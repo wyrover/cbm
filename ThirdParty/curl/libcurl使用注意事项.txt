@@ -1,0 +1,7 @@
+libcurl使用注意事项
+
+预处理符号：
+   BUILDING_LIBCURL  （必须加上，否则报链接错误）
+
+依赖项：
+    ws2_32.lib winmm.lib wldap32.lib  （必须加上，否则报链接错误）
