@@ -7,11 +7,24 @@ namespace cbm {
 
 PoreSize::PoreSize()
 {
+	pore_size_id = 0;
+	size_q = 0.0;
+	size_v = 0.0;
+	size_d = 0.0;
+	size_p = 0.0;
+	size_sigma = 0.0;
+	size_delta = 0.0;
 }
 
 PoreSize::PoreSize(long id)
 {
-	this->pore_size_id = id;
+	pore_size_id = id;
+	size_q = 0.0;
+	size_v = 0.0;
+	size_d = 0.0;
+	size_p = 0.0;
+	size_sigma = 0.0;
+	size_delta = 0.0;
 }
 
 PoreSize::PoreSize(soci::row &rs)
@@ -23,6 +36,11 @@ PoreSize::PoreSize(soci::row &rs)
 	size_p = rs.get<double>(4);
 	size_sigma = rs.get<double>(5);
 	size_delta = rs.get<double>(6);
+}
+
+std::string PoreSize::getTableName() const
+{
+	return "cbm_pore_size";
 }
 
 std::string PoreSize::getSqlInsert() const

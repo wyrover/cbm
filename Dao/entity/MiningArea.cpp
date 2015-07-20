@@ -8,11 +8,20 @@ namespace cbm {
 
 MiningArea::MiningArea()
 {
+	mining_area_id = 0;
+	area_mode = 0;
+	area_k = 0.0;
+	a = 0.0;
+	q_r = 0.0;
 }
 
 MiningArea::MiningArea(long id)
 {
-	this->mining_area_id = id;
+	mining_area_id = id;
+	area_mode = 0;
+	area_k = 0.0;
+	a = 0.0;
+	q_r = 0.0;
 }
 
 MiningArea::MiningArea(soci::row &rs)
@@ -26,6 +35,11 @@ MiningArea::MiningArea(soci::row &rs)
 	area_k = rs.get<double>(3);
 	a = rs.get<double>(4);
 	q_r = rs.get<double>(5);
+}
+
+std::string MiningArea::getTableName() const
+{
+	return "cbm_mining_area";
 }
 
 std::string MiningArea::getSqlInsert() const

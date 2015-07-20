@@ -8,11 +8,74 @@ namespace cbm {
 
 Coal::Coal()
 {
+	coal_id = 0;
+	coal_name = "";
+	coal_number = 0;
+	coal_minable = 0;
+	coal_thick = 0.0;
+	coal_rank = 0;
+	coal_quality = 0;
+	layer_pressure = 0.0;
+	gas_content = 0.0;
+	gas_penetration = 0.0;
+	f_value = 0.0;
+	res_abundance = 0;
+	const_complexity = 0;
+	mine_index = 0;
+	var_coeff = 0.0;
+	coal_stability = 0.0;
+	dip_angle = 0.0;
+	caving_zone_height = 0.0;
+	layer_gap = 0.0;
+	influence_factor = 0.0;
+	res_a1 = 0.0;
+	gas_x1 = 0.0;
+	res_a2 = 0.0;
+	gas_x2 = 0.0;
+	gas_wc = 0.0;
+	coal_r = 0.0;
+	coal_vr = 0.0;
+	gas_w0 = 0.0;
+	gas_eta = 0.0;
+	q_r = 0.0;
+	q0 = 0.0;
+	mine_height = 0.0;
 }
 
 Coal::Coal(long id)
 {
-	this->coal_id = id;
+	coal_id = id;
+	coal_name = "";
+	coal_number = 0;
+	coal_minable = 0;
+	coal_thick = 0.0;
+	coal_rank = 0;
+	coal_quality = 0;
+	layer_pressure = 0.0;
+	gas_content = 0.0;
+	gas_penetration = 0.0;
+	f_value = 0.0;
+	res_abundance = 0;
+	const_complexity = 0;
+	mine_index = 0;
+	var_coeff = 0.0;
+	coal_stability = 0.0;
+	dip_angle = 0.0;
+	caving_zone_height = 0.0;
+	layer_gap = 0.0;
+	influence_factor = 0.0;
+	res_a1 = 0.0;
+	gas_x1 = 0.0;
+	res_a2 = 0.0;
+	gas_x2 = 0.0;
+	gas_wc = 0.0;
+	coal_r = 0.0;
+	coal_vr = 0.0;
+	gas_w0 = 0.0;
+	gas_eta = 0.0;
+	q_r = 0.0;
+	q0 = 0.0;
+	mine_height = 0.0;
 }
 
 Coal::Coal(soci::row &rs)
@@ -53,6 +116,11 @@ Coal::Coal(soci::row &rs)
 	q_r = rs.get<double>(30);
 	q0 = rs.get<double>(31);
 	mine_height = rs.get<double>(32);
+}
+
+std::string Coal::getTableName() const
+{
+	return "cbm_coal";
 }
 
 std::string Coal::getSqlInsert() const

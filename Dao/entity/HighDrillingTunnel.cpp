@@ -8,11 +8,20 @@ namespace cbm {
 
 HighDrillingTunnel::HighDrillingTunnel()
 {
+	high_drilling_tunnel_id = 0;
+	hdt_k = 0.0;
+	hdt_rock = 0;
+	hdt_hz_min = 0.0;
+	hdt_hz_max = 0.0;
 }
 
 HighDrillingTunnel::HighDrillingTunnel(long id)
 {
-	this->high_drilling_tunnel_id = id;
+	high_drilling_tunnel_id = id;
+	hdt_k = 0.0;
+	hdt_rock = 0;
+	hdt_hz_min = 0.0;
+	hdt_hz_max = 0.0;
 }
 
 HighDrillingTunnel::HighDrillingTunnel(soci::row &rs)
@@ -26,6 +35,11 @@ HighDrillingTunnel::HighDrillingTunnel(soci::row &rs)
 	hdt_rock = rs.get<long>(3);
 	hdt_hz_min = rs.get<double>(4);
 	hdt_hz_max = rs.get<double>(5);
+}
+
+std::string HighDrillingTunnel::getTableName() const
+{
+	return "cbm_high_drilling_tunnel";
 }
 
 std::string HighDrillingTunnel::getSqlInsert() const

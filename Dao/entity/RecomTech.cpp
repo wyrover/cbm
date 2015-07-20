@@ -8,11 +8,20 @@ namespace cbm {
 
 RecomTech::RecomTech()
 {
+	recom_tech_id = 0;
+	name = "";
+	is_key = 0;
+	doc = "";
+	video = "";
 }
 
 RecomTech::RecomTech(long id)
 {
-	this->recom_tech_id = id;
+	recom_tech_id = id;
+	name = "";
+	is_key = 0;
+	doc = "";
+	video = "";
 }
 
 RecomTech::RecomTech(soci::row &rs)
@@ -26,6 +35,11 @@ RecomTech::RecomTech(soci::row &rs)
 	is_key = rs.get<long>(3);
 	doc = rs.get<std::string>(4);
 	video = rs.get<std::string>(5);
+}
+
+std::string RecomTech::getTableName() const
+{
+	return "cbm_recom_tech";
 }
 
 std::string RecomTech::getSqlInsert() const

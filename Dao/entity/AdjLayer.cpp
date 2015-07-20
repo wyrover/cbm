@@ -9,11 +9,20 @@ namespace cbm {
 
 AdjLayer::AdjLayer()
 {
+	adj_layer_id = 0;
+	layer_num = 0;
+	layer_h = 0.0;
+	layer_hp = 0.0;
+	layer_cave_zone = 0;
 }
 
 AdjLayer::AdjLayer(long id)
 {
-	this->adj_layer_id = id;
+	adj_layer_id = id;
+	layer_num = 0;
+	layer_h = 0.0;
+	layer_hp = 0.0;
+	layer_cave_zone = 0;
 }
 
 AdjLayer::AdjLayer(soci::row &rs)
@@ -31,6 +40,11 @@ AdjLayer::AdjLayer(soci::row &rs)
 	layer_h = rs.get<double>(4);
 	layer_hp = rs.get<double>(5);
 	layer_cave_zone = rs.get<long>(6);
+}
+
+std::string AdjLayer::getTableName() const
+{
+	return "cbm_adj_layer";
 }
 
 std::string AdjLayer::getSqlInsert() const

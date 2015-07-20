@@ -12,6 +12,7 @@ public:
 	Mine();
 	Mine(long id);
 	Mine(soci::row& rs);
+	std::string getTableName() const;
 	std::string getSqlInsert() const;
 	std::string getSqlUpdate() const;
 	std::string getSqlDelete() const;

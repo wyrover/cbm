@@ -8,11 +8,20 @@ namespace cbm {
 
 GasReserve::GasReserve()
 {
+	gas_reserve_id = 0;
+	reserve_w1 = 0.0;
+	reserve_w2 = 0.0;
+	reserve_w3 = 0.0;
+	reserve_gas = 0.0;
 }
 
 GasReserve::GasReserve(long id)
 {
-	this->gas_reserve_id = id;
+	gas_reserve_id = id;
+	reserve_w1 = 0.0;
+	reserve_w2 = 0.0;
+	reserve_w3 = 0.0;
+	reserve_gas = 0.0;
 }
 
 GasReserve::GasReserve(soci::row &rs)
@@ -26,6 +35,11 @@ GasReserve::GasReserve(soci::row &rs)
 	reserve_w2 = rs.get<double>(3);
 	reserve_w3 = rs.get<double>(4);
 	reserve_gas = rs.get<double>(5);
+}
+
+std::string GasReserve::getTableName() const
+{
+	return "cbm_gas_reserve";
 }
 
 std::string GasReserve::getSqlInsert() const

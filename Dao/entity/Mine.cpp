@@ -7,11 +7,36 @@ namespace cbm {
 
 Mine::Mine()
 {
+	mine_id = 0;
+	username = "";
+	password = "";
+	mine_name = "";
+	mine_region = "";
+	mine_address = "";
+	coal_capacity = 0.0;
+	topo_geo = 0;
+	hydr_geo = 0;
+	ground_condition = 0;
+	q_r = 0.0;
+	stereo_schem_diagram = "";
+	k_gas = 0.0;
 }
 
 Mine::Mine(long id)
 {
-	this->mine_id = id;
+	mine_id = id;
+	username = "";
+	password = "";
+	mine_name = "";
+	mine_region = "";
+	mine_address = "";
+	coal_capacity = 0.0;
+	topo_geo = 0;
+	hydr_geo = 0;
+	ground_condition = 0;
+	q_r = 0.0;
+	stereo_schem_diagram = "";
+	k_gas = 0.0;
 }
 
 Mine::Mine(soci::row &rs)
@@ -29,6 +54,11 @@ Mine::Mine(soci::row &rs)
 	q_r = rs.get<double>(10);
 	stereo_schem_diagram = rs.get<std::string>(11);
 	k_gas = rs.get<double>(12);
+}
+
+std::string Mine::getTableName() const
+{
+	return "cbm_mine";
 }
 
 std::string Mine::getSqlInsert() const

@@ -1,6 +1,7 @@
 #include "StdAfx.h"
 #include "DaoHelper.h"
 
+#include "../ArxHelper/HelperClass.h"
 #include "../Dao/entity/entities.h"
 #include "../Dao/model/models.h"
 
@@ -8,7 +9,7 @@ using namespace cbm;
 
 void DaoHelper::ConfigureDao(const string& url, const string& user, const string& password, const string& dataBase)
 {
-	DaoPrt dao = Dao::getInstance(url, user, password, dataBase);
+	Dao::Configure(url, user, password, dataBase);
 }
 
 void DaoHelper::TestDao()
@@ -16,7 +17,8 @@ void DaoHelper::TestDao()
 	Mine mine;
 	mine.setUsername("dlj");
 	mine.setPassword("123");
-	mine.setMineName("晋煤");
+	//std::string xx = EncodeHelper::ANSIToUtf8("test晋煤集团");
+	mine.setMineName(EncodeHelper::UnicodeToANSI(_T("test晋煤集团")));
 
 	MineDao dao;
 	dao.insert(mine);

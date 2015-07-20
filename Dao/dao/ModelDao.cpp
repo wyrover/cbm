@@ -7,5 +7,5 @@ ModelDao::~ModelDao()
 
 ModelDao::ModelDao()
 {
-    dao = Dao::getInstance();
+    dao = Dao::GetInstance();
 }

@@ -8,11 +8,16 @@ namespace cbm {
 
 EvalUnit::EvalUnit()
 {
+	eval_unit_id = 0;
+	unit_l = 0.0;
+	unit_t = 0.0;
 }
 
 EvalUnit::EvalUnit(long id)
 {
-	this->eval_unit_id = id;
+	eval_unit_id = id;
+	unit_l = 0.0;
+	unit_t = 0.0;
 }
 
 EvalUnit::EvalUnit(soci::row &rs)
@@ -24,6 +29,11 @@ EvalUnit::EvalUnit(soci::row &rs)
 	}
 	unit_l = rs.get<double>(2);
 	unit_t = rs.get<double>(3);
+}
+
+std::string EvalUnit::getTableName() const
+{
+	return "cbm_eval_unit";
 }
 
 std::string EvalUnit::getSqlInsert() const

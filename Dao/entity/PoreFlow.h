@@ -12,6 +12,7 @@ public:
 	PoreFlow();
 	PoreFlow(long id);
 	PoreFlow(soci::row& rs);
+	std::string getTableName() const;
 	std::string getSqlInsert() const;
 	std::string getSqlUpdate() const;
 	std::string getSqlDelete() const;

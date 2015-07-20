@@ -1,13 +1,13 @@
 #pragma once
 
-#include "dlimexp.h"
+//#include "dlimexp.h"
 
 #include <string>
 
 /** 
 * ×Ö·û´®±àÂë×ª»».
 */
-class ARXHELPER_DLLIMPEXP EncodeHelper
+class /*ARXHELPER_DLLIMPEXP*/ EncodeHelper
 {
 public:
 	static std::string UnicodeToANSI(const std::wstring& str);

@@ -17,13 +17,13 @@ typedef soci::rowset<soci::row> ResultSet;
 
 class Dao
 {
-    soci::session sql;
-    static DaoPrt instance;
-    Dao(const std::string& host, const std::string& user, const std::string& password, const std::string& database);
-public:
-    static DaoPrt getInstance(const std::string& url="" /*tcp://127.0.0.1:3306*/, const std::string& user="", const std::string& password="", const string& database="");
-    ~Dao();
 
+public:
+    static DaoPrt GetInstance(const std::string& url="" /*tcp://127.0.0.1:3306*/, const std::string& user="", const std::string& password="", const string& database="");
+	static void Configure(const string& url, const string& user, const string& password, const string& dataBase);
+
+public:
+	~Dao();
     bool isConnected();
     soci::session* getConnection();
 
@@ -46,7 +46,7 @@ public:
             ret = false;
 			//cerr << "MySQL error: " << e.err_num_<< " " << e.what() << endl;
         }
-		catch (std::exception const & e)
+		catch (std::exception const &)
 		{
 			ret = false;
 			//cerr << "Some other error: " << e.what() << endl;
@@ -71,7 +71,7 @@ public:
             ret = false;
 			//cerr << "MySQL error: " << e.err_num_<< " " << e.what() << endl;
         }
-		catch (std::exception const & e)
+		catch (std::exception const &)
 		{
 			//cerr << "Some other error: " << e.what() << endl;
 			ret = false;
@@ -92,7 +92,7 @@ public:
             sql += " FROM "+table+" ";
             sql += options.empty()?"":options;
 
-            ResultSet linhas = connection->prepare << sql;
+            ResultSet linhas = (connection->prepare << sql);
             for (ResultSet::const_iterator it = linhas.begin(); it != linhas.end(); ++it) {
                 soci::row& linha = *it;
                 vec->push_back( shared_ptr<type>(new type(linha) ) );
@@ -103,7 +103,7 @@ public:
             vec.reset();
 			//cerr << "MySQL error: " << e.err_num_<< " " << e.what() << endl;
         }
-		catch (std::exception const & e)
+		catch (std::exception const &)
 		{
 			vec.reset();
 			//cerr << "Some other error: " << e.what() << endl;
@@ -124,18 +124,25 @@ public:
             *connection << sql;
             *connection << "SELECT LAST_INSERT_ID()", soci::into(id);
         }
-        catch(soci::soci_error const &)
+        catch(soci::soci_error const & e)
         {
+			std::string err_msg = e.what();
+
             id = -1;
 			//cerr << "MySQL error: " << e.err_num_<< " " << e.what() << endl;
         }
-		catch (std::exception const & e)
+		catch (std::exception const &)
 		{
 			id = -1;
 			//cerr << "Some other error: " << e.what() << endl;
 		}
         return id;
     }
+
+private:
+	soci::session sql;
+	static DaoPrt instance;
+	Dao(const std::string& host, const std::string& user, const std::string& password, const std::string& database);
 };
 
 #endif // DAO_H

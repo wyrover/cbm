@@ -8,11 +8,16 @@ namespace cbm {
 
 TechMode::TechMode()
 {
+	tech_mode_id = 0;
+	mode_name = "";
+	mode_type = 0;
 }
 
 TechMode::TechMode(long id)
 {
-	this->tech_mode_id = id;
+	tech_mode_id = id;
+	mode_name = "";
+	mode_type = 0;
 }
 
 TechMode::TechMode(soci::row &rs)
@@ -24,6 +29,11 @@ TechMode::TechMode(soci::row &rs)
 	}
 	mode_name = rs.get<std::string>(2);
 	mode_type = rs.get<long>(3);
+}
+
+std::string TechMode::getTableName() const
+{
+	return "cbm_tech_mode";
 }
 
 std::string TechMode::getSqlInsert() const

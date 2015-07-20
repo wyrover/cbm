@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DaoTest", "DaoTest\DaoTest.vcproj", "{F5517201-E20C-41E8-9527-03814B257228}"
+	ProjectSection(ProjectDependencies) = postProject
+		{08CB01F9-3DFC-4B7B-94CA-84A649665656} = {08CB01F9-3DFC-4B7B-94CA-84A649665656}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Dao", "..\..\Dao\Dao.vcproj", "{08CB01F9-3DFC-4B7B-94CA-84A649665656}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
+		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F5517201-E20C-41E8-9527-03814B257228}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F5517201-E20C-41E8-9527-03814B257228}.Debug|Win32.Build.0 = Debug|Win32
+		{F5517201-E20C-41E8-9527-03814B257228}.Debug|x64.ActiveCfg = Debug|x64
+		{F5517201-E20C-41E8-9527-03814B257228}.Debug|x64.Build.0 = Debug|x64
+		{F5517201-E20C-41E8-9527-03814B257228}.Release|Win32.ActiveCfg = Release|Win32
+		{F5517201-E20C-41E8-9527-03814B257228}.Release|Win32.Build.0 = Release|Win32
+		{F5517201-E20C-41E8-9527-03814B257228}.Release|x64.ActiveCfg = Release|x64
+		{F5517201-E20C-41E8-9527-03814B257228}.Release|x64.Build.0 = Release|x64
+		{08CB01F9-3DFC-4B7B-94CA-84A649665656}.Debug|Win32.ActiveCfg = Debug|Win32
+		{08CB01F9-3DFC-4B7B-94CA-84A649665656}.Debug|Win32.Build.0 = Debug|Win32
+		{08CB01F9-3DFC-4B7B-94CA-84A649665656}.Debug|x64.ActiveCfg = Debug|x64
+		{08CB01F9-3DFC-4B7B-94CA-84A649665656}.Debug|x64.Build.0 = Debug|x64
+		{08CB01F9-3DFC-4B7B-94CA-84A649665656}.Release|Win32.ActiveCfg = Release|Win32
+		{08CB01F9-3DFC-4B7B-94CA-84A649665656}.Release|Win32.Build.0 = Release|Win32
+		{08CB01F9-3DFC-4B7B-94CA-84A649665656}.Release|x64.ActiveCfg = Release|x64
+		{08CB01F9-3DFC-4B7B-94CA-84A649665656}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

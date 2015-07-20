@@ -7,11 +7,16 @@ namespace cbm {
 
 MineBase::MineBase()
 {
+	mine_base_id = 0;
+	base_name = "";
+	base_mine = "";
 }
 
 MineBase::MineBase(long id)
 {
-	this->mine_base_id = id;
+	mine_base_id = id;
+	base_name = "";
+	base_mine = "";
 }
 
 MineBase::MineBase(soci::row &rs)
@@ -19,6 +24,11 @@ MineBase::MineBase(soci::row &rs)
 	mine_base_id = rs.get<long>(0);
 	base_name = rs.get<std::string>(1);
 	base_mine = rs.get<std::string>(2);
+}
+
+std::string MineBase::getTableName() const
+{
+	return "cbm_mine_base";
 }
 
 std::string MineBase::getSqlInsert() const

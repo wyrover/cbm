@@ -8,11 +8,36 @@ namespace cbm {
 
 WorkSurf::WorkSurf()
 {
+	work_surf_id = 0;
+	a = 0.0;
+	q_r = 0.0;
+	q_a = 0.0;
+	ws_l = 0.0;
+	ws_layer = 0;
+	ws_k1 = 0.0;
+	ws_k2 = 0.0;
+	ws_k3 = 0.0;
+	ws_kf = 0.0;
+	cross_l = 0.0;
+	cross_v = 0.0;
+	last_t = 0.0;
 }
 
 WorkSurf::WorkSurf(long id)
 {
-	this->work_surf_id = id;
+	work_surf_id = id;
+	a = 0.0;
+	q_r = 0.0;
+	q_a = 0.0;
+	ws_l = 0.0;
+	ws_layer = 0;
+	ws_k1 = 0.0;
+	ws_k2 = 0.0;
+	ws_k3 = 0.0;
+	ws_kf = 0.0;
+	cross_l = 0.0;
+	cross_v = 0.0;
+	last_t = 0.0;
 }
 
 WorkSurf::WorkSurf(soci::row &rs)
@@ -34,6 +59,11 @@ WorkSurf::WorkSurf(soci::row &rs)
 	cross_l = rs.get<double>(11);
 	cross_v = rs.get<double>(12);
 	last_t = rs.get<double>(13);
+}
+
+std::string WorkSurf::getTableName() const
+{
+	return "cbm_work_surf";
 }
 
 std::string WorkSurf::getSqlInsert() const

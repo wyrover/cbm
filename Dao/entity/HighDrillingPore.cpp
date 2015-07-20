@@ -8,11 +8,36 @@ namespace cbm {
 
 HighDrillingPore::HighDrillingPore()
 {
+	high_drilling_pore_id = 0;
+	hdp_l1 = 0.0;
+	hdp_l2 = 0.0;
+	hdp_lg = 0.0;
+	hdp_hz = 0.0;
+	hdp_lk = 0.0;
+	hdp_lc = 0.0;
+	hdp_lw = 0.0;
+	hdp_n = 0.0;
+	hdp_beta = 0.0;
+	hdp_ld = 0.0;
+	hdp_lzi = 0.0;
+	hdp_lzj = 0.0;
 }
 
 HighDrillingPore::HighDrillingPore(long id)
 {
-	this->high_drilling_pore_id = id;
+	high_drilling_pore_id = id;
+	hdp_l1 = 0.0;
+	hdp_l2 = 0.0;
+	hdp_lg = 0.0;
+	hdp_hz = 0.0;
+	hdp_lk = 0.0;
+	hdp_lc = 0.0;
+	hdp_lw = 0.0;
+	hdp_n = 0.0;
+	hdp_beta = 0.0;
+	hdp_ld = 0.0;
+	hdp_lzi = 0.0;
+	hdp_lzj = 0.0;
 }
 
 HighDrillingPore::HighDrillingPore(soci::row &rs)
@@ -34,6 +59,11 @@ HighDrillingPore::HighDrillingPore(soci::row &rs)
 	hdp_ld = rs.get<double>(11);
 	hdp_lzi = rs.get<double>(12);
 	hdp_lzj = rs.get<double>(13);
+}
+
+std::string HighDrillingPore::getTableName() const
+{
+	return "cbm_high_drilling_pore";
 }
 
 std::string HighDrillingPore::getSqlInsert() const

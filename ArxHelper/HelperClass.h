@@ -14,3 +14,4 @@
 #include "ArxDwgHelper.h"
 #include "LayerHelper.h"
 #include "LogHelper.h"
+#include "EncodeHelper.h"

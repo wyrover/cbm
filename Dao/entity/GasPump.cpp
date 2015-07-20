@@ -8,11 +8,28 @@ namespace cbm {
 
 GasPump::GasPump()
 {
+	gas_pump_id = 0;
+	pump_kd = 0.0;
+	pump_k1 = 0.0;
+	pump_k2 = 0.0;
+	pump_k3 = 0.0;
+	pump_k4 = 0.0;
+	pump_my = 0.0;
+	pump_mc = 0.0;
+	pump_wc = 0.0;
 }
 
 GasPump::GasPump(long id)
 {
-	this->gas_pump_id = id;
+	gas_pump_id = id;
+	pump_kd = 0.0;
+	pump_k1 = 0.0;
+	pump_k2 = 0.0;
+	pump_k3 = 0.0;
+	pump_k4 = 0.0;
+	pump_my = 0.0;
+	pump_mc = 0.0;
+	pump_wc = 0.0;
 }
 
 GasPump::GasPump(soci::row &rs)
@@ -30,6 +47,11 @@ GasPump::GasPump(soci::row &rs)
 	pump_my = rs.get<double>(7);
 	pump_mc = rs.get<double>(8);
 	pump_wc = rs.get<double>(9);
+}
+
+std::string GasPump::getTableName() const
+{
+	return "cbm_gas_pump";
 }
 
 std::string GasPump::getSqlInsert() const

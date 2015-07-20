@@ -8,11 +8,22 @@ namespace cbm {
 
 KeyLayer::KeyLayer()
 {
+	key_layer_id = 0;
+	key_hn = 0.0;
+	key_thetan = 0.0;
+	key_qn = 0.0;
+	key_rtn = 0.0;
+	key_sum_hn = 0.0;
 }
 
 KeyLayer::KeyLayer(long id)
 {
-	this->key_layer_id = id;
+	key_layer_id = id;
+	key_hn = 0.0;
+	key_thetan = 0.0;
+	key_qn = 0.0;
+	key_rtn = 0.0;
+	key_sum_hn = 0.0;
 }
 
 KeyLayer::KeyLayer(soci::row &rs)
@@ -27,6 +38,11 @@ KeyLayer::KeyLayer(soci::row &rs)
 	key_qn = rs.get<double>(4);
 	key_rtn = rs.get<double>(5);
 	key_sum_hn = rs.get<double>(6);
+}
+
+std::string KeyLayer::getTableName() const
+{
+	return "cbm_key_layer";
 }
 
 std::string KeyLayer::getSqlInsert() const

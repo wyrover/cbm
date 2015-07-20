@@ -8,11 +8,34 @@ namespace cbm {
 
 DrillingRadius::DrillingRadius()
 {
+	drilling_radius_id = 0;
+	radius_r = 0.0;
+	radius_l = 0.0;
+	radius_k1 = 0.0;
+	radius_rho = 0.0;
+	radius_q0 = 0.0;
+	radius_a = 0.0;
+	radius_t = 0.0;
+	radius_qm1 = 0.0;
+	radius_qm2 = 0.0;
+	radius_qsum = 0.0;
+	radius_eta = 0.0;
 }
 
 DrillingRadius::DrillingRadius(long id)
 {
-	this->drilling_radius_id = id;
+	drilling_radius_id = id;
+	radius_r = 0.0;
+	radius_l = 0.0;
+	radius_k1 = 0.0;
+	radius_rho = 0.0;
+	radius_q0 = 0.0;
+	radius_a = 0.0;
+	radius_t = 0.0;
+	radius_qm1 = 0.0;
+	radius_qm2 = 0.0;
+	radius_qsum = 0.0;
+	radius_eta = 0.0;
 }
 
 DrillingRadius::DrillingRadius(soci::row &rs)
@@ -33,6 +56,11 @@ DrillingRadius::DrillingRadius(soci::row &rs)
 	radius_qm2 = rs.get<double>(10);
 	radius_qsum = rs.get<double>(11);
 	radius_eta = rs.get<double>(12);
+}
+
+std::string DrillingRadius::getTableName() const
+{
+	return "cbm_drilling_radius";
 }
 
 std::string DrillingRadius::getSqlInsert() const

@@ -8,11 +8,52 @@ namespace cbm {
 
 PumpDegree::PumpDegree()
 {
+	pump_degree_id = 0;
+	eval_method = 0;
+	q0_alpha = 0.0;
+	qt_alpha = 0.0;
+	t_alpha = 0.0;
+	q_lambda = 0.0;
+	r_lambda = 0.0;
+	p0_lambda = 0.0;
+	p1_lambda = 0.0;
+	t_lambda = 0.0;
+	a_lambda = 0.0;
+	p1_k = 0.0;
+	p2_k = 0.0;
+	gas_q = 0.0;
+	core_height = 0.0;
+	core_area = 0.0;
+	gas_viscosity = 0.0;
+	decay_alpha = 0.0;
+	permeability_lambda = 0.0;
+	permeability_k = 0.0;
+	eval_difficult = 0;
 }
 
 PumpDegree::PumpDegree(long id)
 {
-	this->pump_degree_id = id;
+	pump_degree_id = id;
+	eval_method = 0;
+	q0_alpha = 0.0;
+	qt_alpha = 0.0;
+	t_alpha = 0.0;
+	q_lambda = 0.0;
+	r_lambda = 0.0;
+	p0_lambda = 0.0;
+	p1_lambda = 0.0;
+	t_lambda = 0.0;
+	a_lambda = 0.0;
+	p1_k = 0.0;
+	p2_k = 0.0;
+	gas_q = 0.0;
+	core_height = 0.0;
+	core_area = 0.0;
+	gas_viscosity = 0.0;
+	decay_alpha = 0.0;
+	permeability_lambda = 0.0;
+	permeability_k = 0.0;
+	eval_difficult = 0;
 }
 
 PumpDegree::PumpDegree(soci::row &rs)
@@ -42,6 +83,11 @@ PumpDegree::PumpDegree(soci::row &rs)
 	permeability_lambda = rs.get<double>(19);
 	permeability_k = rs.get<double>(20);
 	eval_difficult = rs.get<long>(21);
+}
+
+std::string PumpDegree::getTableName() const
+{
+	return "cbm_pump_degree";
 }
 
 std::string PumpDegree::getSqlInsert() const

@@ -7,11 +7,44 @@ namespace cbm {
 
 PoreFlow::PoreFlow()
 {
+	pore_flow_id = 0;
+	flow_t = 0.0;
+	flow_a0 = 0.0;
+	flow_d = 0.0;
+	flow_d1 = 0.0;
+	flow_m = 0.0;
+	flow_k = 0.0;
+	flow_delta_t = 0.0;
+	flow_x = 0.0;
+	flow_p_test = 0.0;
+	flow_p_cur = 0.0;
+	flow_b = 0.0;
+	flow_pt = 0.0;
+	flow_delta_p = 0.0;
+	flow_dh = 0.0;
+	flow_q_hun = 0.0;
+	flow_q_chun = 0.0;
 }
 
 PoreFlow::PoreFlow(long id)
 {
-	this->pore_flow_id = id;
+	pore_flow_id = id;
+	flow_t = 0.0;
+	flow_a0 = 0.0;
+	flow_d = 0.0;
+	flow_d1 = 0.0;
+	flow_m = 0.0;
+	flow_k = 0.0;
+	flow_delta_t = 0.0;
+	flow_x = 0.0;
+	flow_p_test = 0.0;
+	flow_p_cur = 0.0;
+	flow_b = 0.0;
+	flow_pt = 0.0;
+	flow_delta_p = 0.0;
+	flow_dh = 0.0;
+	flow_q_hun = 0.0;
+	flow_q_chun = 0.0;
 }
 
 PoreFlow::PoreFlow(soci::row &rs)
@@ -33,6 +66,11 @@ PoreFlow::PoreFlow(soci::row &rs)
 	flow_dh = rs.get<double>(14);
 	flow_q_hun = rs.get<double>(15);
 	flow_q_chun = rs.get<double>(16);
+}
+
+std::string PoreFlow::getTableName() const
+{
+	return "cbm_pore_flow";
 }
 
 std::string PoreFlow::getSqlInsert() const

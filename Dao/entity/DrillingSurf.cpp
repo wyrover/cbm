@@ -8,11 +8,28 @@ namespace cbm {
 
 DrillingSurf::DrillingSurf()
 {
+	drilling_surf_id = 0;
+	q_r = 0.0;
+	q_a = 0.0;
+	tw_d = 0.0;
+	tw_v = 0.0;
+	tw_l = 0.0;
+	tw_s = 0.0;
+	tw_q3 = 0.0;
+	tw_q4 = 0.0;
 }
 
 DrillingSurf::DrillingSurf(long id)
 {
-	this->drilling_surf_id = id;
+	drilling_surf_id = id;
+	q_r = 0.0;
+	q_a = 0.0;
+	tw_d = 0.0;
+	tw_v = 0.0;
+	tw_l = 0.0;
+	tw_s = 0.0;
+	tw_q3 = 0.0;
+	tw_q4 = 0.0;
 }
 
 DrillingSurf::DrillingSurf(soci::row &rs)
@@ -30,6 +47,11 @@ DrillingSurf::DrillingSurf(soci::row &rs)
 	tw_s = rs.get<double>(7);
 	tw_q3 = rs.get<double>(8);
 	tw_q4 = rs.get<double>(9);
+}
+
+std::string DrillingSurf::getTableName() const
+{
+	return "cbm_drilling_surf";
 }
 
 std::string DrillingSurf::getSqlInsert() const

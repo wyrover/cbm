@@ -7,11 +7,18 @@ namespace cbm {
 
 Help::Help()
 {
+	help_id = 0;
+	help_field = "";
+	help_type = 0;
+	help_value = "";
 }
 
 Help::Help(long id)
 {
-	this->help_id = id;
+	help_id = id;
+	help_field = "";
+	help_type = 0;
+	help_value = "";
 }
 
 Help::Help(soci::row &rs)
@@ -20,6 +27,11 @@ Help::Help(soci::row &rs)
 	help_field = rs.get<std::string>(1);
 	help_type = rs.get<long>(2);
 	help_value = rs.get<std::string>(3);
+}
+
+std::string Help::getTableName() const
+{
+	return "cbm_help";
 }
 
 std::string Help::getSqlInsert() const
