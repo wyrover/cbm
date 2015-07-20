@@ -10,6 +10,7 @@
 
 #include "../MineGEDraw/MineGEDrawSystem.h"
 #include "../ArxHelper/HelperClass.h"
+#include "../Util/HelperClass.h"
 
 // 系统精度设置器全局变量
 TolSetter* pTS = 0;

@@ -409,15 +409,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\EncodeHelper.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\LayerHelper.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\LogHelper.cpp"
 				>
 			</File>
 			<File
@@ -514,19 +506,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\EncodeHelper.h"
-				>
-			</File>
-			<File
 				RelativePath=".\HelperClass.h"
 				>
 			</File>
 			<File
 				RelativePath=".\LayerHelper.h"
-				>
-			</File>
-			<File
-				RelativePath=".\LogHelper.h"
 				>
 			</File>
 			<File

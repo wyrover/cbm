@@ -11,6 +11,7 @@
 
 #include "../ArxHelper/HelperClass.h"
 #include "../MineGE/HelperClass.h"
+#include "../Util/HelperClass.h"
 
 //#include <controls.extend/propgrid/SPropertyGrid.h>
 //#include <controls.extend/SFlyWnd.h>

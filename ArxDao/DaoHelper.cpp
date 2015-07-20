@@ -1,11 +1,11 @@
 #include "StdAfx.h"
 #include "DaoHelper.h"
 
-#include "../ArxHelper/HelperClass.h"
-#include "../Dao/entity/entities.h"
-#include "../Dao/model/models.h"
-
+#include "entity/entities.h"
+#include "model/models.h"
 using namespace cbm;
+
+#include "../ArxHelper/HelperClass.h"
 
 void DaoHelper::ConfigureDao(const string& url, const string& user, const string& password, const string& dataBase)
 {
