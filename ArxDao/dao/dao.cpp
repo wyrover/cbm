@@ -4,32 +4,36 @@
 
 DaoPrt Dao::instance;
 
-void Dao::Configure(const string& url, const string& user, const string& password, const string& dataBase)
+bool Dao::Configure(const string& url, const string& user, const string& password, const string& dataBase)
 {
-	DaoPrt dao = Dao::GetInstance(url, user, password, dataBase);
-	//解决mysql中文乱码问题
-	dao->executeQuery("set names 'gbk';");
-	//dao->executeQuery("set character_set_client=utf8;");
-	//dao->executeQuery("set character_set_results=utf8;");
-	//dao->executeQuery("set character_set_connection=utf8;");
-}
-
-Dao::Dao(const std::string& host, const std::string& user, const std::string& password, const std::string& database)
-{
+	bool ret = true;
 	try
 	{
-		sql.open(soci::mysql, "host="+host+" db="+database+" user="+user+" password=\'"+password+"\'");
+		DaoPrt dao = Dao::GetInstance(url, user, password, dataBase);
+		//解决mysql中文乱码问题
+		dao->executeQuery("set names 'gbk';");
+		//dao->executeQuery("set character_set_client=utf8;");
+		//dao->executeQuery("set character_set_results=utf8;");
+		//dao->executeQuery("set character_set_connection=utf8;");
 	}
 	catch(soci::soci_error const & e)
 	{
+		ret = false;
 		//cerr << "MySQL error: " << e.err_num_<< " " << e.what() << endl;
 		LOG_DEBUG_FMT(_T("连接数据库异常:%s"), EncodeHelper::ANSIToUnicode(e.what()));
 	}
 	catch (std::exception const & e)
 	{
+		ret = false;
 		//cerr << "Some other error: " << e.what() << endl;
 		LOG_DEBUG_FMT(_T("其它异常:%s"), EncodeHelper::ANSIToUnicode(e.what()));
 	}
+	return ret;
+}
+
+Dao::Dao(const std::string& host, const std::string& user, const std::string& password, const std::string& database)
+{
+	sql.open(soci::mysql, "host="+host+" db="+database+" user="+user+" password=\'"+password+"\'");
 }
 
 DaoPrt Dao::GetInstance(const std::string& url, const std::string& user, const std::string& password, const std::string& database)

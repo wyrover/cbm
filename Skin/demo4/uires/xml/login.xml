@@ -1,0 +1,21 @@
+﻿<SOUI trCtx="dlg_login" title="登录" width="350" height="190" margin="5,5,5,5" resizable="0" bigIcon="LOGO:32" smallIcon="LOGO:16" translucent="0" alpha="255">
+  <style>
+    <!--局部style对象-->
+    <class name="cls_edit" ncSkin="_skin.sys.border" margin-x="2" margin-y="2" />
+  </style>
+  <root class="cls_dlg_frame" cache="1" skin="skin_bk">
+    <caption pos="0,0,-0,30" show="1" font="adding:8">
+      <icon pos="10,8" src="LOGO:16"/>
+      <text class="cls_txt_red">系统账户</text>
+      <imgbtn name="btn_close" skin="_skin.sys.btn.close" pos="-45,0" tip="close" animate="1"/>
+    </caption>
+
+    <text class="cls_txt_white" pos="10,[10">用户名：</text>
+    <edit name="user" width="200"></edit>
+    <text class="cls_txt_white" pos="10,[5">密  码：</text>
+    <edit name="passwd" width="200"></edit>
+
+    <imgbtn name="btn_reg" pos="10,[15,@140,@55" skin="skin_reg"></imgbtn>
+    <imgbtn name="btn_login" pos="200,{0,@140,@55" skin="skin_login"></imgbtn>
+  </root>
+</SOUI>

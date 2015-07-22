@@ -9,7 +9,10 @@ using namespace cbm;
 
 void DaoHelper::ConfigureDao(const string& url, const string& user, const string& password, const string& dataBase)
 {
-	Dao::Configure(url, user, password, dataBase);
+	if(!Dao::Configure(url, user, password, dataBase))
+	{
+		AfxMessageBox(_T("连接MySQL数据库失败，请联系技术人员!!!"));
+	}
 }
 
 void DaoHelper::TestDao()

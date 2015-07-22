@@ -21,7 +21,7 @@ class Dao
 {
 public:
     static DaoPrt GetInstance(const std::string& url="" /*tcp://127.0.0.1:3306*/, const std::string& user="", const std::string& password="", const string& database="");
-	static void Configure(const string& url, const string& user, const string& password, const string& dataBase);
+	static bool Configure(const string& url, const string& user, const string& password, const string& dataBase);
 
 public:
 	~Dao();

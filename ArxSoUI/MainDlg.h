@@ -13,26 +13,7 @@
 
 #pragma once
 
-#include "SListCtrl2.h"
-
-struct DBDatas 
-{
-	CString type;
-	CString weight;
-	CString speed;
-	CString maxp;
-	CString factory;
-	CString length;
-	CString height;
-	CString weidth;
-	CString absp;
-	CString power;
-	CString maxq;
-	CString minabsp;
-};
-
-#include <vector>
-typedef std::vector<DBDatas> DBDatasVector;
+#include <controls.extend/SListCtrl2.h>
 
 /**
 * @class      CMainDlg
@@ -166,11 +147,6 @@ protected:
     //////////////////////////////////////////////////////////////////////////
     //  辅助函数
     void InitListCtrl();
-
-	/**
-	* 泵查询对话框辅助函数
-	*/
-	void UpdateList( const DBDatasVector& datasV );
 
 private:
 	BOOL			m_bLayoutInited;/**<UI完成布局标志 */

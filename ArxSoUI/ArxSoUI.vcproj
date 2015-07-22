@@ -391,15 +391,15 @@
 				>
 			</File>
 			<File
+				RelativePath=".\LoginDlg.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\MainDlg.cpp"
 				>
 			</File>
 			<File
 				RelativePath=".\RealWndDlg.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\SListCtrl2.cpp"
 				>
 			</File>
 			<File
@@ -443,6 +443,10 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath=".\TestDlg.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\UIHelper1.cpp"
 				>
 			</File>
@@ -452,6 +456,10 @@
 			</File>
 			<File
 				RelativePath=".\UIHelper3.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\UIHelper4.cpp"
 				>
 			</File>
 			<Filter
@@ -478,6 +486,10 @@
 					>
 				</File>
 				<File
+					RelativePath="..\ThirdParty\soui\controls.extend\SListCtrl2.cpp"
+					>
+				</File>
+				<File
 					RelativePath="..\ThirdParty\soui\controls.extend\SListCtrlEx.cpp"
 					>
 				</File>
@@ -500,6 +512,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\LoginDlg.h"
+				>
+			</File>
+			<File
 				RelativePath=".\MainDlg.h"
 				>
 			</File>
@@ -512,10 +528,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\SListCtrl2.h"
-				>
-			</File>
-			<File
 				RelativePath=".\SoUILoader.h"
 				>
 			</File>
@@ -525,6 +537,10 @@
 			</File>
 			<File
 				RelativePath=".\StdAfx.h"
+				>
+			</File>
+			<File
+				RelativePath=".\TestDlg.h"
 				>
 			</File>
 			<File
@@ -552,6 +568,10 @@
 				</File>
 				<File
 					RelativePath="..\ThirdParty\soui\controls.extend\SIPAddressCtrl.h"
+					>
+				</File>
+				<File
+					RelativePath="..\ThirdParty\soui\controls.extend\SListCtrl2.h"
 					>
 				</File>
 				<File

@@ -2,8 +2,8 @@
 using namespace SOUI;
 
 #include "MainDlg.h"
-#include "SListCtrl2.h"
 
+#include <controls.extend/SListCtrl2.h>
 #include <controls.extend/FileHelper.h>
 #include <controls.extend/SChatEdit.h>
 #include <controls.extend/gif/SGifPlayer.h>

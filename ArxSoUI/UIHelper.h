@@ -7,4 +7,5 @@ public:
 	static void ShowSoUIDlg2();
 
 	static void ShowSoUIDlg3();
+	static void ShowSoUIDlg4();
 };

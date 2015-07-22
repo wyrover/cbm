@@ -67,7 +67,7 @@ public:
 
 	LPCTSTR getSkinDir() const
 	{
-		return _T("\\..\\..\\Skin\\ArxSoUI");
+		return _T("res");
 	}
 
 	bool initRender()
