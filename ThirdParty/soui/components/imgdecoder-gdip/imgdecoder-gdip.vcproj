@@ -3,15 +3,15 @@
 	ProjectType="Visual C++"
 	Version="9,00"
 	Name="imgdecoder-gdip"
-	ProjectGUID="{B82328DD-40A3-331B-8DB9-78FE837157B2}"
+	ProjectGUID="{3B579C01-9C4B-3E64-A9D0-1C19C3B6E89A}"
 	Keyword="Qt4VSv1.0">
 	<Platforms>
 		<Platform
-			Name="x64" />
+			Name="Win32" />
 	</Platforms>
 	<Configurations>
 		<Configuration
-			Name="Debug|x64"
+			Name="Debug|Win32"
 			OutputDirectory="..\..\bin\"
 			ATLMinimizesCRunTimeLibraryUsage="false"
 			CharacterSet="1"
@@ -29,7 +29,7 @@
 				GeneratePreprocessedFile="0"
 				ObjectFile="..\..\obj\debug\imgdecoder-gdip\"
 				Optimization ="4"
-				PreprocessorDefinitions="_WINDOWS,UNICODE,_CRT_SECURE_NO_WARNINGS,_WIN64"
+				PreprocessorDefinitions="_DEBUG,_WINDOWS,UNICODE,WIN32,_CRT_SECURE_NO_WARNINGS"
 				ProgramDataBaseFileName="$(IntDir)"
 				RuntimeLibrary="3"
 				RuntimeTypeInfo="false"
@@ -57,11 +57,11 @@
 				Name="VCPreLinkEventTool" />
 			<Tool
 				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_WINDOWS,UNICODE,_CRT_SECURE_NO_WARNINGS,_WIN64,_DEBUG"
+				PreprocessorDefinitions="_DEBUG,_WINDOWS,UNICODE,WIN32,_CRT_SECURE_NO_WARNINGS,_DEBUG"
 				ResourceOutputFileName="$(OutDir)\$(InputName).res" />
 		</Configuration>
 		<Configuration
-			Name="Release|x64"
+			Name="Release|Win32"
 			OutputDirectory="..\..\bin\"
 			ATLMinimizesCRunTimeLibraryUsage="false"
 			CharacterSet="1"
@@ -79,7 +79,7 @@
 				GeneratePreprocessedFile="0"
 				ObjectFile="..\..\obj\release\imgdecoder-gdip\"
 				Optimization ="1"
-				PreprocessorDefinitions="_WINDOWS,UNICODE,_CRT_SECURE_NO_WARNINGS,_WIN64,NDEBUG"
+				PreprocessorDefinitions="_WINDOWS,UNICODE,WIN32,_CRT_SECURE_NO_WARNINGS,NDEBUG"
 				ProgramDataBaseFileName="$(IntDir)"
 				RuntimeLibrary="2"
 				RuntimeTypeInfo="false"
@@ -107,7 +107,7 @@
 				Name="VCPreLinkEventTool" />
 			<Tool
 				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_WINDOWS,UNICODE,_CRT_SECURE_NO_WARNINGS,_WIN64"
+				PreprocessorDefinitions="_WINDOWS,UNICODE,WIN32,_CRT_SECURE_NO_WARNINGS"
 				ResourceOutputFileName="$(OutDir)\$(InputName).res" />
 		</Configuration>
 	</Configurations>

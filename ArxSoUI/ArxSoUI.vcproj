@@ -383,7 +383,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\EditPumpDBDlg.cpp"
+				RelativePath=".\DockBarChildDlg.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\EmbedSouiDlg.cpp"
 				>
 			</File>
 			<File
@@ -395,15 +399,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\MainDlg.cpp"
+				RelativePath=".\ModalLoginDlg.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\RealWndDlg.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\SouiRealWndHandler.cpp"
+				RelativePath=".\SoUILoader.cpp"
 				>
 			</File>
 			<File
@@ -443,23 +443,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\TestDlg.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\UIHelper1.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\UIHelper2.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\UIHelper3.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\UIHelper4.cpp"
+				RelativePath=".\UIHelper.cpp"
 				>
 			</File>
 			<Filter
@@ -508,6 +492,14 @@
 			Filter="h;hh;hxx"
 			>
 			<File
+				RelativePath=".\DockBarChildDlg.h"
+				>
+			</File>
+			<File
+				RelativePath=".\EmbedSouiDlg.h"
+				>
+			</File>
+			<File
 				RelativePath=".\FormatMsgDlg.h"
 				>
 			</File>
@@ -516,11 +508,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\MainDlg.h"
+				RelativePath=".\ModalLoginDlg.h"
 				>
 			</File>
 			<File
-				RelativePath=".\RealWndDlg.h"
+				RelativePath=".\MySoUiLoader.h"
 				>
 			</File>
 			<File
@@ -532,15 +524,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\SouiRealWndHandler.h"
-				>
-			</File>
-			<File
 				RelativePath=".\StdAfx.h"
-				>
-			</File>
-			<File
-				RelativePath=".\TestDlg.h"
 				>
 			</File>
 			<File
@@ -601,7 +585,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\res\mfc.demo.ico"
+				RelativePath=".\icon.ico"
 				>
 			</File>
 		</Filter>

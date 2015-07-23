@@ -93,6 +93,77 @@
 			/>
 		</Configuration>
 		<Configuration
+			Name="Debug|x64"
+			OutputDirectory="$(SolutionDir)$(PlatformName)\$(ConfigurationName)"
+			IntermediateDirectory="$(PlatformName)\$(ConfigurationName)"
+			ConfigurationType="2"
+			CharacterSet="1"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				TargetEnvironment="3"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="0"
+				AdditionalIncludeDirectories="..;&quot;..\ThirdParty\log4cplus\include&quot;;&quot;..\ThirdParty\lemon&quot;;&quot;..\ThirdParty\soci\include&quot;;..\ThirdParty\boost"
+				PreprocessorDefinitions="WIN32;_LIB;_CRT_SECURE_NO_WARNINGS;CBM_UTIL_MODULE"
+				MinimalRebuild="true"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="2"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				DebugInformationFormat="3"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="log4cplusSU-x64.lib lemon_x64.lib soci_core.lib soci_mysql.lib libmysql.lib ws2_32.lib"
+				AdditionalLibraryDirectories="&quot;..\ThirdParty\log4cplus\lib&quot;;&quot;..\ThirdParty\lemon\lib&quot;;&quot;..\ThirdParty\soci\lib\x64&quot;"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
+		<Configuration
 			Name="Release|Win32"
 			OutputDirectory="$(SolutionDir)$(PlatformName)\$(ConfigurationName)"
 			IntermediateDirectory="$(PlatformName)\$(ConfigurationName)"
@@ -145,77 +216,6 @@
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
 				TargetMachine="1"
-			/>
-			<Tool
-				Name="VCALinkTool"
-			/>
-			<Tool
-				Name="VCManifestTool"
-			/>
-			<Tool
-				Name="VCXDCMakeTool"
-			/>
-			<Tool
-				Name="VCBscMakeTool"
-			/>
-			<Tool
-				Name="VCFxCopTool"
-			/>
-			<Tool
-				Name="VCAppVerifierTool"
-			/>
-			<Tool
-				Name="VCPostBuildEventTool"
-			/>
-		</Configuration>
-		<Configuration
-			Name="Debug|x64"
-			OutputDirectory="$(SolutionDir)$(PlatformName)\$(ConfigurationName)"
-			IntermediateDirectory="$(PlatformName)\$(ConfigurationName)"
-			ConfigurationType="2"
-			CharacterSet="1"
-			>
-			<Tool
-				Name="VCPreBuildEventTool"
-			/>
-			<Tool
-				Name="VCCustomBuildTool"
-			/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-				TargetEnvironment="3"
-			/>
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="0"
-				AdditionalIncludeDirectories="..;&quot;..\ThirdParty\log4cplus\include&quot;;&quot;..\ThirdParty\lemon&quot;;&quot;..\ThirdParty\soci\include&quot;;..\ThirdParty\boost"
-				PreprocessorDefinitions="WIN32;_LIB;_CRT_SECURE_NO_WARNINGS;CBM_UTIL_MODULE"
-				MinimalRebuild="true"
-				BasicRuntimeChecks="3"
-				RuntimeLibrary="2"
-				UsePrecompiledHeader="0"
-				WarningLevel="3"
-				DebugInformationFormat="3"
-			/>
-			<Tool
-				Name="VCManagedResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCPreLinkEventTool"
-			/>
-			<Tool
-				Name="VCLinkerTool"
-				AdditionalDependencies="log4cplusSU-x64.lib lemon_x64.lib soci_core.lib soci_mysql.lib libmysql.lib ws2_32.lib"
-				AdditionalLibraryDirectories="&quot;..\ThirdParty\log4cplus\lib&quot;;&quot;..\ThirdParty\lemon\lib&quot;;&quot;..\ThirdParty\soci\lib\x64&quot;"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -348,6 +348,10 @@
 			</File>
 			<File
 				RelativePath=".\LogHelper.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Singleton.h"
 				>
 			</File>
 		</Filter>

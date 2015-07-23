@@ -1,11 +1,18 @@
 #pragma once
 
+//非模态登录对话框
 class LoginDlg : public SOUI::SHostWnd
 {
 public:
     LoginDlg(void);
     ~LoginDlg(void);
     
+public:
+	//virtual BOOL PreTranslateMessage(MSG* pMsg);
+	LRESULT OnAcadKeepFocus(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
+	BOOL m_mouseInWindow;
+	BOOL m_bTracking;
+
 	//控件消息处理
 protected:
 	void OnLogin();
@@ -35,8 +42,7 @@ protected:
 	void OnDestory();
 	//窗口大小变化
 	void OnSize(UINT nType, SOUI::CSize size);
-	LRESULT OnNcHitTest(::CPoint point);
-    
+
     EVENT_MAP_BEGIN()
 		//标题栏的4个按钮消息(可以用id号，也可以用名字，根据xml文件实际定义来做)
 		EVENT_NAME_COMMAND(_T("btn_close"), OnClose)
@@ -50,7 +56,7 @@ protected:
 
 	//HOST消息及响应函数映射表
 	BEGIN_MSG_MAP_EX(LoginDlg)
-		//MSG_WM_NCHITTEST(OnNcHitTest);
+		MESSAGE_HANDLER(WM_ACAD_KEEPFOCUS,OnAcadKeepFocus)
 		MSG_WM_CREATE(OnCreate)
 		MSG_WM_INITDIALOG(OnInitDialog)
 		MSG_WM_DESTROY(OnDestory)
@@ -58,6 +64,9 @@ protected:
 		MSG_WM_SIZE(OnSize)
 		MSG_WM_COMMAND(OnCommand)
 		MSG_WM_SHOWWINDOW(OnShowWindow)
+		MSG_WM_MOUSELEAVE(OnMouseLeave)
+		MSG_WM_MOUSEHOVER(OnMouseHover)
+		MSG_WM_MOUSEMOVE(OnMouseMove)
 		CHAIN_MSG_MAP(SOUI::SHostWnd)
 		REFLECT_NOTIFICATIONS_EX()
 	END_MSG_MAP()

@@ -3,21 +3,21 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="demo"
-	ProjectGUID="{0A07DCAB-4E48-33C5-8BE6-C71BF41F3250}"
+	ProjectGUID="{CBEDB200-FB25-3021-921D-C1B1F125FA6F}"
 	RootNamespace="demo"
 	Keyword="Qt4VSv1.0"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
 		<Platform
-			Name="x64"
+			Name="Win32"
 		/>
 	</Platforms>
 	<ToolFiles>
 	</ToolFiles>
 	<Configurations>
 		<Configuration
-			Name="Debug|x64"
+			Name="Debug|Win32"
 			OutputDirectory="..\bin\"
 			IntermediateDirectory="..\obj\debug\demo\"
 			ConfigurationType="1"
@@ -47,8 +47,8 @@
 				Name="VCCLCompilerTool"
 				AdditionalOptions="-Zm200 -w34100 -w34189"
 				Optimization="4"
-				AdditionalIncludeDirectories="..;.;..\utilities\include;..\soui\include;&quot;..\third-part\wke\include&quot;;..\components;..\config;&quot;..\tools\mkspecs\win32-msvc2008&quot;"
-				PreprocessorDefinitions="_WINDOWS,UNICODE,_CRT_SECURE_NO_WARNINGS,_WIN64"
+				AdditionalIncludeDirectories=".;..;..\utilities\include;..\soui\include;&quot;..\third-part\wke\include&quot;;..\components;..\config;&quot;..\tools\mkspecs\win32-msvc2008&quot;"
+				PreprocessorDefinitions="_DEBUG,_WINDOWS,UNICODE,WIN32,_CRT_SECURE_NO_WARNINGS"
 				GeneratePreprocessedFile="0"
 				ExceptionHandling="1"
 				RuntimeLibrary="3"
@@ -71,7 +71,7 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_WINDOWS,UNICODE,_CRT_SECURE_NO_WARNINGS,_WIN64,_DEBUG"
+				PreprocessorDefinitions="_DEBUG,_WINDOWS,UNICODE,WIN32,_CRT_SECURE_NO_WARNINGS,_DEBUG"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -88,7 +88,7 @@
 				ProgramDatabaseFile=""
 				SubSystem="2"
 				LinkTimeCodeGeneration="0"
-				TargetMachine="17"
+				TargetMachine="1"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -113,7 +113,7 @@
 			/>
 		</Configuration>
 		<Configuration
-			Name="Release|x64"
+			Name="Release|Win32"
 			OutputDirectory="..\bin\"
 			IntermediateDirectory="..\obj\release\demo\"
 			ConfigurationType="1"
@@ -143,8 +143,8 @@
 				Name="VCCLCompilerTool"
 				AdditionalOptions="-Zm200 -w34100 -w34189"
 				Optimization="1"
-				AdditionalIncludeDirectories="..;.;..\utilities\include;..\soui\include;&quot;..\third-part\wke\include&quot;;..\components;..\config;&quot;..\tools\mkspecs\win32-msvc2008&quot;"
-				PreprocessorDefinitions="_WINDOWS,UNICODE,_CRT_SECURE_NO_WARNINGS,_WIN64,NDEBUG"
+				AdditionalIncludeDirectories=".;..;..\utilities\include;..\soui\include;&quot;..\third-part\wke\include&quot;;..\components;..\config;&quot;..\tools\mkspecs\win32-msvc2008&quot;"
+				PreprocessorDefinitions="_WINDOWS,UNICODE,WIN32,_CRT_SECURE_NO_WARNINGS,NDEBUG"
 				GeneratePreprocessedFile="0"
 				ExceptionHandling="1"
 				RuntimeLibrary="2"
@@ -167,7 +167,7 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_WINDOWS,UNICODE,_CRT_SECURE_NO_WARNINGS,_WIN64"
+				PreprocessorDefinitions="_WINDOWS,UNICODE,WIN32,_CRT_SECURE_NO_WARNINGS"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -185,7 +185,7 @@
 				ProgramDatabaseFile=""
 				SubSystem="2"
 				LinkTimeCodeGeneration="0"
-				TargetMachine="17"
+				TargetMachine="1"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -452,7 +452,7 @@
 				RelativePath="stdafx.h"
 				>
 				<FileConfiguration
-					Name="Debug|x64"
+					Name="Debug|Win32"
 					>
 					<Tool
 						Name="VCCustomBuildTool"
@@ -462,7 +462,7 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|x64"
+					Name="Release|Win32"
 					>
 					<Tool
 						Name="VCCustomBuildTool"
@@ -498,7 +498,7 @@
 				RelativePath="stdafx.h.cpp"
 				>
 				<FileConfiguration
-					Name="Debug|x64"
+					Name="Debug|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -508,7 +508,7 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|x64"
+					Name="Release|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"

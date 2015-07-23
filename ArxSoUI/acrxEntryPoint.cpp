@@ -1,6 +1,3 @@
-//-----------------------------------------------------------------------------
-//----- acrxEntryPoint.cpp
-//-----------------------------------------------------------------------------
 #include "StdAfx.h"
 #include "resource.h"
 #include "UIHelper.h"
@@ -31,6 +28,11 @@ public:
 		acutPrintf( _T( "\nArxSoUI::On_kInitAppMsg\n" ) );
 		LOG_TRACE( _T( "ArxSoUI::On_kInitAppMsg" ) );
 
+		AfxEnableControlContainer();
+		AfxInitRichEdit2();
+
+		UIHelper::InitSouiEnviroment();
+
 		return (retCode) ;
 	}
 
@@ -44,6 +46,9 @@ public:
 
 		acutPrintf( _T( "\nArxSoUI::On_kUnloadAppMsg\n" ) );
 		LOG_TRACE( _T( "ArxSoUI::On_kUnloadAppMsg" ) );
+
+		//UIHelper::DestroyTestDockBar();
+		UIHelper::UnInitSouiEnviroment();
 
 		return (retCode) ;
 	}
@@ -78,21 +83,9 @@ public:
 	{
 		UIHelper::ShowSoUIDlg2();
 	}
-
-	static void JL_TestSoUI3()
-	{
-		UIHelper::ShowSoUIDlg3();
-	}
-
-	static void JL_TestSoUI4()
-	{
-		UIHelper::ShowSoUIDlg4();
-	}
 } ;
 
 //-----------------------------------------------------------------------------
 IMPLEMENT_ARX_ENTRYPOINT(CArxSoUIApp)
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _TestSoUI1, TestSoUI1, ACRX_CMD_TRANSPARENT, NULL )
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _TestSoUI2, TestSoUI2, ACRX_CMD_TRANSPARENT, NULL )
-ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _TestSoUI3, TestSoUI3, ACRX_CMD_TRANSPARENT, NULL )
-ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _TestSoUI4, TestSoUI4, ACRX_CMD_TRANSPARENT, NULL )

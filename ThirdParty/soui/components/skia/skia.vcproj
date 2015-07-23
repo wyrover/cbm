@@ -3,15 +3,15 @@
 	ProjectType="Visual C++"
 	Version="9,00"
 	Name="skia"
-	ProjectGUID="{F8843E18-0ECC-348A-A09C-2E1784DD142B}"
+	ProjectGUID="{95EAD63E-800B-3F42-8457-CE18638E0FB5}"
 	Keyword="Qt4VSv1.0">
 	<Platforms>
 		<Platform
-			Name="x64" />
+			Name="Win32" />
 	</Platforms>
 	<Configurations>
 		<Configuration
-			Name="Debug|x64"
+			Name="Debug|Win32"
 			OutputDirectory="..\..\bin\"
 			ATLMinimizesCRunTimeLibraryUsage="false"
 			CharacterSet="1"
@@ -29,7 +29,7 @@
 				GeneratePreprocessedFile="0"
 				ObjectFile="..\..\obj\debug\skia\"
 				Optimization ="4"
-				PreprocessorDefinitions="_WINDOWS,UNICODE,_CRT_SECURE_NO_WARNINGS,_WIN64,SK_IGNORE_ETC1_SUPPORT"
+				PreprocessorDefinitions="_DEBUG,_WINDOWS,UNICODE,WIN32,_CRT_SECURE_NO_WARNINGS,SK_IGNORE_ETC1_SUPPORT"
 				ProgramDataBaseFileName="$(IntDir)"
 				RuntimeLibrary="3"
 				RuntimeTypeInfo="false"
@@ -57,11 +57,11 @@
 				Name="VCPreLinkEventTool" />
 			<Tool
 				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_WINDOWS,UNICODE,_CRT_SECURE_NO_WARNINGS,_WIN64,SK_IGNORE_ETC1_SUPPORT,_DEBUG"
+				PreprocessorDefinitions="_DEBUG,_WINDOWS,UNICODE,WIN32,_CRT_SECURE_NO_WARNINGS,SK_IGNORE_ETC1_SUPPORT,_DEBUG"
 				ResourceOutputFileName="$(OutDir)\$(InputName).res" />
 		</Configuration>
 		<Configuration
-			Name="Release|x64"
+			Name="Release|Win32"
 			OutputDirectory="..\..\bin\"
 			ATLMinimizesCRunTimeLibraryUsage="false"
 			CharacterSet="1"
@@ -79,7 +79,7 @@
 				GeneratePreprocessedFile="0"
 				ObjectFile="..\..\obj\release\skia\"
 				Optimization ="1"
-				PreprocessorDefinitions="_WINDOWS,UNICODE,_CRT_SECURE_NO_WARNINGS,_WIN64,SK_IGNORE_ETC1_SUPPORT,NDEBUG"
+				PreprocessorDefinitions="_WINDOWS,UNICODE,WIN32,_CRT_SECURE_NO_WARNINGS,SK_IGNORE_ETC1_SUPPORT,NDEBUG"
 				ProgramDataBaseFileName="$(IntDir)"
 				RuntimeLibrary="2"
 				RuntimeTypeInfo="false"
@@ -107,7 +107,7 @@
 				Name="VCPreLinkEventTool" />
 			<Tool
 				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_WINDOWS,UNICODE,_CRT_SECURE_NO_WARNINGS,_WIN64,SK_IGNORE_ETC1_SUPPORT"
+				PreprocessorDefinitions="_WINDOWS,UNICODE,WIN32,_CRT_SECURE_NO_WARNINGS,SK_IGNORE_ETC1_SUPPORT"
 				ResourceOutputFileName="$(OutDir)\$(InputName).res" />
 		</Configuration>
 	</Configurations>

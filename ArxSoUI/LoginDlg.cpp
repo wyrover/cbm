@@ -8,11 +8,29 @@ using namespace SOUI;
 
 LoginDlg::LoginDlg(void) : SHostWnd(_T("layout:dlg_login")), m_bLayoutInited(false)
 {
+	m_mouseInWindow = TRUE;
+	m_bTracking = FALSE;
 }
 
 LoginDlg::~LoginDlg(void)
 {
 }
+
+//- Needed for modeless dialogs to keep focus.
+//- Return FALSE to not keep the focus, return TRUE to keep the focus
+LRESULT LoginDlg::OnAcadKeepFocus(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
+{
+	return m_mouseInWindow;
+}
+
+//BOOL LoginDlg::PreTranslateMessage( MSG* pMsg )
+//{
+//	if(pMsg->message == WM_ACAD_KEEPFOCUS)
+//	{
+//		CSimpleWnd::SendMessage(pMsg->message,pMsg->wParam,pMsg->lParam);
+//	}
+//	return FALSE;
+//}
 
 int LoginDlg::OnCreate( LPCREATESTRUCT lpCreateStruct )
 {
@@ -98,7 +116,9 @@ void LoginDlg::OnMinimize()
 void LoginDlg::OnClose()
 {
 	AnimateHostWindow(200,AW_CENTER|AW_HIDE);
+	//::SendMessage(::GetParent(m_hWnd), WM_CLOSE, NULL, NULL);
 	PostMessage(WM_QUIT);
+	//SHostWnd::OnCancel();
 }
 
 //LRESULT LoginDlg::OnNcHitTest(::CPoint point)
@@ -121,9 +141,9 @@ void LoginDlg::OnLogin()
 	CString msg;
 	msg.Format(_T("用户成功登录"));
 	SMessageBox(m_hWnd,msg,_T("测试"),MB_OK);
-    //SRichEdit *pEdit = FindChildByName2<SRichEdit>(L"re_xmlinput");
-    //m_strMsg = pEdit->GetWindowText();
-    OnClose();
+    SEdit *pEdit = FindChildByName2<SEdit>(L"user");
+    pEdit->SetWindowText(_T("dlj"));
+	//SHostWnd::OnOK();
 }
 
 void LoginDlg::OnReg()
@@ -131,3 +151,8 @@ void LoginDlg::OnReg()
 	SMessageBox(m_hWnd,_T("注册矿井信息"),_T("测试"),MB_OK);
 }
 
+//int LoginDlg::OnGetText(int cchTextMax, LPTSTR lpszText)
+//{
+//	SetMsgHandled(FALSE);
+//	return 0;
+//}

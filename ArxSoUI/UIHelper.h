@@ -6,6 +6,6 @@ public:
 	static void ShowSoUIDlg1();
 	static void ShowSoUIDlg2();
 
-	static void ShowSoUIDlg3();
-	static void ShowSoUIDlg4();
+	static void InitSouiEnviroment();
+	static void UnInitSouiEnviroment();
 };

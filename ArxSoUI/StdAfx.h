@@ -81,6 +81,7 @@
 #include "resource.h"
 
 #include <souistd.h>
+#include <core/Swnd.h>
 #include <core/SHostDialog.h>
 #include <control/SMessageBox.h>
 #include <control/souictrls.h>

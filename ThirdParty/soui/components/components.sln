@@ -1,84 +1,84 @@
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imgdecoder-wic", "C:/Develop/GitProject/DUI/soui/components/imgdecoder-wic\imgdecoder-wic.vcproj", "{6F0A9901-4F0D-3BE8-8A15-C7153C6CD1D3}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imgdecoder-wic", "C:/Develop/GitProject/cbm/ThirdParty/soui/components/imgdecoder-wic\imgdecoder-wic.vcproj", "{FC746B16-0BBE-343F-8D0C-68461D7516A9}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "render-gdi", "C:/Develop/GitProject/DUI/soui/components/render-gdi\render-gdi.vcproj", "{BE3B5B37-45E7-325C-B499-B2E2111C5AB3}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "render-gdi", "C:/Develop/GitProject/cbm/ThirdParty/soui/components/render-gdi\render-gdi.vcproj", "{D14DFC42-E4CA-32FA-981B-B4700FE85A02}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "skia", "C:/Develop/GitProject/DUI/soui/components/skia\skia.vcproj", "{F8843E18-0ECC-348A-A09C-2E1784DD142B}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "skia", "C:/Develop/GitProject/cbm/ThirdParty/soui/components/skia\skia.vcproj", "{95EAD63E-800B-3F42-8457-CE18638E0FB5}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "render-skia", "C:/Develop/GitProject/DUI/soui/components/render-skia\render-skia.vcproj", "{D1F7017E-FBDF-31F0-AE1A-52031F214F9F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "render-skia", "C:/Develop/GitProject/cbm/ThirdParty/soui/components/render-skia\render-skia.vcproj", "{85475CBE-44C3-391D-B92F-20D0CCCE7F69}"
 	ProjectSection(ProjectDependencies) = postProject
-		{F8843E18-0ECC-348A-A09C-2E1784DD142B} = {F8843E18-0ECC-348A-A09C-2E1784DD142B}
+		{95EAD63E-800B-3F42-8457-CE18638E0FB5} = {95EAD63E-800B-3F42-8457-CE18638E0FB5}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "translator", "C:/Develop/GitProject/DUI/soui/components/translator\translator.vcproj", "{6D29D3F2-829E-36B4-92E7-37C2A85EB249}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "translator", "C:/Develop/GitProject/cbm/ThirdParty/soui/components/translator\translator.vcproj", "{BA272171-5BBC-3DDC-B2C1-6540F8199A15}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "zlib", "C:/Develop/GitProject/DUI/soui/components/zlib\zlib.vcproj", "{4FEF1176-4B37-3C85-9E11-8602CBE1DDCF}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "zlib", "C:/Develop/GitProject/cbm/ThirdParty/soui/components/zlib\zlib.vcproj", "{C453B29D-FA84-36E9-B30A-8BD558C09049}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "png", "C:/Develop/GitProject/DUI/soui/components/png\png.vcproj", "{33E54065-EB7E-353E-9CF5-E48AB3CFB551}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "png", "C:/Develop/GitProject/cbm/ThirdParty/soui/components/png\png.vcproj", "{85A7557E-37A5-32B7-8E19-94C5F13EFAB9}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "resprovider-zip", "C:/Develop/GitProject/DUI/soui/components/resprovider-zip\resprovider-zip.vcproj", "{DC19BE57-E706-3497-86DC-D2A4C0970874}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "resprovider-zip", "C:/Develop/GitProject/cbm/ThirdParty/soui/components/resprovider-zip\resprovider-zip.vcproj", "{3F50F06C-6E7B-3187-841A-14DBE8873D33}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imgdecoder-stb", "C:/Develop/GitProject/DUI/soui/components/imgdecoder-stb\imgdecoder-stb.vcproj", "{E8AAF95E-3F61-3639-9CDF-21331391916B}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imgdecoder-stb", "C:/Develop/GitProject/cbm/ThirdParty/soui/components/imgdecoder-stb\imgdecoder-stb.vcproj", "{4661C3D1-A256-3B02-8D6C-2C8F71DED693}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imgdecoder-png", "C:/Develop/GitProject/DUI/soui/components/imgdecoder-png\imgdecoder-png.vcproj", "{9BAAC198-49A7-3980-9F9C-A32E292A754F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imgdecoder-png", "C:/Develop/GitProject/cbm/ThirdParty/soui/components/imgdecoder-png\imgdecoder-png.vcproj", "{386ED2B9-B262-3638-A01B-BA83EBCFE4C7}"
 	ProjectSection(ProjectDependencies) = postProject
-		{4FEF1176-4B37-3C85-9E11-8602CBE1DDCF} = {4FEF1176-4B37-3C85-9E11-8602CBE1DDCF}
-		{33E54065-EB7E-353E-9CF5-E48AB3CFB551} = {33E54065-EB7E-353E-9CF5-E48AB3CFB551}
+		{C453B29D-FA84-36E9-B30A-8BD558C09049} = {C453B29D-FA84-36E9-B30A-8BD558C09049}
+		{85A7557E-37A5-32B7-8E19-94C5F13EFAB9} = {85A7557E-37A5-32B7-8E19-94C5F13EFAB9}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imgdecoder-gdip", "C:/Develop/GitProject/DUI/soui/components/imgdecoder-gdip\imgdecoder-gdip.vcproj", "{B82328DD-40A3-331B-8DB9-78FE837157B2}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imgdecoder-gdip", "C:/Develop/GitProject/cbm/ThirdParty/soui/components/imgdecoder-gdip\imgdecoder-gdip.vcproj", "{3B579C01-9C4B-3E64-A9D0-1C19C3B6E89A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|x64 = Debug|x64
-		Release|x64 = Release|x64
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6F0A9901-4F0D-3BE8-8A15-C7153C6CD1D3}.Debug|x64.ActiveCfg = Debug|x64
-		{6F0A9901-4F0D-3BE8-8A15-C7153C6CD1D3}.Debug|x64.Build.0 = Debug|x64
-		{6F0A9901-4F0D-3BE8-8A15-C7153C6CD1D3}.Release|x64.ActiveCfg = Release|x64
-		{6F0A9901-4F0D-3BE8-8A15-C7153C6CD1D3}.Release|x64.Build.0 = Release|x64
-		{BE3B5B37-45E7-325C-B499-B2E2111C5AB3}.Debug|x64.ActiveCfg = Debug|x64
-		{BE3B5B37-45E7-325C-B499-B2E2111C5AB3}.Debug|x64.Build.0 = Debug|x64
-		{BE3B5B37-45E7-325C-B499-B2E2111C5AB3}.Release|x64.ActiveCfg = Release|x64
-		{BE3B5B37-45E7-325C-B499-B2E2111C5AB3}.Release|x64.Build.0 = Release|x64
-		{F8843E18-0ECC-348A-A09C-2E1784DD142B}.Debug|x64.ActiveCfg = Debug|x64
-		{F8843E18-0ECC-348A-A09C-2E1784DD142B}.Debug|x64.Build.0 = Debug|x64
-		{F8843E18-0ECC-348A-A09C-2E1784DD142B}.Release|x64.ActiveCfg = Release|x64
-		{F8843E18-0ECC-348A-A09C-2E1784DD142B}.Release|x64.Build.0 = Release|x64
-		{D1F7017E-FBDF-31F0-AE1A-52031F214F9F}.Debug|x64.ActiveCfg = Debug|x64
-		{D1F7017E-FBDF-31F0-AE1A-52031F214F9F}.Debug|x64.Build.0 = Debug|x64
-		{D1F7017E-FBDF-31F0-AE1A-52031F214F9F}.Release|x64.ActiveCfg = Release|x64
-		{D1F7017E-FBDF-31F0-AE1A-52031F214F9F}.Release|x64.Build.0 = Release|x64
-		{6D29D3F2-829E-36B4-92E7-37C2A85EB249}.Debug|x64.ActiveCfg = Debug|x64
-		{6D29D3F2-829E-36B4-92E7-37C2A85EB249}.Debug|x64.Build.0 = Debug|x64
-		{6D29D3F2-829E-36B4-92E7-37C2A85EB249}.Release|x64.ActiveCfg = Release|x64
-		{6D29D3F2-829E-36B4-92E7-37C2A85EB249}.Release|x64.Build.0 = Release|x64
-		{4FEF1176-4B37-3C85-9E11-8602CBE1DDCF}.Debug|x64.ActiveCfg = Debug|x64
-		{4FEF1176-4B37-3C85-9E11-8602CBE1DDCF}.Debug|x64.Build.0 = Debug|x64
-		{4FEF1176-4B37-3C85-9E11-8602CBE1DDCF}.Release|x64.ActiveCfg = Release|x64
-		{4FEF1176-4B37-3C85-9E11-8602CBE1DDCF}.Release|x64.Build.0 = Release|x64
-		{33E54065-EB7E-353E-9CF5-E48AB3CFB551}.Debug|x64.ActiveCfg = Debug|x64
-		{33E54065-EB7E-353E-9CF5-E48AB3CFB551}.Debug|x64.Build.0 = Debug|x64
-		{33E54065-EB7E-353E-9CF5-E48AB3CFB551}.Release|x64.ActiveCfg = Release|x64
-		{33E54065-EB7E-353E-9CF5-E48AB3CFB551}.Release|x64.Build.0 = Release|x64
-		{DC19BE57-E706-3497-86DC-D2A4C0970874}.Debug|x64.ActiveCfg = Debug|x64
-		{DC19BE57-E706-3497-86DC-D2A4C0970874}.Debug|x64.Build.0 = Debug|x64
-		{DC19BE57-E706-3497-86DC-D2A4C0970874}.Release|x64.ActiveCfg = Release|x64
-		{DC19BE57-E706-3497-86DC-D2A4C0970874}.Release|x64.Build.0 = Release|x64
-		{E8AAF95E-3F61-3639-9CDF-21331391916B}.Debug|x64.ActiveCfg = Debug|x64
-		{E8AAF95E-3F61-3639-9CDF-21331391916B}.Debug|x64.Build.0 = Debug|x64
-		{E8AAF95E-3F61-3639-9CDF-21331391916B}.Release|x64.ActiveCfg = Release|x64
-		{E8AAF95E-3F61-3639-9CDF-21331391916B}.Release|x64.Build.0 = Release|x64
-		{9BAAC198-49A7-3980-9F9C-A32E292A754F}.Debug|x64.ActiveCfg = Debug|x64
-		{9BAAC198-49A7-3980-9F9C-A32E292A754F}.Debug|x64.Build.0 = Debug|x64
-		{9BAAC198-49A7-3980-9F9C-A32E292A754F}.Release|x64.ActiveCfg = Release|x64
-		{9BAAC198-49A7-3980-9F9C-A32E292A754F}.Release|x64.Build.0 = Release|x64
-		{B82328DD-40A3-331B-8DB9-78FE837157B2}.Debug|x64.ActiveCfg = Debug|x64
-		{B82328DD-40A3-331B-8DB9-78FE837157B2}.Debug|x64.Build.0 = Debug|x64
-		{B82328DD-40A3-331B-8DB9-78FE837157B2}.Release|x64.ActiveCfg = Release|x64
-		{B82328DD-40A3-331B-8DB9-78FE837157B2}.Release|x64.Build.0 = Release|x64
+		{FC746B16-0BBE-343F-8D0C-68461D7516A9}.Debug|Win32.ActiveCfg = Debug|Win32
+		{FC746B16-0BBE-343F-8D0C-68461D7516A9}.Debug|Win32.Build.0 = Debug|Win32
+		{FC746B16-0BBE-343F-8D0C-68461D7516A9}.Release|Win32.ActiveCfg = Release|Win32
+		{FC746B16-0BBE-343F-8D0C-68461D7516A9}.Release|Win32.Build.0 = Release|Win32
+		{D14DFC42-E4CA-32FA-981B-B4700FE85A02}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D14DFC42-E4CA-32FA-981B-B4700FE85A02}.Debug|Win32.Build.0 = Debug|Win32
+		{D14DFC42-E4CA-32FA-981B-B4700FE85A02}.Release|Win32.ActiveCfg = Release|Win32
+		{D14DFC42-E4CA-32FA-981B-B4700FE85A02}.Release|Win32.Build.0 = Release|Win32
+		{95EAD63E-800B-3F42-8457-CE18638E0FB5}.Debug|Win32.ActiveCfg = Debug|Win32
+		{95EAD63E-800B-3F42-8457-CE18638E0FB5}.Debug|Win32.Build.0 = Debug|Win32
+		{95EAD63E-800B-3F42-8457-CE18638E0FB5}.Release|Win32.ActiveCfg = Release|Win32
+		{95EAD63E-800B-3F42-8457-CE18638E0FB5}.Release|Win32.Build.0 = Release|Win32
+		{85475CBE-44C3-391D-B92F-20D0CCCE7F69}.Debug|Win32.ActiveCfg = Debug|Win32
+		{85475CBE-44C3-391D-B92F-20D0CCCE7F69}.Debug|Win32.Build.0 = Debug|Win32
+		{85475CBE-44C3-391D-B92F-20D0CCCE7F69}.Release|Win32.ActiveCfg = Release|Win32
+		{85475CBE-44C3-391D-B92F-20D0CCCE7F69}.Release|Win32.Build.0 = Release|Win32
+		{BA272171-5BBC-3DDC-B2C1-6540F8199A15}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BA272171-5BBC-3DDC-B2C1-6540F8199A15}.Debug|Win32.Build.0 = Debug|Win32
+		{BA272171-5BBC-3DDC-B2C1-6540F8199A15}.Release|Win32.ActiveCfg = Release|Win32
+		{BA272171-5BBC-3DDC-B2C1-6540F8199A15}.Release|Win32.Build.0 = Release|Win32
+		{C453B29D-FA84-36E9-B30A-8BD558C09049}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C453B29D-FA84-36E9-B30A-8BD558C09049}.Debug|Win32.Build.0 = Debug|Win32
+		{C453B29D-FA84-36E9-B30A-8BD558C09049}.Release|Win32.ActiveCfg = Release|Win32
+		{C453B29D-FA84-36E9-B30A-8BD558C09049}.Release|Win32.Build.0 = Release|Win32
+		{85A7557E-37A5-32B7-8E19-94C5F13EFAB9}.Debug|Win32.ActiveCfg = Debug|Win32
+		{85A7557E-37A5-32B7-8E19-94C5F13EFAB9}.Debug|Win32.Build.0 = Debug|Win32
+		{85A7557E-37A5-32B7-8E19-94C5F13EFAB9}.Release|Win32.ActiveCfg = Release|Win32
+		{85A7557E-37A5-32B7-8E19-94C5F13EFAB9}.Release|Win32.Build.0 = Release|Win32
+		{3F50F06C-6E7B-3187-841A-14DBE8873D33}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3F50F06C-6E7B-3187-841A-14DBE8873D33}.Debug|Win32.Build.0 = Debug|Win32
+		{3F50F06C-6E7B-3187-841A-14DBE8873D33}.Release|Win32.ActiveCfg = Release|Win32
+		{3F50F06C-6E7B-3187-841A-14DBE8873D33}.Release|Win32.Build.0 = Release|Win32
+		{4661C3D1-A256-3B02-8D6C-2C8F71DED693}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4661C3D1-A256-3B02-8D6C-2C8F71DED693}.Debug|Win32.Build.0 = Debug|Win32
+		{4661C3D1-A256-3B02-8D6C-2C8F71DED693}.Release|Win32.ActiveCfg = Release|Win32
+		{4661C3D1-A256-3B02-8D6C-2C8F71DED693}.Release|Win32.Build.0 = Release|Win32
+		{386ED2B9-B262-3638-A01B-BA83EBCFE4C7}.Debug|Win32.ActiveCfg = Debug|Win32
+		{386ED2B9-B262-3638-A01B-BA83EBCFE4C7}.Debug|Win32.Build.0 = Debug|Win32
+		{386ED2B9-B262-3638-A01B-BA83EBCFE4C7}.Release|Win32.ActiveCfg = Release|Win32
+		{386ED2B9-B262-3638-A01B-BA83EBCFE4C7}.Release|Win32.Build.0 = Release|Win32
+		{3B579C01-9C4B-3E64-A9D0-1C19C3B6E89A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3B579C01-9C4B-3E64-A9D0-1C19C3B6E89A}.Debug|Win32.Build.0 = Debug|Win32
+		{3B579C01-9C4B-3E64-A9D0-1C19C3B6E89A}.Release|Win32.ActiveCfg = Release|Win32
+		{3B579C01-9C4B-3E64-A9D0-1C19C3B6E89A}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection

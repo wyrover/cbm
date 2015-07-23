@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resource>
+  <UIDEF>
+    <file name="xml_init" path="xml\init.xml"  />
+  </UIDEF>
+  
+  <ICON>
+    <file name="LOGO"  path="image\img_logo.ico" />
+  </ICON>
+  
+  <CURSOR>
+    <file name="ANI_ARROW"  path="image\021.ani" />
+    <file name="CUR_TST" path="image\camera_capture.cur"/>
+  </CURSOR>
+  
+  <LAYOUT>
+    <file name="maindlg" path="xml\dlg_main.xml"  />
+    <file name="dlg_formatmsg" path="xml\dlg_formatmsg.xml"/>
+    <file name="dlg_login" path="xml\login.xml"/>
+    <file name="dlg_register" path="xml\register.xml"/>
+  </LAYOUT>
+  
+  <IMGX>
+    <file name="png_bk" path="image\bk.png"/>
+    <file name="png_login" path="image\login.png"/>
+    <file name="png_reg" path="image\reg.png"/>
+  </IMGX>
+
+  <GIF>
+    <file name="gif_fan"  path="image\fan.gif"/>
+  </GIF>
+
+</resource>
+
