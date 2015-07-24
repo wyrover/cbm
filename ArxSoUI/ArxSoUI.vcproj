@@ -375,6 +375,10 @@
 			Filter="cpp;c;cc;cxx;def;idl;odl"
 			>
 			<File
+				RelativePath=".\AcadSouiDialog.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\acrxEntryPoint.cpp"
 				>
 			</File>
@@ -383,23 +387,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\DockBarChildDlg.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\EmbedSouiDlg.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\FormatMsgDlg.cpp"
 				>
 			</File>
 			<File
 				RelativePath=".\LoginDlg.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\ModalLoginDlg.cpp"
 				>
 			</File>
 			<File
@@ -492,11 +484,7 @@
 			Filter="h;hh;hxx"
 			>
 			<File
-				RelativePath=".\DockBarChildDlg.h"
-				>
-			</File>
-			<File
-				RelativePath=".\EmbedSouiDlg.h"
+				RelativePath=".\AcadSouiDialog.h"
 				>
 			</File>
 			<File
@@ -505,10 +493,6 @@
 			</File>
 			<File
 				RelativePath=".\LoginDlg.h"
-				>
-			</File>
-			<File
-				RelativePath=".\ModalLoginDlg.h"
 				>
 			</File>
 			<File

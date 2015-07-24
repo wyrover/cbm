@@ -7,11 +7,6 @@
 
 #include "MySoUiLoader.h"
 #include "LoginDlg.h"
-#include "ModalLoginDlg.h"
-#include "EmbedSouiDlg.h"
-
-//TestDockBarDlg* pTestDockBarDlg = 0;
-//EmbedSouiDlg* globalEmbedSouiDlg = 0;
 
 void UIHelper::InitSouiEnviroment()
 {
@@ -33,23 +28,14 @@ void UIHelper::ShowSoUIDlg1()
 
 	LOG_TRACE(_T("启动新的soui界面"));
 
-	//创建并显示使用SOUI布局应用程序窗口
-	EmbedSouiDlg* dlg = new EmbedSouiDlg();
-	dlg->Create(IDD_SOUI_EMBED_DLG, acedGetAcadFrame());
-	dlg->ShowWindow(SW_SHOWNORMAL);
-	//LoginDlg dlg;
-	////dlg.DoModal();
-	//dlg.Create(acedGetAcadFrame()->GetSafeHwnd(),0,0,0,0);
-	//dlg.SendMessage(WM_INITDIALOG);
-	//dlg.CenterWindow();
-	//dlg.ShowWindow(SW_SHOWNORMAL);
-	//SoUILoader::getSingletonPtr()->getApp()->Run(dlg.m_hWnd);
+	LoginDlg* dlg = new LoginDlg(FALSE);
+	dlg->Run(acedGetAcadFrame()->GetSafeHwnd());
 }
 
 void UIHelper::ShowSoUIDlg2()
 {
 	CAcModuleResourceOverride myResources;
 
-	ModalLoginDlg dlg;
-	dlg.DoModal(acedGetAcadFrame()->GetSafeHwnd());
+	LoginDlg* dlg = new LoginDlg(TRUE);
+	dlg->Run(acedGetAcadFrame()->GetSafeHwnd());
 }
