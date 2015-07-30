@@ -7,7 +7,6 @@
 #define IDD_MFC_TEST_DIALOG             102
 #define IDR_MAINFRAME                   128
 #define IDD_SOUI_EMBED_DLG              129
-#define IDD_DIALOG1                     131
 #define IDC_BUTTON1                     1000
 #define IDC_BUTTON2                     1001
 

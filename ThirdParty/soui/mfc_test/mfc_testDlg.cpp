@@ -109,12 +109,13 @@ HCURSOR Cmfc_testDlg::OnQueryDragIcon()
 
 void Cmfc_testDlg::OnBnClickedButton1()
 {
-	LoginDlg dlg;
-	dlg.Create(GetSafeHwnd(),0,0,0,0);
-	dlg.SendMessage(WM_INITDIALOG);
-	dlg.CenterWindow();
-	dlg.ShowWindow(SW_SHOWNORMAL);
-	SoUILoader::getSingletonPtr()->getApp()->Run(dlg.m_hWnd);
+	MessageBox(_T("nothing"));
+	//LoginDlg dlg;
+	//dlg.Create(GetSafeHwnd(),0,0,0,0);
+	//dlg.SendMessage(WM_INITDIALOG);
+	//dlg.CenterWindow();
+	//dlg.ShowWindow(SW_SHOWNORMAL);
+	//SoUILoader::getSingletonPtr()->getApp()->Run(dlg.m_hWnd);
 }
 
 void Cmfc_testDlg::OnBnClickedButton2()

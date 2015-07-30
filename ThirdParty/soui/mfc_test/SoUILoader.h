@@ -4,6 +4,8 @@ using namespace SOUI;
 
 #include "Singleton.h"
 
+//参考demo例子中的main函数soui加载过程
+//用类的形式进行封装,试图简化代码~
 class SoUILoader : public Singleton<SoUILoader>
 {
 public:

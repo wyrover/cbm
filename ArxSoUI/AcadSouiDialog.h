@@ -47,10 +47,6 @@ protected:
 	void OnMouseMove(UINT nFlags, ::CPoint point);
 	void OnMouseHover(UINT nFlags, ::CPoint point);
 	void OnMouseLeave();
-	//鼠标是否在窗口内
-	BOOL m_mouseInWindow;
-	//是否需要追踪鼠标移动消息
-	BOOL m_bTracking;
 
 	/** 标题栏4个按钮消息 */
 protected:
@@ -65,6 +61,10 @@ private:
 	BOOL m_bModal;
 	//UI完成布局标志
 	BOOL m_bLayoutInited;
+	//鼠标是否在窗口内
+	BOOL m_mouseInWindow;
+	//是否需要追踪鼠标移动消息
+	BOOL m_bTracking;
 
 	/** 控件消息映射表 */
 	EVENT_MAP_BEGIN()

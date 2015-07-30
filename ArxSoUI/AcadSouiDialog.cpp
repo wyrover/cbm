@@ -70,7 +70,12 @@ LRESULT AcadSouiDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 void AcadSouiDialog::OnFinalMessage( HWND hWnd )
 {
 	SHostDialog::OnFinalMessage(hWnd);
-	delete this;
+	if(!m_bModal)
+	{
+		//一般非模态的对话框都是new出来的,而模态则是局部变量
+		delete this;
+	}
+	
 }
 
 static void SetVisible_Helper(SWindow* wnd, BOOL bVisible)

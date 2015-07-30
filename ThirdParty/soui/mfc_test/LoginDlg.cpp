@@ -6,7 +6,7 @@ using namespace SOUI;
 #include <dwmapi.h>
 #pragma comment(lib,"dwmapi.lib")
 
-LoginDlg::LoginDlg(void) : SHostWnd(_T("layout:dlg_login")), m_bLayoutInited(false)
+LoginDlg::LoginDlg(void) : SHostWnd(_T("layout:login")), m_bLayoutInited(false)
 {
 }
 
