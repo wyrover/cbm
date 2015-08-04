@@ -24,12 +24,15 @@ public:
 	void setHelpType(const long& value);
 	std::string getHelpValue() const;
 	void setHelpValue(const std::string& value);
+	std::string getComment() const;
+	void setComment(const std::string& value);
 
 private:
 	long help_id;
 	std::string help_field;
 	long help_type;
 	std::string help_value;
+	std::string comment;
 
 }; // class Help
 

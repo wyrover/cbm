@@ -426,11 +426,11 @@
 				Name="model"
 				>
 				<File
-					RelativePath=".\model\AdjLayerDao.cpp"
+					RelativePath=".\model\CoalDao.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\model\CoalDao.cpp"
+					RelativePath=".\model\CoalLayerDao.cpp"
 					>
 				</File>
 				<File
@@ -446,14 +446,6 @@
 					>
 				</File>
 				<File
-					RelativePath=".\model\GasPumpDao.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\model\GasReserveDao.cpp"
-					>
-				</File>
-				<File
 					RelativePath=".\model\HelpDao.cpp"
 					>
 				</File>
@@ -463,6 +455,10 @@
 				</File>
 				<File
 					RelativePath=".\model\HighDrillingTunnelDao.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\model\HydrGeoDao.cpp"
 					>
 				</File>
 				<File
@@ -478,6 +474,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\model\MineRegionDao.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\model\MiningAreaDao.cpp"
 					>
 				</File>
@@ -490,19 +490,27 @@
 					>
 				</File>
 				<File
-					RelativePath=".\model\PumpDegreeDao.cpp"
-					>
-				</File>
-				<File
 					RelativePath=".\model\ReadyTunnelDao.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\model\RecomTechDao.cpp"
+					RelativePath=".\model\ResAbundanceDao.cpp"
 					>
 				</File>
 				<File
 					RelativePath=".\model\TechModeDao.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\model\TechnologyDao.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\model\TopoGeoDao.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\model\TunnelDao.cpp"
 					>
 				</File>
 				<File
@@ -514,11 +522,11 @@
 				Name="entity"
 				>
 				<File
-					RelativePath=".\entity\AdjLayer.cpp"
+					RelativePath=".\entity\Coal.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\entity\Coal.cpp"
+					RelativePath=".\entity\CoalLayer.cpp"
 					>
 				</File>
 				<File
@@ -534,14 +542,6 @@
 					>
 				</File>
 				<File
-					RelativePath=".\entity\GasPump.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\entity\GasReserve.cpp"
-					>
-				</File>
-				<File
 					RelativePath=".\entity\Help.cpp"
 					>
 				</File>
@@ -551,6 +551,10 @@
 				</File>
 				<File
 					RelativePath=".\entity\HighDrillingTunnel.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\entity\HydrGeo.cpp"
 					>
 				</File>
 				<File
@@ -566,6 +570,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\entity\MineRegion.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\entity\MiningArea.cpp"
 					>
 				</File>
@@ -578,19 +586,27 @@
 					>
 				</File>
 				<File
-					RelativePath=".\entity\PumpDegree.cpp"
-					>
-				</File>
-				<File
 					RelativePath=".\entity\ReadyTunnel.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\entity\RecomTech.cpp"
+					RelativePath=".\entity\ResAbundance.cpp"
 					>
 				</File>
 				<File
 					RelativePath=".\entity\TechMode.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\entity\Technology.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\entity\TopoGeo.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\entity\Tunnel.cpp"
 					>
 				</File>
 				<File
@@ -651,11 +667,11 @@
 				Name="entity"
 				>
 				<File
-					RelativePath=".\entity\AdjLayer.h"
+					RelativePath=".\entity\Coal.h"
 					>
 				</File>
 				<File
-					RelativePath=".\entity\Coal.h"
+					RelativePath=".\entity\CoalLayer.h"
 					>
 				</File>
 				<File
@@ -679,14 +695,6 @@
 					>
 				</File>
 				<File
-					RelativePath=".\entity\GasPump.h"
-					>
-				</File>
-				<File
-					RelativePath=".\entity\GasReserve.h"
-					>
-				</File>
-				<File
 					RelativePath=".\entity\Help.h"
 					>
 				</File>
@@ -696,6 +704,10 @@
 				</File>
 				<File
 					RelativePath=".\entity\HighDrillingTunnel.h"
+					>
+				</File>
+				<File
+					RelativePath=".\entity\HydrGeo.h"
 					>
 				</File>
 				<File
@@ -711,6 +723,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\entity\MineRegion.h"
+					>
+				</File>
+				<File
 					RelativePath=".\entity\MiningArea.h"
 					>
 				</File>
@@ -723,19 +739,27 @@
 					>
 				</File>
 				<File
-					RelativePath=".\entity\PumpDegree.h"
-					>
-				</File>
-				<File
 					RelativePath=".\entity\ReadyTunnel.h"
 					>
 				</File>
 				<File
-					RelativePath=".\entity\RecomTech.h"
+					RelativePath=".\entity\ResAbundance.h"
 					>
 				</File>
 				<File
 					RelativePath=".\entity\TechMode.h"
+					>
+				</File>
+				<File
+					RelativePath=".\entity\Technology.h"
+					>
+				</File>
+				<File
+					RelativePath=".\entity\TopoGeo.h"
+					>
+				</File>
+				<File
+					RelativePath=".\entity\Tunnel.h"
 					>
 				</File>
 				<File
@@ -747,11 +771,11 @@
 				Name="model"
 				>
 				<File
-					RelativePath=".\model\AdjLayerDao.h"
+					RelativePath=".\model\CoalDao.h"
 					>
 				</File>
 				<File
-					RelativePath=".\model\CoalDao.h"
+					RelativePath=".\model\CoalLayerDao.h"
 					>
 				</File>
 				<File
@@ -767,14 +791,6 @@
 					>
 				</File>
 				<File
-					RelativePath=".\model\GasPumpDao.h"
-					>
-				</File>
-				<File
-					RelativePath=".\model\GasReserveDao.h"
-					>
-				</File>
-				<File
 					RelativePath=".\model\HelpDao.h"
 					>
 				</File>
@@ -787,6 +803,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\model\HydrGeoDao.h"
+					>
+				</File>
+				<File
 					RelativePath=".\model\KeyLayerDao.h"
 					>
 				</File>
@@ -796,6 +816,10 @@
 				</File>
 				<File
 					RelativePath=".\model\MineDao.h"
+					>
+				</File>
+				<File
+					RelativePath=".\model\MineRegionDao.h"
 					>
 				</File>
 				<File
@@ -815,19 +839,27 @@
 					>
 				</File>
 				<File
-					RelativePath=".\model\PumpDegreeDao.h"
-					>
-				</File>
-				<File
 					RelativePath=".\model\ReadyTunnelDao.h"
 					>
 				</File>
 				<File
-					RelativePath=".\model\RecomTechDao.h"
+					RelativePath=".\model\ResAbundanceDao.h"
 					>
 				</File>
 				<File
 					RelativePath=".\model\TechModeDao.h"
+					>
+				</File>
+				<File
+					RelativePath=".\model\TechnologyDao.h"
+					>
+				</File>
+				<File
+					RelativePath=".\model\TopoGeoDao.h"
+					>
+				</File>
+				<File
+					RelativePath=".\model\TunnelDao.h"
 					>
 				</File>
 				<File

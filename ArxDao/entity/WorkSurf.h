@@ -18,6 +18,8 @@ public:
 	std::string getSqlDelete() const;
 	long getId() const;
 	void setId(const long& value);
+	TunnelPtr getTunnel() const;
+	void setTunnel(const TunnelPtr& value);
 	CoalPtr getCoal() const;
 	void setCoal(const CoalPtr& value);
 	double getA() const;
@@ -28,8 +30,8 @@ public:
 	void setQA(const double& value);
 	double getWsL() const;
 	void setWsL(const double& value);
-	long getWsLayer() const;
-	void setWsLayer(const long& value);
+	long getWsLayerable() const;
+	void setWsLayerable(const long& value);
 	double getWsK1() const;
 	void setWsK1(const double& value);
 	double getWsK2() const;
@@ -38,28 +40,32 @@ public:
 	void setWsK3(const double& value);
 	double getWsKf() const;
 	void setWsKf(const double& value);
-	double getCrossL() const;
-	void setCrossL(const double& value);
-	double getCrossV() const;
-	void setCrossV(const double& value);
+	double getWsH() const;
+	void setWsH(const double& value);
+	long getWsMethod() const;
+	void setWsMethod(const long& value);
 	double getLastT() const;
 	void setLastT(const double& value);
+	std::string getComment() const;
+	void setComment(const std::string& value);
 
 private:
 	long work_surf_id;
+	TunnelPtr tunnel;
 	CoalPtr coal;
 	double a;
 	double q_r;
 	double q_a;
 	double ws_l;
-	long ws_layer;
+	long ws_layerable;
 	double ws_k1;
 	double ws_k2;
 	double ws_k3;
 	double ws_kf;
-	double cross_l;
-	double cross_v;
+	double ws_h;
+	long ws_method;
 	double last_t;
+	std::string comment;
 
 }; // class WorkSurf
 

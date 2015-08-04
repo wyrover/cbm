@@ -15,6 +15,7 @@ KeyLayer::KeyLayer()
 	key_qn = 0.0;
 	key_rtn = 0.0;
 	key_sum_hn = 0.0;
+	comment = "NULL";
 }
 
 KeyLayer::KeyLayer(long id)
@@ -25,6 +26,7 @@ KeyLayer::KeyLayer(long id)
 	key_qn = 0.0;
 	key_rtn = 0.0;
 	key_sum_hn = 0.0;
+	comment = "NULL";
 }
 
 KeyLayer::KeyLayer(soci::row &rs)
@@ -39,6 +41,7 @@ KeyLayer::KeyLayer(soci::row &rs)
 	key_qn = rs.get<double>(4);
 	key_rtn = rs.get<double>(5);
 	key_sum_hn = rs.get<double>(6);
+	comment = rs.get<std::string>(7);
 }
 
 std::string KeyLayer::getTableName() const
@@ -56,7 +59,8 @@ std::string KeyLayer::getSqlInsert() const
 		<<key_thetan<<","
 		<<key_qn<<","
 		<<key_rtn<<","
-		<<key_sum_hn<<");";
+		<<key_sum_hn<<","
+		<<"'"<<comment<<"'"<<");";
 	return sql.str();
 }
 
@@ -69,7 +73,8 @@ std::string KeyLayer::getSqlUpdate() const
 		<<" key_thetan="<<key_thetan<<","
 		<<" key_qn="<<key_qn<<","
 		<<" key_rtn="<<key_rtn<<","
-		<<" key_sum_hn="<<key_sum_hn
+		<<" key_sum_hn="<<key_sum_hn<<","
+		<<" comment="<<"'"<<comment<<"'"
 		<<" where key_layer_id="<<key_layer_id
 		<<" ;";
 	return sql.str();
@@ -152,6 +157,16 @@ double KeyLayer::getKeySumHn() const
 void KeyLayer::setKeySumHn(const double& value)
 {
 	this->key_sum_hn = value;
+}
+
+std::string KeyLayer::getComment() const
+{
+	return comment;
+}
+
+void KeyLayer::setComment(const std::string& value)
+{
+	this->comment = value;
 }
 
 } // namespace cbm

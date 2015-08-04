@@ -22,6 +22,7 @@ HighDrillingPore::HighDrillingPore()
 	hdp_ld = 0.0;
 	hdp_lzi = 0.0;
 	hdp_lzj = 0.0;
+	comment = "NULL";
 }
 
 HighDrillingPore::HighDrillingPore(long id)
@@ -39,6 +40,7 @@ HighDrillingPore::HighDrillingPore(long id)
 	hdp_ld = 0.0;
 	hdp_lzi = 0.0;
 	hdp_lzj = 0.0;
+	comment = "NULL";
 }
 
 HighDrillingPore::HighDrillingPore(soci::row &rs)
@@ -60,6 +62,7 @@ HighDrillingPore::HighDrillingPore(soci::row &rs)
 	hdp_ld = rs.get<double>(11);
 	hdp_lzi = rs.get<double>(12);
 	hdp_lzj = rs.get<double>(13);
+	comment = rs.get<std::string>(14);
 }
 
 std::string HighDrillingPore::getTableName() const
@@ -84,7 +87,8 @@ std::string HighDrillingPore::getSqlInsert() const
 		<<hdp_beta<<","
 		<<hdp_ld<<","
 		<<hdp_lzi<<","
-		<<hdp_lzj<<");";
+		<<hdp_lzj<<","
+		<<"'"<<comment<<"'"<<");";
 	return sql.str();
 }
 
@@ -104,7 +108,8 @@ std::string HighDrillingPore::getSqlUpdate() const
 		<<" hdp_beta="<<hdp_beta<<","
 		<<" hdp_ld="<<hdp_ld<<","
 		<<" hdp_lzi="<<hdp_lzi<<","
-		<<" hdp_lzj="<<hdp_lzj
+		<<" hdp_lzj="<<hdp_lzj<<","
+		<<" comment="<<"'"<<comment<<"'"
 		<<" where high_drilling_pore_id="<<high_drilling_pore_id
 		<<" ;";
 	return sql.str();
@@ -257,6 +262,16 @@ double HighDrillingPore::getHdpLzj() const
 void HighDrillingPore::setHdpLzj(const double& value)
 {
 	this->hdp_lzj = value;
+}
+
+std::string HighDrillingPore::getComment() const
+{
+	return comment;
+}
+
+void HighDrillingPore::setComment(const std::string& value)
+{
+	this->comment = value;
 }
 
 } // namespace cbm

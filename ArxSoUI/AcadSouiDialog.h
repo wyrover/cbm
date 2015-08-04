@@ -1,6 +1,18 @@
 #pragma once
 
-//soui对话框封装
+/**
+ * soui对话框封装类.
+ * 用法:
+	(1)非模态对话框(必须new，否则会导致内存错误)
+    HWND hWnd = getWindowHandle();  // 必须要指定有效的父窗口句柄
+	LoginDlg* dlg = new LoginDlg(FALSE);
+	dlg->Run(hWnd);
+	
+	(2)模态对话框(最好是用局部变量,不要new)
+	HWND hWnd = getWindowHandle();  // 必须要指定有效的父窗口句柄
+	LoginDlg dlg(TRUE);
+	dlg.Run(hWnd);
+*/
 class AcadSouiDialog : public SOUI::SHostDialog
 {
 public:

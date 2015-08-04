@@ -30,6 +30,8 @@ public:
 	void setKeyRtn(const double& value);
 	double getKeySumHn() const;
 	void setKeySumHn(const double& value);
+	std::string getComment() const;
+	void setComment(const std::string& value);
 
 private:
 	long key_layer_id;
@@ -39,6 +41,7 @@ private:
 	double key_qn;
 	double key_rtn;
 	double key_sum_hn;
+	std::string comment;
 
 }; // class KeyLayer
 

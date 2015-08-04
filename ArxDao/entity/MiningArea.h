@@ -28,6 +28,8 @@ public:
 	void setA(const double& value);
 	double getQR() const;
 	void setQR(const double& value);
+	std::string getComment() const;
+	void setComment(const std::string& value);
 
 private:
 	long mining_area_id;
@@ -36,6 +38,7 @@ private:
 	double area_k;
 	double a;
 	double q_r;
+	std::string comment;
 
 }; // class MiningArea
 

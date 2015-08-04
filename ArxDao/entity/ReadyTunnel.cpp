@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "ReadyTunnel.h"
 #include "MiningArea.h"
+#include "Tunnel.h"
 
 #include <sstream>
 #include "../dao/util.h"
@@ -10,19 +11,13 @@ namespace cbm {
 ReadyTunnel::ReadyTunnel()
 {
 	ready_tunnel_id = 0;
-	rt_l = 0.0;
-	rt_method = 0;
-	rt_b = 0.0;
-	rt_wh = 0.0;
+	comment = "NULL";
 }
 
 ReadyTunnel::ReadyTunnel(long id)
 {
 	ready_tunnel_id = id;
-	rt_l = 0.0;
-	rt_method = 0;
-	rt_b = 0.0;
-	rt_wh = 0.0;
+	comment = "NULL";
 }
 
 ReadyTunnel::ReadyTunnel(soci::row &rs)
@@ -32,10 +27,11 @@ ReadyTunnel::ReadyTunnel(soci::row &rs)
 	if(mining_area_id > -1) {
 		mining_area = MiningAreaPtr(new MiningArea(mining_area_id));
 	}
-	rt_l = rs.get<double>(2);
-	rt_method = rs.get<long>(3);
-	rt_b = rs.get<double>(4);
-	rt_wh = rs.get<double>(5);
+	long tunnel_id = rs.get<long>(2);
+	if(tunnel_id > -1) {
+		tunnel = TunnelPtr(new Tunnel(tunnel_id));
+	}
+	comment = rs.get<std::string>(3);
 }
 
 std::string ReadyTunnel::getTableName() const
@@ -49,10 +45,8 @@ std::string ReadyTunnel::getSqlInsert() const
 	sql <<"insert into cbm_ready_tunnel values("
 		<<"NULL"<<","
 		<<mining_area->getId()<<","
-		<<rt_l<<","
-		<<rt_method<<","
-		<<rt_b<<","
-		<<rt_wh<<");";
+		<<tunnel->getId()<<","
+		<<"'"<<comment<<"'"<<");";
 	return sql.str();
 }
 
@@ -61,10 +55,8 @@ std::string ReadyTunnel::getSqlUpdate() const
 	std::stringstream sql;
 	sql <<"update cbm_ready_tunnel set"
 		<<" mining_area_id="<<mining_area->getId()<<","
-		<<" rt_l="<<rt_l<<","
-		<<" rt_method="<<rt_method<<","
-		<<" rt_b="<<rt_b<<","
-		<<" rt_wh="<<rt_wh
+		<<" tunnel_id="<<tunnel->getId()<<","
+		<<" comment="<<"'"<<comment<<"'"
 		<<" where ready_tunnel_id="<<ready_tunnel_id
 		<<" ;";
 	return sql.str();
@@ -99,44 +91,24 @@ void ReadyTunnel::setMiningArea(const MiningAreaPtr& value)
 	this->mining_area = value;
 }
 
-double ReadyTunnel::getRtL() const
+TunnelPtr ReadyTunnel::getTunnel() const
 {
-	return rt_l;
+	return tunnel;
 }
 
-void ReadyTunnel::setRtL(const double& value)
+void ReadyTunnel::setTunnel(const TunnelPtr& value)
 {
-	this->rt_l = value;
+	this->tunnel = value;
 }
 
-long ReadyTunnel::getRtMethod() const
+std::string ReadyTunnel::getComment() const
 {
-	return rt_method;
+	return comment;
 }
 
-void ReadyTunnel::setRtMethod(const long& value)
+void ReadyTunnel::setComment(const std::string& value)
 {
-	this->rt_method = value;
-}
-
-double ReadyTunnel::getRtB() const
-{
-	return rt_b;
-}
-
-void ReadyTunnel::setRtB(const double& value)
-{
-	this->rt_b = value;
-}
-
-double ReadyTunnel::getRtWh() const
-{
-	return rt_wh;
-}
-
-void ReadyTunnel::setRtWh(const double& value)
-{
-	this->rt_wh = value;
+	this->comment = value;
 }
 
 } // namespace cbm

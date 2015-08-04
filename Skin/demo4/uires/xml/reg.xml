@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOUI width="390" height="320" translucent="0" alpha="255" resizable="0">
+  <root cache="1" skin="_skin.sys.wnd.bkgnd">
+    <text pos="3,59" width="87" height="23" ncSkin="_skin.sys.border" name="Label22" margin-x="1" margin-y="1">矿  井  名  称</text>
+    <edit pos="103,57" width="284" height="27" enable="1" ncSkin="_skin.sys.border" name="mine_name" margin-x="1" margin-y="1"/>
+    <text pos="3,113" width="87" height="23" ncSkin="_skin.sys.border" name="Label24" margin-x="1" margin-y="1">矿  区  名  称</text>
+    <edit pos="103,111" width="284" height="27" ncSkin="_skin.sys.border" name="mine_region" margin-x="1" margin-y="1"/>
+    <text pos="3,167" width="90" height="23" ncSkin="_skin.sys.border" name="Label28" margin-x="1" margin-y="1">所     在     地</text>
+    <edit pos="103,165" width="69" height="27" enable="1" ncSkin="_skin.sys.border" name="province" margin-x="1" margin-y="1"/>
+    <text pos="3,221" width="90" height="23" ncSkin="_skin.sys.border" name="Label30" margin-x="1" margin-y="1">开采煤层数量</text>
+    <edit pos="103,219" width="61" height="27" ncSkin="_skin.sys.border" name="coal_count" margin-x="1" margin-y="1"/>
+    <text pos="184,167" width="15" height="23" ncSkin="_skin.sys.border" name="Label32" margin-x="1" margin-y="1">省</text>
+    <edit pos="217,165" width="86" height="27" enable="1" ncSkin="_skin.sys.border" name="city" margin-x="1" margin-y="1"/>
+    <text pos="312,167" width="75" height="23" ncSkin="_skin.sys.border" name="Label34" margin-x="1" margin-y="1">市（地区）</text>
+    <text pos="172,223" width="90" height="23" ncSkin="_skin.sys.border" name="Label35" margin-x="1" margin-y="1">开采煤层编号</text>
+    <edit pos="269,221" width="118" height="27" ncSkin="_skin.sys.border" name="coal_nums" margin-x="1" margin-y="1"/>
+    <button pos="116,269" width="198" height="48" ncSkin="_skin.sys.border" name="btn_reg" margin-x="1" margin-y="1">注册&amp;确认</button>
+    <caption pos="3,3" width="384" height="40" ncSkin="_skin.sys.border">
+      <text>测试程序v1.0</text>
+      <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
+    </caption>
+  </root>
+</SOUI>

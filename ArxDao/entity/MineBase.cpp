@@ -9,22 +9,22 @@ namespace cbm {
 MineBase::MineBase()
 {
 	mine_base_id = 0;
-	base_name = "NULL";
-	base_mine = "NULL";
+	name = "NULL";
+	comment = "NULL";
 }
 
 MineBase::MineBase(long id)
 {
 	mine_base_id = id;
-	base_name = "NULL";
-	base_mine = "NULL";
+	name = "NULL";
+	comment = "NULL";
 }
 
 MineBase::MineBase(soci::row &rs)
 {
 	mine_base_id = rs.get<long>(0);
-	base_name = rs.get<std::string>(1);
-	base_mine = rs.get<std::string>(2);
+	name = rs.get<std::string>(1);
+	comment = rs.get<std::string>(2);
 }
 
 std::string MineBase::getTableName() const
@@ -37,8 +37,8 @@ std::string MineBase::getSqlInsert() const
 	std::stringstream sql;
 	sql <<"insert into cbm_mine_base values("
 		<<"NULL"<<","
-		<<"'"<<base_name<<"'"<<","
-		<<"'"<<base_mine<<"'"<<");";
+		<<"'"<<name<<"'"<<","
+		<<"'"<<comment<<"'"<<");";
 	return sql.str();
 }
 
@@ -46,8 +46,8 @@ std::string MineBase::getSqlUpdate() const
 {
 	std::stringstream sql;
 	sql <<"update cbm_mine_base set"
-		<<" base_name="<<"'"<<base_name<<"'"<<","
-		<<" base_mine="<<"'"<<base_mine<<"'"
+		<<" name="<<"'"<<name<<"'"<<","
+		<<" comment="<<"'"<<comment<<"'"
 		<<" where mine_base_id="<<mine_base_id
 		<<" ;";
 	return sql.str();
@@ -72,24 +72,24 @@ void MineBase::setId(const long& value)
 	this->mine_base_id = value;
 }
 
-std::string MineBase::getBaseName() const
+std::string MineBase::getName() const
 {
-	return base_name;
+	return name;
 }
 
-void MineBase::setBaseName(const std::string& value)
+void MineBase::setName(const std::string& value)
 {
-	this->base_name = value;
+	this->name = value;
 }
 
-std::string MineBase::getBaseMine() const
+std::string MineBase::getComment() const
 {
-	return base_mine;
+	return comment;
 }
 
-void MineBase::setBaseMine(const std::string& value)
+void MineBase::setComment(const std::string& value)
 {
-	this->base_mine = value;
+	this->comment = value;
 }
 
 } // namespace cbm

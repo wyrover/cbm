@@ -1,10 +1,11 @@
 #include "stdafx.h"
 #include "LoginDlg.h"
+#include "RegDlg.h"
 
 using namespace SOUI;
 
 LoginDlg::LoginDlg(BOOL bModal) 
-	: AcadSouiDialog(_T("layout:dlg_login"), bModal)
+	: AcadSouiDialog(_T("layout:login"), bModal)
 {
 }
 
@@ -41,12 +42,15 @@ void LoginDlg::OnLogin()
 	CString msg;
 	msg.Format(_T("用户成功登录"));
 	SMessageBox(m_hWnd,msg,_T("测试"),MB_OK);
-    SEdit *pEdit = FindChildByName2<SEdit>(L"user");
+    SEdit *pEdit = FindChildByName2<SEdit>(L"username");
     pEdit->SetWindowText(_T("dlj"));
 	AcadSouiDialog::OnOK();
 }
 
 void LoginDlg::OnReg()
 {
+	RegDlg dlg(TRUE);
+	dlg.Run(this->m_hWnd);
+
 	SMessageBox(m_hWnd,_T("注册矿井信息"),_T("测试"),MB_OK);
 }

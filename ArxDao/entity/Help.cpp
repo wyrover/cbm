@@ -12,6 +12,7 @@ Help::Help()
 	help_field = "NULL";
 	help_type = 0;
 	help_value = "NULL";
+	comment = "NULL";
 }
 
 Help::Help(long id)
@@ -20,6 +21,7 @@ Help::Help(long id)
 	help_field = "NULL";
 	help_type = 0;
 	help_value = "NULL";
+	comment = "NULL";
 }
 
 Help::Help(soci::row &rs)
@@ -28,6 +30,7 @@ Help::Help(soci::row &rs)
 	help_field = rs.get<std::string>(1);
 	help_type = rs.get<long>(2);
 	help_value = rs.get<std::string>(3);
+	comment = rs.get<std::string>(4);
 }
 
 std::string Help::getTableName() const
@@ -42,7 +45,8 @@ std::string Help::getSqlInsert() const
 		<<"NULL"<<","
 		<<"'"<<help_field<<"'"<<","
 		<<help_type<<","
-		<<"'"<<help_value<<"'"<<");";
+		<<"'"<<help_value<<"'"<<","
+		<<"'"<<comment<<"'"<<");";
 	return sql.str();
 }
 
@@ -52,7 +56,8 @@ std::string Help::getSqlUpdate() const
 	sql <<"update cbm_help set"
 		<<" help_field="<<"'"<<help_field<<"'"<<","
 		<<" help_type="<<help_type<<","
-		<<" help_value="<<"'"<<help_value<<"'"
+		<<" help_value="<<"'"<<help_value<<"'"<<","
+		<<" comment="<<"'"<<comment<<"'"
 		<<" where help_id="<<help_id
 		<<" ;";
 	return sql.str();
@@ -105,6 +110,16 @@ std::string Help::getHelpValue() const
 void Help::setHelpValue(const std::string& value)
 {
 	this->help_value = value;
+}
+
+std::string Help::getComment() const
+{
+	return comment;
+}
+
+void Help::setComment(const std::string& value)
+{
+	this->comment = value;
 }
 
 } // namespace cbm

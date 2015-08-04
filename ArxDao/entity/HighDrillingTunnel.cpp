@@ -14,6 +14,7 @@ HighDrillingTunnel::HighDrillingTunnel()
 	hdt_rock = 0;
 	hdt_hz_min = 0.0;
 	hdt_hz_max = 0.0;
+	comment = "NULL";
 }
 
 HighDrillingTunnel::HighDrillingTunnel(long id)
@@ -23,6 +24,7 @@ HighDrillingTunnel::HighDrillingTunnel(long id)
 	hdt_rock = 0;
 	hdt_hz_min = 0.0;
 	hdt_hz_max = 0.0;
+	comment = "NULL";
 }
 
 HighDrillingTunnel::HighDrillingTunnel(soci::row &rs)
@@ -36,6 +38,7 @@ HighDrillingTunnel::HighDrillingTunnel(soci::row &rs)
 	hdt_rock = rs.get<long>(3);
 	hdt_hz_min = rs.get<double>(4);
 	hdt_hz_max = rs.get<double>(5);
+	comment = rs.get<std::string>(6);
 }
 
 std::string HighDrillingTunnel::getTableName() const
@@ -52,7 +55,8 @@ std::string HighDrillingTunnel::getSqlInsert() const
 		<<hdt_k<<","
 		<<hdt_rock<<","
 		<<hdt_hz_min<<","
-		<<hdt_hz_max<<");";
+		<<hdt_hz_max<<","
+		<<"'"<<comment<<"'"<<");";
 	return sql.str();
 }
 
@@ -64,7 +68,8 @@ std::string HighDrillingTunnel::getSqlUpdate() const
 		<<" hdt_k="<<hdt_k<<","
 		<<" hdt_rock="<<hdt_rock<<","
 		<<" hdt_hz_min="<<hdt_hz_min<<","
-		<<" hdt_hz_max="<<hdt_hz_max
+		<<" hdt_hz_max="<<hdt_hz_max<<","
+		<<" comment="<<"'"<<comment<<"'"
 		<<" where high_drilling_tunnel_id="<<high_drilling_tunnel_id
 		<<" ;";
 	return sql.str();
@@ -137,6 +142,16 @@ double HighDrillingTunnel::getHdtHzMax() const
 void HighDrillingTunnel::setHdtHzMax(const double& value)
 {
 	this->hdt_hz_max = value;
+}
+
+std::string HighDrillingTunnel::getComment() const
+{
+	return comment;
+}
+
+void HighDrillingTunnel::setComment(const std::string& value)
+{
+	this->comment = value;
 }
 
 } // namespace cbm

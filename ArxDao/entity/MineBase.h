@@ -18,15 +18,15 @@ public:
 	std::string getSqlDelete() const;
 	long getId() const;
 	void setId(const long& value);
-	std::string getBaseName() const;
-	void setBaseName(const std::string& value);
-	std::string getBaseMine() const;
-	void setBaseMine(const std::string& value);
+	std::string getName() const;
+	void setName(const std::string& value);
+	std::string getComment() const;
+	void setComment(const std::string& value);
 
 private:
 	long mine_base_id;
-	std::string base_name;
-	std::string base_mine;
+	std::string name;
+	std::string comment;
 
 }; // class MineBase
 

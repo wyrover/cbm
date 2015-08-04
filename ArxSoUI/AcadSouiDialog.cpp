@@ -114,11 +114,11 @@ void AcadSouiDialog::OnSize(UINT nType, ::CSize size)
 void AcadSouiDialog::OnShowWindow( BOOL bShow, UINT nStatus )
 {
 	SetMsgHandled(FALSE);
-	if(m_bModal && bShow)
-	{
-		//该行代码是实现窗口的动画启动效果（从小变大的过程）
-		AnimateHostWindow(200, AW_CENTER);
-	}
+	//if(m_bModal && bShow)
+	//{
+	//	//该行代码是实现窗口的动画启动效果（从小变大的过程）
+	//	AnimateHostWindow(200, AW_CENTER);
+	//}
 }
 
 //int AcadSouiDialog::OnCreate( LPCREATESTRUCT lpCreateStruct )

@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "DrillingSurf.h"
 #include "Coal.h"
+#include "Tunnel.h"
 
 #include <sstream>
 #include "../dao/util.h"
@@ -12,12 +13,8 @@ DrillingSurf::DrillingSurf()
 	drilling_surf_id = 0;
 	q_r = 0.0;
 	q_a = 0.0;
-	tw_d = 0.0;
-	tw_v = 0.0;
-	tw_l = 0.0;
-	tw_s = 0.0;
-	tw_q3 = 0.0;
 	tw_q4 = 0.0;
+	comment = "NULL";
 }
 
 DrillingSurf::DrillingSurf(long id)
@@ -25,12 +22,8 @@ DrillingSurf::DrillingSurf(long id)
 	drilling_surf_id = id;
 	q_r = 0.0;
 	q_a = 0.0;
-	tw_d = 0.0;
-	tw_v = 0.0;
-	tw_l = 0.0;
-	tw_s = 0.0;
-	tw_q3 = 0.0;
 	tw_q4 = 0.0;
+	comment = "NULL";
 }
 
 DrillingSurf::DrillingSurf(soci::row &rs)
@@ -40,14 +33,14 @@ DrillingSurf::DrillingSurf(soci::row &rs)
 	if(coal_id > -1) {
 		coal = CoalPtr(new Coal(coal_id));
 	}
-	q_r = rs.get<double>(2);
-	q_a = rs.get<double>(3);
-	tw_d = rs.get<double>(4);
-	tw_v = rs.get<double>(5);
-	tw_l = rs.get<double>(6);
-	tw_s = rs.get<double>(7);
-	tw_q3 = rs.get<double>(8);
-	tw_q4 = rs.get<double>(9);
+	long tunnel_id = rs.get<long>(2);
+	if(tunnel_id > -1) {
+		tunnel = TunnelPtr(new Tunnel(tunnel_id));
+	}
+	q_r = rs.get<double>(3);
+	q_a = rs.get<double>(4);
+	tw_q4 = rs.get<double>(5);
+	comment = rs.get<std::string>(6);
 }
 
 std::string DrillingSurf::getTableName() const
@@ -61,14 +54,11 @@ std::string DrillingSurf::getSqlInsert() const
 	sql <<"insert into cbm_drilling_surf values("
 		<<"NULL"<<","
 		<<coal->getId()<<","
+		<<tunnel->getId()<<","
 		<<q_r<<","
 		<<q_a<<","
-		<<tw_d<<","
-		<<tw_v<<","
-		<<tw_l<<","
-		<<tw_s<<","
-		<<tw_q3<<","
-		<<tw_q4<<");";
+		<<tw_q4<<","
+		<<"'"<<comment<<"'"<<");";
 	return sql.str();
 }
 
@@ -77,14 +67,11 @@ std::string DrillingSurf::getSqlUpdate() const
 	std::stringstream sql;
 	sql <<"update cbm_drilling_surf set"
 		<<" coal_id="<<coal->getId()<<","
+		<<" tunnel_id="<<tunnel->getId()<<","
 		<<" q_r="<<q_r<<","
 		<<" q_a="<<q_a<<","
-		<<" tw_d="<<tw_d<<","
-		<<" tw_v="<<tw_v<<","
-		<<" tw_l="<<tw_l<<","
-		<<" tw_s="<<tw_s<<","
-		<<" tw_q3="<<tw_q3<<","
-		<<" tw_q4="<<tw_q4
+		<<" tw_q4="<<tw_q4<<","
+		<<" comment="<<"'"<<comment<<"'"
 		<<" where drilling_surf_id="<<drilling_surf_id
 		<<" ;";
 	return sql.str();
@@ -119,6 +106,16 @@ void DrillingSurf::setCoal(const CoalPtr& value)
 	this->coal = value;
 }
 
+TunnelPtr DrillingSurf::getTunnel() const
+{
+	return tunnel;
+}
+
+void DrillingSurf::setTunnel(const TunnelPtr& value)
+{
+	this->tunnel = value;
+}
+
 double DrillingSurf::getQR() const
 {
 	return q_r;
@@ -139,56 +136,6 @@ void DrillingSurf::setQA(const double& value)
 	this->q_a = value;
 }
 
-double DrillingSurf::getTwD() const
-{
-	return tw_d;
-}
-
-void DrillingSurf::setTwD(const double& value)
-{
-	this->tw_d = value;
-}
-
-double DrillingSurf::getTwV() const
-{
-	return tw_v;
-}
-
-void DrillingSurf::setTwV(const double& value)
-{
-	this->tw_v = value;
-}
-
-double DrillingSurf::getTwL() const
-{
-	return tw_l;
-}
-
-void DrillingSurf::setTwL(const double& value)
-{
-	this->tw_l = value;
-}
-
-double DrillingSurf::getTwS() const
-{
-	return tw_s;
-}
-
-void DrillingSurf::setTwS(const double& value)
-{
-	this->tw_s = value;
-}
-
-double DrillingSurf::getTwQ3() const
-{
-	return tw_q3;
-}
-
-void DrillingSurf::setTwQ3(const double& value)
-{
-	this->tw_q3 = value;
-}
-
 double DrillingSurf::getTwQ4() const
 {
 	return tw_q4;
@@ -197,6 +144,16 @@ double DrillingSurf::getTwQ4() const
 void DrillingSurf::setTwQ4(const double& value)
 {
 	this->tw_q4 = value;
+}
+
+std::string DrillingSurf::getComment() const
+{
+	return comment;
+}
+
+void DrillingSurf::setComment(const std::string& value)
+{
+	this->comment = value;
 }
 
 } // namespace cbm

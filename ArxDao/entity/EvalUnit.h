@@ -24,12 +24,15 @@ public:
 	void setUnitL(const double& value);
 	double getUnitT() const;
 	void setUnitT(const double& value);
+	std::string getComment() const;
+	void setComment(const std::string& value);
 
 private:
 	long eval_unit_id;
 	WorkSurfPtr work_surf;
 	double unit_l;
 	double unit_t;
+	std::string comment;
 
 }; // class EvalUnit
 

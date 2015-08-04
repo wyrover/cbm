@@ -395,6 +395,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\RegDlg.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\SoUILoader.cpp"
 				>
 			</File>
@@ -497,6 +501,10 @@
 			</File>
 			<File
 				RelativePath=".\MySoUiLoader.h"
+				>
+			</File>
+			<File
+				RelativePath=".\RegDlg.h"
 				>
 			</File>
 			<File

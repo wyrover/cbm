@@ -1,5 +1,5 @@
 ﻿<include>
-  <text pos="10,10">欢迎使用SOUI！</text>
+  <text multiLines="1" pos="10,10">欢迎使用\nSOUI！</text>
   <text pos="10,[5">版本:1.2.0.1</text>
   <text pos="10,[5">协议类型：MIT，个人，企业均可以免费使用本产品，请保留产品的license</text>
   <text pos="10,[5">版权所有：启程软件</text>

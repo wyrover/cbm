@@ -28,6 +28,8 @@ public:
 	void setHdtHzMin(const double& value);
 	double getHdtHzMax() const;
 	void setHdtHzMax(const double& value);
+	std::string getComment() const;
+	void setComment(const std::string& value);
 
 private:
 	long high_drilling_tunnel_id;
@@ -36,6 +38,7 @@ private:
 	long hdt_rock;
 	double hdt_hz_min;
 	double hdt_hz_max;
+	std::string comment;
 
 }; // class HighDrillingTunnel
 

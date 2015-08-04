@@ -12,6 +12,7 @@ EvalUnit::EvalUnit()
 	eval_unit_id = 0;
 	unit_l = 0.0;
 	unit_t = 0.0;
+	comment = "NULL";
 }
 
 EvalUnit::EvalUnit(long id)
@@ -19,6 +20,7 @@ EvalUnit::EvalUnit(long id)
 	eval_unit_id = id;
 	unit_l = 0.0;
 	unit_t = 0.0;
+	comment = "NULL";
 }
 
 EvalUnit::EvalUnit(soci::row &rs)
@@ -30,6 +32,7 @@ EvalUnit::EvalUnit(soci::row &rs)
 	}
 	unit_l = rs.get<double>(2);
 	unit_t = rs.get<double>(3);
+	comment = rs.get<std::string>(4);
 }
 
 std::string EvalUnit::getTableName() const
@@ -44,7 +47,8 @@ std::string EvalUnit::getSqlInsert() const
 		<<"NULL"<<","
 		<<work_surf->getId()<<","
 		<<unit_l<<","
-		<<unit_t<<");";
+		<<unit_t<<","
+		<<"'"<<comment<<"'"<<");";
 	return sql.str();
 }
 
@@ -54,7 +58,8 @@ std::string EvalUnit::getSqlUpdate() const
 	sql <<"update cbm_eval_unit set"
 		<<" work_surf_id="<<work_surf->getId()<<","
 		<<" unit_l="<<unit_l<<","
-		<<" unit_t="<<unit_t
+		<<" unit_t="<<unit_t<<","
+		<<" comment="<<"'"<<comment<<"'"
 		<<" where eval_unit_id="<<eval_unit_id
 		<<" ;";
 	return sql.str();
@@ -107,6 +112,16 @@ double EvalUnit::getUnitT() const
 void EvalUnit::setUnitT(const double& value)
 {
 	this->unit_t = value;
+}
+
+std::string EvalUnit::getComment() const
+{
+	return comment;
+}
+
+void EvalUnit::setComment(const std::string& value)
+{
+	this->comment = value;
 }
 
 } // namespace cbm

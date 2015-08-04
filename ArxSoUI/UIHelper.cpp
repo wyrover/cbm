@@ -26,8 +26,7 @@ void UIHelper::ShowSoUIDlg1()
 	// 切换资源
 	CAcModuleResourceOverride myResources;
 
-	LOG_TRACE(_T("启动新的soui界面"));
-
+	LOG_TRACE(_T("启动新的soui非模态对话框"));
 	LoginDlg* dlg = new LoginDlg(FALSE);
 	dlg->Run(acedGetAcadFrame()->GetSafeHwnd());
 }
@@ -36,6 +35,7 @@ void UIHelper::ShowSoUIDlg2()
 {
 	CAcModuleResourceOverride myResources;
 
-	LoginDlg* dlg = new LoginDlg(TRUE);
-	dlg->Run(acedGetAcadFrame()->GetSafeHwnd());
+	LOG_TRACE(_T("启动新的soui模态对话框"));
+	LoginDlg dlg(TRUE);
+	dlg.Run(acedGetAcadFrame()->GetSafeHwnd());
 }

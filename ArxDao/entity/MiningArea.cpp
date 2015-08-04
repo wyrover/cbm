@@ -14,6 +14,7 @@ MiningArea::MiningArea()
 	area_k = 0.0;
 	a = 0.0;
 	q_r = 0.0;
+	comment = "NULL";
 }
 
 MiningArea::MiningArea(long id)
@@ -23,6 +24,7 @@ MiningArea::MiningArea(long id)
 	area_k = 0.0;
 	a = 0.0;
 	q_r = 0.0;
+	comment = "NULL";
 }
 
 MiningArea::MiningArea(soci::row &rs)
@@ -36,6 +38,7 @@ MiningArea::MiningArea(soci::row &rs)
 	area_k = rs.get<double>(3);
 	a = rs.get<double>(4);
 	q_r = rs.get<double>(5);
+	comment = rs.get<std::string>(6);
 }
 
 std::string MiningArea::getTableName() const
@@ -52,7 +55,8 @@ std::string MiningArea::getSqlInsert() const
 		<<area_mode<<","
 		<<area_k<<","
 		<<a<<","
-		<<q_r<<");";
+		<<q_r<<","
+		<<"'"<<comment<<"'"<<");";
 	return sql.str();
 }
 
@@ -64,7 +68,8 @@ std::string MiningArea::getSqlUpdate() const
 		<<" area_mode="<<area_mode<<","
 		<<" area_k="<<area_k<<","
 		<<" a="<<a<<","
-		<<" q_r="<<q_r
+		<<" q_r="<<q_r<<","
+		<<" comment="<<"'"<<comment<<"'"
 		<<" where mining_area_id="<<mining_area_id
 		<<" ;";
 	return sql.str();
@@ -137,6 +142,16 @@ double MiningArea::getQR() const
 void MiningArea::setQR(const double& value)
 {
 	this->q_r = value;
+}
+
+std::string MiningArea::getComment() const
+{
+	return comment;
+}
+
+void MiningArea::setComment(const std::string& value)
+{
+	this->comment = value;
 }
 
 } // namespace cbm

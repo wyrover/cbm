@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "WorkSurf.h"
+#include "Tunnel.h"
 #include "Coal.h"
 
 #include <sstream>
@@ -14,14 +15,15 @@ WorkSurf::WorkSurf()
 	q_r = 0.0;
 	q_a = 0.0;
 	ws_l = 0.0;
-	ws_layer = 0;
+	ws_layerable = 0;
 	ws_k1 = 0.0;
 	ws_k2 = 0.0;
 	ws_k3 = 0.0;
 	ws_kf = 0.0;
-	cross_l = 0.0;
-	cross_v = 0.0;
+	ws_h = 0.0;
+	ws_method = 0;
 	last_t = 0.0;
+	comment = "NULL";
 }
 
 WorkSurf::WorkSurf(long id)
@@ -31,35 +33,41 @@ WorkSurf::WorkSurf(long id)
 	q_r = 0.0;
 	q_a = 0.0;
 	ws_l = 0.0;
-	ws_layer = 0;
+	ws_layerable = 0;
 	ws_k1 = 0.0;
 	ws_k2 = 0.0;
 	ws_k3 = 0.0;
 	ws_kf = 0.0;
-	cross_l = 0.0;
-	cross_v = 0.0;
+	ws_h = 0.0;
+	ws_method = 0;
 	last_t = 0.0;
+	comment = "NULL";
 }
 
 WorkSurf::WorkSurf(soci::row &rs)
 {
 	work_surf_id = rs.get<long>(0);
-	long coal_id = rs.get<long>(1);
+	long tunnel_id = rs.get<long>(1);
+	if(tunnel_id > -1) {
+		tunnel = TunnelPtr(new Tunnel(tunnel_id));
+	}
+	long coal_id = rs.get<long>(2);
 	if(coal_id > -1) {
 		coal = CoalPtr(new Coal(coal_id));
 	}
-	a = rs.get<double>(2);
-	q_r = rs.get<double>(3);
-	q_a = rs.get<double>(4);
-	ws_l = rs.get<double>(5);
-	ws_layer = rs.get<long>(6);
-	ws_k1 = rs.get<double>(7);
-	ws_k2 = rs.get<double>(8);
-	ws_k3 = rs.get<double>(9);
-	ws_kf = rs.get<double>(10);
-	cross_l = rs.get<double>(11);
-	cross_v = rs.get<double>(12);
-	last_t = rs.get<double>(13);
+	a = rs.get<double>(3);
+	q_r = rs.get<double>(4);
+	q_a = rs.get<double>(5);
+	ws_l = rs.get<double>(6);
+	ws_layerable = rs.get<long>(7);
+	ws_k1 = rs.get<double>(8);
+	ws_k2 = rs.get<double>(9);
+	ws_k3 = rs.get<double>(10);
+	ws_kf = rs.get<double>(11);
+	ws_h = rs.get<double>(12);
+	ws_method = rs.get<long>(13);
+	last_t = rs.get<double>(14);
+	comment = rs.get<std::string>(15);
 }
 
 std::string WorkSurf::getTableName() const
@@ -72,19 +80,21 @@ std::string WorkSurf::getSqlInsert() const
 	std::stringstream sql;
 	sql <<"insert into cbm_work_surf values("
 		<<"NULL"<<","
+		<<tunnel->getId()<<","
 		<<coal->getId()<<","
 		<<a<<","
 		<<q_r<<","
 		<<q_a<<","
 		<<ws_l<<","
-		<<ws_layer<<","
+		<<ws_layerable<<","
 		<<ws_k1<<","
 		<<ws_k2<<","
 		<<ws_k3<<","
 		<<ws_kf<<","
-		<<cross_l<<","
-		<<cross_v<<","
-		<<last_t<<");";
+		<<ws_h<<","
+		<<ws_method<<","
+		<<last_t<<","
+		<<"'"<<comment<<"'"<<");";
 	return sql.str();
 }
 
@@ -92,19 +102,21 @@ std::string WorkSurf::getSqlUpdate() const
 {
 	std::stringstream sql;
 	sql <<"update cbm_work_surf set"
+		<<" tunnel_id="<<tunnel->getId()<<","
 		<<" coal_id="<<coal->getId()<<","
 		<<" a="<<a<<","
 		<<" q_r="<<q_r<<","
 		<<" q_a="<<q_a<<","
 		<<" ws_l="<<ws_l<<","
-		<<" ws_layer="<<ws_layer<<","
+		<<" ws_layerable="<<ws_layerable<<","
 		<<" ws_k1="<<ws_k1<<","
 		<<" ws_k2="<<ws_k2<<","
 		<<" ws_k3="<<ws_k3<<","
 		<<" ws_kf="<<ws_kf<<","
-		<<" cross_l="<<cross_l<<","
-		<<" cross_v="<<cross_v<<","
-		<<" last_t="<<last_t
+		<<" ws_h="<<ws_h<<","
+		<<" ws_method="<<ws_method<<","
+		<<" last_t="<<last_t<<","
+		<<" comment="<<"'"<<comment<<"'"
 		<<" where work_surf_id="<<work_surf_id
 		<<" ;";
 	return sql.str();
@@ -127,6 +139,16 @@ long WorkSurf::getId() const
 void WorkSurf::setId(const long& value)
 {
 	this->work_surf_id = value;
+}
+
+TunnelPtr WorkSurf::getTunnel() const
+{
+	return tunnel;
+}
+
+void WorkSurf::setTunnel(const TunnelPtr& value)
+{
+	this->tunnel = value;
 }
 
 CoalPtr WorkSurf::getCoal() const
@@ -179,14 +201,14 @@ void WorkSurf::setWsL(const double& value)
 	this->ws_l = value;
 }
 
-long WorkSurf::getWsLayer() const
+long WorkSurf::getWsLayerable() const
 {
-	return ws_layer;
+	return ws_layerable;
 }
 
-void WorkSurf::setWsLayer(const long& value)
+void WorkSurf::setWsLayerable(const long& value)
 {
-	this->ws_layer = value;
+	this->ws_layerable = value;
 }
 
 double WorkSurf::getWsK1() const
@@ -229,24 +251,24 @@ void WorkSurf::setWsKf(const double& value)
 	this->ws_kf = value;
 }
 
-double WorkSurf::getCrossL() const
+double WorkSurf::getWsH() const
 {
-	return cross_l;
+	return ws_h;
 }
 
-void WorkSurf::setCrossL(const double& value)
+void WorkSurf::setWsH(const double& value)
 {
-	this->cross_l = value;
+	this->ws_h = value;
 }
 
-double WorkSurf::getCrossV() const
+long WorkSurf::getWsMethod() const
 {
-	return cross_v;
+	return ws_method;
 }
 
-void WorkSurf::setCrossV(const double& value)
+void WorkSurf::setWsMethod(const long& value)
 {
-	this->cross_v = value;
+	this->ws_method = value;
 }
 
 double WorkSurf::getLastT() const
@@ -257,6 +279,16 @@ double WorkSurf::getLastT() const
 void WorkSurf::setLastT(const double& value)
 {
 	this->last_t = value;
+}
+
+std::string WorkSurf::getComment() const
+{
+	return comment;
+}
+
+void WorkSurf::setComment(const std::string& value)
+{
+	this->comment = value;
 }
 
 } // namespace cbm

@@ -20,34 +20,25 @@ public:
 	void setId(const long& value);
 	CoalPtr getCoal() const;
 	void setCoal(const CoalPtr& value);
+	TunnelPtr getTunnel() const;
+	void setTunnel(const TunnelPtr& value);
 	double getQR() const;
 	void setQR(const double& value);
 	double getQA() const;
 	void setQA(const double& value);
-	double getTwD() const;
-	void setTwD(const double& value);
-	double getTwV() const;
-	void setTwV(const double& value);
-	double getTwL() const;
-	void setTwL(const double& value);
-	double getTwS() const;
-	void setTwS(const double& value);
-	double getTwQ3() const;
-	void setTwQ3(const double& value);
 	double getTwQ4() const;
 	void setTwQ4(const double& value);
+	std::string getComment() const;
+	void setComment(const std::string& value);
 
 private:
 	long drilling_surf_id;
 	CoalPtr coal;
+	TunnelPtr tunnel;
 	double q_r;
 	double q_a;
-	double tw_d;
-	double tw_v;
-	double tw_l;
-	double tw_s;
-	double tw_q3;
 	double tw_q4;
+	std::string comment;
 
 }; // class DrillingSurf
 

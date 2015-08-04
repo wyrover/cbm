@@ -9,9 +9,8 @@ namespace cbm {
 
 Coal::Coal()
 {
-	coal_id = 0;
 	coal_name = "NULL";
-	coal_number = 0;
+	coal_id = 0;
 	coal_minable = 0;
 	coal_thick = 0.0;
 	coal_rank = 0;
@@ -37,17 +36,37 @@ Coal::Coal()
 	coal_r = 0.0;
 	coal_vr = 0.0;
 	gas_w0 = 0.0;
+	gas_wc2 = 0.0;
 	gas_eta = 0.0;
 	q_r = 0.0;
 	q0 = 0.0;
-	mine_height = 0.0;
+	eval_method = 0;
+	q0_alpha = 0.0;
+	qt_alpha = 0.0;
+	t_alpha = 0.0;
+	q_lambda = 0.0;
+	r_lambda = 0.0;
+	p0_lambda = 0.0;
+	p1_lambda = 0.0;
+	t_lambda = 0.0;
+	a_lambda = 0.0;
+	p1_k = 0.0;
+	p2_k = 0.0;
+	gas_q = 0.0;
+	core_height = 0.0;
+	core_area = 0.0;
+	gas_viscosity = 0.0;
+	decay_alpha = 0.0;
+	permeability_lambda = 0.0;
+	permeability_k = 0.0;
+	eval_difficult = 0;
+	comment = "NULL";
 }
 
 Coal::Coal(long id)
 {
-	coal_id = id;
 	coal_name = "NULL";
-	coal_number = 0;
+	coal_id = id;
 	coal_minable = 0;
 	coal_thick = 0.0;
 	coal_rank = 0;
@@ -73,50 +92,91 @@ Coal::Coal(long id)
 	coal_r = 0.0;
 	coal_vr = 0.0;
 	gas_w0 = 0.0;
+	gas_wc2 = 0.0;
 	gas_eta = 0.0;
 	q_r = 0.0;
 	q0 = 0.0;
-	mine_height = 0.0;
+	eval_method = 0;
+	q0_alpha = 0.0;
+	qt_alpha = 0.0;
+	t_alpha = 0.0;
+	q_lambda = 0.0;
+	r_lambda = 0.0;
+	p0_lambda = 0.0;
+	p1_lambda = 0.0;
+	t_lambda = 0.0;
+	a_lambda = 0.0;
+	p1_k = 0.0;
+	p2_k = 0.0;
+	gas_q = 0.0;
+	core_height = 0.0;
+	core_area = 0.0;
+	gas_viscosity = 0.0;
+	decay_alpha = 0.0;
+	permeability_lambda = 0.0;
+	permeability_k = 0.0;
+	eval_difficult = 0;
+	comment = "NULL";
 }
 
 Coal::Coal(soci::row &rs)
 {
-	coal_id = rs.get<long>(0);
-	long mine_id = rs.get<long>(1);
+	coal_name = rs.get<std::string>(0);
+	coal_id = rs.get<long>(1);
+	long mine_id = rs.get<long>(2);
 	if(mine_id > -1) {
 		mine = MinePtr(new Mine(mine_id));
 	}
-	coal_name = rs.get<std::string>(2);
-	coal_number = rs.get<long>(3);
-	coal_minable = rs.get<long>(4);
-	coal_thick = rs.get<double>(5);
-	coal_rank = rs.get<long>(6);
-	coal_quality = rs.get<long>(7);
-	layer_pressure = rs.get<double>(8);
-	gas_content = rs.get<double>(9);
-	gas_penetration = rs.get<double>(10);
-	f_value = rs.get<double>(11);
-	res_abundance = rs.get<long>(12);
-	const_complexity = rs.get<long>(13);
-	mine_index = rs.get<long>(14);
-	var_coeff = rs.get<double>(15);
-	coal_stability = rs.get<double>(16);
-	dip_angle = rs.get<double>(17);
-	caving_zone_height = rs.get<double>(18);
-	layer_gap = rs.get<double>(19);
-	influence_factor = rs.get<double>(20);
-	res_a1 = rs.get<double>(21);
-	gas_x1 = rs.get<double>(22);
-	res_a2 = rs.get<double>(23);
-	gas_x2 = rs.get<double>(24);
-	gas_wc = rs.get<double>(25);
-	coal_r = rs.get<double>(26);
-	coal_vr = rs.get<double>(27);
-	gas_w0 = rs.get<double>(28);
+	coal_minable = rs.get<long>(3);
+	coal_thick = rs.get<double>(4);
+	coal_rank = rs.get<long>(5);
+	coal_quality = rs.get<long>(6);
+	layer_pressure = rs.get<double>(7);
+	gas_content = rs.get<double>(8);
+	gas_penetration = rs.get<double>(9);
+	f_value = rs.get<double>(10);
+	res_abundance = rs.get<long>(11);
+	const_complexity = rs.get<long>(12);
+	mine_index = rs.get<long>(13);
+	var_coeff = rs.get<double>(14);
+	coal_stability = rs.get<double>(15);
+	dip_angle = rs.get<double>(16);
+	caving_zone_height = rs.get<double>(17);
+	layer_gap = rs.get<double>(18);
+	influence_factor = rs.get<double>(19);
+	res_a1 = rs.get<double>(20);
+	gas_x1 = rs.get<double>(21);
+	res_a2 = rs.get<double>(22);
+	gas_x2 = rs.get<double>(23);
+	gas_wc = rs.get<double>(24);
+	coal_r = rs.get<double>(25);
+	coal_vr = rs.get<double>(26);
+	gas_w0 = rs.get<double>(27);
+	gas_wc2 = rs.get<double>(28);
 	gas_eta = rs.get<double>(29);
 	q_r = rs.get<double>(30);
 	q0 = rs.get<double>(31);
-	mine_height = rs.get<double>(32);
+	eval_method = rs.get<long>(32);
+	q0_alpha = rs.get<double>(33);
+	qt_alpha = rs.get<double>(34);
+	t_alpha = rs.get<double>(35);
+	q_lambda = rs.get<double>(36);
+	r_lambda = rs.get<double>(37);
+	p0_lambda = rs.get<double>(38);
+	p1_lambda = rs.get<double>(39);
+	t_lambda = rs.get<double>(40);
+	a_lambda = rs.get<double>(41);
+	p1_k = rs.get<double>(42);
+	p2_k = rs.get<double>(43);
+	gas_q = rs.get<double>(44);
+	core_height = rs.get<double>(45);
+	core_area = rs.get<double>(46);
+	gas_viscosity = rs.get<double>(47);
+	decay_alpha = rs.get<double>(48);
+	permeability_lambda = rs.get<double>(49);
+	permeability_k = rs.get<double>(50);
+	eval_difficult = rs.get<long>(51);
+	comment = rs.get<std::string>(52);
 }
 
 std::string Coal::getTableName() const
@@ -128,10 +188,9 @@ std::string Coal::getSqlInsert() const
 {
 	std::stringstream sql;
 	sql <<"insert into cbm_coal values("
+		<<"'"<<coal_name<<"'"<<","
 		<<"NULL"<<","
 		<<mine->getId()<<","
-		<<"'"<<coal_name<<"'"<<","
-		<<coal_number<<","
 		<<coal_minable<<","
 		<<coal_thick<<","
 		<<coal_rank<<","
@@ -157,10 +216,31 @@ std::string Coal::getSqlInsert() const
 		<<coal_r<<","
 		<<coal_vr<<","
 		<<gas_w0<<","
+		<<gas_wc2<<","
 		<<gas_eta<<","
 		<<q_r<<","
 		<<q0<<","
-		<<mine_height<<");";
+		<<eval_method<<","
+		<<q0_alpha<<","
+		<<qt_alpha<<","
+		<<t_alpha<<","
+		<<q_lambda<<","
+		<<r_lambda<<","
+		<<p0_lambda<<","
+		<<p1_lambda<<","
+		<<t_lambda<<","
+		<<a_lambda<<","
+		<<p1_k<<","
+		<<p2_k<<","
+		<<gas_q<<","
+		<<core_height<<","
+		<<core_area<<","
+		<<gas_viscosity<<","
+		<<decay_alpha<<","
+		<<permeability_lambda<<","
+		<<permeability_k<<","
+		<<eval_difficult<<","
+		<<"'"<<comment<<"'"<<");";
 	return sql.str();
 }
 
@@ -168,9 +248,8 @@ std::string Coal::getSqlUpdate() const
 {
 	std::stringstream sql;
 	sql <<"update cbm_coal set"
-		<<" mine_id="<<mine->getId()<<","
 		<<" coal_name="<<"'"<<coal_name<<"'"<<","
-		<<" coal_number="<<coal_number<<","
+		<<" mine_id="<<mine->getId()<<","
 		<<" coal_minable="<<coal_minable<<","
 		<<" coal_thick="<<coal_thick<<","
 		<<" coal_rank="<<coal_rank<<","
@@ -196,10 +275,31 @@ std::string Coal::getSqlUpdate() const
 		<<" coal_r="<<coal_r<<","
 		<<" coal_vr="<<coal_vr<<","
 		<<" gas_w0="<<gas_w0<<","
+		<<" gas_wc2="<<gas_wc2<<","
 		<<" gas_eta="<<gas_eta<<","
 		<<" q_r="<<q_r<<","
 		<<" q0="<<q0<<","
-		<<" mine_height="<<mine_height
+		<<" eval_method="<<eval_method<<","
+		<<" q0_alpha="<<q0_alpha<<","
+		<<" qt_alpha="<<qt_alpha<<","
+		<<" t_alpha="<<t_alpha<<","
+		<<" q_lambda="<<q_lambda<<","
+		<<" r_lambda="<<r_lambda<<","
+		<<" p0_lambda="<<p0_lambda<<","
+		<<" p1_lambda="<<p1_lambda<<","
+		<<" t_lambda="<<t_lambda<<","
+		<<" a_lambda="<<a_lambda<<","
+		<<" p1_k="<<p1_k<<","
+		<<" p2_k="<<p2_k<<","
+		<<" gas_q="<<gas_q<<","
+		<<" core_height="<<core_height<<","
+		<<" core_area="<<core_area<<","
+		<<" gas_viscosity="<<gas_viscosity<<","
+		<<" decay_alpha="<<decay_alpha<<","
+		<<" permeability_lambda="<<permeability_lambda<<","
+		<<" permeability_k="<<permeability_k<<","
+		<<" eval_difficult="<<eval_difficult<<","
+		<<" comment="<<"'"<<comment<<"'"
 		<<" where coal_id="<<coal_id
 		<<" ;";
 	return sql.str();
@@ -212,6 +312,16 @@ std::string Coal::getSqlDelete() const
 		<<" where coal_id="<<coal_id
 		<<" ;";
 	return sql.str();
+}
+
+std::string Coal::getCoalName() const
+{
+	return coal_name;
+}
+
+void Coal::setCoalName(const std::string& value)
+{
+	this->coal_name = value;
 }
 
 long Coal::getId() const
@@ -232,26 +342,6 @@ MinePtr Coal::getMine() const
 void Coal::setMine(const MinePtr& value)
 {
 	this->mine = value;
-}
-
-std::string Coal::getCoalName() const
-{
-	return coal_name;
-}
-
-void Coal::setCoalName(const std::string& value)
-{
-	this->coal_name = value;
-}
-
-long Coal::getCoalNumber() const
-{
-	return coal_number;
-}
-
-void Coal::setCoalNumber(const long& value)
-{
-	this->coal_number = value;
 }
 
 long Coal::getCoalMinable() const
@@ -504,6 +594,16 @@ void Coal::setGasW0(const double& value)
 	this->gas_w0 = value;
 }
 
+double Coal::getGasWc2() const
+{
+	return gas_wc2;
+}
+
+void Coal::setGasWc2(const double& value)
+{
+	this->gas_wc2 = value;
+}
+
 double Coal::getGasEta() const
 {
 	return gas_eta;
@@ -534,14 +634,214 @@ void Coal::setQ0(const double& value)
 	this->q0 = value;
 }
 
-double Coal::getMineHeight() const
+long Coal::getEvalMethod() const
 {
-	return mine_height;
+	return eval_method;
 }
 
-void Coal::setMineHeight(const double& value)
+void Coal::setEvalMethod(const long& value)
 {
-	this->mine_height = value;
+	this->eval_method = value;
+}
+
+double Coal::getQ0Alpha() const
+{
+	return q0_alpha;
+}
+
+void Coal::setQ0Alpha(const double& value)
+{
+	this->q0_alpha = value;
+}
+
+double Coal::getQtAlpha() const
+{
+	return qt_alpha;
+}
+
+void Coal::setQtAlpha(const double& value)
+{
+	this->qt_alpha = value;
+}
+
+double Coal::getTAlpha() const
+{
+	return t_alpha;
+}
+
+void Coal::setTAlpha(const double& value)
+{
+	this->t_alpha = value;
+}
+
+double Coal::getQLambda() const
+{
+	return q_lambda;
+}
+
+void Coal::setQLambda(const double& value)
+{
+	this->q_lambda = value;
+}
+
+double Coal::getRLambda() const
+{
+	return r_lambda;
+}
+
+void Coal::setRLambda(const double& value)
+{
+	this->r_lambda = value;
+}
+
+double Coal::getP0Lambda() const
+{
+	return p0_lambda;
+}
+
+void Coal::setP0Lambda(const double& value)
+{
+	this->p0_lambda = value;
+}
+
+double Coal::getP1Lambda() const
+{
+	return p1_lambda;
+}
+
+void Coal::setP1Lambda(const double& value)
+{
+	this->p1_lambda = value;
+}
+
+double Coal::getTLambda() const
+{
+	return t_lambda;
+}
+
+void Coal::setTLambda(const double& value)
+{
+	this->t_lambda = value;
+}
+
+double Coal::getALambda() const
+{
+	return a_lambda;
+}
+
+void Coal::setALambda(const double& value)
+{
+	this->a_lambda = value;
+}
+
+double Coal::getP1K() const
+{
+	return p1_k;
+}
+
+void Coal::setP1K(const double& value)
+{
+	this->p1_k = value;
+}
+
+double Coal::getP2K() const
+{
+	return p2_k;
+}
+
+void Coal::setP2K(const double& value)
+{
+	this->p2_k = value;
+}
+
+double Coal::getGasQ() const
+{
+	return gas_q;
+}
+
+void Coal::setGasQ(const double& value)
+{
+	this->gas_q = value;
+}
+
+double Coal::getCoreHeight() const
+{
+	return core_height;
+}
+
+void Coal::setCoreHeight(const double& value)
+{
+	this->core_height = value;
+}
+
+double Coal::getCoreArea() const
+{
+	return core_area;
+}
+
+void Coal::setCoreArea(const double& value)
+{
+	this->core_area = value;
+}
+
+double Coal::getGasViscosity() const
+{
+	return gas_viscosity;
+}
+
+void Coal::setGasViscosity(const double& value)
+{
+	this->gas_viscosity = value;
+}
+
+double Coal::getDecayAlpha() const
+{
+	return decay_alpha;
+}
+
+void Coal::setDecayAlpha(const double& value)
+{
+	this->decay_alpha = value;
+}
+
+double Coal::getPermeabilityLambda() const
+{
+	return permeability_lambda;
+}
+
+void Coal::setPermeabilityLambda(const double& value)
+{
+	this->permeability_lambda = value;
+}
+
+double Coal::getPermeabilityK() const
+{
+	return permeability_k;
+}
+
+void Coal::setPermeabilityK(const double& value)
+{
+	this->permeability_k = value;
+}
+
+long Coal::getEvalDifficult() const
+{
+	return eval_difficult;
+}
+
+void Coal::setEvalDifficult(const long& value)
+{
+	this->eval_difficult = value;
+}
+
+std::string Coal::getComment() const
+{
+	return comment;
+}
+
+void Coal::setComment(const std::string& value)
+{
+	this->comment = value;
 }
 
 } // namespace cbm

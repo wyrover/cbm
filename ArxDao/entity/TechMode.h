@@ -18,18 +18,21 @@ public:
 	std::string getSqlDelete() const;
 	long getId() const;
 	void setId(const long& value);
-	MinePtr getMine() const;
-	void setMine(const MinePtr& value);
-	std::string getModeName() const;
-	void setModeName(const std::string& value);
-	long getModeType() const;
-	void setModeType(const long& value);
+	MineRegionPtr getMineRegion() const;
+	void setMineRegion(const MineRegionPtr& value);
+	std::string getName() const;
+	void setName(const std::string& value);
+	long getType() const;
+	void setType(const long& value);
+	std::string getComment() const;
+	void setComment(const std::string& value);
 
 private:
 	long tech_mode_id;
-	MinePtr mine;
-	std::string mode_name;
-	long mode_type;
+	MineRegionPtr mine_region;
+	std::string name;
+	long type;
+	std::string comment;
 
 }; // class TechMode
 

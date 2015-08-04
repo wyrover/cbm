@@ -1,34 +1,241 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <resource>
-  <UIDEF>
-    <file name="xml_init" path="xml\init.xml"  />
-  </UIDEF>
-  
-  <ICON>
-    <file name="LOGO"  path="image\img_logo.ico" />
-  </ICON>
-  
-  <CURSOR>
-    <file name="ANI_ARROW"  path="image\021.ani" />
-    <file name="CUR_TST" path="image\camera_capture.cur"/>
-  </CURSOR>
-  
-  <LAYOUT>
-    <file name="maindlg" path="xml\dlg_main.xml"  />
-    <file name="dlg_formatmsg" path="xml\dlg_formatmsg.xml"/>
-    <file name="dlg_login" path="xml\login.xml"/>
-    <file name="dlg_register" path="xml\register.xml"/>
-  </LAYOUT>
-  
-  <IMGX>
-    <file name="png_bk" path="image\bk.png"/>
-    <file name="png_login" path="image\login.png"/>
-    <file name="png_reg" path="image\reg.png"/>
-  </IMGX>
-
-  <GIF>
-    <file name="gif_fan"  path="image\fan.gif"/>
-  </GIF>
-
+  <uidef>
+    <file name="about" path="xml\about.xml"/>
+    <file name="login" path="xml\login.xml"/>
+    <file name="reg" path="xml\reg.xml"/>
+  </uidef>
+  <layout>
+    <file name="about" path="xml\about.xml"/>
+    <file name="login" path="xml\login.xml"/>
+    <file name="reg" path="xml\reg.xml"/>
+  </layout>
+  <icon>
+    <file name="ICON_DUI_LOGO_32" path="image\icon\dui_logo_32.ico"/>
+    <file name="ICON_SOUI_LOGO_48" path="image\icon\soui_logo_48.ico"/>
+  </icon>
+  <cursor>
+    <file name="CURSOR_ARROW1" path="image\cursor\arrow1.ani"/>
+    <file name="CURSOR_ARROW2" path="image\cursor\arrow2.cur"/>
+  </cursor>
+  <img>
+    <file name="SKIN_PIC_0" path="image\bk\SKIN_PIC_0.png"/>
+    <file name="SKIN_PIC_1" path="image\bk\SKIN_PIC_1.png"/>
+    <file name="SKIN_PIC_2" path="image\bk\SKIN_PIC_2.png"/>
+    <file name="SKIN_PIC_3" path="image\bk\SKIN_PIC_3.png"/>
+    <file name="SKIN_PIC_4" path="image\bk\SKIN_PIC_4.png"/>
+    <file name="SKIN_PIC_5" path="image\bk\SKIN_PIC_5.png"/>
+    <file name="SKIN_PIC_6" path="image\bk\SKIN_PIC_6.png"/>
+    <file name="SKIN_PIC_7" path="image\bk\SKIN_PIC_7.png"/>
+    <file name="SKIN_PIC_8" path="image\bk\SKIN_PIC_8.png"/>
+    <file name="BK" path="image\bk\bk.png"/>
+    <file name="BKGND" path="image\bk\bkgnd.png"/>
+    <file name="ITALIC" path="image\button\Italic.png"/>
+    <file name="ITALIC2" path="image\button\Italic2.png"/>
+    <file name="MAIN_TAB" path="image\button\Main_Tab.png"/>
+    <file name="MAIN_TAB2" path="image\button\Main_Tab2.png"/>
+    <file name="MAIN_TAB3" path="image\button\Main_Tab3.png"/>
+    <file name="UP" path="image\button\Up.png"/>
+    <file name="UP2" path="image\button\Up2.png"/>
+    <file name="BG_COLOR" path="image\button\bg_color.png"/>
+    <file name="BOLD" path="image\button\bold.png"/>
+    <file name="BOLD2" path="image\button\bold2.png"/>
+    <file name="BROWSE" path="image\button\browse.png"/>
+    <file name="COMBOBOX_ADDRESS" path="image\button\combobox_address.png"/>
+    <file name="COMBOBOX_BUTTON" path="image\button\combobox_button.png"/>
+    <file name="COMBOBOX_BUTTON2" path="image\button\combobox_button2.png"/>
+    <file name="DESKTOP" path="image\button\desktop.png"/>
+    <file name="DESKTOP2" path="image\button\desktop2.png"/>
+    <file name="DROPDOWN" path="image\button\dropdown.png"/>
+    <file name="DROPDOWN_NO_BORDER" path="image\button\dropdown_no_border.png"/>
+    <file name="FG_COLOR" path="image\button\fg_color.png"/>
+    <file name="FIRST_LINE_ALIGN" path="image\button\first_line_align.png"/>
+    <file name="FIRST_LINE_ALIGN2" path="image\button\first_line_align2.png"/>
+    <file name="LEFT_ALIGN" path="image\button\left_align.png"/>
+    <file name="LEFT_ALIGN2" path="image\button\left_align2.png"/>
+    <file name="LINE_SPACE" path="image\button\line_space.png"/>
+    <file name="LINK" path="image\button\link.png"/>
+    <file name="LISTVIEW_REPORT" path="image\button\listview_report.png"/>
+    <file name="LISTVIEW_REPORT2" path="image\button\listview_report2.png"/>
+    <file name="LISTVIEW_THUMB" path="image\button\listview_thumb.png"/>
+    <file name="LISTVIEW_THUMB2" path="image\button\listview_thumb2.png"/>
+    <file name="MIDDLE_ALIGN" path="image\button\middle_align.png"/>
+    <file name="MIDDLE_ALIGN2" path="image\button\middle_align2.png"/>
+    <file name="PICTURE" path="image\button\picture.png"/>
+    <file name="REDO" path="image\button\redo.png"/>
+    <file name="REMOVE" path="image\button\remove.png"/>
+    <file name="RIGHT_ALIGN" path="image\button\right_align.png"/>
+    <file name="RIGHT_ALIGN2" path="image\button\right_align2.png"/>
+    <file name="UNDERLINE" path="image\button\underline.png"/>
+    <file name="UNDERLINE2" path="image\button\underline2.png"/>
+    <file name="UNDO" path="image\button\undo.png"/>
+    <file name="SMALL_ABOUT" path="image\small\about.png"/>
+    <file name="SMALL_CALENDAR" path="image\small\calendar.png"/>
+    <file name="SMALL_COLOR" path="image\small\color.png"/>
+    <file name="SMALL_COMPUTER" path="image\small\computer.png"/>
+    <file name="SMALL_CONFIG" path="image\small\config.png"/>
+    <file name="SMALL_DESKTOP" path="image\small\desktop.png"/>
+    <file name="SMALL_DRIVER" path="image\small\driver.png"/>
+    <file name="SMALL_EDIT" path="image\small\edit.png"/>
+    <file name="SMALL_EDIT_USER" path="image\small\edit_user.png"/>
+    <file name="SMALL_ENT" path="image\small\ent.png"/>
+    <file name="SMALL_FEATURE" path="image\small\feature.png"/>
+    <file name="SMALL_FILE_DOWNLOAD" path="image\small\file_download.png"/>
+    <file name="SMALL_FILES_SAVE" path="image\small\files_save.png"/>
+    <file name="SMALL_FOLDER" path="image\small\folder.png"/>
+    <file name="SMALL_FORUM" path="image\small\forum.png"/>
+    <file name="SMALL_GOURP_ADMIN" path="image\small\gourp_admin.png"/>
+    <file name="SMALL_GROUP_MSG" path="image\small\group_msg.png"/>
+    <file name="SMALL_HELP" path="image\small\help.png"/>
+    <file name="SMALL_HOME" path="image\small\home.png"/>
+    <file name="SMALL_INFO" path="image\small\info.png"/>
+    <file name="SMALL_KEY" path="image\small\key.png"/>
+    <file name="SMALL_MAC" path="image\small\mac.png"/>
+    <file name="SMALL_MYDOC" path="image\small\mydoc.png"/>
+    <file name="SMALL_NOTE" path="image\small\note.png"/>
+    <file name="SMALL_PASSWORD" path="image\small\password.png"/>
+    <file name="SMALL_PRIVATE" path="image\small\private.png"/>
+    <file name="SMALL_PWD_LOCK" path="image\small\pwd_lock.png"/>
+    <file name="SMALL_PWD_UNLOCK" path="image\small\pwd_unlock.png"/>
+    <file name="SMALL_REFRESH" path="image\small\refresh.bmp"/>
+    <file name="SMALL_REGISTER" path="image\small\register.png"/>
+    <file name="SMALL_SEARCH_NORMAL" path="image\small\search_normal.png"/>
+    <file name="SMALL_SETTING" path="image\small\setting.png"/>
+    <file name="SMALL_UPDATE" path="image\small\update.png"/>
+    <file name="SMALL_UPDATE_FAIL" path="image\small\update_fail.png"/>
+    <file name="SMALL_UPDATE_SUC" path="image\small\update_suc.png"/>
+    <file name="SMALL_USER" path="image\small\user.png"/>
+    <file name="SMALL_WEIXIN" path="image\small\weixin.png"/>
+    <file name="SMALL_WHY_FREE" path="image\small\why_free.png"/>
+    <file name="ICON_360_LOGO" path="image\icon\360_logo.png"/>
+    <file name="ICON_CHECKLIST" path="image\icon\CheckList.png"/>
+    <file name="ICON_CONNECT" path="image\icon\Connect.png"/>
+    <file name="ICON_EXAMINE" path="image\icon\Examine.png"/>
+    <file name="ICON_FINDER" path="image\icon\Finder.png"/>
+    <file name="ICON_IM" path="image\icon\IM.png"/>
+    <file name="ICON_MOVIES" path="image\icon\Movies.png"/>
+    <file name="ICON_MUSICQUIZ" path="image\icon\MusicQuiz.png"/>
+    <file name="ICON_OK" path="image\icon\OK.png"/>
+    <file name="ICON_PDFVIEWER" path="image\icon\PDFViewer.png"/>
+    <file name="ICON_POOF" path="image\icon\Poof.png"/>
+    <file name="ICON_RUBBISHCLEANER" path="image\icon\RubbishCleaner.png"/>
+    <file name="ICON_SMBPREFS" path="image\icon\SMBPrefs.png"/>
+    <file name="ICON_SPEEDUPOPT" path="image\icon\SpeedupOpt.png"/>
+    <file name="ICON_STUMBLER" path="image\icon\Stumbler.png"/>
+    <file name="ICON_SWAPTUNES" path="image\icon\SwapTunes.png"/>
+    <file name="ICON_SYNCHSTEP" path="image\icon\Synchstep.png"/>
+    <file name="ICON_SYSREPAIR" path="image\icon\SysRepair.png"/>
+    <file name="ICON_TOOL" path="image\icon\Tool.png"/>
+    <file name="ICON_TOOLS" path="image\icon\Tools.png"/>
+    <file name="ICON_TRACECLEANER" path="image\icon\TraceCleaner.png"/>
+    <file name="ICON_VULREPAIR" path="image\icon\VulRepair.png"/>
+    <file name="ICON_ADRULE_RENAME" path="image\icon\adrule_rename.png"/>
+    <file name="ICON_APP" path="image\icon\app.png"/>
+    <file name="ICON_APPBOX" path="image\icon\appbox.png"/>
+    <file name="ICON_ARP_INSTALL" path="image\icon\arp_install.png"/>
+    <file name="ICON_BACK" path="image\icon\back.png"/>
+    <file name="ICON_BUSINESS" path="image\icon\business.png"/>
+    <file name="ICON_CHECK_DISK" path="image\icon\check_disk.png"/>
+    <file name="ICON_CHECK_SAFE" path="image\icon\check_safe.png"/>
+    <file name="ICON_COMPRESS" path="image\icon\compress.png"/>
+    <file name="ICON_DIANNAOMENZHEN" path="image\icon\diannaomenzhen.png"/>
+    <file name="ICON_DOWNLOAD" path="image\icon\download.png"/>
+    <file name="ICON_DSMAIN" path="image\icon\dsmain.png"/>
+    <file name="ICON_DUI_LOGO_128" path="image\icon\dui_logo_128.png"/>
+    <file name="ICON_DUI_LOGO_48" path="image\icon\dui_logo_48.png"/>
+    <file name="ICON_ERROR" path="image\icon\error.png"/>
+    <file name="ICON_IPHONEHOME" path="image\icon\iPhoneHome.png"/>
+    <file name="ICON_ISPLIT" path="image\icon\iSplit.png"/>
+    <file name="ICON_INFO" path="image\icon\info.png"/>
+    <file name="ICON_LOCK" path="image\icon\lock.png"/>
+    <file name="ICON_LUA" path="image\icon\lua.png"/>
+    <file name="ICON_MESSAGE" path="image\icon\message.png"/>
+    <file name="ICON_NAVIGATE" path="image\icon\navigate.png"/>
+    <file name="ICON_NEW" path="image\icon\new.png"/>
+    <file name="ICON_NSIS" path="image\icon\nsis.png"/>
+    <file name="ICON_OPEN" path="image\icon\open.png"/>
+    <file name="ICON_PERL" path="image\icon\perl.png"/>
+    <file name="ICON_PYTHON" path="image\icon\python.png"/>
+    <file name="ICON_QUESTION" path="image\icon\question.png"/>
+    <file name="ICON_QUESTION2" path="image\icon\question2.png"/>
+    <file name="ICON_RSBT" path="image\icon\rSBT.png"/>
+    <file name="ICON_REPORT" path="image\icon\report.png"/>
+    <file name="ICON_RUBY" path="image\icon\ruby.png"/>
+    <file name="ICON_SCAN_SAFE" path="image\icon\scan_Safe.png"/>
+    <file name="ICON_SCAN_DANGER" path="image\icon\scan_danger.png"/>
+    <file name="ICON_SCAN_FAIL" path="image\icon\scan_fail.png"/>
+    <file name="ICON_SCAN_UNKNOW" path="image\icon\scan_unknow.png"/>
+    <file name="ICON_SCAN_WARNING" path="image\icon\scan_warning.png"/>
+    <file name="ICON_SCRIPTNET" path="image\icon\scriptnet.png"/>
+    <file name="ICON_SETBK" path="image\icon\setbk.png"/>
+    <file name="ICON_SOFTMGR" path="image\icon\softmgr.png"/>
+    <file name="ICON_SOFTMGR_CENTER" path="image\icon\softmgr_center.png"/>
+    <file name="ICON_TCL" path="image\icon\tcl.png"/>
+    <file name="ICON_TRASH" path="image\icon\trash.png"/>
+    <file name="ICON_UPLOAD" path="image\icon\upload.png"/>
+    <file name="ICON_UPLOAD_ALL" path="image\icon\upload_all.png"/>
+    <file name="ICON_USER" path="image\icon\user.png"/>
+    <file name="ICON_WARNING" path="image\icon\warning.png"/>
+    <file name="ICON_WETOOL" path="image\icon\weTool.png"/>
+    <file name="MENU_360TRAYMENU_218" path="image\menu\360TrayMenu_218.png"/>
+    <file name="MENU_360TRAYMENU_278" path="image\menu\360TrayMenu_278.png"/>
+    <file name="MENU_360TRAYMENU_300" path="image\menu\360TrayMenu_300.png"/>
+    <file name="MENU_360TRAYMENU_307" path="image\menu\360TrayMenu_307.png"/>
+    <file name="MENU_MENU" path="image\menu\MENU.png"/>
+    <file name="MENU_MENU_AUTH" path="image\menu\MENU_AUTH.png"/>
+    <file name="MENU_MENU_HELP" path="image\menu\MENU_HELP.png"/>
+    <file name="MENU_MENU_SETUP" path="image\menu\MENU_SETUP.png"/>
+    <file name="MENU_MENU_UPDATE" path="image\menu\MENU_UPDATE.png"/>
+    <file name="MENU_BG_SAFE" path="image\menu\bg_safe.png"/>
+    <file name="MENU_BG_UNSAFE" path="image\menu\bg_unsafe.png"/>
+    <file name="MENU_MENU_ARROW" path="image\menu\menu_arrow.png"/>
+    <file name="MENU_MENU_BACK" path="image\menu\menu_back.png"/>
+    <file name="MENU_MENU_BKG" path="image\menu\menu_bkg.png"/>
+    <file name="MENU_MENU_SEP" path="image\menu\menu_sep.png"/>
+    <file name="DEF_BT_CANCEL" path="image\skins\default\BT_CANCEL.png"/>
+    <file name="DEF_BT_CLOSE" path="image\skins\default\BT_CLOSE.png"/>
+    <file name="DEF_BT_DEFAULT" path="image\skins\default\BT_DEFAULT.png"/>
+    <file name="DEF_BT_DROP_DOWN" path="image\skins\default\BT_DROP_DOWN.png"/>
+    <file name="DEF_BT_GREEN" path="image\skins\default\BT_GREEN.png"/>
+    <file name="DEF_BT_ICON" path="image\skins\default\BT_ICON.png"/>
+    <file name="DEF_BT_KEY_BOARD" path="image\skins\default\BT_KEY_BOARD.png"/>
+    <file name="DEF_BT_MENU" path="image\skins\default\BT_MENU.png"/>
+    <file name="DEF_BT_MIN" path="image\skins\default\BT_MIN.png"/>
+    <file name="DEF_BT_SCROLL_DOWN" path="image\skins\default\BT_SCROLL_DOWN.png"/>
+    <file name="DEF_BT_SCROLL_UP" path="image\skins\default\BT_SCROLL_UP.png"/>
+    <file name="DEF_BT_SETUP" path="image\skins\default\BT_SETUP.png"/>
+    <file name="DEF_BT_SKIN" path="image\skins\default\BT_SKIN.png"/>
+    <file name="DEF_BT_SKIN_COLOR" path="image\skins\default\BT_SKIN_COLOR.png"/>
+    <file name="DEF_BT_SKIN_CUSTOMIZE" path="image\skins\default\BT_SKIN_CUSTOMIZE.png"/>
+    <file name="DEF_BT_SKIN_IMAGE" path="image\skins\default\BT_SKIN_IMAGE.png"/>
+    <file name="DEF_CHECK_BOX" path="image\skins\default\CHECK_BOX.png"/>
+    <file name="DEF_COMBO_ITEM" path="image\skins\default\COMBO_ITEM.png"/>
+    <file name="DEF_COMBO_ITEM_CLOSE" path="image\skins\default\COMBO_ITEM_CLOSE.png"/>
+    <file name="DEF_EDIT" path="image\skins\default\EDIT.png"/>
+    <file name="DEF_PROGRESS" path="image\skins\default\Progress.png"/>
+    <file name="DEF_RADIO_BUTTON" path="image\skins\default\RADIO_BUTTON.png"/>
+    <file name="DEF_SCROLL_V" path="image\skins\default\SCROLL_V.png"/>
+    <file name="DEF_SKINBKG" path="image\skins\default\SkinBkg.png"/>
+    <file name="DEF_SKINPUSHEDBKG" path="image\skins\default\SkinPushedBkg.png"/>
+    <file name="DEF_TAB" path="image\skins\default\Tab.png"/>
+    <file name="DEF_TAB_SEPERATOR" path="image\skins\default\Tab_seperator.png"/>
+    <file name="DEF_WINDOWSBACK" path="image\skins\default\WindowsBack.png"/>
+    <file name="DEF_BTN_CLOSE" path="image\skins\default\btn_close.png"/>
+    <file name="DEF_LIST_IMG" path="image\skins\default\list_img.png"/>
+    <file name="DEF_MSGDLG_BK" path="image\skins\default\msgdlg_bk.png"/>
+    <file name="DEF_PROGRESS_BACKGROUND_ICON" path="image\skins\default\progress_background_icon.png"/>
+    <file name="DEF_PROGRESS_FOREGROUND_ICON" path="image\skins\default\progress_foreground_icon.png"/>
+    <file name="DEF_RP_LINE" path="image\skins\default\rp_line.png"/>
+    <file name="DEF_SCAN_ANIMATE" path="image\skins\default\scan_animate.png"/>
+    <file name="DEF_TAB_BACKGROUND" path="image\skins\default\tab_background.png"/>
+    <file name="DEF_TOOLBAR_HOVER" path="image\skins\default\toolbar_hover.png"/>
+    <file name="DEF_TREE_CHECKBOX" path="image\skins\default\tree_checkbox.png"/>
+    <file name="DEF_TREE_COLLAPSE" path="image\skins\default\tree_collapse.png"/>
+    <file name="DEF_TREE_ICON" path="image\skins\default\tree_icon.png"/>
+    <file name="DEF_TREE_TOGGLE" path="image\skins\default\tree_toggle.png"/>
+    <file name="DEF_WINBACK_SHADOW" path="image\skins\default\winback_shadow.png"/>
+  </img>
+  <rtf>
+    <file name="TEST" path="rtf\test.rtf"/>
+  </rtf>
 </resource>
-

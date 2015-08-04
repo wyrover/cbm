@@ -20,22 +20,16 @@ public:
 	void setId(const long& value);
 	MiningAreaPtr getMiningArea() const;
 	void setMiningArea(const MiningAreaPtr& value);
-	double getRtL() const;
-	void setRtL(const double& value);
-	long getRtMethod() const;
-	void setRtMethod(const long& value);
-	double getRtB() const;
-	void setRtB(const double& value);
-	double getRtWh() const;
-	void setRtWh(const double& value);
+	TunnelPtr getTunnel() const;
+	void setTunnel(const TunnelPtr& value);
+	std::string getComment() const;
+	void setComment(const std::string& value);
 
 private:
 	long ready_tunnel_id;
 	MiningAreaPtr mining_area;
-	double rt_l;
-	long rt_method;
-	double rt_b;
-	double rt_wh;
+	TunnelPtr tunnel;
+	std::string comment;
 
 }; // class ReadyTunnel
 

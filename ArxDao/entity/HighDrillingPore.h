@@ -44,6 +44,8 @@ public:
 	void setHdpLzi(const double& value);
 	double getHdpLzj() const;
 	void setHdpLzj(const double& value);
+	std::string getComment() const;
+	void setComment(const std::string& value);
 
 private:
 	long high_drilling_pore_id;
@@ -60,6 +62,7 @@ private:
 	double hdp_ld;
 	double hdp_lzi;
 	double hdp_lzj;
+	std::string comment;
 
 }; // class HighDrillingPore
 
