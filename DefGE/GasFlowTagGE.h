@@ -1,8 +1,7 @@
 #pragma once
 
-#include "../MineGE/TagGE.h"
+#include <MineGE/TagGE.h>
 #include "dlimexp.h"
-#include "../DefGEPlugin/GasFlowTagGEDraw.h"
 
 class DEFGE_EXPORT_API GasFlowTagGE : public FacilityGE
 {

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../MineGEDraw/BlockDraw.h"
+#include <MineGEDraw/BlockDraw.h>
 
 class PPPBlockDraw : public BlockDraw 
 {

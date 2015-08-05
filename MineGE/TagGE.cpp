@@ -1,7 +1,7 @@
 #include "StdAfx.h"
 #include "TagGE.h"
 
-#include "../ArxHelper/HelperClass.h"
+#include <ArxHelper/HelperClass.h>
 
 Adesk::UInt32 TagGE::kCurrentVersionNumber = 1 ;
 

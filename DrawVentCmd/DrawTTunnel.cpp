@@ -1,10 +1,10 @@
 #include "stdafx.h"
 #include "DrawCmd.h"
 
-#include "../DefGE/TTunnel.h"
+#include <DefGE/TTunnel.h>
 
-#include "../MineGE/DrawHelper.h"
-#include "../ArxHelper/ArxUtilHelper.h"
+#include <MineGE/DrawHelper.h>
+#include <ArxHelper/ArxUtilHelper.h>
 
 /* 全局函数(实现在PromptTool.cpp) */
 extern bool PromptSEPt( const CString& name, AcGePoint3d& startPt, AcGePoint3d& endPt, double& angle );

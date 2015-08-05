@@ -1,7 +1,7 @@
 #include "StdAfx.h"
 #include "PolyLineJig.h"
 
-#include "../ArxHelper/HelperClass.h"
+#include <ArxHelper/HelperClass.h>
 
 static AcGePoint2d Point3D_To_2D( const AcGePoint3d& pt )
 {

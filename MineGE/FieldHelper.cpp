@@ -6,7 +6,7 @@
 #include "DataObject.h"
 #include "FieldInfoHelper.h"
 
-#include "../ArxHelper/HelperClass.h"
+#include <ArxHelper/HelperClass.h>
 
 static bool IsEmptyString( const CString& str )
 {

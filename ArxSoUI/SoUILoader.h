@@ -2,7 +2,7 @@
 
 using namespace SOUI;
 
-#include "../Util/Singleton.h"
+#include <Util/HelperClass.h>
 
 //µ¥ÀýÄ£Ê½
 class SoUILoader : public Singleton<SoUILoader>

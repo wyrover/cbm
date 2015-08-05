@@ -1,9 +1,7 @@
 #include "StdAfx.h"
 #include "DataInitHelper.h"
 
-#include "../MineGE/HelperClass.h"
-#include "../MineGE/FuncFieldHelper.h"
-#include "../MineGE/FieldHelper.h"
+#include <MineGE/HelperClass.h>
 
 #include <fstream>
 // 需要包含<fstream>才能使用

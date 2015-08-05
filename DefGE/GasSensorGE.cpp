@@ -1,7 +1,7 @@
 #include "StdAfx.h"
 #include "GasSensorGE.h"
-#include "../MineGE/DataHelper.h"
-#include "../MineGE/DataListHelper.h"
+#include <MineGE/DataHelper.h>
+#include <MineGE/DataListHelper.h>
 
 Adesk::UInt32 GasSensorGE::kCurrentVersionNumber = 1 ;
 

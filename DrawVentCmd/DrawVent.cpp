@@ -1,37 +1,37 @@
 #include "stdafx.h"
 #include "DrawCmd.h"
 
-#include "../MineGE/HelperClass.h"
-#include "../ArxHelper/HelperClass.h"
+#include <MineGE/HelperClass.h>
+#include <ArxHelper/HelperClass.h>
 
 // Í¨·çÍ¼Ôª
-#include "../DefGE/Tunnel.h"
-#include "../DefGE/Fan.h"
-#include "../DefGE/WindDirection.h"
-#include "../DefGE/ArcTunnel.h"
-#include "../DefGE/TTunnel.h"
-#include "../DefGE/Joint.h"
-#include "../DefGE/WindLibrary.h"
-#include "../DefGE/FanTagGE.h"
+#include <DefGE/Tunnel.h>
+#include <DefGE/Fan.h>
+#include <DefGE/WindDirection.h>
+#include <DefGE/ArcTunnel.h>
+#include <DefGE/TTunnel.h>
+#include <DefGE/Joint.h>
+#include <DefGE/WindLibrary.h>
+#include <DefGE/FanTagGE.h>
 
-#include "../DefGE/Chimney.h"
-#include "../DefGE/QTagGE.h"
-#include "../DefGE/EffectRanTag.h"
-#include "../DefGE/GasTube.h"
-#include "../DefGE/GasPumpGE.h"
-#include "../DefGE/ValveGE.h"
-#include "../DefGE/TailraceGE.h"
-#include "../DefGE/FlowmeterGE.h"
-#include "../DefGE/BackFireGE.h"
-#include "../DefGE/DetermineHoleGE.h"
-#include "../DefGE/GasFlowTagGE.h"
-#include "../DefGE/DrillGE.h"
-#include "../DefGE/TempeSensorGE.h"
-#include "../DefGE/FlowSensorGE.h"
-#include "../DefGE/DifferPressSensorGE.h"
-#include "../DefGE/GasSensorGE.h"
-//#include "../vno/vno.h"
-//#include "../GraphTool/DfsNetWork.h"
+#include <DefGE/Chimney.h>
+#include <DefGE/QTagGE.h>
+#include <DefGE/EffectRanTag.h>
+#include <DefGE/GasTube.h>
+#include <DefGE/GasPumpGE.h>
+#include <DefGE/ValveGE.h>
+#include <DefGE/TailraceGE.h>
+#include <DefGE/FlowmeterGE.h>
+#include <DefGE/BackFireGE.h>
+#include <DefGE/DetermineHoleGE.h>
+#include <DefGE/GasFlowTagGE.h>
+#include <DefGE/DrillGE.h>
+#include <DefGE/TempeSensorGE.h>
+#include <DefGE/FlowSensorGE.h>
+#include <DefGE/DifferPressSensorGE.h>
+#include <DefGE/GasSensorGE.h>
+//#include <vno/vno.h>
+//#include <GraphTool/DfsNetWork.h>
 
 #include "PolyLineJig.h"
 

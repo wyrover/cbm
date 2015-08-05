@@ -1,5 +1,5 @@
 #pragma once
-#include "../MineGE/TagGE.h"
+#include <MineGE/TagGE.h>
 #include "dlimexp.h"
 
 class DEFGE_EXPORT_API FanTagGE : public TagGE 

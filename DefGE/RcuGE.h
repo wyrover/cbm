@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../MineGE/MineGE.h"
-#include "../MineGE/TagGE.h"
+#include <MineGE/MineGE.h>
+#include <MineGE/TagGE.h>
 #include "dlimexp.h"
 
 class DEFGE_EXPORT_API RcuGE : public TagGE

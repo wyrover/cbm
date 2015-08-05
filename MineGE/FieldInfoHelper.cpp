@@ -4,7 +4,7 @@
 #include "config.h"
 #include "FieldInfoObject.h"
 
-#include "../ArxHelper/HelperClass.h"
+#include <ArxHelper/HelperClass.h>
 
 static CString MakeFieldInfoKey( const CString& type, const CString& field )
 {

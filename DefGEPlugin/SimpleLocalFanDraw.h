@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../MineGEDraw/MineGEDraw.h"
+#include <MineGEDraw/MineGEDraw.h>
 
 // 通风机简单可视化效果
 class SimpleLocalFanDraw : public MineGEDraw {

@@ -3,7 +3,7 @@
 #include "DrawTool.h"
 #include "DrawSpecial.h"
 
-#include "../ArxHelper/HelperClass.h"
+#include <ArxHelper/HelperClass.h>
 
 ACRX_CONS_DEFINE_MEMBERS ( SimpleCoalSurfaceDraw, MineGEDraw, 1 )
 

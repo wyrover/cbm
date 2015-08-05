@@ -1,10 +1,10 @@
 #include "stdafx.h"
 #include "DrawCmd.h"
 
-#include "../DefGE/Tunnel.h"
-#include "../DefGE/WindDirection.h"
+#include <DefGE/Tunnel.h>
+#include <DefGE/WindDirection.h>
 
-#include "../ArxHelper/ArxUtilHelper.h"
+#include <ArxHelper/HelperClass.h>
 
 /* 全局函数(实现在DWGHelper.cpp中) */
 extern bool SelectDwg( const CString& msg, CString& dwgFilePath );

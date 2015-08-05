@@ -1,7 +1,7 @@
 #include "StdAfx.h"
 #include "ModelGE.h"
 
-#include "../ArxHelper/HelperClass.h"
+#include <ArxHelper/HelperClass.h>
 
 Adesk::UInt32 ModelGE::kCurrentVersionNumber = 1 ;
 

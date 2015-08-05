@@ -4,7 +4,7 @@
 #include "Entity.h"
 using namespace cbm;
 
-#include "../ArxHelper/HelperClass.h"
+#include <ArxHelper/HelperClass.h>
 
 void DaoHelper::ConfigureDao(const CString&  url, const CString&  user, const CString&  password, const CString&  dataBase)
 {

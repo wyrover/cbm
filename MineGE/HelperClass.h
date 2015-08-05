@@ -10,6 +10,7 @@
 // 属性数据字段管理辅助类
 #include "FieldHelper.h"
 #include "FieldInfoHelper.h"
+#include "FuncFieldHelper.h"
 
 // 属性数据读写辅助类
 #include "DataHelper.h"

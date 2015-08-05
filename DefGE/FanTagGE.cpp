@@ -1,6 +1,6 @@
 #include "StdAfx.h"
 #include "FanTagGE.h"
-#include "../ArxHelper/HelperClass.h"
+#include <ArxHelper/HelperClass.h>
 
 Adesk::UInt32 FanTagGE::kCurrentVersionNumber = 1 ;
 

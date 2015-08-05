@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../MineGEDraw/LinkedGEDraw.h"
+#include <MineGEDraw/LinkedGEDraw.h>
 
 // 双弧线巷道效果
 class DoubleArcTunnelDraw : public LinkedGEDraw

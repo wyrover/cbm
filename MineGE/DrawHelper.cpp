@@ -7,8 +7,8 @@
 
 #include "CurDrawTool.h"
 
-#include "../ArxHelper/HelperClass.h"
-#include "../MineGEDraw/MineGEDrawSystem.h"
+#include <ArxHelper/HelperClass.h>
+#include <MineGEDraw/MineGEDrawSystem.h>
 
 /* 全局函数(实现在EdgeJunctionClosure.cpp) */
 extern void LinkedGEJunctionClosure_Helper( const AcGePoint3d& junctionPt );

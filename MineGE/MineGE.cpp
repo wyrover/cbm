@@ -6,8 +6,8 @@
 #include "CurDrawTool.h"
 #include "HelperClass.h"
 
-#include "../MineGEDraw/MineGEDraw_Jig.h"
-#include "../MineGEDraw/MineGEDrawSystem.h"
+#include <MineGEDraw/MineGEDraw_Jig.h>
+#include <MineGEDraw/MineGEDrawSystem.h>
 
 static bool HasDataObject( const AcDbObjectId& dictId )
 {

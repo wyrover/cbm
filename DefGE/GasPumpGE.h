@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../MineGE/LinkedGE.h"
+#include <MineGE/LinkedGE.h>
 #include "dlimexp.h"
 
 // ÍßË¹±Ã

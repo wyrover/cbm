@@ -1,7 +1,7 @@
 #include "StdAfx.h"
 #include "resource.h"
 
-#include "../MineGE/HelperClass.h"
+#include <MineGE/HelperClass.h>
 
 #include "DrawCmd.h"
 

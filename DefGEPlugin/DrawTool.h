@@ -1,5 +1,5 @@
 #pragma once
-#include "../MineGE/config.h"
+#include <MineGE/config.h>
 #define LESS_ZERO(x) (_tstof(x) < TOLERANCE)
 /* 全局函数(实现在DrawTool.cpp) */
 

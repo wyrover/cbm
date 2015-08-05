@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../MineGEDraw/MineGEPlugin.h"
+#include <MineGEDraw/MineGEPlugin.h>
 
 class DefGEPlugin : public MineGEPlugin
 {

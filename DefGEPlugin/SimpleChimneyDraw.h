@@ -1,6 +1,6 @@
 #include "dbmain.h"
 
-#include "../MineGEDraw/MineGEDraw.h"
+#include <MineGEDraw/MineGEDraw.h>
 
 class SimpleChimneyDraw : public MineGEDraw {
 

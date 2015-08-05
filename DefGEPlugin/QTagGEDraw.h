@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../MineGEDraw/MineGEDraw.h"
+#include <MineGEDraw/MineGEDraw.h>
 
 class QTagGEDraw : public MineGEDraw
 {

@@ -7,7 +7,7 @@
 #include "FieldHelper.h"
 #include "FieldType.h"
 
-#include "../ArxHelper/HelperClass.h"
+#include <ArxHelper/HelperClass.h>
 
 static resbuf* GoToListEnd( resbuf* pHead, const CString& field )
 {

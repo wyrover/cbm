@@ -3,7 +3,7 @@
 #include "DataInitHelper.h"
 
 // ÅäÖÃÎÄ¼ş
-#include "../LoadConfig.h"
+#include <LoadConfig.h>
 
 CString GetAppPathDir()
 {

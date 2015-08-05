@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../MineGE/TagGE.h"
+#include <MineGE/TagGE.h>
 #include "dlimexp.h"
 
 // 风机抽象类

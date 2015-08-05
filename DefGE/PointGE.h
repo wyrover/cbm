@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../MineGE/MineGE.h"
+#include <MineGE/MineGE.h>
 #include "dlimexp.h"
 
 // 点类图元：各类点图元，瓦斯突出点，含量点，压力点，钻孔等

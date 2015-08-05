@@ -1,6 +1,6 @@
 //#pragma once
 //
-//#include "../MineGEDraw/LinkedGEDraw.h"
+//#include <MineGEDraw/LinkedGEDraw.h>
 //
 //class GasPumpGEDraw : public LinkedGEDraw
 //{
@@ -66,7 +66,7 @@
 
 #pragma once
 
-#include "../MineGEDraw/LinkedGEDraw.h"
+#include <MineGEDraw/LinkedGEDraw.h>
 #include "JointDrawType.h"
 
 class GasPumpGEDraw : public LinkedGEDraw

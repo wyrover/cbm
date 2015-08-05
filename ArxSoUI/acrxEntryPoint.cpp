@@ -2,8 +2,8 @@
 #include "resource.h"
 #include "UIHelper.h"
 
-#include "../ArxHelper/HelperClass.h"
-#include "../Util/LogHelper.h"
+#include <ArxHelper/HelperClass.h>
+#include <Util/HelperClass.h>
 
 // 定义注册服务名称
 #ifndef ARX_SOUI_SERVICE_NAME

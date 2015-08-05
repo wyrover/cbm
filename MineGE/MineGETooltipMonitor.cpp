@@ -7,7 +7,7 @@
 #include "FieldInfoHelper.h"
 //#include "TypeNameMapHelper.h"
 
-#include "../ArxHelper/HelperClass.h"
+#include <ArxHelper/HelperClass.h>
 
 // 获取要在tooltip显示的字段
 static void GetFieldsShowInToolTip( const CString& type, AcStringArray& fields )

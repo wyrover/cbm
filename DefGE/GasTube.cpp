@@ -1,8 +1,8 @@
 #include "StdAfx.h"
 #include "GasTube.h"
-#include "../MineGE/DataHelper.h"
-#include "../MineGE/DrawHelper.h"
-#include "../MineGE/DataListHelper.h"
+#include <MineGE/DataHelper.h>
+#include <MineGE/DrawHelper.h>
+#include <MineGE/DataListHelper.h>
 Adesk::UInt32 GasTube::kCurrentVersionNumber = 1 ;
 
 ACRX_DXF_DEFINE_MEMBERS (GasTube, LinkedGE,

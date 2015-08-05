@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../MineGEDraw/MineGEDraw.h"
+#include <MineGEDraw/MineGEDraw.h>
 
 // 简单圆形节点绘制效果
 class SimpleJointDraw : public MineGEDraw {

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../MineGEDraw/LinkedGEDraw.h"
+#include <MineGEDraw/LinkedGEDraw.h>
 
 class DrillGEDraw : public LinkedGEDraw
 {

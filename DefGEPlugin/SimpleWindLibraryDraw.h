@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../MineGEDraw/MineGEDraw.h"
+#include <MineGEDraw/MineGEDraw.h>
 
 // 简单风库绘制效果
 class SimpleWindLibraryDraw : public MineGEDraw {

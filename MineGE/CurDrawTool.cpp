@@ -4,8 +4,8 @@
 #include "config.h"
 #include "DrawHelper.h"
 
-#include "../ArxHelper/HelperClass.h"
-#include "../MineGEDraw/MineGEDrawSystem.h"
+#include <ArxHelper/HelperClass.h>
+#include <MineGEDraw/MineGEDrawSystem.h>
 
 static void BuildCurDrawsDict( const AcStringArray& types )
 {

@@ -4,7 +4,7 @@
 #include "config.h"
 #include "DataObject.h"
 
-#include "../ArxHelper/HelperClass.h"
+#include <ArxHelper/HelperClass.h>
 
 void StringListHelper::GetAllNames( AcStringArray& names )
 {

@@ -2,9 +2,9 @@
 #include "config.h"
 #include "FuncFieldHelper.h"
 
-#include "../ArxHelper/HelperClass.h"
-#include "../MineGE/MineGE.h"
-#include "../MineGE/HelperClass.h"
+#include <ArxHelper/HelperClass.h>
+#include <MineGE/MineGE.h>
+#include <MineGE/HelperClass.h>
 
 #include <set>
 

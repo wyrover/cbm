@@ -1,9 +1,9 @@
 #include "StdAfx.h"
 #include "UIHelper.h"
 
-#include "../ArxHelper/HelperClass.h"
-#include "../MineGE/HelperClass.h"
-#include "../Util/HelperClass.h"
+#include <ArxHelper/HelperClass.h>
+#include <MineGE/HelperClass.h>
+#include <Util/HelperClass.h>
 
 #include "MySoUiLoader.h"
 #include "LoginDlg.h"

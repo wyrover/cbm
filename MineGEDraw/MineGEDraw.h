@@ -6,7 +6,7 @@
 #include "dbmain.h"
 #include "dlimexp.h"
 
-#include "../ArxHelper/HelperClass.h"
+#include <ArxHelper/HelperClass.h>
 
 // Ô²ÖÜÂÊ
 #define PI 3.1415926535897932384626433832795

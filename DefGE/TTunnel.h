@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../MineGE/LinkedGE.h"
+#include <MineGE/LinkedGE.h>
 #include "dlimexp.h"
 
 // 依靠风筒导风的独头巷道称为掘进工作面

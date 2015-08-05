@@ -1,9 +1,9 @@
 #include "stdafx.h"
 
-#include "../MineGE/LinkedGE.h"
+#include <MineGE/LinkedGE.h>
 
-#include "../ArxHelper/HelperClass.h"
-#include "../DefGE/ArcTunnel.h"
+#include <ArxHelper/HelperClass.h>
+#include <DefGE/ArcTunnel.h>
 
 void GetEdgeSEPts( const AcDbObjectIdArray& objIds, AcGePoint3dArray& spts, AcGePoint3dArray& epts )
 {

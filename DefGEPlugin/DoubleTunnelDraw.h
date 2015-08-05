@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../MineGEDraw/LinkedGEDraw.h"
+#include <MineGEDraw/LinkedGEDraw.h>
 #include "JointDrawType.h"
 
 class DoubleTunnelDraw : public LinkedGEDraw

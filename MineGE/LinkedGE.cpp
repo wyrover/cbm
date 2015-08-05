@@ -3,8 +3,8 @@
 
 #include "DrawHelper.h"
 
-#include "../MineGEDraw/LinkedGEDraw.h"
-#include "../MineGEDraw/MineGEDrawSystem.h"
+#include <MineGEDraw/LinkedGEDraw.h>
+#include <MineGEDraw/MineGEDrawSystem.h>
 
 Adesk::UInt32 LinkedGE::kCurrentVersionNumber = 1 ;
 

@@ -1,6 +1,6 @@
 #include "StdAfx.h"
 #include "EffectRanTag.h"
-#include "../ArxHelper/HelperClass.h"
+#include <ArxHelper/HelperClass.h>
 
 Adesk::UInt32 EffectRanTagGE::kCurrentVersionNumber = 1 ;
 

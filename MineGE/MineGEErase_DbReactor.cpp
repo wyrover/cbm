@@ -5,7 +5,7 @@
 #include "ModelGE.h"
 #include "DataObject.h"
 
-#include "../ArxHelper/HelperClass.h"
+#include <ArxHelper/HelperClass.h>
 
 MineGEErase_DbReactor::MineGEErase_DbReactor ( AcDbDatabase* pDb ) : AcDbDatabaseReactor(), mpDatabase( pDb )
 {

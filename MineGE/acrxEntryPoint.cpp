@@ -5,7 +5,7 @@
 #include "ReactorHelper.h"
 #include "CurDrawTool.h"
 
-#include "../ArxHelper/HelperClass.h"
+#include <ArxHelper/HelperClass.h>
 
 // 定义注册服务名称
 #ifndef MINEGE_SERVICE_NAME

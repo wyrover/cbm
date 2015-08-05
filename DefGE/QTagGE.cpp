@@ -1,6 +1,6 @@
 #include "StdAfx.h"
 #include "QTagGE.h"
-#include "../ArxHelper/HelperClass.h"
+#include <ArxHelper/HelperClass.h>
 
 Adesk::UInt32 QTagGE::kCurrentVersionNumber = 1 ;
 

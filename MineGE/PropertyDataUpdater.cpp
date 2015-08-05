@@ -7,13 +7,12 @@
 #include "FieldHelper.h"
 #include "DataHelper.h"
 #include "DataListHelper.h"
-
-#include "../ArxHelper/ArxEntityHelper.h"
 #include "DrawHelper.h"
 
 #include "MFCPropertyGridCtrlHelper.h"
 #include "FuncFieldHelper.h"
-#include "../ArxHelper/ArxUtilHelper.h"
+
+#include <ArxHelper/HelperClass.h>
 
 // 将字符串转换成bool类型
 // 在COleVariant中，bool类型使用short表示(boolValue---VT_BOOL)

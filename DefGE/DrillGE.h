@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../MineGE/LinkedGE.h"
+#include <MineGE/LinkedGE.h>
 #include "dlimexp.h"
 
 // 瓦斯抽采管路图元

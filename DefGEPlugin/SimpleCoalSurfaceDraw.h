@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../MineGEDraw/MineGEDraw.h"
+#include <MineGEDraw/MineGEDraw.h>
 
 //简单煤层绘制效果
 class SimpleCoalSurfaceDraw : public MineGEDraw {

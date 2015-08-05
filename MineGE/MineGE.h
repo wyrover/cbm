@@ -2,8 +2,8 @@
 
 #include "dlimexp.h"
 
-#include "../MineGEDraw/MineGEDraw.h"
-#include "../ArxHelper/HelperClass.h"
+#include <MineGEDraw/MineGEDraw.h>
+#include <ArxHelper/HelperClass.h>
 
 // 矿井系统图元基类(抽象类)
 class MINEGE_DLLIMPEXP MineGE : public AcDbEntity 

@@ -2,15 +2,15 @@
 #include "resource.h"
 
 // 配置文件
-#include "../LoadConfig.h"
+#include <LoadConfig.h>
 
 // 系统精度设置器
 // 用于点坐标、向量的相等判断
 #include "TolSetter.h"
 
-#include "../MineGEDraw/MineGEDrawSystem.h"
-#include "../ArxHelper/HelperClass.h"
-#include "../Util/HelperClass.h"
+#include <MineGEDraw/MineGEDrawSystem.h>
+#include <ArxHelper/HelperClass.h>
+#include <Util/HelperClass.h>
 
 // 系统精度设置器全局变量
 TolSetter* pTS = 0;

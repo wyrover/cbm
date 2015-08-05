@@ -21,7 +21,7 @@ GasFlowTagGE::GasFlowTagGE( const AcGePoint3d& insertPt, double angle ): Facilit
 }
 
 
-#include "../MineGE/DataHelper.h"
+#include <MineGE/DataHelper.h>
 static void ReadWriteData( const AcDbObjectId& sObjId, const CString& sField, const AcDbObjectId& tObjId, const CString& tField )
 {
 	CString v;

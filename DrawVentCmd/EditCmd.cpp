@@ -1,15 +1,15 @@
 #include "stdafx.h"
 #include "DrawCmd.h"
 
-#include "../MineGE/MineGE.h"
-#include "../MineGE/LinkedGE.h"
-#include "../MineGE/TagGE.h"
-#include "../DefGE/ArcTunnel.h"
-#include "../DefGE/Chimney.h"
-#include "../DefGE/QTagGE.h"
+#include <MineGE/MineGE.h>
+#include <MineGE/LinkedGE.h>
+#include <MineGE/TagGE.h>
+#include <DefGE/ArcTunnel.h>
+#include <DefGE/Chimney.h>
+#include <DefGE/QTagGE.h>
 
-#include "../MineGE/HelperClass.h"
-#include "../ArxHelper/HelperClass.h"
+#include <MineGE/HelperClass.h>
+#include <ArxHelper/HelperClass.h>
 
 /* 全局函数(实现在PromptTool.cpp) */
 extern bool GetClosePtAndAngle( const AcDbObjectId& objId, AcGePoint3d& pt, double& angle );
@@ -788,7 +788,7 @@ void DrawCmd::DeleteEDTag()
 
 }
 
-#include "../DefGE/Joint.h"
+#include <DefGE/Joint.h>
 void DrawCmd::testHD()
 {
 	AcDbObjectIdArray objIds;

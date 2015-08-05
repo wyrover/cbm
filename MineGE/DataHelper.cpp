@@ -8,7 +8,7 @@
 #include "DataHelperImpl.h"
 #include "FieldHelper.h"
 
-#include "../ArxHelper/HelperClass.h"
+#include <ArxHelper/HelperClass.h>
 
 static bool GetDataObject_Helper( const AcDbObjectId& objId, AcDbObjectId& dObjId )
 {

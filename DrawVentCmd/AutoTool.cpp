@@ -2,17 +2,17 @@
 #include "DrawCmd.h"
 
 // ºËÐÄÄ£¿éMineGE¸¨ÖúÀà
-#include "../MineGE/LinkedGE.h"
-#include "../MineGE/TagGE.h"
-#include "../DefGE/WindDirection.h"
-#include "../DefGE/ArcTunnel.h"
-#include "../DefGE/TTunnel.h"
-#include "../DefGE/GasFlowTagGE.h"
+#include <MineGE/LinkedGE.h>
+#include <MineGE/TagGE.h>
+#include <DefGE/WindDirection.h>
+#include <DefGE/ArcTunnel.h>
+#include <DefGE/TTunnel.h>
+#include <DefGE/GasFlowTagGE.h>
 
-#include "../MineGE/HelperClass.h"
-#include "../ArxHelper/HelperClass.h"
+#include <MineGE/HelperClass.h>
+#include <ArxHelper/HelperClass.h>
 
-//#include "../MineGE/PropertyDataUpdater.h"
+//#include <MineGE/PropertyDataUpdater.h>
 
 #include <cmath>
 
