@@ -3,7 +3,7 @@
 
 #include "DaoManager.h"
 
-class BaseDao
+class ARXDAO_DLLIMPEXP BaseDao
 {
 public:
 	virtual ~BaseDao();

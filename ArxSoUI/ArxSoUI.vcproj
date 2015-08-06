@@ -375,27 +375,11 @@
 			Filter="cpp;c;cc;cxx;def;idl;odl"
 			>
 			<File
-				RelativePath=".\AcadSouiDialog.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\acrxEntryPoint.cpp"
 				>
 			</File>
 			<File
 				RelativePath=".\ArxSoUI_DllMain.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\FormatMsgDlg.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\LoginDlg.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\RegDlg.cpp"
 				>
 			</File>
 			<File
@@ -482,29 +466,33 @@
 					>
 				</File>
 			</Filter>
+			<Filter
+				Name="ui"
+				>
+				<File
+					RelativePath=".\AcadSouiDialog.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\FormatMsgDlg.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\LoginDlg.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\RegDlg.cpp"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Include Files"
 			Filter="h;hh;hxx"
 			>
 			<File
-				RelativePath=".\AcadSouiDialog.h"
-				>
-			</File>
-			<File
-				RelativePath=".\FormatMsgDlg.h"
-				>
-			</File>
-			<File
-				RelativePath=".\LoginDlg.h"
-				>
-			</File>
-			<File
 				RelativePath=".\MySoUiLoader.h"
-				>
-			</File>
-			<File
-				RelativePath=".\RegDlg.h"
 				>
 			</File>
 			<File
@@ -517,10 +505,6 @@
 			</File>
 			<File
 				RelativePath=".\StdAfx.h"
-				>
-			</File>
-			<File
-				RelativePath=".\UIHelper.h"
 				>
 			</File>
 			<Filter
@@ -564,6 +548,30 @@
 				</File>
 				<File
 					RelativePath="..\ThirdParty\soui\controls.extend\SVscrollbar.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="ui"
+				>
+				<File
+					RelativePath=".\AcadSouiDialog.h"
+					>
+				</File>
+				<File
+					RelativePath=".\FormatMsgDlg.h"
+					>
+				</File>
+				<File
+					RelativePath=".\LoginDlg.h"
+					>
+				</File>
+				<File
+					RelativePath=".\RegDlg.h"
+					>
+				</File>
+				<File
+					RelativePath=".\UIHelper.h"
 					>
 				</File>
 			</Filter>

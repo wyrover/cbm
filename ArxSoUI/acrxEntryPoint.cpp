@@ -4,6 +4,8 @@
 
 #include <ArxHelper/HelperClass.h>
 #include <Util/HelperClass.h>
+#include <ArxDao/Entity.h>
+using namespace cbm;
 
 // 定义注册服务名称
 #ifndef ARX_SOUI_SERVICE_NAME

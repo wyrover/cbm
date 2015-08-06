@@ -27,15 +27,13 @@ bool DaoManager::Configure(const CString&  url, const CString&  user, const CStr
 	{
 		ret = false;
 		instance.reset();
-		//cerr << "MySQL error: " << e.err_num_<< " " << e.what() << endl;
 		LOG_DEBUG_FMT(_T("连接数据库异常:%s"), EncodeHelper::ANSIToUnicode(e.what()).c_str());
 	}
 	catch (std::exception const & e)
 	{
 		ret = false;
 		instance.reset();
-		//cerr << "Some other error: " << e.what() << endl;
-		LOG_DEBUG_FMT(_T("其它异常:%s"), EncodeHelper::ANSIToUnicode(e.what()).c_str());
+		LOG_DEBUG_FMT(_T("Runtime异常:%s"), EncodeHelper::ANSIToUnicode(e.what()).c_str());
 	}
 	return ret;
 }
@@ -72,28 +70,27 @@ ResultSet DaoManager::executeQuery(const CString &sql)
     ResultSet rs = (connection->prepare << "select * from cbm_dummy where 0");
     try
     {
-		LOG_DEBUG_FMT(_T("执行sql语句:%s"), sql);
+		LOG_DEBUG_FMT(_T("sql语句:%s"), sql);
 		ResultSet temp_rs = (connection->prepare << EncodeHelper::UnicodeToANSI((LPCTSTR)sql));
         rs = temp_rs;
     }
     catch(soci::soci_error const & e)
     {
-		//cerr << "MySQL error: " << e.err_num_<< " " << e.what() << endl;
-		LOG_DEBUG_FMT(_T("执行sql查询语句异常:%s"), EncodeHelper::ANSIToUnicode(e.what()).c_str());
+		LOG_DEBUG_FMT(_T("调用executeQuery()异常:%s"), EncodeHelper::ANSIToUnicode(e.what()).c_str());
     }
 	catch (std::exception const & e)
 	{
-		//cerr << "Some other error: " << e.what() << endl;
-		LOG_DEBUG_FMT(_T("其它异常:%s"), EncodeHelper::ANSIToUnicode(e.what()).c_str());
+		LOG_DEBUG_FMT(_T("Runtime异常:%s"), EncodeHelper::ANSIToUnicode(e.what()).c_str());
 	}
     return rs;
 }
 
-void DaoManager::executeUpdate(const CString& sql)
+bool DaoManager::executeUpdate(const CString& sql)
 {
+	bool ret = true;
     try
     {
-		LOG_DEBUG_FMT(_T("执行sql语句:%s"), sql);
+		LOG_DEBUG_FMT(_T("sql语句:%s"), sql);
         soci::session* connection = getConnection();
 
 		*connection << EncodeHelper::UnicodeToANSI((LPCTSTR)sql);
@@ -101,12 +98,13 @@ void DaoManager::executeUpdate(const CString& sql)
     }
     catch(soci::soci_error const & e)
     {
-		//cerr << "MySQL error: " << e.err_num_<< " " << e.what() << endl;
-		LOG_DEBUG_FMT(_T("执行sql更新语句异常:%s"), EncodeHelper::ANSIToUnicode(e.what()).c_str());
+		ret = false;
+		LOG_DEBUG_FMT(_T("调用executeUpdate()异常:%s"), EncodeHelper::ANSIToUnicode(e.what()).c_str());
     }
 	catch (std::exception const & e)
 	{
-		//cerr << "Some other error: " << e.what() << endl;
-		LOG_DEBUG_FMT(_T("其它异常:%s"), EncodeHelper::ANSIToUnicode(e.what()).c_str());
+		ret = false;
+		LOG_DEBUG_FMT(_T("Runtime异常:%s"), EncodeHelper::ANSIToUnicode(e.what()).c_str());
 	}
+	return ret;
 }

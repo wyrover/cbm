@@ -23,4 +23,6 @@ void DaoHelper::TestDao()
 	mine->setMineRegion(MineRegion::findOne(1));
 	mine->insert();
 	mine->remove();
+
+	acutPrintf(_T("¿óÇøÃû³Æ:%s"), mine->getMineRegion()->getName());
 }

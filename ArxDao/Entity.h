@@ -9,7 +9,6 @@
 
 namespace cbm {
 
-class AdjLayer;
 class Coal;
 class DrillingRadius;
 class DrillingSurf;
@@ -33,7 +32,6 @@ class TopoGeo;
 class Tunnel;
 class WorkSurf;
 
-typedef boost::shared_ptr<AdjLayer> AdjLayerPtr;
 typedef boost::shared_ptr<Coal> CoalPtr;
 typedef boost::shared_ptr<DrillingRadius> DrillingRadiusPtr;
 typedef boost::shared_ptr<DrillingSurf> DrillingSurfPtr;
@@ -57,7 +55,6 @@ typedef boost::shared_ptr<TopoGeo> TopoGeoPtr;
 typedef boost::shared_ptr<Tunnel> TunnelPtr;
 typedef boost::shared_ptr<WorkSurf> WorkSurfPtr;
 
-typedef boost::shared_ptr< std::vector<AdjLayerPtr> > AdjLayerList;
 typedef boost::shared_ptr< std::vector<CoalPtr> > CoalList;
 typedef boost::shared_ptr< std::vector<DrillingRadiusPtr> > DrillingRadiusList;
 typedef boost::shared_ptr< std::vector<DrillingSurfPtr> > DrillingSurfList;
@@ -81,53 +78,7 @@ typedef boost::shared_ptr< std::vector<TopoGeoPtr> > TopoGeoList;
 typedef boost::shared_ptr< std::vector<TunnelPtr> > TunnelList;
 typedef boost::shared_ptr< std::vector<WorkSurfPtr> > WorkSurfList;
 
-class AdjLayer : public BaseDao
-{
-public:
-	static CString GetTableName();
-	static AdjLayerPtr findOne(int id);
-	static AdjLayerList findAll();
-	int insert();;
-	bool update();
-	bool remove();
-
-public:
-	AdjLayer();
-	AdjLayer(int id);
-	AdjLayer(soci::row& rs);
-	CString getSqlInsert() const;
-	CString getSqlUpdate() const;
-	CString getSqlDelete() const;
-	int getId() const;
-	void setId(const int& value);
-	WorkSurfPtr getWorkSurf() const;
-	void setWorkSurf(const WorkSurfPtr& value);
-	CoalPtr getCoal() const;
-	void setCoal(const CoalPtr& value);
-	int getLayerNum() const;
-	void setLayerNum(const int& value);
-	double getLayerH() const;
-	void setLayerH(const double& value);
-	double getLayerHp() const;
-	void setLayerHp(const double& value);
-	int getLayerCaveZone() const;
-	void setLayerCaveZone(const int& value);
-	CString getComment() const;
-	void setComment(const CString& value);
-
-private:
-	int id;
-	WorkSurfPtr work_surf;
-	CoalPtr coal;
-	int layer_num;
-	double layer_h;
-	double layer_hp;
-	int layer_cave_zone;
-	CString comment;
-
-}; // class AdjLayer
-
-class Coal : public BaseDao
+class ARXDAO_DLLIMPEXP Coal : public BaseDao
 {
 public:
 	static CString GetTableName();
@@ -308,7 +259,7 @@ private:
 
 }; // class Coal
 
-class DrillingRadius : public BaseDao
+class ARXDAO_DLLIMPEXP DrillingRadius : public BaseDao
 {
 public:
 	static CString GetTableName();
@@ -369,7 +320,7 @@ private:
 
 }; // class DrillingRadius
 
-class DrillingSurf : public BaseDao
+class ARXDAO_DLLIMPEXP DrillingSurf : public BaseDao
 {
 public:
 	static CString GetTableName();
@@ -412,7 +363,7 @@ private:
 
 }; // class DrillingSurf
 
-class EvalUnit : public BaseDao
+class ARXDAO_DLLIMPEXP EvalUnit : public BaseDao
 {
 public:
 	static CString GetTableName();
@@ -449,7 +400,7 @@ private:
 
 }; // class EvalUnit
 
-class Help : public BaseDao
+class ARXDAO_DLLIMPEXP Help : public BaseDao
 {
 public:
 	static CString GetTableName();
@@ -486,7 +437,7 @@ private:
 
 }; // class Help
 
-class HighDrillingPore : public BaseDao
+class ARXDAO_DLLIMPEXP HighDrillingPore : public BaseDao
 {
 public:
 	static CString GetTableName();
@@ -553,7 +504,7 @@ private:
 
 }; // class HighDrillingPore
 
-class HighDrillingTunnel : public BaseDao
+class ARXDAO_DLLIMPEXP HighDrillingTunnel : public BaseDao
 {
 public:
 	static CString GetTableName();
@@ -596,7 +547,7 @@ private:
 
 }; // class HighDrillingTunnel
 
-class HydrGeo : public BaseDao
+class ARXDAO_DLLIMPEXP HydrGeo : public BaseDao
 {
 public:
 	static CString GetTableName();
@@ -648,7 +599,7 @@ private:
 
 }; // class HydrGeo
 
-class KeyLayer : public BaseDao
+class ARXDAO_DLLIMPEXP KeyLayer : public BaseDao
 {
 public:
 	static CString GetTableName();
@@ -694,7 +645,7 @@ private:
 
 }; // class KeyLayer
 
-class Mine : public BaseDao
+class ARXDAO_DLLIMPEXP Mine : public BaseDao
 {
 public:
 	static CString GetTableName();
@@ -788,7 +739,7 @@ private:
 
 }; // class Mine
 
-class MineBase : public BaseDao
+class ARXDAO_DLLIMPEXP MineBase : public BaseDao
 {
 public:
 	static CString GetTableName();
@@ -819,7 +770,7 @@ private:
 
 }; // class MineBase
 
-class MineRegion : public BaseDao
+class ARXDAO_DLLIMPEXP MineRegion : public BaseDao
 {
 public:
 	static CString GetTableName();
@@ -853,7 +804,7 @@ private:
 
 }; // class MineRegion
 
-class MiningArea : public BaseDao
+class ARXDAO_DLLIMPEXP MiningArea : public BaseDao
 {
 public:
 	static CString GetTableName();
@@ -896,7 +847,7 @@ private:
 
 }; // class MiningArea
 
-class PoreFlow : public BaseDao
+class ARXDAO_DLLIMPEXP PoreFlow : public BaseDao
 {
 public:
 	static CString GetTableName();
@@ -969,7 +920,7 @@ private:
 
 }; // class PoreFlow
 
-class PoreSize : public BaseDao
+class ARXDAO_DLLIMPEXP PoreSize : public BaseDao
 {
 public:
 	static CString GetTableName();
@@ -1012,7 +963,7 @@ private:
 
 }; // class PoreSize
 
-class ReadyTunnel : public BaseDao
+class ARXDAO_DLLIMPEXP ReadyTunnel : public BaseDao
 {
 public:
 	static CString GetTableName();
@@ -1046,7 +997,7 @@ private:
 
 }; // class ReadyTunnel
 
-class ResAbundance : public BaseDao
+class ARXDAO_DLLIMPEXP ResAbundance : public BaseDao
 {
 public:
 	static CString GetTableName();
@@ -1080,7 +1031,7 @@ private:
 
 }; // class ResAbundance
 
-class TechMode : public BaseDao
+class ARXDAO_DLLIMPEXP TechMode : public BaseDao
 {
 public:
 	static CString GetTableName();
@@ -1117,7 +1068,7 @@ private:
 
 }; // class TechMode
 
-class Technology : public BaseDao
+class ARXDAO_DLLIMPEXP Technology : public BaseDao
 {
 public:
 	static CString GetTableName();
@@ -1160,7 +1111,7 @@ private:
 
 }; // class Technology
 
-class TopoGeo : public BaseDao
+class ARXDAO_DLLIMPEXP TopoGeo : public BaseDao
 {
 public:
 	static CString GetTableName();
@@ -1194,7 +1145,7 @@ private:
 
 }; // class TopoGeo
 
-class Tunnel : public BaseDao
+class ARXDAO_DLLIMPEXP Tunnel : public BaseDao
 {
 public:
 	static CString GetTableName();
@@ -1243,7 +1194,7 @@ private:
 
 }; // class Tunnel
 
-class WorkSurf : public BaseDao
+class ARXDAO_DLLIMPEXP WorkSurf : public BaseDao
 {
 public:
 	static CString GetTableName();
