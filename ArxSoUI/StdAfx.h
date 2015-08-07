@@ -92,5 +92,6 @@
 #include <helper/MenuWndHook.h>
 #include <helper/mybuffer.h>
 #include <helper/SMenu.h>
+using namespace SOUI;
 
 #pragma pack (pop)

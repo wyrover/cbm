@@ -16,6 +16,7 @@ public:
 protected:
 	//×¢²á
 	void OnReg();
+	void OnSelChanged(SOUI::EventArgs *pEvt);
 
 	/** ²Ëµ¥ÏûÏ¢ */
 protected:
@@ -29,6 +30,7 @@ protected:
 
     EVENT_MAP_BEGIN()
 		EVENT_NAME_COMMAND(_T("btn_reg"), OnReg)
+		EVENT_NAME_HANDLER(L"mine_base",EVT_CB_SELCHANGE,OnSelChanged)
 		CHAIN_EVENT_MAP(AcadSouiDialog)
     EVENT_MAP_END()
 

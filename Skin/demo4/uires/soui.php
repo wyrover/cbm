@@ -441,7 +441,7 @@ else if($type == 'caption') {
     $title = escapeUnicodeString($caps['title']);
   }
     //增加<text>子节点
-  $node->appendChild(create_node($doc, 'text', $title, array()));
+  $node->appendChild(create_node($doc, 'text', $title, array('pos'=>'0,8')));
 
     //(2)最大最小关闭按钮的宽度
   $btn_width = 30;
@@ -569,7 +569,7 @@ function create_root($doc, $attribs)
   }
   else {
     //创建SOUI根节点
-    $soui = create_node($doc, 'SOUI', null, array('width'=>$attribs['width']+6, 'height'=>$attribs['height']+6, 'translucent'=>0, 'alpha'=>255, 'resizable'=>0));
+    $soui = create_node($doc, 'SOUI', null, array('width'=>$attribs['width']+15, 'height'=>$attribs['height']+15, 'translucent'=>0, 'alpha'=>255, 'resizable'=>0));
     $doc->appendChild($soui);
     //创建root节点
     $root = create_node($doc, 'root', null, array('cache'=>1, 'skin'=>'_skin.sys.wnd.bkgnd'));
@@ -602,8 +602,8 @@ function mockups_to_soui_xml($jsonfile, $bMainWnd = true)
   $fig_width = intval($mockup['measuredW']);
   $fig_height = intval($mockup['measuredH']);
   //left和top的偏移量
-  $dx = $fig_width - $wnd_width - 3;
-  $dy = $fig_height - $wnd_height - 3;
+  $dx = $fig_width - $wnd_width-8;
+  $dy = $fig_height - $wnd_height-3;
 
   $root_attribs = null;
   if($bMainWnd) {

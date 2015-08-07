@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<SOUI width="355" height="186" translucent="0" alpha="255" resizable="0">
+<SOUI width="364" height="195" translucent="0" alpha="255" resizable="0">
   <root cache="1" skin="_skin.sys.wnd.bkgnd">
-    <text pos="3,51" width="56" height="23" ncSkin="_skin.sys.border" name="Label5" margin-x="1" margin-y="1">用户名</text>
-    <edit pos="69,48" width="283" height="27" enable="1" ncSkin="_skin.sys.border" name="username" margin-x="1" margin-y="1"/>
-    <text pos="3,96" width="56" height="23" ncSkin="_skin.sys.border" name="Label7" margin-x="1" margin-y="1">密  码</text>
-    <edit pos="69,94" width="283" height="27" ncSkin="_skin.sys.border" name="password" margin-x="1" margin-y="1"/>
-    <button pos="59,144" width="115" height="39" ncSkin="_skin.sys.border" name="btn_reg" margin-x="1" margin-y="1">注册</button>
-    <button pos="223,144" width="112" height="37" ncSkin="_skin.sys.border" name="btn_login" margin-x="1" margin-y="1">登录</button>
-    <caption pos="3,3" width="349" height="40" ncSkin="_skin.sys.border">
-      <text>测试程序v1.0</text>
+    <text pos="8,51" width="56" height="23" ncSkin="_skin.sys.border" name="Label5" margin-x="1" margin-y="1">用户名</text>
+    <edit pos="74,48" width="283" height="27" enable="1" ncSkin="_skin.sys.border" name="username" margin-x="1" margin-y="1"/>
+    <text pos="8,96" width="56" height="23" ncSkin="_skin.sys.border" name="Label7" margin-x="1" margin-y="1">密  码</text>
+    <edit pos="74,94" width="283" height="27" ncSkin="_skin.sys.border" name="password" margin-x="1" margin-y="1"/>
+    <button pos="64,144" width="115" height="39" ncSkin="_skin.sys.border" name="btn_reg" margin-x="1" margin-y="1">注册</button>
+    <button pos="228,144" width="112" height="37" ncSkin="_skin.sys.border" name="btn_login" margin-x="1" margin-y="1">登录</button>
+    <caption pos="8,3" width="349" height="40" ncSkin="_skin.sys.border">
+      <text pos="0,8">测试程序v1.0</text>
       <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
     </caption>
   </root>

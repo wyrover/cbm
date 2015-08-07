@@ -1,7 +1,10 @@
 #include "stdafx.h"
 #include "RegDlg.h"
 
-using namespace SOUI;
+#include <ArxHelper/HelperClass.h>
+#include <ArxDao/DaoHelper.h>
+#include <ArxDao/Entity.h>
+using namespace cbm;
 
 RegDlg::RegDlg(BOOL bModal) 
 	: AcadSouiDialog(_T("layout:reg"), bModal)
@@ -32,11 +35,88 @@ void RegDlg::OnCommand( UINT uNotifyCode, int nID, HWND wndCtl )
 
 LRESULT RegDlg::OnInitDialog( HWND hWnd, LPARAM lParam )
 {
+	SComboBox* baseCombox = FindChildByName2<SComboBox>(L"mine_base");
+
+	//查找所有的煤炭基地
+	StringArray bases;
+	DaoHelper::GetAllMineBases(bases);
+
+	//清空所有的煤炭基地列表
+	baseCombox->ResetContent();
+	for(int i=0;i<bases.size();i++)
+	{
+		baseCombox->InsertItem(i, bases[i], 0, 0);
+	}
+	//SetCurSel会触发EVT_CB_SELCHANGE消息
+	baseCombox->SetCurSel(0);
+
 	SetMsgHandled(FALSE);
 	return 0;
 }
 
 void RegDlg::OnReg()
 {
-	SMessageBox(m_hWnd,_T("注册矿井信息"),_T("测试"),MB_OK);
+	CString user = FindChildByName2<SEdit>(L"username")->GetWindowText();
+	CString pwd = FindChildByName2<SEdit>(L"password")->GetWindowText();
+	CString name = FindChildByName2<SEdit>(L"mine_name")->GetWindowText();
+	CString region = FindChildByName2<SComboBox>(L"mine_region")->GetWindowText();
+	//CString base = FindChildByName2<SComboBox>(L"mine_base")->GetWindowText();
+	CString province = FindChildByName2<SEdit>(L"province")->GetWindowText();
+	CString city = FindChildByName2<SEdit>(L"city")->GetWindowText();
+	CString coal_nums = FindChildByName2<SEdit>(L"coal_nums")->GetWindowText();
+	CString coal_count = FindChildByName2<SEdit>(L"coal_count")->GetWindowText();
+
+	//注册矿井账户
+	int ret = DaoHelper::VerifyMineAccount(user, pwd);
+	if(ret == 2)
+	{
+		SMessageBox(m_hWnd,_T("用户名已存在!"),_T("友情提示"),MB_OK);
+	}
+	else
+	{
+		Mine mine;
+		mine.setUsername(user);
+		mine.setPassword(pwd);
+		mine.setMineName(name);
+		CString options;
+		options.Format(_T("where name='%s'"), region);
+		mine.setMineRegion(MineRegion::findOne(options));
+		mine.setProvince(province);
+		mine.setCity(city);
+		//增加到数据库并返回新增行的id值
+		int id = mine.insert();
+		if(id > 0)
+		{
+			SMessageBox(m_hWnd,_T("注册矿井账户成功!"),_T("友情提示"),MB_OK);
+			AcadSouiDialog::OnOK();
+		}
+		else
+		{
+			SMessageBox(m_hWnd,_T("注册矿井账户失败!"),_T("友情提示"),MB_OK);
+		}
+	}
+}
+
+void RegDlg::OnSelChanged( EventArgs *pEvt )
+{
+	SComboBox* baseCombox = FindChildByName2<SComboBox>(L"mine_base");
+	SComboBox* regionCombox = FindChildByName2<SComboBox>(L"mine_region");
+	if(baseCombox == 0 || regionCombox == 0) return;
+
+	EventCBSelChange* pEvtOfCB = (EventCBSelChange*)pEvt;
+	if(pEvtOfCB != 0)
+	{
+		//查找当前煤炭基地对应的所有矿区
+		StringArray regions;
+		CString base = baseCombox->GetLBText(pEvtOfCB->nCurSel);
+		DaoHelper::GetAllMineRegions(base, regions);
+
+		//清空矿区下拉列表
+		regionCombox->ResetContent();
+		for(int i=0;i<regions.size();i++)
+		{
+			regionCombox->InsertItem(i, regions[i], 0, 0);
+		}
+		regionCombox->SetCurSel(0);      
+	}
 }

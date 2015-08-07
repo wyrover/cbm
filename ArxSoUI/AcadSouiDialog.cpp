@@ -1,8 +1,6 @@
 #include "stdafx.h"
 #include "AcadSouiDialog.h"
 
-using namespace SOUI;
-
 //在OnCreate消息函数中启用Aero效果需要dwmapi的支持
 //#include <dwmapi.h>
 //#pragma comment(lib,"dwmapi.lib")
@@ -197,4 +195,17 @@ void AcadSouiDialog::OnMouseHover(UINT nFlags, ::CPoint point)
 
 	m_bTracking = FALSE;
 	m_mouseInWindow = TRUE;
+}
+
+void AcadSouiDialog::OnChar(UINT nChar, UINT nRepCnt, UINT nFlags)
+{
+	if(nChar == VK_ESCAPE) 
+	{
+		SetMsgHandled(TRUE);
+		OnClose();
+	}
+	else
+	{
+		SetMsgHandled(FALSE);
+	}
 }

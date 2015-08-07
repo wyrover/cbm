@@ -149,4 +149,7 @@ private:
 	DaoManager(const CString& host, const CString& user, const CString& password, const CString& database);
 };
 
+//È«¾Öº¯Êý
+extern ARXDAO_DLLIMPEXP DaoManagerPrt dao();
+
 #endif // DAO_H

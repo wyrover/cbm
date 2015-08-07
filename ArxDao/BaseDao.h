@@ -7,7 +7,6 @@ class ARXDAO_DLLIMPEXP BaseDao
 {
 public:
 	virtual ~BaseDao();
-	static DaoManagerPrt Dao();
 
 protected:
 	BaseDao();

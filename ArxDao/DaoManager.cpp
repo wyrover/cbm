@@ -108,3 +108,8 @@ bool DaoManager::executeUpdate(const CString& sql)
 	}
 	return ret;
 }
+
+DaoManagerPrt dao()
+{
+	return DaoManager::GetInstance();
+}

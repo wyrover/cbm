@@ -9,8 +9,3 @@ BaseDao::~BaseDao()
 BaseDao::BaseDao()
 {
 }
-
-DaoManagerPrt BaseDao::Dao()
-{
-	return DaoManager::GetInstance();
-}

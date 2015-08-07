@@ -4,6 +4,216 @@
 
 namespace cbm {
 
+CString AdjLayer::GetTableName()
+{
+	return _T("cbm_adj_layer");
+}
+
+AdjLayerPtr AdjLayer::findOne(int id)
+{
+	CString options;
+	options.Format(_T("where id=%d"), id);
+	return findOne(options);
+}
+
+AdjLayerList AdjLayer::findMany()
+{
+	return findMany(_T(""));
+}
+
+AdjLayerPtr AdjLayer::findOne(const CString& options)
+{
+	AdjLayerList objList = findMany(options);
+	AdjLayerPtr obj;
+	if(objList != 0 && objList->size() > 0) {
+		obj = objList->at(0);
+	}
+	return obj;
+}
+
+AdjLayerList AdjLayer::findMany(const CString& options)
+{
+	return dao()->select<AdjLayer>(_T("cbm_adj_layer"), _T("*"), options+_T(" order by id"));
+}
+
+int AdjLayer::insert()
+{
+	if(work_surf == 0) return 0;
+	if(coal == 0) return 0;
+	this->id = dao()->insert(*this);
+	return this->id;
+}
+
+bool AdjLayer::update()
+{
+	if(work_surf == 0) return false;
+	if(coal == 0) return false;
+	return dao()->update(*this);
+}
+
+bool AdjLayer::remove()
+{
+	return dao()->remove(*this);
+}
+
+AdjLayer::AdjLayer()
+{
+	id = 0;
+	layer_num = 0;
+	layer_h = 0.0;
+	layer_hp = 0.0;
+	layer_cave_zone = 0;
+	comment = _T("NULL");
+}
+
+AdjLayer::AdjLayer(int id)
+{
+	id = 0;
+	layer_num = 0;
+	layer_h = 0.0;
+	layer_hp = 0.0;
+	layer_cave_zone = 0;
+	comment = _T("NULL");
+}
+
+AdjLayer::AdjLayer(soci::row &rs)
+{
+	id = rs.get<int>("id", (int)0);
+	int cbm_work_surf_id = rs.get<int>("cbm_work_surf_id", (int)0);
+	if(cbm_work_surf_id > 0) {
+		work_surf = WorkSurfPtr(new WorkSurf(cbm_work_surf_id));
+	}
+	int cbm_coal_id = rs.get<int>("cbm_coal_id", (int)0);
+	if(cbm_coal_id > 0) {
+		coal = CoalPtr(new Coal(cbm_coal_id));
+	}
+	layer_num = rs.get<int>("layer_num", (int)0);
+	layer_h = rs.get<double>("layer_h", (double)0);
+	layer_hp = rs.get<double>("layer_hp", (double)0);
+	layer_cave_zone = rs.get<int>("layer_cave_zone", (int)0);
+	comment = EncodeHelper::ANSIToUnicode(rs.get<std::string>("comment", "")).c_str();
+}
+
+CString AdjLayer::getSqlInsert() const
+{
+	CString sql;
+	sql.AppendFormat(_T("insert into cbm_adj_layer values("));
+	sql.AppendFormat(_T("NULL"));
+	sql.AppendFormat(_T(", %d"), work_surf->getId());
+	sql.AppendFormat(_T(", %d"), coal->getId());
+	sql.AppendFormat(_T(", %d"), layer_num);
+	sql.AppendFormat(_T(", %lf"), layer_h);
+	sql.AppendFormat(_T(", %lf"), layer_hp);
+	sql.AppendFormat(_T(", %d"), layer_cave_zone);
+	sql.AppendFormat(_T(", '%s'"), comment);
+	sql.AppendFormat(_T(");"));
+	return sql;
+}
+
+CString AdjLayer::getSqlUpdate() const
+{
+	CString sql;
+	sql.AppendFormat(_T("update cbm_adj_layer set"));
+	sql.AppendFormat(_T("  cbm_work_surf_id=%d"), work_surf->getId());
+	sql.AppendFormat(_T(", cbm_coal_id=%d"), coal->getId());
+	sql.AppendFormat(_T(", layer_num=%d"), layer_num);
+	sql.AppendFormat(_T(", layer_h=%lf"), layer_h);
+	sql.AppendFormat(_T(", layer_hp=%lf"), layer_hp);
+	sql.AppendFormat(_T(", layer_cave_zone=%d"), layer_cave_zone);
+	sql.AppendFormat(_T(", comment='%s'"), comment);
+	sql.AppendFormat(_T(";"));
+	return sql;
+}
+
+CString AdjLayer::getSqlDelete() const
+{
+	CString sql;
+	sql.AppendFormat(_T("delete from cbm_adj_layer where"));
+	sql.AppendFormat(_T("  id=%d"), id);
+	sql.AppendFormat(_T(";"));
+	return sql;
+}
+
+int AdjLayer::getId() const
+{
+	return id;
+}
+
+void AdjLayer::setId(const int& value)
+{
+	this->id = value;
+}
+
+WorkSurfPtr AdjLayer::getWorkSurf() const
+{
+	return work_surf;
+}
+
+void AdjLayer::setWorkSurf(const WorkSurfPtr& value)
+{
+	this->work_surf = value;
+}
+
+CoalPtr AdjLayer::getCoal() const
+{
+	return coal;
+}
+
+void AdjLayer::setCoal(const CoalPtr& value)
+{
+	this->coal = value;
+}
+
+int AdjLayer::getLayerNum() const
+{
+	return layer_num;
+}
+
+void AdjLayer::setLayerNum(const int& value)
+{
+	this->layer_num = value;
+}
+
+double AdjLayer::getLayerH() const
+{
+	return layer_h;
+}
+
+void AdjLayer::setLayerH(const double& value)
+{
+	this->layer_h = value;
+}
+
+double AdjLayer::getLayerHp() const
+{
+	return layer_hp;
+}
+
+void AdjLayer::setLayerHp(const double& value)
+{
+	this->layer_hp = value;
+}
+
+int AdjLayer::getLayerCaveZone() const
+{
+	return layer_cave_zone;
+}
+
+void AdjLayer::setLayerCaveZone(const int& value)
+{
+	this->layer_cave_zone = value;
+}
+
+CString AdjLayer::getComment() const
+{
+	return comment;
+}
+
+void AdjLayer::setComment(const CString& value)
+{
+	this->comment = value;
+}
+
 CString Coal::GetTableName()
 {
 	return _T("cbm_coal");
@@ -13,7 +223,17 @@ CoalPtr Coal::findOne(int id)
 {
 	CString options;
 	options.Format(_T("where id=%d"), id);
-	CoalList objList = Dao()->select<Coal>(_T("cbm_coal"), _T("*"), options);
+	return findOne(options);
+}
+
+CoalList Coal::findMany()
+{
+	return findMany(_T(""));
+}
+
+CoalPtr Coal::findOne(const CString& options)
+{
+	CoalList objList = findMany(options);
 	CoalPtr obj;
 	if(objList != 0 && objList->size() > 0) {
 		obj = objList->at(0);
@@ -21,27 +241,27 @@ CoalPtr Coal::findOne(int id)
 	return obj;
 }
 
-CoalList Coal::findAll()
+CoalList Coal::findMany(const CString& options)
 {
-	return Dao()->select<Coal>(_T("cbm_coal"), _T("*"), _T("order by Coal_id desc"));
+	return dao()->select<Coal>(_T("cbm_coal"), _T("*"), options+_T(" order by id"));
 }
 
 int Coal::insert()
 {
 	if(mine == 0) return 0;
-	this->id = Dao()->insert(*this);
+	this->id = dao()->insert(*this);
 	return this->id;
 }
 
 bool Coal::update()
 {
 	if(mine == 0) return false;
-	return Dao()->update(*this);
+	return dao()->update(*this);
 }
 
 bool Coal::remove()
 {
-	return Dao()->remove(*this);
+	return dao()->remove(*this);
 }
 
 Coal::Coal()
@@ -885,7 +1105,17 @@ DrillingRadiusPtr DrillingRadius::findOne(int id)
 {
 	CString options;
 	options.Format(_T("where id=%d"), id);
-	DrillingRadiusList objList = Dao()->select<DrillingRadius>(_T("cbm_drilling_radius"), _T("*"), options);
+	return findOne(options);
+}
+
+DrillingRadiusList DrillingRadius::findMany()
+{
+	return findMany(_T(""));
+}
+
+DrillingRadiusPtr DrillingRadius::findOne(const CString& options)
+{
+	DrillingRadiusList objList = findMany(options);
 	DrillingRadiusPtr obj;
 	if(objList != 0 && objList->size() > 0) {
 		obj = objList->at(0);
@@ -893,27 +1123,27 @@ DrillingRadiusPtr DrillingRadius::findOne(int id)
 	return obj;
 }
 
-DrillingRadiusList DrillingRadius::findAll()
+DrillingRadiusList DrillingRadius::findMany(const CString& options)
 {
-	return Dao()->select<DrillingRadius>(_T("cbm_drilling_radius"), _T("*"), _T("order by DrillingRadius_id desc"));
+	return dao()->select<DrillingRadius>(_T("cbm_drilling_radius"), _T("*"), options+_T(" order by id"));
 }
 
 int DrillingRadius::insert()
 {
 	if(coal == 0) return 0;
-	this->id = Dao()->insert(*this);
+	this->id = dao()->insert(*this);
 	return this->id;
 }
 
 bool DrillingRadius::update()
 {
 	if(coal == 0) return false;
-	return Dao()->update(*this);
+	return dao()->update(*this);
 }
 
 bool DrillingRadius::remove()
 {
-	return Dao()->remove(*this);
+	return dao()->remove(*this);
 }
 
 DrillingRadius::DrillingRadius()
@@ -1157,7 +1387,17 @@ DrillingSurfPtr DrillingSurf::findOne(int id)
 {
 	CString options;
 	options.Format(_T("where id=%d"), id);
-	DrillingSurfList objList = Dao()->select<DrillingSurf>(_T("cbm_drilling_surf"), _T("*"), options);
+	return findOne(options);
+}
+
+DrillingSurfList DrillingSurf::findMany()
+{
+	return findMany(_T(""));
+}
+
+DrillingSurfPtr DrillingSurf::findOne(const CString& options)
+{
+	DrillingSurfList objList = findMany(options);
 	DrillingSurfPtr obj;
 	if(objList != 0 && objList->size() > 0) {
 		obj = objList->at(0);
@@ -1165,16 +1405,16 @@ DrillingSurfPtr DrillingSurf::findOne(int id)
 	return obj;
 }
 
-DrillingSurfList DrillingSurf::findAll()
+DrillingSurfList DrillingSurf::findMany(const CString& options)
 {
-	return Dao()->select<DrillingSurf>(_T("cbm_drilling_surf"), _T("*"), _T("order by DrillingSurf_id desc"));
+	return dao()->select<DrillingSurf>(_T("cbm_drilling_surf"), _T("*"), options+_T(" order by id"));
 }
 
 int DrillingSurf::insert()
 {
 	if(coal == 0) return 0;
 	if(tunnel == 0) return 0;
-	this->id = Dao()->insert(*this);
+	this->id = dao()->insert(*this);
 	return this->id;
 }
 
@@ -1182,12 +1422,12 @@ bool DrillingSurf::update()
 {
 	if(coal == 0) return false;
 	if(tunnel == 0) return false;
-	return Dao()->update(*this);
+	return dao()->update(*this);
 }
 
 bool DrillingSurf::remove()
 {
-	return Dao()->remove(*this);
+	return dao()->remove(*this);
 }
 
 DrillingSurf::DrillingSurf()
@@ -1342,7 +1582,17 @@ EvalUnitPtr EvalUnit::findOne(int id)
 {
 	CString options;
 	options.Format(_T("where id=%d"), id);
-	EvalUnitList objList = Dao()->select<EvalUnit>(_T("cbm_eval_unit"), _T("*"), options);
+	return findOne(options);
+}
+
+EvalUnitList EvalUnit::findMany()
+{
+	return findMany(_T(""));
+}
+
+EvalUnitPtr EvalUnit::findOne(const CString& options)
+{
+	EvalUnitList objList = findMany(options);
 	EvalUnitPtr obj;
 	if(objList != 0 && objList->size() > 0) {
 		obj = objList->at(0);
@@ -1350,27 +1600,27 @@ EvalUnitPtr EvalUnit::findOne(int id)
 	return obj;
 }
 
-EvalUnitList EvalUnit::findAll()
+EvalUnitList EvalUnit::findMany(const CString& options)
 {
-	return Dao()->select<EvalUnit>(_T("cbm_eval_unit"), _T("*"), _T("order by EvalUnit_id desc"));
+	return dao()->select<EvalUnit>(_T("cbm_eval_unit"), _T("*"), options+_T(" order by id"));
 }
 
 int EvalUnit::insert()
 {
 	if(work_surf == 0) return 0;
-	this->id = Dao()->insert(*this);
+	this->id = dao()->insert(*this);
 	return this->id;
 }
 
 bool EvalUnit::update()
 {
 	if(work_surf == 0) return false;
-	return Dao()->update(*this);
+	return dao()->update(*this);
 }
 
 bool EvalUnit::remove()
 {
-	return Dao()->remove(*this);
+	return dao()->remove(*this);
 }
 
 EvalUnit::EvalUnit()
@@ -1494,7 +1744,17 @@ HelpPtr Help::findOne(int id)
 {
 	CString options;
 	options.Format(_T("where id=%d"), id);
-	HelpList objList = Dao()->select<Help>(_T("cbm_help"), _T("*"), options);
+	return findOne(options);
+}
+
+HelpList Help::findMany()
+{
+	return findMany(_T(""));
+}
+
+HelpPtr Help::findOne(const CString& options)
+{
+	HelpList objList = findMany(options);
 	HelpPtr obj;
 	if(objList != 0 && objList->size() > 0) {
 		obj = objList->at(0);
@@ -1502,25 +1762,25 @@ HelpPtr Help::findOne(int id)
 	return obj;
 }
 
-HelpList Help::findAll()
+HelpList Help::findMany(const CString& options)
 {
-	return Dao()->select<Help>(_T("cbm_help"), _T("*"), _T("order by Help_id desc"));
+	return dao()->select<Help>(_T("cbm_help"), _T("*"), options+_T(" order by id"));
 }
 
 int Help::insert()
 {
-	this->id = Dao()->insert(*this);
+	this->id = dao()->insert(*this);
 	return this->id;
 }
 
 bool Help::update()
 {
-	return Dao()->update(*this);
+	return dao()->update(*this);
 }
 
 bool Help::remove()
 {
-	return Dao()->remove(*this);
+	return dao()->remove(*this);
 }
 
 Help::Help()
@@ -1643,7 +1903,17 @@ HighDrillingPorePtr HighDrillingPore::findOne(int id)
 {
 	CString options;
 	options.Format(_T("where id=%d"), id);
-	HighDrillingPoreList objList = Dao()->select<HighDrillingPore>(_T("cbm_high_drilling_pore"), _T("*"), options);
+	return findOne(options);
+}
+
+HighDrillingPoreList HighDrillingPore::findMany()
+{
+	return findMany(_T(""));
+}
+
+HighDrillingPorePtr HighDrillingPore::findOne(const CString& options)
+{
+	HighDrillingPoreList objList = findMany(options);
 	HighDrillingPorePtr obj;
 	if(objList != 0 && objList->size() > 0) {
 		obj = objList->at(0);
@@ -1651,27 +1921,27 @@ HighDrillingPorePtr HighDrillingPore::findOne(int id)
 	return obj;
 }
 
-HighDrillingPoreList HighDrillingPore::findAll()
+HighDrillingPoreList HighDrillingPore::findMany(const CString& options)
 {
-	return Dao()->select<HighDrillingPore>(_T("cbm_high_drilling_pore"), _T("*"), _T("order by HighDrillingPore_id desc"));
+	return dao()->select<HighDrillingPore>(_T("cbm_high_drilling_pore"), _T("*"), options+_T(" order by id"));
 }
 
 int HighDrillingPore::insert()
 {
 	if(work_surf == 0) return 0;
-	this->id = Dao()->insert(*this);
+	this->id = dao()->insert(*this);
 	return this->id;
 }
 
 bool HighDrillingPore::update()
 {
 	if(work_surf == 0) return false;
-	return Dao()->update(*this);
+	return dao()->update(*this);
 }
 
 bool HighDrillingPore::remove()
 {
-	return Dao()->remove(*this);
+	return dao()->remove(*this);
 }
 
 HighDrillingPore::HighDrillingPore()
@@ -1945,7 +2215,17 @@ HighDrillingTunnelPtr HighDrillingTunnel::findOne(int id)
 {
 	CString options;
 	options.Format(_T("where id=%d"), id);
-	HighDrillingTunnelList objList = Dao()->select<HighDrillingTunnel>(_T("cbm_high_drilling_tunnel"), _T("*"), options);
+	return findOne(options);
+}
+
+HighDrillingTunnelList HighDrillingTunnel::findMany()
+{
+	return findMany(_T(""));
+}
+
+HighDrillingTunnelPtr HighDrillingTunnel::findOne(const CString& options)
+{
+	HighDrillingTunnelList objList = findMany(options);
 	HighDrillingTunnelPtr obj;
 	if(objList != 0 && objList->size() > 0) {
 		obj = objList->at(0);
@@ -1953,27 +2233,27 @@ HighDrillingTunnelPtr HighDrillingTunnel::findOne(int id)
 	return obj;
 }
 
-HighDrillingTunnelList HighDrillingTunnel::findAll()
+HighDrillingTunnelList HighDrillingTunnel::findMany(const CString& options)
 {
-	return Dao()->select<HighDrillingTunnel>(_T("cbm_high_drilling_tunnel"), _T("*"), _T("order by HighDrillingTunnel_id desc"));
+	return dao()->select<HighDrillingTunnel>(_T("cbm_high_drilling_tunnel"), _T("*"), options+_T(" order by id"));
 }
 
 int HighDrillingTunnel::insert()
 {
 	if(work_surf == 0) return 0;
-	this->id = Dao()->insert(*this);
+	this->id = dao()->insert(*this);
 	return this->id;
 }
 
 bool HighDrillingTunnel::update()
 {
 	if(work_surf == 0) return false;
-	return Dao()->update(*this);
+	return dao()->update(*this);
 }
 
 bool HighDrillingTunnel::remove()
 {
-	return Dao()->remove(*this);
+	return dao()->remove(*this);
 }
 
 HighDrillingTunnel::HighDrillingTunnel()
@@ -2127,7 +2407,17 @@ HydrGeoPtr HydrGeo::findOne(int id)
 {
 	CString options;
 	options.Format(_T("where id=%d"), id);
-	HydrGeoList objList = Dao()->select<HydrGeo>(_T("cbm_hydr_geo"), _T("*"), options);
+	return findOne(options);
+}
+
+HydrGeoList HydrGeo::findMany()
+{
+	return findMany(_T(""));
+}
+
+HydrGeoPtr HydrGeo::findOne(const CString& options)
+{
+	HydrGeoList objList = findMany(options);
 	HydrGeoPtr obj;
 	if(objList != 0 && objList->size() > 0) {
 		obj = objList->at(0);
@@ -2135,25 +2425,25 @@ HydrGeoPtr HydrGeo::findOne(int id)
 	return obj;
 }
 
-HydrGeoList HydrGeo::findAll()
+HydrGeoList HydrGeo::findMany(const CString& options)
 {
-	return Dao()->select<HydrGeo>(_T("cbm_hydr_geo"), _T("*"), _T("order by HydrGeo_id desc"));
+	return dao()->select<HydrGeo>(_T("cbm_hydr_geo"), _T("*"), options+_T(" order by id"));
 }
 
 int HydrGeo::insert()
 {
-	this->id = Dao()->insert(*this);
+	this->id = dao()->insert(*this);
 	return this->id;
 }
 
 bool HydrGeo::update()
 {
-	return Dao()->update(*this);
+	return dao()->update(*this);
 }
 
 bool HydrGeo::remove()
 {
-	return Dao()->remove(*this);
+	return dao()->remove(*this);
 }
 
 HydrGeo::HydrGeo()
@@ -2351,7 +2641,17 @@ KeyLayerPtr KeyLayer::findOne(int id)
 {
 	CString options;
 	options.Format(_T("where id=%d"), id);
-	KeyLayerList objList = Dao()->select<KeyLayer>(_T("cbm_key_layer"), _T("*"), options);
+	return findOne(options);
+}
+
+KeyLayerList KeyLayer::findMany()
+{
+	return findMany(_T(""));
+}
+
+KeyLayerPtr KeyLayer::findOne(const CString& options)
+{
+	KeyLayerList objList = findMany(options);
 	KeyLayerPtr obj;
 	if(objList != 0 && objList->size() > 0) {
 		obj = objList->at(0);
@@ -2359,27 +2659,27 @@ KeyLayerPtr KeyLayer::findOne(int id)
 	return obj;
 }
 
-KeyLayerList KeyLayer::findAll()
+KeyLayerList KeyLayer::findMany(const CString& options)
 {
-	return Dao()->select<KeyLayer>(_T("cbm_key_layer"), _T("*"), _T("order by KeyLayer_id desc"));
+	return dao()->select<KeyLayer>(_T("cbm_key_layer"), _T("*"), options+_T(" order by id"));
 }
 
 int KeyLayer::insert()
 {
 	if(high_drilling_pore == 0) return 0;
-	this->id = Dao()->insert(*this);
+	this->id = dao()->insert(*this);
 	return this->id;
 }
 
 bool KeyLayer::update()
 {
 	if(high_drilling_pore == 0) return false;
-	return Dao()->update(*this);
+	return dao()->update(*this);
 }
 
 bool KeyLayer::remove()
 {
-	return Dao()->remove(*this);
+	return dao()->remove(*this);
 }
 
 KeyLayer::KeyLayer()
@@ -2548,7 +2848,17 @@ MinePtr Mine::findOne(int id)
 {
 	CString options;
 	options.Format(_T("where id=%d"), id);
-	MineList objList = Dao()->select<Mine>(_T("cbm_mine"), _T("*"), options);
+	return findOne(options);
+}
+
+MineList Mine::findMany()
+{
+	return findMany(_T(""));
+}
+
+MinePtr Mine::findOne(const CString& options)
+{
+	MineList objList = findMany(options);
 	MinePtr obj;
 	if(objList != 0 && objList->size() > 0) {
 		obj = objList->at(0);
@@ -2556,27 +2866,27 @@ MinePtr Mine::findOne(int id)
 	return obj;
 }
 
-MineList Mine::findAll()
+MineList Mine::findMany(const CString& options)
 {
-	return Dao()->select<Mine>(_T("cbm_mine"), _T("*"), _T("order by Mine_id desc"));
+	return dao()->select<Mine>(_T("cbm_mine"), _T("*"), options+_T(" order by id"));
 }
 
 int Mine::insert()
 {
 	if(mine_region == 0) return 0;
-	this->id = Dao()->insert(*this);
+	this->id = dao()->insert(*this);
 	return this->id;
 }
 
 bool Mine::update()
 {
 	if(mine_region == 0) return false;
-	return Dao()->update(*this);
+	return dao()->update(*this);
 }
 
 bool Mine::remove()
 {
-	return Dao()->remove(*this);
+	return dao()->remove(*this);
 }
 
 Mine::Mine()
@@ -2585,8 +2895,9 @@ Mine::Mine()
 	username = _T("NULL");
 	password = _T("NULL");
 	mine_name = _T("NULL");
-	mine_address = _T("NULL");
-	coal_capacity = 0.0;
+	province = _T("NULL");
+	city = _T("NULL");
+	capacity = 0.0;
 	topo_geo = 0;
 	hydr_geo = 0;
 	ground_condition = 0;
@@ -2612,8 +2923,9 @@ Mine::Mine(int id)
 	username = _T("NULL");
 	password = _T("NULL");
 	mine_name = _T("NULL");
-	mine_address = _T("NULL");
-	coal_capacity = 0.0;
+	province = _T("NULL");
+	city = _T("NULL");
+	capacity = 0.0;
 	topo_geo = 0;
 	hydr_geo = 0;
 	ground_condition = 0;
@@ -2643,8 +2955,9 @@ Mine::Mine(soci::row &rs)
 	username = EncodeHelper::ANSIToUnicode(rs.get<std::string>("username", "")).c_str();
 	password = EncodeHelper::ANSIToUnicode(rs.get<std::string>("password", "")).c_str();
 	mine_name = EncodeHelper::ANSIToUnicode(rs.get<std::string>("mine_name", "")).c_str();
-	mine_address = EncodeHelper::ANSIToUnicode(rs.get<std::string>("mine_address", "")).c_str();
-	coal_capacity = rs.get<double>("coal_capacity", (double)0);
+	province = EncodeHelper::ANSIToUnicode(rs.get<std::string>("province", "")).c_str();
+	city = EncodeHelper::ANSIToUnicode(rs.get<std::string>("city", "")).c_str();
+	capacity = rs.get<double>("capacity", (double)0);
 	topo_geo = rs.get<int>("topo_geo", (int)0);
 	hydr_geo = rs.get<int>("hydr_geo", (int)0);
 	ground_condition = rs.get<int>("ground_condition", (int)0);
@@ -2673,8 +2986,9 @@ CString Mine::getSqlInsert() const
 	sql.AppendFormat(_T(", '%s'"), username);
 	sql.AppendFormat(_T(", '%s'"), password);
 	sql.AppendFormat(_T(", '%s'"), mine_name);
-	sql.AppendFormat(_T(", '%s'"), mine_address);
-	sql.AppendFormat(_T(", %lf"), coal_capacity);
+	sql.AppendFormat(_T(", '%s'"), province);
+	sql.AppendFormat(_T(", '%s'"), city);
+	sql.AppendFormat(_T(", %lf"), capacity);
 	sql.AppendFormat(_T(", %d"), topo_geo);
 	sql.AppendFormat(_T(", %d"), hydr_geo);
 	sql.AppendFormat(_T(", %d"), ground_condition);
@@ -2704,8 +3018,9 @@ CString Mine::getSqlUpdate() const
 	sql.AppendFormat(_T(", username='%s'"), username);
 	sql.AppendFormat(_T(", password='%s'"), password);
 	sql.AppendFormat(_T(", mine_name='%s'"), mine_name);
-	sql.AppendFormat(_T(", mine_address='%s'"), mine_address);
-	sql.AppendFormat(_T(", coal_capacity=%lf"), coal_capacity);
+	sql.AppendFormat(_T(", province='%s'"), province);
+	sql.AppendFormat(_T(", city='%s'"), city);
+	sql.AppendFormat(_T(", capacity=%lf"), capacity);
 	sql.AppendFormat(_T(", topo_geo=%d"), topo_geo);
 	sql.AppendFormat(_T(", hydr_geo=%d"), hydr_geo);
 	sql.AppendFormat(_T(", ground_condition=%d"), ground_condition);
@@ -2786,24 +3101,34 @@ void Mine::setMineName(const CString& value)
 	this->mine_name = value;
 }
 
-CString Mine::getMineAddress() const
+CString Mine::getProvince() const
 {
-	return mine_address;
+	return province;
 }
 
-void Mine::setMineAddress(const CString& value)
+void Mine::setProvince(const CString& value)
 {
-	this->mine_address = value;
+	this->province = value;
 }
 
-double Mine::getCoalCapacity() const
+CString Mine::getCity() const
 {
-	return coal_capacity;
+	return city;
 }
 
-void Mine::setCoalCapacity(const double& value)
+void Mine::setCity(const CString& value)
 {
-	this->coal_capacity = value;
+	this->city = value;
+}
+
+double Mine::getCapacity() const
+{
+	return capacity;
+}
+
+void Mine::setCapacity(const double& value)
+{
+	this->capacity = value;
 }
 
 int Mine::getTopoGeo() const
@@ -2985,7 +3310,17 @@ MineBasePtr MineBase::findOne(int id)
 {
 	CString options;
 	options.Format(_T("where id=%d"), id);
-	MineBaseList objList = Dao()->select<MineBase>(_T("cbm_mine_base"), _T("*"), options);
+	return findOne(options);
+}
+
+MineBaseList MineBase::findMany()
+{
+	return findMany(_T(""));
+}
+
+MineBasePtr MineBase::findOne(const CString& options)
+{
+	MineBaseList objList = findMany(options);
 	MineBasePtr obj;
 	if(objList != 0 && objList->size() > 0) {
 		obj = objList->at(0);
@@ -2993,25 +3328,25 @@ MineBasePtr MineBase::findOne(int id)
 	return obj;
 }
 
-MineBaseList MineBase::findAll()
+MineBaseList MineBase::findMany(const CString& options)
 {
-	return Dao()->select<MineBase>(_T("cbm_mine_base"), _T("*"), _T("order by MineBase_id desc"));
+	return dao()->select<MineBase>(_T("cbm_mine_base"), _T("*"), options+_T(" order by id"));
 }
 
 int MineBase::insert()
 {
-	this->id = Dao()->insert(*this);
+	this->id = dao()->insert(*this);
 	return this->id;
 }
 
 bool MineBase::update()
 {
-	return Dao()->update(*this);
+	return dao()->update(*this);
 }
 
 bool MineBase::remove()
 {
-	return Dao()->remove(*this);
+	return dao()->remove(*this);
 }
 
 MineBase::MineBase()
@@ -3104,7 +3439,17 @@ MineRegionPtr MineRegion::findOne(int id)
 {
 	CString options;
 	options.Format(_T("where id=%d"), id);
-	MineRegionList objList = Dao()->select<MineRegion>(_T("cbm_mine_region"), _T("*"), options);
+	return findOne(options);
+}
+
+MineRegionList MineRegion::findMany()
+{
+	return findMany(_T(""));
+}
+
+MineRegionPtr MineRegion::findOne(const CString& options)
+{
+	MineRegionList objList = findMany(options);
 	MineRegionPtr obj;
 	if(objList != 0 && objList->size() > 0) {
 		obj = objList->at(0);
@@ -3112,27 +3457,27 @@ MineRegionPtr MineRegion::findOne(int id)
 	return obj;
 }
 
-MineRegionList MineRegion::findAll()
+MineRegionList MineRegion::findMany(const CString& options)
 {
-	return Dao()->select<MineRegion>(_T("cbm_mine_region"), _T("*"), _T("order by MineRegion_id desc"));
+	return dao()->select<MineRegion>(_T("cbm_mine_region"), _T("*"), options+_T(" order by id"));
 }
 
 int MineRegion::insert()
 {
 	if(mine_base == 0) return 0;
-	this->id = Dao()->insert(*this);
+	this->id = dao()->insert(*this);
 	return this->id;
 }
 
 bool MineRegion::update()
 {
 	if(mine_base == 0) return false;
-	return Dao()->update(*this);
+	return dao()->update(*this);
 }
 
 bool MineRegion::remove()
 {
-	return Dao()->remove(*this);
+	return dao()->remove(*this);
 }
 
 MineRegion::MineRegion()
@@ -3241,7 +3586,17 @@ MiningAreaPtr MiningArea::findOne(int id)
 {
 	CString options;
 	options.Format(_T("where id=%d"), id);
-	MiningAreaList objList = Dao()->select<MiningArea>(_T("cbm_mining_area"), _T("*"), options);
+	return findOne(options);
+}
+
+MiningAreaList MiningArea::findMany()
+{
+	return findMany(_T(""));
+}
+
+MiningAreaPtr MiningArea::findOne(const CString& options)
+{
+	MiningAreaList objList = findMany(options);
 	MiningAreaPtr obj;
 	if(objList != 0 && objList->size() > 0) {
 		obj = objList->at(0);
@@ -3249,27 +3604,27 @@ MiningAreaPtr MiningArea::findOne(int id)
 	return obj;
 }
 
-MiningAreaList MiningArea::findAll()
+MiningAreaList MiningArea::findMany(const CString& options)
 {
-	return Dao()->select<MiningArea>(_T("cbm_mining_area"), _T("*"), _T("order by MiningArea_id desc"));
+	return dao()->select<MiningArea>(_T("cbm_mining_area"), _T("*"), options+_T(" order by id"));
 }
 
 int MiningArea::insert()
 {
 	if(coal == 0) return 0;
-	this->id = Dao()->insert(*this);
+	this->id = dao()->insert(*this);
 	return this->id;
 }
 
 bool MiningArea::update()
 {
 	if(coal == 0) return false;
-	return Dao()->update(*this);
+	return dao()->update(*this);
 }
 
 bool MiningArea::remove()
 {
-	return Dao()->remove(*this);
+	return dao()->remove(*this);
 }
 
 MiningArea::MiningArea()
@@ -3423,7 +3778,17 @@ PoreFlowPtr PoreFlow::findOne(int id)
 {
 	CString options;
 	options.Format(_T("where id=%d"), id);
-	PoreFlowList objList = Dao()->select<PoreFlow>(_T("cbm_pore_flow"), _T("*"), options);
+	return findOne(options);
+}
+
+PoreFlowList PoreFlow::findMany()
+{
+	return findMany(_T(""));
+}
+
+PoreFlowPtr PoreFlow::findOne(const CString& options)
+{
+	PoreFlowList objList = findMany(options);
 	PoreFlowPtr obj;
 	if(objList != 0 && objList->size() > 0) {
 		obj = objList->at(0);
@@ -3431,25 +3796,25 @@ PoreFlowPtr PoreFlow::findOne(int id)
 	return obj;
 }
 
-PoreFlowList PoreFlow::findAll()
+PoreFlowList PoreFlow::findMany(const CString& options)
 {
-	return Dao()->select<PoreFlow>(_T("cbm_pore_flow"), _T("*"), _T("order by PoreFlow_id desc"));
+	return dao()->select<PoreFlow>(_T("cbm_pore_flow"), _T("*"), options+_T(" order by id"));
 }
 
 int PoreFlow::insert()
 {
-	this->id = Dao()->insert(*this);
+	this->id = dao()->insert(*this);
 	return this->id;
 }
 
 bool PoreFlow::update()
 {
-	return Dao()->update(*this);
+	return dao()->update(*this);
 }
 
 bool PoreFlow::remove()
 {
-	return Dao()->remove(*this);
+	return dao()->remove(*this);
 }
 
 PoreFlow::PoreFlow()
@@ -3752,7 +4117,17 @@ PoreSizePtr PoreSize::findOne(int id)
 {
 	CString options;
 	options.Format(_T("where id=%d"), id);
-	PoreSizeList objList = Dao()->select<PoreSize>(_T("cbm_pore_size"), _T("*"), options);
+	return findOne(options);
+}
+
+PoreSizeList PoreSize::findMany()
+{
+	return findMany(_T(""));
+}
+
+PoreSizePtr PoreSize::findOne(const CString& options)
+{
+	PoreSizeList objList = findMany(options);
 	PoreSizePtr obj;
 	if(objList != 0 && objList->size() > 0) {
 		obj = objList->at(0);
@@ -3760,25 +4135,25 @@ PoreSizePtr PoreSize::findOne(int id)
 	return obj;
 }
 
-PoreSizeList PoreSize::findAll()
+PoreSizeList PoreSize::findMany(const CString& options)
 {
-	return Dao()->select<PoreSize>(_T("cbm_pore_size"), _T("*"), _T("order by PoreSize_id desc"));
+	return dao()->select<PoreSize>(_T("cbm_pore_size"), _T("*"), options+_T(" order by id"));
 }
 
 int PoreSize::insert()
 {
-	this->id = Dao()->insert(*this);
+	this->id = dao()->insert(*this);
 	return this->id;
 }
 
 bool PoreSize::update()
 {
-	return Dao()->update(*this);
+	return dao()->update(*this);
 }
 
 bool PoreSize::remove()
 {
-	return Dao()->remove(*this);
+	return dao()->remove(*this);
 }
 
 PoreSize::PoreSize()
@@ -3931,7 +4306,17 @@ ReadyTunnelPtr ReadyTunnel::findOne(int id)
 {
 	CString options;
 	options.Format(_T("where id=%d"), id);
-	ReadyTunnelList objList = Dao()->select<ReadyTunnel>(_T("cbm_ready_tunnel"), _T("*"), options);
+	return findOne(options);
+}
+
+ReadyTunnelList ReadyTunnel::findMany()
+{
+	return findMany(_T(""));
+}
+
+ReadyTunnelPtr ReadyTunnel::findOne(const CString& options)
+{
+	ReadyTunnelList objList = findMany(options);
 	ReadyTunnelPtr obj;
 	if(objList != 0 && objList->size() > 0) {
 		obj = objList->at(0);
@@ -3939,16 +4324,16 @@ ReadyTunnelPtr ReadyTunnel::findOne(int id)
 	return obj;
 }
 
-ReadyTunnelList ReadyTunnel::findAll()
+ReadyTunnelList ReadyTunnel::findMany(const CString& options)
 {
-	return Dao()->select<ReadyTunnel>(_T("cbm_ready_tunnel"), _T("*"), _T("order by ReadyTunnel_id desc"));
+	return dao()->select<ReadyTunnel>(_T("cbm_ready_tunnel"), _T("*"), options+_T(" order by id"));
 }
 
 int ReadyTunnel::insert()
 {
 	if(mining_area == 0) return 0;
 	if(tunnel == 0) return 0;
-	this->id = Dao()->insert(*this);
+	this->id = dao()->insert(*this);
 	return this->id;
 }
 
@@ -3956,12 +4341,12 @@ bool ReadyTunnel::update()
 {
 	if(mining_area == 0) return false;
 	if(tunnel == 0) return false;
-	return Dao()->update(*this);
+	return dao()->update(*this);
 }
 
 bool ReadyTunnel::remove()
 {
-	return Dao()->remove(*this);
+	return dao()->remove(*this);
 }
 
 ReadyTunnel::ReadyTunnel()
@@ -4071,7 +4456,17 @@ ResAbundancePtr ResAbundance::findOne(int id)
 {
 	CString options;
 	options.Format(_T("where id=%d"), id);
-	ResAbundanceList objList = Dao()->select<ResAbundance>(_T("cbm_res_abundance"), _T("*"), options);
+	return findOne(options);
+}
+
+ResAbundanceList ResAbundance::findMany()
+{
+	return findMany(_T(""));
+}
+
+ResAbundancePtr ResAbundance::findOne(const CString& options)
+{
+	ResAbundanceList objList = findMany(options);
 	ResAbundancePtr obj;
 	if(objList != 0 && objList->size() > 0) {
 		obj = objList->at(0);
@@ -4079,25 +4474,25 @@ ResAbundancePtr ResAbundance::findOne(int id)
 	return obj;
 }
 
-ResAbundanceList ResAbundance::findAll()
+ResAbundanceList ResAbundance::findMany(const CString& options)
 {
-	return Dao()->select<ResAbundance>(_T("cbm_res_abundance"), _T("*"), _T("order by ResAbundance_id desc"));
+	return dao()->select<ResAbundance>(_T("cbm_res_abundance"), _T("*"), options+_T(" order by id"));
 }
 
 int ResAbundance::insert()
 {
-	this->id = Dao()->insert(*this);
+	this->id = dao()->insert(*this);
 	return this->id;
 }
 
 bool ResAbundance::update()
 {
-	return Dao()->update(*this);
+	return dao()->update(*this);
 }
 
 bool ResAbundance::remove()
 {
-	return Dao()->remove(*this);
+	return dao()->remove(*this);
 }
 
 ResAbundance::ResAbundance()
@@ -4205,7 +4600,17 @@ TechModePtr TechMode::findOne(int id)
 {
 	CString options;
 	options.Format(_T("where id=%d"), id);
-	TechModeList objList = Dao()->select<TechMode>(_T("cbm_tech_mode"), _T("*"), options);
+	return findOne(options);
+}
+
+TechModeList TechMode::findMany()
+{
+	return findMany(_T(""));
+}
+
+TechModePtr TechMode::findOne(const CString& options)
+{
+	TechModeList objList = findMany(options);
 	TechModePtr obj;
 	if(objList != 0 && objList->size() > 0) {
 		obj = objList->at(0);
@@ -4213,27 +4618,27 @@ TechModePtr TechMode::findOne(int id)
 	return obj;
 }
 
-TechModeList TechMode::findAll()
+TechModeList TechMode::findMany(const CString& options)
 {
-	return Dao()->select<TechMode>(_T("cbm_tech_mode"), _T("*"), _T("order by TechMode_id desc"));
+	return dao()->select<TechMode>(_T("cbm_tech_mode"), _T("*"), options+_T(" order by id"));
 }
 
 int TechMode::insert()
 {
 	if(mine_region == 0) return 0;
-	this->id = Dao()->insert(*this);
+	this->id = dao()->insert(*this);
 	return this->id;
 }
 
 bool TechMode::update()
 {
 	if(mine_region == 0) return false;
-	return Dao()->update(*this);
+	return dao()->update(*this);
 }
 
 bool TechMode::remove()
 {
-	return Dao()->remove(*this);
+	return dao()->remove(*this);
 }
 
 TechMode::TechMode()
@@ -4357,7 +4762,17 @@ TechnologyPtr Technology::findOne(int id)
 {
 	CString options;
 	options.Format(_T("where id=%d"), id);
-	TechnologyList objList = Dao()->select<Technology>(_T("cbm_technology"), _T("*"), options);
+	return findOne(options);
+}
+
+TechnologyList Technology::findMany()
+{
+	return findMany(_T(""));
+}
+
+TechnologyPtr Technology::findOne(const CString& options)
+{
+	TechnologyList objList = findMany(options);
 	TechnologyPtr obj;
 	if(objList != 0 && objList->size() > 0) {
 		obj = objList->at(0);
@@ -4365,27 +4780,27 @@ TechnologyPtr Technology::findOne(int id)
 	return obj;
 }
 
-TechnologyList Technology::findAll()
+TechnologyList Technology::findMany(const CString& options)
 {
-	return Dao()->select<Technology>(_T("cbm_technology"), _T("*"), _T("order by Technology_id desc"));
+	return dao()->select<Technology>(_T("cbm_technology"), _T("*"), options+_T(" order by id"));
 }
 
 int Technology::insert()
 {
 	if(mine_region == 0) return 0;
-	this->id = Dao()->insert(*this);
+	this->id = dao()->insert(*this);
 	return this->id;
 }
 
 bool Technology::update()
 {
 	if(mine_region == 0) return false;
-	return Dao()->update(*this);
+	return dao()->update(*this);
 }
 
 bool Technology::remove()
 {
-	return Dao()->remove(*this);
+	return dao()->remove(*this);
 }
 
 Technology::Technology()
@@ -4539,7 +4954,17 @@ TopoGeoPtr TopoGeo::findOne(int id)
 {
 	CString options;
 	options.Format(_T("where id=%d"), id);
-	TopoGeoList objList = Dao()->select<TopoGeo>(_T("cbm_topo_geo"), _T("*"), options);
+	return findOne(options);
+}
+
+TopoGeoList TopoGeo::findMany()
+{
+	return findMany(_T(""));
+}
+
+TopoGeoPtr TopoGeo::findOne(const CString& options)
+{
+	TopoGeoList objList = findMany(options);
 	TopoGeoPtr obj;
 	if(objList != 0 && objList->size() > 0) {
 		obj = objList->at(0);
@@ -4547,25 +4972,25 @@ TopoGeoPtr TopoGeo::findOne(int id)
 	return obj;
 }
 
-TopoGeoList TopoGeo::findAll()
+TopoGeoList TopoGeo::findMany(const CString& options)
 {
-	return Dao()->select<TopoGeo>(_T("cbm_topo_geo"), _T("*"), _T("order by TopoGeo_id desc"));
+	return dao()->select<TopoGeo>(_T("cbm_topo_geo"), _T("*"), options+_T(" order by id"));
 }
 
 int TopoGeo::insert()
 {
-	this->id = Dao()->insert(*this);
+	this->id = dao()->insert(*this);
 	return this->id;
 }
 
 bool TopoGeo::update()
 {
-	return Dao()->update(*this);
+	return dao()->update(*this);
 }
 
 bool TopoGeo::remove()
 {
-	return Dao()->remove(*this);
+	return dao()->remove(*this);
 }
 
 TopoGeo::TopoGeo()
@@ -4673,7 +5098,17 @@ TunnelPtr Tunnel::findOne(int id)
 {
 	CString options;
 	options.Format(_T("where id=%d"), id);
-	TunnelList objList = Dao()->select<Tunnel>(_T("cbm_tunnel"), _T("*"), options);
+	return findOne(options);
+}
+
+TunnelList Tunnel::findMany()
+{
+	return findMany(_T(""));
+}
+
+TunnelPtr Tunnel::findOne(const CString& options)
+{
+	TunnelList objList = findMany(options);
 	TunnelPtr obj;
 	if(objList != 0 && objList->size() > 0) {
 		obj = objList->at(0);
@@ -4681,25 +5116,25 @@ TunnelPtr Tunnel::findOne(int id)
 	return obj;
 }
 
-TunnelList Tunnel::findAll()
+TunnelList Tunnel::findMany(const CString& options)
 {
-	return Dao()->select<Tunnel>(_T("cbm_tunnel"), _T("*"), _T("order by Tunnel_id desc"));
+	return dao()->select<Tunnel>(_T("cbm_tunnel"), _T("*"), options+_T(" order by id"));
 }
 
 int Tunnel::insert()
 {
-	this->id = Dao()->insert(*this);
+	this->id = dao()->insert(*this);
 	return this->id;
 }
 
 bool Tunnel::update()
 {
-	return Dao()->update(*this);
+	return dao()->update(*this);
 }
 
 bool Tunnel::remove()
 {
-	return Dao()->remove(*this);
+	return dao()->remove(*this);
 }
 
 Tunnel::Tunnel()
@@ -4882,7 +5317,17 @@ WorkSurfPtr WorkSurf::findOne(int id)
 {
 	CString options;
 	options.Format(_T("where id=%d"), id);
-	WorkSurfList objList = Dao()->select<WorkSurf>(_T("cbm_work_surf"), _T("*"), options);
+	return findOne(options);
+}
+
+WorkSurfList WorkSurf::findMany()
+{
+	return findMany(_T(""));
+}
+
+WorkSurfPtr WorkSurf::findOne(const CString& options)
+{
+	WorkSurfList objList = findMany(options);
 	WorkSurfPtr obj;
 	if(objList != 0 && objList->size() > 0) {
 		obj = objList->at(0);
@@ -4890,16 +5335,16 @@ WorkSurfPtr WorkSurf::findOne(int id)
 	return obj;
 }
 
-WorkSurfList WorkSurf::findAll()
+WorkSurfList WorkSurf::findMany(const CString& options)
 {
-	return Dao()->select<WorkSurf>(_T("cbm_work_surf"), _T("*"), _T("order by WorkSurf_id desc"));
+	return dao()->select<WorkSurf>(_T("cbm_work_surf"), _T("*"), options+_T(" order by id"));
 }
 
 int WorkSurf::insert()
 {
 	if(tunnel == 0) return 0;
 	if(coal == 0) return 0;
-	this->id = Dao()->insert(*this);
+	this->id = dao()->insert(*this);
 	return this->id;
 }
 
@@ -4907,12 +5352,12 @@ bool WorkSurf::update()
 {
 	if(tunnel == 0) return false;
 	if(coal == 0) return false;
-	return Dao()->update(*this);
+	return dao()->update(*this);
 }
 
 bool WorkSurf::remove()
 {
-	return Dao()->remove(*this);
+	return dao()->remove(*this);
 }
 
 WorkSurf::WorkSurf()

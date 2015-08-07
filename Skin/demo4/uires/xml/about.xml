@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<SOUI width="150" height="164" translucent="0" alpha="255" resizable="0">
+<SOUI width="159" height="173" translucent="0" alpha="255" resizable="0">
   <root cache="1" skin="_skin.sys.wnd.bkgnd">
-    <combobox pos="7,137" width="118" height="24" ncSkin="_skin.sys.border" dropDown="1" curSel="0" name="ComboBox0" margin-x="1" margin-y="1">
+    <combobox pos="12,137" width="118" height="24" ncSkin="_skin.sys.border" dropDown="1" curSel="0" name="ComboBox0" margin-x="1" margin-y="1">
       <liststyle itemHeight="30" colorText="#000000" colorSelText="#FFFFFF" colorItemBkgnd="#FFFFFF" colorItemSelBkgnd="#000088"/>
       <items>
         <item text="测试1"/>
@@ -11,9 +11,9 @@
         <item text="测试5"/>
       </items>
     </combobox>
-    <check pos="7,89" width="130" height="33" ncSkin="_skin.sys.border" name="CheckBox1" margin-x="1" margin-y="1">又是一个多选</check>
-    <link pos="7,3" width="140" height="28" ncSkin="_skin.sys.border" href="http://www.baidu.com" class="cls_btn_weblink" name="Link2" margin-x="1" margin-y="1">百度首页超链接</link>
-    <check pos="5,60" width="78" height="20" ncSkin="_skin.sys.border" name="CheckBox3" margin-x="1" margin-y="1">多选按钮</check>
-    <radio pos="3,35" width="117" height="20" ncSkin="_skin.sys.border" name="RadioButton4" margin-x="1" margin-y="1">单选按钮</radio>
+    <check pos="12,89" width="130" height="33" ncSkin="_skin.sys.border" name="CheckBox1" margin-x="1" margin-y="1">又是一个多选</check>
+    <link pos="12,3" width="140" height="28" ncSkin="_skin.sys.border" href="http://www.baidu.com" class="cls_btn_weblink" name="Link2" margin-x="1" margin-y="1">百度首页超链接</link>
+    <check pos="10,60" width="78" height="20" ncSkin="_skin.sys.border" name="CheckBox3" margin-x="1" margin-y="1">多选按钮</check>
+    <radio pos="8,35" width="117" height="20" ncSkin="_skin.sys.border" name="RadioButton4" margin-x="1" margin-y="1">单选按钮</radio>
   </root>
 </SOUI>

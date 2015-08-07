@@ -67,6 +67,10 @@ protected:
 	void OnRestore();
 	void OnMinimize();
 
+	/** 键盘消息 */
+protected:
+	 void OnChar(UINT nChar, UINT nRepCnt, UINT nFlags);
+
 	/** 成员变量 */
 private:
 	//是否模态对话框(默认非模态FALSE)
@@ -95,6 +99,7 @@ private:
 		MSG_WM_MOUSEMOVE(OnMouseMove)
 		MSG_WM_INITDIALOG(OnInitDialog)
 		MSG_WM_SHOWWINDOW(OnShowWindow)
+		MSG_WM_CHAR(OnChar)
 		//MSG_WM_CREATE(OnCreate)
 		MSG_WM_CLOSE(OnClose)
 		MSG_WM_SIZE(OnSize)

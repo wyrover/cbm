@@ -9,6 +9,7 @@
 
 namespace cbm {
 
+class AdjLayer;
 class Coal;
 class DrillingRadius;
 class DrillingSurf;
@@ -32,6 +33,7 @@ class TopoGeo;
 class Tunnel;
 class WorkSurf;
 
+typedef boost::shared_ptr<AdjLayer> AdjLayerPtr;
 typedef boost::shared_ptr<Coal> CoalPtr;
 typedef boost::shared_ptr<DrillingRadius> DrillingRadiusPtr;
 typedef boost::shared_ptr<DrillingSurf> DrillingSurfPtr;
@@ -55,6 +57,7 @@ typedef boost::shared_ptr<TopoGeo> TopoGeoPtr;
 typedef boost::shared_ptr<Tunnel> TunnelPtr;
 typedef boost::shared_ptr<WorkSurf> WorkSurfPtr;
 
+typedef boost::shared_ptr< std::vector<AdjLayerPtr> > AdjLayerList;
 typedef boost::shared_ptr< std::vector<CoalPtr> > CoalList;
 typedef boost::shared_ptr< std::vector<DrillingRadiusPtr> > DrillingRadiusList;
 typedef boost::shared_ptr< std::vector<DrillingSurfPtr> > DrillingSurfList;
@@ -78,12 +81,62 @@ typedef boost::shared_ptr< std::vector<TopoGeoPtr> > TopoGeoList;
 typedef boost::shared_ptr< std::vector<TunnelPtr> > TunnelList;
 typedef boost::shared_ptr< std::vector<WorkSurfPtr> > WorkSurfList;
 
+class ARXDAO_DLLIMPEXP AdjLayer : public BaseDao
+{
+public:
+	static CString GetTableName();
+	static AdjLayerPtr findOne(int id);
+	static AdjLayerList findMany();
+	static AdjLayerPtr findOne(const CString& options);
+	static AdjLayerList findMany(const CString& options);
+	int insert();;
+	bool update();
+	bool remove();
+
+public:
+	AdjLayer();
+	AdjLayer(int id);
+	AdjLayer(soci::row& rs);
+	CString getSqlInsert() const;
+	CString getSqlUpdate() const;
+	CString getSqlDelete() const;
+	int getId() const;
+	void setId(const int& value);
+	WorkSurfPtr getWorkSurf() const;
+	void setWorkSurf(const WorkSurfPtr& value);
+	CoalPtr getCoal() const;
+	void setCoal(const CoalPtr& value);
+	int getLayerNum() const;
+	void setLayerNum(const int& value);
+	double getLayerH() const;
+	void setLayerH(const double& value);
+	double getLayerHp() const;
+	void setLayerHp(const double& value);
+	int getLayerCaveZone() const;
+	void setLayerCaveZone(const int& value);
+	CString getComment() const;
+	void setComment(const CString& value);
+
+private:
+	int id;
+	WorkSurfPtr work_surf;
+	CoalPtr coal;
+	int layer_num;
+	double layer_h;
+	double layer_hp;
+	int layer_cave_zone;
+	CString comment;
+
+}; // class AdjLayer
+
 class ARXDAO_DLLIMPEXP Coal : public BaseDao
 {
 public:
 	static CString GetTableName();
 	static CoalPtr findOne(int id);
-	static CoalList findAll();
+	static CoalList findMany();
+	static CoalPtr findOne(const CString& options);
+	static CoalList findMany(const CString& options);
 	int insert();;
 	bool update();
 	bool remove();
@@ -264,7 +317,9 @@ class ARXDAO_DLLIMPEXP DrillingRadius : public BaseDao
 public:
 	static CString GetTableName();
 	static DrillingRadiusPtr findOne(int id);
-	static DrillingRadiusList findAll();
+	static DrillingRadiusList findMany();
+	static DrillingRadiusPtr findOne(const CString& options);
+	static DrillingRadiusList findMany(const CString& options);
 	int insert();;
 	bool update();
 	bool remove();
@@ -325,7 +380,9 @@ class ARXDAO_DLLIMPEXP DrillingSurf : public BaseDao
 public:
 	static CString GetTableName();
 	static DrillingSurfPtr findOne(int id);
-	static DrillingSurfList findAll();
+	static DrillingSurfList findMany();
+	static DrillingSurfPtr findOne(const CString& options);
+	static DrillingSurfList findMany(const CString& options);
 	int insert();;
 	bool update();
 	bool remove();
@@ -368,7 +425,9 @@ class ARXDAO_DLLIMPEXP EvalUnit : public BaseDao
 public:
 	static CString GetTableName();
 	static EvalUnitPtr findOne(int id);
-	static EvalUnitList findAll();
+	static EvalUnitList findMany();
+	static EvalUnitPtr findOne(const CString& options);
+	static EvalUnitList findMany(const CString& options);
 	int insert();;
 	bool update();
 	bool remove();
@@ -405,7 +464,9 @@ class ARXDAO_DLLIMPEXP Help : public BaseDao
 public:
 	static CString GetTableName();
 	static HelpPtr findOne(int id);
-	static HelpList findAll();
+	static HelpList findMany();
+	static HelpPtr findOne(const CString& options);
+	static HelpList findMany(const CString& options);
 	int insert();;
 	bool update();
 	bool remove();
@@ -442,7 +503,9 @@ class ARXDAO_DLLIMPEXP HighDrillingPore : public BaseDao
 public:
 	static CString GetTableName();
 	static HighDrillingPorePtr findOne(int id);
-	static HighDrillingPoreList findAll();
+	static HighDrillingPoreList findMany();
+	static HighDrillingPorePtr findOne(const CString& options);
+	static HighDrillingPoreList findMany(const CString& options);
 	int insert();;
 	bool update();
 	bool remove();
@@ -509,7 +572,9 @@ class ARXDAO_DLLIMPEXP HighDrillingTunnel : public BaseDao
 public:
 	static CString GetTableName();
 	static HighDrillingTunnelPtr findOne(int id);
-	static HighDrillingTunnelList findAll();
+	static HighDrillingTunnelList findMany();
+	static HighDrillingTunnelPtr findOne(const CString& options);
+	static HighDrillingTunnelList findMany(const CString& options);
 	int insert();;
 	bool update();
 	bool remove();
@@ -552,7 +617,9 @@ class ARXDAO_DLLIMPEXP HydrGeo : public BaseDao
 public:
 	static CString GetTableName();
 	static HydrGeoPtr findOne(int id);
-	static HydrGeoList findAll();
+	static HydrGeoList findMany();
+	static HydrGeoPtr findOne(const CString& options);
+	static HydrGeoList findMany(const CString& options);
 	int insert();;
 	bool update();
 	bool remove();
@@ -604,7 +671,9 @@ class ARXDAO_DLLIMPEXP KeyLayer : public BaseDao
 public:
 	static CString GetTableName();
 	static KeyLayerPtr findOne(int id);
-	static KeyLayerList findAll();
+	static KeyLayerList findMany();
+	static KeyLayerPtr findOne(const CString& options);
+	static KeyLayerList findMany(const CString& options);
 	int insert();;
 	bool update();
 	bool remove();
@@ -650,7 +719,9 @@ class ARXDAO_DLLIMPEXP Mine : public BaseDao
 public:
 	static CString GetTableName();
 	static MinePtr findOne(int id);
-	static MineList findAll();
+	static MineList findMany();
+	static MinePtr findOne(const CString& options);
+	static MineList findMany(const CString& options);
 	int insert();;
 	bool update();
 	bool remove();
@@ -672,10 +743,12 @@ public:
 	void setPassword(const CString& value);
 	CString getMineName() const;
 	void setMineName(const CString& value);
-	CString getMineAddress() const;
-	void setMineAddress(const CString& value);
-	double getCoalCapacity() const;
-	void setCoalCapacity(const double& value);
+	CString getProvince() const;
+	void setProvince(const CString& value);
+	CString getCity() const;
+	void setCity(const CString& value);
+	double getCapacity() const;
+	void setCapacity(const double& value);
 	int getTopoGeo() const;
 	void setTopoGeo(const int& value);
 	int getHydrGeo() const;
@@ -717,8 +790,9 @@ private:
 	CString username;
 	CString password;
 	CString mine_name;
-	CString mine_address;
-	double coal_capacity;
+	CString province;
+	CString city;
+	double capacity;
 	int topo_geo;
 	int hydr_geo;
 	int ground_condition;
@@ -744,7 +818,9 @@ class ARXDAO_DLLIMPEXP MineBase : public BaseDao
 public:
 	static CString GetTableName();
 	static MineBasePtr findOne(int id);
-	static MineBaseList findAll();
+	static MineBaseList findMany();
+	static MineBasePtr findOne(const CString& options);
+	static MineBaseList findMany(const CString& options);
 	int insert();;
 	bool update();
 	bool remove();
@@ -775,7 +851,9 @@ class ARXDAO_DLLIMPEXP MineRegion : public BaseDao
 public:
 	static CString GetTableName();
 	static MineRegionPtr findOne(int id);
-	static MineRegionList findAll();
+	static MineRegionList findMany();
+	static MineRegionPtr findOne(const CString& options);
+	static MineRegionList findMany(const CString& options);
 	int insert();;
 	bool update();
 	bool remove();
@@ -809,7 +887,9 @@ class ARXDAO_DLLIMPEXP MiningArea : public BaseDao
 public:
 	static CString GetTableName();
 	static MiningAreaPtr findOne(int id);
-	static MiningAreaList findAll();
+	static MiningAreaList findMany();
+	static MiningAreaPtr findOne(const CString& options);
+	static MiningAreaList findMany(const CString& options);
 	int insert();;
 	bool update();
 	bool remove();
@@ -852,7 +932,9 @@ class ARXDAO_DLLIMPEXP PoreFlow : public BaseDao
 public:
 	static CString GetTableName();
 	static PoreFlowPtr findOne(int id);
-	static PoreFlowList findAll();
+	static PoreFlowList findMany();
+	static PoreFlowPtr findOne(const CString& options);
+	static PoreFlowList findMany(const CString& options);
 	int insert();;
 	bool update();
 	bool remove();
@@ -925,7 +1007,9 @@ class ARXDAO_DLLIMPEXP PoreSize : public BaseDao
 public:
 	static CString GetTableName();
 	static PoreSizePtr findOne(int id);
-	static PoreSizeList findAll();
+	static PoreSizeList findMany();
+	static PoreSizePtr findOne(const CString& options);
+	static PoreSizeList findMany(const CString& options);
 	int insert();;
 	bool update();
 	bool remove();
@@ -968,7 +1052,9 @@ class ARXDAO_DLLIMPEXP ReadyTunnel : public BaseDao
 public:
 	static CString GetTableName();
 	static ReadyTunnelPtr findOne(int id);
-	static ReadyTunnelList findAll();
+	static ReadyTunnelList findMany();
+	static ReadyTunnelPtr findOne(const CString& options);
+	static ReadyTunnelList findMany(const CString& options);
 	int insert();;
 	bool update();
 	bool remove();
@@ -1002,7 +1088,9 @@ class ARXDAO_DLLIMPEXP ResAbundance : public BaseDao
 public:
 	static CString GetTableName();
 	static ResAbundancePtr findOne(int id);
-	static ResAbundanceList findAll();
+	static ResAbundanceList findMany();
+	static ResAbundancePtr findOne(const CString& options);
+	static ResAbundanceList findMany(const CString& options);
 	int insert();;
 	bool update();
 	bool remove();
@@ -1036,7 +1124,9 @@ class ARXDAO_DLLIMPEXP TechMode : public BaseDao
 public:
 	static CString GetTableName();
 	static TechModePtr findOne(int id);
-	static TechModeList findAll();
+	static TechModeList findMany();
+	static TechModePtr findOne(const CString& options);
+	static TechModeList findMany(const CString& options);
 	int insert();;
 	bool update();
 	bool remove();
@@ -1073,7 +1163,9 @@ class ARXDAO_DLLIMPEXP Technology : public BaseDao
 public:
 	static CString GetTableName();
 	static TechnologyPtr findOne(int id);
-	static TechnologyList findAll();
+	static TechnologyList findMany();
+	static TechnologyPtr findOne(const CString& options);
+	static TechnologyList findMany(const CString& options);
 	int insert();;
 	bool update();
 	bool remove();
@@ -1116,7 +1208,9 @@ class ARXDAO_DLLIMPEXP TopoGeo : public BaseDao
 public:
 	static CString GetTableName();
 	static TopoGeoPtr findOne(int id);
-	static TopoGeoList findAll();
+	static TopoGeoList findMany();
+	static TopoGeoPtr findOne(const CString& options);
+	static TopoGeoList findMany(const CString& options);
 	int insert();;
 	bool update();
 	bool remove();
@@ -1150,7 +1244,9 @@ class ARXDAO_DLLIMPEXP Tunnel : public BaseDao
 public:
 	static CString GetTableName();
 	static TunnelPtr findOne(int id);
-	static TunnelList findAll();
+	static TunnelList findMany();
+	static TunnelPtr findOne(const CString& options);
+	static TunnelList findMany(const CString& options);
 	int insert();;
 	bool update();
 	bool remove();
@@ -1199,7 +1295,9 @@ class ARXDAO_DLLIMPEXP WorkSurf : public BaseDao
 public:
 	static CString GetTableName();
 	static WorkSurfPtr findOne(int id);
-	static WorkSurfList findAll();
+	static WorkSurfList findMany();
+	static WorkSurfPtr findOne(const CString& options);
+	static WorkSurfList findMany(const CString& options);
 	int insert();;
 	bool update();
 	bool remove();
