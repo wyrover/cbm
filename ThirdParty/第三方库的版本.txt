@@ -21,7 +21,7 @@ mysql-connector-c£¨mysqlµÄcÓïÑÔ½Ó¿Ú£©
 sqlite3
 
 soci-3.2.3
-stactiverecord
-storm
+stactiverecord-0.1
+storm-0.1
 
 
