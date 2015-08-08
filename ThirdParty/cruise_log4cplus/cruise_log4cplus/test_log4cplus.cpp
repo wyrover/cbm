@@ -10,6 +10,8 @@
 
 using namespace log4cplus;
 
+#include "LogHelper.h"
+
 /**
 * ²Î¿¼£ºhttp://pyhcx.blog.51cto.com/713166/143549/
 */
@@ -109,8 +111,6 @@ int test_logcplus3()
 
 	return 0;
 }
-
-#include "log.h"
 
 int test_logcplus4()
 {  
