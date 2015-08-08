@@ -4,7 +4,7 @@
 
 DaoManagerPrt DaoManager::instance;
 
-bool DaoManager::Configure(const CString&  url, const CString&  user, const CString&  password, const CString&  database)
+bool DaoManager::Configure(const CString& url, const CString& user, const CString& password, const CString& database)
 {
 	bool ret = true;
 	try

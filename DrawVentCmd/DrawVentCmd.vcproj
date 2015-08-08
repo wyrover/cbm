@@ -46,7 +46,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..;&quot;..\ThirdParty\log4cplus\include&quot;;&quot;..\ThirdParty\lemon&quot;;&quot;..\ThirdParty\soci\include&quot;;..\ThirdParty\boost"
+				AdditionalIncludeDirectories="..;&quot;..\ThirdParty\log4cplus\include&quot;;&quot;..\ThirdParty\lemon&quot;;&quot;..\ThirdParty\stactiverecord\include&quot;;..\ThirdParty\boost"
 				AdditionalUsingDirectories="c:\Program Files\AutoCAD"
 				PreprocessorDefinitions="WIN32;_WINDOWS;DRAWVENTCMD_MODULE;_AFXEXT;_ACRXAPP"
 				StringPooling="false"
@@ -72,10 +72,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="log4cplusSU.lib lemon.lib soci_core.lib soci_mysql.lib libmysql.lib"
+				AdditionalDependencies="log4cplusSU.lib lemon.lib sar.lib"
 				OutputFile="$(outdir)/DrawVentCmd.arx"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\lemon\lib;..\ThirdParty\soci\lib\win32"
+				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\lemon\lib;..\ThirdParty\stactiverecord\lib\win32"
 				LinkDLL="true"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/DrawVentCmd.pdb"
@@ -134,7 +134,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..;&quot;..\ThirdParty\log4cplus\include&quot;;&quot;..\ThirdParty\lemon&quot;;&quot;..\ThirdParty\soci\include&quot;;..\ThirdParty\boost"
+				AdditionalIncludeDirectories="..;&quot;..\ThirdParty\log4cplus\include&quot;;&quot;..\ThirdParty\lemon&quot;;&quot;..\ThirdParty\stactiverecord\include&quot;;..\ThirdParty\boost"
 				AdditionalUsingDirectories="c:\Program Files\AutoCAD"
 				PreprocessorDefinitions="WIN32;_WINDOWS;DRAWVENTCMD_MODULE;_AFXEXT;_ACRXAPP"
 				StringPooling="false"
@@ -160,10 +160,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="log4cplusSU-x64.lib lemon_x64.lib soci_core.lib soci_mysql.lib libmysql.lib"
+				AdditionalDependencies="log4cplusSU-x64.lib lemon_x64.lib sar.lib"
 				OutputFile="$(outdir)/DrawVentCmd.arx"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\lemon\lib;..\ThirdParty\soci\lib\x64"
+				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\lemon\lib;..\ThirdParty\stactiverecord\lib\x64"
 				LinkDLL="true"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/DrawVentCmd.pdb"
@@ -221,7 +221,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="2"
-				AdditionalIncludeDirectories="..;&quot;..\ThirdParty\log4cplus\include&quot;;&quot;..\ThirdParty\lemon&quot;;&quot;..\ThirdParty\soci\include&quot;;..\ThirdParty\boost"
+				AdditionalIncludeDirectories="..;&quot;..\ThirdParty\log4cplus\include&quot;;&quot;..\ThirdParty\lemon&quot;;&quot;..\ThirdParty\stactiverecord\include&quot;;..\ThirdParty\boost"
 				AdditionalUsingDirectories="c:\Program Files\AutoCAD"
 				PreprocessorDefinitions="WIN32;_WINDOWS;DRAWVENTCMD_MODULE;NDEBUG;_AFXEXT;_ACRXAPP"
 				StringPooling="true"
@@ -247,10 +247,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="log4cplusSU.lib lemon.lib soci_core.lib soci_mysql.lib libmysql.lib"
+				AdditionalDependencies="log4cplusSU.lib lemon.lib sar.lib"
 				OutputFile="$(outdir)/DrawVentCmd.arx"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\lemon\lib;..\ThirdParty\soci\lib\win32"
+				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\lemon\lib;..\ThirdParty\stactiverecord\lib\win32"
 				LinkDLL="true"
 				GenerateDebugInformation="false"
 				ProgramDatabaseFile=""
@@ -309,7 +309,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="2"
-				AdditionalIncludeDirectories="..;&quot;..\ThirdParty\log4cplus\include&quot;;&quot;..\ThirdParty\lemon&quot;;&quot;..\ThirdParty\soci\include&quot;;..\ThirdParty\boost"
+				AdditionalIncludeDirectories="..;&quot;..\ThirdParty\log4cplus\include&quot;;&quot;..\ThirdParty\lemon&quot;;&quot;..\ThirdParty\stactiverecord\include&quot;;..\ThirdParty\boost"
 				AdditionalUsingDirectories="c:\Program Files\AutoCAD"
 				PreprocessorDefinitions="WIN32;_WINDOWS;DRAWVENTCMD_MODULE;NDEBUG;_AFXEXT;_ACRXAPP"
 				StringPooling="true"
@@ -335,10 +335,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="log4cplusSU-x64.lib lemon_x64.lib soci_core.lib soci_mysql.lib libmysql.lib"
+				AdditionalDependencies="log4cplusSU-x64.lib lemon_x64.lib sar.lib"
 				OutputFile="$(outdir)/DrawVentCmd.arx"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\lemon\lib;..\ThirdParty\soci\lib\x64"
+				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\lemon\lib;..\ThirdParty\stactiverecord\lib\x64"
 				LinkDLL="true"
 				GenerateDebugInformation="false"
 				ProgramDatabaseFile=""
