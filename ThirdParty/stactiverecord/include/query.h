@@ -38,8 +38,8 @@ namespace stactiverecord
     class Q
     {
     private:
-        std::string key;
-        std::string value;
+        tstring key;
+        tstring value;
         int ivalue;
         DateTime dtvalue;
         SarVector<Q> ored;
@@ -47,12 +47,12 @@ namespace stactiverecord
         coltype ct;
     public:
         Where* where;
-        void to_string( std::string& query );
+        void to_string( tstring& query );
         /** Create query object
          * @param _key The key being queried
          * @param _w A Where object describing the limits of the query
          */
-        Q( std::string _key, Where* _w ) : key( _key )
+        Q( tstring _key, Where* _w ) : key( _key )
         {
             ct = _w->ct;
             where = _w;
@@ -62,23 +62,23 @@ namespace stactiverecord
          * @param _key The key being queried
          * @param _value The exact value to match for the given key.
          */
-        Q( std::string _key, std::string _value ) : key( _key ), value( _value )
+        Q( tstring _key, tstring _value ) : key( _key ), value( _value )
         {
             ct = STRING;
             where = equals( _value );
         };
 
-        Q( std::string _key, const char* _value ) : key( _key ), value( std::string( _value ) )
+        Q( tstring _key, const tchar* _value ) : key( _key ), value( tstring(_value) )
         {
             ct = STRING;
-            where = equals( std::string( _value ) );
+            where = equals( tstring( _value ) );
         };
 
         /** Create query object
          * @param _key The key being queried
          * @param _ivalue The exact value to match for the given key.
          */
-        Q( std::string _key, int _ivalue ) : key( _key ), ivalue( _ivalue )
+        Q( tstring _key, int _ivalue ) : key( _key ), ivalue( _ivalue )
         {
             ct = INTEGER;
             where = equals( _ivalue );
@@ -88,7 +88,7 @@ namespace stactiverecord
          * @param _key The key being queried
          * @param _dtvalue The exact value to match for the given key.
          */
-        Q( std::string _key, DateTime _dtvalue ) : key( _key ), dtvalue( _dtvalue )
+        Q( tstring _key, DateTime _dtvalue ) : key( _key ), dtvalue( _dtvalue )
         {
             ct = DATETIME;
             where = equals( _dtvalue );
@@ -98,7 +98,7 @@ namespace stactiverecord
          * @param _key The key being queried
          * @param _bvalue The exact value to match for the given key.
          */
-        Q( std::string _key, bool _bvalue ) : key( _key )
+        Q( tstring _key, bool _bvalue ) : key( _key )
         {
             ivalue = ( _bvalue ) ? 1 : 0;
             ct = INTEGER;
@@ -121,10 +121,10 @@ namespace stactiverecord
         /** using the db, find all records that match
          * @param classname The classname to test
          */
-        SarVector<int> test( std::string classname );
+        SarVector<int> test( tstring classname );
 
         /** Print out all the other Q objects anded and ored */
-        void dump();
+        //void dump();
 
         /** Free the memory used by the internal where instance var and the ones
          * in the ored and anded objects.

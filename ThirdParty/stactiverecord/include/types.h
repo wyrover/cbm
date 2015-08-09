@@ -46,17 +46,17 @@ namespace stactiverecord
         {
             this->push_back( value );
         };
-        void dump()
-        {
-            for( unsigned int i = 0; i < this->size(); i++ )
-                std::cout << this->at( i ) << ", ";
-            std::cout << "\n";
-        };
-        void dumpeach()
-        {
-            for( unsigned int i = 0; i < this->size(); i++ )
-                this->at( i ).dump();
-        };
+        //void dump()
+        //{
+        //    for( unsigned int i = 0; i < this->size(); i++ )
+        //        std::cout << this->at( i ) << ", ";
+        //    std::cout << "\n";
+        //};
+        //void dumpeach()
+        //{
+        //    for( unsigned int i = 0; i < this->size(); i++ )
+        //        this->at( i ).dump();
+        //};
         void remove( T value )
         {
             // terribly inefficient ... fix this later
@@ -127,63 +127,63 @@ namespace stactiverecord
     };
 
     template <class T>
-    class SarMap : public std::map<std::string, T>
+    class SarMap : public std::map<tstring, T>
     {
     public:
-        SarMap() : std::map<std::string, T>() {};
-        bool has_key( std::string key )
+        SarMap() : std::map<tstring, T>() {};
+        bool has_key( tstring key )
         {
             for( typename SarMap<T>::iterator i = this->begin(); i != this->end(); ++i )
-                if( std::string( ( *i ).first ) == key )
+                if( tstring( ( *i ).first ) == key )
                 {
                     return true;
                 }
             return false;
         };
-        void dump()
-        {
-            for( typename SarMap<T>::iterator i = this->begin(); i != this->end(); ++i )
-                std::cout << ( *i ).first << ": " << ( *i ).second << "\n";
-        };
-        void dumpeach()
-        {
-            for( typename SarMap<T>::iterator i = this->begin(); i != this->end(); ++i )
-            {
-                std::cout << ( *i ).first << ": ";
-                ( ( *i ).second ).dump();
-                std::cout << "\n";
-            }
-        };
-        void submap( SarVector<std::string> keys, SarMap<T>& submap )
+        //void dump()
+        //{
+        //    for( typename SarMap<T>::iterator i = this->begin(); i != this->end(); ++i )
+        //        std::cout << ( *i ).first << ": " << ( *i ).second << "\n";
+        //};
+        //void dumpeach()
+        //{
+        //    for( typename SarMap<T>::iterator i = this->begin(); i != this->end(); ++i )
+        //    {
+        //        std::cout << ( *i ).first << ": ";
+        //        ( ( *i ).second ).dump();
+        //        std::cout << "\n";
+        //    }
+        //};
+        void submap( SarVector<tstring> keys, SarMap<T>& submap )
         {
             // clear the submap first...
             submap.clear();
             for( unsigned int i = 0; i < keys.size(); i++ )
                 submap[keys[i]] = this->operator[]( keys[i] );
         };
-        void remove( std::string key )
+        void remove( tstring key )
         {
             for( typename SarMap<T>::iterator i = this->begin(); i != this->end(); ++i )
             {
-                if( std::string( ( *i ).first ) == key )
+                if( tstring( ( *i ).first ) == key )
                     this->erase( i );
             }
         };
-        SarVector<std::string> keys()
+        SarVector<tstring> keys()
         {
-            SarVector<std::string> keys;
+            SarVector<tstring> keys;
             for( typename SarMap<T>::iterator i = this->begin(); i != this->end(); ++i )
-                keys << std::string( ( *i ).first );
+                keys << tstring( ( *i ).first );
             return keys;
         };
         bool operator==( SarMap<T>& others )
         {
             if( this->size() != others.size() || this->keys() != others.keys() )
                 return false;
-            std::string key;
+            tstring key;
             for( typename SarMap<T>::iterator i = this->begin(); i != this->end(); ++i )
             {
-                key = std::string( ( *i ).first );
+                key = tstring( ( *i ).first );
                 if( this->operator[]( key ) != others[key] )
                     return false;
             }
@@ -235,7 +235,7 @@ namespace stactiverecord
         };
         /** This will return a SarVector containing the propertie values for each object
         element in this ObjGroup **/
-        template <class K> SarVector<K> get_property( std::string name )
+        template <class K> SarVector<K> get_property( tstring name )
         {
             SarVector<K> sv;
             K value;

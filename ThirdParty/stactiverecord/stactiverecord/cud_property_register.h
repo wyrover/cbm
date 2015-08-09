@@ -36,42 +36,42 @@ namespace stactiverecord
     class CUDPropertyRegister
     {
     private:
-        std::map<int, SarVector<std::string> > newprop;
-        std::map<int, SarVector<std::string> > changedprop;
-        std::map<int, SarVector<std::string> > deletedprop;
+        std::map<int, SarVector<tstring> > newprop;
+        std::map<int, SarVector<tstring> > changedprop;
+        std::map<int, SarVector<tstring> > deletedprop;
     protected:
         /** register new property */
-        void register_new( std::string key, coltype ct );
+        void register_new( tstring key, coltype ct );
         /** register changed property */
-        void register_change( std::string key, coltype ct );
+        void register_change( tstring key, coltype ct );
         /** register deleted property */
-        void register_delete( std::string key, coltype ct );
+        void register_delete( tstring key, coltype ct );
 
         /** determine if a property has been registered new */
-        bool is_registered_new( std::string key, coltype ct );
+        bool is_registered_new( tstring key, coltype ct );
         /** determine if a property has been registered changed */
-        bool is_registered_changed( std::string key, coltype ct );
+        bool is_registered_changed( tstring key, coltype ct );
         /** determine if a property has been registered deleted */
-        bool is_registered_deleted( std::string key, coltype ct );
+        bool is_registered_deleted( tstring key, coltype ct );
 
         /** unregister new property */
-        void unregister_new( std::string key, coltype ct );
+        void unregister_new( tstring key, coltype ct );
         /** unregister changed property */
-        void unregister_change( std::string key, coltype ct );
+        void unregister_change( tstring key, coltype ct );
         /** unregister deleted property */
-        void unregister_delete( std::string key, coltype ct );
+        void unregister_delete( tstring key, coltype ct );
 
         /** get all new properties */
-        void get_new( SarVector<std::string>& v, coltype ct );
+        void get_new( SarVector<tstring>& v, coltype ct );
         /** get all changed properties */
-        void get_changed( SarVector<std::string>& v, coltype ct );
+        void get_changed( SarVector<tstring>& v, coltype ct );
         /** get all deleted properties */
-        void get_deleted( SarVector<std::string>& v, coltype ct );
+        void get_deleted( SarVector<tstring>& v, coltype ct );
 
         /** clear all records */
         void clear_registers();
         /** print the names of all new/changed/deleted properties */
-        void dump_registers();
+        //void dump_registers();
     };
 
 };

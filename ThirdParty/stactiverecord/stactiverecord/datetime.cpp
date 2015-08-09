@@ -38,7 +38,7 @@ namespace stactiverecord
     void DateTime::set( int month, int day, int year, int hour, int minute, int second )
     {
         if( year != 0 && year < 1970 )
-            Sar_InvalidDateException( "Date year cannot be before 1970.  I know this is crappy, will be fixed later." );
+            Sar_InvalidDateException( SAR_TEXT("Date year cannot be before 1970.  I know this is crappy, will be fixed later.") );
 
         t.tm_year = ( year == 0 || year <= 1970 ) ? 70 : year - 1900;
         t.tm_mon = ( month == 0 ) ? 0 : month - 1;
@@ -51,9 +51,9 @@ namespace stactiverecord
         mktime( &t );
     };
 
-    void DateTime::to_string( std::string& s )
+    void DateTime::to_string( tstring& s )
     {
-        s = std::string( asctime( &t ) );
+        s = SAR_S2T( asctime( &t ) );
     };
 
     int DateTime::to_int()

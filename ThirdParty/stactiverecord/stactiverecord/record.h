@@ -40,7 +40,7 @@ namespace stactiverecord
     private:
         Sar_Dbi* _db;
         bool dirty;
-        SarMap<std::string> svalues;
+        SarMap<tstring> svalues;
         SarMap<int> ivalues;
         SarMap< SarVector<int> > rvalues;
         SarMap<DateTime> dtvalues;
@@ -48,14 +48,14 @@ namespace stactiverecord
         bool initial_update;
         // Delete any previous values for key that isn't coltype ct
         // this is done to prevent two concurrent types for any key value
-        void clear_other_values( std::string colname, coltype ct )
+        void clear_other_values( tstring colname, coltype ct )
         {
             coltype existing_ct = type( colname );
             if( existing_ct != NONE && existing_ct != ct )
             {
-                std::string coltypename;
+                tstring coltypename;
                 coltype_to_name( existing_ct, coltypename );
-                debug( "getting rid of old value for " + colname + " and type " + coltypename );
+                debug( SAR_TEXT("getting rid of old value for ") + colname + SAR_TEXT(" and type ") + coltypename );
                 if( is_registered_new( colname, existing_ct ) )
                 {
                     unregister_new( colname, ct );
@@ -91,19 +91,19 @@ namespace stactiverecord
             check_classname( classname );
             _db->initialize_tables( classname );
             if( !_db->exists( classname, id ) )
-                throw Sar_NoSuchObjectException( "There is no " + classname + " with given id." );
+                throw Sar_NoSuchObjectException( SAR_TEXT("There is no ") + classname + SAR_TEXT(" with given id.") );
         };
     public:
         int id;
-        std::string classname;
+        tstring classname;
 
         /** Update properties of an object.  Will overwrite any changes made since the object was created. **/
         void update()
         {
             if( id == -1 )
-                throw Sar_NoSuchObjectException( "Cannot update an object with id of -1" );
+                throw Sar_NoSuchObjectException( SAR_TEXT("Cannot update an object with id of -1") );
             else if( !_db->exists( classname, id ) )
-                throw Sar_NoSuchObjectException( "The object id given does not exist." );
+                throw Sar_NoSuchObjectException( SAR_TEXT("The object id given does not exist.") );
             else
             {
                 _db->get( id, classname, svalues );
@@ -141,8 +141,8 @@ namespace stactiverecord
                     update();
                 }
 
-                SarVector<std::string> propkeys;
-                SarMap<std::string> spropvalues;
+                SarVector<tstring> propkeys;
+                SarMap<tstring> spropvalues;
                 SarMap<int> ipropvalues;
                 SarMap<DateTime> dtpropvalues;
 
@@ -200,7 +200,7 @@ namespace stactiverecord
                 propkeys.clear();
                 get_changed( propkeys, RECORD );
                 SarVector<int> related_ids;
-                std::string related_classname;
+                tstring related_classname;
                 for( unsigned int i = 0; i < propkeys.size(); i++ )
                 {
                     related_ids.clear();
@@ -218,13 +218,13 @@ namespace stactiverecord
             }
         };
 
-        void set( std::string key, const char* s )
+        void set( tstring key, const tchar* s )
         {
             if( !initial_update && id != -1 ) update();
-            set( key, std::string( s ) );
+            set( key, tstring( s ) );
         };
 
-        void set( std::string key, std::string value )
+        void set( tstring key, tstring value )
         {
             if( !initial_update && id != -1 ) update();
             // no change
@@ -250,7 +250,7 @@ namespace stactiverecord
             dirty = true;
         };
 
-        void set( std::string key, int value )
+        void set( tstring key, int value )
         {
             if( !initial_update && id != -1 ) update();
             // no change
@@ -276,7 +276,7 @@ namespace stactiverecord
             dirty = true;
         };
 
-        void set( std::string key, DateTime value )
+        void set( tstring key, DateTime value )
         {
             if( !initial_update && id != -1 ) update();
             // no change
@@ -302,13 +302,13 @@ namespace stactiverecord
             dirty = true;
         };
 
-        void set( std::string key, bool value )
+        void set( tstring key, bool value )
         {
             if( !initial_update && id != -1 ) update();
             set( key, ( ( value ) ? 1 : 0 ) );
         };
 
-        void get( std::string key, std::string& value, std::string alt )
+        void get( tstring key, tstring& value, tstring alt )
         {
             if( !initial_update && id != -1 ) update();
             if( svalues.has_key( key ) )
@@ -317,15 +317,15 @@ namespace stactiverecord
                 value = alt;
         };
 
-        void get( std::string key, std::string& value )
+        void get( tstring key, tstring& value )
         {
             if( !initial_update && id != -1 ) update();
             if( svalues.has_key( key ) )
                 value = svalues[key];
-            else throw Sar_NoSuchPropertyException( "property \"" + key + "\" does not exist" );
+            else throw Sar_NoSuchPropertyException( SAR_TEXT("property \"") + key + SAR_TEXT("\" does not exist") );
         };
 
-        void get( std::string key, int& value, int alt )
+        void get( tstring key, int& value, int alt )
         {
             if( !initial_update && id != -1 ) update();
             if( ivalues.has_key( key ) )
@@ -334,15 +334,15 @@ namespace stactiverecord
                 value = alt;
         };
 
-        void get( std::string key, int& value )
+        void get( tstring key, int& value )
         {
             if( !initial_update && id != -1 ) update();
             if( ivalues.has_key( key ) )
                 value = ivalues[key];
-            else throw Sar_NoSuchPropertyException( "property \"" + key + "\" does not exist" );
+            else throw Sar_NoSuchPropertyException( SAR_TEXT("property \"") + key + SAR_TEXT("\" does not exist") );
         };
 
-        void get( std::string key, bool& value, bool alt )
+        void get( tstring key, bool& value, bool alt )
         {
             if( !initial_update && id != -1 ) update();
             if( ivalues.has_key( key ) )
@@ -351,15 +351,15 @@ namespace stactiverecord
                 value = alt;
         };
 
-        void get( std::string key, bool& value )
+        void get( tstring key, bool& value )
         {
             if( !initial_update ) update();
             if( ivalues.has_key( key ) )
                 value = ( ivalues[key] == 0 ) ? false : true;
-            else throw Sar_NoSuchPropertyException( "property \"" + key + "\" does not exist" );
+            else throw Sar_NoSuchPropertyException( SAR_TEXT("property \"") + key + SAR_TEXT("\" does not exist") );
         };
 
-        void get( std::string key, DateTime& value, DateTime alt )
+        void get( tstring key, DateTime& value, DateTime alt )
         {
             if( !initial_update && id != -1 ) update();
             if( dtvalues.has_key( key ) )
@@ -368,16 +368,16 @@ namespace stactiverecord
                 value = alt;
         };
 
-        void get( std::string key, DateTime& value )
+        void get( tstring key, DateTime& value )
         {
             if( !initial_update && id != -1 ) update();
             if( dtvalues.has_key( key ) )
                 value = dtvalues[key];
-            else throw Sar_NoSuchPropertyException( "property \"" + key + "\" does not exist" );
+            else throw Sar_NoSuchPropertyException( SAR_TEXT("property \"") + key + SAR_TEXT("\" does not exist") );
         };
 
         /** Delete property with the given key name */
-        void del( std::string key )
+        void del( tstring key )
         {
             if( !initial_update && id != -1 ) update();
             coltype ct = type( key );
@@ -406,7 +406,7 @@ namespace stactiverecord
         };
 
         /** Determine if a property is set */
-        bool isset( std::string colname )
+        bool isset( tstring colname )
         {
             if( !initial_update && id != -1 ) update();
             return ( type( colname ) == NONE );
@@ -422,7 +422,7 @@ namespace stactiverecord
         /** Determine the column type for the given column.
         Return coltype if found, NONE if not found
         **/
-        coltype type( std::string colname )
+        coltype type( tstring colname )
         {
             if( !initial_update && id != -1 ) update();
             if( svalues.has_key( colname ) || is_registered_new( colname, STRING ) )
@@ -453,12 +453,12 @@ namespace stactiverecord
             if( !initial_update && id != -1 ) update();
             if( r.id == -1 || !T::exists( r.id ) )
             {
-                std::string msg = "You cannot set an object relation with an object ";
-                msg += "that either has not yet been saved or has been deleted.";
+                tstring msg = SAR_TEXT("You cannot set an object relation with an object ");
+                msg += SAR_TEXT("that either has not yet been saved or has been deleted.");
                 throw Sar_NoSuchObjectException( msg );
             }
 
-            std::string key = r.classname;
+            tstring key = r.classname;
             if( !rvalues.has_key( key ) )
                 rvalues[key] = SarVector<int>();
 
@@ -484,7 +484,7 @@ namespace stactiverecord
             }
 
             // Determine which should be removed, and remove them
-            std::string classname = T::classname;
+            tstring classname = T::classname;
             SarVector<int> to_delete = og_ids.get_new( rvalues[classname] );
             for( unsigned int i = 0; i < to_delete.size(); i++ )
             {
@@ -498,7 +498,7 @@ namespace stactiverecord
         template <class T> void del()
         {
             if( !initial_update && id != -1 ) update();
-            std::string related_classname = T::classname;
+            tstring related_classname = T::classname;
             if( rvalues.has_key( related_classname ) && rvalues[related_classname].size() > 0 )
             {
                 rvalues[related_classname] = SarVector<int>();
@@ -511,19 +511,19 @@ namespace stactiverecord
         template <class T> void getOne( T& record )
         {
             if( !initial_update && id != -1 ) update();
-            std::string related_classname = T::classname;
+            tstring related_classname = T::classname;
             if( rvalues.has_key( related_classname ) && rvalues[related_classname].size() > 0 )
             {
                 record = T( rvalues[related_classname][0] );
             }
-            else throw Sar_RecordNotFoundException( "Could not find related record \"" + related_classname + "\"" );
+            else throw Sar_RecordNotFoundException( SAR_TEXT("Could not find related record \"") + related_classname + SAR_TEXT("\"") );
         };
 
         /** Get related records (one->many) */
         template <class T> ObjGroup<T> getMany()
         {
             if( !initial_update && id != -1 ) update();
-            std::string related_classname = T::classname;
+            tstring related_classname = T::classname;
             if( rvalues.has_key( related_classname ) )
                 return ObjGroup<T>( rvalues[related_classname] );
             return ObjGroup<T>();

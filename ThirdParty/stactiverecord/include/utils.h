@@ -32,19 +32,19 @@ namespace stactiverecord
 
     struct mapStrCmp
     {
-        bool operator()( std::string s1, std::string s2 ) const
+        bool operator()( tstring s1, tstring s2 ) const
         {
             return s1 == s2;
         }
     };
 
     // In utils.cpp
-    void int_to_string( int i, std::string& s );
-    void debug( std::string s );
-    void check_classname( std::string classname );
-    std::vector<std::string> explode( std::string s, std::string e );
-    void coltype_to_name( coltype ct, std::string& name );
-    void join( std::vector<std::string> v, std::string joiner, std::string& result );
-    int string_to_int( std::string s );
+    void int_to_string( int i, tstring& s );
+    void debug( tstring s );
+    void check_classname( tstring classname );
+    std::vector<tstring> explode( tstring s, tstring e );
+    void coltype_to_name( coltype ct, tstring& name );
+    void join( std::vector<tstring> v, tstring joiner, tstring& result );
+    int string_to_int( tstring s );
 };
 

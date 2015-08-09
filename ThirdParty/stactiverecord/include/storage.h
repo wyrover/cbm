@@ -33,25 +33,25 @@ namespace stactiverecord
     class KVT
     {
     public:
-        std::string key, svalue;
+        tstring key, svalue;
         int ivalue;
         coltype type;
-        KVT( std::string _key, std::string _value ) : key( _key ), svalue( _value ), type( STRING ) {};
-        KVT( std::string _key, int _value ) : key( _key ), ivalue( _value ), type( INTEGER ) {};
-        KVT( std::string _key, coltype ct ) : key( _key ), type( ct ) {};
+        KVT( tstring _key, tstring _value ) : key( _key ), svalue( _value ), type( STRING ) {};
+        KVT( tstring _key, int _value ) : key( _key ), ivalue( _value ), type( INTEGER ) {};
+        KVT( tstring _key, coltype ct ) : key( _key ), type( ct ) {};
     };
 
     class Row
     {
     public:
         SarVector<int> ints;
-        SarVector<std::string> strings;
+        SarVector<tstring> strings;
         SarVector<DateTime> dts;
         void operator<<( int i )
         {
             ints << i;
         };
-        void operator<<( std::string s )
+        void operator<<( tstring s )
         {
             strings << s;
         };
@@ -63,25 +63,25 @@ namespace stactiverecord
         {
             return ints == other.ints && strings == other.strings && dts == other.dts;
         };
-        void get_string( int position, std::string& s )
+        void get_string( int position, tstring& s )
         {
             if( position > ( int )strings.size() - 1 )
-                throw Sar_ColumnNotFoundException( "String column not found." );
+                throw Sar_ColumnNotFoundException( SAR_TEXT("String column not found.") );
             s = strings[position];
         };
         int get_int( int position )
         {
             if( position > ( int )ints.size() - 1 )
-                throw Sar_ColumnNotFoundException( "Int column not found." );
+                throw Sar_ColumnNotFoundException( SAR_TEXT("Int column not found.") );
             return ints[position];
         };
-        void dump()
-        {
-            std::cout << "Ints:\n";
-            ints.dump();
-            std::cout << "Strings:\n";
-            strings.dump();
-        };
+        //void dump()
+        //{
+        //    std::cout << "Ints:\n";
+        //    ints.dump();
+        //    std::cout << "Strings:\n";
+        //    strings.dump();
+        //};
     };
 
 
@@ -89,64 +89,64 @@ namespace stactiverecord
     {
     public:
         // config is in form scheme://[user[:password]@]host[:port]/database
-        static Sar_Dbi* makeStorage( std::string config, std::string prefix = "" );
+        static Sar_Dbi* makeStorage( tstring config, tstring prefix = SAR_TEXT("") );
         static Sar_Dbi* dbi;
-        static SarMap<std::string> parseconfig( std::string config );
-        std::string table_prefix;
-        SarVector<std::string> initialized_tables;
-        Sar_Dbi( std::string prefix = "" ) : initialized_tables(), table_prefix( prefix ) {};
+        static SarMap<tstring> parseconfig( tstring config );
+        tstring table_prefix;
+        SarVector<tstring> initialized_tables;
+        Sar_Dbi( tstring prefix = SAR_TEXT("") ) : initialized_tables(), table_prefix( prefix ) {};
 
-        virtual void initialize_tables( std::string classname ) = 0;
-        int next_id( std::string classname );
-        bool exists( std::string classname, int id );
-        void make_existing( std::string classname, int id );
-        int current_id( std::string classname );
-        void delete_record( int id, std::string classname );
-        void delete_records( std::string classname );
+        virtual void initialize_tables( tstring classname ) = 0;
+        int next_id( tstring classname );
+        bool exists( tstring classname, int id );
+        void make_existing( tstring classname, int id );
+        int current_id( tstring classname );
+        void delete_record( int id, tstring classname );
+        void delete_records( tstring classname );
 
-        // get std::string values
-        void get( int id, std::string classname, SarMap<std::string>& values );
+        // get tstring values
+        void get( int id, tstring classname, SarMap<tstring>& values );
         // get int values
-        void get( int id, std::string classname, SarMap<int>& values );
+        void get( int id, tstring classname, SarMap<int>& values );
         // get datetime values
-        void get( int id, std::string classname, SarMap<DateTime>& values );
+        void get( int id, tstring classname, SarMap<DateTime>& values );
         // get record relations (of a specific class)
-        void get( int id, std::string classname, std::string related_classname, SarVector<int>& related );
+        void get( int id, tstring classname, tstring related_classname, SarVector<int>& related );
         // get all related classes
-        void get( int id, std::string classname, SarMap< SarVector<int> >& sm );
+        void get( int id, tstring classname, SarMap< SarVector<int> >& sm );
 
-        // insert/modify std::string values
-        void set( int id, std::string classname, SarMap<std::string> values, bool isinsert );
+        // insert/modify tstring values
+        void set( int id, tstring classname, SarMap<tstring> values, bool isinsert );
         // insert/modify int values
-        void set( int id, std::string classname, SarMap<int> values, bool isinsert );
+        void set( int id, tstring classname, SarMap<int> values, bool isinsert );
         // insert/modify datetime values
-        void set( int id, std::string classname, SarMap<DateTime> values, bool isinsert );
+        void set( int id, tstring classname, SarMap<DateTime> values, bool isinsert );
         // insert record relations
-        void set( int id, std::string classname, SarVector<int> related, std::string related_classname );
+        void set( int id, tstring classname, SarVector<int> related, tstring related_classname );
 
-        // delete std::string / int / datetime value
-        void del( int id, std::string classname, SarVector<std::string> keys, coltype ct );
+        // delete tstring / int / datetime value
+        void del( int id, tstring classname, SarVector<tstring> keys, coltype ct );
         // delete record relations
-        void del( int id, std::string classname, SarVector<int> related, std::string related_classname );
+        void del( int id, tstring classname, SarVector<int> related, tstring related_classname );
 
         // Some searching/static stuff
         // get all objects of a type
-        void get( std::string classname, SarVector<int>& results );
+        void get( tstring classname, SarVector<int>& results );
         // using a query with a conditional "where"
-        void get_where( std::string classname, std::string key, Where* where, SarVector<int>& results );
+        void get_where( tstring classname, tstring key, Where* where, SarVector<int>& results );
 
         // Convert a where object to a string value for a query
-        virtual void where_to_string( Where* where, std::string& swhere );
+        virtual void where_to_string( Where* where, tstring& swhere );
 
-        SarVector<Row> select( std::string table, SarVector<KVT> cols, Q qwhere, bool distinct = false );
-        virtual SarVector<Row> select( std::string table, SarVector<KVT> cols, std::string where = "", bool distinct = false ) = 0;
-        void update( std::string table, SarVector<KVT> cols, Q qwhere );
-        virtual void update( std::string table, SarVector<KVT> cols, std::string where = "" ) = 0;
-        void remove( std::string table, Q qwhere );
-        virtual void remove( std::string table, std::string where = "" ) = 0;
-        virtual void insert( std::string table, SarVector<KVT> cols ) = 0;
-        virtual void execute( std::string query ) = 0;
+        SarVector<Row> select( tstring table, SarVector<KVT> cols, Q qwhere, bool distinct = false );
+        virtual SarVector<Row> select( tstring table, SarVector<KVT> cols, tstring where = SAR_TEXT(""), bool distinct = false ) = 0;
+        void update( tstring table, SarVector<KVT> cols, Q qwhere );
+        virtual void update( tstring table, SarVector<KVT> cols, tstring where = SAR_TEXT("") ) = 0;
+        void remove( tstring table, Q qwhere );
+        virtual void remove( tstring table, tstring where = SAR_TEXT("") ) = 0;
+        virtual void insert( tstring table, SarVector<KVT> cols ) = 0;
+        virtual void execute( tstring query ) = 0;
 
-        bool table_is_initialized( std::string tablename );
+        bool table_is_initialized( tstring tablename );
     };
 };

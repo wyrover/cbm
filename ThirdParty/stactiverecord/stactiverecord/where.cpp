@@ -30,17 +30,17 @@ Created by bmuller <bmuller@butterfat.net>
 namespace stactiverecord
 {
 
-    Where* startswith( std::string value )
+    Where* startswith( tstring value )
     {
         return new Where( value, STARTSWITH );
     };
 
-    Where* endswith( std::string value )
+    Where* endswith( tstring value )
     {
         return new Where( value, ENDSWITH );
     };
 
-    Where* contains( std::string value )
+    Where* contains( tstring value )
     {
         return new Where( value, CONTAINS );
     };
@@ -85,7 +85,7 @@ namespace stactiverecord
         return new Where( value, EQUALS );
     };
 
-    Where* equals( std::string value )
+    Where* equals( tstring value )
     {
         return new Where( value, EQUALS );
     };
@@ -97,9 +97,9 @@ namespace stactiverecord
         return new Where( 0, EQUALS );
     };
 
-    Where* equals( const char* value )
+    Where* equals( const tchar* value )
     {
-        return equals( std::string( value ) );
+        return equals( tstring( value ) );
     };
 
     Where* in( std::vector<int> values )
@@ -114,17 +114,17 @@ namespace stactiverecord
 
     // negated values
 
-    Where* nstartswith( std::string value )
+    Where* nstartswith( tstring value )
     {
         return new Where( value, STARTSWITH, true );
     };
 
-    Where* nendswith( std::string value )
+    Where* nendswith( tstring value )
     {
         return new Where( value, ENDSWITH, true );
     };
 
-    Where* ncontains( std::string value )
+    Where* ncontains( tstring value )
     {
         return new Where( value, CONTAINS, true );
     };
@@ -169,7 +169,7 @@ namespace stactiverecord
         return new Where( value, EQUALS, true );
     };
 
-    Where* nequals( std::string value )
+    Where* nequals( tstring value )
     {
         return new Where( value, EQUALS, true );
     };
@@ -179,9 +179,9 @@ namespace stactiverecord
         return equals( !value );
     };
 
-    Where* nequals( const char* value )
+    Where* nequals( const tchar* value )
     {
-        return nequals( std::string( value ) );
+        return nequals( tstring( value ) );
     };
 
     Where* nin( std::vector<int> values )

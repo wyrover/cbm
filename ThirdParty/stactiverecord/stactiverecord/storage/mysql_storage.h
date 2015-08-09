@@ -39,19 +39,19 @@ namespace stactiverecord
 		void close();
 		MYSQL* db;
 		bool is_closed;
-		void test_result( int result, const std::string& context );
+		void test_result( int result, const tstring& context );
 	public:
-		MySQLStorage( std::string config, std::string prefix );
+		MySQLStorage( tstring config, tstring prefix );
 		~MySQLStorage()
 		{
 			close();
 		};
-		void execute( std::string query );
-		void initialize_tables( std::string classname );
-		SarVector<Row> select( std::string table, SarVector<KVT> cols, std::string where = "", bool distinct = false );
-		void update( std::string table, SarVector<KVT> cols, std::string where = "" );
-		void remove( std::string table, std::string where = "" );
-		void insert( std::string table, SarVector<KVT> cols );
+		void execute( tstring query );
+		void initialize_tables( tstring classname );
+		SarVector<Row> select( tstring table, SarVector<KVT> cols, tstring where = SAR_TEXT(""), bool distinct = false );
+		void update( tstring table, SarVector<KVT> cols, tstring where = SAR_TEXT("") );
+		void remove( tstring table, tstring where = SAR_TEXT("") );
+		void insert( tstring table, SarVector<KVT> cols );
 	};
 
 };

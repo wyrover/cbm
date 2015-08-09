@@ -42,7 +42,7 @@ namespace stactiverecord
         return ( *this );
     };
 
-    SarVector<int> Q::test( std::string classname )
+    SarVector<int> Q::test( tstring classname )
     {
         SarVector<int> results;
         Sar_Dbi::dbi->get_where( classname, key, where, results );
@@ -73,50 +73,50 @@ namespace stactiverecord
         return results;
     };
 
-    void Q::to_string( std::string& query )
+    void Q::to_string( tstring& query )
     {
-        std::string swhere;
+        tstring swhere;
         Sar_Dbi::dbi->where_to_string( where, swhere );
-        query = "(" + key + " " + swhere;
+        query = SAR_TEXT("(") + key + SAR_TEXT(" ") + swhere;
 
-        std::string sored;
+        tstring sored;
         for( unsigned int i = 0; i < ored.size(); i++ )
         {
             ored[i].to_string( sored );
-            query += " OR " + sored;
+            query += SAR_TEXT(" OR ") + sored;
         }
 
-        std::string sanded;
+        tstring sanded;
         for( unsigned int i = 0; i < anded.size(); i++ )
         {
             anded[i].to_string( sanded );
-            query += " AND " + sanded;
+            query += SAR_TEXT(" AND ") + sanded;
         }
-        query += ")";
+        query += SAR_TEXT(")");
     };
 
-    void Q::dump()
-    {
-        std::cout << key << ": " << value << "\n";
-        if( anded.size() > 0 )
-        {
-            std::cout << "\tanded:\n";
-            for( unsigned int i = 0; i < anded.size(); i++ )
-            {
-                std::cout << "\t";
-                anded[i].dump();
-            }
-        }
-        if( ored.size() > 0 )
-        {
-            std::cout << "\tored:\n";
-            for( unsigned int i = 0; i < ored.size(); i++ )
-            {
-                std::cout << "\t";
-                ored[i].dump();
-            }
-        }
-    };
+    //void Q::dump()
+    //{
+    //    std::cout << key << ": " << value << "\n";
+    //    if( anded.size() > 0 )
+    //    {
+    //        std::cout << "\tanded:\n";
+    //        for( unsigned int i = 0; i < anded.size(); i++ )
+    //        {
+    //            std::cout << "\t";
+    //            anded[i].dump();
+    //        }
+    //    }
+    //    if( ored.size() > 0 )
+    //    {
+    //        std::cout << "\tored:\n";
+    //        for( unsigned int i = 0; i < ored.size(); i++ )
+    //        {
+    //            std::cout << "\t";
+    //            ored[i].dump();
+    //        }
+    //    }
+    //};
 
     void Q::free()
     {

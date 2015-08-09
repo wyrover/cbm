@@ -34,6 +34,7 @@ namespace stactiverecord
 };
 
 #include "config.h"
+#include "tstring.h"
 #include "datetime.h"
 #include "where.h"
 #include "utils.h"
@@ -47,5 +48,5 @@ namespace stactiverecord
 #define VALUE_MAX_SIZE 255
 #define VALUE_MAX_SIZE_S "255"
 
-#define SAR_INIT() static string classname;
-#define SAR_SET_CLASSNAME(c, n) string c::classname = n;
+#define SAR_INIT() static tstring classname;
+#define SAR_SET_CLASSNAME(c, n) tstring c::classname = n;

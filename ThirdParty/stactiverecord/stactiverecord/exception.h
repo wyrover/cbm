@@ -33,12 +33,15 @@ namespace stactiverecord
     class Sar_Exception : public std::exception
     {
     public:
-        std::string _w;
-        explicit Sar_Exception( const std::string& s ) : _w( s ) {};
+		tstring _w;
+		explicit Sar_Exception( const tstring& s ) : _w( s ) {};
         virtual ~Sar_Exception() throw() {};
         virtual const char* what() const throw()
         {
-            return _w.c_str();
+			const wchar_t* xx = _w.c_str();
+			std::string s = SAR_T2S(_w);
+			return "";
+			//return s.c_str();
         };
     };
 
@@ -48,7 +51,7 @@ namespace stactiverecord
     class Sar_DBException : public Sar_Exception
     {
     public:
-        Sar_DBException( std::string s ) : Sar_Exception( s ) {};
+        Sar_DBException( const tstring& s ) : Sar_Exception( s ) {};
     };
 
     /** \class Sar_NoSuchObjectException
@@ -57,7 +60,7 @@ namespace stactiverecord
     class Sar_NoSuchObjectException : public Sar_Exception
     {
     public:
-        Sar_NoSuchObjectException( std::string s ) : Sar_Exception( s ) {};
+        Sar_NoSuchObjectException( const tstring& s ) : Sar_Exception( s ) {};
     };
 
     /** \class Sar_NoSuchPropertyException
@@ -66,7 +69,7 @@ namespace stactiverecord
     class Sar_NoSuchPropertyException : public Sar_Exception
     {
     public:
-        Sar_NoSuchPropertyException( std::string s ) : Sar_Exception( s ) {};
+        Sar_NoSuchPropertyException( const tstring& s ) : Sar_Exception( s ) {};
     };
 
     /** \class Sar_InvalidConfigurationException
@@ -75,7 +78,7 @@ namespace stactiverecord
     class Sar_InvalidConfigurationException : public Sar_Exception
     {
     public:
-        Sar_InvalidConfigurationException( std::string s ) : Sar_Exception( s ) {};
+        Sar_InvalidConfigurationException( const tstring& s ) : Sar_Exception( s ) {};
     };
 
     /** \class Sar_RecordNotFoundException
@@ -84,7 +87,7 @@ namespace stactiverecord
     class Sar_RecordNotFoundException : public Sar_Exception
     {
     public:
-        Sar_RecordNotFoundException( std::string s ) : Sar_Exception( s ) {};
+        Sar_RecordNotFoundException( const tstring& s ) : Sar_Exception( s ) {};
     };
 
     /** \class Sar_AssertionFailedException
@@ -93,7 +96,7 @@ namespace stactiverecord
     class Sar_AssertionFailedException : public Sar_Exception
     {
     public:
-        Sar_AssertionFailedException( std::string s ) : Sar_Exception( s ) {};
+        Sar_AssertionFailedException( const tstring& s ) : Sar_Exception( s ) {};
     };
 
     /** \class Sar_InvalidClassnameException
@@ -102,7 +105,7 @@ namespace stactiverecord
     class Sar_InvalidClassnameException : public Sar_Exception
     {
     public:
-        Sar_InvalidClassnameException( std::string s ) : Sar_Exception( s ) {};
+        Sar_InvalidClassnameException( const tstring& s ) : Sar_Exception( s ) {};
     };
 
     /** \class Sar_ColumnNotFoundException
@@ -112,12 +115,12 @@ namespace stactiverecord
     class Sar_ColumnNotFoundException : public Sar_Exception
     {
     public:
-        Sar_ColumnNotFoundException( std::string s ) : Sar_Exception( s ) {};
+        Sar_ColumnNotFoundException( const tstring& s ) : Sar_Exception( s ) {};
     };
 
     class Sar_InvalidDateException : public Sar_Exception
     {
     public:
-        Sar_InvalidDateException( std::string s ) : Sar_Exception( s ) {};
+        Sar_InvalidDateException( const tstring& s ) : Sar_Exception( s ) {};
     };
 };

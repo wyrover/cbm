@@ -40,18 +40,18 @@ namespace stactiverecord
         };
         DateTime( int month = 0, int day = 1, int year = 0, int hour = 0, int minute = 0, int second = 0 );
         void set( int month = 0, int day = 1, int year = 0, int hour = 0, int minute = 0, int second = 0 );
-        void to_string( std::string& s );
+        void to_string( tstring& s );
         int to_int();
         void from_int( int i );
         void from_tm( tm* tm );
         bool operator==( DateTime& other );
         bool operator!=( DateTime& other );
-        void dump()
-        {
-            std::string s;
-            to_string( s );
-            std::cout << s << "\n";
-        };
+        //void dump()
+        //{
+        //    tstring s;
+        //    to_string( s );
+        //    std::cout << s << "\n";
+        //};
         static int now()
         {
             time_t rawtime;

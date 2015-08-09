@@ -30,75 +30,75 @@ Created by bmuller <bmuller@butterfat.net>
 namespace stactiverecord
 {
 
-    void CUDPropertyRegister::register_new( std::string key, coltype ct )
+    void CUDPropertyRegister::register_new( tstring key, coltype ct )
     {
         if( !newprop[ct].includes( key ) )
             newprop[ct].push_back( key );
     };
 
-    void CUDPropertyRegister::register_change( std::string key, coltype ct )
+    void CUDPropertyRegister::register_change( tstring key, coltype ct )
     {
         if( !changedprop[ct].includes( key ) )
             changedprop[ct].push_back( key );
     };
 
-    void CUDPropertyRegister::register_delete( std::string key, coltype ct )
+    void CUDPropertyRegister::register_delete( tstring key, coltype ct )
     {
         if( !deletedprop[ct].includes( key ) )
             deletedprop[ct].push_back( key );
     };
 
-    void CUDPropertyRegister::get_new( SarVector<std::string>& v, coltype ct )
+    void CUDPropertyRegister::get_new( SarVector<tstring>& v, coltype ct )
     {
         for( unsigned int i = 0; i < newprop[ct].size(); i++ )
             v.push_back( newprop[ct][i] );
     };
 
-    void CUDPropertyRegister::get_changed( SarVector<std::string>& v, coltype ct )
+    void CUDPropertyRegister::get_changed( SarVector<tstring>& v, coltype ct )
     {
         for( unsigned int i = 0; i < changedprop[ct].size(); i++ )
             v.push_back( changedprop[ct][i] );
     };
 
-    void CUDPropertyRegister::get_deleted( SarVector<std::string>& v, coltype ct )
+    void CUDPropertyRegister::get_deleted( SarVector<tstring>& v, coltype ct )
     {
         for( unsigned int i = 0; i < deletedprop[ct].size(); i++ )
             v.push_back( deletedprop[ct][i] );
     };
 
-    bool CUDPropertyRegister::is_registered_new( std::string key, coltype ct )
+    bool CUDPropertyRegister::is_registered_new( tstring key, coltype ct )
     {
         return newprop[ct].includes( key );
     };
 
-    bool CUDPropertyRegister::is_registered_changed( std::string key, coltype ct )
+    bool CUDPropertyRegister::is_registered_changed( tstring key, coltype ct )
     {
         return changedprop[ct].includes( key );
     };
 
-    bool CUDPropertyRegister::is_registered_deleted( std::string key, coltype ct )
+    bool CUDPropertyRegister::is_registered_deleted( tstring key, coltype ct )
     {
         return deletedprop[ct].includes( key );
     };
 
-    void CUDPropertyRegister::unregister_new( std::string key, coltype ct )
+    void CUDPropertyRegister::unregister_new( tstring key, coltype ct )
     {
         newprop[ct].remove( key );
     };
 
-    void CUDPropertyRegister::unregister_change( std::string key, coltype ct )
+    void CUDPropertyRegister::unregister_change( tstring key, coltype ct )
     {
         changedprop[ct].remove( key );
     };
 
-    void CUDPropertyRegister::unregister_delete( std::string key, coltype ct )
+    void CUDPropertyRegister::unregister_delete( tstring key, coltype ct )
     {
         deletedprop[ct].remove( key );
     };
 
     void CUDPropertyRegister::clear_registers()
     {
-        std::map<int, SarVector<std::string> >::iterator i;
+        std::map<int, SarVector<tstring> >::iterator i;
         for( i = newprop.begin(); i != newprop.end(); ++i )
             ( *i ).second.clear();
         for( i = changedprop.begin(); i != changedprop.end(); ++i )
@@ -107,25 +107,25 @@ namespace stactiverecord
             ( *i ).second.clear();
     };
 
-    void CUDPropertyRegister::dump_registers()
-    {
-        std::cout << "New props:\n";
-        std::cout << "Strings: ";
-        newprop[STRING].dump();
-        std::cout << "Integers: ";
-        newprop[INTEGER].dump();
+    //void CUDPropertyRegister::dump_registers()
+    //{
+    //    std::cout << "New props:\n";
+    //    std::cout << "Strings: ";
+    //    newprop[STRING].dump();
+    //    std::cout << "Integers: ";
+    //    newprop[INTEGER].dump();
 
-        std::cout << "\nChanged props:\n";
-        std::cout << "Strings: ";
-        changedprop[STRING].dump();
-        std::cout << "Integers: ";
-        changedprop[INTEGER].dump();
+    //    std::cout << "\nChanged props:\n";
+    //    std::cout << "Strings: ";
+    //    changedprop[STRING].dump();
+    //    std::cout << "Integers: ";
+    //    changedprop[INTEGER].dump();
 
-        std::cout << "\nDeleted props:\n";
-        std::cout << "Strings: ";
-        deletedprop[STRING].dump();
-        std::cout << "Integers: ";
-        deletedprop[INTEGER].dump();
-    };
+    //    std::cout << "\nDeleted props:\n";
+    //    std::cout << "Strings: ";
+    //    deletedprop[STRING].dump();
+    //    std::cout << "Integers: ";
+    //    deletedprop[INTEGER].dump();
+    //};
 
 };
