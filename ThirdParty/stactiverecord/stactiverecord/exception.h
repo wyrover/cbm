@@ -38,10 +38,7 @@ namespace stactiverecord
         virtual ~Sar_Exception() throw() {};
         virtual const char* what() const throw()
         {
-			const wchar_t* xx = _w.c_str();
-			std::string s = SAR_T2S(_w);
-			return "";
-			//return s.c_str();
+			return SAR_T2S(_w).c_str();
         };
     };
 

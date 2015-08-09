@@ -4,7 +4,11 @@
 #include <cstddef>
 #endif
 
-#ifdef UNICODE
+#if defined (UNICODE)
+//#	define SAR_UNICODE
+#endif
+
+#ifdef SAR_UNICODE
 #  define SAR_TEXT2(STRING) L##STRING
 #else
 #  define SAR_TEXT2(STRING) STRING
@@ -16,7 +20,7 @@
 namespace stactiverecord
 {
 
-#if defined (UNICODE)
+#if defined (SAR_UNICODE)
 typedef wchar_t tchar;
 
 #else

@@ -15,7 +15,7 @@ namespace helpers
 	std::wstring towstring(const std::string&);
 } // namespace helpers
 
-#ifdef UNICODE
+#ifdef SAR_UNICODE
 
 #define SAR_C2T(STRING) stactiverecord::helpers::towstring(STRING)
 #define SAR_S2T(STRING) stactiverecord::helpers::towstring(STRING)
