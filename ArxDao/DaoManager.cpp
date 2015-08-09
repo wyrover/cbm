@@ -1,115 +1,71 @@
 #include "stdafx.h"
 #include "DaoManager.h"
-#include <mysql/soci-mysql.h>
-
 DaoManagerPrt DaoManager::instance;
 
-bool DaoManager::Configure(const CString& url, const CString& user, const CString& password, const CString& database)
+#include <stactive_record.h>
+using namespace stactiverecord;
+Sar_Dbi* Sar_Dbi::dbi = 0;
+
+#include <Util/HelperClass.h>
+
+bool DaoManager::config(const CString& host, const CString& user, const CString& password, const CString& database)
 {
 	bool ret = true;
 	try
 	{
-		if( ! instance ) {
-			if(!url.IsEmpty() && !user.IsEmpty()) {
-				instance.reset(new DaoManager(url, user, password, database));
-				//解决mysql中文乱码问题
-				instance->executeQuery(_T("set names 'gbk';"));
-				//instance->executeQuery("set character_set_client=utf8;");
-				//instance->executeQuery("set character_set_results=utf8;");
-				//instance->executeQuery("set character_set_connection=utf8;");
-			}
-			else {
-				throw std::runtime_error("Passe a URL, Usuario e Senha na primeira vez que chamar: Dao::getInstance");
-			}
+		// config is in form scheme://[user[:password]@]host[:port]/database
+		CString config;
+		config.AppendFormat(_T("mysql://%s"), user);
+		if(password.GetLength() > 0)
+		{
+			config.AppendFormat(_T(":%s"), password);
 		}
-	}
-	catch(soci::soci_error const & e)
-	{
-		ret = false;
-		instance.reset();
-		LOG_DEBUG_FMT(_T("连接数据库异常:%s"), EncodeHelper::ANSIToUnicode(e.what()).c_str());
+		config.AppendFormat(_T("@%s"), host);
+		
+		CString port;
+		if(port.GetLength() > 0)
+		{
+			config.AppendFormat(_T(":%s"), port);
+		}
+		config.AppendFormat(_T("/%s"), database);
+		Sar_Dbi::dbi =  Sar_Dbi::dbi = Sar_Dbi::makeStorage( (LPCTSTR)config, SAR_TEXT("cbm_") );
+
+		//解决mysql中文乱码问题
+		Sar_Dbi::dbi->execute(_T("set names 'gbk';"));
+		//Sar_Dbi::dbi->execute("set character_set_client=utf8;");
+		//Sar_Dbi::dbi->execute("set character_set_results=utf8;");
+		//Sar_Dbi::dbi->execute("set character_set_connection=utf8;");
 	}
 	catch (std::exception const & e)
 	{
 		ret = false;
-		instance.reset();
-		LOG_DEBUG_FMT(_T("Runtime异常:%s"), EncodeHelper::ANSIToUnicode(e.what()).c_str());
+		LOG_DEBUG_FMT(_T("异常:%s"), EncodeHelper::ANSIToUnicode(e.what()).c_str());
 	}
 	return ret;
 }
 
-DaoManagerPrt DaoManager::GetInstance()
+DaoManagerPrt DaoManager::Instance()
 {
+	if( ! instance ) 
+	{
+		instance = new DaoManager();
+	}
 	return instance;
 }
 
-DaoManager::DaoManager(const CString& host, const CString& user, const CString& password, const CString& database)
+DaoManager::DaoManager()
 {
-	std::string c_host = EncodeHelper::UnicodeToANSI((LPCTSTR)host);
-	std::string c_user = EncodeHelper::UnicodeToANSI((LPCTSTR)user);
-	std::string c_password = EncodeHelper::UnicodeToANSI((LPCTSTR)password);
-	std::string c_database = EncodeHelper::UnicodeToANSI((LPCTSTR)database);
-
-	sql.open(soci::mysql, "host="+c_host+" db="+c_database+" user="+c_user+" password=\'"+c_password+"\'");
+	//为了更好的输出中文，需要设置locale为中文
+	//log4cplus也有中文问题,所以这个设置和log4cplus的设置重合了
+	//在vvloader已经修改过locale了,无需重复设置
+	//std::locale m_origin_locale = std::locale::global(std::locale("chs"));
 }
 
 DaoManager::~DaoManager()
 {
-}
+	//恢复原来的locale设置
+	//std::locale::global(m_origin_locale);
 
-soci::session* DaoManager::getConnection()
-{
-    return &sql;
-}
-
-ResultSet DaoManager::executeQuery(const CString &sql)
-{
-	soci::session* connection = getConnection();
-	//执行一句什么也得不到的sql语句(前提cbm_dummy表必须存在!!!)
-	//否则会出现运行错误!!!
-    ResultSet rs = (connection->prepare << "select * from cbm_dummy where 0");
-    try
-    {
-		LOG_DEBUG_FMT(_T("sql语句:%s"), sql);
-		ResultSet temp_rs = (connection->prepare << EncodeHelper::UnicodeToANSI((LPCTSTR)sql));
-        rs = temp_rs;
-    }
-    catch(soci::soci_error const & e)
-    {
-		LOG_DEBUG_FMT(_T("调用executeQuery()异常:%s"), EncodeHelper::ANSIToUnicode(e.what()).c_str());
-    }
-	catch (std::exception const & e)
-	{
-		LOG_DEBUG_FMT(_T("Runtime异常:%s"), EncodeHelper::ANSIToUnicode(e.what()).c_str());
-	}
-    return rs;
-}
-
-bool DaoManager::executeUpdate(const CString& sql)
-{
-	bool ret = true;
-    try
-    {
-		LOG_DEBUG_FMT(_T("sql语句:%s"), sql);
-        soci::session* connection = getConnection();
-
-		*connection << EncodeHelper::UnicodeToANSI((LPCTSTR)sql);
-        connection->commit();
-    }
-    catch(soci::soci_error const & e)
-    {
-		ret = false;
-		LOG_DEBUG_FMT(_T("调用executeUpdate()异常:%s"), EncodeHelper::ANSIToUnicode(e.what()).c_str());
-    }
-	catch (std::exception const & e)
-	{
-		ret = false;
-		LOG_DEBUG_FMT(_T("Runtime异常:%s"), EncodeHelper::ANSIToUnicode(e.what()).c_str());
-	}
-	return ret;
-}
-
-DaoManagerPrt dao()
-{
-	return DaoManager::GetInstance();
+	delete Sar_Dbi::dbi;
+	Sar_Dbi::dbi = 0;
 }

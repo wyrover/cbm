@@ -91,6 +91,15 @@ namespace stactiverecord
             initialized_tables.push_back( tablename );
         }
 
+		// make table for decimal values
+		tablename = table_prefix + classname + SAR_TEXT("_f");
+		if( !table_is_initialized( tablename ) )
+		{
+			debug( SAR_TEXT("initializing table ") + tablename );
+			execute( SAR_TEXT("CREATE TABLE IF NOT EXISTS ") + tablename + SAR_TEXT(" (id INT, keyname VARCHAR(255), value INT)") );
+			initialized_tables.push_back( tablename );
+		}
+
         // make table for datetime values
         tablename = table_prefix + classname + SAR_TEXT("_dt");
         if( !table_is_initialized( tablename ) )
@@ -131,6 +140,11 @@ namespace stactiverecord
                 int_to_string( cols[i].ivalue, sint );
                 values += sint;
             }
+			else if( cols[i].type == DECIMAL )
+			{
+				double_to_string( cols[i].fvalue, sint );
+				values += sint;
+			}
             if( i != cols.size() - 1 )
                 values += SAR_TEXT(",");
         }
@@ -158,6 +172,11 @@ namespace stactiverecord
                 int_to_string( cols[i].ivalue, sint );
                 setstring += cols[i].key + SAR_TEXT("=") + sint;
             }
+			else if( cols[i].type == DECIMAL )
+			{
+				double_to_string( cols[i].fvalue, sint );
+				setstring += cols[i].key + SAR_TEXT("=") + sint;
+			}
             if( i != cols.size() - 1 )
                 setstring += SAR_TEXT(",");
         }
@@ -191,6 +210,10 @@ namespace stactiverecord
                 {
                     r << sqlite3_column_int( pSelect, i );
                 }
+				else if( cols[i].type == DECIMAL )
+				{
+					r << sqlite3_column_double( pSelect, i );
+				}
                 else if( cols[i].type == STRING )
                 {
                     char c_key[255];

@@ -75,13 +75,13 @@ namespace stactiverecord
         set( ( tp->tm_mon + 1 ), tp->tm_mday, ( tp->tm_year + 1900 ), tp->tm_hour, tp->tm_min, tp->tm_sec );
     };
 
-    bool DateTime::operator==( DateTime& other )
+    bool DateTime::operator==( const DateTime& other ) const
     {
         return ( t.tm_year == other.t.tm_year && t.tm_mon == other.t.tm_mon &&
                  t.tm_mday == other.t.tm_mday && t.tm_hour == other.t.tm_hour &&
                  t.tm_min == other.t.tm_min && t.tm_sec == other.t.tm_sec );
     };
-    bool DateTime::operator!=( DateTime& other )
+    bool DateTime::operator!=( const DateTime& other ) const
     {
         return !( *this == other );
     };

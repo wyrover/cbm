@@ -36,10 +36,10 @@ namespace stactiverecord
         db = mysql_init( NULL );
         SarMap<tstring> config = parseconfig( location );
 		tstring host = config.has_key( SAR_TEXT("host") ) ? config[SAR_TEXT("host")] : SAR_TEXT("localhost");
-		tstring user = config.has_key( SAR_TEXT("user") ) ? config[SAR_TEXT("user")] : NULL;
-		tstring pwd = config.has_key( SAR_TEXT("password") ) ? config[SAR_TEXT("password")] : NULL;
+		tstring user = config.has_key( SAR_TEXT("user") ) ? config[SAR_TEXT("user")] : SAR_TEXT("root");
+		tstring pwd = config.has_key( SAR_TEXT("password") ) ? config[SAR_TEXT("password")] : SAR_TEXT("");
 		tstring database = config[SAR_TEXT("database")];
-		tstring port = config.has_key( SAR_TEXT("port") ) ? config[SAR_TEXT("port")] : SAR_TEXT("0");
+		tstring port = config.has_key( SAR_TEXT("port") ) ? config[SAR_TEXT("port")] : SAR_TEXT("3306");
         mysql_real_connect( db,
                             SAR_T2S(host).c_str(),
                             SAR_T2S(user).c_str(),
@@ -105,7 +105,16 @@ namespace stactiverecord
             initialized_tables.push_back( tablename );
         }
 
-        // make table for int values
+		// make table for decimal values
+		tablename = table_prefix + classname + SAR_TEXT("_f");
+		if( !table_is_initialized( tablename ) )
+		{
+			debug( SAR_TEXT("initializing table ") + tablename );
+			execute( SAR_TEXT("CREATE TABLE IF NOT EXISTS ") + tablename + SAR_TEXT(" (id INT, keyname VARCHAR(255), value DECIMAL(10,4))") );
+			initialized_tables.push_back( tablename );
+		}
+
+        // make table for datetime values
         tablename = table_prefix + classname + SAR_TEXT("_dt");
         if( !table_is_initialized( tablename ) )
         {
@@ -138,13 +147,18 @@ namespace stactiverecord
         {
             if( cols[i].type == STRING )
             {
-                values += SAR_TEXT("\"") + cols[i].svalue + SAR_TEXT("\"");
+                values += SAR_TEXT("'") + cols[i].svalue + SAR_TEXT("'");
             }
             else if( cols[i].type == INTEGER )
             {
                 int_to_string( cols[i].ivalue, sint );
                 values += sint;
             }
+			else if( cols[i].type == DECIMAL )
+			{
+				double_to_string( cols[i].fvalue, sint );
+				values += sint;
+			}
             if( i != cols.size() - 1 )
                 values += SAR_TEXT(",");
         }
@@ -172,6 +186,11 @@ namespace stactiverecord
                 int_to_string( cols[i].ivalue, sint );
                 setstring += cols[i].key + SAR_TEXT("=") + sint;
             }
+			else if( cols[i].type == DECIMAL )
+			{
+				double_to_string( cols[i].fvalue, sint );
+				setstring += cols[i].key + SAR_TEXT("=") + sint;
+			}
             if( i != cols.size() - 1 )
                 setstring += SAR_TEXT(",");
         }
@@ -203,6 +222,10 @@ namespace stactiverecord
                 {
                     r << string_to_int( SAR_C2T( row[i] ) );
                 }
+				else if( cols[i].type == DECIMAL )
+				{
+					r << string_to_double( SAR_C2T( row[i] ) );
+				}
                 else if( cols[i].type == STRING )
                 {
                     char c_key[255];

@@ -41,6 +41,7 @@ namespace stactiverecord
         tstring key;
         tstring value;
         int ivalue;
+		double fvalue;
         DateTime dtvalue;
         SarVector<Q> ored;
         SarVector<Q> anded;
@@ -83,6 +84,12 @@ namespace stactiverecord
             ct = INTEGER;
             where = equals( _ivalue );
         };
+
+		Q( tstring _key, double _fvalue ) : key( _key ), fvalue( _fvalue )
+		{
+			ct = DECIMAL;
+			where = equals( _fvalue );
+		};
 
         /** Create query object
          * @param _key The key being queried

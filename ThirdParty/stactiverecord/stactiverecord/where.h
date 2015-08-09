@@ -34,6 +34,7 @@ namespace stactiverecord
     {
     public:
         int ivalue, ivaluetwo;
+		double fvalue, fvaluetwo;
         tstring svalue;
         std::vector<int> ivalues;
         wheretype type;
@@ -41,13 +42,17 @@ namespace stactiverecord
         bool isnot;
         Where( int _ivalue, wheretype _wt, bool _isnot = false ) :
             ivalue( _ivalue ), type( _wt ), ct( INTEGER ), isnot( _isnot ) {};
+		Where( double _fvalue, wheretype _wt, bool _isnot = false ) :
+			fvalue( _fvalue ), type( _wt ), ct( DECIMAL ), isnot( _isnot ) {};
         Where( DateTime _dtvalue, wheretype _wt, bool _isnot = false ) :
             ivalue( _dtvalue.to_int() ), type( _wt ), ct( DATETIME ), isnot( _isnot ) {};
         Where( std::vector<int> _ivalues, wheretype _wt, bool _isnot = false ) :
             ivalues( _ivalues ), type( _wt ), ct( INTEGER ), isnot( _isnot ) {};
         Where( int _ivalue, int _valuetwo, wheretype _wt, bool _isnot = false ) :
             ivalue( _ivalue ), ivaluetwo( _valuetwo ), type( _wt ), ct( INTEGER ), isnot( _isnot ) {};
-        Where( DateTime _dtvalue, DateTime _dtvaluetwo, wheretype _wt, bool _isnot = false ) :
+		Where( double _fvalue, double _fvaluetwo, wheretype _wt, bool _isnot = false ) :
+			fvalue( _fvalue ), fvaluetwo( _fvaluetwo ), type( _wt ), ct( DECIMAL ), isnot( _isnot ) {};
+		Where( DateTime _dtvalue, DateTime _dtvaluetwo, wheretype _wt, bool _isnot = false ) :
             ivalue( _dtvalue.to_int() ), ivaluetwo( _dtvaluetwo.to_int() ), type( _wt ), ct( DATETIME ), isnot( _isnot ) {};
         Where( tstring _svalue, wheretype _wt, bool _isnot = false ) :
             svalue( _svalue ), type( _wt ), ct( STRING ), isnot( _isnot ) {};
@@ -64,11 +69,15 @@ namespace stactiverecord
     Where* lessthan( int value );
     Where* greaterthan( int value );
     Where* between( int value, int valuetwo );
+	Where* lessthan( double value );
+	Where* greaterthan( double value );
+	Where* between( double value, double valuetwo );
     Where* lessthan( DateTime value );
     Where* greaterthan( DateTime value );
     Where* between( DateTime value, DateTime valuetwo );
     Where* equals( DateTime value );
     Where* equals( int value );
+	Where* equals( double value );
     Where* equals( tstring value );
     Where* equals( bool value );
     Where* equals( const tchar* value );
@@ -88,6 +97,9 @@ namespace stactiverecord
     Where* ngreaterthan( int value );
     Where* nbetween( int value, int valuetwo );
     Where* nequals( int value );
+	Where* ngreaterthan( double value );
+	Where* nbetween( double value, double valuetwo );
+	Where* nequals( double value );
     Where* nlessthan( DateTime value );
     Where* ngreaterthan( DateTime value );
     Where* nbetween( DateTime value, DateTime valuetwo );

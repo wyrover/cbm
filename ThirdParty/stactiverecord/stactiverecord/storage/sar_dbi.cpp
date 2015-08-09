@@ -182,11 +182,31 @@ namespace stactiverecord
         int value;
         for ( unsigned int i = 0; i < rows.size(); i++ )
         {
+			if(rows[i].ints.empty()) continue;
             rows[i].get_string( 0, key );
             value = rows[i].get_int( 0 );
             values[key] = value;
         }
     };
+
+	void Sar_Dbi::get( int id, tstring classname, SarMap<double>& values )
+	{
+		values.clear();
+		tstring tablename = table_prefix + classname + SAR_TEXT("_f");
+		SarVector<KVT> cols;
+		cols << KVT( SAR_TEXT("keyname"), STRING );
+		cols << KVT( SAR_TEXT("value"), INTEGER );
+		SarVector<Row> rows = select( tablename, cols, Q( SAR_TEXT("id"), id ) );
+		tstring key;
+		double value;
+		for ( unsigned int i = 0; i < rows.size(); i++ )
+		{
+			if(rows[i].decimals.empty()) continue;
+			rows[i].get_string( 0, key );
+			value = rows[i].get_decimal( 0 );
+			values[key] = value;
+		}
+	};
 
     void Sar_Dbi::get( int id, tstring classname, SarMap<DateTime>& values )
     {
@@ -199,6 +219,7 @@ namespace stactiverecord
         tstring key;
         for ( unsigned int i = 0; i < rows.size(); i++ )
         {
+			if(rows[i].strings.empty()) continue;
             rows[i].get_string( 0, key );
             DateTime dt;
             dt.from_int( rows[i].get_int( 0 ) );
@@ -246,6 +267,26 @@ namespace stactiverecord
         }
     };
 
+	void Sar_Dbi::set( int id, tstring classname, SarMap<double> values, bool isinsert )
+	{
+		tstring tablename = table_prefix + classname + SAR_TEXT("_f");
+		for( std::map<tstring, double>::iterator i = values.begin(); i != values.end(); ++i )
+		{
+			SarVector<KVT> values;
+			values << KVT( SAR_TEXT("value"), ( *i ).second );
+			if( isinsert )
+			{
+				values << KVT( SAR_TEXT("id"), id );
+				values << KVT( SAR_TEXT("keyname"), tstring( ( *i ).first ) );
+				insert( tablename, values );
+			}
+			else
+			{
+				update( tablename, values, Q( SAR_TEXT("id"), id ) && Q( SAR_TEXT("keyname"), tstring( ( *i ).first ) ) );
+			}
+		}
+	};
+
     void Sar_Dbi::set( int id, tstring classname, SarMap<DateTime> values, bool isinsert )
     {
         tstring tablename = table_prefix + classname + SAR_TEXT("_dt");
@@ -268,7 +309,19 @@ namespace stactiverecord
 
     void Sar_Dbi::del( int id, tstring classname, SarVector<tstring> keys, coltype ct )
     {
-        tstring tablename = table_prefix + ( ( ct == STRING ) ? classname + SAR_TEXT("_s") : classname + SAR_TEXT("_i") );
+        tstring tablename = table_prefix + classname;
+		if( ct == STRING )
+		{
+			tablename += SAR_TEXT("_s");
+		}
+		else if(ct == INTEGER)
+		{
+			tablename += SAR_TEXT("_i");
+		}
+		else if(ct == DECIMAL)
+		{
+			tablename += SAR_TEXT("_f");
+		}
         for( unsigned int i = 0; i < keys.size(); i++ )
             remove( tablename, Q( SAR_TEXT("id"), id ) && Q( SAR_TEXT("keyname"), keys[i] ) );
     };
@@ -280,6 +333,9 @@ namespace stactiverecord
 
         tablename = table_prefix + classname + SAR_TEXT("_i");
         remove( tablename, Q( SAR_TEXT("id"), id ) );
+
+		tablename = table_prefix + classname + SAR_TEXT("_f");
+		remove( tablename, Q( SAR_TEXT("id"), id ) );
 
         tablename = table_prefix + classname + SAR_TEXT("_e");
         remove( tablename, Q( SAR_TEXT("id"), id ) );
@@ -298,6 +354,10 @@ namespace stactiverecord
         // delete int values table
         tablename = table_prefix + classname + SAR_TEXT("_i");
         remove( tablename );
+
+		// delete decimal values table
+		tablename = table_prefix + classname + SAR_TEXT("_f");
+		remove( tablename );
 
         // delete existing values table
         tablename = table_prefix + classname + SAR_TEXT("_e");
@@ -423,6 +483,9 @@ namespace stactiverecord
         tablename = table_prefix + classname + SAR_TEXT("_i");
         rows.unionize( select( tablename, cols, SAR_TEXT(""), true ) );
 
+		tablename = table_prefix + classname + SAR_TEXT("_f");
+		rows.unionize( select( tablename, cols, SAR_TEXT(""), true ) );
+
         tablename = table_prefix + SAR_TEXT("relationships");
         cols.clear();
         cols << KVT( SAR_TEXT("class_one_id"), INTEGER );
@@ -449,6 +512,12 @@ namespace stactiverecord
             cols << KVT( SAR_TEXT("id"), INTEGER );
             rows = select( tablename, cols, Q( SAR_TEXT("keyname"), key ) && Q( SAR_TEXT("value"), where ) );
         }
+		else if( where->ct == DECIMAL )
+		{
+			tablename = table_prefix + classname + SAR_TEXT("_f");
+			cols << KVT( SAR_TEXT("id"), INTEGER );
+			rows = select( tablename, cols, Q( SAR_TEXT("keyname"), key ) && Q( SAR_TEXT("value"), where ) );
+		}
         else if( where->ct == DATETIME )
         {
             tablename = table_prefix + classname + SAR_TEXT("_dt");
@@ -473,6 +542,8 @@ namespace stactiverecord
                     rows = select( tablename, cols, Q( SAR_TEXT("keyname"), key ), true );
                     tablename = table_prefix + classname + SAR_TEXT("_i");
                     rows.unionize( select( tablename, cols, Q( SAR_TEXT("keyname"), key ), true ) );
+					tablename = table_prefix + classname + SAR_TEXT("_f");
+					rows.unionize( select( tablename, cols, Q( SAR_TEXT("keyname"), key ), true ) );
                 }
                 else
                 {
@@ -562,6 +633,39 @@ namespace stactiverecord
                 break;
             }
         }
+		else if( where->ct == DECIMAL )
+		{
+			tstring sint, second_sint;
+			double_to_string( where->fvalue, sint );
+			switch( where->type )
+			{
+			case GREATERTHAN:
+				swhere = ( ( isnot ) ? SAR_TEXT("<= ") : SAR_TEXT("> ") ) + sint ;
+				break;
+			case LESSTHAN:
+				swhere = ( ( isnot ) ? SAR_TEXT(">= ") : SAR_TEXT("< ") ) + sint;
+				break;
+			case EQUALS:
+				swhere = ( ( isnot ) ? SAR_TEXT("!= ") : SAR_TEXT("= ") ) + sint;
+				break;
+			case BETWEEN:
+				double_to_string( where->fvaluetwo, second_sint );
+				swhere = ( ( isnot ) ? SAR_TEXT("NOT BETWEEN ") : SAR_TEXT("BETWEEN ") ) + sint + SAR_TEXT(" AND ") + second_sint;
+				break;
+			//case ISIN:
+			//	tstring idlist = SAR_TEXT("(");
+			//	for( std::vector<int>::size_type i = 0; i < where->fvalues.size(); i++ )
+			//	{
+			//		int_to_string( where->fvalues[i], sint );
+			//		idlist += sint;
+			//		if( i != ( where->ivalues.size() - 1 ) )
+			//			idlist += SAR_TEXT(",");
+			//	}
+			//	idlist += SAR_TEXT(")");
+			//	swhere = ( ( isnot ) ? SAR_TEXT("NOT IN ") : SAR_TEXT("IN ") ) + idlist;
+			//	break;
+			}
+		}
         else if( where->ct == STRING )
         {
             switch( where->type )

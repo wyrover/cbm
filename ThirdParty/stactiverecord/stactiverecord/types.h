@@ -30,15 +30,16 @@ Created by bmuller <bmuller@butterfat.net>
 namespace stactiverecord
 {
 
-    template <class T>
+	template <class T, class Comp=std::equal_to<T> >
     class SarVector : public std::vector<T>
     {
     public:
         SarVector() : std::vector<T>() {};
         bool includes( T value )
         {
+			Comp cmp;
             for( unsigned int i = 0; i < this->size(); i++ )
-                if( this->at( i ) == value )
+                if( cmp(this->at( i ), value) )
                     return true;
             return false;
         };
@@ -62,7 +63,8 @@ namespace stactiverecord
             // terribly inefficient ... fix this later
             for( unsigned int i = 0; i < this->size(); i++ )
             {
-                if( this->at( i ) == value )
+				Comp cmp;
+                if( cmp(this->at( i ), value) )
                 {
                     this->erase( this->begin() + i );
                     remove( value );
@@ -71,47 +73,48 @@ namespace stactiverecord
         };
         int count( T value )
         {
+			Comp cmp;
             int count = 0;
             for( unsigned int i = 0; i < this->size(); i++ )
-                if( this->at( i ) == value )
+                if( cmp(this->at( i ), value) )
                     count++;
             return count;
         };
         // return a vector containing any new values in others
-        SarVector<T> get_new( SarVector<T> others )
+        SarVector<T, Comp> get_new( SarVector<T, Comp> others )
         {
-            SarVector<T> newones;
+            SarVector<T, Comp> newones;
             for( unsigned int i = 0; i < others.size(); i++ )
                 if( !this->includes( others[i] ) )
                     newones << others[i];
             return newones;
         };
-        void unionize( SarVector<T> others )
+        void unionize( SarVector<T, Comp> others )
         {
             for( unsigned int i = 0; i < others.size(); i++ )
                 if( !this->includes( others[i] ) )
                     this->push_back( others[i] );
         };
-        SarVector<T> intersects( SarVector<T> others )
+        SarVector<T, Comp> intersects( SarVector<T, Comp> others )
         {
-            SarVector<T> joined;
+            SarVector<T, Comp> joined;
             for( unsigned int i = 0; i < others.size(); i++ )
                 if( this->includes( others[i] ) )
                     joined << others[i];
             return joined;
         };
-        void operator+( SarVector<T> others )
+        void operator+( SarVector<T, Comp> others )
         {
             for( unsigned int i = 0; i < others.size(); i++ )
                 this->push_back( others[i] );
         };
-        void operator-( SarVector<T> others )
+        void operator-( SarVector<T, Comp> others )
         {
             for( unsigned int i = 0; i < others.size(); i++ )
                 this->remove( others[i] );
         };
         // if order doesn't matter, consider equality
-        bool operator==( SarVector<T>& others )
+        bool operator==( SarVector<T, Comp>& others )
         {
             if( this->size() != others.size() )
                 return false;
@@ -120,7 +123,7 @@ namespace stactiverecord
                     return false;
             return true;
         };
-        bool operator!=( SarVector<T>& others )
+        bool operator!=( SarVector<T, Comp>& others )
         {
             return !( *this == others );
         };
@@ -195,8 +198,8 @@ namespace stactiverecord
         };
     };
 
-    template <class T>
-    class ObjGroup : public SarVector<T>
+	template <class T, class Comp=std::equal_to<T> >
+    class ObjGroup : public SarVector<T, Comp>
     {
     private:
         SarVector<int> ids;
@@ -208,13 +211,13 @@ namespace stactiverecord
             slow_inits = false;
         };
     public:
-        ObjGroup() : SarVector<T>(), slow_inits( false ) {};
-        ObjGroup( SarVector<T>& sr ) : SarVector<T>(), slow_inits( false )
+        ObjGroup() : SarVector<T, Comp>(), slow_inits( false ) {};
+        ObjGroup( SarVector<T, Comp>& sr ) : SarVector<T, Comp>(), slow_inits( false )
         {
             for( unsigned int i = 0; i < sr.size(); i++ )
                 push_back( sr[i] );
         };
-        ObjGroup( SarVector<int> _ids ) : SarVector<T>(), slow_inits( true )
+        ObjGroup( SarVector<int> _ids ) : SarVector<T, Comp>(), slow_inits( true )
         {
             ids = _ids;
         };
@@ -222,7 +225,7 @@ namespace stactiverecord
         {
             if( slow_inits )
                 return ids.size();
-            return SarVector<T>::size();
+            return SarVector<T, Comp>::size();
         };
         SarVector<int> get_ids()
         {
@@ -264,7 +267,7 @@ namespace stactiverecord
         T& at( int i )
         {
             if( slow_inits ) ids_to_objs();
-            return SarVector<T>::at( i );
+            return SarVector<T, Comp>::at( i );
         };
     };
 };

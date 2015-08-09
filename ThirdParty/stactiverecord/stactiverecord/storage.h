@@ -35,9 +35,11 @@ namespace stactiverecord
     public:
         tstring key, svalue;
         int ivalue;
+		double fvalue;
         coltype type;
         KVT( tstring _key, tstring _value ) : key( _key ), svalue( _value ), type( STRING ) {};
         KVT( tstring _key, int _value ) : key( _key ), ivalue( _value ), type( INTEGER ) {};
+		KVT( tstring _key, double _value ) : key( _key ), fvalue( _value ), type( DECIMAL ) {};
         KVT( tstring _key, coltype ct ) : key( _key ), type( ct ) {};
     };
 
@@ -45,21 +47,26 @@ namespace stactiverecord
     {
     public:
         SarVector<int> ints;
+		SarVector<double, mapDecimalCmp> decimals;
         SarVector<tstring> strings;
         SarVector<DateTime> dts;
         void operator<<( int i )
         {
             ints << i;
         };
+		void operator<<( double f )
+		{
+			decimals << f;
+		};
         void operator<<( tstring s )
         {
             strings << s;
         };
-        bool operator!=( Row& other )
+        bool operator!=( const Row& other ) const
         {
             return !( *this == other );
         };
-        bool operator==( Row& other )
+        bool operator==( const Row& other ) const
         {
             return ints == other.ints && strings == other.strings && dts == other.dts;
         };
@@ -75,6 +82,12 @@ namespace stactiverecord
                 throw Sar_ColumnNotFoundException( SAR_TEXT("Int column not found.") );
             return ints[position];
         };
+		double get_decimal( int position )
+		{
+			if( position > ( int )ints.size() - 1 )
+				throw Sar_ColumnNotFoundException( SAR_TEXT("Int column not found.") );
+			return decimals[position];
+		};
         //void dump()
         //{
         //    std::cout << "Ints:\n";
@@ -108,6 +121,8 @@ namespace stactiverecord
         void get( int id, tstring classname, SarMap<tstring>& values );
         // get int values
         void get( int id, tstring classname, SarMap<int>& values );
+		// get decimal values
+		void get( int id, tstring classname, SarMap<double>& values );
         // get datetime values
         void get( int id, tstring classname, SarMap<DateTime>& values );
         // get record relations (of a specific class)
@@ -119,6 +134,8 @@ namespace stactiverecord
         void set( int id, tstring classname, SarMap<tstring> values, bool isinsert );
         // insert/modify int values
         void set( int id, tstring classname, SarMap<int> values, bool isinsert );
+		// insert/modify decimal values
+		void set( int id, tstring classname, SarMap<double> values, bool isinsert );
         // insert/modify datetime values
         void set( int id, tstring classname, SarMap<DateTime> values, bool isinsert );
         // insert record relations

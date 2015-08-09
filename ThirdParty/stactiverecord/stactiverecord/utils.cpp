@@ -50,7 +50,7 @@ namespace stactiverecord
     /** convert column type to string */
     void coltype_to_name( coltype ct, tstring& name )
     {
-        tstring scoltype[] = { SAR_TEXT("NONE"), SAR_TEXT("INTEGER"), SAR_TEXT("STRING"), SAR_TEXT("RECORD") };
+        tstring scoltype[] = { SAR_TEXT("NONE"), SAR_TEXT("INTEGER"), SAR_TEXT("DECIMAL"), SAR_TEXT("STRING"), SAR_TEXT("RECORD") };
         name = scoltype[ct];
     };
 
@@ -62,6 +62,13 @@ namespace stactiverecord
 		s = SAR_S2T( std::string(c_int) );
     };
 
+	void double_to_string(double f, tstring& s)
+	{
+		char c_double[100];
+		sprintf( c_double, "%lf", f );
+		s = SAR_S2T( std::string(c_double) );
+	}
+
     /** Better be sure s is really a string - used for postgres int column
         retrieval
     **/
@@ -71,6 +78,13 @@ namespace stactiverecord
         sscanf( SAR_T2S(s).c_str(), "%d", &i );
         return i;
     }
+
+	double string_to_double(tstring s)
+	{
+		double f;
+		sscanf( SAR_T2S(s).c_str(), "%lf", &f );
+		return f;
+	}
 
     /** print debugging information if DEBUG is defined */
     void debug( tstring s )

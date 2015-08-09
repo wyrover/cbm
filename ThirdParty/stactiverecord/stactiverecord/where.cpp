@@ -50,6 +50,11 @@ namespace stactiverecord
         return new Where( value, GREATERTHAN );
     };
 
+	Where* greaterthan( double value )
+	{
+		return new Where( value, GREATERTHAN );
+	};
+
     Where* greaterthan( DateTime value )
     {
         return new Where( value, GREATERTHAN );
@@ -59,6 +64,11 @@ namespace stactiverecord
     {
         return new Where( value, LESSTHAN );
     };
+
+	Where* lessthan( double value )
+	{
+		return new Where( value, LESSTHAN );
+	};
 
     Where* lessthan( DateTime value )
     {
@@ -70,6 +80,11 @@ namespace stactiverecord
         return new Where( value, valuetwo, BETWEEN );
     };
 
+	Where* between( double value, double valuetwo )
+	{
+		return new Where( value, valuetwo, BETWEEN );
+	};
+
     Where* between( DateTime value, DateTime valuetwo )
     {
         return new Where( value, valuetwo, BETWEEN );
@@ -79,6 +94,11 @@ namespace stactiverecord
     {
         return new Where( value, EQUALS );
     };
+
+	Where* equals( double value )
+	{
+		return new Where( value, EQUALS );
+	};
 
     Where* equals( DateTime value )
     {
@@ -134,6 +154,11 @@ namespace stactiverecord
         return new Where( value, GREATERTHAN, true );
     };
 
+	Where* ngreaterthan( double value )
+	{
+		return new Where( value, GREATERTHAN, true );
+	};
+
     Where* ngreaterthan( DateTime value )
     {
         return new Where( value, GREATERTHAN, true );
@@ -143,6 +168,11 @@ namespace stactiverecord
     {
         return new Where( value, LESSTHAN, true );
     };
+
+	Where* nlessthan( double value )
+	{
+		return new Where( value, LESSTHAN, true );
+	};
 
     Where* nlessthan( DateTime value )
     {
@@ -154,6 +184,11 @@ namespace stactiverecord
         return new Where( value, valuetwo, BETWEEN, true );
     };
 
+	Where* nbetween( double value, double valuetwo )
+	{
+		return new Where( value, valuetwo, BETWEEN, true );
+	};
+
     Where* nbetween( DateTime value, DateTime valuetwo )
     {
         return new Where( value, valuetwo, BETWEEN, true );
@@ -163,6 +198,11 @@ namespace stactiverecord
     {
         return new Where( value, EQUALS, true );
     };
+
+	Where* nequals( double value )
+	{
+		return new Where( value, EQUALS, true );
+	};
 
     Where* nequals( DateTime value )
     {

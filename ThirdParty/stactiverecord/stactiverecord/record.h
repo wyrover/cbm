@@ -42,6 +42,7 @@ namespace stactiverecord
         bool dirty;
         SarMap<tstring> svalues;
         SarMap<int> ivalues;
+		SarMap<double> fvalues;
         SarMap< SarVector<int> > rvalues;
         SarMap<DateTime> dtvalues;
         // lazy updates mean we only initialize values if necessary
@@ -70,7 +71,10 @@ namespace stactiverecord
                 case INTEGER:
                     ivalues.remove( colname );
                     break;
-                case STRING:
+				case DECIMAL:
+					fvalues.remove( colname );
+					break;
+				case STRING:
                     svalues.remove( colname );
                     break;
                 case DATETIME:
@@ -108,6 +112,7 @@ namespace stactiverecord
             {
                 _db->get( id, classname, svalues );
                 _db->get( id, classname, ivalues );
+				_db->get( id, classname, fvalues );
                 _db->get( id, classname, rvalues );
                 _db->get( id, classname, dtvalues );
                 initial_update = true;
@@ -144,6 +149,7 @@ namespace stactiverecord
                 SarVector<tstring> propkeys;
                 SarMap<tstring> spropvalues;
                 SarMap<int> ipropvalues;
+				SarMap<double> fpropvalues;
                 SarMap<DateTime> dtpropvalues;
 
                 // new strings
@@ -177,7 +183,24 @@ namespace stactiverecord
                 // deleted ints
                 propkeys.clear();
                 get_deleted( propkeys, INTEGER );
-                _db->del( id, classname, propkeys, STRING );
+                _db->del( id, classname, propkeys, INTEGER );
+
+				// new decimals
+				propkeys.clear();
+				get_new( propkeys, DECIMAL );
+				fvalues.submap( propkeys, fpropvalues );
+				_db->set( id, classname, fpropvalues, true );
+
+				// changed decimals
+				propkeys.clear();
+				get_changed( propkeys, DECIMAL );
+				fvalues.submap( propkeys, fpropvalues );
+				_db->set( id, classname, fpropvalues, false );
+
+				// deleted decimals
+				propkeys.clear();
+				get_deleted( propkeys, DECIMAL );
+				_db->del( id, classname, propkeys, DECIMAL );
 
                 // new datetimes
                 propkeys.clear();
@@ -276,6 +299,33 @@ namespace stactiverecord
             dirty = true;
         };
 
+		void set( tstring key, double value )
+		{
+			if( !initial_update && id != -1 ) update();
+			// no change
+			mapDecimalCmp cmp;
+			if( fvalues.has_key( key ) && cmp(fvalues[key], value) )
+				return;
+
+			if( fvalues.has_key( key ) )
+			{
+				register_change( key, DECIMAL );
+			}
+			else if( is_registered_deleted( key, DECIMAL ) )
+			{
+				// in this case it's now a modify
+				unregister_delete( key, DECIMAL );
+				register_change( key, DECIMAL );
+			}
+			else
+			{
+				clear_other_values( key, DECIMAL );
+				register_new( key, DECIMAL );
+			}
+			fvalues[key] = value;
+			dirty = true;
+		};
+
         void set( tstring key, DateTime value )
         {
             if( !initial_update && id != -1 ) update();
@@ -342,6 +392,23 @@ namespace stactiverecord
             else throw Sar_NoSuchPropertyException( SAR_TEXT("property \"") + key + SAR_TEXT("\" does not exist") );
         };
 
+		void get( tstring key, double& value, double alt )
+		{
+			if( !initial_update && id != -1 ) update();
+			if( fvalues.has_key( key ) )
+				value = fvalues[key];
+			else
+				value = alt;
+		};
+
+		void get( tstring key, double& value )
+		{
+			if( !initial_update && id != -1 ) update();
+			if( fvalues.has_key( key ) )
+				value = fvalues[key];
+			else throw Sar_NoSuchPropertyException( SAR_TEXT("property \"") + key + SAR_TEXT("\" does not exist") );
+		};
+
         void get( tstring key, bool& value, bool alt )
         {
             if( !initial_update && id != -1 ) update();
@@ -396,7 +463,10 @@ namespace stactiverecord
             case INTEGER:
                 ivalues.remove( key );
                 break;
-            case STRING:
+			case DECIMAL:
+				fvalues.remove( key );
+				break;
+			case STRING:
                 svalues.remove( key );
                 break;
             case DATETIME:
@@ -429,7 +499,9 @@ namespace stactiverecord
                 return STRING;
             if( ivalues.has_key( colname ) || is_registered_new( colname, INTEGER ) )
                 return INTEGER;
-            if( dtvalues.has_key( colname ) || is_registered_new( colname, DATETIME ) )
+			if( fvalues.has_key( colname ) || is_registered_new( colname, DECIMAL ) )
+				return DECIMAL;
+			if( dtvalues.has_key( colname ) || is_registered_new( colname, DATETIME ) )
                 return DATETIME;
             return NONE;
         };

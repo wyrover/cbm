@@ -44,8 +44,8 @@ namespace stactiverecord
         int to_int();
         void from_int( int i );
         void from_tm( tm* tm );
-        bool operator==( DateTime& other );
-        bool operator!=( DateTime& other );
+        bool operator==( const DateTime& other ) const;
+        bool operator!=( const DateTime& other ) const;
         //void dump()
         //{
         //    tstring s;

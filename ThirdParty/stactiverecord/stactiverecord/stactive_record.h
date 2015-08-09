@@ -17,6 +17,9 @@
 #include <map>
 #include <exception>
 #include <time.h>
+#include <cmath>
+#include <algorithm>
+#include <functional>
 
 /// \namespace stactiverecord The project's namespace
 namespace stactiverecord
@@ -26,7 +29,7 @@ namespace stactiverecord
      * editing coltype_to_name in utils too.
      * \enum wheretype The possible specific types/relationships a Where class can represent.
      */
-    enum coltype { NONE, INTEGER, STRING, RECORD, DATETIME, ALL };
+    enum coltype { NONE, INTEGER, DECIMAL, STRING, RECORD, DATETIME, ALL };
     enum wheretype { STARTSWITH, ENDSWITH, CONTAINS, GREATERTHAN, LESSTHAN, BETWEEN, EQUALS, OBJECTRELATION, ISIN, ISNULL };
 
     // Forward declaration of class Record

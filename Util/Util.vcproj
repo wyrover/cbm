@@ -64,7 +64,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="log4cplusSU.lib lemon.lib sar.lib"
+				AdditionalDependencies="log4cplusSU.lib lemon.lib sar.lib ws2_32.lib"
 				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\lemon\lib;..\ThirdParty\stactiverecord\lib\win32"
 				GenerateDebugInformation="true"
 				SubSystem="2"
@@ -138,7 +138,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="log4cplusSU-x64.lib lemon_x64.lib sar.lib"
+				AdditionalDependencies="log4cplusSU-x64.lib lemon_x64.lib sar.lib ws2_32.lib"
 				AdditionalLibraryDirectories="&quot;..\ThirdParty\log4cplus\lib&quot;;&quot;..\ThirdParty\lemon\lib&quot;;&quot;..\ThirdParty\stactiverecord\lib\x64&quot;"
 			/>
 			<Tool
@@ -209,7 +209,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="log4cplusSU.lib lemon.lib sar.lib"
+				AdditionalDependencies="log4cplusSU.lib lemon.lib sar.lib ws2_32.lib"
 				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\lemon\lib;..\ThirdParty\stactiverecord\lib\win32"
 				GenerateDebugInformation="true"
 				SubSystem="2"
@@ -286,7 +286,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="log4cplusSU-x64.lib lemon_x64.lib sar.lib"
+				AdditionalDependencies="log4cplusSU-x64.lib lemon_x64.lib sar.lib ws2_32.lib"
 				AdditionalLibraryDirectories="&quot;..\ThirdParty\log4cplus\lib&quot;;&quot;..\ThirdParty\lemon\lib&quot;;&quot;..\ThirdParty\stactiverecord\lib\x64&quot;"
 			/>
 			<Tool

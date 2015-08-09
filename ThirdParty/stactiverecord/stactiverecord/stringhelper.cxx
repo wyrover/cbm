@@ -1,3 +1,5 @@
+#include <Windows.h>
+
 #include "stringhelper.h"
 
 #include <iterator>
@@ -9,6 +11,37 @@
 #include <cassert>
 #include <vector>
 
+static std::string UnicodeToANSI(const std::wstring& str)
+{
+	//unicode --> ansi
+	std::string result;
+	int len = ::WideCharToMultiByte(CP_ACP, NULL, str.c_str(), (int)str.size(), NULL, 0, NULL, NULL);
+	result.assign(len, 0);
+	char* p = (char*)result.data();
+	::WideCharToMultiByte(CP_ACP, NULL, str.data(), (int)str.size(), p, len, NULL, NULL);
+	return result;
+}
+
+static std::wstring ANSIToUnicode(const std::string& str)
+{
+	//ansi --> unicode
+	std::wstring result;
+	int len = ::MultiByteToWideChar(CP_ACP, 0, str.c_str(), (int)str.size(), NULL, 0);
+	result.assign(len, 0);
+	wchar_t* p = (wchar_t*)result.data();
+	::MultiByteToWideChar(CP_ACP, NULL, str.data(), (int)str.size(), p, len);
+
+	// skip 0xfeff
+	/*
+	wchar_t a=result.at(0);
+	if (a==0xfeff)
+	{
+		result = result.substr(1,result.size()-1);
+	}
+	*/
+
+	return result;
+}
 
 namespace stactiverecord
 {
@@ -108,9 +141,10 @@ static void towstring_internal (std::wstring & outstr, const char * src, std::si
 
 std::wstring towstring(const std::string& src)
 {
-	std::wstring ret;
-	towstring_internal (ret, src.c_str (), src.size (), std::locale ());
-	return ret;
+	//std::wstring ret;
+	//towstring_internal (ret, src.c_str (), src.size (), std::locale ());
+	//return ret;
+	return ANSIToUnicode(src);
 }
 
 
@@ -189,9 +223,10 @@ static void tostring_internal (std::string & outstr, const wchar_t * src, std::s
 
 std::string tostring(const std::wstring& src)
 {
-	std::string ret;
-	tostring_internal (ret, src.c_str (), src.size (), std::locale ());
-	return ret;
+	//std::string ret;
+	//tostring_internal (ret, src.c_str (), src.size (), std::locale ());
+	//return ret;
+	return UnicodeToANSI(src);
 }
 
 //std::string tostring(wchar_t const * src)

@@ -38,13 +38,23 @@ namespace stactiverecord
         }
     };
 
+	struct mapDecimalCmp
+	{
+		bool operator()( double f1, double f2 ) const
+		{
+			return fabs((f1-f2)*1e4)<1e-4;
+		}
+	};
+
     // In utils.cpp
     void int_to_string( int i, tstring& s );
+	void double_to_string(double f, tstring& s);
     void debug( tstring s );
     void check_classname( tstring classname );
     std::vector<tstring> explode( tstring s, tstring e );
     void coltype_to_name( coltype ct, tstring& name );
     void join( std::vector<tstring> v, tstring joiner, tstring& result );
     int string_to_int( tstring s );
+	double string_to_double(tstring s);
 };
 
