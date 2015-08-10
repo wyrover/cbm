@@ -426,15 +426,23 @@
 				Name="dao"
 				>
 				<File
-					RelativePath=".\BaseDao.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\DaoManager.cpp"
+					RelativePath=".\Db.cpp"
 					>
 				</File>
 				<File
 					RelativePath=".\Entity.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Query.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Record.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Row.cpp"
 					>
 				</File>
 			</Filter>
@@ -463,15 +471,23 @@
 				Name="dao"
 				>
 				<File
-					RelativePath=".\BaseDao.h"
-					>
-				</File>
-				<File
-					RelativePath=".\DaoManager.h"
+					RelativePath=".\Db.h"
 					>
 				</File>
 				<File
 					RelativePath=".\Entity.h"
+					>
+				</File>
+				<File
+					RelativePath=".\Query.h"
+					>
+				</File>
+				<File
+					RelativePath=".\Record.h"
+					>
+				</File>
+				<File
+					RelativePath=".\Row.h"
 					>
 				</File>
 			</Filter>

@@ -1,14 +1,17 @@
 #include "StdAfx.h"
 #include "DaoHelper.h"
 
+#include "Db.h"
+using namespace orm;
+
 #include "Entity.h"
 using namespace cbm;
 
 #include <ArxHelper/HelperClass.h>
 
-void DaoHelper::ConfigureDao(const CString&  url, const CString&  user, const CString&  password, const CString&  dataBase)
+void DaoHelper::ConfigureDao(const CString& host, const CString& user, const CString& password, const CString& dataBase)
 {
-	if(!DaoManager::Configure(url, user, password, dataBase))
+	if(!Db::Instance()->config(host, user, password, dataBase))
 	{
 		AfxMessageBox(_T("连接MySQL数据库失败，请联系技术人员!!!"));
 	}
