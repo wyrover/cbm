@@ -10,7 +10,7 @@ string join(vector<string> vec, string delim){
 	if( vec.empty() )
 		return "";
 
-	for(auto it=vec.begin();it!=vec.end()-1;++it){
+	for(vector<string>::iterator it=vec.begin();it!=vec.end()-1;++it){
 		result +=
 			(*it) + delim;
 	}
@@ -33,7 +33,7 @@ string Query::build_conditions(){
 }
 string Query::build_field_keys(){
 	string keys;
-	auto it = fields.begin();
+	map<string,string>::iterator it = fields.begin();
 
 	while( it != fields.end() ){
 		keys += (*it).first;
@@ -46,7 +46,7 @@ string Query::build_field_keys(){
 }
 string Query::build_field_values(){
 	string values;
-	auto it = fields.begin();
+	map<string,string>::iterator it = fields.begin();
 
 	while( it != fields.end() ){
 		values += "\'" + 
@@ -64,7 +64,8 @@ string Query::build_changes(){
 	if( dirty_fields.empty() )
 		return "";
 
-	for(auto field_name : dirty_fields){
+	for(vector<string>::iterator itr=dirty_fields.begin(); itr!=dirty_fields.end(); ++itr) {
+		string field_name = *itr;
 		changes +=
 			field_name + "=\'" +
 			escape(get(field_name)) + "\',";

@@ -1,18 +1,19 @@
 #include "storm.h"
 
-#include <thread>
-#include <concurrent_queue.h>
+//#include <boost/thread.hpp>
+//#include <boost/concurrent_queue.hpp>
 
-#include <mysql.h>
+#include <mysql\mysql.h>
 
 using namespace std;
-using namespace chrono;
-using namespace concurrency;
+//using namespace boost;
+//using boost::chrono;
+//using namespace concurrency;
 
 namespace ORM{
 
-concurrent_queue<MYSQL*> conns;
-_declspec(thread) MYSQL *local_db = nullptr;
+//concurrent_queue<MYSQL*> conns;
+//_declspec(thread) MYSQL *local_db = nullptr;
 
 bool initPool(){
 	string host = get_config("host");
@@ -42,7 +43,7 @@ bool initPool(){
 
 		mysql_autocommit( mysql, false );
 
-		conns.push( mysql );
+		//conns.push( mysql );
 	}
 
 	return true;

@@ -1,7 +1,9 @@
 #ifndef _STORM_H
 #define _STORM_H
 
-#include <mysql.h>
+#define WIN32_LEAN_AND_MEAN
+#include <WinSock2.h>
+#include <mysql\mysql.h>
 
 #include <string>
 #include <vector>

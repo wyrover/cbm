@@ -149,13 +149,13 @@ Query *Query::find_single_record(){
 		return NULL;
 
 	ORM::Query *obj = ORM::from( table );
-	auto fields =
+	vector<string> fields =
 		fetch_fields( result );
 
 	for(int i=0;i<fields.size();i++)
 		obj->set_with_no_dirt( fields[i], row[i] );
 
-	/* 나중에 이 레코드를 식별하기 위해 */
+	/* then, in order to identify the record. */
 	obj->where("id", obj->get("id") );
 	obj->set_query_type(
 		QueryType::eUPDATE );
@@ -175,10 +175,8 @@ vector<Query*> Query::find_records(){
 	if( result == NULL )
 		return results;
 
-	auto fields =
-		fetch_fields( result );
-	auto rows =
-		fetch_rows( result );
+	vector<string> fields = fetch_fields( result );
+	vector<MYSQL_ROW> rows = fetch_rows( result );
 
 	for(int i=0;i<rows.size();i++){
 		ORM::Query *obj = ORM::from( table );
@@ -186,7 +184,7 @@ vector<Query*> Query::find_records(){
 		for(int j=0;j<fields.size();j++)
 			obj->set_with_no_dirt( fields[j], rows[i][j] );
 
-		/* 나중에 이 레코드를 식별하기 위해 */
+		/* then, in order to identify the record. */
 		obj->where("id", obj->get("id") );
 		obj->set_query_type(
 			QueryType::eUPDATE );

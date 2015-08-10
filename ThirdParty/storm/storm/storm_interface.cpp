@@ -193,8 +193,8 @@ string &Query::get(const string &key){
 	return fields[key];
 }
 string &Query::operator[](const std::string &key){
-	/* operator[]로 접근된 값들은 수정 여부를 알 수 없으므로
-	   무조건 dirt시킨다, 나중에 수정 */
+	/* operator [] close to the value is modified or not, and i know
+	   you can modify the dirt later */
 	dirt_field( key );
 
 	return fields[key];

@@ -14,7 +14,7 @@ void configure(
 void configure_with_no_override(
 	const string &key, const string &value){
 
-	auto pair = configs.find( key );
+	map<string,string>::iterator pair = configs.find( key );
 	if( pair == configs.end() )
 		configs[key] = value;
 }
