@@ -82,7 +82,7 @@ int main( int argc, char* argv[] )
 	std::locale m_origin_locale = std::locale::global(std::locale("chs"));
 
 	std::cout<<"你好xxxx\n";
-	std::cout<<SAR_T2S(SAR_TEXT("aaa你好"));
+	std::cout<<SAR_T2S(SAR_TEXT("aaa你好"))<<"\n";
 
     //if( argc != 2 )
     //{
@@ -92,6 +92,12 @@ int main( int argc, char* argv[] )
     //Sar_Dbi::dbi = Sar_Dbi::makeStorage( SAR_S2T(std::string( argv[1] )) );
 	Sar_Dbi::dbi = Sar_Dbi::makeStorage( SAR_TEXT("mysql://root@localhost/sar") );
 	Sar_Dbi::dbi->execute(SAR_TEXT("set names 'gbk';"));
+
+	//测试query转sql语句
+	Q query = Q( SAR_TEXT("score"), between( 85.0, 100.0 ) ) && Q( SAR_TEXT("age"), between( 40, 100 ) ) && Q( SAR_TEXT("fullname"), startswith( SAR_TEXT("Robert") ) );
+	tstring sql;
+	query.to_string(sql);
+	std::cout<<sql<<"\n";
 
     Person bob;
     bob.fullname = SAR_TEXT("Robert Somethingorother");
