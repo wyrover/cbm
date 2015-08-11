@@ -7,6 +7,7 @@
 
 namespace orm 
 {
+	//表示数据库表中的一条记录
 	class ARXDAO_DLLIMPEXP Record
 	{
 	public:
@@ -19,7 +20,7 @@ namespace orm
 
 		//获取数据库表名
 		CString getTable() const;
-		//获取id
+		//获取id(表的主键名要求必须是"id")
 		int getID() const;
 		
 		//读/写字段(目前只支持int、double、CString三种类型)
@@ -30,12 +31,13 @@ namespace orm
 		bool get(const CString& name, double& v) const;
 		bool get(const CString& name, CString& v) const;
 
-		//从row中读取数据(数据库一个row代表一条记录,内部使用)
+		/** 下面的几个方法仅供内部使用. */
+		//从row中读取数据(数据库一个row代表一条记录)
 		bool fetchByRow(RowPtr& row);
-		//判断对象是新建的还是通过select得到的(内部使用)
+		//判断对象是新建的还是通过select得到的
 		void setNewlyRecord(bool isNewly);
 		bool isNewlyRecord() const;
-		//字段和外键操作(内部使用)
+		//字段和外键操作
 		void attributes(KVMap& fields, bool all=false);
 		bool setAttrib(const CString& name, const Attribute& attrib);
 		bool setForeignKey(const CString& name, const CString& id);
