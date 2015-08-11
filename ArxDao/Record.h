@@ -11,6 +11,9 @@ namespace orm
 	class ARXDAO_DLLIMPEXP Record
 	{
 	public:
+		//析构函数
+		virtual ~Record();
+
 		//执行insert操作
 		bool save();
 		//根据id执行delete操作
@@ -23,7 +26,7 @@ namespace orm
 		//获取id(表的主键名要求必须是"id")
 		int getID() const;
 		
-		//读/写字段(目前只支持int、double、CString三种类型)
+		//读/写字段(目前只支持int、double、CString三种类型，不包括外键)
 		void set(const CString& name, int v);
 		void set(const CString& name, double v);
 		void set(const CString& name, CString v);
@@ -42,7 +45,6 @@ namespace orm
 		bool setAttrib(const CString& name, const Attribute& attrib);
 		bool setForeignKey(const CString& name, const CString& id);
 		bool isForeignKey(const CString& name) const;
-		virtual ~Record();
 	protected:
 		Record(const CString& table);
 		void map_field(const CString& name, int& v);
