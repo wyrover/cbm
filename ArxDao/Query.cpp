@@ -5,8 +5,7 @@
 namespace orm
 {
     Query::Query() :
-        n_limit( 0 ),
-        currupted( false )
+        n_limit( 0 )
     {
     }
     Query::~Query()

@@ -102,7 +102,6 @@ namespace orm
         std::vector<CString> group_by;
         std::map<CString, CString> fields;
         int n_limit;
-        bool currupted;
 	private:
 		DISALLOW_COPY_AND_ASSIGN(Query);
     };
