@@ -1,19 +1,35 @@
 #pragma once
 
-#include "dlimexp.h"
-#include <string>
-#include <vector>
-#include <map>
-using namespace std;
+#include "QueryHelper.h"
 
 namespace orm
 {
     class ARXDAO_DLLIMPEXP Query
     {
 	public:
-		static Query* from( const CString& table );
-
+		template<typename Klass>		
+		static Query* from()
+		{
+			return Query::from(Klass::Table());
+		}
+		template<typename Klass>
+		static RecordPtr find(int id)
+		{
+			return orm::helper::find<Klass>(id);
+		}
+	public:
+		template<typename Klass>
+		RecordPtr find_one()
+		{
+			return orm::helper::find_one<Klass>(this);
+		}
+		template<typename Klass>
+		RecordPtr find_many()
+		{
+			return orm::helper::find_many<Klass>(this);
+		}
     public:
+		static Query* from( const CString& table );
 		~Query();
         Query* where( const CString& col, const CString& value );
         Query* where_equal( const CString& col, const CString& value );
@@ -28,7 +44,7 @@ namespace orm
 
         Query* select( const CString& col );
 
-        Query* limit( int n_limit );
+		Query* limit( int n_limit );
 
         Query* order_by_expr( const CString& expr );
         Query* order_by_asc( const CString& col );
@@ -38,16 +54,10 @@ namespace orm
 		Query* find_max( const CString& col );
 		Query* find_avg( const CString& col );
 		Query* find_sum( const CString& col );
-
-        //bool save();
-        //bool remove();
-		//Query* find_one();
-		//std::vector<Query*> find_many();
 		
 		void set(const CString &key, const CString &value);
 		CString& get(const CString &key);	
 		CString& operator[](const CString &key);
-		void clean_dirty_fields();
 
 		CString build_select();
 		CString build_update();
@@ -81,6 +91,7 @@ namespace orm
 
 		void set_with_no_dirt( const CString& key, const CString& value );
         void dirt_field( const CString& field_name );
+		void clean_dirty_fields();
 
     protected:
         CString table;
@@ -92,5 +103,7 @@ namespace orm
         std::map<CString, CString> fields;
         int n_limit;
         bool currupted;
+	private:
+		DISALLOW_COPY_AND_ASSIGN(Query);
     };
 };

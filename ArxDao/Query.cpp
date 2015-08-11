@@ -1,67 +1,9 @@
 #include "StdAfx.h"
 #include "Query.h"
-
-using namespace std;
+#include "Utils.h"
 
 namespace orm
 {
-
-	/** Split a CString s into parts by value e */
-	static std::vector<std::string> explode(std::string s, std::string e) 
-	{
-		std::vector<std::string> ret;
-		int iPos = s.find(e, 0);
-		int iPit = e.length();
-		while(iPos>-1) {
-			if(iPos!=0)
-				ret.push_back(s.substr(0,iPos));
-			s.erase(0,iPos+iPit);
-			iPos = s.find(e, 0);
-		}
-		if(s!="")
-			ret.push_back(s);
-		return ret;
-	}
-
-	static CString join( vector<CString> vec, CString delim )
-	{
-		if( vec.empty() )
-			return "";
-
-		CString result;
-		for( vector<CString>::iterator it = vec.begin(); it != vec.end() - 1; ++it )
-		{
-			result += ( *it ) + delim;
-		}
-		return result +	( *vec.rbegin() );
-	}
-
-	static CString cstring_join( vector<CString> vec, CString delim )
-	{
-		CString result;
-
-		if( vec.empty() )
-			return _T("");
-
-		for( vector<CString>::iterator it = vec.begin(); it != vec.end() - 1; ++it )
-		{
-			result +=
-				( *it ) + delim;
-		}
-		return result +	( *vec.rbegin() );
-	}
-
-	static void cstring_explode(const CString& str, const CString& tokens, CStringArray& values)
-	{
-		int nTokenPos = 0;
-		CString strToken = str.Tokenize(tokens, nTokenPos);
-		while (!strToken.IsEmpty())
-		{
-			values.Add(strToken);
-			strToken = str.Tokenize(tokens, nTokenPos);
-		}
-	}
-
     Query::Query() :
         n_limit( 0 ),
         currupted( false )
@@ -91,7 +33,6 @@ namespace orm
     }
     void Query::add_condition( const CString& col, const CString& op, const CString& value )
     {
-
         conditions.push_back(
             col + _T(" ") + op + _T(" \'") +
             /*escape*/( value ) + _T("\'") );
@@ -124,17 +65,18 @@ namespace orm
         if( results.empty() )
             return _T("*");
         else
-            return cstring_join( results, _T(",") );
+			return Utils::cstring_join( results, _T(",") );
     }
     CString Query::build_conditions()
     {
+		if(conditions.empty()) return _T("");
         CString query = _T("WHERE ");
-        return query + cstring_join( conditions, _T(" AND ") );
+        return query + Utils::cstring_join( conditions, _T(" AND ") );
     }
     CString Query::build_field_keys()
     {
         CString keys;
-        map<CString, CString>::iterator it = fields.begin();
+		std::map<CString, CString>::iterator it = fields.begin();
 
         while( it != fields.end() )
         {
@@ -149,7 +91,7 @@ namespace orm
     CString Query::build_field_values()
     {
         CString values;
-        map<CString, CString>::iterator it = fields.begin();
+        std::map<CString, CString>::iterator it = fields.begin();
 
         while( it != fields.end() )
         {
@@ -159,16 +101,13 @@ namespace orm
             if( ++it != fields.end() )
                 values += _T(",");
         }
-
         return values;
     }
     CString Query::build_changes()
     {
-        if( dirty_fields.empty() )
-            return _T("");
-
+        if( dirty_fields.empty() ) return _T("");
 		CString changes;
-        for( vector<CString>::iterator itr = dirty_fields.begin(); itr != dirty_fields.end(); ++itr )
+        for( std::vector<CString>::iterator itr = dirty_fields.begin(); itr != dirty_fields.end(); ++itr )
         {
             CString field_name = *itr;
             changes +=
@@ -182,16 +121,16 @@ namespace orm
     }
     CString Query::build_order_by()
     {
-        CString orders = _T("ORDER BY ");
-
-        orders += cstring_join( order_by, _T(",") );
-
-        return orders;
+		if(order_by.empty()) return _T("");
+		CString orders = _T("ORDER BY ");
+		orders += Utils::cstring_join( order_by, _T(",") );
+		return orders;
     }
     CString Query::build_group_by()
     {
+		if(group_by.empty()) return _T("");
         CString groups = _T("GROUP BY ");
-        groups += cstring_join( group_by, _T(",") );
+        groups += Utils::cstring_join( group_by, _T(",") );
         return groups;
     }
 
@@ -209,7 +148,7 @@ namespace orm
     }
     CString Query::build_limit()
     {
-		if( n_limit == 0 ) return "";
+		if( n_limit == 0 ) return _T("");
         CString query;
 		query.AppendFormat(_T("LIMIT %d"), n_limit);
         return query;
@@ -224,26 +163,26 @@ namespace orm
             build_conditions() + _T(" ") +
             build_order_by() + _T(" ") +
             build_limit();
-
+		clean_dirty_fields();
         return query;
     }
     CString Query::build_update()
     {
         CString query = _T("UPDATE ");
-
         query +=
             table + _T(" SET ") +
             build_changes() + _T(" ") +
             build_conditions();
+		clean_dirty_fields();
         return query;
     }
     CString Query::build_delete()
     {
         CString query = _T("DELETE ");
-
         query +=
             build_from() + _T(" ") +
             build_conditions();
+		clean_dirty_fields();
         return query;
     }
     CString Query::build_insert()
@@ -253,85 +192,73 @@ namespace orm
             build_into() + _T(" (") +
             build_field_keys() + _T(") VALUES (") +
             build_field_values() + _T(")");
-
+		clean_dirty_fields();
         return query;
     }
 
 	Query* Query::from( const CString& table )
     {
 		Query* Query = new orm::Query();
-
         Query->set_table( table );
-
         return Query;
     }
 
     Query* Query::where( const CString& col, const CString& value )
     {
         add_condition( col, _T("="), value );
-
         return this;
     }
     Query* Query::where_equal( const CString& col, const CString& value )
     {
         add_condition( col, _T("="), value );
-
         return this;
     }
     Query* Query::where_not_equal( const CString& col, const CString& value )
     {
         add_condition( col, _T("!="), value );
-
         return this;
     }
     Query* Query::where_like( const CString& col, const CString& value )
     {
         add_condition( col, _T("LIKE"), value );
-
         return this;
     }
     Query* Query::where_not_like( const CString& col, const CString& value )
     {
         add_condition( col, _T("NOT LIKE"), value );
-
         return this;
     }
     Query* Query::where_gt( const CString& col, const CString& value )
     {
         add_condition( col, _T(">"), value );
-
         return this;
     }
     Query* Query::where_gte( const CString& col, const CString& value )
     {
         add_condition( col, _T(">="), value );
-
         return this;
     }
     Query* Query::where_lt( const CString& col, const CString& value )
     {
         add_condition( col, _T("<"), value );
-
         return this;
     }
     Query* Query::where_lte( const CString& col, const CString& value )
     {
         add_condition( col, _T("<="), value );
-
         return this;
     }
 
     Query* Query::where_raw( const CString& query )
     {
         add_condition( query );
-
         return this;
     }
 
     Query* Query::select( const CString& col )
     {
 		CStringArray values;
-		cstring_explode(col, _T(", "), values);
+		Utils::cstring_explode(col, _T(", "), values);
 		for(int i=0;i<values.GetCount();i++)
 		{
 			add_result_column(values[i]);
@@ -342,26 +269,22 @@ namespace orm
     Query* Query::limit( int n_limit )
     {
         set_limit( n_limit );
-
         return this;
     }
 
     Query* Query::order_by_expr( const CString& expr )
     {
         add_order_by( expr, _T("") );
-
         return this;
     }
     Query* Query::order_by_asc( const CString& col )
     {
         add_order_by( col, _T("ASC") );
-
         return this;
     }
     Query* Query::order_by_desc( const CString& col )
     {
         add_order_by( col, _T("DESC") );
-
         return this;
     }
 
@@ -370,7 +293,6 @@ namespace orm
         results.clear();
         add_result_column(
             _T("MIN(") + col + _T(")") );
-
         return this;
     }
     Query* Query::find_max( const CString& col )
@@ -378,7 +300,6 @@ namespace orm
         results.clear();
         add_result_column(
             _T("MAX(") + col + _T(")") );
-
         return this;
     }
     Query* Query::find_avg( const CString& col )
@@ -386,7 +307,6 @@ namespace orm
         results.clear();
         add_result_column(
             _T("AVG(") + col + _T(")") );
-
         return this;
     }
     Query* Query::find_sum( const CString& col )

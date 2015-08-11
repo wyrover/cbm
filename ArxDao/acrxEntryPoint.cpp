@@ -23,7 +23,7 @@ public:
 		acutPrintf( _T( "\nArxDao::On_kInitAppMsg\n" ) );
 
 		//初始化数据库连接
-		DaoHelper::ConfigureDao(_T("localhost"), _T("root"), _T(""), _T("cbm"));
+		DaoHelper::ConfigureDao(_T("root"), _T(""), _T("cbm"), _T("localhost"), _T("3306"));
 
 		return (retCode) ;
 	}

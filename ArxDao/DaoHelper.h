@@ -8,7 +8,7 @@ typedef std::vector<CString> StringArray;
 class ARXDAO_DLLIMPEXP DaoHelper
 {
 public:
-	static void ConfigureDao(const CString& host, const CString& user, const CString& password, const CString& dataBase);
+	static void ConfigureDao(const CString& user, const CString& password, const CString& database, const CString& host=_T("localhost"), const CString& port=_T("3306"));
 	static void TestDao();
 
 	static int VerifyMineAccount(const CString& username, const CString& pwd);

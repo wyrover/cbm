@@ -1,17 +1,9 @@
-#ifndef DAO_H
-#define DAO_H
+#pragma once
 
-#include "dlimexp.h"
 #include "Row.h"
-
-#include <boost/shared_ptr.hpp>
-using namespace boost;
 
 namespace orm 
 {
-	class Db;
-	typedef shared_ptr<Db> DbPrt;
-
 	class ARXDAO_DLLIMPEXP Db
 	{
 	public:
@@ -19,17 +11,17 @@ namespace orm
 
 	public:	
 		virtual ~Db() {}
-		virtual bool config(const CString& host, const CString& user, const CString& password, const CString& database) = 0;
+		virtual bool config(const CString& user, const CString& password, const CString& database, const CString& host=_T("localhost"), const CString& port=_T("3306") ) = 0;
 		virtual bool execute(const CString& sql) = 0;
 		virtual bool query(const CString& sql, RowSet& rs) = 0;
 
 	protected:
 		static DbPrt instance;
 		Db() {}
+	private:
+		DISALLOW_COPY_AND_ASSIGN(Db);
 	};
 
 	//È«¾Öº¯Êý
 	extern ARXDAO_DLLIMPEXP DbPrt get_db();
 }
-
-#endif // DAO_H

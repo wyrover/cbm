@@ -1,49 +1,8 @@
 #include "stdafx.h"
 #include "Row.h"
-#include <cstring>
 
 namespace orm
 {
-	static std::string int_to_string(int v) 
-	{
-		char ss[100];
-		sprintf(ss, "%d", v);
-		return std::string(ss);
-	}
-	static std::string double_to_string(double v) 
-	{
-		char ss[100];
-		sprintf(ss, "%lf", v);
-		return std::string(ss);
-	}
-	static bool string_to_int(std::string s, int& v) {
-		return sscanf(s.c_str(), "%d", &v) > -1;
-	}
-	static bool string_to_double(std::string s, double& v) {
-		return sscanf(s.c_str(), "%lf", &v) > -1;
-	}
-
-	static CString int_to_cstring(int v) 
-	{
-		CString str;
-		str.Format(_T("%d"), v);
-		return str;
-	}
-	static CString double_to_cstring(double v) 
-	{
-		CString str;
-		str.Format(_T("%lf"), v);
-		return str;
-	}
-	static bool cstring_to_int(CString s, int& v) {
-		v = _ttoi(s);
-		return true;
-	}
-	static bool cstring_to_double(CString s, double& v) {
-		v = _tstof(s);
-		return true;
-	}
-
 	void Attribute::update()
 	{
 		switch(att_type)
@@ -65,10 +24,10 @@ namespace orm
 		switch(att_type)
 		{
 		case 1:
-			value = int_to_cstring(ivalue.new_value());
+			value = Utils::int_to_cstring(ivalue.new_value());
 			break;
 		case 2:
-			value = double_to_cstring(fvalue.new_value());
+			value = Utils::double_to_cstring(fvalue.new_value());
 			break;
 		case 3:
 			value = svalue.new_value();
@@ -127,7 +86,7 @@ namespace orm
 		if(getType() == 1)
 		{
 			int i;
-			if(cstring_to_int(v, i))
+			if(Utils::cstring_to_int(v, i))
 			{
 				ivalue = i;
 			}
@@ -135,7 +94,7 @@ namespace orm
 		else if(getType() == 2)
 		{
 			double f;
-			if(cstring_to_double(v, f))
+			if(Utils::cstring_to_double(v, f))
 			{
 				fvalue = f;
 			}
@@ -163,11 +122,11 @@ namespace orm
 		bool ret = true;
 		if(att_type == 1)
 		{
-			v = int_to_cstring(ivalue.new_value());
+			v = Utils::int_to_cstring(ivalue.new_value());
 		}
 		else if(att_type == 2)
 		{
-			v = double_to_cstring(fvalue.new_value());
+			v = Utils::double_to_cstring(fvalue.new_value());
 		}
 		else if(att_type == 3)
 		{
@@ -213,7 +172,7 @@ namespace orm
 			d->m_attribs[name].set(v);
 		}
 	}
-	bool Row::get(const CString& name, int& v)
+	bool Row::get(const CString& name, int& v) const
 	{
 		if(d->m_attribs.find(name) != d->m_attribs.end())
 		{
@@ -224,7 +183,7 @@ namespace orm
 			return false;
 		}
 	}
-	bool Row::get(const CString& name, double& v)
+	bool Row::get(const CString& name, double& v) const
 	{
 		if(d->m_attribs.find(name) != d->m_attribs.end())
 		{
@@ -235,7 +194,7 @@ namespace orm
 			return false;
 		}
 	}
-	bool Row::get(const CString& name, CString& v)
+	bool Row::get(const CString& name, CString& v) const
 	{
 		if(d->m_attribs.find(name) != d->m_attribs.end())
 		{

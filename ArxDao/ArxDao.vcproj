@@ -434,6 +434,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\ForeignKey.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\Query.cpp"
 					>
 				</File>
@@ -443,6 +447,14 @@
 				</File>
 				<File
 					RelativePath=".\Row.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\SociDb.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Utils.cpp"
 					>
 				</File>
 			</Filter>
@@ -479,7 +491,15 @@
 					>
 				</File>
 				<File
+					RelativePath=".\ForeignKey.h"
+					>
+				</File>
+				<File
 					RelativePath=".\Query.h"
+					>
+				</File>
+				<File
+					RelativePath=".\QueryHelper.h"
 					>
 				</File>
 				<File
@@ -488,6 +508,18 @@
 				</File>
 				<File
 					RelativePath=".\Row.h"
+					>
+				</File>
+				<File
+					RelativePath=".\SociDb.h"
+					>
+				</File>
+				<File
+					RelativePath=".\Types.h"
+					>
+				</File>
+				<File
+					RelativePath=".\Utils.h"
 					>
 				</File>
 			</Filter>

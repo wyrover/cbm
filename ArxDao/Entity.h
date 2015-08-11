@@ -3,6 +3,10 @@
 
 #include "Record.h"
 
+#include <vector>
+#include <boost/shared_ptr.hpp>
+using namespace boost;
+
 namespace cbm {
 
 class AdjLayer;
@@ -29,10 +33,65 @@ class TopoGeo;
 class Tunnel;
 class WorkSurf;
 
+typedef boost::shared_ptr<AdjLayer> AdjLayerPtr;
+typedef boost::shared_ptr<Coal> CoalPtr;
+typedef boost::shared_ptr<DrillingRadius> DrillingRadiusPtr;
+typedef boost::shared_ptr<DrillingSurf> DrillingSurfPtr;
+typedef boost::shared_ptr<EvalUnit> EvalUnitPtr;
+typedef boost::shared_ptr<Help> HelpPtr;
+typedef boost::shared_ptr<HighDrillingPore> HighDrillingPorePtr;
+typedef boost::shared_ptr<HighDrillingTunnel> HighDrillingTunnelPtr;
+typedef boost::shared_ptr<HydrGeo> HydrGeoPtr;
+typedef boost::shared_ptr<KeyLayer> KeyLayerPtr;
+typedef boost::shared_ptr<Mine> MinePtr;
+typedef boost::shared_ptr<MineBase> MineBasePtr;
+typedef boost::shared_ptr<MineRegion> MineRegionPtr;
+typedef boost::shared_ptr<MiningArea> MiningAreaPtr;
+typedef boost::shared_ptr<PoreFlow> PoreFlowPtr;
+typedef boost::shared_ptr<PoreSize> PoreSizePtr;
+typedef boost::shared_ptr<ReadyTunnel> ReadyTunnelPtr;
+typedef boost::shared_ptr<ResAbundance> ResAbundancePtr;
+typedef boost::shared_ptr<TechMode> TechModePtr;
+typedef boost::shared_ptr<Technology> TechnologyPtr;
+typedef boost::shared_ptr<TopoGeo> TopoGeoPtr;
+typedef boost::shared_ptr<Tunnel> TunnelPtr;
+typedef boost::shared_ptr<WorkSurf> WorkSurfPtr;
+
+typedef boost::shared_ptr< std::vector<AdjLayerPtr> > AdjLayerList;
+typedef boost::shared_ptr< std::vector<CoalPtr> > CoalList;
+typedef boost::shared_ptr< std::vector<DrillingRadiusPtr> > DrillingRadiusList;
+typedef boost::shared_ptr< std::vector<DrillingSurfPtr> > DrillingSurfList;
+typedef boost::shared_ptr< std::vector<EvalUnitPtr> > EvalUnitList;
+typedef boost::shared_ptr< std::vector<HelpPtr> > HelpList;
+typedef boost::shared_ptr< std::vector<HighDrillingPorePtr> > HighDrillingPoreList;
+typedef boost::shared_ptr< std::vector<HighDrillingTunnelPtr> > HighDrillingTunnelList;
+typedef boost::shared_ptr< std::vector<HydrGeoPtr> > HydrGeoList;
+typedef boost::shared_ptr< std::vector<KeyLayerPtr> > KeyLayerList;
+typedef boost::shared_ptr< std::vector<MinePtr> > MineList;
+typedef boost::shared_ptr< std::vector<MineBasePtr> > MineBaseList;
+typedef boost::shared_ptr< std::vector<MineRegionPtr> > MineRegionList;
+typedef boost::shared_ptr< std::vector<MiningAreaPtr> > MiningAreaList;
+typedef boost::shared_ptr< std::vector<PoreFlowPtr> > PoreFlowList;
+typedef boost::shared_ptr< std::vector<PoreSizePtr> > PoreSizeList;
+typedef boost::shared_ptr< std::vector<ReadyTunnelPtr> > ReadyTunnelList;
+typedef boost::shared_ptr< std::vector<ResAbundancePtr> > ResAbundanceList;
+typedef boost::shared_ptr< std::vector<TechModePtr> > TechModeList;
+typedef boost::shared_ptr< std::vector<TechnologyPtr> > TechnologyList;
+typedef boost::shared_ptr< std::vector<TopoGeoPtr> > TopoGeoList;
+typedef boost::shared_ptr< std::vector<TunnelPtr> > TunnelList;
+typedef boost::shared_ptr< std::vector<WorkSurfPtr> > WorkSurfList;
+
 class ARXDAO_DLLIMPEXP AdjLayer : public orm::Record
 {
-	WorkSurf work_surf;
-	Coal coal;
+public:
+	static CString Table();
+	static orm::RecordPtr Create();
+
+public:
+	AdjLayer();
+	int id;
+	orm::RecordPtr work_surf;
+	orm::RecordPtr coal;
 	int layer_num;
 	double layer_h;
 	double layer_hp;
@@ -43,7 +102,14 @@ class ARXDAO_DLLIMPEXP AdjLayer : public orm::Record
 
 class ARXDAO_DLLIMPEXP Coal : public orm::Record
 {
-	Mine mine;
+public:
+	static CString Table();
+	static orm::RecordPtr Create();
+
+public:
+	Coal();
+	int id;
+	orm::RecordPtr mine;
 	CString coal_name;
 	int coal_minable;
 	double coal_thick;
@@ -100,7 +166,14 @@ class ARXDAO_DLLIMPEXP Coal : public orm::Record
 
 class ARXDAO_DLLIMPEXP DrillingRadius : public orm::Record
 {
-	Coal coal;
+public:
+	static CString Table();
+	static orm::RecordPtr Create();
+
+public:
+	DrillingRadius();
+	int id;
+	orm::RecordPtr coal;
 	double radius_r;
 	double radius_l;
 	double radius_k1;
@@ -117,8 +190,15 @@ class ARXDAO_DLLIMPEXP DrillingRadius : public orm::Record
 
 class ARXDAO_DLLIMPEXP DrillingSurf : public orm::Record
 {
-	Coal coal;
-	Tunnel tunnel;
+public:
+	static CString Table();
+	static orm::RecordPtr Create();
+
+public:
+	DrillingSurf();
+	int id;
+	orm::RecordPtr coal;
+	orm::RecordPtr tunnel;
 	double q_r;
 	double q_a;
 	double tw_q4;
@@ -128,7 +208,14 @@ class ARXDAO_DLLIMPEXP DrillingSurf : public orm::Record
 
 class ARXDAO_DLLIMPEXP EvalUnit : public orm::Record
 {
-	WorkSurf work_surf;
+public:
+	static CString Table();
+	static orm::RecordPtr Create();
+
+public:
+	EvalUnit();
+	int id;
+	orm::RecordPtr work_surf;
 	double unit_l;
 	double unit_t;
 	CString comment;
@@ -137,6 +224,13 @@ class ARXDAO_DLLIMPEXP EvalUnit : public orm::Record
 
 class ARXDAO_DLLIMPEXP Help : public orm::Record
 {
+public:
+	static CString Table();
+	static orm::RecordPtr Create();
+
+public:
+	Help();
+	int id;
 	CString help_field;
 	int help_type;
 	CString help_value;
@@ -146,7 +240,14 @@ class ARXDAO_DLLIMPEXP Help : public orm::Record
 
 class ARXDAO_DLLIMPEXP HighDrillingPore : public orm::Record
 {
-	WorkSurf work_surf;
+public:
+	static CString Table();
+	static orm::RecordPtr Create();
+
+public:
+	HighDrillingPore();
+	int id;
+	orm::RecordPtr work_surf;
 	double hdp_l1;
 	double hdp_l2;
 	double hdp_lg;
@@ -165,7 +266,14 @@ class ARXDAO_DLLIMPEXP HighDrillingPore : public orm::Record
 
 class ARXDAO_DLLIMPEXP HighDrillingTunnel : public orm::Record
 {
-	WorkSurf work_surf;
+public:
+	static CString Table();
+	static orm::RecordPtr Create();
+
+public:
+	HighDrillingTunnel();
+	int id;
+	orm::RecordPtr work_surf;
 	double hdt_k;
 	int hdt_rock;
 	double hdt_hz_min;
@@ -176,6 +284,13 @@ class ARXDAO_DLLIMPEXP HighDrillingTunnel : public orm::Record
 
 class ARXDAO_DLLIMPEXP HydrGeo : public orm::Record
 {
+public:
+	static CString Table();
+	static orm::RecordPtr Create();
+
+public:
+	HydrGeo();
+	int id;
 	CString type;
 	int x1;
 	double x2;
@@ -190,7 +305,14 @@ class ARXDAO_DLLIMPEXP HydrGeo : public orm::Record
 
 class ARXDAO_DLLIMPEXP KeyLayer : public orm::Record
 {
-	HighDrillingPore high_drilling_pore;
+public:
+	static CString Table();
+	static orm::RecordPtr Create();
+
+public:
+	KeyLayer();
+	int id;
+	orm::RecordPtr high_drilling_pore;
 	double key_hn;
 	double key_thetan;
 	double key_qn;
@@ -202,7 +324,14 @@ class ARXDAO_DLLIMPEXP KeyLayer : public orm::Record
 
 class ARXDAO_DLLIMPEXP Mine : public orm::Record
 {
-	MineRegion mine_region;
+public:
+	static CString Table();
+	static orm::RecordPtr Create();
+
+public:
+	Mine();
+	int id;
+	orm::RecordPtr mine_region;
 	CString username;
 	CString password;
 	CString mine_name;
@@ -231,6 +360,13 @@ class ARXDAO_DLLIMPEXP Mine : public orm::Record
 
 class ARXDAO_DLLIMPEXP MineBase : public orm::Record
 {
+public:
+	static CString Table();
+	static orm::RecordPtr Create();
+
+public:
+	MineBase();
+	int id;
 	CString name;
 	CString comment;
 
@@ -238,7 +374,14 @@ class ARXDAO_DLLIMPEXP MineBase : public orm::Record
 
 class ARXDAO_DLLIMPEXP MineRegion : public orm::Record
 {
-	MineBase mine_base;
+public:
+	static CString Table();
+	static orm::RecordPtr Create();
+
+public:
+	MineRegion();
+	int id;
+	orm::RecordPtr mine_base;
 	CString name;
 	CString comment;
 
@@ -246,7 +389,14 @@ class ARXDAO_DLLIMPEXP MineRegion : public orm::Record
 
 class ARXDAO_DLLIMPEXP MiningArea : public orm::Record
 {
-	Coal coal;
+public:
+	static CString Table();
+	static orm::RecordPtr Create();
+
+public:
+	MiningArea();
+	int id;
+	orm::RecordPtr coal;
 	int area_mode;
 	double area_k;
 	double a;
@@ -257,6 +407,13 @@ class ARXDAO_DLLIMPEXP MiningArea : public orm::Record
 
 class ARXDAO_DLLIMPEXP PoreFlow : public orm::Record
 {
+public:
+	static CString Table();
+	static orm::RecordPtr Create();
+
+public:
+	PoreFlow();
+	int id;
 	double flow_t;
 	double flow_a0;
 	double flow_d;
@@ -278,6 +435,13 @@ class ARXDAO_DLLIMPEXP PoreFlow : public orm::Record
 
 class ARXDAO_DLLIMPEXP PoreSize : public orm::Record
 {
+public:
+	static CString Table();
+	static orm::RecordPtr Create();
+
+public:
+	PoreSize();
+	int id;
 	double size_q;
 	double size_v;
 	double size_d;
@@ -289,14 +453,28 @@ class ARXDAO_DLLIMPEXP PoreSize : public orm::Record
 
 class ARXDAO_DLLIMPEXP ReadyTunnel : public orm::Record
 {
-	MiningArea mining_area;
-	Tunnel tunnel;
+public:
+	static CString Table();
+	static orm::RecordPtr Create();
+
+public:
+	ReadyTunnel();
+	int id;
+	orm::RecordPtr mining_area;
+	orm::RecordPtr tunnel;
 	CString comment;
 
 }; // class ReadyTunnel
 
 class ARXDAO_DLLIMPEXP ResAbundance : public orm::Record
 {
+public:
+	static CString Table();
+	static orm::RecordPtr Create();
+
+public:
+	ResAbundance();
+	int id;
 	CString type;
 	double min_abundance;
 	double max_abundance;
@@ -305,7 +483,14 @@ class ARXDAO_DLLIMPEXP ResAbundance : public orm::Record
 
 class ARXDAO_DLLIMPEXP TechMode : public orm::Record
 {
-	MineRegion mine_region;
+public:
+	static CString Table();
+	static orm::RecordPtr Create();
+
+public:
+	TechMode();
+	int id;
+	orm::RecordPtr mine_region;
 	CString name;
 	int type;
 	CString comment;
@@ -314,7 +499,14 @@ class ARXDAO_DLLIMPEXP TechMode : public orm::Record
 
 class ARXDAO_DLLIMPEXP Technology : public orm::Record
 {
-	MineRegion mine_region;
+public:
+	static CString Table();
+	static orm::RecordPtr Create();
+
+public:
+	Technology();
+	int id;
+	orm::RecordPtr mine_region;
 	CString name;
 	int iskey;
 	CString doc;
@@ -325,6 +517,13 @@ class ARXDAO_DLLIMPEXP Technology : public orm::Record
 
 class ARXDAO_DLLIMPEXP TopoGeo : public orm::Record
 {
+public:
+	static CString Table();
+	static orm::RecordPtr Create();
+
+public:
+	TopoGeo();
+	int id;
 	CString type;
 	CString feature;
 	CString comment;
@@ -333,6 +532,13 @@ class ARXDAO_DLLIMPEXP TopoGeo : public orm::Record
 
 class ARXDAO_DLLIMPEXP Tunnel : public orm::Record
 {
+public:
+	static CString Table();
+	static orm::RecordPtr Create();
+
+public:
+	Tunnel();
+	int id;
 	double b;
 	double l;
 	double s;
@@ -346,8 +552,15 @@ class ARXDAO_DLLIMPEXP Tunnel : public orm::Record
 
 class ARXDAO_DLLIMPEXP WorkSurf : public orm::Record
 {
-	Tunnel tunnel;
-	Coal coal;
+public:
+	static CString Table();
+	static orm::RecordPtr Create();
+
+public:
+	WorkSurf();
+	int id;
+	orm::RecordPtr tunnel;
+	orm::RecordPtr coal;
 	double a;
 	double q_r;
 	double q_a;
