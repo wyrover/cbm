@@ -14,6 +14,7 @@ namespace orm
 		virtual bool config(const CString& user, const CString& password, const CString& database, const CString& host=_T("localhost"), const CString& port=_T("3306") ) = 0;
 		virtual bool execute(const CString& sql) = 0;
 		virtual bool query(const CString& sql, RowSet& rs) = 0;
+		virtual int lastInsertId(const CString& table) = 0;
 
 	protected:
 		static DbPrt instance;

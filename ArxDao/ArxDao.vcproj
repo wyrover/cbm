@@ -430,10 +430,6 @@
 					>
 				</File>
 				<File
-					RelativePath=".\Entity.cpp"
-					>
-				</File>
-				<File
 					RelativePath=".\ForeignKey.cpp"
 					>
 				</File>
@@ -455,6 +451,14 @@
 				</File>
 				<File
 					RelativePath=".\Utils.cpp"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="entity"
+				>
+				<File
+					RelativePath=".\Entity.cpp"
 					>
 				</File>
 			</Filter>
@@ -487,10 +491,6 @@
 					>
 				</File>
 				<File
-					RelativePath=".\Entity.h"
-					>
-				</File>
-				<File
 					RelativePath=".\ForeignKey.h"
 					>
 				</File>
@@ -520,6 +520,14 @@
 				</File>
 				<File
 					RelativePath=".\Utils.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="entity"
+				>
+				<File
+					RelativePath=".\Entity.h"
 					>
 				</File>
 			</Filter>

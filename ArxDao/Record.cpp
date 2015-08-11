@@ -149,6 +149,11 @@ namespace orm
 		{
 			ret = get_db()->execute(query->build_insert());
 			setNewlyRecord(!ret);
+			if(ret)
+			{
+				int id = get_db()->lastInsertId(this->getTable());
+				this->set(PRIMARY_KEY_ID, id);
+			}
 		}
 		else
 		{

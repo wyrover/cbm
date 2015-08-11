@@ -136,4 +136,27 @@ namespace orm
 		}
 		return ret;
 	}
+
+	int soci_Db::lastInsertId(const CString& table)
+	{
+		int id = 0;
+		try
+		{
+			soci::session* conn = getConnection();
+			long long_id = 0;
+			conn->get_last_insert_id(W2C((LPCTSTR)table), long_id);
+			id = (int)long_id; // 可能存在精度损失
+		}
+		catch(soci::soci_error const & e)
+		{
+			id = 0;
+			LOG_DEBUG_FMT(_T("调用lastInsertId()异常:%s"), C2W(e.what()));
+		}
+		catch (std::exception const & e)
+		{
+			id = 0;
+			LOG_DEBUG_FMT(_T("Runtime异常:%s"), C2W(e.what()));
+		}
+		return id;
+	}
 }
