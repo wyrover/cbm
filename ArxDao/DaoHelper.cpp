@@ -43,11 +43,11 @@ int DaoHelper::VerifyMineAccount(const CString& username, const CString& pwd)
 	RecordPtr mine = query->where(FIELD(username), username)
 		                  ->find_one<Mine>();
 	if(mine == 0) 
-		return 0;
+		return 0; // 用户名不存在
 	else if(mine->get(FIELD(password)) != pwd) 
-		return 1;
+		return 1; // 密码错误
 	else
-		return 2;
+		return 2; // 用户名已注册
 }
 
 void DaoHelper::GetAllMineBases(StringArray& bases)

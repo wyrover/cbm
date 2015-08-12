@@ -69,7 +69,7 @@ void RegDlg::OnReg()
 
 	//注册矿井账户
 	int ret = DaoHelper::VerifyMineAccount(user, pwd);
-	if(ret == 2)
+	if(ret != 0)
 	{
 		SMessageBox(m_hWnd,_T("用户名已存在!"),_T("友情提示"),MB_OK);
 	}

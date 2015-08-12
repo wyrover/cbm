@@ -39,7 +39,7 @@ namespace orm
 	#define FKEY2(Klass) FKEY(Klass::Table())
 	//字段名称(简化字段名的写法)
 	//注:一般情况下类的成员变量和表的字段名都是相同的)
-	#define FIELD(name) _T("name")
+	#define FIELD(name) _T(#name)
 
 	class Record;
 	typedef shared_ptr<Record> RecordPtr;
