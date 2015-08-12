@@ -4,9 +4,11 @@
 
 namespace orm 
 {
+	//单件模式
 	class ARXDAO_DLLIMPEXP Db
 	{
 	public:
+		//静态方法--获取实例指针
 		static DbPrt Instance();
 
 	public:	
@@ -16,11 +18,30 @@ namespace orm
 		virtual bool query(const CString& sql, RowSet& rs) = 0;
 		virtual int lastInsertId(const CString& table) = 0;
 
+	public:
+		//主键ID使用表前缀(默认不使用)
+		//如果使用表前缀,则主键id的字段名为: 表前缀_id,例如"cbm_mine_id"
+		//如果不使用表前缀，则主键id的字段名为:id，例如"id"
+		void enableTablePrefix(bool use=false)
+		{
+			m_useTablePrefix = use;
+		}
+
+		//获取固定的主键ID名
+		CString getPrimaryKeyName(const CString& table) const
+		{
+			if(m_useTablePrefix)
+				//全部变成小写
+				return Utils::cstring_tolower(table+_T("_")+PRIMARY_KEY_ID);
+			else
+				return PRIMARY_KEY_ID;
+		}
 	protected:
 		static DbPrt instance;
-		Db() {}
+		Db() : m_useTablePrefix(false) {}
 	private:
 		DISALLOW_COPY_AND_ASSIGN(Db);
+		bool m_useTablePrefix;
 	};
 
 	//全局函数

@@ -11,16 +11,23 @@
 #include <boost/shared_ptr.hpp>
 using namespace boost;
 
-//定义主键的名称(所有的表都必须用这个名字,大小写也应该一样)
-#define PRIMARY_KEY_ID _T("id")
-
 //宏--禁用拷贝构造函数和赋值运算符重载
 #define DISALLOW_COPY_AND_ASSIGN(TypeName) \
 	TypeName(const TypeName&); \
 	TypeName& operator=(const TypeName&)
 
+//share_ptr智能指针转换
+#define DYNAMIC_POINTER_CAST(DeriveClass, ptrBase) boost::dynamic_pointer_cast<DeriveClass>(ptrBase)
+#define STATIC_POINTER_CAST(Class, ptr) boost::static_pointer_cast<Class>(ptr)
+
 namespace orm
 {
+	//主键id的一部分
+	#define PRIMARY_KEY_ID _T("id")
+
+	//获取表table的主键id名称
+	#define PRIMARY_KEY_NAME(table) get_db()->getPrimaryKeyName(table)
+
 	class Record;
 	typedef shared_ptr<Record> RecordPtr;
 	typedef std::vector<RecordPtr> RecordPtrList;

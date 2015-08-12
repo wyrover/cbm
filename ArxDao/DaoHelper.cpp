@@ -26,11 +26,15 @@ void DaoHelper::TestDao()
 	mine->mine_region = Query::find<MineRegion>(1);
 	mine->set(_T("mine_name"), _T("xxx煤集团公司"));
 	mine->mine_region->set(_T("name"), _T("华北地区"));
-	mine->mine_region->set(PRIMARY_KEY_ID, _T("2"));
-	mine->mine_region->fetch();
-	mine->save();
+	mine->mine_region->setID(_T("2"), true);
+	//mine->save();
 
-	//acutPrintf(_T("矿区名称:%s"), mine->mine_region->name);
+	MineRegionPtr region = DYNAMIC_POINTER_CAST(MineRegion, mine->mine_region);
+	acutPrintf(_T("矿区名称:%s"), region->name);
+
+	MinePtr mine2(new Mine);
+	mine->clone(mine2);
+	acutPrintf(_T("\n矿井名称:%s"), mine2->mine_name);
 }
 
 int DaoHelper::VerifyMineAccount(const CString& username, const CString& pwd)

@@ -28,10 +28,10 @@ namespace orm
 
 				//对soci而言,host、port、user等数据的顺序并不重要，只要有这些关键词，用空格分开即可
 				std::string conn_string = "host=" + c_host +
-					                      " port=" + c_port +
-										  " db=" + c_database + 
-										  " user=" + c_user + 
-										  " password=\'" + c_password+"\'";
+					" port=" + c_port +
+					" db=" + c_database + 
+					" user=" + c_user + 
+					" password=\'" + c_password+"\'";
 				LOG_DEBUG_FMT(_T("数据连接字符串:%s"), C2W(conn_string));
 				sql.open(soci::mysql, conn_string);
 				//解决mysql中文乱码问题
@@ -139,12 +139,25 @@ namespace orm
 
 	int soci_Db::lastInsertId(const CString& table)
 	{
+		using namespace soci;
 		int id = 0;
 		try
 		{
 			soci::session* conn = getConnection();
 			long long_id = 0;
-			conn->get_last_insert_id(W2C((LPCTSTR)table), long_id);
+			std::string backed_name = conn->get_backend_name();
+			if(backed_name == "odbc")
+			{
+				conn->get_last_insert_id(W2C((LPCTSTR)table), long_id);
+			}
+			else if(backed_name == "mysql")
+			{
+				*conn << "select last_insert_id()", into(long_id);
+			}
+			else if(backed_name == "sqlite3")
+			{
+				*conn << "select last_insert_rowid()", into(long_id);
+			}
 			id = (int)long_id; // 可能存在精度损失
 		}
 		catch(soci::soci_error const & e)

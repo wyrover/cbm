@@ -24,7 +24,16 @@ namespace orm
 	{
 		return sscanf(s.c_str(), "%lf", &v) > -1;
 	}
-
+	std::string Utils::string_tolower(std::string s)
+	{
+		std::transform(s.begin(), s.end(), s.begin(), tolower);
+		return s;
+	}
+	std::string Utils::string_toupper(std::string s)
+	{
+		std::transform(s.begin(), s.end(), s.begin(), toupper);
+		return s;
+	}
 	CString Utils::int_to_cstring(int v) 
 	{
 		CString str;
@@ -66,6 +75,16 @@ namespace orm
 		return result +	( *vec.rbegin() );
 	}
 
+	CString Utils::cstring_tolower(CString s)
+	{
+		s.MakeLower();
+		return s;
+	}
+	CString Utils::cstring_toupper(CString s)
+	{
+		s.MakeUpper();
+		return s;
+	}
 	bool Utils::cstring_to_int(CString s, int& v) 
 	{
 		v = _ttoi(s);

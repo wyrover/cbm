@@ -5,7 +5,8 @@
 
 namespace orm
 {
-	Record::Record(const CString& table) : m_isNewlyRecord(true), m_table(table)
+	Record::Record(const CString& table) 
+		: m_isNewlyRecord(true), m_table(table), m_id(0)
 	{
 		row = new Row();
 		fk = new ForeignKey;
@@ -37,6 +38,10 @@ namespace orm
 	bool Record::isForeignKey(const CString& name) const
 	{
 		return fk->has(name);
+	}
+	bool Record::isPrimaryKey(const CString& name) const
+	{
+		return (name.CompareNoCase(PRIMARY_KEY_NAME(this->getTable())) == 0);
 	}
 	bool Record::setForeignKey(const CString& name, const CString& str)
 	{
@@ -79,7 +84,11 @@ namespace orm
 	}
 	void Record::set(const CString& name, int v)
 	{
-		if(!isForeignKey(name))
+		if(isPrimaryKey(name))
+		{
+			this->m_id = v;
+		}
+		else if(!isForeignKey(name))
 		{
 			row->set(name, v);
 		}
@@ -93,13 +102,23 @@ namespace orm
 	}
 	void Record::set(const CString& name, CString v)
 	{
-		if(!isForeignKey(name))
+		if(isPrimaryKey(name))
+		{
+			int i = 0;
+			if(Utils::cstring_to_int(v, i) && i > 0)
+			{
+				this->m_id = i;
+			}
+		}
+		else if(!isForeignKey(name))
 		{
 			row->set(name, v);
 		}
 	}
 	void Record::map_field(const CString& name, int& v)
 	{
+		//特殊情况:不注册主键id变量(主键由基类Record负责)
+		if(isPrimaryKey(name)) return;
 		(*row)[name] = Attribute(&v);
 	}
 	void Record::map_field(const CString& name, double& v)
@@ -128,20 +147,38 @@ namespace orm
 	}
 	int Record::getID() const
 	{
-		int id = 0;
-		this->get(PRIMARY_KEY_ID, id);
-		return id;
+		return this->m_id;
+	}
+	bool Record::setID(int id, bool fetch/*=false*/)
+	{
+		bool ret = false;
+		if(id > 0)
+		{
+			this->m_id = id;
+			ret = true;
+			if(fetch)
+			{
+				ret = fetchById(this->getID());
+			}
+		}
+		return ret;
+	}
+	bool Record::setID(const CString& id, bool fetch/*=false*/)
+	{
+		int i = 0;
+		Utils::cstring_to_int(id, i);
+		return this->setID(i, fetch);
 	}
 	bool Record::save()
 	{
-		Query* query = Query::from(this->m_table);
+		QueryPtr query(Query::from(this->m_table));
 		
 		//获取修改过的字段及值
 		KVMap fields;
 		this->attributes(fields, false);
 		for(KVMap::iterator itr=fields.begin(); itr!=fields.end();++itr)
 		{
-			if(itr->first.CompareNoCase(PRIMARY_KEY_ID) == 0) continue;
+			if(this->isPrimaryKey(itr->first)) continue;
 			query->set(itr->first, itr->second.toString());
 		}
 		bool ret = false;
@@ -152,23 +189,19 @@ namespace orm
 			if(ret)
 			{
 				int id = get_db()->lastInsertId(this->getTable());
-				this->set(PRIMARY_KEY_ID, id);
+				this->setID(id, false);
 			}
 		}
 		else
 		{
 			ret = get_db()->execute(query->build_update());
 		}
-
-		delete query;
 		return ret;
 	}
 	bool Record::remove()
 	{
-		Query* query = Query::from(this->m_table);
-		CString idStr;
-		this->get(PRIMARY_KEY_ID, idStr);
-		query->where(PRIMARY_KEY_ID, idStr);
+		QueryPtr query(Query::from(this->m_table));
+		query->where(PRIMARY_KEY_NAME(this->getTable()), Utils::int_to_cstring(this->getID()));
 		return get_db()->execute(query->build_delete());
 	}
 	bool Record::fetchByRow(RowPtr& row)
@@ -179,8 +212,14 @@ namespace orm
 		bool ret = false;
 		for(KVMap::iterator kv_itr=fields.begin(); kv_itr!=fields.end(); ++kv_itr)
 		{
+			if(this->isPrimaryKey(kv_itr->first))
+			{
+				int id = 0;
+				kv_itr->second.get(id);
+				this->setID(id, false);
+			}
 			//该字段是外键
-			if(this->isForeignKey(kv_itr->first))
+			else if(this->isForeignKey(kv_itr->first))
 			{
 				CString idStr;
 				if(kv_itr->second.get(idStr))
@@ -197,12 +236,12 @@ namespace orm
 		this->setNewlyRecord(!ret);
 		return ret;
 	}
-	bool Record::fetch()
+	bool Record::fetchById(int id)
 	{
-		if(getID() == 0) return false;
+		if(id <= 0) return false;
 
 		QueryPtr query(Query::from(this->getTable()));
-		query->where(PRIMARY_KEY_ID, Utils::int_to_cstring(getID()))->limit(1);
+		query->where(PRIMARY_KEY_NAME(this->getTable()), Utils::int_to_cstring(id))->limit(1);
 
 		RowSet rs;
 		if(!get_db()->query(query->build_select(), rs) || rs.empty()) {
@@ -213,4 +252,46 @@ namespace orm
 		}
 	}
 
+	bool Record::clone(RecordPtr ptr)
+	{
+		RowPtr row(new Row);
+
+		KVMap fields;
+		this->attributes(fields, true);
+
+		for(KVMap::iterator kv_itr=fields.begin(); kv_itr!=fields.end(); ++kv_itr)
+		{
+			Attribute& attrib = kv_itr->second;
+			switch(attrib.getType())
+			{
+			case 1:
+				{
+					int v = 0;
+					attrib.get(v);
+					row->set(kv_itr->first, v);
+				}
+				break;
+			case 2:
+				{
+					double v = 0;
+					attrib.get(v);
+					row->set(kv_itr->first, v);
+				}
+				break;
+			case 3:
+				{
+					CString v;
+					attrib.get(v);
+					row->set(kv_itr->first, v);
+				}
+				break;
+			}
+		}
+		bool ret = ptr->fetchByRow(row);
+		if(ret)
+		{
+			ptr->setNewlyRecord(this->isNewlyRecord());
+		}
+		return ret;
+	}
 }

@@ -44,7 +44,7 @@ namespace orm
 		RecordPtr find(int id)
 		{
 			QueryPtr query(Query::from<Klass>());
-			query->where(PRIMARY_KEY_ID, Utils::int_to_cstring(id))->limit(1);
+			query->where(PRIMARY_KEY_NAME(Klass::Table()), Utils::int_to_cstring(id))->limit(1);
 			return orm::helper::find_one<Klass>(query.get());
 		}
 	}

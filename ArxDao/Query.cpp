@@ -135,15 +135,11 @@ namespace orm
 
     CString Query::build_from()
     {
-        CString query = _T("FROM ");
-        query += table;
-        return query;
+        return CString(_T("FROM ")+table);
     }
     CString Query::build_into()
     {
-        CString query = _T("INTO ");
-        query += table;
-        return query;
+		return CString(_T("INTO ")+table);
     }
     CString Query::build_limit()
     {
@@ -197,9 +193,9 @@ namespace orm
 
 	Query* Query::from( const CString& table )
     {
-		Query* Query = new orm::Query();
-        Query->set_table( table );
-        return Query;
+		Query* query = new orm::Query();
+        query->set_table( table );
+        return query;
     }
 
     Query* Query::where( const CString& col, const CString& value )

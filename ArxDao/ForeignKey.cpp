@@ -29,9 +29,7 @@ namespace orm
 			}
 			else {
 				RecordPtr& ptr = *obj_ptr;
-				int id = 0;
-				ptr->get(PRIMARY_KEY_ID, id);
-				return (id != fk_id);
+				return (ptr->getID() != fk_id);
 			}
 		}
 		void update()
@@ -39,9 +37,7 @@ namespace orm
 			if(obj_ptr != 0 && *obj_ptr!=0)
 			{
 				RecordPtr& ptr = *obj_ptr;
-				int id = 0;
-				ptr->get(PRIMARY_KEY_ID, id);
-				id_attr.set(id);
+				id_attr.set(ptr->getID());
 			}
 		}
 	};
@@ -74,10 +70,10 @@ namespace orm
 			fk.id_attr.get(fk_id);
 			if(fk_id <= 0)
 			{
-				ptr.swap(fk.cf());
+				ptr = fk.cf();
 			}
 			fk.id_attr.set(id);
-			ptr->set(PRIMARY_KEY_ID, id);
+			ptr->setID(id, true);
 		}
 		bool set(const CString& name, int id)
 		{
@@ -97,11 +93,7 @@ namespace orm
 			if(fk.obj_ptr == 0) return 0;
 
 			RecordPtr ptr = *(fk.obj_ptr);
-			if(ptr == 0) return 0;
-
-			int id = 0;
-			ptr->get(PRIMARY_KEY_ID, id);
-			return id;
+			return (ptr == 0) ? 0 : ptr->getID();
 		}
 		bool has_fk(const CString& name) const
 		{

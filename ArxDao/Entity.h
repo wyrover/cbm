@@ -57,30 +57,6 @@ typedef boost::shared_ptr<TopoGeo> TopoGeoPtr;
 typedef boost::shared_ptr<Tunnel> TunnelPtr;
 typedef boost::shared_ptr<WorkSurf> WorkSurfPtr;
 
-typedef boost::shared_ptr< std::vector<AdjLayerPtr> > AdjLayerList;
-typedef boost::shared_ptr< std::vector<CoalPtr> > CoalList;
-typedef boost::shared_ptr< std::vector<DrillingRadiusPtr> > DrillingRadiusList;
-typedef boost::shared_ptr< std::vector<DrillingSurfPtr> > DrillingSurfList;
-typedef boost::shared_ptr< std::vector<EvalUnitPtr> > EvalUnitList;
-typedef boost::shared_ptr< std::vector<HelpPtr> > HelpList;
-typedef boost::shared_ptr< std::vector<HighDrillingPorePtr> > HighDrillingPoreList;
-typedef boost::shared_ptr< std::vector<HighDrillingTunnelPtr> > HighDrillingTunnelList;
-typedef boost::shared_ptr< std::vector<HydrGeoPtr> > HydrGeoList;
-typedef boost::shared_ptr< std::vector<KeyLayerPtr> > KeyLayerList;
-typedef boost::shared_ptr< std::vector<MinePtr> > MineList;
-typedef boost::shared_ptr< std::vector<MineBasePtr> > MineBaseList;
-typedef boost::shared_ptr< std::vector<MineRegionPtr> > MineRegionList;
-typedef boost::shared_ptr< std::vector<MiningAreaPtr> > MiningAreaList;
-typedef boost::shared_ptr< std::vector<PoreFlowPtr> > PoreFlowList;
-typedef boost::shared_ptr< std::vector<PoreSizePtr> > PoreSizeList;
-typedef boost::shared_ptr< std::vector<ReadyTunnelPtr> > ReadyTunnelList;
-typedef boost::shared_ptr< std::vector<ResAbundancePtr> > ResAbundanceList;
-typedef boost::shared_ptr< std::vector<TechModePtr> > TechModeList;
-typedef boost::shared_ptr< std::vector<TechnologyPtr> > TechnologyList;
-typedef boost::shared_ptr< std::vector<TopoGeoPtr> > TopoGeoList;
-typedef boost::shared_ptr< std::vector<TunnelPtr> > TunnelList;
-typedef boost::shared_ptr< std::vector<WorkSurfPtr> > WorkSurfList;
-
 class ARXDAO_DLLIMPEXP AdjLayer : public orm::Record
 {
 public:
@@ -89,7 +65,6 @@ public:
 
 public:
 	AdjLayer();
-	int id;
 	orm::RecordPtr work_surf;
 	orm::RecordPtr coal;
 	int layer_num;
@@ -108,7 +83,6 @@ public:
 
 public:
 	Coal();
-	int id;
 	orm::RecordPtr mine;
 	CString coal_name;
 	int coal_minable;
@@ -172,7 +146,6 @@ public:
 
 public:
 	DrillingRadius();
-	int id;
 	orm::RecordPtr coal;
 	double radius_r;
 	double radius_l;
@@ -196,7 +169,6 @@ public:
 
 public:
 	DrillingSurf();
-	int id;
 	orm::RecordPtr coal;
 	orm::RecordPtr tunnel;
 	double q_r;
@@ -214,7 +186,6 @@ public:
 
 public:
 	EvalUnit();
-	int id;
 	orm::RecordPtr work_surf;
 	double unit_l;
 	double unit_t;
@@ -230,7 +201,6 @@ public:
 
 public:
 	Help();
-	int id;
 	CString help_field;
 	int help_type;
 	CString help_value;
@@ -246,7 +216,6 @@ public:
 
 public:
 	HighDrillingPore();
-	int id;
 	orm::RecordPtr work_surf;
 	double hdp_l1;
 	double hdp_l2;
@@ -272,7 +241,6 @@ public:
 
 public:
 	HighDrillingTunnel();
-	int id;
 	orm::RecordPtr work_surf;
 	double hdt_k;
 	int hdt_rock;
@@ -290,7 +258,6 @@ public:
 
 public:
 	HydrGeo();
-	int id;
 	CString type;
 	int x1;
 	double x2;
@@ -311,7 +278,6 @@ public:
 
 public:
 	KeyLayer();
-	int id;
 	orm::RecordPtr high_drilling_pore;
 	double key_hn;
 	double key_thetan;
@@ -330,7 +296,6 @@ public:
 
 public:
 	Mine();
-	int id;
 	orm::RecordPtr mine_region;
 	CString username;
 	CString password;
@@ -366,7 +331,6 @@ public:
 
 public:
 	MineBase();
-	int id;
 	CString name;
 	CString comment;
 
@@ -380,7 +344,6 @@ public:
 
 public:
 	MineRegion();
-	int id;
 	orm::RecordPtr mine_base;
 	CString name;
 	CString comment;
@@ -395,7 +358,6 @@ public:
 
 public:
 	MiningArea();
-	int id;
 	orm::RecordPtr coal;
 	int area_mode;
 	double area_k;
@@ -413,7 +375,6 @@ public:
 
 public:
 	PoreFlow();
-	int id;
 	double flow_t;
 	double flow_a0;
 	double flow_d;
@@ -441,7 +402,6 @@ public:
 
 public:
 	PoreSize();
-	int id;
 	double size_q;
 	double size_v;
 	double size_d;
@@ -459,7 +419,6 @@ public:
 
 public:
 	ReadyTunnel();
-	int id;
 	orm::RecordPtr mining_area;
 	orm::RecordPtr tunnel;
 	CString comment;
@@ -474,7 +433,6 @@ public:
 
 public:
 	ResAbundance();
-	int id;
 	CString type;
 	double min_abundance;
 	double max_abundance;
@@ -489,7 +447,6 @@ public:
 
 public:
 	TechMode();
-	int id;
 	orm::RecordPtr mine_region;
 	CString name;
 	int type;
@@ -505,7 +462,6 @@ public:
 
 public:
 	Technology();
-	int id;
 	orm::RecordPtr mine_region;
 	CString name;
 	int iskey;
@@ -523,7 +479,6 @@ public:
 
 public:
 	TopoGeo();
-	int id;
 	CString type;
 	CString feature;
 	CString comment;
@@ -538,7 +493,6 @@ public:
 
 public:
 	Tunnel();
-	int id;
 	double b;
 	double l;
 	double s;
@@ -558,7 +512,6 @@ public:
 
 public:
 	WorkSurf();
-	int id;
 	orm::RecordPtr tunnel;
 	orm::RecordPtr coal;
 	double a;
