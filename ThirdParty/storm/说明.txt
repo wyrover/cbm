@@ -1,6 +1,0 @@
-https://github.com/pjc0247/STORM
-
-这个代码写得挺不错，查询(query)和关系映射(relationship)的代码近乎完美
-但它没有和Model绑定在一起的机制，这部分的代码需要我们自己手动编写
-
-代码值得研究和学习
