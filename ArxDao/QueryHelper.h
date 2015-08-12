@@ -38,13 +38,13 @@ namespace orm
 		RecordPtrListPtr find_many(Query* q)
 		{
 			RecordPtrListPtr objs = orm::helper::internal::find_many<Klass>(q);
-			return (objs == 0 || objs->empty()) ? 0 : objs;
+			return (objs == 0 || objs->empty()) ? RecordPtrListPtr() : objs;
 		}
 		template<typename Klass>
 		RecordPtr find(int id)
 		{
 			QueryPtr query(Query::from<Klass>());
-			query->where(PRIMARY_KEY_NAME(Klass::Table()), Utils::int_to_cstring(id))->limit(1);
+			query->where(PKEY(Klass::Table()), Utils::int_to_cstring(id))->limit(1);
 			return orm::helper::find_one<Klass>(query.get());
 		}
 	}

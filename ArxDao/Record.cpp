@@ -20,12 +20,31 @@ namespace orm
 	{
 		//获取字段属性
 		row->attributes(fields, all);
-		//获取外键
-		fk->attributes(fields, all);
+		//获取外键(无论外键是否有变化,都要进行更新提交到数据库)
+		fk->attributes(fields, true);
+	}
+	CString Record::get(const CString& name) const
+	{
+		CString v;
+		this->get(name, v);
+		return v;
 	}
 	bool Record::get(const CString& name, int& v) const
 	{
-		return row->get(name, v);
+		if(isPrimaryKey(name))
+		{
+			v = getID();
+			return true;
+		}
+		else if(isForeignKey(name))
+		{
+			v = fk->get(name);
+			return true;
+		}
+		else
+		{
+			return row->get(name, v);
+		}
 	}
 	bool Record::get(const CString& name, double& v) const
 	{
@@ -33,7 +52,20 @@ namespace orm
 	}
 	bool Record::get(const CString& name, CString& v) const
 	{
-		return row->get(name, v);
+		if(isPrimaryKey(name))
+		{
+			v = Utils::int_to_cstring(getID());
+			return true;
+		}
+		else if(isForeignKey(name))
+		{
+			v = Utils::int_to_cstring(fk->get(name));
+			return true;
+		}
+		else
+		{
+			return row->get(name, v);
+		}
 	}
 	bool Record::isForeignKey(const CString& name) const
 	{
@@ -41,7 +73,7 @@ namespace orm
 	}
 	bool Record::isPrimaryKey(const CString& name) const
 	{
-		return (name.CompareNoCase(PRIMARY_KEY_NAME(this->getTable())) == 0);
+		return (name.CompareNoCase(PKEY(this->getTable())) == 0);
 	}
 	bool Record::setForeignKey(const CString& name, const CString& str)
 	{
@@ -149,6 +181,10 @@ namespace orm
 	{
 		return this->m_id;
 	}
+	CString Record::getStringID() const
+	{
+		return Utils::int_to_cstring(getID());
+	}
 	bool Record::setID(int id, bool fetch/*=false*/)
 	{
 		bool ret = false;
@@ -201,7 +237,7 @@ namespace orm
 	bool Record::remove()
 	{
 		QueryPtr query(Query::from(this->m_table));
-		query->where(PRIMARY_KEY_NAME(this->getTable()), Utils::int_to_cstring(this->getID()));
+		query->where(PKEY(this->getTable()), Utils::int_to_cstring(this->getID()));
 		return get_db()->execute(query->build_delete());
 	}
 	bool Record::fetchByRow(RowPtr& row)
@@ -241,7 +277,7 @@ namespace orm
 		if(id <= 0) return false;
 
 		QueryPtr query(Query::from(this->getTable()));
-		query->where(PRIMARY_KEY_NAME(this->getTable()), Utils::int_to_cstring(id))->limit(1);
+		query->where(PKEY(this->getTable()), Utils::int_to_cstring(id))->limit(1);
 
 		RowSet rs;
 		if(!get_db()->query(query->build_select(), rs) || rs.empty()) {

@@ -20,7 +20,7 @@ namespace orm
 
 	public:
 		//主键ID使用表前缀(默认不使用)
-		//如果使用表前缀,则主键id的字段名为: 表前缀_id,例如"cbm_mine_id"
+		//如果使用表前缀,则主键id的字段名为: 表前缀+下划线+id,例如"cbm_mine_id"
 		//如果不使用表前缀，则主键id的字段名为:id，例如"id"
 		void enableTablePrefix(bool use=false)
 		{
@@ -30,11 +30,20 @@ namespace orm
 		//获取固定的主键ID名
 		CString getPrimaryKeyName(const CString& table) const
 		{
-			if(m_useTablePrefix)
+			if(m_useTablePrefix) 
+			{
 				//全部变成小写
-				return Utils::cstring_tolower(table+_T("_")+PRIMARY_KEY_ID);
+				return Utils::cstring_tolower(table+_T("_")+KEY_ID);
+			}
 			else
-				return PRIMARY_KEY_ID;
+			{
+				return KEY_ID;
+			}
+		}
+		CString getForeignKeyName(const CString& table) const
+		{
+			//全部变成小写
+			return Utils::cstring_tolower(table+_T("_")+KEY_ID);
 		}
 	protected:
 		static DbPrt instance;

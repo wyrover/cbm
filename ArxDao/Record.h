@@ -28,6 +28,7 @@ namespace orm
 		bool setID(const CString& id, bool fetch=false);
 		//获取主键id
 		int getID() const;
+		CString getStringID() const;
 		//获取数据库表名
 		CString getTable() const;
 		
@@ -43,6 +44,8 @@ namespace orm
 		bool get(const CString& name, int& v) const;
 		bool get(const CString& name, double& v) const;
 		bool get(const CString& name, CString& v) const;
+		//读取数据并自动转换成string类型(方便使用)
+		CString get(const CString& name) const;
 
 		/** 下面的几个方法仅供内部使用. */
 		//从row中读取数据(数据库一个row代表一条记录)

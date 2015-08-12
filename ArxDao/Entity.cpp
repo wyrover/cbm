@@ -15,18 +15,36 @@ orm::RecordPtr AdjLayer::Create()
 
 AdjLayer::AdjLayer() : orm::Record(AdjLayer::Table())
 {
-	layer_num = 0;
-	layer_h = 0.0;
-	layer_hp = 0.0;
-	layer_cave_zone = 0;
+	num = 0;
+	h = 0.0;
+	hp = 0.0;
+	cave_zone = 0;
 	comment = _T("");
-	REG_ATTRIB(layer_num, layer_num);
-	REG_ATTRIB(layer_h, layer_h);
-	REG_ATTRIB(layer_hp, layer_hp);
-	REG_ATTRIB(layer_cave_zone, layer_cave_zone);
+	REG_ATTRIB(num, num);
+	REG_ATTRIB(h, h);
+	REG_ATTRIB(hp, hp);
+	REG_ATTRIB(cave_zone, cave_zone);
 	REG_ATTRIB(comment, comment);
 	REG_FOREGIN_KEY(cbm_work_surf_id, work_surf, &WorkSurf::Create);
 	REG_FOREGIN_KEY(cbm_coal_id, coal, &Coal::Create);
+}
+
+CString Base::Table()
+{
+	return _T("cbm_base");
+}
+
+orm::RecordPtr Base::Create()
+{
+	return orm::RecordPtr(new Base());
+}
+
+Base::Base() : orm::Record(Base::Table())
+{
+	name = _T("");
+	comment = _T("");
+	REG_ATTRIB(name, name);
+	REG_ATTRIB(comment, comment);
 }
 
 CString Coal::Table()
@@ -41,12 +59,12 @@ orm::RecordPtr Coal::Create()
 
 Coal::Coal() : orm::Record(Coal::Table())
 {
-	coal_name = _T("");
-	coal_minable = 0;
-	coal_thick = 0.0;
-	coal_rank = 0;
-	coal_quality = 0;
-	layer_pressure = 0.0;
+	name = _T("");
+	minable = 0;
+	thick = 0.0;
+	rank = 0;
+	quality = 0;
+	pressure = 0.0;
 	gas_content = 0.0;
 	gas_penetration = 0.0;
 	f_value = 0.0;
@@ -92,12 +110,12 @@ Coal::Coal() : orm::Record(Coal::Table())
 	permeability_k = 0.0;
 	eval_difficult = 0;
 	comment = _T("");
-	REG_ATTRIB(coal_name, coal_name);
-	REG_ATTRIB(coal_minable, coal_minable);
-	REG_ATTRIB(coal_thick, coal_thick);
-	REG_ATTRIB(coal_rank, coal_rank);
-	REG_ATTRIB(coal_quality, coal_quality);
-	REG_ATTRIB(layer_pressure, layer_pressure);
+	REG_ATTRIB(name, name);
+	REG_ATTRIB(minable, minable);
+	REG_ATTRIB(thick, thick);
+	REG_ATTRIB(rank, rank);
+	REG_ATTRIB(quality, quality);
+	REG_ATTRIB(pressure, pressure);
 	REG_ATTRIB(gas_content, gas_content);
 	REG_ATTRIB(gas_penetration, gas_penetration);
 	REG_ATTRIB(f_value, f_value);
@@ -158,28 +176,28 @@ orm::RecordPtr DrillingRadius::Create()
 
 DrillingRadius::DrillingRadius() : orm::Record(DrillingRadius::Table())
 {
-	radius_r = 0.0;
-	radius_l = 0.0;
-	radius_k1 = 0.0;
-	radius_rho = 0.0;
-	radius_q0 = 0.0;
-	radius_a = 0.0;
-	radius_t = 0.0;
-	radius_qm1 = 0.0;
-	radius_qm2 = 0.0;
-	radius_qsum = 0.0;
-	radius_eta = 0.0;
-	REG_ATTRIB(radius_r, radius_r);
-	REG_ATTRIB(radius_l, radius_l);
-	REG_ATTRIB(radius_k1, radius_k1);
-	REG_ATTRIB(radius_rho, radius_rho);
-	REG_ATTRIB(radius_q0, radius_q0);
-	REG_ATTRIB(radius_a, radius_a);
-	REG_ATTRIB(radius_t, radius_t);
-	REG_ATTRIB(radius_qm1, radius_qm1);
-	REG_ATTRIB(radius_qm2, radius_qm2);
-	REG_ATTRIB(radius_qsum, radius_qsum);
-	REG_ATTRIB(radius_eta, radius_eta);
+	r = 0.0;
+	l = 0.0;
+	k1 = 0.0;
+	rho = 0.0;
+	q0 = 0.0;
+	a = 0.0;
+	t = 0.0;
+	qm1 = 0.0;
+	qm2 = 0.0;
+	qsum = 0.0;
+	eta = 0.0;
+	REG_ATTRIB(r, r);
+	REG_ATTRIB(l, l);
+	REG_ATTRIB(k1, k1);
+	REG_ATTRIB(rho, rho);
+	REG_ATTRIB(q0, q0);
+	REG_ATTRIB(a, a);
+	REG_ATTRIB(t, t);
+	REG_ATTRIB(qm1, qm1);
+	REG_ATTRIB(qm2, qm2);
+	REG_ATTRIB(qsum, qsum);
+	REG_ATTRIB(eta, eta);
 	REG_FOREGIN_KEY(cbm_coal_id, coal, &Coal::Create);
 }
 
@@ -197,11 +215,11 @@ DrillingSurf::DrillingSurf() : orm::Record(DrillingSurf::Table())
 {
 	q_r = 0.0;
 	q_a = 0.0;
-	tw_q4 = 0.0;
+	q4 = 0.0;
 	comment = _T("");
 	REG_ATTRIB(q_r, q_r);
 	REG_ATTRIB(q_a, q_a);
-	REG_ATTRIB(tw_q4, tw_q4);
+	REG_ATTRIB(q4, q4);
 	REG_ATTRIB(comment, comment);
 	REG_FOREGIN_KEY(cbm_coal_id, coal, &Coal::Create);
 	REG_FOREGIN_KEY(cbm_tunnel_id, tunnel, &Tunnel::Create);
@@ -219,11 +237,11 @@ orm::RecordPtr EvalUnit::Create()
 
 EvalUnit::EvalUnit() : orm::Record(EvalUnit::Table())
 {
-	unit_l = 0.0;
-	unit_t = 0.0;
+	l = 0.0;
+	t = 0.0;
 	comment = _T("");
-	REG_ATTRIB(unit_l, unit_l);
-	REG_ATTRIB(unit_t, unit_t);
+	REG_ATTRIB(l, l);
+	REG_ATTRIB(t, t);
 	REG_ATTRIB(comment, comment);
 	REG_FOREGIN_KEY(cbm_work_surf_id, work_surf, &WorkSurf::Create);
 }
@@ -240,13 +258,13 @@ orm::RecordPtr Help::Create()
 
 Help::Help() : orm::Record(Help::Table())
 {
-	help_field = _T("");
-	help_type = 0;
-	help_value = _T("");
+	field = _T("");
+	type = 0;
+	value = _T("");
 	comment = _T("");
-	REG_ATTRIB(help_field, help_field);
-	REG_ATTRIB(help_type, help_type);
-	REG_ATTRIB(help_value, help_value);
+	REG_ATTRIB(field, field);
+	REG_ATTRIB(type, type);
+	REG_ATTRIB(value, value);
 	REG_ATTRIB(comment, comment);
 }
 
@@ -262,31 +280,31 @@ orm::RecordPtr HighDrillingPore::Create()
 
 HighDrillingPore::HighDrillingPore() : orm::Record(HighDrillingPore::Table())
 {
-	hdp_l1 = 0.0;
-	hdp_l2 = 0.0;
-	hdp_lg = 0.0;
-	hdp_hz = 0.0;
-	hdp_lk = 0.0;
-	hdp_lc = 0.0;
-	hdp_lw = 0.0;
-	hdp_n = 0.0;
-	hdp_beta = 0.0;
-	hdp_ld = 0.0;
-	hdp_lzi = 0.0;
-	hdp_lzj = 0.0;
+	l1 = 0.0;
+	l2 = 0.0;
+	lg = 0.0;
+	hz = 0.0;
+	lk = 0.0;
+	lc = 0.0;
+	lw = 0.0;
+	n = 0.0;
+	beta = 0.0;
+	ld = 0.0;
+	lzi = 0.0;
+	lzj = 0.0;
 	comment = _T("");
-	REG_ATTRIB(hdp_l1, hdp_l1);
-	REG_ATTRIB(hdp_l2, hdp_l2);
-	REG_ATTRIB(hdp_lg, hdp_lg);
-	REG_ATTRIB(hdp_hz, hdp_hz);
-	REG_ATTRIB(hdp_lk, hdp_lk);
-	REG_ATTRIB(hdp_lc, hdp_lc);
-	REG_ATTRIB(hdp_lw, hdp_lw);
-	REG_ATTRIB(hdp_n, hdp_n);
-	REG_ATTRIB(hdp_beta, hdp_beta);
-	REG_ATTRIB(hdp_ld, hdp_ld);
-	REG_ATTRIB(hdp_lzi, hdp_lzi);
-	REG_ATTRIB(hdp_lzj, hdp_lzj);
+	REG_ATTRIB(l1, l1);
+	REG_ATTRIB(l2, l2);
+	REG_ATTRIB(lg, lg);
+	REG_ATTRIB(hz, hz);
+	REG_ATTRIB(lk, lk);
+	REG_ATTRIB(lc, lc);
+	REG_ATTRIB(lw, lw);
+	REG_ATTRIB(n, n);
+	REG_ATTRIB(beta, beta);
+	REG_ATTRIB(ld, ld);
+	REG_ATTRIB(lzi, lzi);
+	REG_ATTRIB(lzj, lzj);
 	REG_ATTRIB(comment, comment);
 	REG_FOREGIN_KEY(cbm_work_surf_id, work_surf, &WorkSurf::Create);
 }
@@ -303,15 +321,15 @@ orm::RecordPtr HighDrillingTunnel::Create()
 
 HighDrillingTunnel::HighDrillingTunnel() : orm::Record(HighDrillingTunnel::Table())
 {
-	hdt_k = 0.0;
-	hdt_rock = 0;
-	hdt_hz_min = 0.0;
-	hdt_hz_max = 0.0;
+	k = 0.0;
+	rock = 0;
+	hz_min = 0.0;
+	hz_max = 0.0;
 	comment = _T("");
-	REG_ATTRIB(hdt_k, hdt_k);
-	REG_ATTRIB(hdt_rock, hdt_rock);
-	REG_ATTRIB(hdt_hz_min, hdt_hz_min);
-	REG_ATTRIB(hdt_hz_max, hdt_hz_max);
+	REG_ATTRIB(k, k);
+	REG_ATTRIB(rock, rock);
+	REG_ATTRIB(hz_min, hz_min);
+	REG_ATTRIB(hz_max, hz_max);
 	REG_ATTRIB(comment, comment);
 	REG_FOREGIN_KEY(cbm_work_surf_id, work_surf, &WorkSurf::Create);
 }
@@ -360,17 +378,17 @@ orm::RecordPtr KeyLayer::Create()
 
 KeyLayer::KeyLayer() : orm::Record(KeyLayer::Table())
 {
-	key_hn = 0.0;
-	key_thetan = 0.0;
-	key_qn = 0.0;
-	key_rtn = 0.0;
-	key_sum_hn = 0.0;
+	hn = 0.0;
+	thetan = 0.0;
+	qn = 0.0;
+	rtn = 0.0;
+	sum_hn = 0.0;
 	comment = _T("");
-	REG_ATTRIB(key_hn, key_hn);
-	REG_ATTRIB(key_thetan, key_thetan);
-	REG_ATTRIB(key_qn, key_qn);
-	REG_ATTRIB(key_rtn, key_rtn);
-	REG_ATTRIB(key_sum_hn, key_sum_hn);
+	REG_ATTRIB(hn, hn);
+	REG_ATTRIB(thetan, thetan);
+	REG_ATTRIB(qn, qn);
+	REG_ATTRIB(rtn, rtn);
+	REG_ATTRIB(sum_hn, sum_hn);
 	REG_ATTRIB(comment, comment);
 	REG_FOREGIN_KEY(cbm_high_drilling_pore_id, high_drilling_pore, &HighDrillingPore::Create);
 }
@@ -389,7 +407,7 @@ Mine::Mine() : orm::Record(Mine::Table())
 {
 	username = _T("");
 	password = _T("");
-	mine_name = _T("");
+	name = _T("");
 	province = _T("");
 	city = _T("");
 	capacity = 0.0;
@@ -412,7 +430,7 @@ Mine::Mine() : orm::Record(Mine::Table())
 	comment = _T("");
 	REG_ATTRIB(username, username);
 	REG_ATTRIB(password, password);
-	REG_ATTRIB(mine_name, mine_name);
+	REG_ATTRIB(name, name);
 	REG_ATTRIB(province, province);
 	REG_ATTRIB(city, city);
 	REG_ATTRIB(capacity, capacity);
@@ -433,44 +451,7 @@ Mine::Mine() : orm::Record(Mine::Table())
 	REG_ATTRIB(pump_k4, pump_k4);
 	REG_ATTRIB(pump_wc, pump_wc);
 	REG_ATTRIB(comment, comment);
-	REG_FOREGIN_KEY(cbm_mine_region_id, mine_region, &MineRegion::Create);
-}
-
-CString MineBase::Table()
-{
-	return _T("cbm_mine_base");
-}
-
-orm::RecordPtr MineBase::Create()
-{
-	return orm::RecordPtr(new MineBase());
-}
-
-MineBase::MineBase() : orm::Record(MineBase::Table())
-{
-	name = _T("");
-	comment = _T("");
-	REG_ATTRIB(name, name);
-	REG_ATTRIB(comment, comment);
-}
-
-CString MineRegion::Table()
-{
-	return _T("cbm_mine_region");
-}
-
-orm::RecordPtr MineRegion::Create()
-{
-	return orm::RecordPtr(new MineRegion());
-}
-
-MineRegion::MineRegion() : orm::Record(MineRegion::Table())
-{
-	name = _T("");
-	comment = _T("");
-	REG_ATTRIB(name, name);
-	REG_ATTRIB(comment, comment);
-	REG_FOREGIN_KEY(cbm_mine_base_id, mine_base, &MineBase::Create);
+	REG_FOREGIN_KEY(cbm_region_id, region, &Region::Create);
 }
 
 CString MiningArea::Table()
@@ -485,13 +466,13 @@ orm::RecordPtr MiningArea::Create()
 
 MiningArea::MiningArea() : orm::Record(MiningArea::Table())
 {
-	area_mode = 0;
-	area_k = 0.0;
+	mode = 0;
+	k_gas = 0.0;
 	a = 0.0;
 	q_r = 0.0;
 	comment = _T("");
-	REG_ATTRIB(area_mode, area_mode);
-	REG_ATTRIB(area_k, area_k);
+	REG_ATTRIB(mode, mode);
+	REG_ATTRIB(k_gas, k_gas);
 	REG_ATTRIB(a, a);
 	REG_ATTRIB(q_r, q_r);
 	REG_ATTRIB(comment, comment);
@@ -510,38 +491,38 @@ orm::RecordPtr PoreFlow::Create()
 
 PoreFlow::PoreFlow() : orm::Record(PoreFlow::Table())
 {
-	flow_t = 0.0;
-	flow_a0 = 0.0;
-	flow_d = 0.0;
-	flow_d1 = 0.0;
-	flow_m = 0.0;
-	flow_k = 0.0;
-	flow_delta_t = 0.0;
-	flow_x = 0.0;
-	flow_p_test = 0.0;
-	flow_p_cur = 0.0;
-	flow_b = 0.0;
-	flow_pt = 0.0;
-	flow_delta_p = 0.0;
-	flow_dh = 0.0;
-	flow_q_hun = 0.0;
-	flow_q_chun = 0.0;
-	REG_ATTRIB(flow_t, flow_t);
-	REG_ATTRIB(flow_a0, flow_a0);
-	REG_ATTRIB(flow_d, flow_d);
-	REG_ATTRIB(flow_d1, flow_d1);
-	REG_ATTRIB(flow_m, flow_m);
-	REG_ATTRIB(flow_k, flow_k);
-	REG_ATTRIB(flow_delta_t, flow_delta_t);
-	REG_ATTRIB(flow_x, flow_x);
-	REG_ATTRIB(flow_p_test, flow_p_test);
-	REG_ATTRIB(flow_p_cur, flow_p_cur);
-	REG_ATTRIB(flow_b, flow_b);
-	REG_ATTRIB(flow_pt, flow_pt);
-	REG_ATTRIB(flow_delta_p, flow_delta_p);
-	REG_ATTRIB(flow_dh, flow_dh);
-	REG_ATTRIB(flow_q_hun, flow_q_hun);
-	REG_ATTRIB(flow_q_chun, flow_q_chun);
+	t = 0.0;
+	a0 = 0.0;
+	d = 0.0;
+	d1 = 0.0;
+	m = 0.0;
+	k = 0.0;
+	delta_t = 0.0;
+	x = 0.0;
+	p_test = 0.0;
+	p_cur = 0.0;
+	b = 0.0;
+	pt = 0.0;
+	delta_p = 0.0;
+	dh = 0.0;
+	q_hun = 0.0;
+	q_chun = 0.0;
+	REG_ATTRIB(t, t);
+	REG_ATTRIB(a0, a0);
+	REG_ATTRIB(d, d);
+	REG_ATTRIB(d1, d1);
+	REG_ATTRIB(m, m);
+	REG_ATTRIB(k, k);
+	REG_ATTRIB(delta_t, delta_t);
+	REG_ATTRIB(x, x);
+	REG_ATTRIB(p_test, p_test);
+	REG_ATTRIB(p_cur, p_cur);
+	REG_ATTRIB(b, b);
+	REG_ATTRIB(pt, pt);
+	REG_ATTRIB(delta_p, delta_p);
+	REG_ATTRIB(dh, dh);
+	REG_ATTRIB(q_hun, q_hun);
+	REG_ATTRIB(q_chun, q_chun);
 }
 
 CString PoreSize::Table()
@@ -556,18 +537,18 @@ orm::RecordPtr PoreSize::Create()
 
 PoreSize::PoreSize() : orm::Record(PoreSize::Table())
 {
-	size_q = 0.0;
-	size_v = 0.0;
-	size_d = 0.0;
-	size_p = 0.0;
-	size_sigma = 0.0;
-	size_delta = 0.0;
-	REG_ATTRIB(size_q, size_q);
-	REG_ATTRIB(size_v, size_v);
-	REG_ATTRIB(size_d, size_d);
-	REG_ATTRIB(size_p, size_p);
-	REG_ATTRIB(size_sigma, size_sigma);
-	REG_ATTRIB(size_delta, size_delta);
+	q = 0.0;
+	v = 0.0;
+	d = 0.0;
+	p = 0.0;
+	sigma = 0.0;
+	delta = 0.0;
+	REG_ATTRIB(q, q);
+	REG_ATTRIB(v, v);
+	REG_ATTRIB(d, d);
+	REG_ATTRIB(p, p);
+	REG_ATTRIB(sigma, sigma);
+	REG_ATTRIB(delta, delta);
 }
 
 CString ReadyTunnel::Table()
@@ -586,6 +567,25 @@ ReadyTunnel::ReadyTunnel() : orm::Record(ReadyTunnel::Table())
 	REG_ATTRIB(comment, comment);
 	REG_FOREGIN_KEY(cbm_mining_area_id, mining_area, &MiningArea::Create);
 	REG_FOREGIN_KEY(cbm_tunnel_id, tunnel, &Tunnel::Create);
+}
+
+CString Region::Table()
+{
+	return _T("cbm_region");
+}
+
+orm::RecordPtr Region::Create()
+{
+	return orm::RecordPtr(new Region());
+}
+
+Region::Region() : orm::Record(Region::Table())
+{
+	name = _T("");
+	comment = _T("");
+	REG_ATTRIB(name, name);
+	REG_ATTRIB(comment, comment);
+	REG_FOREGIN_KEY(cbm_base_id, base, &Base::Create);
 }
 
 CString ResAbundance::Table()
@@ -626,7 +626,7 @@ TechMode::TechMode() : orm::Record(TechMode::Table())
 	REG_ATTRIB(name, name);
 	REG_ATTRIB(type, type);
 	REG_ATTRIB(comment, comment);
-	REG_FOREGIN_KEY(cbm_mine_region_id, mine_region, &MineRegion::Create);
+	REG_FOREGIN_KEY(cbm_region_id, region, &Region::Create);
 }
 
 CString Technology::Table()
@@ -651,7 +651,7 @@ Technology::Technology() : orm::Record(Technology::Table())
 	REG_ATTRIB(doc, doc);
 	REG_ATTRIB(video, video);
 	REG_ATTRIB(comment, comment);
-	REG_FOREGIN_KEY(cbm_mine_region_id, mine_region, &MineRegion::Create);
+	REG_FOREGIN_KEY(cbm_region_id, region, &Region::Create);
 }
 
 CString TopoGeo::Table()
@@ -719,27 +719,27 @@ WorkSurf::WorkSurf() : orm::Record(WorkSurf::Table())
 	a = 0.0;
 	q_r = 0.0;
 	q_a = 0.0;
-	ws_l = 0.0;
-	ws_layerable = 0;
-	ws_k1 = 0.0;
-	ws_k2 = 0.0;
-	ws_k3 = 0.0;
-	ws_kf = 0.0;
-	ws_h = 0.0;
-	ws_method = 0;
+	l = 0.0;
+	layerable = 0;
+	k1 = 0.0;
+	k2 = 0.0;
+	k3 = 0.0;
+	kf = 0.0;
+	h = 0.0;
+	method = 0;
 	last_t = 0.0;
 	comment = _T("");
 	REG_ATTRIB(a, a);
 	REG_ATTRIB(q_r, q_r);
 	REG_ATTRIB(q_a, q_a);
-	REG_ATTRIB(ws_l, ws_l);
-	REG_ATTRIB(ws_layerable, ws_layerable);
-	REG_ATTRIB(ws_k1, ws_k1);
-	REG_ATTRIB(ws_k2, ws_k2);
-	REG_ATTRIB(ws_k3, ws_k3);
-	REG_ATTRIB(ws_kf, ws_kf);
-	REG_ATTRIB(ws_h, ws_h);
-	REG_ATTRIB(ws_method, ws_method);
+	REG_ATTRIB(l, l);
+	REG_ATTRIB(layerable, layerable);
+	REG_ATTRIB(k1, k1);
+	REG_ATTRIB(k2, k2);
+	REG_ATTRIB(k3, k3);
+	REG_ATTRIB(kf, kf);
+	REG_ATTRIB(h, h);
+	REG_ATTRIB(method, method);
 	REG_ATTRIB(last_t, last_t);
 	REG_ATTRIB(comment, comment);
 	REG_FOREGIN_KEY(cbm_tunnel_id, tunnel, &Tunnel::Create);

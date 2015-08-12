@@ -4,6 +4,7 @@
 #include <ArxHelper/HelperClass.h>
 #include <ArxDao/DaoHelper.h>
 #include <ArxDao/Entity.h>
+using namespace orm;
 using namespace cbm;
 
 RegDlg::RegDlg(BOOL bModal) 
@@ -35,7 +36,7 @@ void RegDlg::OnCommand( UINT uNotifyCode, int nID, HWND wndCtl )
 
 LRESULT RegDlg::OnInitDialog( HWND hWnd, LPARAM lParam )
 {
-	SComboBox* baseCombox = FindChildByName2<SComboBox>(L"mine_base");
+	SComboBox* baseCombox = FindChildByName2<SComboBox>(L"base");
 
 	//查找所有的煤炭基地
 	StringArray bases;
@@ -58,9 +59,9 @@ void RegDlg::OnReg()
 {
 	CString user = FindChildByName2<SEdit>(L"username")->GetWindowText();
 	CString pwd = FindChildByName2<SEdit>(L"password")->GetWindowText();
-	CString name = FindChildByName2<SEdit>(L"mine_name")->GetWindowText();
-	CString region = FindChildByName2<SComboBox>(L"mine_region")->GetWindowText();
-	//CString base = FindChildByName2<SComboBox>(L"mine_base")->GetWindowText();
+	CString name = FindChildByName2<SEdit>(L"name")->GetWindowText();
+	CString region = FindChildByName2<SComboBox>(L"region")->GetWindowText();
+	//CString base = FindChildByName2<SComboBox>(L"base")->GetWindowText();
 	CString province = FindChildByName2<SEdit>(L"province")->GetWindowText();
 	CString city = FindChildByName2<SEdit>(L"city")->GetWindowText();
 	CString coal_nums = FindChildByName2<SEdit>(L"coal_nums")->GetWindowText();
@@ -74,18 +75,17 @@ void RegDlg::OnReg()
 	}
 	else
 	{
-		Mine mine;
-		mine.setUsername(user);
-		mine.setPassword(pwd);
-		mine.setMineName(name);
-		CString options;
-		options.Format(_T("where name='%s'"), region);
-		mine.setMineRegion(MineRegion::findOne(options));
-		mine.setProvince(province);
-		mine.setCity(city);
+		MinePtr mine(new Mine);
+		mine->username = user;
+		mine->password = pwd;
+		mine->name = name;
+		mine->province = province;
+		mine->city = city;
+
+		QueryPtr query(Query::from<Region>());
+		mine->region = query->where(FIELD(name), region)->find_one<Region>();
 		//增加到数据库并返回新增行的id值
-		int id = mine.insert();
-		if(id > 0)
+		if(mine->save())
 		{
 			SMessageBox(m_hWnd,_T("注册矿井账户成功!"),_T("友情提示"),MB_OK);
 			AcadSouiDialog::OnOK();
@@ -99,8 +99,8 @@ void RegDlg::OnReg()
 
 void RegDlg::OnSelChanged( EventArgs *pEvt )
 {
-	SComboBox* baseCombox = FindChildByName2<SComboBox>(L"mine_base");
-	SComboBox* regionCombox = FindChildByName2<SComboBox>(L"mine_region");
+	SComboBox* baseCombox = FindChildByName2<SComboBox>(L"base");
+	SComboBox* regionCombox = FindChildByName2<SComboBox>(L"region");
 	if(baseCombox == 0 || regionCombox == 0) return;
 
 	EventCBSelChange* pEvtOfCB = (EventCBSelChange*)pEvt;

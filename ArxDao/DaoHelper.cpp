@@ -22,52 +22,58 @@ void DaoHelper::TestDao()
 	MinePtr mine(new Mine);
 	mine->username = _T("dlj");
 	mine->password = _T("123");
-	mine->mine_name = _T("晋煤集团");
-	mine->mine_region = Query::find<MineRegion>(1);
-	mine->set(_T("mine_name"), _T("xxx煤集团公司"));
-	mine->mine_region->set(_T("name"), _T("华北地区"));
-	mine->mine_region->setID(_T("2"), true);
-	//mine->save();
+	mine->name = _T("晋煤集团");
+	mine->region = Query::find<Region>(1);
+	mine->set(FIELD(name), _T("xxx煤集团公司"));
+	mine->region->set(FIELD(name), _T("华北地区"));
+	mine->region->setID(_T("2"), true);
+	mine->save();
 
-	MineRegionPtr region = DYNAMIC_POINTER_CAST(MineRegion, mine->mine_region);
+	RegionPtr region = DYNAMIC_POINTER_CAST(Region, mine->region);
 	acutPrintf(_T("矿区名称:%s"), region->name);
 
 	MinePtr mine2(new Mine);
 	mine->clone(mine2);
-	acutPrintf(_T("\n矿井名称:%s"), mine2->mine_name);
+	acutPrintf(_T("\n矿井名称:%s"), mine2->name);
 }
 
 int DaoHelper::VerifyMineAccount(const CString& username, const CString& pwd)
 {
-	//CString options;
-	//options.Format(_T("where username='%s'"), username);
-	//MinePtr mine = Mine::findOne(options);
-	//if(mine == 0) return 0;
-	//if(mine->getPassword() != pwd) return 1;
-	//return 2;
-	return 0;
+	QueryPtr query(Query::from<Mine>());
+	RecordPtr mine = query->where(FIELD(username), username)
+		                  ->find_one<Mine>();
+	if(mine == 0) 
+		return 0;
+	else if(mine->get(FIELD(password)) != pwd) 
+		return 1;
+	else
+		return 2;
 }
 
 void DaoHelper::GetAllMineBases(StringArray& bases)
 {
-	//MineBaseList list = MineBase::findMany();
-	//for(int i=0;i<list->size();i++)
-	//{
-	//	bases.push_back(list->at(i)->getName());
-	//}
+	QueryPtr query(Query::from<Base>());
+	RecordPtrListPtr lists = query->find_many<Base>();
+	for(int i=0;i<lists->size();i++)
+	{
+		bases.push_back(lists->at(i)->get(FIELD(name)));
+	}
 }
 
 void DaoHelper::GetAllMineRegions(const CString& baseName, StringArray& regions)
 {
-	//CString options;
-	//options.Format(_T("where name='%s'"), baseName);
-	//MineBasePtr base = MineBase::findOne(options);
-	//if(base == 0) return;
+	QueryPtr query(Query::from<Base>());
+	RecordPtr base = query->where(FIELD(name), baseName)
+		                  ->find_one<Base>();
+	if(base == 0) return;
 
-	//options.Format(_T("where cbm_mine_base_id=%d"), base->getId());
-	//MineRegionList list = MineRegion::findMany(options);
-	//for(int i=0;i<list->size();i++)
-	//{
-	//	regions.push_back(list->at(i)->getName());
-	//}
+	query.reset(Query::from<Region>());
+	RecordPtrListPtr lists = query->where(FKEY2(Base), base->getStringID())
+		                          ->find_many<Region>();
+	if(lists == 0) return;
+
+	for(int i=0;i<lists->size();i++)
+	{
+		regions.push_back(lists->at(i)->get(FIELD(name)));
+	}
 }

@@ -10,6 +10,7 @@ using namespace boost;
 namespace cbm {
 
 class AdjLayer;
+class Base;
 class Coal;
 class DrillingRadius;
 class DrillingSurf;
@@ -20,12 +21,11 @@ class HighDrillingTunnel;
 class HydrGeo;
 class KeyLayer;
 class Mine;
-class MineBase;
-class MineRegion;
 class MiningArea;
 class PoreFlow;
 class PoreSize;
 class ReadyTunnel;
+class Region;
 class ResAbundance;
 class TechMode;
 class Technology;
@@ -34,6 +34,7 @@ class Tunnel;
 class WorkSurf;
 
 typedef boost::shared_ptr<AdjLayer> AdjLayerPtr;
+typedef boost::shared_ptr<Base> BasePtr;
 typedef boost::shared_ptr<Coal> CoalPtr;
 typedef boost::shared_ptr<DrillingRadius> DrillingRadiusPtr;
 typedef boost::shared_ptr<DrillingSurf> DrillingSurfPtr;
@@ -44,12 +45,11 @@ typedef boost::shared_ptr<HighDrillingTunnel> HighDrillingTunnelPtr;
 typedef boost::shared_ptr<HydrGeo> HydrGeoPtr;
 typedef boost::shared_ptr<KeyLayer> KeyLayerPtr;
 typedef boost::shared_ptr<Mine> MinePtr;
-typedef boost::shared_ptr<MineBase> MineBasePtr;
-typedef boost::shared_ptr<MineRegion> MineRegionPtr;
 typedef boost::shared_ptr<MiningArea> MiningAreaPtr;
 typedef boost::shared_ptr<PoreFlow> PoreFlowPtr;
 typedef boost::shared_ptr<PoreSize> PoreSizePtr;
 typedef boost::shared_ptr<ReadyTunnel> ReadyTunnelPtr;
+typedef boost::shared_ptr<Region> RegionPtr;
 typedef boost::shared_ptr<ResAbundance> ResAbundancePtr;
 typedef boost::shared_ptr<TechMode> TechModePtr;
 typedef boost::shared_ptr<Technology> TechnologyPtr;
@@ -67,13 +67,26 @@ public:
 	AdjLayer();
 	orm::RecordPtr work_surf;
 	orm::RecordPtr coal;
-	int layer_num;
-	double layer_h;
-	double layer_hp;
-	int layer_cave_zone;
+	int num;
+	double h;
+	double hp;
+	int cave_zone;
 	CString comment;
 
 }; // class AdjLayer
+
+class ARXDAO_DLLIMPEXP Base : public orm::Record
+{
+public:
+	static CString Table();
+	static orm::RecordPtr Create();
+
+public:
+	Base();
+	CString name;
+	CString comment;
+
+}; // class Base
 
 class ARXDAO_DLLIMPEXP Coal : public orm::Record
 {
@@ -84,12 +97,12 @@ public:
 public:
 	Coal();
 	orm::RecordPtr mine;
-	CString coal_name;
-	int coal_minable;
-	double coal_thick;
-	int coal_rank;
-	int coal_quality;
-	double layer_pressure;
+	CString name;
+	int minable;
+	double thick;
+	int rank;
+	int quality;
+	double pressure;
 	double gas_content;
 	double gas_penetration;
 	double f_value;
@@ -147,17 +160,17 @@ public:
 public:
 	DrillingRadius();
 	orm::RecordPtr coal;
-	double radius_r;
-	double radius_l;
-	double radius_k1;
-	double radius_rho;
-	double radius_q0;
-	double radius_a;
-	double radius_t;
-	double radius_qm1;
-	double radius_qm2;
-	double radius_qsum;
-	double radius_eta;
+	double r;
+	double l;
+	double k1;
+	double rho;
+	double q0;
+	double a;
+	double t;
+	double qm1;
+	double qm2;
+	double qsum;
+	double eta;
 
 }; // class DrillingRadius
 
@@ -173,7 +186,7 @@ public:
 	orm::RecordPtr tunnel;
 	double q_r;
 	double q_a;
-	double tw_q4;
+	double q4;
 	CString comment;
 
 }; // class DrillingSurf
@@ -187,8 +200,8 @@ public:
 public:
 	EvalUnit();
 	orm::RecordPtr work_surf;
-	double unit_l;
-	double unit_t;
+	double l;
+	double t;
 	CString comment;
 
 }; // class EvalUnit
@@ -201,9 +214,9 @@ public:
 
 public:
 	Help();
-	CString help_field;
-	int help_type;
-	CString help_value;
+	CString field;
+	int type;
+	CString value;
 	CString comment;
 
 }; // class Help
@@ -217,18 +230,18 @@ public:
 public:
 	HighDrillingPore();
 	orm::RecordPtr work_surf;
-	double hdp_l1;
-	double hdp_l2;
-	double hdp_lg;
-	double hdp_hz;
-	double hdp_lk;
-	double hdp_lc;
-	double hdp_lw;
-	double hdp_n;
-	double hdp_beta;
-	double hdp_ld;
-	double hdp_lzi;
-	double hdp_lzj;
+	double l1;
+	double l2;
+	double lg;
+	double hz;
+	double lk;
+	double lc;
+	double lw;
+	double n;
+	double beta;
+	double ld;
+	double lzi;
+	double lzj;
 	CString comment;
 
 }; // class HighDrillingPore
@@ -242,10 +255,10 @@ public:
 public:
 	HighDrillingTunnel();
 	orm::RecordPtr work_surf;
-	double hdt_k;
-	int hdt_rock;
-	double hdt_hz_min;
-	double hdt_hz_max;
+	double k;
+	int rock;
+	double hz_min;
+	double hz_max;
 	CString comment;
 
 }; // class HighDrillingTunnel
@@ -279,11 +292,11 @@ public:
 public:
 	KeyLayer();
 	orm::RecordPtr high_drilling_pore;
-	double key_hn;
-	double key_thetan;
-	double key_qn;
-	double key_rtn;
-	double key_sum_hn;
+	double hn;
+	double thetan;
+	double qn;
+	double rtn;
+	double sum_hn;
 	CString comment;
 
 }; // class KeyLayer
@@ -296,10 +309,10 @@ public:
 
 public:
 	Mine();
-	orm::RecordPtr mine_region;
+	orm::RecordPtr region;
 	CString username;
 	CString password;
-	CString mine_name;
+	CString name;
 	CString province;
 	CString city;
 	double capacity;
@@ -323,33 +336,6 @@ public:
 
 }; // class Mine
 
-class ARXDAO_DLLIMPEXP MineBase : public orm::Record
-{
-public:
-	static CString Table();
-	static orm::RecordPtr Create();
-
-public:
-	MineBase();
-	CString name;
-	CString comment;
-
-}; // class MineBase
-
-class ARXDAO_DLLIMPEXP MineRegion : public orm::Record
-{
-public:
-	static CString Table();
-	static orm::RecordPtr Create();
-
-public:
-	MineRegion();
-	orm::RecordPtr mine_base;
-	CString name;
-	CString comment;
-
-}; // class MineRegion
-
 class ARXDAO_DLLIMPEXP MiningArea : public orm::Record
 {
 public:
@@ -359,8 +345,8 @@ public:
 public:
 	MiningArea();
 	orm::RecordPtr coal;
-	int area_mode;
-	double area_k;
+	int mode;
+	double k_gas;
 	double a;
 	double q_r;
 	CString comment;
@@ -375,22 +361,22 @@ public:
 
 public:
 	PoreFlow();
-	double flow_t;
-	double flow_a0;
-	double flow_d;
-	double flow_d1;
-	double flow_m;
-	double flow_k;
-	double flow_delta_t;
-	double flow_x;
-	double flow_p_test;
-	double flow_p_cur;
-	double flow_b;
-	double flow_pt;
-	double flow_delta_p;
-	double flow_dh;
-	double flow_q_hun;
-	double flow_q_chun;
+	double t;
+	double a0;
+	double d;
+	double d1;
+	double m;
+	double k;
+	double delta_t;
+	double x;
+	double p_test;
+	double p_cur;
+	double b;
+	double pt;
+	double delta_p;
+	double dh;
+	double q_hun;
+	double q_chun;
 
 }; // class PoreFlow
 
@@ -402,12 +388,12 @@ public:
 
 public:
 	PoreSize();
-	double size_q;
-	double size_v;
-	double size_d;
-	double size_p;
-	double size_sigma;
-	double size_delta;
+	double q;
+	double v;
+	double d;
+	double p;
+	double sigma;
+	double delta;
 
 }; // class PoreSize
 
@@ -424,6 +410,20 @@ public:
 	CString comment;
 
 }; // class ReadyTunnel
+
+class ARXDAO_DLLIMPEXP Region : public orm::Record
+{
+public:
+	static CString Table();
+	static orm::RecordPtr Create();
+
+public:
+	Region();
+	orm::RecordPtr base;
+	CString name;
+	CString comment;
+
+}; // class Region
 
 class ARXDAO_DLLIMPEXP ResAbundance : public orm::Record
 {
@@ -447,7 +447,7 @@ public:
 
 public:
 	TechMode();
-	orm::RecordPtr mine_region;
+	orm::RecordPtr region;
 	CString name;
 	int type;
 	CString comment;
@@ -462,7 +462,7 @@ public:
 
 public:
 	Technology();
-	orm::RecordPtr mine_region;
+	orm::RecordPtr region;
 	CString name;
 	int iskey;
 	CString doc;
@@ -517,14 +517,14 @@ public:
 	double a;
 	double q_r;
 	double q_a;
-	double ws_l;
-	int ws_layerable;
-	double ws_k1;
-	double ws_k2;
-	double ws_k3;
-	double ws_kf;
-	double ws_h;
-	int ws_method;
+	double l;
+	int layerable;
+	double k1;
+	double k2;
+	double k3;
+	double kf;
+	double h;
+	int method;
 	double last_t;
 	CString comment;
 

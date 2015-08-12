@@ -220,7 +220,7 @@ public:
 
 		if( !loadArxModule( _T( "DataInit" ) ) ) return false;
 		if( !loadArxModule( _T( "ArxDao" ) ) ) return false;
-		//if( !loadArxModule( _T( "ArxSoUI" ) ) ) return false;
+		if( !loadArxModule( _T( "ArxSoUI" ) ) ) return false;
 
 		return true;
 	}
@@ -230,7 +230,7 @@ public:
 		acutPrintf( _T( "\n-------- Ð¶ÔØ¹¦ÄÜÄ£¿é ------------" ) );
 
 		unloadArxModule( _T( "DataInit" ) );
-		//unloadArxModule( _T( "ArxSoUI" ) );
+		unloadArxModule( _T( "ArxSoUI" ) );
 		unloadArxModule( _T( "ArxDao" ) );
 	}
 

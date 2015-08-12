@@ -2,7 +2,7 @@
 <SOUI width="374" height="406" translucent="0" alpha="255" resizable="0">
   <root cache="1" skin="_skin.sys.wnd.bkgnd">
     <text pos="8,141" width="60" height="23" ncSkin="_skin.sys.border" name="Label22" margin-x="1" margin-y="1">矿井名称</text>
-    <edit pos="74,139" width="292" height="27" enable="1" ncSkin="_skin.sys.border" name="mine_name" margin-x="1" margin-y="1"/>
+    <edit pos="74,139" width="292" height="27" enable="1" ncSkin="_skin.sys.border" name="name" margin-x="1" margin-y="1"/>
     <text pos="8,195" width="60" height="23" ncSkin="_skin.sys.border" name="Label24" margin-x="1" margin-y="1">煤炭基地</text>
     <text pos="8,249" width="45" height="23" ncSkin="_skin.sys.border" name="Label28" margin-x="1" margin-y="1">所在地</text>
     <edit pos="74,247" width="69" height="27" enable="1" ncSkin="_skin.sys.border" name="province" margin-x="1" margin-y="1"/>
@@ -22,14 +22,14 @@
     <edit pos="74,53" width="293" height="27" enable="1" ncSkin="_skin.sys.border" name="username" margin-x="1" margin-y="1"/>
     <text pos="8,100" width="45" height="23" ncSkin="_skin.sys.border" name="Label46" margin-x="1" margin-y="1">密码</text>
     <edit pos="74,98" width="293" height="27" ncSkin="_skin.sys.border" name="password" margin-x="1" margin-y="1"/>
-    <combobox pos="74,194" width="102" height="24" ncSkin="_skin.sys.border" dropDown="1" curSel="0" name="mine_base" margin-x="1" margin-y="1">
+    <combobox pos="74,194" width="102" height="24" ncSkin="_skin.sys.border" dropDown="1" curSel="0" name="base" margin-x="1" margin-y="1">
       <liststyle itemHeight="30" colorText="#000000" colorSelText="#FFFFFF" colorItemBkgnd="#FFFFFF" colorItemSelBkgnd="#000088"/>
       <items>
         <item text=""/>
       </items>
     </combobox>
-    <text pos="189,195" width="30" height="23" ncSkin="_skin.sys.border" name="Label49" margin-x="1" margin-y="1">矿区</text>
-    <combobox pos="226,194" width="137" height="24" ncSkin="_skin.sys.border" dropDown="1" curSel="0" name="mine_region" margin-x="1" margin-y="1">
+    <text pos="189,195" width="60" height="23" ncSkin="_skin.sys.border" name="Label49" margin-x="1" margin-y="1">所在矿区</text>
+    <combobox pos="254,194" width="109" height="24" ncSkin="_skin.sys.border" dropDown="1" curSel="0" name="region" margin-x="1" margin-y="1">
       <liststyle itemHeight="30" colorText="#000000" colorSelText="#FFFFFF" colorItemBkgnd="#FFFFFF" colorItemSelBkgnd="#000088"/>
       <items>
         <item text=""/>

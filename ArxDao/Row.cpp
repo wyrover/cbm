@@ -205,6 +205,11 @@ namespace orm
 			return false;
 		}
 	}
+	CString Row::toString(const CString& name) const
+	{
+		if(d->m_attribs.find(name) == d->m_attribs.end()) return _T("");
+		return d->m_attribs[name].toString();
+	}
 	Attribute& Row::operator[](const CString& name)
 	{
 		return d->m_attribs[name];

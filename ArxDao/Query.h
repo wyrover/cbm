@@ -24,7 +24,7 @@ namespace orm
 			return orm::helper::find_one<Klass>(this);
 		}
 		template<typename Klass>
-		RecordPtr find_many()
+		RecordPtrListPtr find_many()
 		{
 			return orm::helper::find_many<Klass>(this);
 		}

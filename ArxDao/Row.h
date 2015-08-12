@@ -78,6 +78,7 @@ namespace orm
 		bool get(const CString& name, int& v) const;
 		bool get(const CString& name, double& v) const;
 		bool get(const CString& name, CString& v) const;
+		CString toString(const CString& name) const;
 		Attribute& operator[](const CString& name);
 		void attributes(KVMap& fields, bool all=false);
 
