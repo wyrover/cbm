@@ -7,9 +7,12 @@
     <file name="about" path="xml\about.xml"/>
     <file name="coal" path="xml\coal.xml"/>
     <file name="demo" path="xml\demo.xml"/>
+    <file name="difficult_eval" path="xml\difficult_eval.xml"/>
+    <file name="key_param" path="xml\key_param.xml"/>
     <file name="login" path="xml\login.xml"/>
     <file name="mine" path="xml\mine.xml"/>
     <file name="reg" path="xml\reg.xml"/>
+    <file name="reserves_predict" path="xml\reserves_predict.xml"/>
   </layout>
   <icon>
     <file name="ICON_DUI_LOGO_32" path="image\icon\dui_logo_32.ico"/>
@@ -70,6 +73,20 @@
     <file name="UNDERLINE" path="image\button\underline.png"/>
     <file name="UNDERLINE2" path="image\button\underline2.png"/>
     <file name="UNDO" path="image\button\undo.png"/>
+    <file name="DKPAC_HOME_ICON_0" path="image\dkpac\home_icon_0.png"/>
+    <file name="DKPAC_HOME_ICON_1" path="image\dkpac\home_icon_1.png"/>
+    <file name="DKPAC_HOME_ICON_10" path="image\dkpac\home_icon_10.png"/>
+    <file name="DKPAC_HOME_ICON_11" path="image\dkpac\home_icon_11.png"/>
+    <file name="DKPAC_HOME_ICON_12" path="image\dkpac\home_icon_12.png"/>
+    <file name="DKPAC_HOME_ICON_2" path="image\dkpac\home_icon_2.png"/>
+    <file name="DKPAC_HOME_ICON_3" path="image\dkpac\home_icon_3.png"/>
+    <file name="DKPAC_HOME_ICON_4" path="image\dkpac\home_icon_4.png"/>
+    <file name="DKPAC_HOME_ICON_5" path="image\dkpac\home_icon_5.png"/>
+    <file name="DKPAC_HOME_ICON_6" path="image\dkpac\home_icon_6.png"/>
+    <file name="DKPAC_HOME_ICON_7" path="image\dkpac\home_icon_7.png"/>
+    <file name="DKPAC_HOME_ICON_8" path="image\dkpac\home_icon_8.png"/>
+    <file name="DKPAC_HOME_ICON_9" path="image\dkpac\home_icon_9.png"/>
+    <file name="DKPAC_TOOL_BOX" path="image\dkpac\tool_box.png"/>
     <file name="SMALL_ABOUT" path="image\small\about.png"/>
     <file name="SMALL_CALENDAR" path="image\small\calendar.png"/>
     <file name="SMALL_COLOR" path="image\small\color.png"/>

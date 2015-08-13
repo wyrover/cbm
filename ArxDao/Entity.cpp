@@ -3,6 +3,24 @@
 
 namespace cbm {
 
+CString Account::Table()
+{
+	return _T("cbm_account");
+}
+
+orm::RecordPtr Account::Create()
+{
+	return orm::RecordPtr(new Account());
+}
+
+Account::Account() : orm::Record(Account::Table())
+{
+	username = _T("");
+	password = _T("");
+	REG_ATTRIB(username, username);
+	REG_ATTRIB(password, password);
+}
+
 CString AdjLayer::Table()
 {
 	return _T("cbm_adj_layer");
@@ -70,9 +88,9 @@ Coal::Coal() : orm::Record(Coal::Table())
 	f_value = 0.0;
 	res_abundance = 0;
 	complexity = 0;
-	mine_index = 0;
+	mine_index = 0.0;
 	var_coeff = 0.0;
-	stability = 0.0;
+	stability = 0;
 	dip_angle = 0.0;
 	caving_zone_height = 0.0;
 	layer_gap = 0.0;
@@ -237,11 +255,11 @@ orm::RecordPtr EvalUnit::Create()
 
 EvalUnit::EvalUnit() : orm::Record(EvalUnit::Table())
 {
-	unit_l = 0.0;
-	unit_t = 0.0;
+	l = 0.0;
+	t = 0.0;
 	comment = _T("");
-	REG_ATTRIB(unit_l, unit_l);
-	REG_ATTRIB(unit_t, unit_t);
+	REG_ATTRIB(l, l);
+	REG_ATTRIB(t, t);
 	REG_ATTRIB(comment, comment);
 	REG_FOREGIN_KEY(cbm_work_surf_id, work_surf, &WorkSurf::Create);
 }
@@ -405,8 +423,6 @@ orm::RecordPtr Mine::Create()
 
 Mine::Mine() : orm::Record(Mine::Table())
 {
-	username = _T("");
-	password = _T("");
 	name = _T("");
 	province = _T("");
 	city = _T("");
@@ -428,8 +444,6 @@ Mine::Mine() : orm::Record(Mine::Table())
 	pump_k4 = 0.0;
 	pump_wc = 0.0;
 	comment = _T("");
-	REG_ATTRIB(username, username);
-	REG_ATTRIB(password, password);
 	REG_ATTRIB(name, name);
 	REG_ATTRIB(province, province);
 	REG_ATTRIB(city, city);

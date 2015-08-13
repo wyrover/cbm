@@ -38,7 +38,7 @@ LRESULT AboutDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 
 void AboutDialog::OnCombox71SelChanged(SOUI::EventArgs *pEvt)
 {
-	if(!m_bLayoutInited) return;
+	if(!isLayoutInited()) return;
 	EventCBSelChange* pEvtOfCB = (EventCBSelChange*)pEvt;
 	if(pEvtOfCB == 0) return;
 

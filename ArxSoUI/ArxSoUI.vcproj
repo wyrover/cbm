@@ -470,7 +470,15 @@
 					>
 				</File>
 				<File
+					RelativePath=".\CoalDialog.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\DemoDialog.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\DifficultEvalDialog.cpp"
 					>
 				</File>
 				<File
@@ -478,11 +486,23 @@
 					>
 				</File>
 				<File
+					RelativePath=".\KeyParamDialog.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\LoginDialog.cpp"
 					>
 				</File>
 				<File
+					RelativePath=".\MineDialog.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\RegDialog.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\ReservesPredictDialog.cpp"
 					>
 				</File>
 				<File
@@ -563,7 +583,15 @@
 					>
 				</File>
 				<File
+					RelativePath=".\CoalDialog.h"
+					>
+				</File>
+				<File
 					RelativePath=".\DemoDialog.h"
+					>
+				</File>
+				<File
+					RelativePath=".\DifficultEvalDialog.h"
 					>
 				</File>
 				<File
@@ -571,11 +599,23 @@
 					>
 				</File>
 				<File
+					RelativePath=".\KeyParamDialog.h"
+					>
+				</File>
+				<File
 					RelativePath=".\LoginDialog.h"
 					>
 				</File>
 				<File
+					RelativePath=".\MineDialog.h"
+					>
+				</File>
+				<File
 					RelativePath=".\RegDialog.h"
+					>
+				</File>
+				<File
+					RelativePath=".\ReservesPredictDialog.h"
 					>
 				</File>
 				<File

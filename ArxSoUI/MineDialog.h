@@ -58,4 +58,9 @@ protected:
 	SEdit* m_ProvinceEdit;
 	SEdit* m_CityEdit;
 	SComboBox* m_HydrGeoCombox;
+
+private:
+	void fillBaseCombox();
+	void fillRegionCombox(const CString& base);
+
 };

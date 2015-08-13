@@ -63,9 +63,11 @@ void RegDialog::OnRegButtonClick()
 	}
 	else
 	{
+		AccountPtr account(new Account);
+		account->username = user;
+		account->password = pwd;
+
 		MinePtr mine(new Mine);
-		mine->username = user;
-		mine->password = pwd;
 		mine->name = name;
 		mine->province = province;
 		mine->city = city;
@@ -73,7 +75,7 @@ void RegDialog::OnRegButtonClick()
 		QueryPtr query(Query::from<Region>());
 		mine->region = query->where(FIELD(name), region)->find_one<Region>();
 		//增加到数据库并返回新增行的id值
-		if(mine->save())
+		if(account->save() && mine->save())
 		{
 			SMessageBox(m_hWnd,_T("注册矿井账户成功!"),_T("友情提示"),MB_OK);
 			AcadSouiDialog::OnOK();
@@ -91,7 +93,6 @@ void RegDialog::OnBaseComboxSelChanged(SOUI::EventArgs *pEvt)
 	EventCBSelChange* pEvtOfCB = (EventCBSelChange*)pEvt;
 	if(pEvtOfCB == 0) return;
 
-	int nCurSel = pEvtOfCB->nCurSel;
 	//查找当前煤炭基地对应的所有矿区
 	CString base = m_BaseCombox->GetLBText(pEvtOfCB->nCurSel);
 	fillRegionCombox(base);

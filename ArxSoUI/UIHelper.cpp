@@ -8,6 +8,8 @@
 #include "MySoUiLoader.h"
 #include "DemoDialog.h"
 #include "LoginDialog.h"
+#include "MineDialog.h"
+#include "KeyParamDialog.h"
 
 void UIHelper::InitSouiEnviroment()
 {
@@ -46,5 +48,21 @@ void UIHelper::Login()
 	CAcModuleResourceOverride myResources;
 
 	LoginDialog dlg(TRUE);
+	dlg.Run(acedGetAcadFrame()->GetSafeHwnd());
+}
+
+void UIHelper::Mine()
+{
+	CAcModuleResourceOverride myResources;
+
+	MineDialog dlg(TRUE);
+	dlg.Run(acedGetAcadFrame()->GetSafeHwnd());
+}
+
+void UIHelper::KPC()
+{
+	CAcModuleResourceOverride myResources;
+
+	KeyParamDialog dlg(TRUE);
 	dlg.Run(acedGetAcadFrame()->GetSafeHwnd());
 }

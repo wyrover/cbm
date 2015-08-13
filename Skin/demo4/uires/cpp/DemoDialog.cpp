@@ -60,7 +60,7 @@ void DemoDialog::OnButton32Click()
 
 void DemoDialog::OnCombox71SelChanged(SOUI::EventArgs *pEvt)
 {
-	if(!m_bLayoutInited) return;
+	if(!isLayoutInited()) return;
 	EventCBSelChange* pEvtOfCB = (EventCBSelChange*)pEvt;
 	if(pEvtOfCB == 0) return;
 

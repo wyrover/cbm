@@ -48,7 +48,7 @@ void RegDialog::OnRegButtonClick()
 
 void RegDialog::OnBaseComboxSelChanged(SOUI::EventArgs *pEvt)
 {
-	if(!m_bLayoutInited) return;
+	if(!isLayoutInited()) return;
 	EventCBSelChange* pEvtOfCB = (EventCBSelChange*)pEvt;
 	if(pEvtOfCB == 0) return;
 
@@ -57,7 +57,7 @@ void RegDialog::OnBaseComboxSelChanged(SOUI::EventArgs *pEvt)
 
 void RegDialog::OnRegionComboxSelChanged(SOUI::EventArgs *pEvt)
 {
-	if(!m_bLayoutInited) return;
+	if(!isLayoutInited()) return;
 	EventCBSelChange* pEvtOfCB = (EventCBSelChange*)pEvt;
 	if(pEvtOfCB == 0) return;
 

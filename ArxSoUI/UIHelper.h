@@ -6,6 +6,8 @@ public:
 	static void ShowSoUIModeless();
 	static void ShowSoUIModal();
 	static void Login();
+	static void Mine();
+	static void KPC();
 
 	static void InitSouiEnviroment();
 	static void UnInitSouiEnviroment();

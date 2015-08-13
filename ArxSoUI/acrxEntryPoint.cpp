@@ -90,6 +90,16 @@ public:
 	{
 		UIHelper::Login();
 	}
+
+	static void JL_Mine()
+	{
+		UIHelper::Mine();
+	}
+
+	static void JL_KPC()
+	{
+		UIHelper::KPC();
+	}
 } ;
 
 //-----------------------------------------------------------------------------
@@ -97,3 +107,5 @@ IMPLEMENT_ARX_ENTRYPOINT(CArxSoUIApp)
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _ShowSouiModeless, sm1, ACRX_CMD_TRANSPARENT, NULL )
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _ShowSoUIModal, sm2, ACRX_CMD_TRANSPARENT, NULL )
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _Login, login, ACRX_CMD_TRANSPARENT, NULL )
+ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _Mine, mine, ACRX_CMD_TRANSPARENT, NULL )
+ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _KPC, kpc, ACRX_CMD_TRANSPARENT, NULL )

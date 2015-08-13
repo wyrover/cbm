@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOUI width="687" height="344" translucent="0" alpha="255" resizable="0">
+  <root cache="1" skin="_skin.sys.wnd.bkgnd">
+    <window pos="0,0" width="687" height="344" ncSkin="_skin.sys.border" name="window0" margin-x="1" margin-y="1" enable="0" visible="0"/>
+    <caption pos="16,0" width="665" height="40" ncSkin="_skin.sys.border" name="caption1">
+      <text pos="0,8">测试程序v1.0</text>
+      <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
+    </caption>
+    <button pos="33,58" width="180" height="50" ncSkin="_skin.sys.border" name="KP1" margin-x="1" margin-y="1">煤层气抽采难易程度评价</button>
+    <button pos="245,56" width="196" height="54" ncSkin="_skin.sys.border" name="KP2" margin-x="1" margin-y="1">矿井煤层气储量及可抽量预测</button>
+    <button pos="469,57" width="180" height="50" ncSkin="_skin.sys.border" name="KP3" margin-x="1" margin-y="1">矿井瓦斯涌出量预测</button>
+    <button pos="33,130" width="180" height="54" ncSkin="_skin.sys.border" name="KP4" margin-x="1" margin-y="1">掘进工作面瓦斯涌出量预测</button>
+    <button pos="469,132" width="180" height="50" ncSkin="_skin.sys.border" name="KP6" margin-x="1" margin-y="1">高抽巷合理布设层位计算</button>
+    <button pos="33,200" width="180" height="54" ncSkin="_skin.sys.border" name="KP7" margin-x="1" margin-y="1">高位抽采钻孔有效布设范围计算</button>
+    <button pos="245,200" width="196" height="50" ncSkin="_skin.sys.border" name="KP8" margin-x="1" margin-y="1">煤层瓦斯抽采半径计算</button>
+    <button pos="473,200" width="180" height="47" ncSkin="_skin.sys.border" name="KP9" margin-x="1" margin-y="1">抽采管径大小辅助计算</button>
+    <button pos="33,273" width="180" height="50" ncSkin="_skin.sys.border" name="KP10" margin-x="1" margin-y="1">孔板流量计算</button>
+    <button pos="245,273" width="196" height="50" ncSkin="_skin.sys.border" name="KP11" margin-x="1" margin-y="1">评价单元划分计算</button>
+    <button pos="245,132" width="196" height="50" ncSkin="_skin.sys.border" name="KP5" margin-x="1" margin-y="1">回采工作面瓦斯涌出量预测</button>
+  </root>
+</SOUI>

@@ -867,6 +867,7 @@ function createUIResFile($uiResFile='uires.idx')
   xml_append_child($res, createFileNodes($doc, 'img', 'image', $filters='*.png;*.jgp;*.bmp;*.jpge', $prefx='', $bDfs=false));
   xml_append_child($res, createFileNodes($doc, 'img', 'image\bk', $filters='*.png;*.jgp;*.bmp;*.jpge', $prefx='', $bDfs=false));
   xml_append_child($res, createFileNodes($doc, 'img', 'image\button', $filters='*.png;*.jgp;*.bmp;*.jpge', $prefx='', $bDfs=false));
+  xml_append_child($res, createFileNodes($doc, 'img', 'image\dkpac', $filters='*.png;*.jgp;*.bmp;*.jpge', $prefx='DKPAC', $bDfs=false));
   xml_append_child($res, createFileNodes($doc, 'img', 'image\small', $filters='*.png;*.jgp;*.bmp;*.jpge', $prefx='SMALL', $bDfs=false));
   xml_append_child($res, createFileNodes($doc, 'img', 'image\icon', $filters='*.png;*.jgp;*.bmp;*.jpge', $prefx='ICON', $bDfs=false));
   xml_append_child($res, createFileNodes($doc, 'img', 'image\menu', $filters='*.png;*.jgp;*.bmp;*.jpge', $prefx='MENU', $bDfs=false));
@@ -940,7 +941,7 @@ createUIResFile('uires.idx');
 // writeImgSrcToDB('uires.idx', 'img');
 //复制文件夹到cmb项目(方便使用!!!)
 recurse_copy('.', 'C:\Develop\GitProject\cbm\Skin\demo4\uires');
-//recurse_copy('json', 'C:\Develop\GitProject\cbm\Skin\demo4\uires\json');
+// recurse_copy('json', 'C:\Develop\GitProject\cbm\Skin\demo4\uires\json');
 
 //解析xml文件,生成cpp代码
 xml_to_dialog('xml', 'cpp');

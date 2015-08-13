@@ -20,8 +20,8 @@ void DaoHelper::ConfigureDao(const CString& user, const CString& password, const
 void DaoHelper::TestDao()
 {
 	MinePtr mine(new Mine);
-	mine->username = _T("dlj");
-	mine->password = _T("123");
+	//mine->username = _T("dlj");
+	//mine->password = _T("123");
 	mine->name = _T("晋煤集团");
 	mine->region = Query::find<Region>(1);
 	mine->set(FIELD(name), _T("xxx煤集团公司"));
@@ -39,12 +39,12 @@ void DaoHelper::TestDao()
 
 int DaoHelper::VerifyMineAccount(const CString& username, const CString& pwd)
 {
-	QueryPtr query(Query::from<Mine>());
-	RecordPtr mine = query->where(FIELD(username), username)
-		                  ->find_one<Mine>();
-	if(mine == 0) 
+	QueryPtr query(Query::from<Account>());
+	RecordPtr account = query->where(FIELD(username), username)
+		                  ->find_one<Account>();
+	if(account == 0) 
 		return 0; // 用户名不存在
-	else if(mine->get(FIELD(password)) != pwd) 
+	else if(account->get(FIELD(password)) != pwd) 
 		return 1; // 密码错误
 	else
 		return 2; // 用户名已注册

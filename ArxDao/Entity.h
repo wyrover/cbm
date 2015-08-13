@@ -9,6 +9,7 @@ using namespace boost;
 
 namespace cbm {
 
+class Account;
 class AdjLayer;
 class Base;
 class Coal;
@@ -33,6 +34,7 @@ class TopoGeo;
 class Tunnel;
 class WorkSurf;
 
+typedef boost::shared_ptr<Account> AccountPtr;
 typedef boost::shared_ptr<AdjLayer> AdjLayerPtr;
 typedef boost::shared_ptr<Base> BasePtr;
 typedef boost::shared_ptr<Coal> CoalPtr;
@@ -56,6 +58,19 @@ typedef boost::shared_ptr<Technology> TechnologyPtr;
 typedef boost::shared_ptr<TopoGeo> TopoGeoPtr;
 typedef boost::shared_ptr<Tunnel> TunnelPtr;
 typedef boost::shared_ptr<WorkSurf> WorkSurfPtr;
+
+class ARXDAO_DLLIMPEXP Account : public orm::Record
+{
+public:
+	static CString Table();
+	static orm::RecordPtr Create();
+
+public:
+	Account();
+	CString username;
+	CString password;
+
+}; // class Account
 
 class ARXDAO_DLLIMPEXP AdjLayer : public orm::Record
 {
@@ -108,9 +123,9 @@ public:
 	double f_value;
 	int res_abundance;
 	int complexity;
-	int mine_index;
+	double mine_index;
 	double var_coeff;
-	double stability;
+	int stability;
 	double dip_angle;
 	double caving_zone_height;
 	double layer_gap;
@@ -200,8 +215,8 @@ public:
 public:
 	EvalUnit();
 	orm::RecordPtr work_surf;
-	double unit_l;
-	double unit_t;
+	double l;
+	double t;
 	CString comment;
 
 }; // class EvalUnit
@@ -310,8 +325,6 @@ public:
 public:
 	Mine();
 	orm::RecordPtr region;
-	CString username;
-	CString password;
 	CString name;
 	CString province;
 	CString city;
