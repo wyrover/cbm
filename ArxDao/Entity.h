@@ -107,10 +107,10 @@ public:
 	double gas_penetration;
 	double f_value;
 	int res_abundance;
-	int const_complexity;
+	int complexity;
 	int mine_index;
 	double var_coeff;
-	double coal_stability;
+	double stability;
 	double dip_angle;
 	double caving_zone_height;
 	double layer_gap;
@@ -200,8 +200,8 @@ public:
 public:
 	EvalUnit();
 	orm::RecordPtr work_surf;
-	double l;
-	double t;
+	double unit_l;
+	double unit_t;
 	CString comment;
 
 }; // class EvalUnit

@@ -69,10 +69,10 @@ Coal::Coal() : orm::Record(Coal::Table())
 	gas_penetration = 0.0;
 	f_value = 0.0;
 	res_abundance = 0;
-	const_complexity = 0;
+	complexity = 0;
 	mine_index = 0;
 	var_coeff = 0.0;
-	coal_stability = 0.0;
+	stability = 0.0;
 	dip_angle = 0.0;
 	caving_zone_height = 0.0;
 	layer_gap = 0.0;
@@ -120,10 +120,10 @@ Coal::Coal() : orm::Record(Coal::Table())
 	REG_ATTRIB(gas_penetration, gas_penetration);
 	REG_ATTRIB(f_value, f_value);
 	REG_ATTRIB(res_abundance, res_abundance);
-	REG_ATTRIB(const_complexity, const_complexity);
+	REG_ATTRIB(complexity, complexity);
 	REG_ATTRIB(mine_index, mine_index);
 	REG_ATTRIB(var_coeff, var_coeff);
-	REG_ATTRIB(coal_stability, coal_stability);
+	REG_ATTRIB(stability, stability);
 	REG_ATTRIB(dip_angle, dip_angle);
 	REG_ATTRIB(caving_zone_height, caving_zone_height);
 	REG_ATTRIB(layer_gap, layer_gap);
@@ -237,11 +237,11 @@ orm::RecordPtr EvalUnit::Create()
 
 EvalUnit::EvalUnit() : orm::Record(EvalUnit::Table())
 {
-	l = 0.0;
-	t = 0.0;
+	unit_l = 0.0;
+	unit_t = 0.0;
 	comment = _T("");
-	REG_ATTRIB(l, l);
-	REG_ATTRIB(t, t);
+	REG_ATTRIB(unit_l, unit_l);
+	REG_ATTRIB(unit_t, unit_t);
 	REG_ATTRIB(comment, comment);
 	REG_FOREGIN_KEY(cbm_work_surf_id, work_surf, &WorkSurf::Create);
 }

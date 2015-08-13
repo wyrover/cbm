@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOUI width="490" height="329" translucent="0" alpha="255" resizable="0">
+  <root cache="1" skin="_skin.sys.wnd.bkgnd">
+    <window pos="0,0" width="490" height="329" ncSkin="_skin.sys.border" name="window0" margin-x="1" margin-y="1" enable="0" visible="0"/>
+    <text pos="22,59" width="60" height="23" ncSkin="_skin.sys.border" name="text1" margin-x="1" margin-y="1">矿井名称</text>
+    <edit pos="98,57" width="224" height="27" enable="1" ncSkin="_skin.sys.border" name="mine_name" margin-x="1" margin-y="1"/>
+    <text pos="22,103" width="60" height="23" ncSkin="_skin.sys.border" name="text3" margin-x="1" margin-y="1">所在矿区</text>
+    <button pos="119,265" width="112" height="48" ncSkin="_skin.sys.border" name="next" margin-x="1" margin-y="1">下一步</button>
+    <text pos="242,103" width="90" height="23" ncSkin="_skin.sys.border" name="text8" margin-x="1" margin-y="1">所属煤炭基地</text>
+    <text pos="337,59" width="60" height="23" ncSkin="_skin.sys.border" name="text12" margin-x="1" margin-y="1">矿井产能</text>
+    <edit pos="407,57" width="61" height="27" enable="1" ncSkin="_skin.sys.border" name="mine_capacity" margin-x="1" margin-y="1"/>
+    <text pos="22,188" width="90" height="23" ncSkin="_skin.sys.border" name="text16" margin-x="1" margin-y="1">地形地貌特征</text>
+    <text pos="253,188" width="90" height="23" ncSkin="_skin.sys.border" name="text18" margin-x="1" margin-y="1">水文地质条件</text>
+    <button pos="276,265" width="112" height="48" ncSkin="_skin.sys.border" name="cancel" margin-x="1" margin-y="1">取消</button>
+    <combobox pos="98,102" width="111" height="24" ncSkin="_skin.sys.border" dropDown="1" curSel="0" name="mine_region" margin-x="1" margin-y="1">
+      <liststyle itemHeight="30" colorText="#000000" colorSelText="#FFFFFF" colorItemBkgnd="#FFFFFF" colorItemSelBkgnd="#000088"/>
+      <items>
+        <item text="矿区1"/>
+        <item text="矿区2"/>
+        <item text="矿区3"/>
+        <item text="矿区4"/>
+        <item text="矿区5"/>
+      </items>
+    </combobox>
+    <combobox pos="343,102" width="125" height="24" ncSkin="_skin.sys.border" dropDown="1" curSel="0" name="mine_base" margin-x="1" margin-y="1">
+      <liststyle itemHeight="30" colorText="#000000" colorSelText="#FFFFFF" colorItemBkgnd="#FFFFFF" colorItemSelBkgnd="#000088"/>
+      <items>
+        <item text="基地1"/>
+        <item text="基地2"/>
+        <item text="基地3"/>
+        <item text="基地4"/>
+        <item text="基地5"/>
+      </items>
+    </combobox>
+    <combobox pos="119,189" width="123" height="24" ncSkin="_skin.sys.border" dropDown="1" curSel="0" name="topo_geo" margin-x="1" margin-y="1">
+      <liststyle itemHeight="30" colorText="#000000" colorSelText="#FFFFFF" colorItemBkgnd="#FFFFFF" colorItemSelBkgnd="#000088"/>
+      <items>
+        <item text="简单"/>
+        <item text="中等"/>
+        <item text="复杂"/>
+      </items>
+    </combobox>
+    <check pos="22,227" width="163" height="22" ncSkin="_skin.sys.border" name="ground_cond" margin-x="1" margin-y="1">是否具备地面井开发条件</check>
+    <text pos="22,145" width="45" height="23" ncSkin="_skin.sys.border" name="text75" margin-x="1" margin-y="1">所在地</text>
+    <edit pos="98,143" width="111" height="27" enable="1" ncSkin="_skin.sys.border" name="province" margin-x="1" margin-y="1"/>
+    <text pos="219,145" width="15" height="23" ncSkin="_skin.sys.border" name="text77" margin-x="1" margin-y="1">省</text>
+    <edit pos="242,143" width="139" height="27" enable="1" ncSkin="_skin.sys.border" name="city" margin-x="1" margin-y="1"/>
+    <text pos="394,145" width="75" height="23" ncSkin="_skin.sys.border" name="text79" margin-x="1" margin-y="1">市（地区）</text>
+    <combobox pos="353,187" width="115" height="24" ncSkin="_skin.sys.border" dropDown="1" curSel="0" name="hydr_geo" margin-x="1" margin-y="1">
+      <liststyle itemHeight="30" colorText="#000000" colorSelText="#FFFFFF" colorItemBkgnd="#FFFFFF" colorItemSelBkgnd="#000088"/>
+      <items>
+        <item text="简单"/>
+        <item text="中等"/>
+        <item text="复杂"/>
+        <item text="极复杂"/>
+      </items>
+    </combobox>
+    <caption pos="8,6" width="476" height="40" ncSkin="_skin.sys.border" name="caption81">
+      <text pos="0,8">测试程序v1.0</text>
+      <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
+    </caption>
+  </root>
+</SOUI>

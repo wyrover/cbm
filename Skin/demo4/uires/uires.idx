@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resource>
   <uidef>
-    <file name="about" path="xml\about.xml"/>
-    <file name="login" path="xml\login.xml"/>
-    <file name="reg" path="xml\reg.xml"/>
+    <file name="init" path="xml\init.xml"/>
   </uidef>
   <layout>
     <file name="about" path="xml\about.xml"/>
+    <file name="coal" path="xml\coal.xml"/>
+    <file name="demo" path="xml\demo.xml"/>
     <file name="login" path="xml\login.xml"/>
+    <file name="mine" path="xml\mine.xml"/>
     <file name="reg" path="xml\reg.xml"/>
   </layout>
   <icon>

@@ -209,3 +209,8 @@ void AcadSouiDialog::OnChar(UINT nChar, UINT nRepCnt, UINT nFlags)
 		SetMsgHandled(FALSE);
 	}
 }
+
+BOOL AcadSouiDialog::isLayoutInited() const
+{
+	return m_bLayoutInited;
+}

@@ -71,6 +71,10 @@ protected:
 protected:
 	 void OnChar(UINT nChar, UINT nRepCnt, UINT nFlags);
 
+	 /** 普通函数 */
+protected:
+	BOOL isLayoutInited() const;
+
 	/** 成员变量 */
 private:
 	//是否模态对话框(默认非模态FALSE)

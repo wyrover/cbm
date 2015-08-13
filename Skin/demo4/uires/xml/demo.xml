@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOUI width="1183" height="673" translucent="0" alpha="255" resizable="0">
+  <root cache="1" skin="_skin.sys.wnd.bkgnd">
+    <text pos="81,103" width="50" height="21" ncSkin="_skin.sys.border" name="text7" margin-x="1" margin-y="1">用户名</text>
+    <edit pos="139,100" width="206" height="27" enable="1" ncSkin="_skin.sys.border" name="edit_user" test="中文测试" margin-x="1" margin-y="1"/>
+    <text pos="81,145" width="50" height="21" ncSkin="_skin.sys.border" name="text10" margin-x="1" margin-y="1">密码</text>
+    <edit pos="139,145" width="206" height="27" ncSkin="_skin.sys.border" name="edit11" margin-x="1" margin-y="1"/>
+    <button pos="58,182" width="125" height="55" ncSkin="_skin.sys.border" name="button12" margin-x="1" margin-y="1">'有引号的汉字'</button>
+    <button pos="202,183" width="116" height="30" ncSkin="_skin.sys.border" name="button13" margin-x="1" margin-y="1">注册</button>
+    <img pos="598,521" width="140" height="86" ncSkin="_skin.sys.border" name="img17" margin-x="1" margin-y="1"/>
+    <listbox pos="399,290" width="142" height="104" ncSkin="_skin.sys.border" itemHeight="24" hotTrack="1" name="listbox29" margin-x="1" margin-y="1">
+      <items>
+        <item text="Item One"/>
+        <item text="Item Two"/>
+        <item text="Item Three"/>
+      </items>
+    </listbox>
+    <richedit pos="399,73" width="261" height="109" ncSkin="_skin.sys.border" name="richedit30" margin-x="1" margin-y="1" multiLines="1" vscrollBar="1" hscrollBar="1" wantReturn="1" wordWrap="1" autoVscroll="1" autoHScroll="1" transParent="1">今天下雨了，淋了个落汤鸡</richedit>
+    <richedit pos="399,188" width="256" height="87" ncSkin="_skin.sys.border" name="richedit31" margin-x="1" margin-y="1" multiLines="1" vscrollBar="1" hscrollBar="1" wantReturn="1" wordWrap="1" autoVscroll="1" autoHScroll="1" transParent="1">A *paragraph* of {color:red}text{color} with an [unassigned link].\nA _second_ &amp;row&amp; of ~text~ with a [web link](http://support.balsamiq.com/customer/portal/articles/110121#basicformatting)</richedit>
+    <button pos="33,350" width="90" height="84" font=",underline:1,italic:1,bold:1" ncSkin="_skin.sys.border" name="button32" margin-x="1" margin-y="1">Button</button>
+    <sliderbar pos="33,243" width="217" height="19" ncSkin="_skin.sys.border" value="37" min="0" max="100" name="sliderbar34" margin-x="1" margin-y="1"/>
+    <sliderbar pos="33,73" width="19" height="123" ncSkin="_skin.sys.border" value="27" min="0" max="100" vertical="1" name="sliderbar37" margin-x="1" margin-y="1"/>
+    <progress pos="97,69" width="101" height="18" ncSkin="_skin.sys.border" scrollBarValue="0" min="0" max="100" value="40" showPercent="1" name="progress38" margin-x="1" margin-y="1"/>
+    <progress pos="276,227" width="101" height="18" ncSkin="_skin.sys.border" scrollBarValue="0" min="0" max="100" value="54" showPercent="1" name="progress41" margin-x="1" margin-y="1"/>
+    <hr pos="385,66" width="1" height="573" ncSkin="_skin.sys.border" lineStyle="solid" mode="vertical" name="hr43" margin-x="1" margin-y="1"/>
+    <hr pos="44,639" width="888" height="1" ncSkin="_skin.sys.border" lineStyle="dash" mode="horizontal" name="hr44" margin-x="1" margin-y="1"/>
+    <listctrl pos="33,471" width="350" height="164" ncSkin="_skin.sys.border" hotTrack="1" itemHeight="33" headerHeight="33" name="listctrl45" margin-x="1" margin-y="1">
+      <header align="center" itemSwapEnable="0" fixWidth="0" sortHeader="0">
+        <items>
+          <item width="87">名称</item>
+          <item width="87">学号</item>
+          <item width="87">性别</item>
+          <item width="87">成绩</item>
+        </items>
+      </header>
+    </listctrl>
+    <tabctrl pos="393,411" width="191" height="196" ncSkin="_skin.sys.border" tabAlign="top" name="tabctrl48" margin-x="1" margin-y="1">
+      <page title="杀毒">
+        <combobox pos="4,134" width="118" height="24" ncSkin="_skin.sys.border" dropDown="1" curSel="0" name="combobox71" margin-x="1" margin-y="1">
+          <liststyle itemHeight="30" colorText="#000000" colorSelText="#FFFFFF" colorItemBkgnd="#FFFFFF" colorItemSelBkgnd="#000088"/>
+          <items>
+            <item text="测试1"/>
+            <item text="测试2"/>
+            <item text="测试3"/>
+            <item text="测试4"/>
+            <item text="测试5"/>
+          </items>
+        </combobox>
+        <check pos="4,86" width="130" height="33" ncSkin="_skin.sys.border" name="check72" margin-x="1" margin-y="1">又是一个多选</check>
+        <link pos="4,0" width="140" height="28" ncSkin="_skin.sys.border" href="http://www.baidu.com" class="cls_btn_weblink" name="link73" margin-x="1" margin-y="1">百度首页超链接</link>
+        <check pos="2,57" width="78" height="20" ncSkin="_skin.sys.border" name="check74" margin-x="1" margin-y="1">多选按钮</check>
+        <radio pos="0,32" width="117" height="20" ncSkin="_skin.sys.border" name="radio75" margin-x="1" margin-y="1">单选按钮</radio>
+      </page>
+      <page title="体检"/>
+      <page title="更新"/>
+      <page title="Four"/>
+    </tabctrl>
+    <tabctrl pos="614,301" width="294" height="209" ncSkin="_skin.sys.border" tabAlign="left" name="tabctrl49" margin-x="1" margin-y="1">
+      <page title="字体">
+        <combobox pos="4,134" width="118" height="24" ncSkin="_skin.sys.border" dropDown="1" curSel="0" name="combobox71" margin-x="1" margin-y="1">
+          <liststyle itemHeight="30" colorText="#000000" colorSelText="#FFFFFF" colorItemBkgnd="#FFFFFF" colorItemSelBkgnd="#000088"/>
+          <items>
+            <item text="测试1"/>
+            <item text="测试2"/>
+            <item text="测试3"/>
+            <item text="测试4"/>
+            <item text="测试5"/>
+          </items>
+        </combobox>
+        <check pos="4,86" width="130" height="33" ncSkin="_skin.sys.border" name="check72" margin-x="1" margin-y="1">又是一个多选</check>
+        <link pos="4,0" width="140" height="28" ncSkin="_skin.sys.border" href="http://www.baidu.com" class="cls_btn_weblink" name="link73" margin-x="1" margin-y="1">百度首页超链接</link>
+        <check pos="2,57" width="78" height="20" ncSkin="_skin.sys.border" name="check74" margin-x="1" margin-y="1">多选按钮</check>
+        <radio pos="0,32" width="117" height="20" ncSkin="_skin.sys.border" name="radio75" margin-x="1" margin-y="1">单选按钮</radio>
+      </page>
+      <page title="颜色">
+        <combobox pos="4,134" width="118" height="24" ncSkin="_skin.sys.border" dropDown="1" curSel="0" name="combobox71" margin-x="1" margin-y="1">
+          <liststyle itemHeight="30" colorText="#000000" colorSelText="#FFFFFF" colorItemBkgnd="#FFFFFF" colorItemSelBkgnd="#000088"/>
+          <items>
+            <item text="测试1"/>
+            <item text="测试2"/>
+            <item text="测试3"/>
+            <item text="测试4"/>
+            <item text="测试5"/>
+          </items>
+        </combobox>
+        <check pos="4,86" width="130" height="33" ncSkin="_skin.sys.border" name="check72" margin-x="1" margin-y="1">又是一个多选</check>
+        <link pos="4,0" width="140" height="28" ncSkin="_skin.sys.border" href="http://www.baidu.com" class="cls_btn_weblink" name="link73" margin-x="1" margin-y="1">百度首页超链接</link>
+        <check pos="2,57" width="78" height="20" ncSkin="_skin.sys.border" name="check74" margin-x="1" margin-y="1">多选按钮</check>
+        <radio pos="0,32" width="117" height="20" ncSkin="_skin.sys.border" name="radio75" margin-x="1" margin-y="1">单选按钮</radio>
+      </page>
+      <page title="帮助">
+        <combobox pos="4,134" width="118" height="24" ncSkin="_skin.sys.border" dropDown="1" curSel="0" name="combobox71" margin-x="1" margin-y="1">
+          <liststyle itemHeight="30" colorText="#000000" colorSelText="#FFFFFF" colorItemBkgnd="#FFFFFF" colorItemSelBkgnd="#000088"/>
+          <items>
+            <item text="测试1"/>
+            <item text="测试2"/>
+            <item text="测试3"/>
+            <item text="测试4"/>
+            <item text="测试5"/>
+          </items>
+        </combobox>
+        <check pos="4,86" width="130" height="33" ncSkin="_skin.sys.border" name="check72" margin-x="1" margin-y="1">又是一个多选</check>
+        <link pos="4,0" width="140" height="28" ncSkin="_skin.sys.border" href="http://www.baidu.com" class="cls_btn_weblink" name="link73" margin-x="1" margin-y="1">百度首页超链接</link>
+        <check pos="2,57" width="78" height="20" ncSkin="_skin.sys.border" name="check74" margin-x="1" margin-y="1">多选按钮</check>
+        <radio pos="0,32" width="117" height="20" ncSkin="_skin.sys.border" name="radio75" margin-x="1" margin-y="1">单选按钮</radio>
+      </page>
+      <page title="随便写点啥"/>
+    </tabctrl>
+    <treectrl pos="668,73" width="204" height="202" ncSkin="_skin.sys.border" itemHeight="30" checkBox="1" name="tree1" margin-x="1" margin-y="1">
+      <item text="组织结构" expand="1">
+        <item text="市场部" expand="1">
+          <item text="南一区" expand="1"/>
+          <item text="北二区" expand="1"/>
+          <item text="西三区" expand="1">
+            <item text="第一分队" expand="1">
+              <item text="李四组" expand="1"/>
+              <item text="王五组" expand="1"/>
+            </item>
+          </item>
+        </item>
+        <item text="宣传部" expand="1">
+          <item text="南一区" expand="1"/>
+          <item text="南一区" expand="1"/>
+          <item text="南一区" expand="1"/>
+        </item>
+      </item>
+    </treectrl>
+    <group pos="144,263" width="214" height="194" ncSkin="_skin.sys.border" align="left" name="group57" margin-x="1" margin-y="1">Group Name
+  <combobox pos="4,134" width="118" height="24" ncSkin="_skin.sys.border" dropDown="1" curSel="0" name="combobox71" margin-x="1" margin-y="1"><liststyle itemHeight="30" colorText="#000000" colorSelText="#FFFFFF" colorItemBkgnd="#FFFFFF" colorItemSelBkgnd="#000088"/><items><item text="测试1"/><item text="测试2"/><item text="测试3"/><item text="测试4"/><item text="测试5"/></items></combobox>
+  <check pos="4,86" width="130" height="33" ncSkin="_skin.sys.border" name="check72" margin-x="1" margin-y="1">又是一个多选</check>
+  <link pos="4,0" width="140" height="28" ncSkin="_skin.sys.border" href="http://www.baidu.com" class="cls_btn_weblink" name="link73" margin-x="1" margin-y="1">百度首页超链接</link>
+  <check pos="2,57" width="78" height="20" ncSkin="_skin.sys.border" name="check74" margin-x="1" margin-y="1">多选按钮</check>
+  <radio pos="0,32" width="117" height="20" ncSkin="_skin.sys.border" name="radio75" margin-x="1" margin-y="1">单选按钮</radio>
+</group>
+    <window pos="888,77" width="270" height="213" ncSkin="_skin.sys.border" name="window65" margin-x="1" margin-y="1">
+      <combobox pos="4,134" width="118" height="24" ncSkin="_skin.sys.border" dropDown="1" curSel="0" name="combobox71" margin-x="1" margin-y="1">
+        <liststyle itemHeight="30" colorText="#000000" colorSelText="#FFFFFF" colorItemBkgnd="#FFFFFF" colorItemSelBkgnd="#000088"/>
+        <items>
+          <item text="测试1"/>
+          <item text="测试2"/>
+          <item text="测试3"/>
+          <item text="测试4"/>
+          <item text="测试5"/>
+        </items>
+      </combobox>
+      <check pos="4,86" width="130" height="33" ncSkin="_skin.sys.border" name="check72" margin-x="1" margin-y="1">又是一个多选</check>
+      <link pos="4,0" width="140" height="28" ncSkin="_skin.sys.border" href="http://www.baidu.com" class="cls_btn_weblink" name="link73" margin-x="1" margin-y="1">百度首页超链接</link>
+      <check pos="2,57" width="78" height="20" ncSkin="_skin.sys.border" name="check74" margin-x="1" margin-y="1">多选按钮</check>
+      <radio pos="0,32" width="117" height="20" ncSkin="_skin.sys.border" name="radio75" margin-x="1" margin-y="1">单选按钮</radio>
+    </window>
+    <caption pos="33,24" width="1130" height="40" ncSkin="_skin.sys.border" name="caption70">
+      <text pos="0,8">测试程序v1.0</text>
+      <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
+    </caption>
+    <window pos="0,0" width="1183" height="673" ncSkin="_skin.sys.border" name="window84" margin-x="1" margin-y="1" enable="0" visible="0"/>
+  </root>
+</SOUI>

@@ -422,10 +422,6 @@
 					/>
 				</FileConfiguration>
 			</File>
-			<File
-				RelativePath=".\UIHelper.cpp"
-				>
-			</File>
 			<Filter
 				Name="controls.extend"
 				>
@@ -474,15 +470,23 @@
 					>
 				</File>
 				<File
+					RelativePath=".\DemoDialog.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\FormatMsgDlg.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\LoginDlg.cpp"
+					RelativePath=".\LoginDialog.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\RegDlg.cpp"
+					RelativePath=".\RegDialog.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\UIHelper.cpp"
 					>
 				</File>
 			</Filter>
@@ -559,15 +563,19 @@
 					>
 				</File>
 				<File
+					RelativePath=".\DemoDialog.h"
+					>
+				</File>
+				<File
 					RelativePath=".\FormatMsgDlg.h"
 					>
 				</File>
 				<File
-					RelativePath=".\LoginDlg.h"
+					RelativePath=".\LoginDialog.h"
 					>
 				</File>
 				<File
-					RelativePath=".\RegDlg.h"
+					RelativePath=".\RegDialog.h"
 					>
 				</File>
 				<File

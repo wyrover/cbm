@@ -1,39 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<SOUI width="374" height="406" translucent="0" alpha="255" resizable="0">
+<SOUI width="383" height="400" translucent="0" alpha="255" resizable="0">
   <root cache="1" skin="_skin.sys.wnd.bkgnd">
-    <text pos="8,141" width="60" height="23" ncSkin="_skin.sys.border" name="Label22" margin-x="1" margin-y="1">矿井名称</text>
-    <edit pos="74,139" width="292" height="27" enable="1" ncSkin="_skin.sys.border" name="name" margin-x="1" margin-y="1"/>
-    <text pos="8,195" width="60" height="23" ncSkin="_skin.sys.border" name="Label24" margin-x="1" margin-y="1">煤炭基地</text>
-    <text pos="8,249" width="45" height="23" ncSkin="_skin.sys.border" name="Label28" margin-x="1" margin-y="1">所在地</text>
-    <edit pos="74,247" width="69" height="27" enable="1" ncSkin="_skin.sys.border" name="province" margin-x="1" margin-y="1"/>
-    <text pos="8,303" width="90" height="23" ncSkin="_skin.sys.border" name="Label30" margin-x="1" margin-y="1">开采煤层数量</text>
-    <edit pos="108,301" width="46" height="27" ncSkin="_skin.sys.border" name="coal_count" margin-x="1" margin-y="1"/>
-    <text pos="154,251" width="15" height="23" ncSkin="_skin.sys.border" name="Label32" margin-x="1" margin-y="1">省</text>
-    <edit pos="182,247" width="86" height="27" enable="1" ncSkin="_skin.sys.border" name="city" margin-x="1" margin-y="1"/>
-    <text pos="279,249" width="75" height="23" ncSkin="_skin.sys.border" name="Label34" margin-x="1" margin-y="1">市（地区）</text>
-    <text pos="164,303" width="90" height="23" ncSkin="_skin.sys.border" name="Label35" margin-x="1" margin-y="1">开采煤层编号</text>
-    <edit pos="263,301" width="101" height="27" ncSkin="_skin.sys.border" name="coal_nums" margin-x="1" margin-y="1"/>
-    <button pos="121,346" width="198" height="48" ncSkin="_skin.sys.border" name="btn_reg" margin-x="1" margin-y="1">注册&amp;确认</button>
-    <caption pos="8,3" width="359" height="40" ncSkin="_skin.sys.border">
+    <text pos="16,138" width="60" height="23" ncSkin="_skin.sys.border" name="text22" margin-x="1" margin-y="1">矿井名称</text>
+    <edit pos="82,136" width="292" height="27" enable="1" ncSkin="_skin.sys.border" name="name" margin-x="1" margin-y="1"/>
+    <text pos="16,192" width="60" height="23" ncSkin="_skin.sys.border" name="text24" margin-x="1" margin-y="1">煤炭基地</text>
+    <text pos="16,246" width="45" height="23" ncSkin="_skin.sys.border" name="text28" margin-x="1" margin-y="1">所在地</text>
+    <edit pos="82,244" width="69" height="27" enable="1" ncSkin="_skin.sys.border" name="province" margin-x="1" margin-y="1"/>
+    <text pos="16,300" width="90" height="23" ncSkin="_skin.sys.border" name="text30" margin-x="1" margin-y="1">开采煤层数量</text>
+    <edit pos="116,298" width="46" height="27" ncSkin="_skin.sys.border" name="coal_count" margin-x="1" margin-y="1"/>
+    <text pos="162,248" width="15" height="23" ncSkin="_skin.sys.border" name="text32" margin-x="1" margin-y="1">省</text>
+    <edit pos="190,244" width="86" height="27" enable="1" ncSkin="_skin.sys.border" name="city" margin-x="1" margin-y="1"/>
+    <text pos="287,246" width="75" height="23" ncSkin="_skin.sys.border" name="text34" margin-x="1" margin-y="1">市（地区）</text>
+    <text pos="172,300" width="90" height="23" ncSkin="_skin.sys.border" name="text35" margin-x="1" margin-y="1">开采煤层编号</text>
+    <edit pos="271,298" width="101" height="27" ncSkin="_skin.sys.border" name="coal_nums" margin-x="1" margin-y="1"/>
+    <button pos="106,339" width="198" height="48" ncSkin="_skin.sys.border" name="reg" margin-x="1" margin-y="1">注册&amp;确认</button>
+    <caption pos="10,0" width="365" height="40" ncSkin="_skin.sys.border" name="caption42">
       <text pos="0,8">测试程序v1.0</text>
       <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
     </caption>
-    <text pos="8,55" width="45" height="23" ncSkin="_skin.sys.border" name="Label44" margin-x="1" margin-y="1">用户名</text>
-    <edit pos="74,53" width="293" height="27" enable="1" ncSkin="_skin.sys.border" name="username" margin-x="1" margin-y="1"/>
-    <text pos="8,100" width="45" height="23" ncSkin="_skin.sys.border" name="Label46" margin-x="1" margin-y="1">密码</text>
-    <edit pos="74,98" width="293" height="27" ncSkin="_skin.sys.border" name="password" margin-x="1" margin-y="1"/>
-    <combobox pos="74,194" width="102" height="24" ncSkin="_skin.sys.border" dropDown="1" curSel="0" name="base" margin-x="1" margin-y="1">
+    <text pos="16,52" width="45" height="23" ncSkin="_skin.sys.border" name="text44" margin-x="1" margin-y="1">用户名</text>
+    <edit pos="82,50" width="293" height="27" enable="1" ncSkin="_skin.sys.border" name="username" margin-x="1" margin-y="1"/>
+    <text pos="16,97" width="45" height="23" ncSkin="_skin.sys.border" name="text46" margin-x="1" margin-y="1">密码</text>
+    <edit pos="82,95" width="293" height="27" ncSkin="_skin.sys.border" name="password" margin-x="1" margin-y="1"/>
+    <combobox pos="82,191" width="102" height="24" ncSkin="_skin.sys.border" dropDown="1" curSel="0" name="base" margin-x="1" margin-y="1">
       <liststyle itemHeight="30" colorText="#000000" colorSelText="#FFFFFF" colorItemBkgnd="#FFFFFF" colorItemSelBkgnd="#000088"/>
       <items>
         <item text=""/>
       </items>
     </combobox>
-    <text pos="189,195" width="60" height="23" ncSkin="_skin.sys.border" name="Label49" margin-x="1" margin-y="1">所在矿区</text>
-    <combobox pos="254,194" width="109" height="24" ncSkin="_skin.sys.border" dropDown="1" curSel="0" name="region" margin-x="1" margin-y="1">
+    <text pos="197,192" width="60" height="23" ncSkin="_skin.sys.border" name="text49" margin-x="1" margin-y="1">所在矿区</text>
+    <combobox pos="262,191" width="109" height="24" ncSkin="_skin.sys.border" dropDown="1" curSel="0" name="region" margin-x="1" margin-y="1">
       <liststyle itemHeight="30" colorText="#000000" colorSelText="#FFFFFF" colorItemBkgnd="#FFFFFF" colorItemSelBkgnd="#000088"/>
       <items>
         <item text=""/>
       </items>
     </combobox>
+    <window pos="0,0" width="383" height="400" ncSkin="_skin.sys.border" name="window52" margin-x="1" margin-y="1" enable="0" visible="0"/>
   </root>
 </SOUI>

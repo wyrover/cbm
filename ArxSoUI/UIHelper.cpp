@@ -6,7 +6,8 @@
 #include <Util/HelperClass.h>
 
 #include "MySoUiLoader.h"
-#include "LoginDlg.h"
+#include "DemoDialog.h"
+#include "LoginDialog.h"
 
 void UIHelper::InitSouiEnviroment()
 {
@@ -21,21 +22,29 @@ void UIHelper::UnInitSouiEnviroment()
 	delete SoUILoader::getSingletonPtr();
 }
 
-void UIHelper::ShowSoUIDlg1()
+void UIHelper::ShowSoUIModeless()
 {
 	// 切换资源
 	CAcModuleResourceOverride myResources;
 
-	LOG_TRACE(_T("启动新的soui非模态对话框"));
-	LoginDlg* dlg = new LoginDlg(FALSE);
+	LOG_TRACE(_T("启动soui非模态对话框"));
+	DemoDialog* dlg = new DemoDialog(FALSE);
 	dlg->Run(acedGetAcadFrame()->GetSafeHwnd());
 }
 
-void UIHelper::ShowSoUIDlg2()
+void UIHelper::ShowSoUIModal()
 {
 	CAcModuleResourceOverride myResources;
 
-	LOG_TRACE(_T("启动新的soui模态对话框"));
-	LoginDlg dlg(TRUE);
+	LOG_TRACE(_T("启动soui模态对话框"));
+	DemoDialog dlg(TRUE);
+	dlg.Run(acedGetAcadFrame()->GetSafeHwnd());
+}
+
+void UIHelper::Login()
+{
+	CAcModuleResourceOverride myResources;
+
+	LoginDialog dlg(TRUE);
 	dlg.Run(acedGetAcadFrame()->GetSafeHwnd());
 }

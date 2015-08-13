@@ -2,132 +2,8 @@
 
   <?php
 
-/*
-参考资料:
-(1)在线json工具,用起来还不错
-http://www.qqe2.com/
-(2)4种生成xml文件的方法
-http://www.oschina.net/code/snippet_110138_4727
-http://my.oschina.net/zhangb081511/blog/160113
-(3)php的json解析方法
-http://www.php.net/json_decode
-(4)DomDocument使用方法
-http://my.oschina.net/zhangb081511/blog/160113
-(5))PHP中用json_decode()无法解析有换行符的字符串
-http://www.thinkful.cn/archives/233.html
-(6)\u编码的中文转换问题
-http://www.csdn123.com/html/2013/fuwuqiduanjiaoben_0822/422108.html
-(7)PHP官网手册(每个页面的例子都非常丰富全面)
-http://www.php.net/manual
-(8)php超好用的文件及文件夹复制函数recurse_copy
-http://www.12345t.com/code/php/20140525/315.html
-*/
-
-function recurse_copy( $src, $dst )   // 原目录，复制到的目录
-{
-  $handle = opendir( $src );
-  @mkdir( $dst );
-  while( false !== ( $file = readdir( $handle ) ) ) 
-  {
-    if( ( $file != '.' ) && ( $file != '..' ) ) 
-    {
-      if( is_dir( $src . '/' . $file ) )
-      {
-        recurse_copy( $src . '/' . $file, $dst . '/' . $file );
-      }
-      else 
-      {
-        copy( $src . '/' . $file, $dst . '/' . $file );
-      }
-    }
-  }
-  closedir( $handle );
-}
-
-//PHP 非递归实现查询该目录下所有文件(包括子文件夹)
-function scanfiles1($dir) 
-{
-  if (! is_dir ( $dir ))
-    return array ();
-  
-  // 兼容各操作系统
-  $dir = rtrim ( str_replace ( '/', '\\', $dir ), '\\' ) . '\\';
-  // 栈，默认值为传入的目录
-  $dirs = array ( $dir );
-  // 放置所有文件的容器
-  $rt = array ();
-  do {
-    // 弹栈
-    $dir = array_pop ( $dirs );
-    // 扫描该目录
-    $tmp = scandir ( $dir );
-    foreach ( $tmp as $f ) {
-      // 过滤. ..
-      if ($f == '.' || $f == '..') continue;
-      // 组合当前绝对路径(全小写)
-      $path = strtolower($dir . $f);
-      // 如果是目录，压栈。
-      if (is_dir ( $path )) {
-        array_push ( $dirs, $path . '\\' );
-      } 
-      else if (is_file ( $path )) { 
-        // 如果是文件，放入容器中
-        $rt [] = $path;
-      }
-    }
-  } while ( $dirs ); // 直到栈中没有目录
-  return $rt;
-}
-
-function scanfiles2($dir)
-{
-  $filesnames = scandir($dir);
-  $rt = array();
-  foreach ($filesnames as $name) {
-    if($name == '.' || $name == '..') continue;
-    if(is_dir($dir.'\\'.$name)) continue;
-
-    $rt[] = $dir.'\\'.$name;
-  }
-  return $rt;
-}
-
-function scanfiles($dir, $bDfs = false)
-{
-  if($bDfs) {
-    return scanfiles1($dir);
-  }
-  else {
-    return scanfiles2($dir);
-  }
-}
-
-//var_dump(scanfiles('C:/Develop/GitProject/cbm/ThirdParty/soui/mfc_test'));
-
-function decode_json($str, $assoc=true){
-  $str = str_replace("\\", '\\\\', $str);
-  $str = str_replace("\r\n", '\n', $str);
-  return json_decode($str, $assoc);
-}
-
-function escapeJsonString($value) 
-{ 
-  static $escapers = array("\\", "/", "\"", "\n", "\r", "\t", "\x08", "\x0c");
-  static $replacements = array("\\\\", "\\/", "\\\"", "\\n", "\\r", "\\t", "\\f", "\\b");
-  $result = str_replace($escapers, $replacements, $value);
-  return $result;
-}
-
-function escapeUnicodeString($value)
-{
-  if(is_string($value)) {
-
-    return json_decode('"'.$value.'"');
-  }
-  else {
-    return $value;
-  }
-}
+require_once('sql_utils.php');
+require_once('soui_code.php');
 
 function mockups_type_to_soui_type($type)
 {
@@ -251,7 +127,7 @@ function create_subtree($doc, $tree)
 
 function createIncNode($doc, $node, $jsonfile)
 {
-  //if(!is_file($jsonfile)) return;
+  if(!is_file($jsonfile)) return;
 
   //解析json文件
   $xml_src = mockups_to_soui_xml($jsonfile, false);
@@ -259,7 +135,7 @@ function createIncNode($doc, $node, $jsonfile)
   echo htmlspecialchars($xml_src)."<br/><br/>";
   if(is_null($xml_src) || $xml_src == '') {
     $fname = pathinfo($jsonfile)['filename'];
-    $node->appendChild(create_node($doc, 'include', null, array('src'=>'layout:$fname', 'json'=>$jsonfile)));
+    $node->appendChild(create_node($doc, 'include', null, array("src"=>"layout:$fname", "json"=>$jsonfile)));
   }
   else {
     //添加到<group> <window>等容器节点下
@@ -426,7 +302,7 @@ else if($type == 'caption') {
   $node->removeAttribute("value");
   $node->nodeValue = '';
     //删除几个用不到的属性
-  $node->removeAttribute('name');
+  // $node->removeAttribute('name');
   $node->removeAttribute('margin-x');
   $node->removeAttribute('margin-y');
 
@@ -529,7 +405,7 @@ else if($type == 'tabctrl') {
         $jsonfile = escapeUnicodeString(trim($jsonfile));
         $jsonfile = 'json/'.$jsonfile.'.json';
         //解析json文件,并添加到<page>子节点下
-        createIncNode($doc, $page_node, $jsonfile);        
+        createIncNode($doc, $page_node, $jsonfile);
       } 
     }
   }
@@ -555,8 +431,14 @@ else if($type == 'tabctrl') {
     $jsonfile = escapeUnicodeString(trim(explode(',', $text)[0]));
     //构造json文件名
     $jsonfile = 'json/'.$jsonfile.'.json';
-    //解析json文件,并添加到<group>子节点下
-    createIncNode($doc, $node, $jsonfile);
+    if(is_file($jsonfile)) {
+      //解析json文件,并添加到<group>子节点下
+      createIncNode($doc, $node, $jsonfile);
+    }
+    else {
+      $node->setAttribute('enable', '0');
+      $node->setAttribute('visible', '0');
+    }
   }
 }
 
@@ -569,7 +451,7 @@ function create_root($doc, $attribs)
   }
   else {
     //创建SOUI根节点
-    $soui = create_node($doc, 'SOUI', null, array('width'=>$attribs['width']+15, 'height'=>$attribs['height']+15, 'translucent'=>0, 'alpha'=>255, 'resizable'=>0));
+    $soui = create_node($doc, 'SOUI', null, array('width'=>$attribs['width'], 'height'=>$attribs['height'], 'translucent'=>0, 'alpha'=>255, 'resizable'=>0));
     $doc->appendChild($soui);
     //创建root节点
     $root = create_node($doc, 'root', null, array('cache'=>1, 'skin'=>'_skin.sys.wnd.bkgnd'));
@@ -602,8 +484,8 @@ function mockups_to_soui_xml($jsonfile, $bMainWnd = true)
   $fig_width = intval($mockup['measuredW']);
   $fig_height = intval($mockup['measuredH']);
   //left和top的偏移量
-  $dx = $fig_width - $wnd_width-8;
-  $dy = $fig_height - $wnd_height-3;
+  $dx = $fig_width - $wnd_width;
+  $dy = $fig_height - $wnd_height;
 
   $root_attribs = null;
   if($bMainWnd) {
@@ -797,7 +679,8 @@ if($type == 'window') {
   //这2个字段可以是任意类型的数据
   //本程序规定customData以json格式传入自定义数据,从而补充mockups没有的一些属性和数据
   //比如name, min, max等等
-$attribs['name'] = $control['typeID'].''.$control['ID'];
+$name = mockups_type_to_soui_type($control['typeID']);
+$attribs['name'] = $name.$control['ID'];
 if(isset($control['properties']['customData'])) {
   $json_datas = trim($control['properties']['customData']);
     //json数据中的引号等符号被用url方式进行编码转义了,比如空格变成了%22,需要进行解码
@@ -928,8 +811,8 @@ function createFileNodes($doc, $resType, $dir, $filters='*.*', $prefix='', $bDfs
     $name = $pi['filename'];
 
     if($basename == '.' || $basename == '..') continue;
-    if($resType == 'UIDEF' && $basename != 'init.xml') continue;
-    if($resType != 'UIDEF' && $basename == 'init.xml') continue;
+    if($resType == 'uidef' && $basename != 'init.xml') continue;
+    if($resType != 'uidef' && $basename == 'init.xml') continue;
     if($filters != '*.*' && !array_key_exists($ext, $filterDict)) continue;
 
     //修饰前缀
@@ -1058,6 +941,10 @@ createUIResFile('uires.idx');
 //复制文件夹到cmb项目(方便使用!!!)
 recurse_copy('.', 'C:\Develop\GitProject\cbm\Skin\demo4\uires');
 //recurse_copy('json', 'C:\Develop\GitProject\cbm\Skin\demo4\uires\json');
+
+//解析xml文件,生成cpp代码
+xml_to_dialog('xml', 'cpp');
+// recurse_copy('cpp', 'C:\Develop\GitProject\cbm\ArxSoUI');
 
 ?>
 
