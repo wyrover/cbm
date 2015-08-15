@@ -33,6 +33,18 @@ LRESULT ReservesPredictDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 	m_ReserveW1Edit = FindChildByName2<SEdit>(L"reserve_w1");
 	m_ReserveW2Edit = FindChildByName2<SEdit>(L"reserve_w2");
 	m_ReserveW3Edit = FindChildByName2<SEdit>(L"reserve_w3");
+	m_PumpWcEdit = FindChildByName2<SEdit>(L"pump_Wc");
+	m_PumpKdEdit = FindChildByName2<SEdit>(L"pump_Kd");
+	m_PumpK1Edit = FindChildByName2<SEdit>(L"pump_K1");
+	m_PumpK2Edit = FindChildByName2<SEdit>(L"pump_K2");
+	m_PumpK4Edit = FindChildByName2<SEdit>(L"pump_K4");
+	m_PumpK3Edit = FindChildByName2<SEdit>(L"pump_K3");
+	m_PumpMyEdit = FindChildByName2<SEdit>(L"pump_My");
+	m_PumpMcEdit = FindChildByName2<SEdit>(L"pump_Mc");
 	return 0;
 }
 
+
+void ReservesPredictDialog::OnSaveButtonClick()
+{
+}

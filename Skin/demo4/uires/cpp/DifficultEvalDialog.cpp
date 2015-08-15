@@ -29,6 +29,21 @@ LRESULT DifficultEvalDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 {
 	AcadSouiDialog::OnInitDialog(hWnd, lParam);
 	//do something
+	m_PermeabilityKEdit = FindChildByName2<SEdit>(L"permeability_k");
+	m_DecayAlphaEdit = FindChildByName2<SEdit>(L"decay_alpha");
+	m_PermeabilityLambdaEdit = FindChildByName2<SEdit>(L"permeability_lambda");
 	return 0;
 }
 
+
+void DifficultEvalDialog::OnCancelButtonClick()
+{
+}
+
+void DifficultEvalDialog::OnEvalButtonClick()
+{
+}
+
+void DifficultEvalDialog::OnEvalProofButtonClick()
+{
+}

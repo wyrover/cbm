@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOUI width="462" height="214" translucent="0" alpha="255" resizable="0">
+  <root cache="1" skin="_skin.sys.wnd.bkgnd">
+    <text pos="16,47" width="130" height="23" ncSkin="_skin.sys.border" name="text24" margin-x="1" margin-y="1">吨煤瓦斯抽采量Qm2</text>
+    <edit pos="156,45" width="69" height="26" enable="1" ncSkin="_skin.sys.border" name="Qm" margin-x="1" margin-y="1"/>
+    <text pos="231,47" width="135" height="23" ncSkin="_skin.sys.border" name="text26" margin-x="1" margin-y="1">煤层原始瓦斯含量W</text>
+    <edit pos="377,45" width="69" height="26" enable="1" ncSkin="_skin.sys.border" name="gas_W0" margin-x="1" margin-y="1"/>
+    <text pos="16,88" width="253" height="23" ncSkin="_skin.sys.border" name="text28" margin-x="1" margin-y="1">抽采时间内，钻孔的累计瓦斯抽采量Q</text>
+    <edit pos="277,86" width="73" height="26" enable="1" ncSkin="_skin.sys.border" name="QSum" margin-x="1" margin-y="1"/>
+    <text pos="16,127" width="53" height="23" ncSkin="_skin.sys.border" name="text30" margin-x="1" margin-y="1">抽采率η</text>
+    <edit pos="74,125" width="73" height="26" enable="1" ncSkin="_skin.sys.border" name="eta" margin-x="1" margin-y="1"/>
+    <text pos="156,127" width="188" height="23" ncSkin="_skin.sys.border" name="text32" margin-x="1" margin-y="1">抽采后煤层残存瓦斯含量Wc</text>
+    <edit pos="348,125" width="79" height="26" enable="1" ncSkin="_skin.sys.border" name="gas_Wc3" margin-x="1" margin-y="1"/>
+    <window pos="0,0" width="462" height="214" ncSkin="_skin.sys.border" name="window35" margin-x="1" margin-y="1" enable="0" visible="0"/>
+    <caption pos="9,3" width="446" height="40" ncSkin="_skin.sys.border" name="caption36">
+      <text pos="0,8">测试程序v1.0</text>
+      <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
+    </caption>
+    <button pos="142,166" width="141" height="40" ncSkin="_skin.sys.border" name="save" margin-x="1" margin-y="1">保存</button>
+  </root>
+</SOUI>

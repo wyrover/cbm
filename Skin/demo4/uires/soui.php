@@ -809,7 +809,6 @@ function createFileNodes($doc, $resType, $dir, $filters='*.*', $prefix='', $bDfs
     $ext = $pi['extension'];
     //文件名
     $name = $pi['filename'];
-
     if($basename == '.' || $basename == '..') continue;
     if($resType == 'uidef' && $basename != 'init.xml') continue;
     if($resType != 'uidef' && $basename == 'init.xml') continue;
@@ -833,13 +832,7 @@ function createFileNodes($doc, $resType, $dir, $filters='*.*', $prefix='', $bDfs
     $node->appendChild(createFileNode($doc, $fname, $prefix));
   }
 
-  if(!$node->hasChildNodes()) {
-    $doc->removeChild($node);
-    return null;
-  }
-  else {
-    return $node;
-  }
+  return $node;
 }
 
 function createUIResFile($uiResFile='uires.idx')

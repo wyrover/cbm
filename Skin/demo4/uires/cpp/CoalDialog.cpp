@@ -45,11 +45,12 @@ LRESULT CoalDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 	m_InfluenceFactorEdit = FindChildByName2<SEdit>(L"influence_factor");
 	m_MineIndexEdit = FindChildByName2<SEdit>(L"mine_index");
 	m_StabilityCombox = FindChildByName2<SComboBox>(L"stability");
+	m_CoalCombox = FindChildByName2<SComboBox>(L"coal");
 	return 0;
 }
 
 
-void CoalDialog::OnSaveButtonClick()
+void CoalDialog::OnDelButtonClick()
 {
 }
 
@@ -99,4 +100,17 @@ void CoalDialog::OnStabilityComboxSelChanged(SOUI::EventArgs *pEvt)
 	if(pEvtOfCB == 0) return;
 
 	// do something
+}
+
+void CoalDialog::OnCoalComboxSelChanged(SOUI::EventArgs *pEvt)
+{
+	if(!isLayoutInited()) return;
+	EventCBSelChange* pEvtOfCB = (EventCBSelChange*)pEvt;
+	if(pEvtOfCB == 0) return;
+
+	// do something
+}
+
+void CoalDialog::OnSaveButtonClick()
+{
 }

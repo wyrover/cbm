@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOUI width="361" height="296" translucent="0" alpha="255" resizable="0">
+  <root cache="1" skin="_skin.sys.wnd.bkgnd">
+    <text pos="38,182" width="86" height="23" ncSkin="_skin.sys.border" name="text15" margin-x="1" margin-y="1">平均日产量A</text>
+    <edit pos="153,180" width="72" height="26" enable="1" ncSkin="_skin.sys.border" name="work_area_A" margin-x="1" margin-y="1"/>
+    <text pos="9,42" width="209" height="23" ncSkin="_skin.sys.border" name="text18" margin-x="1" margin-y="1">生产采区采空区瓦斯涌出系数K'</text>
+    <edit pos="225,40" width="53" height="26" enable="1" ncSkin="_skin.sys.border" name="K1_gas" margin-x="1" margin-y="1"/>
+    <button pos="291,40" width="54" height="27" ncSkin="_skin.sys.border" name="k1_help" margin-x="1" margin-y="1">帮助</button>
+    <window pos="0,0" width="361" height="296" ncSkin="_skin.sys.border" name="window29" margin-x="1" margin-y="1" enable="0" visible="0"/>
+    <caption pos="9,0" width="346" height="40" ncSkin="_skin.sys.border" name="caption30">
+      <text pos="0,8">测试程序v1.0</text>
+      <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
+    </caption>
+    <button pos="101,247" width="141" height="40" ncSkin="_skin.sys.border" name="save" margin-x="1" margin-y="1">保存</button>
+    <text pos="9,214" width="144" height="23" ncSkin="_skin.sys.border" name="text32" margin-x="1" margin-y="1">矿井相对瓦斯涌出量q</text>
+    <edit pos="164,212" width="83" height="26" enable="1" ncSkin="_skin.sys.border" name="qr" margin-x="1" margin-y="1"/>
+    <text pos="9,83" width="211" height="23" ncSkin="_skin.sys.border" name="text37" margin-x="1" margin-y="1">已采采区采空区瓦斯涌出系数K''</text>
+    <edit pos="225,81" width="53" height="26" enable="1" ncSkin="_skin.sys.border" name="K2_gas" margin-x="1" margin-y="1"/>
+    <button pos="291,81" width="54" height="27" ncSkin="_skin.sys.border" name="k2_help" margin-x="1" margin-y="1">帮助</button>
+    <combobox pos="69,117" width="149" height="24" ncSkin="_skin.sys.border" dropDown="1" curSel="0" name="work_area" margin-x="1" margin-y="1">
+      <liststyle itemHeight="30" colorText="#000000" colorSelText="#FFFFFF" colorItemBkgnd="#FFFFFF" colorItemSelBkgnd="#000088"/>
+      <items>
+        <item text=""/>
+      </items>
+    </combobox>
+    <text pos="9,118" width="60" height="23" ncSkin="_skin.sys.border" name="text49" margin-x="1" margin-y="1">生产采区</text>
+    <edit pos="153,148" width="72" height="26" enable="1" ncSkin="_skin.sys.border" name="work_area_qr" margin-x="1" margin-y="1"/>
+    <button pos="225,116" width="54" height="27" ncSkin="_skin.sys.border" name="input" margin-x="1" margin-y="1">输入</button>
+    <text pos="38,150" width="105" height="23" ncSkin="_skin.sys.border" name="text53" margin-x="1" margin-y="1">相对瓦斯涌出量</text>
+  </root>
+</SOUI>

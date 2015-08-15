@@ -11,6 +11,7 @@ public:
 
 	/** 控件消息处理 */
 protected:
+	void OnSaveButtonClick();
 
 	/** 菜单消息 */
 protected:
@@ -24,6 +25,7 @@ protected:
 
 	//控件消息映射表
 	EVENT_MAP_BEGIN()
+		EVENT_NAME_COMMAND(_T("save"), OnSaveButtonClick)
 		CHAIN_EVENT_MAP(AcadSouiDialog)
 	EVENT_MAP_END()
 	
@@ -40,4 +42,12 @@ protected:
 	SEdit* m_ReserveW1Edit;
 	SEdit* m_ReserveW2Edit;
 	SEdit* m_ReserveW3Edit;
+	SEdit* m_PumpWcEdit;
+	SEdit* m_PumpKdEdit;
+	SEdit* m_PumpK1Edit;
+	SEdit* m_PumpK2Edit;
+	SEdit* m_PumpK4Edit;
+	SEdit* m_PumpK3Edit;
+	SEdit* m_PumpMyEdit;
+	SEdit* m_PumpMcEdit;
 };

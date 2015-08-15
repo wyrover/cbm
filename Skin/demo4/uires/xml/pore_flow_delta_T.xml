@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOUI width="371" height="156" translucent="0" alpha="255" resizable="0">
+  <root cache="1" skin="_skin.sys.wnd.bkgnd">
+    <window pos="0,0" width="371" height="156" ncSkin="_skin.sys.border" name="window67" margin-x="1" margin-y="1" enable="0" visible="0"/>
+    <text pos="16,45" width="126" height="23" ncSkin="_skin.sys.border" name="text68" margin-x="1" margin-y="1">瓦斯管内测点温度t</text>
+    <edit pos="157,43" width="84" height="26" enable="1" ncSkin="_skin.sys.border" name="t" margin-x="1" margin-y="1"/>
+    <button pos="103,108" width="141" height="40" ncSkin="_skin.sys.border" name="save" margin-x="1" margin-y="1">保存</button>
+    <caption pos="10,0" width="361" height="40" ncSkin="_skin.sys.border" name="caption71">
+      <text pos="0,8">测试程序v1.0</text>
+      <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
+    </caption>
+    <text pos="16,78" width="108" height="23" ncSkin="_skin.sys.border" name="text74" margin-x="1" margin-y="1">温度校正系数δT</text>
+    <edit pos="157,76" width="84" height="26" enable="1" ncSkin="_skin.sys.border" name="delta_t" margin-x="1" margin-y="1"/>
+  </root>
+</SOUI>

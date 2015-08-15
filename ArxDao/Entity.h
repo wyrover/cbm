@@ -13,6 +13,7 @@ class Account;
 class AdjLayer;
 class Base;
 class Coal;
+class CoalPore;
 class DrillingRadius;
 class DrillingSurf;
 class EvalUnit;
@@ -28,6 +29,7 @@ class PoreSize;
 class ReadyTunnel;
 class Region;
 class ResAbundance;
+class SysInfo;
 class TechMode;
 class Technology;
 class TopoGeo;
@@ -38,6 +40,7 @@ typedef boost::shared_ptr<Account> AccountPtr;
 typedef boost::shared_ptr<AdjLayer> AdjLayerPtr;
 typedef boost::shared_ptr<Base> BasePtr;
 typedef boost::shared_ptr<Coal> CoalPtr;
+typedef boost::shared_ptr<CoalPore> CoalPorePtr;
 typedef boost::shared_ptr<DrillingRadius> DrillingRadiusPtr;
 typedef boost::shared_ptr<DrillingSurf> DrillingSurfPtr;
 typedef boost::shared_ptr<EvalUnit> EvalUnitPtr;
@@ -53,6 +56,7 @@ typedef boost::shared_ptr<PoreSize> PoreSizePtr;
 typedef boost::shared_ptr<ReadyTunnel> ReadyTunnelPtr;
 typedef boost::shared_ptr<Region> RegionPtr;
 typedef boost::shared_ptr<ResAbundance> ResAbundancePtr;
+typedef boost::shared_ptr<SysInfo> SysInfoPtr;
 typedef boost::shared_ptr<TechMode> TechModePtr;
 typedef boost::shared_ptr<Technology> TechnologyPtr;
 typedef boost::shared_ptr<TopoGeo> TopoGeoPtr;
@@ -69,6 +73,7 @@ public:
 	Account();
 	CString username;
 	CString password;
+	CString comment;
 
 }; // class Account
 
@@ -115,6 +120,7 @@ public:
 	CString name;
 	int minable;
 	double thick;
+	double hw;
 	int rank;
 	int quality;
 	double pressure;
@@ -127,7 +133,9 @@ public:
 	double var_coeff;
 	int stability;
 	double dip_angle;
-	double caving_zone_height;
+	double czh;
+	double czk;
+	double czw;
 	double layer_gap;
 	double influence_factor;
 	double res_a1;
@@ -135,12 +143,13 @@ public:
 	double res_a2;
 	double gas_x2;
 	double gas_wc;
-	double coal_r;
-	double coal_vr;
+	double rho;
+	double vr;
 	double gas_w0;
 	double gas_wc2;
+	double gas_wc3;
 	double gas_eta;
-	double q_r;
+	double qr;
 	double q0;
 	int eval_method;
 	double q0_alpha;
@@ -166,6 +175,20 @@ public:
 
 }; // class Coal
 
+class ARXDAO_DLLIMPEXP CoalPore : public orm::Record
+{
+public:
+	static CString Table();
+	static orm::RecordPtr Create();
+
+public:
+	CoalPore();
+	orm::RecordPtr coal;
+	double thick;
+	CString comment;
+
+}; // class CoalPore
+
 class ARXDAO_DLLIMPEXP DrillingRadius : public orm::Record
 {
 public:
@@ -182,8 +205,7 @@ public:
 	double q0;
 	double a;
 	double t;
-	double qm1;
-	double qm2;
+	double qm;
 	double qsum;
 	double eta;
 
@@ -197,10 +219,10 @@ public:
 
 public:
 	DrillingSurf();
-	orm::RecordPtr coal;
+	orm::RecordPtr mining_area;
 	orm::RecordPtr tunnel;
-	double q_r;
-	double q_a;
+	double qr;
+	double qa;
 	double q4;
 	CString comment;
 
@@ -248,7 +270,6 @@ public:
 	double l1;
 	double l2;
 	double lg;
-	double hz;
 	double lk;
 	double lc;
 	double lw;
@@ -307,11 +328,11 @@ public:
 public:
 	KeyLayer();
 	orm::RecordPtr high_drilling_pore;
-	double hn;
-	double thetan;
-	double qn;
-	double rtn;
-	double sum_hn;
+	double h;
+	double theta;
+	double q;
+	double rt;
+	double sum_h;
 	CString comment;
 
 }; // class KeyLayer
@@ -324,7 +345,9 @@ public:
 
 public:
 	Mine();
+	orm::RecordPtr tech_mode;
 	orm::RecordPtr region;
+	orm::RecordPtr account;
 	CString name;
 	CString province;
 	CString city;
@@ -333,8 +356,10 @@ public:
 	int hydr_geo;
 	int ground_condition;
 	double q_r;
+	double gas_k1;
+	double gas_k2;
 	CString stereo_schem_diagram;
-	double k_gas;
+	double rock_gas_k2;
 	double reserve_w1;
 	double reserve_w2;
 	double reserve_w3;
@@ -359,9 +384,8 @@ public:
 	MiningArea();
 	orm::RecordPtr coal;
 	int mode;
-	double k_gas;
 	double a;
-	double q_r;
+	double qr;
 	CString comment;
 
 }; // class MiningArea
@@ -407,6 +431,7 @@ public:
 	double p;
 	double sigma;
 	double delta;
+	CString comment;
 
 }; // class PoreSize
 
@@ -452,6 +477,18 @@ public:
 
 }; // class ResAbundance
 
+class ARXDAO_DLLIMPEXP SysInfo : public orm::Record
+{
+public:
+	static CString Table();
+	static orm::RecordPtr Create();
+
+public:
+	SysInfo();
+	orm::RecordPtr account;
+
+}; // class SysInfo
+
 class ARXDAO_DLLIMPEXP TechMode : public orm::Record
 {
 public:
@@ -463,6 +500,9 @@ public:
 	orm::RecordPtr region;
 	CString name;
 	int type;
+	int c1;
+	int c2;
+	int c3;
 	CString comment;
 
 }; // class TechMode
@@ -525,18 +565,17 @@ public:
 
 public:
 	WorkSurf();
+	orm::RecordPtr mining_area;
 	orm::RecordPtr tunnel;
-	orm::RecordPtr coal;
 	double a;
-	double q_r;
-	double q_a;
+	double qr;
+	double qa;
 	double l;
 	int layerable;
 	double k1;
 	double k2;
 	double k3;
 	double kf;
-	double h;
 	int method;
 	double last_t;
 	CString comment;

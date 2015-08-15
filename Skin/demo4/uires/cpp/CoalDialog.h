@@ -11,7 +11,7 @@ public:
 
 	/** 控件消息处理 */
 protected:
-	void OnSaveButtonClick();
+	void OnDelButtonClick();
 	void OnNextButtonClick();
 	void OnCancelButtonClick();
 	void OnRankComboxSelChanged(SOUI::EventArgs *pEvt);
@@ -19,6 +19,8 @@ protected:
 	void OnAddCoalButtonClick();
 	void OnResAbundanceComboxSelChanged(SOUI::EventArgs *pEvt);
 	void OnStabilityComboxSelChanged(SOUI::EventArgs *pEvt);
+	void OnCoalComboxSelChanged(SOUI::EventArgs *pEvt);
+	void OnSaveButtonClick();
 
 	/** 菜单消息 */
 protected:
@@ -32,7 +34,7 @@ protected:
 
 	//控件消息映射表
 	EVENT_MAP_BEGIN()
-		EVENT_NAME_COMMAND(_T("save"), OnSaveButtonClick)
+		EVENT_NAME_COMMAND(_T("del"), OnDelButtonClick)
 		EVENT_NAME_COMMAND(_T("next"), OnNextButtonClick)
 		EVENT_NAME_COMMAND(_T("cancel"), OnCancelButtonClick)
 		EVENT_NAME_HANDLER(_T("rank"), EVT_CB_SELCHANGE, OnRankComboxSelChanged)
@@ -40,6 +42,8 @@ protected:
 		EVENT_NAME_COMMAND(_T("add_coal"), OnAddCoalButtonClick)
 		EVENT_NAME_HANDLER(_T("res_abundance"), EVT_CB_SELCHANGE, OnResAbundanceComboxSelChanged)
 		EVENT_NAME_HANDLER(_T("stability"), EVT_CB_SELCHANGE, OnStabilityComboxSelChanged)
+		EVENT_NAME_HANDLER(_T("coal"), EVT_CB_SELCHANGE, OnCoalComboxSelChanged)
+		EVENT_NAME_COMMAND(_T("save"), OnSaveButtonClick)
 		CHAIN_EVENT_MAP(AcadSouiDialog)
 	EVENT_MAP_END()
 	
@@ -68,4 +72,5 @@ protected:
 	SEdit* m_InfluenceFactorEdit;
 	SEdit* m_MineIndexEdit;
 	SComboBox* m_StabilityCombox;
+	SComboBox* m_CoalCombox;
 };

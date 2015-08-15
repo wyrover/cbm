@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOUI width="546" height="338" translucent="0" alpha="255" resizable="0">
+  <root cache="1" skin="_skin.sys.wnd.bkgnd">
+    <window pos="0,0" width="546" height="338" ncSkin="_skin.sys.border" name="window0" margin-x="1" margin-y="1" enable="0" visible="0"/>
+    <text pos="16,40" width="242" height="23" ncSkin="_skin.sys.border" name="text2" margin-x="1" margin-y="1">钻孔沿工作面推进方向的控制范围Lk</text>
+    <edit pos="264,38" width="78" height="27" ncSkin="_skin.sys.border" name="Lk" margin-x="1" margin-y="1"/>
+    <text pos="16,81" width="352" height="23" ncSkin="_skin.sys.border" name="text4" margin-x="1" margin-y="1">重叠区长度,即钻孔沿工作面推进方向上的搭接长度Lc</text>
+    <edit pos="373,77" width="84" height="27" ncSkin="_skin.sys.border" name="Lc" margin-x="1" margin-y="1"/>
+    <edit pos="467,38" width="71" height="27" ncSkin="_skin.sys.border" name="Lg" margin-x="1" margin-y="1"/>
+    <text pos="16,120" width="144" height="23" ncSkin="_skin.sys.border" name="text10" margin-x="1" margin-y="1">工作面水平投影长度L</text>
+    <edit pos="161,118" width="106" height="27" ncSkin="_skin.sys.border" name="Lw" margin-x="1" margin-y="1"/>
+    <text pos="348,40" width="109" height="23" ncSkin="_skin.sys.border" name="text13" margin-x="1" margin-y="1">各钻场的间距Lg</text>
+    <text pos="284,120" width="159" height="23" ncSkin="_skin.sys.border" name="text14" margin-x="1" margin-y="1">ABCD 范围内钻孔总数n</text>
+    <edit pos="450,118" width="80" height="27" ncSkin="_skin.sys.border" name="n" margin-x="1" margin-y="1"/>
+    <text pos="16,161" width="249" height="23" ncSkin="_skin.sys.border" name="text16" margin-x="1" margin-y="1">ABCD 范围内抽放钻孔的范围控制角β</text>
+    <edit pos="268,159" width="89" height="27" ncSkin="_skin.sys.border" name="beta" margin-x="1" margin-y="1"/>
+    <text pos="16,202" width="228" height="23" ncSkin="_skin.sys.border" name="text18" margin-x="1" margin-y="1">钻孔沿工作面方向水平投影长度Ld</text>
+    <edit pos="247,200" width="101" height="27" ncSkin="_skin.sys.border" name="Ld" margin-x="1" margin-y="1"/>
+    <text pos="16,243" width="156" height="23" ncSkin="_skin.sys.border" name="text20" margin-x="1" margin-y="1">ABC范围内钻孔长度Lzi</text>
+    <edit pos="176,241" width="82" height="27" ncSkin="_skin.sys.border" name="Lzi" margin-x="1" margin-y="1"/>
+    <text pos="287,243" width="157" height="23" ncSkin="_skin.sys.border" name="text22" margin-x="1" margin-y="1">BCD范围内钻孔长度Lzj</text>
+    <edit pos="447,241" width="71" height="27" ncSkin="_skin.sys.border" name="Lzj" margin-x="1" margin-y="1"/>
+    <caption pos="9,0" width="537" height="40" ncSkin="_skin.sys.border" name="caption24">
+      <text pos="0,8">测试程序v1.0</text>
+      <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
+    </caption>
+    <button pos="203,288" width="141" height="40" ncSkin="_skin.sys.border" name="save" margin-x="1" margin-y="1">保存</button>
+  </root>
+</SOUI>

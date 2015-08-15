@@ -11,6 +11,9 @@ public:
 
 	/** 控件消息处理 */
 protected:
+	void OnCancelButtonClick();
+	void OnEvalButtonClick();
+	void OnEvalProofButtonClick();
 
 	/** 菜单消息 */
 protected:
@@ -24,6 +27,9 @@ protected:
 
 	//控件消息映射表
 	EVENT_MAP_BEGIN()
+		EVENT_NAME_COMMAND(_T("cancel"), OnCancelButtonClick)
+		EVENT_NAME_COMMAND(_T("eval"), OnEvalButtonClick)
+		EVENT_NAME_COMMAND(_T("eval_proof"), OnEvalProofButtonClick)
 		CHAIN_EVENT_MAP(AcadSouiDialog)
 	EVENT_MAP_END()
 	
@@ -36,4 +42,7 @@ protected:
 	END_MSG_MAP()
 
 protected:
+	SEdit* m_PermeabilityKEdit;
+	SEdit* m_DecayAlphaEdit;
+	SEdit* m_PermeabilityLambdaEdit;
 };

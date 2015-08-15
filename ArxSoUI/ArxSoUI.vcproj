@@ -506,7 +506,31 @@
 					>
 				</File>
 				<File
+					RelativePath=".\TwsGasPredictDialog.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\TwsGasPredictQ3Dialog.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\TwsGasPredictQ4Dialog.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\UIHelper.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\WsGasPredictAdjDialog.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\WsGasPredictDialog.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\WsGasPredictWorkDialog.cpp"
 					>
 				</File>
 			</Filter>
@@ -619,7 +643,31 @@
 					>
 				</File>
 				<File
+					RelativePath=".\TwsGasPredictDialog.h"
+					>
+				</File>
+				<File
+					RelativePath=".\TwsGasPredictQ3Dialog.h"
+					>
+				</File>
+				<File
+					RelativePath=".\TwsGasPredictQ4Dialog.h"
+					>
+				</File>
+				<File
 					RelativePath=".\UIHelper.h"
+					>
+				</File>
+				<File
+					RelativePath=".\WsGasPredictAdjDialog.h"
+					>
+				</File>
+				<File
+					RelativePath=".\WsGasPredictDialog.h"
+					>
+				</File>
+				<File
+					RelativePath=".\WsGasPredictWorkDialog.h"
 					>
 				</File>
 			</Filter>

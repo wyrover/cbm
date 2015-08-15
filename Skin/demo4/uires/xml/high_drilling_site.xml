@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOUI width="431" height="382" translucent="0" alpha="255" resizable="0">
+  <root cache="1" skin="_skin.sys.wnd.bkgnd">
+    <text pos="14,276" width="130" height="23" ncSkin="_skin.sys.border" name="text40" margin-x="1" margin-y="1">初次垮落循环步距L1</text>
+    <edit pos="160,274" width="140" height="26" enable="1" ncSkin="_skin.sys.border" name="L1" margin-x="1" margin-y="1"/>
+    <text pos="14,311" width="139" height="23" ncSkin="_skin.sys.border" name="text42" margin-x="1" margin-y="1">周期垮落循环步距L2</text>
+    <edit pos="160,309" width="140" height="26" enable="1" ncSkin="_skin.sys.border" name="L2" margin-x="1" margin-y="1"/>
+    <text pos="14,343" width="109" height="23" ncSkin="_skin.sys.border" name="text44" margin-x="1" margin-y="1">各钻场的间距Lg</text>
+    <edit pos="159,341" width="141" height="26" ncSkin="_skin.sys.border" name="Lg" margin-x="1" margin-y="1"/>
+    <button pos="320,286" width="100" height="72" ncSkin="_skin.sys.border" name="save" margin-x="1" margin-y="1">保存</button>
+    <window pos="0,0" width="431" height="382" ncSkin="_skin.sys.border" name="window47" margin-x="1" margin-y="1" enable="0" visible="0"/>
+    <listctrl pos="12,77" width="411" height="183" ncSkin="_skin.sys.border" hotTrack="1" itemHeight="33" headerHeight="33" name="adj_layer" margin-x="1" margin-y="1">
+      <header align="center" itemSwapEnable="0" fixWidth="0" sortHeader="0">
+        <items>
+          <item width="102">名称</item>
+          <item width="102">学号</item>
+          <item width="102">性别</item>
+          <item width="102">成绩</item>
+        </items>
+      </header>
+    </listctrl>
+    <text pos="14,46" width="45" height="23" ncSkin="_skin.sys.border" name="text53" margin-x="1" margin-y="1">关键层</text>
+    <button pos="82,41" width="96" height="32" ncSkin="_skin.sys.border" name="add" margin-x="1" margin-y="1">增加</button>
+    <button pos="202,40" width="96" height="32" ncSkin="_skin.sys.border" name="del" margin-x="1" margin-y="1">删除</button>
+    <button pos="320,41" width="96" height="32" ncSkin="_skin.sys.border" name="modify" margin-x="1" margin-y="1">修改</button>
+    <caption pos="7,0" width="418" height="40" ncSkin="_skin.sys.border" name="caption59">
+      <text pos="0,8">测试程序v1.0</text>
+      <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
+    </caption>
+  </root>
+</SOUI>

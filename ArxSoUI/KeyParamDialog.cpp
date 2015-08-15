@@ -1,7 +1,5 @@
 #include "stdafx.h"
 #include "KeyParamDialog.h"
-#include "DifficultEvalDialog.h"
-#include "ReservesPredictDialog.h"
 
 #include <ArxHelper/HelperClass.h>
 #include <ArxDao/DaoHelper.h>
@@ -37,14 +35,10 @@ LRESULT KeyParamDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 
 void KeyParamDialog::OnKP1ButtonClick()
 {
-	DifficultEvalDialog dlg(TRUE);
-	dlg.Run(this->m_hWnd);
 }
 
 void KeyParamDialog::OnKP2ButtonClick()
 {
-	ReservesPredictDialog dlg(TRUE);
-	dlg.Run(this->m_hWnd);
 }
 
 void KeyParamDialog::OnKP3ButtonClick()

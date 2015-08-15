@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOUI width="488" height="556" translucent="0" alpha="255" resizable="0">
+  <root cache="1" skin="_skin.sys.wnd.bkgnd">
+    <text pos="17,40" width="75" height="23" ncSkin="_skin.sys.border" name="text53" margin-x="1" margin-y="1">当前用户：</text>
+    <button pos="405,36" width="73" height="31" ncSkin="_skin.sys.border" name="logout" margin-x="1" margin-y="1">注销</button>
+    <text pos="92,40" width="111" height="23" ncSkin="_skin.sys.border" name="user" margin-x="1" margin-y="1">null</text>
+    <hr pos="17,71" width="455" height="1" ncSkin="_skin.sys.border" lineStyle="solid" mode="horizontal" name="hr56" margin-x="1" margin-y="1"/>
+    <window pos="1,0" width="487" height="556" ncSkin="_skin.sys.border" name="window57" margin-x="1" margin-y="1" enable="0" visible="0"/>
+    <caption pos="0,0" width="488" height="40" ncSkin="_skin.sys.border" name="caption58">
+      <text pos="0,8">测试程序v1.0</text>
+      <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
+    </caption>
+    <text pos="17,94" width="150" height="23" ncSkin="_skin.sys.border" name="text59" margin-x="1" margin-y="1">示范矿区技术库管理：</text>
+    <combobox pos="177,93" width="135" height="24" ncSkin="_skin.sys.border" dropDown="1" curSel="0" name="region" margin-x="1" margin-y="1">
+      <liststyle itemHeight="30" colorText="#000000" colorSelText="#FFFFFF" colorItemBkgnd="#FFFFFF" colorItemSelBkgnd="#000088"/>
+      <items>
+        <item text="晋城"/>
+        <item text="两淮"/>
+        <item text="松藻"/>
+      </items>
+    </combobox>
+    <listctrl pos="17,151" width="461" height="152" ncSkin="_skin.sys.border" hotTrack="1" itemHeight="33" headerHeight="33" name="coal" margin-x="1" margin-y="1">
+      <header align="center" itemSwapEnable="0" fixWidth="0" sortHeader="0">
+        <items>
+          <item width="115">编号</item>
+          <item width="115">名称</item>
+          <item width="115">煤层厚度</item>
+          <item width="115">煤层倾角</item>
+          <item width="115">煤层埋深</item>
+        </items>
+      </header>
+    </listctrl>
+    <text pos="203,128" width="90" height="23" ncSkin="_skin.sys.border" name="text65" margin-x="1" margin-y="1">煤层基础参数</text>
+    <listctrl pos="17,341" width="461" height="206" ncSkin="_skin.sys.border" hotTrack="1" itemHeight="33" headerHeight="33" name="technology" margin-x="1" margin-y="1">
+      <header align="center" itemSwapEnable="0" fixWidth="0" sortHeader="0">
+        <items>
+          <item width="115">编号</item>
+          <item width="115">参数1</item>
+          <item width="115">参数2</item>
+          <item width="115">参数3</item>
+        </items>
+      </header>
+    </listctrl>
+    <text pos="203,319" width="90" height="23" ncSkin="_skin.sys.border" name="text67" margin-x="1" margin-y="1">抽采技术参数</text>
+  </root>
+</SOUI>

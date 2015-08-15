@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOUI width="413" height="345" translucent="0" alpha="255" resizable="0">
+  <root cache="1" skin="_skin.sys.wnd.bkgnd">
+    <window pos="0,0" width="413" height="345" ncSkin="_skin.sys.border" name="window30" margin-x="1" margin-y="1" enable="0" visible="0"/>
+    <text pos="23,266" width="98" height="23" ncSkin="_skin.sys.border" name="text44" margin-x="1" margin-y="1">可抽瓦斯量Wc</text>
+    <edit pos="129,264" width="71" height="26" ncSkin="_skin.sys.border" name="pump_Wc" margin-x="1" margin-y="1"/>
+    <text pos="23,51" width="79" height="23" ncSkin="_skin.sys.border" name="text46" margin-x="1" margin-y="1">可抽系数Kd</text>
+    <edit pos="102,49" width="71" height="26" ncSkin="_skin.sys.border" name="pump_Kd" margin-x="1" margin-y="1"/>
+    <text pos="184,51" width="136" height="23" ncSkin="_skin.sys.border" name="text48" margin-x="1" margin-y="1">瓦斯涌出程度系数K1</text>
+    <edit pos="326,49" width="71" height="26" ncSkin="_skin.sys.border" name="pump_K1" margin-x="1" margin-y="1"/>
+    <text pos="23,85" width="200" height="23" ncSkin="_skin.sys.border" name="text50" margin-x="1" margin-y="1">负压抽采时的抽采作用系数K2</text>
+    <edit pos="242,83" width="71" height="26" ncSkin="_skin.sys.border" name="pump_K2" margin-x="1" margin-y="1"/>
+    <text pos="23,120" width="125" height="23" ncSkin="_skin.sys.border" name="text52" margin-x="1" margin-y="1">煤层瓦斯排放率K4</text>
+    <edit pos="179,118" width="71" height="26" ncSkin="_skin.sys.border" name="pump_K4" margin-x="1" margin-y="1"/>
+    <text pos="23,159" width="125" height="23" ncSkin="_skin.sys.border" name="text54" margin-x="1" margin-y="1">矿井瓦斯抽采率K3</text>
+    <edit pos="176,157" width="71" height="26" ncSkin="_skin.sys.border" name="pump_K3" margin-x="1" margin-y="1"/>
+    <text pos="23,197" width="140" height="23" ncSkin="_skin.sys.border" name="text56" margin-x="1" margin-y="1">煤层原始瓦斯含量My</text>
+    <edit pos="189,195" width="71" height="26" ncSkin="_skin.sys.border" name="pump_My" margin-x="1" margin-y="1"/>
+    <text pos="23,232" width="201" height="23" ncSkin="_skin.sys.border" name="text58" margin-x="1" margin-y="1">运到地面煤的残余瓦斯含量Mc</text>
+    <edit pos="239,230" width="71" height="26" ncSkin="_skin.sys.border" name="pump_Mc" margin-x="1" margin-y="1"/>
+    <caption pos="7,0" width="405" height="40" ncSkin="_skin.sys.border" name="caption61">
+      <text pos="0,8">测试程序v1.0</text>
+      <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
+    </caption>
+    <button pos="148,299" width="116" height="38" ncSkin="_skin.sys.border" name="save" margin-x="1" margin-y="1">保存</button>
+  </root>
+</SOUI>

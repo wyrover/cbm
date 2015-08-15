@@ -14,7 +14,6 @@ protected:
 	void OnButton12Click();
 	void OnButton13Click();
 	void OnButton32Click();
-	void OnCombox0SelChanged(SOUI::EventArgs *pEvt);
 	void OnCombox71SelChanged(SOUI::EventArgs *pEvt);
 
 	/** 菜单消息 */
@@ -32,7 +31,6 @@ protected:
 		EVENT_NAME_COMMAND(_T("button12"), OnButton12Click)
 		EVENT_NAME_COMMAND(_T("button13"), OnButton13Click)
 		EVENT_NAME_COMMAND(_T("button32"), OnButton32Click)
-		EVENT_NAME_HANDLER(_T("combobox0"), EVT_CB_SELCHANGE, OnCombox0SelChanged)
 		EVENT_NAME_HANDLER(_T("combobox71"), EVT_CB_SELCHANGE, OnCombox71SelChanged)
 		CHAIN_EVENT_MAP(AcadSouiDialog)
 	EVENT_MAP_END()
@@ -56,9 +54,6 @@ protected:
 	STabCtrl* m_Tabctrl48;
 	STabCtrl* m_Tabctrl49;
 	STreeCtrl* m_Tree1Treectrl;
-	SComboBox* m_Combox0;
-	SLink* m_Link2;
-	SRadioBox* m_Radio4;
 	SComboBox* m_Combox71;
 	SLink* m_Link73;
 	SRadioBox* m_Radio75;
