@@ -42,11 +42,10 @@ BOOL EmbedSouiDlg::OnInitDialog()
 	//dlg.CenterWindow();
 	//dlg.ShowWindow(SW_SHOW);
 
-	//::CRect rect;
-	//::GetWindowRect(dlg.m_hWnd, &rect);
-	//ScreenToClient(&rect);
-	//::ScreenToClient(this->m_hWnd, &rect);
-	MoveWindow(0,0,1150,760);
+	SOUI::CRect rect;
+	dlg.SWindow::GetWindowRect(&rect);
+	rect.bottom += 15;
+	MoveWindow(&rect);
 
 	return TRUE;  // return TRUE unless you set the focus to a control
 	// 异常: OCX 属性页应返回 FALSE

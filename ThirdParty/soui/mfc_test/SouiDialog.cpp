@@ -98,7 +98,7 @@ static void SetVisible_Helper(SWindow* wnd, BOOL bVisible)
 
 void SouiDialog::OnSize(UINT nType, ::CSize size)
 {
-	SetMsgHandled(FALSE);   //这一行很重要，保证消息继续传递给SouiDialog处理，当然也可以用SouiDialog::OnSize(nType,size);代替，但是这里使用的方法更简单，通用
+	SetMsgHandled(FALSE);   //这一行很重要，保证消息继续传递给SOUI::SHostDialog处理，当然也可以用SouiDialog::OnSize(nType,size);代替，但是这里使用的方法更简单，通用
 	if(!m_bLayoutInited) return;
 
 	/**
