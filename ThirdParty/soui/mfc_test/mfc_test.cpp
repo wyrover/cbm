@@ -47,7 +47,7 @@ BOOL Cmfc_testApp::InitInstance()
 	AfxInitRichEdit2();
 
 	new MySoUiLoader(m_hInstance);
-	MySoUiLoader::getSingletonPtr()->init();
+	SoUILoader::getSingletonPtr()->init();
 
 	// 标准初始化
 	// 如果未使用这些功能并希望减小
@@ -57,13 +57,6 @@ BOOL Cmfc_testApp::InitInstance()
 	// TODO: 应适当修改该字符串，
 	// 例如修改为公司或组织名
 	SetRegistryKey(_T("应用程序向导生成的本地应用程序"));
-
-	//LoginDlg dlg;
-	//dlg.Create(NULL,0,0,0,0);
-	//dlg.SendMessage(WM_INITDIALOG);
-	//dlg.CenterWindow();
-	//dlg.ShowWindow(SW_SHOWNORMAL);
-	//soui_loader.getApp()->Run(dlg.m_hWnd);
 
 	Cmfc_testDlg dlg;
 	m_pMainWnd = &dlg;

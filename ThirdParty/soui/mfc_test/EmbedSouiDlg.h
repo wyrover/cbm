@@ -1,6 +1,6 @@
 #pragma once
 
-#include "LoginDlg.h"
+#include "TestDlg.h"
 #include "resource.h"
 
 class EmbedSouiDlg : public CDialog
@@ -16,7 +16,7 @@ public:
 
 	//子对话框(soui)
 public:
-	LoginDlg login_dlg;
+	TestDlg dlg;
 
 protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV 支持

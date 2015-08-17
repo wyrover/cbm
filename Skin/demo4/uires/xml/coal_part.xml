@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOUI width="538" height="291" translucent="0" alpha="255" resizable="0">
+  <root cache="1" skin="_skin.sys.wnd.bkgnd">
+    <text pos="16,56" width="60" height="23" ncSkin="_skin.sys.border" name="text29" margin-x="1" margin-y="1">煤层编号</text>
+    <edit pos="92,54" width="68" height="26" enable="1" ncSkin="_skin.sys.border" name="number" margin-x="1" margin-y="1"/>
+    <text pos="16,101" width="60" height="23" ncSkin="_skin.sys.border" name="text31" margin-x="1" margin-y="1">储层压力</text>
+    <button pos="331,0" width="79" height="32" ncSkin="_skin.sys.border" name="del" margin-x="1" margin-y="1">删除</button>
+    <text pos="296,101" width="45" height="23" ncSkin="_skin.sys.border" name="text35" margin-x="1" margin-y="1">渗透率</text>
+    <text pos="418,101" width="21" height="23" ncSkin="_skin.sys.border" name="text36" margin-x="1" margin-y="1">f值</text>
+    <edit pos="449,98" width="76" height="26" enable="1" ncSkin="_skin.sys.border" name="f_value" margin-x="1" margin-y="1"/>
+    <text pos="285,145" width="90" height="23" ncSkin="_skin.sys.border" name="text38" margin-x="1" margin-y="1">构造复杂程度</text>
+    <text pos="16,145" width="105" height="23" ncSkin="_skin.sys.border" name="text40" margin-x="1" margin-y="1">煤层气储量丰度</text>
+    <text pos="337,185" width="75" height="23" ncSkin="_skin.sys.border" name="text43" margin-x="1" margin-y="1">煤层稳定性</text>
+    <text pos="169,56" width="60" height="23" ncSkin="_skin.sys.border" name="text50" margin-x="1" margin-y="1">煤层厚度</text>
+    <edit pos="239,54" width="63" height="26" enable="1" ncSkin="_skin.sys.border" name="thick" margin-x="1" margin-y="1"/>
+    <text pos="325,56" width="30" height="23" ncSkin="_skin.sys.border" name="text52" margin-x="1" margin-y="1">煤阶</text>
+    <combobox pos="363,55" width="153" height="24" ncSkin="_skin.sys.border" dropDown="1" curSel="0" name="rank" margin-x="1" margin-y="1">
+      <liststyle itemHeight="30" colorText="#000000" colorSelText="#FFFFFF" colorItemBkgnd="#FFFFFF" colorItemSelBkgnd="#000088"/>
+      <items>
+        <item text="褐煤"/>
+        <item text="烟煤"/>
+        <item text="无烟煤"/>
+      </items>
+    </combobox>
+    <edit pos="92,101" width="68" height="26" enable="1" ncSkin="_skin.sys.border" name="pressure" margin-x="1" margin-y="1"/>
+    <text pos="168,101" width="45" height="23" ncSkin="_skin.sys.border" name="text56" margin-x="1" margin-y="1">气含量</text>
+    <edit pos="226,98" width="63" height="26" enable="1" ncSkin="_skin.sys.border" name="gas_content" margin-x="1" margin-y="1"/>
+    <edit pos="347,98" width="63" height="26" enable="1" ncSkin="_skin.sys.border" name="gas_penetration" margin-x="1" margin-y="1"/>
+    <combobox pos="379,144" width="146" height="24" ncSkin="_skin.sys.border" dropDown="1" curSel="0" name="const_complexity" margin-x="1" margin-y="1">
+      <liststyle itemHeight="30" colorText="#000000" colorSelText="#FFFFFF" colorItemBkgnd="#FFFFFF" colorItemSelBkgnd="#000088"/>
+      <items>
+        <item text="简单"/>
+        <item text="中等"/>
+        <item text="复杂"/>
+        <item text="极复杂"/>
+      </items>
+    </combobox>
+    <text pos="16,185" width="75" height="23" ncSkin="_skin.sys.border" name="text60" margin-x="1" margin-y="1">可采性指数</text>
+    <text pos="192,185" width="60" height="23" ncSkin="_skin.sys.border" name="text62" margin-x="1" margin-y="1">变异系数</text>
+    <edit pos="260,182" width="66" height="26" enable="1" ncSkin="_skin.sys.border" name="var_coeff" margin-x="1" margin-y="1"/>
+    <text pos="16,226" width="60" height="23" ncSkin="_skin.sys.border" name="text64" margin-x="1" margin-y="1">煤层倾角</text>
+    <edit pos="92,225" width="63" height="26" enable="1" ncSkin="_skin.sys.border" name="dip_angle" margin-x="1" margin-y="1"/>
+    <text pos="168,226" width="75" height="23" ncSkin="_skin.sys.border" name="text66" margin-x="1" margin-y="1">冒落带高度</text>
+    <edit pos="253,225" width="63" height="26" enable="0" ncSkin="_skin.sys.border" name="caving_zone_height" margin-x="1" margin-y="1"/>
+    <button pos="230,0" width="80" height="32" ncSkin="_skin.sys.border" name="add_coal" margin-x="1" margin-y="1">添加</button>
+    <combobox pos="128,145" width="125" height="24" ncSkin="_skin.sys.border" dropDown="1" curSel="0" name="res_abundance" margin-x="1" margin-y="1">
+      <liststyle itemHeight="30" colorText="#000000" colorSelText="#FFFFFF" colorItemBkgnd="#FFFFFF" colorItemSelBkgnd="#000088"/>
+      <items>
+        <item text="高(&gt;3.0)"/>
+        <item text="中(0.5~3.0)"/>
+        <item text="低(&lt;0.5)"/>
+      </items>
+    </combobox>
+    <text pos="16,267" width="120" height="23" ncSkin="_skin.sys.border" name="text71" margin-x="1" margin-y="1">与上覆煤层层间距</text>
+    <edit pos="140,265" width="76" height="26" enable="1" ncSkin="_skin.sys.border" name="layer_gap" margin-x="1" margin-y="1"/>
+    <text pos="230,265" width="90" height="23" ncSkin="_skin.sys.border" name="text73" margin-x="1" margin-y="1">采动影响倍数</text>
+    <edit pos="327,263" width="103" height="26" enable="1" ncSkin="_skin.sys.border" name="influence_factor" margin-x="1" margin-y="1"/>
+    <edit pos="101,182" width="85" height="26" enable="1" ncSkin="_skin.sys.border" name="mine_index" margin-x="1" margin-y="1"/>
+    <combobox pos="418,184" width="107" height="24" ncSkin="_skin.sys.border" dropDown="1" curSel="0" name="stability" margin-x="1" margin-y="1">
+      <liststyle itemHeight="30" colorText="#000000" colorSelText="#FFFFFF" colorItemBkgnd="#FFFFFF" colorItemSelBkgnd="#000088"/>
+      <items>
+        <item text="稳定煤层"/>
+        <item text="较稳定煤层"/>
+        <item text="不稳定煤层"/>
+        <item text="极不稳定煤层"/>
+      </items>
+    </combobox>
+    <text pos="7,2" width="60" height="23" ncSkin="_skin.sys.border" name="text102" margin-x="1" margin-y="1">煤层列表</text>
+    <combobox pos="84,1" width="125" height="24" ncSkin="_skin.sys.border" dropDown="1" curSel="0" name="coal" margin-x="1" margin-y="1">
+      <liststyle itemHeight="30" colorText="#000000" colorSelText="#FFFFFF" colorItemBkgnd="#FFFFFF" colorItemSelBkgnd="#000088"/>
+      <items>
+        <item text=""/>
+      </items>
+    </combobox>
+    <hr pos="0,32" width="538" height="1" ncSkin="_skin.sys.border" lineStyle="solid" mode="horizontal" name="hr104" margin-x="1" margin-y="1"/>
+    <button pos="430,0" width="79" height="32" ncSkin="_skin.sys.border" name="save" margin-x="1" margin-y="1">保存</button>
+  </root>
+</SOUI>

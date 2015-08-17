@@ -10,6 +10,7 @@
 #include "LoginDialog.h"
 #include "MineDialog.h"
 #include "KeyParamDialog.h"
+#include "SampleManageDialog.h"
 
 void UIHelper::InitSouiEnviroment()
 {
@@ -64,5 +65,13 @@ void UIHelper::KPC()
 	CAcModuleResourceOverride myResources;
 
 	KeyParamDialog dlg(TRUE);
+	dlg.Run(acedGetAcadFrame()->GetSafeHwnd());
+}
+
+void UIHelper::SampleManage()
+{
+	CAcModuleResourceOverride myResources;
+
+	SampleManageDialog dlg(FALSE);
 	dlg.Run(acedGetAcadFrame()->GetSafeHwnd());
 }

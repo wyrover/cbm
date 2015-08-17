@@ -100,6 +100,11 @@ public:
 	{
 		UIHelper::KPC();
 	}
+
+	static void JL_SampleManage()
+	{
+		UIHelper::SampleManage();
+	}
 } ;
 
 //-----------------------------------------------------------------------------
@@ -109,3 +114,4 @@ ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _ShowSoUIModal, sm2, ACRX_CMD_TRANS
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _Login, login, ACRX_CMD_TRANSPARENT, NULL )
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _Mine, mine, ACRX_CMD_TRANSPARENT, NULL )
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _KPC, kpc, ACRX_CMD_TRANSPARENT, NULL )
+ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _SampleManage, sm, ACRX_CMD_TRANSPARENT, NULL )

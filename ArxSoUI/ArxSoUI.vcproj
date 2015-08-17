@@ -422,6 +422,10 @@
 					/>
 				</FileConfiguration>
 			</File>
+			<File
+				RelativePath=".\UIHelper.cpp"
+				>
+			</File>
 			<Filter
 				Name="controls.extend"
 				>
@@ -506,6 +510,14 @@
 					>
 				</File>
 				<File
+					RelativePath=".\SampleManageDialog.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\SouiDialog.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\TwsGasPredictDialog.cpp"
 					>
 				</File>
@@ -515,10 +527,6 @@
 				</File>
 				<File
 					RelativePath=".\TwsGasPredictQ4Dialog.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\UIHelper.cpp"
 					>
 				</File>
 				<File
@@ -553,6 +561,10 @@
 			</File>
 			<File
 				RelativePath=".\StdAfx.h"
+				>
+			</File>
+			<File
+				RelativePath=".\UIHelper.h"
 				>
 			</File>
 			<Filter
@@ -643,6 +655,14 @@
 					>
 				</File>
 				<File
+					RelativePath=".\SampleManageDialog.h"
+					>
+				</File>
+				<File
+					RelativePath=".\SouiDialog.h"
+					>
+				</File>
+				<File
 					RelativePath=".\TwsGasPredictDialog.h"
 					>
 				</File>
@@ -652,10 +672,6 @@
 				</File>
 				<File
 					RelativePath=".\TwsGasPredictQ4Dialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\UIHelper.h"
 					>
 				</File>
 				<File

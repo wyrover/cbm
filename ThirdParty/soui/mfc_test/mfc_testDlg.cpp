@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "mfc_test.h"
 #include "mfc_testDlg.h"
-#include "LoginDlg.h"
+#include "TestDlg.h"
 #include "EmbedSouiDlg.h"
 
 #ifdef _DEBUG
@@ -105,17 +105,11 @@ HCURSOR Cmfc_testDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
-#include "SoUILoader.h"
-
 void Cmfc_testDlg::OnBnClickedButton1()
 {
 	MessageBox(_T("nothing"));
-	//LoginDlg dlg;
-	//dlg.Create(GetSafeHwnd(),0,0,0,0);
-	//dlg.SendMessage(WM_INITDIALOG);
-	//dlg.CenterWindow();
-	//dlg.ShowWindow(SW_SHOWNORMAL);
-	//SoUILoader::getSingletonPtr()->getApp()->Run(dlg.m_hWnd);
+	TestDlg* dlg = new TestDlg;
+	dlg->Run(GetSafeHwnd());
 }
 
 void Cmfc_testDlg::OnBnClickedButton2()

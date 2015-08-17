@@ -42,6 +42,6 @@ protected:
 	SEdit* m_TwSEdit;
 	SEdit* m_TwVEdit;
 	SEdit* m_CoalREdit;
-	SEdit* m_PumpMcEdit;
-	SEdit* m_TwQ4Edit;
+	SEdit* m_GasWc2Edit;
+	SEdit* m_Q4Edit;
 };

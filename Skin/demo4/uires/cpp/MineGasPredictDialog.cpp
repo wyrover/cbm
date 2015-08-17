@@ -29,9 +29,12 @@ LRESULT MineGasPredictDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 {
 	AcadSouiDialog::OnInitDialog(hWnd, lParam);
 	//do something
+	m_WorkAreaAEdit = FindChildByName2<SEdit>(L"work_area_A");
 	m_K1GasEdit = FindChildByName2<SEdit>(L"K1_gas");
-	m_QREdit = FindChildByName2<SEdit>(L"q_r");
+	m_QrEdit = FindChildByName2<SEdit>(L"qr");
 	m_K2GasEdit = FindChildByName2<SEdit>(L"K2_gas");
+	m_WorkAreaCombox = FindChildByName2<SComboBox>(L"work_area");
+	m_WorkAreaQrEdit = FindChildByName2<SEdit>(L"work_area_qr");
 	return 0;
 }
 
@@ -45,5 +48,18 @@ void MineGasPredictDialog::OnSaveButtonClick()
 }
 
 void MineGasPredictDialog::OnK2HelpButtonClick()
+{
+}
+
+void MineGasPredictDialog::OnWorkAreaComboxSelChanged(SOUI::EventArgs *pEvt)
+{
+	if(!isLayoutInited()) return;
+	EventCBSelChange* pEvtOfCB = (EventCBSelChange*)pEvt;
+	if(pEvtOfCB == 0) return;
+
+	// do something
+}
+
+void MineGasPredictDialog::OnInputButtonClick()
 {
 }

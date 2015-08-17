@@ -33,8 +33,8 @@ LRESULT WsGasPredictAdjDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 	m_ThickEdit = FindChildByName2<SEdit>(L"thick");
 	m_GasEtaEdit = FindChildByName2<SEdit>(L"gas_eta");
 	m_GasWc2Edit = FindChildByName2<SEdit>(L"gas_Wc2");
-	m_HEdit = FindChildByName2<SEdit>(L"h");
-	m_QREdit = FindChildByName2<SEdit>(L"q_r");
+	m_HwEdit = FindChildByName2<SEdit>(L"hw");
+	m_Qr2Edit = FindChildByName2<SEdit>(L"qr2");
 	return 0;
 }
 

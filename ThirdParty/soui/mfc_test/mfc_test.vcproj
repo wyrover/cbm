@@ -193,15 +193,15 @@
 				>
 			</File>
 			<File
-				RelativePath=".\LoginDlg.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\mfc_test.cpp"
 				>
 			</File>
 			<File
 				RelativePath=".\mfc_testDlg.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\SouiDialog.cpp"
 				>
 			</File>
 			<File
@@ -228,6 +228,10 @@
 					/>
 				</FileConfiguration>
 			</File>
+			<File
+				RelativePath=".\TestDlg.cpp"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Í·ÎÄ¼þ"
@@ -236,10 +240,6 @@
 			>
 			<File
 				RelativePath=".\EmbedSouiDlg.h"
-				>
-			</File>
-			<File
-				RelativePath=".\LoginDlg.h"
 				>
 			</File>
 			<File
@@ -263,6 +263,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\SouiDialog.h"
+				>
+			</File>
+			<File
 				RelativePath=".\SoUILoader.h"
 				>
 			</File>
@@ -272,6 +276,10 @@
 			</File>
 			<File
 				RelativePath=".\targetver.h"
+				>
+			</File>
+			<File
+				RelativePath=".\TestDlg.h"
 				>
 			</File>
 		</Filter>

@@ -14,6 +14,8 @@ protected:
 	void OnK1HelpButtonClick();
 	void OnSaveButtonClick();
 	void OnK2HelpButtonClick();
+	void OnWorkAreaComboxSelChanged(SOUI::EventArgs *pEvt);
+	void OnInputButtonClick();
 
 	/** 菜单消息 */
 protected:
@@ -30,6 +32,8 @@ protected:
 		EVENT_NAME_COMMAND(_T("k1_help"), OnK1HelpButtonClick)
 		EVENT_NAME_COMMAND(_T("save"), OnSaveButtonClick)
 		EVENT_NAME_COMMAND(_T("k2_help"), OnK2HelpButtonClick)
+		EVENT_NAME_HANDLER(_T("work_area"), EVT_CB_SELCHANGE, OnWorkAreaComboxSelChanged)
+		EVENT_NAME_COMMAND(_T("input"), OnInputButtonClick)
 		CHAIN_EVENT_MAP(AcadSouiDialog)
 	EVENT_MAP_END()
 	
@@ -42,7 +46,10 @@ protected:
 	END_MSG_MAP()
 
 protected:
+	SEdit* m_WorkAreaAEdit;
 	SEdit* m_K1GasEdit;
-	SEdit* m_QREdit;
+	SEdit* m_QrEdit;
 	SEdit* m_K2GasEdit;
+	SComboBox* m_WorkAreaCombox;
+	SEdit* m_WorkAreaQrEdit;
 };

@@ -43,7 +43,8 @@ function soui_control_type($type)
 function short_name($type)
 {
   static $short_names = array(
-    "combobox" => "combox"
+    "combobox" => "combox",
+    "text" => "label"
   );
   if(!isset($short_names[$type])) {
     return $type;
@@ -61,7 +62,10 @@ function real_name($name, $type)
   $name = trim($name, "_");
 
   if(preg_match("/^[0-9]+/", $name)) {
-    return short_name($type).$name;
+    if($type == 'text') 
+      return null;
+    else
+      return short_name($type).$name;
   }
   else {
     return $name."_".short_name($type);
@@ -76,7 +80,10 @@ function declare_vars($file, $vars)
     $ctrl_type = soui_control_type($type);
     if(is_null($ctrl_type)) continue;
 
-    $var_name = camel_case(real_name($name, $type));
+    $var_name = real_name($name, $type);
+    if(is_null($var_name)) continue;
+
+    $var_name = camel_case($var_name);
     fwrite($file, TAB.$ctrl_type."* m_".$var_name.";".ENTER);
   }
 }
@@ -87,7 +94,10 @@ function impl_function_onInitDialog($file, $vars)
     $ctrl_type = soui_control_type($type);
     if(is_null($ctrl_type)) continue;
 
-    $var_name = camel_case(real_name($name, $type));
+    $var_name = real_name($name, $type);
+    if(is_null($var_name)) continue;
+
+    $var_name = camel_case($var_name);
     fwrite($file, TAB."m_$var_name = FindChildByName2<$ctrl_type>(L".DBL_QUOT.$name.DBL_QUOT.");".ENTER);
   }
 }
@@ -292,7 +302,7 @@ function walk_xml_tree($root, &$vars)
     $type = $node->nodeName;
     $name = $node->getAttribute('name');
     //过滤掉<text>控件
-    if($type == 'text') continue;
+    // if($type == 'text') continue;
 
     echo "$name --> $type"."<br/>";
     $vars[$name] = $type;

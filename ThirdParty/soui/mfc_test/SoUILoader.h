@@ -13,6 +13,7 @@ public:
 	virtual ~SoUILoader();
 	bool init();
 	SApplication* getApp();
+	CString getResName() const;
 
 protected:
 	//设置uires文件夹的所在路径

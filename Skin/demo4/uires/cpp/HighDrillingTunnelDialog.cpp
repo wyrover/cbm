@@ -29,8 +29,8 @@ LRESULT HighDrillingTunnelDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 {
 	AcadSouiDialog::OnInitDialog(hWnd, lParam);
 	//do something
-	m_HEdit = FindChildByName2<SEdit>(L"h");
-	m_KEdit = FindChildByName2<SEdit>(L"k");
+	m_HwEdit = FindChildByName2<SEdit>(L"hw");
+	m_CzkEdit = FindChildByName2<SEdit>(L"czk");
 	m_DipAngleEdit = FindChildByName2<SEdit>(L"dip_angle");
 	m_RockCombox = FindChildByName2<SComboBox>(L"rock");
 	m_HzMinEdit = FindChildByName2<SEdit>(L"Hz_min");

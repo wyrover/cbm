@@ -35,11 +35,11 @@ LRESULT TwsGasPredictDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 }
 
 
-void TwsGasPredictDialog::OnCacl1ButtonClick()
+void TwsGasPredictDialog::OnQ3CaclButtonClick()
 {
 }
 
-void TwsGasPredictDialog::OnCacl2ButtonClick()
+void TwsGasPredictDialog::OnQ4CaclButtonClick()
 {
 }
 

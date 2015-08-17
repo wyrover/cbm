@@ -2,7 +2,6 @@
 #include "mfc_test.h"
 #include "EmbedSouiDlg.h"
 
-
 // EmbedSouiDlg 对话框
 IMPLEMENT_DYNAMIC(EmbedSouiDlg, CDialog)
 
@@ -35,13 +34,15 @@ BOOL EmbedSouiDlg::OnInitDialog()
 {
 	CDialog::OnInitDialog();
 
-	login_dlg.Create(GetSafeHwnd(), WS_VISIBLE | WS_CHILD | WS_CLIPCHILDREN, NULL, 0,0,0,0);
-	login_dlg.SendMessage(WM_INITDIALOG);
-	login_dlg.CenterWindow();
-	login_dlg.ShowWindow(SW_SHOW);
+	dlg.setAsChild(TRUE);
+	dlg.Run(GetSafeHwnd());
+	//dlg.Create(GetSafeHwnd(), WS_VISIBLE | WS_CHILD | WS_CLIPCHILDREN, NULL, 0,0,0,0);
+	//dlg.SendMessage(WM_INITDIALOG);
+	//dlg.CenterWindow();
+	//dlg.ShowWindow(SW_SHOW);
 
 	//::CRect rect;
-	//::GetWindowRect(login_dlg.m_hWnd, &rect);
+	//::GetWindowRect(dlg.m_hWnd, &rect);
 	//ScreenToClient(&rect);
 	//::ScreenToClient(this->m_hWnd, &rect);
 	MoveWindow(0,0,1150,760);
@@ -58,7 +59,7 @@ BOOL EmbedSouiDlg::PreTranslateMessage(MSG* pMsg)
 	//mfc内部的PreTranslateMessage会过滤掉WM_CHAR消息,导致soui接收不到WM_CHAR消息,使得edit无法输入文字
 	if(pMsg->message == WM_CHAR)
 	{
-		return login_dlg.SendMessage(pMsg->message, pMsg->wParam, pMsg->lParam);
+		return dlg.SendMessage(pMsg->message, pMsg->wParam, pMsg->lParam);
 	}
 	else
 	{

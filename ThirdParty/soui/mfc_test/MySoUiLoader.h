@@ -29,7 +29,7 @@ public:
 protected:
 	virtual LPCTSTR getSkinDir() const
 	{
-		return _T("\\..\\mfc_test");
+		return _T("");
 	}
 
 	virtual bool initExtendControls()
@@ -72,6 +72,6 @@ protected:
 	{
 		//加载全局资源描述XML
 		//初始化SOUI全局资源
-		return (TRUE == pSouiApp->Init(_T("xml_init"), _T("uidef"))); 
+		return (TRUE == pSouiApp->Init(_T("init"), _T("uidef"))); 
 	}
 };

@@ -11,7 +11,7 @@ public:
 
 	/** 控件消息处理 */
 protected:
-	void OnWorkCacllButtonClick();
+	void OnWorkCaclButtonClick();
 	void OnAdjCaclButtonClick();
 	void OnSaveButtonClick();
 
@@ -27,7 +27,7 @@ protected:
 
 	//控件消息映射表
 	EVENT_MAP_BEGIN()
-		EVENT_NAME_COMMAND(_T("work_cacll"), OnWorkCacllButtonClick)
+		EVENT_NAME_COMMAND(_T("work_cacl"), OnWorkCaclButtonClick)
 		EVENT_NAME_COMMAND(_T("adj_cacl"), OnAdjCaclButtonClick)
 		EVENT_NAME_COMMAND(_T("save"), OnSaveButtonClick)
 		CHAIN_EVENT_MAP(AcadSouiDialog)
@@ -42,7 +42,9 @@ protected:
 	END_MSG_MAP()
 
 protected:
-	SEdit* m_QREdit;
+	SEdit* m_Qr1Edit;
+	SEdit* m_Qr2Edit;
+	SEdit* m_QrEdit;
 	SRadioBox* m_Radio68;
 	SRadioBox* m_Radio69;
 };

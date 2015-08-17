@@ -42,13 +42,13 @@ protected:
 	END_MSG_MAP()
 
 protected:
-	SEdit* m_CoalThickEdit;
-	SEdit* m_WsK1Edit;
-	SEdit* m_WsK2Edit;
+	SEdit* m_ThickEdit;
+	SEdit* m_K1Edit;
+	SEdit* m_K2Edit;
 	SEdit* m_K3Edit;
-	SEdit* m_MineHeightEdit;
-	SEdit* m_TwQ4Edit;
-	SEdit* m_PumpMcEdit;
-	SEdit* m_QREdit;
+	SEdit* m_HwEdit;
+	SEdit* m_GasW0Edit;
+	SEdit* m_GasWc2Edit;
+	SEdit* m_Qr1Edit;
 	SEdit* m_KfEdit;
 };

@@ -55,7 +55,7 @@ bool SoUILoader::init()
 //设置uires文件夹的所在路径
 LPCTSTR SoUILoader::getSkinDir() const
 {
-	return _T("\\.");
+	return _T("");
 }
 
 bool SoUILoader::initRender()
@@ -81,6 +81,10 @@ bool SoUILoader::initApp()
 {
 	pSouiApp = new SApplication(pRenderFactory, hInstance);
 	SStringT strResDir = pSouiApp->GetAppDir();
+	if(strResDir.GetAt(strResDir.GetLength()-1) != _T('\\'))
+	{
+		strResDir += _T("\\");
+	}
 	strResDir += getSkinDir();
 	//将程序的运行路径修改到demo所在的目录
 	//某些复杂情况下使用SetCurrentDirectory会导致程序莫名其妙的挂掉(慎用!)

@@ -926,14 +926,24 @@ function writeImgSrcToDB($uiResFile='uires.idx', $resType='img')
  $mysqli->close();
 }
 
+function genResNameTxtFile()
+{
+  $file = fopen("res.txt", 'w');
+  fwrite($file, "layout:reg");
+  fclose($file);
+}
+
 //执行转换,扫描json文件夹里的json文件,解析并生成xml文件,保存到xml文件夹
 mockups_to_soui_converter('json', 'xml');
 //生成资源入口文件uires.idx
 createUIResFile('uires.idx');
 //生成图片资源索引数据库
 // writeImgSrcToDB('uires.idx', 'img');
+
+genResNameTxtFile();
 //复制文件夹到cmb项目(方便使用!!!)
 recurse_copy('.', 'C:\Develop\GitProject\cbm\Skin\demo4\uires');
+recurse_copy('.', 'C:\Develop\GitProject\cbm\ThirdParty\soui\bin\uires');
 // recurse_copy('json', 'C:\Develop\GitProject\cbm\Skin\demo4\uires\json');
 
 //解析xml文件,生成cpp代码

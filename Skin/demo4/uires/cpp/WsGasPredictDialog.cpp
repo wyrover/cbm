@@ -29,14 +29,16 @@ LRESULT WsGasPredictDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 {
 	AcadSouiDialog::OnInitDialog(hWnd, lParam);
 	//do something
-	m_QREdit = FindChildByName2<SEdit>(L"q_r");
+	m_Qr1Edit = FindChildByName2<SEdit>(L"qr1");
+	m_Qr2Edit = FindChildByName2<SEdit>(L"qr2");
+	m_QrEdit = FindChildByName2<SEdit>(L"qr");
 	m_Radio68 = FindChildByName2<SRadioBox>(L"radio68");
 	m_Radio69 = FindChildByName2<SRadioBox>(L"radio69");
 	return 0;
 }
 
 
-void WsGasPredictDialog::OnWorkCacllButtonClick()
+void WsGasPredictDialog::OnWorkCaclButtonClick()
 {
 }
 

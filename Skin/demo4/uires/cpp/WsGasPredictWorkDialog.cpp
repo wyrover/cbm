@@ -29,14 +29,14 @@ LRESULT WsGasPredictWorkDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 {
 	AcadSouiDialog::OnInitDialog(hWnd, lParam);
 	//do something
-	m_CoalThickEdit = FindChildByName2<SEdit>(L"coal_thick");
-	m_WsK1Edit = FindChildByName2<SEdit>(L"ws_K1");
-	m_WsK2Edit = FindChildByName2<SEdit>(L"ws_K2");
+	m_ThickEdit = FindChildByName2<SEdit>(L"thick");
+	m_K1Edit = FindChildByName2<SEdit>(L"K1");
+	m_K2Edit = FindChildByName2<SEdit>(L"K2");
 	m_K3Edit = FindChildByName2<SEdit>(L"K3");
-	m_MineHeightEdit = FindChildByName2<SEdit>(L"mine_height");
-	m_TwQ4Edit = FindChildByName2<SEdit>(L"tw_q4");
-	m_PumpMcEdit = FindChildByName2<SEdit>(L"pump_Mc");
-	m_QREdit = FindChildByName2<SEdit>(L"q_r");
+	m_HwEdit = FindChildByName2<SEdit>(L"hw");
+	m_GasW0Edit = FindChildByName2<SEdit>(L"gas_W0");
+	m_GasWc2Edit = FindChildByName2<SEdit>(L"gas_Wc2");
+	m_Qr1Edit = FindChildByName2<SEdit>(L"qr1");
 	m_KfEdit = FindChildByName2<SEdit>(L"Kf");
 	return 0;
 }

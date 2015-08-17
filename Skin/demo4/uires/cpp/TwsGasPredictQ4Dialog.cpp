@@ -33,8 +33,8 @@ LRESULT TwsGasPredictQ4Dialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 	m_TwSEdit = FindChildByName2<SEdit>(L"tw_S");
 	m_TwVEdit = FindChildByName2<SEdit>(L"tw_V");
 	m_CoalREdit = FindChildByName2<SEdit>(L"coal_r");
-	m_PumpMcEdit = FindChildByName2<SEdit>(L"pump_Mc");
-	m_TwQ4Edit = FindChildByName2<SEdit>(L"tw_q4");
+	m_GasWc2Edit = FindChildByName2<SEdit>(L"gas_Wc2");
+	m_Q4Edit = FindChildByName2<SEdit>(L"q4");
 	return 0;
 }
 

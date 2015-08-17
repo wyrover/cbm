@@ -40,8 +40,8 @@ protected:
 	END_MSG_MAP()
 
 protected:
-	SEdit* m_HEdit;
-	SEdit* m_KEdit;
+	SEdit* m_HwEdit;
+	SEdit* m_CzkEdit;
 	SEdit* m_DipAngleEdit;
 	SComboBox* m_RockCombox;
 	SEdit* m_HzMinEdit;

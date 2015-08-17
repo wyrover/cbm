@@ -1,17 +1,18 @@
 #pragma once
 #include "AcadSouiDialog.h"
 
-class TwsGasPredictQ3Dialog : public AcadSouiDialog
+class MinePartDialog : public AcadSouiDialog
 {
 
 	/** 构造和析构函数 */
 public:
-	TwsGasPredictQ3Dialog(BOOL bModal = FALSE);
-	~TwsGasPredictQ3Dialog(void);
+	MinePartDialog(BOOL bModal = FALSE);
+	~MinePartDialog(void);
 
 	/** 控件消息处理 */
 protected:
-	void OnSaveButtonClick();
+	void OnTopoGeoComboxSelChanged(SOUI::EventArgs *pEvt);
+	void OnHydrGeoComboxSelChanged(SOUI::EventArgs *pEvt);
 
 	/** 菜单消息 */
 protected:
@@ -25,12 +26,13 @@ protected:
 
 	//控件消息映射表
 	EVENT_MAP_BEGIN()
-		EVENT_NAME_COMMAND(_T("save"), OnSaveButtonClick)
+		EVENT_NAME_HANDLER(_T("topo_geo"), EVT_CB_SELCHANGE, OnTopoGeoComboxSelChanged)
+		EVENT_NAME_HANDLER(_T("hydr_geo"), EVT_CB_SELCHANGE, OnHydrGeoComboxSelChanged)
 		CHAIN_EVENT_MAP(AcadSouiDialog)
 	EVENT_MAP_END()
 	
 //HOST消息(WINDOWS消息)映射表
-	BEGIN_MSG_MAP_EX(TwsGasPredictQ3Dialog)
+	BEGIN_MSG_MAP_EX(MinePartDialog)
 		MSG_WM_INITDIALOG(OnInitDialog)
 		MSG_WM_COMMAND(OnCommand)
 		CHAIN_MSG_MAP(AcadSouiDialog)
@@ -38,11 +40,6 @@ protected:
 	END_MSG_MAP()
 
 protected:
-	SEdit* m_Q0Edit;
-	SEdit* m_DEdit;
-	SEdit* m_VEdit;
-	SEdit* m_LEdit;
-	SEdit* m_Q3Edit;
-	SEdit* m_VrEdit;
-	SEdit* m_GasW0Edit;
+	SComboBox* m_TopoGeoCombox;
+	SComboBox* m_HydrGeoCombox;
 };

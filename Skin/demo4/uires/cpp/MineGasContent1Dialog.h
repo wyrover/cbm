@@ -1,13 +1,13 @@
 #pragma once
 #include "AcadSouiDialog.h"
 
-class TwsGasPredictQ3Dialog : public AcadSouiDialog
+class MineGasContent1Dialog : public AcadSouiDialog
 {
 
 	/** 构造和析构函数 */
 public:
-	TwsGasPredictQ3Dialog(BOOL bModal = FALSE);
-	~TwsGasPredictQ3Dialog(void);
+	MineGasContent1Dialog(BOOL bModal = FALSE);
+	~MineGasContent1Dialog(void);
 
 	/** 控件消息处理 */
 protected:
@@ -30,7 +30,7 @@ protected:
 	EVENT_MAP_END()
 	
 //HOST消息(WINDOWS消息)映射表
-	BEGIN_MSG_MAP_EX(TwsGasPredictQ3Dialog)
+	BEGIN_MSG_MAP_EX(MineGasContent1Dialog)
 		MSG_WM_INITDIALOG(OnInitDialog)
 		MSG_WM_COMMAND(OnCommand)
 		CHAIN_MSG_MAP(AcadSouiDialog)
@@ -38,11 +38,8 @@ protected:
 	END_MSG_MAP()
 
 protected:
-	SEdit* m_Q0Edit;
-	SEdit* m_DEdit;
-	SEdit* m_VEdit;
-	SEdit* m_LEdit;
-	SEdit* m_Q3Edit;
-	SEdit* m_VrEdit;
-	SEdit* m_GasW0Edit;
+	SEdit* m_ReserveGasEdit;
+	SEdit* m_ReserveW1Edit;
+	SEdit* m_ReserveW2Edit;
+	SEdit* m_ReserveW3Edit;
 };

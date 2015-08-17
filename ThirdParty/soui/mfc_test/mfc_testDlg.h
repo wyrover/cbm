@@ -1,6 +1,5 @@
 #pragma once
 
-#include "LoginDlg.h"
 #include "resource.h"
 
 // Cmfc_testDlg ¶Ô»°¿ò

@@ -55,7 +55,7 @@ bool SoUILoader::init()
 //设置uires文件夹的所在路径
 LPCTSTR SoUILoader::getSkinDir() const
 {
-	return _T("\\.");
+	return _T("");
 }
 
 bool SoUILoader::initRender()
@@ -81,7 +81,12 @@ bool SoUILoader::initApp()
 {
 	pSouiApp = new SApplication(pRenderFactory, hInstance);
 	SStringT strResDir = pSouiApp->GetAppDir();
+	if(strResDir.GetAt(strResDir.GetLength()-1) != _T('\\'))
+	{
+		strResDir += _T("\\");
+	}
 	strResDir += getSkinDir();
+	
 	//将程序的运行路径修改到demo所在的目录
 	//某些复杂情况下使用SetCurrentDirectory会导致程序莫名其妙的挂掉(慎用!)
 	//SetCurrentDirectory(strResDir);
@@ -178,4 +183,32 @@ bool SoUILoader::initGlobalStyle()
 	//加载全局资源描述XML
 	//初始化SOUI全局资源
 	return (TRUE == pSouiApp->Init(_T("init"), _T("uidef"))); 
+}
+
+CString SoUILoader::getResName() const
+{
+	SStringT strResDir = pSouiApp->GetAppDir();
+	if(strResDir.GetAt(strResDir.GetLength()-1) != _T('\\'))
+	{
+		strResDir += _T("\\");
+	}
+	CString filename= strResDir+_T("uires\\res.txt");
+
+	CStdioFile myFile;
+	if(myFile.Open(filename, CFile::modeRead))
+	{
+		CString resName;
+		if(myFile.ReadString(resName))
+		{
+			return resName;
+		}
+		else
+		{
+			return _T("");
+		}
+	}
+	else 
+	{
+		return _T("");
+	}
 }

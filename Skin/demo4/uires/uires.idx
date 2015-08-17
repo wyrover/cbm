@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resource>
-  <uidef/>
+  <uidef>
+    <file name="init" path="xml\init.xml"/>
+  </uidef>
   <layout>
     <file name="about" path="xml\about.xml"/>
     <file name="adj_layer" path="xml\adj_layer.xml"/>
     <file name="coal" path="xml\coal.xml"/>
+    <file name="coal_part" path="xml\coal_part.xml"/>
     <file name="demo" path="xml\demo.xml"/>
     <file name="difficult_eval" path="xml\difficult_eval.xml"/>
     <file name="drilling_radius_qm" path="xml\drilling_radius_qm.xml"/>
@@ -20,6 +23,7 @@
     <file name="mine_gas_content2" path="xml\mine_gas_content2.xml"/>
     <file name="mine_gas_predict" path="xml\mine_gas_predict.xml"/>
     <file name="mine_gas_predict_input" path="xml\mine_gas_predict_input.xml"/>
+    <file name="mine_part" path="xml\mine_part.xml"/>
     <file name="policy" path="xml\policy.xml"/>
     <file name="pore_flow" path="xml\pore_flow.xml"/>
     <file name="pore_flow_K" path="xml\pore_flow_K.xml"/>

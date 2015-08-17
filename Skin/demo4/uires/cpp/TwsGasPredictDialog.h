@@ -11,8 +11,8 @@ public:
 
 	/** 控件消息处理 */
 protected:
-	void OnCacl1ButtonClick();
-	void OnCacl2ButtonClick();
+	void OnQ3CaclButtonClick();
+	void OnQ4CaclButtonClick();
 	void OnSaveButtonClick();
 
 	/** 菜单消息 */
@@ -27,8 +27,8 @@ protected:
 
 	//控件消息映射表
 	EVENT_MAP_BEGIN()
-		EVENT_NAME_COMMAND(_T("cacl1"), OnCacl1ButtonClick)
-		EVENT_NAME_COMMAND(_T("cacl2"), OnCacl2ButtonClick)
+		EVENT_NAME_COMMAND(_T("q3_cacl"), OnQ3CaclButtonClick)
+		EVENT_NAME_COMMAND(_T("q4_cacl"), OnQ4CaclButtonClick)
 		EVENT_NAME_COMMAND(_T("save"), OnSaveButtonClick)
 		CHAIN_EVENT_MAP(AcadSouiDialog)
 	EVENT_MAP_END()

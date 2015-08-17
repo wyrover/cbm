@@ -42,6 +42,6 @@ protected:
 	SEdit* m_ThickEdit;
 	SEdit* m_GasEtaEdit;
 	SEdit* m_GasWc2Edit;
-	SEdit* m_HEdit;
-	SEdit* m_QREdit;
+	SEdit* m_HwEdit;
+	SEdit* m_Qr2Edit;
 };

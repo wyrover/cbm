@@ -1,19 +1,16 @@
 #pragma once
 #include "AcadSouiDialog.h"
 
-class SampleManageDialog : public AcadSouiDialog
+class CoalPartDialog : public AcadSouiDialog
 {
 
 	/** 构造和析构函数 */
 public:
-	SampleManageDialog(BOOL bModal = FALSE);
-	~SampleManageDialog(void);
+	CoalPartDialog(BOOL bModal = FALSE);
+	~CoalPartDialog(void);
 
 	/** 控件消息处理 */
 protected:
-	void OnRegionComboxSelChanged(SOUI::EventArgs *pEvt);
-	void OnTopoGeoComboxSelChanged(SOUI::EventArgs *pEvt);
-	void OnHydrGeoComboxSelChanged(SOUI::EventArgs *pEvt);
 	void OnDelButtonClick();
 	void OnRankComboxSelChanged(SOUI::EventArgs *pEvt);
 	void OnConstComplexityComboxSelChanged(SOUI::EventArgs *pEvt);
@@ -35,9 +32,6 @@ protected:
 
 	//控件消息映射表
 	EVENT_MAP_BEGIN()
-		EVENT_NAME_HANDLER(_T("region"), EVT_CB_SELCHANGE, OnRegionComboxSelChanged)
-		EVENT_NAME_HANDLER(_T("topo_geo"), EVT_CB_SELCHANGE, OnTopoGeoComboxSelChanged)
-		EVENT_NAME_HANDLER(_T("hydr_geo"), EVT_CB_SELCHANGE, OnHydrGeoComboxSelChanged)
 		EVENT_NAME_COMMAND(_T("del"), OnDelButtonClick)
 		EVENT_NAME_HANDLER(_T("rank"), EVT_CB_SELCHANGE, OnRankComboxSelChanged)
 		EVENT_NAME_HANDLER(_T("const_complexity"), EVT_CB_SELCHANGE, OnConstComplexityComboxSelChanged)
@@ -50,7 +44,7 @@ protected:
 	EVENT_MAP_END()
 	
 //HOST消息(WINDOWS消息)映射表
-	BEGIN_MSG_MAP_EX(SampleManageDialog)
+	BEGIN_MSG_MAP_EX(CoalPartDialog)
 		MSG_WM_INITDIALOG(OnInitDialog)
 		MSG_WM_COMMAND(OnCommand)
 		CHAIN_MSG_MAP(AcadSouiDialog)
@@ -58,9 +52,6 @@ protected:
 	END_MSG_MAP()
 
 protected:
-	SComboBox* m_RegionCombox;
-	SComboBox* m_TopoGeoCombox;
-	SComboBox* m_HydrGeoCombox;
 	SEdit* m_NumberEdit;
 	SEdit* m_FValueEdit;
 	SEdit* m_ThickEdit;

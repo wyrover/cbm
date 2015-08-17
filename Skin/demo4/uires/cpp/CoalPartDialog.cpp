@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "SampleManageDialog.h"
+#include "CoalPartDialog.h"
 
 #include <ArxHelper/HelperClass.h>
 #include <ArxDao/DaoHelper.h>
@@ -7,15 +7,15 @@
 using namespace orm;
 using namespace cbm;
 
-SampleManageDialog::SampleManageDialog(BOOL bModal) : AcadSouiDialog(_T("layout:sample_manage"), bModal)
+CoalPartDialog::CoalPartDialog(BOOL bModal) : AcadSouiDialog(_T("layout:coal_part"), bModal)
 {
 }
 
-SampleManageDialog::~SampleManageDialog()
+CoalPartDialog::~CoalPartDialog()
 {
 }
 
-void SampleManageDialog::OnCommand( UINT uNotifyCode, int nID, HWND wndCtl )
+void CoalPartDialog::OnCommand( UINT uNotifyCode, int nID, HWND wndCtl )
 {
 	if(uNotifyCode==0)
 	{
@@ -25,13 +25,10 @@ void SampleManageDialog::OnCommand( UINT uNotifyCode, int nID, HWND wndCtl )
 	}
 }
 
-LRESULT SampleManageDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
+LRESULT CoalPartDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 {
 	AcadSouiDialog::OnInitDialog(hWnd, lParam);
 	//do something
-	m_RegionCombox = FindChildByName2<SComboBox>(L"region");
-	m_TopoGeoCombox = FindChildByName2<SComboBox>(L"topo_geo");
-	m_HydrGeoCombox = FindChildByName2<SComboBox>(L"hydr_geo");
 	m_NumberEdit = FindChildByName2<SEdit>(L"number");
 	m_FValueEdit = FindChildByName2<SEdit>(L"f_value");
 	m_ThickEdit = FindChildByName2<SEdit>(L"thick");
@@ -53,7 +50,11 @@ LRESULT SampleManageDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 }
 
 
-void SampleManageDialog::OnRegionComboxSelChanged(SOUI::EventArgs *pEvt)
+void CoalPartDialog::OnDelButtonClick()
+{
+}
+
+void CoalPartDialog::OnRankComboxSelChanged(SOUI::EventArgs *pEvt)
 {
 	if(!isLayoutInited()) return;
 	EventCBSelChange* pEvtOfCB = (EventCBSelChange*)pEvt;
@@ -62,7 +63,7 @@ void SampleManageDialog::OnRegionComboxSelChanged(SOUI::EventArgs *pEvt)
 	// do something
 }
 
-void SampleManageDialog::OnTopoGeoComboxSelChanged(SOUI::EventArgs *pEvt)
+void CoalPartDialog::OnConstComplexityComboxSelChanged(SOUI::EventArgs *pEvt)
 {
 	if(!isLayoutInited()) return;
 	EventCBSelChange* pEvtOfCB = (EventCBSelChange*)pEvt;
@@ -71,7 +72,11 @@ void SampleManageDialog::OnTopoGeoComboxSelChanged(SOUI::EventArgs *pEvt)
 	// do something
 }
 
-void SampleManageDialog::OnHydrGeoComboxSelChanged(SOUI::EventArgs *pEvt)
+void CoalPartDialog::OnAddCoalButtonClick()
+{
+}
+
+void CoalPartDialog::OnResAbundanceComboxSelChanged(SOUI::EventArgs *pEvt)
 {
 	if(!isLayoutInited()) return;
 	EventCBSelChange* pEvtOfCB = (EventCBSelChange*)pEvt;
@@ -80,11 +85,7 @@ void SampleManageDialog::OnHydrGeoComboxSelChanged(SOUI::EventArgs *pEvt)
 	// do something
 }
 
-void SampleManageDialog::OnDelButtonClick()
-{
-}
-
-void SampleManageDialog::OnRankComboxSelChanged(SOUI::EventArgs *pEvt)
+void CoalPartDialog::OnStabilityComboxSelChanged(SOUI::EventArgs *pEvt)
 {
 	if(!isLayoutInited()) return;
 	EventCBSelChange* pEvtOfCB = (EventCBSelChange*)pEvt;
@@ -93,7 +94,7 @@ void SampleManageDialog::OnRankComboxSelChanged(SOUI::EventArgs *pEvt)
 	// do something
 }
 
-void SampleManageDialog::OnConstComplexityComboxSelChanged(SOUI::EventArgs *pEvt)
+void CoalPartDialog::OnCoalComboxSelChanged(SOUI::EventArgs *pEvt)
 {
 	if(!isLayoutInited()) return;
 	EventCBSelChange* pEvtOfCB = (EventCBSelChange*)pEvt;
@@ -102,37 +103,6 @@ void SampleManageDialog::OnConstComplexityComboxSelChanged(SOUI::EventArgs *pEvt
 	// do something
 }
 
-void SampleManageDialog::OnAddCoalButtonClick()
-{
-}
-
-void SampleManageDialog::OnResAbundanceComboxSelChanged(SOUI::EventArgs *pEvt)
-{
-	if(!isLayoutInited()) return;
-	EventCBSelChange* pEvtOfCB = (EventCBSelChange*)pEvt;
-	if(pEvtOfCB == 0) return;
-
-	// do something
-}
-
-void SampleManageDialog::OnStabilityComboxSelChanged(SOUI::EventArgs *pEvt)
-{
-	if(!isLayoutInited()) return;
-	EventCBSelChange* pEvtOfCB = (EventCBSelChange*)pEvt;
-	if(pEvtOfCB == 0) return;
-
-	// do something
-}
-
-void SampleManageDialog::OnCoalComboxSelChanged(SOUI::EventArgs *pEvt)
-{
-	if(!isLayoutInited()) return;
-	EventCBSelChange* pEvtOfCB = (EventCBSelChange*)pEvt;
-	if(pEvtOfCB == 0) return;
-
-	// do something
-}
-
-void SampleManageDialog::OnSaveButtonClick()
+void CoalPartDialog::OnSaveButtonClick()
 {
 }
