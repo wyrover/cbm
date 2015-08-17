@@ -928,8 +928,8 @@ function writeImgSrcToDB($uiResFile='uires.idx', $resType='img')
 
 function genResNameTxtFile()
 {
-  $file = fopen("res.txt", 'w');
-  fwrite($file, "layout:reg");
+  $file = fopen("ResName.txt", 'w');
+  fwrite($file, "layout:demo");
   fclose($file);
 }
 

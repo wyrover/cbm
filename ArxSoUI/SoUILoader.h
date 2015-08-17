@@ -1,7 +1,5 @@
 #pragma once
 
-using namespace SOUI;
-
 #include <Util/HelperClass.h>
 
 //单例模式
@@ -11,7 +9,7 @@ public:
 	SoUILoader(HINSTANCE _hInstance);
 	virtual ~SoUILoader();
 	bool init();
-	SApplication* getApp();
+	SOUI::SApplication* getApp();
 
 protected:
 	//设置uires文件夹的所在路径
@@ -28,9 +26,9 @@ protected:
 protected:
 	HINSTANCE hInstance;                                //当前模块(exe、dll的句柄)
 	SComMgr comMgrObj;                                  // 组件加载管理器
-	CAutoRefPtr<IImgDecoderFactory> pImgDecoderFactory; //图片解码器
-	CAutoRefPtr<IRenderFactory> pRenderFactory;         //UI渲染模块,由render-gdi.dll或render-skia.dll提供
-	//CAutoRefPtr<ITranslatorMgr> trans;                //多语言翻译模块,由translator.dll提供
-	CAutoRefPtr<IScriptFactory> pScriptLua;             //lua脚本模块,由scriptmodule-lua.dll提供
-	SApplication* pSouiApp;
+	SOUI::CAutoRefPtr<SOUI::IImgDecoderFactory> pImgDecoderFactory; //图片解码器
+	SOUI::CAutoRefPtr<SOUI::IRenderFactory> pRenderFactory;         //UI渲染模块,由render-gdi.dll或render-skia.dll提供
+	//SOUI::CAutoRefPtr<ITranslatorMgr> trans;                //多语言翻译模块,由translator.dll提供
+	SOUI::CAutoRefPtr<IScriptFactory> pScriptLua;             //lua脚本模块,由scriptmodule-lua.dll提供
+	SOUI::SApplication* pSouiApp;
 };

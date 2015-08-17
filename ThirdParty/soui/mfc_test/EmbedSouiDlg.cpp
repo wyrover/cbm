@@ -1,12 +1,13 @@
 #include "stdafx.h"
 #include "mfc_test.h"
 #include "EmbedSouiDlg.h"
+#include "SoUILoader.h"
 
 // EmbedSouiDlg ¶Ô»°¿ò
 IMPLEMENT_DYNAMIC(EmbedSouiDlg, CDialog)
 
 EmbedSouiDlg::EmbedSouiDlg(CWnd* pParent /*=NULL*/)
-	: CDialog(EmbedSouiDlg::IDD, pParent)
+	: CDialog(EmbedSouiDlg::IDD, pParent), dlg(RES_NAME, FALSE)
 {
 
 }

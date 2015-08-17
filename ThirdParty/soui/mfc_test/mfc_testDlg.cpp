@@ -1,8 +1,10 @@
 #include "stdafx.h"
 #include "mfc_test.h"
 #include "mfc_testDlg.h"
-#include "TestDlg.h"
 #include "EmbedSouiDlg.h"
+
+#include "SouiDialog.h"
+#include "SoUILoader.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -107,8 +109,7 @@ HCURSOR Cmfc_testDlg::OnQueryDragIcon()
 
 void Cmfc_testDlg::OnBnClickedButton1()
 {
-	MessageBox(_T("nothing"));
-	TestDlg* dlg = new TestDlg;
+	SouiDialog* dlg = new SouiDialog(RES_NAME, FALSE);
 	dlg->Run(GetSafeHwnd());
 }
 
