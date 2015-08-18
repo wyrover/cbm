@@ -68,7 +68,7 @@ void DaoHelper::GetAllMineRegions(const CString& baseName, StringArray& regions)
 	if(base == 0) return;
 
 	query.reset(Query::from<Region>());
-	RecordPtrListPtr lists = query->where(FKEY2(Base), base->getStringID())
+	RecordPtrListPtr lists = query->where(FKEY(Base), base->getStringID())
 		                          ->find_many<Region>();
 	if(lists == 0) return;
 
@@ -84,8 +84,22 @@ MinePtr DaoHelper::GetSampleMine(const CString& regionName)
 	if(region == 0) return MinePtr();
 
 	//根据id查询对应的矿井
-	RecordPtr ptr = FIND_ONE(Mine, FKEY2(Region), region->getStringID());
+	RecordPtr ptr = FIND_ONE(Mine, FKEY(Region), region->getStringID());
 	if(ptr == 0) return MinePtr();
 
 	return DYNAMIC_POINTER_CAST(Mine, ptr);
+}
+
+void DaoHelper::GetCoals(const CString& mineName, StringArray& coals)
+{
+	RecordPtr mine = FIND_ONE(Mine, FIELD(name), mineName);
+	if(mine == 0) return;
+
+	RecordPtrListPtr lists = FIND_MANY(Coal, FKEY(Mine), mine->getStringID());
+	if(lists == 0) return;
+
+	for(int i=0;i<lists->size();i++)
+	{
+		coals.push_back(lists->at(i)->get(FIELD(name)));
+	}
 }

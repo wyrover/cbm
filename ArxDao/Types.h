@@ -29,15 +29,16 @@ namespace orm
 	//id名称的一部分
 	#define KEY_ID _T("id")
 
-	//获取表table的主键id名称
+	//获取表table的主键id名称(table是一个字符串)
 	//注:主键id的名字分为2种情况,有表前缀、无表前缀
 	//    可以到Db类中设置该参数(参见Db::enableTablePrefix方法)
 	#define PKEY(table) get_db()->getPrimaryKeyName(table)
-	//获取外键id名称
+	//获取外键id名称(table是一个字符串)
 	//注:一般情况下外键的名字都是：表名+下划线+id，例如: mine_id
-	#define FKEY(table) get_db()->getForeignKeyName(table)
-	#define FKEY2(Klass) FKEY(Klass::Table())
-	//字段名称(简化字段名的写法)
+	#define _FKEY(table) get_db()->getForeignKeyName(table)
+	//Klass是一个符号名称
+	#define FKEY(Klass) _FKEY(Klass::Table())
+	//字段名称(简化字段名的写法, name是一个符号名称)
 	//注:一般情况下类的成员变量和表的字段名都是相同的)
 	#define FIELD(name) _T(#name)
 
