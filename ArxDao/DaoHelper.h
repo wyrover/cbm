@@ -1,6 +1,8 @@
 #pragma once
 
 #include "dlimexp.h"
+#include "Entity.h"
+using namespace cbm;
 
 #include <vector>
 typedef std::vector<CString> StringArray;

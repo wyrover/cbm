@@ -3,7 +3,7 @@
 /**
  * soui对话框封装类.
  * 用法:
-	(1)非模态对话框(必须new，否则会导致内存错误)
+	(1)非模态对话框(切记:必须new，否则会导致内存错误)
     HWND hWnd = getWindowHandle();  // 必须要指定有效的父窗口句柄
 	LoginDlg* dlg = new LoginDlg(FALSE);
 	dlg->Run(hWnd);

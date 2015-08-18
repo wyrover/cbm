@@ -290,11 +290,12 @@ namespace orm
 
 	bool Record::clone(RecordPtr ptr)
 	{
-		RowPtr row(new Row);
+		if(ptr == 0) return false;
 
 		KVMap fields;
 		this->attributes(fields, true);
 
+		RowPtr row(new Row);
 		for(KVMap::iterator kv_itr=fields.begin(); kv_itr!=fields.end(); ++kv_itr)
 		{
 			Attribute& attrib = kv_itr->second;

@@ -12,6 +12,10 @@ namespace orm
 		RecordPtr* obj_ptr;
 		CreateFunc cf;
 
+		bool isNull() const
+		{
+			return (obj_ptr==0 || *obj_ptr==0);
+		}
 		bool hasChanged() const
 		{
 			//关联外键变量没有成功,所以obj_ptr=0;
@@ -34,7 +38,7 @@ namespace orm
 		}
 		void update()
 		{
-			if(obj_ptr != 0 && *obj_ptr!=0)
+			if(!isNull())
 			{
 				RecordPtr& ptr = *obj_ptr;
 				id_attr.set(ptr->getID());
@@ -65,6 +69,8 @@ namespace orm
 		}
 		void createOrUpdateFKObject(FKPair& fk, int id)
 		{
+			if(id <= 0) return;
+
 			RecordPtr& ptr = *(fk.obj_ptr);
 			int fk_id = 0;
 			fk.id_attr.get(fk_id);
@@ -77,7 +83,7 @@ namespace orm
 		}
 		bool set(const CString& name, int id)
 		{
-			bool ret = (id > 0 && m_foregin_keys.find(name) != m_foregin_keys.end());
+			bool ret = (m_foregin_keys.find(name) != m_foregin_keys.end());
 			if(ret) 
 			{
 				createOrUpdateFKObject(m_foregin_keys[name], id);
@@ -106,8 +112,11 @@ namespace orm
 				FKPair& fk = itr->second;
 				if(all || fk.hasChanged())
 				{
-					fields[itr->first] = fk.id_attr;
-					fk.update();
+					if(!fk.isNull()) 
+					{
+						fields[itr->first] = fk.id_attr;
+						fk.update();
+					}
 				}
 			}
 		}
