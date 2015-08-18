@@ -16,4 +16,5 @@ public:
 	static int VerifyMineAccount(const CString& username, const CString& pwd);
 	static void GetAllMineBases(StringArray& bases);
 	static void GetAllMineRegions(const CString& baseName, StringArray& regions);
+	static MinePtr GetSampleMine(const CString& regionName);
 };

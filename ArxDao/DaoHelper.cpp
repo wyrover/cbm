@@ -77,3 +77,15 @@ void DaoHelper::GetAllMineRegions(const CString& baseName, StringArray& regions)
 		regions.push_back(lists->at(i)->get(FIELD(name)));
 	}
 }
+
+MinePtr DaoHelper::GetSampleMine(const CString& regionName)
+{
+	RecordPtr region = FIND_ONE(Region, FIELD(name), regionName);
+	if(region == 0) return MinePtr();
+
+	//根据id查询对应的矿井
+	RecordPtr ptr = FIND_ONE(Mine, FKEY2(Region), region->getStringID());
+	if(ptr == 0) return MinePtr();
+
+	return DYNAMIC_POINTER_CAST(Mine, ptr);
+}

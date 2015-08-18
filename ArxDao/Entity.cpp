@@ -83,6 +83,7 @@ Coal::Coal() : orm::Record(Coal::Table())
 	minable = 0;
 	thick = 0.0;
 	hw = 0.0;
+	qr = 0.0;
 	rank = 0;
 	quality = 0;
 	pressure = 0.0;
@@ -111,7 +112,6 @@ Coal::Coal() : orm::Record(Coal::Table())
 	gas_wc2 = 0.0;
 	gas_wc3 = 0.0;
 	gas_eta = 0.0;
-	qr = 0.0;
 	q0 = 0.0;
 	eval_method = 0;
 	q0_alpha = 0.0;
@@ -138,6 +138,7 @@ Coal::Coal() : orm::Record(Coal::Table())
 	REG_ATTRIB(minable, minable);
 	REG_ATTRIB(thick, thick);
 	REG_ATTRIB(hw, hw);
+	REG_ATTRIB(qr, qr);
 	REG_ATTRIB(rank, rank);
 	REG_ATTRIB(quality, quality);
 	REG_ATTRIB(pressure, pressure);
@@ -166,7 +167,6 @@ Coal::Coal() : orm::Record(Coal::Table())
 	REG_ATTRIB(gas_wc2, gas_wc2);
 	REG_ATTRIB(gas_wc3, gas_wc3);
 	REG_ATTRIB(gas_eta, gas_eta);
-	REG_ATTRIB(qr, qr);
 	REG_ATTRIB(q0, q0);
 	REG_ATTRIB(eval_method, eval_method);
 	REG_ATTRIB(q0_alpha, q0_alpha);

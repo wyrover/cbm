@@ -230,6 +230,7 @@ namespace orm
 		}
 		else
 		{
+			query->where(PKEY(this->getTable()), Utils::int_to_cstring(this->getID()));
 			ret = get_db()->execute(query->build_update());
 		}
 		return ret;

@@ -121,6 +121,7 @@ public:
 	int minable;
 	double thick;
 	double hw;
+	double qr;
 	int rank;
 	int quality;
 	double pressure;
@@ -149,7 +150,6 @@ public:
 	double gas_wc2;
 	double gas_wc3;
 	double gas_eta;
-	double qr;
 	double q0;
 	int eval_method;
 	double q0_alpha;
