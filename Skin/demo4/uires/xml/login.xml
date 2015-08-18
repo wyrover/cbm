@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SOUI width="375" height="196" translucent="0" alpha="255" resizable="0">
   <root cache="1" skin="_skin.sys.wnd.bkgnd">
-    <text pos="10,48" width="56" height="23" ncSkin="_skin.sys.border" name="text5" margin-x="1" margin-y="1">用户名</text>
-    <edit pos="76,45" width="283" height="27" enable="1" ncSkin="_skin.sys.border" name="username" margin-x="1" margin-y="1"/>
-    <text pos="10,93" width="56" height="23" ncSkin="_skin.sys.border" name="text7" margin-x="1" margin-y="1">密  码</text>
-    <edit pos="76,91" width="283" height="27" ncSkin="_skin.sys.border" name="password" margin-x="1" margin-y="1"/>
-    <button pos="66,141" width="115" height="39" ncSkin="_skin.sys.border" name="reg" margin-x="1" margin-y="1">注册</button>
-    <button pos="230,141" width="112" height="37" ncSkin="_skin.sys.border" name="login" margin-x="1" margin-y="1">登录</button>
-    <caption pos="10,0" width="357" height="40" ncSkin="_skin.sys.border" name="caption41">
+    <text pos="10,48" width="56" height="23" name="text5" margin-x="1" margin-y="1">用户名</text>
+    <edit pos="76,45" width="283" height="27" enable="1" name="username" margin-x="1" margin-y="1"/>
+    <text pos="10,93" width="56" height="23" name="text7" margin-x="1" margin-y="1">密  码</text>
+    <edit pos="76,91" width="283" height="27" name="password" margin-x="1" margin-y="1"/>
+    <button pos="66,141" width="115" height="39" name="reg" margin-x="1" margin-y="1">注册</button>
+    <button pos="230,141" width="112" height="37" name="login" margin-x="1" margin-y="1">登录</button>
+    <caption pos="10,0" width="357" height="40" name="caption41">
       <text pos="0,8">测试程序v1.0</text>
       <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
     </caption>
-    <window pos="0,0" width="375" height="196" ncSkin="_skin.sys.border" name="window51" margin-x="1" margin-y="1" enable="0" visible="0"/>
+    <window pos="0,0" width="375" height="196" name="window51" margin-x="1" margin-y="1" enable="0" visible="0"/>
   </root>
 </SOUI>

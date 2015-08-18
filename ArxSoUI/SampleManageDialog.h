@@ -60,6 +60,7 @@ protected:
 protected:
 	SComboBox* m_RegionCombox;
 	SComboBox* m_TopoGeoCombox;
+	SCheckBox* m_GroundCondCheck;
 	SComboBox* m_HydrGeoCombox;
 	SEdit* m_NumberEdit;
 	SEdit* m_FValueEdit;
@@ -78,4 +79,14 @@ protected:
 	SEdit* m_MineIndexEdit;
 	SComboBox* m_StabilityCombox;
 	SComboBox* m_CoalCombox;
+
+protected:
+	virtual void OnDestroyWindow();
+
+private:
+	void fillCoalList();
+	void addCoalToListBox(const CString& name, int id, int i);
+	bool isCoalExist(const CString& name);
+	void initMineDatas();
+	void initCoalDatas();
 };

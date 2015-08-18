@@ -39,6 +39,8 @@ protected:
 
 protected:
 	SComboBox* m_Combox71;
+	SCheckBox* m_Check72;
 	SLink* m_Link73;
+	SCheckBox* m_Check74;
 	SRadioBox* m_Radio75;
 };

@@ -102,7 +102,3 @@ void CoalPartDialog::OnCoalComboxSelChanged(SOUI::EventArgs *pEvt)
 
 	// do something
 }
-
-void CoalPartDialog::OnSaveButtonClick()
-{
-}

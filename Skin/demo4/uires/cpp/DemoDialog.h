@@ -55,6 +55,8 @@ protected:
 	STabCtrl* m_Tabctrl49;
 	STreeCtrl* m_Tree1Treectrl;
 	SComboBox* m_Combox71;
+	SCheckBox* m_Check72;
 	SLink* m_Link73;
+	SCheckBox* m_Check74;
 	SRadioBox* m_Radio75;
 };

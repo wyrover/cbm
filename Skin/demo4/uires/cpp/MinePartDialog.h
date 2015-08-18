@@ -41,5 +41,6 @@ protected:
 
 protected:
 	SComboBox* m_TopoGeoCombox;
+	SCheckBox* m_GroundCondCheck;
 	SComboBox* m_HydrGeoCombox;
 };

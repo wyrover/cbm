@@ -34,6 +34,7 @@ LRESULT MineDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 	m_RegionCombox = FindChildByName2<SComboBox>(L"region");
 	m_BaseCombox = FindChildByName2<SComboBox>(L"base");
 	m_TopoGeoCombox = FindChildByName2<SComboBox>(L"topo_geo");
+	m_GroundCondCheck = FindChildByName2<SCheckBox>(L"ground_cond");
 	m_ProvinceEdit = FindChildByName2<SEdit>(L"province");
 	m_CityEdit = FindChildByName2<SEdit>(L"city");
 	m_HydrGeoCombox = FindChildByName2<SComboBox>(L"hydr_geo");

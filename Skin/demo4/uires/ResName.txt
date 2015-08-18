@@ -1,1 +1,1 @@
-layout:demo
+layout:sample_manage

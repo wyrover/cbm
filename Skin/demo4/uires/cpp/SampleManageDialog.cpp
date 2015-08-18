@@ -31,6 +31,7 @@ LRESULT SampleManageDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 	//do something
 	m_RegionCombox = FindChildByName2<SComboBox>(L"region");
 	m_TopoGeoCombox = FindChildByName2<SComboBox>(L"topo_geo");
+	m_GroundCondCheck = FindChildByName2<SCheckBox>(L"ground_cond");
 	m_HydrGeoCombox = FindChildByName2<SComboBox>(L"hydr_geo");
 	m_NumberEdit = FindChildByName2<SEdit>(L"number");
 	m_FValueEdit = FindChildByName2<SEdit>(L"f_value");

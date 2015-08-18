@@ -6,6 +6,7 @@ using namespace cbm;
 
 #include <vector>
 typedef std::vector<CString> StringArray;
+typedef std::vector<int> IntArray;
 
 class ARXDAO_DLLIMPEXP DaoHelper
 {
@@ -21,6 +22,8 @@ public:
 	static void GetAllMineRegions(const CString& baseName, StringArray& regions);
 	//查询示范矿区的虚拟矿井
 	static MinePtr GetSampleMine(const CString& regionName);
-	//查询矿井的所有煤层
-	static void GetCoals(const CString& mineName, StringArray& coals);
+	//查询矿井的所有煤层名称
+	static void GetCoalNames(const CString& mineName, StringArray& coals);
+	//查询矿井的所有煤层id
+	static void GetCoalIds(const CString& mineName, IntArray& coals);
 };

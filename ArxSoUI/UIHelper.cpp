@@ -25,7 +25,7 @@ void UIHelper::UnInitSouiEnviroment()
 	delete SoUILoader::getSingletonPtr();
 }
 
-void UIHelper::ShowSoUIModeless()
+void UIHelper::ShowModelessDemo()
 {
 	// ÇÐ»»×ÊÔ´
 	CAcModuleResourceOverride myResources;
@@ -35,7 +35,7 @@ void UIHelper::ShowSoUIModeless()
 	dlg->Run(acedGetAcadFrame()->GetSafeHwnd());
 }
 
-void UIHelper::ShowSoUIModal()
+void UIHelper::ShowModalDemo()
 {
 	CAcModuleResourceOverride myResources;
 
@@ -72,6 +72,6 @@ void UIHelper::SampleManage()
 {
 	CAcModuleResourceOverride myResources;
 
-	SampleManageDialog dlg(FALSE);
-	dlg.Run(acedGetAcadFrame()->GetSafeHwnd());
+	SampleManageDialog* dlg = new SampleManageDialog(FALSE);
+	dlg->Run(acedGetAcadFrame()->GetSafeHwnd());
 }

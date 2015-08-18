@@ -76,14 +76,14 @@ public:
 	virtual void RegisterServerComponents () {
 	}
 
-	static void JL_ShowSouiModeless()
+	static void JL_ShowModelessDemo()
 	{
-		UIHelper::ShowSoUIModeless();
+		UIHelper::ShowModelessDemo();
 	}
 
-	static void JL_ShowSoUIModal()
+	static void JL_ShowModalDemo()
 	{
-		UIHelper::ShowSoUIModal();
+		UIHelper::ShowModalDemo();
 	}
 
 	static void JL_Login()
@@ -109,8 +109,8 @@ public:
 
 //-----------------------------------------------------------------------------
 IMPLEMENT_ARX_ENTRYPOINT(CArxSoUIApp)
-ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _ShowSouiModeless, sm1, ACRX_CMD_TRANSPARENT, NULL )
-ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _ShowSoUIModal, sm2, ACRX_CMD_TRANSPARENT, NULL )
+ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _ShowModelessDemo, sd1, ACRX_CMD_TRANSPARENT, NULL )
+ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _ShowModalDemo, sd2, ACRX_CMD_TRANSPARENT, NULL )
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _Login, login, ACRX_CMD_TRANSPARENT, NULL )
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _Mine, mine, ACRX_CMD_TRANSPARENT, NULL )
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _KPC, kpc, ACRX_CMD_TRANSPARENT, NULL )

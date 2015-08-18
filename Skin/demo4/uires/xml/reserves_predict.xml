@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SOUI width="640" height="359" translucent="0" alpha="255" resizable="0">
   <root cache="1" skin="_skin.sys.wnd.bkgnd">
-    <window pos="0,0" width="640" height="359" ncSkin="_skin.sys.border" name="window30" margin-x="1" margin-y="1" enable="0" visible="0"/>
-    <text pos="16,177" width="90" height="23" ncSkin="_skin.sys.border" name="text34" margin-x="1" margin-y="1">矿井瓦斯储量</text>
-    <edit pos="117,175" width="107" height="27" ncSkin="_skin.sys.border" name="reserve_gas" margin-x="1" margin-y="1"/>
-    <text pos="16,56" width="81" height="23" ncSkin="_skin.sys.border" name="text36" margin-x="1" margin-y="1">瓦斯储量W1</text>
-    <edit pos="109,54" width="71" height="27" ncSkin="_skin.sys.border" name="reserve_w1" margin-x="1" margin-y="1"/>
-    <text pos="16,99" width="85" height="23" ncSkin="_skin.sys.border" name="text38" margin-x="1" margin-y="1">瓦斯储量W2</text>
-    <edit pos="109,97" width="71" height="27" ncSkin="_skin.sys.border" name="reserve_w2" margin-x="1" margin-y="1"/>
-    <text pos="16,138" width="129" height="23" ncSkin="_skin.sys.border" name="text40" margin-x="1" margin-y="1">围岩的瓦斯储量W3</text>
-    <edit pos="150,136" width="74" height="27" ncSkin="_skin.sys.border" name="reserve_w3" margin-x="1" margin-y="1"/>
-    <text pos="251,276" width="98" height="23" ncSkin="_skin.sys.border" name="text44" margin-x="1" margin-y="1">可抽瓦斯量Wc</text>
-    <edit pos="362,274" width="71" height="27" ncSkin="_skin.sys.border" name="pump_Wc" margin-x="1" margin-y="1"/>
-    <text pos="251,51" width="79" height="23" ncSkin="_skin.sys.border" name="text46" margin-x="1" margin-y="1">可抽系数Kd</text>
-    <edit pos="346,50" width="71" height="27" ncSkin="_skin.sys.border" name="pump_Kd" margin-x="1" margin-y="1"/>
-    <text pos="422,52" width="136" height="23" ncSkin="_skin.sys.border" name="text48" margin-x="1" margin-y="1">瓦斯涌出程度系数K1</text>
-    <edit pos="563,50" width="71" height="27" ncSkin="_skin.sys.border" name="pump_K1" margin-x="1" margin-y="1"/>
-    <text pos="251,97" width="200" height="23" ncSkin="_skin.sys.border" name="text50" margin-x="1" margin-y="1">负压抽采时的抽采作用系数K2</text>
-    <edit pos="470,95" width="71" height="27" ncSkin="_skin.sys.border" name="pump_K2" margin-x="1" margin-y="1"/>
-    <text pos="251,132" width="125" height="23" ncSkin="_skin.sys.border" name="text52" margin-x="1" margin-y="1">煤层瓦斯排放率K4</text>
-    <edit pos="407,130" width="71" height="27" ncSkin="_skin.sys.border" name="pump_K4" margin-x="1" margin-y="1"/>
-    <text pos="251,171" width="125" height="23" ncSkin="_skin.sys.border" name="text54" margin-x="1" margin-y="1">矿井瓦斯抽采率K3</text>
-    <edit pos="417,169" width="71" height="27" ncSkin="_skin.sys.border" name="pump_K3" margin-x="1" margin-y="1"/>
-    <text pos="251,200" width="140" height="23" ncSkin="_skin.sys.border" name="text56" margin-x="1" margin-y="1">煤层原始瓦斯含量My</text>
-    <edit pos="417,198" width="71" height="27" ncSkin="_skin.sys.border" name="pump_My" margin-x="1" margin-y="1"/>
-    <text pos="251,237" width="201" height="23" ncSkin="_skin.sys.border" name="text58" margin-x="1" margin-y="1">运到地面煤的残余瓦斯含量Mc</text>
-    <edit pos="467,235" width="71" height="27" ncSkin="_skin.sys.border" name="pump_Mc" margin-x="1" margin-y="1"/>
-    <caption pos="12,0" width="628" height="40" ncSkin="_skin.sys.border" name="caption61">
+    <window pos="0,0" width="640" height="359" name="window30" margin-x="1" margin-y="1" enable="0" visible="0"/>
+    <text pos="16,177" width="90" height="23" name="text34" margin-x="1" margin-y="1">矿井瓦斯储量</text>
+    <edit pos="117,175" width="107" height="27" name="reserve_gas" margin-x="1" margin-y="1"/>
+    <text pos="16,56" width="81" height="23" name="text36" margin-x="1" margin-y="1">瓦斯储量W1</text>
+    <edit pos="109,54" width="71" height="27" name="reserve_w1" margin-x="1" margin-y="1"/>
+    <text pos="16,99" width="85" height="23" name="text38" margin-x="1" margin-y="1">瓦斯储量W2</text>
+    <edit pos="109,97" width="71" height="27" name="reserve_w2" margin-x="1" margin-y="1"/>
+    <text pos="16,138" width="129" height="23" name="text40" margin-x="1" margin-y="1">围岩的瓦斯储量W3</text>
+    <edit pos="150,136" width="74" height="27" name="reserve_w3" margin-x="1" margin-y="1"/>
+    <text pos="251,276" width="98" height="23" name="text44" margin-x="1" margin-y="1">可抽瓦斯量Wc</text>
+    <edit pos="362,274" width="71" height="27" name="pump_Wc" margin-x="1" margin-y="1"/>
+    <text pos="251,51" width="79" height="23" name="text46" margin-x="1" margin-y="1">可抽系数Kd</text>
+    <edit pos="346,50" width="71" height="27" name="pump_Kd" margin-x="1" margin-y="1"/>
+    <text pos="422,52" width="136" height="23" name="text48" margin-x="1" margin-y="1">瓦斯涌出程度系数K1</text>
+    <edit pos="563,50" width="71" height="27" name="pump_K1" margin-x="1" margin-y="1"/>
+    <text pos="251,97" width="200" height="23" name="text50" margin-x="1" margin-y="1">负压抽采时的抽采作用系数K2</text>
+    <edit pos="470,95" width="71" height="27" name="pump_K2" margin-x="1" margin-y="1"/>
+    <text pos="251,132" width="125" height="23" name="text52" margin-x="1" margin-y="1">煤层瓦斯排放率K4</text>
+    <edit pos="407,130" width="71" height="27" name="pump_K4" margin-x="1" margin-y="1"/>
+    <text pos="251,171" width="125" height="23" name="text54" margin-x="1" margin-y="1">矿井瓦斯抽采率K3</text>
+    <edit pos="417,169" width="71" height="27" name="pump_K3" margin-x="1" margin-y="1"/>
+    <text pos="251,200" width="140" height="23" name="text56" margin-x="1" margin-y="1">煤层原始瓦斯含量My</text>
+    <edit pos="417,198" width="71" height="27" name="pump_My" margin-x="1" margin-y="1"/>
+    <text pos="251,237" width="201" height="23" name="text58" margin-x="1" margin-y="1">运到地面煤的残余瓦斯含量Mc</text>
+    <edit pos="467,235" width="71" height="27" name="pump_Mc" margin-x="1" margin-y="1"/>
+    <caption pos="12,0" width="628" height="40" name="caption61">
       <text pos="0,8">测试程序v1.0</text>
       <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
     </caption>
-    <button pos="64,251" width="114" height="48" ncSkin="_skin.sys.border" name="save" margin-x="1" margin-y="1">保存</button>
+    <button pos="64,251" width="114" height="48" name="save" margin-x="1" margin-y="1">保存</button>
   </root>
 </SOUI>

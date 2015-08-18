@@ -90,7 +90,7 @@ MinePtr DaoHelper::GetSampleMine(const CString& regionName)
 	return DYNAMIC_POINTER_CAST(Mine, ptr);
 }
 
-void DaoHelper::GetCoals(const CString& mineName, StringArray& coals)
+void DaoHelper::GetCoalNames(const CString& mineName, StringArray& coals)
 {
 	RecordPtr mine = FIND_ONE(Mine, FIELD(name), mineName);
 	if(mine == 0) return;
@@ -101,5 +101,19 @@ void DaoHelper::GetCoals(const CString& mineName, StringArray& coals)
 	for(int i=0;i<lists->size();i++)
 	{
 		coals.push_back(lists->at(i)->get(FIELD(name)));
+	}
+}
+
+void DaoHelper::GetCoalIds(const CString& mineName, IntArray& coals)
+{
+	RecordPtr mine = FIND_ONE(Mine, FIELD(name), mineName);
+	if(mine == 0) return;
+
+	RecordPtrListPtr lists = FIND_MANY(Coal, FKEY(Mine), mine->getStringID());
+	if(lists == 0) return;
+
+	for(int i=0;i<lists->size();i++)
+	{
+		coals.push_back(lists->at(i)->getID());
 	}
 }

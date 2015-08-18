@@ -18,7 +18,6 @@ protected:
 	void OnResAbundanceComboxSelChanged(SOUI::EventArgs *pEvt);
 	void OnStabilityComboxSelChanged(SOUI::EventArgs *pEvt);
 	void OnCoalComboxSelChanged(SOUI::EventArgs *pEvt);
-	void OnSaveButtonClick();
 
 	/** 菜单消息 */
 protected:
@@ -39,7 +38,6 @@ protected:
 		EVENT_NAME_HANDLER(_T("res_abundance"), EVT_CB_SELCHANGE, OnResAbundanceComboxSelChanged)
 		EVENT_NAME_HANDLER(_T("stability"), EVT_CB_SELCHANGE, OnStabilityComboxSelChanged)
 		EVENT_NAME_HANDLER(_T("coal"), EVT_CB_SELCHANGE, OnCoalComboxSelChanged)
-		EVENT_NAME_COMMAND(_T("save"), OnSaveButtonClick)
 		CHAIN_EVENT_MAP(AcadSouiDialog)
 	EVENT_MAP_END()
 	

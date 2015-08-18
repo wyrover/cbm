@@ -60,6 +60,7 @@ protected:
 protected:
 	SComboBox* m_RegionCombox;
 	SComboBox* m_TopoGeoCombox;
+	SCheckBox* m_GroundCondCheck;
 	SComboBox* m_HydrGeoCombox;
 	SEdit* m_NumberEdit;
 	SEdit* m_FValueEdit;

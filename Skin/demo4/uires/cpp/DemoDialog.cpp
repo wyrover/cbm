@@ -40,7 +40,9 @@ LRESULT DemoDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 	m_Tabctrl49 = FindChildByName2<STabCtrl>(L"tabctrl49");
 	m_Tree1Treectrl = FindChildByName2<STreeCtrl>(L"tree1");
 	m_Combox71 = FindChildByName2<SComboBox>(L"combobox71");
+	m_Check72 = FindChildByName2<SCheckBox>(L"check72");
 	m_Link73 = FindChildByName2<SLink>(L"link73");
+	m_Check74 = FindChildByName2<SCheckBox>(L"check74");
 	m_Radio75 = FindChildByName2<SRadioBox>(L"radio75");
 	return 0;
 }

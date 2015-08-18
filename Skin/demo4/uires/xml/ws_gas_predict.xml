@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SOUI width="403" height="292" translucent="0" alpha="255" resizable="0">
   <root cache="1" skin="_skin.sys.wnd.bkgnd">
-    <window pos="0,0" width="403" height="292" ncSkin="_skin.sys.border" name="window43" margin-x="1" margin-y="1" enable="0" visible="0"/>
-    <text pos="16,95" width="165" height="23" ncSkin="_skin.sys.border" name="text47" margin-x="1" margin-y="1">开采层相对瓦斯涌出量q1</text>
-    <edit pos="188,93" width="98" height="26" ncSkin="_skin.sys.border" name="qr1" margin-x="1" margin-y="1"/>
-    <text pos="16,148" width="169" height="23" ncSkin="_skin.sys.border" name="text49" margin-x="1" margin-y="1">邻近层相对瓦斯涌出量q2</text>
-    <edit pos="188,146" width="98" height="26" ncSkin="_skin.sys.border" name="qr2" margin-x="1" margin-y="1"/>
-    <text pos="16,189" width="204" height="23" ncSkin="_skin.sys.border" name="text51" margin-x="1" margin-y="1">回采工作面相对瓦斯涌出量q采</text>
-    <edit pos="225,187" width="107" height="26" ncSkin="_skin.sys.border" name="qr" margin-x="1" margin-y="1"/>
-    <button pos="294,91" width="93" height="31" ncSkin="_skin.sys.border" name="work_cacl" margin-x="1" margin-y="1">计算</button>
-    <button pos="294,144" width="93" height="31" ncSkin="_skin.sys.border" name="adj_cacl" margin-x="1" margin-y="1">计算</button>
-    <caption pos="8,0" width="395" height="40" ncSkin="_skin.sys.border" name="caption66">
+    <window pos="0,0" width="403" height="292" name="window43" margin-x="1" margin-y="1" enable="0" visible="0"/>
+    <text pos="16,95" width="165" height="23" name="text47" margin-x="1" margin-y="1">开采层相对瓦斯涌出量q1</text>
+    <edit pos="188,93" width="98" height="26" name="qr1" margin-x="1" margin-y="1"/>
+    <text pos="16,148" width="169" height="23" name="text49" margin-x="1" margin-y="1">邻近层相对瓦斯涌出量q2</text>
+    <edit pos="188,146" width="98" height="26" name="qr2" margin-x="1" margin-y="1"/>
+    <text pos="16,189" width="204" height="23" name="text51" margin-x="1" margin-y="1">回采工作面相对瓦斯涌出量q采</text>
+    <edit pos="225,187" width="107" height="26" name="qr" margin-x="1" margin-y="1"/>
+    <button pos="294,91" width="93" height="31" name="work_cacl" margin-x="1" margin-y="1">计算</button>
+    <button pos="294,144" width="93" height="31" name="adj_cacl" margin-x="1" margin-y="1">计算</button>
+    <caption pos="8,0" width="395" height="40" name="caption66">
       <text pos="0,8">测试程序v1.0</text>
       <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
     </caption>
-    <button pos="132,228" width="127" height="48" ncSkin="_skin.sys.border" name="save" margin-x="1" margin-y="1">保存</button>
-    <radio pos="8,56" width="148" height="21" ncSkin="_skin.sys.border" name="radio68" margin-x="1" margin-y="1">薄及中厚煤层不分层开采</radio>
-    <radio pos="188,56" width="117" height="20" ncSkin="_skin.sys.border" name="radio69" margin-x="1" margin-y="1">厚煤层分层开采</radio>
+    <button pos="132,228" width="127" height="48" name="save" margin-x="1" margin-y="1">保存</button>
+    <radio pos="8,56" width="148" height="21" name="radio68" margin-x="1" margin-y="1">薄及中厚煤层不分层开采</radio>
+    <radio pos="188,56" width="117" height="20" name="radio69" margin-x="1" margin-y="1">厚煤层分层开采</radio>
   </root>
 </SOUI>

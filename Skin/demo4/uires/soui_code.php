@@ -16,7 +16,7 @@ function soui_control_type($type)
     "combobox" => "SComboBox",
     "radio" => "SRadioBox",
     "toggle" => "SToggle",
-    "checkbox" => "SCheckBox",
+    "check" => "SCheckBox",
     "img" => "SImageWnd",
     "link" => "SLink",
     "icon" => "SIconWnd",
@@ -172,8 +172,10 @@ function impl_msg_handler($file, $vars, $Class)
       fwrite($file, "{".ENTER);
       fwrite($file, TAB."if(!isLayoutInited()) return;".ENTER);
       fwrite($file, TAB."EventCBSelChange* pEvtOfCB = (EventCBSelChange*)pEvt;".ENTER);
-      fwrite($file, TAB."if(pEvtOfCB == 0) return;".TWO_ENTER);
-      // fwrite($file, TAB."int nCurSel = pEvtOfCB->nCurSel;".ENTER);
+      fwrite($file, TAB."if(pEvtOfCB == 0) return;".ENTER);
+      fwrite($file, TAB."int nCurSel = pEvtOfCB->nCurSel;".ENTER);
+      fwrite($file, TAB."if(nCurSel == -1) return;".TWO_ENTER);
+  
       fwrite($file, TAB."// do something".ENTER);
       fwrite($file, "}".ENTER);
     }

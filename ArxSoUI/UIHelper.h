@@ -3,8 +3,8 @@
 class UIHelper
 {
 public:
-	static void ShowSoUIModeless();
-	static void ShowSoUIModal();
+	static void ShowModelessDemo();
+	static void ShowModalDemo();
 	static void Login();
 	static void Mine();
 	static void KPC();

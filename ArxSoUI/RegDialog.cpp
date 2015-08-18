@@ -92,6 +92,8 @@ void RegDialog::OnBaseComboxSelChanged(SOUI::EventArgs *pEvt)
 	if(!isLayoutInited()) return;
 	EventCBSelChange* pEvtOfCB = (EventCBSelChange*)pEvt;
 	if(pEvtOfCB == 0) return;
+	int nCurSel = pEvtOfCB->nCurSel;
+	if(nCurSel == -1) return;
 
 	//查找当前煤炭基地对应的所有矿区
 	CString base = m_BaseCombox->GetLBText(pEvtOfCB->nCurSel);
@@ -103,6 +105,8 @@ void RegDialog::OnRegionComboxSelChanged(SOUI::EventArgs *pEvt)
 	if(!isLayoutInited()) return;
 	EventCBSelChange* pEvtOfCB = (EventCBSelChange*)pEvt;
 	if(pEvtOfCB == 0) return;
+	int nCurSel = pEvtOfCB->nCurSel;
+	if(nCurSel == -1) return;
 }
 
 void RegDialog::fillBaseCombox()

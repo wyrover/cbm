@@ -151,6 +151,7 @@ function postProcess($doc, $node, $type)
   $node->setAttribute('margin-y', '1');
 
   if($type == 'listbox') {
+    $node->setAttribute('ncSkin', '_skin.sys.border');
     //删除标签的文本值
     $text = $node->nodeValue;
     $node->nodeValue = '';
@@ -163,6 +164,7 @@ function postProcess($doc, $node, $type)
     $node->appendChild($comboItemsNode);
   }
   else if($type == 'combobox') {
+    $node->setAttribute('ncSkin', '_skin.sys.border');
     //取出combobox属性的数据进行解析,得到标题信息
     $text = $node->getAttribute('value');
     //删除combobox属性和combobox的节点文本值
@@ -410,6 +412,7 @@ else if($type == 'tabctrl') {
     }
   }
   else if($type == 'group') {
+    $node->setAttribute('ncSkin', '_skin.sys.border');
     //取出group属性的数据进行解析
     $text = $node->getAttribute('include');
      //删除group属性
@@ -422,7 +425,7 @@ else if($type == 'tabctrl') {
     createIncNode($doc, $node, $jsonfile);
   }
   else if($type == 'window') {
-    $node->setAttribute('ncSkin', '_skin.sys.border');
+    // $node->setAttribute('ncSkin', '_skin.sys.border');
     //取出group属性的数据进行解析
     $text = $node->getAttribute('include');
      //删除group属性
@@ -549,7 +552,7 @@ function mockups_to_soui_xml($jsonfile, $bMainWnd = true)
 
     //所有控件增加边框，便于观察
     //后期可以用样式class进行替代或删除该属性
-    $attribs['ncSkin'] = '_skin.sys.border';
+    // $attribs['ncSkin'] = '_skin.sys.border';
 
     //listbox要特殊处理
     if($type == 'listbox') {
@@ -929,7 +932,7 @@ function writeImgSrcToDB($uiResFile='uires.idx', $resType='img')
 function genResNameTxtFile()
 {
   $file = fopen("ResName.txt", 'w');
-  fwrite($file, "layout:demo");
+  fwrite($file, "layout:sample_manage");
   fclose($file);
 }
 
