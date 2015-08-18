@@ -21,6 +21,8 @@ public:
 	SouiDialog(LPCTSTR pszXmlName, BOOL bModal = FALSE);
 	//析构函数
 	virtual ~SouiDialog(void);
+	//获取窗口句柄
+	HWND GetSafeWnd() const;
 	//运行对话框
 	//注:非模态对话框的返回值没有意义,可以忽略
 	INT_PTR Run(HWND hParent=NULL);

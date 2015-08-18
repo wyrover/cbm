@@ -16,23 +16,25 @@ namespace orm
 		sprintf(ss, "%lf", v);
 		return std::string(ss);
 	}
-	bool Utils::string_to_int(std::string s, int& v) 
+	bool Utils::string_to_int(const std::string& s, int& v) 
 	{
 		return sscanf(s.c_str(), "%d", &v) > -1;
 	}
-	bool Utils::string_to_double(std::string s, double& v) 
+	bool Utils::string_to_double(const std::string& s, double& v) 
 	{
 		return sscanf(s.c_str(), "%lf", &v) > -1;
 	}
-	std::string Utils::string_tolower(std::string s)
+	std::string Utils::string_tolower(const std::string& s)
 	{
-		std::transform(s.begin(), s.end(), s.begin(), tolower);
-		return s;
+		std::string ss(s);
+		std::transform(ss.begin(), ss.end(), ss.begin(), tolower);
+		return ss;
 	}
-	std::string Utils::string_toupper(std::string s)
+	std::string Utils::string_toupper(const std::string& s)
 	{
-		std::transform(s.begin(), s.end(), s.begin(), toupper);
-		return s;
+		std::string ss(s);
+		std::transform(ss.begin(), ss.end(), ss.begin(), toupper);
+		return ss;
 	}
 	CString Utils::int_to_cstring(int v) 
 	{
@@ -46,24 +48,25 @@ namespace orm
 		str.Format(_T("%lf"), v);
 		return str;
 	}
-	/** Split a CString s into parts by value e */
-	std::vector<std::string> Utils::string_explode(std::string s, std::string e) 
+	/** Split a const CString& s into parts by value e */
+	std::vector<std::string> Utils::string_explode(const std::string& s, const std::string& e) 
 	{
+		std::string ss(s);
 		std::vector<std::string> ret;
-		int iPos = s.find(e, 0);
+		int iPos = ss.find(e, 0);
 		int iPit = e.length();
 		while(iPos>-1) {
 			if(iPos!=0)
-				ret.push_back(s.substr(0,iPos));
-			s.erase(0,iPos+iPit);
-			iPos = s.find(e, 0);
+				ret.push_back(ss.substr(0,iPos));
+			ss.erase(0,iPos+iPit);
+			iPos = ss.find(e, 0);
 		}
-		if(s!="") {
-			ret.push_back(s);
+		if(ss!="") {
+			ret.push_back(ss);
 		}
 		return ret;
 	}
-	std::string Utils::string_join( std::vector<std::string> vec, std::string delim )
+	std::string Utils::string_join( std::vector<std::string> vec, const std::string& delim )
 	{
 		if( vec.empty() ) return "";
 
@@ -75,27 +78,29 @@ namespace orm
 		return result +	( *vec.rbegin() );
 	}
 
-	CString Utils::cstring_tolower(CString s)
+	CString Utils::cstring_tolower(const CString& s)
 	{
-		s.MakeLower();
-		return s;
+		CString ss(s);
+		ss.MakeLower();
+		return ss;
 	}
-	CString Utils::cstring_toupper(CString s)
+	CString Utils::cstring_toupper(const CString& s)
 	{
-		s.MakeUpper();
-		return s;
+		CString ss(s);
+		ss.MakeUpper();
+		return ss;
 	}
-	bool Utils::cstring_to_int(CString s, int& v) 
+	bool Utils::cstring_to_int(const CString& s, int& v) 
 	{
 		v = _ttoi(s);
 		return true;
 	}
-	bool Utils::cstring_to_double(CString s, double& v) 
+	bool Utils::cstring_to_double(const CString& s, double& v) 
 	{
 		v = _tstof(s);
 		return true;
 	}
-	CString Utils::cstring_join( std::vector<CString> vec, CString delim )
+	CString Utils::cstring_join( std::vector<CString> vec, const CString& delim )
 	{
 		if( vec.empty() ) return _T("");
 

@@ -33,6 +33,10 @@ INT_PTR SouiDialog::Run(HWND hParent)
 		return ShowWindow(SW_SHOWNORMAL);
 	}
 }
+HWND SouiDialog::GetSafeWnd() const
+{
+	return m_hWnd;
+}
 
 void SouiDialog::OnOK()
 {
