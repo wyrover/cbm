@@ -44,9 +44,12 @@ protected:
 	//非模态窗口的销毁处理
 	//参考1:http://bbs.csdn.net/topics/350048650
 	//参考2:http://blog.csdn.net/candyliuxj/article/details/6736032
+	//参考3:http://blog.csdn.net/xiliang_pan/article/details/7178601
 	//注1:soui没有PostNcDestory虚函数,用OnFinalMessage虚函数替代!!!
 	//注2:如果响应WM_NCDESTORY消息,在该消息中delete this,会导致内存错误!!!
 	virtual void OnFinalMessage(HWND hWnd);
+	//手动添加的虚函数(用于在窗口销毁或关闭前做一些清理工作,默认什么也不做)
+	virtual void OnDestroyWindow();
 	//窗口关闭消息
 	void OnClose();
 	//窗口大小位置变化(最大/最小/复原这3个按钮要同步变化尺寸)

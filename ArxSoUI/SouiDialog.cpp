@@ -54,6 +54,7 @@ void SouiDialog::OnOK()
 void SouiDialog::OnCancel()
 {
 	m_bTracking = FALSE;
+	OnDestroyWindow();
 	if(m_bModal)
 	{
 		SHostDialog::OnCancel();
@@ -218,4 +219,9 @@ void SouiDialog::OnMouseHover(UINT nFlags, ::CPoint point)
 
 	m_bTracking = FALSE;
 	m_mouseInWindow = TRUE;
+}
+
+void SouiDialog::OnDestroyWindow()
+{
+
 }
