@@ -44,7 +44,6 @@ protected:
 protected:
 	SEdit* m_NameEdit;
 	SEdit* m_ProvinceEdit;
-	SEdit* m_CoalCountEdit;
 	SEdit* m_CityEdit;
 	SEdit* m_CoalNumsEdit;
 	SEdit* m_UsernameEdit;

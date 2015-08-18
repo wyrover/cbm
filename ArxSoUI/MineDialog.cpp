@@ -98,7 +98,7 @@ void MineDialog::OnHydrGeoComboxSelChanged(SOUI::EventArgs *pEvt)
 void MineDialog::OnSaveButtonClick()
 {
 	CString name = m_NameEdit->GetWindowText();
-	CString region = m_RegionCombox->GetWindowText();
+	CString regionName = m_RegionCombox->GetWindowText();
 	CString province = m_ProvinceEdit->GetWindowText();
 	CString city = m_CityEdit->GetWindowText();
 
@@ -107,8 +107,7 @@ void MineDialog::OnSaveButtonClick()
 	mine->province = province;
 	mine->city = city;
 
-	QueryPtr query(Query::from<Region>());
-	mine->region = query->where(FIELD(name), region)->find_one<Region>();
+	mine->region = FIND_ONE(Region, FIELD(name), regionName);
 	if(mine->save())
 	{
 		SMessageBox(m_hWnd,_T("录入矿井数据成功!"),_T("友情提示"),MB_OK);

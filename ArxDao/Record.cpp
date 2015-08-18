@@ -207,7 +207,7 @@ namespace orm
 	}
 	bool Record::save()
 	{
-		QueryPtr query(Query::from(this->m_table));
+		QueryPtr query(Query::From(this->m_table));
 		
 		//获取修改过的字段及值
 		KVMap fields;
@@ -237,7 +237,7 @@ namespace orm
 	}
 	bool Record::remove()
 	{
-		QueryPtr query(Query::from(this->m_table));
+		QueryPtr query(Query::From(this->m_table));
 		query->where(PKEY(this->getTable()), Utils::int_to_cstring(this->getID()));
 		return get_db()->execute(query->build_delete());
 	}
@@ -277,7 +277,7 @@ namespace orm
 	{
 		if(id <= 0) return false;
 
-		QueryPtr query(Query::from(this->getTable()));
+		QueryPtr query(Query::From(this->getTable()));
 		query->where(PKEY(this->getTable()), Utils::int_to_cstring(id))->limit(1);
 
 		RowSet rs;

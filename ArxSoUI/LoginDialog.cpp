@@ -69,7 +69,43 @@ void LoginDialog::OnLoginButtonClick()
 	}
 	else
 	{
-		SMessageBox(m_hWnd,_T("登录成功!"),_T("友情提示"),MB_OK);
-		AcadSouiDialog::OnOK();
+		int account_id = DaoHelper::GetOnlineAccountId();
+		if(account_id == 0)
+		{
+			//设置当前登录用户
+			SysInfoPtr sys_info(new SysInfo);
+			sys_info->account = FIND_ONE(Account, FIELD(username), user);
+			sys_info->save();
+			SMessageBox(m_hWnd,_T("登录成功!"),_T("友情提示"),MB_OK);
+			AcadSouiDialog::OnOK();
+		}
+		else
+		{
+			//根据id查找用户
+			AccountPtr account = FIND_BY_ID(Account, account_id);
+			if(account == 0)
+			{
+				SMessageBox(m_hWnd,_T("登录失败!"),_T("友情提示"),MB_OK);
+			}
+			else if(account->username == user)
+			{
+				SMessageBox(m_hWnd,_T("当前用户已登录!"),_T("友情提示"),MB_OK);
+			}
+			else
+			{
+				CString msg;
+				msg.Format(_T("是否注销当前用户%s并切换到用户%s???"), account->username, user);
+				if(IDYES == SMessageBox(m_hWnd,msg,_T("友情提示"),MB_YESNO))
+				{
+					//设置当前登录用户
+					SysInfoPtr sys_info = FIND_FIRST(SysInfo);
+					sys_info->account = FIND_ONE(Account, FIELD(username), user);
+					sys_info->save();
+					msg.Format(_T("成功切换到用户:%s"), user);
+					SMessageBox(m_hWnd,msg,_T("友情提示"),MB_OK);
+					AcadSouiDialog::OnOK();
+				}
+			}
+		}
 	}
 }

@@ -7,29 +7,39 @@ namespace orm
     class ARXDAO_DLLIMPEXP Query
     {
 	public:
+		static Query* From( const CString& table );
 		template<typename Klass>		
-		static Query* from()
+		static Query* From()
 		{
-			return Query::from(Klass::Table());
+			return Query::From(Klass::Table());
 		}
 		template<typename Klass>
-		static RecordPtr find(int id)
+		static RecordPtr FindById(int id)
 		{
-			return orm::helper::find<Klass>(id);
+			return orm::helper::_findById<Klass>(id);
+		}
+		template<typename Klass>
+		static RecordPtr FindFirst()
+		{
+			return orm::helper::_findFirst<Klass>();
+		}
+		template<typename Klass>
+		static RecordPtrListPtr FindAll()
+		{
+			return orm::helper::_findAll<Klass>();
 		}
 	public:
 		template<typename Klass>
 		RecordPtr find_one()
 		{
-			return orm::helper::find_one<Klass>(this);
+			return orm::helper::_find_one<Klass>(this);
 		}
 		template<typename Klass>
 		RecordPtrListPtr find_many()
 		{
-			return orm::helper::find_many<Klass>(this);
+			return orm::helper::_find_many<Klass>(this);
 		}
     public:
-		static Query* from( const CString& table );
 		~Query();
         Query* where( const CString& col, const CString& value );
         Query* where_equal( const CString& col, const CString& value );

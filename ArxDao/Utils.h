@@ -14,7 +14,7 @@ namespace orm
 		static bool string_to_int(const std::string& s, int& v);
 		static bool string_to_double(const std::string& s, double& v);
 		static std::vector<std::string> string_explode(const std::string& s, const std::string& e);
-		static std::string string_join(std::vector<std::string> vec, const std::string& delim);
+		static std::string string_join(const std::vector<std::string>& vec, const std::string& delim);
 
 		static CString cstring_tolower(const CString& s);
 		static CString cstring_toupper(const CString& s);
@@ -23,6 +23,6 @@ namespace orm
 		static bool cstring_to_int(const CString& s, int& v);
 		static bool cstring_to_double(const CString& s, double& v);
 		static CString cstring_join(std::vector<CString> vec, const CString& delim);
-		static void cstring_explode(const CString& str, const CString& tokens, CStringArray& values);
+		static void cstring_explode(const CString& str, const CString& tokens, std::vector<CString>& values);
 	};
 }

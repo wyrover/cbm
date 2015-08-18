@@ -14,6 +14,7 @@ public:
 	static void ConfigureDao(const CString& user, const CString& password, const CString& database, const CString& host=_T("localhost"), const CString& port=_T("3306"));
 	static void TestDao();
 
+	static int GetOnlineAccountId();
 	//验证用户名和密码
 	static int VerifyMineAccount(const CString& username, const CString& pwd);
 	//查询所有的基地

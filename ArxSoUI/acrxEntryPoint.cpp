@@ -49,7 +49,8 @@ public:
 		acutPrintf( _T( "\nArxSoUI::On_kUnloadAppMsg\n" ) );
 		LOG_TRACE( _T( "ArxSoUI::On_kUnloadAppMsg" ) );
 
-		//UIHelper::DestroyTestDockBar();
+		//ÍË³öµÇÂ¼×´Ì¬
+		UIHelper::Logout();
 		UIHelper::UnInitSouiEnviroment();
 
 		return (retCode) ;
@@ -91,6 +92,16 @@ public:
 		UIHelper::Login();
 	}
 
+	static void JL_Logout()
+	{
+		UIHelper::Logout();
+	}
+
+	static void JL_SampleManage()
+	{
+		UIHelper::SampleManage();
+	}
+
 	static void JL_Mine()
 	{
 		UIHelper::Mine();
@@ -101,10 +112,6 @@ public:
 		UIHelper::KPC();
 	}
 
-	static void JL_SampleManage()
-	{
-		UIHelper::SampleManage();
-	}
 } ;
 
 //-----------------------------------------------------------------------------
@@ -112,6 +119,7 @@ IMPLEMENT_ARX_ENTRYPOINT(CArxSoUIApp)
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _ShowModelessDemo, sd1, ACRX_CMD_TRANSPARENT, NULL )
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _ShowModalDemo, sd2, ACRX_CMD_TRANSPARENT, NULL )
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _Login, login, ACRX_CMD_TRANSPARENT, NULL )
+ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _Logout, logout, ACRX_CMD_TRANSPARENT, NULL )
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _Mine, mine, ACRX_CMD_TRANSPARENT, NULL )
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _KPC, kpc, ACRX_CMD_TRANSPARENT, NULL )
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _SampleManage, sm, ACRX_CMD_TRANSPARENT, NULL )

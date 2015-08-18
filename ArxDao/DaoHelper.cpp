@@ -23,7 +23,7 @@ void DaoHelper::TestDao()
 	//mine->username = _T("dlj");
 	//mine->password = _T("123");
 	mine->name = _T("晋煤集团");
-	mine->region = Query::find<Region>(1);
+	mine->region = Query::FindById<Region>(1);
 	mine->set(FIELD(name), _T("xxx煤集团公司"));
 	mine->region->set(FIELD(name), _T("华北地区"));
 	mine->region->setID(_T("2"), true);
@@ -39,7 +39,7 @@ void DaoHelper::TestDao()
 
 int DaoHelper::VerifyMineAccount(const CString& username, const CString& pwd)
 {
-	QueryPtr query(Query::from<Account>());
+	QueryPtr query(Query::From<Account>());
 	RecordPtr account = query->where(FIELD(username), username)
 		                  ->find_one<Account>();
 	if(account == 0) 
@@ -52,7 +52,7 @@ int DaoHelper::VerifyMineAccount(const CString& username, const CString& pwd)
 
 void DaoHelper::GetAllMineBases(StringArray& bases)
 {
-	QueryPtr query(Query::from<Base>());
+	QueryPtr query(Query::From<Base>());
 	RecordPtrListPtr lists = query->find_many<Base>();
 	for(int i=0;i<lists->size();i++)
 	{
@@ -62,12 +62,12 @@ void DaoHelper::GetAllMineBases(StringArray& bases)
 
 void DaoHelper::GetAllMineRegions(const CString& baseName, StringArray& regions)
 {
-	QueryPtr query(Query::from<Base>());
+	QueryPtr query(Query::From<Base>());
 	RecordPtr base = query->where(FIELD(name), baseName)
 		                  ->find_one<Base>();
 	if(base == 0) return;
 
-	query.reset(Query::from<Region>());
+	query.reset(Query::From<Region>());
 	RecordPtrListPtr lists = query->where(FKEY(Base), base->getStringID())
 		                          ->find_many<Region>();
 	if(lists == 0) return;
@@ -84,10 +84,7 @@ MinePtr DaoHelper::GetSampleMine(const CString& regionName)
 	if(region == 0) return MinePtr();
 
 	//根据id查询对应的矿井
-	RecordPtr ptr = FIND_ONE(Mine, FKEY(Region), region->getStringID());
-	if(ptr == 0) return MinePtr();
-
-	return DYNAMIC_POINTER_CAST(Mine, ptr);
+	return FIND_ONE(Mine, FKEY(Region), region->getStringID());
 }
 
 void DaoHelper::GetCoalNames(const CString& mineName, StringArray& coals)
@@ -117,3 +114,12 @@ void DaoHelper::GetCoalIds(const CString& mineName, IntArray& coals)
 		coals.push_back(lists->at(i)->getID());
 	}
 }
+
+int DaoHelper::GetOnlineAccountId()
+{
+	SysInfoPtr sys_info = FIND_FIRST(SysInfo);
+	if(sys_info == 0) return 0;
+
+	return sys_info->account->getID();
+}
+

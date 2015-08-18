@@ -42,10 +42,12 @@ namespace orm
 	//注:一般情况下类的成员变量和表的字段名都是相同的)
 	#define FIELD(name) _T(#name)
 
-	//3个宏用于简化query代码写法
-	#define FIND_BY_ID(Klass, id) Query::find<Klass>(id)
-	#define FIND_ONE(Klass, field, value) QueryPtr(Query::from<Klass>())->where(field, value)->find_one<Klass>()
-	#define FIND_MANY(Klass, field, value) QueryPtr(Query::from<Klass>())->where(field, value)->find_many<Klass>()
+	//4个宏用于简化query代码写法
+	#define FIND_BY_ID(Klass, id) DYNAMIC_POINTER_CAST(Klass, Query::FindById<Klass>(id))
+	#define FIND_FIRST(Klass) DYNAMIC_POINTER_CAST(Klass, Query::FindFirst<Klass>())
+	#define FIND_ALL(Klass) Query::FindAll<Klass>()
+	#define FIND_ONE(Klass, field, value) DYNAMIC_POINTER_CAST(Klass, QueryPtr(Query::From<Klass>())->where(field, value)->find_one<Klass>())
+	#define FIND_MANY(Klass, field, value) QueryPtr(Query::From<Klass>())->where(field, value)->find_many<Klass>()
 
 	class Record;
 	typedef shared_ptr<Record> RecordPtr;

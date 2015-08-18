@@ -191,7 +191,7 @@ namespace orm
         return query;
     }
 
-	Query* Query::from( const CString& table )
+	Query* Query::From( const CString& table )
     {
 		Query* query = new orm::Query();
         query->set_table( table );
@@ -252,9 +252,9 @@ namespace orm
 
     Query* Query::select( const CString& col )
     {
-		CStringArray values;
+		std::vector<CString> values;
 		Utils::cstring_explode(col, _T(", "), values);
-		for(int i=0;i<values.GetCount();i++)
+		for(int i=0;i<values.size();i++)
 		{
 			add_result_column(values[i]);
 		}

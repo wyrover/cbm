@@ -5,6 +5,11 @@
 #include <MineGE/HelperClass.h>
 #include <Util/HelperClass.h>
 
+#include <ArxDao/DaoHelper.h>
+#include <ArxDao/Entity.h>
+using namespace orm;
+using namespace cbm;
+
 #include "MySoUiLoader.h"
 #include "DemoDialog.h"
 #include "LoginDialog.h"
@@ -50,6 +55,18 @@ void UIHelper::Login()
 
 	LoginDialog dlg(TRUE);
 	dlg.Run(acedGetAcadFrame()->GetSafeHwnd());
+}
+
+void UIHelper::Logout()
+{
+	//Çå¿Õcbm_sys_info±í
+	RecordPtrListPtr lists = FIND_ALL(SysInfo);
+	if(lists == 0) return;
+
+	for(int i=0;i<lists->size();i++)
+	{
+		lists->at(i)->remove();
+	}
 }
 
 void UIHelper::Mine()

@@ -118,7 +118,7 @@ void SampleManageDialog::OnDelButtonClick()
 	int nCurSel = m_CoalCombox->GetCurSel();
 	ItemData* pData = (ItemData*)m_CoalCombox->GetItemData(nCurSel);
 	if(pData == 0) return;
-	CoalPtr coal = DYNAMIC_POINTER_CAST(Coal, FIND_BY_ID(Coal, pData->id));
+	CoalPtr coal = FIND_BY_ID(Coal, pData->id);
 	if(coal == 0) return;
 	
 	if(coal->remove())
@@ -248,7 +248,7 @@ void SampleManageDialog::OnCoalComboxSelChanged(SOUI::EventArgs *pEvt)
 
 	ItemData* pData = (ItemData*)m_CoalCombox->GetItemData(nCurSel);
 	if(pData == 0) return;
-	CoalPtr coal = DYNAMIC_POINTER_CAST(Coal, FIND_BY_ID(Coal, pData->id));
+	CoalPtr coal = FIND_BY_ID(Coal, pData->id);
 	if(coal == 0) return;
 
 	m_NumberEdit->SetWindowText(coal->name);
@@ -281,7 +281,7 @@ void SampleManageDialog::OnSaveButtonClick()
 	int nCurSel = m_CoalCombox->GetCurSel();
 	ItemData* pData = (ItemData*)m_CoalCombox->GetItemData(nCurSel);
 	if(pData == 0) return;
-	CoalPtr coal = DYNAMIC_POINTER_CAST(Coal, FIND_BY_ID(Coal, pData->id));
+	CoalPtr coal = FIND_BY_ID(Coal, pData->id);
 	if(coal == 0) return;
 
 	Utils::cstring_to_double((LPCTSTR)m_ThickEdit->GetWindowText(), coal->thick); // Ãººñ

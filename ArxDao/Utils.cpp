@@ -66,12 +66,12 @@ namespace orm
 		}
 		return ret;
 	}
-	std::string Utils::string_join( std::vector<std::string> vec, const std::string& delim )
+	std::string Utils::string_join(const std::vector<std::string>& vec, const std::string& delim )
 	{
 		if( vec.empty() ) return "";
 
 		std::string result;
-		for( std::vector<std::string>::iterator it = vec.begin(); it != vec.end() - 1; ++it )
+		for( std::vector<std::string>::const_iterator it = vec.begin(); it != vec.end() - 1; ++it )
 		{
 			result += ( *it ) + delim;
 		}
@@ -111,13 +111,14 @@ namespace orm
 		}
 		return result +	( *vec.rbegin() );
 	}
-	void Utils::cstring_explode(const CString& str, const CString& tokens, CStringArray& values)
+	void Utils::cstring_explode(const CString& str, const CString& tokens, std::vector<CString>& values)
 	{
 		int nTokenPos = 0;
 		CString strToken = str.Tokenize(tokens, nTokenPos);
+		strToken.Trim(); // È¥µô×óÓÒ¿Õ°×
 		while (!strToken.IsEmpty())
 		{
-			values.Add(strToken);
+			values.push_back(strToken);
 			strToken = str.Tokenize(tokens, nTokenPos);
 		}
 	}
