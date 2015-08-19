@@ -478,6 +478,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\DecisionDialog.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\DemoDialog.cpp"
 					>
 				</File>
@@ -620,6 +624,10 @@
 				</File>
 				<File
 					RelativePath=".\CoalDialog.h"
+					>
+				</File>
+				<File
+					RelativePath=".\DecisionDialog.h"
 					>
 				</File>
 				<File

@@ -5,7 +5,7 @@
     <text pos="22,53" width="62" height="23" name="text1" margin-x="1" margin-y="1">矿井名称</text>
     <edit pos="98,51" width="226" height="26" enable="1" name="name" margin-x="1" margin-y="1"/>
     <text pos="264,93" width="62" height="23" name="text3" margin-x="1" margin-y="1">所在矿区</text>
-    <button pos="200,259" width="114" height="48" name="next" margin-x="1" margin-y="1">下一步</button>
+    <button pos="43,259" width="114" height="48" name="next" margin-x="1" margin-y="1">下一步</button>
     <text pos="22,93" width="92" height="23" name="text8" margin-x="1" margin-y="1">所属煤炭基地</text>
     <text pos="327,53" width="62" height="23" name="text12" margin-x="1" margin-y="1">矿井产能</text>
     <edit pos="393,52" width="63" height="26" enable="1" name="capacity" margin-x="1" margin-y="1"/>
@@ -39,7 +39,7 @@
       <text pos="0,8">测试程序v1.0</text>
       <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
     </caption>
-    <button pos="52,259" width="116" height="48" name="save" margin-x="1" margin-y="1">保存</button>
+    <button pos="199,259" width="116" height="48" name="save" margin-x="1" margin-y="1">保存</button>
     <window pos="22,178" width="470" height="75" name="window106" margin-x="1" margin-y="1">
       <text pos="0,1" width="92" height="23" name="text16" margin-x="1" margin-y="1">地形地貌特征</text>
       <text pos="231,1" width="92" height="23" name="text18" margin-x="1" margin-y="1">水文地质条件</text>

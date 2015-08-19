@@ -8,6 +8,7 @@
     <file name="adj_layer" path="xml\adj_layer.xml"/>
     <file name="coal" path="xml\coal.xml"/>
     <file name="coal_part" path="xml\coal_part.xml"/>
+    <file name="decision" path="xml\decision.xml"/>
     <file name="demo" path="xml\demo.xml"/>
     <file name="difficult_eval" path="xml\difficult_eval.xml"/>
     <file name="drilling_radius_qm" path="xml\drilling_radius_qm.xml"/>

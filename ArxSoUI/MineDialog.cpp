@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "MineDialog.h"
+#include "CoalDialog.h"
 
 #include <ArxHelper/HelperClass.h>
 #include <ArxDao/DaoHelper.h>
@@ -40,21 +41,7 @@ LRESULT MineDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 	m_HydrGeoCombox = FindChildByName2<SComboBox>(L"hydr_geo");
 
 	fillBaseCombox();
-
-	//查询在线用户的id
-	int account_id = DaoHelper::GetOnlineAccountId();
-	//查询账户关联的矿井
-	MinePtr mine = FIND_ONE(Mine, FKEY(Account), Utils::int_to_cstring(account_id));
-	//填充数据
-	m_NameEdit->SetWindowText(mine->name);
-	m_CapacityEdit->SetWindowText(Utils::double_to_cstring(mine->capacity));
-	CString regionName = mine->region->get(FIELD(name));
-	m_RegionCombox->SetCurSel(m_RegionCombox->FindString((LPCTSTR)regionName));
-	m_ProvinceEdit->SetWindowText(mine->province);
-	m_CityEdit->SetWindowText(mine->city);
-	m_TopoGeoCombox->SetCurSel(mine->topo_geo-1);
-	m_HydrGeoCombox->SetCurSel(mine->hydr_geo-1);
-	m_GroundCondCheck->SetCheck(BOOL_2_INT(mine->ground_condition!=0));
+	fillMineDatas();
 
 	return 0;
 }
@@ -62,10 +49,15 @@ LRESULT MineDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 
 void MineDialog::OnNextButtonClick()
 {
+	AcadSouiDialog::OnOK();
+
+	CoalDialog* dlg = new CoalDialog(FALSE);
+	dlg->Run(acedGetAcadFrame()->GetSafeHwnd());
 }
 
 void MineDialog::OnCancelButtonClick()
 {
+	AcadSouiDialog::OnCancel();
 }
 
 void MineDialog::OnRegionComboxSelChanged(SOUI::EventArgs *pEvt)
@@ -95,6 +87,39 @@ void MineDialog::OnBaseComboxSelChanged(SOUI::EventArgs *pEvt)
 
 void MineDialog::OnSaveButtonClick()
 {
+	CString regionName = m_RegionCombox->GetWindowText();
+
+	//根据当前账户的矿井
+	MinePtr mine = DaoHelper::GetOnlineMine();
+	if(mine == 0)
+	{
+		SMessageBox(GetSafeWnd(), _T("当前没有用户登录!"), _T("友情提示"), MB_OK);
+		return;
+	}
+
+	mine->name = m_NameEdit->GetWindowText();
+	mine->province = m_ProvinceEdit->GetWindowText();
+	mine->city = m_CityEdit->GetWindowText();
+	Utils::cstring_to_double((LPCTSTR)m_CapacityEdit->GetWindowText(), mine->capacity);
+	mine->topo_geo = m_TopoGeoCombox->GetCurSel() + 1;
+	mine->hydr_geo = m_HydrGeoCombox->GetCurSel() + 1;
+	mine->ground_condition = m_GroundCondCheck->IsChecked();
+	//更新矿井所属矿区
+	mine->region = FIND_ONE(Region, FIELD(name), regionName);
+
+	//增加到数据库并返回新增行的id值
+	if(mine->save())
+	{
+		CString msg;
+		msg.Format(_T("更新矿井%s数据成功!"), mine->name);
+		SMessageBox(GetSafeWnd(), msg, _T("友情提示"), MB_OK);
+	}
+	else
+	{
+		CString msg;
+		msg.Format(_T("更新矿井%s数据失败!"), mine->name);
+		SMessageBox(GetSafeWnd(), msg, _T("友情提示"), MB_OK);
+	}
 }
 
 void MineDialog::OnTopoGeoComboxSelChanged(SOUI::EventArgs *pEvt)
@@ -147,4 +172,27 @@ void MineDialog::fillRegionCombox(const CString& base)
 		m_RegionCombox->InsertItem(i, regions[i], 0, 0);
 	}
 	m_RegionCombox->SetCurSel(0);      
+}
+
+void MineDialog::fillMineDatas()
+{
+	//查询在线用户的id
+	int account_id = DaoHelper::GetOnlineAccountId();
+	//查询账户关联的矿井
+	MinePtr mine = FIND_ONE(Mine, FKEY(Account), Utils::int_to_cstring(account_id));
+	//填充数据
+	m_NameEdit->SetWindowText(mine->name);
+	m_CapacityEdit->SetWindowText(Utils::double_to_cstring(mine->capacity));
+
+	//根据矿区反查基地
+	CString regionName = mine->region->get(FIELD(name));
+	CString baseName = DaoHelper::GetBaeByRegion(regionName);
+	m_BaseCombox->SetCurSel(m_BaseCombox->FindString(baseName));
+	m_RegionCombox->SetCurSel(m_RegionCombox->FindString(regionName));
+
+	m_ProvinceEdit->SetWindowText(mine->province);
+	m_CityEdit->SetWindowText(mine->city);
+	m_TopoGeoCombox->SetCurSel(mine->topo_geo-1);
+	m_HydrGeoCombox->SetCurSel(mine->hydr_geo-1);
+	m_GroundCondCheck->SetCheck(BOOL_2_INT(mine->ground_condition!=0));
 }

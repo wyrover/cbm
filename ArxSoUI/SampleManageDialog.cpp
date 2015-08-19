@@ -305,10 +305,13 @@ void SampleManageDialog::OnSaveButtonClick()
 void SampleManageDialog::fillCoalList()
 {
 	CString regionName = m_RegionCombox->GetLBText(m_RegionCombox->GetCurSel());
+	MinePtr mine = DaoHelper::GetSampleMine(regionName);
+	if(mine == 0) return;
+
 	StringArray coal_names;
 	IntArray coal_ids;
-	DaoHelper::GetCoalIds(regionName, coal_ids);
-	DaoHelper::GetCoalNames(regionName, coal_names);
+	DaoHelper::GetCoalIds(mine->name, coal_ids);
+	DaoHelper::GetCoalNames(mine->name, coal_names);
 
 	m_CoalCombox->ResetContent();
 	for(int i=0;i<coal_names.size();i++)

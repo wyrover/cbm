@@ -4,12 +4,12 @@
 class SampleManageDialog : public AcadSouiDialog
 {
 
-	/** æ„é€ å’Œææ„å‡½æ•° */
+	/** ¹¹ÔìºÍÎö¹¹º¯Êı */
 public:
 	SampleManageDialog(BOOL bModal = FALSE);
 	~SampleManageDialog(void);
 
-	/** æ§ä»¶æ¶ˆæ¯å¤„ç† */
+	/** ¿Ø¼şÏûÏ¢´¦Àí */
 protected:
 	void OnRegionComboxSelChanged(SOUI::EventArgs *pEvt);
 	void OnTopoGeoComboxSelChanged(SOUI::EventArgs *pEvt);
@@ -23,17 +23,17 @@ protected:
 	void OnCoalComboxSelChanged(SOUI::EventArgs *pEvt);
 	void OnSaveButtonClick();
 
-	/** èœå•æ¶ˆæ¯ */
+	/** ²Ëµ¥ÏûÏ¢ */
 protected:
-	//å¤„ç†èœå•æ¶ˆæ¯(èœå•åœ¨ä¸€ä¸ªå•ç‹¬çš„xmlæ–‡ä»¶ä¸­æè¿°ï¼Œæ¯ä¸ªèœå•é¡¹éƒ½æœ‰ä¸€ä¸ªidå·)
+	//´¦Àí²Ëµ¥ÏûÏ¢(²Ëµ¥ÔÚÒ»¸öµ¥¶ÀµÄxmlÎÄ¼şÖĞÃèÊö£¬Ã¿¸ö²Ëµ¥Ïî¶¼ÓĞÒ»¸öidºÅ)
 	void OnCommand(UINT uNotifyCode, int nID, HWND wndCtl);
 
-	/** çª—å£æ¶ˆæ¯ */
+	/** ´°¿ÚÏûÏ¢ */
 protected:
-	//å¯¹è¯æ¡†åˆå§‹åŒ–è¿‡ç¨‹
+	//¶Ô»°¿ò³õÊ¼»¯¹ı³Ì
 	LRESULT OnInitDialog(HWND hWnd, LPARAM lParam);
 
-	//æ§ä»¶æ¶ˆæ¯æ˜ å°„è¡¨
+	//¿Ø¼şÏûÏ¢Ó³Éä±í
 	EVENT_MAP_BEGIN()
 		EVENT_NAME_HANDLER(_T("region"), EVT_CB_SELCHANGE, OnRegionComboxSelChanged)
 		EVENT_NAME_HANDLER(_T("topo_geo"), EVT_CB_SELCHANGE, OnTopoGeoComboxSelChanged)
@@ -49,7 +49,7 @@ protected:
 		CHAIN_EVENT_MAP(AcadSouiDialog)
 	EVENT_MAP_END()
 	
-//HOSTæ¶ˆæ¯(WINDOWSæ¶ˆæ¯)æ˜ å°„è¡¨
+//HOSTÏûÏ¢(WINDOWSÏûÏ¢)Ó³Éä±í
 	BEGIN_MSG_MAP_EX(SampleManageDialog)
 		MSG_WM_INITDIALOG(OnInitDialog)
 		MSG_WM_COMMAND(OnCommand)

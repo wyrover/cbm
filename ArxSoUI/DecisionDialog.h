@@ -1,17 +1,18 @@
 #pragma once
 #include "AcadSouiDialog.h"
 
-class MineGasContent2Dialog : public AcadSouiDialog
+class DecisionDialog : public AcadSouiDialog
 {
 
 	/** 构造和析构函数 */
 public:
-	MineGasContent2Dialog(BOOL bModal = FALSE);
-	~MineGasContent2Dialog(void);
+	DecisionDialog(BOOL bModal = FALSE);
+	~DecisionDialog(void);
 
 	/** 控件消息处理 */
 protected:
-	void OnSaveButtonClick();
+	void OnGraphButtonClick();
+	void OnTechnologyButtonClick();
 
 	/** 菜单消息 */
 protected:
@@ -25,12 +26,13 @@ protected:
 
 	//控件消息映射表
 	EVENT_MAP_BEGIN()
-		EVENT_NAME_COMMAND(_T("save"), OnSaveButtonClick)
+		EVENT_NAME_COMMAND(_T("graph"), OnGraphButtonClick)
+		EVENT_NAME_COMMAND(_T("technology"), OnTechnologyButtonClick)
 		CHAIN_EVENT_MAP(AcadSouiDialog)
 	EVENT_MAP_END()
 	
 //HOST消息(WINDOWS消息)映射表
-	BEGIN_MSG_MAP_EX(MineGasContent2Dialog)
+	BEGIN_MSG_MAP_EX(DecisionDialog)
 		MSG_WM_INITDIALOG(OnInitDialog)
 		MSG_WM_COMMAND(OnCommand)
 		CHAIN_MSG_MAP(AcadSouiDialog)
@@ -38,12 +40,5 @@ protected:
 	END_MSG_MAP()
 
 protected:
-	SEdit* m_PumpWcEdit;
-	SEdit* m_PumpKdEdit;
-	SEdit* m_PumpK1Edit;
-	SEdit* m_PumpK2Edit;
-	SEdit* m_PumpK4Edit;
-	SEdit* m_PumpK3Edit;
-	SEdit* m_PumpMyEdit;
-	SEdit* m_PumpMcEdit;
+	SStatic* m_TechModeLabel;
 };

@@ -4,28 +4,28 @@
 class DifficultEvalDialog : public AcadSouiDialog
 {
 
-	/** æž„é€ å’Œæžæž„å‡½æ•° */
+	/** ¹¹ÔìºÍÎö¹¹º¯Êý */
 public:
 	DifficultEvalDialog(BOOL bModal = FALSE);
 	~DifficultEvalDialog(void);
 
-	/** æŽ§ä»¶æ¶ˆæ¯å¤„ç† */
+	/** ¿Ø¼þÏûÏ¢´¦Àí */
 protected:
 	void OnCancelButtonClick();
 	void OnEvalButtonClick();
 	void OnEvalProofButtonClick();
 
-	/** èœå•æ¶ˆæ¯ */
+	/** ²Ëµ¥ÏûÏ¢ */
 protected:
-	//å¤„ç†èœå•æ¶ˆæ¯(èœå•åœ¨ä¸€ä¸ªå•ç‹¬çš„xmlæ–‡ä»¶ä¸­æè¿°ï¼Œæ¯ä¸ªèœå•é¡¹éƒ½æœ‰ä¸€ä¸ªidå·)
+	//´¦Àí²Ëµ¥ÏûÏ¢(²Ëµ¥ÔÚÒ»¸öµ¥¶ÀµÄxmlÎÄ¼þÖÐÃèÊö£¬Ã¿¸ö²Ëµ¥Ïî¶¼ÓÐÒ»¸öidºÅ)
 	void OnCommand(UINT uNotifyCode, int nID, HWND wndCtl);
 
-	/** çª—å£æ¶ˆæ¯ */
+	/** ´°¿ÚÏûÏ¢ */
 protected:
-	//å¯¹è¯æ¡†åˆå§‹åŒ–è¿‡ç¨‹
+	//¶Ô»°¿ò³õÊ¼»¯¹ý³Ì
 	LRESULT OnInitDialog(HWND hWnd, LPARAM lParam);
 
-	//æŽ§ä»¶æ¶ˆæ¯æ˜ å°„è¡¨
+	//¿Ø¼þÏûÏ¢Ó³Éä±í
 	EVENT_MAP_BEGIN()
 		EVENT_NAME_COMMAND(_T("cancel"), OnCancelButtonClick)
 		EVENT_NAME_COMMAND(_T("eval"), OnEvalButtonClick)
@@ -33,7 +33,7 @@ protected:
 		CHAIN_EVENT_MAP(AcadSouiDialog)
 	EVENT_MAP_END()
 	
-//HOSTæ¶ˆæ¯(WINDOWSæ¶ˆæ¯)æ˜ å°„è¡¨
+//HOSTÏûÏ¢(WINDOWSÏûÏ¢)Ó³Éä±í
 	BEGIN_MSG_MAP_EX(DifficultEvalDialog)
 		MSG_WM_INITDIALOG(OnInitDialog)
 		MSG_WM_COMMAND(OnCommand)

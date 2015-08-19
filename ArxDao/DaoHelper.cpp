@@ -78,6 +78,14 @@ void DaoHelper::GetAllMineRegions(const CString& baseName, StringArray& regions)
 	}
 }
 
+CString DaoHelper::GetBaeByRegion(const CString& regionName)
+{
+	RegionPtr region = FIND_ONE(Region, FIELD(name), regionName);
+	if(region == 0) return _T("");
+
+	return region->base->get(FIELD(name));
+}
+
 MinePtr DaoHelper::GetSampleMine(const CString& regionName)
 {
 	RecordPtr region = FIND_ONE(Region, FIELD(name), regionName);
@@ -123,3 +131,10 @@ int DaoHelper::GetOnlineAccountId()
 	return sys_info->account->getID();
 }
 
+MinePtr DaoHelper::GetOnlineMine()
+{
+	int account_id = DaoHelper::GetOnlineAccountId();
+	if(account_id == 0) return MinePtr();
+
+	return FIND_ONE(Mine, FKEY(Account), Utils::int_to_cstring(account_id));
+}
