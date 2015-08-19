@@ -44,7 +44,9 @@ LRESULT TechModeDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 	m_C1YesRadio = FindChildByName2<SRadioBox>(L"c1_yes");
 	m_C1NoRadio = FindChildByName2<SRadioBox>(L"c1_no");
 
-	m_RegionLabel->SetWindowText(regionName);
+	CString msg;
+	msg.Format(_T(">>%s矿区抽采技术模式"), regionName);
+	m_RegionLabel->SetWindowText((LPCTSTR)msg);
 	fillTechModeCombox();
 
 	return 0;

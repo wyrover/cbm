@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<SOUI width="527" height="349" translucent="0" alpha="255" resizable="0">
+<SOUI width="527" height="341" translucent="0" alpha="255" resizable="0">
   <root cache="1" skin="_skin.sys.wnd.bkgnd">
-    <listbox pos="27,73" width="486" height="197" itemHeight="24" hotTrack="1" name="technology" margin-x="1" margin-y="1" ncSkin="_skin.sys.border">
+    <listbox pos="27,65" width="486" height="197" itemHeight="24" hotTrack="1" name="technology" margin-x="1" margin-y="1" ncSkin="_skin.sys.border">
       <items>
         <item text="专用瓦斯抽采巷穿层钻孔预抽煤层气技术"/>
         <item text="本煤层顺层钻孔抽采煤层气技术"/>
@@ -14,23 +14,21 @@
         <item text="松软突出煤层顺层孔连续套管护孔技术"/>
       </items>
     </listbox>
-    <check pos="203,42" width="104" height="22" name="is_key" margin-x="1" margin-y="1">关键技术</check>
-    <text pos="27,281" width="62" height="23" name="text124" margin-x="1" margin-y="1">技术文档</text>
-    <edit pos="93,279" width="294" height="26" name="doc" margin-x="1" margin-y="1"/>
-    <text pos="27,313" width="62" height="23" name="text126" margin-x="1" margin-y="1">技术视频</text>
-    <edit pos="93,311" width="293" height="26" name="video" margin-x="1" margin-y="1"/>
-    <button pos="451,275" width="56" height="30" name="doc_read" margin-x="1" margin-y="1">查看</button>
-    <button pos="451,310" width="56" height="30" name="video_play" margin-x="1" margin-y="1">播放</button>
-    <button pos="391,275" width="56" height="30" name="doc_select" margin-x="1" margin-y="1">选择</button>
-    <button pos="391,310" width="56" height="30" name="video_select" margin-x="1" margin-y="1">选择</button>
-    <window pos="0,0" width="529" height="349" name="window146" margin-x="1" margin-y="1" enable="0" visible="0"/>
-    <caption pos="12,0" width="513" height="40" name="caption147">
+    <check pos="203,34" width="104" height="22" name="is_key" margin-x="1" margin-y="1">关键技术</check>
+    <text pos="27,273" width="62" height="23" name="text124" margin-x="1" margin-y="1">技术文档</text>
+    <edit pos="93,271" width="294" height="26" name="doc" margin-x="1" margin-y="1"/>
+    <text pos="27,305" width="62" height="23" name="text126" margin-x="1" margin-y="1">技术视频</text>
+    <edit pos="93,303" width="293" height="26" name="video" margin-x="1" margin-y="1"/>
+    <button pos="451,267" width="56" height="30" name="doc_read" margin-x="1" margin-y="1">查看</button>
+    <button pos="451,302" width="56" height="30" name="video_play" margin-x="1" margin-y="1">播放</button>
+    <button pos="391,267" width="56" height="30" name="doc_select" margin-x="1" margin-y="1">选择</button>
+    <button pos="391,302" width="56" height="30" name="video_select" margin-x="1" margin-y="1">选择</button>
+    <window pos="0,0" width="529" height="341" name="window146" margin-x="1" margin-y="1" enable="0" visible="0"/>
+    <caption pos="15,0" width="513" height="40" name="caption147">
       <text pos="0,8">测试程序v1.0</text>
       <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
     </caption>
-    <text pos="61,42" width="32" height="23" name="text149" margin-x="1" margin-y="1">矿区</text>
-    <text pos="25,42" width="34" height="23" name="region" margin-x="1" margin-y="1">xxxx</text>
-    <text pos="93,42" width="92" height="23" name="text151" margin-x="1" margin-y="1">推荐抽采技术</text>
-    <button pos="445,42" width="68" height="30" name="save" margin-x="1" margin-y="1">保存</button>
+    <text pos="27,38" width="160" height="23" name="region" margin-x="1" margin-y="1">&gt;&gt;xx矿区推荐抽采技术</text>
+    <button pos="445,34" width="68" height="30" name="save" margin-x="1" margin-y="1">保存</button>
   </root>
 </SOUI>

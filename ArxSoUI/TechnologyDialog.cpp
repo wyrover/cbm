@@ -41,7 +41,9 @@ LRESULT TechnologyDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 	m_VideoEdit = FindChildByName2<SEdit>(L"video");
 	m_RegionLabel = FindChildByName2<SStatic>(L"region");
 
-	m_RegionLabel->SetWindowText(regionName);
+	CString msg;
+	msg.Format(_T(">>%s矿区推荐抽采技术"), regionName);
+	m_RegionLabel->SetWindowText((LPCTSTR)msg);
 	fillTechnologyListBox();
 
 	return 0;
