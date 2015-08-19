@@ -15,9 +15,9 @@ protected:
 	void OnCancelButtonClick();
 	void OnRegionComboxSelChanged(SOUI::EventArgs *pEvt);
 	void OnBaseComboxSelChanged(SOUI::EventArgs *pEvt);
+	void OnSaveButtonClick();
 	void OnTopoGeoComboxSelChanged(SOUI::EventArgs *pEvt);
 	void OnHydrGeoComboxSelChanged(SOUI::EventArgs *pEvt);
-	void OnSaveButtonClick();
 
 	/** 菜单消息 */
 protected:
@@ -35,9 +35,9 @@ protected:
 		EVENT_NAME_COMMAND(_T("cancel"), OnCancelButtonClick)
 		EVENT_NAME_HANDLER(_T("region"), EVT_CB_SELCHANGE, OnRegionComboxSelChanged)
 		EVENT_NAME_HANDLER(_T("base"), EVT_CB_SELCHANGE, OnBaseComboxSelChanged)
+		EVENT_NAME_COMMAND(_T("save"), OnSaveButtonClick)
 		EVENT_NAME_HANDLER(_T("topo_geo"), EVT_CB_SELCHANGE, OnTopoGeoComboxSelChanged)
 		EVENT_NAME_HANDLER(_T("hydr_geo"), EVT_CB_SELCHANGE, OnHydrGeoComboxSelChanged)
-		EVENT_NAME_COMMAND(_T("save"), OnSaveButtonClick)
 		CHAIN_EVENT_MAP(AcadSouiDialog)
 	EVENT_MAP_END()
 	
@@ -54,9 +54,10 @@ protected:
 	SEdit* m_CapacityEdit;
 	SComboBox* m_RegionCombox;
 	SComboBox* m_BaseCombox;
-	SComboBox* m_TopoGeoCombox;
 	SEdit* m_ProvinceEdit;
 	SEdit* m_CityEdit;
+	SComboBox* m_TopoGeoCombox;
+	SCheckBox* m_GroundCondCheck;
 	SComboBox* m_HydrGeoCombox;
 
 private:

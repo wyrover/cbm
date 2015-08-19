@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "MineDialog.h"
-#include "CoalDialog.h"
 
 #include <ArxHelper/HelperClass.h>
 #include <ArxDao/DaoHelper.h>
@@ -34,12 +33,28 @@ LRESULT MineDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 	m_CapacityEdit = FindChildByName2<SEdit>(L"capacity");
 	m_RegionCombox = FindChildByName2<SComboBox>(L"region");
 	m_BaseCombox = FindChildByName2<SComboBox>(L"base");
-	m_TopoGeoCombox = FindChildByName2<SComboBox>(L"topo_geo");
 	m_ProvinceEdit = FindChildByName2<SEdit>(L"province");
 	m_CityEdit = FindChildByName2<SEdit>(L"city");
+	m_TopoGeoCombox = FindChildByName2<SComboBox>(L"topo_geo");
+	m_GroundCondCheck = FindChildByName2<SCheckBox>(L"ground_cond");
 	m_HydrGeoCombox = FindChildByName2<SComboBox>(L"hydr_geo");
 
 	fillBaseCombox();
+
+	//查询在线用户的id
+	int account_id = DaoHelper::GetOnlineAccountId();
+	//查询账户关联的矿井
+	MinePtr mine = FIND_ONE(Mine, FKEY(Account), Utils::int_to_cstring(account_id));
+	//填充数据
+	m_NameEdit->SetWindowText(mine->name);
+	m_CapacityEdit->SetWindowText(Utils::double_to_cstring(mine->capacity));
+	CString regionName = mine->region->get(FIELD(name));
+	m_RegionCombox->SetCurSel(m_RegionCombox->FindString((LPCTSTR)regionName));
+	m_ProvinceEdit->SetWindowText(mine->province);
+	m_CityEdit->SetWindowText(mine->city);
+	m_TopoGeoCombox->SetCurSel(mine->topo_geo-1);
+	m_HydrGeoCombox->SetCurSel(mine->hydr_geo-1);
+	m_GroundCondCheck->SetCheck(BOOL_2_INT(mine->ground_condition!=0));
 
 	return 0;
 }
@@ -47,13 +62,10 @@ LRESULT MineDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 
 void MineDialog::OnNextButtonClick()
 {
-	CoalDialog dlg(TRUE);
-	dlg.Run(this->m_hWnd);
 }
 
 void MineDialog::OnCancelButtonClick()
 {
-	AcadSouiDialog::OnCancel();
 }
 
 void MineDialog::OnRegionComboxSelChanged(SOUI::EventArgs *pEvt)
@@ -61,6 +73,8 @@ void MineDialog::OnRegionComboxSelChanged(SOUI::EventArgs *pEvt)
 	if(!isLayoutInited()) return;
 	EventCBSelChange* pEvtOfCB = (EventCBSelChange*)pEvt;
 	if(pEvtOfCB == 0) return;
+	int nCurSel = pEvtOfCB->nCurSel;
+	if(nCurSel == -1) return;
 
 	// do something
 }
@@ -70,6 +84,8 @@ void MineDialog::OnBaseComboxSelChanged(SOUI::EventArgs *pEvt)
 	if(!isLayoutInited()) return;
 	EventCBSelChange* pEvtOfCB = (EventCBSelChange*)pEvt;
 	if(pEvtOfCB == 0) return;
+	int nCurSel = pEvtOfCB->nCurSel;
+	if(nCurSel == -1) return;
 
 	// do something
 	//查找当前煤炭基地对应的所有矿区
@@ -77,11 +93,17 @@ void MineDialog::OnBaseComboxSelChanged(SOUI::EventArgs *pEvt)
 	fillRegionCombox(base);
 }
 
+void MineDialog::OnSaveButtonClick()
+{
+}
+
 void MineDialog::OnTopoGeoComboxSelChanged(SOUI::EventArgs *pEvt)
 {
 	if(!isLayoutInited()) return;
 	EventCBSelChange* pEvtOfCB = (EventCBSelChange*)pEvt;
 	if(pEvtOfCB == 0) return;
+	int nCurSel = pEvtOfCB->nCurSel;
+	if(nCurSel == -1) return;
 
 	// do something
 }
@@ -91,32 +113,10 @@ void MineDialog::OnHydrGeoComboxSelChanged(SOUI::EventArgs *pEvt)
 	if(!isLayoutInited()) return;
 	EventCBSelChange* pEvtOfCB = (EventCBSelChange*)pEvt;
 	if(pEvtOfCB == 0) return;
+	int nCurSel = pEvtOfCB->nCurSel;
+	if(nCurSel == -1) return;
 
 	// do something
-}
-
-void MineDialog::OnSaveButtonClick()
-{
-	CString name = m_NameEdit->GetWindowText();
-	CString regionName = m_RegionCombox->GetWindowText();
-	CString province = m_ProvinceEdit->GetWindowText();
-	CString city = m_CityEdit->GetWindowText();
-
-	MinePtr mine(new Mine);
-	mine->name = name;
-	mine->province = province;
-	mine->city = city;
-
-	mine->region = FIND_ONE(Region, FIELD(name), regionName);
-	if(mine->save())
-	{
-		SMessageBox(m_hWnd,_T("录入矿井数据成功!"),_T("友情提示"),MB_OK);
-		AcadSouiDialog::OnOK();
-	}
-	else
-	{
-		SMessageBox(m_hWnd,_T("录入矿井数据失败!"),_T("友情提示"),MB_OK);
-	}
 }
 
 void MineDialog::fillBaseCombox()

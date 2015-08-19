@@ -50,10 +50,6 @@ LRESULT CoalDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 }
 
 
-void CoalDialog::OnDelButtonClick()
-{
-}
-
 void CoalDialog::OnNextButtonClick()
 {
 }
@@ -62,11 +58,21 @@ void CoalDialog::OnCancelButtonClick()
 {
 }
 
+void CoalDialog::OnSaveButtonClick()
+{
+}
+
+void CoalDialog::OnDelButtonClick()
+{
+}
+
 void CoalDialog::OnRankComboxSelChanged(SOUI::EventArgs *pEvt)
 {
 	if(!isLayoutInited()) return;
 	EventCBSelChange* pEvtOfCB = (EventCBSelChange*)pEvt;
 	if(pEvtOfCB == 0) return;
+	int nCurSel = pEvtOfCB->nCurSel;
+	if(nCurSel == -1) return;
 
 	// do something
 }
@@ -76,6 +82,8 @@ void CoalDialog::OnConstComplexityComboxSelChanged(SOUI::EventArgs *pEvt)
 	if(!isLayoutInited()) return;
 	EventCBSelChange* pEvtOfCB = (EventCBSelChange*)pEvt;
 	if(pEvtOfCB == 0) return;
+	int nCurSel = pEvtOfCB->nCurSel;
+	if(nCurSel == -1) return;
 
 	// do something
 }
@@ -89,6 +97,8 @@ void CoalDialog::OnResAbundanceComboxSelChanged(SOUI::EventArgs *pEvt)
 	if(!isLayoutInited()) return;
 	EventCBSelChange* pEvtOfCB = (EventCBSelChange*)pEvt;
 	if(pEvtOfCB == 0) return;
+	int nCurSel = pEvtOfCB->nCurSel;
+	if(nCurSel == -1) return;
 
 	// do something
 }
@@ -98,6 +108,8 @@ void CoalDialog::OnStabilityComboxSelChanged(SOUI::EventArgs *pEvt)
 	if(!isLayoutInited()) return;
 	EventCBSelChange* pEvtOfCB = (EventCBSelChange*)pEvt;
 	if(pEvtOfCB == 0) return;
+	int nCurSel = pEvtOfCB->nCurSel;
+	if(nCurSel == -1) return;
 
 	// do something
 }
@@ -107,10 +119,8 @@ void CoalDialog::OnCoalComboxSelChanged(SOUI::EventArgs *pEvt)
 	if(!isLayoutInited()) return;
 	EventCBSelChange* pEvtOfCB = (EventCBSelChange*)pEvt;
 	if(pEvtOfCB == 0) return;
+	int nCurSel = pEvtOfCB->nCurSel;
+	if(nCurSel == -1) return;
 
 	// do something
-}
-
-void CoalDialog::OnSaveButtonClick()
-{
 }
