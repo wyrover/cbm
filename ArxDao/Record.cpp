@@ -114,6 +114,13 @@ namespace orm
 		}
 		return ret;
 	}
+
+	void Record::updateAttrib(const CString& name)
+	{
+		if(isForeignKey(name) || isPrimaryKey(name)) return ;
+		(*row)[name].update();
+	}
+
 	void Record::set(const CString& name, int v)
 	{
 		if(isPrimaryKey(name))
@@ -267,6 +274,11 @@ namespace orm
 			else 
 			{
 				ret = this->setAttrib(kv_itr->first, kv_itr->second);
+				if(ret)
+				{
+					//将数据更新到Value类型的v_pod里去(重要!!!)
+					updateAttrib(kv_itr->first);
+				}
 			}
 			if(!ret) break;
 		}

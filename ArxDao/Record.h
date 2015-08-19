@@ -60,6 +60,7 @@ namespace orm
 		//×Ö¶ÎºÍÍâ¼ü²Ù×÷
 		void attributes(KVMap& fields, bool all=false);
 		bool setAttrib(const CString& name, const Attribute& attrib);
+		void updateAttrib(const CString& name);
 		bool isForeignKey(const CString& name) const;
 		bool isPrimaryKey(const CString& name) const;
 		bool setForeignKey(const CString& name, const CString& id);
