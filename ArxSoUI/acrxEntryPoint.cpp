@@ -112,6 +112,11 @@ public:
 		UIHelper::KPC();
 	}
 
+	static void JL_GasTechModeDecision()
+	{
+		UIHelper::GasTechModeDecision();
+	}
+
 } ;
 
 //-----------------------------------------------------------------------------
@@ -123,3 +128,4 @@ ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _Logout, logout, ACRX_CMD_TRANSPARE
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _Mine, mine, ACRX_CMD_TRANSPARENT, NULL )
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _KPC, kpc, ACRX_CMD_TRANSPARENT, NULL )
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _SampleManage, sm, ACRX_CMD_TRANSPARENT, NULL )
+ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _GasTechModeDecision, gtmd, ACRX_CMD_TRANSPARENT, NULL )

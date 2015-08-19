@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SOUI width="352" height="303" translucent="0" alpha="255" resizable="0">
   <root cache="1" skin="_skin.sys.wnd.bkgnd">
-    <window pos="0,0" width="352" height="303" name="window24" margin-x="1" margin-y="1" enable="0" visible="0"/>
-    <text pos="16,147" width="144" height="23" name="text26" margin-x="1" margin-y="1">煤层原始瓦斯含量W0</text>
-    <edit pos="189,143" width="71" height="26" name="gas_W0" margin-x="1" margin-y="1"/>
-    <text pos="16,40" width="115" height="23" name="text28" margin-x="1" margin-y="1">掘进巷道断面积S</text>
-    <edit pos="142,38" width="71" height="26" name="tw_S" margin-x="1" margin-y="1"/>
-    <text pos="16,73" width="128" height="23" name="text30" margin-x="1" margin-y="1">巷道平均掘进速度υ</text>
-    <edit pos="148,71" width="71" height="26" name="tw_V" margin-x="1" margin-y="1"/>
-    <text pos="16,112" width="68" height="23" name="text32" margin-x="1" margin-y="1">煤的密度γ</text>
-    <edit pos="99,110" width="71" height="26" name="coal_r" margin-x="1" margin-y="1"/>
-    <text pos="16,182" width="218" height="23" name="text34" margin-x="1" margin-y="1">运出矿井后煤的残存瓦斯含量Wc</text>
-    <edit pos="248,180" width="71" height="26" name="gas_Wc2" margin-x="1" margin-y="1"/>
-    <text pos="16,221" width="229" height="23" name="text36" margin-x="1" margin-y="1">掘进工作面落煤绝对瓦斯涌出量q4</text>
-    <edit pos="264,219" width="71" height="26" name="q4" margin-x="1" margin-y="1"/>
-    <caption pos="8,0" width="342" height="40" name="caption58">
+    <window pos="0,0" width="354" height="303" name="window24" margin-x="1" margin-y="1" enable="0" visible="0"/>
+    <text pos="16,147" width="146" height="23" name="text26" margin-x="1" margin-y="1">煤层原始瓦斯含量W0</text>
+    <edit pos="189,143" width="73" height="26" name="gas_W0" margin-x="1" margin-y="1"/>
+    <text pos="16,40" width="117" height="23" name="text28" margin-x="1" margin-y="1">掘进巷道断面积S</text>
+    <edit pos="142,38" width="73" height="26" name="tw_S" margin-x="1" margin-y="1"/>
+    <text pos="16,73" width="130" height="23" name="text30" margin-x="1" margin-y="1">巷道平均掘进速度υ</text>
+    <edit pos="148,71" width="73" height="26" name="tw_V" margin-x="1" margin-y="1"/>
+    <text pos="16,112" width="70" height="23" name="text32" margin-x="1" margin-y="1">煤的密度γ</text>
+    <edit pos="99,110" width="73" height="26" name="coal_r" margin-x="1" margin-y="1"/>
+    <text pos="16,182" width="220" height="23" name="text34" margin-x="1" margin-y="1">运出矿井后煤的残存瓦斯含量Wc</text>
+    <edit pos="248,180" width="73" height="26" name="gas_Wc2" margin-x="1" margin-y="1"/>
+    <text pos="16,221" width="231" height="23" name="text36" margin-x="1" margin-y="1">掘进工作面落煤绝对瓦斯涌出量q4</text>
+    <edit pos="264,219" width="73" height="26" name="q4" margin-x="1" margin-y="1"/>
+    <caption pos="8,0" width="344" height="40" name="caption58">
       <text pos="0,8">测试程序v1.0</text>
       <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
     </caption>
-    <button pos="99,254" width="141" height="40" name="save" margin-x="1" margin-y="1">保存</button>
+    <button pos="99,254" width="143" height="40" name="save" margin-x="1" margin-y="1">保存</button>
   </root>
 </SOUI>

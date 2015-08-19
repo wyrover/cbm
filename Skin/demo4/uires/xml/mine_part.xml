@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<SOUI width="446" height="62" translucent="0" alpha="255" resizable="0">
+<SOUI width="446" height="59" translucent="0" alpha="255" resizable="0">
   <root cache="1" skin="_skin.sys.wnd.bkgnd">
-    <text pos="0,1" width="90" height="23" name="text16" margin-x="1" margin-y="1">地形地貌特征</text>
-    <text pos="231,1" width="90" height="23" name="text18" margin-x="1" margin-y="1">水文地质条件</text>
-    <combobox pos="97,2" width="123" height="24" dropDown="1" curSel="0" name="topo_geo" margin-x="1" margin-y="1" ncSkin="_skin.sys.border">
+    <text pos="0,1" width="92" height="23" name="text16" margin-x="1" margin-y="1">地形地貌特征</text>
+    <text pos="231,1" width="92" height="23" name="text18" margin-x="1" margin-y="1">水文地质条件</text>
+    <combobox pos="97,2" width="125" height="24" dropDown="1" curSel="0" name="topo_geo" margin-x="1" margin-y="1" ncSkin="_skin.sys.border">
       <liststyle itemHeight="30" colorText="#000000" colorSelText="#FFFFFF" colorItemBkgnd="#FFFFFF" colorItemSelBkgnd="#000088"/>
       <items>
         <item text="简单"/>
@@ -11,8 +11,8 @@
         <item text="复杂"/>
       </items>
     </combobox>
-    <check pos="0,40" width="163" height="22" name="ground_cond" margin-x="1" margin-y="1">是否具备地面井开发条件</check>
-    <combobox pos="331,0" width="115" height="24" dropDown="1" curSel="0" name="hydr_geo" margin-x="1" margin-y="1" ncSkin="_skin.sys.border">
+    <check pos="0,37" width="195" height="22" enable="1" name="ground_cond" margin-x="1" margin-y="1">是否具备地面井开发条件</check>
+    <combobox pos="331,0" width="117" height="24" dropDown="1" curSel="0" name="hydr_geo" margin-x="1" margin-y="1" ncSkin="_skin.sys.border">
       <liststyle itemHeight="30" colorText="#000000" colorSelText="#FFFFFF" colorItemBkgnd="#FFFFFF" colorItemSelBkgnd="#000088"/>
       <items>
         <item text="简单"/>

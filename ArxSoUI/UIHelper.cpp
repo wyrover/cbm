@@ -13,9 +13,10 @@ using namespace cbm;
 #include "MySoUiLoader.h"
 #include "DemoDialog.h"
 #include "LoginDialog.h"
+#include "SampleManageDialog.h"
 #include "MineDialog.h"
 #include "KeyParamDialog.h"
-#include "SampleManageDialog.h"
+using namespace SOUI;
 
 void UIHelper::InitSouiEnviroment()
 {
@@ -91,4 +92,22 @@ void UIHelper::SampleManage()
 
 	SampleManageDialog* dlg = new SampleManageDialog(FALSE);
 	dlg->Run(acedGetAcadFrame()->GetSafeHwnd());
+}
+
+void UIHelper::GasTechModeDecision()
+{
+	int account_id = DaoHelper::GetOnlineAccountId();
+	if(account_id == 0)
+	{
+		SMessageBox(acedGetAcadFrame()->GetSafeHwnd(),_T("请登录!"),_T("友情提示"),MB_OK);
+		//调用登录函数
+		UIHelper::Login();
+	}
+	else
+	{
+		CAcModuleResourceOverride myResources;
+
+		MineDialog* dlg = new MineDialog(FALSE);
+		dlg->Run(acedGetAcadFrame()->GetSafeHwnd());
+	}
 }

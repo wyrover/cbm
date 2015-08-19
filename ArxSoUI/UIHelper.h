@@ -10,6 +10,7 @@ public:
 	static void Mine();
 	static void KPC();
 	static void SampleManage();
+	static void GasTechModeDecision();
 
 	static void InitSouiEnviroment();
 	static void UnInitSouiEnviroment();

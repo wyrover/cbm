@@ -26,6 +26,8 @@ using namespace boost;
 
 namespace orm
 {
+	#define BOOL_2_INT(condition) condition?1:0
+
 	//id名称的一部分
 	#define KEY_ID _T("id")
 
@@ -42,7 +44,7 @@ namespace orm
 	//注:一般情况下类的成员变量和表的字段名都是相同的)
 	#define FIELD(name) _T(#name)
 
-	//4个宏用于简化query代码写法
+	//4个宏用于简化query代码写法(Klass类型名称,field和value则是字符串, id是一个整数)
 	#define FIND_BY_ID(Klass, id) DYNAMIC_POINTER_CAST(Klass, Query::FindById<Klass>(id))
 	#define FIND_FIRST(Klass) DYNAMIC_POINTER_CAST(Klass, Query::FindFirst<Klass>())
 	#define FIND_ALL(Klass) Query::FindAll<Klass>()

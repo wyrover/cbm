@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SOUI width="507" height="445" translucent="0" alpha="255" resizable="0">
   <root cache="1" skin="_skin.sys.wnd.bkgnd">
-    <text pos="24,232" width="88" height="23" name="text2" margin-x="1" margin-y="1">开采层厚度m</text>
-    <edit pos="119,230" width="77" height="26" name="thick" margin-x="1" margin-y="1"/>
-    <text pos="18,42" width="181" height="23" name="text4" margin-x="1" margin-y="1">工作面围岩瓦斯涌出系数K1</text>
-    <edit pos="211,40" width="71" height="26" name="K1" margin-x="1" margin-y="1"/>
-    <text pos="18,73" width="185" height="23" name="text6" margin-x="1" margin-y="1">工作面丢煤瓦斯涌出系数K2</text>
-    <edit pos="211,69" width="71" height="26" name="K2" margin-x="1" margin-y="1"/>
-    <text pos="18,101" width="365" height="23" name="text8" margin-x="1" margin-y="1">采区内准备巷道预排瓦斯对开采层瓦斯涌出影响系数K3</text>
-    <edit pos="24,124" width="118" height="26" name="K3" margin-x="1" margin-y="1"/>
-    <text pos="207,232" width="72" height="23" name="text10" margin-x="1" margin-y="1">煤层采高M</text>
-    <edit pos="302,230" width="81" height="26" name="hw" margin-x="1" margin-y="1"/>
-    <text pos="24,273" width="144" height="23" name="text12" margin-x="1" margin-y="1">煤层原始瓦斯含量W0</text>
-    <edit pos="180,271" width="93" height="26" name="gas_W0" margin-x="1" margin-y="1"/>
-    <window pos="0,0" width="505" height="445" name="window17" margin-x="1" margin-y="1" enable="0" visible="0"/>
-    <text pos="24,310" width="218" height="23" name="text19" margin-x="1" margin-y="1">运出矿井后煤的残存瓦斯含量Wc</text>
-    <edit pos="258,306" width="93" height="26" name="gas_Wc2" margin-x="1" margin-y="1"/>
-    <text pos="24,351" width="165" height="23" name="text21" margin-x="1" margin-y="1">开采层相对瓦斯涌出量q1</text>
-    <edit pos="207,349" width="103" height="26" name="qr1" margin-x="1" margin-y="1"/>
-    <button pos="168,390" width="127" height="48" name="save" margin-x="1" margin-y="1">保存</button>
-    <caption pos="10,0" width="497" height="40" name="caption56">
+    <text pos="24,232" width="90" height="23" name="text2" margin-x="1" margin-y="1">开采层厚度m</text>
+    <edit pos="119,230" width="79" height="26" name="thick" margin-x="1" margin-y="1"/>
+    <text pos="18,42" width="183" height="23" name="text4" margin-x="1" margin-y="1">工作面围岩瓦斯涌出系数K1</text>
+    <edit pos="211,40" width="73" height="26" name="K1" margin-x="1" margin-y="1"/>
+    <text pos="18,73" width="187" height="23" name="text6" margin-x="1" margin-y="1">工作面丢煤瓦斯涌出系数K2</text>
+    <edit pos="211,69" width="73" height="26" name="K2" margin-x="1" margin-y="1"/>
+    <text pos="18,101" width="367" height="23" name="text8" margin-x="1" margin-y="1">采区内准备巷道预排瓦斯对开采层瓦斯涌出影响系数K3</text>
+    <edit pos="24,124" width="120" height="26" name="K3" margin-x="1" margin-y="1"/>
+    <text pos="207,232" width="74" height="23" name="text10" margin-x="1" margin-y="1">煤层采高M</text>
+    <edit pos="302,230" width="83" height="26" name="hw" margin-x="1" margin-y="1"/>
+    <text pos="24,273" width="146" height="23" name="text12" margin-x="1" margin-y="1">煤层原始瓦斯含量W0</text>
+    <edit pos="180,271" width="95" height="26" name="gas_W0" margin-x="1" margin-y="1"/>
+    <window pos="0,0" width="507" height="445" name="window17" margin-x="1" margin-y="1" enable="0" visible="0"/>
+    <text pos="24,310" width="220" height="23" name="text19" margin-x="1" margin-y="1">运出矿井后煤的残存瓦斯含量Wc</text>
+    <edit pos="258,306" width="95" height="26" name="gas_Wc2" margin-x="1" margin-y="1"/>
+    <text pos="24,351" width="167" height="23" name="text21" margin-x="1" margin-y="1">开采层相对瓦斯涌出量q1</text>
+    <edit pos="207,349" width="105" height="26" name="qr1" margin-x="1" margin-y="1"/>
+    <button pos="168,390" width="129" height="48" name="save" margin-x="1" margin-y="1">保存</button>
+    <caption pos="10,0" width="499" height="40" name="caption56">
       <text pos="0,8">测试程序v1.0</text>
       <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
     </caption>
-    <text pos="24,157" width="331" height="23" name="text57" margin-x="1" margin-y="1">取决于煤层分层数量和顺序的分层瓦斯涌出系数Kf</text>
-    <edit pos="24,185" width="118" height="26" name="Kf" margin-x="1" margin-y="1"/>
-    <button pos="180,122" width="93" height="31" name="k3_cacl" margin-x="1" margin-y="1">计算</button>
-    <button pos="180,183" width="93" height="30" name="kf_cacl" margin-x="1" margin-y="1">计算</button>
+    <text pos="24,157" width="333" height="23" name="text57" margin-x="1" margin-y="1">取决于煤层分层数量和顺序的分层瓦斯涌出系数Kf</text>
+    <edit pos="24,185" width="120" height="26" name="Kf" margin-x="1" margin-y="1"/>
+    <button pos="180,122" width="95" height="31" name="k3_cacl" margin-x="1" margin-y="1">计算</button>
+    <button pos="180,183" width="95" height="30" name="kf_cacl" margin-x="1" margin-y="1">计算</button>
   </root>
 </SOUI>
