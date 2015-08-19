@@ -134,7 +134,7 @@ void RegDialog::fillBaseCombox()
 	DaoHelper::GetAllMineBases(bases);
 
 	//清空所有的煤炭基地列表
-	m_BaseCombox->ResetContent();
+	clearBaseCombox();
 	for(int i=0;i<bases.size();i++)
 	{
 		m_BaseCombox->InsertItem(i, bases[i], 0, 0);
@@ -149,10 +149,20 @@ void RegDialog::fillRegionCombox(const CString& base)
 	DaoHelper::GetAllMineRegions(base, regions);
 
 	//清空矿区下拉列表
-	m_RegionCombox->ResetContent();
+	clearRegionCombox();
 	for(int i=0;i<regions.size();i++)
 	{
 		m_RegionCombox->InsertItem(i, regions[i], 0, 0);
 	}
 	m_RegionCombox->SetCurSel(0);      
+}
+
+void RegDialog::clearBaseCombox()
+{
+	m_BaseCombox->ResetContent();
+}
+
+void RegDialog::clearRegionCombox()
+{
+	m_RegionCombox->ResetContent();
 }

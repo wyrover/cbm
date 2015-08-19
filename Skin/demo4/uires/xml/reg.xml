@@ -2,12 +2,12 @@
 <SOUI width="383" height="400" translucent="0" alpha="255" resizable="0">
   <root cache="1" skin="_skin.sys.wnd.bkgnd">
     <text pos="16,138" width="62" height="23" name="text22" margin-x="1" margin-y="1">矿井名称</text>
-    <edit pos="82,136" width="294" height="26" enable="1" name="name" margin-x="1" margin-y="1"/>
+    <edit pos="82,136" width="294" height="26" name="name" margin-x="1" margin-y="1"/>
     <text pos="16,192" width="62" height="23" name="text24" margin-x="1" margin-y="1">煤炭基地</text>
     <text pos="16,246" width="47" height="23" name="text28" margin-x="1" margin-y="1">所在地</text>
-    <edit pos="82,244" width="71" height="26" enable="1" name="province" margin-x="1" margin-y="1"/>
+    <edit pos="82,244" width="71" height="26" name="province" margin-x="1" margin-y="1"/>
     <text pos="162,248" width="17" height="23" name="text32" margin-x="1" margin-y="1">省</text>
-    <edit pos="190,244" width="88" height="26" enable="1" name="city" margin-x="1" margin-y="1"/>
+    <edit pos="190,244" width="88" height="26" name="city" margin-x="1" margin-y="1"/>
     <text pos="287,246" width="77" height="23" name="text34" margin-x="1" margin-y="1">市（地区）</text>
     <text pos="16,291" width="92" height="23" name="text35" margin-x="1" margin-y="1">开采煤层编号</text>
     <edit pos="113,289" width="176" height="26" name="coal_nums" margin-x="1" margin-y="1"/>
@@ -17,7 +17,7 @@
       <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
     </caption>
     <text pos="16,52" width="47" height="23" name="text44" margin-x="1" margin-y="1">用户名</text>
-    <edit pos="82,50" width="295" height="26" enable="1" name="username" margin-x="1" margin-y="1"/>
+    <edit pos="82,50" width="295" height="26" name="username" margin-x="1" margin-y="1"/>
     <text pos="16,97" width="47" height="23" name="text46" margin-x="1" margin-y="1">密码</text>
     <edit pos="82,95" width="295" height="26" name="password" margin-x="1" margin-y="1"/>
     <combobox pos="82,191" width="104" height="24" dropDown="1" curSel="0" name="base" margin-x="1" margin-y="1" ncSkin="_skin.sys.border">

@@ -2,9 +2,9 @@
 <SOUI width="431" height="382" translucent="0" alpha="255" resizable="0">
   <root cache="1" skin="_skin.sys.wnd.bkgnd">
     <text pos="14,276" width="132" height="23" name="text40" margin-x="1" margin-y="1">初次垮落循环步距L1</text>
-    <edit pos="160,274" width="142" height="26" enable="1" name="L1" margin-x="1" margin-y="1"/>
+    <edit pos="160,274" width="142" height="26" name="L1" margin-x="1" margin-y="1"/>
     <text pos="14,311" width="141" height="23" name="text42" margin-x="1" margin-y="1">周期垮落循环步距L2</text>
-    <edit pos="160,309" width="142" height="26" enable="1" name="L2" margin-x="1" margin-y="1"/>
+    <edit pos="160,309" width="142" height="26" name="L2" margin-x="1" margin-y="1"/>
     <text pos="14,343" width="111" height="23" name="text44" margin-x="1" margin-y="1">各钻场的间距Lg</text>
     <edit pos="159,341" width="143" height="26" name="Lg" margin-x="1" margin-y="1"/>
     <button pos="320,286" width="102" height="72" name="save" margin-x="1" margin-y="1">保存</button>

@@ -22,6 +22,8 @@ protected:
 	void OnStabilityComboxSelChanged(SOUI::EventArgs *pEvt);
 	void OnCoalComboxSelChanged(SOUI::EventArgs *pEvt);
 	void OnSaveButtonClick();
+	void OnTechModeButtonClick();
+	void OnTechnologyButtonClick();
 
 	/** ²Ëµ¥ÏûÏ¢ */
 protected:
@@ -46,6 +48,8 @@ protected:
 		EVENT_NAME_HANDLER(_T("stability"), EVT_CB_SELCHANGE, OnStabilityComboxSelChanged)
 		EVENT_NAME_HANDLER(_T("coal"), EVT_CB_SELCHANGE, OnCoalComboxSelChanged)
 		EVENT_NAME_COMMAND(_T("save"), OnSaveButtonClick)
+		EVENT_NAME_COMMAND(_T("tech_mode"), OnTechModeButtonClick)
+		EVENT_NAME_COMMAND(_T("technology"), OnTechnologyButtonClick)
 		CHAIN_EVENT_MAP(AcadSouiDialog)
 	EVENT_MAP_END()
 	
@@ -84,9 +88,10 @@ protected:
 	virtual void OnDestroyWindow();
 
 private:
-	void fillCoalList();
+	void fillCoalCombox();
 	void addCoalToListBox(const CString& name, int id, int i);
 	bool isCoalExist(const CString& name);
 	void initMineDatas();
 	void initCoalDatas();
+	void clearCoalCombox();
 };

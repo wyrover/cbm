@@ -3,12 +3,12 @@
   <root cache="1" skin="_skin.sys.wnd.bkgnd">
     <window pos="0,0" width="353" height="205" name="window0" margin-x="1" margin-y="1" enable="0" visible="0"/>
     <text pos="17,51" width="53" height="23" name="text1" margin-x="1" margin-y="1">渗透率</text>
-    <edit pos="76,49" width="79" height="26" enable="1" name="permeability_k" margin-x="1" margin-y="1"/>
+    <edit pos="76,49" width="79" height="26" name="permeability_k" margin-x="1" margin-y="1"/>
     <text pos="17,96" width="122" height="23" name="text3" margin-x="1" margin-y="1">钻孔流量衰减系数</text>
     <edit pos="153,94" width="76" height="26" name="decay_alpha" margin-x="1" margin-y="1"/>
     <button pos="207,141" width="114" height="48" name="cancel" margin-x="1" margin-y="1">取消</button>
     <text pos="161,51" width="77" height="23" name="text8" margin-x="1" margin-y="1">透气性系数</text>
-    <edit pos="243,49" width="87" height="26" enable="1" name="permeability_lambda" margin-x="1" margin-y="1"/>
+    <edit pos="243,49" width="87" height="26" name="permeability_lambda" margin-x="1" margin-y="1"/>
     <button pos="39,141" width="116" height="48" name="eval" margin-x="1" margin-y="1">评价</button>
     <button pos="250,93" width="76" height="27" name="eval_proof" margin-x="1" margin-y="1">评价依据</button>
     <caption pos="9,0" width="344" height="40" name="caption12">

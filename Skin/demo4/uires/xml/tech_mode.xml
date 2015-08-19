@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOUI width="269" height="369" translucent="0" alpha="255" resizable="0">
+  <root cache="1" skin="_skin.sys.wnd.bkgnd">
+    <text pos="82,47" width="92" height="23" name="text93" margin-x="1" margin-y="1">抽采技术模式</text>
+    <combobox pos="10,82" width="249" height="24" dropDown="1" curSel="0" name="tech_mode" margin-x="1" margin-y="1" ncSkin="_skin.sys.border">
+      <liststyle itemHeight="30" colorText="#000000" colorSelText="#FFFFFF" colorItemBkgnd="#FFFFFF" colorItemSelBkgnd="#000088"/>
+      <items>
+        <item text=""/>
+      </items>
+    </combobox>
+    <text pos="32,136" width="47" height="23" name="text96" margin-x="1" margin-y="1">渗透率</text>
+    <text pos="32,196" width="182" height="23" name="text97" margin-x="1" margin-y="1">是否具体有保护层开采条件</text>
+    <text pos="32,261" width="122" height="23" name="text98" margin-x="1" margin-y="1">是否近距离煤层群</text>
+    <window pos="32,218" width="220" height="35" name="window109" margin-x="1" margin-y="1">
+      <radio pos="0,0" width="60" height="21" checked="1" name="c2_yes" id="110" margin-x="1" margin-y="1">是</radio>
+      <radio pos="76,0" width="60" height="21" name="c2_no" id="111" margin-x="1" margin-y="1">否</radio>
+    </window>
+    <text pos="10,115" width="84" height="23" name="text112" margin-x="1" margin-y="1">&gt;&gt;适用条件</text>
+    <window pos="32,282" width="220" height="36" name="window113" margin-x="1" margin-y="1">
+      <radio pos="0,0" width="60" height="21" checked="1" name="c3_yes" id="120" margin-x="1" margin-y="1">是</radio>
+      <radio pos="76,0" width="60" height="21" name="c3_no" id="121" margin-x="1" margin-y="1">否</radio>
+    </window>
+    <window pos="0,0" width="271" height="369" name="window121" margin-x="1" margin-y="1" enable="0" visible="0"/>
+    <caption pos="10,0" width="261" height="40" name="caption122">
+      <text pos="0,8">测试程序v1.0</text>
+      <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
+    </caption>
+    <button pos="92,324" width="88" height="37" name="save" margin-x="1" margin-y="1">保存</button>
+    <text pos="46,47" width="32" height="23" name="text135" margin-x="1" margin-y="1">矿区</text>
+    <text pos="10,47" width="34" height="23" name="region" margin-x="1" margin-y="1">xxxx</text>
+    <window pos="32,156" width="220" height="35" name="window137" margin-x="1" margin-y="1">
+      <radio pos="0,0" width="127" height="21" checked="1" name="c1_yes" id="100" margin-x="1" margin-y="1">中高渗(&gt;5mD)</radio>
+      <radio pos="114,0" width="122" height="21" name="c1_no" id="101" margin-x="1" margin-y="1">低渗(&lt;=5mD)</radio>
+    </window>
+  </root>
+</SOUI>

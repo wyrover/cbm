@@ -35,6 +35,11 @@
     <file name="reg" path="xml\reg.xml"/>
     <file name="reserves_predict" path="xml\reserves_predict.xml"/>
     <file name="sample_manage" path="xml\sample_manage.xml"/>
+    <file name="tech_mode" path="xml\tech_mode.xml"/>
+    <file name="tech_mode_condition_1" path="xml\tech_mode_condition_1.xml"/>
+    <file name="tech_mode_condition_2" path="xml\tech_mode_condition_2.xml"/>
+    <file name="tech_mode_condition_3" path="xml\tech_mode_condition_3.xml"/>
+    <file name="technology" path="xml\technology.xml"/>
     <file name="tws_gas_predict" path="xml\tws_gas_predict.xml"/>
     <file name="tws_gas_predict_q3" path="xml\tws_gas_predict_q3.xml"/>
     <file name="tws_gas_predict_q4" path="xml\tws_gas_predict_q4.xml"/>

@@ -151,7 +151,7 @@ void MineDialog::fillBaseCombox()
 	DaoHelper::GetAllMineBases(bases);
 
 	//清空所有的煤炭基地列表
-	m_BaseCombox->ResetContent();
+	clearBaseCombox();
 	for(int i=0;i<bases.size();i++)
 	{
 		m_BaseCombox->InsertItem(i, bases[i], 0, 0);
@@ -166,7 +166,7 @@ void MineDialog::fillRegionCombox(const CString& base)
 	DaoHelper::GetAllMineRegions(base, regions);
 
 	//清空矿区下拉列表
-	m_RegionCombox->ResetContent();
+	clearRegionCombox();
 	for(int i=0;i<regions.size();i++)
 	{
 		m_RegionCombox->InsertItem(i, regions[i], 0, 0);
@@ -195,4 +195,14 @@ void MineDialog::fillMineDatas()
 	m_TopoGeoCombox->SetCurSel(mine->topo_geo-1);
 	m_HydrGeoCombox->SetCurSel(mine->hydr_geo-1);
 	m_GroundCondCheck->SetCheck(BOOL_2_INT(mine->ground_condition!=0));
+}
+
+void MineDialog::clearBaseCombox()
+{
+	m_BaseCombox->ResetContent();
+}
+
+void MineDialog::clearRegionCombox()
+{
+	m_RegionCombox->ResetContent();
 }

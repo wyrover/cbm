@@ -1,5 +1,7 @@
 #include "stdafx.h"
 #include "SampleManageDialog.h"
+#include "TechModeDialog.h"
+#include "TechnologyDialog.h"
 
 #include <ArxHelper/HelperClass.h>
 #include <ArxDao/DaoHelper.h>
@@ -88,7 +90,7 @@ void SampleManageDialog::OnRegionComboxSelChanged(SOUI::EventArgs *pEvt)
 	m_GroundCondCheck->SetCheck(mine->ground_condition!=0?TRUE:FALSE);
 
 	//填充煤层列表数据
-	fillCoalList();
+	fillCoalCombox();
 }
 
 void SampleManageDialog::OnTopoGeoComboxSelChanged(SOUI::EventArgs *pEvt)
@@ -302,7 +304,23 @@ void SampleManageDialog::OnSaveButtonClick()
 	SMessageBox(GetSafeWnd(),_T("更新成功!"),_T("友情提示"),MB_OK);
 }
 
-void SampleManageDialog::fillCoalList()
+void SampleManageDialog::OnTechModeButtonClick()
+{
+	CString regionName = m_RegionCombox->GetLBText(m_RegionCombox->GetCurSel());
+	TechModeDialog dlg(TRUE);
+	dlg.regionName = regionName; // 传入示范矿区的名称
+	dlg.Run(GetSafeWnd());
+}
+
+void SampleManageDialog::OnTechnologyButtonClick()
+{
+	CString regionName = m_RegionCombox->GetLBText(m_RegionCombox->GetCurSel());
+	TechnologyDialog dlg(TRUE);
+	dlg.regionName = regionName; // 传入示范矿区的名称
+	dlg.Run(GetSafeWnd());
+}
+
+void SampleManageDialog::fillCoalCombox()
 {
 	CString regionName = m_RegionCombox->GetLBText(m_RegionCombox->GetCurSel());
 	MinePtr mine = DaoHelper::GetSampleMine(regionName);
@@ -313,7 +331,7 @@ void SampleManageDialog::fillCoalList()
 	DaoHelper::GetCoalIds(mine->name, coal_ids);
 	DaoHelper::GetCoalNames(mine->name, coal_names);
 
-	m_CoalCombox->ResetContent();
+	clearCoalCombox();
 	for(int i=0;i<coal_names.size();i++)
 	{
 		addCoalToListBox(coal_names[i], coal_ids[i], i);
@@ -324,12 +342,7 @@ void SampleManageDialog::fillCoalList()
 void SampleManageDialog::OnDestroyWindow()
 {
 	//删除所有的附加数据
-	int n = m_CoalCombox->GetCount();
-	for(int i=0;i<n;i++)
-	{
-		ItemData* pData = (ItemData*)m_CoalCombox->GetItemData(i);
-		delete pData;
-	}
+	clearCoalCombox();
 	AcadSouiDialog::OnDestroyWindow();
 }
 
@@ -357,7 +370,7 @@ void SampleManageDialog::initMineDatas()
 
 void SampleManageDialog::initCoalDatas()
 {
-	m_CoalCombox->ResetContent();
+	clearCoalCombox();
 	m_NumberEdit->SetWindowText(_T(""));
 	m_ThickEdit->SetWindowText(_T(""));
 	m_RankCombox->SetCurSel(-1);
@@ -372,4 +385,15 @@ void SampleManageDialog::initCoalDatas()
 	m_StabilityCombox->SetCurSel(-1);
 	m_DipAngleEdit->SetWindowText(_T(""));
 	m_CavingZoneHeightEdit->SetWindowText(_T(""));
+}
+
+void SampleManageDialog::clearCoalCombox()
+{
+	int n = m_CoalCombox->GetCount();
+	for(int i=0;i<n;i++)
+	{
+		ItemData* pData = (ItemData*)m_CoalCombox->GetItemData(i);
+		delete pData;
+	}
+	m_CoalCombox->ResetContent();
 }

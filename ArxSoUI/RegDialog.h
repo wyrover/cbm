@@ -54,4 +54,6 @@ protected:
 private:
 	void fillBaseCombox();
 	void fillRegionCombox(const CString& base);
+	void clearBaseCombox();
+	void clearRegionCombox();
 };

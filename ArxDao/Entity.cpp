@@ -665,6 +665,10 @@ orm::RecordPtr SysInfo::Create()
 
 SysInfo::SysInfo() : orm::Record(SysInfo::Table())
 {
+	last_login_time = _T("");
+	comment = _T("");
+	REG_ATTRIB(last_login_time, last_login_time);
+	REG_ATTRIB(comment, comment);
 	REG_FOREGIN_KEY(cbm_account_id, account, &Account::Create);
 }
 

@@ -486,6 +486,8 @@ public:
 public:
 	SysInfo();
 	orm::RecordPtr account;
+	CString last_login_time;
+	CString comment;
 
 }; // class SysInfo
 

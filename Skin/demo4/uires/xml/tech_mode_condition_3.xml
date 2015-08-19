@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOUI width="104" height="21" translucent="0" alpha="255" resizable="0">
+  <root cache="1" skin="_skin.sys.wnd.bkgnd">
+    <radio pos="0,0" width="60" height="21" checked="1" name="c3_yes" id="120" margin-x="1" margin-y="1">是</radio>
+    <radio pos="76,0" width="60" height="21" name="c3_no" id="121" margin-x="1" margin-y="1">否</radio>
+  </root>
+</SOUI>

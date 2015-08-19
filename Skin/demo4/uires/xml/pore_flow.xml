@@ -8,21 +8,21 @@
     </caption>
     <button pos="123,333" width="143" height="40" name="save" margin-x="1" margin-y="1">保存</button>
     <text pos="22,45" width="162" height="23" name="text4" margin-x="1" margin-y="1">实际孔板流量特性系数K</text>
-    <edit pos="191,43" width="86" height="26" enable="1" name="K" margin-x="1" margin-y="1"/>
+    <edit pos="191,43" width="86" height="26" name="K" margin-x="1" margin-y="1"/>
     <text pos="22,86" width="131" height="23" name="text6" margin-x="1" margin-y="1">瓦斯浓度校正系数b</text>
-    <edit pos="191,84" width="86" height="26" enable="1" name="b" margin-x="1" margin-y="1"/>
+    <edit pos="191,84" width="86" height="26" name="b" margin-x="1" margin-y="1"/>
     <text pos="22,119" width="108" height="23" name="text8" margin-x="1" margin-y="1">气压校正系数δp</text>
-    <edit pos="191,117" width="86" height="26" enable="1" name="delta_p" margin-x="1" margin-y="1"/>
+    <edit pos="191,117" width="86" height="26" name="delta_p" margin-x="1" margin-y="1"/>
     <text pos="22,152" width="110" height="23" name="text10" margin-x="1" margin-y="1">温度校正系数δT</text>
-    <edit pos="193,150" width="86" height="26" enable="1" name="delta_t" margin-x="1" margin-y="1"/>
+    <edit pos="193,150" width="86" height="26" name="delta_t" margin-x="1" margin-y="1"/>
     <text pos="22,193" width="185" height="23" name="text12" margin-x="1" margin-y="1">在孔板前后端所测之压差Δh</text>
-    <edit pos="213,191" width="86" height="26" enable="1" name="dh" margin-x="1" margin-y="1"/>
+    <edit pos="213,191" width="86" height="26" name="dh" margin-x="1" margin-y="1"/>
     <text pos="22,226" width="147" height="23" name="text14" margin-x="1" margin-y="1">混合气体中瓦斯浓度X</text>
-    <edit pos="179,224" width="86" height="26" enable="1" name="X" margin-x="1" margin-y="1"/>
+    <edit pos="179,224" width="86" height="26" name="X" margin-x="1" margin-y="1"/>
     <text pos="22,267" width="150" height="23" name="text22" margin-x="1" margin-y="1">抽放的瓦斯混合量Q混</text>
-    <edit pos="178,265" width="86" height="26" enable="1" name="Q_hun" margin-x="1" margin-y="1"/>
+    <edit pos="178,265" width="86" height="26" name="Q_hun" margin-x="1" margin-y="1"/>
     <text pos="22,300" width="135" height="23" name="text24" margin-x="1" margin-y="1">抽放的瓦斯纯量Q纯</text>
-    <edit pos="178,298" width="86" height="26" enable="1" name="Q_chun" margin-x="1" margin-y="1"/>
+    <edit pos="178,298" width="86" height="26" name="Q_chun" margin-x="1" margin-y="1"/>
     <button pos="278,43" width="95" height="26" name="K_cacl" margin-x="1" margin-y="1">计算</button>
     <button pos="278,81" width="95" height="28" name="b_cacl" margin-x="1" margin-y="1">计算</button>
     <button pos="280,117" width="91" height="26" name="delta_p_cacl" margin-x="1" margin-y="1">计算</button>

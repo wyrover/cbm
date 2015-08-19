@@ -64,4 +64,6 @@ private:
 	void fillBaseCombox();
 	void fillRegionCombox(const CString& base);
 	void fillMineDatas();
+	void clearBaseCombox();
+	void clearRegionCombox();
 };

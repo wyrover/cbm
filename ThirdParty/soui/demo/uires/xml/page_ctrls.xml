@@ -250,15 +250,18 @@
       <hr pos="10,{0,@2,-10" lineStyle="solid" mode="vertical" colorLine="#0000ff" size="2"/>
     </page>
     <page title="radiobox">
-      <group pos="10,10,@200,@90">
+      <!-- <group pos="10,10,@200,@90"> -->
         radio
         <radio pos="10,0" name="radio_1">radio 1</radio>
         <radio pos="[10,{0" name="radio_2">radio 2</radio>
         <radio pos="10,[10" name="radio_3" checked="1">radio 3</radio>
         <radio pos="[10,{0" name="radio_4">radio 4</radio>
-      </group>
+        <radio pos="[10,{0" name="radio_5">radio 4</radio>
+        <radio pos="[10,{0" name="radio_6">radio 4</radio>
+      <!-- </group> -->
       <group pos="[50,{0,@180,@100">
         radio2
+        
         <radio2 pos="10,0" id="10000" name="radio2_1"  skin="skin_webbtn_forward"></radio2>
         <radio2 pos="[20,{0" id="10001" name="radio2_2"  skin="skin_webbtn_forward"></radio2>
         <radio2 pos="[20,{0" id="10002" name="radio2_3" skin="skin_webbtn_forward"></radio2>

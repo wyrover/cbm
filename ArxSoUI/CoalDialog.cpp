@@ -254,12 +254,7 @@ void CoalDialog::OnCoalComboxSelChanged(SOUI::EventArgs *pEvt)
 void CoalDialog::OnDestroyWindow()
 {
 	//删除所有的附加数据
-	int n = m_CoalCombox->GetCount();
-	for(int i=0;i<n;i++)
-	{
-		ItemData* pData = (ItemData*)m_CoalCombox->GetItemData(i);
-		delete pData;
-	}
+	clearCoalList();
 	AcadSouiDialog::OnDestroyWindow();
 }
 
@@ -273,7 +268,7 @@ void CoalDialog::fillCoalList()
 	DaoHelper::GetCoalIds(mine->name, coal_ids);
 	DaoHelper::GetCoalNames(mine->name, coal_names);
 
-	m_CoalCombox->ResetContent();
+	clearCoalList();
 	for(int i=0;i<coal_names.size();i++)
 	{
 		addCoalToListBox(coal_names[i], coal_ids[i], i);
@@ -298,7 +293,7 @@ bool CoalDialog::isCoalExist(const CString& name)
 
 void CoalDialog::initCoalDatas()
 {
-	m_CoalCombox->ResetContent();
+	clearCoalList();
 	m_NumberEdit->SetWindowText(_T(""));
 	m_ThickEdit->SetWindowText(_T(""));
 	m_RankCombox->SetCurSel(-1);
@@ -313,4 +308,15 @@ void CoalDialog::initCoalDatas()
 	m_StabilityCombox->SetCurSel(-1);
 	m_DipAngleEdit->SetWindowText(_T(""));
 	m_CavingZoneHeightEdit->SetWindowText(_T(""));
+}
+
+void CoalDialog::clearCoalList()
+{
+	int n = m_CoalCombox->GetCount();
+	for(int i=0;i<n;i++)
+	{
+		ItemData* pData = (ItemData*)m_CoalCombox->GetItemData(i);
+		delete pData;
+	}
+	m_CoalCombox->ResetContent();
 }

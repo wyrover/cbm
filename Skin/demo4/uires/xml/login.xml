@@ -2,7 +2,7 @@
 <SOUI width="375" height="196" translucent="0" alpha="255" resizable="0">
   <root cache="1" skin="_skin.sys.wnd.bkgnd">
     <text pos="10,48" width="58" height="23" name="text5" margin-x="1" margin-y="1">用户名</text>
-    <edit pos="76,45" width="285" height="27" enable="1" name="username" margin-x="1" margin-y="1"/>
+    <edit pos="76,45" width="285" height="27" name="username" margin-x="1" margin-y="1"/>
     <text pos="10,93" width="58" height="23" name="text7" margin-x="1" margin-y="1">密  码</text>
     <edit pos="76,91" width="285" height="27" name="password" margin-x="1" margin-y="1"/>
     <button pos="66,141" width="117" height="39" name="reg" margin-x="1" margin-y="1">注册</button>

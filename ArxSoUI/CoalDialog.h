@@ -82,4 +82,5 @@ private:
 	void addCoalToListBox(const CString& name, int id, int i);
 	bool isCoalExist(const CString& name);
 	void initCoalDatas();
+	void clearCoalList();
 };

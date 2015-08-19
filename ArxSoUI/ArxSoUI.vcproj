@@ -522,6 +522,14 @@
 					>
 				</File>
 				<File
+					RelativePath=".\TechModeDialog.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\TechnologyDialog.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\TwsGasPredictDialog.cpp"
 					>
 				</File>
@@ -668,6 +676,14 @@
 				</File>
 				<File
 					RelativePath=".\SouiDialog.h"
+					>
+				</File>
+				<File
+					RelativePath=".\TechModeDialog.h"
+					>
+				</File>
+				<File
+					RelativePath=".\TechnologyDialog.h"
 					>
 				</File>
 				<File

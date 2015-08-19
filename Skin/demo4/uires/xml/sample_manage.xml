@@ -28,7 +28,7 @@
           <item text="复杂"/>
         </items>
       </combobox>
-      <check pos="0,37" width="195" height="22" enable="1" name="ground_cond" margin-x="1" margin-y="1">是否具备地面井开发条件</check>
+      <check pos="0,37" width="195" height="22" name="ground_cond" margin-x="1" margin-y="1">是否具备地面井开发条件</check>
       <combobox pos="331,0" width="117" height="24" dropDown="1" curSel="0" name="hydr_geo" margin-x="1" margin-y="1" ncSkin="_skin.sys.border">
         <liststyle itemHeight="30" colorText="#000000" colorSelText="#FFFFFF" colorItemBkgnd="#FFFFFF" colorItemSelBkgnd="#000088"/>
         <items>
@@ -41,17 +41,17 @@
     </window>
     <window pos="6,193" width="540" height="295" name="window87" margin-x="1" margin-y="1">
       <text pos="0,46" width="62" height="23" name="text29" margin-x="1" margin-y="1">煤层编号</text>
-      <edit pos="76,44" width="70" height="26" enable="1" name="number" margin-x="1" margin-y="1"/>
+      <edit pos="76,44" width="70" height="26" name="number" margin-x="1" margin-y="1"/>
       <text pos="0,91" width="62" height="23" name="text31" margin-x="1" margin-y="1">储层压力</text>
       <button pos="324,0" width="76" height="27" name="del" margin-x="1" margin-y="1">删除煤层</button>
       <text pos="280,91" width="47" height="23" name="text35" margin-x="1" margin-y="1">渗透率</text>
       <text pos="402,91" width="23" height="23" name="text36" margin-x="1" margin-y="1">f值</text>
-      <edit pos="433,88" width="78" height="26" enable="1" name="f_value" margin-x="1" margin-y="1"/>
+      <edit pos="433,88" width="78" height="26" name="f_value" margin-x="1" margin-y="1"/>
       <text pos="269,135" width="92" height="23" name="text38" margin-x="1" margin-y="1">构造复杂程度</text>
       <text pos="0,135" width="107" height="23" name="text40" margin-x="1" margin-y="1">煤层气储量丰度</text>
       <text pos="321,175" width="77" height="23" name="text43" margin-x="1" margin-y="1">煤层稳定性</text>
       <text pos="153,46" width="62" height="23" name="text50" margin-x="1" margin-y="1">煤层厚度</text>
-      <edit pos="223,44" width="65" height="26" enable="1" name="thick" margin-x="1" margin-y="1"/>
+      <edit pos="223,44" width="65" height="26" name="thick" margin-x="1" margin-y="1"/>
       <text pos="309,46" width="32" height="23" name="text52" margin-x="1" margin-y="1">煤阶</text>
       <combobox pos="347,45" width="155" height="24" dropDown="1" curSel="0" name="rank" margin-x="1" margin-y="1" ncSkin="_skin.sys.border">
         <liststyle itemHeight="30" colorText="#000000" colorSelText="#FFFFFF" colorItemBkgnd="#FFFFFF" colorItemSelBkgnd="#000088"/>
@@ -61,10 +61,10 @@
           <item text="无烟煤"/>
         </items>
       </combobox>
-      <edit pos="76,91" width="70" height="26" enable="1" name="pressure" margin-x="1" margin-y="1"/>
+      <edit pos="76,91" width="70" height="26" name="pressure" margin-x="1" margin-y="1"/>
       <text pos="152,91" width="47" height="23" name="text56" margin-x="1" margin-y="1">气含量</text>
-      <edit pos="210,88" width="65" height="26" enable="1" name="gas_content" margin-x="1" margin-y="1"/>
-      <edit pos="331,88" width="65" height="26" enable="1" name="gas_penetration" margin-x="1" margin-y="1"/>
+      <edit pos="210,88" width="65" height="26" name="gas_content" margin-x="1" margin-y="1"/>
+      <edit pos="331,88" width="65" height="26" name="gas_penetration" margin-x="1" margin-y="1"/>
       <combobox pos="363,134" width="148" height="24" dropDown="1" curSel="0" name="const_complexity" margin-x="1" margin-y="1" ncSkin="_skin.sys.border">
         <liststyle itemHeight="30" colorText="#000000" colorSelText="#FFFFFF" colorItemBkgnd="#FFFFFF" colorItemSelBkgnd="#000088"/>
         <items>
@@ -76,11 +76,11 @@
       </combobox>
       <text pos="0,175" width="77" height="23" name="text60" margin-x="1" margin-y="1">可采性指数</text>
       <text pos="176,175" width="62" height="23" name="text62" margin-x="1" margin-y="1">变异系数</text>
-      <edit pos="244,172" width="68" height="26" enable="1" name="var_coeff" margin-x="1" margin-y="1"/>
+      <edit pos="244,172" width="68" height="26" name="var_coeff" margin-x="1" margin-y="1"/>
       <text pos="0,216" width="62" height="23" name="text64" margin-x="1" margin-y="1">煤层倾角</text>
-      <edit pos="76,215" width="65" height="26" enable="1" name="dip_angle" margin-x="1" margin-y="1"/>
+      <edit pos="76,215" width="65" height="26" name="dip_angle" margin-x="1" margin-y="1"/>
       <text pos="152,216" width="77" height="23" name="text66" margin-x="1" margin-y="1">冒落带高度</text>
-      <edit pos="237,215" width="65" height="26" enable="0" name="caving_zone_height" margin-x="1" margin-y="1"/>
+      <edit pos="237,215" width="65" height="26" readOnly="1" name="caving_zone_height" margin-x="1" margin-y="1"/>
       <button pos="223,0" width="76" height="27" name="add_coal" margin-x="1" margin-y="1">增加煤层</button>
       <combobox pos="112,135" width="127" height="24" dropDown="1" curSel="0" name="res_abundance" margin-x="1" margin-y="1" ncSkin="_skin.sys.border">
         <liststyle itemHeight="30" colorText="#000000" colorSelText="#FFFFFF" colorItemBkgnd="#FFFFFF" colorItemSelBkgnd="#000088"/>
@@ -91,10 +91,10 @@
         </items>
       </combobox>
       <text pos="0,257" width="122" height="23" name="text71" margin-x="1" margin-y="1">与上覆煤层层间距</text>
-      <edit pos="124,255" width="78" height="26" enable="1" name="layer_gap" margin-x="1" margin-y="1"/>
+      <edit pos="124,255" width="78" height="26" name="layer_gap" margin-x="1" margin-y="1"/>
       <text pos="214,255" width="92" height="23" name="text73" margin-x="1" margin-y="1">采动影响倍数</text>
-      <edit pos="311,253" width="105" height="26" enable="1" name="influence_factor" margin-x="1" margin-y="1"/>
-      <edit pos="85,172" width="87" height="26" enable="1" name="mine_index" margin-x="1" margin-y="1"/>
+      <edit pos="311,253" width="105" height="26" name="influence_factor" margin-x="1" margin-y="1"/>
+      <edit pos="85,172" width="87" height="26" name="mine_index" margin-x="1" margin-y="1"/>
       <combobox pos="402,174" width="109" height="24" dropDown="1" curSel="0" name="stability" margin-x="1" margin-y="1" ncSkin="_skin.sys.border">
         <liststyle itemHeight="30" colorText="#000000" colorSelText="#FFFFFF" colorItemBkgnd="#FFFFFF" colorItemSelBkgnd="#000088"/>
         <items>
@@ -112,9 +112,10 @@
         </items>
       </combobox>
     </window>
-    <text pos="230,522" width="47" height="23" name="text88" margin-x="1" margin-y="1">待设计</text>
     <hr pos="6,65" width="540" height="1" lineStyle="solid" mode="horizontal" name="hr89" margin-x="1" margin-y="1"/>
     <text pos="6,168" width="84" height="23" name="text90" margin-x="1" margin-y="1">&gt;&gt;煤层参数</text>
     <button pos="408,36" width="80" height="28" name="save" margin-x="1" margin-y="1">保存</button>
+    <button pos="98,516" width="163" height="38" name="tech_mode" margin-x="1" margin-y="1">抽采技术模式参数</button>
+    <button pos="307,516" width="163" height="38" name="technology" margin-x="1" margin-y="1">推荐抽采技术参数</button>
   </root>
 </SOUI>

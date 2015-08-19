@@ -42,5 +42,23 @@ void DecisionDialog::OnGraphButtonClick()
 
 void DecisionDialog::OnTechnologyButtonClick()
 {
-	SMessageBox(GetSafeWnd(),_T("辅助决策还有疑问,参见资料的批注"),_T("友情提示"),MB_OK);
+	MinePtr mine = DaoHelper::GetOnlineMine();
+	if(mine == 0) return;
+
+	StringArray coal_names;
+	IntArray coal_ids;
+	DaoHelper::GetCoalIds(mine->name, coal_ids);
+	DaoHelper::GetCoalNames(mine->name, coal_names);
+
+	CString msg;
+	msg.Format(_T("矿井:%s,所属矿区:%s\\n"), mine->name, mine->region->get(FIELD(name)));
+	msg.AppendFormat(_T("煤层个数:%d\\n"), coal_names.size());
+	msg.AppendFormat(_T("煤层编号(或名称):"));
+	for(int i=0;i<coal_names.size();i++)
+	{
+		msg.AppendFormat(_T("  %s"), coal_names[i]);
+	}
+	msg.AppendFormat(_T("\\n"));
+	msg.AppendFormat(_T("如何决策尚不明确???"));
+	SMessageBox(GetSafeWnd(),msg,_T("友情提示"),MB_OK);
 }

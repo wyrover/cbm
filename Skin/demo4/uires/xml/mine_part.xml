@@ -11,7 +11,7 @@
         <item text="复杂"/>
       </items>
     </combobox>
-    <check pos="0,37" width="195" height="22" enable="1" name="ground_cond" margin-x="1" margin-y="1">是否具备地面井开发条件</check>
+    <check pos="0,37" width="195" height="22" name="ground_cond" margin-x="1" margin-y="1">是否具备地面井开发条件</check>
     <combobox pos="331,0" width="117" height="24" dropDown="1" curSel="0" name="hydr_geo" margin-x="1" margin-y="1" ncSkin="_skin.sys.border">
       <liststyle itemHeight="30" colorText="#000000" colorSelText="#FFFFFF" colorItemBkgnd="#FFFFFF" colorItemSelBkgnd="#000088"/>
       <items>

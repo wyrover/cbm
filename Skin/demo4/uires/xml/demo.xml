@@ -2,7 +2,7 @@
 <SOUI width="1183" height="673" translucent="0" alpha="255" resizable="0">
   <root cache="1" skin="_skin.sys.wnd.bkgnd">
     <text pos="81,103" width="52" height="21" name="text7" margin-x="1" margin-y="1">用户名</text>
-    <edit pos="139,100" width="208" height="27" enable="1" name="edit_user" test="中文测试" margin-x="1" margin-y="1"/>
+    <edit pos="139,100" width="208" height="27" name="edit_user" test="中文测试" margin-x="1" margin-y="1"/>
     <text pos="81,145" width="52" height="21" name="text10" margin-x="1" margin-y="1">密码</text>
     <edit pos="139,145" width="208" height="27" name="edit11" margin-x="1" margin-y="1"/>
     <button pos="58,182" width="127" height="55" name="button12" margin-x="1" margin-y="1">'有引号的汉字'</button>
@@ -49,7 +49,7 @@
         <check pos="4,86" width="162" height="33" name="check72" margin-x="1" margin-y="1">又是一个多选</check>
         <link pos="4,0" width="142" height="28" href="http://www.baidu.com" class="cls_btn_weblink" name="link73" margin-x="1" margin-y="1">百度首页超链接</link>
         <check pos="2,57" width="110" height="20" name="check74" margin-x="1" margin-y="1">多选按钮</check>
-        <radio pos="0,32" width="119" height="20" name="radio75" margin-x="1" margin-y="1">单选按钮</radio>
+        <radio pos="0,32" width="149" height="20" name="radio75" margin-x="1" margin-y="1">单选按钮</radio>
       </page>
       <page title="体检"/>
       <page title="更新"/>
@@ -70,7 +70,7 @@
         <check pos="4,86" width="162" height="33" name="check72" margin-x="1" margin-y="1">又是一个多选</check>
         <link pos="4,0" width="142" height="28" href="http://www.baidu.com" class="cls_btn_weblink" name="link73" margin-x="1" margin-y="1">百度首页超链接</link>
         <check pos="2,57" width="110" height="20" name="check74" margin-x="1" margin-y="1">多选按钮</check>
-        <radio pos="0,32" width="119" height="20" name="radio75" margin-x="1" margin-y="1">单选按钮</radio>
+        <radio pos="0,32" width="149" height="20" name="radio75" margin-x="1" margin-y="1">单选按钮</radio>
       </page>
       <page title="颜色">
         <combobox pos="4,134" width="120" height="24" dropDown="1" curSel="0" name="combobox71" margin-x="1" margin-y="1" ncSkin="_skin.sys.border">
@@ -86,7 +86,7 @@
         <check pos="4,86" width="162" height="33" name="check72" margin-x="1" margin-y="1">又是一个多选</check>
         <link pos="4,0" width="142" height="28" href="http://www.baidu.com" class="cls_btn_weblink" name="link73" margin-x="1" margin-y="1">百度首页超链接</link>
         <check pos="2,57" width="110" height="20" name="check74" margin-x="1" margin-y="1">多选按钮</check>
-        <radio pos="0,32" width="119" height="20" name="radio75" margin-x="1" margin-y="1">单选按钮</radio>
+        <radio pos="0,32" width="149" height="20" name="radio75" margin-x="1" margin-y="1">单选按钮</radio>
       </page>
       <page title="帮助">
         <combobox pos="4,134" width="120" height="24" dropDown="1" curSel="0" name="combobox71" margin-x="1" margin-y="1" ncSkin="_skin.sys.border">
@@ -102,7 +102,7 @@
         <check pos="4,86" width="162" height="33" name="check72" margin-x="1" margin-y="1">又是一个多选</check>
         <link pos="4,0" width="142" height="28" href="http://www.baidu.com" class="cls_btn_weblink" name="link73" margin-x="1" margin-y="1">百度首页超链接</link>
         <check pos="2,57" width="110" height="20" name="check74" margin-x="1" margin-y="1">多选按钮</check>
-        <radio pos="0,32" width="119" height="20" name="radio75" margin-x="1" margin-y="1">单选按钮</radio>
+        <radio pos="0,32" width="149" height="20" name="radio75" margin-x="1" margin-y="1">单选按钮</radio>
       </page>
       <page title="随便写点啥"/>
     </tabctrl>
@@ -130,7 +130,7 @@
   <check pos="4,86" width="162" height="33" name="check72" margin-x="1" margin-y="1">又是一个多选</check>
   <link pos="4,0" width="142" height="28" href="http://www.baidu.com" class="cls_btn_weblink" name="link73" margin-x="1" margin-y="1">百度首页超链接</link>
   <check pos="2,57" width="110" height="20" name="check74" margin-x="1" margin-y="1">多选按钮</check>
-  <radio pos="0,32" width="119" height="20" name="radio75" margin-x="1" margin-y="1">单选按钮</radio>
+  <radio pos="0,32" width="149" height="20" name="radio75" margin-x="1" margin-y="1">单选按钮</radio>
 </group>
     <window pos="888,77" width="272" height="213" name="window65" margin-x="1" margin-y="1">
       <combobox pos="4,134" width="120" height="24" dropDown="1" curSel="0" name="combobox71" margin-x="1" margin-y="1" ncSkin="_skin.sys.border">
@@ -146,7 +146,7 @@
       <check pos="4,86" width="162" height="33" name="check72" margin-x="1" margin-y="1">又是一个多选</check>
       <link pos="4,0" width="142" height="28" href="http://www.baidu.com" class="cls_btn_weblink" name="link73" margin-x="1" margin-y="1">百度首页超链接</link>
       <check pos="2,57" width="110" height="20" name="check74" margin-x="1" margin-y="1">多选按钮</check>
-      <radio pos="0,32" width="119" height="20" name="radio75" margin-x="1" margin-y="1">单选按钮</radio>
+      <radio pos="0,32" width="149" height="20" name="radio75" margin-x="1" margin-y="1">单选按钮</radio>
     </window>
     <caption pos="33,24" width="1132" height="40" name="caption70">
       <text pos="0,8">测试程序v1.0</text>

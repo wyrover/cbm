@@ -8,11 +8,11 @@
     </caption>
     <button pos="147,151" width="143" height="40" name="save" margin-x="1" margin-y="1">保存</button>
     <text pos="16,79" width="116" height="23" name="text4" margin-x="1" margin-y="1">相对瓦斯涌出量q</text>
-    <edit pos="147,77" width="55" height="26" enable="1" name="ws_qr" margin-x="1" margin-y="1"/>
+    <edit pos="147,77" width="55" height="26" name="ws_qr" margin-x="1" margin-y="1"/>
     <text pos="15,112" width="88" height="23" name="text6" margin-x="1" margin-y="1">平均日产量A</text>
-    <edit pos="146,110" width="55" height="26" enable="1" name="ws_A" margin-x="1" margin-y="1"/>
+    <edit pos="146,110" width="55" height="26" name="ws_A" margin-x="1" margin-y="1"/>
     <text pos="247,87" width="116" height="23" name="text24" margin-x="1" margin-y="1">相对瓦斯涌出量q</text>
-    <edit pos="371,85" width="62" height="26" enable="1" name="tws_qr" margin-x="1" margin-y="1"/>
+    <edit pos="371,85" width="62" height="26" name="tws_qr" margin-x="1" margin-y="1"/>
     <text pos="16,46" width="77" height="23" name="text41" margin-x="1" margin-y="1">工作面列表</text>
     <combobox pos="96,45" width="111" height="24" dropDown="1" curSel="0" name="ws" margin-x="1" margin-y="1" ncSkin="_skin.sys.border">
       <liststyle itemHeight="30" colorText="#000000" colorSelText="#FFFFFF" colorItemBkgnd="#FFFFFF" colorItemSelBkgnd="#000088"/>

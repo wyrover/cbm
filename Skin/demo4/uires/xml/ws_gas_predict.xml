@@ -15,7 +15,7 @@
       <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
     </caption>
     <button pos="132,228" width="129" height="48" name="save" margin-x="1" margin-y="1">保存</button>
-    <radio pos="8,56" width="150" height="21" name="radio68" margin-x="1" margin-y="1">薄及中厚煤层不分层开采</radio>
-    <radio pos="188,56" width="119" height="20" name="radio69" margin-x="1" margin-y="1">厚煤层分层开采</radio>
+    <radio pos="8,56" width="180" height="21" name="radio68" margin-x="1" margin-y="1">薄及中厚煤层不分层开采</radio>
+    <radio pos="188,56" width="149" height="20" name="radio69" margin-x="1" margin-y="1">厚煤层分层开采</radio>
   </root>
 </SOUI>
