@@ -1,17 +1,21 @@
 #pragma once
 #include "AcadSouiDialog.h"
 
-class ReservesPredictDialog : public AcadSouiDialog
+class MineGasReservesPredict1Dialog : public AcadSouiDialog
 {
 
 	/** 构造和析构函数 */
 public:
-	ReservesPredictDialog(BOOL bModal = FALSE);
-	~ReservesPredictDialog(void);
+	MineGasReservesPredict1Dialog(BOOL bModal = FALSE);
+	~MineGasReservesPredict1Dialog(void);
 
 	/** 控件消息处理 */
 protected:
 	void OnSaveButtonClick();
+	void OnW1CaclButtonClick();
+	void OnW2CaclButtonClick();
+	void OnW3CaclButtonClick();
+	void OnGasCaclButtonClick();
 
 	/** 菜单消息 */
 protected:
@@ -26,11 +30,15 @@ protected:
 	//控件消息映射表
 	EVENT_MAP_BEGIN()
 		EVENT_NAME_COMMAND(_T("save"), OnSaveButtonClick)
+		EVENT_NAME_COMMAND(_T("w1_cacl"), OnW1CaclButtonClick)
+		EVENT_NAME_COMMAND(_T("w2_cacl"), OnW2CaclButtonClick)
+		EVENT_NAME_COMMAND(_T("w3_cacl"), OnW3CaclButtonClick)
+		EVENT_NAME_COMMAND(_T("gas_cacl"), OnGasCaclButtonClick)
 		CHAIN_EVENT_MAP(AcadSouiDialog)
 	EVENT_MAP_END()
 	
 //HOST消息(WINDOWS消息)映射表
-	BEGIN_MSG_MAP_EX(ReservesPredictDialog)
+	BEGIN_MSG_MAP_EX(MineGasReservesPredict1Dialog)
 		MSG_WM_INITDIALOG(OnInitDialog)
 		MSG_WM_COMMAND(OnCommand)
 		CHAIN_MSG_MAP(AcadSouiDialog)
@@ -42,12 +50,8 @@ protected:
 	SEdit* m_ReserveW1Edit;
 	SEdit* m_ReserveW2Edit;
 	SEdit* m_ReserveW3Edit;
-	SEdit* m_PumpWcEdit;
-	SEdit* m_PumpKdEdit;
-	SEdit* m_PumpK1Edit;
-	SEdit* m_PumpK2Edit;
-	SEdit* m_PumpK4Edit;
-	SEdit* m_PumpK3Edit;
-	SEdit* m_PumpMyEdit;
-	SEdit* m_PumpMcEdit;
+	SEdit* m_RockGasK2Edit;
+
+private:
+	void fillMineDatas();
 };

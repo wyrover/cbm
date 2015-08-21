@@ -7,6 +7,10 @@
     <file name="about" path="xml\about.xml"/>
     <file name="adj_layer" path="xml\adj_layer.xml"/>
     <file name="coal" path="xml\coal.xml"/>
+    <file name="coal_layer_method" path="xml\coal_layer_method.xml"/>
+    <file name="coal_layer_more" path="xml\coal_layer_more.xml"/>
+    <file name="coal_layer_one" path="xml\coal_layer_one.xml"/>
+    <file name="coal_method" path="xml\coal_method.xml"/>
     <file name="coal_part" path="xml\coal_part.xml"/>
     <file name="decision" path="xml\decision.xml"/>
     <file name="demo" path="xml\demo.xml"/>
@@ -20,11 +24,14 @@
     <file name="key_param" path="xml\key_param.xml"/>
     <file name="login" path="xml\login.xml"/>
     <file name="mine" path="xml\mine.xml"/>
-    <file name="mine_gas_content1" path="xml\mine_gas_content1.xml"/>
-    <file name="mine_gas_content2" path="xml\mine_gas_content2.xml"/>
-    <file name="mine_gas_predict" path="xml\mine_gas_predict.xml"/>
-    <file name="mine_gas_predict_input" path="xml\mine_gas_predict_input.xml"/>
+    <file name="mine_gas_flow_predict" path="xml\mine_gas_flow_predict.xml"/>
+    <file name="mine_gas_flow_predict_design" path="xml\mine_gas_flow_predict_design.xml"/>
+    <file name="mine_gas_reserves_predict" path="xml\mine_gas_reserves_predict.xml"/>
+    <file name="mine_gas_reserves_predict_1" path="xml\mine_gas_reserves_predict_1.xml"/>
+    <file name="mine_gas_reserves_predict_2" path="xml\mine_gas_reserves_predict_2.xml"/>
+    <file name="mine_gas_reserves_predict_input" path="xml\mine_gas_reserves_predict_input.xml"/>
     <file name="mine_part" path="xml\mine_part.xml"/>
+    <file name="name" path="xml\name.xml"/>
     <file name="policy" path="xml\policy.xml"/>
     <file name="pore_flow" path="xml\pore_flow.xml"/>
     <file name="pore_flow_K" path="xml\pore_flow_K.xml"/>
@@ -40,12 +47,10 @@
     <file name="tech_mode_condition_2" path="xml\tech_mode_condition_2.xml"/>
     <file name="tech_mode_condition_3" path="xml\tech_mode_condition_3.xml"/>
     <file name="technology" path="xml\technology.xml"/>
-    <file name="tws_gas_predict" path="xml\tws_gas_predict.xml"/>
-    <file name="tws_gas_predict_q3" path="xml\tws_gas_predict_q3.xml"/>
-    <file name="tws_gas_predict_q4" path="xml\tws_gas_predict_q4.xml"/>
-    <file name="ws_gas_predict" path="xml\ws_gas_predict.xml"/>
-    <file name="ws_gas_predict_adj" path="xml\ws_gas_predict_adj.xml"/>
-    <file name="ws_gas_predict_work" path="xml\ws_gas_predict_work.xml"/>
+    <file name="tws_gas_flow_predict" path="xml\tws_gas_flow_predict.xml"/>
+    <file name="ws_gas_flow_predict" path="xml\ws_gas_flow_predict.xml"/>
+    <file name="ws_gas_flow_predict_adj" path="xml\ws_gas_flow_predict_adj.xml"/>
+    <file name="ws_gas_flow_predict_work" path="xml\ws_gas_flow_predict_work.xml"/>
   </layout>
   <icon>
     <file name="ICON_DUI_LOGO_32" path="image\icon\dui_logo_32.ico"/>

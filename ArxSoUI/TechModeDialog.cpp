@@ -1,17 +1,12 @@
 #include "stdafx.h"
 #include "TechModeDialog.h"
+#include "SComboxHelper.h"
 
 #include <ArxHelper/HelperClass.h>
 #include <ArxDao/DaoHelper.h>
 #include <ArxDao/Entity.h>
 using namespace orm;
 using namespace cbm;
-
-struct ItemData
-{
-	int id;
-	int nItem;
-};
 
 TechModeDialog::TechModeDialog(BOOL bModal) : AcadSouiDialog(_T("layout:tech_mode"), bModal)
 {
@@ -63,9 +58,9 @@ void TechModeDialog::OnTechModeComboxSelChanged(SOUI::EventArgs *pEvt)
 
 	// do something
 	//根据技术模式的id查找相关参数
-	ItemData* pData = (ItemData*)m_TechModeCombox->GetItemData(nCurSel);
-	if(pData == 0) return;
-	TechModePtr tech_mode = FIND_BY_ID(TechMode, pData->id);
+	int tech_mode_id = SComboBoxHelper::GetItemID(m_TechModeCombox, nCurSel);
+	if(tech_mode_id == 0) return;
+	TechModePtr tech_mode = FIND_BY_ID(TechMode, tech_mode_id);
 	if(tech_mode == 0) return;
 
 	m_C1YesRadio->SetCheck(BOOL_2_INT(tech_mode->c1 != 0));
@@ -79,9 +74,9 @@ void TechModeDialog::OnTechModeComboxSelChanged(SOUI::EventArgs *pEvt)
 void TechModeDialog::OnSaveButtonClick()
 {
 	//根据技术模式的id查找相关参数
-	ItemData* pData = (ItemData*)m_TechModeCombox->GetItemData(m_TechModeCombox->GetCurSel());
-	if(pData == 0) return;
-	TechModePtr tech_mode = FIND_BY_ID(TechMode, pData->id);
+	int tech_mode_id = SComboBoxHelper::GetCurSelItemID(m_TechModeCombox);
+	if(tech_mode_id == 0) return;
+	TechModePtr tech_mode = FIND_BY_ID(TechMode, tech_mode_id);
 	if(tech_mode == 0) return;
 
 	tech_mode->set(FIELD(c1), 1000);
@@ -118,7 +113,7 @@ void TechModeDialog::OnRadioGroup3Switch(int nID)
 void TechModeDialog::OnDestroyWindow()
 {
 	//删除所有的附加数据并清空
-	clearTechModeCombox();
+	SComboBoxHelper::Clear(m_TechModeCombox);
 	AcadSouiDialog::OnDestroyWindow();
 }
 
@@ -130,27 +125,11 @@ void TechModeDialog::fillTechModeCombox()
 	RecordPtrListPtr lists = FIND_MANY(TechMode, FKEY(Region), region->getStringID());
 	if(lists == 0) return;
 
-	clearTechModeCombox();
+	SComboBoxHelper::Clear(m_TechModeCombox);
 	for(int i=0;i<lists->size();i++)
 	{
-		RecordPtr tech_mode = lists->at(i);
-		m_TechModeCombox->InsertItem(i, tech_mode->get(FIELD(name)), 0, 0);
-		//附加数据
-		ItemData* pData = new ItemData;
-		pData->id = tech_mode->getID();
-		pData->nItem = i;
-		m_TechModeCombox->SetItemData(i, (LPARAM)pData);	
+		TechModePtr tech_mode = DYNAMIC_POINTER_CAST(TechMode, lists->at(i));
+		SComboBoxHelper::Insert(m_TechModeCombox, tech_mode->name, tech_mode->getID(), i);
 	}
-	m_TechModeCombox->SetCurSel(0);
-}
-
-void TechModeDialog::clearTechModeCombox()
-{
-	int n = m_TechModeCombox->GetCount();
-	for(int i=0;i<n;i++)
-	{
-		ItemData* pData = (ItemData*)m_TechModeCombox->GetItemData(i);
-		delete pData;
-	}
-	m_TechModeCombox->ResetContent();
+	SComboBoxHelper::Select(m_TechModeCombox, 0);
 }

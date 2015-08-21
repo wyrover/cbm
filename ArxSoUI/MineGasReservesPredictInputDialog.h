@@ -1,16 +1,17 @@
 #pragma once
 #include "AcadSouiDialog.h"
 
-class WsGasPredictAdjDialog : public AcadSouiDialog
+class MineGasReservesPredictInputDialog : public AcadSouiDialog
 {
 
 	/** 构造和析构函数 */
 public:
-	WsGasPredictAdjDialog(BOOL bModal = FALSE);
-	~WsGasPredictAdjDialog(void);
+	MineGasReservesPredictInputDialog(BOOL bModal = FALSE);
+	~MineGasReservesPredictInputDialog(void);
 
 	/** 控件消息处理 */
 protected:
+	void OnCoalComboxSelChanged(SOUI::EventArgs *pEvt);
 	void OnSaveButtonClick();
 
 	/** 菜单消息 */
@@ -25,12 +26,13 @@ protected:
 
 	//控件消息映射表
 	EVENT_MAP_BEGIN()
+		EVENT_NAME_HANDLER(_T("coal"), EVT_CB_SELCHANGE, OnCoalComboxSelChanged)
 		EVENT_NAME_COMMAND(_T("save"), OnSaveButtonClick)
 		CHAIN_EVENT_MAP(AcadSouiDialog)
 	EVENT_MAP_END()
 	
 //HOST消息(WINDOWS消息)映射表
-	BEGIN_MSG_MAP_EX(WsGasPredictAdjDialog)
+	BEGIN_MSG_MAP_EX(MineGasReservesPredictInputDialog)
 		MSG_WM_INITDIALOG(OnInitDialog)
 		MSG_WM_COMMAND(OnCommand)
 		CHAIN_MSG_MAP(AcadSouiDialog)
@@ -38,10 +40,7 @@ protected:
 	END_MSG_MAP()
 
 protected:
-	SEdit* m_GasW0Edit;
-	SEdit* m_ThickEdit;
-	SEdit* m_GasEtaEdit;
-	SEdit* m_GasWc2Edit;
-	SEdit* m_HwEdit;
-	SEdit* m_Qr2Edit;
+	SEdit* m_ResA1Edit;
+	SEdit* m_GasX1Edit;
+	SComboBox* m_CoalCombox;
 };

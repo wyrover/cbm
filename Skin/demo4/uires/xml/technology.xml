@@ -25,7 +25,7 @@
     <button pos="391,302" width="56" height="30" name="video_select" margin-x="1" margin-y="1">选择</button>
     <window pos="0,0" width="529" height="341" name="window146" margin-x="1" margin-y="1" enable="0" visible="0"/>
     <caption pos="15,0" width="513" height="40" name="caption147">
-      <text pos="0,8">测试程序v1.0</text>
+      <text pos="0,8" name="wnd_title">测试程序v1.0</text>
       <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
     </caption>
     <text pos="27,38" width="160" height="23" name="region" margin-x="1" margin-y="1">&gt;&gt;xx矿区推荐抽采技术</text>

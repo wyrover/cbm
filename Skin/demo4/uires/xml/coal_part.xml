@@ -72,5 +72,6 @@
         <item text=""/>
       </items>
     </combobox>
+    <check pos="414,2" width="104" height="22" name="minable" margin-x="1" margin-y="1">可采煤层</check>
   </root>
 </SOUI>

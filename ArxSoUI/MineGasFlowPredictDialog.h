@@ -1,13 +1,13 @@
 #pragma once
 #include "AcadSouiDialog.h"
 
-class MineGasPredictDialog : public AcadSouiDialog
+class MineGasFlowPredictDialog : public AcadSouiDialog
 {
 
 	/** 构造和析构函数 */
 public:
-	MineGasPredictDialog(BOOL bModal = FALSE);
-	~MineGasPredictDialog(void);
+	MineGasFlowPredictDialog(BOOL bModal = FALSE);
+	~MineGasFlowPredictDialog(void);
 
 	/** 控件消息处理 */
 protected:
@@ -15,7 +15,13 @@ protected:
 	void OnSaveButtonClick();
 	void OnK2HelpButtonClick();
 	void OnWorkAreaComboxSelChanged(SOUI::EventArgs *pEvt);
-	void OnInputButtonClick();
+	void OnWorkAreaCaclButtonClick();
+	void OnDelWorkAreaButtonClick();
+	void OnAddWorkAreaButtonClick();
+	void OnCaclButtonClick();
+	void OnCoalComboxSelChanged(SOUI::EventArgs *pEvt);
+	void OnAssignButtonClick();
+	void OnDesignWorkAreaButtonClick();
 
 	/** 菜单消息 */
 protected:
@@ -33,12 +39,18 @@ protected:
 		EVENT_NAME_COMMAND(_T("save"), OnSaveButtonClick)
 		EVENT_NAME_COMMAND(_T("k2_help"), OnK2HelpButtonClick)
 		EVENT_NAME_HANDLER(_T("work_area"), EVT_CB_SELCHANGE, OnWorkAreaComboxSelChanged)
-		EVENT_NAME_COMMAND(_T("input"), OnInputButtonClick)
+		EVENT_NAME_COMMAND(_T("work_area_cacl"), OnWorkAreaCaclButtonClick)
+		EVENT_NAME_COMMAND(_T("del_work_area"), OnDelWorkAreaButtonClick)
+		EVENT_NAME_COMMAND(_T("add_work_area"), OnAddWorkAreaButtonClick)
+		EVENT_NAME_COMMAND(_T("cacl"), OnCaclButtonClick)
+		EVENT_NAME_HANDLER(_T("coal"), EVT_CB_SELCHANGE, OnCoalComboxSelChanged)
+		EVENT_NAME_COMMAND(_T("assign"), OnAssignButtonClick)
+		EVENT_NAME_COMMAND(_T("design_work_area"), OnDesignWorkAreaButtonClick)
 		CHAIN_EVENT_MAP(AcadSouiDialog)
 	EVENT_MAP_END()
 	
 //HOST消息(WINDOWS消息)映射表
-	BEGIN_MSG_MAP_EX(MineGasPredictDialog)
+	BEGIN_MSG_MAP_EX(MineGasFlowPredictDialog)
 		MSG_WM_INITDIALOG(OnInitDialog)
 		MSG_WM_COMMAND(OnCommand)
 		CHAIN_MSG_MAP(AcadSouiDialog)
@@ -52,4 +64,16 @@ protected:
 	SEdit* m_K2GasEdit;
 	SComboBox* m_WorkAreaCombox;
 	SEdit* m_WorkAreaQrEdit;
+	SComboBox* m_CoalCombox;
+
+protected:
+	virtual void OnDestroyWindow();
+
+private:
+	void fillCoalCombox();
+	void initMineDatas();
+	void initWorkAreaDatas();
+	void fillWorkAreadCombox();
+	CoalPtr getCurSelCoal();
+	WorkAreaPtr getCurSelWorkArea();
 };

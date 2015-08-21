@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOUI width="316" height="385" translucent="0" alpha="255" resizable="0">
+  <root cache="1" skin="_skin.sys.wnd.bkgnd">
+    <window pos="0,0" width="318" height="385" name="window30" margin-x="1" margin-y="1" enable="0" visible="0"/>
+    <text pos="23,310" width="100" height="23" name="text44" margin-x="1" margin-y="1">可抽瓦斯量Wc</text>
+    <edit pos="123,308" width="73" height="26" name="pump_Wc" margin-x="1" margin-y="1"/>
+    <text pos="23,76" width="81" height="23" name="text46" margin-x="1" margin-y="1">可抽系数Kd</text>
+    <edit pos="104,74" width="73" height="26" name="pump_Kd" margin-x="1" margin-y="1"/>
+    <text pos="23,277" width="138" height="23" name="text48" margin-x="1" margin-y="1">瓦斯涌出程度系数K1</text>
+    <edit pos="165,275" width="91" height="26" readOnly="1" name="pump_K1" margin-x="1" margin-y="1"/>
+    <text pos="23,110" width="202" height="23" name="text50" margin-x="1" margin-y="1">负压抽采时的抽采作用系数K2</text>
+    <edit pos="225,108" width="73" height="26" name="pump_K2" margin-x="1" margin-y="1"/>
+    <text pos="23,178" width="127" height="23" name="text52" margin-x="1" margin-y="1">煤层瓦斯排放率K4</text>
+    <edit pos="149,176" width="73" height="26" name="pump_K4" margin-x="1" margin-y="1"/>
+    <text pos="23,141" width="127" height="23" name="text54" margin-x="1" margin-y="1">煤层瓦斯抽采率K3</text>
+    <edit pos="149,141" width="73" height="26" name="pump_K3" margin-x="1" margin-y="1"/>
+    <text pos="23,213" width="142" height="23" name="text56" margin-x="1" margin-y="1">煤层原始瓦斯含量My</text>
+    <edit pos="164,211" width="73" height="26" name="gas_W0" margin-x="1" margin-y="1"/>
+    <text pos="23,248" width="203" height="23" name="text58" margin-x="1" margin-y="1">运到地面煤的残余瓦斯含量Mc</text>
+    <edit pos="225,246" width="73" height="26" name="pump_Mc" margin-x="1" margin-y="1"/>
+    <caption pos="8,0" width="310" height="40" name="caption61">
+      <text pos="0,8" name="wnd_title">测试程序v1.0</text>
+      <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
+    </caption>
+    <button pos="90,341" width="118" height="38" name="save" margin-x="1" margin-y="1">保存</button>
+    <button pos="204,307" width="53" height="28" name="pump_wc_cacl" margin-x="1" margin-y="1">计算</button>
+    <text pos="23,40" width="62" height="23" name="text90" margin-x="1" margin-y="1">煤层列表</text>
+    <combobox pos="90,39" width="137" height="24" dropDown="1" curSel="0" name="coal" margin-x="1" margin-y="1" ncSkin="_skin.sys.border">
+      <liststyle itemHeight="30" colorText="#000000" colorSelText="#FFFFFF" colorItemBkgnd="#FFFFFF" colorItemSelBkgnd="#000088"/>
+      <items>
+        <item text=""/>
+      </items>
+    </combobox>
+  </root>
+</SOUI>

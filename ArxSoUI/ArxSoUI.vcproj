@@ -383,6 +383,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\SComboxHelper.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\SoUILoader.cpp"
 				>
 			</File>
@@ -506,11 +510,35 @@
 					>
 				</File>
 				<File
-					RelativePath=".\RegDialog.cpp"
+					RelativePath=".\MineGasFlowPredictDesignDialog.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\ReservesPredictDialog.cpp"
+					RelativePath=".\MineGasFlowPredictDialog.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\MineGasReservesPredict1Dialog.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\MineGasReservesPredict2Dialog.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\MineGasReservesPredictDialog.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\MineGasReservesPredictInputDialog.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\NameDialog.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\RegDialog.cpp"
 					>
 				</File>
 				<File
@@ -530,27 +558,19 @@
 					>
 				</File>
 				<File
-					RelativePath=".\TwsGasPredictDialog.cpp"
+					RelativePath=".\TwsGasFlowPredictDialog.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\TwsGasPredictQ3Dialog.cpp"
+					RelativePath=".\WsGasFlowPredictAdjDialog.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\TwsGasPredictQ4Dialog.cpp"
+					RelativePath=".\WsGasFlowPredictDialog.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\WsGasPredictAdjDialog.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\WsGasPredictDialog.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\WsGasPredictWorkDialog.cpp"
+					RelativePath=".\WsGasFlowPredictWorkDialog.cpp"
 					>
 				</File>
 			</Filter>
@@ -565,6 +585,10 @@
 			</File>
 			<File
 				RelativePath=".\Resource.h"
+				>
+			</File>
+			<File
+				RelativePath=".\SComboxHelper.h"
 				>
 			</File>
 			<File
@@ -663,11 +687,35 @@
 					>
 				</File>
 				<File
-					RelativePath=".\RegDialog.h"
+					RelativePath=".\MineGasFlowPredictDesignDialog.h"
 					>
 				</File>
 				<File
-					RelativePath=".\ReservesPredictDialog.h"
+					RelativePath=".\MineGasFlowPredictDialog.h"
+					>
+				</File>
+				<File
+					RelativePath=".\MineGasReservesPredict1Dialog.h"
+					>
+				</File>
+				<File
+					RelativePath=".\MineGasReservesPredict2Dialog.h"
+					>
+				</File>
+				<File
+					RelativePath=".\MineGasReservesPredictDialog.h"
+					>
+				</File>
+				<File
+					RelativePath=".\MineGasReservesPredictInputDialog.h"
+					>
+				</File>
+				<File
+					RelativePath=".\NameDialog.h"
+					>
+				</File>
+				<File
+					RelativePath=".\RegDialog.h"
 					>
 				</File>
 				<File
@@ -687,27 +735,19 @@
 					>
 				</File>
 				<File
-					RelativePath=".\TwsGasPredictDialog.h"
+					RelativePath=".\TwsGasFlowPredictDialog.h"
 					>
 				</File>
 				<File
-					RelativePath=".\TwsGasPredictQ3Dialog.h"
+					RelativePath=".\WsGasFlowPredictAdjDialog.h"
 					>
 				</File>
 				<File
-					RelativePath=".\TwsGasPredictQ4Dialog.h"
+					RelativePath=".\WsGasFlowPredictDialog.h"
 					>
 				</File>
 				<File
-					RelativePath=".\WsGasPredictAdjDialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\WsGasPredictDialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\WsGasPredictWorkDialog.h"
+					RelativePath=".\WsGasFlowPredictWorkDialog.h"
 					>
 				</File>
 			</Filter>

@@ -70,22 +70,6 @@ void UIHelper::Logout()
 	}
 }
 
-void UIHelper::Mine()
-{
-	CAcModuleResourceOverride myResources;
-
-	MineDialog dlg(TRUE);
-	dlg.Run(acedGetAcadFrame()->GetSafeHwnd());
-}
-
-void UIHelper::KPC()
-{
-	CAcModuleResourceOverride myResources;
-
-	KeyParamDialog dlg(TRUE);
-	dlg.Run(acedGetAcadFrame()->GetSafeHwnd());
-}
-
 void UIHelper::SampleManage()
 {
 	CAcModuleResourceOverride myResources;
@@ -108,6 +92,24 @@ void UIHelper::GasTechModeDecision()
 		CAcModuleResourceOverride myResources;
 
 		MineDialog* dlg = new MineDialog(FALSE);
+		dlg->Run(acedGetAcadFrame()->GetSafeHwnd());
+	}
+}
+
+void UIHelper::KeyParamCacl()
+{
+	int account_id = DaoHelper::GetOnlineAccountId();
+	if(account_id == 0)
+	{
+		SMessageBox(acedGetAcadFrame()->GetSafeHwnd(),_T("请登录!"),_T("友情提示"),MB_OK);
+		//调用登录函数
+		UIHelper::Login();
+	}
+	else
+	{
+		CAcModuleResourceOverride myResources;
+
+		KeyParamDialog* dlg = new KeyParamDialog(FALSE);
 		dlg->Run(acedGetAcadFrame()->GetSafeHwnd());
 	}
 }

@@ -6,7 +6,7 @@
     <edit pos="187,43" width="86" height="26" name="P_test" margin-x="1" margin-y="1"/>
     <button pos="122,193" width="143" height="40" name="save" margin-x="1" margin-y="1">保存</button>
     <caption pos="10,0" width="363" height="40" name="caption60">
-      <text pos="0,8">测试程序v1.0</text>
+      <text pos="0,8" name="wnd_title">测试程序v1.0</text>
       <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
     </caption>
     <text pos="16,82" width="117" height="23" name="text61" margin-x="1" margin-y="1">测定当地压力P当</text>

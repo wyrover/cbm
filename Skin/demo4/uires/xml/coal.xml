@@ -5,7 +5,7 @@
     <button pos="43,336" width="114" height="48" name="next" margin-x="1" margin-y="1">下一步</button>
     <button pos="364,336" width="114" height="48" name="cancel" margin-x="1" margin-y="1">取消</button>
     <caption pos="7,0" width="533" height="40" name="caption82">
-      <text pos="0,8">测试程序v1.0</text>
+      <text pos="0,8" name="wnd_title">测试程序v1.0</text>
       <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
     </caption>
     <button pos="197,336" width="122" height="49" name="save" margin-x="1" margin-y="1">保存</button>
@@ -81,6 +81,7 @@
           <item text=""/>
         </items>
       </combobox>
+      <check pos="414,2" width="104" height="22" name="minable" margin-x="1" margin-y="1">可采煤层</check>
     </window>
   </root>
 </SOUI>

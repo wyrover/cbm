@@ -33,4 +33,8 @@ public:
 	static void GetCoalIds(const CString& mineName, IntArray& coals);
 	//查询矿井的所有采区
 	static RecordPtrListPtr GetWorkAreas(const CString& mineName);
+	//查询矿井的所有工作面
+	static RecordPtrListPtr GetWorkSurfs(const CString& mineName);
+	//查询矿井的所有掘进面
+	static RecordPtrListPtr GetDrillingSurfs(const CString& mineName);
 };

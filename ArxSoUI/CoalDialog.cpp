@@ -1,18 +1,13 @@
 #include "stdafx.h"
 #include "CoalDialog.h"
 #include "DecisionDialog.h"
+#include "SComboxHelper.h"
 
 #include <ArxHelper/HelperClass.h>
 #include <ArxDao/DaoHelper.h>
 #include <ArxDao/Entity.h>
 using namespace orm;
 using namespace cbm;
-
-struct ItemData
-{
-	int id;
-	int nItem;
-};
 
 CoalDialog::CoalDialog(BOOL bModal) : AcadSouiDialog(_T("layout:coal"), bModal)
 {
@@ -53,9 +48,10 @@ LRESULT CoalDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 	m_MineIndexEdit = FindChildByName2<SEdit>(L"mine_index");
 	m_StabilityCombox = FindChildByName2<SComboBox>(L"stability");
 	m_CoalCombox = FindChildByName2<SComboBox>(L"coal");
+	m_MinableCheck = FindChildByName2<SCheckBox>(L"minable");
 
 	initCoalDatas();
-	fillCoalList();
+	fillCoalCombox();
 	return 0;
 }
 
@@ -93,6 +89,7 @@ void CoalDialog::OnSaveButtonClick()
 	coal->stability = m_StabilityCombox->GetCurSel() + 1; // 煤层稳定性
 	Utils::cstring_to_double((LPCTSTR)m_DipAngleEdit->GetWindowText(), coal->dip_angle); // 煤层倾角
 	Utils::cstring_to_double((LPCTSTR)m_CavingZoneHeightEdit->GetWindowText(), coal->czh); // 冒落带高度
+	coal->minable = m_MinableCheck->IsChecked(); // 是否可采煤层
 	if(!coal->save()) return;
 
 	SMessageBox(GetSafeWnd(),_T("更新成功!"),_T("友情提示"),MB_OK);
@@ -100,23 +97,17 @@ void CoalDialog::OnSaveButtonClick()
 
 void CoalDialog::OnDelButtonClick()
 {
-	int nCurSel = m_CoalCombox->GetCurSel();
-	ItemData* pData = (ItemData*)m_CoalCombox->GetItemData(nCurSel);
-	if(pData == 0) return;
-	CoalPtr coal = FIND_BY_ID(Coal, pData->id);
+	int coal_id = SComboBoxHelper::GetCurSelItemID(m_CoalCombox);
+	if(coal_id == 0) return;
+	CoalPtr coal = FIND_BY_ID(Coal, coal_id);
 	if(coal == 0) return;
 
 	if(coal->remove())
 	{
 		//删除煤层列表中的当前项
-		delete pData;
-		m_CoalCombox->DeleteString(nCurSel);
-
-		if(m_CoalCombox->GetCount() > 0)
-		{
-			m_CoalCombox->SetCurSel(0);
-		}
-		else
+		SComboBoxHelper::DeleteCurSel(m_CoalCombox);
+		SComboBoxHelper::Select(m_CoalCombox, 0);
+		if(m_CoalCombox->GetCount() == 0)
 		{
 			initCoalDatas();
 		}
@@ -161,7 +152,7 @@ void CoalDialog::OnAddCoalButtonClick()
 		SMessageBox(GetSafeWnd(),_T("必须填写煤层编号!!!"),_T("友情提示"),MB_OK);
 		return ;
 	}
-	else if(isCoalExist(coal->name))
+	else if(m_CoalCombox->FindString(coal->name) != -1)
 	{
 		CString msg;
 		msg.Format(_T("煤层%s已存在!!!"), coal->name);
@@ -182,14 +173,14 @@ void CoalDialog::OnAddCoalButtonClick()
 	coal->stability = m_StabilityCombox->GetCurSel() + 1; // 煤层稳定性
 	Utils::cstring_to_double((LPCTSTR)m_DipAngleEdit->GetWindowText(), coal->dip_angle); // 煤层倾角
 	Utils::cstring_to_double((LPCTSTR)m_CavingZoneHeightEdit->GetWindowText(), coal->czh); // 冒落带高度
+	coal->minable = m_MinableCheck->IsChecked();
 
 	if(coal->save())
 	{
 		//添加到煤层列表中
-		int nIndex = m_CoalCombox->GetCount();
-		addCoalToListBox(coal->name, coal->getID(), nIndex);
+		int nItem = SComboBoxHelper::Add(m_CoalCombox, coal->name, coal->getID());
 		//切换当前煤层
-		m_CoalCombox->SetCurSel(nIndex);
+		SComboBoxHelper::Select(m_CoalCombox, nItem);
 
 		//打印消息
 		CString msg;
@@ -249,16 +240,17 @@ void CoalDialog::OnCoalComboxSelChanged(SOUI::EventArgs *pEvt)
 	m_StabilityCombox->SetCurSel(coal->stability-1);
 	m_DipAngleEdit->SetWindowText(Utils::double_to_cstring(coal->dip_angle));
 	m_CavingZoneHeightEdit->SetWindowText(Utils::double_to_cstring(coal->czh));
+	m_MinableCheck->SetCheck(BOOL_2_INT(coal->minable != 0));
 }
 
 void CoalDialog::OnDestroyWindow()
 {
 	//删除所有的附加数据
-	clearCoalList();
+	SComboBoxHelper::Clear(m_CoalCombox);
 	AcadSouiDialog::OnDestroyWindow();
 }
 
-void CoalDialog::fillCoalList()
+void CoalDialog::fillCoalCombox()
 {
 	MinePtr mine = DaoHelper::GetOnlineMine();
 	if(mine == 0) return;
@@ -268,32 +260,14 @@ void CoalDialog::fillCoalList()
 	DaoHelper::GetCoalIds(mine->name, coal_ids);
 	DaoHelper::GetCoalNames(mine->name, coal_names);
 
-	clearCoalList();
-	for(int i=0;i<coal_names.size();i++)
-	{
-		addCoalToListBox(coal_names[i], coal_ids[i], i);
-	}
-	m_CoalCombox->SetCurSel(0);
-}
-
-void CoalDialog::addCoalToListBox(const CString& name, int id, int i)
-{
-	m_CoalCombox->InsertItem(i, name, 0, 0);
-	//附加数据
-	ItemData* pData = new ItemData;
-	pData->id = id;
-	pData->nItem = i;
-	m_CoalCombox->SetItemData(i, (LPARAM)pData);
-}
-
-bool CoalDialog::isCoalExist(const CString& name)
-{
-	return m_CoalCombox->FindString(name)!=-1;
+	SComboBoxHelper::Clear(m_CoalCombox);
+	SComboBoxHelper::Append(m_CoalCombox, coal_names, coal_ids);
+	SComboBoxHelper::Select(m_CoalCombox, 0);
 }
 
 void CoalDialog::initCoalDatas()
 {
-	clearCoalList();
+	m_CoalCombox->SetCurSel(-1);
 	m_NumberEdit->SetWindowText(_T(""));
 	m_ThickEdit->SetWindowText(_T(""));
 	m_RankCombox->SetCurSel(-1);
@@ -308,15 +282,5 @@ void CoalDialog::initCoalDatas()
 	m_StabilityCombox->SetCurSel(-1);
 	m_DipAngleEdit->SetWindowText(_T(""));
 	m_CavingZoneHeightEdit->SetWindowText(_T(""));
-}
-
-void CoalDialog::clearCoalList()
-{
-	int n = m_CoalCombox->GetCount();
-	for(int i=0;i<n;i++)
-	{
-		ItemData* pData = (ItemData*)m_CoalCombox->GetItemData(i);
-		delete pData;
-	}
-	m_CoalCombox->ResetContent();
+	m_MinableCheck->SetCheck(FALSE);
 }

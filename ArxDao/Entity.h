@@ -119,7 +119,6 @@ public:
 	CString name;
 	int minable;
 	double thick;
-	double hw;
 	double qa;
 	double qr;
 	double fore_qr;
@@ -526,7 +525,8 @@ public:
 	double d;
 	double wh;
 	double v;
-	double qa;
+	double q3;
+	double q0;
 	CString comment;
 
 }; // class Tunnel
@@ -581,6 +581,7 @@ public:
 	double qa;
 	double fore_qr;
 	double fore_qa;
+	double m;
 	double l;
 	int layerable;
 	double k1;
@@ -589,6 +590,8 @@ public:
 	double kf;
 	int method;
 	double last_t;
+	double qr1;
+	double qr2;
 	CString comment;
 
 }; // class WorkSurf

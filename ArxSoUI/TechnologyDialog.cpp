@@ -1,17 +1,12 @@
 #include "stdafx.h"
 #include "TechnologyDialog.h"
+#include "SComboxHelper.h"
 
 #include <ArxHelper/HelperClass.h>
 #include <ArxDao/DaoHelper.h>
 #include <ArxDao/Entity.h>
 using namespace orm;
 using namespace cbm;
-
-struct ItemData
-{
-	int id;
-	int nItem;
-};
 
 TechnologyDialog::TechnologyDialog(BOOL bModal) : AcadSouiDialog(_T("layout:technology"), bModal)
 {
@@ -60,9 +55,9 @@ void TechnologyDialog::OnTechnologyListboxSelChanged(SOUI::EventArgs *pEvt)
 
 	// do something
 	//根据技术模式的id查找相关参数
-	ItemData* pData = (ItemData*)m_TechnologyListbox->GetItemData(nCurSel);
-	if(pData == 0) return;
-	TechnologyPtr technology = FIND_BY_ID(Technology, pData->id);
+	int technology_id = SListBoxHelper::GetItemID(m_TechnologyListbox, nCurSel);
+	if(technology_id == 0) return;
+	TechnologyPtr technology = FIND_BY_ID(Technology, technology_id);
 	if(technology == 0) return;
 
 	m_DocEdit->SetWindowText(technology->doc);
@@ -92,9 +87,9 @@ void TechnologyDialog::OnVideoSelectButtonClick()
 
 void TechnologyDialog::OnSaveButtonClick()
 {
-	ItemData* pData2 = (ItemData*)m_TechnologyListbox->GetItemData(m_TechnologyListbox->GetCurSel());
-	if(pData2 == 0) return;
-	TechnologyPtr technology = FIND_BY_ID(Technology, pData2->id);
+	int technology_id = SListBoxHelper::GetCurSelItemID(m_TechnologyListbox);
+	if(technology_id == 0) return;
+	TechnologyPtr technology = FIND_BY_ID(Technology, technology_id);
 	if(technology == 0) return;
 
 	//更新抽采技术的数据
@@ -112,7 +107,7 @@ void TechnologyDialog::OnSaveButtonClick()
 void TechnologyDialog::OnDestroyWindow()
 {
 	//删除所有的附加数据并清空
-	clearTechnologyListBox();
+	SListBoxHelper::Clear(m_TechnologyListbox);
 	AcadSouiDialog::OnDestroyWindow();
 }
 
@@ -124,27 +119,11 @@ void TechnologyDialog::fillTechnologyListBox()
 	RecordPtrListPtr lists = FIND_MANY(Technology, FKEY(Region), region->getStringID());
 	if(lists == 0) return;
 
-	m_TechnologyListbox->DeleteAll();
+	SListBoxHelper::Clear(m_TechnologyListbox);
 	for(int i=0;i<lists->size();i++)
 	{
-		RecordPtr technology = lists->at(i);
-		m_TechnologyListbox->AddString(technology->get(FIELD(name)));
-		//附加数据
-		ItemData* pData = new ItemData;
-		pData->id = technology->getID();
-		pData->nItem = i;
-		m_TechnologyListbox->SetItemData(i, (LPARAM)pData);	
+		TechnologyPtr technology = DYNAMIC_POINTER_CAST(Technology, lists->at(i));
+		SListBoxHelper::Add(m_TechnologyListbox, technology->name, technology->getID());
 	}
-	m_TechnologyListbox->SetCurSel(0);
-}
-
-void TechnologyDialog::clearTechnologyListBox()
-{
-	int n = m_TechnologyListbox->GetCount();
-	for(int i=0;i<n;i++)
-	{
-		ItemData* pData = (ItemData*)m_TechnologyListbox->GetItemData(i);
-		delete pData;
-	}
-	m_TechnologyListbox->DeleteAll();
+	SListBoxHelper::Select(m_TechnologyListbox, 0);
 }

@@ -21,7 +21,7 @@
     <text pos="287,243" width="159" height="23" name="text22" margin-x="1" margin-y="1">BCD范围内钻孔长度Lzj</text>
     <edit pos="447,241" width="73" height="27" name="Lzj" margin-x="1" margin-y="1"/>
     <caption pos="9,0" width="539" height="40" name="caption24">
-      <text pos="0,8">测试程序v1.0</text>
+      <text pos="0,8" name="wnd_title">测试程序v1.0</text>
       <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
     </caption>
     <button pos="203,288" width="143" height="40" name="save" margin-x="1" margin-y="1">保存</button>

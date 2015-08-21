@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<SOUI width="327" height="264" translucent="0" alpha="255" resizable="0">
+<SOUI width="313" height="250" translucent="0" alpha="255" resizable="0">
   <root cache="1" skin="_skin.sys.wnd.bkgnd">
-    <text pos="23,168" width="92" height="23" name="text34" margin-x="1" margin-y="1">矿井瓦斯储量</text>
-    <edit pos="124,166" width="109" height="26" name="reserve_gas" margin-x="1" margin-y="1"/>
-    <text pos="23,47" width="83" height="23" name="text36" margin-x="1" margin-y="1">瓦斯储量W1</text>
-    <edit pos="116,45" width="73" height="26" name="reserve_w1" margin-x="1" margin-y="1"/>
-    <text pos="23,90" width="87" height="23" name="text38" margin-x="1" margin-y="1">瓦斯储量W2</text>
-    <edit pos="116,88" width="73" height="26" name="reserve_w2" margin-x="1" margin-y="1"/>
-    <text pos="23,129" width="116" height="23" name="text40" margin-x="1" margin-y="1">围岩瓦斯储量W3</text>
-    <edit pos="157,127" width="76" height="26" name="reserve_w3" margin-x="1" margin-y="1"/>
-    <button pos="100,207" width="116" height="48" name="save" margin-x="1" margin-y="1">保存</button>
-    <window pos="0,0" width="329" height="264" name="window63" margin-x="1" margin-y="1" enable="0" visible="0"/>
-    <caption pos="7,0" width="322" height="40" name="caption64">
+    <text pos="16,164" width="92" height="23" name="text34" margin-x="1" margin-y="1">矿井瓦斯储量</text>
+    <edit pos="117,162" width="109" height="26" name="reserve_gas" margin-x="1" margin-y="1"/>
+    <text pos="16,43" width="83" height="23" name="text36" margin-x="1" margin-y="1">瓦斯储量W1</text>
+    <edit pos="99,41" width="85" height="26" name="reserve_w1" margin-x="1" margin-y="1"/>
+    <text pos="14,86" width="87" height="23" name="text38" margin-x="1" margin-y="1">瓦斯储量W2</text>
+    <edit pos="99,84" width="85" height="26" name="reserve_w2" margin-x="1" margin-y="1"/>
+    <text pos="16,125" width="116" height="23" name="text40" margin-x="1" margin-y="1">围岩瓦斯储量W3</text>
+    <edit pos="134,123" width="91" height="26" name="reserve_w3" margin-x="1" margin-y="1"/>
+    <button pos="97,192" width="116" height="48" name="save" margin-x="1" margin-y="1">保存</button>
+    <window pos="0,0" width="315" height="250" name="window63" margin-x="1" margin-y="1" enable="0" visible="0"/>
+    <caption pos="7,0" width="308" height="40" name="caption64">
       <text pos="0,8">测试程序v1.0</text>
       <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
     </caption>
-    <button pos="202,43" width="80" height="30" name="save" margin-x="1" margin-y="1">计算</button>
-    <button pos="202,83" width="80" height="30" name="save" margin-x="1" margin-y="1">计算</button>
-    <button pos="248,126" width="73" height="28" name="save" margin-x="1" margin-y="1">计算</button>
+    <button pos="231,39" width="73" height="30" name="save" margin-x="1" margin-y="1">计算</button>
+    <button pos="231,82" width="73" height="30" name="save" margin-x="1" margin-y="1">计算</button>
+    <button pos="231,122" width="73" height="28" name="save" margin-x="1" margin-y="1">计算</button>
   </root>
 </SOUI>

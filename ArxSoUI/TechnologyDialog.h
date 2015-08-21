@@ -62,5 +62,4 @@ protected:
 
 private:
 	void fillTechnologyListBox();
-	void clearTechnologyListBox();
 };

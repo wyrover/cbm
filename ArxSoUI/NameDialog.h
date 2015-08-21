@@ -1,19 +1,17 @@
 #pragma once
 #include "AcadSouiDialog.h"
 
-class TwsGasPredictDialog : public AcadSouiDialog
+class NameDialog : public AcadSouiDialog
 {
 
 	/** 构造和析构函数 */
 public:
-	TwsGasPredictDialog(BOOL bModal = FALSE);
-	~TwsGasPredictDialog(void);
+	NameDialog(BOOL bModal = FALSE);
+	~NameDialog(void);
 
 	/** 控件消息处理 */
 protected:
-	void OnQ3CaclButtonClick();
-	void OnQ4CaclButtonClick();
-	void OnSaveButtonClick();
+	void OnOkButtonClick();
 
 	/** 菜单消息 */
 protected:
@@ -27,14 +25,12 @@ protected:
 
 	//控件消息映射表
 	EVENT_MAP_BEGIN()
-		EVENT_NAME_COMMAND(_T("q3_cacl"), OnQ3CaclButtonClick)
-		EVENT_NAME_COMMAND(_T("q4_cacl"), OnQ4CaclButtonClick)
-		EVENT_NAME_COMMAND(_T("save"), OnSaveButtonClick)
+		EVENT_NAME_COMMAND(_T("ok"), OnOkButtonClick)
 		CHAIN_EVENT_MAP(AcadSouiDialog)
 	EVENT_MAP_END()
 	
 //HOST消息(WINDOWS消息)映射表
-	BEGIN_MSG_MAP_EX(TwsGasPredictDialog)
+	BEGIN_MSG_MAP_EX(NameDialog)
 		MSG_WM_INITDIALOG(OnInitDialog)
 		MSG_WM_COMMAND(OnCommand)
 		CHAIN_MSG_MAP(AcadSouiDialog)
@@ -42,6 +38,8 @@ protected:
 	END_MSG_MAP()
 
 protected:
-	SEdit* m_TwQ3Edit;
-	SEdit* m_TwQ4Edit;
+	SEdit* m_NameEdit;
+
+public:
+	CString name;
 };

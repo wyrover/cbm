@@ -27,7 +27,7 @@
     <text pos="251,237" width="203" height="23" name="text58" margin-x="1" margin-y="1">运到地面煤的残余瓦斯含量Mc</text>
     <edit pos="467,235" width="73" height="27" name="pump_Mc" margin-x="1" margin-y="1"/>
     <caption pos="12,0" width="630" height="40" name="caption61">
-      <text pos="0,8">测试程序v1.0</text>
+      <text pos="0,8" name="wnd_title">测试程序v1.0</text>
       <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
     </caption>
     <button pos="64,251" width="116" height="48" name="save" margin-x="1" margin-y="1">保存</button>

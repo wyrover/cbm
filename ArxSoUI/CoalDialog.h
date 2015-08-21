@@ -73,14 +73,12 @@ protected:
 	SEdit* m_MineIndexEdit;
 	SComboBox* m_StabilityCombox;
 	SComboBox* m_CoalCombox;
+	SCheckBox* m_MinableCheck;
 
 protected:
 	virtual void OnDestroyWindow();
 
 private:
-	void fillCoalList();
-	void addCoalToListBox(const CString& name, int id, int i);
-	bool isCoalExist(const CString& name);
+	void fillCoalCombox();
 	void initCoalDatas();
-	void clearCoalList();
 };

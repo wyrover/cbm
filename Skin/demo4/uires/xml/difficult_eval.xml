@@ -1,19 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<SOUI width="351" height="205" translucent="0" alpha="255" resizable="0">
+<SOUI width="351" height="235" translucent="0" alpha="255" resizable="0">
   <root cache="1" skin="_skin.sys.wnd.bkgnd">
-    <window pos="0,0" width="353" height="205" name="window0" margin-x="1" margin-y="1" enable="0" visible="0"/>
-    <text pos="17,51" width="53" height="23" name="text1" margin-x="1" margin-y="1">渗透率</text>
-    <edit pos="76,49" width="79" height="26" name="permeability_k" margin-x="1" margin-y="1"/>
-    <text pos="17,96" width="122" height="23" name="text3" margin-x="1" margin-y="1">钻孔流量衰减系数</text>
-    <edit pos="153,94" width="76" height="26" name="decay_alpha" margin-x="1" margin-y="1"/>
-    <button pos="207,141" width="114" height="48" name="cancel" margin-x="1" margin-y="1">取消</button>
-    <text pos="161,51" width="77" height="23" name="text8" margin-x="1" margin-y="1">透气性系数</text>
-    <edit pos="243,49" width="87" height="26" name="permeability_lambda" margin-x="1" margin-y="1"/>
-    <button pos="39,141" width="116" height="48" name="eval" margin-x="1" margin-y="1">评价</button>
-    <button pos="250,93" width="76" height="27" name="eval_proof" margin-x="1" margin-y="1">评价依据</button>
+    <window pos="0,0" width="353" height="235" name="window0" margin-x="1" margin-y="1" enable="0" visible="0"/>
+    <text pos="17,73" width="53" height="23" name="text1" margin-x="1" margin-y="1">渗透率</text>
+    <edit pos="60,71" width="79" height="26" name="permeability_k" margin-x="1" margin-y="1"/>
+    <text pos="17,112" width="122" height="23" name="text3" margin-x="1" margin-y="1">钻孔流量衰减系数</text>
+    <edit pos="137,110" width="85" height="26" name="decay_alpha" margin-x="1" margin-y="1"/>
+    <button pos="203,181" width="114" height="48" name="cancel" margin-x="1" margin-y="1">取消</button>
+    <text pos="161,73" width="77" height="23" name="text8" margin-x="1" margin-y="1">透气性系数</text>
+    <edit pos="236,71" width="94" height="26" name="permeability_lambda" margin-x="1" margin-y="1"/>
+    <button pos="35,181" width="116" height="48" name="eval" margin-x="1" margin-y="1">评价&amp;&amp;保存</button>
+    <button pos="254,110" width="76" height="27" name="eval_proof" margin-x="1" margin-y="1">评价依据</button>
     <caption pos="9,0" width="344" height="40" name="caption12">
-      <text pos="0,8">测试程序v1.0</text>
+      <text pos="0,8" name="wnd_title">测试程序v1.0</text>
       <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
     </caption>
+    <text pos="20,146" width="197" height="23" name="text13" margin-x="1" margin-y="1">煤层气抽采难易程度评价结果</text>
+    <combobox pos="215,145" width="118" height="24" dropDown="1" curSel="0" name="eval_difficult" margin-x="1" margin-y="1" ncSkin="_skin.sys.border">
+      <liststyle itemHeight="30" colorText="#000000" colorSelText="#FFFFFF" colorItemBkgnd="#FFFFFF" colorItemSelBkgnd="#000088"/>
+      <items>
+        <item text="容易抽采"/>
+        <item text="可以抽采"/>
+        <item text="较难抽采"/>
+      </items>
+    </combobox>
+    <text pos="17,40" width="62" height="23" name="text15" margin-x="1" margin-y="1">煤层列表</text>
+    <combobox pos="94,39" width="127" height="24" dropDown="1" curSel="0" name="coal" margin-x="1" margin-y="1" ncSkin="_skin.sys.border">
+      <liststyle itemHeight="30" colorText="#000000" colorSelText="#FFFFFF" colorItemBkgnd="#FFFFFF" colorItemSelBkgnd="#000088"/>
+      <items>
+        <item text=""/>
+      </items>
+    </combobox>
   </root>
 </SOUI>

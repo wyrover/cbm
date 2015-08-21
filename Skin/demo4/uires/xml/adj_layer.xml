@@ -10,7 +10,7 @@
     <text pos="16,106" width="71" height="23" name="text38" margin-x="1" margin-y="1">作用载荷q</text>
     <edit pos="183,136" width="139" height="26" name="Rt" margin-x="1" margin-y="1"/>
     <caption pos="0,0" width="358" height="40" name="caption48">
-      <text pos="0,8">测试程序v1.0</text>
+      <text pos="0,8" name="wnd_title">测试程序v1.0</text>
       <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
     </caption>
     <text pos="183,106" width="78" height="23" name="text50" margin-x="1" margin-y="1">抗拉强度Rt</text>

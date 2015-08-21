@@ -84,7 +84,6 @@ Coal::Coal() : orm::Record(Coal::Table())
 	name = _T("");
 	minable = 0;
 	thick = 0.0;
-	hw = 0.0;
 	qa = 0.0;
 	qr = 0.0;
 	fore_qr = 0.0;
@@ -147,7 +146,6 @@ Coal::Coal() : orm::Record(Coal::Table())
 	REG_ATTRIB(name, name);
 	REG_ATTRIB(minable, minable);
 	REG_ATTRIB(thick, thick);
-	REG_ATTRIB(hw, hw);
 	REG_ATTRIB(qa, qa);
 	REG_ATTRIB(qr, qr);
 	REG_ATTRIB(fore_qr, fore_qr);
@@ -736,7 +734,8 @@ Tunnel::Tunnel() : orm::Record(Tunnel::Table())
 	d = 0.0;
 	wh = 0.0;
 	v = 0.0;
-	qa = 0.0;
+	q3 = 0.0;
+	q0 = 0.0;
 	comment = _T("");
 	REG_ATTRIB(name, name);
 	REG_ATTRIB(b, b);
@@ -745,7 +744,8 @@ Tunnel::Tunnel() : orm::Record(Tunnel::Table())
 	REG_ATTRIB(d, d);
 	REG_ATTRIB(wh, wh);
 	REG_ATTRIB(v, v);
-	REG_ATTRIB(qa, qa);
+	REG_ATTRIB(q3, q3);
+	REG_ATTRIB(q0, q0);
 	REG_ATTRIB(comment, comment);
 }
 
@@ -816,6 +816,7 @@ WorkSurf::WorkSurf() : orm::Record(WorkSurf::Table())
 	qa = 0.0;
 	fore_qr = 0.0;
 	fore_qa = 0.0;
+	m = 0.0;
 	l = 0.0;
 	layerable = 0;
 	k1 = 0.0;
@@ -824,6 +825,8 @@ WorkSurf::WorkSurf() : orm::Record(WorkSurf::Table())
 	kf = 0.0;
 	method = 0;
 	last_t = 0.0;
+	qr1 = 0.0;
+	qr2 = 0.0;
 	comment = _T("");
 	REG_ATTRIB(name, name);
 	REG_ATTRIB(a, a);
@@ -831,6 +834,7 @@ WorkSurf::WorkSurf() : orm::Record(WorkSurf::Table())
 	REG_ATTRIB(qa, qa);
 	REG_ATTRIB(fore_qr, fore_qr);
 	REG_ATTRIB(fore_qa, fore_qa);
+	REG_ATTRIB(m, m);
 	REG_ATTRIB(l, l);
 	REG_ATTRIB(layerable, layerable);
 	REG_ATTRIB(k1, k1);
@@ -839,6 +843,8 @@ WorkSurf::WorkSurf() : orm::Record(WorkSurf::Table())
 	REG_ATTRIB(kf, kf);
 	REG_ATTRIB(method, method);
 	REG_ATTRIB(last_t, last_t);
+	REG_ATTRIB(qr1, qr1);
+	REG_ATTRIB(qr2, qr2);
 	REG_ATTRIB(comment, comment);
 	REG_FOREGIN_KEY(cbm_work_area_id, work_area, &WorkArea::Create);
 	REG_FOREGIN_KEY(cbm_tunnel_id, tunnel, &Tunnel::Create);

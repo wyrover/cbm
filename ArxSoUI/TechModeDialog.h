@@ -63,5 +63,4 @@ protected:
 
 private:
 	void fillTechModeCombox();
-	void clearTechModeCombox();
 };

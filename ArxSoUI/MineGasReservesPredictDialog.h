@@ -1,19 +1,19 @@
 #pragma once
 #include "AcadSouiDialog.h"
 
-class WsGasPredictDialog : public AcadSouiDialog
+class MineGasReservesPredictDialog : public AcadSouiDialog
 {
 
 	/** 构造和析构函数 */
 public:
-	WsGasPredictDialog(BOOL bModal = FALSE);
-	~WsGasPredictDialog(void);
+	MineGasReservesPredictDialog(BOOL bModal = FALSE);
+	~MineGasReservesPredictDialog(void);
 
 	/** 控件消息处理 */
 protected:
-	void OnWorkCaclButtonClick();
-	void OnAdjCaclButtonClick();
 	void OnSaveButtonClick();
+	void OnGasCaclButtonClick();
+	void OnPumpWcCaclButtonClick();
 
 	/** 菜单消息 */
 protected:
@@ -27,14 +27,14 @@ protected:
 
 	//控件消息映射表
 	EVENT_MAP_BEGIN()
-		EVENT_NAME_COMMAND(_T("work_cacl"), OnWorkCaclButtonClick)
-		EVENT_NAME_COMMAND(_T("adj_cacl"), OnAdjCaclButtonClick)
 		EVENT_NAME_COMMAND(_T("save"), OnSaveButtonClick)
+		EVENT_NAME_COMMAND(_T("gas_cacl"), OnGasCaclButtonClick)
+		EVENT_NAME_COMMAND(_T("pump_wc_cacl"), OnPumpWcCaclButtonClick)
 		CHAIN_EVENT_MAP(AcadSouiDialog)
 	EVENT_MAP_END()
 	
 //HOST消息(WINDOWS消息)映射表
-	BEGIN_MSG_MAP_EX(WsGasPredictDialog)
+	BEGIN_MSG_MAP_EX(MineGasReservesPredictDialog)
 		MSG_WM_INITDIALOG(OnInitDialog)
 		MSG_WM_COMMAND(OnCommand)
 		CHAIN_MSG_MAP(AcadSouiDialog)
@@ -42,9 +42,9 @@ protected:
 	END_MSG_MAP()
 
 protected:
-	SEdit* m_Qr1Edit;
-	SEdit* m_Qr2Edit;
-	SEdit* m_QrEdit;
-	SRadioBox* m_Radio68;
-	SRadioBox* m_Radio69;
+	SEdit* m_ReserveGasEdit;
+	SEdit* m_PumpWcEdit;
+
+private:
+	void fillMineDatas();
 };

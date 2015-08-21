@@ -22,7 +22,7 @@
     <edit pos="176,153" width="73" height="26" name="Hz_min" margin-x="1" margin-y="1"/>
     <edit pos="264,153" width="73" height="26" name="edit14" margin-x="1" margin-y="1"/>
     <caption pos="4,0" width="344" height="40" name="caption15">
-      <text pos="0,8">测试程序v1.0</text>
+      <text pos="0,8" name="wnd_title">测试程序v1.0</text>
       <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
     </caption>
     <button pos="105,194" width="143" height="40" name="save" margin-x="1" margin-y="1">保存</button>

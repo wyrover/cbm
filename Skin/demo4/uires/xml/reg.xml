@@ -13,7 +13,7 @@
     <edit pos="113,289" width="176" height="26" name="coal_nums" margin-x="1" margin-y="1"/>
     <button pos="106,339" width="200" height="48" name="reg" margin-x="1" margin-y="1">注册&amp;确认</button>
     <caption pos="10,0" width="367" height="40" name="caption42">
-      <text pos="0,8">测试程序v1.0</text>
+      <text pos="0,8" name="wnd_title">测试程序v1.0</text>
       <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
     </caption>
     <text pos="16,52" width="47" height="23" name="text44" margin-x="1" margin-y="1">用户名</text>

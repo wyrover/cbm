@@ -160,3 +160,47 @@ RecordPtrListPtr DaoHelper::GetWorkAreas(const CString& mineName)
 	if(lists->empty()) lists.reset();
 	return lists;
 }
+
+RecordPtrListPtr DaoHelper::GetWorkSurfs(const CString& mineName)
+{
+	//查询所有的采区
+	RecordPtrListPtr work_areas = DaoHelper::GetWorkAreas(mineName);
+	if(work_areas == 0) return RecordPtrListPtr();
+
+	RecordPtrListPtr lists(new RecordPtrList);
+	for(int i=0;i<work_areas->size();i++)
+	{
+		//查询每个采区上的回采工作面
+		RecordPtrListPtr ws_lists = FIND_MANY(WorkSurf, FKEY(WorkArea), work_areas->at(i)->getStringID());
+		if(ws_lists == 0) continue;;
+
+		for(int j=0;j<ws_lists->size();j++)
+		{
+			lists->push_back(ws_lists->at(j));
+		}
+	}
+	if(lists->empty()) lists.reset();
+	return lists;
+}
+
+RecordPtrListPtr DaoHelper::GetDrillingSurfs(const CString& mineName)
+{
+	//查询所有的采区
+	RecordPtrListPtr work_areas = DaoHelper::GetWorkAreas(mineName);
+	if(work_areas == 0) return RecordPtrListPtr();
+
+	RecordPtrListPtr lists(new RecordPtrList);
+	for(int i=0;i<work_areas->size();i++)
+	{
+		//查询每个采区上的掘进工作面
+		RecordPtrListPtr tws_lists = FIND_MANY(DrillingSurf, FKEY(WorkArea), work_areas->at(i)->getStringID());
+		if(tws_lists == 0) continue;;
+
+		for(int j=0;j<tws_lists->size();j++)
+		{
+			lists->push_back(tws_lists->at(j));
+		}
+	}
+	if(lists->empty()) lists.reset();
+	return lists;
+}

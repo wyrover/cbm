@@ -8,7 +8,7 @@
     <button pos="66,141" width="117" height="39" name="reg" margin-x="1" margin-y="1">注册</button>
     <button pos="230,141" width="114" height="37" name="login" margin-x="1" margin-y="1">登录</button>
     <caption pos="10,0" width="359" height="40" name="caption41">
-      <text pos="0,8">测试程序v1.0</text>
+      <text pos="0,8" name="wnd_title">测试程序v1.0</text>
       <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
     </caption>
     <window pos="0,0" width="377" height="196" name="window51" margin-x="1" margin-y="1" enable="0" visible="0"/>

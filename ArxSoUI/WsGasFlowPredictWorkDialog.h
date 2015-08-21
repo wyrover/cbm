@@ -1,17 +1,19 @@
 #pragma once
 #include "AcadSouiDialog.h"
 
-class MineGasContent2Dialog : public AcadSouiDialog
+class WsGasFlowPredictWorkDialog : public AcadSouiDialog
 {
 
 	/** 构造和析构函数 */
 public:
-	MineGasContent2Dialog(BOOL bModal = FALSE);
-	~MineGasContent2Dialog(void);
+	WsGasFlowPredictWorkDialog(BOOL bModal = FALSE);
+	~WsGasFlowPredictWorkDialog(void);
 
 	/** 控件消息处理 */
 protected:
 	void OnSaveButtonClick();
+	void OnK3CaclButtonClick();
+	void OnKfCaclButtonClick();
 
 	/** 菜单消息 */
 protected:
@@ -26,11 +28,13 @@ protected:
 	//控件消息映射表
 	EVENT_MAP_BEGIN()
 		EVENT_NAME_COMMAND(_T("save"), OnSaveButtonClick)
+		EVENT_NAME_COMMAND(_T("k3_cacl"), OnK3CaclButtonClick)
+		EVENT_NAME_COMMAND(_T("kf_cacl"), OnKfCaclButtonClick)
 		CHAIN_EVENT_MAP(AcadSouiDialog)
 	EVENT_MAP_END()
 	
 //HOST消息(WINDOWS消息)映射表
-	BEGIN_MSG_MAP_EX(MineGasContent2Dialog)
+	BEGIN_MSG_MAP_EX(WsGasFlowPredictWorkDialog)
 		MSG_WM_INITDIALOG(OnInitDialog)
 		MSG_WM_COMMAND(OnCommand)
 		CHAIN_MSG_MAP(AcadSouiDialog)
@@ -38,12 +42,17 @@ protected:
 	END_MSG_MAP()
 
 protected:
-	SEdit* m_PumpWcEdit;
-	SEdit* m_PumpKdEdit;
-	SEdit* m_PumpK1Edit;
-	SEdit* m_PumpK2Edit;
-	SEdit* m_PumpK4Edit;
-	SEdit* m_PumpK3Edit;
-	SEdit* m_PumpMyEdit;
-	SEdit* m_PumpMcEdit;
+	SEdit* m_K1Edit;
+	SEdit* m_K2Edit;
+	SEdit* m_K3Edit;
+	SEdit* m_GasW0Edit;
+	SEdit* m_GasWc2Edit;
+	SEdit* m_KfEdit;
+
+public:
+	int ws_id; // 外部传入(工作面id)
+
+private:
+	void initDatas();
+	void fillDatas();
 };

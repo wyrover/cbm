@@ -36,7 +36,7 @@
     <edit pos="242,137" width="141" height="26" name="city" margin-x="1" margin-y="1"/>
     <text pos="394,139" width="77" height="23" name="text79" margin-x="1" margin-y="1">市（地区）</text>
     <caption pos="8,0" width="484" height="40" name="caption81">
-      <text pos="0,8">测试程序v1.0</text>
+      <text pos="0,8" name="wnd_title">测试程序v1.0</text>
       <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
     </caption>
     <button pos="199,259" width="116" height="48" name="save" margin-x="1" margin-y="1">保存</button>

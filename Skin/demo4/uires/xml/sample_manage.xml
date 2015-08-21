@@ -3,7 +3,7 @@
   <root cache="1" skin="_skin.sys.wnd.bkgnd">
     <window pos="0,0" width="552" height="570" name="window57" margin-x="1" margin-y="1" enable="0" visible="0"/>
     <caption pos="6,0" width="546" height="40" name="caption58">
-      <text pos="0,8">测试程序v1.0</text>
+      <text pos="0,8" name="wnd_title">测试程序v1.0</text>
       <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
     </caption>
     <text pos="16,39" width="152" height="23" name="text59" margin-x="1" margin-y="1">示范矿区技术库管理：</text>
@@ -111,6 +111,7 @@
           <item text=""/>
         </items>
       </combobox>
+      <check pos="414,2" width="104" height="22" name="minable" margin-x="1" margin-y="1">可采煤层</check>
     </window>
     <hr pos="6,65" width="540" height="1" lineStyle="solid" mode="horizontal" name="hr89" margin-x="1" margin-y="1"/>
     <text pos="6,168" width="84" height="23" name="text90" margin-x="1" margin-y="1">&gt;&gt;煤层参数</text>

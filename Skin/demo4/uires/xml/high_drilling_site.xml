@@ -24,7 +24,7 @@
     <button pos="202,40" width="98" height="32" name="del" margin-x="1" margin-y="1">删除</button>
     <button pos="320,41" width="98" height="32" name="modify" margin-x="1" margin-y="1">修改</button>
     <caption pos="7,0" width="420" height="40" name="caption59">
-      <text pos="0,8">测试程序v1.0</text>
+      <text pos="0,8" name="wnd_title">测试程序v1.0</text>
       <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
     </caption>
   </root>

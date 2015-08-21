@@ -1,19 +1,19 @@
 #pragma once
 #include "AcadSouiDialog.h"
 
-class WsGasPredictWorkDialog : public AcadSouiDialog
+class MineGasReservesPredict2Dialog : public AcadSouiDialog
 {
 
 	/** 构造和析构函数 */
 public:
-	WsGasPredictWorkDialog(BOOL bModal = FALSE);
-	~WsGasPredictWorkDialog(void);
+	MineGasReservesPredict2Dialog(BOOL bModal = FALSE);
+	~MineGasReservesPredict2Dialog(void);
 
 	/** 控件消息处理 */
 protected:
 	void OnSaveButtonClick();
-	void OnK3CaclButtonClick();
-	void OnKfCaclButtonClick();
+	void OnPumpWcCaclButtonClick();
+	void OnCoalComboxSelChanged(SOUI::EventArgs *pEvt);
 
 	/** 菜单消息 */
 protected:
@@ -28,13 +28,13 @@ protected:
 	//控件消息映射表
 	EVENT_MAP_BEGIN()
 		EVENT_NAME_COMMAND(_T("save"), OnSaveButtonClick)
-		EVENT_NAME_COMMAND(_T("k3_cacl"), OnK3CaclButtonClick)
-		EVENT_NAME_COMMAND(_T("kf_cacl"), OnKfCaclButtonClick)
+		EVENT_NAME_COMMAND(_T("pump_wc_cacl"), OnPumpWcCaclButtonClick)
+		EVENT_NAME_HANDLER(_T("coal"), EVT_CB_SELCHANGE, OnCoalComboxSelChanged)
 		CHAIN_EVENT_MAP(AcadSouiDialog)
 	EVENT_MAP_END()
 	
 //HOST消息(WINDOWS消息)映射表
-	BEGIN_MSG_MAP_EX(WsGasPredictWorkDialog)
+	BEGIN_MSG_MAP_EX(MineGasReservesPredict2Dialog)
 		MSG_WM_INITDIALOG(OnInitDialog)
 		MSG_WM_COMMAND(OnCommand)
 		CHAIN_MSG_MAP(AcadSouiDialog)
@@ -42,13 +42,20 @@ protected:
 	END_MSG_MAP()
 
 protected:
-	SEdit* m_ThickEdit;
-	SEdit* m_K1Edit;
-	SEdit* m_K2Edit;
-	SEdit* m_K3Edit;
-	SEdit* m_HwEdit;
+	SEdit* m_PumpWcEdit;
+	SEdit* m_PumpKdEdit;
+	SEdit* m_PumpK1Edit;
+	SEdit* m_PumpK2Edit;
+	SEdit* m_PumpK4Edit;
+	SEdit* m_PumpK3Edit;
 	SEdit* m_GasW0Edit;
-	SEdit* m_GasWc2Edit;
-	SEdit* m_Qr1Edit;
-	SEdit* m_KfEdit;
+	SEdit* m_PumpMcEdit;
+	SComboBox* m_CoalCombox;
+
+protected:
+	virtual void OnDestroyWindow();
+
+private:
+	void fillCoalCombox();
+	void initCoalDatas();
 };

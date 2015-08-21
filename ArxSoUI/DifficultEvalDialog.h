@@ -14,6 +14,8 @@ protected:
 	void OnCancelButtonClick();
 	void OnEvalButtonClick();
 	void OnEvalProofButtonClick();
+	void OnEvalDifficultComboxSelChanged(SOUI::EventArgs *pEvt);
+	void OnCoalComboxSelChanged(SOUI::EventArgs *pEvt);
 
 	/** ²Ëµ¥ÏûÏ¢ */
 protected:
@@ -30,6 +32,8 @@ protected:
 		EVENT_NAME_COMMAND(_T("cancel"), OnCancelButtonClick)
 		EVENT_NAME_COMMAND(_T("eval"), OnEvalButtonClick)
 		EVENT_NAME_COMMAND(_T("eval_proof"), OnEvalProofButtonClick)
+		EVENT_NAME_HANDLER(_T("eval_difficult"), EVT_CB_SELCHANGE, OnEvalDifficultComboxSelChanged)
+		EVENT_NAME_HANDLER(_T("coal"), EVT_CB_SELCHANGE, OnCoalComboxSelChanged)
 		CHAIN_EVENT_MAP(AcadSouiDialog)
 	EVENT_MAP_END()
 	
@@ -45,4 +49,13 @@ protected:
 	SEdit* m_PermeabilityKEdit;
 	SEdit* m_DecayAlphaEdit;
 	SEdit* m_PermeabilityLambdaEdit;
+	SComboBox* m_EvalDifficultCombox;
+	SComboBox* m_CoalCombox;
+
+protected:
+	virtual void OnDestroyWindow();
+
+private:
+	void fillCoalCombox();
+	void initCoalDatas();
 };
