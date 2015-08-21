@@ -2,6 +2,7 @@
 
 #include "dlimexp.h"
 #include "Entity.h"
+using namespace orm;
 using namespace cbm;
 
 #include <vector>
@@ -30,4 +31,6 @@ public:
 	static void GetCoalNames(const CString& mineName, StringArray& coals);
 	//查询矿井的所有煤层id
 	static void GetCoalIds(const CString& mineName, IntArray& coals);
+	//查询矿井的所有采区
+	static RecordPtrListPtr GetWorkAreas(const CString& mineName);
 };

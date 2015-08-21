@@ -51,6 +51,9 @@ namespace orm
 	#define FIND_ONE(Klass, field, value) DYNAMIC_POINTER_CAST(Klass, QueryPtr(Query::From<Klass>())->where(field, value)->find_one<Klass>())
 	#define FIND_MANY(Klass, field, value) QueryPtr(Query::From<Klass>())->where(field, value)->find_many<Klass>()
 
+	#define FIND_ONE2(Klass, field1, value1, field2, value2) DYNAMIC_POINTER_CAST(Klass, QueryPtr(Query::From<Klass>())->where(field1, value1)->where(field2, value2)->find_one<Klass>())
+	#define FIND_MANY2(Klass, field1, value1, field2, value2) QueryPtr(Query::From<Klass>())->where(field1, value1)->where(field2, value2)->find_many<Klass>()
+
 	class Record;
 	typedef shared_ptr<Record> RecordPtr;
 	typedef std::vector<RecordPtr> RecordPtrList;

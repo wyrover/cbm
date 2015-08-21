@@ -138,3 +138,25 @@ MinePtr DaoHelper::GetOnlineMine()
 
 	return FIND_ONE(Mine, FKEY(Account), Utils::int_to_cstring(account_id));
 }
+
+RecordPtrListPtr DaoHelper::GetWorkAreas(const CString& mineName)
+{
+	//查找矿井的所有煤层
+	IntArray ids;
+	DaoHelper::GetCoalIds(mineName, ids);
+
+	RecordPtrListPtr lists(new RecordPtrList);
+	for(int i=0;i<ids.size();i++)
+	{
+		//查找煤层上布置的所有采区
+		RecordPtrListPtr wa_lists = FIND_MANY(WorkArea, FKEY(Coal), Utils::int_to_cstring(ids[i]));
+		if(wa_lists == 0) continue;;
+
+		for(int j=0;j<wa_lists->size();j++)
+		{
+			lists->push_back(wa_lists->at(j));
+		}
+	}
+	if(lists->empty()) lists.reset();
+	return lists;
+}
