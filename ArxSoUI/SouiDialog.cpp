@@ -68,6 +68,12 @@ void SouiDialog::OnCancel()
 LRESULT SouiDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 {
 	m_bLayoutInited = TRUE;
+	//…Ë÷√±ÍÃ‚
+	SStatic* titleLabel = FindChildByName2<SStatic>(L"wnd_title");
+	if(titleLabel != 0 && !m_title.IsEmpty())
+	{
+		titleLabel->SetWindowText(m_title);
+	}
 	return FALSE;
 }
 
@@ -224,4 +230,9 @@ void SouiDialog::OnMouseHover(UINT nFlags, ::CPoint point)
 void SouiDialog::OnDestroyWindow()
 {
 
+}
+
+void SouiDialog::SetWindowTitle(const CString& title)
+{
+	m_title = title;
 }

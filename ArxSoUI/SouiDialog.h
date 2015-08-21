@@ -21,6 +21,8 @@ public:
 	SouiDialog(LPCTSTR pszXmlName, BOOL bModal = FALSE);
 	//析构函数
 	virtual ~SouiDialog(void);
+	//设置窗口标题
+	void SetWindowTitle(const CString& title);
 	//获取窗口句柄
 	HWND GetSafeWnd() const;
 	//运行对话框
@@ -90,6 +92,8 @@ private:
 	BOOL m_mouseInWindow;
 	//是否需要追踪鼠标移动消息
 	BOOL m_bTracking;
+	//窗口标题
+	CString m_title;
 
 	/** 控件消息映射表 */
 	EVENT_MAP_BEGIN()
