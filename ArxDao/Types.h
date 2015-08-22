@@ -53,6 +53,7 @@ namespace orm
 
 	#define FIND_ONE2(Klass, field1, value1, field2, value2) DYNAMIC_POINTER_CAST(Klass, QueryPtr(Query::From<Klass>())->where(field1, value1)->where(field2, value2)->find_one<Klass>())
 	#define FIND_MANY2(Klass, field1, value1, field2, value2) QueryPtr(Query::From<Klass>())->where(field1, value1)->where(field2, value2)->find_many<Klass>()
+	#define DELETE_MANY(Klass, field, value) get_db()->execute(QueryPtr(Query::From<Klass>())->where(field, value)->build_delete())
 
 	class Record;
 	typedef shared_ptr<Record> RecordPtr;
