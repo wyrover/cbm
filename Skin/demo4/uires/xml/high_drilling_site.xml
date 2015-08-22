@@ -1,29 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<SOUI width="431" height="382" translucent="0" alpha="255" resizable="0">
+<SOUI width="400" height="316" translucent="0" alpha="255" resizable="0">
   <root cache="1" skin="_skin.sys.wnd.bkgnd">
-    <text pos="14,276" width="132" height="23" name="text40" margin-x="1" margin-y="1">初次垮落循环步距L1</text>
-    <edit pos="160,274" width="142" height="26" name="L1" margin-x="1" margin-y="1"/>
-    <text pos="14,311" width="141" height="23" name="text42" margin-x="1" margin-y="1">周期垮落循环步距L2</text>
-    <edit pos="160,309" width="142" height="26" name="L2" margin-x="1" margin-y="1"/>
-    <text pos="14,343" width="111" height="23" name="text44" margin-x="1" margin-y="1">各钻场的间距Lg</text>
-    <edit pos="159,341" width="143" height="26" name="Lg" margin-x="1" margin-y="1"/>
-    <button pos="320,286" width="102" height="72" name="save" margin-x="1" margin-y="1">保存</button>
-    <window pos="0,0" width="433" height="382" name="window47" margin-x="1" margin-y="1" enable="0" visible="0"/>
-    <listctrl pos="12,77" width="413" height="183" hotTrack="1" itemHeight="33" headerHeight="33" name="adj_layer" margin-x="1" margin-y="1">
-      <header align="center" itemSwapEnable="0" fixWidth="0" sortHeader="0">
-        <items>
-          <item width="103">名称</item>
-          <item width="103">学号</item>
-          <item width="103">性别</item>
-          <item width="103">成绩</item>
-        </items>
-      </header>
-    </listctrl>
-    <text pos="14,46" width="47" height="23" name="text53" margin-x="1" margin-y="1">关键层</text>
-    <button pos="82,41" width="98" height="32" name="add" margin-x="1" margin-y="1">增加</button>
-    <button pos="202,40" width="98" height="32" name="del" margin-x="1" margin-y="1">删除</button>
-    <button pos="320,41" width="98" height="32" name="modify" margin-x="1" margin-y="1">修改</button>
-    <caption pos="7,0" width="420" height="40" name="caption59">
+    <text pos="16,35" width="326" height="23" name="text26" margin-x="1" margin-y="1">垮落带范围内自上而下最上一个关键层n的厚度hn</text>
+    <edit pos="16,58" width="139" height="26" name="hn" margin-x="1" margin-y="1"/>
+    <text pos="16,210" width="301" height="23" name="text34" margin-x="1" margin-y="1">自煤层到第n个关键层之间的岩层累计厚度∑hi</text>
+    <edit pos="16,233" width="139" height="26" name="hs" margin-x="1" margin-y="1"/>
+    <text pos="16,94" width="267" height="23" name="text36" margin-x="1" margin-y="1">∑h范围内顶板岩层断裂面与层面的夹角θ</text>
+    <edit pos="16,117" width="139" height="26" name="theta" margin-x="1" margin-y="1"/>
+    <text pos="21,151" width="169" height="23" name="text38" margin-x="1" margin-y="1">第n个关键层的作用载荷q</text>
+    <edit pos="201,174" width="139" height="26" name="Rtn" margin-x="1" margin-y="1"/>
+    <button pos="158,267" width="116" height="41" name="save" margin-x="1" margin-y="1">保存</button>
+    <window pos="0,0" width="402" height="316" name="window47" margin-x="1" margin-y="1" enable="0" visible="0"/>
+    <text pos="201,151" width="185" height="23" name="text50" margin-x="1" margin-y="1">第n个关键层的抗拉强度Rtn</text>
+    <edit pos="16,174" width="139" height="26" name="q" margin-x="1" margin-y="1"/>
+    <caption pos="6,0" width="396" height="40" name="caption59">
       <text pos="0,8" name="wnd_title">测试程序v1.0</text>
       <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
     </caption>

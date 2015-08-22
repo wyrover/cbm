@@ -2,7 +2,7 @@
 #include "WsGasFlowPredictDialog.h"
 #include "WsGasFlowPredictWorkDialog.h"
 #include "WsGasFlowPredictAdjDialog.h"
-#include "SComboxHelper.h"
+#include "SouiListHelper.h"
 
 #include <ArxHelper/HelperClass.h>
 #include <ArxDao/DaoHelper.h>

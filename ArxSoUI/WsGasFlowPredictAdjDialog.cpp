@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "WsGasFlowPredictAdjDialog.h"
 #include "NameDialog.h"
-#include "SComboxHelper.h"
+#include "SouiListHelper.h"
 
 #include <ArxHelper/HelperClass.h>
 #include <ArxDao/DaoHelper.h>
@@ -115,9 +115,9 @@ void WsGasFlowPredictAdjDialog::OnAddAdjLayerButtonClick()
 {
 	NameDialog dlg(TRUE);
 	dlg.SetWindowTitle(_T("ÐÂÔöÁÚ½ü²ã"));
-	dlg.Run(GetSafeWnd());
-	CString name = dlg.name;
+	if(IDOK != dlg.Run(GetSafeWnd())) return;
 
+	CString name = dlg.name;
 	if(name.IsEmpty()) return;
 	if(m_AdjLayerCombox->FindString(name) != -1)
 	{

@@ -18,6 +18,7 @@
     <file name="drilling_radius_qm" path="xml\drilling_radius_qm.xml"/>
     <file name="drilling_radius_validate" path="xml\drilling_radius_validate.xml"/>
     <file name="function_manage" path="xml\function_manage.xml"/>
+    <file name="high_drilling_design" path="xml\high_drilling_design.xml"/>
     <file name="high_drilling_pore" path="xml\high_drilling_pore.xml"/>
     <file name="high_drilling_site" path="xml\high_drilling_site.xml"/>
     <file name="high_drilling_tunnel" path="xml\high_drilling_tunnel.xml"/>

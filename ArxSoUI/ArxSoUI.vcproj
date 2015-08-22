@@ -383,7 +383,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\SComboxHelper.cpp"
+				RelativePath=".\SouiListHelper.cpp"
 				>
 			</File>
 			<File
@@ -498,6 +498,22 @@
 					>
 				</File>
 				<File
+					RelativePath=".\HighDrillingDesignDialog.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\HighDrillingPoreDialog.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\HighDrillingSiteDialog.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\HighDrillingTunnelDialog.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\KeyParamDialog.cpp"
 					>
 				</File>
@@ -588,7 +604,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\SComboxHelper.h"
+				RelativePath=".\SouiListHelper.h"
 				>
 			</File>
 			<File
@@ -672,6 +688,22 @@
 				</File>
 				<File
 					RelativePath=".\FormatMsgDlg.h"
+					>
+				</File>
+				<File
+					RelativePath=".\HighDrillingDesignDialog.h"
+					>
+				</File>
+				<File
+					RelativePath=".\HighDrillingPoreDialog.h"
+					>
+				</File>
+				<File
+					RelativePath=".\HighDrillingSiteDialog.h"
+					>
+				</File>
+				<File
+					RelativePath=".\HighDrillingTunnelDialog.h"
 					>
 				</File>
 				<File

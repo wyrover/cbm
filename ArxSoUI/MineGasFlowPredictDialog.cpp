@@ -2,7 +2,7 @@
 #include "MineGasFlowPredictDialog.h"
 #include "MineGasFlowPredictDesignDialog.h"
 #include "NameDialog.h"
-#include "SComboxHelper.h"
+#include "SouiListHelper.h"
 
 #include <ArxHelper/HelperClass.h>
 #include <ArxDao/DaoHelper.h>
@@ -195,9 +195,9 @@ void MineGasFlowPredictDialog::OnAddWorkAreaButtonClick()
 {
 	NameDialog dlg(TRUE);
 	dlg.SetWindowTitle(_T("新增采区"));
-	dlg.Run(GetSafeWnd());
-	CString name = dlg.name;
+	if(IDOK != dlg.Run(GetSafeWnd())) return;
 
+	CString name = dlg.name;
 	if(name.IsEmpty()) return;
 	if(m_WorkAreaCombox->FindString(name) != -1)
 	{

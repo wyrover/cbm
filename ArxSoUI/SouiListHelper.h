@@ -45,3 +45,23 @@ public:
 	static CString GetCurSelString(SListBox* listbox);
 	static int GetCurSel(SListBox* listbox);
 };
+
+
+class SListCtrlHelper
+{
+public:
+	static int Add(SListCtrl* listctrl, int id);
+	static int Insert(SListCtrl* listctrl, int id, int i);
+	static void SetStringItem(SListCtrl* listctrl, int i, int j, const CString& value);
+	static void SetIntItem(SListCtrl* listctrl, int i, int j, int value);
+	static void SetDoubleItem(SListCtrl* listctrl, int i, int j, double value, int precision=3);
+	static bool GetStringItem(SListCtrl* listctrl, int i, int j, CString& value);
+	static bool GetIntItem(SListCtrl* listctrl, int i, int j, int& value);
+	static bool GetDoubleItem(SListCtrl* listctrl, int i, int j, double& value);
+	static void Delete(SListCtrl* listctrl, int i);
+	static int GetItemID(SListCtrl* listctrl, int i);
+	static void Clear(SListCtrl* listctrl);
+
+	static void DeleteCurSel(SListCtrl* listctrl);
+	static int GetCurSelItemID(SListCtrl* listctrl);
+};

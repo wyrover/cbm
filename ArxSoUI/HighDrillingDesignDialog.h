@@ -1,16 +1,19 @@
 #pragma once
 #include "AcadSouiDialog.h"
 
-class HighDrillingSiteDialog : public AcadSouiDialog
+class HighDrillingDesignDialog : public AcadSouiDialog
 {
 
 	/** 构造和析构函数 */
 public:
-	HighDrillingSiteDialog(BOOL bModal = FALSE);
-	~HighDrillingSiteDialog(void);
+	HighDrillingDesignDialog(BOOL bModal = FALSE);
+	~HighDrillingDesignDialog(void);
 
 	/** 控件消息处理 */
 protected:
+	void OnWsComboxSelChanged(SOUI::EventArgs *pEvt);
+	void OnDrillSiteButtonClick();
+	void OnDrillPoreButtonClick();
 	void OnSaveButtonClick();
 
 	/** 菜单消息 */
@@ -25,12 +28,15 @@ protected:
 
 	//控件消息映射表
 	EVENT_MAP_BEGIN()
+		EVENT_NAME_HANDLER(_T("ws"), EVT_CB_SELCHANGE, OnWsComboxSelChanged)
+		EVENT_NAME_COMMAND(_T("drill_site"), OnDrillSiteButtonClick)
+		EVENT_NAME_COMMAND(_T("drill_pore"), OnDrillPoreButtonClick)
 		EVENT_NAME_COMMAND(_T("save"), OnSaveButtonClick)
 		CHAIN_EVENT_MAP(AcadSouiDialog)
 	EVENT_MAP_END()
 	
 //HOST消息(WINDOWS消息)映射表
-	BEGIN_MSG_MAP_EX(HighDrillingSiteDialog)
+	BEGIN_MSG_MAP_EX(HighDrillingDesignDialog)
 		MSG_WM_INITDIALOG(OnInitDialog)
 		MSG_WM_COMMAND(OnCommand)
 		CHAIN_MSG_MAP(AcadSouiDialog)
@@ -38,16 +44,18 @@ protected:
 	END_MSG_MAP()
 
 protected:
-	SEdit* m_HnEdit;
-	SEdit* m_HsEdit;
-	SEdit* m_ThetaEdit;
-	SEdit* m_RtnEdit;
-	SEdit* m_QEdit;
+	SEdit* m_L1Edit;
+	SEdit* m_L2Edit;
+	SEdit* m_LgEdit;
+	SComboBox* m_WsCombox;
+	SListCtrl* m_AbcListctrl;
+	SListCtrl* m_BcdListctrl;
 
-public:
-	int ws_id; // 工作面id
+protected:
+	virtual void OnDestroyWindow();
 
 private:
 	void initDatas();
-	void fillDatas();
+	void fillWsCombox();
+	WorkSurfPtr getCurSelWs();
 };

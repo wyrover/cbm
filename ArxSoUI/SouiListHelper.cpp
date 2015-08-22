@@ -1,5 +1,5 @@
 #include "StdAfx.h"
-#include "SComboxHelper.h"
+#include "SouiListHelper.h"
 
 void SComboBoxHelper::Append(SComboBox* combox, const StringArray& names, const IntArray& ids)
 {
@@ -244,4 +244,102 @@ CString SListBoxHelper::GetCurSelString(SListBox* listbox)
 int SListBoxHelper::GetCurSel(SListBox* listbox)
 {
 	return listbox->GetCurSel();
+}
+
+void SListCtrlHelper::Clear(SListCtrl* listctrl)
+{
+	for(int i=0;i<listctrl->GetItemCount();i++)
+	{
+		ItemData* pData = (ItemData*)listctrl->GetItemData(i);
+		delete pData;
+	}
+	listctrl->DeleteAllItems();
+}
+
+int SListCtrlHelper::Insert(SListCtrl* listctrl, int id, int i)
+{
+	int nItem = listctrl->InsertItem(i, _T(""));
+	if(nItem != -1)
+	{
+		//¸½¼ÓÊý¾Ý
+		ItemData* pData = new ItemData;
+		pData->id = id;
+		pData->nItem = nItem;
+		listctrl->SetItemData(nItem, (DWORD)pData);
+	}
+	return nItem;
+}
+
+int SListCtrlHelper::Add(SListCtrl* listctrl, int id)
+{
+	return SListCtrlHelper::Insert(listctrl, id, listctrl->GetItemCount());
+}
+
+void SListCtrlHelper::SetStringItem(SListCtrl* listctrl, int i, int j, const CString& value)
+{
+	if(i < 0 || j < 0 || i >= listctrl->GetItemCount() || j >= listctrl->GetColumnCount()) return;
+	listctrl->SetSubItemText(i, j, value);
+}
+
+void SListCtrlHelper::SetIntItem(SListCtrl* listctrl, int i, int j, int value)
+{
+	CString str;
+	str.Format(_T("%d"), value);
+	SListCtrlHelper::SetStringItem(listctrl, i, j, str);
+}
+
+void SListCtrlHelper::SetDoubleItem(SListCtrl* listctrl, int i, int j, double value, int precision)
+{
+	CString fmt;
+	fmt.Format(_T("%%.%df"), precision);
+	CString str;
+	str.Format(fmt, value);
+	SListCtrlHelper::SetStringItem(listctrl, i, j, str);
+}
+
+void SListCtrlHelper::Delete(SListCtrl* listctrl, int i)
+{
+	if(i < 0 || i >= listctrl->GetItemCount()) return;
+	ItemData* pData = (ItemData*)listctrl->GetItemData(i);
+	delete pData;
+	listctrl->DeleteItem(i);
+}
+
+int SListCtrlHelper::GetItemID(SListCtrl* listctrl, int i)
+{
+	if(i < 0 || i >= listctrl->GetItemCount()) return 0;
+	ItemData* pData = (ItemData*)listctrl->GetItemData(i);
+	if(pData == 0) return 0;
+	return pData->id;
+}
+
+void SListCtrlHelper::DeleteCurSel(SListCtrl* listctrl)
+{
+	SListCtrlHelper::Delete(listctrl, listctrl->GetSelectedItem());
+}
+
+int SListCtrlHelper::GetCurSelItemID(SListCtrl* listctrl)
+{
+	return SListCtrlHelper::GetItemID(listctrl, listctrl->GetSelectedItem());
+}
+
+bool SListCtrlHelper::GetStringItem(SListCtrl* listctrl, int i, int j, CString& value)
+{
+	if(i < 0 || j < 0 || i >= listctrl->GetItemCount() || j >= listctrl->GetColumnCount()) return false;
+	value = listctrl->GetSubItemText(i, j);
+	return true;
+}
+
+bool SListCtrlHelper::GetIntItem(SListCtrl* listctrl, int i, int j, int& value)
+{
+	CString str;
+	if(!SListCtrlHelper::GetStringItem(listctrl, i, j, str)) return false;
+	return Utils::cstring_to_int(str, value);
+}
+
+bool SListCtrlHelper::GetDoubleItem(SListCtrl* listctrl, int i, int j, double& value)
+{
+	CString str;
+	if(!SListCtrlHelper::GetStringItem(listctrl, i, j, str)) return false;
+	return Utils::cstring_to_double(str, value);
 }

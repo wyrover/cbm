@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "MineGasFlowPredictDesignDialog.h"
 #include "NameDialog.h"
-#include "SComboxHelper.h"
+#include "SouiListHelper.h"
 
 #include <ArxHelper/HelperClass.h>
 #include <ArxDao/DaoHelper.h>
@@ -109,9 +109,9 @@ void MineGasFlowPredictDesignDialog::OnAddWsButtonClick()
 {
 	NameDialog dlg(TRUE);
 	dlg.SetWindowTitle(_T("新增工作面"));
-	dlg.Run(GetSafeWnd());
-	CString name = dlg.name;
+	if(IDOK != dlg.Run(GetSafeWnd())) return;
 
+	CString name = dlg.name;
 	if(name.IsEmpty()) return;
 	if(m_WsCombox->FindString(name) != -1)
 	{
@@ -156,9 +156,9 @@ void MineGasFlowPredictDesignDialog::OnAddTwsButtonClick()
 {
 	NameDialog dlg(TRUE);
 	dlg.SetWindowTitle(_T("新增掘进面"));
-	dlg.Run(GetSafeWnd());
-	CString name = dlg.name;
+	if(IDOK != dlg.Run(GetSafeWnd())) return;
 
+	CString name = dlg.name;
 	if(name.IsEmpty()) return;
 	if(m_TwsCombox->FindString(name) != -1)
 	{

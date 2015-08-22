@@ -13,6 +13,8 @@ public:
 protected:
 	void OnRockComboxSelChanged(SOUI::EventArgs *pEvt);
 	void OnSaveButtonClick();
+	void OnWsComboxSelChanged(SOUI::EventArgs *pEvt);
+	void OnCaclButtonClick();
 
 	/** ²Ëµ¥ÏûÏ¢ */
 protected:
@@ -28,6 +30,8 @@ protected:
 	EVENT_MAP_BEGIN()
 		EVENT_NAME_HANDLER(_T("rock"), EVT_CB_SELCHANGE, OnRockComboxSelChanged)
 		EVENT_NAME_COMMAND(_T("save"), OnSaveButtonClick)
+		EVENT_NAME_HANDLER(_T("ws"), EVT_CB_SELCHANGE, OnWsComboxSelChanged)
+		EVENT_NAME_COMMAND(_T("cacl"), OnCaclButtonClick)
 		CHAIN_EVENT_MAP(AcadSouiDialog)
 	EVENT_MAP_END()
 	
@@ -45,5 +49,14 @@ protected:
 	SEdit* m_DipAngleEdit;
 	SComboBox* m_RockCombox;
 	SEdit* m_HzMinEdit;
-	SEdit* m_Edit14;
+	SEdit* m_HzMaxEdit;
+	SComboBox* m_WsCombox;
+
+protected:
+	virtual void OnDestroyWindow();
+
+private:
+	void initWsDatas();
+	void fillWsCombox();
+	WorkSurfPtr getCurSelWs();
 };

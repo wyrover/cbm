@@ -5,6 +5,8 @@
 #include "MineGasFlowPredictDialog.h"
 #include "TwsGasFlowPredictDialog.h"
 #include "WsGasFlowPredictDialog.h"
+#include "HighDrillingTunnelDialog.h"
+#include "HighDrillingDesignDialog.h"
 
 #include <ArxHelper/HelperClass.h>
 #include <ArxDao/DaoHelper.h>
@@ -64,10 +66,14 @@ void KeyParamDialog::OnKP4ButtonClick()
 
 void KeyParamDialog::OnKP6ButtonClick()
 {
+	HighDrillingTunnelDialog dlg(TRUE);
+	dlg.Run(GetSafeWnd());
 }
 
 void KeyParamDialog::OnKP7ButtonClick()
 {
+	HighDrillingDesignDialog dlg(TRUE);
+	dlg.Run(GetSafeWnd());
 }
 
 void KeyParamDialog::OnKP8ButtonClick()

@@ -18,14 +18,16 @@ class DrillingRadius;
 class DrillingSurf;
 class EvalUnit;
 class HighDrillingPore;
+class HighDrillingPoreParam;
+class HighDrillingSiteParam;
 class HighDrillingTunnel;
 class HydrGeo;
-class KeyLayer;
 class Mine;
 class PoreFlow;
 class PoreSize;
 class Region;
 class ResAbundance;
+class Rock;
 class SysInfo;
 class TechMode;
 class Technology;
@@ -44,14 +46,16 @@ typedef boost::shared_ptr<DrillingRadius> DrillingRadiusPtr;
 typedef boost::shared_ptr<DrillingSurf> DrillingSurfPtr;
 typedef boost::shared_ptr<EvalUnit> EvalUnitPtr;
 typedef boost::shared_ptr<HighDrillingPore> HighDrillingPorePtr;
+typedef boost::shared_ptr<HighDrillingPoreParam> HighDrillingPoreParamPtr;
+typedef boost::shared_ptr<HighDrillingSiteParam> HighDrillingSiteParamPtr;
 typedef boost::shared_ptr<HighDrillingTunnel> HighDrillingTunnelPtr;
 typedef boost::shared_ptr<HydrGeo> HydrGeoPtr;
-typedef boost::shared_ptr<KeyLayer> KeyLayerPtr;
 typedef boost::shared_ptr<Mine> MinePtr;
 typedef boost::shared_ptr<PoreFlow> PoreFlowPtr;
 typedef boost::shared_ptr<PoreSize> PoreSizePtr;
 typedef boost::shared_ptr<Region> RegionPtr;
 typedef boost::shared_ptr<ResAbundance> ResAbundancePtr;
+typedef boost::shared_ptr<Rock> RockPtr;
 typedef boost::shared_ptr<SysInfo> SysInfoPtr;
 typedef boost::shared_ptr<TechMode> TechModePtr;
 typedef boost::shared_ptr<Technology> TechnologyPtr;
@@ -263,22 +267,57 @@ public:
 
 public:
 	HighDrillingPore();
+	orm::RecordPtr high_drilling_pore_param;
+	int num;
+	double length;
+	double angle;
+	int type;
+	CString comment;
+
+}; // class HighDrillingPore
+
+class ARXDAO_DLLIMPEXP HighDrillingPoreParam : public orm::Record
+{
+public:
+	static CString Table();
+	static orm::RecordPtr Create();
+
+public:
+	HighDrillingPoreParam();
+	orm::RecordPtr work_surf;
+	CString name;
+	double lk;
+	double lc;
+	double lw;
+	int n1;
+	int n2;
+	double beta;
+	double ld;
+	CString comment;
+
+}; // class HighDrillingPoreParam
+
+class ARXDAO_DLLIMPEXP HighDrillingSiteParam : public orm::Record
+{
+public:
+	static CString Table();
+	static orm::RecordPtr Create();
+
+public:
+	HighDrillingSiteParam();
 	orm::RecordPtr work_surf;
 	CString name;
 	double l1;
 	double l2;
 	double lg;
-	double lk;
-	double lc;
-	double lw;
-	double n;
-	double beta;
-	double ld;
-	double lzi;
-	double lzj;
+	double hn;
+	double theta;
+	double q;
+	double rtn;
+	double hs;
 	CString comment;
 
-}; // class HighDrillingPore
+}; // class HighDrillingSiteParam
 
 class ARXDAO_DLLIMPEXP HighDrillingTunnel : public orm::Record
 {
@@ -317,25 +356,6 @@ public:
 	CString x8;
 
 }; // class HydrGeo
-
-class ARXDAO_DLLIMPEXP KeyLayer : public orm::Record
-{
-public:
-	static CString Table();
-	static orm::RecordPtr Create();
-
-public:
-	KeyLayer();
-	orm::RecordPtr high_drilling_pore;
-	CString name;
-	double h;
-	double theta;
-	double q;
-	double rt;
-	double sum_h;
-	CString comment;
-
-}; // class KeyLayer
 
 class ARXDAO_DLLIMPEXP Mine : public orm::Record
 {
@@ -446,6 +466,22 @@ public:
 	double max_abundance;
 
 }; // class ResAbundance
+
+class ARXDAO_DLLIMPEXP Rock : public orm::Record
+{
+public:
+	static CString Table();
+	static orm::RecordPtr Create();
+
+public:
+	Rock();
+	CString rock;
+	double a;
+	double b;
+	double c;
+	CString comment;
+
+}; // class Rock
 
 class ARXDAO_DLLIMPEXP SysInfo : public orm::Record
 {

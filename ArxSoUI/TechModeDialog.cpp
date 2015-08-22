@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "TechModeDialog.h"
-#include "SComboxHelper.h"
+#include "SouiListHelper.h"
 
 #include <ArxHelper/HelperClass.h>
 #include <ArxDao/DaoHelper.h>

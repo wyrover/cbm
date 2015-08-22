@@ -1,29 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<SOUI width="546" height="338" translucent="0" alpha="255" resizable="0">
+<SOUI width="382" height="363" translucent="0" alpha="255" resizable="0">
   <root cache="1" skin="_skin.sys.wnd.bkgnd">
-    <window pos="0,0" width="548" height="338" name="window0" margin-x="1" margin-y="1" enable="0" visible="0"/>
-    <text pos="16,40" width="244" height="23" name="text2" margin-x="1" margin-y="1">钻孔沿工作面推进方向的控制范围Lk</text>
-    <edit pos="264,38" width="80" height="27" name="Lk" margin-x="1" margin-y="1"/>
-    <text pos="16,81" width="354" height="23" name="text4" margin-x="1" margin-y="1">重叠区长度,即钻孔沿工作面推进方向上的搭接长度Lc</text>
-    <edit pos="373,77" width="86" height="27" name="Lc" margin-x="1" margin-y="1"/>
-    <edit pos="467,38" width="73" height="27" name="Lg" margin-x="1" margin-y="1"/>
-    <text pos="16,120" width="146" height="23" name="text10" margin-x="1" margin-y="1">工作面水平投影长度L</text>
-    <edit pos="161,118" width="108" height="27" name="Lw" margin-x="1" margin-y="1"/>
-    <text pos="348,40" width="111" height="23" name="text13" margin-x="1" margin-y="1">各钻场的间距Lg</text>
-    <text pos="284,120" width="161" height="23" name="text14" margin-x="1" margin-y="1">ABCD 范围内钻孔总数n</text>
-    <edit pos="450,118" width="82" height="27" name="n" margin-x="1" margin-y="1"/>
-    <text pos="16,161" width="251" height="23" name="text16" margin-x="1" margin-y="1">ABCD 范围内抽放钻孔的范围控制角β</text>
-    <edit pos="268,159" width="91" height="27" name="beta" margin-x="1" margin-y="1"/>
-    <text pos="16,202" width="230" height="23" name="text18" margin-x="1" margin-y="1">钻孔沿工作面方向水平投影长度Ld</text>
-    <edit pos="247,200" width="103" height="27" name="Ld" margin-x="1" margin-y="1"/>
-    <text pos="16,243" width="158" height="23" name="text20" margin-x="1" margin-y="1">ABC范围内钻孔长度Lzi</text>
-    <edit pos="176,241" width="84" height="27" name="Lzi" margin-x="1" margin-y="1"/>
-    <text pos="287,243" width="159" height="23" name="text22" margin-x="1" margin-y="1">BCD范围内钻孔长度Lzj</text>
-    <edit pos="447,241" width="73" height="27" name="Lzj" margin-x="1" margin-y="1"/>
-    <caption pos="9,0" width="539" height="40" name="caption24">
+    <window pos="0,0" width="384" height="363" name="window0" margin-x="1" margin-y="1" enable="0" visible="0"/>
+    <text pos="16,250" width="244" height="23" name="text2" margin-x="1" margin-y="1">钻孔沿工作面推进方向的控制范围Lk</text>
+    <edit pos="265,248" width="79" height="26" readOnly="1" name="Lk" margin-x="1" margin-y="1"/>
+    <text pos="16,138" width="354" height="23" name="text4" margin-x="1" margin-y="1">重叠区长度,即钻孔沿工作面推进方向上的搭接长度Lc</text>
+    <edit pos="16,162" width="73" height="26" name="Lc" margin-x="1" margin-y="1"/>
+    <text pos="16,42" width="146" height="23" name="text10" margin-x="1" margin-y="1">工作面水平投影长度L</text>
+    <edit pos="182,40" width="85" height="26" name="Lw" margin-x="1" margin-y="1"/>
+    <text pos="16,110" width="160" height="23" name="text14" margin-x="1" margin-y="1">BCD 范围内钻孔总数n2</text>
+    <edit pos="182,108" width="85" height="26" name="n2" margin-x="1" margin-y="1"/>
+    <text pos="16,284" width="251" height="23" name="text16" margin-x="1" margin-y="1">ABCD 范围内抽放钻孔的范围控制角β</text>
+    <edit pos="268,282" width="76" height="26" readOnly="1" name="beta" margin-x="1" margin-y="1"/>
+    <text pos="16,192" width="230" height="23" name="text18" margin-x="1" margin-y="1">钻孔沿工作面方向水平投影长度Ld</text>
+    <edit pos="16,215" width="73" height="26" name="Ld" margin-x="1" margin-y="1"/>
+    <caption pos="8,0" width="372" height="40" name="caption24">
       <text pos="0,8" name="wnd_title">测试程序v1.0</text>
       <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
     </caption>
-    <button pos="203,288" width="143" height="40" name="save" margin-x="1" margin-y="1">保存</button>
+    <button pos="200,314" width="106" height="40" name="save" margin-x="1" margin-y="1">保存</button>
+    <text pos="91,164" width="226" height="23" name="text69" margin-x="1" margin-y="1">(注：依据生产实际Lc不小于20m)</text>
+    <text pos="91,217" width="152" height="23" name="text70" margin-x="1" margin-y="1">(注：Ld=(2/3~3/4)L)</text>
+    <text pos="16,75" width="156" height="23" name="text81" margin-x="1" margin-y="1">ABC 范围内钻孔总数n1</text>
+    <edit pos="182,73" width="85" height="26" name="n1" margin-x="1" margin-y="1"/>
+    <button pos="65,314" width="106" height="40" name="cacl" margin-x="1" margin-y="1">计算</button>
   </root>
 </SOUI>

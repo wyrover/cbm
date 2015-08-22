@@ -12,6 +12,7 @@ public:
 	/** 控件消息处理 */
 protected:
 	void OnSaveButtonClick();
+	void OnCaclButtonClick();
 
 	/** 菜单消息 */
 protected:
@@ -26,6 +27,7 @@ protected:
 	//控件消息映射表
 	EVENT_MAP_BEGIN()
 		EVENT_NAME_COMMAND(_T("save"), OnSaveButtonClick)
+		EVENT_NAME_COMMAND(_T("cacl"), OnCaclButtonClick)
 		CHAIN_EVENT_MAP(AcadSouiDialog)
 	EVENT_MAP_END()
 	
@@ -40,11 +42,17 @@ protected:
 protected:
 	SEdit* m_LkEdit;
 	SEdit* m_LcEdit;
-	SEdit* m_LgEdit;
 	SEdit* m_LwEdit;
-	SEdit* m_NEdit;
+	SEdit* m_N2Edit;
 	SEdit* m_BetaEdit;
 	SEdit* m_LdEdit;
-	SEdit* m_LziEdit;
-	SEdit* m_LzjEdit;
+	SEdit* m_N1Edit;
+
+public:
+	double Lg;
+	int ws_id; // 工作面id(外部传入)
+
+private:
+	void initDatas();
+	void fillDatas();
 };

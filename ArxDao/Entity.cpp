@@ -331,31 +331,83 @@ orm::RecordPtr HighDrillingPore::Create()
 
 HighDrillingPore::HighDrillingPore() : orm::Record(HighDrillingPore::Table())
 {
+	num = 0;
+	length = 0.0;
+	angle = 0.0;
+	type = 0;
+	comment = _T("");
+	REG_ATTRIB(num, num);
+	REG_ATTRIB(length, length);
+	REG_ATTRIB(angle, angle);
+	REG_ATTRIB(type, type);
+	REG_ATTRIB(comment, comment);
+	REG_FOREGIN_KEY(cbm_high_drilling_pore_param_id, high_drilling_pore_param, &HighDrillingPoreParam::Create);
+}
+
+CString HighDrillingPoreParam::Table()
+{
+	return _T("cbm_high_drilling_pore_param");
+}
+
+orm::RecordPtr HighDrillingPoreParam::Create()
+{
+	return orm::RecordPtr(new HighDrillingPoreParam());
+}
+
+HighDrillingPoreParam::HighDrillingPoreParam() : orm::Record(HighDrillingPoreParam::Table())
+{
+	name = _T("");
+	lk = 0.0;
+	lc = 0.0;
+	lw = 0.0;
+	n1 = 0;
+	n2 = 0;
+	beta = 0.0;
+	ld = 0.0;
+	comment = _T("");
+	REG_ATTRIB(name, name);
+	REG_ATTRIB(lk, lk);
+	REG_ATTRIB(lc, lc);
+	REG_ATTRIB(lw, lw);
+	REG_ATTRIB(n1, n1);
+	REG_ATTRIB(n2, n2);
+	REG_ATTRIB(beta, beta);
+	REG_ATTRIB(ld, ld);
+	REG_ATTRIB(comment, comment);
+	REG_FOREGIN_KEY(cbm_work_surf_id, work_surf, &WorkSurf::Create);
+}
+
+CString HighDrillingSiteParam::Table()
+{
+	return _T("cbm_high_drilling_site_param");
+}
+
+orm::RecordPtr HighDrillingSiteParam::Create()
+{
+	return orm::RecordPtr(new HighDrillingSiteParam());
+}
+
+HighDrillingSiteParam::HighDrillingSiteParam() : orm::Record(HighDrillingSiteParam::Table())
+{
 	name = _T("");
 	l1 = 0.0;
 	l2 = 0.0;
 	lg = 0.0;
-	lk = 0.0;
-	lc = 0.0;
-	lw = 0.0;
-	n = 0.0;
-	beta = 0.0;
-	ld = 0.0;
-	lzi = 0.0;
-	lzj = 0.0;
+	hn = 0.0;
+	theta = 0.0;
+	q = 0.0;
+	rtn = 0.0;
+	hs = 0.0;
 	comment = _T("");
 	REG_ATTRIB(name, name);
 	REG_ATTRIB(l1, l1);
 	REG_ATTRIB(l2, l2);
 	REG_ATTRIB(lg, lg);
-	REG_ATTRIB(lk, lk);
-	REG_ATTRIB(lc, lc);
-	REG_ATTRIB(lw, lw);
-	REG_ATTRIB(n, n);
-	REG_ATTRIB(beta, beta);
-	REG_ATTRIB(ld, ld);
-	REG_ATTRIB(lzi, lzi);
-	REG_ATTRIB(lzj, lzj);
+	REG_ATTRIB(hn, hn);
+	REG_ATTRIB(theta, theta);
+	REG_ATTRIB(q, q);
+	REG_ATTRIB(rtn, rtn);
+	REG_ATTRIB(hs, hs);
 	REG_ATTRIB(comment, comment);
 	REG_FOREGIN_KEY(cbm_work_surf_id, work_surf, &WorkSurf::Create);
 }
@@ -417,35 +469,6 @@ HydrGeo::HydrGeo() : orm::Record(HydrGeo::Table())
 	REG_ATTRIB(x6, x6);
 	REG_ATTRIB(x7, x7);
 	REG_ATTRIB(x8, x8);
-}
-
-CString KeyLayer::Table()
-{
-	return _T("cbm_key_layer");
-}
-
-orm::RecordPtr KeyLayer::Create()
-{
-	return orm::RecordPtr(new KeyLayer());
-}
-
-KeyLayer::KeyLayer() : orm::Record(KeyLayer::Table())
-{
-	name = _T("");
-	h = 0.0;
-	theta = 0.0;
-	q = 0.0;
-	rt = 0.0;
-	sum_h = 0.0;
-	comment = _T("");
-	REG_ATTRIB(name, name);
-	REG_ATTRIB(h, h);
-	REG_ATTRIB(theta, theta);
-	REG_ATTRIB(q, q);
-	REG_ATTRIB(rt, rt);
-	REG_ATTRIB(sum_h, sum_h);
-	REG_ATTRIB(comment, comment);
-	REG_FOREGIN_KEY(cbm_high_drilling_pore_id, high_drilling_pore, &HighDrillingPore::Create);
 }
 
 CString Mine::Table()
@@ -622,6 +645,30 @@ ResAbundance::ResAbundance() : orm::Record(ResAbundance::Table())
 	REG_ATTRIB(type, type);
 	REG_ATTRIB(min_abundance, min_abundance);
 	REG_ATTRIB(max_abundance, max_abundance);
+}
+
+CString Rock::Table()
+{
+	return _T("cbm_rock");
+}
+
+orm::RecordPtr Rock::Create()
+{
+	return orm::RecordPtr(new Rock());
+}
+
+Rock::Rock() : orm::Record(Rock::Table())
+{
+	rock = _T("");
+	a = 0.0;
+	b = 0.0;
+	c = 0.0;
+	comment = _T("");
+	REG_ATTRIB(rock, rock);
+	REG_ATTRIB(a, a);
+	REG_ATTRIB(b, b);
+	REG_ATTRIB(c, c);
+	REG_ATTRIB(comment, comment);
 }
 
 CString SysInfo::Table()
