@@ -19,7 +19,7 @@ namespace orm
 		static CString cstring_tolower(const CString& s);
 		static CString cstring_toupper(const CString& s);
 		static CString int_to_cstring(int v);
-		static CString double_to_cstring(double v);
+		static CString double_to_cstring(double v, int precision=3);
 		static bool cstring_to_int(const CString& s, int& v);
 		static bool cstring_to_double(const CString& s, double& v);
 		static CString cstring_join(std::vector<CString> vec, const CString& delim);

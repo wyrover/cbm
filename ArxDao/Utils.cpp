@@ -42,10 +42,12 @@ namespace orm
 		str.Format(_T("%d"), v);
 		return str;
 	}
-	CString Utils::double_to_cstring(double v) 
+	CString Utils::double_to_cstring(double v, int precision) 
 	{
+		CString fmt;
+		fmt.Format(_T("%%.%df"), precision);
 		CString str;
-		str.Format(_T("%lf"), v);
+		str.Format(fmt, v);
 		return str;
 	}
 	/** Split a const CString& s into parts by value e */
