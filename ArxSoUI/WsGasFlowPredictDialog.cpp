@@ -75,7 +75,7 @@ void WsGasFlowPredictDialog::OnQr1CaclButtonClick()
 	double m = coal->thick;
 	Utils::cstring_to_double((LPCTSTR)m_WsThickEdit->GetWindowText(), m);
 	//工作面采高
-	double M = work_surf->m;
+	double M = coal->hw;
 	double W0 = coal->gas_w0;
 	double Wc = coal->gas_wc2;
 	//计算开采层相对瓦斯涌出量q1
@@ -104,6 +104,10 @@ void WsGasFlowPredictDialog::OnQr2CaclButtonClick()
 	//根据id查找回采工作面
 	WorkSurfPtr work_surf = FIND_BY_ID(WorkSurf, ws_id);
 	if(work_surf == 0) return;
+	WorkAreaPtr work_area = DYNAMIC_POINTER_CAST(WorkArea, work_surf->work_area);
+	if(work_area == 0) return;
+	CoalPtr coal = DYNAMIC_POINTER_CAST(Coal, work_area->coal);
+	if(coal == 0) return;
 
 	//查找所有的邻近层
 	RecordPtrListPtr lists = FIND_MANY(AdjLayer, FKEY(WorkSurf), work_surf->getStringID());
@@ -114,17 +118,17 @@ void WsGasFlowPredictDialog::OnQr2CaclButtonClick()
 	{
 		AdjLayerPtr adj_layer = DYNAMIC_POINTER_CAST(AdjLayer, lists->at(i));
 		if(adj_layer == 0) continue;
-		CoalPtr coal = DYNAMIC_POINTER_CAST(Coal, adj_layer->coal);
-		if(coal == 0) continue;
+		CoalPtr adj_coal = DYNAMIC_POINTER_CAST(Coal, adj_layer->coal);
+		if(adj_coal == 0) continue;
 
-		double W0 = coal->gas_w0;
-		double Wc = coal->gas_wc2;
-		double m = coal->thick;
-		double eta = coal->gas_eta;
+		double W0 = adj_coal->gas_w0;
+		double Wc = adj_coal->gas_wc2;
+		double m = adj_coal->thick;
+		double eta = adj_coal->gas_eta;
 
 		S += (W0-Wc)*m*eta;
 	}
-	double M = work_surf->m;
+	double M = coal->hw;
 	double q2 = S/M;
 
 	//更新到界面
@@ -139,10 +143,14 @@ void WsGasFlowPredictDialog::OnSaveButtonClick()
 	//根据id查找回采工作面
 	WorkSurfPtr work_surf = FIND_BY_ID(WorkSurf, ws_id);
 	if(work_surf == 0) return;
+	WorkAreaPtr work_area = DYNAMIC_POINTER_CAST(WorkArea, work_surf->work_area);
+	if(work_area == 0) return;
+	CoalPtr coal = DYNAMIC_POINTER_CAST(Coal, work_area->coal);
+	if(coal == 0) return;
 
 	work_surf->layerable = BOOL_2_INT(m_MethodThickRadio->IsChecked() == 0);
 	Utils::cstring_to_double((LPCTSTR)m_LEdit->GetWindowText(), work_surf->l);
-	Utils::cstring_to_double((LPCTSTR)m_HwEdit->GetWindowText(), work_surf->m);
+	Utils::cstring_to_double((LPCTSTR)m_HwEdit->GetWindowText(), coal->hw);
 	Utils::cstring_to_double((LPCTSTR)m_Qr1Edit->GetWindowText(), work_surf->qr1);
 	Utils::cstring_to_double((LPCTSTR)m_Qr2Edit->GetWindowText(), work_surf->qr2);
 	Utils::cstring_to_double((LPCTSTR)m_QrEdit->GetWindowText(), work_surf->qr);
@@ -179,7 +187,7 @@ void WsGasFlowPredictDialog::OnWsComboxSelChanged(SOUI::EventArgs *pEvt)
 	m_MethodThickRadio->SetCheck(BOOL_2_INT(work_surf->layerable != 0));
 	//工作面长度和采高
 	m_LEdit->SetWindowText(Utils::double_to_cstring(work_surf->l));
-	m_HwEdit->SetWindowText(Utils::double_to_cstring(work_surf->m));
+	//m_HwEdit->SetWindowText(Utils::double_to_cstring(coal->hw));
 	//工作面瓦斯涌出量数据
 	m_Qr1Edit->SetWindowText(Utils::double_to_cstring(work_surf->qr1));
 	m_Qr2Edit->SetWindowText(Utils::double_to_cstring(work_surf->qr2));
@@ -190,6 +198,7 @@ void WsGasFlowPredictDialog::OnWsComboxSelChanged(SOUI::EventArgs *pEvt)
 	CoalPtr coal = DYNAMIC_POINTER_CAST(Coal, work_area->coal);
 	if(coal != 0)
 	{
+		m_HwEdit->SetWindowText(Utils::double_to_cstring(coal->hw));
 		m_ThickEdit->SetWindowText(Utils::double_to_cstring(coal->thick));
 		m_WsThickEdit->SetWindowText(Utils::double_to_cstring(coal->thick));
 	}

@@ -106,7 +106,7 @@ void HighDrillingTunnelDialog::OnWsComboxSelChanged(SOUI::EventArgs *pEvt)
 	if(coal == 0) return;
 
 	//工作面数据
-	m_HwEdit->SetWindowText(Utils::double_to_cstring(work_surf->m)); // 采高
+	m_HwEdit->SetWindowText(Utils::double_to_cstring(coal->hw)); // 采高
 	//煤层数据
 	m_DipAngleEdit->SetWindowText(Utils::double_to_cstring(coal->dip_angle));// 煤层倾角
 	//高抽巷数据

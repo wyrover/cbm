@@ -84,6 +84,7 @@ Coal::Coal() : orm::Record(Coal::Table())
 	name = _T("");
 	minable = 0;
 	thick = 0.0;
+	hw = 0.0;
 	qa = 0.0;
 	qr = 0.0;
 	fore_qr = 0.0;
@@ -109,12 +110,12 @@ Coal::Coal() : orm::Record(Coal::Table())
 	gas_x1 = 0.0;
 	res_a2 = 0.0;
 	gas_x2 = 0.0;
+	pump_wc = 0.0;
 	pump_kd = 0.0;
-	pump_k1 = 0.0;
 	pump_k2 = 0.0;
 	pump_k3 = 0.0;
 	pump_k4 = 0.0;
-	pump_wc = 0.0;
+	pump_k1 = 0.0;
 	rho = 0.0;
 	vr = 0.0;
 	gas_w0 = 0.0;
@@ -146,6 +147,7 @@ Coal::Coal() : orm::Record(Coal::Table())
 	REG_ATTRIB(name, name);
 	REG_ATTRIB(minable, minable);
 	REG_ATTRIB(thick, thick);
+	REG_ATTRIB(hw, hw);
 	REG_ATTRIB(qa, qa);
 	REG_ATTRIB(qr, qr);
 	REG_ATTRIB(fore_qr, fore_qr);
@@ -171,12 +173,12 @@ Coal::Coal() : orm::Record(Coal::Table())
 	REG_ATTRIB(gas_x1, gas_x1);
 	REG_ATTRIB(res_a2, res_a2);
 	REG_ATTRIB(gas_x2, gas_x2);
+	REG_ATTRIB(pump_wc, pump_wc);
 	REG_ATTRIB(pump_kd, pump_kd);
-	REG_ATTRIB(pump_k1, pump_k1);
 	REG_ATTRIB(pump_k2, pump_k2);
 	REG_ATTRIB(pump_k3, pump_k3);
 	REG_ATTRIB(pump_k4, pump_k4);
-	REG_ATTRIB(pump_wc, pump_wc);
+	REG_ATTRIB(pump_k1, pump_k1);
 	REG_ATTRIB(rho, rho);
 	REG_ATTRIB(vr, vr);
 	REG_ATTRIB(gas_w0, gas_w0);
@@ -229,17 +231,17 @@ CoalPore::CoalPore() : orm::Record(CoalPore::Table())
 	REG_FOREGIN_KEY(cbm_coal_id, coal, &Coal::Create);
 }
 
-CString DrillingRadius::Table()
+CString DrillingRadiusParam::Table()
 {
-	return _T("cbm_drilling_radius");
+	return _T("cbm_drilling_radius_param");
 }
 
-orm::RecordPtr DrillingRadius::Create()
+orm::RecordPtr DrillingRadiusParam::Create()
 {
-	return orm::RecordPtr(new DrillingRadius());
+	return orm::RecordPtr(new DrillingRadiusParam());
 }
 
-DrillingRadius::DrillingRadius() : orm::Record(DrillingRadius::Table())
+DrillingRadiusParam::DrillingRadiusParam() : orm::Record(DrillingRadiusParam::Table())
 {
 	name = _T("");
 	r = 0.0;
@@ -863,7 +865,6 @@ WorkSurf::WorkSurf() : orm::Record(WorkSurf::Table())
 	qa = 0.0;
 	fore_qr = 0.0;
 	fore_qa = 0.0;
-	m = 0.0;
 	l = 0.0;
 	layerable = 0;
 	k1 = 0.0;
@@ -881,7 +882,6 @@ WorkSurf::WorkSurf() : orm::Record(WorkSurf::Table())
 	REG_ATTRIB(qa, qa);
 	REG_ATTRIB(fore_qr, fore_qr);
 	REG_ATTRIB(fore_qa, fore_qa);
-	REG_ATTRIB(m, m);
 	REG_ATTRIB(l, l);
 	REG_ATTRIB(layerable, layerable);
 	REG_ATTRIB(k1, k1);

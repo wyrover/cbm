@@ -14,7 +14,7 @@ class AdjLayer;
 class Base;
 class Coal;
 class CoalPore;
-class DrillingRadius;
+class DrillingRadiusParam;
 class DrillingSurf;
 class EvalUnit;
 class HighDrillingPore;
@@ -42,7 +42,7 @@ typedef boost::shared_ptr<AdjLayer> AdjLayerPtr;
 typedef boost::shared_ptr<Base> BasePtr;
 typedef boost::shared_ptr<Coal> CoalPtr;
 typedef boost::shared_ptr<CoalPore> CoalPorePtr;
-typedef boost::shared_ptr<DrillingRadius> DrillingRadiusPtr;
+typedef boost::shared_ptr<DrillingRadiusParam> DrillingRadiusParamPtr;
 typedef boost::shared_ptr<DrillingSurf> DrillingSurfPtr;
 typedef boost::shared_ptr<EvalUnit> EvalUnitPtr;
 typedef boost::shared_ptr<HighDrillingPore> HighDrillingPorePtr;
@@ -123,6 +123,7 @@ public:
 	CString name;
 	int minable;
 	double thick;
+	double hw;
 	double qa;
 	double qr;
 	double fore_qr;
@@ -148,12 +149,12 @@ public:
 	double gas_x1;
 	double res_a2;
 	double gas_x2;
+	double pump_wc;
 	double pump_kd;
-	double pump_k1;
 	double pump_k2;
 	double pump_k3;
 	double pump_k4;
-	double pump_wc;
+	double pump_k1;
 	double rho;
 	double vr;
 	double gas_w0;
@@ -200,14 +201,14 @@ public:
 
 }; // class CoalPore
 
-class ARXDAO_DLLIMPEXP DrillingRadius : public orm::Record
+class ARXDAO_DLLIMPEXP DrillingRadiusParam : public orm::Record
 {
 public:
 	static CString Table();
 	static orm::RecordPtr Create();
 
 public:
-	DrillingRadius();
+	DrillingRadiusParam();
 	orm::RecordPtr coal;
 	CString name;
 	double r;
@@ -221,7 +222,7 @@ public:
 	double qsum;
 	double eta;
 
-}; // class DrillingRadius
+}; // class DrillingRadiusParam
 
 class ARXDAO_DLLIMPEXP DrillingSurf : public orm::Record
 {
@@ -617,7 +618,6 @@ public:
 	double qa;
 	double fore_qr;
 	double fore_qa;
-	double m;
 	double l;
 	int layerable;
 	double k1;

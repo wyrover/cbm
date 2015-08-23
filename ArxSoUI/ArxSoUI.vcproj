@@ -494,6 +494,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\DrillingRadiusDesignDialog.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\FormatMsgDlg.cpp"
 					>
 				</File>
@@ -684,6 +688,10 @@
 				</File>
 				<File
 					RelativePath=".\DifficultEvalDialog.h"
+					>
+				</File>
+				<File
+					RelativePath=".\DrillingRadiusDesignDialog.h"
 					>
 				</File>
 				<File
