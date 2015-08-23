@@ -7,6 +7,9 @@
 #include "WsGasFlowPredictDialog.h"
 #include "HighDrillingTunnelDialog.h"
 #include "HighDrillingDesignDialog.h"
+#include "DrillingRadiusDesignDialog.h"
+#include "PoreSizeDialog.h"
+#include "PoreFlowDialog.h"
 
 #include <ArxHelper/HelperClass.h>
 #include <ArxDao/DaoHelper.h>
@@ -78,14 +81,20 @@ void KeyParamDialog::OnKP7ButtonClick()
 
 void KeyParamDialog::OnKP8ButtonClick()
 {
+	DrillingRadiusDesignDialog dlg(TRUE);
+	dlg.Run(GetSafeWnd());
 }
 
 void KeyParamDialog::OnKP9ButtonClick()
 {
+	PoreSizeDialog dlg(TRUE);
+	dlg.Run(GetSafeWnd());
 }
 
 void KeyParamDialog::OnKP10ButtonClick()
 {
+	PoreFlowDialog dlg(TRUE);
+	dlg.Run(GetSafeWnd());
 }
 
 void KeyParamDialog::OnKP11ButtonClick()

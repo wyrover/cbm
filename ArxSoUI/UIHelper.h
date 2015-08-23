@@ -10,6 +10,7 @@ public:
 	static void SampleManage();
 	static void GasTechModeDecision();
 	static void KeyParamCacl();
+	static void PolicyHelp();
 
 	static void InitSouiEnviroment();
 	static void UnInitSouiEnviroment();

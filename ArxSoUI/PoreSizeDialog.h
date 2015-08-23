@@ -12,6 +12,9 @@ public:
 	/** 控件消息处理 */
 protected:
 	void OnSaveButtonClick();
+	void OnHintButtonClick();
+	void OnCaclButtonClick();
+	void OnHint2ButtonClick();
 
 	/** 菜单消息 */
 protected:
@@ -26,6 +29,9 @@ protected:
 	//控件消息映射表
 	EVENT_MAP_BEGIN()
 		EVENT_NAME_COMMAND(_T("save"), OnSaveButtonClick)
+		EVENT_NAME_COMMAND(_T("hint"), OnHintButtonClick)
+		EVENT_NAME_COMMAND(_T("cacl"), OnCaclButtonClick)
+		EVENT_NAME_COMMAND(_T("hint2"), OnHint2ButtonClick)
 		CHAIN_EVENT_MAP(AcadSouiDialog)
 	EVENT_MAP_END()
 	
@@ -38,10 +44,17 @@ protected:
 	END_MSG_MAP()
 
 protected:
+	virtual void OnDestroyWindow();
+
+protected:
 	SEdit* m_QEdit;
 	SEdit* m_DeltaEdit;
 	SEdit* m_VEdit;
 	SEdit* m_SigmaEdit;
 	SEdit* m_PEdit;
 	SEdit* m_DEdit;
+
+private:
+	void initDatas();
+	int pore_size_id; // 内部使用
 };

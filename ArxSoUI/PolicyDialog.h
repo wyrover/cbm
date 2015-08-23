@@ -11,6 +11,14 @@ public:
 
 	/** 控件消息处理 */
 protected:
+	void OnP1ButtonClick();
+	void OnP2ButtonClick();
+	void OnP3ButtonClick();
+	void OnP4ButtonClick();
+	void OnP6ButtonClick();
+	void OnP7ButtonClick();
+	void OnP8ButtonClick();
+	void OnP5ButtonClick();
 
 	/** 菜单消息 */
 protected:
@@ -24,6 +32,14 @@ protected:
 
 	//控件消息映射表
 	EVENT_MAP_BEGIN()
+		EVENT_NAME_COMMAND(_T("P1"), OnP1ButtonClick)
+		EVENT_NAME_COMMAND(_T("P2"), OnP2ButtonClick)
+		EVENT_NAME_COMMAND(_T("P3"), OnP3ButtonClick)
+		EVENT_NAME_COMMAND(_T("P4"), OnP4ButtonClick)
+		EVENT_NAME_COMMAND(_T("P6"), OnP6ButtonClick)
+		EVENT_NAME_COMMAND(_T("P7"), OnP7ButtonClick)
+		EVENT_NAME_COMMAND(_T("P8"), OnP8ButtonClick)
+		EVENT_NAME_COMMAND(_T("P5"), OnP5ButtonClick)
 		CHAIN_EVENT_MAP(AcadSouiDialog)
 	EVENT_MAP_END()
 	
@@ -36,4 +52,5 @@ protected:
 	END_MSG_MAP()
 
 protected:
+	SLink* m_Link14;
 };

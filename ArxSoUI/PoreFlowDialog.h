@@ -16,6 +16,7 @@ protected:
 	void OnBCaclButtonClick();
 	void OnDeltaPCaclButtonClick();
 	void OnDeltaTCaclButtonClick();
+	void OnCaclButtonClick();
 
 	/** 菜单消息 */
 protected:
@@ -34,6 +35,7 @@ protected:
 		EVENT_NAME_COMMAND(_T("b_cacl"), OnBCaclButtonClick)
 		EVENT_NAME_COMMAND(_T("delta_p_cacl"), OnDeltaPCaclButtonClick)
 		EVENT_NAME_COMMAND(_T("delta_T_cacl"), OnDeltaTCaclButtonClick)
+		EVENT_NAME_COMMAND(_T("cacl"), OnCaclButtonClick)
 		CHAIN_EVENT_MAP(AcadSouiDialog)
 	EVENT_MAP_END()
 	
@@ -54,4 +56,12 @@ protected:
 	SEdit* m_XEdit;
 	SEdit* m_QHunEdit;
 	SEdit* m_QChunEdit;
+	SEdit* m_TEdit;
+
+protected:
+	virtual void OnDestroyWindow();
+
+private:
+	void initDatas();
+	int pore_flow_id; // 内部使用
 };

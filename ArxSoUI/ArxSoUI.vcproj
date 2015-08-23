@@ -558,6 +558,26 @@
 					>
 				</File>
 				<File
+					RelativePath=".\PolicyDialog.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\PoreFlowDeltaPDialog.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\PoreFlowDialog.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\PoreFlowKDialog.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\PoreSizeDialog.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\RegDialog.cpp"
 					>
 				</File>
@@ -752,6 +772,26 @@
 				</File>
 				<File
 					RelativePath=".\NameDialog.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PolicyDialog.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PoreFlowDeltaPDialog.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PoreFlowDialog.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PoreFlowKDialog.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PoreSizeDialog.h"
 					>
 				</File>
 				<File

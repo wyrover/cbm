@@ -16,6 +16,7 @@ using namespace cbm;
 #include "SampleManageDialog.h"
 #include "MineDialog.h"
 #include "KeyParamDialog.h"
+#include "PolicyDialog.h"
 using namespace SOUI;
 
 void UIHelper::InitSouiEnviroment()
@@ -112,4 +113,12 @@ void UIHelper::KeyParamCacl()
 		KeyParamDialog* dlg = new KeyParamDialog(FALSE);
 		dlg->Run(acedGetAcadFrame()->GetSafeHwnd());
 	}
+}
+
+void UIHelper::PolicyHelp()
+{
+	CAcModuleResourceOverride myResources;
+
+	PolicyDialog* dlg = new PolicyDialog(FALSE);
+	dlg->Run(acedGetAcadFrame()->GetSafeHwnd());
 }

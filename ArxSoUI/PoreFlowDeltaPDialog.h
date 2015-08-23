@@ -42,4 +42,11 @@ protected:
 	SEdit* m_PCurEdit;
 	SEdit* m_PTEdit;
 	SEdit* m_DeltaPEdit;
+
+public:
+	int pore_flow_id; // 外部传入
+
+private:
+	void initDatas();
+	void fillDatas();
 };
