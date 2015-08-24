@@ -37,7 +37,7 @@ public:
 	// 指定图元类型的当前绘制效果
 	bool setCurrentGEDraw(const CString& geType, const CString& realGEDrawName);
 
-	// 获取指定图元类型的所有绘制效果（用于遍历）
+	// 获取指定图元类型所有的绘制效果（用于遍历）
 	void getAllGEDrawsByGEType(const CString& geType, AcStringArray& drawList);
 
 private:

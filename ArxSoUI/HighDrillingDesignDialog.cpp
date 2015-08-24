@@ -232,7 +232,7 @@ void HighDrillingDesignDialog::OnSaveButtonClick()
 	HighDrillingPoreParamPtr hdpp = FIND_ONE(HighDrillingPoreParam, FKEY(WorkSurf), work_surf->getStringID());
 	if(hdpp == 0) return;
 
-	//删除与钻孔参数关联的所有高位抽采钻孔(abc和bcd范围)
+	//删除与钻孔参数关联所有的高位抽采钻孔(abc和bcd范围)
 	DELETE_MANY(HighDrillingPore, FKEY(HighDrillingPoreParam), hdpp->getStringID());
 
 	//保存abc范围的钻孔

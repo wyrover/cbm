@@ -165,7 +165,7 @@ bool DictEntryManager::modifyEntry( int index, const CString& newEntry )
 {
     if( m_pHead == 0 ) return false;
 
-    // 链表中的所有数据必须是唯一的
+    // 链表中所有的数据必须是唯一的
     if( INVALID_ENTRY != findEntry( newEntry ) ) return false;
 
     int count = 1;

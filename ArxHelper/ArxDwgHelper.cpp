@@ -79,7 +79,7 @@ bool ArxDwgHelper::InsertDwg(const CString& dwgFilePath)
 	AcDbDatabase db( false );
 	if( Acad::eOk != db.readDwgFile( dwgFilePath ) ) return false;
 
-	// 读取模板dwg文件中的所有不是*开头的块定义
+	// 读取模板dwg文件中所有的不是*开头的块定义
 	AcStringArray allBlocks;
 	ReadAllBlocks( &db, allBlocks );
 

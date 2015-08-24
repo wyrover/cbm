@@ -36,7 +36,7 @@ public:
 
 	MineGEDraw* getGEDraw(const CString& geType, const CString& realGEDrawName);
 
-	// 获取图元类型的所有绘制效果	
+	// 获取图元类型所有的绘制效果	
 	void getAllGEDrawsByGEType(const CString& geType, AcStringArray& drawList);
 
 	// 获取图元类型的绘制jig

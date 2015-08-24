@@ -54,22 +54,22 @@ public:
 	// 获取当前已注册的MineGE图元类型(用于draw的参数设置)
 	static void GetAllRegGETypesForDraw(AcStringArray& allGETypes);
 
-	// 查找指定类型geType的所有图元
+	// 查找指定类型geType所有的图元
 	static void FindMineGEs(const CString& geType, AcDbObjectIdArray& objIds);
 
-	// 查找图元的所有关联的标签图元
+	// 查找图元所有的关联的标签图元
 	static void GetAllTagGEById(const AcDbObjectId& objId, AcDbObjectIdArray& objIds);
 
 	// 查找与图元objId关联的指定类型的标签图元(包括从geType派生的图元类型)
 	static void GetTagGEById2(const AcDbObjectId& objId, const CString& geType, AcDbObjectIdArray& objIds);
 
-	// 查找与objIds关联的所有的宿主图元
+	// 查找与objIds关联所有的的宿主图元
 	static void GetHosts(const AcDbObjectIdArray& objIds, AcDbObjectIdArray& hosts);
 
 	// 查找所有以objId为宿主的模型图元ModelGE
 	static void GetModelGEById(const AcDbObjectId& objId, AcDbObjectIdArray& objIds);
 
-	// 用一种颜色显示图元的所有标签图元
+	// 用一种颜色显示图元所有的标签图元
 	static void ShowAllTagGE(const AcDbObjectId& objId, unsigned short colorIndex);
 
 	// 用一种颜色显示高亮显示某个图元

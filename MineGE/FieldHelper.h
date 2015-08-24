@@ -10,7 +10,7 @@ public:
 	static bool RemoveField(const CString& type, const CString& field);     // 删除字段
 	static void RemoveAllFields(const CString& type);                       // 删除所有字段
 	static int FindField(const CString& type, const CString& field);        // 查找字段的索引位置
-	static void GetAllFields(const CString& type, AcStringArray& fields);   // 获取图元的所有字段
+	static void GetAllFields(const CString& type, AcStringArray& fields);   // 获取图元所有的字段
 	static int CountFields(const CString& type);                            // 统计图元的字段个数
 	static void GetAllRegTypes(AcStringArray& types);		                // 获取当前已注册的图元类型
 };

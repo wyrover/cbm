@@ -24,8 +24,8 @@ public:
 	int addEntry(const CString& key, const CString& entry);         // 添加entry,如果key不存在，则自动添加
 	int removeEntry(const CString& key, const CString& entry);      // 删除entry
 	int findEntry(const CString& key, const CString& entry);        // 查找entry的索引位置
-	void getAllEntries(const CString& key, AcStringArray& entries); // 获取key包含的的所有entry
-	int countEntries(const CString& key);                           // 统计key包含的所有entry个数
+	void getAllEntries(const CString& key, AcStringArray& entries); // 获取key包含的所有的entry
+	int countEntries(const CString& key);                           // 统计key包含所有的entry个数
 
 	// index必须要大于0
 	bool modifyEntry(const CString& key, int index, const CString& newEntry); // 修改key中第index项的值

@@ -66,7 +66,7 @@ static AcDbObjectId GetDataObject( const AcDbObjectId& dictId )
     return objId;
 }
 
-// 对图元关联的所有标签图元进行变换(可见图元，不包括已删除掉的图元)
+// 对图元关联所有的标签图元进行变换(可见图元，不包括已删除掉的图元)
 static void TransformAllTagGE( const AcDbObjectId& objId, const AcGeMatrix3d & xform )
 {
 	AcDbObjectIdArray objIds;
@@ -526,7 +526,7 @@ static void LONG2RGB( Adesk::UInt32 rgbColor, Adesk::UInt8& r, Adesk::UInt8& g, 
 // 获取cad绘图窗口背景色
 static bool GetBackgroundColor( Adesk::UInt8& r, Adesk::UInt8& g, Adesk::UInt8& b )
 {
-    // 获取cad当前的所有颜色设置
+    // 获取cad当前所有的颜色设置
     // 右键"选项"->"显示"->"颜色"
     AcColorSettings cs;
     if( !acedGetCurrentColors( &cs ) ) return false;

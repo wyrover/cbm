@@ -143,14 +143,14 @@ MinePtr DaoHelper::GetOnlineMine()
 
 RecordPtrListPtr DaoHelper::GetWorkAreas(int mine_id)
 {
-	//查找矿井的所有煤层
+	//查找矿井所有的煤层
 	IntArray ids;
 	DaoHelper::GetCoalIds(mine_id, ids);
 
 	RecordPtrListPtr lists(new RecordPtrList);
 	for(int i=0;i<ids.size();i++)
 	{
-		//查找煤层上布置的所有采区
+		//查找煤层上布置所有的采区
 		RecordPtrListPtr wa_lists = FIND_MANY(WorkArea, FKEY(Coal), Utils::int_to_cstring(ids[i]));
 		if(wa_lists == 0) continue;;
 

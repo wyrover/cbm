@@ -221,7 +221,7 @@ static void GetTagGEById2_Helper( const CString& geType, const AcDbObjectIdArray
 
 void DrawHelper::GetTagGEById2( const AcDbObjectId& objId, const CString& geType, AcDbObjectIdArray& objIds )
 {
-    // 查找图元ObjId关联的所有标签
+    // 查找图元ObjId关联所有的标签
     AcDbObjectIdArray allObjIds;
     DrawHelper::GetAllTagGEById( objId, allObjIds );
     if( allObjIds.isEmpty() ) return;

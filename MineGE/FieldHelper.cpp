@@ -105,7 +105,7 @@ static void GetDataObjectFromExtDict( AcDbObjectIdArray& dbObjIds )
     actrTransactionManager->endTransaction();
 }
 
-// 获取词典下的所有
+// 获取词典下所有的
 static void GetDataObjectFromDict( const CString& dictName, AcDbObjectIdArray& dbObjIds )
 {
     AcDbObjectIdArray allObjIds;

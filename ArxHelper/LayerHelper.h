@@ -23,10 +23,10 @@ public:
 	// 获取图层列表
 	static void GetAllLayers(AcStringArray& layers);
 
-	// 获取图层上的所有实体
+	// 获取图层上所有的实体
 	static bool GetAllEntitiesOnLayer(const CString& layerName, AcDbObjectIdArray &ents);
 
-	// 删除图层上的所有实体
+	// 删除图层上所有的实体
 	static void DeleteAllEntitiesOnLayer(const CString& layerName);
 };
 

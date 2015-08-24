@@ -51,7 +51,7 @@ static void DrawTunnels( const AcGePoint3dArray& sptArray,
 static void PrintMsg( const CString& dwgFilePath, const CString& layerName, bool isOk )
 {
     CString msg;
-    msg.Format( _T( "读取文件\n\t%s\n【%s】图层上的所有直线数据：【%s】" ), dwgFilePath, layerName, ( isOk ? _T( "成功" ) : _T( "失败" ) ) );
+    msg.Format( _T( "读取文件\n\t%s\n【%s】图层上所有的直线数据：【%s】" ), dwgFilePath, layerName, ( isOk ? _T( "成功" ) : _T( "失败" ) ) );
     if( !isOk )
     {
         msg.AppendFormat( _T( "\n\n请确保导入的dwg文件没有被AutoCAD使用!!!" ) );
@@ -65,7 +65,7 @@ void DrawCmd::AutoDraw()
     if( !SelectDwg( _T( "请选择一个dwg文件" ), dwgFilePath ) ) return;
 
     CString srcLayer = _T( "巷道" );
-    // 读取dwg文件中的所有直线始末点坐标
+    // 读取dwg文件中所有的直线始末点坐标
     AcGePoint3dArray sptArray, eptArray;
     if( !ReadAllLinesFromDwg( dwgFilePath, srcLayer, sptArray, eptArray ) )
     {

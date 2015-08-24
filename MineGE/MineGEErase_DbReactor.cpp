@@ -169,10 +169,10 @@ void MineGEErase_DbReactor::objectErased( const AcDbDatabase* dwg, const AcDbObj
     // 因此，一定要进行判断，否者会影响到正常图元(例如删除1000条直线)的删除
     if( dbObj->isKindOf( MineGE::desc() ) )
     {
-        // 删除图元关联的所有TagGE
+        // 删除图元关联所有的TagGE
         EraseAllTagGE( dbObj->objectId(), pErased );
 
-        // 删除图元的数据对象关联的所有ModelGE
+        // 删除图元的数据对象关联所有的ModelGE
         MineGE* pGE = MineGE::cast( dbObj );
         EraseAllModelGE( pGE->getDataObject(), pErased );
     }

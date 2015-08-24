@@ -23,20 +23,20 @@ public:
 	static int VerifyMineAccount(const CString& username, const CString& pwd);
 	//查询所有的基地
 	static void GetAllMineBases(StringArray& bases);
-	//查询基地的所有矿区
+	//查询基地所有的矿区
 	static void GetAllMineRegions(const CString& baseName, StringArray& regions);
 	//根据矿区反查基地
 	static CString GetBaeByRegion(const CString& regionName);
 	//查询示范矿区的虚拟矿井
 	static MinePtr GetSampleMine(const CString& regionName);
-	//查询矿井的所有煤层名称
+	//查询矿井所有的煤层名称
 	static void GetCoalNames(int mine_id, StringArray& coals);
-	//查询矿井的所有煤层id
+	//查询矿井所有的煤层id
 	static void GetCoalIds(int mine_id, IntArray& coals);
-	//查询矿井的所有采区
+	//查询矿井所有的采区
 	static RecordPtrListPtr GetWorkAreas(int mine_id);
-	//查询矿井的所有工作面
+	//查询矿井所有的工作面
 	static RecordPtrListPtr GetWorkSurfs(int mine_id);
-	//查询矿井的所有掘进面
+	//查询矿井所有的掘进面
 	static RecordPtrListPtr GetDrillingSurfs(int mine_id);
 };
