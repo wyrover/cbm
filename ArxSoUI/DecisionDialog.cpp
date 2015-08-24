@@ -9,6 +9,7 @@ using namespace cbm;
 
 DecisionDialog::DecisionDialog(BOOL bModal) : AcadSouiDialog(_T("layout:decision"), bModal)
 {
+	mine_id = 0;
 }
 
 DecisionDialog::~DecisionDialog()
@@ -30,7 +31,7 @@ LRESULT DecisionDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 	AcadSouiDialog::OnInitDialog(hWnd, lParam);
 	//do something
 	m_TechModeLabel = FindChildByName2<SStatic>(L"tech_mode");
-	m_TechModeLabel->SetWindowText(_T("")); // Çå¿Õ
+	m_TechModeLabel->SetWindowText(NULL);
 	return 0;
 }
 
@@ -42,13 +43,13 @@ void DecisionDialog::OnGraphButtonClick()
 
 void DecisionDialog::OnTechnologyButtonClick()
 {
-	MinePtr mine = DaoHelper::GetOnlineMine();
+	MinePtr mine = FIND_BY_ID(Mine, mine_id);
 	if(mine == 0) return;
 
 	StringArray coal_names;
 	IntArray coal_ids;
-	DaoHelper::GetCoalIds(mine->name, coal_ids);
-	DaoHelper::GetCoalNames(mine->name, coal_names);
+	DaoHelper::GetCoalIds(mine->getID(), coal_ids);
+	DaoHelper::GetCoalNames(mine->getID(), coal_names);
 
 	CString msg;
 	msg.Format(_T("¿ó¾®:%s,ËùÊô¿óÇø:%s\\n"), mine->name, mine->region->get(FIELD(name)));

@@ -39,8 +39,22 @@ protected:
 		REFLECT_NOTIFICATIONS_EX()
 	END_MSG_MAP()
 
+public:
+	int mine_id;
+
 protected:
 	SEdit* m_ResA1Edit;
 	SEdit* m_GasX1Edit;
 	SComboBox* m_CoalCombox;
+
+public:
+	int type; // 是否可采煤层(默认为1-可采)
+
+protected:
+	virtual void OnDestroyWindow();
+
+private:
+	void fillCoalCombox();
+	void initCoalDatas();
+	CoalPtr getCurSelCoal();
 };

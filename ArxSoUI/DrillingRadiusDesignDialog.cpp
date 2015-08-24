@@ -9,10 +9,11 @@ using namespace orm;
 using namespace cbm;
 
 #include <cmath>
-#define PI 3.1415926
+#define PI 3.1415926535897932384626433832795
 
 DrillingRadiusDesignDialog::DrillingRadiusDesignDialog(BOOL bModal) : AcadSouiDialog(_T("layout:drilling_radius_design"), bModal)
 {
+	mine_id = 0;
 }
 
 DrillingRadiusDesignDialog::~DrillingRadiusDesignDialog()
@@ -191,13 +192,13 @@ void DrillingRadiusDesignDialog::OnDestroyWindow()
 
 void DrillingRadiusDesignDialog::fillCoalCombox()
 {
-	MinePtr mine = DaoHelper::GetOnlineMine();
+	MinePtr mine = FIND_BY_ID(Mine, mine_id);
 	if(mine == 0) return;
 
 	StringArray coal_names;
 	IntArray coal_ids;
-	DaoHelper::GetCoalIds(mine->name, coal_ids);
-	DaoHelper::GetCoalNames(mine->name, coal_names);
+	DaoHelper::GetCoalIds(mine->getID(), coal_ids);
+	DaoHelper::GetCoalNames(mine->getID(), coal_names);
 
 	SComboBoxHelper::Clear(m_CoalCombox);
 	SComboBoxHelper::Append(m_CoalCombox, coal_names, coal_ids);

@@ -56,6 +56,9 @@ protected:
 	SComboBox* m_EvalDifficultCombox;
 	SComboBox* m_CoalCombox;
 
+public:
+	int mine_id; 
+
 protected:
 	virtual void OnDestroyWindow();
 

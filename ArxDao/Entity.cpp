@@ -105,6 +105,8 @@ Coal::Coal() : orm::Record(Coal::Table())
 	czk = 0.0;
 	czw = 0.0;
 	hw_sum = 0.0;
+	rock = 0;
+	hhh = 0.0;
 	layer_gap = 0.0;
 	influence_factor = 0.0;
 	res_a1 = 0.0;
@@ -112,7 +114,7 @@ Coal::Coal() : orm::Record(Coal::Table())
 	res_a2 = 0.0;
 	gas_x2 = 0.0;
 	pump_wc = 0.0;
-	pump_kd = 0.0;
+	pump_k = 0.0;
 	pump_k2 = 0.0;
 	pump_k3 = 0.0;
 	pump_k4 = 0.0;
@@ -170,6 +172,8 @@ Coal::Coal() : orm::Record(Coal::Table())
 	REG_ATTRIB(czk, czk);
 	REG_ATTRIB(czw, czw);
 	REG_ATTRIB(hw_sum, hw_sum);
+	REG_ATTRIB(rock, rock);
+	REG_ATTRIB(hhh, hhh);
 	REG_ATTRIB(layer_gap, layer_gap);
 	REG_ATTRIB(influence_factor, influence_factor);
 	REG_ATTRIB(res_a1, res_a1);
@@ -177,7 +181,7 @@ Coal::Coal() : orm::Record(Coal::Table())
 	REG_ATTRIB(res_a2, res_a2);
 	REG_ATTRIB(gas_x2, gas_x2);
 	REG_ATTRIB(pump_wc, pump_wc);
-	REG_ATTRIB(pump_kd, pump_kd);
+	REG_ATTRIB(pump_k, pump_k);
 	REG_ATTRIB(pump_k2, pump_k2);
 	REG_ATTRIB(pump_k3, pump_k3);
 	REG_ATTRIB(pump_k4, pump_k4);
@@ -506,6 +510,13 @@ Mine::Mine() : orm::Record(Mine::Table())
 	reserve_w1 = 0.0;
 	reserve_w2 = 0.0;
 	reserve_w3 = 0.0;
+	gas_w0 = 0.0;
+	gas_wc2 = 0.0;
+	pump_k2 = 0.0;
+	pump_k3 = 0.0;
+	pump_k4 = 0.0;
+	pump_k1 = 0.0;
+	pump_k = 0.0;
 	pump_wc = 0.0;
 	reserve_gas = 0.0;
 	comment = _T("");
@@ -527,6 +538,13 @@ Mine::Mine() : orm::Record(Mine::Table())
 	REG_ATTRIB(reserve_w1, reserve_w1);
 	REG_ATTRIB(reserve_w2, reserve_w2);
 	REG_ATTRIB(reserve_w3, reserve_w3);
+	REG_ATTRIB(gas_w0, gas_w0);
+	REG_ATTRIB(gas_wc2, gas_wc2);
+	REG_ATTRIB(pump_k2, pump_k2);
+	REG_ATTRIB(pump_k3, pump_k3);
+	REG_ATTRIB(pump_k4, pump_k4);
+	REG_ATTRIB(pump_k1, pump_k1);
+	REG_ATTRIB(pump_k, pump_k);
 	REG_ATTRIB(pump_wc, pump_wc);
 	REG_ATTRIB(reserve_gas, reserve_gas);
 	REG_ATTRIB(comment, comment);

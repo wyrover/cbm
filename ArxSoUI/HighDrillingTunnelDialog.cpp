@@ -2,7 +2,7 @@
 #include "HighDrillingTunnelDialog.h"
 #include "SouiListHelper.h"
 #include <cmath>
-#define PI 3.1415926
+#define PI 3.1415926535897932384626433832795
 
 #include <ArxHelper/HelperClass.h>
 #include <ArxDao/DaoHelper.h>
@@ -12,6 +12,7 @@ using namespace cbm;
 
 HighDrillingTunnelDialog::HighDrillingTunnelDialog(BOOL bModal) : AcadSouiDialog(_T("layout:high_drilling_tunnel"), bModal)
 {
+	mine_id = 0;
 }
 
 HighDrillingTunnelDialog::~HighDrillingTunnelDialog()
@@ -168,11 +169,11 @@ void HighDrillingTunnelDialog::initWsDatas()
 
 void HighDrillingTunnelDialog::fillWsCombox()
 {
-	MinePtr mine = DaoHelper::GetOnlineMine();
+	MinePtr mine = FIND_BY_ID(Mine, mine_id);
 	if(mine == 0) return;
 
 	//查询所有的回采工作面
-	RecordPtrListPtr lists = DaoHelper::GetWorkSurfs(mine->name);
+	RecordPtrListPtr lists = DaoHelper::GetWorkSurfs(mine->getID());
 	if(lists == 0) return;
 
 	for(int i=0;i<lists->size();i++)

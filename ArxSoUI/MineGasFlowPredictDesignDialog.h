@@ -14,10 +14,6 @@ protected:
 	void OnSaveButtonClick();
 	void OnWsComboxSelChanged(SOUI::EventArgs *pEvt);
 	void OnTwsComboxSelChanged(SOUI::EventArgs *pEvt);
-	void OnDelWsButtonClick();
-	void OnAddWsButtonClick();
-	void OnDelTwsButtonClick();
-	void OnAddTwsButtonClick();
 
 	/** ²Ëµ¥ÏûÏ¢ */
 protected:
@@ -34,10 +30,6 @@ protected:
 		EVENT_NAME_COMMAND(_T("save"), OnSaveButtonClick)
 		EVENT_NAME_HANDLER(_T("ws"), EVT_CB_SELCHANGE, OnWsComboxSelChanged)
 		EVENT_NAME_HANDLER(_T("tws"), EVT_CB_SELCHANGE, OnTwsComboxSelChanged)
-		EVENT_NAME_COMMAND(_T("del_ws"), OnDelWsButtonClick)
-		EVENT_NAME_COMMAND(_T("add_ws"), OnAddWsButtonClick)
-		EVENT_NAME_COMMAND(_T("del_tws"), OnDelTwsButtonClick)
-		EVENT_NAME_COMMAND(_T("add_tws"), OnAddTwsButtonClick)
 		CHAIN_EVENT_MAP(AcadSouiDialog)
 	EVENT_MAP_END()
 	

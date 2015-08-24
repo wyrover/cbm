@@ -13,6 +13,7 @@ using namespace cbm;
 
 MainDialog::MainDialog(BOOL bModal) : AcadSouiDialog(_T("layout:main"), bModal)
 {
+	mine_id = 0;
 }
 
 MainDialog::~MainDialog()
@@ -40,12 +41,14 @@ LRESULT MainDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 void MainDialog::OnF1ButtonClick()
 {
 	MineDialog dlg(TRUE);
+	dlg.mine_id = mine_id;
 	dlg.Run(GetSafeWnd());
 }
 
 void MainDialog::OnF2ButtonClick()
 {
 	KeyParamDialog dlg(TRUE);
+	dlg.mine_id = mine_id;
 	dlg.Run(GetSafeWnd());
 }
 
@@ -56,11 +59,13 @@ void MainDialog::OnF3ButtonClick()
 void MainDialog::OnF0ButtonClick()
 {
 	MineDesignDialog dlg(TRUE);
+	dlg.mine_id = mine_id;
 	dlg.Run(GetSafeWnd());
 }
 
 void MainDialog::OnF4ButtonClick()
 {
 	PolicyDialog dlg(TRUE);
+	//dlg.mine_id = mine_id;
 	dlg.Run(GetSafeWnd());
 }

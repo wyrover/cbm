@@ -57,6 +57,9 @@ protected:
 	SEdit* m_HwEdit;
 	SComboBox* m_CoalCombox;
 
+public:
+	int mine_id;
+
 protected:
 	virtual void OnDestroyWindow();
 

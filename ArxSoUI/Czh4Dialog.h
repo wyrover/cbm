@@ -12,6 +12,7 @@ public:
 	/** 控件消息处理 */
 protected:
 	void OnSaveButtonClick();
+	void OnRockComboxSelChanged(SOUI::EventArgs *pEvt);
 
 	/** 菜单消息 */
 protected:
@@ -26,6 +27,7 @@ protected:
 	//控件消息映射表
 	EVENT_MAP_BEGIN()
 		EVENT_NAME_COMMAND(_T("save"), OnSaveButtonClick)
+		EVENT_NAME_HANDLER(_T("rock"), EVT_CB_SELCHANGE, OnRockComboxSelChanged)
 		CHAIN_EVENT_MAP(AcadSouiDialog)
 	EVENT_MAP_END()
 	
@@ -40,6 +42,9 @@ protected:
 protected:
 	SEdit* m_HwEdit;
 	SEdit* m_HEdit;
+	SEdit* m_CavingZoneHeightEdit;
+	SComboBox* m_RockCombox;
+	SEdit* m_ToleranceEdit;
 
 public:
 	int coal_id;

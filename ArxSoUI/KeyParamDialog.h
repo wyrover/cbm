@@ -57,5 +57,6 @@ protected:
 		REFLECT_NOTIFICATIONS_EX()
 	END_MSG_MAP()
 
-protected:
+public:
+	int mine_id;
 };

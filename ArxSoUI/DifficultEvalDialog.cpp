@@ -61,6 +61,7 @@ static int DifficultEval(int k1, int k2)
 
 DifficultEvalDialog::DifficultEvalDialog(BOOL bModal) : AcadSouiDialog(_T("layout:difficult_eval"), bModal)
 {
+	mine_id = 0;
 }
 
 DifficultEvalDialog::~DifficultEvalDialog()
@@ -217,13 +218,13 @@ void DifficultEvalDialog::initCoalDatas()
 
 void DifficultEvalDialog::fillCoalCombox()
 {
-	MinePtr mine = DaoHelper::GetOnlineMine();
+	MinePtr mine = FIND_BY_ID(Mine, mine_id);
 	if(mine == 0) return;
 
 	StringArray coal_names;
 	IntArray coal_ids;
-	DaoHelper::GetCoalIds(mine->name, coal_ids);
-	DaoHelper::GetCoalNames(mine->name, coal_names);
+	DaoHelper::GetCoalIds(mine->getID(), coal_ids);
+	DaoHelper::GetCoalNames(mine->getID(), coal_names);
 
 	SComboBoxHelper::Clear(m_CoalCombox);
 	SComboBoxHelper::Append(m_CoalCombox, coal_names, coal_ids);

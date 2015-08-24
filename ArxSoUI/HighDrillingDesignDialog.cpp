@@ -11,10 +11,11 @@ using namespace orm;
 using namespace cbm;
 
 #include <cmath>
-#define PI 3.1415926
+#define PI 3.1415926535897932384626433832795
 
 HighDrillingDesignDialog::HighDrillingDesignDialog(BOOL bModal) : AcadSouiDialog(_T("layout:high_drilling_design"), bModal)
 {
+	mine_id = 0;
 }
 
 HighDrillingDesignDialog::~HighDrillingDesignDialog()
@@ -290,11 +291,11 @@ void HighDrillingDesignDialog::initDatas()
 
 void HighDrillingDesignDialog::fillWsCombox()
 {
-	MinePtr mine = DaoHelper::GetOnlineMine();
+	MinePtr mine = FIND_BY_ID(Mine, mine_id);
 	if(mine == 0) return;
 
 	//查询所有的回采工作面
-	RecordPtrListPtr lists = DaoHelper::GetWorkSurfs(mine->name);
+	RecordPtrListPtr lists = DaoHelper::GetWorkSurfs(mine->getID());
 	if(lists == 0) return;
 
 	for(int i=0;i<lists->size();i++)

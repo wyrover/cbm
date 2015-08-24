@@ -16,8 +16,6 @@ protected:
 	void OnK2HelpButtonClick();
 	void OnWorkAreaComboxSelChanged(SOUI::EventArgs *pEvt);
 	void OnWorkAreaCaclButtonClick();
-	void OnDelWorkAreaButtonClick();
-	void OnAddWorkAreaButtonClick();
 	void OnCaclButtonClick();
 	void OnCoalComboxSelChanged(SOUI::EventArgs *pEvt);
 	void OnAssignButtonClick();
@@ -40,8 +38,6 @@ protected:
 		EVENT_NAME_COMMAND(_T("k2_help"), OnK2HelpButtonClick)
 		EVENT_NAME_HANDLER(_T("work_area"), EVT_CB_SELCHANGE, OnWorkAreaComboxSelChanged)
 		EVENT_NAME_COMMAND(_T("work_area_cacl"), OnWorkAreaCaclButtonClick)
-		EVENT_NAME_COMMAND(_T("del_work_area"), OnDelWorkAreaButtonClick)
-		EVENT_NAME_COMMAND(_T("add_work_area"), OnAddWorkAreaButtonClick)
 		EVENT_NAME_COMMAND(_T("cacl"), OnCaclButtonClick)
 		EVENT_NAME_HANDLER(_T("coal"), EVT_CB_SELCHANGE, OnCoalComboxSelChanged)
 		EVENT_NAME_COMMAND(_T("assign"), OnAssignButtonClick)
@@ -65,6 +61,9 @@ protected:
 	SComboBox* m_WorkAreaCombox;
 	SEdit* m_WorkAreaQrEdit;
 	SComboBox* m_CoalCombox;
+
+public:
+	int mine_id;
 
 protected:
 	virtual void OnDestroyWindow();

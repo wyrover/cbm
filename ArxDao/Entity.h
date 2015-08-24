@@ -142,6 +142,8 @@ public:
 	double czk;
 	double czw;
 	double hw_sum;
+	int rock;
+	double hhh;
 	double layer_gap;
 	double influence_factor;
 	double res_a1;
@@ -149,7 +151,7 @@ public:
 	double res_a2;
 	double gas_x2;
 	double pump_wc;
-	double pump_kd;
+	double pump_k;
 	double pump_k2;
 	double pump_k3;
 	double pump_k4;
@@ -386,6 +388,13 @@ public:
 	double reserve_w1;
 	double reserve_w2;
 	double reserve_w3;
+	double gas_w0;
+	double gas_wc2;
+	double pump_k2;
+	double pump_k3;
+	double pump_k4;
+	double pump_k1;
+	double pump_k;
 	double pump_wc;
 	double reserve_gas;
 	CString comment;

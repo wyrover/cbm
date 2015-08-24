@@ -43,6 +43,9 @@ protected:
 		REFLECT_NOTIFICATIONS_EX()
 	END_MSG_MAP()
 
+public:
+	int mine_id;
+
 protected:
 	virtual void OnDestroyWindow();
 

@@ -94,6 +94,9 @@ void UIHelper::GasTechModeDecision()
 		CAcModuleResourceOverride myResources;
 
 		MineDialog* dlg = new MineDialog(FALSE);
+		//查询账户关联的矿井
+		MinePtr mine = FIND_ONE(Mine, FKEY(Account), Utils::int_to_cstring(account_id));
+		dlg->mine_id = mine->getID();
 		dlg->Run(acedGetAcadFrame()->GetSafeHwnd());
 	}
 }
@@ -112,6 +115,9 @@ void UIHelper::KeyParamCacl()
 		CAcModuleResourceOverride myResources;
 
 		KeyParamDialog* dlg = new KeyParamDialog(FALSE);
+		//查询账户关联的矿井
+		MinePtr mine = FIND_ONE(Mine, FKEY(Account), Utils::int_to_cstring(account_id));
+		dlg->mine_id = mine->getID();
 		dlg->Run(acedGetAcadFrame()->GetSafeHwnd());
 	}
 }
@@ -138,6 +144,9 @@ void UIHelper::Main()
 		CAcModuleResourceOverride myResources;
 
 		MainDialog* dlg = new MainDialog(FALSE);
+		//查询账户关联的矿井
+		MinePtr mine = FIND_ONE(Mine, FKEY(Account), Utils::int_to_cstring(account_id));
+		dlg->mine_id = mine->getID();
 		dlg->Run(acedGetAcadFrame()->GetSafeHwnd());
 	}
 }

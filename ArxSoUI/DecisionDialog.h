@@ -41,4 +41,7 @@ protected:
 
 protected:
 	SStatic* m_TechModeLabel;
+
+public:
+	int mine_id; // 外部传入(矿井id)
 };

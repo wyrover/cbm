@@ -11,6 +11,7 @@ using namespace cbm;
 
 PoreSizeDialog::PoreSizeDialog(BOOL bModal) : AcadSouiDialog(_T("layout:pore_size"), bModal)
 {
+	mine_id = 0;
 	pore_size_id = 0;
 }
 

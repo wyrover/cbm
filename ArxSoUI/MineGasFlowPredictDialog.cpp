@@ -12,6 +12,7 @@ using namespace cbm;
 
 MineGasFlowPredictDialog::MineGasFlowPredictDialog(BOOL bModal) : AcadSouiDialog(_T("layout:mine_gas_flow_predict"), bModal)
 {
+	mine_id = 0;
 }
 
 MineGasFlowPredictDialog::~MineGasFlowPredictDialog()
@@ -66,7 +67,7 @@ void MineGasFlowPredictDialog::OnSaveButtonClick()
 	if(!work_area->save()) return;
 
 	//保存矿井的数据
-	MinePtr mine = DaoHelper::GetOnlineMine();
+	MinePtr mine = FIND_BY_ID(Mine, mine_id);
 	if(mine == 0) return;
 
 	Utils::cstring_to_double((LPCTSTR)m_K1GasEdit->GetWindowText(), mine->gas_k1);
@@ -173,60 +174,13 @@ void MineGasFlowPredictDialog::OnWorkAreaCaclButtonClick()
 	}
 }
 
-void MineGasFlowPredictDialog::OnDelWorkAreaButtonClick()
-{
-	WorkAreaPtr work_area = getCurSelWorkArea();
-	if(work_area == 0) return;
-
-	//从数据库中删除
-	if(work_area->remove())
-	{
-		//从采区列表中删除
-		SComboBoxHelper::DeleteCurSel(m_WorkAreaCombox);
-		SComboBoxHelper::Select(m_WorkAreaCombox, 0);
-		if(m_WorkAreaCombox->GetCount() == 0)
-		{
-			initWorkAreaDatas();
-		}
-	}
-}
-
-void MineGasFlowPredictDialog::OnAddWorkAreaButtonClick()
-{
-	NameDialog dlg(TRUE);
-	dlg.SetWindowTitle(_T("新增采区"));
-	if(IDOK != dlg.Run(GetSafeWnd())) return;
-
-	CString name = dlg.name;
-	if(name.IsEmpty()) return;
-	if(m_WorkAreaCombox->FindString(name) != -1)
-	{
-		CString msg;
-		msg.Format(_T("采区名称%s已存在!"), name);
-		SMessageBox(GetSafeWnd(),msg,_T("友情提示"),MB_OK);
-	}
-	else
-	{
-		//提交到数据库
-		WorkAreaPtr work_area(new WorkArea);
-		work_area->name = name;
-		//work_area->coal = getCurSelCoal();
-		if(work_area->save())
-		{
-			//插入到采区列表
-			int nItem = SComboBoxHelper::Add(m_WorkAreaCombox, work_area->name, work_area->getID());
-			SComboBoxHelper::Select(m_WorkAreaCombox, nItem);
-		}
-	}
-}
-
 void MineGasFlowPredictDialog::OnCaclButtonClick()
 {
-	MinePtr mine = DaoHelper::GetOnlineMine();
+	MinePtr mine = FIND_BY_ID(Mine, mine_id);
 	if(mine == 0) return;
 
 	//查找该矿所有的采区
-	RecordPtrListPtr lists = DaoHelper::GetWorkAreas(mine->name);
+	RecordPtrListPtr lists = DaoHelper::GetWorkAreas(mine->getID());
 	if(lists == 0) return;
 
 	double S1 = 0, S2 = 0;
@@ -311,13 +265,13 @@ void MineGasFlowPredictDialog::OnDestroyWindow()
 
 void MineGasFlowPredictDialog::fillCoalCombox()
 {
-	MinePtr mine = DaoHelper::GetOnlineMine();
+	MinePtr mine = FIND_BY_ID(Mine, mine_id);
 	if(mine == 0) return;
 
 	StringArray coal_names;
 	IntArray coal_ids;
-	DaoHelper::GetCoalIds(mine->name, coal_ids);
-	DaoHelper::GetCoalNames(mine->name, coal_names);
+	DaoHelper::GetCoalIds(mine->getID(), coal_ids);
+	DaoHelper::GetCoalNames(mine->getID(), coal_names);
 
 	SComboBoxHelper::Clear(m_CoalCombox);
 	SComboBoxHelper::Append(m_CoalCombox, coal_names, coal_ids);
@@ -344,11 +298,11 @@ void MineGasFlowPredictDialog::fillWorkAreadCombox()
 	SComboBoxHelper::Clear(m_WorkAreaCombox);
 
 	//当前在线用户的煤矿
-	MinePtr mine = DaoHelper::GetOnlineMine();
+	MinePtr mine = FIND_BY_ID(Mine, mine_id);
 	if(mine == 0) return;
 
 	//查找该矿所有的采区
-	RecordPtrListPtr lists = DaoHelper::GetWorkAreas(mine->name);
+	RecordPtrListPtr lists = DaoHelper::GetWorkAreas(mine->getID());
 	if(lists == 0) return;
 
 	for(int i=0;i<lists->size();i++)

@@ -97,9 +97,9 @@ MinePtr DaoHelper::GetSampleMine(const CString& regionName)
 	return FIND_ONE(Mine, FKEY(Region), region->getStringID());
 }
 
-void DaoHelper::GetCoalNames(const CString& mineName, StringArray& coals)
+void DaoHelper::GetCoalNames(int mine_id, StringArray& coals)
 {
-	RecordPtr mine = FIND_ONE(Mine, FIELD(name), mineName);
+	RecordPtr mine = FIND_BY_ID(Mine,mine_id);
 	if(mine == 0) return;
 
 	RecordPtrListPtr lists = FIND_MANY(Coal, FKEY(Mine), mine->getStringID());
@@ -111,9 +111,9 @@ void DaoHelper::GetCoalNames(const CString& mineName, StringArray& coals)
 	}
 }
 
-void DaoHelper::GetCoalIds(const CString& mineName, IntArray& coals)
+void DaoHelper::GetCoalIds(int mine_id, IntArray& coals)
 {
-	RecordPtr mine = FIND_ONE(Mine, FIELD(name), mineName);
+	RecordPtr mine = FIND_BY_ID(Mine, mine_id);
 	if(mine == 0) return;
 
 	RecordPtrListPtr lists = FIND_MANY(Coal, FKEY(Mine), mine->getStringID());
@@ -141,11 +141,11 @@ MinePtr DaoHelper::GetOnlineMine()
 	return FIND_ONE(Mine, FKEY(Account), Utils::int_to_cstring(account_id));
 }
 
-RecordPtrListPtr DaoHelper::GetWorkAreas(const CString& mineName)
+RecordPtrListPtr DaoHelper::GetWorkAreas(int mine_id)
 {
 	//查找矿井的所有煤层
 	IntArray ids;
-	DaoHelper::GetCoalIds(mineName, ids);
+	DaoHelper::GetCoalIds(mine_id, ids);
 
 	RecordPtrListPtr lists(new RecordPtrList);
 	for(int i=0;i<ids.size();i++)
@@ -163,10 +163,10 @@ RecordPtrListPtr DaoHelper::GetWorkAreas(const CString& mineName)
 	return lists;
 }
 
-RecordPtrListPtr DaoHelper::GetWorkSurfs(const CString& mineName)
+RecordPtrListPtr DaoHelper::GetWorkSurfs(int mine_id)
 {
 	//查询所有的采区
-	RecordPtrListPtr work_areas = DaoHelper::GetWorkAreas(mineName);
+	RecordPtrListPtr work_areas = DaoHelper::GetWorkAreas(mine_id);
 	if(work_areas == 0) return RecordPtrListPtr();
 
 	RecordPtrListPtr lists(new RecordPtrList);
@@ -185,10 +185,10 @@ RecordPtrListPtr DaoHelper::GetWorkSurfs(const CString& mineName)
 	return lists;
 }
 
-RecordPtrListPtr DaoHelper::GetDrillingSurfs(const CString& mineName)
+RecordPtrListPtr DaoHelper::GetDrillingSurfs(int mine_id)
 {
 	//查询所有的采区
-	RecordPtrListPtr work_areas = DaoHelper::GetWorkAreas(mineName);
+	RecordPtrListPtr work_areas = DaoHelper::GetWorkAreas(mine_id);
 	if(work_areas == 0) return RecordPtrListPtr();
 
 	RecordPtrListPtr lists(new RecordPtrList);

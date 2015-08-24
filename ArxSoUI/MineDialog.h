@@ -60,6 +60,9 @@ protected:
 	SCheckBox* m_GroundCondCheck;
 	SComboBox* m_HydrGeoCombox;
 
+public:
+	int mine_id;
+
 private:
 	void fillBaseCombox();
 	void fillRegionCombox(const CString& base);

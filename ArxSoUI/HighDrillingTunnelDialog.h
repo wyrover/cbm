@@ -52,6 +52,9 @@ protected:
 	SEdit* m_HzMaxEdit;
 	SComboBox* m_WsCombox;
 
+public:
+	int mine_id;
+
 protected:
 	virtual void OnDestroyWindow();
 

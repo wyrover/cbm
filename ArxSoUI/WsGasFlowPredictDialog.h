@@ -59,6 +59,9 @@ protected:
 	SEdit* m_LEdit;
 	SEdit* m_WsThickEdit;
 
+public:
+	int mine_id;
+
 protected:
 	virtual void OnDestroyWindow();
 

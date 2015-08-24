@@ -12,8 +12,7 @@ public:
 	/** 控件消息处理 */
 protected:
 	void OnSaveButtonClick();
-	void OnPumpWcCaclButtonClick();
-	void OnCoalComboxSelChanged(SOUI::EventArgs *pEvt);
+	void OnCaclButtonClick();
 
 	/** 菜单消息 */
 protected:
@@ -28,8 +27,7 @@ protected:
 	//控件消息映射表
 	EVENT_MAP_BEGIN()
 		EVENT_NAME_COMMAND(_T("save"), OnSaveButtonClick)
-		EVENT_NAME_COMMAND(_T("pump_wc_cacl"), OnPumpWcCaclButtonClick)
-		EVENT_NAME_HANDLER(_T("coal"), EVT_CB_SELCHANGE, OnCoalComboxSelChanged)
+		EVENT_NAME_COMMAND(_T("cacl"), OnCaclButtonClick)
 		CHAIN_EVENT_MAP(AcadSouiDialog)
 	EVENT_MAP_END()
 	
@@ -49,13 +47,12 @@ protected:
 	SEdit* m_PumpK4Edit;
 	SEdit* m_PumpK3Edit;
 	SEdit* m_GasW0Edit;
-	SEdit* m_PumpMcEdit;
-	SComboBox* m_CoalCombox;
+	SEdit* m_GasWc2Edit;
 
-protected:
-	virtual void OnDestroyWindow();
+public:
+	int mine_id;
+	double W; // 外部传入(矿井瓦斯储量W=W1+W2+W3)
 
 private:
-	void fillCoalCombox();
-	void initCoalDatas();
+	void initDatas();
 };

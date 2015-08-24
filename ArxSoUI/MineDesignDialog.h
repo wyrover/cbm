@@ -68,6 +68,9 @@ protected:
 	SComboBox* m_WsCombox;
 	SComboBox* m_TwsCombox;
 
+public:
+	int mine_id;
+
 protected:
 	virtual void OnDestroyWindow();
 

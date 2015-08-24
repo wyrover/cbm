@@ -51,6 +51,9 @@ protected:
 	SListCtrl* m_AbcListctrl;
 	SListCtrl* m_BcdListctrl;
 
+public:
+	int mine_id;
+
 protected:
 	virtual void OnDestroyWindow();
 

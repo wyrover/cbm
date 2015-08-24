@@ -82,6 +82,9 @@ protected:
 	SCheckBox* m_MinableCheck;
 	SEdit* m_HwEdit;
 
+public:
+	int mine_id; // 外部传入(矿井id)
+
 protected:
 	virtual void OnDestroyWindow();
 

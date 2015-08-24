@@ -10,6 +10,7 @@ using namespace cbm;
 
 MineDialog::MineDialog(BOOL bModal) : AcadSouiDialog(_T("layout:mine"), bModal)
 {
+	mine_id = 0;
 }
 
 MineDialog::~MineDialog()
@@ -52,6 +53,7 @@ void MineDialog::OnNextButtonClick()
 	AcadSouiDialog::OnOK();
 
 	CoalDialog* dlg = new CoalDialog(FALSE);
+	dlg->mine_id = mine_id;
 	dlg->Run(acedGetAcadFrame()->GetSafeHwnd());
 }
 
@@ -90,12 +92,8 @@ void MineDialog::OnSaveButtonClick()
 	CString regionName = m_RegionCombox->GetWindowText();
 
 	//根据当前账户的矿井
-	MinePtr mine = DaoHelper::GetOnlineMine();
-	if(mine == 0)
-	{
-		SMessageBox(GetSafeWnd(), _T("当前没有用户登录!"), _T("友情提示"), MB_OK);
-		return;
-	}
+	MinePtr mine = FIND_BY_ID(Mine, mine_id);
+	if(mine == 0) return;
 
 	mine->name = m_NameEdit->GetWindowText();
 	mine->province = m_ProvinceEdit->GetWindowText();
@@ -176,10 +174,9 @@ void MineDialog::fillRegionCombox(const CString& base)
 
 void MineDialog::fillMineDatas()
 {
-	//查询在线用户的id
-	int account_id = DaoHelper::GetOnlineAccountId();
-	//查询账户关联的矿井
-	MinePtr mine = FIND_ONE(Mine, FKEY(Account), Utils::int_to_cstring(account_id));
+	MinePtr mine = FIND_BY_ID(Mine, mine_id);
+	if(mine == 0) return;
+
 	//填充数据
 	m_NameEdit->SetWindowText(mine->name);
 	m_CapacityEdit->SetWindowText(Utils::double_to_cstring(mine->capacity));

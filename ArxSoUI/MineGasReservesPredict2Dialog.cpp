@@ -10,6 +10,8 @@ using namespace cbm;
 
 MineGasReservesPredict2Dialog::MineGasReservesPredict2Dialog(BOOL bModal) : AcadSouiDialog(_T("layout:mine_gas_reserves_predict_2"), bModal)
 {
+	mine_id = 0;
+	W = 0;
 }
 
 MineGasReservesPredict2Dialog::~MineGasReservesPredict2Dialog()
@@ -37,11 +39,9 @@ LRESULT MineGasReservesPredict2Dialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 	m_PumpK4Edit = FindChildByName2<SEdit>(L"pump_K4");
 	m_PumpK3Edit = FindChildByName2<SEdit>(L"pump_K3");
 	m_GasW0Edit = FindChildByName2<SEdit>(L"gas_W0");
-	m_PumpMcEdit = FindChildByName2<SEdit>(L"pump_Mc");
-	m_CoalCombox = FindChildByName2<SComboBox>(L"coal");
+	m_GasWc2Edit = FindChildByName2<SEdit>(L"gas_Wc2");
 
-	initCoalDatas();
-	fillCoalCombox();
+	initDatas();
 
 	return 0;
 }
@@ -49,14 +49,8 @@ LRESULT MineGasReservesPredict2Dialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 
 void MineGasReservesPredict2Dialog::OnSaveButtonClick()
 {
-}
-
-void MineGasReservesPredict2Dialog::OnPumpWcCaclButtonClick()
-{
-	ItemData* pData = (ItemData*)m_CoalCombox->GetItemData(m_CoalCombox->GetCurSel());
-	if(pData == 0) return;
-	CoalPtr coal = FIND_BY_ID(Coal, pData->id);
-	if(coal == 0) return;
+	MinePtr mine = FIND_BY_ID(Mine, mine_id);
+	if(mine == 0) return;
 
 	//从界面提取数据进行计算
 	double K1=0,K2=0,K3=0,K4=0,My=0,Mc=0;
@@ -64,7 +58,49 @@ void MineGasReservesPredict2Dialog::OnPumpWcCaclButtonClick()
 	Utils::cstring_to_double((LPCTSTR)m_PumpK3Edit->GetWindowText(), K3);
 	Utils::cstring_to_double((LPCTSTR)m_PumpK4Edit->GetWindowText(), K4);
 	Utils::cstring_to_double((LPCTSTR)m_GasW0Edit->GetWindowText(), My);
-	Utils::cstring_to_double((LPCTSTR)m_PumpMcEdit->GetWindowText(), Mc);
+	Utils::cstring_to_double((LPCTSTR)m_GasWc2Edit->GetWindowText(), Mc);
+
+	if(My <= 0)
+	{
+		SMessageBox(GetSafeWnd(),_T("煤层原始瓦斯含量My的值必须大于0!!!"),_T("友情提示"),MB_OK);
+	}
+	else
+	{
+		//计算可抽瓦斯量
+		K1 = K4*(My-Mc)/My;
+		double Wc = K1*K2*K3*W;
+		mine->pump_k = K1*K2*K3;
+		mine->pump_k1 = K1;
+		mine->pump_k1 = K2;
+		mine->pump_k1 = K3;
+		mine->pump_k4 = K4;
+		mine->pump_wc = Wc;
+		mine->gas_w0 = My;
+		mine->gas_wc2 = Mc;
+		//保存到数据库
+		if(mine->save())
+		{
+			SMessageBox(GetSafeWnd(),_T("保存数据成功!"),_T("友情提示"),MB_OK);
+		}
+		else
+		{
+			SMessageBox(GetSafeWnd(),_T("保存数据失败!"),_T("友情提示"),MB_OK);
+		}
+	}
+}
+
+void MineGasReservesPredict2Dialog::OnCaclButtonClick()
+{
+	MinePtr mine = FIND_BY_ID(Mine, mine_id);
+	if(mine == 0) return;
+
+	//从界面提取数据进行计算
+	double K1=0,K2=0,K3=0,K4=0,My=0,Mc=0;
+	Utils::cstring_to_double((LPCTSTR)m_PumpK2Edit->GetWindowText(), K2);
+	Utils::cstring_to_double((LPCTSTR)m_PumpK3Edit->GetWindowText(), K3);
+	Utils::cstring_to_double((LPCTSTR)m_PumpK4Edit->GetWindowText(), K4);
+	Utils::cstring_to_double((LPCTSTR)m_GasW0Edit->GetWindowText(), My);
+	Utils::cstring_to_double((LPCTSTR)m_GasWc2Edit->GetWindowText(), Mc);
 
 	if(My <= 0)
 	{
@@ -73,63 +109,12 @@ void MineGasReservesPredict2Dialog::OnPumpWcCaclButtonClick()
 	else
 	{
 		K1 = K4*(My-Mc)/My;
-		double W = 0; // 不知道从哪儿来???
 		double Wc = K1*K2*K3*W;
 		m_PumpK1Edit->SetWindowText(Utils::double_to_cstring(K1));
-		m_PumpWcEdit->SetWindowText(Utils::double_to_cstring(Wc));
-
 	}
 }
 
-void MineGasReservesPredict2Dialog::OnCoalComboxSelChanged(SOUI::EventArgs *pEvt)
-{
-	if(!isLayoutInited()) return;
-	EventCBSelChange* pEvtOfCB = (EventCBSelChange*)pEvt;
-	if(pEvtOfCB == 0) return;
-	int nCurSel = pEvtOfCB->nCurSel;
-	if(nCurSel == -1) return;
-
-	// do something
-	// do something
-	initCoalDatas();
-	int coal_id = SComboBoxHelper::GetItemID(m_CoalCombox, nCurSel);
-	if(coal_id == 0) return;
-	CoalPtr coal = FIND_BY_ID(Coal, coal_id);
-	if(coal == 0) return;
-
-	m_PumpKdEdit->SetWindowText(Utils::double_to_cstring(coal->pump_kd));
-	m_PumpK1Edit->SetWindowText(Utils::double_to_cstring(coal->pump_k1));
-	m_PumpK2Edit->SetWindowText(Utils::double_to_cstring(coal->pump_k2));
-	m_PumpK3Edit->SetWindowText(Utils::double_to_cstring(coal->pump_k3));
-	m_PumpK4Edit->SetWindowText(Utils::double_to_cstring(coal->pump_k4));
-	m_GasW0Edit->SetWindowText(Utils::double_to_cstring(coal->gas_w0)); //煤层原始瓦斯含量
-	m_PumpWcEdit->SetWindowText(Utils::double_to_cstring(coal->gas_wc2)); // 运出地面后残余瓦斯含量
-	m_PumpWcEdit->SetWindowText(Utils::double_to_cstring(coal->pump_wc)); //煤层可抽瓦斯量
-}
-
-void MineGasReservesPredict2Dialog::OnDestroyWindow()
-{
-	//删除所有的附加数据
-	SComboBoxHelper::Clear(m_CoalCombox);
-	AcadSouiDialog::OnDestroyWindow();
-}
-
-void MineGasReservesPredict2Dialog::fillCoalCombox()
-{
-	MinePtr mine = DaoHelper::GetOnlineMine();
-	if(mine == 0) return;
-
-	StringArray coal_names;
-	IntArray coal_ids;
-	DaoHelper::GetCoalIds(mine->name, coal_ids);
-	DaoHelper::GetCoalNames(mine->name, coal_names);
-
-	SComboBoxHelper::Clear(m_CoalCombox);
-	SComboBoxHelper::Append(m_CoalCombox, coal_names, coal_ids);
-	SComboBoxHelper::Select(m_CoalCombox, 0);
-}
-
-void MineGasReservesPredict2Dialog::initCoalDatas()
+void MineGasReservesPredict2Dialog::initDatas()
 {
 	m_PumpKdEdit->SetWindowText(NULL);
 	m_PumpK1Edit->SetWindowText(NULL);
@@ -137,6 +122,6 @@ void MineGasReservesPredict2Dialog::initCoalDatas()
 	m_PumpK3Edit->SetWindowText(NULL);
 	m_PumpK4Edit->SetWindowText(NULL);
 	m_GasW0Edit->SetWindowText(NULL); //煤层原始瓦斯含量
-	m_PumpWcEdit->SetWindowText(NULL); // 运出地面后残余瓦斯含量
+	m_GasWc2Edit->SetWindowText(NULL); // 运出地面后残余瓦斯含量
 	m_PumpWcEdit->SetWindowText(NULL); //煤层可抽瓦斯量
 }

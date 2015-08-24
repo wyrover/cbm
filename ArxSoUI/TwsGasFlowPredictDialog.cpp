@@ -12,6 +12,7 @@ using namespace cbm;
 
 TwsGasFlowPredictDialog::TwsGasFlowPredictDialog(BOOL bModal) : AcadSouiDialog(_T("layout:tws_gas_flow_predict"), bModal)
 {
+	mine_id = 0;
 }
 
 TwsGasFlowPredictDialog::~TwsGasFlowPredictDialog()
@@ -264,11 +265,11 @@ void TwsGasFlowPredictDialog::fillTwsCombox()
 {
 	SComboBoxHelper::Clear(m_TwsCombox);
 
-	MinePtr mine = DaoHelper::GetOnlineMine();
+	MinePtr mine = FIND_BY_ID(Mine, mine_id);
 	if(mine == 0) return;
 
 	//查询所有的掘进工作面
-	RecordPtrListPtr lists = DaoHelper::GetDrillingSurfs(mine->name);
+	RecordPtrListPtr lists = DaoHelper::GetDrillingSurfs(mine->getID());
 	if(lists == 0) return;
 
 	for(int i=0;i<lists->size();i++)

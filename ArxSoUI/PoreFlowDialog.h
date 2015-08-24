@@ -58,6 +58,9 @@ protected:
 	SEdit* m_QChunEdit;
 	SEdit* m_TEdit;
 
+public:
+	int mine_id;
+
 protected:
 	virtual void OnDestroyWindow();
 

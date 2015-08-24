@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<SOUI width="408" height="150" translucent="0" alpha="255" resizable="0">
+<SOUI width="408" height="183" translucent="0" alpha="255" resizable="0">
   <root cache="1" skin="_skin.sys.wnd.bkgnd">
-    <window pos="0,0" width="410" height="150" name="window166" margin-x="1" margin-y="1" enable="0" visible="0"/>
+    <window pos="0,0" width="410" height="183" name="window166" margin-x="1" margin-y="1" enable="0" visible="0"/>
     <caption pos="7,0" width="403" height="40" name="caption167">
       <text pos="0,8" name="wnd_title">测试程序v1.0</text>
       <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
     </caption>
-    <button pos="106,102" width="124" height="40" name="save" margin-x="1" margin-y="1">确定</button>
+    <button pos="142,135" width="124" height="40" name="save" margin-x="1" margin-y="1">确定</button>
     <text pos="20,41" width="62" height="23" name="text169" margin-x="1" margin-y="1">覆岩岩性</text>
     <combobox pos="83,40" width="313" height="24" dropDown="1" curSel="0" name="rock" margin-x="1" margin-y="1" ncSkin="_skin.sys.border">
       <liststyle itemHeight="30" colorText="#000000" colorSelText="#FFFFFF" colorItemBkgnd="#FFFFFF" colorItemSelBkgnd="#000088"/>
@@ -19,5 +19,9 @@
     </combobox>
     <text pos="20,72" width="167" height="23" name="text171" margin-x="1" margin-y="1">厚煤层分层开采累计煤厚</text>
     <edit pos="193,70" width="70" height="26" readOnly="1" name="hw_sum" margin-x="1" margin-y="1"/>
+    <text pos="187,106" width="62" height="23" name="text188" margin-x="1" margin-y="1">误差范围</text>
+    <edit pos="250,104" width="59" height="26" readOnly="1" name="tolerance" margin-x="1" margin-y="1"/>
+    <text pos="20,105" width="77" height="23" name="text194" margin-x="1" margin-y="1">冒落带高度</text>
+    <edit pos="100,104" width="65" height="26" readOnly="1" name="caving_zone_height" margin-x="1" margin-y="1"/>
   </root>
 </SOUI>

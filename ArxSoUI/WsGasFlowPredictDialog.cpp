@@ -12,6 +12,7 @@ using namespace cbm;
 
 WsGasFlowPredictDialog::WsGasFlowPredictDialog(BOOL bModal) : AcadSouiDialog(_T("layout:ws_gas_flow_predict"), bModal)
 {
+	mine_id = 0;
 }
 
 WsGasFlowPredictDialog::~WsGasFlowPredictDialog()
@@ -244,11 +245,11 @@ void WsGasFlowPredictDialog::initWsDatas()
 
 void WsGasFlowPredictDialog::fillWsCombox()
 {
-	MinePtr mine = DaoHelper::GetOnlineMine();
+	MinePtr mine = FIND_BY_ID(Mine, mine_id);
 	if(mine == 0) return;
 
 	//查询所有的回采工作面
-	RecordPtrListPtr lists = DaoHelper::GetWorkSurfs(mine->name);
+	RecordPtrListPtr lists = DaoHelper::GetWorkSurfs(mine->getID());
 	if(lists == 0) return;
 
 	for(int i=0;i<lists->size();i++)

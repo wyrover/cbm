@@ -318,8 +318,8 @@ void SampleManageDialog::fillCoalCombox()
 
 	StringArray coal_names;
 	IntArray coal_ids;
-	DaoHelper::GetCoalIds(mine->name, coal_ids);
-	DaoHelper::GetCoalNames(mine->name, coal_names);
+	DaoHelper::GetCoalIds(mine->getID(), coal_ids);
+	DaoHelper::GetCoalNames(mine->getID(), coal_names);
 
 	SComboBoxHelper::Clear(m_CoalCombox);
 	SComboBoxHelper::Append(m_CoalCombox, coal_names, coal_ids);
@@ -343,19 +343,19 @@ void SampleManageDialog::initMineDatas()
 void SampleManageDialog::initCoalDatas()
 {
 	m_CoalCombox->SetCurSel(-1);
-	m_NumberEdit->SetWindowText(_T(""));
-	m_ThickEdit->SetWindowText(_T(""));
+	m_NumberEdit->SetWindowText(NULL);
+	m_ThickEdit->SetWindowText(NULL);
 	m_RankCombox->SetCurSel(-1);
-	m_PressureEdit->SetWindowText(_T(""));
-	m_GasContentEdit->SetWindowText(_T(""));
-	m_GasPenetrationEdit->SetWindowText(_T(""));
-	m_FValueEdit->SetWindowText(_T(""));
+	m_PressureEdit->SetWindowText(NULL);
+	m_GasContentEdit->SetWindowText(NULL);
+	m_GasPenetrationEdit->SetWindowText(NULL);
+	m_FValueEdit->SetWindowText(NULL);
 	m_ResAbundanceCombox->SetCurSel(-1);
 	m_ConstComplexityCombox->SetCurSel(-1);
-	m_MineIndexEdit->SetWindowText(_T(""));
-	m_VarCoeffEdit->SetWindowText(_T(""));
+	m_MineIndexEdit->SetWindowText(NULL);
+	m_VarCoeffEdit->SetWindowText(NULL);
 	m_StabilityCombox->SetCurSel(-1);
-	m_DipAngleEdit->SetWindowText(_T(""));
-	m_CavingZoneHeightEdit->SetWindowText(_T(""));
+	m_DipAngleEdit->SetWindowText(NULL);
+	m_CavingZoneHeightEdit->SetWindowText(NULL);
 	m_MinableCheck->SetCheck(FALSE);
 }

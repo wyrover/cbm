@@ -45,6 +45,9 @@ protected:
 	SEdit* m_ReserveGasEdit;
 	SEdit* m_PumpWcEdit;
 
+public:
+	int mine_id;
+
 private:
 	void fillMineDatas();
 };

@@ -11,6 +11,7 @@ using namespace cbm;
 
 MineDesignDialog::MineDesignDialog(BOOL bModal) : AcadSouiDialog(_T("layout:mine_design"), bModal)
 {
+	mine_id = 0;
 }
 
 MineDesignDialog::~MineDesignDialog()
@@ -64,7 +65,7 @@ void MineDesignDialog::OnDelCoalButtonClick()
 
 void MineDesignDialog::OnAddCoalButtonClick()
 {
-	MinePtr mine = DaoHelper::GetOnlineMine();
+	MinePtr mine = FIND_BY_ID(Mine, mine_id);
 	if(mine == 0) return;
 
 	NameDialog dlg(TRUE);
@@ -379,7 +380,7 @@ void MineDesignDialog::OnDestroyWindow()
 
 void MineDesignDialog::initMineDatas()
 {
-	MinePtr mine = DaoHelper::GetOnlineMine();
+	MinePtr mine = FIND_BY_ID(Mine, mine_id);
 	if(mine == 0) return;
 
 	m_NameEdit->SetWindowText(mine->name);
@@ -389,13 +390,13 @@ void MineDesignDialog::fillCoalCombox()
 {
 	SComboBoxHelper::Clear(m_CoalCombox);
 
-	MinePtr mine = DaoHelper::GetOnlineMine();
+	MinePtr mine = FIND_BY_ID(Mine, mine_id);
 	if(mine == 0) return;
 
 	StringArray coal_names;
 	IntArray coal_ids;
-	DaoHelper::GetCoalIds(mine->name, coal_ids);
-	DaoHelper::GetCoalNames(mine->name, coal_names);
+	DaoHelper::GetCoalIds(mine->getID(), coal_ids);
+	DaoHelper::GetCoalNames(mine->getID(), coal_names);
 
 	SComboBoxHelper::Clear(m_CoalCombox);
 	SComboBoxHelper::Append(m_CoalCombox, coal_names, coal_ids);

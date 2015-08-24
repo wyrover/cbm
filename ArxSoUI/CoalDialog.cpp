@@ -105,6 +105,7 @@ static int DipAngle(double angle)
 
 CoalDialog::CoalDialog(BOOL bModal) : AcadSouiDialog(_T("layout:coal"), bModal)
 {
+	mine_id = 0;
 }
 
 CoalDialog::~CoalDialog()
@@ -156,6 +157,7 @@ void CoalDialog::OnNextButtonClick()
 {
 	AcadSouiDialog::OnOK();
 	DecisionDialog* dlg = new DecisionDialog(FALSE);
+	dlg->mine_id = mine_id;
 	dlg->Run(acedGetAcadFrame()->GetSafeHwnd());
 }
 
@@ -342,8 +344,8 @@ void CoalDialog::OnStabilityCaclButtonClick()
 
 void CoalDialog::OnCzhCaclButtonClick()
 {
-	CoalPtr coal = getCurSelCoal();
-	if(coal == 0) return;
+	int coal_id = SComboBoxHelper::GetCurSelItemID(m_CoalCombox);
+	if(coal_id == 0) return;
 
 	//提取煤层倾角和采高数据
 	double angle = 0;
@@ -354,35 +356,34 @@ void CoalDialog::OnCzhCaclButtonClick()
 		if(IDYES == SMessageBox(GetSafeWnd(),_T("煤层顶板覆盖为“极坚硬岩层”?"),_T("友情提示"),MB_YESNO))
 		{
 			Czh1Dialog dlg(TRUE);
-			dlg.coal_id = coal->getID();
-			if(IDOK != dlg.Run(GetSafeWnd())) return;
-			//计算
+			dlg.coal_id = coal_id;
+			dlg.Run(GetSafeWnd());
 		}
 		else
 		{
 			if(IDYES == SMessageBox(GetSafeWnd(),_T("厚煤层分层开采?"),_T("友情提示"),MB_YESNO))
 			{
 				Czh3Dialog dlg(TRUE);
-				dlg.coal_id = coal->getID();
-				if(IDOK != dlg.Run(GetSafeWnd())) return;
-				//计算
+				dlg.coal_id = coal_id;
+				dlg.Run(GetSafeWnd());
 			}
 			else
 			{
 				Czh2Dialog dlg(TRUE);
-				dlg.coal_id = coal->getID();
-				if(IDOK != dlg.Run(GetSafeWnd())) return;
-				//计算
+				dlg.coal_id = coal_id;
+				dlg.Run(GetSafeWnd());
 			}
 		}
 	}
 	else
 	{
 		Czh4Dialog dlg(TRUE);
-		dlg.coal_id = coal->getID();
-		if(IDOK != dlg.Run(GetSafeWnd())) return;
-		//计算
+		dlg.coal_id = coal_id;
+		dlg.Run(GetSafeWnd());
 	}
+	//更新到界面
+	CoalPtr coal = FIND_BY_ID(Coal, coal_id);
+	m_CavingZoneHeightEdit->SetWindowText(Utils::double_to_cstring(coal->czh));
 }
 
 void CoalDialog::OnInfluenceFactorCaclButtonClick()
@@ -431,13 +432,13 @@ void CoalDialog::initCoalDatas()
 
 void CoalDialog::fillCoalCombox()
 {
-	MinePtr mine = DaoHelper::GetOnlineMine();
+	MinePtr mine = FIND_BY_ID(Mine, mine_id);
 	if(mine == 0) return;
 
 	StringArray coal_names;
 	IntArray coal_ids;
-	DaoHelper::GetCoalIds(mine->name, coal_ids);
-	DaoHelper::GetCoalNames(mine->name, coal_names);
+	DaoHelper::GetCoalIds(mine->getID(), coal_ids);
+	DaoHelper::GetCoalNames(mine->getID(), coal_names);
 
 	SComboBoxHelper::Clear(m_CoalCombox);
 	SComboBoxHelper::Append(m_CoalCombox, coal_names, coal_ids);

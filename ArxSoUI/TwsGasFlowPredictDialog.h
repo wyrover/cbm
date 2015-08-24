@@ -58,6 +58,9 @@ protected:
 	SEdit* m_GasWc2Edit;
 	SComboBox* m_TwsCombox;
 
+public:
+	int mine_id;
+
 protected:
 	virtual void OnDestroyWindow();
 

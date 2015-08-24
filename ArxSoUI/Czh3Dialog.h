@@ -42,6 +42,8 @@ protected:
 protected:
 	SComboBox* m_RockCombox;
 	SEdit* m_HwSumEdit;
+	SEdit* m_ToleranceEdit;
+	SEdit* m_CavingZoneHeightEdit;
 
 public:
 	int coal_id;

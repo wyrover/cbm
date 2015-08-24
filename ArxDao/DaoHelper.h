@@ -15,7 +15,9 @@ public:
 	static void ConfigureDao(const CString& user, const CString& password, const CString& database, const CString& host=_T("localhost"), const CString& port=_T("3306"));
 	static void TestDao();
 
+	//查询已登录用户的id
 	static int GetOnlineAccountId();
+	//获取已登录用户的矿井数据
 	static MinePtr GetOnlineMine();
 	//验证用户名和密码
 	static int VerifyMineAccount(const CString& username, const CString& pwd);
@@ -28,13 +30,13 @@ public:
 	//查询示范矿区的虚拟矿井
 	static MinePtr GetSampleMine(const CString& regionName);
 	//查询矿井的所有煤层名称
-	static void GetCoalNames(const CString& mineName, StringArray& coals);
+	static void GetCoalNames(int mine_id, StringArray& coals);
 	//查询矿井的所有煤层id
-	static void GetCoalIds(const CString& mineName, IntArray& coals);
+	static void GetCoalIds(int mine_id, IntArray& coals);
 	//查询矿井的所有采区
-	static RecordPtrListPtr GetWorkAreas(const CString& mineName);
+	static RecordPtrListPtr GetWorkAreas(int mine_id);
 	//查询矿井的所有工作面
-	static RecordPtrListPtr GetWorkSurfs(const CString& mineName);
+	static RecordPtrListPtr GetWorkSurfs(int mine_id);
 	//查询矿井的所有掘进面
-	static RecordPtrListPtr GetDrillingSurfs(const CString& mineName);
+	static RecordPtrListPtr GetDrillingSurfs(int mine_id);
 };

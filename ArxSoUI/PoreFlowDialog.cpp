@@ -13,6 +13,7 @@ using namespace cbm;
 
 PoreFlowDialog::PoreFlowDialog(BOOL bModal) : AcadSouiDialog(_T("layout:pore_flow"), bModal)
 {
+	mine_id = 0;
 }
 
 PoreFlowDialog::~PoreFlowDialog()

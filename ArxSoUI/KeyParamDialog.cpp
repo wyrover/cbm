@@ -19,6 +19,7 @@ using namespace cbm;
 
 KeyParamDialog::KeyParamDialog(BOOL bModal) : AcadSouiDialog(_T("layout:key_param"), bModal)
 {
+	mine_id = 0;
 }
 
 KeyParamDialog::~KeyParamDialog()
@@ -46,54 +47,63 @@ LRESULT KeyParamDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 void KeyParamDialog::OnKP1ButtonClick()
 {
 	DifficultEvalDialog dlg(TRUE);
+	dlg.mine_id = mine_id;
 	dlg.Run(GetSafeWnd());
 }
 
 void KeyParamDialog::OnKP2ButtonClick()
 {
 	MineGasReservesPredictDialog dlg(TRUE);
+	dlg.mine_id = mine_id;
 	dlg.Run(GetSafeWnd());
 }
 
 void KeyParamDialog::OnKP3ButtonClick()
 {
 	MineGasFlowPredictDialog dlg(TRUE);
+	dlg.mine_id = mine_id;
 	dlg.Run(GetSafeWnd());
 }
 
 void KeyParamDialog::OnKP4ButtonClick()
 {
 	TwsGasFlowPredictDialog dlg(TRUE);
+	dlg.mine_id = mine_id;
 	dlg.Run(GetSafeWnd());
 }
 
 void KeyParamDialog::OnKP6ButtonClick()
 {
 	HighDrillingTunnelDialog dlg(TRUE);
+	dlg.mine_id = mine_id;
 	dlg.Run(GetSafeWnd());
 }
 
 void KeyParamDialog::OnKP7ButtonClick()
 {
 	HighDrillingDesignDialog dlg(TRUE);
+	dlg.mine_id = mine_id;
 	dlg.Run(GetSafeWnd());
 }
 
 void KeyParamDialog::OnKP8ButtonClick()
 {
 	DrillingRadiusDesignDialog dlg(TRUE);
+	dlg.mine_id = mine_id;
 	dlg.Run(GetSafeWnd());
 }
 
 void KeyParamDialog::OnKP9ButtonClick()
 {
 	PoreSizeDialog dlg(TRUE);
+	dlg.mine_id = mine_id;
 	dlg.Run(GetSafeWnd());
 }
 
 void KeyParamDialog::OnKP10ButtonClick()
 {
 	PoreFlowDialog dlg(TRUE);
+	dlg.mine_id = mine_id;
 	dlg.Run(GetSafeWnd());
 }
 
@@ -104,5 +114,6 @@ void KeyParamDialog::OnKP11ButtonClick()
 void KeyParamDialog::OnKP5ButtonClick()
 {
 	WsGasFlowPredictDialog dlg(TRUE);
+	dlg.mine_id = mine_id;
 	dlg.Run(GetSafeWnd());
 }

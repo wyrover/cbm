@@ -42,6 +42,7 @@ protected:
 	SEdit* m_DipAngleEdit;
 	SEdit* m_CzkEdit;
 	SEdit* m_CzwEdit;
+	SEdit* m_CavingZoneHeightEdit;
 
 public:
 	int coal_id;
