@@ -482,6 +482,22 @@
 					>
 				</File>
 				<File
+					RelativePath=".\Czh1Dialog.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Czh2Dialog.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Czh3Dialog.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Czh4Dialog.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\DecisionDialog.cpp"
 					>
 				</File>
@@ -526,6 +542,14 @@
 					>
 				</File>
 				<File
+					RelativePath=".\MainDialog.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\MineDesignDialog.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\MineDialog.cpp"
 					>
 				</File>
@@ -551,6 +575,10 @@
 				</File>
 				<File
 					RelativePath=".\MineGasReservesPredictInputDialog.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\MineIndexDialog.cpp"
 					>
 				</File>
 				<File
@@ -599,6 +627,10 @@
 				</File>
 				<File
 					RelativePath=".\TwsGasFlowPredictDialog.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\VarCoeffDialog.cpp"
 					>
 				</File>
 				<File
@@ -699,6 +731,22 @@
 					>
 				</File>
 				<File
+					RelativePath=".\Czh1Dialog.h"
+					>
+				</File>
+				<File
+					RelativePath=".\Czh2Dialog.h"
+					>
+				</File>
+				<File
+					RelativePath=".\Czh3Dialog.h"
+					>
+				</File>
+				<File
+					RelativePath=".\Czh4Dialog.h"
+					>
+				</File>
+				<File
 					RelativePath=".\DecisionDialog.h"
 					>
 				</File>
@@ -743,6 +791,14 @@
 					>
 				</File>
 				<File
+					RelativePath=".\MainDialog.h"
+					>
+				</File>
+				<File
+					RelativePath=".\MineDesignDialog.h"
+					>
+				</File>
+				<File
 					RelativePath=".\MineDialog.h"
 					>
 				</File>
@@ -768,6 +824,10 @@
 				</File>
 				<File
 					RelativePath=".\MineGasReservesPredictInputDialog.h"
+					>
+				</File>
+				<File
+					RelativePath=".\MineIndexDialog.h"
 					>
 				</File>
 				<File
@@ -816,6 +876,10 @@
 				</File>
 				<File
 					RelativePath=".\TwsGasFlowPredictDialog.h"
+					>
+				</File>
+				<File
+					RelativePath=".\VarCoeffDialog.h"
 					>
 				</File>
 				<File

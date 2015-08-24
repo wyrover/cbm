@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOUI width="393" height="176" translucent="0" alpha="255" resizable="0">
+  <root cache="1" skin="_skin.sys.wnd.bkgnd">
+    <window pos="0,0" width="395" height="176" name="window122" margin-x="1" margin-y="1" enable="0" visible="0"/>
+    <caption pos="7,0" width="382" height="40" name="caption123">
+      <text pos="0,8" name="wnd_title">测试程序v1.0</text>
+      <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
+    </caption>
+    <text pos="19,48" width="284" height="23" name="text124" margin-x="1" margin-y="1">煤层厚度大于或等于可采厚度的见煤点数n'</text>
+    <edit pos="309,46" width="70" height="26" name="m" margin-x="1" margin-y="1"/>
+    <text pos="20,85" width="221" height="23" name="text126" margin-x="1" margin-y="1">参与煤层厚度评价的见煤点总数n</text>
+    <edit pos="248,82" width="70" height="26" name="n" margin-x="1" margin-y="1"/>
+    <button pos="120,118" width="122" height="49" name="save" margin-x="1" margin-y="1">确定</button>
+  </root>
+</SOUI>

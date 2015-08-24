@@ -104,6 +104,7 @@ Coal::Coal() : orm::Record(Coal::Table())
 	czh = 0.0;
 	czk = 0.0;
 	czw = 0.0;
+	hw_sum = 0.0;
 	layer_gap = 0.0;
 	influence_factor = 0.0;
 	res_a1 = 0.0;
@@ -116,6 +117,7 @@ Coal::Coal() : orm::Record(Coal::Table())
 	pump_k3 = 0.0;
 	pump_k4 = 0.0;
 	pump_k1 = 0.0;
+	pore_datas = _T("");
 	rho = 0.0;
 	vr = 0.0;
 	gas_w0 = 0.0;
@@ -167,6 +169,7 @@ Coal::Coal() : orm::Record(Coal::Table())
 	REG_ATTRIB(czh, czh);
 	REG_ATTRIB(czk, czk);
 	REG_ATTRIB(czw, czw);
+	REG_ATTRIB(hw_sum, hw_sum);
 	REG_ATTRIB(layer_gap, layer_gap);
 	REG_ATTRIB(influence_factor, influence_factor);
 	REG_ATTRIB(res_a1, res_a1);
@@ -179,6 +182,7 @@ Coal::Coal() : orm::Record(Coal::Table())
 	REG_ATTRIB(pump_k3, pump_k3);
 	REG_ATTRIB(pump_k4, pump_k4);
 	REG_ATTRIB(pump_k1, pump_k1);
+	REG_ATTRIB(pore_datas, pore_datas);
 	REG_ATTRIB(rho, rho);
 	REG_ATTRIB(vr, vr);
 	REG_ATTRIB(gas_w0, gas_w0);
@@ -210,25 +214,24 @@ Coal::Coal() : orm::Record(Coal::Table())
 	REG_FOREGIN_KEY(cbm_mine_id, mine, &Mine::Create);
 }
 
-CString CoalPore::Table()
+CString Complexity::Table()
 {
-	return _T("cbm_coal_pore");
+	return _T("cbm_complexity");
 }
 
-orm::RecordPtr CoalPore::Create()
+orm::RecordPtr Complexity::Create()
 {
-	return orm::RecordPtr(new CoalPore());
+	return orm::RecordPtr(new Complexity());
 }
 
-CoalPore::CoalPore() : orm::Record(CoalPore::Table())
+Complexity::Complexity() : orm::Record(Complexity::Table())
 {
 	name = _T("");
-	thick = 0.0;
+	details = _T("");
 	comment = _T("");
 	REG_ATTRIB(name, name);
-	REG_ATTRIB(thick, thick);
+	REG_ATTRIB(details, details);
 	REG_ATTRIB(comment, comment);
-	REG_FOREGIN_KEY(cbm_coal_id, coal, &Coal::Create);
 }
 
 CString DrillingRadiusParam::Table()
@@ -827,24 +830,6 @@ WorkArea::WorkArea() : orm::Record(WorkArea::Table())
 	REG_ATTRIB(fore_qa, fore_qa);
 	REG_ATTRIB(comment, comment);
 	REG_FOREGIN_KEY(cbm_coal_id, coal, &Coal::Create);
-}
-
-CString WorkAreaReadyTunnel::Table()
-{
-	return _T("cbm_work_area_ready_tunnel");
-}
-
-orm::RecordPtr WorkAreaReadyTunnel::Create()
-{
-	return orm::RecordPtr(new WorkAreaReadyTunnel());
-}
-
-WorkAreaReadyTunnel::WorkAreaReadyTunnel() : orm::Record(WorkAreaReadyTunnel::Table())
-{
-	comment = _T("");
-	REG_ATTRIB(comment, comment);
-	REG_FOREGIN_KEY(cbm_work_area_id, work_area, &WorkArea::Create);
-	REG_FOREGIN_KEY(cbm_tunnel_id, tunnel, &Tunnel::Create);
 }
 
 CString WorkSurf::Table()

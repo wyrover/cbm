@@ -13,7 +13,7 @@ class Account;
 class AdjLayer;
 class Base;
 class Coal;
-class CoalPore;
+class Complexity;
 class DrillingRadiusParam;
 class DrillingSurf;
 class EvalUnit;
@@ -34,14 +34,13 @@ class Technology;
 class TopoGeo;
 class Tunnel;
 class WorkArea;
-class WorkAreaReadyTunnel;
 class WorkSurf;
 
 typedef boost::shared_ptr<Account> AccountPtr;
 typedef boost::shared_ptr<AdjLayer> AdjLayerPtr;
 typedef boost::shared_ptr<Base> BasePtr;
 typedef boost::shared_ptr<Coal> CoalPtr;
-typedef boost::shared_ptr<CoalPore> CoalPorePtr;
+typedef boost::shared_ptr<Complexity> ComplexityPtr;
 typedef boost::shared_ptr<DrillingRadiusParam> DrillingRadiusParamPtr;
 typedef boost::shared_ptr<DrillingSurf> DrillingSurfPtr;
 typedef boost::shared_ptr<EvalUnit> EvalUnitPtr;
@@ -62,7 +61,6 @@ typedef boost::shared_ptr<Technology> TechnologyPtr;
 typedef boost::shared_ptr<TopoGeo> TopoGeoPtr;
 typedef boost::shared_ptr<Tunnel> TunnelPtr;
 typedef boost::shared_ptr<WorkArea> WorkAreaPtr;
-typedef boost::shared_ptr<WorkAreaReadyTunnel> WorkAreaReadyTunnelPtr;
 typedef boost::shared_ptr<WorkSurf> WorkSurfPtr;
 
 class ARXDAO_DLLIMPEXP Account : public orm::Record
@@ -143,6 +141,7 @@ public:
 	double czh;
 	double czk;
 	double czw;
+	double hw_sum;
 	double layer_gap;
 	double influence_factor;
 	double res_a1;
@@ -155,6 +154,7 @@ public:
 	double pump_k3;
 	double pump_k4;
 	double pump_k1;
+	CString pore_datas;
 	double rho;
 	double vr;
 	double gas_w0;
@@ -186,20 +186,19 @@ public:
 
 }; // class Coal
 
-class ARXDAO_DLLIMPEXP CoalPore : public orm::Record
+class ARXDAO_DLLIMPEXP Complexity : public orm::Record
 {
 public:
 	static CString Table();
 	static orm::RecordPtr Create();
 
 public:
-	CoalPore();
-	orm::RecordPtr coal;
+	Complexity();
 	CString name;
-	double thick;
+	CString details;
 	CString comment;
 
-}; // class CoalPore
+}; // class Complexity
 
 class ARXDAO_DLLIMPEXP DrillingRadiusParam : public orm::Record
 {
@@ -587,20 +586,6 @@ public:
 	CString comment;
 
 }; // class WorkArea
-
-class ARXDAO_DLLIMPEXP WorkAreaReadyTunnel : public orm::Record
-{
-public:
-	static CString Table();
-	static orm::RecordPtr Create();
-
-public:
-	WorkAreaReadyTunnel();
-	orm::RecordPtr work_area;
-	orm::RecordPtr tunnel;
-	CString comment;
-
-}; // class WorkAreaReadyTunnel
 
 class ARXDAO_DLLIMPEXP WorkSurf : public orm::Record
 {

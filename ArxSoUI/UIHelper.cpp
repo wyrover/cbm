@@ -17,6 +17,7 @@ using namespace cbm;
 #include "MineDialog.h"
 #include "KeyParamDialog.h"
 #include "PolicyDialog.h"
+#include "MainDialog.h"
 using namespace SOUI;
 
 void UIHelper::InitSouiEnviroment()
@@ -121,4 +122,22 @@ void UIHelper::PolicyHelp()
 
 	PolicyDialog* dlg = new PolicyDialog(FALSE);
 	dlg->Run(acedGetAcadFrame()->GetSafeHwnd());
+}
+
+void UIHelper::Main()
+{
+	int account_id = DaoHelper::GetOnlineAccountId();
+	if(account_id == 0)
+	{
+		SMessageBox(acedGetAcadFrame()->GetSafeHwnd(),_T("请登录!"),_T("友情提示"),MB_OK);
+		//调用登录函数
+		UIHelper::Login();
+	}
+	else
+	{
+		CAcModuleResourceOverride myResources;
+
+		MainDialog* dlg = new MainDialog(FALSE);
+		dlg->Run(acedGetAcadFrame()->GetSafeHwnd());
+	}
 }

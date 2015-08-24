@@ -11,6 +11,7 @@ public:
 	static void GasTechModeDecision();
 	static void KeyParamCacl();
 	static void PolicyHelp();
+	static void Main();
 
 	static void InitSouiEnviroment();
 	static void UnInitSouiEnviroment();

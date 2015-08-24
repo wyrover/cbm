@@ -14,13 +14,16 @@ protected:
 	void OnNextButtonClick();
 	void OnCancelButtonClick();
 	void OnSaveButtonClick();
-	void OnDelButtonClick();
 	void OnRankComboxSelChanged(SOUI::EventArgs *pEvt);
 	void OnConstComplexityComboxSelChanged(SOUI::EventArgs *pEvt);
-	void OnAddCoalButtonClick();
 	void OnResAbundanceComboxSelChanged(SOUI::EventArgs *pEvt);
 	void OnStabilityComboxSelChanged(SOUI::EventArgs *pEvt);
 	void OnCoalComboxSelChanged(SOUI::EventArgs *pEvt);
+	void OnMineIndexCaclButtonClick();
+	void OnVarCoeffCaclButtonClick();
+	void OnStabilityCaclButtonClick();
+	void OnCzhCaclButtonClick();
+	void OnInfluenceFactorCaclButtonClick();
 
 	/** ²Ëµ¥ÏûÏ¢ */
 protected:
@@ -37,13 +40,16 @@ protected:
 		EVENT_NAME_COMMAND(_T("next"), OnNextButtonClick)
 		EVENT_NAME_COMMAND(_T("cancel"), OnCancelButtonClick)
 		EVENT_NAME_COMMAND(_T("save"), OnSaveButtonClick)
-		EVENT_NAME_COMMAND(_T("del"), OnDelButtonClick)
 		EVENT_NAME_HANDLER(_T("rank"), EVT_CB_SELCHANGE, OnRankComboxSelChanged)
 		EVENT_NAME_HANDLER(_T("const_complexity"), EVT_CB_SELCHANGE, OnConstComplexityComboxSelChanged)
-		EVENT_NAME_COMMAND(_T("add_coal"), OnAddCoalButtonClick)
 		EVENT_NAME_HANDLER(_T("res_abundance"), EVT_CB_SELCHANGE, OnResAbundanceComboxSelChanged)
 		EVENT_NAME_HANDLER(_T("stability"), EVT_CB_SELCHANGE, OnStabilityComboxSelChanged)
 		EVENT_NAME_HANDLER(_T("coal"), EVT_CB_SELCHANGE, OnCoalComboxSelChanged)
+		EVENT_NAME_COMMAND(_T("mine_index_cacl"), OnMineIndexCaclButtonClick)
+		EVENT_NAME_COMMAND(_T("var_coeff_cacl"), OnVarCoeffCaclButtonClick)
+		EVENT_NAME_COMMAND(_T("stability_cacl"), OnStabilityCaclButtonClick)
+		EVENT_NAME_COMMAND(_T("czh_cacl"), OnCzhCaclButtonClick)
+		EVENT_NAME_COMMAND(_T("influence_factor_cacl"), OnInfluenceFactorCaclButtonClick)
 		CHAIN_EVENT_MAP(AcadSouiDialog)
 	EVENT_MAP_END()
 	
@@ -74,6 +80,7 @@ protected:
 	SComboBox* m_StabilityCombox;
 	SComboBox* m_CoalCombox;
 	SCheckBox* m_MinableCheck;
+	SEdit* m_HwEdit;
 
 protected:
 	virtual void OnDestroyWindow();
@@ -81,4 +88,5 @@ protected:
 private:
 	void fillCoalCombox();
 	void initCoalDatas();
+	CoalPtr getCurSelCoal();
 };

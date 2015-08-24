@@ -54,6 +54,8 @@ void DaoHelper::GetAllMineBases(StringArray& bases)
 {
 	QueryPtr query(Query::From<Base>());
 	RecordPtrListPtr lists = query->find_many<Base>();
+	if(lists == 0) return;
+
 	for(int i=0;i<lists->size();i++)
 	{
 		bases.push_back(lists->at(i)->get(FIELD(name)));
