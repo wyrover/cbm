@@ -238,6 +238,172 @@ Complexity::Complexity() : orm::Record(Complexity::Table())
 	REG_ATTRIB(comment, comment);
 }
 
+CString DesignCoal::Table()
+{
+	return _T("cbm_design_coal");
+}
+
+orm::RecordPtr DesignCoal::Create()
+{
+	return orm::RecordPtr(new DesignCoal());
+}
+
+DesignCoal::DesignCoal() : orm::Record(DesignCoal::Table())
+{
+	name = _T("");
+	angle = 0.0;
+	thick = 0.0;
+	comment = _T("");
+	REG_ATTRIB(name, name);
+	REG_ATTRIB(angle, angle);
+	REG_ATTRIB(thick, thick);
+	REG_ATTRIB(comment, comment);
+	REG_FOREGIN_KEY(cbm_design_technology_id, design_technology, &DesignTechnology::Create);
+}
+
+CString DesignPore::Table()
+{
+	return _T("cbm_design_pore");
+}
+
+orm::RecordPtr DesignPore::Create()
+{
+	return orm::RecordPtr(new DesignPore());
+}
+
+DesignPore::DesignPore() : orm::Record(DesignPore::Table())
+{
+	name = _T("");
+	d = 0.0;
+	x1 = 0.0;
+	y1 = 0.0;
+	z1 = 0.0;
+	x2 = 0.0;
+	y2 = 0.0;
+	z2 = 0.0;
+	length = 0.0;
+	angle1 = 0.0;
+	angle2 = 0.0;
+	comment = _T("");
+	REG_ATTRIB(name, name);
+	REG_ATTRIB(d, d);
+	REG_ATTRIB(x1, x1);
+	REG_ATTRIB(y1, y1);
+	REG_ATTRIB(z1, z1);
+	REG_ATTRIB(x2, x2);
+	REG_ATTRIB(y2, y2);
+	REG_ATTRIB(z2, z2);
+	REG_ATTRIB(length, length);
+	REG_ATTRIB(angle1, angle1);
+	REG_ATTRIB(angle2, angle2);
+	REG_ATTRIB(comment, comment);
+	REG_FOREGIN_KEY(cbm_design_site_id, design_site, &DesignSite::Create);
+}
+
+CString DesignSite::Table()
+{
+	return _T("cbm_design_site");
+}
+
+orm::RecordPtr DesignSite::Create()
+{
+	return orm::RecordPtr(new DesignSite());
+}
+
+DesignSite::DesignSite() : orm::Record(DesignSite::Table())
+{
+	name = _T("");
+	w = 0.0;
+	h = 0.0;
+	x = 0.0;
+	y = 0.0;
+	z = 0.0;
+	comment = _T("");
+	REG_ATTRIB(name, name);
+	REG_ATTRIB(w, w);
+	REG_ATTRIB(h, h);
+	REG_ATTRIB(x, x);
+	REG_ATTRIB(y, y);
+	REG_ATTRIB(z, z);
+	REG_ATTRIB(comment, comment);
+	REG_FOREGIN_KEY(cbm_design_tunnel_id, design_tunnel, &DesignTunnel::Create);
+}
+
+CString DesignTechnology::Table()
+{
+	return _T("cbm_design_technology");
+}
+
+orm::RecordPtr DesignTechnology::Create()
+{
+	return orm::RecordPtr(new DesignTechnology());
+}
+
+DesignTechnology::DesignTechnology() : orm::Record(DesignTechnology::Table())
+{
+	name = _T("");
+	vd = 0.0;
+	hd = 0.0;
+	d = 0.0;
+	gap = 0.0;
+	l1 = 0.0;
+	l2 = 0.0;
+	comment = _T("");
+	REG_ATTRIB(name, name);
+	REG_ATTRIB(vd, vd);
+	REG_ATTRIB(hd, hd);
+	REG_ATTRIB(d, d);
+	REG_ATTRIB(gap, gap);
+	REG_ATTRIB(l1, l1);
+	REG_ATTRIB(l2, l2);
+	REG_ATTRIB(comment, comment);
+}
+
+CString DesignTunnel::Table()
+{
+	return _T("cbm_design_tunnel");
+}
+
+orm::RecordPtr DesignTunnel::Create()
+{
+	return orm::RecordPtr(new DesignTunnel());
+}
+
+DesignTunnel::DesignTunnel() : orm::Record(DesignTunnel::Table())
+{
+	name = _T("");
+	w = 0.0;
+	h = 0.0;
+	type = 0;
+	top_side = 0.0;
+	bottom_side = 0.0;
+	left_side = 0.0;
+	right_side = 0.0;
+	x1 = 0.0;
+	y1 = 0.0;
+	z1 = 0.0;
+	x2 = 0.0;
+	y2 = 0.0;
+	z2 = 0.0;
+	comment = _T("");
+	REG_ATTRIB(name, name);
+	REG_ATTRIB(w, w);
+	REG_ATTRIB(h, h);
+	REG_ATTRIB(type, type);
+	REG_ATTRIB(top_side, top_side);
+	REG_ATTRIB(bottom_side, bottom_side);
+	REG_ATTRIB(left_side, left_side);
+	REG_ATTRIB(right_side, right_side);
+	REG_ATTRIB(x1, x1);
+	REG_ATTRIB(y1, y1);
+	REG_ATTRIB(z1, z1);
+	REG_ATTRIB(x2, x2);
+	REG_ATTRIB(y2, y2);
+	REG_ATTRIB(z2, z2);
+	REG_ATTRIB(comment, comment);
+	REG_FOREGIN_KEY(cbm_design_coal_id, design_coal, &DesignCoal::Create);
+}
+
 CString DrillingRadiusParam::Table()
 {
 	return _T("cbm_drilling_radius_param");

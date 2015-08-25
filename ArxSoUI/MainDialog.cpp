@@ -4,6 +4,7 @@
 #include "MineDialog.h"
 #include "KeyParamDialog.h"
 #include "PolicyDialog.h"
+#include "DesignDialog.h"
 
 #include <ArxHelper/HelperClass.h>
 #include <ArxDao/DaoHelper.h>
@@ -54,6 +55,9 @@ void MainDialog::OnF2ButtonClick()
 
 void MainDialog::OnF3ButtonClick()
 {
+	DesignDialog dlg(TRUE);
+	dlg.mine_id = mine_id;
+	dlg.Run(GetSafeWnd());
 }
 
 void MainDialog::OnF0ButtonClick()

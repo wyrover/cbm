@@ -18,6 +18,7 @@
     <file name="czh_4" path="xml\czh_4.xml"/>
     <file name="decision" path="xml\decision.xml"/>
     <file name="demo" path="xml\demo.xml"/>
+    <file name="design" path="xml\design.xml"/>
     <file name="difficult_eval" path="xml\difficult_eval.xml"/>
     <file name="drilling_radius_design" path="xml\drilling_radius_design.xml"/>
     <file name="function_manage" path="xml\function_manage.xml"/>
