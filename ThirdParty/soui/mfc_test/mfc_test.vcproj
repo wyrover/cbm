@@ -209,6 +209,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\SouiXmlName.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\stdafx.cpp"
 				>
 				<FileConfiguration
@@ -264,6 +268,10 @@
 			</File>
 			<File
 				RelativePath=".\SoUILoader.h"
+				>
+			</File>
+			<File
+				RelativePath=".\SouiXmlName.h"
 				>
 			</File>
 			<File

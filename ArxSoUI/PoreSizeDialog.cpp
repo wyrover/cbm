@@ -60,17 +60,17 @@ void PoreSizeDialog::OnSaveButtonClick()
 	//保存到数据库
 	if(pore_size->save())
 	{
-		SMessageBox(GetSafeWnd(), _T("保存数据成功!!!"), _T("友情提示"), MB_OK);
+		SMessageBox(GetSafeHwnd(), _T("保存数据成功!!!"), _T("友情提示"), MB_OK);
 	}
 	else
 	{
-		SMessageBox(GetSafeWnd(), _T("保存数据失败!!!"), _T("友情提示"), MB_OK);
+		SMessageBox(GetSafeHwnd(), _T("保存数据失败!!!"), _T("友情提示"), MB_OK);
 	}
 }
 
 void PoreSizeDialog::OnHintButtonClick()
 {
-	SMessageBox(GetSafeWnd(), _T("注：各类管路的流量应按照其使用年限或服务区域内的最大值确定\\n并应有1.2~1.8的富余系数!!!"), _T("友情提示"), MB_OK);
+	SMessageBox(GetSafeHwnd(), _T("注：各类管路的流量应按照其使用年限或服务区域内的最大值确定\\n并应有1.2~1.8的富余系数!!!"), _T("友情提示"), MB_OK);
 }
 
 void PoreSizeDialog::OnCaclButtonClick()
@@ -86,7 +86,7 @@ void PoreSizeDialog::OnCaclButtonClick()
 
 	if(sigma == 0 || V == 0)
 	{
-		SMessageBox(GetSafeWnd(), _T("经济流速或容许压力取值不能为0!!!"), _T("友情提示"), MB_OK);
+		SMessageBox(GetSafeHwnd(), _T("经济流速或容许压力取值不能为0!!!"), _T("友情提示"), MB_OK);
 		return;
 	}
 
@@ -100,7 +100,7 @@ void PoreSizeDialog::OnCaclButtonClick()
 
 void PoreSizeDialog::OnHint2ButtonClick()
 {
-	SMessageBox(GetSafeWnd(), _T("注:可取屈服极限强度的60%；缺少此值时:\\n铸铁管可取20MPa\\n焊接钢管可取60MPa\\n无缝钢管可取80MPa"), _T("友情提示"), MB_OK);
+	SMessageBox(GetSafeHwnd(), _T("注:可取屈服极限强度的60%；缺少此值时:\\n铸铁管可取20MPa\\n焊接钢管可取60MPa\\n无缝钢管可取80MPa"), _T("友情提示"), MB_OK);
 }
 
 void PoreSizeDialog::OnDestroyWindow()

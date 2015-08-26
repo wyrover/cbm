@@ -218,11 +218,19 @@ create table cbm_design_technology
    id                   int not null auto_increment,
    cbm_coal_id          int,
    name                 varchar(255),
-   vd                   decimal(8,2),
-   hd                   decimal(8,2),
-   d                    decimal(8,2),
-   gap                  decimal(8,2),
+   v_dist               decimal(8,2),
+   h_dist               decimal(8,2),
    comment              varchar(255),
+   top_side             decimal(8,2),
+   bottom_side          decimal(8,2),
+   left_side            decimal(8,2),
+   right_side           decimal(8,2),
+   dp                   decimal(8,2),
+   gp                   decimal(8,2),
+   ws                   decimal(8,2),
+   hs                   decimal(8,2),
+   wd                   decimal(8,2),
+   hd                   decimal(8,2),
    primary key (id)
 );
 
@@ -234,10 +242,6 @@ create table cbm_design_tunnel
    w                    decimal(8,2),
    h                    decimal(8,2),
    type                 int,
-   top_side             decimal(8,2),
-   bottom_side          decimal(8,2),
-   left_side            decimal(8,2),
-   right_side           decimal(8,2),
    x1                   decimal(8,2),
    y1                   decimal(8,2),
    z1                   decimal(8,2),
@@ -260,6 +264,8 @@ create table cbm_design_work_surf
    x0                   decimal(8,2),
    y0                   decimal(8,2),
    z0                   decimal(8,2),
+   w                    decimal(8,2),
+   h                    decimal(8,2),
    primary key (id)
 );
 

@@ -265,11 +265,19 @@ public:
 	DesignTechnology();
 	orm::RecordPtr coal;
 	CString name;
-	double vd;
-	double hd;
-	double d;
-	double gap;
+	double v_dist;
+	double h_dist;
 	CString comment;
+	double top_side;
+	double bottom_side;
+	double left_side;
+	double right_side;
+	double dp;
+	double gp;
+	double ws;
+	double hs;
+	double wd;
+	double hd;
 
 }; // class DesignTechnology
 
@@ -286,10 +294,6 @@ public:
 	double w;
 	double h;
 	int type;
-	double top_side;
-	double bottom_side;
-	double left_side;
-	double right_side;
 	double x1;
 	double y1;
 	double z1;
@@ -317,6 +321,8 @@ public:
 	double x0;
 	double y0;
 	double z0;
+	double w;
+	double h;
 
 }; // class DesignWorkSurf
 

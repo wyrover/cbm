@@ -319,17 +319,33 @@ orm::RecordPtr DesignTechnology::Create()
 DesignTechnology::DesignTechnology() : orm::Record(DesignTechnology::Table())
 {
 	name = _T("");
-	vd = 0.0;
-	hd = 0.0;
-	d = 0.0;
-	gap = 0.0;
+	v_dist = 0.0;
+	h_dist = 0.0;
 	comment = _T("");
+	top_side = 0.0;
+	bottom_side = 0.0;
+	left_side = 0.0;
+	right_side = 0.0;
+	dp = 0.0;
+	gp = 0.0;
+	ws = 0.0;
+	hs = 0.0;
+	wd = 0.0;
+	hd = 0.0;
 	REG_ATTRIB(name, name);
-	REG_ATTRIB(vd, vd);
-	REG_ATTRIB(hd, hd);
-	REG_ATTRIB(d, d);
-	REG_ATTRIB(gap, gap);
+	REG_ATTRIB(v_dist, v_dist);
+	REG_ATTRIB(h_dist, h_dist);
 	REG_ATTRIB(comment, comment);
+	REG_ATTRIB(top_side, top_side);
+	REG_ATTRIB(bottom_side, bottom_side);
+	REG_ATTRIB(left_side, left_side);
+	REG_ATTRIB(right_side, right_side);
+	REG_ATTRIB(dp, dp);
+	REG_ATTRIB(gp, gp);
+	REG_ATTRIB(ws, ws);
+	REG_ATTRIB(hs, hs);
+	REG_ATTRIB(wd, wd);
+	REG_ATTRIB(hd, hd);
 	REG_FOREGIN_KEY(cbm_coal_id, coal, &Coal::Create);
 }
 
@@ -349,10 +365,6 @@ DesignTunnel::DesignTunnel() : orm::Record(DesignTunnel::Table())
 	w = 0.0;
 	h = 0.0;
 	type = 0;
-	top_side = 0.0;
-	bottom_side = 0.0;
-	left_side = 0.0;
-	right_side = 0.0;
 	x1 = 0.0;
 	y1 = 0.0;
 	z1 = 0.0;
@@ -364,10 +376,6 @@ DesignTunnel::DesignTunnel() : orm::Record(DesignTunnel::Table())
 	REG_ATTRIB(w, w);
 	REG_ATTRIB(h, h);
 	REG_ATTRIB(type, type);
-	REG_ATTRIB(top_side, top_side);
-	REG_ATTRIB(bottom_side, bottom_side);
-	REG_ATTRIB(left_side, left_side);
-	REG_ATTRIB(right_side, right_side);
 	REG_ATTRIB(x1, x1);
 	REG_ATTRIB(y1, y1);
 	REG_ATTRIB(z1, z1);
@@ -398,6 +406,8 @@ DesignWorkSurf::DesignWorkSurf() : orm::Record(DesignWorkSurf::Table())
 	x0 = 0.0;
 	y0 = 0.0;
 	z0 = 0.0;
+	w = 0.0;
+	h = 0.0;
 	REG_ATTRIB(name, name);
 	REG_ATTRIB(l1, l1);
 	REG_ATTRIB(l2, l2);
@@ -406,6 +416,8 @@ DesignWorkSurf::DesignWorkSurf() : orm::Record(DesignWorkSurf::Table())
 	REG_ATTRIB(x0, x0);
 	REG_ATTRIB(y0, y0);
 	REG_ATTRIB(z0, z0);
+	REG_ATTRIB(w, w);
+	REG_ATTRIB(h, h);
 	REG_FOREGIN_KEY(cbm_coal_id, coal, &Coal::Create);
 }
 

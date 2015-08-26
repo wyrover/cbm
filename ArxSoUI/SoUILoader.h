@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Util/HelperClass.h>
+#include <Util/Singleton.h>
 
 //单例模式
 class SoUILoader : public Singleton<SoUILoader>
@@ -29,6 +29,6 @@ protected:
 	SOUI::CAutoRefPtr<SOUI::IImgDecoderFactory> pImgDecoderFactory; //图片解码器
 	SOUI::CAutoRefPtr<SOUI::IRenderFactory> pRenderFactory;         //UI渲染模块,由render-gdi.dll或render-skia.dll提供
 	//SOUI::CAutoRefPtr<ITranslatorMgr> trans;                //多语言翻译模块,由translator.dll提供
-	SOUI::CAutoRefPtr<IScriptFactory> pScriptLua;             //lua脚本模块,由scriptmodule-lua.dll提供
+	SOUI::CAutoRefPtr<SOUI::IScriptFactory> pScriptLua;             //lua脚本模块,由scriptmodule-lua.dll提供
 	SOUI::SApplication* pSouiApp;
 };

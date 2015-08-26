@@ -131,7 +131,7 @@ void HighDrillingDesignDialog::OnDrillSiteButtonClick()
 	//显示对话框
 	HighDrillingSiteDialog dlg(TRUE);
 	dlg.ws_id = work_surf->getID(); // 传入工作面id
-	if(IDOK != dlg.Run(GetSafeWnd())) return;
+	if(IDOK != dlg.Run(GetSafeHwnd())) return;
 	
 	//计算钻场参数
 	HighDrillingSiteParamPtr hdsp = FIND_ONE(HighDrillingSiteParam, FKEY(WorkSurf), work_surf->getStringID());
@@ -168,7 +168,7 @@ void HighDrillingDesignDialog::OnDrillPoreButtonClick()
 	HighDrillingPoreDialog dlg(TRUE);
 	dlg.ws_id = work_surf->getID();  //传入工作面id
 	dlg.Lg = Lg; // 传入Lg数据
-	if(IDOK != dlg.Run(GetSafeWnd())) return;
+	if(IDOK != dlg.Run(GetSafeHwnd())) return;
 
 	SListCtrlHelper::Clear(m_AbcListctrl);
 	SListCtrlHelper::Clear(m_BcdListctrl);
@@ -268,7 +268,7 @@ void HighDrillingDesignDialog::OnSaveButtonClick()
 		pore->save(); // 保存到数据库
 	}
 
-	SMessageBox(GetSafeWnd(), _T("保存数据成功!!!"), _T("友情提示"), MB_OK);
+	SMessageBox(GetSafeHwnd(), _T("保存数据成功!!!"), _T("友情提示"), MB_OK);
 }
 
 void HighDrillingDesignDialog::OnDestroyWindow()

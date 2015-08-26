@@ -188,11 +188,11 @@ void CoalDialog::OnSaveButtonClick()
 	coal->minable = m_MinableCheck->IsChecked(); // 是否可采煤层
 	if(coal->save())
 	{
-		SMessageBox(GetSafeWnd(),_T("更新成功!"),_T("友情提示"),MB_OK);
+		SMessageBox(GetSafeHwnd(),_T("更新成功!"),_T("友情提示"),MB_OK);
 	}
 	else
 	{
-		SMessageBox(GetSafeWnd(),_T("更新失败!"),_T("友情提示"),MB_OK);
+		SMessageBox(GetSafeHwnd(),_T("更新失败!"),_T("友情提示"),MB_OK);
 	}	
 }
 
@@ -273,7 +273,7 @@ void CoalDialog::OnCoalComboxSelChanged(SOUI::EventArgs *pEvt)
 void CoalDialog::OnMineIndexCaclButtonClick()
 {
 	MineIndexDialog dlg(TRUE);
-	if(IDOK != dlg.Run(GetSafeWnd())) return;
+	if(IDOK != dlg.Run(GetSafeHwnd())) return;
 
 	//取出数据
 	int m = dlg.m, n = dlg.n;
@@ -286,7 +286,7 @@ void CoalDialog::OnMineIndexCaclButtonClick()
 void CoalDialog::OnVarCoeffCaclButtonClick()
 {
 	VarCoeffDialog dlg(TRUE);
-	if(IDOK != dlg.Run(GetSafeWnd())) return;
+	if(IDOK != dlg.Run(GetSafeHwnd())) return;
 
 	//取出数据
 	CString str = dlg.datas;
@@ -352,25 +352,25 @@ void CoalDialog::OnCzhCaclButtonClick()
 	int k = DipAngle(angle);
 	if(k == 1 || k == 2)  // 缓倾斜、中倾斜煤层
 	{
-		if(IDYES == SMessageBox(GetSafeWnd(),_T("煤层顶板覆盖为“极坚硬岩层”?"),_T("友情提示"),MB_YESNO))
+		if(IDYES == SMessageBox(GetSafeHwnd(),_T("煤层顶板覆盖为“极坚硬岩层”?"),_T("友情提示"),MB_YESNO))
 		{
 			Czh1Dialog dlg(TRUE);
 			dlg.coal_id = coal_id;
-			dlg.Run(GetSafeWnd());
+			dlg.Run(GetSafeHwnd());
 		}
 		else
 		{
-			if(IDYES == SMessageBox(GetSafeWnd(),_T("厚煤层分层开采?"),_T("友情提示"),MB_YESNO))
+			if(IDYES == SMessageBox(GetSafeHwnd(),_T("厚煤层分层开采?"),_T("友情提示"),MB_YESNO))
 			{
 				Czh3Dialog dlg(TRUE);
 				dlg.coal_id = coal_id;
-				dlg.Run(GetSafeWnd());
+				dlg.Run(GetSafeHwnd());
 			}
 			else
 			{
 				Czh2Dialog dlg(TRUE);
 				dlg.coal_id = coal_id;
-				dlg.Run(GetSafeWnd());
+				dlg.Run(GetSafeHwnd());
 			}
 		}
 	}
@@ -378,7 +378,7 @@ void CoalDialog::OnCzhCaclButtonClick()
 	{
 		Czh4Dialog dlg(TRUE);
 		dlg.coal_id = coal_id;
-		dlg.Run(GetSafeWnd());
+		dlg.Run(GetSafeHwnd());
 	}
 	//更新到界面
 	CoalPtr coal = FIND_BY_ID(Coal, coal_id);
@@ -393,7 +393,7 @@ void CoalDialog::OnInfluenceFactorCaclButtonClick()
 	Utils::cstring_to_double((LPCTSTR)m_HwEdit->GetWindowText(), M);
 	if(M == 0)
 	{
-		SMessageBox(GetSafeWnd(),_T("采高必须大于0"),_T("友情提示"),MB_YESNO);
+		SMessageBox(GetSafeHwnd(),_T("采高必须大于0"),_T("友情提示"),MB_YESNO);
 	}
 	else
 	{

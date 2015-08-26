@@ -55,11 +55,11 @@ void MineDesignDialog::OnDelCoalButtonClick()
 		//从采区列表中删除
 		SComboBoxHelper::DeleteCurSel(m_CoalCombox);
 		SComboBoxHelper::Select(m_CoalCombox, 0);
-		SMessageBox(GetSafeWnd(),_T("删除煤层成功"),_T("友情提示"),MB_OK);
+		SMessageBox(GetSafeHwnd(),_T("删除煤层成功"),_T("友情提示"),MB_OK);
 	}
 	else
 	{
-		SMessageBox(GetSafeWnd(),_T("删除煤层失败"),_T("友情提示"),MB_OK);
+		SMessageBox(GetSafeHwnd(),_T("删除煤层失败"),_T("友情提示"),MB_OK);
 	}
 }
 
@@ -70,7 +70,7 @@ void MineDesignDialog::OnAddCoalButtonClick()
 
 	NameDialog dlg(TRUE);
 	dlg.SetWindowTitle(_T("新增煤层"));
-	if(IDOK != dlg.Run(GetSafeWnd())) return;
+	if(IDOK != dlg.Run(GetSafeHwnd())) return;
 
 	CString name = dlg.name;
 	if(name.IsEmpty()) return;
@@ -79,7 +79,7 @@ void MineDesignDialog::OnAddCoalButtonClick()
 	{
 		CString msg;
 		msg.Format(_T("煤层%s已存在!"), name);
-		SMessageBox(GetSafeWnd(),msg,_T("友情提示"),MB_OK);
+		SMessageBox(GetSafeHwnd(),msg,_T("友情提示"),MB_OK);
 	}
 	else
 	{
@@ -92,11 +92,11 @@ void MineDesignDialog::OnAddCoalButtonClick()
 			//插入到煤层列表列表
 			int nItem = SComboBoxHelper::Add(m_CoalCombox, coal->name, coal->getID());
 			SComboBoxHelper::Select(m_CoalCombox, nItem);
-			SMessageBox(GetSafeWnd(),_T("新增煤层成功"),_T("友情提示"),MB_OK);
+			SMessageBox(GetSafeHwnd(),_T("新增煤层成功"),_T("友情提示"),MB_OK);
 		}
 		else
 		{
-			SMessageBox(GetSafeWnd(),_T("新增煤层失败"),_T("友情提示"),MB_OK);
+			SMessageBox(GetSafeHwnd(),_T("新增煤层失败"),_T("友情提示"),MB_OK);
 		}
 	}
 }
@@ -183,11 +183,11 @@ void MineDesignDialog::OnDelWorkAreaButtonClick()
 		//从采区列表中删除
 		SComboBoxHelper::DeleteCurSel(m_WorkAreaCombox);
 		SComboBoxHelper::Select(m_WorkAreaCombox, 0);
-		SMessageBox(GetSafeWnd(),_T("删除采区成功"),_T("友情提示"),MB_OK);
+		SMessageBox(GetSafeHwnd(),_T("删除采区成功"),_T("友情提示"),MB_OK);
 	}
 	else
 	{
-		SMessageBox(GetSafeWnd(),_T("删除采区失败"),_T("友情提示"),MB_OK);
+		SMessageBox(GetSafeHwnd(),_T("删除采区失败"),_T("友情提示"),MB_OK);
 	}
 }
 
@@ -198,7 +198,7 @@ void MineDesignDialog::OnAddWorkAreaButtonClick()
 
 	NameDialog dlg(TRUE);
 	dlg.SetWindowTitle(_T("新增采区"));
-	if(IDOK != dlg.Run(GetSafeWnd())) return;
+	if(IDOK != dlg.Run(GetSafeHwnd())) return;
 
 	CString name = dlg.name;
 	if(name.IsEmpty()) return;
@@ -207,7 +207,7 @@ void MineDesignDialog::OnAddWorkAreaButtonClick()
 	{
 		CString msg;
 		msg.Format(_T("采区名称%s已存在!"), name);
-		SMessageBox(GetSafeWnd(),msg,_T("友情提示"),MB_OK);
+		SMessageBox(GetSafeHwnd(),msg,_T("友情提示"),MB_OK);
 	}
 	else
 	{
@@ -220,11 +220,11 @@ void MineDesignDialog::OnAddWorkAreaButtonClick()
 			//插入到采区列表
 			int nItem = SComboBoxHelper::Add(m_WorkAreaCombox, work_area->name, work_area->getID());
 			SComboBoxHelper::Select(m_WorkAreaCombox, nItem);
-			SMessageBox(GetSafeWnd(),_T("新增采区成功"),_T("友情提示"),MB_OK);
+			SMessageBox(GetSafeHwnd(),_T("新增采区成功"),_T("友情提示"),MB_OK);
 		}
 		else
 		{
-			SMessageBox(GetSafeWnd(),_T("新增采区失败"),_T("友情提示"),MB_OK);
+			SMessageBox(GetSafeHwnd(),_T("新增采区失败"),_T("友情提示"),MB_OK);
 		}
 	}
 }
@@ -262,11 +262,11 @@ void MineDesignDialog::OnDelWsButtonClick()
 		//从采区列表中删除
 		SComboBoxHelper::DeleteCurSel(m_WsCombox);
 		SComboBoxHelper::Select(m_WsCombox, 0);
-		SMessageBox(GetSafeWnd(),_T("删除回采工作面成功"),_T("友情提示"),MB_OK);
+		SMessageBox(GetSafeHwnd(),_T("删除回采工作面成功"),_T("友情提示"),MB_OK);
 	}
 	else
 	{
-		SMessageBox(GetSafeWnd(),_T("删除回采工作面失败"),_T("友情提示"),MB_OK);
+		SMessageBox(GetSafeHwnd(),_T("删除回采工作面失败"),_T("友情提示"),MB_OK);
 	}
 }
 
@@ -277,7 +277,7 @@ void MineDesignDialog::OnAddWsButtonClick()
 
 	NameDialog dlg(TRUE);
 	dlg.SetWindowTitle(_T("新增工作面"));
-	if(IDOK != dlg.Run(GetSafeWnd())) return;
+	if(IDOK != dlg.Run(GetSafeHwnd())) return;
 
 	CString name = dlg.name;
 	if(name.IsEmpty()) return;
@@ -286,7 +286,7 @@ void MineDesignDialog::OnAddWsButtonClick()
 	{
 		CString msg;
 		msg.Format(_T("回采工作面%s已存在!"), name);
-		SMessageBox(GetSafeWnd(),msg,_T("友情提示"),MB_OK);
+		SMessageBox(GetSafeHwnd(),msg,_T("友情提示"),MB_OK);
 	}
 	else
 	{
@@ -299,11 +299,11 @@ void MineDesignDialog::OnAddWsButtonClick()
 			//插入到工作面列表
 			int nItem = SComboBoxHelper::Add(m_WsCombox, work_surf->name, work_surf->getID());
 			SComboBoxHelper::Select(m_WsCombox, nItem);
-			SMessageBox(GetSafeWnd(),_T("新增工作面成功"),_T("友情提示"),MB_OK);
+			SMessageBox(GetSafeHwnd(),_T("新增工作面成功"),_T("友情提示"),MB_OK);
 		}
 		else
 		{
-			SMessageBox(GetSafeWnd(),_T("新增工作面失败"),_T("友情提示"),MB_OK);
+			SMessageBox(GetSafeHwnd(),_T("新增工作面失败"),_T("友情提示"),MB_OK);
 		}
 	}
 }
@@ -319,11 +319,11 @@ void MineDesignDialog::OnDelTwsButtonClick()
 		//从采区列表中删除
 		SComboBoxHelper::DeleteCurSel(m_TwsCombox);
 		SComboBoxHelper::Select(m_TwsCombox, 0);
-		SMessageBox(GetSafeWnd(),_T("删除掘进面成功"),_T("友情提示"),MB_OK);
+		SMessageBox(GetSafeHwnd(),_T("删除掘进面成功"),_T("友情提示"),MB_OK);
 	}
 	else
 	{
-		SMessageBox(GetSafeWnd(),_T("删除掘进面失败"),_T("友情提示"),MB_OK);
+		SMessageBox(GetSafeHwnd(),_T("删除掘进面失败"),_T("友情提示"),MB_OK);
 	}
 }
 
@@ -334,7 +334,7 @@ void MineDesignDialog::OnAddTwsButtonClick()
 
 	NameDialog dlg(TRUE);
 	dlg.SetWindowTitle(_T("新增掘进面"));
-	if(IDOK != dlg.Run(GetSafeWnd())) return;
+	if(IDOK != dlg.Run(GetSafeHwnd())) return;
 
 	CString name = dlg.name;
 	if(name.IsEmpty()) return;
@@ -342,7 +342,7 @@ void MineDesignDialog::OnAddTwsButtonClick()
 	{
 		CString msg;
 		msg.Format(_T("掘进工作面%s已存在!"), name);
-		SMessageBox(GetSafeWnd(),msg,_T("友情提示"),MB_OK);
+		SMessageBox(GetSafeHwnd(),msg,_T("友情提示"),MB_OK);
 	}
 	else
 	{
@@ -355,11 +355,11 @@ void MineDesignDialog::OnAddTwsButtonClick()
 			//插入到采区列表
 			int nItem = SComboBoxHelper::Add(m_TwsCombox, drilling_surf->name, drilling_surf->getID());
 			SComboBoxHelper::Select(m_TwsCombox, nItem);
-			SMessageBox(GetSafeWnd(),_T("新增掘进面成功"),_T("友情提示"),MB_OK);
+			SMessageBox(GetSafeHwnd(),_T("新增掘进面成功"),_T("友情提示"),MB_OK);
 		}
 		else
 		{
-			SMessageBox(GetSafeWnd(),_T("新增掘进面失败"),_T("友情提示"),MB_OK);
+			SMessageBox(GetSafeHwnd(),_T("新增掘进面失败"),_T("友情提示"),MB_OK);
 		}
 	}
 }

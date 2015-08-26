@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOUI width="411" height="568" translucent="0" alpha="255" resizable="0">
+  <root cache="1" skin="_skin.sys.wnd.bkgnd">
+    <window pos="0,0" width="413" height="568" name="window0" margin-x="1" margin-y="1" enable="0" visible="0"/>
+    <text pos="39,62" width="62" height="23" name="text3" margin-x="1" margin-y="1">煤层厚度</text>
+    <edit pos="115,60" width="67" height="26" name="thick" margin-x="1" margin-y="1"/>
+    <button pos="131,519" width="143" height="40" name="save" margin-x="1" margin-y="1">保存</button>
+    <caption pos="5,0" width="401" height="40" name="caption10">
+      <text pos="0,8" name="wnd_title">测试程序v1.0</text>
+      <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
+    </caption>
+    <text pos="21,37" width="84" height="23" name="text12" margin-x="1" margin-y="1">&gt;&gt;煤层参数</text>
+    <text pos="230,64" width="62" height="23" name="text13" margin-x="1" margin-y="1">煤层倾角</text>
+    <edit pos="306,62" width="69" height="26" name="dip_angle" margin-x="1" margin-y="1"/>
+    <text pos="39,144" width="62" height="23" name="text15" margin-x="1" margin-y="1">走向长度</text>
+    <edit pos="115,142" width="67" height="26" name="L1" margin-x="1" margin-y="1"/>
+    <text pos="18,90" width="99" height="23" name="text17" margin-x="1" margin-y="1">&gt;&gt;工作面参数</text>
+    <text pos="230,145" width="62" height="23" name="text18" margin-x="1" margin-y="1">倾向长度</text>
+    <edit pos="306,144" width="69" height="26" name="L2" margin-x="1" margin-y="1"/>
+    <text pos="39,176" width="62" height="23" name="text21" margin-x="1" margin-y="1">巷道宽度</text>
+    <edit pos="115,175" width="67" height="26" name="w" margin-x="1" margin-y="1"/>
+    <text pos="230,177" width="62" height="23" name="text23" margin-x="1" margin-y="1">巷道高度</text>
+    <edit pos="306,176" width="69" height="26" name="h" margin-x="1" margin-y="1"/>
+    <text pos="39,230" width="77" height="23" name="text25" margin-x="1" margin-y="1">底板巷宽度</text>
+    <edit pos="115,228" width="67" height="26" name="Wd" margin-x="1" margin-y="1"/>
+    <text pos="230,232" width="77" height="23" name="text27" margin-x="1" margin-y="1">底板巷高度</text>
+    <edit pos="307,230" width="69" height="26" name="Hd" margin-x="1" margin-y="1"/>
+    <text pos="18,207" width="99" height="23" name="text29" margin-x="1" margin-y="1">&gt;&gt;底板巷参数</text>
+    <text pos="39,341" width="62" height="23" name="text30" margin-x="1" margin-y="1">钻孔直径</text>
+    <edit pos="115,339" width="67" height="26" name="Dp" margin-x="1" margin-y="1"/>
+    <text pos="230,341" width="62" height="23" name="text32" margin-x="1" margin-y="1">钻孔间距</text>
+    <edit pos="306,341" width="69" height="26" name="Gp" margin-x="1" margin-y="1"/>
+    <text pos="18,318" width="84" height="23" name="text34" margin-x="1" margin-y="1">&gt;&gt;钻孔参数</text>
+    <text pos="39,488" width="62" height="23" name="text35" margin-x="1" margin-y="1">钻场宽度</text>
+    <edit pos="115,486" width="67" height="26" name="Ws" margin-x="1" margin-y="1"/>
+    <text pos="230,488" width="62" height="23" name="text37" margin-x="1" margin-y="1">钻场高度</text>
+    <edit pos="306,486" width="69" height="26" name="Hs" margin-x="1" margin-y="1"/>
+    <text pos="18,465" width="84" height="23" name="text39" margin-x="1" margin-y="1">&gt;&gt;钻场参数</text>
+    <text pos="39,399" width="32" height="23" name="text40" margin-x="1" margin-y="1">上帮</text>
+    <text pos="196,401" width="32" height="23" name="text41" margin-x="1" margin-y="1">下帮</text>
+    <text pos="39,433" width="32" height="23" name="text42" margin-x="1" margin-y="1">左帮</text>
+    <edit pos="77,431" width="59" height="26" name="left" margin-x="1" margin-y="1"/>
+    <text pos="196,436" width="32" height="23" name="text44" margin-x="1" margin-y="1">右帮</text>
+    <edit pos="232,437" width="57" height="26" name="right" margin-x="1" margin-y="1"/>
+    <edit pos="77,397" width="57" height="26" name="top" margin-x="1" margin-y="1"/>
+    <edit pos="232,399" width="58" height="26" name="bottom" margin-x="1" margin-y="1"/>
+    <text pos="18,374" width="114" height="23" name="text48" margin-x="1" margin-y="1">&gt;&gt;钻孔控制范围</text>
+    <text pos="230,115" width="77" height="23" name="text49" margin-x="1" margin-y="1">工作面长度</text>
+    <edit pos="306,113" width="67" height="26" name="L" margin-x="1" margin-y="1"/>
+    <text pos="39,261" width="137" height="23" name="text51" margin-x="1" margin-y="1">底板巷与工作面垂距</text>
+    <text pos="39,291" width="227" height="23" name="text52" margin-x="1" margin-y="1">底板巷与工作面风巷水平投影距离</text>
+    <edit pos="180,259" width="67" height="26" name="V_dist" margin-x="1" margin-y="1"/>
+    <edit pos="272,289" width="67" height="26" name="H_dist" margin-x="1" margin-y="1"/>
+    <text pos="39,115" width="77" height="23" name="text55" margin-x="1" margin-y="1">工作面名称</text>
+    <edit pos="115,113" width="67" height="26" name="name" margin-x="1" margin-y="1"/>
+  </root>
+</SOUI>

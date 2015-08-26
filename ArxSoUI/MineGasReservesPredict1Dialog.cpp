@@ -63,11 +63,11 @@ void MineGasReservesPredict1Dialog::OnSaveButtonClick()
 	//保存到数据库
 	if(mine->save())
 	{
-		SMessageBox(GetSafeWnd(),_T("更新数据成功"),_T("友情提示"),MB_OK);
+		SMessageBox(GetSafeHwnd(),_T("更新数据成功"),_T("友情提示"),MB_OK);
 	}
 	else
 	{
-		SMessageBox(GetSafeWnd(),_T("更新数据失败"),_T("友情提示"),MB_OK);
+		SMessageBox(GetSafeHwnd(),_T("更新数据失败"),_T("友情提示"),MB_OK);
 	}
 }
 
@@ -76,7 +76,7 @@ void MineGasReservesPredict1Dialog::OnW1CaclButtonClick()
 	//提取数据进行计算
 	MineGasReservesPredictInputDialog dlg(TRUE);
 	dlg.mine_id = mine_id;
-	dlg.Run(GetSafeWnd());
+	dlg.Run(GetSafeHwnd());
 
 	//查找所有的可采煤层
 	RecordPtrListPtr lists = FIND_MANY2(Coal, FKEY(Mine), Utils::int_to_cstring(mine_id), FIELD(minable), _T("1"));
@@ -96,7 +96,7 @@ void MineGasReservesPredict1Dialog::OnW1CaclButtonClick()
 
 void MineGasReservesPredict1Dialog::OnW2CaclButtonClick()
 {
-	SMessageBox(GetSafeWnd(), _T("请直接输入数据即可!!!"), _T("友情提示"), MB_OK);
+	SMessageBox(GetSafeHwnd(), _T("请直接输入数据即可!!!"), _T("友情提示"), MB_OK);
 
 	////提取数据进行计算
 	//MineGasReservesPredictInputDialog dlg(TRUE);

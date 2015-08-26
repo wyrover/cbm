@@ -2,6 +2,8 @@
 #include "mfc_test.h"
 #include "mfc_testDlg.h"
 #include "MySoUiLoader.h"
+#include "SouiDialog.h"
+#include "SouiXmlName.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -27,7 +29,44 @@ Cmfc_testApp::Cmfc_testApp()
 Cmfc_testApp theApp;
 
 
-// Cmfc_testApp 初始化
+static void InitSouiEnviroment(HINSTANCE hInstance)
+{
+	new MySoUiLoader(hInstance);
+	SoUILoader::getSingletonPtr()->init();
+}
+
+static void UnInitSouiEnviroment()
+{
+	delete SoUILoader::getSingletonPtr();
+}
+
+static void StartFromSoui()
+{
+	SouiDialog dlg(RES_NAME, TRUE);
+	dlg.Run(GetActiveWindow());
+	//MFC程序本身就有消息循环了,不需要用getApp()->Run()启动消息循环
+	//只有纯粹的win32程序才需要用getApp()->Run()启动消息循环
+	//SoUILoader::getSingletonPtr()->getApp()->Run(dlg->m_hWnd);
+}
+
+static void StartFromMFC(CWnd*& m_pMainWnd)
+{
+	//创建mfc主对话框
+	Cmfc_testDlg dlg;
+	m_pMainWnd = &dlg;
+	//进入模态消息循环,直到关闭对话框
+	INT_PTR nResponse = dlg.DoModal();
+	if (nResponse == IDOK)
+	{
+		// TODO: 在此放置处理何时用
+		//  “确定”来关闭对话框的代码
+	}
+	else if (nResponse == IDCANCEL)
+	{
+		// TODO: 在此放置处理何时用
+		//  “取消”来关闭对话框的代码
+	}
+}
 
 BOOL Cmfc_testApp::InitInstance()
 {
@@ -40,41 +79,29 @@ BOOL Cmfc_testApp::InitInstance()
 	// 公共控件类。
 	InitCtrls.dwICC = ICC_WIN95_CLASSES;
 	InitCommonControlsEx(&InitCtrls);
-
 	CWinAppEx::InitInstance();
-
 	AfxEnableControlContainer();
 	AfxInitRichEdit2();
-
-	new MySoUiLoader(m_hInstance);
-	SoUILoader::getSingletonPtr()->init();
-
-	// 标准初始化
-	// 如果未使用这些功能并希望减小
-	// 最终可执行文件的大小，则应移除下列
-	// 不需要的特定初始化例程
-	// 更改用于存储设置的注册表项
-	// TODO: 应适当修改该字符串，
-	// 例如修改为公司或组织名
 	SetRegistryKey(_T("应用程序向导生成的本地应用程序"));
 
-	Cmfc_testDlg dlg;
-	m_pMainWnd = &dlg;
-	INT_PTR nResponse = dlg.DoModal();
-	if (nResponse == IDOK)
-	{
-		// TODO: 在此放置处理何时用
-		//  “确定”来关闭对话框的代码
-	}
-	else if (nResponse == IDCANCEL)
-	{
-		// TODO: 在此放置处理何时用
-		//  “取消”来关闭对话框的代码
-	}
+	InitSouiEnviroment(m_hInstance);
 
-	delete MySoUiLoader::getSingletonPtr();
+	if(IDYES == MessageBox(NULL, _T("启动纯soui窗口 或者 MFC对话框???"), _T("询问"), MB_YESNO))
+	{
+		StartFromSoui();
+	}
+	else
+	{
+		StartFromMFC(m_pMainWnd);
+	}
 
 	// 由于对话框已关闭，所以将返回 FALSE 以便退出应用程序，
 	//  而不是启动应用程序的消息泵。
 	return FALSE;
+}
+
+int Cmfc_testApp::ExitInstance()
+{
+	UnInitSouiEnviroment();
+	return CWinAppEx::ExitInstance();
 }

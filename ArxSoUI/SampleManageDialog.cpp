@@ -199,7 +199,7 @@ void SampleManageDialog::OnSaveButtonClick()
 	coal->minable = m_MinableCheck->IsChecked(); // 是否可采煤层
 	if(!coal->save()) return;
 
-	SMessageBox(GetSafeWnd(),_T("更新成功!"),_T("友情提示"),MB_OK);
+	SMessageBox(GetSafeHwnd(),_T("更新成功!"),_T("友情提示"),MB_OK);
 }
 
 void SampleManageDialog::OnTechModeButtonClick()
@@ -207,7 +207,7 @@ void SampleManageDialog::OnTechModeButtonClick()
 	CString regionName = m_RegionCombox->GetLBText(m_RegionCombox->GetCurSel());
 	TechModeDialog dlg(TRUE);
 	dlg.regionName = regionName; // 传入示范矿区的名称
-	dlg.Run(GetSafeWnd());
+	dlg.Run(GetSafeHwnd());
 }
 
 void SampleManageDialog::OnTechnologyButtonClick()
@@ -215,7 +215,7 @@ void SampleManageDialog::OnTechnologyButtonClick()
 	CString regionName = SComboBoxHelper::GetCurSelString(m_RegionCombox);
 	TechnologyDialog dlg(TRUE);
 	dlg.regionName = regionName; // 传入示范矿区的名称
-	dlg.Run(GetSafeWnd());
+	dlg.Run(GetSafeHwnd());
 }
 
 void SampleManageDialog::OnDestroyWindow()

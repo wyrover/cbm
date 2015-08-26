@@ -76,11 +76,11 @@ void MineGasReservesPredictInputDialog::OnSaveButtonClick()
 	//保存到数据库
 	if(coal->save())
 	{
-		SMessageBox(GetSafeWnd(), _T("保存数据成功!!!"), _T("友情提示"), MB_OK);
+		SMessageBox(GetSafeHwnd(), _T("保存数据成功!!!"), _T("友情提示"), MB_OK);
 	}
 	else
 	{
-		SMessageBox(GetSafeWnd(), _T("保存数据失败!!!"), _T("友情提示"), MB_OK);
+		SMessageBox(GetSafeHwnd(), _T("保存数据失败!!!"), _T("友情提示"), MB_OK);
 	}
 }
 

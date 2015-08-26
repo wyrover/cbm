@@ -68,11 +68,11 @@ void PoreFlowDialog::OnSaveButtonClick()
 	//保存到数据库
 	if(pore_flow->save())
 	{
-		SMessageBox(GetSafeWnd(), _T("保存数据成功!!!"), _T("友情提示"), MB_OK);
+		SMessageBox(GetSafeHwnd(), _T("保存数据成功!!!"), _T("友情提示"), MB_OK);
 	}
 	else
 	{
-		SMessageBox(GetSafeWnd(), _T("保存数据失败!!!"), _T("友情提示"), MB_OK);
+		SMessageBox(GetSafeHwnd(), _T("保存数据失败!!!"), _T("友情提示"), MB_OK);
 	}
 }
 
@@ -80,7 +80,7 @@ void PoreFlowDialog::OnKCaclButtonClick()
 {
 	PoreFlowKDialog dlg(TRUE);
 	dlg.pore_flow_id = pore_flow_id;
-	if(IDOK != dlg.Run(GetSafeWnd())) return;
+	if(IDOK != dlg.Run(GetSafeHwnd())) return;
 
 	PoreFlowPtr pore_flow = FIND_BY_ID(PoreFlow, pore_flow_id);
 	if(pore_flow == 0) return;
@@ -104,7 +104,7 @@ void PoreFlowDialog::OnDeltaPCaclButtonClick()
 {
 	PoreFlowDeltaPDialog dlg(TRUE);
 	dlg.pore_flow_id = pore_flow_id;
-	if(IDOK != dlg.Run(GetSafeWnd())) return;
+	if(IDOK != dlg.Run(GetSafeHwnd())) return;
 }
 
 void PoreFlowDialog::OnDeltaTCaclButtonClick()

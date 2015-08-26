@@ -133,7 +133,7 @@ void DifficultEvalDialog::OnEvalButtonClick()
 			CString msg;
 			msg.Format(_T("该煤层属于:%s\\n"), PermeabilityString(permeability_k));
 			msg.AppendFormat(_T("瓦斯抽采难易程度:%s"), DifficultEvalString(eval));
-			SMessageBox(GetSafeWnd(),msg,_T("友情提示"),MB_OK);
+			SMessageBox(GetSafeHwnd(),msg,_T("友情提示"),MB_OK);
 		}
 	}
 }

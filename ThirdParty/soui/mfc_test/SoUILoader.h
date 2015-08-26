@@ -11,7 +11,6 @@ public:
 	virtual ~SoUILoader();
 	bool init();
 	SOUI::SApplication* getApp();
-	CString getResName() const;
 
 protected:
 	//设置uires文件夹的所在路径
@@ -34,5 +33,3 @@ protected:
 	SOUI::CAutoRefPtr<SOUI::IScriptFactory> pScriptLua;             //lua脚本模块,由scriptmodule-lua.dll提供
 	SOUI::SApplication* pSouiApp;
 };
-
-#define RES_NAME SoUILoader::getSingletonPtr()->getResName()

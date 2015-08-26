@@ -81,7 +81,7 @@ void HighDrillingTunnelDialog::OnSaveButtonClick()
 	hdt->rock = m_RockCombox->GetCurSel() + 1;
 	if(hdt->save())
 	{
-		SMessageBox(GetSafeWnd(), _T("保存数据成功!!!"), _T("友情提示"), MB_OK);
+		SMessageBox(GetSafeHwnd(), _T("保存数据成功!!!"), _T("友情提示"), MB_OK);
 	}
 }
 
@@ -129,7 +129,7 @@ void HighDrillingTunnelDialog::OnCaclButtonClick()
 	int rock_id = m_RockCombox->GetCurSel()+1;
 	if(rock_id == 0)
 	{
-		SMessageBox(GetSafeWnd(), _T("请选择岩性!!!"), _T("友情提示"), MB_OK);
+		SMessageBox(GetSafeHwnd(), _T("请选择岩性!!!"), _T("友情提示"), MB_OK);
 		return;
 	}
 

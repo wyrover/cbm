@@ -90,7 +90,7 @@ void TechModeDialog::OnSaveButtonClick()
 	//保存到数据库
 	if(tech_mode->save())
 	{
-		SMessageBox(GetSafeWnd(), _T("更新抽采技术模式数据成功!!"), _T("友情提示"), MB_OK);
+		SMessageBox(GetSafeHwnd(), _T("更新抽采技术模式数据成功!!"), _T("友情提示"), MB_OK);
 	}
 }
 

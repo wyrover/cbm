@@ -72,14 +72,14 @@ void WsGasFlowPredictAdjDialog::OnSaveButtonClick()
 	//保存到数据库
 	if(!adj_layer->save())
 	{
-		SMessageBox(GetSafeWnd(),_T("保存邻近层数据失败"),_T("友情提示"),MB_OK);
+		SMessageBox(GetSafeHwnd(),_T("保存邻近层数据失败"),_T("友情提示"),MB_OK);
 		return;
 	}
 	if(!coal->save())
 	{
-		SMessageBox(GetSafeWnd(),_T("保存邻近层的煤层数据失败"),_T("友情提示"),MB_OK);
+		SMessageBox(GetSafeHwnd(),_T("保存邻近层的煤层数据失败"),_T("友情提示"),MB_OK);
 	}
-	SMessageBox(GetSafeWnd(),_T("保存数据成功!"),_T("友情提示"),MB_OK);
+	SMessageBox(GetSafeHwnd(),_T("保存数据成功!"),_T("友情提示"),MB_OK);
 }
 
 void WsGasFlowPredictAdjDialog::OnAdjLayerComboxSelChanged(SOUI::EventArgs *pEvt)
@@ -115,7 +115,7 @@ void WsGasFlowPredictAdjDialog::OnAddAdjLayerButtonClick()
 {
 	NameDialog dlg(TRUE);
 	dlg.SetWindowTitle(_T("新增邻近层"));
-	if(IDOK != dlg.Run(GetSafeWnd())) return;
+	if(IDOK != dlg.Run(GetSafeHwnd())) return;
 
 	CString name = dlg.name;
 	if(name.IsEmpty()) return;
@@ -123,7 +123,7 @@ void WsGasFlowPredictAdjDialog::OnAddAdjLayerButtonClick()
 	{
 		CString msg;
 		msg.Format(_T("邻近层%s已存在!"), name);
-		SMessageBox(GetSafeWnd(),msg,_T("友情提示"),MB_OK);
+		SMessageBox(GetSafeHwnd(),msg,_T("友情提示"),MB_OK);
 	}
 	else
 	{
@@ -142,7 +142,7 @@ void WsGasFlowPredictAdjDialog::OnAddAdjLayerButtonClick()
 
 void WsGasFlowPredictAdjDialog::OnEtaCaclButtonClick()
 {
-	SMessageBox(GetSafeWnd(),_T("点击自动弹出计算框"),_T("友情提示"),MB_OK);
+	SMessageBox(GetSafeHwnd(),_T("点击自动弹出计算框"),_T("友情提示"),MB_OK);
 	double eta = 0;
 	
 	//更新到界面

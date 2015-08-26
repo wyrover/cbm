@@ -50,11 +50,11 @@ void MineGasReservesPredictDialog::OnSaveButtonClick()
 
 	if(mine->save())
 	{
-		SMessageBox(GetSafeWnd(),_T("更新数据成功!"),_T("友情提示"),MB_OK);
+		SMessageBox(GetSafeHwnd(),_T("更新数据成功!"),_T("友情提示"),MB_OK);
 	}
 	else
 	{
-		SMessageBox(GetSafeWnd(),_T("更新数据失败!"),_T("友情提示"),MB_OK);
+		SMessageBox(GetSafeHwnd(),_T("更新数据失败!"),_T("友情提示"),MB_OK);
 	}
 }
 
@@ -66,7 +66,7 @@ void MineGasReservesPredictDialog::OnGasCaclButtonClick()
 
 	MineGasReservesPredict1Dialog dlg(TRUE);
 	dlg.mine_id = mine->getID();
-	dlg.Run(GetSafeWnd());
+	dlg.Run(GetSafeHwnd());
 
 	//更新界面
 	mine = FIND_BY_ID(Mine, mine->getID());
@@ -84,7 +84,7 @@ void MineGasReservesPredictDialog::OnPumpWcCaclButtonClick()
 	Utils::cstring_to_double((LPCTSTR)m_ReserveGasEdit->GetWindowText(), W);
 	dlg.W = W; // 传入矿井瓦斯储量数据
 	dlg.mine_id = mine->getID();
-	dlg.Run(GetSafeWnd());
+	dlg.Run(GetSafeHwnd());
 
 	//更新界面
 	mine = FIND_BY_ID(Mine, mine->getID());

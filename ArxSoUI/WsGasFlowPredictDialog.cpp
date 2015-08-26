@@ -55,7 +55,7 @@ void WsGasFlowPredictDialog::OnQr1CaclButtonClick()
 {
 	//显示对话框
 	WsGasFlowPredictWorkDialog dlg(TRUE);
-	dlg.Run(GetSafeWnd());
+	dlg.Run(GetSafeHwnd());
 
 	int ws_id = SComboBoxHelper::GetCurSelItemID(m_WsCombox);
 	if(ws_id == 0) return;
@@ -97,7 +97,7 @@ void WsGasFlowPredictDialog::OnQr2CaclButtonClick()
 {
 	//显示对话框
 	WsGasFlowPredictAdjDialog dlg(TRUE);
-	dlg.Run(GetSafeWnd());
+	dlg.Run(GetSafeHwnd());
 
 	int ws_id = SComboBoxHelper::GetCurSelItemID(m_WsCombox);
 	if(ws_id == 0) return;
@@ -157,11 +157,11 @@ void WsGasFlowPredictDialog::OnSaveButtonClick()
 	Utils::cstring_to_double((LPCTSTR)m_QrEdit->GetWindowText(), work_surf->qr);
 	if(work_surf->save())
 	{
-		SMessageBox(GetSafeWnd(),_T("保存数据成功!"),_T("友情提示"),MB_OK);
+		SMessageBox(GetSafeHwnd(),_T("保存数据成功!"),_T("友情提示"),MB_OK);
 	}
 	else
 	{
-		SMessageBox(GetSafeWnd(),_T("保存数据失败!"),_T("友情提示"),MB_OK);
+		SMessageBox(GetSafeHwnd(),_T("保存数据失败!"),_T("友情提示"),MB_OK);
 	}
 }
 

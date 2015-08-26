@@ -23,6 +23,7 @@ protected:
 	void OnP32ButtonClick();
 	void OnP33ButtonClick();
 	void OnP34ButtonClick();
+	void OnCoalComboxSelChanged(SOUI::EventArgs *pEvt);
 
 	/** ²Ëµ¥ÏûÏ¢ */
 protected:
@@ -48,6 +49,7 @@ protected:
 		EVENT_NAME_COMMAND(_T("P3_2"), OnP32ButtonClick)
 		EVENT_NAME_COMMAND(_T("P3_3"), OnP33ButtonClick)
 		EVENT_NAME_COMMAND(_T("P3_4"), OnP34ButtonClick)
+		EVENT_NAME_HANDLER(_T("coal"), EVT_CB_SELCHANGE, OnCoalComboxSelChanged)
 		CHAIN_EVENT_MAP(AcadSouiDialog)
 	EVENT_MAP_END()
 	
@@ -59,6 +61,15 @@ protected:
 		REFLECT_NOTIFICATIONS_EX()
 	END_MSG_MAP()
 
+protected:
+	SComboBox* m_CoalCombox;
+
 public:
 	int mine_id;
+
+protected:
+	virtual void OnDestroyWindow();
+
+private:
+	void fillCoalCombox();
 };

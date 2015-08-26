@@ -67,6 +67,7 @@
 				AdditionalDependencies="log4cplusSU.lib lemon.lib soci_core.lib soci_mysql.lib libmysql.lib ws2_32.lib"
 				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\lemon\lib;..\ThirdParty\soci\lib\win32"
 				GenerateDebugInformation="true"
+				ProgramDatabaseFile="$(OutDir)/Util.pdb"
 				SubSystem="2"
 				TargetMachine="1"
 			/>
@@ -140,6 +141,8 @@
 				Name="VCLinkerTool"
 				AdditionalDependencies="log4cplusSU-x64.lib lemon_x64.lib soci_core.lib soci_mysql.lib libmysql.lib ws2_32.lib"
 				AdditionalLibraryDirectories="&quot;..\ThirdParty\log4cplus\lib&quot;;&quot;..\ThirdParty\lemon\lib&quot;;&quot;..\ThirdParty\soci\lib\x64&quot;"
+				GenerateDebugInformation="true"
+				ProgramDatabaseFile="$(OutDir)/Util.pdb"
 			/>
 			<Tool
 				Name="VCALinkTool"

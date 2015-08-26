@@ -90,20 +90,20 @@ void TwsGasFlowPredictDialog::OnSaveButtonClick()
 	//依次保存到数据库
 	if(!drilling_surf->save())
 	{
-		SMessageBox(GetSafeWnd(),_T("保存掘进面数据失败!"),_T("友情提示"),MB_OK);
+		SMessageBox(GetSafeHwnd(),_T("保存掘进面数据失败!"),_T("友情提示"),MB_OK);
 		return;
 	}
 	if(!tunnel->save())
 	{
-		SMessageBox(GetSafeWnd(),_T("保存掘进巷道数据失败!"),_T("友情提示"),MB_OK);
+		SMessageBox(GetSafeHwnd(),_T("保存掘进巷道数据失败!"),_T("友情提示"),MB_OK);
 		return;
 	}
 	if(!coal->save())
 	{
-		SMessageBox(GetSafeWnd(),_T("保存煤层数据失败!"),_T("友情提示"),MB_OK);
+		SMessageBox(GetSafeHwnd(),_T("保存煤层数据失败!"),_T("友情提示"),MB_OK);
 		return;
 	}
-	SMessageBox(GetSafeWnd(),_T("保存数据成功!"),_T("友情提示"),MB_OK);
+	SMessageBox(GetSafeHwnd(),_T("保存数据成功!"),_T("友情提示"),MB_OK);
 }
 
 void TwsGasFlowPredictDialog::OnCaclButtonClick()
@@ -178,7 +178,7 @@ void TwsGasFlowPredictDialog::OnWcCaclButtonClick()
 
 	if(coal->quality < 3 || coal->gas_w0 > 10) // 中低变质煤或高变质煤,W0>10
 	{
-		SMessageBox(GetSafeWnd(),_T("弹出对话框让用户选择!"),_T("友情提示"),MB_OK);
+		SMessageBox(GetSafeHwnd(),_T("弹出对话框让用户选择!"),_T("友情提示"),MB_OK);
 		//更新到界面
 		//coal->gas_wc2 = Wc;
 	}

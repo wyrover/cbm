@@ -186,31 +186,3 @@ bool SoUILoader::initGlobalStyle()
 	//初始化SOUI全局资源
 	return (TRUE == pSouiApp->Init(_T("init"), _T("uidef"))); 
 }
-
-CString SoUILoader::getResName() const
-{
-	SStringT strResDir = pSouiApp->GetAppDir();
-	if(strResDir.GetAt(strResDir.GetLength()-1) != _T('\\'))
-	{
-		strResDir += _T("\\");
-	}
-	CString filename= strResDir+_T("uires\\ResName.txt");
-
-	CStdioFile myFile;
-	if(myFile.Open(filename, CFile::modeRead))
-	{
-		CString resName;
-		if(myFile.ReadString(resName))
-		{
-			return resName;
-		}
-		else
-		{
-			return _T("");
-		}
-	}
-	else 
-	{
-		return _T("");
-	}
-}

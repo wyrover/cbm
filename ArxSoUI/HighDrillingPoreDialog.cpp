@@ -71,12 +71,12 @@ void HighDrillingPoreDialog::OnSaveButtonClick()
 	//保存到数据库
 	if(hdpp->save())
 	{
-		SMessageBox(GetSafeWnd(), _T("保存数据成功!!!"), _T("友情提示"), MB_OK);
+		SMessageBox(GetSafeHwnd(), _T("保存数据成功!!!"), _T("友情提示"), MB_OK);
 		AcadSouiDialog::OnOK();
 	}
 	else
 	{
-		SMessageBox(GetSafeWnd(), _T("保存数据失败!!!"), _T("友情提示"), MB_OK);
+		SMessageBox(GetSafeHwnd(), _T("保存数据失败!!!"), _T("友情提示"), MB_OK);
 		AcadSouiDialog::OnCancel();
 	}
 }

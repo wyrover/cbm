@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "mfc_test.h"
 #include "EmbedSouiDlg.h"
-#include "SoUILoader.h"
+#include "SouiXmlName.h"
 
 // EmbedSouiDlg ¶Ô»°¿ò
 IMPLEMENT_DYNAMIC(EmbedSouiDlg, CDialog)

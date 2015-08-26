@@ -67,22 +67,22 @@ void TechnologyDialog::OnTechnologyListboxSelChanged(SOUI::EventArgs *pEvt)
 
 void TechnologyDialog::OnDocReadButtonClick()
 {
-	SMessageBox(GetSafeWnd(), _T("启动文档阅读器(尚未实现!!)"), _T("友情提示"), MB_OK);
+	SMessageBox(GetSafeHwnd(), _T("启动文档阅读器(尚未实现!!)"), _T("友情提示"), MB_OK);
 }
 
 void TechnologyDialog::OnVideoPlayButtonClick()
 {
-	SMessageBox(GetSafeWnd(), _T("启动播放器(尚未实现!!)"), _T("友情提示"), MB_OK);
+	SMessageBox(GetSafeHwnd(), _T("启动播放器(尚未实现!!)"), _T("友情提示"), MB_OK);
 }
 
 void TechnologyDialog::OnDocSelectButtonClick()
 {
-	SMessageBox(GetSafeWnd(), _T("选择文档(尚未实现!!)"), _T("友情提示"), MB_OK);
+	SMessageBox(GetSafeHwnd(), _T("选择文档(尚未实现!!)"), _T("友情提示"), MB_OK);
 }
 
 void TechnologyDialog::OnVideoSelectButtonClick()
 {
-	SMessageBox(GetSafeWnd(), _T("选择视频(尚未实现!!)"), _T("友情提示"), MB_OK);
+	SMessageBox(GetSafeHwnd(), _T("选择视频(尚未实现!!)"), _T("友情提示"), MB_OK);
 }
 
 void TechnologyDialog::OnSaveButtonClick()
@@ -100,7 +100,7 @@ void TechnologyDialog::OnSaveButtonClick()
 	//保存到数据库
 	if(technology->save())
 	{
-		SMessageBox(GetSafeWnd(), _T("更新抽采技术数据成功!!"), _T("友情提示"), MB_OK);
+		SMessageBox(GetSafeHwnd(), _T("更新抽采技术数据成功!!"), _T("友情提示"), MB_OK);
 	}
 }
 

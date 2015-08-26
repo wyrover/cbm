@@ -66,17 +66,17 @@ void WsGasFlowPredictWorkDialog::OnSaveButtonClick()
 	}
 	if(work_surf->save())
 	{
-		SMessageBox(GetSafeWnd(),_T("保存数据成功!"),_T("友情提示"),MB_OK);
+		SMessageBox(GetSafeHwnd(),_T("保存数据成功!"),_T("友情提示"),MB_OK);
 	}
 	else
 	{
-		SMessageBox(GetSafeWnd(),_T("保存数据失败!"),_T("友情提示"),MB_OK);
+		SMessageBox(GetSafeHwnd(),_T("保存数据失败!"),_T("友情提示"),MB_OK);
 	}
 }
 
 void WsGasFlowPredictWorkDialog::OnK3CaclButtonClick()
 {
-	SMessageBox(GetSafeWnd(),_T("若无实测值点击自动弹出计算框!"),_T("友情提示"),MB_OK);
+	SMessageBox(GetSafeHwnd(),_T("若无实测值点击自动弹出计算框!"),_T("友情提示"),MB_OK);
 	double K3 = 0;
 	
 	//更新到界面
@@ -85,7 +85,7 @@ void WsGasFlowPredictWorkDialog::OnK3CaclButtonClick()
 
 void WsGasFlowPredictWorkDialog::OnKfCaclButtonClick()
 {
-	SMessageBox(GetSafeWnd(),_T("若无实测值点击自动弹出计算框!"),_T("友情提示"),MB_OK);
+	SMessageBox(GetSafeHwnd(),_T("若无实测值点击自动弹出计算框!"),_T("友情提示"),MB_OK);
 
 	double Kf = 0;
 

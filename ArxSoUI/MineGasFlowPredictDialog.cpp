@@ -51,7 +51,7 @@ LRESULT MineGasFlowPredictDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 
 void MineGasFlowPredictDialog::OnK1HelpButtonClick()
 {
-	SMessageBox(GetSafeWnd(),_T("K1参数(尚未实现,后续在完善!!!"),_T("友情提示"),MB_OK);
+	SMessageBox(GetSafeHwnd(),_T("K1参数(尚未实现,后续在完善!!!"),_T("友情提示"),MB_OK);
 }
 
 void MineGasFlowPredictDialog::OnSaveButtonClick()
@@ -79,7 +79,7 @@ void MineGasFlowPredictDialog::OnSaveButtonClick()
 
 void MineGasFlowPredictDialog::OnK2HelpButtonClick()
 {
-	SMessageBox(GetSafeWnd(),_T("K2参数(尚未实现,后续在完善!!!"),_T("友情提示"),MB_OK);
+	SMessageBox(GetSafeHwnd(),_T("K2参数(尚未实现,后续在完善!!!"),_T("友情提示"),MB_OK);
 }
 
 void MineGasFlowPredictDialog::OnWorkAreaComboxSelChanged(SOUI::EventArgs *pEvt)
@@ -159,7 +159,7 @@ void MineGasFlowPredictDialog::OnWorkAreaCaclButtonClick()
 	Utils::cstring_to_double((LPCTSTR)m_WorkAreaAEdit->GetWindowText(), A0);
 	if(A0<=0)
 	{
-		SMessageBox(GetSafeWnd(),_T("采区的日产量A必须大于0!!!"),_T("友情提示"),MB_OK);
+		SMessageBox(GetSafeHwnd(),_T("采区的日产量A必须大于0!!!"),_T("友情提示"),MB_OK);
 	}
 	else
 	{
@@ -194,7 +194,7 @@ void MineGasFlowPredictDialog::OnCaclButtonClick()
 	}
 	if(S2<=0)
 	{
-		SMessageBox(GetSafeWnd(),_T("错误:采区的日产量之和等于0!!!"),_T("友情提示"),MB_OK);
+		SMessageBox(GetSafeHwnd(),_T("错误:采区的日产量之和等于0!!!"),_T("友情提示"),MB_OK);
 	}
 	else
 	{
@@ -239,7 +239,7 @@ void MineGasFlowPredictDialog::OnAssignButtonClick()
 	{
 		CString msg;
 		msg.Format(_T("采区%s成功布置在煤层%s"), work_area->name, coal->name);
-		SMessageBox(GetSafeWnd(),msg,_T("友情提示"),MB_OK);
+		SMessageBox(GetSafeHwnd(),msg,_T("友情提示"),MB_OK);
 	}
 }
 
@@ -252,7 +252,7 @@ void MineGasFlowPredictDialog::OnDesignWorkAreaButtonClick()
 	//工作面和掘进面的瓦斯涌出量相关参数及设计
 	MineGasFlowPredictDesignDialog dlg(TRUE);
 	dlg.work_area_id = work_area->getID(); // 传入采区id编号
-	dlg.Run(GetSafeWnd());
+	dlg.Run(GetSafeHwnd());
 }
 
 void MineGasFlowPredictDialog::OnDestroyWindow()

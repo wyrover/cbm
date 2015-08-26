@@ -61,7 +61,7 @@ void Czh2Dialog::OnSaveButtonClick()
 	double alpha = coal->dip_angle*PI/180;
 	if(K<=1)
 	{
-		SMessageBox(GetSafeWnd(),_T("冒落岩石碎胀系数必须满足: K>1"),_T("友情提示"),MB_YESNO);
+		SMessageBox(GetSafeHwnd(),_T("冒落岩石碎胀系数必须满足: K>1"),_T("友情提示"),MB_YESNO);
 	}
 	else
 	{

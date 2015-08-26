@@ -38,7 +38,7 @@ LRESULT DecisionDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 
 void DecisionDialog::OnGraphButtonClick()
 {
-	SMessageBox(GetSafeWnd(),_T("如何查看煤层赋存图???"),_T("友情提示"),MB_OK);
+	SMessageBox(GetSafeHwnd(),_T("如何查看煤层赋存图???"),_T("友情提示"),MB_OK);
 }
 
 void DecisionDialog::OnTechnologyButtonClick()
@@ -61,5 +61,5 @@ void DecisionDialog::OnTechnologyButtonClick()
 	}
 	msg.AppendFormat(_T("\\n"));
 	msg.AppendFormat(_T("如何决策尚不明确???"));
-	SMessageBox(GetSafeWnd(),msg,_T("友情提示"),MB_OK);
+	SMessageBox(GetSafeHwnd(),msg,_T("友情提示"),MB_OK);
 }

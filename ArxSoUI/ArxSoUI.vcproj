@@ -510,6 +510,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\DesignP11Dialog.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\DifficultEvalDialog.cpp"
 					>
 				</File>
@@ -760,6 +764,10 @@
 				</File>
 				<File
 					RelativePath=".\DesignDialog.h"
+					>
+				</File>
+				<File
+					RelativePath=".\DesignP11Dialog.h"
 					>
 				</File>
 				<File

@@ -110,13 +110,13 @@ void MineDialog::OnSaveButtonClick()
 	{
 		CString msg;
 		msg.Format(_T("更新矿井%s数据成功!"), mine->name);
-		SMessageBox(GetSafeWnd(), msg, _T("友情提示"), MB_OK);
+		SMessageBox(GetSafeHwnd(), msg, _T("友情提示"), MB_OK);
 	}
 	else
 	{
 		CString msg;
 		msg.Format(_T("更新矿井%s数据失败!"), mine->name);
-		SMessageBox(GetSafeWnd(), msg, _T("友情提示"), MB_OK);
+		SMessageBox(GetSafeHwnd(), msg, _T("友情提示"), MB_OK);
 	}
 }
 

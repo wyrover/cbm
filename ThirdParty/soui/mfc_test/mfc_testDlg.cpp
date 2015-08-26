@@ -4,7 +4,7 @@
 #include "EmbedSouiDlg.h"
 
 #include "SouiDialog.h"
-#include "SoUILoader.h"
+#include "SouiXmlName.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW

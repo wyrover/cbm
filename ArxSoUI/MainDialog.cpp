@@ -41,35 +41,35 @@ LRESULT MainDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 
 void MainDialog::OnF1ButtonClick()
 {
-	MineDialog dlg(TRUE);
-	dlg.mine_id = mine_id;
-	dlg.Run(GetSafeWnd());
+	MineDialog* dlg = new MineDialog(FALSE);
+	dlg->mine_id = mine_id;
+	dlg->Run(acedGetAcadFrame()->GetSafeHwnd());
 }
 
 void MainDialog::OnF2ButtonClick()
 {
-	KeyParamDialog dlg(TRUE);
-	dlg.mine_id = mine_id;
-	dlg.Run(GetSafeWnd());
+	KeyParamDialog* dlg = new KeyParamDialog(FALSE);
+	dlg->mine_id = mine_id;
+	dlg->Run(acedGetAcadFrame()->GetSafeHwnd());
 }
 
 void MainDialog::OnF3ButtonClick()
 {
-	DesignDialog dlg(TRUE);
-	dlg.mine_id = mine_id;
-	dlg.Run(GetSafeWnd());
+	DesignDialog* dlg = new DesignDialog(FALSE);
+	dlg->mine_id = mine_id;
+	dlg->Run(acedGetAcadFrame()->GetSafeHwnd());
 }
 
 void MainDialog::OnF0ButtonClick()
 {
-	MineDesignDialog dlg(TRUE);
-	dlg.mine_id = mine_id;
-	dlg.Run(GetSafeWnd());
+	MineDesignDialog* dlg = new MineDesignDialog(FALSE);
+	dlg->mine_id = mine_id;
+	dlg->Run(acedGetAcadFrame()->GetSafeHwnd());
 }
 
 void MainDialog::OnF4ButtonClick()
 {
-	PolicyDialog dlg(TRUE);
-	//dlg.mine_id = mine_id;
-	dlg.Run(GetSafeWnd());
+	PolicyDialog* dlg = new PolicyDialog(FALSE);
+	//dlg->mine_id = mine_id;
+	dlg->Run(acedGetAcadFrame()->GetSafeHwnd());
 }

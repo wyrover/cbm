@@ -47,7 +47,7 @@ void Czh3Dialog::OnSaveButtonClick()
 	int nCurSel = SComboBoxHelper::GetCurSel(m_RockCombox);
 	if(nCurSel == -1)
 	{
-		SMessageBox(GetSafeWnd(),_T("请选择\"顶板覆岩岩性!!!\""),_T("友情提示"),MB_YESNO);
+		SMessageBox(GetSafeHwnd(),_T("请选择\"顶板覆岩岩性!!!\""),_T("友情提示"),MB_YESNO);
 		return;
 	}
 

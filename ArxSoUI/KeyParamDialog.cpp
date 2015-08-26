@@ -48,63 +48,63 @@ void KeyParamDialog::OnKP1ButtonClick()
 {
 	DifficultEvalDialog dlg(TRUE);
 	dlg.mine_id = mine_id;
-	dlg.Run(GetSafeWnd());
+	dlg.Run(GetSafeHwnd());
 }
 
 void KeyParamDialog::OnKP2ButtonClick()
 {
 	MineGasReservesPredictDialog dlg(TRUE);
 	dlg.mine_id = mine_id;
-	dlg.Run(GetSafeWnd());
+	dlg.Run(GetSafeHwnd());
 }
 
 void KeyParamDialog::OnKP3ButtonClick()
 {
 	MineGasFlowPredictDialog dlg(TRUE);
 	dlg.mine_id = mine_id;
-	dlg.Run(GetSafeWnd());
+	dlg.Run(GetSafeHwnd());
 }
 
 void KeyParamDialog::OnKP4ButtonClick()
 {
 	TwsGasFlowPredictDialog dlg(TRUE);
 	dlg.mine_id = mine_id;
-	dlg.Run(GetSafeWnd());
+	dlg.Run(GetSafeHwnd());
 }
 
 void KeyParamDialog::OnKP6ButtonClick()
 {
 	HighDrillingTunnelDialog dlg(TRUE);
 	dlg.mine_id = mine_id;
-	dlg.Run(GetSafeWnd());
+	dlg.Run(GetSafeHwnd());
 }
 
 void KeyParamDialog::OnKP7ButtonClick()
 {
 	HighDrillingDesignDialog dlg(TRUE);
 	dlg.mine_id = mine_id;
-	dlg.Run(GetSafeWnd());
+	dlg.Run(GetSafeHwnd());
 }
 
 void KeyParamDialog::OnKP8ButtonClick()
 {
 	DrillingRadiusDesignDialog dlg(TRUE);
 	dlg.mine_id = mine_id;
-	dlg.Run(GetSafeWnd());
+	dlg.Run(GetSafeHwnd());
 }
 
 void KeyParamDialog::OnKP9ButtonClick()
 {
 	PoreSizeDialog dlg(TRUE);
 	dlg.mine_id = mine_id;
-	dlg.Run(GetSafeWnd());
+	dlg.Run(GetSafeHwnd());
 }
 
 void KeyParamDialog::OnKP10ButtonClick()
 {
 	PoreFlowDialog dlg(TRUE);
 	dlg.mine_id = mine_id;
-	dlg.Run(GetSafeWnd());
+	dlg.Run(GetSafeHwnd());
 }
 
 void KeyParamDialog::OnKP11ButtonClick()
@@ -115,5 +115,5 @@ void KeyParamDialog::OnKP5ButtonClick()
 {
 	WsGasFlowPredictDialog dlg(TRUE);
 	dlg.mine_id = mine_id;
-	dlg.Run(GetSafeWnd());
+	dlg.Run(GetSafeHwnd());
 }

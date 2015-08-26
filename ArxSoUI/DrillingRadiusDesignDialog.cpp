@@ -72,7 +72,7 @@ void DrillingRadiusDesignDialog::OnCaclButtonClick()
 	Utils::cstring_to_double((LPCTSTR)m_QSumEdit->GetWindowText(), Q);
 	if(R == 0 || h == 0 || W == 0 || L == 0)
 	{
-		SMessageBox(GetSafeWnd(),_T("无效数据,不能出现等于0的情况!"),_T("友情提示"),MB_OK);
+		SMessageBox(GetSafeHwnd(),_T("无效数据,不能出现等于0的情况!"),_T("友情提示"),MB_OK);
 		return;
 	}
 
@@ -101,7 +101,7 @@ void DrillingRadiusDesignDialog::OnCaclButtonClick()
 	msg.Format(_T("根据规定要求:\\n"));
 	msg.AppendFormat(_T("    抽采率η=%.2f应大于等于0.3"), eta);
 	msg.AppendFormat(_T("    抽采后煤层残存瓦斯含量Wc=%.3f应小于等于8"), Wc);
-	SMessageBox(GetSafeWnd(),msg,_T("友情提示"),MB_OK);
+	SMessageBox(GetSafeHwnd(),msg,_T("友情提示"),MB_OK);
 }
 
 void DrillingRadiusDesignDialog::OnSaveButtonClick()
@@ -135,11 +135,11 @@ void DrillingRadiusDesignDialog::OnSaveButtonClick()
 	//保存到数据库
 	if(!drp->save())
 	{
-		SMessageBox(GetSafeWnd(),_T("保存数据失败!"),_T("友情提示"),MB_OK);
+		SMessageBox(GetSafeHwnd(),_T("保存数据失败!"),_T("友情提示"),MB_OK);
 	}
 	else
 	{
-		SMessageBox(GetSafeWnd(),_T("保存数据成功!"),_T("友情提示"),MB_OK);
+		SMessageBox(GetSafeHwnd(),_T("保存数据成功!"),_T("友情提示"),MB_OK);
 	}
 }
 
