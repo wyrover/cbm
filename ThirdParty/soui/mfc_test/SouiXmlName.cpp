@@ -11,7 +11,7 @@ CString GetResName()
 	{
 		strResDir += _T("\\");
 	}
-	CString filename= strResDir+_T("uires\\ResName.txt");
+	SStringT filename= strResDir+_T("uires\\ResName.txt");
 
 	CStdioFile myFile;
 	if(myFile.Open(filename, CFile::modeRead))

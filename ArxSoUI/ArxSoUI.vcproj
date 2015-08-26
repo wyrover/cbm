@@ -383,6 +383,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\SouiDialog.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\SouiListHelper.cpp"
 				>
 			</File>
@@ -622,10 +626,6 @@
 					>
 				</File>
 				<File
-					RelativePath=".\SouiDialog.cpp"
-					>
-				</File>
-				<File
 					RelativePath=".\TechModeDialog.cpp"
 					>
 				</File>
@@ -665,6 +665,10 @@
 			</File>
 			<File
 				RelativePath=".\Resource.h"
+				>
+			</File>
+			<File
+				RelativePath=".\SouiDialog.h"
 				>
 			</File>
 			<File
@@ -876,10 +880,6 @@
 				</File>
 				<File
 					RelativePath=".\SampleManageDialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\SouiDialog.h"
 					>
 				</File>
 				<File
