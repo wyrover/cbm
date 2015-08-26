@@ -37,7 +37,7 @@ static void SetWindowTitle()
 	//acutPrintf(_T("\n程序名:%s"),appName);
 	//acedGetAcadFrame()->ModifyStyle(0,WS_SYSMENU|WS_MAXIMIZEBOX|WS_MINIMIZEBOX); 
 	//AfxGetMainWnd()->SetWindowText(_T("瓦斯抽采达标评价系统(AutoCAD 2010版)"));
-	pp->SetWindowText (_T("瓦斯抽采达标评价系统(AutoCAD 2010版)"));
+	pp->SetWindowText (_T("井下煤层气规模化抽采计算机辅助设计（CAD）系统"));
 	HICON hIcon =AfxGetApp()->LoadIcon(IDI_ICON1);
 	pp->SetIcon(hIcon,TRUE);
 	pp->SetIcon(hIcon,FALSE);
