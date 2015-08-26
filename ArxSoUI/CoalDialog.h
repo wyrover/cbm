@@ -62,7 +62,6 @@ protected:
 	END_MSG_MAP()
 
 protected:
-	SEdit* m_NumberEdit;
 	SEdit* m_FValueEdit;
 	SEdit* m_ThickEdit;
 	SComboBox* m_RankCombox;

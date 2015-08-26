@@ -14,13 +14,10 @@ protected:
 	void OnRegionComboxSelChanged(SOUI::EventArgs *pEvt);
 	void OnTopoGeoComboxSelChanged(SOUI::EventArgs *pEvt);
 	void OnHydrGeoComboxSelChanged(SOUI::EventArgs *pEvt);
-	void OnDelButtonClick();
 	void OnRankComboxSelChanged(SOUI::EventArgs *pEvt);
 	void OnConstComplexityComboxSelChanged(SOUI::EventArgs *pEvt);
-	void OnAddCoalButtonClick();
 	void OnResAbundanceComboxSelChanged(SOUI::EventArgs *pEvt);
 	void OnStabilityComboxSelChanged(SOUI::EventArgs *pEvt);
-	void OnCoalComboxSelChanged(SOUI::EventArgs *pEvt);
 	void OnSaveButtonClick();
 	void OnTechModeButtonClick();
 	void OnTechnologyButtonClick();
@@ -40,13 +37,10 @@ protected:
 		EVENT_NAME_HANDLER(_T("region"), EVT_CB_SELCHANGE, OnRegionComboxSelChanged)
 		EVENT_NAME_HANDLER(_T("topo_geo"), EVT_CB_SELCHANGE, OnTopoGeoComboxSelChanged)
 		EVENT_NAME_HANDLER(_T("hydr_geo"), EVT_CB_SELCHANGE, OnHydrGeoComboxSelChanged)
-		EVENT_NAME_COMMAND(_T("del"), OnDelButtonClick)
 		EVENT_NAME_HANDLER(_T("rank"), EVT_CB_SELCHANGE, OnRankComboxSelChanged)
 		EVENT_NAME_HANDLER(_T("const_complexity"), EVT_CB_SELCHANGE, OnConstComplexityComboxSelChanged)
-		EVENT_NAME_COMMAND(_T("add_coal"), OnAddCoalButtonClick)
 		EVENT_NAME_HANDLER(_T("res_abundance"), EVT_CB_SELCHANGE, OnResAbundanceComboxSelChanged)
 		EVENT_NAME_HANDLER(_T("stability"), EVT_CB_SELCHANGE, OnStabilityComboxSelChanged)
-		EVENT_NAME_HANDLER(_T("coal"), EVT_CB_SELCHANGE, OnCoalComboxSelChanged)
 		EVENT_NAME_COMMAND(_T("save"), OnSaveButtonClick)
 		EVENT_NAME_COMMAND(_T("tech_mode"), OnTechModeButtonClick)
 		EVENT_NAME_COMMAND(_T("technology"), OnTechnologyButtonClick)
@@ -66,7 +60,6 @@ protected:
 	SComboBox* m_TopoGeoCombox;
 	SCheckBox* m_GroundCondCheck;
 	SComboBox* m_HydrGeoCombox;
-	SEdit* m_NumberEdit;
 	SEdit* m_FValueEdit;
 	SEdit* m_ThickEdit;
 	SComboBox* m_RankCombox;
@@ -82,14 +75,12 @@ protected:
 	SEdit* m_InfluenceFactorEdit;
 	SEdit* m_MineIndexEdit;
 	SComboBox* m_StabilityCombox;
-	SComboBox* m_CoalCombox;
 	SCheckBox* m_MinableCheck;
 
 protected:
 	virtual void OnDestroyWindow();
 
 private:
-	void fillCoalCombox();
 	void initMineDatas();
 	void initCoalDatas();
 };

@@ -24,6 +24,8 @@ public:
 
 		//初始化数据库连接
 		DaoHelper::ConfigureDao(_T("root"), _T(""), _T("cbm"), _T("localhost"), _T("3306"));
+		//初始化示范矿区数据
+		DaoHelper::InitSampleRegion();
 
 		return (retCode) ;
 	}

@@ -238,29 +238,6 @@ Complexity::Complexity() : orm::Record(Complexity::Table())
 	REG_ATTRIB(comment, comment);
 }
 
-CString DesignCoal::Table()
-{
-	return _T("cbm_design_coal");
-}
-
-orm::RecordPtr DesignCoal::Create()
-{
-	return orm::RecordPtr(new DesignCoal());
-}
-
-DesignCoal::DesignCoal() : orm::Record(DesignCoal::Table())
-{
-	name = _T("");
-	angle = 0.0;
-	thick = 0.0;
-	comment = _T("");
-	REG_ATTRIB(name, name);
-	REG_ATTRIB(angle, angle);
-	REG_ATTRIB(thick, thick);
-	REG_ATTRIB(comment, comment);
-	REG_FOREGIN_KEY(cbm_design_technology_id, design_technology, &DesignTechnology::Create);
-}
-
 CString DesignPore::Table()
 {
 	return _T("cbm_design_pore");
@@ -346,17 +323,14 @@ DesignTechnology::DesignTechnology() : orm::Record(DesignTechnology::Table())
 	hd = 0.0;
 	d = 0.0;
 	gap = 0.0;
-	l1 = 0.0;
-	l2 = 0.0;
 	comment = _T("");
 	REG_ATTRIB(name, name);
 	REG_ATTRIB(vd, vd);
 	REG_ATTRIB(hd, hd);
 	REG_ATTRIB(d, d);
 	REG_ATTRIB(gap, gap);
-	REG_ATTRIB(l1, l1);
-	REG_ATTRIB(l2, l2);
 	REG_ATTRIB(comment, comment);
+	REG_FOREGIN_KEY(cbm_coal_id, coal, &Coal::Create);
 }
 
 CString DesignTunnel::Table()
@@ -401,7 +375,38 @@ DesignTunnel::DesignTunnel() : orm::Record(DesignTunnel::Table())
 	REG_ATTRIB(y2, y2);
 	REG_ATTRIB(z2, z2);
 	REG_ATTRIB(comment, comment);
-	REG_FOREGIN_KEY(cbm_design_coal_id, design_coal, &DesignCoal::Create);
+	REG_FOREGIN_KEY(cbm_design_work_surf_id, design_work_surf, &DesignWorkSurf::Create);
+}
+
+CString DesignWorkSurf::Table()
+{
+	return _T("cbm_design_work_surf");
+}
+
+orm::RecordPtr DesignWorkSurf::Create()
+{
+	return orm::RecordPtr(new DesignWorkSurf());
+}
+
+DesignWorkSurf::DesignWorkSurf() : orm::Record(DesignWorkSurf::Table())
+{
+	name = _T("");
+	l1 = 0.0;
+	l2 = 0.0;
+	l = 0.0;
+	comment = _T("");
+	x0 = 0.0;
+	y0 = 0.0;
+	z0 = 0.0;
+	REG_ATTRIB(name, name);
+	REG_ATTRIB(l1, l1);
+	REG_ATTRIB(l2, l2);
+	REG_ATTRIB(l, l);
+	REG_ATTRIB(comment, comment);
+	REG_ATTRIB(x0, x0);
+	REG_ATTRIB(y0, y0);
+	REG_ATTRIB(z0, z0);
+	REG_FOREGIN_KEY(cbm_coal_id, coal, &Coal::Create);
 }
 
 CString DrillingRadiusParam::Table()
@@ -626,16 +631,16 @@ orm::RecordPtr HydrGeo::Create()
 
 HydrGeo::HydrGeo() : orm::Record(HydrGeo::Table())
 {
-	type = _T("");
+	name = _T("");
 	x1 = 0;
-	x2 = 0.0;
+	x2 = 0;
 	x3 = 0;
 	x4 = 0.0;
 	x5 = 0.0;
 	x6 = 0.0;
 	x7 = 0.0;
 	x8 = _T("");
-	REG_ATTRIB(type, type);
+	REG_ATTRIB(name, name);
 	REG_ATTRIB(x1, x1);
 	REG_ATTRIB(x2, x2);
 	REG_ATTRIB(x3, x3);
@@ -828,10 +833,10 @@ orm::RecordPtr ResAbundance::Create()
 
 ResAbundance::ResAbundance() : orm::Record(ResAbundance::Table())
 {
-	type = _T("");
+	name = _T("");
 	min_abundance = 0.0;
 	max_abundance = 0.0;
-	REG_ATTRIB(type, type);
+	REG_ATTRIB(name, name);
 	REG_ATTRIB(min_abundance, min_abundance);
 	REG_ATTRIB(max_abundance, max_abundance);
 }
@@ -848,12 +853,12 @@ orm::RecordPtr Rock::Create()
 
 Rock::Rock() : orm::Record(Rock::Table())
 {
-	rock = _T("");
+	name = _T("");
 	a = 0.0;
 	b = 0.0;
 	c = 0.0;
 	comment = _T("");
-	REG_ATTRIB(rock, rock);
+	REG_ATTRIB(name, name);
 	REG_ATTRIB(a, a);
 	REG_ATTRIB(b, b);
 	REG_ATTRIB(c, c);
@@ -943,10 +948,10 @@ orm::RecordPtr TopoGeo::Create()
 
 TopoGeo::TopoGeo() : orm::Record(TopoGeo::Table())
 {
-	type = _T("");
+	name = _T("");
 	feature = _T("");
 	comment = _T("");
-	REG_ATTRIB(type, type);
+	REG_ATTRIB(name, name);
 	REG_ATTRIB(feature, feature);
 	REG_ATTRIB(comment, comment);
 }
@@ -965,6 +970,7 @@ Tunnel::Tunnel() : orm::Record(Tunnel::Table())
 {
 	name = _T("");
 	b = 0.0;
+	h = 0.0;
 	l = 0.0;
 	s = 0.0;
 	d = 0.0;
@@ -973,8 +979,20 @@ Tunnel::Tunnel() : orm::Record(Tunnel::Table())
 	q3 = 0.0;
 	q0 = 0.0;
 	comment = _T("");
+	type = 0;
+	top_side = 0.0;
+	bottom_side = 0.0;
+	left_side = 0.0;
+	right_side = 0.0;
+	x1 = 0.0;
+	y1 = 0.0;
+	z1 = 0.0;
+	x2 = 0.0;
+	y2 = 0.0;
+	z2 = 0.0;
 	REG_ATTRIB(name, name);
 	REG_ATTRIB(b, b);
+	REG_ATTRIB(h, h);
 	REG_ATTRIB(l, l);
 	REG_ATTRIB(s, s);
 	REG_ATTRIB(d, d);
@@ -983,6 +1001,17 @@ Tunnel::Tunnel() : orm::Record(Tunnel::Table())
 	REG_ATTRIB(q3, q3);
 	REG_ATTRIB(q0, q0);
 	REG_ATTRIB(comment, comment);
+	REG_ATTRIB(type, type);
+	REG_ATTRIB(top_side, top_side);
+	REG_ATTRIB(bottom_side, bottom_side);
+	REG_ATTRIB(left_side, left_side);
+	REG_ATTRIB(right_side, right_side);
+	REG_ATTRIB(x1, x1);
+	REG_ATTRIB(y1, y1);
+	REG_ATTRIB(z1, z1);
+	REG_ATTRIB(x2, x2);
+	REG_ATTRIB(y2, y2);
+	REG_ATTRIB(z2, z2);
 }
 
 CString WorkArea::Table()
@@ -1035,6 +1064,8 @@ WorkSurf::WorkSurf() : orm::Record(WorkSurf::Table())
 	fore_qr = 0.0;
 	fore_qa = 0.0;
 	l = 0.0;
+	l1 = 0.0;
+	l2 = 0.0;
 	layerable = 0;
 	k1 = 0.0;
 	k2 = 0.0;
@@ -1052,6 +1083,8 @@ WorkSurf::WorkSurf() : orm::Record(WorkSurf::Table())
 	REG_ATTRIB(fore_qr, fore_qr);
 	REG_ATTRIB(fore_qa, fore_qa);
 	REG_ATTRIB(l, l);
+	REG_ATTRIB(l1, l1);
+	REG_ATTRIB(l2, l2);
 	REG_ATTRIB(layerable, layerable);
 	REG_ATTRIB(k1, k1);
 	REG_ATTRIB(k2, k2);

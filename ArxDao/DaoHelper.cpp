@@ -97,6 +97,14 @@ MinePtr DaoHelper::GetSampleMine(const CString& regionName)
 	return FIND_ONE(Mine, FKEY(Region), region->getStringID());
 }
 
+CoalPtr DaoHelper::GetSampleCoal(const CString& regionName)
+{
+	MinePtr mine = DaoHelper::GetSampleMine(regionName);
+	if(mine == 0) return CoalPtr();
+
+	return FIND_ONE(Coal, FKEY(Mine), mine->getStringID());
+}
+
 void DaoHelper::GetCoalNames(int mine_id, StringArray& coals)
 {
 	RecordPtr mine = FIND_BY_ID(Mine,mine_id);
@@ -205,4 +213,56 @@ RecordPtrListPtr DaoHelper::GetDrillingSurfs(int mine_id)
 	}
 	if(lists->empty()) lists.reset();
 	return lists;
+}
+
+//初始化示范矿区的虚拟矿井和虚拟煤层
+static void InitSampleMine(int region_id, int account_id, const CString& name)
+{
+	MinePtr mine = FIND_ONE2(Mine, FKEY(Region), Utils::int_to_cstring(region_id), FKEY(Account), Utils::int_to_cstring(account_id));
+	if(mine == 0)
+	{
+		CString mineName;
+		mineName.Format(_T("示范矿区矿井-%s"), name);
+		//创建矿井
+		mine.reset(new Mine);
+		mine->name = mineName;
+		mine->region = FIND_BY_ID(Region, region_id);
+		mine->account = FIND_BY_ID(Account, account_id);
+		mine->save();
+
+		CString coalName;
+		coalName.Format(_T("示范矿区煤层-%s"), name);
+		//创建煤层
+		CoalPtr coal(new Coal);
+		coal->mine = mine;
+		coal->name = coalName;
+		coal->save();
+	}
+}
+
+void DaoHelper::InitSampleRegion()
+{
+	//查找管理员帐户
+	AccountPtr admin = FIND_ONE(Account, FIELD(username), _T("admin"));
+	if(admin == 0)
+	{
+		admin.reset(new Account);
+		admin->username = _T("admin");
+		admin->password = _T("123");
+		admin->comment = _T("超级管理员账户");
+		if(!admin->save()) return;
+	}
+
+	//查找三个示范矿区
+	RegionPtr jincheng = FIND_ONE(Region, FIELD(name), _T("晋城"));
+	if(jincheng == 0) return;
+	RegionPtr lianghuai = FIND_ONE(Region, FIELD(name), _T("两淮"));
+	if(lianghuai == 0) return;
+	RegionPtr songzao = FIND_ONE(Region, FIELD(name), _T("松藻"));
+	if(songzao == 0) return;
+
+	//根据id依次初始化示范矿区的数据
+	InitSampleMine(jincheng->getID(), admin->getID(), _T("晋城"));
+	InitSampleMine(lianghuai->getID(), admin->getID(), _T("两淮"));
+	InitSampleMine(songzao->getID(), admin->getID(), _T("松藻"));
 }
