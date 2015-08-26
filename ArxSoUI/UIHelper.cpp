@@ -74,10 +74,24 @@ void UIHelper::Logout()
 
 void UIHelper::SampleManage()
 {
-	CAcModuleResourceOverride myResources;
+	//查找管理员帐户
+	AccountPtr admin = FIND_ONE(Account, FIELD(username), _T("admin"));
+	if(admin == 0) return;
 
-	SampleManageDialog* dlg = new SampleManageDialog(FALSE);
-	dlg->Run(acedGetAcadFrame()->GetSafeHwnd());
+	int account_id = DaoHelper::GetOnlineAccountId();
+	if(account_id == 0 || account_id != admin->getID())
+	{
+		SMessageBox(acedGetAcadFrame()->GetSafeHwnd(),_T("请以管理员(admin)身份登录!"),_T("友情提示"),MB_OK);
+		//调用登录函数
+		UIHelper::Login();
+	}
+	else
+	{
+		CAcModuleResourceOverride myResources;
+
+		SampleManageDialog* dlg = new SampleManageDialog(FALSE);
+		dlg->Run(acedGetAcadFrame()->GetSafeHwnd());
+	}
 }
 
 void UIHelper::GasTechModeDecision()

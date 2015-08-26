@@ -14,11 +14,11 @@ class AdjLayer;
 class Base;
 class Coal;
 class Complexity;
-class DesignCoal;
 class DesignPore;
 class DesignSite;
 class DesignTechnology;
 class DesignTunnel;
+class DesignWorkSurf;
 class DrillingRadiusParam;
 class DrillingSurf;
 class EvalUnit;
@@ -46,11 +46,11 @@ typedef boost::shared_ptr<AdjLayer> AdjLayerPtr;
 typedef boost::shared_ptr<Base> BasePtr;
 typedef boost::shared_ptr<Coal> CoalPtr;
 typedef boost::shared_ptr<Complexity> ComplexityPtr;
-typedef boost::shared_ptr<DesignCoal> DesignCoalPtr;
 typedef boost::shared_ptr<DesignPore> DesignPorePtr;
 typedef boost::shared_ptr<DesignSite> DesignSitePtr;
 typedef boost::shared_ptr<DesignTechnology> DesignTechnologyPtr;
 typedef boost::shared_ptr<DesignTunnel> DesignTunnelPtr;
+typedef boost::shared_ptr<DesignWorkSurf> DesignWorkSurfPtr;
 typedef boost::shared_ptr<DrillingRadiusParam> DrillingRadiusParamPtr;
 typedef boost::shared_ptr<DrillingSurf> DrillingSurfPtr;
 typedef boost::shared_ptr<EvalUnit> EvalUnitPtr;
@@ -212,22 +212,6 @@ public:
 
 }; // class Complexity
 
-class ARXDAO_DLLIMPEXP DesignCoal : public orm::Record
-{
-public:
-	static CString Table();
-	static orm::RecordPtr Create();
-
-public:
-	DesignCoal();
-	orm::RecordPtr design_technology;
-	CString name;
-	double angle;
-	double thick;
-	CString comment;
-
-}; // class DesignCoal
-
 class ARXDAO_DLLIMPEXP DesignPore : public orm::Record
 {
 public:
@@ -279,13 +263,12 @@ public:
 
 public:
 	DesignTechnology();
+	orm::RecordPtr coal;
 	CString name;
 	double vd;
 	double hd;
 	double d;
 	double gap;
-	double l1;
-	double l2;
 	CString comment;
 
 }; // class DesignTechnology
@@ -298,7 +281,7 @@ public:
 
 public:
 	DesignTunnel();
-	orm::RecordPtr design_coal;
+	orm::RecordPtr design_work_surf;
 	CString name;
 	double w;
 	double h;
@@ -316,6 +299,26 @@ public:
 	CString comment;
 
 }; // class DesignTunnel
+
+class ARXDAO_DLLIMPEXP DesignWorkSurf : public orm::Record
+{
+public:
+	static CString Table();
+	static orm::RecordPtr Create();
+
+public:
+	DesignWorkSurf();
+	orm::RecordPtr coal;
+	CString name;
+	double l1;
+	double l2;
+	double l;
+	CString comment;
+	double x0;
+	double y0;
+	double z0;
+
+}; // class DesignWorkSurf
 
 class ARXDAO_DLLIMPEXP DrillingRadiusParam : public orm::Record
 {
@@ -462,9 +465,9 @@ public:
 
 public:
 	HydrGeo();
-	CString type;
+	CString name;
 	int x1;
-	double x2;
+	int x2;
 	int x3;
 	double x4;
 	double x5;
@@ -585,7 +588,7 @@ public:
 
 public:
 	ResAbundance();
-	CString type;
+	CString name;
 	double min_abundance;
 	double max_abundance;
 
@@ -599,7 +602,7 @@ public:
 
 public:
 	Rock();
-	CString rock;
+	CString name;
 	double a;
 	double b;
 	double c;
@@ -664,7 +667,7 @@ public:
 
 public:
 	TopoGeo();
-	CString type;
+	CString name;
 	CString feature;
 	CString comment;
 
@@ -680,6 +683,7 @@ public:
 	Tunnel();
 	CString name;
 	double b;
+	double h;
 	double l;
 	double s;
 	double d;
@@ -688,6 +692,17 @@ public:
 	double q3;
 	double q0;
 	CString comment;
+	int type;
+	double top_side;
+	double bottom_side;
+	double left_side;
+	double right_side;
+	double x1;
+	double y1;
+	double z1;
+	double x2;
+	double y2;
+	double z2;
 
 }; // class Tunnel
 
@@ -728,6 +743,8 @@ public:
 	double fore_qr;
 	double fore_qa;
 	double l;
+	double l1;
+	double l2;
 	int layerable;
 	double k1;
 	double k2;

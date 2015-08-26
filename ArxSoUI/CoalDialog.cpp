@@ -126,7 +126,6 @@ LRESULT CoalDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 {
 	AcadSouiDialog::OnInitDialog(hWnd, lParam);
 	//do something
-	m_NumberEdit = FindChildByName2<SEdit>(L"number");
 	m_FValueEdit = FindChildByName2<SEdit>(L"f_value");
 	m_ThickEdit = FindChildByName2<SEdit>(L"thick");
 	m_RankCombox = FindChildByName2<SComboBox>(L"rank");

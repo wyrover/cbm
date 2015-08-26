@@ -4,6 +4,11 @@
 
 namespace orm 
 {
+	//ÕûÊý->×Ö·û´®
+	#define I2S(v) Utils::int_to_cstring(v)
+	//¸¡µãÊý->×Ö·û´®
+	#define F2S(v, precision) Utils::double_to_cstring(v, precision)
+
 	class ARXDAO_DLLIMPEXP Utils
 	{
 	public:
