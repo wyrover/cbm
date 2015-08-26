@@ -168,6 +168,7 @@ Global
 		{CE268375-59DA-4FF5-8707-D28D99C24960}.Release|Win32.ActiveCfg = Release|Win32
 		{CE268375-59DA-4FF5-8707-D28D99C24960}.Release|Win32.Build.0 = Release|Win32
 		{CE268375-59DA-4FF5-8707-D28D99C24960}.Release|x64.ActiveCfg = Release|x64
+		{CE268375-59DA-4FF5-8707-D28D99C24960}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
