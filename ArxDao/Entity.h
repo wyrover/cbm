@@ -316,7 +316,6 @@ public:
 	CString name;
 	double l1;
 	double l2;
-	double l;
 	CString comment;
 	double x0;
 	double y0;
@@ -748,7 +747,6 @@ public:
 	double qa;
 	double fore_qr;
 	double fore_qa;
-	double l;
 	double l1;
 	double l2;
 	int layerable;

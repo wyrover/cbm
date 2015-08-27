@@ -45,7 +45,6 @@ LRESULT DesignP11Dialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 	m_RightEdit = FindChildByName2<SEdit>(L"right");
 	m_TopEdit = FindChildByName2<SEdit>(L"top");
 	m_BottomEdit = FindChildByName2<SEdit>(L"bottom");
-	m_LEdit = FindChildByName2<SEdit>(L"L");
 	m_VDistEdit = FindChildByName2<SEdit>(L"V_dist");
 	m_HDistEdit = FindChildByName2<SEdit>(L"H_dist");
 	m_NameEdit = FindChildByName2<SEdit>(L"name");
@@ -53,6 +52,11 @@ LRESULT DesignP11Dialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 	initDatas();
 
 	return 0;
+}
+
+static void CaclCoalSize(double L1, double L2, double angle, double left, double right, double top, double bottom)
+{
+	//Ãº²ãÆ½ÃæµÄ
 }
 
 void DesignP11Dialog::OnSaveButtonClick()
@@ -73,7 +77,6 @@ void DesignP11Dialog::OnSaveButtonClick()
 		work_surf.reset(new DesignWorkSurf);
 	}
 	work_surf->name = m_NameEdit->GetWindowText();
-	Utils::cstring_to_double((LPCTSTR)m_LEdit->GetWindowText(), work_surf->l);
 	Utils::cstring_to_double((LPCTSTR)m_L1Edit->GetWindowText(), work_surf->l1);
 	Utils::cstring_to_double((LPCTSTR)m_L2Edit->GetWindowText(), work_surf->l2);
 	Utils::cstring_to_double((LPCTSTR)m_WEdit->GetWindowText(), work_surf->w);
@@ -114,7 +117,6 @@ void DesignP11Dialog::initDatas()
 	DesignWorkSurfPtr work_surf = FIND_ONE(DesignWorkSurf, FKEY(Coal), coal->getStringID());
 	if(work_surf != 0)
 	{
-		m_LEdit->SetWindowText(Utils::double_to_cstring(work_surf->l));
 		m_L1Edit->SetWindowText(Utils::double_to_cstring(work_surf->l1));
 		m_L2Edit->SetWindowText(Utils::double_to_cstring(work_surf->l2));
 		m_WEdit->SetWindowText(Utils::double_to_cstring(work_surf->w));

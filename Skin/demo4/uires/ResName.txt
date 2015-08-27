@@ -1,1 +1,1 @@
-layout:main
+layout:cbm

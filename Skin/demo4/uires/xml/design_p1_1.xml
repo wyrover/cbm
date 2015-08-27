@@ -45,8 +45,6 @@
     <edit pos="77,397" width="57" height="26" name="top" margin-x="1" margin-y="1"/>
     <edit pos="232,399" width="58" height="26" name="bottom" margin-x="1" margin-y="1"/>
     <text pos="18,374" width="114" height="23" name="text48" margin-x="1" margin-y="1">&gt;&gt;钻孔控制范围</text>
-    <text pos="230,115" width="77" height="23" name="text49" margin-x="1" margin-y="1">工作面长度</text>
-    <edit pos="306,113" width="67" height="26" name="L" margin-x="1" margin-y="1"/>
     <text pos="39,261" width="137" height="23" name="text51" margin-x="1" margin-y="1">底板巷与工作面垂距</text>
     <text pos="39,291" width="227" height="23" name="text52" margin-x="1" margin-y="1">底板巷与工作面风巷水平投影距离</text>
     <edit pos="180,259" width="67" height="26" name="V_dist" margin-x="1" margin-y="1"/>

@@ -54,7 +54,6 @@ protected:
 	SEdit* m_RightEdit;
 	SEdit* m_TopEdit;
 	SEdit* m_BottomEdit;
-	SEdit* m_LEdit;
 	SEdit* m_VDistEdit;
 	SEdit* m_HDistEdit;
 	SEdit* m_NameEdit;

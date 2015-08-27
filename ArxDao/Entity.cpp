@@ -401,7 +401,6 @@ DesignWorkSurf::DesignWorkSurf() : orm::Record(DesignWorkSurf::Table())
 	name = _T("");
 	l1 = 0.0;
 	l2 = 0.0;
-	l = 0.0;
 	comment = _T("");
 	x0 = 0.0;
 	y0 = 0.0;
@@ -411,7 +410,6 @@ DesignWorkSurf::DesignWorkSurf() : orm::Record(DesignWorkSurf::Table())
 	REG_ATTRIB(name, name);
 	REG_ATTRIB(l1, l1);
 	REG_ATTRIB(l2, l2);
-	REG_ATTRIB(l, l);
 	REG_ATTRIB(comment, comment);
 	REG_ATTRIB(x0, x0);
 	REG_ATTRIB(y0, y0);
@@ -1075,7 +1073,6 @@ WorkSurf::WorkSurf() : orm::Record(WorkSurf::Table())
 	qa = 0.0;
 	fore_qr = 0.0;
 	fore_qa = 0.0;
-	l = 0.0;
 	l1 = 0.0;
 	l2 = 0.0;
 	layerable = 0;
@@ -1094,7 +1091,6 @@ WorkSurf::WorkSurf() : orm::Record(WorkSurf::Table())
 	REG_ATTRIB(qa, qa);
 	REG_ATTRIB(fore_qr, fore_qr);
 	REG_ATTRIB(fore_qa, fore_qa);
-	REG_ATTRIB(l, l);
 	REG_ATTRIB(l1, l1);
 	REG_ATTRIB(l2, l2);
 	REG_ATTRIB(layerable, layerable);
