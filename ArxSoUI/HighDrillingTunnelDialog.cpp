@@ -1,8 +1,7 @@
 #include "stdafx.h"
 #include "HighDrillingTunnelDialog.h"
 #include "SouiListHelper.h"
-#include <cmath>
-#define PI 3.1415926535897932384626433832795
+#include "SouiMath.h"
 
 #include <ArxHelper/HelperClass.h>
 #include <ArxDao/DaoHelper.h>

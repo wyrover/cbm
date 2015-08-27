@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "DesignP11Dialog.h"
+#include "SouiMath.h"
 
 #include <ArxHelper/HelperClass.h>
 #include <ArxDao/DaoHelper.h>
@@ -54,9 +55,13 @@ LRESULT DesignP11Dialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 	return 0;
 }
 
-static void CaclCoalSize(double L1, double L2, double angle, double left, double right, double top, double bottom)
+//计算工作面的平面尺寸
+static void CaclWorkSurfSize(double L1, double L2, double angle, double left, double right, double top, double bottom)
 {
-	//煤层平面的
+	//计算宽度(倾向长度L2+工作面左帮控制范围left+偏移)
+	double w = L2+1.6*left;
+	//w = w*cos()
+	double h = L1+3*left;
 }
 
 void DesignP11Dialog::OnSaveButtonClick()

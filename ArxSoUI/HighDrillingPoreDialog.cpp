@@ -1,14 +1,12 @@
 #include "stdafx.h"
 #include "HighDrillingPoreDialog.h"
+#include "SouiMath.h"
 
 #include <ArxHelper/HelperClass.h>
 #include <ArxDao/DaoHelper.h>
 #include <ArxDao/Entity.h>
 using namespace orm;
 using namespace cbm;
-
-#include <cmath>
-#define PI 3.1415926535897932384626433832795
 
 HighDrillingPoreDialog::HighDrillingPoreDialog(BOOL bModal) : AcadSouiDialog(_T("layout:high_drilling_pore"), bModal)
 {

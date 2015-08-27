@@ -1,15 +1,13 @@
 #include "stdafx.h"
 #include "DrillingRadiusDesignDialog.h"
 #include "SouiListHelper.h"
+#include "SouiMath.h"
 
 #include <ArxHelper/HelperClass.h>
 #include <ArxDao/DaoHelper.h>
 #include <ArxDao/Entity.h>
 using namespace orm;
 using namespace cbm;
-
-#include <cmath>
-#define PI 3.1415926535897932384626433832795
 
 DrillingRadiusDesignDialog::DrillingRadiusDesignDialog(BOOL bModal) : AcadSouiDialog(_T("layout:drilling_radius_design"), bModal)
 {

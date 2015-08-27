@@ -1,13 +1,12 @@
 #include "stdafx.h"
 #include "Czh1Dialog.h"
+#include "SouiMath.h"
 
 #include <ArxHelper/HelperClass.h>
 #include <ArxDao/DaoHelper.h>
 #include <ArxDao/Entity.h>
 using namespace orm;
 using namespace cbm;
-
-#define PI 3.1415926535897932384626433832795
 
 Czh1Dialog::Czh1Dialog(BOOL bModal) : AcadSouiDialog(_T("layout:czh_1"), bModal)
 {
