@@ -24,6 +24,28 @@ SouiDialog::~SouiDialog(void)
 {
 }
 
+HWND SouiDialog::GetSafeHwnd() const
+{
+	return m_hWnd;
+}
+
+void SouiDialog::SetWindowTitle(LPCTSTR title)
+{
+	m_title = title;
+	//设置标题
+	SStatic* titleLabel = FindChildByName2<SStatic>(L"wnd_title");
+	if(titleLabel != 0)
+	{
+		titleLabel->SetWindowText(m_title);
+	}
+}
+
+void SouiDialog::setAsChild(BOOL bChild) 
+{ 
+	m_bChild = bChild; 
+	if(bChild) m_bModal = FALSE;
+}
+
 INT_PTR SouiDialog::Run(HWND hParent)
 {
 	if(m_bModal)
@@ -66,6 +88,7 @@ void SouiDialog::OnCancel()
 	if(m_bChild) return;
 
 	m_bTracking = FALSE;
+	OnDestroyWindow();
 	if(m_bModal)
 	{
 		SHostDialog::OnCancel();
@@ -88,6 +111,10 @@ void SouiDialog::OnCancel()
 LRESULT SouiDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 {
 	m_bLayoutInited = TRUE;
+	if(m_title.GetLength() > 0)
+	{
+		this->SetWindowTitle(m_title);
+	}
 	return FALSE;
 }
 
@@ -99,6 +126,10 @@ void SouiDialog::OnFinalMessage( HWND hWnd )
 		//一般非模态的对话框都是new出来的,而模态则是局部变量
 		delete this;
 	}
+}
+
+void SouiDialog::OnDestroyWindow()
+{
 }
 
 static void SetVisible_Helper(SWindow* wnd, BOOL bVisible)
@@ -232,7 +263,7 @@ void SouiDialog::OnMouseLeave()
 	m_mouseInWindow = FALSE;
 }
 
-void SouiDialog::OnMouseHover(UINT nFlags, SOUI::CPoint point)
+void SouiDialog::OnMouseHover(WPARAM wParam, SOUI::CPoint point)
 {
 	SetMsgHandled(FALSE);
 	if(isModal()) return;

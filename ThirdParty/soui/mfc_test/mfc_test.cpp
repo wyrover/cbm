@@ -45,11 +45,13 @@ static void StartFromSoui(LPCTSTR pszXmlName, HWND hParent=NULL, bool bModal=tru
 	if(bModal)
 	{
 		SouiDialog dlg(pszXmlName, TRUE);
+		dlg.SetWindowTitle(_T("改标题,随便玩玩!"));
 		dlg.Run(hParent);
 	}
 	else
 	{
 		SouiDialog* dlg = new SouiDialog(pszXmlName, FALSE);
+		dlg->SetWindowTitle(_T("改标题,随便玩玩!"));
 		dlg->Run(hParent);
 		//父窗口为0的一般都是主窗口
 		if(hParent == NULL)
