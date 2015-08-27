@@ -150,7 +150,7 @@ void WsGasFlowPredictDialog::OnSaveButtonClick()
 	if(coal == 0) return;
 
 	work_surf->layerable = BOOL_2_INT(m_MethodThickRadio->IsChecked() == 0);
-	Utils::cstring_to_double((LPCTSTR)m_LEdit->GetWindowText(), work_surf->l);
+	Utils::cstring_to_double((LPCTSTR)m_LEdit->GetWindowText(), work_surf->l1); // 走向长度
 	Utils::cstring_to_double((LPCTSTR)m_HwEdit->GetWindowText(), coal->hw);
 	Utils::cstring_to_double((LPCTSTR)m_Qr1Edit->GetWindowText(), work_surf->qr1);
 	Utils::cstring_to_double((LPCTSTR)m_Qr2Edit->GetWindowText(), work_surf->qr2);
@@ -187,7 +187,7 @@ void WsGasFlowPredictDialog::OnWsComboxSelChanged(SOUI::EventArgs *pEvt)
 	m_MethodThickRadio->SetCheck(BOOL_2_INT(work_surf->layerable == 0));
 	m_MethodThickRadio->SetCheck(BOOL_2_INT(work_surf->layerable != 0));
 	//工作面长度和采高
-	m_LEdit->SetWindowText(Utils::double_to_cstring(work_surf->l));
+	m_LEdit->SetWindowText(Utils::double_to_cstring(work_surf->l1)); // 走向长度
 	//m_HwEdit->SetWindowText(Utils::double_to_cstring(coal->hw));
 	//工作面瓦斯涌出量数据
 	m_Qr1Edit->SetWindowText(Utils::double_to_cstring(work_surf->qr1));

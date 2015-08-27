@@ -216,10 +216,10 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="..;..\ThirdParty\boost;..\ThirdParty\soui;..\ThirdParty\soui\soui\include;..\ThirdParty\soui\utilities\include;..\ThirdParty\soui\config;..\ThirdParty\soui\components"
-				PreprocessorDefinitions="WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS"
+				PreprocessorDefinitions="WIN32;_WINDOWS;_DEBUG;_CRT_SECURE_NO_WARNINGS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
-				RuntimeLibrary="2"
+				RuntimeLibrary="3"
 				UsePrecompiledHeader="2"
 				WarningLevel="3"
 				DebugInformationFormat="3"
@@ -238,7 +238,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="soui.lib utilities.lib"
+				AdditionalDependencies="souid.lib utilitiesd.lib"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="..\ThirdParty\soui\bin64"
 				GenerateDebugInformation="true"
