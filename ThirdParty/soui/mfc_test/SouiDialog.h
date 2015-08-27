@@ -21,11 +21,13 @@ public:
 	SouiDialog(LPCTSTR pszXmlName, BOOL bModal = FALSE);
 	//析构函数
 	virtual ~SouiDialog(void);
-	void setAsChild(BOOL bChild) 
-	{ 
-		m_bChild = bChild; 
-		if(bChild) m_bModal = FALSE;
-	}
+	//设置窗口标题
+	void SetWindowTitle(LPCTSTR title);
+	//获取窗口句柄
+	HWND GetSafeHwnd() const;
+	//标记为子窗口
+	//理论上期望是可以嵌入到其他窗口使用,但目前尚不完善,慎用!
+	void setAsChild(BOOL bChild);
 	//运行对话框
 	//注:非模态对话框的返回值没有意义,可以忽略
 	INT_PTR Run(HWND hParent=NULL);
@@ -47,9 +49,12 @@ protected:
 	//非模态窗口的销毁处理
 	//参考1:http://bbs.csdn.net/topics/350048650
 	//参考2:http://blog.csdn.net/candyliuxj/article/details/6736032
+	//参考3:http://blog.csdn.net/xiliang_pan/article/details/7178601
 	//注1:soui没有PostNcDestory虚函数,用OnFinalMessage虚函数替代!!!
 	//注2:如果响应WM_NCDESTORY消息,在该消息中delete this,会导致内存错误!!!
 	virtual void OnFinalMessage(HWND hWnd);
+	//手动添加的虚函数(用于在窗口销毁或关闭前做一些清理工作,默认什么也不做)
+	virtual void OnDestroyWindow();
 	//窗口关闭消息
 	void OnClose();
 	//窗口大小位置变化(最大/最小/复原这3个按钮要同步变化尺寸)
@@ -60,7 +65,7 @@ protected:
 	//鼠标移动消息(用于判断鼠标是否在窗口内)
 	//参考:http://www.cnblogs.com/greatverve/archive/2013/02/06/TRACKMOUSEEVENT.html
 	void OnMouseMove(UINT nFlags, SOUI::CPoint point);
-	void OnMouseHover(UINT nFlags, SOUI::CPoint point);
+	void OnMouseHover(WPARAM wParam, SOUI::CPoint point);
 	void OnMouseLeave();
 
 	/** 标题栏4个按钮消息 */
@@ -92,6 +97,8 @@ private:
 	BOOL m_mouseInWindow;
 	//是否需要追踪鼠标移动消息
 	BOOL m_bTracking;
+	//窗口标题
+	SOUI::SStringT m_title;
 
 	/** 控件消息映射表 */
 	EVENT_MAP_BEGIN()

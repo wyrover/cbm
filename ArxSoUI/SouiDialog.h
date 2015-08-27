@@ -3,7 +3,7 @@
 /**
  * soui对话框封装类.
  * 用法:
-	(1)非模态对话框(切记:必须new，否则会导致内存错误)
+	(1)非模态对话框(必须new，否则会导致内存错误)
     HWND hWnd = getWindowHandle();  // 必须要指定有效的父窗口句柄
 	LoginDlg* dlg = new LoginDlg(FALSE);
 	dlg->Run(hWnd);
@@ -22,9 +22,12 @@ public:
 	//析构函数
 	virtual ~SouiDialog(void);
 	//设置窗口标题
-	void SetWindowTitle(const CString& title);
+	void SetWindowTitle(LPCTSTR title);
 	//获取窗口句柄
 	HWND GetSafeHwnd() const;
+	//标记为子窗口
+	//理论上期望是可以嵌入到其他窗口使用,但目前尚不完善,慎用!
+	void setAsChild(BOOL bChild);
 	//运行对话框
 	//注:非模态对话框的返回值没有意义,可以忽略
 	INT_PTR Run(HWND hParent=NULL);
@@ -62,7 +65,7 @@ protected:
 	//鼠标移动消息(用于判断鼠标是否在窗口内)
 	//参考:http://www.cnblogs.com/greatverve/archive/2013/02/06/TRACKMOUSEEVENT.html
 	void OnMouseMove(UINT nFlags, SOUI::CPoint point);
-	void OnMouseHover(UINT nFlags, SOUI::CPoint point);
+	void OnMouseHover(WPARAM wParam, SOUI::CPoint point);
 	void OnMouseLeave();
 
 	/** 标题栏4个按钮消息 */
@@ -84,6 +87,8 @@ protected:
 
 	/** 成员变量 */
 private:
+	//是否子窗口(默认FALSE)
+	BOOL m_bChild;
 	//是否模态对话框(默认非模态FALSE)
 	BOOL m_bModal;
 	//UI完成布局标志
@@ -93,7 +98,7 @@ private:
 	//是否需要追踪鼠标移动消息
 	BOOL m_bTracking;
 	//窗口标题
-	CString m_title;
+	SOUI::SStringT m_title;
 
 	/** 控件消息映射表 */
 	EVENT_MAP_BEGIN()
