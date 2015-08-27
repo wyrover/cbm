@@ -2,6 +2,10 @@
 #include "SouiDialog.h"
 using namespace SOUI;
 
+//OnMouseMove消息函数用到了_TrackMouseEvent函数
+#include <CommCtrl.h>
+#pragma comment(lib, "comctl32.lib")
+
 //在OnCreate消息函数中启用Aero效果需要dwmapi的支持
 //#include <dwmapi.h>
 //#pragma comment(lib,"dwmapi.lib")
@@ -68,7 +72,16 @@ void SouiDialog::OnCancel()
 	}
 	else
 	{
-		DestroyWindow();
+		//如果父窗口为空,则该窗口是主窗口
+		//销毁窗口后应退出进程
+		if(::GetParent(m_hWnd) == NULL)
+		{
+			PostMessage(WM_QUIT);
+		}
+		else
+		{
+			DestroyWindow();
+		}
 	}
 }
 
@@ -96,7 +109,7 @@ static void SetVisible_Helper(SWindow* wnd, BOOL bVisible)
 	}
 }
 
-void SouiDialog::OnSize(UINT nType, ::CSize size)
+void SouiDialog::OnSize(UINT nType, SOUI::CSize size)
 {
 	SetMsgHandled(FALSE);   //这一行很重要，保证消息继续传递给SOUI::SHostDialog处理，当然也可以用SouiDialog::OnSize(nType,size);代替，但是这里使用的方法更简单，通用
 	if(!m_bLayoutInited) return;
@@ -190,7 +203,7 @@ BOOL SouiDialog::keepFocus() const
 	return isModal()?TRUE:m_mouseInWindow;
 }
 
-void SouiDialog::OnMouseMove(UINT nFlags, ::CPoint point)
+void SouiDialog::OnMouseMove(UINT nFlags, SOUI::CPoint point)
 {
 	SetMsgHandled(FALSE);
 	if(isModal()) return;
@@ -219,7 +232,7 @@ void SouiDialog::OnMouseLeave()
 	m_mouseInWindow = FALSE;
 }
 
-void SouiDialog::OnMouseHover(UINT nFlags, ::CPoint point)
+void SouiDialog::OnMouseHover(UINT nFlags, SOUI::CPoint point)
 {
 	SetMsgHandled(FALSE);
 	if(isModal()) return;

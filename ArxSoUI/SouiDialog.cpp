@@ -2,6 +2,10 @@
 #include "SouiDialog.h"
 using namespace SOUI;
 
+//OnMouseMove消息函数用到了_TrackMouseEvent函数
+#include <CommCtrl.h>
+#pragma comment(lib, "comctl32.lib")
+
 //在OnCreate消息函数中启用Aero效果需要dwmapi的支持
 //#include <dwmapi.h>
 //#pragma comment(lib,"dwmapi.lib")

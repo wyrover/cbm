@@ -26,17 +26,26 @@ static void UnInitSouiEnviroment()
 	delete SoUILoader::getSingletonPtr();
 }
 
-static void StartFromSoui()
+static void StartFromSoui(LPCTSTR pszXmlName, HWND hParent=NULL, bool bModal=true)
 {
-	//SouiDialog类及其派生类的构造函数都接受一个参数,用来指定xml资源的名称
-	//本例中资源名称是动态获取的
-	//用户使用的时候可以从SouiDialog类派生,并在派生类的构造函数中指定xml资源文件名
-	//详细用法参考ArxSoUI项目中的对话框类
-	SouiDialog dlg(RES_NAME, TRUE);
-	dlg.Run(GetActiveWindow());
-	//MFC程序本身就有消息循环了,不需要用getApp()->Run()启动消息循环
-	//只有纯粹的win32程序才需要用getApp()->Run()启动消息循环
-	//SoUILoader::getSingletonPtr()->getApp()->Run(dlg->m_hWnd);
+	if(bModal)
+	{
+		SouiDialog dlg(pszXmlName, TRUE);
+		dlg.Run(hParent);
+	}
+	else
+	{
+		SouiDialog* dlg = new SouiDialog(pszXmlName, FALSE);
+		dlg->Run(hParent);
+		//父窗口为0的一般都是主窗口
+		if(hParent == NULL)
+		{
+			//只有主窗口才需要用getApp()->Run()启动消息循环
+			//MFC的InitInstance()函数执行的时候,此时还没有消息循环,如果要显示主窗口,那么需要我们人工启动消息循环
+			//同理,win32程序的WinMain函数中主窗口也是需要等候MFC程序本身就有消息循环了,不需要用getApp()->Run()启动消息循环
+			SoUILoader::getSingletonPtr()->getApp()->Run(dlg->m_hWnd);
+		}
+	}
 }
 
 //static void StartFromMFC(CWnd*& m_pMainWnd)
@@ -79,7 +88,10 @@ BOOL CLauncherApp::InitInstance()
 	InitSouiEnviroment(m_hInstance);
 
 	//(1)从soui启动
-	StartFromSoui();
+	// 以模态方式启动
+	//StartFromSoui(RES_NAME, NULL, true);
+	// 或者以非模态方式启动
+	StartFromSoui(RES_NAME, NULL, false);
 	//(2)或者从mfc启动
 	//StartFromMFC(m_pMainWnd);
 

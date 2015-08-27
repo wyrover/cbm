@@ -53,14 +53,14 @@ protected:
 	//窗口关闭消息
 	void OnClose();
 	//窗口大小位置变化(最大/最小/复原这3个按钮要同步变化尺寸)
-	void OnSize(UINT nType, ::CSize size);
+	void OnSize(UINT nType, SOUI::CSize size);
 	
 	/** 鼠标消息 */
 protected:
 	//鼠标移动消息(用于判断鼠标是否在窗口内)
 	//参考:http://www.cnblogs.com/greatverve/archive/2013/02/06/TRACKMOUSEEVENT.html
-	void OnMouseMove(UINT nFlags, ::CPoint point);
-	void OnMouseHover(UINT nFlags, ::CPoint point);
+	void OnMouseMove(UINT nFlags, SOUI::CPoint point);
+	void OnMouseHover(UINT nFlags, SOUI::CPoint point);
 	void OnMouseLeave();
 
 	/** 标题栏4个按钮消息 */
