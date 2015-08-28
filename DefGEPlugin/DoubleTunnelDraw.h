@@ -17,6 +17,9 @@ public:
 	virtual void readExtraParam(DrawParamReader& reader);
 	virtual void writeExtraParam(DrawParamWriter& writer);
 
+	virtual void regPropertyDataNames(AcStringArray& names) const;
+	virtual void readPropertyDataFromGE(const AcStringArray& values);
+
 	virtual void caclBackGroundMinPolygon(AcGePoint3dArray& pts);
 
 	virtual void dealWithStartPointBoundary(const AcGeRay3d& boundaryLine);
@@ -49,13 +52,12 @@ public:
 	void caclStartPoint(AcGePoint3d& startPt, AcGePoint3d& endPt);
 	void caclEndPoint(AcGePoint3d& startPt, AcGePoint3d& endPt);
 
-	//double getLenth();
-	//void setLenth(double lenth);
-
-	// extra param
-	double m_width; // 默认为30
+	// 附加参数
 	AcGePoint3d m_leftStartPt, m_leftEndPt;
 	AcGePoint3d m_rightStartPt, m_rightEndPt;
+
+	//属性数据
+	double m_width, m_height; // 宽度和高度
 };
 
 #ifdef DEFGEPLUGIN_MODULE
