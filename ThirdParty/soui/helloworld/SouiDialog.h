@@ -28,6 +28,8 @@ public:
 	//标记为子窗口
 	//理论上期望是可以嵌入到其他窗口使用,但目前尚不完善,慎用!
 	void setAsChild(BOOL bChild);
+	//是否模态对话框?
+	BOOL isModal() const;
 	//运行对话框
 	//注:非模态对话框的返回值没有意义,可以忽略
 	INT_PTR Run(HWND hParent=NULL);
@@ -82,7 +84,6 @@ protected:
 	 /** 普通函数 */
 protected:
 	BOOL isLayoutInited() const;
-	BOOL isModal() const;
 	BOOL keepFocus() const;
 
 	/** 成员变量 */

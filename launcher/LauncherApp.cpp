@@ -26,48 +26,44 @@ static void UnInitSouiEnviroment()
     delete SoUILoader::getSingletonPtr();
 }
 
-static void StartFromSoui( LPCTSTR pszXmlName, HWND hParent = NULL, bool bModal = true )
+static void StartFromSoui(SouiDialog* dlg, HWND hParent=NULL)
 {
-    if( bModal )
-    {
-        SouiDialog dlg( pszXmlName, TRUE );
-        dlg.SetWindowTitle( _T( "随便玩玩!" ) );
-        dlg.Run( hParent );
-    }
-    else
-    {
-        SouiDialog* dlg = new SouiDialog( pszXmlName, FALSE );
-        dlg->SetWindowTitle( _T( "改标题,随便玩玩!" ) );
-        dlg->Run( hParent );
-        //父窗口为0的一般都是主窗口
-        if( hParent == NULL )
-        {
-            //只有主窗口才需要用getApp()->Run()启动消息循环
-            //MFC的InitInstance()函数执行的时候,此时还没有消息循环,如果要显示主窗口,那么需要我们人工启动消息循环
-            //同理,win32程序的WinMain函数中主窗口也是需要等候MFC程序本身就有消息循环了,不需要用getApp()->Run()启动消息循环
-            SoUILoader::getSingletonPtr()->getApp()->Run( dlg->m_hWnd );
-        }
-    }
+	//dlg->SetWindowTitle(_T("改标题,随便玩玩!"));
+	if(dlg->isModal() == TRUE)
+	{
+		dlg->Run(hParent);
+	}
+	else
+	{
+		dlg->Run(hParent);
+		//父窗口为0的一般都是主窗口
+		if(hParent == NULL)
+		{
+			//只有主窗口才需要用getApp()->Run()启动消息循环
+			//MFC的InitInstance()函数执行的时候,此时还没有消息循环,如果要显示主窗口,那么需要我们人工启动消息循环
+			//同理,win32程序的WinMain函数中主窗口也是需要等候MFC程序本身就有消息循环了,不需要用getApp()->Run()启动消息循环
+			SoUILoader::getSingletonPtr()->getApp()->Run(dlg->m_hWnd);
+		}
+	}
 }
 
-//static void StartFromMFC(CWnd*& m_pMainWnd)
-//{
-//	//创建mfc主对话框
-//	Cmfc_testDlg dlg;
-//	m_pMainWnd = &dlg;
-//	//进入模态消息循环,直到关闭对话框
-//	INT_PTR nResponse = dlg.DoModal();
-//	if (nResponse == IDOK)
-//	{
-//		// TODO: 在此放置处理何时用
-//		//  “确定”来关闭对话框的代码
-//	}
-//	else if (nResponse == IDCANCEL)
-//	{
-//		// TODO: 在此放置处理何时用
-//		//  “取消”来关闭对话框的代码
-//	}
-//}
+static void StartFromMFC(CDialog* dlg)
+{
+	//设置MFC主窗口
+	AfxGetApp()->m_pMainWnd = dlg;
+	//进入模态消息循环,直到关闭对话框
+	INT_PTR nResponse = dlg->DoModal();
+	if (nResponse == IDOK)
+	{
+		// TODO: 在此放置处理何时用
+		//  “确定”来关闭对话框的代码
+	}
+	else if (nResponse == IDCANCEL)
+	{
+		// TODO: 在此放置处理何时用
+		//  “取消”来关闭对话框的代码
+	}
+}
 
 // ClauncherApp 初始化
 BOOL CLauncherApp::InitInstance()
@@ -89,13 +85,22 @@ BOOL CLauncherApp::InitInstance()
     //初始化soui环境
     InitSouiEnviroment( m_hInstance );
 
-    //(1)从soui启动
-    // 以模态方式启动
-    //StartFromSoui(RES_NAME, NULL, true);
-    // 或者以非模态方式启动
-    StartFromSoui( RES_NAME, NULL, false );
+	//(1)从soui启动
+	if(1)
+	{
+		//以模态方式启动
+		SouiDialog dlg(_T("layout:main"), TRUE);
+		StartFromSoui(&dlg, NULL);
+	}
+	else
+	{
+		// 或者以非模态方式启动
+		SouiDialog* dlg = new SouiDialog(_T("layout:main"), FALSE);
+		StartFromSoui(dlg, NULL);
+	}
     //(2)或者从mfc启动
-    //StartFromMFC(m_pMainWnd);
+	//Cmfc_testDlg dlg;
+	//StartFromMFC(&dlg);
 
     // 由于对话框已关闭，所以将返回 FALSE 以便退出应用程序，
     //  而不是启动应用程序的消息泵。

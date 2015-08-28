@@ -45,7 +45,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..;.;..\utilities\include;..\soui\include;&quot;..\third-part\wke\include&quot;;..\components;..\config;&quot;..\tools\mkspecs\win32-msvc2008&quot;"
+				AdditionalIncludeDirectories="..\..\boost;..;.;..\utilities\include;..\soui\include;&quot;..\third-part\wke\include&quot;;..\components;..\config;&quot;..\tools\mkspecs\win32-msvc2008&quot;"
 				PreprocessorDefinitions="WIN32;_WINDOWS;_DEBUG;_CRT_SECURE_NO_WARNINGS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
