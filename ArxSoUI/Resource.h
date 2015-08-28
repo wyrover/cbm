@@ -3,9 +3,9 @@
 // Used by ArxSoUI.rc
 //
 #define IDS_PROJNAME                    100
-#define IDD_TEST_DLG                    102
-#define IDD_SOUI_EMBED_DLG              102
-#define IDR_MAINFRAME                   128
+//#define IDD_TEST_DLG                    102
+//#define IDD_SOUI_EMBED_DLG              102
+//#define IDR_MAINFRAME                   128
 
 // Next default values for new objects
 // 
