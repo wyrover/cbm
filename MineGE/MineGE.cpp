@@ -67,11 +67,11 @@ static AcDbObjectId GetDataObject( const AcDbObjectId& dictId )
 }
 
 // 对图元关联所有的标签图元进行变换(可见图元，不包括已删除掉的图元)
-static void TransformAllTagGE( const AcDbObjectId& objId, const AcGeMatrix3d & xform )
+static void TransformAllTagGE( const AcDbObjectId& objId, const AcGeMatrix3d& xform )
 {
-	AcDbObjectIdArray objIds;
-	DrawHelper::GetAllTagGEById(objId, objIds);
-	ArxEntityHelper::TransformEntities2(objIds, xform);
+    AcDbObjectIdArray objIds;
+    DrawHelper::GetAllTagGEById( objId, objIds );
+    ArxEntityHelper::TransformEntities2( objIds, xform );
 }
 
 Adesk::UInt32 MineGE::kCurrentVersionNumber = 1 ;
@@ -79,7 +79,7 @@ Adesk::UInt32 MineGE::kCurrentVersionNumber = 1 ;
 // 有修改，使得MineGE成为抽象类
 ACRX_NO_CONS_DEFINE_MEMBERS ( MineGE, AcDbEntity )
 
-MineGE::MineGE() : m_pCurrentGEDraw( 0 ), m_bFollow(false)
+MineGE::MineGE() : m_pCurrentGEDraw( 0 ), m_bFollow( false )
 {
     //acutPrintf(_T("\nMineGE::MineGE()..."));
 }
@@ -411,11 +411,11 @@ void MineGE::writePropertyDataToGEDraw( MineGEDraw* pGEDraw ) const
             values.append( _T( "" ) );
         }
     }
-	//int len = names.length();
-	//for( int i = 0; i < len; i++ )
-	//{
-	//	acutPrintf(_T("\n字段名:%s\t值:%s\n"),names[i].kACharPtr(),values[i].kACharPtr());
-	//}
+    //int len = names.length();
+    //for( int i = 0; i < len; i++ )
+    //{
+    //	acutPrintf(_T("\n字段名:%s\t值:%s\n"),names[i].kACharPtr(),values[i].kACharPtr());
+    //}
 
     // 将查询到的数据返回到pGEDraw
     pGEDraw->readPropertyDataFromGE( values );
@@ -471,7 +471,7 @@ Acad::ErrorStatus MineGE::dwgOutFields( AcDbDwgFiler* pFiler ) const
         return ( es ) ;
 
     pFiler->writeSoftPointerId( m_dataObjectId );
-	pFiler->writeBool(m_bFollow);
+    pFiler->writeBool( m_bFollow );
 
     return ( pFiler->filerStatus () ) ;
 }
@@ -501,7 +501,7 @@ Acad::ErrorStatus MineGE::dwgInFields( AcDbDwgFiler* pFiler )
     pFiler->readSoftPointerId( &id );
     m_dataObjectId = id;
 
-	pFiler->readBool(&m_bFollow);
+    pFiler->readBool( &m_bFollow );
 
     initDraw();
 
@@ -598,7 +598,7 @@ Adesk::Boolean MineGE::subWorldDraw( AcGiWorldDraw* mode )
     if( m_pCurrentGEDraw == 0 ) return Adesk::kTrue;
 
     //acutPrintf(_T("\ncall id:%d MineGE::subWorldDraw()..."), objectId());
-   // acutPrintf(_T("\ncall drawname:%s..."), m_pCurrentGEDraw->isA()->name());
+    // acutPrintf(_T("\ncall drawname:%s..."), m_pCurrentGEDraw->isA()->name());
 
     // 1、更新参数到MineGEDraw中
     updateDrawParam( false );
@@ -633,7 +633,7 @@ Acad::ErrorStatus MineGE::subTransformBy( const AcGeMatrix3d& xform )
     updateDrawParam( true );
 
     // 4、将附带所有的TagGE
-	transformAllTagGE(xform);
+    transformAllTagGE( xform );
 
     return Acad::eOk;
 }
@@ -697,7 +697,7 @@ Acad::ErrorStatus MineGE::subMoveGripPointsAt ( const AcDbIntArray& indices, con
 
     // 所有的标签图元也进行变换
     // 变换结果偏差较大，不建议在程序中使用
-	transformAllTagGE(AcGeMatrix3d::translation(offset));
+    transformAllTagGE( AcGeMatrix3d::translation( offset ) );
 
     return Acad::eOk;
 }
@@ -755,16 +755,16 @@ Acad::ErrorStatus MineGE::subClose( void )
     return es;
 }
 
-void MineGE::transformAllTagGE(const AcGeMatrix3d& xform)
+void MineGE::transformAllTagGE( const AcGeMatrix3d& xform )
 {
-	if(m_bFollow)
-	{
-		TransformAllTagGE(this->objectId(), xform);
-	}
+    if( m_bFollow )
+    {
+        TransformAllTagGE( this->objectId(), xform );
+    }
 }
 
-void MineGE::enableFollow(bool bFollow)
+void MineGE::enableFollow( bool bFollow )
 {
-	assertWriteEnabled () ;
-	m_bFollow = bFollow;
+    assertWriteEnabled () ;
+    m_bFollow = bFollow;
 }

@@ -65,8 +65,8 @@ void PolyLineDirectionDraw::regPropertyDataNames( AcStringArray& names ) const
 
 void PolyLineDirectionDraw::readPropertyDataFromGE( const AcStringArray& values )
 {
-   // m_vt = _ttoi( values[0].kACharPtr() ) % 2; // 保证值为{0,1}
-	//m_vt = 1;
+    // m_vt = _ttoi( values[0].kACharPtr() ) % 2; // 保证值为{0,1}
+    //m_vt = 1;
 }
 
 Adesk::Boolean PolyLineDirectionDraw::subWorldDraw( AcGiWorldDraw* mode )

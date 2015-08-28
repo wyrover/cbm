@@ -4,15 +4,15 @@
 Adesk::UInt32 CoalSurface::kCurrentVersionNumber = 1 ;
 
 ACRX_DXF_DEFINE_MEMBERS (
-	CoalSurface, RcuGE,
-	AcDb::kDHL_CURRENT, AcDb::kMReleaseCurrent,
-	AcDbProxyEntity::kNoOperation,
-	Ãº²ã, DEFGEAPP
+    CoalSurface, RcuGE,
+    AcDb::kDHL_CURRENT, AcDb::kMReleaseCurrent,
+    AcDbProxyEntity::kNoOperation,
+    Ãº²ã, DEFGEAPP
 )
 
 CoalSurface::CoalSurface()
 {
-	//m_width = m_height = 1.0;
+    //m_width = m_height = 1.0;
 }
 
 AcGePoint3d CoalSurface::getInsertPt() const
@@ -53,16 +53,16 @@ void CoalSurface::setInsertPt( const AcGePoint3d& pt )
 
 void CoalSurface::readKeyParam( DrawParamReader& reader )
 {
-    reader.readPoint(m_insertPt);
-	//reader.readDouble(m_width);
-	//reader.readDouble(m_height);
+    reader.readPoint( m_insertPt );
+    //reader.readDouble(m_width);
+    //reader.readDouble(m_height);
 }
 
 void CoalSurface::writeKeyParam( DrawParamWriter& writer ) const
 {
-    writer.writePoint(m_insertPt);
-	//writer.writeDouble(m_width);
-	//writer.writeDouble(m_height);
+    writer.writePoint( m_insertPt );
+    //writer.writeDouble(m_width);
+    //writer.writeDouble(m_height);
 }
 
 Acad::ErrorStatus CoalSurface::dwgOutFields ( AcDbDwgFiler* pFiler ) const
@@ -76,9 +76,9 @@ Acad::ErrorStatus CoalSurface::dwgOutFields ( AcDbDwgFiler* pFiler ) const
     if ( ( es = pFiler->writeUInt32 ( CoalSurface::kCurrentVersionNumber ) ) != Acad::eOk )
         return ( es ) ;
 
-    pFiler->writeItem(m_insertPt);
-	//pFiler->writeItem(m_width);
-	//pFiler->writeItem(m_height);
+    pFiler->writeItem( m_insertPt );
+    //pFiler->writeItem(m_width);
+    //pFiler->writeItem(m_height);
 
     return ( pFiler->filerStatus () ) ;
 }
@@ -97,9 +97,9 @@ Acad::ErrorStatus CoalSurface::dwgInFields ( AcDbDwgFiler* pFiler )
     if ( version > CoalSurface::kCurrentVersionNumber )
         return ( Acad::eMakeMeProxy ) ;
 
-    pFiler->readItem(&m_insertPt);
-	//pFiler->readItem(&m_width);
-	//pFiler->readItem(&m_height);
+    pFiler->readItem( &m_insertPt );
+    //pFiler->readItem(&m_width);
+    //pFiler->readItem(&m_height);
 
     return ( pFiler->filerStatus () ) ;
 }

@@ -21,3 +21,5 @@
 // CMFCPropertyGridCtrl¿Ø¼þµÄ¸¨ÖúÀà
 #include "MFCPropertyGridCtrlHelper.h"
 #include "PropertyDataUpdater.h"
+
+#include "DataInitHelper.h"

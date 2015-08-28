@@ -14,7 +14,6 @@ DoubleTunnelDraw::DoubleTunnelDraw()
 void DoubleTunnelDraw::setAllExtraParamsToDefault()
 {
     m_width = 40;
-    jdt = JDT_NULL;
 }
 
 void DoubleTunnelDraw::configExtraParams()
@@ -38,7 +37,6 @@ void DoubleTunnelDraw::readExtraParam( DrawParamReader& reader )
 
     int i = 0;
     reader.readInt( i );
-    jdt = ( JointDrawType )( i % 3 );
 }
 
 void DoubleTunnelDraw::writeExtraParam( DrawParamWriter& writer )
@@ -48,7 +46,6 @@ void DoubleTunnelDraw::writeExtraParam( DrawParamWriter& writer )
     writer.writePoint( m_leftEndPt );
     writer.writePoint( m_rightStartPt );
     writer.writePoint( m_rightEndPt );
-    writer.writeInt( ( int )jdt ); // 转换成整数
 }
 
 void DoubleTunnelDraw::update()

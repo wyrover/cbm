@@ -498,6 +498,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\ArxTolSetter.h"
+				>
+			</File>
+			<File
 				RelativePath=".\ArxUtilHelper.h"
 				>
 			</File>

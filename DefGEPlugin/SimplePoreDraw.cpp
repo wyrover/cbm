@@ -17,8 +17,8 @@ SimplePoreDraw::~SimplePoreDraw ()
 
 void SimplePoreDraw::setAllExtraParamsToDefault()
 {
-	m_pore_size = 1;
-	m_id = _T("");
+    m_pore_size = 1;
+    m_id = _T( "" );
 }
 
 void SimplePoreDraw::configExtraParams()
@@ -30,14 +30,14 @@ void SimplePoreDraw::updateExtraParams()
 
 }
 
-void SimplePoreDraw::readKeyParam(DrawParamReader& reader)
+void SimplePoreDraw::readKeyParam( DrawParamReader& reader )
 {
-	reader.readPoint( m_insertPt );
+    reader.readPoint( m_insertPt );
 }
 
-void SimplePoreDraw::writeKeyParam(DrawParamWriter& writer)
+void SimplePoreDraw::writeKeyParam( DrawParamWriter& writer )
 {
-	writer.writePoint(m_insertPt);
+    writer.writePoint( m_insertPt );
 }
 
 void SimplePoreDraw::readExtraParam( DrawParamReader& reader )
@@ -54,14 +54,14 @@ void SimplePoreDraw::regPropertyDataNames( AcStringArray& names ) const
 {
     names.append( _T( "编号" ) );
     names.append( _T( "孔径" ) );
-	//names.append( _T( "$坐标" ) );
+    //names.append( _T( "$坐标" ) );
 }
 
 void SimplePoreDraw::readPropertyDataFromGE( const AcStringArray& values )
 {
     m_id = values[0].kACharPtr();
-	m_pore_size = abs(_tstof(values[1].kACharPtr()));
-	//ArxUtilHelper::StringToPoint3d(values[2].kACharPtr(), m_insertPt);
+    m_pore_size = abs( _tstof( values[1].kACharPtr() ) );
+    //ArxUtilHelper::StringToPoint3d(values[2].kACharPtr(), m_insertPt);
 }
 
 static AcGePoint3d CaclLeftBottomPt( const AcGePoint3d& pt, double angle, double width, double height )
@@ -82,14 +82,14 @@ Adesk::Boolean SimplePoreDraw::subWorldDraw( AcGiWorldDraw* mode )
     assertReadEnabled () ;
 
     //绘制一个圆
-	DrawCircle(mode, m_insertPt, m_pore_size*0.5, false);
-	//绘制十字
-	//DrawCross(mode, m_insertPt, m_pore_size*0.382);
+    DrawCircle( mode, m_insertPt, m_pore_size * 0.5, false );
+    //绘制十字
+    //DrawCross(mode, m_insertPt, m_pore_size*0.382);
 
     // 绘制编号
     AcGePoint3d pt1, pt2;
-	//AcGePoint3d pt = CaclLeftBottomPt(m_insertPt, 0, m_pore_size*0.5, m_pore_size*0.5);
-	DrawMText(mode, m_insertPt, 0, m_id, 0.25*m_pore_size);
+    //AcGePoint3d pt = CaclLeftBottomPt(m_insertPt, 0, m_pore_size*0.5, m_pore_size*0.5);
+    DrawMText( mode, m_insertPt, 0, m_id, 0.25 * m_pore_size );
 
     return Adesk::kTrue;
 }
@@ -98,7 +98,7 @@ Acad::ErrorStatus SimplePoreDraw::subGetGripPoints( AcGePoint3dArray& gripPoints
 {
     assertReadEnabled () ;
 
-	gripPoints.append(m_insertPt);
+    gripPoints.append( m_insertPt );
 
     return Acad::eOk;
 }
@@ -107,55 +107,55 @@ Acad::ErrorStatus SimplePoreDraw::subMoveGripPointsAt ( const AcDbIntArray& indi
 {
     assertWriteEnabled () ;
 
-	for( int i = 0; i < indices.length(); i++ )
-	{
-		int idx = indices.at( i );
+    for( int i = 0; i < indices.length(); i++ )
+    {
+        int idx = indices.at( i );
 
-		if ( idx == 0 )
-		{
-			m_insertPt += offset;
-		}
-	}
+        if ( idx == 0 )
+        {
+            m_insertPt += offset;
+        }
+    }
     return Acad::eOk;
 }
 
 Acad::ErrorStatus SimplePoreDraw::subTransformBy( const AcGeMatrix3d& xform )
 {
-	m_insertPt.transformBy(xform);
-	return Acad::eOk;
+    m_insertPt.transformBy( xform );
+    return Acad::eOk;
 }
 
 Acad::ErrorStatus SimplePoreDraw::subGetOsnapPoints (
-	AcDb::OsnapMode osnapMode,
-	Adesk::GsMarker gsSelectionMark,
-	const AcGePoint3d& pickPoint,
-	const AcGePoint3d& lastPoint,
-	const AcGeMatrix3d& viewXform,
-	AcGePoint3dArray& snapPoints,
-	AcDbIntArray& geomIds ) const
+    AcDb::OsnapMode osnapMode,
+    Adesk::GsMarker gsSelectionMark,
+    const AcGePoint3d& pickPoint,
+    const AcGePoint3d& lastPoint,
+    const AcGeMatrix3d& viewXform,
+    AcGePoint3dArray& snapPoints,
+    AcDbIntArray& geomIds ) const
 {
-	assertReadEnabled () ;
-	// 只捕捉2种类型的点：端点或圆心
-	if( osnapMode != AcDb::kOsMaskCen &&  osnapMode != AcDb::kOsMaskEnd) return Acad::eOk;
+    assertReadEnabled () ;
+    // 只捕捉2种类型的点：端点或圆心
+    if( osnapMode != AcDb::kOsMaskCen &&  osnapMode != AcDb::kOsMaskEnd ) return Acad::eOk;
 
-	if( osnapMode == AcDb::kOsMaskCen )
-	{
-		snapPoints.append(m_insertPt);
-	}
-	else if(osnapMode == AcDb::kOsMaskEnd)
-	{
-		AcGeVector3d v(AcGeVector3d::kXAxis);
-		snapPoints.append(m_insertPt + v*m_pore_size*0.5);
-		
-		v.rotateBy(PI*0.5, AcGeVector3d::kZAxis);
-		snapPoints.append(m_insertPt + v*m_pore_size*0.5);
+    if( osnapMode == AcDb::kOsMaskCen )
+    {
+        snapPoints.append( m_insertPt );
+    }
+    else if( osnapMode == AcDb::kOsMaskEnd )
+    {
+        AcGeVector3d v( AcGeVector3d::kXAxis );
+        snapPoints.append( m_insertPt + v * m_pore_size * 0.5 );
 
-		v.rotateBy(PI*0.5, AcGeVector3d::kZAxis);
-		snapPoints.append(m_insertPt + v*m_pore_size*0.5);
+        v.rotateBy( PI * 0.5, AcGeVector3d::kZAxis );
+        snapPoints.append( m_insertPt + v * m_pore_size * 0.5 );
 
-		v.rotateBy(PI*0.5, AcGeVector3d::kZAxis);
-		snapPoints.append(m_insertPt + v*m_pore_size*0.5);
-	}
+        v.rotateBy( PI * 0.5, AcGeVector3d::kZAxis );
+        snapPoints.append( m_insertPt + v * m_pore_size * 0.5 );
 
-	return Acad::eOk;
+        v.rotateBy( PI * 0.5, AcGeVector3d::kZAxis );
+        snapPoints.append( m_insertPt + v * m_pore_size * 0.5 );
+    }
+
+    return Acad::eOk;
 }

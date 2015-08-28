@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SOUI width="1266" height="754" translucent="0" alpha="255" resizable="0">
-  <root cache="1" skin="_skin.bg">
+  <root cache="1" skin="_skin.sys.wnd.bkgnd">
     <window pos="0,0" width="1268" height="754" name="window6" margin-x="1" margin-y="1" enable="0" visible="0"/>
     <caption pos="12,0" width="1247" height="50" name="caption7">
       <text pos="0,8" name="wnd_title">井下煤层气规模化抽采计算机辅助设计（CAD）系统</text>

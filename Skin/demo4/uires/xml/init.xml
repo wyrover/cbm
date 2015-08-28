@@ -3,8 +3,8 @@
   <font face="微软雅黑" size="13"/>
 
   <skin>
-    <imglist name="_skin.bg" src="img:CBM_BG"/>
-    <imgframe name="_skin.shadow" src="img:CBM_SHADOW" left="5" top="3" right="5" bottom="7"/>
+    <imglist name="_skin.bg" src="img:CBM_PNG_BG"/>
+    <imgframe name="_skin.shadow" src="img:CBM_PNG_SHADOW" left="5" top="3" right="5" bottom="7"/>
     <imglist name="_skin.btn.close" src="img:CBM_SYS_BTN_CLOSE" states="3" />
     <imglist name="_skin.btn.max" src="img:CBM_SYS_BTN_MAX" states="3" />
     <imglist name="_skin.btn.restore" src="img:CBM_SYS_BTN_RESTORE" states="3" />

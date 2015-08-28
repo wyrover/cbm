@@ -265,8 +265,8 @@ public:
 	DesignTechnology();
 	orm::RecordPtr coal;
 	CString name;
-	double v_dist;
-	double h_dist;
+	double v_offset;
+	double h_offset;
 	CString comment;
 	double top_side;
 	double bottom_side;

@@ -14,117 +14,124 @@ using namespace cbm;
 
 //-----------------------------------------------------------------------------
 //----- ObjectARX EntryPoint
-class CArxSoUIApp : public AcRxArxApp {
+class CArxSoUIApp : public AcRxArxApp
+{
 
 public:
-	CArxSoUIApp () : AcRxArxApp () {}
+    CArxSoUIApp () : AcRxArxApp () {}
 
-	virtual AcRx::AppRetCode On_kInitAppMsg (void *pkt) {
-		// TODO: Load dependencies here
+    virtual AcRx::AppRetCode On_kInitAppMsg ( void* pkt )
+    {
+        // TODO: Load dependencies here
 
-		// You *must* call On_kInitAppMsg here
-		AcRx::AppRetCode retCode =AcRxArxApp::On_kInitAppMsg (pkt) ;
-		
-		acrxRegisterService( ARX_SOUI_SERVICE_NAME );
+        // You *must* call On_kInitAppMsg here
+        AcRx::AppRetCode retCode = AcRxArxApp::On_kInitAppMsg ( pkt ) ;
 
-		acutPrintf( _T( "\nArxSoUI::On_kInitAppMsg\n" ) );
-		LOG_TRACE( _T( "ArxSoUI::On_kInitAppMsg" ) );
+        acrxRegisterService( ARX_SOUI_SERVICE_NAME );
 
-		AfxEnableControlContainer();
-		AfxInitRichEdit2();
+        acutPrintf( _T( "\nArxSoUI::On_kInitAppMsg\n" ) );
+        LOG_TRACE( _T( "ArxSoUI::On_kInitAppMsg" ) );
 
-		UIHelper::InitSouiEnviroment();
+        AfxEnableControlContainer();
+        AfxInitRichEdit2();
 
-		return (retCode) ;
-	}
+        //初始化数据字段
+        UIHelper::InitAllData();
+        //初始化soui环境
+        UIHelper::InitSouiEnviroment();
 
-	virtual AcRx::AppRetCode On_kUnloadAppMsg (void *pkt) {
-		// TODO: Add your code here
+        return ( retCode ) ;
+    }
 
-		// You *must* call On_kUnloadAppMsg here
-		AcRx::AppRetCode retCode =AcRxArxApp::On_kUnloadAppMsg (pkt) ;
+    virtual AcRx::AppRetCode On_kUnloadAppMsg ( void* pkt )
+    {
+        // TODO: Add your code here
 
-		delete acrxServiceDictionary->remove( ARX_SOUI_SERVICE_NAME );
+        // You *must* call On_kUnloadAppMsg here
+        AcRx::AppRetCode retCode = AcRxArxApp::On_kUnloadAppMsg ( pkt ) ;
 
-		acutPrintf( _T( "\nArxSoUI::On_kUnloadAppMsg\n" ) );
-		LOG_TRACE( _T( "ArxSoUI::On_kUnloadAppMsg" ) );
+        delete acrxServiceDictionary->remove( ARX_SOUI_SERVICE_NAME );
 
-		//退出登录状态
-		UIHelper::Logout();
-		UIHelper::UnInitSouiEnviroment();
+        acutPrintf( _T( "\nArxSoUI::On_kUnloadAppMsg\n" ) );
+        LOG_TRACE( _T( "ArxSoUI::On_kUnloadAppMsg" ) );
 
-		return (retCode) ;
-	}
+        //退出登录状态
+        UIHelper::Logout();
+        UIHelper::UnInitSouiEnviroment();
 
-	virtual AcRx::AppRetCode On_kLoadDwgMsg( void* pkt )
-	{
-		AcRx::AppRetCode retCode = AcRxArxApp::On_kLoadDwgMsg ( pkt );
+        return ( retCode ) ;
+    }
 
-		acutPrintf( _T( "\nArxSoUI::On_kLoadDwgMsg\n" ) );
+    virtual AcRx::AppRetCode On_kLoadDwgMsg( void* pkt )
+    {
+        AcRx::AppRetCode retCode = AcRxArxApp::On_kLoadDwgMsg ( pkt );
 
-		return retCode;
-	}
+        acutPrintf( _T( "\nArxSoUI::On_kLoadDwgMsg\n" ) );
 
-	virtual AcRx::AppRetCode On_kUnloadDwgMsg( void* pkt )
-	{
-		AcRx::AppRetCode retCode = AcRxArxApp::On_kUnloadDwgMsg( pkt ) ;
+        return retCode;
+    }
 
-		acutPrintf( _T( "\nArxSoUI::On_kUnloadDwgMsg\n" ) );
+    virtual AcRx::AppRetCode On_kUnloadDwgMsg( void* pkt )
+    {
+        AcRx::AppRetCode retCode = AcRxArxApp::On_kUnloadDwgMsg( pkt ) ;
 
-		return retCode;
-	}
+        acutPrintf( _T( "\nArxSoUI::On_kUnloadDwgMsg\n" ) );
 
-	virtual void RegisterServerComponents () {
-	}
+        return retCode;
+    }
 
-	static void JL_ShowModelessDemo()
-	{
-		UIHelper::ShowModelessDemo();
-	}
+    virtual void RegisterServerComponents ()
+    {
+    }
 
-	static void JL_ShowModalDemo()
-	{
-		UIHelper::ShowModalDemo();
-	}
+    static void JL_ShowModelessDemo()
+    {
+        UIHelper::ShowModelessDemo();
+    }
 
-	static void JL_Login()
-	{
-		UIHelper::Login();
-	}
+    static void JL_ShowModalDemo()
+    {
+        UIHelper::ShowModalDemo();
+    }
 
-	static void JL_Logout()
-	{
-		UIHelper::Logout();
-	}
+    static void JL_Login()
+    {
+        UIHelper::Login();
+    }
 
-	static void JL_SampleManage()
-	{
-		UIHelper::SampleManage();
-	}
+    static void JL_Logout()
+    {
+        UIHelper::Logout();
+    }
 
-	static void JL_GasTechModeDecision()
-	{
-		UIHelper::GasTechModeDecision();
-	}
+    static void JL_SampleManage()
+    {
+        UIHelper::SampleManage();
+    }
 
-	static void JL_KeyParamCacl()
-	{
-		UIHelper::KeyParamCacl();
-	}
+    static void JL_GasTechModeDecision()
+    {
+        UIHelper::GasTechModeDecision();
+    }
 
-	static void JL_PolicyHelp()
-	{
-		UIHelper::PolicyHelp();
-	}
+    static void JL_KeyParamCacl()
+    {
+        UIHelper::KeyParamCacl();
+    }
 
-	static void JL_Main()
-	{
-		UIHelper::Main();
-	}
+    static void JL_PolicyHelp()
+    {
+        UIHelper::PolicyHelp();
+    }
+
+    static void JL_Main()
+    {
+        UIHelper::Main();
+    }
 } ;
 
 //-----------------------------------------------------------------------------
-IMPLEMENT_ARX_ENTRYPOINT(CArxSoUIApp)
+IMPLEMENT_ARX_ENTRYPOINT( CArxSoUIApp )
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _ShowModelessDemo, sd1, ACRX_CMD_TRANSPARENT, NULL )
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _ShowModalDemo, sd2, ACRX_CMD_TRANSPARENT, NULL )
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _Login, login, ACRX_CMD_TRANSPARENT, NULL )

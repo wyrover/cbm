@@ -26,7 +26,7 @@ bool DataHelperImpl::getPropertyData( const CString& fieldName, CString& value )
     int index = FieldHelper::FindField( m_pObj->getType(), fieldName );
     if( index < 1 ) return false; // 字段不存在
 
-	// 字段返回的索引从1开始
+    // 字段返回的索引从1开始
     // 而数据的索引从0开始
     bool ret = m_pObj->getData( index - 1, value );
     if( ret )

@@ -259,38 +259,38 @@ bool SingleDataObjectHelper::GetObjectId( const CString& name, AcDbObjectId& obj
 
 void GDESDataObjectHelper::GetAllNames( AcStringArray& names )
 {
-	ArxDictHelper::GetAllKeys( REPORTER_INFO_DICT, names );
+    ArxDictHelper::GetAllKeys( REPORTER_INFO_DICT, names );
 }
 
 bool GDESDataObjectHelper::AddObject( const CString& name )
 {
-	if( name.GetLength() == 0 ) return false;
+    if( name.GetLength() == 0 ) return false;
 
-	ArxDictTool2* pDictTool2 = ArxDictTool2::GetDictTool( REPORTER_INFO_DICT );
-	DataObject* pDO = new DataObject();
-	pDO->initData();  // 初始化数据
-	bool ret = pDictTool2->addEntry( name, pDO );
-	if( !ret ) delete pDO; // 添加Object失败
-	delete pDictTool2;
-	return ret;
+    ArxDictTool2* pDictTool2 = ArxDictTool2::GetDictTool( REPORTER_INFO_DICT );
+    DataObject* pDO = new DataObject();
+    pDO->initData();  // 初始化数据
+    bool ret = pDictTool2->addEntry( name, pDO );
+    if( !ret ) delete pDO; // 添加Object失败
+    delete pDictTool2;
+    return ret;
 }
 
 bool GDESDataObjectHelper::RemoveObject( const CString& name )
 {
-	if( name.GetLength() == 0 ) return false;
+    if( name.GetLength() == 0 ) return false;
 
-	ArxDictTool2* pDictTool2 = ArxDictTool2::GetDictTool( REPORTER_INFO_DICT );
-	bool ret = pDictTool2->removeEntry( name );
-	delete pDictTool2;
-	return ret;
+    ArxDictTool2* pDictTool2 = ArxDictTool2::GetDictTool( REPORTER_INFO_DICT );
+    bool ret = pDictTool2->removeEntry( name );
+    delete pDictTool2;
+    return ret;
 }
 
 bool GDESDataObjectHelper::GetObjectId( const CString& name, AcDbObjectId& objId )
 {
-	if( name.GetLength() == 0 ) return false;
+    if( name.GetLength() == 0 ) return false;
 
-	ArxDictTool2* pDictTool2 = ArxDictTool2::GetDictTool( REPORTER_INFO_DICT );
-	bool ret = pDictTool2->findEntry( name, objId );
-	delete pDictTool2;
-	return ret;
+    ArxDictTool2* pDictTool2 = ArxDictTool2::GetDictTool( REPORTER_INFO_DICT );
+    bool ret = pDictTool2->findEntry( name, objId );
+    delete pDictTool2;
+    return ret;
 }

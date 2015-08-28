@@ -7,9 +7,9 @@ ACRX_DXF_DEFINE_MEMBERS (
     FieldInfoObject, AcDbObject,
     AcDb::kDHL_CURRENT, AcDb::kMReleaseCurrent,
     AcDbProxyEntity::kNoOperation, FIELDINFOOBJECT,
-    MINEGEAPP)
+    MINEGEAPP )
 
-    FieldInfoObject::FieldInfoObject () : AcDbObject ()
+FieldInfoObject::FieldInfoObject () : AcDbObject ()
 {
 }
 

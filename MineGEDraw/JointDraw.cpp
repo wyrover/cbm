@@ -11,12 +11,12 @@ JointDraw::JointDraw()
 
 void JointDraw::readKeyParam( DrawParamReader& reader )
 {
-	reader.readPoint( m_inserPt );
+    reader.readPoint( m_inserPt );
 }
 
 void JointDraw::writeKeyParam( DrawParamWriter& writer )
 {
-	writer.writePoint( m_inserPt );
+    writer.writePoint( m_inserPt );
 }
 
 void JointDraw::extendByLength( double length )

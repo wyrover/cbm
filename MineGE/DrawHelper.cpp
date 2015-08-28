@@ -268,22 +268,23 @@ void DrawHelper::GetModelGEById( const AcDbObjectId& objId, AcDbObjectIdArray& o
 
 void DrawHelper::GetHosts( const AcDbObjectIdArray& objIds, AcDbObjectIdArray& hosts )
 {
-	AcTransaction* pTrans = actrTransactionManager->startTransaction();
-	if( pTrans == 0 ) return;
+    AcTransaction* pTrans = actrTransactionManager->startTransaction();
+    if( pTrans == 0 ) return;
 
-	int len = objIds.length();
-	for( int i = 0; i < len; i++ )
-	{
-		AcDbObject* pObj;
-		if( Acad::eOk != pTrans->getObject( pObj, objIds[i], AcDb::kForRead ) ) continue;
+    int len = objIds.length();
+    for( int i = 0; i < len; i++ )
+    {
+        AcDbObject* pObj;
+        if( Acad::eOk != pTrans->getObject( pObj, objIds[i], AcDb::kForRead ) ) continue;
 
-		TagGE* pTag = TagGE::cast( pObj );
-		if( pTag == 0 ) continue;
+        TagGE* pTag = TagGE::cast( pObj );
+        if( pTag == 0 ) continue;
 
-		AcDbObjectId host = pTag->getRelatedGE();
-		/*if( !host.isNull() ) */hosts.append( host );
-	}
-	actrTransactionManager->endTransaction();
+        AcDbObjectId host = pTag->getRelatedGE();
+        /*if( !host.isNull() ) */
+        hosts.append( host );
+    }
+    actrTransactionManager->endTransaction();
 }
 
 bool DrawHelper::IsGETypeHasDrawJig( const CString& geType )
@@ -417,141 +418,141 @@ bool DrawHelper::GetCurrentDraw( const CString& type, CString& draw )
     return GetCurDraw( type, draw );
 }
 
-AcDbObjectId DrawHelper::GetRelatedTW(AcDbObjectId objId)
+AcDbObjectId DrawHelper::GetRelatedTW( AcDbObjectId objId )
 {
-	AcDbObjectId tWorkId;
-	AcDbObjectIdArray objIds;
-	DrawHelper::FindMineGEs(_T("LinkedGE"),objIds);
-	int len = objIds.length();
+    AcDbObjectId tWorkId;
+    AcDbObjectIdArray objIds;
+    DrawHelper::FindMineGEs( _T( "LinkedGE" ), objIds );
+    int len = objIds.length();
 
-	AcGePoint3d spt,ept;
-	//获取选择巷道的始末节点
-	AcDbObject* pObj;
-	acdbOpenObject( pObj, objId, AcDb::kForRead );
+    AcGePoint3d spt, ept;
+    //获取选择巷道的始末节点
+    AcDbObject* pObj;
+    acdbOpenObject( pObj, objId, AcDb::kForRead );
 
-	LinkedGE* pEdge = LinkedGE::cast( pObj );
-	pObj->close();
-	pEdge->getSEPoint(spt,ept);
+    LinkedGE* pEdge = LinkedGE::cast( pObj );
+    pObj->close();
+    pEdge->getSEPoint( spt, ept );
 
-	AcGePoint3dArray findedPts;
-	findedPts.append(spt);
-	findedPts.append(ept);
+    AcGePoint3dArray findedPts;
+    findedPts.append( spt );
+    findedPts.append( ept );
 
-	for (int i = 0;i < len; i++)
-	{
-		bool isTTunnel = ArxUtilHelper::IsEqualType( _T( "TTunnel" ), objIds[i] );
+    for ( int i = 0; i < len; i++ )
+    {
+        bool isTTunnel = ArxUtilHelper::IsEqualType( _T( "TTunnel" ), objIds[i] );
 
-		//获取其他巷道的始末节点
-		AcDbObject* pObj;
-		acdbOpenObject( pObj, objIds[i], AcDb::kForRead );
+        //获取其他巷道的始末节点
+        AcDbObject* pObj;
+        acdbOpenObject( pObj, objIds[i], AcDb::kForRead );
 
-		LinkedGE* pEdge = LinkedGE::cast( pObj );
-		pObj->close();
-		pEdge->getSEPoint(spt,ept);
+        LinkedGE* pEdge = LinkedGE::cast( pObj );
+        pObj->close();
+        pEdge->getSEPoint( spt, ept );
 
-		//acutPrintf(_T("\n始节点:(%f,%f),末节点(%f,%f)"),spt.x,spt.y,ept.x,ept.y);
-		if (findedPts.contains(spt) && findedPts.contains(ept))
-		{
-			continue;
-		}
-		else if (findedPts.contains(spt) && !isTTunnel)
-		{
-			findedPts.append(ept);
-			i = -1;
-		}
-		else if (findedPts.contains(ept) && !isTTunnel)
-		{
-			findedPts.append(spt);
-			i = -1;
-		}
-		else if ((findedPts.contains(spt) || findedPts.contains(ept)) && isTTunnel)
-		{
-			tWorkId = objIds[i];
-			break;
-		}
-	}
+        //acutPrintf(_T("\n始节点:(%f,%f),末节点(%f,%f)"),spt.x,spt.y,ept.x,ept.y);
+        if ( findedPts.contains( spt ) && findedPts.contains( ept ) )
+        {
+            continue;
+        }
+        else if ( findedPts.contains( spt ) && !isTTunnel )
+        {
+            findedPts.append( ept );
+            i = -1;
+        }
+        else if ( findedPts.contains( ept ) && !isTTunnel )
+        {
+            findedPts.append( spt );
+            i = -1;
+        }
+        else if ( ( findedPts.contains( spt ) || findedPts.contains( ept ) ) && isTTunnel )
+        {
+            tWorkId = objIds[i];
+            break;
+        }
+    }
 
-	return tWorkId;
+    return tWorkId;
 }
 
-static void GetSEPointById(const AcDbObjectId& objId, AcGePoint3d& spt, AcGePoint3d& ept)
+static void GetSEPointById( const AcDbObjectId& objId, AcGePoint3d& spt, AcGePoint3d& ept )
 {
-	AcTransaction *pTran = actrTransactionManager->startTransaction();
-	if ( 0 == pTran) return;
+    AcTransaction* pTran = actrTransactionManager->startTransaction();
+    if ( 0 == pTran ) return;
 
-	AcDbObject* pObj;
-	if (Acad::eOk != pTran->getObject(pObj,objId,AcDb::kForRead)) return;
+    AcDbObject* pObj;
+    if ( Acad::eOk != pTran->getObject( pObj, objId, AcDb::kForRead ) ) return;
 
-	LinkedGE* pEdge = LinkedGE::cast( pObj );
-	pEdge->getSEPoint(spt,ept);
+    LinkedGE* pEdge = LinkedGE::cast( pObj );
+    pEdge->getSEPoint( spt, ept );
 
-	actrTransactionManager->endTransaction();
+    actrTransactionManager->endTransaction();
 
 }
 
-AcDbObjectIdArray DrawHelper::GetRelatedTunnel(AcDbObjectId ttunnelId)
+AcDbObjectIdArray DrawHelper::GetRelatedTunnel( AcDbObjectId ttunnelId )
 {
-	AcDbObjectIdArray objIds;
-	DrawHelper::FindMineGEs(_T("LinkedGE"),objIds);
-	int len = objIds.length();
+    AcDbObjectIdArray objIds;
+    DrawHelper::FindMineGEs( _T( "LinkedGE" ), objIds );
+    int len = objIds.length();
 
-	//acutPrintf(_T("\nLinkedGE的数目：%d"),len);
-	AcGePoint3d ttunnelSpt,ttunnelEpt;
-	//获取选择工作面的始末节点
-	GetSEPointById(ttunnelId,ttunnelSpt,ttunnelEpt);
+    //acutPrintf(_T("\nLinkedGE的数目：%d"),len);
+    AcGePoint3d ttunnelSpt, ttunnelEpt;
+    //获取选择工作面的始末节点
+    GetSEPointById( ttunnelId, ttunnelSpt, ttunnelEpt );
 
-	AcDbObjectIdArray tunnelsRetIds;
-	//AcGePoint3d pt = ttunnelSpt;
+    AcDbObjectIdArray tunnelsRetIds;
+    //AcGePoint3d pt = ttunnelSpt;
 
-	AcGePoint3dArray findedPts;
-	findedPts.append(ttunnelSpt);
+    AcGePoint3dArray findedPts;
+    findedPts.append( ttunnelSpt );
 
-	for (int i = 0; i < len; i++)
-	{
-		AcGePoint3d tunnelSpt,tunnelEpt;
-		GetSEPointById(objIds[i],tunnelSpt,tunnelEpt);
+    for ( int i = 0; i < len; i++ )
+    {
+        AcGePoint3d tunnelSpt, tunnelEpt;
+        GetSEPointById( objIds[i], tunnelSpt, tunnelEpt );
 
-		if (findedPts.contains(tunnelSpt) && !findedPts.contains(tunnelEpt))
-		{
-			findedPts.append(tunnelEpt);
-			i = -1;
-		}
-		else if (findedPts.contains(tunnelEpt) && !findedPts.contains(tunnelSpt))
-		{
-			findedPts.append(tunnelSpt);
-			i = -1;
-		}
-	}
+        if ( findedPts.contains( tunnelSpt ) && !findedPts.contains( tunnelEpt ) )
+        {
+            findedPts.append( tunnelEpt );
+            i = -1;
+        }
+        else if ( findedPts.contains( tunnelEpt ) && !findedPts.contains( tunnelSpt ) )
+        {
+            findedPts.append( tunnelSpt );
+            i = -1;
+        }
+    }
 
-	for (int i = 0;i < len; i++)
-	{		
-		AcGePoint3d tunnelSpt,tunnelEpt;
-		GetSEPointById(objIds[i],tunnelSpt,tunnelEpt);
+    for ( int i = 0; i < len; i++ )
+    {
+        AcGePoint3d tunnelSpt, tunnelEpt;
+        GetSEPointById( objIds[i], tunnelSpt, tunnelEpt );
 
-		if ((findedPts.contains(tunnelSpt)||findedPts.contains(tunnelEpt)))
-		{
-			tunnelsRetIds.append(objIds[i]);
-		}
-	}
-	return tunnelsRetIds;
+        if ( ( findedPts.contains( tunnelSpt ) || findedPts.contains( tunnelEpt ) ) )
+        {
+            tunnelsRetIds.append( objIds[i] );
+        }
+    }
+    return tunnelsRetIds;
 }
 
 void DrawHelper::HighLightShowGE( const AcDbObjectId& objId, unsigned short colorIndex )
 {
-	AcDbObjectIdArray objIds;
-	objIds.append( objId );
+    AcDbObjectIdArray objIds;
+    objIds.append( objId );
 
-	// 记录图元的原颜色
-	AcArray<Adesk::UInt16> colors;
-	if( !ArxEntityHelper::GetEntitiesColor( objIds, colors ) ) return;
+    // 记录图元的原颜色
+    AcArray<Adesk::UInt16> colors;
+    if( !ArxEntityHelper::GetEntitiesColor( objIds, colors ) ) return;
 
-	// 高亮显示图元
-	ArxEntityHelper::SetEntitiesColor( objIds, colorIndex );
+    // 高亮显示图元
+    ArxEntityHelper::SetEntitiesColor( objIds, colorIndex );
 
-	// 中断
-	ArxUtilHelper::Pause();
+    // 中断
+    ArxUtilHelper::Pause();
 
-	// 恢复原有颜色
-	ArxEntityHelper::SetEntitiesColor2( objIds, colors );
+    // 恢复原有颜色
+    ArxEntityHelper::SetEntitiesColor2( objIds, colors );
 
 }

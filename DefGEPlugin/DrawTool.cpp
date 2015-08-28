@@ -195,43 +195,43 @@ void DrawPolyLine( AcGiWorldDraw* mode, const AcGePoint3d& pt, double angle, dou
  http://blog.csdn.net/jiangdong2007/article/details/39637369
  */
 
-AcDbObjectId GetTextStyle(const CString& style)
+AcDbObjectId GetTextStyle( const CString& style )
 {
-	AcDbTextStyleTable *pTextStyleTbl;
-	acdbHostApplicationServices()->workingDatabase()->getSymbolTable(pTextStyleTbl, AcDb::kForWrite);
-	AcDbObjectId fontId;
-	pTextStyleTbl->getAt(style, fontId);
-	pTextStyleTbl->close();
+    AcDbTextStyleTable* pTextStyleTbl;
+    acdbHostApplicationServices()->workingDatabase()->getSymbolTable( pTextStyleTbl, AcDb::kForWrite );
+    AcDbObjectId fontId;
+    pTextStyleTbl->getAt( style, fontId );
+    pTextStyleTbl->close();
 
-	return fontId;
+    return fontId;
 }
 
-AcDbObjectId CreateTextStyle(const CString& style, const CString& winFont, Adesk::Boolean bold, Adesk::Boolean italic, int charset, int pitchAndFamily)
+AcDbObjectId CreateTextStyle( const CString& style, const CString& winFont, Adesk::Boolean bold, Adesk::Boolean italic, int charset, int pitchAndFamily )
 {
-	/*
-	//pTextStyleTblRcd->setFileName(_T("simfang.ttf"));
-	//pTextStyleTblRcd->setBigFontFileName("hzdx");
-	pTextStyleTblRcd->setXScale(0.8);
-	//pTextStyleTblRcd->setFont("_T(楷体_GB2312"),Adesk::kFalse,Adesk::kFalse,GB2312_CHARSET,49);
-	//pTextStyleTblRcd->setFont(_T("宋体"),Adesk::kFalse,Adesk::kFalse,GB2312_CHARSET,2);
-	pTextStyleTblRcd->setFont(winFont,Adesk::kFalse,Adesk::kFalse,GB2312_CHARSET,16);
-	*/
+    /*
+    //pTextStyleTblRcd->setFileName(_T("simfang.ttf"));
+    //pTextStyleTblRcd->setBigFontFileName("hzdx");
+    pTextStyleTblRcd->setXScale(0.8);
+    //pTextStyleTblRcd->setFont("_T(楷体_GB2312"),Adesk::kFalse,Adesk::kFalse,GB2312_CHARSET,49);
+    //pTextStyleTblRcd->setFont(_T("宋体"),Adesk::kFalse,Adesk::kFalse,GB2312_CHARSET,2);
+    pTextStyleTblRcd->setFont(winFont,Adesk::kFalse,Adesk::kFalse,GB2312_CHARSET,16);
+    */
 
-	AcDbTextStyleTable *pTextStyleTbl;
-	acdbHostApplicationServices()->workingDatabase()->getSymbolTable(pTextStyleTbl, AcDb::kForWrite);
-	AcDbObjectId fontId;
-	if(pTextStyleTbl->getAt(style, fontId) == Acad::eKeyNotFound)
-	{
-		AcDbTextStyleTableRecord *pTextStyleTblRcd=new AcDbTextStyleTableRecord;
-		pTextStyleTblRcd->setName(style);
-		pTextStyleTblRcd->setFont(winFont,bold,italic,charset,pitchAndFamily);
-		pTextStyleTbl->add(fontId,pTextStyleTblRcd);
-		pTextStyleTblRcd->close();
-	}
-	pTextStyleTbl->close();
+    AcDbTextStyleTable* pTextStyleTbl;
+    acdbHostApplicationServices()->workingDatabase()->getSymbolTable( pTextStyleTbl, AcDb::kForWrite );
+    AcDbObjectId fontId;
+    if( pTextStyleTbl->getAt( style, fontId ) == Acad::eKeyNotFound )
+    {
+        AcDbTextStyleTableRecord* pTextStyleTblRcd = new AcDbTextStyleTableRecord;
+        pTextStyleTblRcd->setName( style );
+        pTextStyleTblRcd->setFont( winFont, bold, italic, charset, pitchAndFamily );
+        pTextStyleTbl->add( fontId, pTextStyleTblRcd );
+        pTextStyleTblRcd->close();
+    }
+    pTextStyleTbl->close();
 
-	return fontId;
-	//acdbHostApplicationServices()->workingDatabase()->setTextstyle(fontId);
+    return fontId;
+    //acdbHostApplicationServices()->workingDatabase()->setTextstyle(fontId);
 }
 
 void DrawMText( AcGiWorldDraw* mode, const AcGePoint3d& pt, double angle, const CString& str, double height, AcDbMText::AttachmentPoint ap, const CString& style )
@@ -239,24 +239,24 @@ void DrawMText( AcGiWorldDraw* mode, const AcGePoint3d& pt, double angle, const 
     //acutPrintf(_T("\n绘制前--文字颜色:%d"), mode->subEntityTraits().color());
     AcDbMText mt;
 
- //   //AcDbObjectId style; // 文字样式
-	AcDbObjectId fontId = GetTextStyle(style);
-	if(!fontId.isNull())
-	{
-		//acutPrintf(_T("\n设置样式为罗马字体"));
-		mt.setTextStyle(fontId);
-	}
+//   //AcDbObjectId style; // 文字样式
+    AcDbObjectId fontId = GetTextStyle( style );
+    if( !fontId.isNull() )
+    {
+        //acutPrintf(_T("\n设置样式为罗马字体"));
+        mt.setTextStyle( fontId );
+    }
     mt.setLocation( pt );
     mt.setTextHeight( height );
 
-	mt.setAttachment( ap );
+    mt.setAttachment( ap );
     mt.setRotation( angle );
 
     mt.setContents( str );
 
     // 经过测试发现，AcDbMText调用worldDraw的同时会修改mode的一些属性
     mt.setColorIndex( mode->subEntityTraits().color() );
-	
+
     mt.worldDraw( mode );
 
     //acutPrintf(_T("\n绘制后--文字颜色:%d"), mode->subEntityTraits().color());
@@ -501,57 +501,57 @@ bool OffSetPolygon( const AcGePoint3dArray& polygon, double offset, bool is_inne
     return ret;
 }
 
-static Acad::ErrorStatus GetLinetypeId(const CString& linetype, AcDbObjectId &linetypeId)
+static Acad::ErrorStatus GetLinetypeId( const CString& linetype, AcDbObjectId& linetypeId )
 {
-	AcDbLinetypeTable *pLtpTbl;
-	acdbHostApplicationServices()->workingDatabase()->getLinetypeTable(pLtpTbl, AcDb::kForRead);
-	if (!pLtpTbl->has(linetype))
-	{
-		pLtpTbl->close();
-		return Acad::eBadLinetypeName;
-	}
-	pLtpTbl->getAt(linetype, linetypeId);
-	pLtpTbl->close();
-	return Acad::eOk;
+    AcDbLinetypeTable* pLtpTbl;
+    acdbHostApplicationServices()->workingDatabase()->getLinetypeTable( pLtpTbl, AcDb::kForRead );
+    if ( !pLtpTbl->has( linetype ) )
+    {
+        pLtpTbl->close();
+        return Acad::eBadLinetypeName;
+    }
+    pLtpTbl->getAt( linetype, linetypeId );
+    pLtpTbl->close();
+    return Acad::eOk;
 }
 
-static void AddLineType(CString lineTypeName)
+static void AddLineType( CString lineTypeName )
 {
-	// 加载线型（两种方法）
-	Acad::ErrorStatus es;
-	//es = acdbHostApplicationServices()->workingDatabase()->loadLineTypeFile(_T("CENTER"), _T("acadiso.lin"));
-	es = acdbLoadLineTypeFile(lineTypeName, _T("acadiso.lin"),acdbHostApplicationServices()->workingDatabase());
-	// 创建新的AcDbMlineStyle对象
-	AcDbMlineStyle *pMlStyle = new AcDbMlineStyle;
-	pMlStyle->initMlineStyle();
-	pMlStyle->setName(_T("NewStyle"));
-	int index; // 多线样式中的元素索引
-	//AcCmColor color; // 颜色
-	AcDbObjectId linetypeId; // 线型的ID
-	// 添加第一个元素（红色的中心线）
-	//color.setColorIndex(1); // 红色
-	GetLinetypeId(lineTypeName, linetypeId);
-	//pMlStyle->addElement(index, 0, color, linetypeId);
-	//// 添加第二个元素（蓝色的虚线）
-	//color.setColorIndex(5); // 蓝色
-	//GetLinetypeId("HIDDEN", linetypeId);
-	//pMlStyle->addElement(index, 0.5, color, linetypeId);
-	//// 添加第三个元素（蓝色的虚线）
-	//pMlStyle->addElement(index, -0.5, color, linetypeId);
-	//// 将多线样式添加到多线样式字典中
-	AcDbDictionary *pDict;
-	acdbHostApplicationServices()->workingDatabase()->getMLStyleDictionary(pDict, AcDb::kForWrite);
-	AcDbObjectId mlStyleId;
-	es = pDict->setAt(_T("NewStyle"), pMlStyle, mlStyleId);
-	pDict->close();
-	pMlStyle->close();
+    // 加载线型（两种方法）
+    Acad::ErrorStatus es;
+    //es = acdbHostApplicationServices()->workingDatabase()->loadLineTypeFile(_T("CENTER"), _T("acadiso.lin"));
+    es = acdbLoadLineTypeFile( lineTypeName, _T( "acadiso.lin" ), acdbHostApplicationServices()->workingDatabase() );
+    // 创建新的AcDbMlineStyle对象
+    AcDbMlineStyle* pMlStyle = new AcDbMlineStyle;
+    pMlStyle->initMlineStyle();
+    pMlStyle->setName( _T( "NewStyle" ) );
+    int index; // 多线样式中的元素索引
+    //AcCmColor color; // 颜色
+    AcDbObjectId linetypeId; // 线型的ID
+    // 添加第一个元素（红色的中心线）
+    //color.setColorIndex(1); // 红色
+    GetLinetypeId( lineTypeName, linetypeId );
+    //pMlStyle->addElement(index, 0, color, linetypeId);
+    //// 添加第二个元素（蓝色的虚线）
+    //color.setColorIndex(5); // 蓝色
+    //GetLinetypeId("HIDDEN", linetypeId);
+    //pMlStyle->addElement(index, 0.5, color, linetypeId);
+    //// 添加第三个元素（蓝色的虚线）
+    //pMlStyle->addElement(index, -0.5, color, linetypeId);
+    //// 将多线样式添加到多线样式字典中
+    AcDbDictionary* pDict;
+    acdbHostApplicationServices()->workingDatabase()->getMLStyleDictionary( pDict, AcDb::kForWrite );
+    AcDbObjectId mlStyleId;
+    es = pDict->setAt( _T( "NewStyle" ), pMlStyle, mlStyleId );
+    pDict->close();
+    pMlStyle->close();
 }
 
-void DrawDotLine( AcGiWorldDraw *mode, const AcGePoint3d& spt, const AcGePoint3d& ept )
+void DrawDotLine( AcGiWorldDraw* mode, const AcGePoint3d& spt, const AcGePoint3d& ept )
 {
-	AddLineType(_T("CENTER"));
-	AcDbLine line( spt, ept );
-	line.setLinetype(_T("CENTER"));
-	line.worldDraw( mode );
+    AddLineType( _T( "CENTER" ) );
+    AcDbLine line( spt, ept );
+    line.setLinetype( _T( "CENTER" ) );
+    line.worldDraw( mode );
 
 }

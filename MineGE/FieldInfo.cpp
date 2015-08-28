@@ -11,7 +11,7 @@ void FieldInfo::initDefault()
     m_dt = DT_STRING;
     m_enable = true;
     m_descr = _T( "" );
-	m_tolrance = 4;
+    m_tolrance = 4;
     m_showInTooltip = false;
     initListType();
     initIntMinMaxValue();
@@ -29,7 +29,7 @@ void FieldInfo::copyFrom( const FieldInfo& info )
     m_descr = info.m_descr;
     m_lt = info.m_lt;
     m_varName = info.m_varName;
-	m_tolrance = info.m_tolrance;
+    m_tolrance = info.m_tolrance;
     m_showInTooltip = info.m_showInTooltip;
 }
 

@@ -1,7 +1,6 @@
 #pragma once
 
 #include <MineGEDraw/LinkedGEDraw.h>
-#include "JointDrawType.h"
 
 class DoubleTunnelDraw : public LinkedGEDraw
 {
@@ -57,7 +56,6 @@ public:
 	double m_width; // д╛хон╙30
 	AcGePoint3d m_leftStartPt, m_leftEndPt;
 	AcGePoint3d m_rightStartPt, m_rightEndPt;
-	JointDrawType jdt;
 };
 
 #ifdef DEFGEPLUGIN_MODULE

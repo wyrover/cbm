@@ -2,18 +2,14 @@
 #include "resource.h"
 
 // 配置文件
-#include <LoadConfig.h>
-
-// 系统精度设置器
-// 用于点坐标、向量的相等判断
-#include "TolSetter.h"
+#include "config.h"
 
 #include <MineGEDraw/MineGEDrawSystem.h>
 #include <ArxHelper/HelperClass.h>
 #include <Util/HelperClass.h>
 
 // 系统精度设置器全局变量
-TolSetter* pTS = 0;
+ArxTolSetter* pTS = 0;
 
 static CString BuildArxFileName( const CString& arxModuleName )
 {
@@ -29,7 +25,7 @@ static CString BuildServiceName( const CString& arxModuleName )
 	return str.MakeUpper();
 }
 
-static void SetWindowTitle()
+static void SetAutoCADTitle()
 {
 	//CWnd *pp= AfxGetMainWnd();
 	CMDIFrameWnd *pp = acedGetAcadFrame();
@@ -56,10 +52,10 @@ public:
 
 		//初始化log4cplus日志系统
 		//为了保证日志功能正常使用，在加载所有模块之前初始化日志系统
-		log_init(_T(".\\Datas\\log4cplus.properties"));
+		log_init(_T(".\\log\\log4cplus.properties"));
 
 		// 修改cad系统全局精度
-		pTS = new TolSetter( GLOBAL_TOLERANCE );
+		pTS = new ArxTolSetter( GLOBAL_TOLERANCE );
 
 		// 初始化可视化系统
 		if( !initDrawSystem() ) return AcRx::kRetError;
@@ -75,7 +71,7 @@ public:
 
 		acutPrintf( _T( "\nVVLoader::On_kInitAppMsg\n" ) );
 
-		SetWindowTitle();
+		SetAutoCADTitle();
 
 		return ( retCode ) ;
 	}
@@ -147,10 +143,7 @@ public:
 		// 初始化MineGEDrawSystem
 		MineGEDrawSystem::CreateInstance();
 		MineGEDrawSystem* pDrawSystem = MineGEDrawSystem::GetInstance();
-
-#if INCLUDE_VENT_MODULE
 		pDrawSystem->loadPlugin( ArxUtilHelper::BuildPath( ArxUtilHelper::GetAppPathDir(_hdllInstance), _T( "DefGEPlugin.arx" ) ) );
-#endif
 
 		return true;
 	}
@@ -170,10 +163,7 @@ public:
 		acutPrintf( _T( "\n-------- 加载图元模块 ------------\n" ) );
 
 		if( !loadArxModule( _T( "MineGE" ) ) ) return false;
-
-#if INCLUDE_VENT_MODULE
 		if( !loadArxModule( _T( "DefGE" ) ) ) return false;
-#endif
 
 		return true;
 	}
@@ -182,10 +172,7 @@ public:
 	{
 		acutPrintf( _T( "\n-------- 卸载图元模块 ------------" ) );
 
-#if INCLUDE_VENT_MODULE
 		unloadArxModule( _T( "DefGE" ) );
-#endif
-
 		unloadArxModule( _T( "MineGE" ) );
 	}
 
@@ -194,10 +181,7 @@ public:
 		acutPrintf( _T( "\n-------- 加载命令模块 ------------" ) );
 
 		//if( !loadArxModule( _T( "MineGECmds" ) ) ) return false;
-
-#if INCLUDE_VENT_MODULE
-		if( !loadArxModule( _T( "DrawVentCmd" ) ) ) return false;
-#endif
+		//if( !loadArxModule( _T( "DrawVentCmd" ) ) ) return false;
 
 		return true;
 	}
@@ -207,18 +191,13 @@ public:
 		acutPrintf( _T( "\n-------- 卸载命令模块 ------------" ) );
 
 		//unloadArxModule( _T( "MineGECmds" ) );
-
-#if INCLUDE_VENT_MODULE
-		unloadArxModule( _T( "DrawVentCmd" ) );
-#endif
-
+		//unloadArxModule( _T( "DrawVentCmd" ) );
 	}
 
 	bool loadFunctionModule()
 	{
 		acutPrintf( _T( "\n-------- 加载功能模块 ------------" ) );
 
-		if( !loadArxModule( _T( "DataInit" ) ) ) return false;
 		if( !loadArxModule( _T( "ArxDao" ) ) ) return false;
 		if( !loadArxModule( _T( "ArxSoUI" ) ) ) return false;
 
@@ -229,7 +208,6 @@ public:
 	{
 		acutPrintf( _T( "\n-------- 卸载功能模块 ------------" ) );
 
-		unloadArxModule( _T( "DataInit" ) );
 		unloadArxModule( _T( "ArxSoUI" ) );
 		unloadArxModule( _T( "ArxDao" ) );
 	}
