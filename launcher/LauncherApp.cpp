@@ -1,8 +1,9 @@
 #include "stdafx.h"
 #include "LauncherApp.h"
 #include "MySoUiLoader.h"
-#include "SouiDialog.h"
+#include "MainuiDialog.h"
 #include "SouiXmlName.h"
+#include "laucherHelper.h"
 
 BEGIN_MESSAGE_MAP(CLauncherApp, CWinAppEx)
 	ON_COMMAND(ID_HELP, &CWinApp::OnHelp)
@@ -26,18 +27,53 @@ static void UnInitSouiEnviroment()
 	delete SoUILoader::getSingletonPtr();
 }
 
+static BOOL IsRunning()
+{
+	if (0 == LaucherHelper::FindProcess(_T("acad.exe")))
+	{
+		MessageBox(NULL, _T("CAD正在运行!"), _T("警告"), MB_OK | MB_ICONWARNING);
+		return TRUE;
+	}
+
+	if (1 == LaucherHelper::FindProcess(_T("Launcher.exe")))
+	{
+		MessageBox(NULL, _T("程序正在运行!"), _T("警告"), MB_OK | MB_ICONWARNING);
+		return TRUE;
+	}
+	return FALSE;
+
+}
+
+static BOOL CADFileInit()
+{
+	if(!LaucherHelper::IsAutoCADExist()) return FALSE;
+	if(!LaucherHelper::copyCadFile()) 
+	{
+		MessageBox(NULL, _T("程序初始化失败!"), _T("错误提示"), MB_OK | MB_ICONSTOP);
+		return FALSE;
+	}
+	if(!LaucherHelper::writeReg()) 
+	{
+		MessageBox(NULL, _T("注册表写入失败!"), _T("错误提示"), MB_OK | MB_ICONSTOP);
+		return FALSE;
+	}
+	return TRUE;
+}
+
 static void StartFromSoui(LPCTSTR pszXmlName, HWND hParent=NULL, bool bModal=true)
 {
+	if(!CADFileInit()) return;
 	if(bModal)
 	{
-		SouiDialog dlg(pszXmlName, TRUE);
-		dlg.SetWindowTitle(_T("随便玩玩!"));
+		MainuiDialog dlg(pszXmlName, TRUE);
+		if(IsRunning()) return;
 		dlg.Run(hParent);
 	}
 	else
 	{
-		SouiDialog* dlg = new SouiDialog(pszXmlName, FALSE);
-		dlg->SetWindowTitle(_T("改标题,随便玩玩!"));
+		MainuiDialog* dlg = new MainuiDialog(pszXmlName, FALSE);
+		dlg->SetWindowTitle(_T("井下煤层气规模化抽采计算机辅助设计（CAD）系统"));
+		if(IsRunning()) return;
 		dlg->Run(hParent);
 		//父窗口为0的一般都是主窗口
 		if(hParent == NULL)

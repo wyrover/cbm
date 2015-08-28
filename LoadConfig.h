@@ -3,7 +3,7 @@
 // 控制arx模块的加载
 #define INCLUDE_VENT_MODULE 1
 
-#define INCLUDE_TVNS_MODULE 1
+#define INCLUDE_TVNS_MODULE 0
 
 #define INCLUDE_EVAL_MODULE 0
 

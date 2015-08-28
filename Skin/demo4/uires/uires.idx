@@ -66,7 +66,7 @@
   <icon>
     <file name="ICON_DUI_LOGO_32" path="image\icon\dui_logo_32.ico"/>
     <file name="ICON_SOUI_LOGO_48" path="image\icon\soui_logo_48.ico"/>
-    <file name="ICON_SOUI" path="image\cbm\soui.ico"/>
+    <file name="ICON_CBM_SOUI" path="image\cbm\soui.ico"/>
   </icon>
   <cursor>
     <file name="CURSOR_ARROW1" path="image\cursor\arrow1.ani"/>
@@ -83,7 +83,8 @@
     <file name="CBM_SKIN_HORIZONTAL_LINE" path="image\cbm\skin_horizontal_line.png"/>
     <file name="CBM_SKIN_LOGO" path="image\cbm\skin_logo.png"/>
     <file name="CBM_SKIN_MENU" path="image\cbm\skin_menu.png"/>
-    <file name="CBM_SKIN_PAYINSURE" path="image\cbm\skin_payinsure.png"/>
+    <file name="CBM_SKIN_BTN_CAD" path="image\cbm\skin_btn_cad.png"/>
+    <file name="CBM_SKIN_BTN_CAD_FILE" path="image\cbm\skin_btn_cad_file.png"/>
     <file name="CBM_SKIN_REGISTER_BG" path="image\cbm\skin_register_bg.png"/>
     <file name="CBM_SKIN_SKIN" path="image\cbm\skin_skin.png"/>
     <file name="CBM_SKIN_TAB_ICON" path="image\cbm\skin_tab_icon.png"/>
