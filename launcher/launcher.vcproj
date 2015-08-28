@@ -426,6 +426,22 @@
 					/>
 				</FileConfiguration>
 			</File>
+			<Filter
+				Name="thread"
+				>
+				<File
+					RelativePath=".\MonitorThread.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\SouiCADThread.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\ThreadHelper.cpp"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="头文件"
@@ -480,6 +496,22 @@
 				RelativePath=".\stdafx.h"
 				>
 			</File>
+			<Filter
+				Name="thread"
+				>
+				<File
+					RelativePath=".\MonitorThread.h"
+					>
+				</File>
+				<File
+					RelativePath=".\SouiCADThread.h"
+					>
+				</File>
+				<File
+					RelativePath=".\ThreadHelper.h"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="资源文件"
