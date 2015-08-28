@@ -118,6 +118,8 @@ BOOL CLauncherApp::InitInstance()
 	//如果cad或launcher已经运行就退出
 	//保证只有一个实例在运行!!!
 	if(IsRunning()) return FALSE;
+	//初始化CAD
+	if(!CADFileInit()) return FALSE;
 
     //初始化soui环境
     InitSouiEnviroment( m_hInstance );

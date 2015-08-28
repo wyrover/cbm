@@ -96,7 +96,7 @@ void MainuiDialog::OnCadfileButtonClick()
 	RunCADApp(sPath,argument);
 }
 
-void MainuiDialog::OnClose()
+void MainuiDialog::OnDestroyWindow()
 {
 	if (0 == LaucherHelper::FindProcess(_T("acad.exe")))
 	{
@@ -106,5 +106,4 @@ void MainuiDialog::OnClose()
 
 	LaucherHelper::deleteReg();
 	LaucherHelper::recoverCadFile();
-	SouiDialog::OnClose();
 }

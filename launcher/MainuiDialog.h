@@ -13,7 +13,6 @@ public:
 protected:
 	void OnCadButtonClick();
 	void OnCadfileButtonClick();
-	virtual void OnClose();
 
 	/** 菜单消息 */
 protected:
@@ -24,6 +23,8 @@ protected:
 protected:
 	//对话框初始化过程
 	LRESULT OnInitDialog(HWND hWnd, LPARAM lParam);
+	//窗口关闭前做一些清理工作
+	virtual void OnDestroyWindow();
 
 	//控件消息映射表
 	EVENT_MAP_BEGIN()
