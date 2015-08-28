@@ -58,7 +58,7 @@ protected:
 	//手动添加的虚函数(用于在窗口销毁或关闭前做一些清理工作,默认什么也不做)
 	virtual void OnDestroyWindow();
 	//窗口关闭消息
-	void OnClose();
+	virtual void OnClose();
 	//窗口大小位置变化(最大/最小/复原这3个按钮要同步变化尺寸)
 	void OnSize(UINT nType, SOUI::CSize size);
 	

@@ -363,7 +363,19 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
+				RelativePath=".\laucherHelper.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\LauncherApp.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\MainuiDialog.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Registry.cpp"
 				>
 			</File>
 			<File
@@ -421,11 +433,27 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
+				RelativePath=".\laucherHelper.h"
+				>
+			</File>
+			<File
 				RelativePath=".\LauncherApp.h"
 				>
 			</File>
 			<File
+				RelativePath=".\MainuiDialog.h"
+				>
+			</File>
+			<File
 				RelativePath=".\MySoUiLoader.h"
+				>
+			</File>
+			<File
+				RelativePath=".\RegEntry.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Registry.h"
 				>
 			</File>
 			<File
@@ -458,10 +486,6 @@
 			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav"
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
 			>
-			<File
-				RelativePath=".\res\launcher.ico"
-				>
-			</File>
 			<File
 				RelativePath=".\launcher.rc"
 				>
