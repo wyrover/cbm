@@ -55,33 +55,32 @@ static DWORD MonitorThreadProc( LPVOID lpParam )
 		}
 	}
 	//执行清理收尾工作
-	SendMessage(pData->hWnd, WM_END_MONITOR, (WPARAM)pData, NULL);
+	SendMessage(pData->hWnd, WM_END_MONITOR, (WPARAM)NULL, (LPARAM)pData);
 	return 0;
 }
 
 bool MonitorThread::Run(HANDLE hThread)
 {
 	//读取exe的路径
-	CString ExePath;
-	if( !getExePath( ExePath ) ) return false;
+	//主:这里应该对exe路径做一些检查(比如是否exe后缀,是否有效的exe等等)
+	if( m_exePath.GetLength()==0 ) return false;
 
 	MonitorThreadData data;
 	data.monitor = this;
 	data.hProcess = NULL;
 	data.hThread = NULL;
 	data.hWnd = m_hWnd;
-	data.data = attachData();
-
-	CString cmdLine = getCmdLine();
+	//data.value = attachData();
 
 	//启动进程前做一些准备工作
-	SendMessage(this->m_hWnd, WM_BEGIN_MONITOR, (WPARAM)&data, NULL);
+	LRESULT lResult = SendMessage(this->m_hWnd, WM_BEGIN_MONITOR, (WPARAM)NULL, (LPARAM)&data);
+	if(lResult == 0) return false;
 
 	//启动进程
 	if( !ThreadHelper::RunProecess(
-		ExePath,    // exe路径
-		cmdLine,    // 命令行参数
-		m_workDir,  // 当前工作路径
+		m_exePath,    // exe路径
+		m_cmdLine,    // 命令行参数
+		m_workDir,    // 当前工作路径
 		data.hProcess,
 		data.hThread,
 		m_bShow ) )
@@ -109,17 +108,19 @@ bool MonitorThread::Run(HANDLE hThread)
 	return true;
 }
 
-void MonitorThread::SetWndHandle(HWND hWnd)
+LRESULT MonitorThread::OnMonitorBegin(WPARAM wParam, LPARAM lParam)
 {
-	m_hWnd = hWnd;
+	return TRUE; 
 }
 
-void MonitorThread::ShowWindow(bool bShow)
+LRESULT MonitorThread::OnMonitorEnd(WPARAM wParam, LPARAM lParam) 
 {
-	m_bShow = bShow;
-}
-
-void MonitorThread::SetWorkDirectory(const CString& workDir)
-{
-	m_workDir = workDir;
+	//回收监控对象的内容(MonitorThread* monitor)
+	MonitorThreadData* pData = ( MonitorThreadData* )lParam;
+	if(pData != 0 && pData->monitor != 0)
+	{
+		delete pData->monitor;
+		pData->monitor = 0;
+	}
+	return TRUE;
 }

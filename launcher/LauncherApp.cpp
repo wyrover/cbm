@@ -3,7 +3,7 @@
 #include "MySoUiLoader.h"
 #include "MainuiDialog.h"
 #include "SouiXmlName.h"
-#include "laucherHelper.h"
+#include "ThreadHelper.h"
 
 BEGIN_MESSAGE_MAP( CLauncherApp, CWinAppEx )
     ON_COMMAND( ID_HELP, &CWinApp::OnHelp )
@@ -25,38 +25,6 @@ static void InitSouiEnviroment( HINSTANCE hInstance )
 static void UnInitSouiEnviroment()
 {
     delete SoUILoader::getSingletonPtr();
-}
-
-static BOOL IsRunning()
-{
-	if (0 == LaucherHelper::FindProcess(_T("acad.exe")))
-	{
-		MessageBox(NULL, _T("CAD正在运行!"), _T("警告"), MB_OK | MB_ICONWARNING);
-		return TRUE;
-	}
-
-	if (1 == LaucherHelper::FindProcess(_T("Launcher.exe")))
-	{
-		MessageBox(NULL, _T("程序正在运行!"), _T("警告"), MB_OK | MB_ICONWARNING);
-		return TRUE;
-	}
-	return FALSE;
-}
-
-static BOOL CADFileInit()
-{
-	if(!LaucherHelper::IsAutoCADExist()) return FALSE;
-	if(!LaucherHelper::copyCadFile()) 
-	{
-		MessageBox(NULL, _T("程序初始化失败!"), _T("错误提示"), MB_OK | MB_ICONSTOP);
-		return FALSE;
-	}
-	if(!LaucherHelper::writeReg()) 
-	{
-		MessageBox(NULL, _T("注册表写入失败!"), _T("错误提示"), MB_OK | MB_ICONSTOP);
-		return FALSE;
-	}
-	return TRUE;
 }
 
 static void StartFromSoui(SouiDialog* dlg, HWND hParent=NULL)
@@ -115,11 +83,11 @@ BOOL CLauncherApp::InitInstance()
     AfxInitRichEdit2();
     SetRegistryKey( _T( "应用程序向导生成的本地应用程序" ) );
 
-	//如果cad或launcher已经运行就退出
-	//保证只有一个实例在运行!!!
-	if(IsRunning()) return FALSE;
-	//初始化CAD
-	if(!CADFileInit()) return FALSE;
+	if (ThreadHelper::ProcessNum(_T("Launcher.exe")) > 1)
+	{
+		MessageBox(NULL, _T("程序正在运行!"), _T("警告"), MB_OK | MB_ICONWARNING);
+		return FALSE;
+	}
 
     //初始化soui环境
     InitSouiEnviroment( m_hInstance );

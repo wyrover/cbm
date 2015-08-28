@@ -1,53 +1,63 @@
 #include "StdAfx.h"
 #include "SouiCADThread.h"
 #include "ThreadHelper.h"
+#include "CADHelper.h"
 
-// Gabmit的注册表项以及路径
-#define GAMBIT_KEY HKEY_CURRENT_USER
-#define GAMBIT_SUB_KEY _T("Software\\Fluent Inc Products\\Exe")
-
-SouiCADThread::SouiCADThread()
+SouiCADThread::SouiCADThread(const CString& dwgFile)
 {
+	//设置cad的路径
+	SetExePath(CADHelper::GetCADPath());
+	//设置命令行参数
+	CString strArg;
+	if(dwgFile.GetLength() > 0)
+	{
+		strArg = _T("motifi ") + dwgFile;
+	}
+	SetCmdLine(strArg);
+	//设置当前工作路径
+	SetWorkDirectory(ThreadHelper::GetAppPathDir(NULL));
+	//显示CAD窗口
+	ShowWindow(true);
 }
 
 SouiCADThread::~SouiCADThread(void)
 {
 }
 
-bool SouiCADThread::getExePath(CString& path)
+LRESULT SouiCADThread::OnMonitorBegin(WPARAM wParam, LPARAM lParam)
 {
-	path = _T("C:\\Program Files\\AutoCAD 2010\\acad.exe");
-	return true;
+	//初始化CAD
+	if(!CADHelper::InitCAD()) 
+	{
+		return FALSE;
+	}
+	else
+	{
+		//隐藏窗口
+		return pWnd->ShowWindow(SW_HIDE);
+		//调用基类方法
+		return MonitorThread::OnMonitorBegin(wParam, lParam);;
+	}
 }
 
-CString SouiCADThread::getCmdLine()
+LRESULT SouiCADThread::OnMonitorEnd(WPARAM wParam, LPARAM lParam)
 {
-	return _T("");
+	if(!CADHelper::CleanCAD()) 
+	{
+		return FALSE;
+	}
+	else
+	{
+		//显示窗口
+		pWnd->ShowWindow(SW_SHOW);
+		//调用基类的方法,回收内存
+		return MonitorThread::OnMonitorEnd(wParam, lParam);
+	}
 }
 
-void* SouiCADThread::attachData()
+void SouiCADThread::RunCAD(SouiDialog* pWnd, const CString& dwgFile)
 {
-	CString appDir = ThreadHelper::GetAppPathDir();
-	return 0;
-}
-
-void SouiCADThread::OnMonitorBegin(WPARAM wParam, LPARAM lParam)
-{
-	//隐藏窗口
-	pWnd->ShowWindow(SW_HIDE);
-}
-
-void SouiCADThread::OnMonitorEnd(WPARAM wParam, LPARAM lParam)
-{
-	//显示窗口
-	pWnd->ShowWindow(SW_SHOW);
-}
-
-void SouiCADThread::RunCAD(SouiDialog* pWnd)
-{
-	SouiCADThread* cad = new SouiCADThread();
-	cad->SetWorkDirectory(ThreadHelper::GetAppPathDir(NULL));
-	cad->ShowWindow(true);
+	SouiCADThread* cad = new SouiCADThread(dwgFile);
 	cad->SetWndHandle(pWnd->GetSafeHwnd());
 	cad->pWnd = pWnd;
 

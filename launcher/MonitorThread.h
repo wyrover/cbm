@@ -1,10 +1,9 @@
 #pragma once
 
 // 自定义消息 -- 开始监控
-#define WM_BEGIN_MONITOR WM_USER+3
-
+#define WM_BEGIN_MONITOR WM_USER+100
 // 自定义消息 -- 结束监控
-#define WM_END_MONITOR WM_USER+4
+#define WM_END_MONITOR WM_USER+101
 
 class MonitorThread;
 
@@ -15,7 +14,7 @@ struct MonitorThreadData
 	HANDLE hProcess; // 要监视的exe程序(进程句柄)
 	HWND hWnd;       // 窗口句柄
 	MonitorThread* monitor; // 监视器
-	void* data;      // 任意数据
+	void* value;      // 任意数据
 };
 
 /*
@@ -44,33 +43,37 @@ public:
 	//虚析构函数
 	virtual ~MonitorThread(void) {}
 	//消息处理: 进程运行之前的准备工作(派生类应重载该函数)
-	virtual void OnMonitorBegin(WPARAM wParam, LPARAM lParam) {}
+	virtual LRESULT OnMonitorBegin(WPARAM wParam, LPARAM lParam);
 	//消息处理: 进程结束后的收尾清理工作(派生类应重载该函数)
-	virtual void OnMonitorEnd(WPARAM wParam, LPARAM lParam) {}
+	virtual LRESULT OnMonitorEnd(WPARAM wParam, LPARAM lParam);
 
 public:
+	//设置exe程序路径
+	void SetExePath(const CString& exePath) { m_exePath = exePath; }
+	//设置命令行参数
+	void SetCmdLine(const CString& cmdLine) { m_cmdLine = cmdLine; }
 	//设置进程的工作路径
-	void SetWorkDirectory(const CString& workDir);
+	void SetWorkDirectory(const CString& workDir) { m_workDir = workDir; }
 	//显示/隐藏进程窗口
-	void ShowWindow(bool bShow);
+	void ShowWindow(bool bShow) { m_bShow = bShow; }
 	//关联窗口
-	void SetWndHandle(HWND hWnd);
+	void SetWndHandle(HWND hWnd) { m_hWnd = hWnd; }
 	//运行
 	bool Run(HANDLE hThread);
 
 protected:
+	//构造函数
 	MonitorThread();
-	//读取exe的路径(一般都是通过注册表得到)
-	virtual bool getExePath(CString& path) { return false; }
-	virtual CString getCmdLine() { return _T(""); }
-	virtual void* attachData() { return 0; }
 
-private:
+	//要监控的exe程序路径
+	CString m_exePath;
+	//命令行参数
+	CString m_cmdLine;
 	//窗口句柄
 	HWND m_hWnd;
 	//exe程序的当前工作路径
 	CString m_workDir;
-	//是否隐藏exe程序的窗口
+	//是否隐藏exe程序的窗口(默认显示-true)
 	bool m_bShow;
 	//用户要求结束线程
 	static bool thread_end;

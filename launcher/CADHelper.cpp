@@ -1,7 +1,9 @@
 #include "stdafx.h"
-#include "laucherHelper.h"
+#include "CADHelper.h"
+#include "ThreadHelper.h"
 #include "Registry.h"
 #include "RegEntry.h"
+
 #include <shlwapi.h>
 
 typedef BOOL (WINAPI *LPFN_ISWOW64PROCESS) (HANDLE, PBOOL);
@@ -20,6 +22,12 @@ static BOOL IsWow64()
 	}
 	return bIsWow64; 
 }
+
+enum pathType
+{
+	CURRENT_USER = 0, //得到的目录C:\Users\hd\AppData\Roaming\Autodesk\AutoCAD 2010\R18.0\chs\Support
+	LOCAL_MACHINE = 1, //得到的目录是CAD的安装目录
+};
 
 static CString GetCADPathByWinAPI( TCHAR* locationKey ,pathType pat)
 {
@@ -190,83 +198,33 @@ static BOOL CopyCUIXandMNR(LPCTSTR cuixPath,LPCTSTR mnrPath)
 	return TRUE;
 }
 
-int LaucherHelper::FindProcess( TCHAR* appName )
+BOOL CADHelper::IsAutoCADExist()
 {
-	int i=0;  
-	PROCESSENTRY32 pe32;  
-	pe32.dwSize = sizeof(pe32);   
-	HANDLE hProcessSnap = ::CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);  
-	if(hProcessSnap == INVALID_HANDLE_VALUE)  
-	{  
-		i+=0;  
-	}  
-	BOOL bMore = ::Process32First(hProcessSnap, &pe32);  
-	while(bMore)  
-	{  
-		//printf(" 进程名称：%s \n", pe32.szExeFile);  
-		if(!_tcscmp(appName,pe32.szExeFile))  
-		{  
-			//printf("进程运行中"); 
-			//AfxMessageBox(appName);
-			i+=1;  
-		}  
-		bMore = ::Process32Next(hProcessSnap, &pe32);  
-	}  
-	if(i>1)//大于1，排除自身  
-	{           
-		return 1;  
-	}
-
-	else if( i > 0 && i < 2 ) //等于1，找到自身
-	{
-		return 0;
-	}
-
-	else
-	{  
-		return -1;  
-	}  
-}
-
-BOOL LaucherHelper::IsAutoCADExist()
-{
-	BOOL isExist = FALSE;
 	//CAD的安装目录
 	CString cadPath = GetCADPathByWinAPI(_T("AcadLocation"),LOCAL_MACHINE);
-	if(cadPath.IsEmpty()) 
-	{
-		MessageBox(NULL, _T("未安装CAD!"), _T("警告!"), MB_OK | MB_ICONWARNING);
-		isExist = FALSE;
-		return FALSE;
-	}
-
-	else isExist = TRUE;
-
-	return isExist;
-
+	return cadPath.IsEmpty()? FALSE : TRUE;
 }
 
-
-CString LaucherHelper::GetCADPath()
+CString CADHelper::GetCADPath()
 {
 	CString cadPath = GetCADPathByWinAPI(_T("AcadLocation"),LOCAL_MACHINE);
 	cadPath.Append(_T("\\acad.exe"));
 	return cadPath;
 }
 
-BOOL LaucherHelper::copyCadFile()
+BOOL CADHelper::CopyCADFile()
 {
 	if(!CopyCUIXandMNR(_T("\\Datas\\JL\\acad.CUIX"),_T("\\Datas\\JL\\acad.mnr"))) return FALSE;
 	return TRUE;
 }
 
-BOOL LaucherHelper::recoverCadFile()
+BOOL CADHelper::RecoverCADFile()
 {
 	if(!CopyCUIXandMNR(_T("\\Datas\\CAD\\acad.CUIX"),_T("\\Datas\\CAD\\acad.mnr"))) return FALSE;
 	return TRUE;
 }
 
-BOOL LaucherHelper::writeReg()
+BOOL CADHelper::WriteLaunchInfo()
 {
 	CString CurrentPath = GetWorkDir();
 	if(!writeTestKeybyWinAPI(CurrentPath)) return FALSE;
@@ -274,9 +232,72 @@ BOOL LaucherHelper::writeReg()
 	return TRUE;
 }
 
-BOOL LaucherHelper::deleteReg()
+BOOL CADHelper::DeleteLaunchInfo()
 {
 	if(!delTestKeybyWinAPI()) return FALSE;
 	if(!MotifiInfomationKey(1)) return FALSE;
 	return TRUE;
+}
+
+static void GetDefaultPath( CString& defaultPath )
+{
+	TCHAR pPath[MAX_PATH]={0};
+	SHGetSpecialFolderPath(NULL,pPath,CSIDL_PERSONAL,0);
+
+	defaultPath.Format(_T("%s"),pPath);
+}
+
+BOOL CADHelper::SelectFile(CString& fileName, const CString& szFileFilter, const CString& szFileExt)
+{
+	CString defaultPath;
+	GetDefaultPath(defaultPath);
+
+	CFileDialog dlg(TRUE,szFileExt,defaultPath,OFN_OVERWRITEPROMPT,szFileFilter);///TRUE为OPEN对话框，FALSE为SAVE AS对话框
+
+	dlg.m_ofn.lpstrFile[0] = NULL;
+	CString selectedPath;
+	if(IDOK == dlg.DoModal())
+	{
+		selectedPath = dlg.GetPathName();
+	}
+	else
+	{
+		return FALSE;
+	}
+
+	fileName = selectedPath;
+	return TRUE;
+}
+
+bool CADHelper::InitCAD()
+{
+	if (ThreadHelper::IsProcessActive(_T("acad.exe")))
+	{
+		MessageBox(NULL, _T("CAD正在运行!"), _T("警告"), MB_OK | MB_ICONWARNING);
+		return false;
+	}
+	if(!CADHelper::IsAutoCADExist()) 
+	{
+		MessageBox(NULL, _T("未安装CAD!"), _T("警告!"), MB_OK | MB_ICONWARNING);
+		return false;
+	}
+	if(!CADHelper::CopyCADFile()) 
+	{
+		MessageBox(NULL, _T("程序初始化失败!"), _T("错误提示"), MB_OK | MB_ICONSTOP);
+		return false;
+	}
+	if(!CADHelper::WriteLaunchInfo()) 
+	{
+		MessageBox(NULL, _T("注册表写入失败!"), _T("错误提示"), MB_OK | MB_ICONSTOP);
+		return false;
+	}
+	return true;
+}
+
+bool CADHelper::CleanCAD()
+{
+	//删除注册表信息并恢复CAD原始的CUIX文件
+	if(!CADHelper::DeleteLaunchInfo()) return false;
+	if(!CADHelper::RecoverCADFile()) return false;
+	return true;
 }

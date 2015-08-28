@@ -88,6 +88,13 @@ void ThreadHelper::KillProcess( const CString& name )
     }
 }
 
+int ThreadHelper::ProcessNum(const CString& name)
+{
+	std::vector<DWORD> pids;
+	FindProcessIdByName( name, pids );
+	return (int)pids.size();
+}
+
 bool ThreadHelper::IsProcessActive( const CString& name )
 {
     std::vector<DWORD> pids;
