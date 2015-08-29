@@ -45,14 +45,14 @@ void DrawShaft( AcGiWorldDraw* mode, const AcGePoint3d& pt, double radius )
     DrawArc( mode, pt, radius * 0.8, PI * 7 / 6, PI, false );
 }
 
-void DrawJoint( AcGiWorldDraw* mode, const AcGePoint3d& pt, double radius, JointDrawType jdt )
+void DrawJoint( AcGiWorldDraw* mode, const AcGePoint3d& pt, double radius, int jdt )
 {
-    if( jdt == JDT_CROSS )
+    if( jdt == 1 )
     {
         DrawCircle( mode, pt, radius, false );
         DrawCross( mode, pt, radius );
     }
-    else if( jdt == JDT_FILL )
+    else if( jdt == 2 )
     {
         DrawCircle( mode, pt, radius, true );
     }
@@ -60,49 +60,49 @@ void DrawJoint( AcGiWorldDraw* mode, const AcGePoint3d& pt, double radius, Joint
 
 void DealSpPoints( CString& value )
 {
-	//小数点前面的0补全,并且除掉左右多余的0
-	if(value.Find(_T('.')) == -1) return;
-	CString strValue;
-	strValue.Format(_T("%.2f"),_tstof(value));
-	value = strValue;
-	value.Replace(_T("0"),_T(" "));	//替换0为空格
-	value.Trim();	//裁剪
-	value.Replace(_T(" "),_T("0"));
-	if(value[0] == _T('.')) value.Insert(0,_T("0"));
-	int lenth = value.GetLength();
-	if(0 == lenth)
-	{
-		return;
-	}
-	if(value[lenth-1] == _T('.'))
-	{
-		value.Replace(_T("."),_T(" "));
-		value.Trim();	//裁剪
-	}
+    //小数点前面的0补全,并且除掉左右多余的0
+    if( value.Find( _T( '.' ) ) == -1 ) return;
+    CString strValue;
+    strValue.Format( _T( "%.2f" ), _tstof( value ) );
+    value = strValue;
+    value.Replace( _T( "0" ), _T( " " ) );	//替换0为空格
+    value.Trim();	//裁剪
+    value.Replace( _T( " " ), _T( "0" ) );
+    if( value[0] == _T( '.' ) ) value.Insert( 0, _T( "0" ) );
+    int lenth = value.GetLength();
+    if( 0 == lenth )
+    {
+        return;
+    }
+    if( value[lenth - 1] == _T( '.' ) )
+    {
+        value.Replace( _T( "." ), _T( " " ) );
+        value.Trim();	//裁剪
+    }
 
 }
 
-void DrawBackGround( AcGiWorldDraw* mode ,const AcGePoint3dArray& pts ,int colorIndx)
+void DrawBackGround( AcGiWorldDraw* mode , const AcGePoint3dArray& pts , int colorIndx )
 {
-	// 用户没有定义边界
-	if( pts.isEmpty() ) return;
+    // 用户没有定义边界
+    if( pts.isEmpty() ) return;
 
-	Adesk::UInt8 r, g, b;
+    Adesk::UInt8 r, g, b;
 
-	AcGiSubEntityTraits& traits = mode->subEntityTraits();
-	// 保存原有的属性
-	Adesk::UInt16 cl = traits.color();;
-	AcGiFillType ft = traits.fillType();
+    AcGiSubEntityTraits& traits = mode->subEntityTraits();
+    // 保存原有的属性
+    Adesk::UInt16 cl = traits.color();;
+    AcGiFillType ft = traits.fillType();
 
-	//AcCmEntityColor bgColor( r, g, b );
-	//traits.setTrueColor( bgColor );
-	if(colorIndx < 0 || colorIndx > 256) colorIndx = 7;
-	traits.setColor(colorIndx);
-	traits.setFillType( kAcGiFillAlways ); // 填充
-	//acutPrintf(_T("\n颜色索引：%d"), bgColor.colorIndex());
-	mode->geometry().polygon( pts.length(), pts.asArrayPtr() );
+    //AcCmEntityColor bgColor( r, g, b );
+    //traits.setTrueColor( bgColor );
+    if( colorIndx < 0 || colorIndx > 256 ) colorIndx = 7;
+    traits.setColor( colorIndx );
+    traits.setFillType( kAcGiFillAlways ); // 填充
+    //acutPrintf(_T("\n颜色索引：%d"), bgColor.colorIndex());
+    mode->geometry().polygon( pts.length(), pts.asArrayPtr() );
 
-	// 恢复属性
-	traits.setFillType( ft );
-	traits.setColor( cl );
+    // 恢复属性
+    traits.setFillType( ft );
+    traits.setColor( cl );
 }

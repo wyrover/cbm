@@ -4,10 +4,10 @@
 Adesk::UInt32 DrillSite::kCurrentVersionNumber = 1 ;
 
 ACRX_DXF_DEFINE_MEMBERS (
-	DrillSite, MineGE,
-	AcDb::kDHL_CURRENT, AcDb::kMReleaseCurrent,
-	AcDbProxyEntity::kNoOperation,
-	×ê³¡, DEFGEAPP
+    DrillSite, MineGE,
+    AcDb::kDHL_CURRENT, AcDb::kMReleaseCurrent,
+    AcDbProxyEntity::kNoOperation,
+    ×ê³¡, DEFGEAPP
 )
 
 DrillSite::DrillSite()
@@ -41,14 +41,14 @@ void DrillSite::setInsertPt( const AcGePoint3d& pt )
 
 void DrillSite::readKeyParam( DrawParamReader& reader )
 {
-    reader.readPoint(m_insertPt);
-	//reader.readPoint(m_linkPt);
+    reader.readPoint( m_insertPt );
+    //reader.readPoint(m_linkPt);
 }
 
 void DrillSite::writeKeyParam( DrawParamWriter& writer ) const
 {
-    writer.writePoint(m_insertPt);
-	//writer.writePoint(m_linkPt);
+    writer.writePoint( m_insertPt );
+    //writer.writePoint(m_linkPt);
 }
 
 Acad::ErrorStatus DrillSite::dwgOutFields ( AcDbDwgFiler* pFiler ) const
@@ -62,8 +62,8 @@ Acad::ErrorStatus DrillSite::dwgOutFields ( AcDbDwgFiler* pFiler ) const
     if ( ( es = pFiler->writeUInt32 ( DrillSite::kCurrentVersionNumber ) ) != Acad::eOk )
         return ( es ) ;
 
-    pFiler->writeItem(m_insertPt);
-	//pFiler->writeItem(m_linkPt);
+    pFiler->writeItem( m_insertPt );
+    //pFiler->writeItem(m_linkPt);
 
     return ( pFiler->filerStatus () ) ;
 }
@@ -82,8 +82,8 @@ Acad::ErrorStatus DrillSite::dwgInFields ( AcDbDwgFiler* pFiler )
     if ( version > DrillSite::kCurrentVersionNumber )
         return ( Acad::eMakeMeProxy ) ;
 
-    pFiler->readItem(&m_insertPt);
-	//pFiler->readItem(&m_linkPt);
+    pFiler->readItem( &m_insertPt );
+    //pFiler->readItem(&m_linkPt);
 
     return ( pFiler->filerStatus () ) ;
 }

@@ -15,18 +15,15 @@ static void UnInitSouiEnviroment()
 	delete SoUILoader::getSingletonPtr();
 }
 
-static void StartFromSoui(LPCTSTR pszXmlName, HWND hParent=NULL, bool bModal=true)
+static void StartFromSoui(SouiDialog* dlg, HWND hParent=NULL)
 {
-	if(bModal)
+	//dlg->SetWindowTitle(_T("改标题,随便玩玩!"));
+	if(dlg->isModal() == TRUE)
 	{
-		SouiDialog dlg(pszXmlName, TRUE);
-		dlg.SetWindowTitle(_T("改标题,随便玩玩!"));
-		dlg.Run(hParent);
+		dlg->Run(hParent);
 	}
 	else
 	{
-		SouiDialog* dlg = new SouiDialog(pszXmlName, FALSE);
-		dlg->SetWindowTitle(_T("改标题,随便玩玩!"));
 		dlg->Run(hParent);
 		//父窗口为0的一般都是主窗口
 		if(hParent == NULL)
@@ -42,10 +39,18 @@ static void StartFromSoui(LPCTSTR pszXmlName, HWND hParent=NULL, bool bModal=tru
 int APIENTRY _tWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,LPTSTR lpCmdLine, int nCmdShow)
 {
 	InitSouiEnviroment(hInstance);
-	// 以模态方式启动
-	//StartFromSoui(_T("layout:main"), NULL, true);
-	// 或者以非模态方式启动
-	StartFromSoui(_T("layout:main"), NULL, false);
+	if(1)
+	{
+		//以模态方式启动
+		SouiDialog dlg(_T("layout:main"), TRUE);
+		StartFromSoui(&dlg, NULL);
+	}
+	else
+	{
+		// 或者以非模态方式启动
+		SouiDialog* dlg = new SouiDialog(_T("layout:main"), FALSE);
+		StartFromSoui(dlg, NULL);
+	}
 	UnInitSouiEnviroment();
 
 	return 0;

@@ -381,6 +381,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\DataInitHelper.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\DrawHelper.cpp"
 				>
 			</File>
@@ -559,6 +563,10 @@
 			</File>
 			<File
 				RelativePath=".\ConstData.h"
+				>
+			</File>
+			<File
+				RelativePath=".\DataInitHelper.h"
 				>
 			</File>
 			<File

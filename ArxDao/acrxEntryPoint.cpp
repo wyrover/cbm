@@ -8,69 +8,73 @@
 #endif
 
 //----- ObjectARX EntryPoint
-class CArxDaoApp : public AcRxArxApp {
+class CArxDaoApp : public AcRxArxApp
+{
 
 public:
-	CArxDaoApp () : AcRxArxApp () {}
+    CArxDaoApp () : AcRxArxApp () {}
 
-	virtual AcRx::AppRetCode On_kInitAppMsg (void *pkt) {
-		// TODO: Load dependencies here
+    virtual AcRx::AppRetCode On_kInitAppMsg ( void* pkt )
+    {
+        // TODO: Load dependencies here
 
-		// You *must* call On_kInitAppMsg here
-		AcRx::AppRetCode retCode =AcRxArxApp::On_kInitAppMsg (pkt) ;
-		
-		acrxRegisterService( ARXDAO_SERVICE_NAME );
-		acutPrintf( _T( "\nArxDao::On_kInitAppMsg\n" ) );
+        // You *must* call On_kInitAppMsg here
+        AcRx::AppRetCode retCode = AcRxArxApp::On_kInitAppMsg ( pkt ) ;
 
-		//初始化数据库连接
-		DaoHelper::ConfigureDao(_T("root"), _T(""), _T("cbm"), _T("localhost"), _T("3306"));
-		//初始化示范矿区数据
-		DaoHelper::InitSampleRegion();
+        acrxRegisterService( ARXDAO_SERVICE_NAME );
+        acutPrintf( _T( "\nArxDao::On_kInitAppMsg\n" ) );
 
-		return (retCode) ;
-	}
+        //初始化数据库连接
+        DaoHelper::ConfigureDao( _T( "root" ), _T( "" ), _T( "cbm" ), _T( "localhost" ), _T( "3306" ) );
+        //初始化示范矿区数据
+        DaoHelper::InitSampleRegion();
 
-	virtual AcRx::AppRetCode On_kUnloadAppMsg (void *pkt) {
-		// You *must* call On_kUnloadAppMsg here
-		AcRx::AppRetCode retCode =AcRxArxApp::On_kUnloadAppMsg (pkt) ;
+        return ( retCode ) ;
+    }
 
-		delete acrxServiceDictionary->remove( ARXDAO_SERVICE_NAME );
+    virtual AcRx::AppRetCode On_kUnloadAppMsg ( void* pkt )
+    {
+        // You *must* call On_kUnloadAppMsg here
+        AcRx::AppRetCode retCode = AcRxArxApp::On_kUnloadAppMsg ( pkt ) ;
 
-		acutPrintf( _T( "\nArxDao::On_kUnloadAppMsg\n" ) );
-		//LOG_TRACE( _T( "ArxDao::On_kUnloadAppMsg" ) );
+        delete acrxServiceDictionary->remove( ARXDAO_SERVICE_NAME );
 
-		return (retCode) ;
-	}
+        acutPrintf( _T( "\nArxDao::On_kUnloadAppMsg\n" ) );
+        //LOG_TRACE( _T( "ArxDao::On_kUnloadAppMsg" ) );
 
-	virtual AcRx::AppRetCode On_kLoadDwgMsg( void* pkt )
-	{
-		AcRx::AppRetCode retCode = AcRxArxApp::On_kLoadDwgMsg ( pkt );
+        return ( retCode ) ;
+    }
 
-		acutPrintf( _T( "\nArxDao::On_kLoadDwgMsg\n" ) );
+    virtual AcRx::AppRetCode On_kLoadDwgMsg( void* pkt )
+    {
+        AcRx::AppRetCode retCode = AcRxArxApp::On_kLoadDwgMsg ( pkt );
 
-		return retCode;
-	}
+        acutPrintf( _T( "\nArxDao::On_kLoadDwgMsg\n" ) );
 
-	virtual AcRx::AppRetCode On_kUnloadDwgMsg( void* pkt )
-	{
-		AcRx::AppRetCode retCode = AcRxArxApp::On_kUnloadDwgMsg( pkt ) ;
+        return retCode;
+    }
 
-		acutPrintf( _T( "\nArxDao::On_kUnloadDwgMsg\n" ) );
+    virtual AcRx::AppRetCode On_kUnloadDwgMsg( void* pkt )
+    {
+        AcRx::AppRetCode retCode = AcRxArxApp::On_kUnloadDwgMsg( pkt ) ;
 
-		return retCode;
-	}
+        acutPrintf( _T( "\nArxDao::On_kUnloadDwgMsg\n" ) );
 
-	virtual void RegisterServerComponents () {
-	}
+        return retCode;
+    }
 
-	static void JL_TestDao()
-	{
-		DaoHelper::TestDao();
-	}
+    virtual void RegisterServerComponents ()
+    {
+    }
+
+    static void JL_TestDao()
+    {
+        DaoHelper::TestDao();
+    }
 
 } ;
 
 //-----------------------------------------------------------------------------
-IMPLEMENT_ARX_ENTRYPOINT(CArxDaoApp)
+IMPLEMENT_ARX_ENTRYPOINT( CArxDaoApp )
 
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxDaoApp, JL, _TestDao, TestDao, ACRX_CMD_TRANSPARENT, NULL )

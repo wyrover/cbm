@@ -1,103 +1,103 @@
 #include "StdAfx.h"
 #include "CustomProperties.h"
 
-SyncFunctor::SyncFunctor(AcPropertyArray& pProps) : m_pProps(pProps)
+SyncFunctor::SyncFunctor( AcPropertyArray& pProps ) : m_pProps( pProps )
 {
 }
 
-void CustomGridProperty::setSyncFun(SyncFunctor* fn)
+void CustomGridProperty::setSyncFun( SyncFunctor* fn )
 {
-	m_fn = fn;
+    m_fn = fn;
 }
 
-CustomGridProperty::CustomGridProperty(const CString& strName, const COleVariant& varValue, LPCTSTR lpszDescr)
-	:CMFCPropertyGridProperty( strName, varValue, lpszDescr ), m_bHighlight(false)
+CustomGridProperty::CustomGridProperty( const CString& strName, const COleVariant& varValue, LPCTSTR lpszDescr )
+    : CMFCPropertyGridProperty( strName, varValue, lpszDescr ), m_bHighlight( false )
 {
-	m_valueRect.SetRectEmpty();
-	m_nameRect.SetRectEmpty();
-	m_fn = 0;
+    m_valueRect.SetRectEmpty();
+    m_nameRect.SetRectEmpty();
+    m_fn = 0;
 }
 
 CustomGridProperty::~CustomGridProperty()
 {
-	if(m_fn)
-	{
-		delete m_fn;
-	}
+    if( m_fn )
+    {
+        delete m_fn;
+    }
 }
 
-void CustomGridProperty::OnDrawName(CDC* pDC, CRect rect)
+void CustomGridProperty::OnDrawName( CDC* pDC, CRect rect )
 {
-	//保存属性矩形框大小
-	m_nameRect = rect;
+    //保存属性矩形框大小
+    m_nameRect = rect;
 
-	COLORREF clrBackground, clrText, clrGroupBackground, clrGroupText, clrDescriptionBackground, clrDescriptionText, clrLine;
-	m_pWndList->GetCustomColors(clrBackground, clrText, clrGroupBackground, clrGroupText, clrDescriptionBackground, clrDescriptionText, clrLine);
+    COLORREF clrBackground, clrText, clrGroupBackground, clrGroupText, clrDescriptionBackground, clrDescriptionText, clrLine;
+    m_pWndList->GetCustomColors( clrBackground, clrText, clrGroupBackground, clrGroupText, clrDescriptionBackground, clrDescriptionText, clrLine );
 
-	//if(m_bHighlight)
-	//{
-	//	m_pWndList->SetCustomColors( RGB(255,0,0), RGB(255,0,0), clrGroupBackground, RGB(255,0,0), clrDescriptionBackground, clrDescriptionText, clrLine);
-	//}
+    //if(m_bHighlight)
+    //{
+    //	m_pWndList->SetCustomColors( RGB(255,0,0), RGB(255,0,0), clrGroupBackground, RGB(255,0,0), clrDescriptionBackground, clrDescriptionText, clrLine);
+    //}
 
-	CMFCPropertyGridProperty::OnDrawName(pDC, rect);
+    CMFCPropertyGridProperty::OnDrawName( pDC, rect );
 
-	//if(m_bHighlight)
-	//{
-	//	m_pWndList->SetCustomColors(clrBackground, clrText, clrGroupBackground, clrGroupText, clrDescriptionBackground, clrDescriptionText, clrLine);
-	//}
+    //if(m_bHighlight)
+    //{
+    //	m_pWndList->SetCustomColors(clrBackground, clrText, clrGroupBackground, clrGroupText, clrDescriptionBackground, clrDescriptionText, clrLine);
+    //}
 }
 
-void CustomGridProperty::OnDrawValue(CDC* pDC, CRect rect)
+void CustomGridProperty::OnDrawValue( CDC* pDC, CRect rect )
 {
-	ASSERT_VALID(m_pWndList);
-	ASSERT_VALID(pDC);
+    ASSERT_VALID( m_pWndList );
+    ASSERT_VALID( pDC );
 
-	//保存属性矩形框大小
-	m_valueRect = rect;
+    //保存属性矩形框大小
+    m_valueRect = rect;
 
-	//调用基类的OnDrawValue
-	CMFCPropertyGridProperty::OnDrawValue(pDC, rect);
+    //调用基类的OnDrawValue
+    CMFCPropertyGridProperty::OnDrawValue( pDC, rect );
 
-	//绘制高亮效果
-	if(m_bHighlight)
-	{
-		CRect rectFill = rect;
-		//填充背景色
-		//CBrush br(RGB(135, 206, 206));
-		//pDC->FillRect(rectFill, &br);
+    //绘制高亮效果
+    if( m_bHighlight )
+    {
+        CRect rectFill = rect;
+        //填充背景色
+        //CBrush br(RGB(135, 206, 206));
+        //pDC->FillRect(rectFill, &br);
 
-		//修改文字颜色
-		COLORREF clrTextOld = pDC->GetTextColor();
-		CString strVal = FormatProperty();
-		rect.DeflateRect(AFX_TEXT_MARGIN, 0);
-		pDC->SetTextColor(RGB(255,0,0));
-		pDC->DrawText(strVal, rect, DT_LEFT | DT_SINGLELINE | DT_VCENTER | DT_NOPREFIX | DT_END_ELLIPSIS);
-		pDC->SetTextColor(clrTextOld);
-	}
+        //修改文字颜色
+        COLORREF clrTextOld = pDC->GetTextColor();
+        CString strVal = FormatProperty();
+        rect.DeflateRect( AFX_TEXT_MARGIN, 0 );
+        pDC->SetTextColor( RGB( 255, 0, 0 ) );
+        pDC->DrawText( strVal, rect, DT_LEFT | DT_SINGLELINE | DT_VCENTER | DT_NOPREFIX | DT_END_ELLIPSIS );
+        pDC->SetTextColor( clrTextOld );
+    }
 }
 
-BOOL CustomGridProperty::OnDblClk(CPoint point)
+BOOL CustomGridProperty::OnDblClk( CPoint point )
 {
-	ASSERT_VALID(m_pWndList);
+    ASSERT_VALID( m_pWndList );
 
-	//acutPrintf(_T("\nx:%d, y:%d, widht:%d, height:%d"), m_valueRect.left, m_valueRect.bottom, m_valueRect.Width(), m_valueRect.Height());
-	//acutPrintf(_T("\npx:%d, py:%d"), point.x, point.y);
-	if (m_bEnabled && m_valueRect.PtInRect(point))
-	{
-		if(m_fn != 0 && m_varValue.vt == VT_R8)
-		{
-			COleVariant v(m_fn->caculate());
-			this->SetValue(v);
-			m_pWndList->InvalidateRect(m_valueRect);
-		}
-	}
-	return CMFCPropertyGridProperty::OnDblClk(point);
+    //acutPrintf(_T("\nx:%d, y:%d, widht:%d, height:%d"), m_valueRect.left, m_valueRect.bottom, m_valueRect.Width(), m_valueRect.Height());
+    //acutPrintf(_T("\npx:%d, py:%d"), point.x, point.y);
+    if ( m_bEnabled && m_valueRect.PtInRect( point ) )
+    {
+        if( m_fn != 0 && m_varValue.vt == VT_R8 )
+        {
+            COleVariant v( m_fn->caculate() );
+            this->SetValue( v );
+            m_pWndList->InvalidateRect( m_valueRect );
+        }
+    }
+    return CMFCPropertyGridProperty::OnDblClk( point );
 }
 
-void CustomGridProperty::highlight(bool bHighlight /*= true*/)
+void CustomGridProperty::highlight( bool bHighlight /*= true*/ )
 {
-	m_bHighlight = bHighlight;
-	Redraw();
+    m_bHighlight = bHighlight;
+    Redraw();
 }
 
 //COleVariant(short nSrc, VARTYPE vtSrc = VT_I2);
@@ -264,13 +264,13 @@ BOOL CNumericProp::OnUpdateValue()
 
 CString CNumericProp::FormatProperty()
 {
-	ASSERT_VALID( this );
-	CString fmt;
-	fmt.Format(_T("%s%df"), _T("%."), m_precise);
-	CString val;
-	val.Format(fmt, (double)GetValue().dblVal);
-	//acutPrintf(_T("\nm_precise:%d\tfmt:%s"),m_precise,fmt);
-	return val;
+    ASSERT_VALID( this );
+    CString fmt;
+    fmt.Format( _T( "%s%df" ), _T( "%." ), m_precise );
+    CString val;
+    val.Format( fmt, ( double )GetValue().dblVal );
+    //acutPrintf(_T("\nm_precise:%d\tfmt:%s"),m_precise,fmt);
+    return val;
 }
 
 
@@ -307,27 +307,27 @@ int IntStrProp::Str2Int( const CString& strValue )
 CString IntStrProp::FormatProperty()
 {
     ASSERT_VALID( this );
-    return Int2Str( (int)GetValue().lVal );
+    return Int2Str( ( int )GetValue().lVal );
 }
 
 BOOL IntStrProp::OnUpdateValue()
 {
     ASSERT_VALID( this );
-	//acutPrintf(_T("\nthis指针地址:%ld"),(long)this);
+    //acutPrintf(_T("\nthis指针地址:%ld"),(long)this);
     ASSERT_VALID( m_pWndList );
     ASSERT_VALID( m_pWndInPlace );
     ASSERT( ::IsWindow( m_pWndInPlace->GetSafeHwnd() ) );
 
-	CString strText;
-	m_pWndInPlace->GetWindowText( strText );
+    CString strText;
+    m_pWndInPlace->GetWindowText( strText );
 
-	BOOL bIsChanged = FormatProperty() != strText;
-	if ( bIsChanged )
-	{
-		// 更新数据
-		SetValue( ( long )Str2Int( strText ) );
-		m_pWndList->OnPropertyChanged( this );
-	}
+    BOOL bIsChanged = FormatProperty() != strText;
+    if ( bIsChanged )
+    {
+        // 更新数据
+        SetValue( ( long )Str2Int( strText ) );
+        m_pWndList->OnPropertyChanged( this );
+    }
 
     return TRUE;
 }

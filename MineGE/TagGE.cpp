@@ -192,75 +192,75 @@ Acad::ErrorStatus DirectionTagGE::dwgInFields ( AcDbDwgFiler* pFiler )
 /////////////////////////////////////////////////////////
 AcGePoint3d FacilityGE::getInsertPt() const
 {
-	assertReadEnabled();
-	return m_insertPt;
+    assertReadEnabled();
+    return m_insertPt;
 }
 
 void FacilityGE::setInsertPt( const AcGePoint3d& pt )
 {
-	assertWriteEnabled();
-	m_insertPt = pt;
+    assertWriteEnabled();
+    m_insertPt = pt;
 }
 
 double FacilityGE::getDirectionAngle() const
 {
-	assertReadEnabled();
-	return m_angle;
+    assertReadEnabled();
+    return m_angle;
 }
 
 void FacilityGE::setDirectionAngle( double angle )
 {
-	assertWriteEnabled();
-	m_angle = angle;
+    assertWriteEnabled();
+    m_angle = angle;
 }
 
 void FacilityGE::readKeyParam( DrawParamReader& reader )
 {
-	reader.readPoint( m_insertPt );
-	reader.readDouble( m_angle );
+    reader.readPoint( m_insertPt );
+    reader.readDouble( m_angle );
 }
 
 void FacilityGE::writeKeyParam( DrawParamWriter& writer ) const
 {
-	writer.writePoint( m_insertPt );
-	writer.writeDouble( m_angle );
+    writer.writePoint( m_insertPt );
+    writer.writeDouble( m_angle );
 }
 
 Acad::ErrorStatus FacilityGE::dwgOutFields ( AcDbDwgFiler* pFiler ) const
 {
-	assertReadEnabled () ;
-	//----- Save parent class information first.
-	Acad::ErrorStatus es = DirectionTagGE::dwgOutFields ( pFiler ) ;
-	if ( es != Acad::eOk )
-		return ( es ) ;
-	//----- Object version number needs to be saved first
-	if ( ( es = pFiler->writeUInt32 ( DirectionTagGE::kCurrentVersionNumber ) ) != Acad::eOk )
-		return ( es ) ;
+    assertReadEnabled () ;
+    //----- Save parent class information first.
+    Acad::ErrorStatus es = DirectionTagGE::dwgOutFields ( pFiler ) ;
+    if ( es != Acad::eOk )
+        return ( es ) ;
+    //----- Object version number needs to be saved first
+    if ( ( es = pFiler->writeUInt32 ( DirectionTagGE::kCurrentVersionNumber ) ) != Acad::eOk )
+        return ( es ) ;
 
-	pFiler->writeItem( m_insertPt );
-	pFiler->writeItem( m_angle );
+    pFiler->writeItem( m_insertPt );
+    pFiler->writeItem( m_angle );
 
-	return ( pFiler->filerStatus () ) ;
+    return ( pFiler->filerStatus () ) ;
 }
 
 Acad::ErrorStatus FacilityGE::dwgInFields ( AcDbDwgFiler* pFiler )
 {
-	assertWriteEnabled () ;
-	//----- Read parent class information first.
-	Acad::ErrorStatus es = DirectionTagGE::dwgInFields ( pFiler ) ;
-	if ( es != Acad::eOk )
-		return ( es ) ;
-	//----- Object version number needs to be read first
-	Adesk::UInt32 version = 0 ;
-	if ( ( es = pFiler->readUInt32 ( &version ) ) != Acad::eOk )
-		return ( es ) ;
-	if ( version > DirectionTagGE::kCurrentVersionNumber )
-		return ( Acad::eMakeMeProxy ) ;
+    assertWriteEnabled () ;
+    //----- Read parent class information first.
+    Acad::ErrorStatus es = DirectionTagGE::dwgInFields ( pFiler ) ;
+    if ( es != Acad::eOk )
+        return ( es ) ;
+    //----- Object version number needs to be read first
+    Adesk::UInt32 version = 0 ;
+    if ( ( es = pFiler->readUInt32 ( &version ) ) != Acad::eOk )
+        return ( es ) ;
+    if ( version > DirectionTagGE::kCurrentVersionNumber )
+        return ( Acad::eMakeMeProxy ) ;
 
-	pFiler->readItem( &m_insertPt );
-	pFiler->readItem( &m_angle );
+    pFiler->readItem( &m_insertPt );
+    pFiler->readItem( &m_angle );
 
-	return ( pFiler->filerStatus () ) ;
+    return ( pFiler->filerStatus () ) ;
 }
 
 FacilityGE::FacilityGE()
@@ -268,7 +268,7 @@ FacilityGE::FacilityGE()
 
 }
 
-FacilityGE::FacilityGE( const AcGePoint3d& insertPt, double angle ):m_insertPt(insertPt),m_angle(angle)
+FacilityGE::FacilityGE( const AcGePoint3d& insertPt, double angle ): m_insertPt( insertPt ), m_angle( angle )
 {
 
 }

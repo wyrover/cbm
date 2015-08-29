@@ -11,34 +11,34 @@ MFCPropertyGridCtrlHelper::MFCPropertyGridCtrlHelper( CMFCPropertyGridCtrl* pWnd
     if( pWndPropList != 0 )
     {
         m_pWndPropList = pWndPropList;
-		//acutPrintf(_T("\n类型:%s"),m_type);
+        //acutPrintf(_T("\n类型:%s"),m_type);
         m_pWndPropList->EnableHeaderCtrl( TRUE, _T( "属性" ), _T( "值" ) );
         m_pWndPropList->EnableDescriptionArea();
         m_pWndPropList->SetVSDotNetLook();
         m_pWndPropList->MarkModifiedProperties();
-		//m_pWndPropList->SetAlphabeticMode(false);
-		m_pWndPropList->SetShowDragContext();
-	}
+        //m_pWndPropList->SetAlphabeticMode(false);
+        m_pWndPropList->SetShowDragContext();
+    }
 }
 
-static void SetAndAddToPropertyList( CMFCPropertyGridProperty *pGroup, CMFCPropertyGridProperty* pProp, bool bEnable, bool bEditable, bool isBoolType = false )
+static void SetAndAddToPropertyList( CMFCPropertyGridProperty* pGroup, CMFCPropertyGridProperty* pProp, bool bEnable, bool bEditable, bool isBoolType = false )
 {
     pProp->Enable( bool2BOOL( bEnable ) );
     if( !isBoolType ) pProp->AllowEdit( bool2BOOL( bEditable ) );
-	pGroup->AddSubItem(pProp);
-	//acutPrintf(_T("\n属性名:%s"),pProp->GetName());
+    pGroup->AddSubItem( pProp );
+    //acutPrintf(_T("\n属性名:%s"),pProp->GetName());
     //pPropList->AddProperty( pProp );
 }
 
-void MFCPropertyGridCtrlHelper::addStringProperty( CMFCPropertyGridProperty *pGroup, const CString& name, const CString& value, LPCTSTR descr, bool bEnable )
+void MFCPropertyGridCtrlHelper::addStringProperty( CMFCPropertyGridProperty* pGroup, const CString& name, const CString& value, LPCTSTR descr, bool bEnable )
 {
     ASSERT_VALID( pGroup );
     // VT_BSTR
     CMFCPropertyGridProperty* pProp = new CMFCPropertyGridProperty( name, ( COleVariant )value, descr );
-	SetAndAddToPropertyList( pGroup,pProp, bEnable, true );
+    SetAndAddToPropertyList( pGroup, pProp, bEnable, true );
 }
 
-void MFCPropertyGridCtrlHelper::addIntProperty( CMFCPropertyGridProperty *pGroup, const CString& name, int value, int nMinValue, int nMaxValue, LPCTSTR descr, bool bEnable )
+void MFCPropertyGridCtrlHelper::addIntProperty( CMFCPropertyGridProperty* pGroup, const CString& name, int value, int nMinValue, int nMaxValue, LPCTSTR descr, bool bEnable )
 {
     ASSERT_VALID( pGroup );
     // VT_I4
@@ -48,7 +48,7 @@ void MFCPropertyGridCtrlHelper::addIntProperty( CMFCPropertyGridProperty *pGroup
     SetAndAddToPropertyList( pGroup, pProp, bEnable, true );
 }
 
-void MFCPropertyGridCtrlHelper::addDoubleProperty( CMFCPropertyGridProperty *pGroup, const CString& name, double value, double dMinValue, double dMaxValue, unsigned short precise, LPCTSTR descr, bool bEnable )
+void MFCPropertyGridCtrlHelper::addDoubleProperty( CMFCPropertyGridProperty* pGroup, const CString& name, double value, double dMinValue, double dMaxValue, unsigned short precise, LPCTSTR descr, bool bEnable )
 {
     ASSERT_VALID( pGroup );
     // VT_R8
@@ -57,16 +57,16 @@ void MFCPropertyGridCtrlHelper::addDoubleProperty( CMFCPropertyGridProperty *pGr
     SetAndAddToPropertyList( pGroup, pProp, bEnable, true );
 }
 
-void MFCPropertyGridCtrlHelper::addBoolProperty( CMFCPropertyGridProperty *pGroup, const CString& name, bool value, LPCTSTR descr, bool bEnable )
+void MFCPropertyGridCtrlHelper::addBoolProperty( CMFCPropertyGridProperty* pGroup, const CString& name, bool value, LPCTSTR descr, bool bEnable )
 {
     ASSERT_VALID( pGroup );
 
-    
+
     // VT_BOOL
- //   COleVariant v((short)value, VT_BOOL);
- //   CMFCPropertyGridProperty* pProp = new CMFCPropertyGridProperty(name, v, descr);
-	//SetAndAddToPropertyList(pGroup, pProp, bEnable, false, true); // 针对bool类型，bEditable参数无效
-    
+//   COleVariant v((short)value, VT_BOOL);
+//   CMFCPropertyGridProperty* pProp = new CMFCPropertyGridProperty(name, v, descr);
+    //SetAndAddToPropertyList(pGroup, pProp, bEnable, false, true); // 针对bool类型，bEditable参数无效
+
     // 用IntStrProp模拟
     // 主要是为了使用汉字(是/否)，替代默认的bool英文(true/false)
     AcDbIntArray intValues;
@@ -79,7 +79,7 @@ void MFCPropertyGridCtrlHelper::addBoolProperty( CMFCPropertyGridProperty *pGrou
     SetAndAddToPropertyList( pGroup, pProp, bEnable, false ); // 鼠标不可编辑
 }
 
-void MFCPropertyGridCtrlHelper::addDateTimeProperty( CMFCPropertyGridProperty *pGroup, const CString& name, const COleDateTime& value, LPCTSTR descr, bool bEnable )
+void MFCPropertyGridCtrlHelper::addDateTimeProperty( CMFCPropertyGridProperty* pGroup, const CString& name, const COleDateTime& value, LPCTSTR descr, bool bEnable )
 {
     ASSERT_VALID( pGroup );
 
@@ -87,7 +87,7 @@ void MFCPropertyGridCtrlHelper::addDateTimeProperty( CMFCPropertyGridProperty *p
     SetAndAddToPropertyList( pGroup, pProp, bEnable, true );
 }
 
-void MFCPropertyGridCtrlHelper::addStringPropertyList( CMFCPropertyGridProperty *pGroup, const CString& name, const CString& value, const AcStringArray& values, LPCTSTR descr, bool bEnable )
+void MFCPropertyGridCtrlHelper::addStringPropertyList( CMFCPropertyGridProperty* pGroup, const CString& name, const CString& value, const AcStringArray& values, LPCTSTR descr, bool bEnable )
 {
     ASSERT_VALID( pGroup );
     if( values.isEmpty() ) return;
@@ -107,11 +107,11 @@ void MFCPropertyGridCtrlHelper::addStringPropertyList( CMFCPropertyGridProperty 
     SetAndAddToPropertyList( pGroup, pProp, bEnable, false ); // 鼠标不可编辑
 }
 
-void MFCPropertyGridCtrlHelper::addIntPropertList( CMFCPropertyGridProperty *pGroup, const CString& name, int value, const AcDbIntArray& intValues, const AcStringArray& strValues, LPCTSTR descr, bool bEnable )
+void MFCPropertyGridCtrlHelper::addIntPropertList( CMFCPropertyGridProperty* pGroup, const CString& name, int value, const AcDbIntArray& intValues, const AcStringArray& strValues, LPCTSTR descr, bool bEnable )
 {
     ASSERT_VALID( pGroup );
     if( intValues.isEmpty() || strValues.isEmpty() || intValues.length() != strValues.length() ) return;
-	if( !intValues.contains( value ) )
+    if( !intValues.contains( value ) )
     {
         value = intValues[0]; // 如果不存在，默认使用列表中的第1个
     }
@@ -123,7 +123,7 @@ void MFCPropertyGridCtrlHelper::addIntPropertList( CMFCPropertyGridProperty *pGr
     SetAndAddToPropertyList( pGroup, pProp, bEnable, false ); // 鼠标不可编辑
 }
 
-void MFCPropertyGridCtrlHelper::addDataObjectPropertyList( CMFCPropertyGridProperty *pGroup, const CString& name, const CString& value, const AcStringArray& values, LPCTSTR descr, bool bEnable )
+void MFCPropertyGridCtrlHelper::addDataObjectPropertyList( CMFCPropertyGridProperty* pGroup, const CString& name, const CString& value, const AcStringArray& values, LPCTSTR descr, bool bEnable )
 {
     ASSERT_VALID( pGroup );
     if( values.isEmpty() ) return;
@@ -178,7 +178,7 @@ void CustomClickProp::OnClickButton( CPoint /*point*/ )
     if( ret ) SetValue( ( COleVariant )newValue );
 }
 
-void MFCPropertyGridCtrlHelper::addClickProperty( CMFCPropertyGridProperty *pGroup, const CString& name, const CString& value, ClickPropModifyCallBack cpmcb, LPCTSTR descr, bool bEnable )
+void MFCPropertyGridCtrlHelper::addClickProperty( CMFCPropertyGridProperty* pGroup, const CString& name, const CString& value, ClickPropModifyCallBack cpmcb, LPCTSTR descr, bool bEnable )
 {
     ASSERT_VALID( m_pWndPropList );
     ASSERT_VALID( cpmcb != 0 );

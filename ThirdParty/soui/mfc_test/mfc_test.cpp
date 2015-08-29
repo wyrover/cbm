@@ -28,7 +28,6 @@ Cmfc_testApp::Cmfc_testApp()
 
 Cmfc_testApp theApp;
 
-
 static void InitSouiEnviroment(HINSTANCE hInstance)
 {
 	new MySoUiLoader(hInstance);
@@ -40,18 +39,15 @@ static void UnInitSouiEnviroment()
 	delete SoUILoader::getSingletonPtr();
 }
 
-static void StartFromSoui(LPCTSTR pszXmlName, HWND hParent=NULL, bool bModal=true)
+static void StartFromSoui(SouiDialog* dlg, HWND hParent=NULL)
 {
-	if(bModal)
+	//dlg->SetWindowTitle(_T("改标题,随便玩玩!"));
+	if(dlg->isModal() == TRUE)
 	{
-		SouiDialog dlg(pszXmlName, TRUE);
-		dlg.SetWindowTitle(_T("改标题,随便玩玩!"));
-		dlg.Run(hParent);
+		dlg->Run(hParent);
 	}
 	else
 	{
-		SouiDialog* dlg = new SouiDialog(pszXmlName, FALSE);
-		dlg->SetWindowTitle(_T("改标题,随便玩玩!"));
 		dlg->Run(hParent);
 		//父窗口为0的一般都是主窗口
 		if(hParent == NULL)
@@ -64,13 +60,12 @@ static void StartFromSoui(LPCTSTR pszXmlName, HWND hParent=NULL, bool bModal=tru
 	}
 }
 
-static void StartFromMFC(CWnd*& m_pMainWnd)
+static void StartFromMFC(CDialog* dlg)
 {
-	//创建mfc主对话框
-	Cmfc_testDlg dlg;
-	m_pMainWnd = &dlg;
+	//设置MFC主窗口
+	AfxGetApp()->m_pMainWnd = dlg;
 	//进入模态消息循环,直到关闭对话框
-	INT_PTR nResponse = dlg.DoModal();
+	INT_PTR nResponse = dlg->DoModal();
 	if (nResponse == IDOK)
 	{
 		// TODO: 在此放置处理何时用
@@ -103,15 +98,23 @@ BOOL Cmfc_testApp::InitInstance()
 
 	if(IDYES == MessageBox(NULL, _T("启动纯soui窗口 或者 MFC对话框???"), _T("询问"), MB_YESNO))
 	{
-		// 以模态方式启动
-	 	//StartFromSoui(RES_NAME, NULL, true);
-		
-		// 或者以非模态方式启动
-		StartFromSoui(RES_NAME, NULL, false);
+		if(1)
+		{
+			//以模态方式启动
+			SouiDialog dlg(RES_NAME, TRUE);
+			StartFromSoui(&dlg, NULL);
+		}
+		else
+		{
+			// 或者以非模态方式启动
+			SouiDialog* dlg = new SouiDialog(RES_NAME, FALSE);
+			StartFromSoui(dlg, NULL);
+		}
 	}
 	else
 	{
-		StartFromMFC(m_pMainWnd);
+		Cmfc_testDlg dlg;
+		StartFromMFC(&dlg);
 	}
 
 	// 由于对话框已关闭，所以将返回 FALSE 以便退出应用程序，

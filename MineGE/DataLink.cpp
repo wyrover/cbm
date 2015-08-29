@@ -111,23 +111,23 @@ static resbuf* SetData( resbuf* pStart, const CString& value )
     }
     break;
 
-	case DT_POINT:
-	{
-		AcGePoint3d pt;
-		ArxUtilHelper::StringToPoint3d( value, pt );
-		AcGePoint3d* pValue = ( AcGePoint3d* )ptr;
-		*pValue = pt;
-	}
-	break;
+    case DT_POINT:
+    {
+        AcGePoint3d pt;
+        ArxUtilHelper::StringToPoint3d( value, pt );
+        AcGePoint3d* pValue = ( AcGePoint3d* )ptr;
+        *pValue = pt;
+    }
+    break;
 
-	case DT_VECTOR:
-	{
-		AcGeVector3d v;
-		ArxUtilHelper::StringToVector3d( value, v );
-		AcGeVector3d* pValue = ( AcGeVector3d* )ptr;
-		*pValue = v;
-	}
-	break;
+    case DT_VECTOR:
+    {
+        AcGeVector3d v;
+        ArxUtilHelper::StringToVector3d( value, v );
+        AcGeVector3d* pValue = ( AcGeVector3d* )ptr;
+        *pValue = v;
+    }
+    break;
     }
     return pValueNode->rbnext;
 }
@@ -167,19 +167,19 @@ static resbuf* GetData( resbuf* pStart, CString& value )
     }
     break;
 
-	case DT_POINT:
-	{
-		value = ArxUtilHelper::Point3dToString( *( ( AcGePoint3d* )ptr ) );
-		break;
-	}
-	break;
+    case DT_POINT:
+    {
+        value = ArxUtilHelper::Point3dToString( *( ( AcGePoint3d* )ptr ) );
+        break;
+    }
+    break;
 
-	case DT_VECTOR:
-	{
-		value = ArxUtilHelper::Vector3dToString( *( ( AcGeVector3d* )ptr ) );
-		break;
-	}
-	break;
+    case DT_VECTOR:
+    {
+        value = ArxUtilHelper::Vector3dToString( *( ( AcGeVector3d* )ptr ) );
+        break;
+    }
+    break;
     }
     return pValueNode->rbnext;
 }
@@ -234,14 +234,14 @@ void DataLink::linkDateTimeData( const CString& field, COleDateTime* pValue )
     LinkGenericData( m_pDatasToFileds, field, DT_DATE, pValue );
 }
 
-void DataLink::linkPointData(const CString& field, AcGePoint3d* pValue)
+void DataLink::linkPointData( const CString& field, AcGePoint3d* pValue )
 {
-	LinkGenericData( m_pDatasToFileds, field, DT_POINT, pValue );
+    LinkGenericData( m_pDatasToFileds, field, DT_POINT, pValue );
 }
 
-void DataLink::linkVectorData(const CString& field, AcGeVector3d* pValue)
+void DataLink::linkVectorData( const CString& field, AcGeVector3d* pValue )
 {
-	LinkGenericData( m_pDatasToFileds, field, DT_VECTOR, pValue );
+    LinkGenericData( m_pDatasToFileds, field, DT_VECTOR, pValue );
 }
 
 void DataLink::initDatas()

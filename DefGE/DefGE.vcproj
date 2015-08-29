@@ -381,11 +381,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\ArcTunnel.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Chimney.cpp"
+				RelativePath=".\CoalSurface.cpp"
 				>
 			</File>
 			<File
@@ -393,11 +389,15 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Fan.cpp"
+				RelativePath=".\DrillSite.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Joint.cpp"
+				RelativePath=".\Pore.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\RcuGE.cpp"
 				>
 			</File>
 			<File
@@ -437,10 +437,6 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\TTunnel.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\Tunnel.cpp"
 				>
 			</File>
@@ -448,149 +444,13 @@
 				RelativePath=".\WindDirection.cpp"
 				>
 			</File>
-			<File
-				RelativePath=".\WindLibrary.cpp"
-				>
-			</File>
-			<Filter
-				Name="Sensor"
-				>
-				<File
-					RelativePath=".\DifferPressSensorGE.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\FlowSensorGE.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\GasSensorGE.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\TempeSensorGE.cpp"
-					>
-				</File>
-			</Filter>
-			<Filter
-				Name="RCU"
-				>
-				<File
-					RelativePath=".\CoalSurface.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\DrillSite.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\Pore.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\RcuGE.cpp"
-					>
-				</File>
-			</Filter>
-			<Filter
-				Name="Gas1"
-				>
-				<File
-					RelativePath=".\CDH.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\DCI.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\GCP.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\GFP.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\GOP.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\GPP.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\PointGE.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\PPP.cpp"
-					>
-				</File>
-			</Filter>
-			<Filter
-				Name="Gas2"
-				>
-				<File
-					RelativePath=".\BackFireGE.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\DetermineHoleGE.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\DrillGE.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\EffectRanTag.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\FanTagGE.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\FlowmeterGE.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\GasFlowTagGE.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\GasPumpGE.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\GasTube.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\QTagGE.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\TailraceGE.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\ValveGE.cpp"
-					>
-				</File>
-			</Filter>
 		</Filter>
 		<Filter
 			Name="Include Files"
 			Filter="h;hh;hxx"
 			>
 			<File
-				RelativePath=".\ArcTunnel.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Chimney.h"
+				RelativePath=".\CoalSurface.h"
 				>
 			</File>
 			<File
@@ -598,11 +458,15 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Fan.h"
+				RelativePath=".\DrillSite.h"
 				>
 			</File>
 			<File
-				RelativePath=".\Joint.h"
+				RelativePath=".\Pore.h"
+				>
+			</File>
+			<File
+				RelativePath=".\RcuGE.h"
 				>
 			</File>
 			<File
@@ -614,10 +478,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\TTunnel.h"
-				>
-			</File>
-			<File
 				RelativePath=".\Tunnel.h"
 				>
 			</File>
@@ -625,138 +485,6 @@
 				RelativePath=".\WindDirection.h"
 				>
 			</File>
-			<File
-				RelativePath=".\WindLibrary.h"
-				>
-			</File>
-			<Filter
-				Name="Sensor"
-				>
-				<File
-					RelativePath=".\DifferPressSensorGE.h"
-					>
-				</File>
-				<File
-					RelativePath=".\FlowSensorGE.h"
-					>
-				</File>
-				<File
-					RelativePath=".\GasSensorGE.h"
-					>
-				</File>
-				<File
-					RelativePath=".\TempeSensorGE.h"
-					>
-				</File>
-			</Filter>
-			<Filter
-				Name="RCU"
-				>
-				<File
-					RelativePath=".\CoalSurface.h"
-					>
-				</File>
-				<File
-					RelativePath=".\DrillSite.h"
-					>
-				</File>
-				<File
-					RelativePath=".\Pore.h"
-					>
-				</File>
-				<File
-					RelativePath=".\RcuGE.h"
-					>
-				</File>
-			</Filter>
-			<Filter
-				Name="Gas1"
-				>
-				<File
-					RelativePath=".\CDH.h"
-					>
-				</File>
-				<File
-					RelativePath=".\DCI.h"
-					>
-				</File>
-				<File
-					RelativePath=".\GCP.h"
-					>
-				</File>
-				<File
-					RelativePath=".\GFP.h"
-					>
-				</File>
-				<File
-					RelativePath=".\GOP.h"
-					>
-				</File>
-				<File
-					RelativePath=".\GPP.h"
-					>
-				</File>
-				<File
-					RelativePath=".\PointGE.h"
-					>
-				</File>
-				<File
-					RelativePath=".\PPP.h"
-					>
-				</File>
-			</Filter>
-			<Filter
-				Name="Gas2"
-				>
-				<File
-					RelativePath=".\BackFireGE.h"
-					>
-				</File>
-				<File
-					RelativePath=".\DetermineHoleGE.h"
-					>
-				</File>
-				<File
-					RelativePath=".\DrillGE.h"
-					>
-				</File>
-				<File
-					RelativePath=".\EffectRanTag.h"
-					>
-				</File>
-				<File
-					RelativePath=".\FanTagGE.h"
-					>
-				</File>
-				<File
-					RelativePath=".\FlowmeterGE.h"
-					>
-				</File>
-				<File
-					RelativePath=".\GasFlowTagGE.h"
-					>
-				</File>
-				<File
-					RelativePath=".\GasPumpGE.h"
-					>
-				</File>
-				<File
-					RelativePath=".\GasTube.h"
-					>
-				</File>
-				<File
-					RelativePath=".\QTagGE.h"
-					>
-				</File>
-				<File
-					RelativePath=".\TailraceGE.h"
-					>
-				</File>
-				<File
-					RelativePath=".\ValveGE.h"
-					>
-				</File>
-			</Filter>
 		</Filter>
 		<Filter
 			Name="Resource Files"

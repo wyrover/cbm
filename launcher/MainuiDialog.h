@@ -1,19 +1,24 @@
 #pragma once
 #include "SouiDialog.h"
+#include "MonitorThread.h"
 
 class MainuiDialog : public SouiDialog
 {
 
 	/** 构造和析构函数 */
 public:
-	MainuiDialog(LPCTSTR pszXmlName,BOOL bModal = FALSE);
+	MainuiDialog(BOOL bModal = FALSE);
 	~MainuiDialog(void);
+
+	/** 自定义监控消息 */
+protected:
+	LRESULT OnBeginMonitor(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
+	LRESULT OnEndMonitor(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
 
 	/** 控件消息处理 */
 protected:
 	void OnCadButtonClick();
 	void OnCadfileButtonClick();
-	virtual void OnClose();
 
 	/** 菜单消息 */
 protected:
@@ -24,6 +29,8 @@ protected:
 protected:
 	//对话框初始化过程
 	LRESULT OnInitDialog(HWND hWnd, LPARAM lParam);
+	//窗口关闭前做一些清理工作
+	virtual void OnDestroyWindow();
 
 	//控件消息映射表
 	EVENT_MAP_BEGIN()
@@ -36,10 +43,9 @@ protected:
 	BEGIN_MSG_MAP_EX(MainuiDialog)
 		MSG_WM_INITDIALOG(OnInitDialog)
 		MSG_WM_COMMAND(OnCommand)
+		MESSAGE_HANDLER(WM_BEGIN_MONITOR, OnBeginMonitor)
+		MESSAGE_HANDLER(WM_END_MONITOR, OnEndMonitor)
 		CHAIN_MSG_MAP(SouiDialog)
 		REFLECT_NOTIFICATIONS_EX()
 	END_MSG_MAP()
-
-private:
-	void RunCADApp(CString& sPath,LPTSTR arg = NULL);
 };

@@ -363,10 +363,6 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\laucherHelper.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\LauncherApp.cpp"
 				>
 			</File>
@@ -426,16 +422,32 @@
 					/>
 				</FileConfiguration>
 			</File>
+			<Filter
+				Name="cad"
+				>
+				<File
+					RelativePath=".\CADHelper.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\MonitorThread.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\SouiCADThread.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\ThreadHelper.cpp"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="头文件"
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
-			<File
-				RelativePath=".\laucherHelper.h"
-				>
-			</File>
 			<File
 				RelativePath=".\LauncherApp.h"
 				>
@@ -480,6 +492,26 @@
 				RelativePath=".\stdafx.h"
 				>
 			</File>
+			<Filter
+				Name="cad"
+				>
+				<File
+					RelativePath=".\CADHelper.h"
+					>
+				</File>
+				<File
+					RelativePath=".\MonitorThread.h"
+					>
+				</File>
+				<File
+					RelativePath=".\SouiCADThread.h"
+					>
+				</File>
+				<File
+					RelativePath=".\ThreadHelper.h"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="资源文件"

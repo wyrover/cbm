@@ -48,31 +48,31 @@ AcDbObjectId ArxUtilHelper::SelectObject( const CString& msg )
     return eId;
 }
 
-void ArxUtilHelper::GetPickSetEntity2(AcDbObjectIdArray& objIds)
+void ArxUtilHelper::GetPickSetEntity2( AcDbObjectIdArray& objIds )
 {
-	resbuf* pset;  // standard out of mem handler??
-	if(RTNORM != acedSSGetFirst(NULL, &pset)) return;
+    resbuf* pset;  // standard out of mem handler??
+    if( RTNORM != acedSSGetFirst( NULL, &pset ) ) return;
 
-	ads_name ss;
-	ads_name_set(pset->resval.rlname, ss);
-	acutPrintf(_T("\nseett   type:%d"), pset->restype);
-	acutRelRb(pset);
+    ads_name ss;
+    ads_name_set( pset->resval.rlname, ss );
+    acutPrintf( _T( "\nseett   type:%d" ), pset->restype );
+    acutRelRb( pset );
 
-	acutPrintf(_T("\n遍历选择集.."));
-	long n = 0;
-	acedSSLength ( ss, &n );
-	for( long i = 0; i < n; i++ )
-	{
-		ads_name ename;
-		if( RTNORM != acedSSName ( ss, i, ename ) ) continue;
+    acutPrintf( _T( "\n遍历选择集.." ) );
+    long n = 0;
+    acedSSLength ( ss, &n );
+    for( long i = 0; i < n; i++ )
+    {
+        ads_name ename;
+        if( RTNORM != acedSSName ( ss, i, ename ) ) continue;
 
-		AcDbObjectId objId;
-		if( Acad::eOk != acdbGetObjectId( objId, ename ) ) continue;
+        AcDbObjectId objId;
+        if( Acad::eOk != acdbGetObjectId( objId, ename ) ) continue;
 
-		objIds.append( objId );
-	}
-	acedSSFree( ss );
-	acutPrintf(_T("\n释放选择集.."));
+        objIds.append( objId );
+    }
+    acedSSFree( ss );
+    acutPrintf( _T( "\n释放选择集.." ) );
 }
 void ArxUtilHelper::GetPickSetEntity( AcDbObjectIdArray& objIds )
 {
@@ -95,7 +95,7 @@ void ArxUtilHelper::GetPickSetEntity( AcDbObjectIdArray& objIds )
     acedSSFree( ss );
 }
 
-void ArxUtilHelper::Pause(const CString& msg)
+void ArxUtilHelper::Pause( const CString& msg )
 {
     // 中断
     ACHAR tt[100];
@@ -189,13 +189,13 @@ void ArxUtilHelper::IntToString( int v, CString& value )
     value.Format( _T( "%d" ), v );
 }
 
-bool ArxUtilHelper::IsNum(const CString &str)
+bool ArxUtilHelper::IsNum( const CString& str )
 {
-	int n=str.GetLength();
-	for(int i=0;i<n;i++)
-		if ((str[i]<'0'||str[i]>'9') && str[i] != '.') 
-			return false;
-	return true;
+    int n = str.GetLength();
+    for( int i = 0; i < n; i++ )
+        if ( ( str[i] < '0' || str[i] > '9' ) && str[i] != '.' )
+            return false;
+    return true;
 }
 
 // 判断字符串是否是一个合法的整数串
@@ -273,82 +273,82 @@ void ArxUtilHelper::BrowserEntities( const AcDbObjectIdArray& objIds )
 }
 
 // 获取当前模块的路径
-CString ArxUtilHelper::GetAppPathDir(HINSTANCE hInstance)
+CString ArxUtilHelper::GetAppPathDir( HINSTANCE hInstance )
 {
-	TCHAR szMoudlePath[_MAX_PATH];
-	GetModuleFileName( hInstance, szMoudlePath, _MAX_PATH );
+    TCHAR szMoudlePath[_MAX_PATH];
+    GetModuleFileName( hInstance, szMoudlePath, _MAX_PATH );
 
-	TCHAR drive[_MAX_DRIVE];
-	TCHAR dir[_MAX_DIR];
-	_tsplitpath( szMoudlePath, drive, dir, NULL, NULL );
+    TCHAR drive[_MAX_DRIVE];
+    TCHAR dir[_MAX_DIR];
+    _tsplitpath( szMoudlePath, drive, dir, NULL, NULL );
 
-	TCHAR path[_MAX_PATH];
-	_tmakepath( path, drive, dir, NULL, NULL );
+    TCHAR path[_MAX_PATH];
+    _tmakepath( path, drive, dir, NULL, NULL );
 
-	return CString( path );
+    return CString( path );
 }
 
 // 生成路径
 CString ArxUtilHelper::BuildPath( const CString& dir, const CString& fileName )
 {
-	CString path;
-	path.Format( _T( "%s%s" ), dir, fileName );
-	return path;
+    CString path;
+    path.Format( _T( "%s%s" ), dir, fileName );
+    return path;
 }
 
-CString ArxUtilHelper::Point3dToString(const AcGePoint3d& pt)
+CString ArxUtilHelper::Point3dToString( const AcGePoint3d& pt )
 {
-	CString value;
-	value.Format(_T("(%.3f,%.3f,%.3f)"), pt.x*1.0, pt.y*1.0, pt.z*1.0);
-	return value;
+    CString value;
+    value.Format( _T( "(%.3f,%.3f,%.3f)" ), pt.x * 1.0, pt.y * 1.0, pt.z * 1.0 );
+    return value;
 }
 
 //分隔字符串
-void ArxUtilHelper::SplitCString(const CString& str, const CString& tokens, CStringArray& values)
+void ArxUtilHelper::SplitCString( const CString& str, const CString& tokens, CStringArray& values )
 {
-	int nTokenPos = 0;
-	CString strToken = str.Tokenize(tokens, nTokenPos);
-	while (!strToken.IsEmpty())
-	{
-		values.Add(strToken);
-		strToken = str.Tokenize(tokens, nTokenPos);
-	}
+    int nTokenPos = 0;
+    CString strToken = str.Tokenize( tokens, nTokenPos );
+    while ( !strToken.IsEmpty() )
+    {
+        values.Add( strToken );
+        strToken = str.Tokenize( tokens, nTokenPos );
+    }
 }
 
-bool ArxUtilHelper::StringToPoint3d(const CString& value, AcGePoint3d& pt)
+bool ArxUtilHelper::StringToPoint3d( const CString& value, AcGePoint3d& pt )
 {
-	CStringArray values;
-	ArxUtilHelper::SplitCString(value, _T(" (\t\n,;_)"), values);
-	if(values.GetCount() < 3) return false;
+    CStringArray values;
+    ArxUtilHelper::SplitCString( value, _T( " (\t\n,;_)" ), values );
+    if( values.GetCount() < 3 ) return false;
 
-	double x=0,y=0,z=0;
-	if(!ArxUtilHelper::StringToDouble(values[0], x)) return false;
-	if(!ArxUtilHelper::StringToDouble(values[1], y)) return false;
-	if(!ArxUtilHelper::StringToDouble(values[2], z)) return false;
+    double x = 0, y = 0, z = 0;
+    if( !ArxUtilHelper::StringToDouble( values[0], x ) ) return false;
+    if( !ArxUtilHelper::StringToDouble( values[1], y ) ) return false;
+    if( !ArxUtilHelper::StringToDouble( values[2], z ) ) return false;
 
-	pt.set(x,y,z);
+    pt.set( x, y, z );
 
-	return true;
+    return true;
 }
 
-CString ArxUtilHelper::Vector3dToString(const AcGeVector3d& v)
+CString ArxUtilHelper::Vector3dToString( const AcGeVector3d& v )
 {
-	AcGePoint3d pt;
-	pt += v;
-	return ArxUtilHelper::Point3dToString(pt);
+    AcGePoint3d pt;
+    pt += v;
+    return ArxUtilHelper::Point3dToString( pt );
 }
 
-bool ArxUtilHelper::StringToVector3d(const CString& value, AcGeVector3d& v)
+bool ArxUtilHelper::StringToVector3d( const CString& value, AcGeVector3d& v )
 {
-	AcGePoint3d pt;
-	pt += v;
-	if(StringToPoint3d(value, pt))
-	{
-		v = pt.asVector();
-		return true;
-	}
-	else
-	{
-		return false;
-	}
+    AcGePoint3d pt;
+    pt += v;
+    if( StringToPoint3d( value, pt ) )
+    {
+        v = pt.asVector();
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }

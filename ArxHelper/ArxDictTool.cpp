@@ -459,7 +459,7 @@ bool ArxDictTool2::findEntry( const CString& key, AcDbObjectId& objId )
     if( pDict == 0 ) return false;
 
     bool ret = ( Acad::eOk == pDict->getAt( key, objId ) );
-	//acutPrintf(_T("\nArxDitToll->Ret:%s"),ret?_T("Y"):_T("N"));
+    //acutPrintf(_T("\nArxDitToll->Ret:%s"),ret?_T("Y"):_T("N"));
     pDict->close();
 
     return ret;
@@ -542,7 +542,7 @@ bool ArxDictHelper::AddEntry( const CString& dictName, const CString& key, const
 }
 void ArxDictHelper::RemoveKey( const CString& dictName, const CString& key )
 {
-	ArxDictTool* pDictTool = ArxDictTool::GetDictTool( dictName );
-	pDictTool->removeKey( key );
-	delete pDictTool;
+    ArxDictTool* pDictTool = ArxDictTool::GetDictTool( dictName );
+    pDictTool->removeKey( key );
+    delete pDictTool;
 }

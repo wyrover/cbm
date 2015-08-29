@@ -4,10 +4,10 @@
 Adesk::UInt32 Pore::kCurrentVersionNumber = 1 ;
 
 ACRX_DXF_DEFINE_MEMBERS (
-	Pore, RcuGE,
-	AcDb::kDHL_CURRENT, AcDb::kMReleaseCurrent,
-	AcDbProxyEntity::kNoOperation,
-	×ê¿×, DEFGEAPP
+    Pore, RcuGE,
+    AcDb::kDHL_CURRENT, AcDb::kMReleaseCurrent,
+    AcDbProxyEntity::kNoOperation,
+    ×ê¿×, DEFGEAPP
 )
 
 Pore::Pore()

@@ -13,8 +13,7 @@ DoubleTunnelDraw::DoubleTunnelDraw()
 
 void DoubleTunnelDraw::setAllExtraParamsToDefault()
 {
-    m_width = 40;
-    jdt = JDT_NULL;
+    
 }
 
 void DoubleTunnelDraw::configExtraParams()
@@ -30,7 +29,6 @@ void DoubleTunnelDraw::updateExtraParams()
 
 void DoubleTunnelDraw::readExtraParam( DrawParamReader& reader )
 {
-    reader.readDouble( m_width );
     reader.readPoint( m_leftStartPt );
     reader.readPoint( m_leftEndPt );
     reader.readPoint( m_rightStartPt );
@@ -38,19 +36,30 @@ void DoubleTunnelDraw::readExtraParam( DrawParamReader& reader )
 
     int i = 0;
     reader.readInt( i );
-    jdt = ( JointDrawType )( i % 3 );
 }
 
 void DoubleTunnelDraw::writeExtraParam( DrawParamWriter& writer )
 {
-    writer.writeDouble( m_width );
     writer.writePoint( m_leftStartPt );
     writer.writePoint( m_leftEndPt );
     writer.writePoint( m_rightStartPt );
     writer.writePoint( m_rightEndPt );
-    writer.writeInt( ( int )jdt ); // 转换成整数
 }
 
+void DoubleTunnelDraw::regPropertyDataNames( AcStringArray& names ) const
+{
+	names.append( _T( "宽度" ) );
+	names.append( _T( "高度" ) );
+}
+
+void DoubleTunnelDraw::readPropertyDataFromGE( const AcStringArray& values )
+{
+	if( values.isEmpty() ) return;
+	m_width = _tstof( values[0].kACharPtr() );
+	m_height = _tstof( values[1].kACharPtr() );
+
+	//ArxUtilHelper::StringToPoint3d(values[2].kACharPtr(), m_pt);
+}
 void DoubleTunnelDraw::update()
 {
     caclStartPoint( m_leftStartPt, m_rightStartPt );
@@ -252,16 +261,3 @@ Acad::ErrorStatus DoubleTunnelDraw::subMoveGripPointsAt ( const AcDbIntArray& in
     }
     return Acad::eOk;
 }
-
-//double DoubleTunnelDraw::getLenth()
-//{
-//	AcGeVector3d v = m_endPt - m_startPt;
-//	return v.length();
-//}
-//
-//void DoubleTunnelDraw::setLenth( double lenth )
-//{
-//	AcGeVector3d v = m_endPt - m_startPt;
-//	m_endPt = m_startPt + v * lenth;
-//	update();
-//}

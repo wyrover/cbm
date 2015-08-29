@@ -21,7 +21,7 @@ public:
 
         acrxRegisterService( DEFGE_PLUGIN_SERVICE_NAME );
 
-		CreateTextStyle(_T("GDESS"), _T("Times New Roman"), Adesk::kFalse, Adesk::kFalse, GB2312_CHARSET, 16);
+        CreateTextStyle( _T( "GDESS" ), _T( "Times New Roman" ), Adesk::kFalse, Adesk::kFalse, GB2312_CHARSET, 16 );
 
         return ( retCode ) ;
     }

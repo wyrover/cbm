@@ -4,19 +4,19 @@
 
 namespace orm
 {
-	DbPrt Db::instance;
+    DbPrt Db::instance;
 
-	DbPrt Db::Instance()
-	{
-		if(!instance)
-		{
-			instance.reset(new soci_Db());
-		}
-		return instance;
-	}
+    DbPrt Db::Instance()
+    {
+        if( !instance )
+        {
+            instance.reset( new soci_Db() );
+        }
+        return instance;
+    }
 
-	DbPrt get_db()
-	{
-		return Db::Instance();
-	}
+    DbPrt get_db()
+    {
+        return Db::Instance();
+    }
 }

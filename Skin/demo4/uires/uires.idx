@@ -41,6 +41,7 @@
     <file name="mine_gas_reserves_predict_input" path="xml\mine_gas_reserves_predict_input.xml"/>
     <file name="mine_index" path="xml\mine_index.xml"/>
     <file name="mine_part" path="xml\mine_part.xml"/>
+    <file name="monitor" path="xml\monitor.xml"/>
     <file name="name" path="xml\name.xml"/>
     <file name="policy" path="xml\policy.xml"/>
     <file name="pore_flow" path="xml\pore_flow.xml"/>

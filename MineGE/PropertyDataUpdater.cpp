@@ -79,7 +79,7 @@ bool ShaftPropertySet(const CString& oldValue, CString& newValue)
 // "xxx"            --> {cb2, "xdddsf"}
 */
 
-static void BuildPropList( MFCPropertyGridCtrlHelper& pgch, CMFCPropertyGridProperty *pGroup,const CString& name, const CString& value, const FieldInfo& info )
+static void BuildPropList( MFCPropertyGridCtrlHelper& pgch, CMFCPropertyGridProperty* pGroup, const CString& name, const CString& value, const FieldInfo& info )
 {
     DATA_TYPE dt       = info.m_dt;
     int nMinValue      = info.m_minValue2;
@@ -88,7 +88,7 @@ static void BuildPropList( MFCPropertyGridCtrlHelper& pgch, CMFCPropertyGridProp
     double dMaxValue   = info.m_maxValue;
     LIST_TYPE lt       = info.m_lt;
     CString varName    = info.m_varName;
-	int tole	   = info.m_tolrance;
+    int tole	   = info.m_tolrance;
     bool bEnable       = info.m_enable;
     CString m_descr    = info.m_descr;
     LPCTSTR descr = NULL;
@@ -173,17 +173,17 @@ static void PrintPropList( CMFCPropertyGridCtrl* pPropDataList )
     acutPrintf( _T( "\n" ) );
 }
 
-static void ExcludeSpecial(int& funcCount,AcStringArray& funcNames,const CString& excludeName)
+static void ExcludeSpecial( int& funcCount, AcStringArray& funcNames, const CString& excludeName )
 {
-	if( funcCount > 1 ) 
-	{
-		int indx = funcNames.find( excludeName );
-		if(indx != -1)
-		{
-			funcNames.removeAt(indx);
-			funcCount = funcCount - 1;
-		}
-	}
+    if( funcCount > 1 )
+    {
+        int indx = funcNames.find( excludeName );
+        if( indx != -1 )
+        {
+            funcNames.removeAt( indx );
+            funcCount = funcCount - 1;
+        }
+    }
 }
 
 bool PropertyDataUpdater::BuildPropGridCtrl( CMFCPropertyGridCtrl* pPropDataList, const CString& type, const AcStringArray& funcFieldsInfo )
@@ -195,46 +195,46 @@ bool PropertyDataUpdater::BuildPropGridCtrl( CMFCPropertyGridCtrl* pPropDataList
     pPropDataList->RemoveAll();
     //acutPrintf(_T("\n清空所有属性..."));
 
-	int funcCount = 0;
-	AcStringArray funcNames;
-	for (int i = 0; i < funcFieldsInfo.length(); i++)
-	{
-		if ( _T("$") == funcFieldsInfo[i] )
-		{
-			funcCount += 1;
-			funcNames.append(funcFieldsInfo[i+1]);
-		}
-	}
+    int funcCount = 0;
+    AcStringArray funcNames;
+    for ( int i = 0; i < funcFieldsInfo.length(); i++ )
+    {
+        if ( _T( "$" ) == funcFieldsInfo[i] )
+        {
+            funcCount += 1;
+            funcNames.append( funcFieldsInfo[i + 1] );
+        }
+    }
 
-	ExcludeSpecial(funcCount,funcNames,_T("管路计算"));
-	ExcludeSpecial(funcCount,funcNames,_T("高位钻孔参数计算"));
-	ExcludeSpecial(funcCount,funcNames,_T("瓦斯泵计算"));
-	ExcludeSpecial(funcCount,funcNames,_T("瓦斯泵选型参考"));
-	ExcludeSpecial(funcCount,funcNames,_T("大小调节"));
+    ExcludeSpecial( funcCount, funcNames, _T( "管路计算" ) );
+    ExcludeSpecial( funcCount, funcNames, _T( "高位钻孔参数计算" ) );
+    ExcludeSpecial( funcCount, funcNames, _T( "瓦斯泵计算" ) );
+    ExcludeSpecial( funcCount, funcNames, _T( "瓦斯泵选型参考" ) );
+    ExcludeSpecial( funcCount, funcNames, _T( "大小调节" ) );
 
-	for(int i = 0; i < funcCount; i++)
-	{
-		CString funcName = funcNames[i].kACharPtr();
-		CMFCPropertyGridProperty *pGroup = new CMFCPropertyGridProperty(funcName);
-		pPropDataList->AddProperty(pGroup);
-	}
+    for( int i = 0; i < funcCount; i++ )
+    {
+        CString funcName = funcNames[i].kACharPtr();
+        CMFCPropertyGridProperty* pGroup = new CMFCPropertyGridProperty( funcName );
+        pPropDataList->AddProperty( pGroup );
+    }
 
-	MFCPropertyGridCtrlHelper pgch( pPropDataList );
-	for(int i = 0; i < funcCount; i++)
-	{
-		CString funcName = funcNames[i].kACharPtr();
-		int indx = funcFieldsInfo.find(funcName);
-		CMFCPropertyGridProperty *pGroup = pPropDataList->GetProperty(i);
-		for(int j = indx+1; j < funcFieldsInfo.length(); j++)
-		{
-			if( _T("$") == funcFieldsInfo[j] ) break;
-			CString name = funcFieldsInfo[j].kACharPtr();
-			FieldInfo info; // 默认设置(DT_STRING, m_enable=true, m_descr =_T(""))
-			FieldInfoHelper::ReadFieldInfo( type, name, info );
-			// 构建PropertyList
-			BuildPropList( pgch, pGroup, name, _T( "" ), info ); // 赋予空字符串
-		}
-	}
+    MFCPropertyGridCtrlHelper pgch( pPropDataList );
+    for( int i = 0; i < funcCount; i++ )
+    {
+        CString funcName = funcNames[i].kACharPtr();
+        int indx = funcFieldsInfo.find( funcName );
+        CMFCPropertyGridProperty* pGroup = pPropDataList->GetProperty( i );
+        for( int j = indx + 1; j < funcFieldsInfo.length(); j++ )
+        {
+            if( _T( "$" ) == funcFieldsInfo[j] ) break;
+            CString name = funcFieldsInfo[j].kACharPtr();
+            FieldInfo info; // 默认设置(DT_STRING, m_enable=true, m_descr =_T(""))
+            FieldInfoHelper::ReadFieldInfo( type, name, info );
+            // 构建PropertyList
+            BuildPropList( pgch, pGroup, name, _T( "" ), info ); // 赋予空字符串
+        }
+    }
     return true;
 }
 
@@ -247,29 +247,29 @@ static void SetPropValue( CMFCPropertyGridProperty* pProp, const FieldInfo& info
         break;
 
     case DT_INT:
-		if ( _ttoi( value ) < info.m_minValue2 || _ttoi( value ) > info.m_maxValue2 )
-		{ 
-			 pProp->SetValue( ( long ) info.m_minValue2 );
-		}
-		else
-		{
-			pProp->SetValue( ( long )_ttoi( value ) );
-		}
+        if ( _ttoi( value ) < info.m_minValue2 || _ttoi( value ) > info.m_maxValue2 )
+        {
+            pProp->SetValue( ( long ) info.m_minValue2 );
+        }
+        else
+        {
+            pProp->SetValue( ( long )_ttoi( value ) );
+        }
         break;
 
     case DT_NUMERIC:
-		if ( _ttoi( value ) < info.m_minValue || _ttoi( value ) > info.m_maxValue )
-		{ 
-			pProp->SetValue( ( long ) info.m_minValue );
-		}
-		else
-		{
-			pProp->SetValue( _tstof( value ) );
-		}
+        if ( _ttoi( value ) < info.m_minValue || _ttoi( value ) > info.m_maxValue )
+        {
+            pProp->SetValue( ( long ) info.m_minValue );
+        }
+        else
+        {
+            pProp->SetValue( _tstof( value ) );
+        }
         break;
 
     case DT_BOOL:
-        pProp->SetValue(( long )( StringToBool( value ) ? 1 : 0 ));
+        pProp->SetValue( ( long )( StringToBool( value ) ? 1 : 0 ) );
         break;
 
     case DT_DATE:
@@ -315,44 +315,44 @@ bool PropertyDataUpdater::ReadDataFromGE( CMFCPropertyGridCtrl* pPropDataList, c
     AcDbObject* pObj;
     if( Acad::eOk != pTrans->getObject( pObj, objId, AcDb::kForRead ) )
     {
-		acutPrintf(_T("open data for read failed.....\n"));
+        acutPrintf( _T( "open data for read failed.....\n" ) );
         actrTransactionManager->abortTransaction();
         return false;
     }
     DataObject* pDO = DataObject::cast( pObj );
     if( pDO == 0 )
     {
-		acutPrintf(_T("is not a dataobject....\n"));
+        acutPrintf( _T( "is not a dataobject....\n" ) );
         actrTransactionManager->abortTransaction();
         return false;
     }
 
     //acutPrintf(_T("\n读取数据..."));
     DataHelperImpl dh( pDO );
-	//经过测试，这个地方的的个数是群组的个数，就是树根的个数
+    //经过测试，这个地方的的个数是群组的个数，就是树根的个数
     int nCount = pPropDataList->GetPropertyCount();
     for ( int i = 0; i < nCount; i++ )
     {
         CMFCPropertyGridProperty* pGroup = pPropDataList->GetProperty( i );
-		//acutPrintf(_T("\n属性个数:%d"),pGroup->GetSubItemsCount());
-		for(int j = 0; j < pGroup->GetSubItemsCount(); j++)
-		{
-			CMFCPropertyGridProperty* pProp = pGroup->GetSubItem( j );
+        //acutPrintf(_T("\n属性个数:%d"),pGroup->GetSubItemsCount());
+        for( int j = 0; j < pGroup->GetSubItemsCount(); j++ )
+        {
+            CMFCPropertyGridProperty* pProp = pGroup->GetSubItem( j );
 
-			CString value;
-			dh.getPropertyData( pProp->GetName(), value ); // 更新属性数据
-			//acutPrintf(_T("\n功能:%s->字段:%s->值:%s"),pGroup->GetName(),pProp->GetName(),value);
-			FieldInfo info; // 默认设置(DT_STRING, m_enable=true, m_descr =_T(""))
-			FieldInfoHelper::ReadFieldInfo( pDO->getType(), pProp->GetName(), info );
-			SetPropValue( pProp, info, value ); // 设置属性值
-		}
+            CString value;
+            dh.getPropertyData( pProp->GetName(), value ); // 更新属性数据
+            //acutPrintf(_T("\n功能:%s->字段:%s->值:%s"),pGroup->GetName(),pProp->GetName(),value);
+            FieldInfo info; // 默认设置(DT_STRING, m_enable=true, m_descr =_T(""))
+            FieldInfoHelper::ReadFieldInfo( pDO->getType(), pProp->GetName(), info );
+            SetPropValue( pProp, info, value ); // 设置属性值
+        }
 
-		//DATA_TYPE dt       = info.m_dt;
-		//LIST_TYPE lt       = info.m_lt;
-		//if (dt == DT_LIST && lt == LT_INT)
-		//{
-		//	
-		//}
+        //DATA_TYPE dt       = info.m_dt;
+        //LIST_TYPE lt       = info.m_lt;
+        //if (dt == DT_LIST && lt == LT_INT)
+        //{
+        //
+        //}
 
     }
 
@@ -362,63 +362,63 @@ bool PropertyDataUpdater::ReadDataFromGE( CMFCPropertyGridCtrl* pPropDataList, c
 
 static void Update( )
 {
-	AcDbObjectIdArray objIds;
-	DrawHelper::FindMineGEs(_T("DifferPressSensorGE"),objIds);
-	DrawHelper::FindMineGEs(_T("GasSensorGE"),objIds);
-	DrawHelper::FindMineGEs(_T("FlowSensorGE"),objIds);
-	DrawHelper::FindMineGEs(_T("TempeSensorGE"),objIds);
-	DrawHelper::FindMineGEs(_T("GasFlowTagGE"),objIds);
-	for(int i = 0; i < objIds.length(); i++ )
-	{
-		ArxEntityHelper::UpdateEntity( objIds[i] ); // 强制更新显示效果
-	}
+    AcDbObjectIdArray objIds;
+    DrawHelper::FindMineGEs( _T( "DifferPressSensorGE" ), objIds );
+    DrawHelper::FindMineGEs( _T( "GasSensorGE" ), objIds );
+    DrawHelper::FindMineGEs( _T( "FlowSensorGE" ), objIds );
+    DrawHelper::FindMineGEs( _T( "TempeSensorGE" ), objIds );
+    DrawHelper::FindMineGEs( _T( "GasFlowTagGE" ), objIds );
+    for( int i = 0; i < objIds.length(); i++ )
+    {
+        ArxEntityHelper::UpdateEntity( objIds[i] ); // 强制更新显示效果
+    }
 
 }
 
 bool PropertyDataUpdater::WriteDataToGE( CMFCPropertyGridCtrl* pPropDataList, const AcDbObjectId& objId )
 {
-	if( pPropDataList == NULL ) return false;
-	if( objId.isNull() ) return false;
+    if( pPropDataList == NULL ) return false;
+    if( objId.isNull() ) return false;
 
-	// 没有属性数据可更新
-	if( pPropDataList->GetPropertyCount() == 0 ) return false;
+    // 没有属性数据可更新
+    if( pPropDataList->GetPropertyCount() == 0 ) return false;
 
-	AcTransaction* pTrans = actrTransactionManager->startTransaction();
-	if( pTrans == 0 ) return false;
+    AcTransaction* pTrans = actrTransactionManager->startTransaction();
+    if( pTrans == 0 ) return false;
 
-	AcDbObject* pObj;
-	if( Acad::eOk != pTrans->getObject( pObj, objId, AcDb::kForWrite ) )
-	{
-		actrTransactionManager->abortTransaction();
-		return false;
-	}
-	DataObject* pDO = DataObject::cast( pObj );
-	if( pDO == 0 )
-	{
-		actrTransactionManager->abortTransaction();
-		return false;
-	}
+    AcDbObject* pObj;
+    if( Acad::eOk != pTrans->getObject( pObj, objId, AcDb::kForWrite ) )
+    {
+        actrTransactionManager->abortTransaction();
+        return false;
+    }
+    DataObject* pDO = DataObject::cast( pObj );
+    if( pDO == 0 )
+    {
+        actrTransactionManager->abortTransaction();
+        return false;
+    }
 
-	//acutPrintf(_T("\n写入数据..."));
-	DataHelperImpl dh( pDO );
-	int nCount = pPropDataList->GetPropertyCount();
-	for ( int i = 0; i < nCount; i++ )
-	{
-		CMFCPropertyGridProperty* pGroup = pPropDataList->GetProperty( i );
-		//acutPrintf(_T("\n属性个数:%d"),pGroup->GetSubItemsCount());
-		for(int j = 0; j < pGroup->GetSubItemsCount(); j++)
-		{
-			CMFCPropertyGridProperty* pProp = pGroup->GetSubItem( j );
-			CString value = pProp->GetValue();
-			//acutPrintf(_T("\n字段:%s"),value);
-			//acutPrintf(_T("\n写数据功能:%s->字段:%s->值:%s"),pGroup->GetName(),pProp->GetName(),value);
-			bool ret = dh.setPropertyData( pProp->GetName(), value ); // 更新属性数据
-			//acutPrintf(_T("\n数据更新%s"),ret?_T("成功"):_T("失败"));
-		}
-	}
-	actrTransactionManager->endTransaction();
+    //acutPrintf(_T("\n写入数据..."));
+    DataHelperImpl dh( pDO );
+    int nCount = pPropDataList->GetPropertyCount();
+    for ( int i = 0; i < nCount; i++ )
+    {
+        CMFCPropertyGridProperty* pGroup = pPropDataList->GetProperty( i );
+        //acutPrintf(_T("\n属性个数:%d"),pGroup->GetSubItemsCount());
+        for( int j = 0; j < pGroup->GetSubItemsCount(); j++ )
+        {
+            CMFCPropertyGridProperty* pProp = pGroup->GetSubItem( j );
+            CString value = pProp->GetValue();
+            //acutPrintf(_T("\n字段:%s"),value);
+            //acutPrintf(_T("\n写数据功能:%s->字段:%s->值:%s"),pGroup->GetName(),pProp->GetName(),value);
+            bool ret = dh.setPropertyData( pProp->GetName(), value ); // 更新属性数据
+            //acutPrintf(_T("\n数据更新%s"),ret?_T("成功"):_T("失败"));
+        }
+    }
+    actrTransactionManager->endTransaction();
 
-	//不管什么数据写入都更新瓦斯流量
-	Update();
-	return true;
+    //不管什么数据写入都更新瓦斯流量
+    Update();
+    return true;
 }

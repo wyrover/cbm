@@ -83,7 +83,7 @@ public:
         ArxDataTool::RegDict( OBJECT_LIST_DATA_DICT );
         ArxDataTool::RegDict( GLOBAL_SINGLE_INFO_DICT );
         ArxDataTool::RegDict( CUR_DRAW_DICT );
-		ArxDataTool::RegDict(FUNC_FIELD_DICT);
+        ArxDataTool::RegDict( FUNC_FIELD_DICT );
 
         ArxDataTool::RegAppName( acdbHostApplicationServices()->workingDatabase(), DRAW_PARAMS_XDATA_GROUP );
 

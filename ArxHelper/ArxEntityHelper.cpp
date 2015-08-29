@@ -66,37 +66,37 @@ void ArxEntityHelper::TransformEntities2( const AcDbObjectIdArray& objIds, const
 {
     if( objIds.isEmpty() ) return;
 
-	int len = objIds.length();
+    int len = objIds.length();
     for( int i = 0; i < len; i++ )
     {
-		AcDbEntity* pEnt;
-		if( Acad::eOk == acdbOpenAcDbEntity( pEnt, objIds[i], AcDb::kForWrite ) )
-		{
-			pEnt->transformBy( xform );
-			pEnt->close();
-		}
+        AcDbEntity* pEnt;
+        if( Acad::eOk == acdbOpenAcDbEntity( pEnt, objIds[i], AcDb::kForWrite ) )
+        {
+            pEnt->transformBy( xform );
+            pEnt->close();
+        }
     }
 }
 
 void ArxEntityHelper::TransformEntities( const AcDbObjectIdArray& objIds, const AcGeMatrix3d& xform )
 {
-	if( objIds.isEmpty() ) return;
+    if( objIds.isEmpty() ) return;
 
-	AcTransaction* pTrans = actrTransactionManager->startTransaction();
-	if( pTrans == 0 ) return;
+    AcTransaction* pTrans = actrTransactionManager->startTransaction();
+    if( pTrans == 0 ) return;
 
-	int len = objIds.length();
-	for( int i = 0; i < len; i++ )
-	{
-		AcDbObject* pObj;
-		if( Acad::eOk != pTrans->getObject( pObj, objIds[i], AcDb::kForWrite ) ) continue;
+    int len = objIds.length();
+    for( int i = 0; i < len; i++ )
+    {
+        AcDbObject* pObj;
+        if( Acad::eOk != pTrans->getObject( pObj, objIds[i], AcDb::kForWrite ) ) continue;
 
-		AcDbEntity* pEnt = AcDbEntity::cast( pObj );
-		if( pEnt == 0 ) continue;
+        AcDbEntity* pEnt = AcDbEntity::cast( pObj );
+        if( pEnt == 0 ) continue;
 
-		pEnt->transformBy( xform );
-	}
-	actrTransactionManager->endTransaction();
+        pEnt->transformBy( xform );
+    }
+    actrTransactionManager->endTransaction();
 }
 
 void ArxEntityHelper::DrawEntities( const AcDbObjectIdArray& objIds, AcGiWorldDraw* mode )
@@ -259,15 +259,15 @@ static bool IsValidExtent( const AcDbExtents& ext )
 
 void ArxEntityHelper::ZoomToEntityForModeless( const AcDbObjectId& objId )
 {
-	// 在非模态对话框下无法使用
-	//ads_name en;
-	//if(Acad::eOk != acdbGetAdsName(en, objId)) return;
-	//acedCommand(RTSTR, _T("ZOOM"), RTSTR, _T("O"), RTENAME, en, RTSTR, _T(""), 0);
+    // 在非模态对话框下无法使用
+    //ads_name en;
+    //if(Acad::eOk != acdbGetAdsName(en, objId)) return;
+    //acedCommand(RTSTR, _T("ZOOM"), RTSTR, _T("O"), RTENAME, en, RTSTR, _T(""), 0);
 
-	// 临时使用sendStringToExecute解决缩放定位问题
-	CString cmd;
-	cmd.Format( _T( "ZOOM O \003" ) ); // 按空格结束选择对象，然后esc(防止多余的空格重复执行命令)
-	acDocManager->sendStringToExecute( curDoc(), cmd, true, false, false );
+    // 临时使用sendStringToExecute解决缩放定位问题
+    CString cmd;
+    cmd.Format( _T( "ZOOM O \003" ) ); // 按空格结束选择对象，然后esc(防止多余的空格重复执行命令)
+    acDocManager->sendStringToExecute( curDoc(), cmd, true, false, false );
 }
 
 void ArxEntityHelper::ZoomToEntity( const AcDbObjectId& objId )
@@ -481,7 +481,7 @@ bool ArxEntityHelper::SetEntitiesColor2( const AcDbObjectIdArray& objIds, const 
  * 要求使用它的命令应该开启ACRX_CMD_USEPICKSET和ACRX_CMD_REDRAW选项
  * 但测试结果显示，貌似不使用也可以??????
  */
- bool ArxEntityHelper::SelectEntity( const AcDbObjectId& objId )
+bool ArxEntityHelper::SelectEntity( const AcDbObjectId& objId )
 {
     //acedSSSetFirst(NULL, NULL);
 
@@ -499,36 +499,36 @@ bool ArxEntityHelper::SetEntitiesColor2( const AcDbObjectIdArray& objIds, const 
     return true;
 }
 
- bool ArxEntityHelper::SelectEntities( const AcDbObjectIdArray& objIds )
+bool ArxEntityHelper::SelectEntities( const AcDbObjectIdArray& objIds )
 {
-	//acedSSSetFirst(NULL, NULL);
+    //acedSSSetFirst(NULL, NULL);
 
-	if( objIds.isEmpty() ) return false;
+    if( objIds.isEmpty() ) return false;
 
-	ads_name ss;
-	//创建一个空的选择集
-	if(RTNORM != acedSSAdd( NULL, NULL, ss )) return false;
-	bool ret = true;
-	for(int i=0;i<objIds.length();i++)
-	{
-		ads_name ename;
-		if( Acad::eOk != acdbGetAdsName( ename, objIds[i] ) ) 
-		{ 
-			ret = false;;
-			break;
-		}
-		if( RTNORM != acedSSAdd( ename, ss, ss ) )  // 添加到选择集
-		{
-			ret = false;;
-			break;
-		}
-	}
+    ads_name ss;
+    //创建一个空的选择集
+    if( RTNORM != acedSSAdd( NULL, NULL, ss ) ) return false;
+    bool ret = true;
+    for( int i = 0; i < objIds.length(); i++ )
+    {
+        ads_name ename;
+        if( Acad::eOk != acdbGetAdsName( ename, objIds[i] ) )
+        {
+            ret = false;;
+            break;
+        }
+        if( RTNORM != acedSSAdd( ename, ss, ss ) )  // 添加到选择集
+        {
+            ret = false;;
+            break;
+        }
+    }
 
-	if(ret)
-	{
-		acedSSSetFirst( ss, NULL ); // 高亮选中
-	}
-	acedSSFree( ss );           // 释放选择集
+    if( ret )
+    {
+        acedSSSetFirst( ss, NULL ); // 高亮选中
+    }
+    acedSSFree( ss );           // 释放选择集
 
-	return ret;
+    return ret;
 }

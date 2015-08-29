@@ -3,6 +3,7 @@
 class UIHelper
 {
 public:
+	static void InitAllData();
 	static void ShowModelessDemo();
 	static void ShowModalDemo();
 	static void Login();

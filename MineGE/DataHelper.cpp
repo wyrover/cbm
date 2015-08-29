@@ -168,9 +168,9 @@ bool DataHelper::SetPropertyData( const AcDbObjectId& objId, const CString& fiel
 
 void DataHelper::CopyPropertyData( const AcDbObjectId& sourceObjId, const AcDbObjectId& targetObjId )
 {
-	AcDbObjectId dObjId1, dObjId2;
-	if(!DataHelper::GetDataObject(sourceObjId, dObjId1)) return;
-	if(!DataHelper::GetDataObject(targetObjId, dObjId2)) return;
+    AcDbObjectId dObjId1, dObjId2;
+    if( !DataHelper::GetDataObject( sourceObjId, dObjId1 ) ) return;
+    if( !DataHelper::GetDataObject( targetObjId, dObjId2 ) ) return;
 
     AcTransaction* pTrans = actrTransactionManager->startTransaction();
     if( pTrans == 0 ) return;
@@ -188,7 +188,7 @@ void DataHelper::CopyPropertyData( const AcDbObjectId& sourceObjId, const AcDbOb
         return;
     }
 
-	//acutPrintf(_T("source:%s \t target:%s\n"), pObj1->isA()->name(), pObj2->isA()->name());
+    //acutPrintf(_T("source:%s \t target:%s\n"), pObj1->isA()->name(), pObj2->isA()->name());
 
     DataObject* pDO1 = DataObject::cast( pObj1 );
     if( pDO1 == 0 )
@@ -210,22 +210,22 @@ void DataHelper::CopyPropertyData( const AcDbObjectId& sourceObjId, const AcDbOb
         actrTransactionManager->abortTransaction();
         return;
     }
-     //测试用
+    //测试用
     //acutPrintf(_T("source:%s \t target:%s\n"), pObj1->isA()->name(), pObj2->isA()->name());
 
     AcStringArray values;
     pDO1->getAllData( values ); // 获取所有数据
     pDO2->setAllData( values ); // 交换数据
 
-	//AcStringArray fields;
-	//FieldHelper::GetAllFields(_T("Chimney"),fields);
-	//int len = fields.length();
-	//for (int i = 0; i < len; i++)
-	//{
-	//	CString value;
-	//	//CString &field = fields[i];
-	//	DataHelper::GetPropertyData(sourceObjId,fields[i].kszPtr(),value);
-	//	DataHelper::SetPropertyData(targetObjId,fields[i].kszPtr(),value);
-	//}
+    //AcStringArray fields;
+    //FieldHelper::GetAllFields(_T("Chimney"),fields);
+    //int len = fields.length();
+    //for (int i = 0; i < len; i++)
+    //{
+    //	CString value;
+    //	//CString &field = fields[i];
+    //	DataHelper::GetPropertyData(sourceObjId,fields[i].kszPtr(),value);
+    //	DataHelper::SetPropertyData(targetObjId,fields[i].kszPtr(),value);
+    //}
     actrTransactionManager->endTransaction();
 }
