@@ -64,5 +64,5 @@ protected:
 private:
 	void initAdjLayerDatas();
 	void fillAdjLayerCombox();
-	AdjLayerPtr getCurSelAdjLayer();
+	cbm::AdjLayerPtr getCurSelAdjLayer();
 };

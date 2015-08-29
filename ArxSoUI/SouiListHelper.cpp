@@ -1,5 +1,6 @@
 #include "StdAfx.h"
 #include "SouiListHelper.h"
+using namespace orm;
 
 void SComboBoxHelper::Append( SComboBox* combox, const StringArray& names, const IntArray& ids )
 {

@@ -68,5 +68,5 @@ protected:
 private:
 	void initWsDatas();
 	void fillWsCombox();
-	WorkSurfPtr getCurSelWs();
+	cbm::WorkSurfPtr getCurSelWs();
 };

@@ -20,21 +20,16 @@ using namespace cbm;
 #include "MainDialog.h"
 using namespace SOUI;
 
-HINSTANCE arx_instance()
-{
-    return _hdllInstance;
-}
-
 void UIHelper::InitAllData()
 {
-    CString appDir = ArxUtilHelper::GetAppPathDir( arx_instance() );
+    CString appDir = ArxUtilHelper::GetAppPathDir( _hdllInstance );
     DataInitHelper::InitDataField( ArxUtilHelper::BuildPath( appDir, _T( "煤层气抽采-字段-图元属性.txt" ) ) );
 }
 
 void UIHelper::InitSouiEnviroment()
 {
     LOG_TRACE( _T( "初始化soui环境..." ) );
-    new MySoUiLoader( arx_instance() );
+    new MySoUiLoader( _hdllInstance );
     SoUILoader::getSingletonPtr()->init();
 }
 

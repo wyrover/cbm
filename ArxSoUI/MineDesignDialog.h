@@ -78,8 +78,8 @@ private:
 	void initMineDatas();
 	void fillCoalCombox();
 
-	CoalPtr getCurSelCoal();
-	WorkAreaPtr getCurSelWorkArea();
-	WorkSurfPtr getCurSelWs();
-	DrillingSurfPtr getCurSelTws();
+	cbm::CoalPtr getCurSelCoal();
+	cbm::WorkAreaPtr getCurSelWorkArea();
+	cbm::WorkSurfPtr getCurSelWs();
+	cbm::DrillingSurfPtr getCurSelTws();
 };

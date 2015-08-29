@@ -97,7 +97,5 @@ using namespace SOUI;
 #include <ArxHelper/HelperClass.h>
 #include <ArxDao/DaoHelper.h>
 #include <ArxDao/Entity.h>
-using namespace orm;
-using namespace cbm;
 
 #pragma pack (pop)

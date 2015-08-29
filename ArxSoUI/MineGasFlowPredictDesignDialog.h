@@ -59,6 +59,6 @@ private:
 	void initTwsDatas();
 	void fillWsCombox();
 	void fillTwsCombox();
-	WorkSurfPtr getCurSelWs();
-	DrillingSurfPtr getCurSelTws();
+	cbm::WorkSurfPtr getCurSelWs();
+	cbm::DrillingSurfPtr getCurSelTws();
 };

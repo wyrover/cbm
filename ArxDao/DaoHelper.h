@@ -2,8 +2,6 @@
 
 #include "dlimexp.h"
 #include "Entity.h"
-using namespace orm;
-using namespace cbm;
 
 #include <vector>
 typedef std::vector<CString> StringArray;
@@ -20,7 +18,7 @@ public:
 	//查询已登录用户的id
 	static int GetOnlineAccountId();
 	//获取已登录用户的矿井数据
-	static MinePtr GetOnlineMine();
+	static cbm::MinePtr GetOnlineMine();
 	//验证用户名和密码
 	static int VerifyMineAccount(const CString& username, const CString& pwd);
 	//查询所有的基地
@@ -30,17 +28,17 @@ public:
 	//根据矿区反查基地
 	static CString GetBaeByRegion(const CString& regionName);
 	//查询示范矿区的虚拟矿井
-	static MinePtr GetSampleMine(const CString& regionName);
+	static cbm::MinePtr GetSampleMine(const CString& regionName);
 	//查询示范矿区的虚拟煤层
-	static CoalPtr GetSampleCoal(const CString& regionName);
+	static cbm::CoalPtr GetSampleCoal(const CString& regionName);
 	//查询矿井所有的煤层名称
 	static void GetCoalNames(int mine_id, StringArray& coals);
 	//查询矿井所有的煤层id
 	static void GetCoalIds(int mine_id, IntArray& coals);
 	//查询矿井所有的采区
-	static RecordPtrListPtr GetWorkAreas(int mine_id);
+	static orm::RecordPtrListPtr GetWorkAreas(int mine_id);
 	//查询矿井所有的工作面
-	static RecordPtrListPtr GetWorkSurfs(int mine_id);
+	static orm::RecordPtrListPtr GetWorkSurfs(int mine_id);
 	//查询矿井所有的掘进面
-	static RecordPtrListPtr GetDrillingSurfs(int mine_id);
+	static orm::RecordPtrListPtr GetDrillingSurfs(int mine_id);
 };

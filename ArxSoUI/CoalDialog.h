@@ -90,5 +90,5 @@ protected:
 private:
 	void fillCoalCombox();
 	void initCoalDatas();
-	CoalPtr getCurSelCoal();
+	cbm::CoalPtr getCurSelCoal();
 };

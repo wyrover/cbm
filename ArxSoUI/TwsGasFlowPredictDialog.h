@@ -67,5 +67,5 @@ protected:
 private:
 	void initTwsDatas();
 	void fillTwsCombox();
-	DrillingSurfPtr getCurSelTws();
+	cbm::DrillingSurfPtr getCurSelTws();
 };
