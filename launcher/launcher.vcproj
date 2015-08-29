@@ -526,6 +526,10 @@
 				RelativePath=".\res\launcher.rc2"
 				>
 			</File>
+			<File
+				RelativePath=".\res\soui_res.rc2"
+				>
+			</File>
 		</Filter>
 	</Files>
 	<Globals>
