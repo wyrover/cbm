@@ -291,8 +291,26 @@ CString ArxUtilHelper::GetAppPathDir( HINSTANCE hInstance )
 // Éú³ÉÂ·¾¶
 CString ArxUtilHelper::BuildPath( const CString& dir, const CString& fileName )
 {
-    CString path;
-    path.Format( _T( "%s%s" ), dir, fileName );
+	int n1 = dir.GetLength();
+	int n2 = fileName.GetLength();
+	CString path;
+	if(dir.GetAt(n1-1) == _T('\\')) 
+	{
+		path += dir.Left(n1-1);
+	}
+	else
+	{
+		path += dir;
+	}
+	path += _T("\\");
+	if(fileName.GetAt(0) == _T('\\'))
+	{
+		path += fileName.Right(n2-1);
+	}
+	else
+	{
+		path += fileName;
+	}
     return path;
 }
 

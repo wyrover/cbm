@@ -1,6 +1,7 @@
 #include "StdAfx.h"
 #include "resource.h"
 #include "UIHelper.h"
+#include "CmdHelper.h"
 
 #include <ArxHelper/HelperClass.h>
 #include <Util/HelperClass.h>
@@ -35,8 +36,6 @@ public:
         AfxEnableControlContainer();
         AfxInitRichEdit2();
 
-        //初始化数据字段
-        UIHelper::InitAllData();
         //初始化soui环境
         UIHelper::InitSouiEnviroment();
 
@@ -67,6 +66,8 @@ public:
         AcRx::AppRetCode retCode = AcRxArxApp::On_kLoadDwgMsg ( pkt );
 
         acutPrintf( _T( "\nArxSoUI::On_kLoadDwgMsg\n" ) );
+		//初始化数据字段
+		UIHelper::InitAllData();
 
         return retCode;
     }
@@ -128,6 +129,16 @@ public:
     {
         UIHelper::Main();
     }
+
+	static void JL_DrawTunnel()
+	{
+		CmdHelper::DrawTunnel();
+	}
+
+	static void JL_TestTunnel()
+	{
+		CmdHelper::TestTunnel();
+	}
 } ;
 
 //-----------------------------------------------------------------------------
@@ -141,3 +152,6 @@ ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _GasTechModeDecision, gtmd, ACRX_CM
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _KeyParamCacl, kpc, ACRX_CMD_TRANSPARENT, NULL )
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _PolicyHelp, phelp, ACRX_CMD_TRANSPARENT, NULL )
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _Main, main, ACRX_CMD_TRANSPARENT, NULL )
+
+ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _DrawTunnel, tunnel, ACRX_CMD_TRANSPARENT, NULL )
+ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _TestTunnel, tt, ACRX_CMD_TRANSPARENT, NULL )

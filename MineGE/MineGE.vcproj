@@ -381,10 +381,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\DataInitHelper.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\DrawHelper.cpp"
 				>
 			</File>
@@ -496,6 +492,10 @@
 				Name="field"
 				>
 				<File
+					RelativePath=".\DataInitHelper.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\FieldHelper.cpp"
 					>
 				</File>
@@ -563,10 +563,6 @@
 			</File>
 			<File
 				RelativePath=".\ConstData.h"
-				>
-			</File>
-			<File
-				RelativePath=".\DataInitHelper.h"
 				>
 			</File>
 			<File
@@ -652,6 +648,10 @@
 			<Filter
 				Name="field"
 				>
+				<File
+					RelativePath=".\DataInitHelper.h"
+					>
+				</File>
 				<File
 					RelativePath=".\FieldHelper.h"
 					>

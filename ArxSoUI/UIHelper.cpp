@@ -23,7 +23,7 @@ using namespace SOUI;
 void UIHelper::InitAllData()
 {
     CString appDir = ArxUtilHelper::GetAppPathDir( _hdllInstance );
-    DataInitHelper::InitDataField( ArxUtilHelper::BuildPath( appDir, _T( "煤层气抽采-字段-图元属性.txt" ) ) );
+    DataInitHelper::InitDataField( ArxUtilHelper::BuildPath( appDir, _T( "Datas\\煤层气抽采-字段-图元属性.txt" ) ) );
 }
 
 void UIHelper::InitSouiEnviroment()
