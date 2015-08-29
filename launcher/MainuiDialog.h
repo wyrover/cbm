@@ -19,6 +19,7 @@ protected:
 protected:
 	void OnCadButtonClick();
 	void OnCadfileButtonClick();
+	void OnClose();
 
 	/** 菜单消息 */
 protected:
@@ -34,6 +35,7 @@ protected:
 
 	//控件消息映射表
 	EVENT_MAP_BEGIN()
+		EVENT_NAME_COMMAND(_T("btn_close"), OnClose)
 		EVENT_NAME_COMMAND(_T("cad"), OnCadButtonClick)
 		EVENT_NAME_COMMAND(_T("cadfile"), OnCadfileButtonClick)
 		CHAIN_EVENT_MAP(SouiDialog)

@@ -49,11 +49,6 @@ void MainuiDialog::OnCadfileButtonClick()
 
 void MainuiDialog::OnDestroyWindow()
 {
-	if (ThreadHelper::IsProcessActive(_T("acad.exe")))
-	{
-		MessageBox(NULL, _T("请先关闭CAD!"), _T("警告"), MB_OK | MB_ICONWARNING);
-		return;
-	}
 }
 
 LRESULT MainuiDialog::OnBeginMonitor(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
@@ -74,4 +69,14 @@ LRESULT MainuiDialog::OnEndMonitor(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL
 		return pData->monitor->OnMonitorEnd(wParam, lParam);
 	}
 	return FALSE;
+}
+
+void MainuiDialog::OnClose()
+{
+	if (ThreadHelper::IsProcessActive(_T("acad.exe")))
+	{
+		MessageBox(NULL, _T("请先关闭CAD!"), _T("警告"), MB_OK | MB_ICONWARNING);
+		return;
+	}
+	SouiDialog::OnClose();
 }
