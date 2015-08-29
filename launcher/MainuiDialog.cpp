@@ -39,7 +39,7 @@ void MainuiDialog::OnCadfileButtonClick()
 {
 	//弹出文件选择对话框,用于选择dwg文件
 	CString dwgFile;
-	TCHAR szFileFilter[] = _T("DWG文件(*.dwg)|*.dwg|DFX文件(*.dfx)|*.dfx|所有文件(*.*)|*.*||");
+	TCHAR szFileFilter[] = _T("DWG文件(*.dwg)|*.dwg|DXF文件(*.dxf)|*.dxf|所有文件(*.*)|*.*||");
 	TCHAR szFileExt[] = _T("dwg");
 	if(!CADHelper::SelectFile(dwgFile, szFileFilter, szFileExt)) return;
 	
