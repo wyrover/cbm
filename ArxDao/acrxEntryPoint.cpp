@@ -25,7 +25,12 @@ public:
         acutPrintf( _T( "\nArxDao::On_kInitAppMsg\n" ) );
 
         //初始化数据库连接
-        DaoHelper::ConfigureDao( _T( "root" ), _T( "" ), _T( "cbm" ), _T( "localhost" ), _T( "3306" ) );
+        if(!DaoHelper::ConfigureDao( _T( "root" ), _T( "" ), _T( "cbm" ), _T( "localhost" ), _T( "3306" ) ))
+		{
+			AfxMessageBox( _T( "连接MySQL数据库失败，请联系技术人员!!!" ) );
+			return AcRx::kRetError;
+		}
+
         //初始化示范矿区数据
         DaoHelper::InitSampleRegion();
 

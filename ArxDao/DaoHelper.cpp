@@ -9,12 +9,9 @@ using namespace cbm;
 
 #include <ArxHelper/HelperClass.h>
 
-void DaoHelper::ConfigureDao( const CString& user, const CString& password, const CString& database, const CString& host/*=_T("localhost")*/, const CString& port/*=_T("3306")*/ )
+bool DaoHelper::ConfigureDao( const CString& user, const CString& password, const CString& database, const CString& host/*=_T("localhost")*/, const CString& port/*=_T("3306")*/ )
 {
-    if( !Db::Instance()->config( user, password, database, host, port ) )
-    {
-        AfxMessageBox( _T( "连接MySQL数据库失败，请联系技术人员!!!" ) );
-    }
+    return Db::Instance()->config( user, password, database, host, port );
 }
 
 void DaoHelper::TestDao()
