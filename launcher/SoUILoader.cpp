@@ -2,8 +2,8 @@
 #include "SoUILoader.h"
 using namespace SOUI;
 
-#define RES_TYPE 0   //从文件中加载资源
-// #define RES_TYPE 1   //从PE资源中加载UI资源
+//#define RES_TYPE 0   //从文件中加载资源
+#define RES_TYPE 1   //从PE资源中加载UI资源
 // #define RES_TYPE 2   //从zip包中加载资源
 
 #ifdef _DEBUG
