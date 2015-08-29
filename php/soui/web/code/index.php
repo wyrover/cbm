@@ -868,6 +868,38 @@ function createFileNodes($doc, $resType, $dir, $subDir, $filters='*.*', $prefix=
   return $node;
 }
 
+function addImgToRes($res, $doc, $dir)
+{
+    //扫描image文件,创建<img>子节点
+  xml_append_child($res, createFileNodes($doc, 'icon', $dir, 'image', $filters='*.ico', $prefx='ICON', $bDfs=true));
+  //扫描image文件,创建<img>子节点
+  xml_append_child($res, createFileNodes($doc, 'cursor', $dir, 'image', $filters='*.cur;*.ani', $prefx='CURSOR', $bDfs=true));
+  //扫描image文件,创建<img>子节点
+  xml_append_child($res, createFileNodes($doc, 'img', $dir, 'image\cbm', $filters='*.png;*.jgp;*.bmp;*.jpge', $prefx='cbm', $bDfs=false));
+  xml_append_child($res, createFileNodes($doc, 'img', $dir, 'image', $filters='*.png;*.jgp;*.bmp;*.jpge', $prefx='', $bDfs=false));
+  xml_append_child($res, createFileNodes($doc, 'img', $dir, 'image\bk', $filters='*.png;*.jgp;*.bmp;*.jpge', $prefx='', $bDfs=false));
+  xml_append_child($res, createFileNodes($doc, 'img', $dir, 'image\button', $filters='*.png;*.jgp;*.bmp;*.jpge', $prefx='', $bDfs=false));
+  xml_append_child($res, createFileNodes($doc, 'img', $dir, 'image\dkpac', $filters='*.png;*.jgp;*.bmp;*.jpge', $prefx='DKPAC', $bDfs=false));
+  xml_append_child($res, createFileNodes($doc, 'img', $dir, 'image\small', $filters='*.png;*.jgp;*.bmp;*.jpge', $prefx='SMALL', $bDfs=false));
+  xml_append_child($res, createFileNodes($doc, 'img', $dir, 'image\icon', $filters='*.png;*.jgp;*.bmp;*.jpge', $prefx='ICON', $bDfs=false));
+  xml_append_child($res, createFileNodes($doc, 'img', $dir, 'image\menu', $filters='*.png;*.jgp;*.bmp;*.jpge', $prefx='MENU', $bDfs=false));
+  xml_append_child($res, createFileNodes($doc, 'img', $dir, 'image\skins\default', $filters='*.png;*.jgp;*.bmp;*.jpge', $prefx='DEF', $bDfs=false));
+  //扫描image文件,创建<img>子节点
+  //xml_append_child($res, createFileNodes($doc, 'GIF', 'image', $filters='*.gif', $prefx='', $bDfs=false));
+  //扫描gif文件,创建<GIF>子节点
+  xml_append_child($res, createFileNodes($doc, 'gif', $dir, 'gif', $filters='*.gif', $prefx='', $bDfs=false));
+}
+
+function addOtherToRes($res, $doc, $dir)
+{
+  //扫描rtf文件,创建<rtf>子节点
+  xml_append_child($res, createFileNodes($doc, 'rtf', $dir, 'rtf', $filters='*.rtf', $prefx='', $bDfs=false));
+  //扫描lua文件,创建<script>子节点
+  xml_append_child($res, createFileNodes($doc, 'script', $dir, 'lua', $filters='*.lua', $prefx='', $bDfs=false));
+  //扫描translator文件,创建<translator>子节点
+  xml_append_child($res, createFileNodes($doc, 'translator', $dir, 'translator', $filters='*.xml', $prefx='', $bDfs=false));
+}
+
 function createUIResFile($dir, $uiResFile)
 {
   if($dir[strlen($dir)-1] != '\\') {
@@ -889,30 +921,12 @@ function createUIResFile($dir, $uiResFile)
   xml_append_child($res, createFileNodes($doc, 'uidef', $dir, 'xml'));
   //扫描xml文件,创建<LAYOUT>子节点
   xml_append_child($res, createFileNodes($doc, 'layout', $dir, 'xml'));
-  //扫描image文件,创建<img>子节点
-  xml_append_child($res, createFileNodes($doc, 'icon', $dir, 'image', $filters='*.ico', $prefx='ICON', $bDfs=true));
-  //扫描image文件,创建<img>子节点
-  xml_append_child($res, createFileNodes($doc, 'cursor', $dir, 'image', $filters='*.cur;*.ani', $prefx='CURSOR', $bDfs=true));
-  //扫描image文件,创建<img>子节点
-  xml_append_child($res, createFileNodes($doc, 'img', $dir, 'image\cbm', $filters='*.png;*.jgp;*.bmp;*.jpge', $prefx='cbm', $bDfs=false));
-  xml_append_child($res, createFileNodes($doc, 'img', $dir, 'image', $filters='*.png;*.jgp;*.bmp;*.jpge', $prefx='', $bDfs=false));
-  xml_append_child($res, createFileNodes($doc, 'img', $dir, 'image\bk', $filters='*.png;*.jgp;*.bmp;*.jpge', $prefx='', $bDfs=false));
-  xml_append_child($res, createFileNodes($doc, 'img', $dir, 'image\button', $filters='*.png;*.jgp;*.bmp;*.jpge', $prefx='', $bDfs=false));
-  xml_append_child($res, createFileNodes($doc, 'img', $dir, 'image\dkpac', $filters='*.png;*.jgp;*.bmp;*.jpge', $prefx='DKPAC', $bDfs=false));
-  xml_append_child($res, createFileNodes($doc, 'img', $dir, 'image\small', $filters='*.png;*.jgp;*.bmp;*.jpge', $prefx='SMALL', $bDfs=false));
-  xml_append_child($res, createFileNodes($doc, 'img', $dir, 'image\icon', $filters='*.png;*.jgp;*.bmp;*.jpge', $prefx='ICON', $bDfs=false));
-  xml_append_child($res, createFileNodes($doc, 'img', $dir, 'image\menu', $filters='*.png;*.jgp;*.bmp;*.jpge', $prefx='MENU', $bDfs=false));
-  xml_append_child($res, createFileNodes($doc, 'img', $dir, 'image\skins\default', $filters='*.png;*.jgp;*.bmp;*.jpge', $prefx='DEF', $bDfs=false));
-  //扫描image文件,创建<img>子节点
-  //xml_append_child($res, createFileNodes($doc, 'GIF', 'image', $filters='*.gif', $prefx='', $bDfs=false));
-  //扫描gif文件,创建<GIF>子节点
-  xml_append_child($res, createFileNodes($doc, 'gif', $dir, 'gif', $filters='*.gif', $prefx='', $bDfs=false));
-  //扫描rtf文件,创建<rtf>子节点
-  xml_append_child($res, createFileNodes($doc, 'rtf', $dir, 'rtf', $filters='*.rtf', $prefx='', $bDfs=false));
-  //扫描lua文件,创建<script>子节点
-  xml_append_child($res, createFileNodes($doc, 'script', $dir, 'lua', $filters='*.lua', $prefx='', $bDfs=false));
-  //扫描translator文件,创建<translator>子节点
-  xml_append_child($res, createFileNodes($doc, 'translator', $dir, 'translator', $filters='*.xml', $prefx='', $bDfs=false));
+
+  //创建<img>、<icon>等图片资源节点
+  // addImgToRes($res, $doc, $dir);
+  //创建<rtf>、<script>等资源节点
+  // addOtherToRes($res, $doc, $dir);
+
   //美化xml结构并保存到文件中
   prettyXml($doc->saveXML(), $uiResFile); 
 }
@@ -967,7 +981,7 @@ function writeImgSrcToDB($uiResFile='uires.idx', $resType='img')
 function genResNameTxtFile()
 {
   $file = fopen("ResName.txt", 'w');
-  fwrite($file, "layout:cbm");
+  fwrite($file, "layout:main");
   fclose($file);
 }
 

@@ -3,8 +3,8 @@
   <font face="微软雅黑" size="13"/>
 
   <skin>
-    <imgframe name="_skin.bg" src="img:CBM_BG"/>
-    <imgframe name="_skin.shadow" src="img:CBM_SHADOW" left="5" top="3" right="5" bottom="7"/>
+    <imglist name="_skin.bg" src="img:CBM_PNG_BG"/>
+    <imgframe name="_skin.shadow" src="img:CBM_PNG_SHADOW" left="5" top="3" right="5" bottom="7"/>
     <imglist name="_skin.btn.close" src="img:CBM_SYS_BTN_CLOSE" states="3" />
     <imglist name="_skin.btn.max" src="img:CBM_SYS_BTN_MAX" states="3" />
     <imglist name="_skin.btn.restore" src="img:CBM_SYS_BTN_RESTORE" states="3" />
@@ -12,14 +12,13 @@
     <imglist name="_skin.tab.main" src="img:CBM_TAB_MAIN" states="3" />
     <imglist name="_skin.tab.icon" src="img:CBM_TAB_ICON" states="8" />
     <imglist name="_skin.white.bg" src="img:CBM_WHITE_BG"  alpha="100"/>
-    <imgframe name="_skin.logo" src="img:CBM_SKIN_LOGO" />
+    <imglist name="_skin.logo" src="img:CBM_SKIN_LOGO" />
     <imglist name="_skin.ver.line" src="img:CBM_SKIN_VER_LINE" />
     <imglist name="_skin.hor.line" src="img:CBM_SKIN_HOR_LINE" />
     <imglist name="_skin.reg.bg" src="img:CBM_SKIN_REG_BG" />
     <imglist name="_skin.firewall" src="img:CBM_SKIN_FIREWALL" states="3" />
     <imglist name="_skin.guard" src="img:CBM_SKIN_GUARD" states="3" />
-    <imglist name="_skin.btn.cad" src="img:CBM_SKIN_BTN_CAD" states="3" />
-    <imglist name="_skin.btn.cad.file" src="img:CBM_SKIN_BTN_CAD_FILE" states="3" />
+    <imglist name="_skin.payinsure" src="img:CBM_SKIN_PAYINSURE" states="3" />
     <imglist name="_skin.check.btn" src="img:CBM_SKIN_CHECK_BTN" states="3" />
     <imglist name="_skin.error" src="img:CBM_SKIN_ERROR" />
     <imglist name="_skin.feedback" src="img:CBM_SKIN_FEEDBACK" states="3" />
