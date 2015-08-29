@@ -2,13 +2,13 @@
 
 #include <MineGEDraw/LinkedGEDraw.h>
 
-class DoubleTunnelDraw : public LinkedGEDraw
+class TunnelDraw : public LinkedGEDraw
 {
 public:
-	ACRX_DECLARE_MEMBERS(DoubleTunnelDraw);
+	ACRX_DECLARE_MEMBERS(TunnelDraw);
 
 public:
-	DoubleTunnelDraw();
+	TunnelDraw();
 
 	virtual void setAllExtraParamsToDefault();
 	virtual void configExtraParams();
@@ -61,5 +61,5 @@ public:
 };
 
 #ifdef DEFGEPLUGIN_MODULE
-ACDB_REGISTER_OBJECT_ENTRY_AUTO(DoubleTunnelDraw)
+ACDB_REGISTER_OBJECT_ENTRY_AUTO(TunnelDraw)
 #endif

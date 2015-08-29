@@ -1,66 +1,66 @@
 #include "StdAfx.h"
-#include "SimpleCoalSurfaceDraw.h"
+#include "CoalSurfaceDraw.h"
 #include "DrawTool.h"
 #include "DrawSpecial.h"
 
 #include <ArxHelper/HelperClass.h>
 
-ACRX_CONS_DEFINE_MEMBERS ( SimpleCoalSurfaceDraw, MineGEDraw, 1 )
+ACRX_CONS_DEFINE_MEMBERS ( CoalSurfaceDraw, MineGEDraw, 1 )
 
-SimpleCoalSurfaceDraw::SimpleCoalSurfaceDraw () : MineGEDraw ()
+CoalSurfaceDraw::CoalSurfaceDraw () : MineGEDraw ()
 {
 }
 
-SimpleCoalSurfaceDraw::~SimpleCoalSurfaceDraw ()
+CoalSurfaceDraw::~CoalSurfaceDraw ()
 {
 }
 
-void SimpleCoalSurfaceDraw::setAllExtraParamsToDefault()
+void CoalSurfaceDraw::setAllExtraParamsToDefault()
 {
     //m_height = 0;
     //m_width = 0;
 }
 
-void SimpleCoalSurfaceDraw::configExtraParams()
+void CoalSurfaceDraw::configExtraParams()
 {
 
 }
-void SimpleCoalSurfaceDraw::updateExtraParams()
+void CoalSurfaceDraw::updateExtraParams()
 {
 }
 
-void SimpleCoalSurfaceDraw::readKeyParam( DrawParamReader& reader )
+void CoalSurfaceDraw::readKeyParam( DrawParamReader& reader )
 {
     reader.readPoint( m_insertPt );
     //reader.readDouble(m_width);
     //reader.readDouble(m_height);
 }
 
-void SimpleCoalSurfaceDraw::writeKeyParam( DrawParamWriter& writer )
+void CoalSurfaceDraw::writeKeyParam( DrawParamWriter& writer )
 {
     writer.writePoint( m_insertPt );
     //writer.writeDouble(m_width);
     //writer.writeDouble(m_height);
 }
 
-void SimpleCoalSurfaceDraw::readExtraParam( DrawParamReader& reader )
+void CoalSurfaceDraw::readExtraParam( DrawParamReader& reader )
 {
     //MineGEDraw::readExtraParam( reader );
 }
 
-void SimpleCoalSurfaceDraw::writeExtraParam( DrawParamWriter& writer )
+void CoalSurfaceDraw::writeExtraParam( DrawParamWriter& writer )
 {
     //MineGEDraw::writeExtraParam( writer );
 }
 
-void SimpleCoalSurfaceDraw::regPropertyDataNames( AcStringArray& names ) const
+void CoalSurfaceDraw::regPropertyDataNames( AcStringArray& names ) const
 {
     names.append( _T( "$几何宽度" ) );
     names.append( _T( "$几何高度" ) );
     //names.append( _T( "中心点坐标" ) );
 }
 
-void SimpleCoalSurfaceDraw::readPropertyDataFromGE( const AcStringArray& values )
+void CoalSurfaceDraw::readPropertyDataFromGE( const AcStringArray& values )
 {
     // m_width = abs(_tstof(values[0].kACharPtr()));
     //m_height = abs(_tstof(values[1].kACharPtr()));
@@ -71,7 +71,7 @@ void SimpleCoalSurfaceDraw::readPropertyDataFromGE( const AcStringArray& values 
     //ArxUtilHelper::StringToPoint3d(values[2].kACharPtr(), m_pt);
 }
 
-Adesk::Boolean SimpleCoalSurfaceDraw::subWorldDraw( AcGiWorldDraw* mode )
+Adesk::Boolean CoalSurfaceDraw::subWorldDraw( AcGiWorldDraw* mode )
 {
     assertReadEnabled () ;
 
@@ -91,7 +91,7 @@ Adesk::Boolean SimpleCoalSurfaceDraw::subWorldDraw( AcGiWorldDraw* mode )
     return Adesk::kTrue;
 }
 
-Acad::ErrorStatus SimpleCoalSurfaceDraw::subGetGripPoints( AcGePoint3dArray& gripPoints, AcDbIntArray& osnapModes, AcDbIntArray& geomIds ) const
+Acad::ErrorStatus CoalSurfaceDraw::subGetGripPoints( AcGePoint3dArray& gripPoints, AcDbIntArray& osnapModes, AcDbIntArray& geomIds ) const
 {
     assertReadEnabled () ;
 
@@ -101,7 +101,7 @@ Acad::ErrorStatus SimpleCoalSurfaceDraw::subGetGripPoints( AcGePoint3dArray& gri
     return Acad::eOk;
 }
 
-Acad::ErrorStatus SimpleCoalSurfaceDraw::subMoveGripPointsAt ( const AcDbIntArray& indices, const AcGeVector3d& offset )
+Acad::ErrorStatus CoalSurfaceDraw::subMoveGripPointsAt ( const AcDbIntArray& indices, const AcGeVector3d& offset )
 {
     assertWriteEnabled () ;
 
@@ -117,13 +117,13 @@ Acad::ErrorStatus SimpleCoalSurfaceDraw::subMoveGripPointsAt ( const AcDbIntArra
     return Acad::eOk;
 }
 
-Acad::ErrorStatus SimpleCoalSurfaceDraw::subTransformBy( const AcGeMatrix3d& xform )
+Acad::ErrorStatus CoalSurfaceDraw::subTransformBy( const AcGeMatrix3d& xform )
 {
     m_insertPt.transformBy( xform );
     return Acad::eOk;
 }
 
-Acad::ErrorStatus SimpleCoalSurfaceDraw::subGetOsnapPoints (
+Acad::ErrorStatus CoalSurfaceDraw::subGetOsnapPoints (
     AcDb::OsnapMode osnapMode,
     Adesk::GsMarker gsSelectionMark,
     const AcGePoint3d& pickPoint,

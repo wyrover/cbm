@@ -381,19 +381,15 @@
 				>
 			</File>
 			<File
+				RelativePath=".\CoalSurfaceDraw.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\DefGEPlugin.cpp"
 				>
 			</File>
 			<File
 				RelativePath=".\DefGEPlugin_DllMain.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\DoubleTunnelDraw.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\DoubleTunnelDraw_ConfigDlg.cpp"
 				>
 			</File>
 			<File
@@ -405,19 +401,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\PolyLineDirectionDraw.cpp"
+				RelativePath=".\DrillPoreDraw.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\SimpleCoalSurfaceDraw.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\SimpleDrillSiteDraw.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\SimplePoreDraw.cpp"
+				RelativePath=".\DrillSiteDraw.cpp"
 				>
 			</File>
 			<File
@@ -456,25 +444,25 @@
 					/>
 				</FileConfiguration>
 			</File>
+			<File
+				RelativePath=".\TunnelDraw.cpp"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Include Files"
 			Filter="h;hh;hxx"
 			>
 			<File
+				RelativePath=".\CoalSurfaceDraw.h"
+				>
+			</File>
+			<File
 				RelativePath=".\DefGEPlugin.h"
 				>
 			</File>
 			<File
 				RelativePath=".\DefGEPlugin_ServiceName.h"
-				>
-			</File>
-			<File
-				RelativePath=".\DoubleTunnelDraw.h"
-				>
-			</File>
-			<File
-				RelativePath=".\DoubleTunnelDraw_ConfigDlg.h"
 				>
 			</File>
 			<File
@@ -486,7 +474,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\PolyLineDirectionDraw.h"
+				RelativePath=".\DrillPoreDraw.h"
+				>
+			</File>
+			<File
+				RelativePath=".\DrillSiteDraw.h"
 				>
 			</File>
 			<File
@@ -494,19 +486,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\SimpleCoalSurfaceDraw.h"
-				>
-			</File>
-			<File
-				RelativePath=".\SimpleDrillSiteDraw.h"
-				>
-			</File>
-			<File
-				RelativePath=".\SimplePoreDraw.h"
-				>
-			</File>
-			<File
 				RelativePath=".\StdAfx.h"
+				>
+			</File>
+			<File
+				RelativePath=".\TunnelDraw.h"
 				>
 			</File>
 		</Filter>

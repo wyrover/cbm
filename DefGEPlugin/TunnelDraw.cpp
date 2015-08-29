@@ -1,33 +1,33 @@
 #include "StdAfx.h"
-#include "DoubleTunnelDraw.h"
+#include "TunnelDraw.h"
 
 #include "DrawTool.h"
 #include "DrawSpecial.h"
 #include <cmath>
 
-ACRX_CONS_DEFINE_MEMBERS ( DoubleTunnelDraw, LinkedGEDraw, 1 )
+ACRX_CONS_DEFINE_MEMBERS ( TunnelDraw, LinkedGEDraw, 1 )
 
-DoubleTunnelDraw::DoubleTunnelDraw()
+TunnelDraw::TunnelDraw()
 {
 }
 
-void DoubleTunnelDraw::setAllExtraParamsToDefault()
+void TunnelDraw::setAllExtraParamsToDefault()
 {
     
 }
 
-void DoubleTunnelDraw::configExtraParams()
+void TunnelDraw::configExtraParams()
 {
     // 切换资源
     //CAcModuleResourceOverride myResources;
 }
 
-void DoubleTunnelDraw::updateExtraParams()
+void TunnelDraw::updateExtraParams()
 {
     update();
 }
 
-void DoubleTunnelDraw::readExtraParam( DrawParamReader& reader )
+void TunnelDraw::readExtraParam( DrawParamReader& reader )
 {
     reader.readPoint( m_leftStartPt );
     reader.readPoint( m_leftEndPt );
@@ -38,7 +38,7 @@ void DoubleTunnelDraw::readExtraParam( DrawParamReader& reader )
     reader.readInt( i );
 }
 
-void DoubleTunnelDraw::writeExtraParam( DrawParamWriter& writer )
+void TunnelDraw::writeExtraParam( DrawParamWriter& writer )
 {
     writer.writePoint( m_leftStartPt );
     writer.writePoint( m_leftEndPt );
@@ -46,13 +46,13 @@ void DoubleTunnelDraw::writeExtraParam( DrawParamWriter& writer )
     writer.writePoint( m_rightEndPt );
 }
 
-void DoubleTunnelDraw::regPropertyDataNames( AcStringArray& names ) const
+void TunnelDraw::regPropertyDataNames( AcStringArray& names ) const
 {
 	names.append( _T( "宽度" ) );
 	names.append( _T( "高度" ) );
 }
 
-void DoubleTunnelDraw::readPropertyDataFromGE( const AcStringArray& values )
+void TunnelDraw::readPropertyDataFromGE( const AcStringArray& values )
 {
 	if( values.isEmpty() ) return;
 	m_width = _tstof( values[0].kACharPtr() );
@@ -60,13 +60,13 @@ void DoubleTunnelDraw::readPropertyDataFromGE( const AcStringArray& values )
 
 	//ArxUtilHelper::StringToPoint3d(values[2].kACharPtr(), m_pt);
 }
-void DoubleTunnelDraw::update()
+void TunnelDraw::update()
 {
     caclStartPoint( m_leftStartPt, m_rightStartPt );
     caclEndPoint( m_leftEndPt, m_rightEndPt );
 }
 
-void DoubleTunnelDraw::caclStartPoint( AcGePoint3d& startPt1, AcGePoint3d& startPt2 )
+void TunnelDraw::caclStartPoint( AcGePoint3d& startPt1, AcGePoint3d& startPt2 )
 {
     AcGeVector3d v = m_endPt - m_startPt;
     v.normalize();
@@ -78,7 +78,7 @@ void DoubleTunnelDraw::caclStartPoint( AcGePoint3d& startPt1, AcGePoint3d& start
     startPt2 = m_startPt + v * m_width * 0.5;
 }
 
-void DoubleTunnelDraw::caclEndPoint( AcGePoint3d& endPt1, AcGePoint3d& endPt2 )
+void TunnelDraw::caclEndPoint( AcGePoint3d& endPt1, AcGePoint3d& endPt2 )
 {
     AcGeVector3d v = m_endPt - m_startPt;
     v.normalize();
@@ -90,7 +90,7 @@ void DoubleTunnelDraw::caclEndPoint( AcGePoint3d& endPt1, AcGePoint3d& endPt2 )
     endPt2 = m_endPt + v * m_width * 0.5;
 }
 
-void DoubleTunnelDraw::dealWithStartPointBoundary( const AcGeRay3d& boundaryLine )
+void TunnelDraw::dealWithStartPointBoundary( const AcGeRay3d& boundaryLine )
 {
     AcGeLine3d line( m_leftStartPt, m_leftEndPt );
 
@@ -103,7 +103,7 @@ void DoubleTunnelDraw::dealWithStartPointBoundary( const AcGeRay3d& boundaryLine
         m_rightStartPt = pt;                       // 调整右侧轮廓线的始点坐标
 }
 
-void DoubleTunnelDraw::dealWithEndPointBoundary( const AcGeRay3d& boundaryLine )
+void TunnelDraw::dealWithEndPointBoundary( const AcGeRay3d& boundaryLine )
 {
     AcGeLine3d line( m_leftStartPt, m_leftEndPt );
 
@@ -123,14 +123,14 @@ static void SwapPoint( AcGePoint3d& pt1, AcGePoint3d& pt2 )
     pt2 = tpt;
 }
 
-void DoubleTunnelDraw::reverse()
+void TunnelDraw::reverse()
 {
     LinkedGEDraw::reverse();
     SwapPoint( m_leftStartPt, m_leftEndPt );
     SwapPoint( m_rightStartPt, m_rightEndPt );
 }
 
-void DoubleTunnelDraw::extendByLength( double length )
+void TunnelDraw::extendByLength( double length )
 {
     AcGeVector3d v = m_endPt - m_startPt;
     v.normalize();
@@ -139,7 +139,7 @@ void DoubleTunnelDraw::extendByLength( double length )
     update(); // 更新其它参数
 }
 
-void DoubleTunnelDraw::caclBackGroundMinPolygon( AcGePoint3dArray& pts )
+void TunnelDraw::caclBackGroundMinPolygon( AcGePoint3dArray& pts )
 {
     pts.append( m_startPt );
 
@@ -152,7 +152,7 @@ void DoubleTunnelDraw::caclBackGroundMinPolygon( AcGePoint3dArray& pts )
     pts.append( m_rightStartPt );
 }
 
-Adesk::Boolean DoubleTunnelDraw::subWorldDraw( AcGiWorldDraw* mode )
+Adesk::Boolean TunnelDraw::subWorldDraw( AcGiWorldDraw* mode )
 {
     assertReadEnabled();
 
@@ -165,7 +165,7 @@ Adesk::Boolean DoubleTunnelDraw::subWorldDraw( AcGiWorldDraw* mode )
     return Adesk::kTrue;
 }
 
-Acad::ErrorStatus DoubleTunnelDraw::subTransformBy( const AcGeMatrix3d& xform )
+Acad::ErrorStatus TunnelDraw::subTransformBy( const AcGeMatrix3d& xform )
 {
     m_startPt.transformBy( xform );
     m_endPt.transformBy( xform );
@@ -174,7 +174,7 @@ Acad::ErrorStatus DoubleTunnelDraw::subTransformBy( const AcGeMatrix3d& xform )
     return Acad::eOk;
 }
 
-Acad::ErrorStatus DoubleTunnelDraw::subGetOsnapPoints (
+Acad::ErrorStatus TunnelDraw::subGetOsnapPoints (
     AcDb::OsnapMode osnapMode,
     Adesk::GsMarker gsSelectionMark,
     const AcGePoint3d& pickPoint,
@@ -199,7 +199,7 @@ Acad::ErrorStatus DoubleTunnelDraw::subGetOsnapPoints (
     return Acad::eOk;
 }
 
-Acad::ErrorStatus DoubleTunnelDraw::subGetGripPoints ( AcGePoint3dArray& gripPoints,
+Acad::ErrorStatus TunnelDraw::subGetGripPoints ( AcGePoint3dArray& gripPoints,
         AcDbIntArray& osnapModes,
         AcDbIntArray& geomIds ) const
 {
@@ -221,7 +221,7 @@ Acad::ErrorStatus DoubleTunnelDraw::subGetGripPoints ( AcGePoint3dArray& gripPoi
     return Acad::eOk;
 }
 
-Acad::ErrorStatus DoubleTunnelDraw::subMoveGripPointsAt ( const AcDbIntArray& indices, const AcGeVector3d& offset )
+Acad::ErrorStatus TunnelDraw::subMoveGripPointsAt ( const AcDbIntArray& indices, const AcGeVector3d& offset )
 {
     assertWriteEnabled () ;
 

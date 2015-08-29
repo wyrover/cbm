@@ -2,15 +2,15 @@
 
 #include <MineGEDraw/MineGEDraw.h>
 
-//简单煤层绘制效果
-class SimpleCoalSurfaceDraw : public MineGEDraw {
+//简单钻孔绘制效果
+class DrillSiteDraw : public MineGEDraw {
 
 public:
-	ACRX_DECLARE_MEMBERS(SimpleCoalSurfaceDraw) ;
+	ACRX_DECLARE_MEMBERS(DrillSiteDraw) ;
 
 public:
-	SimpleCoalSurfaceDraw () ;
-	virtual ~SimpleCoalSurfaceDraw () ;
+	DrillSiteDraw () ;
+	virtual ~DrillSiteDraw () ;
 
 	virtual void setAllExtraParamsToDefault();
 	virtual void configExtraParams();
@@ -41,11 +41,13 @@ protected:
 
 public:
 	//key param
-	AcGePoint3d m_insertPt;   // 插入点坐标
+	AcGePoint3d m_insertPt;     // 插入点坐标
+	//AcGePoint3d m_linkPt;       // 连接点坐标
 	//data
-	double m_width, m_height; // 宽度和高度
+	double m_width, m_height;   // 钻场宽度和高度
+	CString m_name;				// 钻场编号
 } ;
 
 #ifdef DEFGEPLUGIN_MODULE
-ACDB_REGISTER_OBJECT_ENTRY_AUTO(SimpleCoalSurfaceDraw)
+ACDB_REGISTER_OBJECT_ENTRY_AUTO(DrillSiteDraw)
 #endif

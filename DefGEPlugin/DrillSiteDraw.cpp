@@ -1,69 +1,69 @@
 #include "StdAfx.h"
-#include "SimpleDrillSiteDraw.h"
+#include "DrillSiteDraw.h"
 #include "DrawTool.h"
 #include "DrawSpecial.h"
 
 #include <ArxHelper/HelperClass.h>
 
-ACRX_CONS_DEFINE_MEMBERS ( SimpleDrillSiteDraw, MineGEDraw, 1 )
+ACRX_CONS_DEFINE_MEMBERS ( DrillSiteDraw, MineGEDraw, 1 )
 
-SimpleDrillSiteDraw::SimpleDrillSiteDraw () : MineGEDraw ()
+DrillSiteDraw::DrillSiteDraw () : MineGEDraw ()
 {
 }
 
-SimpleDrillSiteDraw::~SimpleDrillSiteDraw ()
+DrillSiteDraw::~DrillSiteDraw ()
 {
 }
 
-void SimpleDrillSiteDraw::setAllExtraParamsToDefault()
+void DrillSiteDraw::setAllExtraParamsToDefault()
 {
 }
 
-void SimpleDrillSiteDraw::configExtraParams()
+void DrillSiteDraw::configExtraParams()
 {
 
 }
-void SimpleDrillSiteDraw::updateExtraParams()
+void DrillSiteDraw::updateExtraParams()
 {
 }
 
-void SimpleDrillSiteDraw::readKeyParam( DrawParamReader& reader )
+void DrillSiteDraw::readKeyParam( DrawParamReader& reader )
 {
     reader.readPoint( m_insertPt );
     //reader.readPoint(m_linkPt);
 }
 
-void SimpleDrillSiteDraw::writeKeyParam( DrawParamWriter& writer )
+void DrillSiteDraw::writeKeyParam( DrawParamWriter& writer )
 {
     writer.writePoint( m_insertPt );
     //writer.writePoint(m_linkPt);
 }
 
-void SimpleDrillSiteDraw::readExtraParam( DrawParamReader& reader )
+void DrillSiteDraw::readExtraParam( DrawParamReader& reader )
 {
     //MineGEDraw::readExtraParam( reader );
 }
 
-void SimpleDrillSiteDraw::writeExtraParam( DrawParamWriter& writer )
+void DrillSiteDraw::writeExtraParam( DrawParamWriter& writer )
 {
     //MineGEDraw::writeExtraParam( writer );
 }
 
-void SimpleDrillSiteDraw::regPropertyDataNames( AcStringArray& names ) const
+void DrillSiteDraw::regPropertyDataNames( AcStringArray& names ) const
 {
     names.append( _T( "名称" ) );
     names.append( _T( "宽度" ) );
     names.append( _T( "高度" ) );
 }
 
-void SimpleDrillSiteDraw::readPropertyDataFromGE( const AcStringArray& values )
+void DrillSiteDraw::readPropertyDataFromGE( const AcStringArray& values )
 {
     m_name = values[0].kACharPtr();
     m_width = abs( _tstof( values[1].kACharPtr() ) );
     m_height = abs( _tstof( values[2].kACharPtr() ) );
 }
 
-Adesk::Boolean SimpleDrillSiteDraw::subWorldDraw( AcGiWorldDraw* mode )
+Adesk::Boolean DrillSiteDraw::subWorldDraw( AcGiWorldDraw* mode )
 {
     assertReadEnabled () ;
 
@@ -101,7 +101,7 @@ Adesk::Boolean SimpleDrillSiteDraw::subWorldDraw( AcGiWorldDraw* mode )
     return Adesk::kTrue;
 }
 
-Acad::ErrorStatus SimpleDrillSiteDraw::subGetGripPoints( AcGePoint3dArray& gripPoints, AcDbIntArray& osnapModes, AcDbIntArray& geomIds ) const
+Acad::ErrorStatus DrillSiteDraw::subGetGripPoints( AcGePoint3dArray& gripPoints, AcDbIntArray& osnapModes, AcDbIntArray& geomIds ) const
 {
     assertReadEnabled () ;
 
@@ -111,7 +111,7 @@ Acad::ErrorStatus SimpleDrillSiteDraw::subGetGripPoints( AcGePoint3dArray& gripP
     return Acad::eOk;
 }
 
-Acad::ErrorStatus SimpleDrillSiteDraw::subMoveGripPointsAt ( const AcDbIntArray& indices, const AcGeVector3d& offset )
+Acad::ErrorStatus DrillSiteDraw::subMoveGripPointsAt ( const AcDbIntArray& indices, const AcGeVector3d& offset )
 {
     assertWriteEnabled () ;
 
@@ -134,14 +134,14 @@ Acad::ErrorStatus SimpleDrillSiteDraw::subMoveGripPointsAt ( const AcDbIntArray&
     return Acad::eOk;
 }
 
-Acad::ErrorStatus SimpleDrillSiteDraw::subTransformBy( const AcGeMatrix3d& xform )
+Acad::ErrorStatus DrillSiteDraw::subTransformBy( const AcGeMatrix3d& xform )
 {
     m_insertPt.transformBy( xform );
     //m_linkPt.transformBy(xform);
     return Acad::eOk;
 }
 
-Acad::ErrorStatus SimpleDrillSiteDraw::subGetOsnapPoints (
+Acad::ErrorStatus DrillSiteDraw::subGetOsnapPoints (
     AcDb::OsnapMode osnapMode,
     Adesk::GsMarker gsSelectionMark,
     const AcGePoint3d& pickPoint,

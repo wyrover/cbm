@@ -1,30 +1,26 @@
 #include "StdAfx.h"
 #include "DefGEPlugin.h"
 
-// 双线巷道
-#include "DoubleTunnelDraw.h"
-// 多段线箭头
-#include "PolyLineDirectionDraw.h"
+//巷道
+#include "TunnelDraw.h"
 //钻孔
-#include "SimplePoreDraw.h"
+#include "DrillPoreDraw.h"
 //钻场
-#include "SimpleDrillSiteDraw.h"
+#include "DrillSiteDraw.h"
 //煤层面
-#include "SimpleCoalSurfaceDraw.h"
+#include "CoalSurfaceDraw.h"
 
 void DefGEPlugin::initialize( MineGEDrawManager* pGEDrawManager )
 {
     BEGIN_REGISTER_MINEGE_DRAW( MineGEDrawManager, pGEDrawManager )
     // 巷道
-    REGISTER_MINEGE_DRAW( Tunnel, DoubleTunnelDraw )
-    //风流方向
-    REGISTER_MINEGE_DRAW( WindDirection, PolyLineDirectionDraw )
+    REGISTER_MINEGE_DRAW( Tunnel, TunnelDraw )
     //钻孔
-    REGISTER_MINEGE_DRAW( Pore, SimplePoreDraw );
+    REGISTER_MINEGE_DRAW( Pore, DrillPoreDraw );
     //钻场
-    REGISTER_MINEGE_DRAW( DrillSite, SimpleDrillSiteDraw );
+    REGISTER_MINEGE_DRAW( DrillSite, DrillSiteDraw );
     //煤层面
-    REGISTER_MINEGE_DRAW( CoalSurface, SimpleCoalSurfaceDraw );
+    REGISTER_MINEGE_DRAW( CoalSurface, CoalSurfaceDraw );
     END_REGISTER_MINEGE_DRAW
 }
 
@@ -32,15 +28,13 @@ void DefGEPlugin::unInitialize( MineGEDrawManager* pGEDrawManager )
 {
     BEGIN_UNREGISTER_MINEGE_DRAW( MineGEDrawManager, pGEDrawManager )
     // 巷道
-    UNREGISTER_MINEGE_DRAW( Tunnel, DoubleTunnelDraw )
-    // 风流方向
-    UNREGISTER_MINEGE_DRAW( WindDirection, PolyLineDirectionDraw )
+    UNREGISTER_MINEGE_DRAW( Tunnel, TunnelDraw )
     //钻孔
-    UNREGISTER_MINEGE_DRAW( Pore, SimplePoreDraw );
+    UNREGISTER_MINEGE_DRAW( Pore, DrillPoreDraw );
     //钻场
-    UNREGISTER_MINEGE_DRAW( DrillSite, SimpleDrillSiteDraw );
+    UNREGISTER_MINEGE_DRAW( DrillSite, DrillSiteDraw );
     //煤层面
-    UNREGISTER_MINEGE_DRAW( CoalSurface, SimpleCoalSurfaceDraw );
+    UNREGISTER_MINEGE_DRAW( CoalSurface, CoalSurfaceDraw );
     END_UNREGISTER_MINEGE_DRAW
 }
 

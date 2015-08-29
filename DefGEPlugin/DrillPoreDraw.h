@@ -3,14 +3,14 @@
 #include <MineGEDraw/MineGEDraw.h>
 
 //简单钻孔绘制效果
-class SimplePoreDraw : public MineGEDraw {
+class DrillPoreDraw : public MineGEDraw {
 
 public:
-	ACRX_DECLARE_MEMBERS(SimplePoreDraw) ;
+	ACRX_DECLARE_MEMBERS(DrillPoreDraw) ;
 
 public:
-	SimplePoreDraw () ;
-	virtual ~SimplePoreDraw () ;
+	DrillPoreDraw () ;
+	virtual ~DrillPoreDraw () ;
 
 	virtual void setAllExtraParamsToDefault();
 	virtual void configExtraParams();
@@ -48,5 +48,5 @@ public:
 } ;
 
 #ifdef DEFGEPLUGIN_MODULE
-ACDB_REGISTER_OBJECT_ENTRY_AUTO(SimplePoreDraw)
+ACDB_REGISTER_OBJECT_ENTRY_AUTO(DrillPoreDraw)
 #endif
