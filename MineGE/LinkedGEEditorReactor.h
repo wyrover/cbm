@@ -8,14 +8,14 @@
  * 处理巷道原始位置的连接点闭合
  * 以及处理巷道在新位置的连接点闭合
  */
-class LinkedGE_EditorReactor : public AcEditorReactor {
+class LinkedGEEditorReactor : public AcEditorReactor {
 
 protected:
 	bool mbAutoInitAndRelease ;
 
 public:
-	LinkedGE_EditorReactor (const bool autoInitAndRelease =true) ;
-	virtual ~LinkedGE_EditorReactor () ;
+	LinkedGEEditorReactor (const bool autoInitAndRelease =true) ;
+	virtual ~LinkedGEEditorReactor () ;
 
 	virtual void Attach () ;
 	virtual void Detach () ;

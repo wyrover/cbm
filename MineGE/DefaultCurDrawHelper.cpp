@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-#include "CurDrawTool.h"
+#include "DefaultCurDrawHelper.h"
 #include "config.h"
 #include "DrawHelper.h"
 
@@ -28,7 +28,7 @@ static void BuildCurDrawsDict( const AcStringArray& types )
 }
 
 // 设置当前可视化效果
-void InitAllCurDraws()
+void InitAllDefaultCurDraws()
 {
     AcStringArray types;
     DrawHelper::GetAllRegGETypesForDraw( types );
@@ -37,7 +37,7 @@ void InitAllCurDraws()
     BuildCurDrawsDict( types );
 }
 
-bool SetCurDraw( const CString& type, const CString& draw )
+bool SetDefaultCurDraw( const CString& type, const CString& draw )
 {
     ArxDictTool* pDictTool = ArxDictTool::GetDictTool( CUR_DRAW_DICT );
     bool ret = pDictTool->modifyEntry( type, 1, draw );
@@ -46,11 +46,27 @@ bool SetCurDraw( const CString& type, const CString& draw )
     return ret;
 }
 
-bool GetCurDraw( const CString& type, CString& draw )
+bool GetDefaultCurDraw( const CString& type, CString& draw )
 {
     ArxDictTool* pDictTool = ArxDictTool::GetDictTool( CUR_DRAW_DICT );
     bool ret = pDictTool->getEntry( type, 1, draw );
     delete pDictTool;
 
     return ret;
+}
+
+MineGEDraw* GetDefaultCurDrawPtr( const CString& type )
+{
+	MineGEDraw* pDraw = 0;
+
+	CString draw;
+	if( GetDefaultCurDraw( type, draw ) )
+	{
+		MineGEDrawSystem* pDrawSystem = MineGEDrawSystem::GetInstance();
+		if( pDrawSystem != 0 )
+		{
+			pDraw = pDrawSystem->getGEDraw( type, draw );
+		}
+	}
+	return pDraw;
 }

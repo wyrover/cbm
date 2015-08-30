@@ -40,36 +40,36 @@ void LinkedGE::reverse()
 {
     assertWriteEnabled();
 
-    LinkedGEDraw* pCGEDraw = LinkedGEDraw::cast( getCurrentDraw() ); // 访问父类MineGE的draw对象
-    if( pCGEDraw == 0 ) return;
+    LinkedGEDraw* pDraw = LinkedGEDraw::cast( getCurDrawPtr() ); // 访问父类MineGE的draw对象
+    if( pDraw == 0 ) return;
 
-    updateDrawParam( false ); // to draw
-    pCGEDraw->reverse();
-    updateDrawParam( true ); // back to ge
+    updateDrawParam( pDraw, false ); // to draw
+    pDraw->reverse();
+    updateDrawParam( pDraw, true ); // back to ge
 }
 
 void LinkedGE::dealWithStartPointBoundary( const AcGeRay3d& boundaryLine )
 {
     assertWriteEnabled();
 
-    LinkedGEDraw* pCGEDraw = LinkedGEDraw::cast( getCurrentDraw() ); // 访问父类MineGE的draw对象
-    if( pCGEDraw == 0 ) return;
+    LinkedGEDraw* pDraw = LinkedGEDraw::cast( getCurDrawPtr() ); // 访问父类MineGE的draw对象
+    if( pDraw == 0 ) return;
 
-    updateDrawParam( false ); // to draw
-    pCGEDraw->dealWithStartPointBoundary( boundaryLine );
-    updateDrawParam( true ); // back to ge
+    updateDrawParam( pDraw, false ); // to draw
+    pDraw->dealWithStartPointBoundary( boundaryLine );
+    updateDrawParam( pDraw, true ); // back to ge
 }
 
 void LinkedGE::dealWithEndPointBoundary( const AcGeRay3d& boundaryLine )
 {
     assertWriteEnabled();
 
-    LinkedGEDraw* pCGEDraw = LinkedGEDraw::cast( getCurrentDraw() );
-    if( pCGEDraw == 0 ) return;
+    LinkedGEDraw* pDraw = LinkedGEDraw::cast( getCurDrawPtr() );
+    if( pDraw == 0 ) return;
 
-    updateDrawParam( false );
-    pCGEDraw->dealWithEndPointBoundary( boundaryLine );
-    updateDrawParam( true );
+    updateDrawParam( pDraw, false );
+    pDraw->dealWithEndPointBoundary( boundaryLine );
+    updateDrawParam( pDraw, true );
 }
 
 double LinkedGE::getAngle() const
@@ -84,15 +84,15 @@ AcGeVector3d LinkedGE::getStartPointInExtendAngle() const
 {
     assertReadEnabled();
 
-    LinkedGEDraw* pCGEDraw = LinkedGEDraw::cast( getCurrentDraw() );
-    if( pCGEDraw == 0 )
+    LinkedGEDraw* pDraw = LinkedGEDraw::cast( getCurDrawPtr() );
+    if( pDraw == 0 )
     {
         return AcGeVector3d::kIdentity; // 零向量
     }
     else
     {
-        updateDrawParam( false ); // to draw
-        return pCGEDraw->getStartPointInExtendAngle().normalize(); // 标准化
+        updateDrawParam( pDraw, false ); // to draw
+        return pDraw->getStartPointInExtendAngle().normalize(); // 标准化
     }
 }
 
@@ -100,15 +100,15 @@ AcGeVector3d LinkedGE::getEndPointInExtendAngle() const
 {
     assertReadEnabled();
 
-    LinkedGEDraw* pCGEDraw = LinkedGEDraw::cast( getCurrentDraw() );
-    if( pCGEDraw == 0 )
+    LinkedGEDraw* pDraw = LinkedGEDraw::cast( getCurDrawPtr() );
+    if( pDraw == 0 )
     {
         return AcGeVector3d::kIdentity; // 零向量
     }
     else
     {
-        updateDrawParam( false ); // to draw
-        return pCGEDraw->getEndPointInExtendAngle().normalize(); // 标准化
+        updateDrawParam( pDraw, false ); // to draw
+        return pDraw->getEndPointInExtendAngle().normalize(); // 标准化
     }
 }
 
@@ -116,12 +116,12 @@ void LinkedGE::extendByLength( double length )
 {
     assertWriteEnabled();
 
-    LinkedGEDraw* pCGEDraw = LinkedGEDraw::cast( getCurrentDraw() );
-    if( pCGEDraw == 0 ) return;
+    LinkedGEDraw* pDraw = LinkedGEDraw::cast( getCurDrawPtr() );
+    if( pDraw == 0 ) return;
 
-    updateDrawParam( false ); // to draw
-    pCGEDraw->extendByLength( length );
-    updateDrawParam( true );
+    updateDrawParam( pDraw, false ); // to draw
+    pDraw->extendByLength( length );
+    updateDrawParam( pDraw, true );
 }
 
 void LinkedGE::writeKeyParam( DrawParamWriter& writer ) const
@@ -181,51 +181,14 @@ Acad::ErrorStatus LinkedGE::dwgInFields ( AcDbDwgFiler* pFiler )
     return ( pFiler->filerStatus () ) ;
 }
 
-void LinkedGE::doEdgeGEJunctionClosure()
+void LinkedGE::onParamsChanged()
 {
-    if( !isNewObject() )
-    {
-        DrawHelper::LinkedGEJunctionClosure( m_startPt );
-        DrawHelper::LinkedGEJunctionClosure( m_endPt );
-    }
-}
-
-Adesk::Boolean LinkedGE::subWorldDraw( AcGiWorldDraw* mode )
-{
-    assertReadEnabled();
-    return MineGE::subWorldDraw( mode );
-}
-
-Acad::ErrorStatus LinkedGE::subTransformBy( const AcGeMatrix3d& xform )
-{
-    //acutPrintf(_T("\nid:%d call LinkedGE::subTransformBy().."), objectId());
-
-    doEdgeGEJunctionClosure(); // 处理闭合(当前正在编辑的图元不参与闭合处理)
-
-    return MineGE::subTransformBy( xform );
-}
-
-Acad::ErrorStatus LinkedGE::subMoveGripPointsAt( const AcDbIntArray& indices, const AcGeVector3d& offset )
-{
-    assertWriteEnabled () ;
-
-    //acutPrintf(_T("\nid:%d call LinkedGE::subMoveGripPointsAt()..."), objectId());
-
-    doEdgeGEJunctionClosure(); // 处理闭合(当前正在编辑的图元不参与闭合处理)
-
-    return MineGE::subMoveGripPointsAt( indices, offset );
-}
-
-Acad::ErrorStatus LinkedGE::subErase( Adesk::Boolean erasing )
-{
-    //acutPrintf(_T("\nid:%d call LinkedGE::subErase()..."), objectId());
-
-    Acad::ErrorStatus retCode = MineGE::subErase ( erasing ) ;
-
-    if( Acad::eOk == retCode )
-    {
-        doEdgeGEJunctionClosure(); // 处理闭合(当前正在编辑的图元不参与闭合处理)
-    }
-
-    return Acad::eOk;
+	if( !isNewObject() )
+	{
+		//处理闭合
+		//由于reactor中使用事务由很多问题
+		//因此该函数中当前正在编辑的图元不参与闭合处理)
+		DrawHelper::LinkedGEJunctionClosure( m_startPt );
+		DrawHelper::LinkedGEJunctionClosure( m_endPt );
+	}
 }

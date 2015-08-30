@@ -3,7 +3,7 @@
 #include "config.h"
 #include "HelperClass.h"
 #include "ReactorHelper.h"
-#include "CurDrawTool.h"
+#include "DefaultCurDrawHelper.h"
 
 #include <ArxHelper/HelperClass.h>
 
@@ -93,7 +93,7 @@ public:
 
         // 初始化所有的图元类型的当前可视化效果
         // 目前的代码实现只考虑新添加的图元类型
-        InitAllCurDraws();
+        InitAllDefaultCurDraws();
 
         acutPrintf( _T( "\nMineGE::On_kLoadDwgMsg\n" ) );
         return retCode;

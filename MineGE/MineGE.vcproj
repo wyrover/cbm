@@ -448,15 +448,11 @@
 				Name="reactor"
 				>
 				<File
-					RelativePath=".\LinkedGE_EditorReactor.cpp"
+					RelativePath=".\LinkedGEEditorReactor.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\LinkedGEAppendReactor.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\MineGEErase_DbReactor.cpp"
+					RelativePath=".\MineGEDatabaseReactor.cpp"
 					>
 				</File>
 				<File
@@ -544,7 +540,7 @@
 				Name="curDraw"
 				>
 				<File
-					RelativePath=".\CurDrawTool.cpp"
+					RelativePath=".\DefaultCurDrawHelper.cpp"
 					>
 				</File>
 			</Filter>
@@ -605,15 +601,11 @@
 				Name="reactor"
 				>
 				<File
-					RelativePath=".\LinkedGE_EditorReactor.h"
+					RelativePath=".\LinkedGEEditorReactor.h"
 					>
 				</File>
 				<File
-					RelativePath=".\LinkedGEAppendReactor.h"
-					>
-				</File>
-				<File
-					RelativePath=".\MineGEErase_DbReactor.h"
+					RelativePath=".\MineGEDatabaseReactor.h"
 					>
 				</File>
 				<File
@@ -705,7 +697,7 @@
 				Name="curDraw"
 				>
 				<File
-					RelativePath=".\CurDrawTool.h"
+					RelativePath=".\DefaultCurDrawHelper.h"
 					>
 				</File>
 			</Filter>

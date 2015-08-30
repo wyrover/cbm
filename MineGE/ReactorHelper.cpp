@@ -1,10 +1,9 @@
 #include "StdAfx.h"
 #include "ReactorHelper.h"
 
-#include "LinkedGE_EditorReactor.h"
+#include "LinkedGEEditorReactor.h"
 #include "MineGETooltipMonitor.h"
-#include "MineGEErase_DbReactor.h"
-#include "LinkedGEAppendReactor.h"
+#include "MineGEDatabaseReactor.h"
 
 /*
  * 用于记录与Document相关的reactor
@@ -18,10 +17,9 @@
 #include <map>
 struct MineGE_DocumentReactor
 {
-    MineGE_DocumentReactor() : pTooltipMonitor( 0 ), pEraseDbReactor( 0 ) {}
+    MineGE_DocumentReactor() : pTooltipMonitor( 0 ), pDbReactor( 0 ) {}
     MineGETooltipMonitor* pTooltipMonitor;
-    MineGEErase_DbReactor* pEraseDbReactor;
-    LinkedGEAppendReactor* pLinkedGEDatabaseReactor;
+    MineGEDatabaseReactor* pDbReactor;
     // 还可以添加其它的 AcDbDatabaseReactor、
     // AcEdInputPointMonitor等属于ApApDocument类别的reactor
     // ...
@@ -37,21 +35,21 @@ struct MineGE_DocumentReactor
  */
 typedef std::map<long, MineGE_DocumentReactor> DocumentReactorMap;
 
-LinkedGE_EditorReactor* pEdgeReactor = 0;
+LinkedGEEditorReactor* pEdgeEdReactor = 0;
 DocumentReactorMap* pDocumentReactorMap_MineGE = 0;
 
 void ReactorHelper::CreateLinkedGE_EditorReactor()
 {
-    if( pEdgeReactor == 0 )
+    if( pEdgeEdReactor == 0 )
     {
-        pEdgeReactor = new LinkedGE_EditorReactor( true );
+        pEdgeEdReactor = new LinkedGEEditorReactor( true );
     }
 }
 
 void ReactorHelper::RemoveLinkedGE_EditorReactor()
 {
-    delete pEdgeReactor;
-    pEdgeReactor = 0;
+    delete pEdgeEdReactor;
+    pEdgeEdReactor = 0;
 }
 
 void ReactorHelper::CreateDocumentReactorMap()
@@ -78,8 +76,7 @@ void ReactorHelper::AddDocumentReactor( AcApDocument* pDoc )
 
     MineGE_DocumentReactor dr;
     //dr.pTooltipMonitor = new MineGETooltipMonitor(pDoc);
-    dr.pEraseDbReactor = new MineGEErase_DbReactor( pDoc->database() );
-    dr.pLinkedGEDatabaseReactor = new LinkedGEAppendReactor( pDoc->database() );
+    dr.pDbReactor = new MineGEDatabaseReactor( pDoc->database() );
 
     pDocumentReactorMap_MineGE->insert( DocumentReactorMap::value_type( id, dr ) );
 }
@@ -94,9 +91,8 @@ void ReactorHelper::RemoveDocumentReactor( AcApDocument* pDoc )
 
     // 解除绑定
     MineGE_DocumentReactor dr = itr->second;
-    delete dr.pEraseDbReactor;
+    delete dr.pDbReactor;
     //delete dr.pTooltipMonitor;
-    delete dr.pLinkedGEDatabaseReactor;
 
     pDocumentReactorMap_MineGE->erase( id );
 }

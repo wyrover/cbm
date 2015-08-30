@@ -3,7 +3,7 @@
 
 #include "config.h"
 #include "DataHelperImpl.h"
-#include "CurDrawTool.h"
+#include "DefaultCurDrawHelper.h"
 #include "HelperClass.h"
 
 #include <MineGEDraw/MineGEDraw_Jig.h>
@@ -79,7 +79,7 @@ Adesk::UInt32 MineGE::kCurrentVersionNumber = 1 ;
 // 有修改，使得MineGE成为抽象类
 ACRX_NO_CONS_DEFINE_MEMBERS ( MineGE, AcDbEntity )
 
-MineGE::MineGE() : m_pCurrentGEDraw( 0 ), m_bFollow( false )
+MineGE::MineGE() :m_bFollow( false )
 {
     //acutPrintf(_T("\nMineGE::MineGE()..."));
 }
@@ -87,7 +87,6 @@ MineGE::MineGE() : m_pCurrentGEDraw( 0 ), m_bFollow( false )
 MineGE::~MineGE ()
 {
     //acutPrintf(_T("\nMineGE::~MineGE()..."));
-    m_pCurrentGEDraw = 0;
 }
 
 CString MineGE::getTypeName() const
@@ -95,6 +94,25 @@ CString MineGE::getTypeName() const
     // 返回类型名称
     // 使用了虚函数方法isA()
     return this->isA()->name();
+}
+
+CString MineGE::getCurDraw() const
+{
+	assertReadEnabled();
+
+	CString curDraw;
+	ArxDbgAppXdata xdata( DRAW_PARAMS_XDATA_GROUP, acdbHostApplicationServices()->workingDatabase() );
+	xdata.getXdata( ( MineGE* )this ); // 提取扩展数据到xdata对象中(强制去掉const属性)
+	if( !xdata.isEmpty() ) 
+	{
+		xdata.getString(0, curDraw);
+	}
+	else
+	{
+		//如果还没有扩展数据,则返回系统提供的默认可视化效果
+		//GetDefaultCurDraw(getTypeName(), curDraw);
+	}
+	return curDraw;
 }
 
 void MineGE::initPropertyData()
@@ -124,12 +142,16 @@ AcDbObjectId MineGE::getDataObject() const
 
 void MineGE::initDraw()
 {
-    if( m_pCurrentGEDraw == 0 )
+	MineGEDraw* pDraw = getCurDrawPtr();
+    if( pDraw == 0 )
     {
         Acad::ErrorStatus es = upgradeOpen();
         if( es == Acad::eOk || es == Acad::eWasOpenForWrite )
         {
-            updateCurrentDraw();
+			if( isNewObject() )
+			{
+				initAllExtraParamsToXData();
+			}
         }
         if( es == Acad::eOk )
         {
@@ -138,27 +160,48 @@ void MineGE::initDraw()
     }
 }
 
-void MineGE::updateDrawParams( MineGEDraw* pGEDraw )
+void MineGE::updateDrawParams( MineGEDraw* pDraw )
 {
-    if( pGEDraw != 0 )
+    if( pDraw != 0 )
     {
-		writeParamToGEDraw(pGEDraw);
-        pGEDraw->updateExtraParams();
-		readParamFromGEDraw(pGEDraw);
+		writeParamToGEDraw(pDraw);
+        pDraw->updateExtraParams();
+		readParamFromGEDraw(pDraw);
     }
 }
 
+void MineGE::switchDraw(const CString& drawName)
+{
+	assertWriteEnabled();
+
+	MineGEDraw* pDraw = MineGEDrawSystem::GetInstance()->getGEDraw( getTypeName(), drawName );
+	if(pDraw != 0)
+	{
+		ArxDbgAppXdata xdata( DRAW_PARAMS_XDATA_GROUP, acdbHostApplicationServices()->workingDatabase() );
+		xdata.getXdata( ( MineGE* )this ); // 提取扩展数据到xdata对象中(强制去掉const属性)
+		if( !xdata.isEmpty() ) 
+		{
+			xdata.setString(0, pDraw->isA()->name());
+			if(Acad::eOk == xdata.setXdata(this))
+			{
+				updateDrawParams( pDraw );
+			}
+		}
+	}
+}
+
+/*
 void MineGE::configDraw( const CString& drawName )
 {
-    MineGEDraw* pGEDraw = MineGEDrawSystem::GetInstance()->getGEDraw( getTypeName(), drawName );
-    updateDrawParams( pGEDraw );
+    MineGEDraw* pDraw = MineGEDrawSystem::GetInstance()->getGEDraw( getTypeName(), drawName );
+    updateDrawParams( pDraw );
 }
+*/
 
 void MineGE::extractExistedDraw( AcStringArray& existedDraw )
 {
     ArxDbgAppXdata xdata( DRAW_PARAMS_XDATA_GROUP, acdbHostApplicationServices()->workingDatabase() );
     xdata.getXdata( this );          // 提取扩展数据到xdata对象中
-
     if( xdata.isEmpty() ) return;    // 没有数据
 
     int len = 0;
@@ -190,6 +233,9 @@ void MineGE::initAllExtraParamsToXData()
     AcStringArray existedDraw;
     extractExistedDraw( existedDraw );
 
+	//提取当前的可视化效果名称
+	CString curDraw = getCurDraw();
+
     MineGEDrawSystem* pGEService = MineGEDrawSystem::GetInstance();
     AcStringArray drawList;
     pGEService->getAllGEDrawsByGEType( getTypeName(), drawList );
@@ -207,31 +253,44 @@ void MineGE::initAllExtraParamsToXData()
 
         foundNewDraw = true;                                   // 发现了新的draw
 
-        MineGEDraw* pGEDraw = pGEService->getGEDraw( getTypeName(), drawList.at( j ).kACharPtr() );
-        writeKeyParamToGEDraw( pGEDraw );                          // 写入主要参数到draw中
+        MineGEDraw* pDraw = pGEService->getGEDraw( getTypeName(), drawList.at( j ).kACharPtr() );
+        writeKeyParamToGEDraw( pDraw );                          // 写入主要参数到draw中
         // 有些extra param是需要计算的，
         // 且可能与key param有关
-        //pGEDraw->setAllExtraParamsToDefault();                   // 参数置为默认值
-        pGEDraw->updateExtraParams();                              // 计算并更新参数
-        xdata.setString( 2 * i, pGEDraw->isA()->name() );          // 绘制效果名称
+        //pDraw->setAllExtraParamsToDefault();                   // 参数置为默认值
+        pDraw->updateExtraParams();                              // 计算并更新参数
+        xdata.setString( 2 * i, pDraw->isA()->name() );          // 绘制效果名称
 
         ArxDbgXdataList dataList;
         DrawParamWriter writer( &dataList );
-        pGEDraw->writeExtraParam( writer );
+        pDraw->writeExtraParam( writer );
         xdata.setList( 2 * i + 1, dataList );                      // 写入附加参数
         i++;
     }
     xdata.setInteger( 1, i - 1 );                                  // 修正draw的实际个数
 
+	//设置当前可视化效果
+	if(curDraw.GetLength() == 0)
+	{
+		//if(!foundNewDraw)
+		//{
+			GetDefaultCurDraw(getTypeName(), curDraw);
+		//}
+		//else
+		//{
+			//curDraw = drawList.at(0).kACharPtr();
+		//}
+		xdata.setString(0, curDraw);
+	}
     if( foundNewDraw ) xdata.setXdata( this );                     // 只有发现新的draw才会更新xdata
 }
 
-static MineGEDraw* GetCurrentDrawPointer( const CString& type )
+static MineGEDraw* GetDefaultCurDrawPtr( const CString& type )
 {
     MineGEDraw* pDraw = 0;
 
     CString draw;
-    if( GetCurDraw( type, draw ) )
+    if( GetDefaultCurDraw( type, draw ) )
     {
         MineGEDrawSystem* pDrawSystem = MineGEDrawSystem::GetInstance();
         if( pDrawSystem != 0 )
@@ -246,44 +305,29 @@ void MineGE::updateDraw()
 {
     assertWriteEnabled();
 
-    //m_pCurrentGEDraw = GetCurrentDrawPointer(getTypeName());
-    if( m_pCurrentGEDraw != 0 )
+	//获取当前的可视化对象指针
+	MineGEDraw* pDraw = getCurDrawPtr();
+    if( pDraw != 0 )
     {
-        updateDrawParams( m_pCurrentGEDraw );
+        updateDrawParams( pDraw );
+		//参数更新后LinkedGE图元微调
+		onParamsChanged();
     }
 }
 
-void MineGE::updateCurrentDraw()
+MineGEDraw* MineGE::getCurDrawPtr() const
 {
-    assertWriteEnabled();
-
-    m_pCurrentGEDraw = GetCurrentDrawPointer( getTypeName() );
-    if( !isNewObject() )
-    {
-        //acutPrintf(_T("\nnot new object"));
-        // clone操作(例如动态编辑效果显示、复制等)
-        // 得到的图元没有提交到数据库
-        // 此时可视化参数尚未初始化，不需要更新可视化参数
-        //updateDrawParams(m_pCurrentGEDraw);
-    }
-    else
-    {
-        //acutPrintf(_T("\nnew object"));
-        initAllExtraParamsToXData();
-    }
+	CString drawName = getCurDraw();
+	return MineGEDrawSystem::GetInstance()->getGEDraw( getTypeName(), drawName );
 }
 
-MineGEDraw* MineGE::getCurrentDraw() const
-{
-    return m_pCurrentGEDraw;
-}
-
-void MineGE::writeExtraParamToGEDraw( MineGEDraw* pGEDraw ) const
+void MineGE::writeExtraParamToGEDraw( MineGEDraw* pDraw ) const
 {
     assertReadEnabled();
 
     ArxDbgAppXdata xdata( DRAW_PARAMS_XDATA_GROUP, acdbHostApplicationServices()->workingDatabase() );
     xdata.getXdata( ( MineGE* )this ); // 提取扩展数据到xdata对象中(强制去掉const属性)
+	if( xdata.isEmpty() ) return;
 
     int len = 0;
     xdata.getInteger( 1, len );    // 绘制效果个数
@@ -292,33 +336,38 @@ void MineGE::writeExtraParamToGEDraw( MineGEDraw* pGEDraw ) const
         CString drawName;
         xdata.getString( 2 * i, drawName ); // 绘制效果名称
 
-        if( drawName.CompareNoCase( pGEDraw->isA()->name() ) == 0 )
+        if( drawName.CompareNoCase( pDraw->isA()->name() ) == 0 )
         {
             ArxDbgXdataList dataList;
             xdata.getList( 2 * i + 1, dataList ); // 绘制效果的参数
 
             ArxDbgXdataListIterator paramList( dataList );
             DrawParamReader reader( &paramList );
-            pGEDraw->readExtraParam( reader ); // 从扩展数据中读取参数
+            pDraw->readExtraParam( reader ); // 从扩展数据中读取参数
+			break;
         }
     }
 }
 
 // 必须在write状态下操作
-void MineGE::readExtraParamFromGEDraw( MineGEDraw* pGEDraw )
+void MineGE::readExtraParamFromGEDraw( MineGEDraw* pDraw )
 {
     assertWriteEnabled();
 
     ArxDbgAppXdata xdata( DRAW_PARAMS_XDATA_GROUP, acdbHostApplicationServices()->workingDatabase() );
     xdata.getXdata( this ); // 提取扩展数据到xdata对象中
+	if( xdata.isEmpty() ) return;
 
     // 进行替换的扩展数据
     // 思路：将原有的扩展数据复制一份，对于修改的draw的数据先进行修改，然后再保存到新的扩展数据中
     ArxDbgAppXdata xdata2( DRAW_PARAMS_XDATA_GROUP, acdbHostApplicationServices()->workingDatabase() );
-    xdata2.setString( 0, _T( "" ) ); // 当前绘制效果名称
+
+	CString curDraw;
+	xdata.getString(0, curDraw);
+    xdata2.setString( 0, curDraw ); // 复制当前绘制效果名称
 
     int len = 0;
-    xdata.getInteger( 1, len );     // 绘制效果个数
+    xdata.getInteger( 1, len );     // 复制绘制效果个数
     xdata2.setInteger( 1, len );
 
     for( int i = 1; i <= len; i++ )
@@ -327,11 +376,11 @@ void MineGE::readExtraParamFromGEDraw( MineGEDraw* pGEDraw )
         xdata.getString( 2 * i, drawName ); // 绘制效果名称
         xdata2.setString( 2 * i, drawName );
 
-        if( drawName.CompareNoCase( pGEDraw->isA()->name() ) == 0 )
+        if( drawName.CompareNoCase( pDraw->isA()->name() ) == 0 )
         {
             ArxDbgXdataList dataList;
             DrawParamWriter writer( &dataList );
-            pGEDraw->writeExtraParam( writer );
+            pDraw->writeExtraParam( writer );
 
             xdata2.setList( 2 * i + 1, dataList ); // 修改并保存绘制效果的参数
         }
@@ -345,21 +394,21 @@ void MineGE::readExtraParamFromGEDraw( MineGEDraw* pGEDraw )
     xdata2.setXdata( this );
 }
 
-void MineGE::readKeyParamFromGEDraw( MineGEDraw* pGEDraw )
+void MineGE::readKeyParamFromGEDraw( MineGEDraw* pDraw )
 {
     assertWriteEnabled();
 
     // 从MineGEDraw中读取更新之后的关键参数
     ArxDbgXdataList dataList;
     DrawParamWriter writer( &dataList );
-    pGEDraw->writeKeyParam( writer );
+    pDraw->writeKeyParam( writer );
 
     ArxDbgXdataListIterator dataListIter( dataList );
     DrawParamReader reader( &dataListIter );
     readKeyParam( reader );
 }
 
-void MineGE::writeKeyParamToGEDraw( MineGEDraw* pGEDraw ) const
+void MineGE::writeKeyParamToGEDraw( MineGEDraw* pDraw ) const
 {
     assertReadEnabled();
 
@@ -370,7 +419,7 @@ void MineGE::writeKeyParamToGEDraw( MineGEDraw* pGEDraw ) const
 
     ArxDbgXdataListIterator dataListIter( dataList );
     DrawParamReader reader( &dataListIter );
-    pGEDraw->readKeyParam( reader );
+    pDraw->readKeyParam( reader );
 }
 
 static bool GetPropertyDataFromDataObject( const AcDbObjectId& objId, const AcStringArray& names, AcStringArray& values )
@@ -391,13 +440,13 @@ static bool GetPropertyDataFromDataObject( const AcDbObjectId& objId, const AcSt
     return true;
 }
 
-void MineGE::writePropertyDataToGEDraw( MineGEDraw* pGEDraw ) const
+void MineGE::writePropertyDataToGEDraw( MineGEDraw* pDraw ) const
 {
     assertReadEnabled();
 
     // 读取要查询的字段名称集合
     AcStringArray names;
-    pGEDraw->regPropertyDataNames( names );
+    pDraw->regPropertyDataNames( names );
     if( names.isEmpty() ) return;
 
     // 查询数据，并写入到values中
@@ -417,44 +466,44 @@ void MineGE::writePropertyDataToGEDraw( MineGEDraw* pGEDraw ) const
     //	acutPrintf(_T("\n字段名:%s\t值:%s\n"),names[i].kACharPtr(),values[i].kACharPtr());
     //}
 
-    // 将查询到的数据返回到pGEDraw
-    pGEDraw->readPropertyDataFromGE( values );
+    // 将查询到的数据返回到pDraw
+    pDraw->readPropertyDataFromGE( values );
 }
 
-void MineGE::writeParamToGEDraw( MineGEDraw* pGEDraw ) const
+void MineGE::writeParamToGEDraw( MineGEDraw* pDraw ) const
 {
     assertReadEnabled();
 
     // 1、将关键参数更新到MineGEDraw中
-    writeKeyParamToGEDraw( pGEDraw );
+    writeKeyParamToGEDraw( pDraw );
 
     // 2、从扩展数据中提取参数
-    writeExtraParamToGEDraw( pGEDraw );
+    writeExtraParamToGEDraw( pDraw );
 
     // 3、读取属性数据，并传递给MineGEDraw
-    writePropertyDataToGEDraw( pGEDraw );
+    writePropertyDataToGEDraw( pDraw );
 }
 
-void MineGE::readParamFromGEDraw( MineGEDraw* pGEDraw )
+void MineGE::readParamFromGEDraw( MineGEDraw* pDraw )
 {
     assertWriteEnabled();
 
     // 1、从MineGEDraw中读取更新后的关键参数
-    readKeyParamFromGEDraw( pGEDraw );
+    readKeyParamFromGEDraw( pDraw );
 
     // 2、将draw的参数保存到扩展数据中
-    readExtraParamFromGEDraw( pGEDraw );
+    readExtraParamFromGEDraw( pDraw );
 }
 
-void MineGE::updateDrawParam( bool readOrWrite ) const
+void MineGE::updateDrawParam( MineGEDraw* pDraw, bool readOrWrite ) const
 {
     if( readOrWrite )
     {
-        ( ( MineGE* )this )->readParamFromGEDraw( m_pCurrentGEDraw ); // 强制去掉const修饰
+        ( ( MineGE* )this )->readParamFromGEDraw( pDraw ); // 强制去掉const修饰
     }
     else
     {
-        writeParamToGEDraw( m_pCurrentGEDraw );
+        writeParamToGEDraw( pDraw );
     }
 }
 
@@ -561,12 +610,12 @@ else bgColor.setRGB(255-r, 255-g, 255-b);
 
 // 慎用AcCmColor::colorIndex()方法，因为color index总共只有256种，且白/黑都使用7表示，无法区分
 // 如果要使用rgb颜色，应使用AcCmEntityColor或AcCmColor对象
-void MineGE::drawBackground( MineGEDraw* pGEDraw, AcGiWorldDraw* mode )
+void MineGE::drawBackground( MineGEDraw* pDraw, AcGiWorldDraw* mode )
 {
     if( isNewObject() ) return;
 
     AcGePoint3dArray pts;
-    m_pCurrentGEDraw->caclBackGroundMinPolygon( pts );
+    pDraw->caclBackGroundMinPolygon( pts );
 
     // 用户没有定义边界
     if( pts.isEmpty() ) return;
@@ -595,45 +644,48 @@ Adesk::Boolean MineGE::subWorldDraw( AcGiWorldDraw* mode )
 {
     assertReadEnabled () ;
 
-    if( m_pCurrentGEDraw == 0 ) return Adesk::kTrue;
+	//获取当前的可视化对象指针
+	MineGEDraw* pDraw = getCurDrawPtr();
+    if( pDraw == 0 ) return Adesk::kTrue;
 
     //acutPrintf(_T("\ncall id:%d MineGE::subWorldDraw()..."), objectId());
-    // acutPrintf(_T("\ncall drawname:%s..."), m_pCurrentGEDraw->isA()->name());
+    // acutPrintf(_T("\ncall drawname:%s..."), pDraw->isA()->name());
 
     // 1、更新参数到MineGEDraw中
-    updateDrawParam( false );
+    updateDrawParam( pDraw, false );
     // 2、绘制背景块
     // 该方法在动态效果中可能会有一些问题,特别是jig
     // 猜测原因:绘制填充的多边形可能比较慢
-    drawBackground( m_pCurrentGEDraw, mode );
+    drawBackground( pDraw, mode );
 
     // 3、draw对象负责绘制实际图形
-    m_pCurrentGEDraw->worldDraw( mode );
+    pDraw->worldDraw( mode );
 
     return Adesk::kTrue;
 }
 
 Acad::ErrorStatus MineGE::subTransformBy( const AcGeMatrix3d& xform )
 {
-    if( m_pCurrentGEDraw == 0 )
-    {
-        //acutPrintf(_T("\nsubTransformBy中draw=null"));
-        return Acad::eOk;
-    }
+	//获取当前的可视化对象指针
+	MineGEDraw* pDraw = getCurDrawPtr();
+    if( pDraw == 0 ) return Acad::eOk;
 
     //acutPrintf(_T("\ncall id:%d MineGE::subTransformBy()..."), objectId());
 
     // 1、更新参数到MineGEDraw中
-    updateDrawParam( false );
+    updateDrawParam( pDraw, false );
 
     // 2、执行变换
-    m_pCurrentGEDraw->transformBy( xform );
+    pDraw->transformBy( xform );
 
     // 3、从MineGEDraw中读取更新后的参数
-    updateDrawParam( true );
+    updateDrawParam( pDraw, true );
+
+	//参数变化后的附加操作
+	onParamsChanged();
 
     // 4、将附带所有的TagGE
-    transformAllTagGE( xform );
+    //transformAllTagGE( xform );
 
     return Acad::eOk;
 }
@@ -649,13 +701,15 @@ Acad::ErrorStatus MineGE::subGetOsnapPoints (
 {
     assertReadEnabled () ;
 
-    if( m_pCurrentGEDraw == 0 ) return Acad::eOk;
+	//获取当前的可视化对象指针
+	MineGEDraw* pDraw = getCurDrawPtr();
+    if( pDraw == 0 ) return Acad::eOk;
 
     // 1、更新参数到MineGEDraw中
-    updateDrawParam( false );
+    updateDrawParam( pDraw, false );
 
     // 2、draw对象负责绘制实际图形
-    m_pCurrentGEDraw->getOsnapPoints( osnapMode, gsSelectionMark, pickPoint, lastPoint, viewXform, snapPoints, geomIds );
+    pDraw->getOsnapPoints( osnapMode, gsSelectionMark, pickPoint, lastPoint, viewXform, snapPoints, geomIds );
 
     return Acad::eOk;
 }
@@ -667,13 +721,15 @@ Acad::ErrorStatus MineGE::subGetGripPoints(
 {
     assertReadEnabled () ;
 
-    if( m_pCurrentGEDraw == 0 ) return Acad::eOk;
+	//获取当前的可视化对象指针
+	MineGEDraw* pDraw = getCurDrawPtr();
+    if( pDraw == 0 ) return Acad::eOk;
 
     // 1、更新参数到MineGEDraw中
-    updateDrawParam( false );
+    updateDrawParam( pDraw, false );
 
     // 2、draw对象负责绘制实际图形
-    m_pCurrentGEDraw->getGripPoints( gripPoints, osnapModes, geomIds );
+    pDraw->getGripPoints( gripPoints, osnapModes, geomIds );
 
     return Acad::eOk;
 }
@@ -682,22 +738,27 @@ Acad::ErrorStatus MineGE::subMoveGripPointsAt ( const AcDbIntArray& indices, con
 {
     assertWriteEnabled () ;
 
-    if( m_pCurrentGEDraw == 0 ) return Acad::eOk;
+	//获取当前的可视化对象指针
+	MineGEDraw* pDraw = getCurDrawPtr();
+    if( pDraw == 0 ) return Acad::eOk;
 
     //acutPrintf(_T("\ncall id:%d MineGE::subMoveGripPointsAt()..."), objectId());
 
     // 1、更新参数到MineGEDraw中
-    updateDrawParam( false );
+    updateDrawParam( pDraw, false );
 
     // 2、执行变换
-    m_pCurrentGEDraw->moveGripPointsAt( indices, offset );
+    pDraw->moveGripPointsAt( indices, offset );
 
     // 3、从MineGEDraw中读取更新后的参数
-    updateDrawParam( true );
+    updateDrawParam( pDraw, true );
+
+	//参数变化后的附加操作
+	onParamsChanged();
 
     // 所有的标签图元也进行变换
     // 变换结果偏差较大，不建议在程序中使用
-    transformAllTagGE( AcGeMatrix3d::translation( offset ) );
+    //transformAllTagGE( AcGeMatrix3d::translation( offset ) );
 
     return Acad::eOk;
 }
@@ -706,19 +767,21 @@ Acad::ErrorStatus MineGE::subGetGeomExtents( AcDbExtents& extents ) const
 {
     assertReadEnabled () ;
 
-    if( m_pCurrentGEDraw == 0 ) return AcDbEntity::subGetGeomExtents( extents );
+	//获取当前的可视化对象指针
+	MineGEDraw* pDraw = getCurDrawPtr();
+    if( pDraw == 0 ) return AcDbEntity::subGetGeomExtents( extents );
 
     // 1、更新参数到MineGEDraw中
-    updateDrawParam( false );
+    updateDrawParam( pDraw, false );
 
-    Acad::ErrorStatus es = m_pCurrentGEDraw->getGeomExtents( extents );
+    Acad::ErrorStatus es = pDraw->getGeomExtents( extents );
     // Draw没有重载实现subGetGeomExtents
     if( Acad::eOk != es )
     {
         //acutPrintf(_T("\n使用背景消隐多边形计算缩放区域...\n"));
         // 使用caclBackGroundMinPolygon()方法计算的多边形代替
         AcGePoint3dArray pts;
-        m_pCurrentGEDraw->caclBackGroundMinPolygon( pts );
+        pDraw->caclBackGroundMinPolygon( pts );
         if( pts.isEmpty() )
         {
             es = Acad::eInvalidExtents;
@@ -741,6 +804,7 @@ Acad::ErrorStatus MineGE::subGetGeomExtents( AcDbExtents& extents ) const
 Acad::ErrorStatus MineGE::subClose( void )
 {
     //acutPrintf(_T("\nid:%d call MineGE::subClose()...\n"), objectId());
+	if(!isReallyClosing()) return Acad::eOk;
 
     Acad::ErrorStatus es = AcDbEntity::subClose () ;
 
@@ -749,10 +813,21 @@ Acad::ErrorStatus MineGE::subClose( void )
     // 构造数据对象(扩展词典)
     if( es == Acad::eOk )
     {
-        initDraw();
-        initPropertyData();
+		initDraw();
+		initPropertyData();
     }
     return es;
+}
+
+Acad::ErrorStatus MineGE::subErase(Adesk::Boolean erasing)
+{
+	Acad::ErrorStatus retCode = AcDbEntity::subErase ( erasing ) ;
+
+	if( Acad::eOk == retCode )
+	{
+		onParamsChanged();
+	}
+	return Acad::eOk;
 }
 
 void MineGE::transformAllTagGE( const AcGeMatrix3d& xform )

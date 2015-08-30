@@ -1,9 +1,9 @@
 #include "StdAfx.h"
-#include "LinkedGE_EditorReactor.h"
+#include "LinkedGEEditorReactor.h"
 #include "LinkedGE.h"
 #include "DrawHelper.h"
 
-LinkedGE_EditorReactor::LinkedGE_EditorReactor ( const bool autoInitAndRelease ) : AcEditorReactor(), mbAutoInitAndRelease( autoInitAndRelease )
+LinkedGEEditorReactor::LinkedGEEditorReactor ( const bool autoInitAndRelease ) : AcEditorReactor(), mbAutoInitAndRelease( autoInitAndRelease )
 {
     if( autoInitAndRelease )
     {
@@ -17,12 +17,12 @@ LinkedGE_EditorReactor::LinkedGE_EditorReactor ( const bool autoInitAndRelease )
     }
 }
 
-LinkedGE_EditorReactor::~LinkedGE_EditorReactor ()
+LinkedGEEditorReactor::~LinkedGEEditorReactor ()
 {
     Detach () ;
 }
 
-void LinkedGE_EditorReactor::Attach ()
+void LinkedGEEditorReactor::Attach ()
 {
     Detach () ;
     if ( !mbAutoInitAndRelease )
@@ -35,7 +35,7 @@ void LinkedGE_EditorReactor::Attach ()
     }
 }
 
-void LinkedGE_EditorReactor::Detach ()
+void LinkedGEEditorReactor::Detach ()
 {
     if ( mbAutoInitAndRelease )
     {
@@ -47,12 +47,12 @@ void LinkedGE_EditorReactor::Detach ()
     }
 }
 
-AcEditor* LinkedGE_EditorReactor::Subject () const
+AcEditor* LinkedGEEditorReactor::Subject () const
 {
     return ( acedEditor ) ;
 }
 
-bool LinkedGE_EditorReactor::IsAttached () const
+bool LinkedGEEditorReactor::IsAttached () const
 {
     return ( mbAutoInitAndRelease ) ;
 }
@@ -167,7 +167,7 @@ static ACHAR* _cmds[] =
     _T( "GRIP_STRETCH" )
 };
 
-void LinkedGE_EditorReactor::commandEnded( const ACHAR* cmdStr )
+void LinkedGEEditorReactor::commandEnded( const ACHAR* cmdStr )
 {
     // If AutoCAD is shutting down, then do nothing.
     if ( !acdbHostApplicationServices()->workingDatabase() )

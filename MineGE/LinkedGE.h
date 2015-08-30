@@ -31,10 +31,8 @@ public:
 	// 注："零向量"表示不处理闭合
 	AcGeVector3d getStartPointInExtendAngle() const;
 	AcGeVector3d getEndPointInExtendAngle() const;
-
 	void dealWithStartPointBoundary(const AcGeRay3d& boundaryLine);
 	void dealWithEndPointBoundary(const AcGeRay3d& boundaryLine);
-
 	void extendByLength(double length);
 
 	virtual Acad::ErrorStatus dwgOutFields (AcDbDwgFiler *pFiler) const;
@@ -43,18 +41,11 @@ public:
 protected:
 	virtual void writeKeyParam(DrawParamWriter& writer) const;
 	virtual void readKeyParam(DrawParamReader& reader);
-
-	virtual Adesk::Boolean subWorldDraw (AcGiWorldDraw *mode);
-	virtual Acad::ErrorStatus subTransformBy(const AcGeMatrix3d & xform);
-	Acad::ErrorStatus subMoveGripPointsAt( const AcDbIntArray &indices, const AcGeVector3d &offset );
-	virtual Acad::ErrorStatus subErase(Adesk::Boolean erasing);	// 处理删除时的闭合
+	virtual void onParamsChanged();
 
 protected:
 	LinkedGE();
 	LinkedGE(const AcGePoint3d& startPt, const AcGePoint3d& endPt);
-
-private:
-	void doEdgeGEJunctionClosure();    // 处理闭合
 
 protected:
 	AcGePoint3d m_startPt, m_endPt;    // 始末点坐标

@@ -21,8 +21,11 @@ public:
 	// 获取类型名称
 	CString getTypeName() const;
 
+	//切换可视化效果
+	void switchDraw(const CString& drawName);
+
 	// 当全局配置extra param的参数后，更新图元的参数
-	void configDraw(const CString& drawName);
+	//void configDraw(const CString& drawName);
 
 	// 更新图元可视化效果
 	void updateDraw();
@@ -40,6 +43,10 @@ protected:
 
 	// 从reader中读取关键参数
 	virtual void readKeyParam(DrawParamReader& reader) = 0;
+
+	//当DataObject中的数据被修改后MineGE会重新计算可视化参数
+	//有些图元需要对参数进行额外的调整(比如LinkedGE)
+	virtual void onParamsChanged() {}
 
 	// AcDbObject重载函数
 public:
@@ -78,6 +85,7 @@ protected:
 	virtual Acad::ErrorStatus subGetGeomExtents(AcDbExtents& extents) const;
 
 	virtual Acad::ErrorStatus subClose(void);
+	virtual Acad::ErrorStatus subErase(Adesk::Boolean erasing);
 
 protected:
 	// 构造函数
@@ -87,29 +95,26 @@ protected:
 	// true  -- 将参数写入到draw中
 	// false -- 将参数读取回来到ge中
 	// 与writeParamToGEDraw和readParamFromGEDraw方法在功能上重复(***)
-	void updateDrawParam(bool readOrWrite = true) const;
+	void updateDrawParam(MineGEDraw* pDraw, bool readOrWrite = true) const;
 
 	// 获取当前draw对象(方便子类使用，避免直接操纵私有数据)
-	MineGEDraw* getCurrentDraw() const;
-
-	//变换所有的关联图元
-	void transformAllTagGE(const AcGeMatrix3d& xform);
+	MineGEDraw* getCurDrawPtr() const;
 
 private:
 	// 绘制背景消隐
-	void drawBackground(MineGEDraw* pGEDraw, AcGiWorldDraw *mode);
+	void drawBackground(MineGEDraw* pDraw, AcGiWorldDraw *mode);
 
 	// 读写关键参数
-	void readKeyParamFromGEDraw(MineGEDraw* pGEDraw);
-	void writeKeyParamToGEDraw(MineGEDraw* pGEDraw) const;
+	void readKeyParamFromGEDraw(MineGEDraw* pDraw);
+	void writeKeyParamToGEDraw(MineGEDraw* pDraw) const;
 
 	// 读写绘制图元附加参数
-	void readExtraParamFromGEDraw(MineGEDraw* pGEDraw);
-	void writeExtraParamToGEDraw(MineGEDraw* pGEDraw) const;	
+	void readExtraParamFromGEDraw(MineGEDraw* pDraw);
+	void writeExtraParamToGEDraw(MineGEDraw* pDraw) const;	
 
 	// 读写参数(关键参数和附加参数)-- 辅助方法
-	void readParamFromGEDraw(MineGEDraw* pGEDraw);
-	void writeParamToGEDraw(MineGEDraw* pGEDraw) const;
+	void readParamFromGEDraw(MineGEDraw* pDraw);
+	void writeParamToGEDraw(MineGEDraw* pDraw) const;
 
 	// 初始化所有的附加参数到xdata中
 	void initAllExtraParamsToXData();
@@ -123,18 +128,21 @@ private:
 	// 初始化属性数据
 	void initPropertyData();
 
-	void updateDrawParams(MineGEDraw* pGEDraw);
+	//更新可视化参数
+	//注:某些情况下属性数据变化后,应重新计算附加参数,甚至是关键参数
+	void updateDrawParams(MineGEDraw* pDraw);
 
-	void updateCurrentDraw();
+	//获取图元当前可视化效果名称
+	CString getCurDraw() const;
+
+	//变换所有的关联图元
+	void transformAllTagGE(const AcGeMatrix3d& xform);
 
 protected:
 	// 写入属性数据到MineGEDraw中
-	virtual void writePropertyDataToGEDraw(MineGEDraw* pGEDraw) const;
+	virtual void writePropertyDataToGEDraw(MineGEDraw* pDraw) const;
 
 private:
-	// 当前绘制效果指针
-	// 图元的图形效果都是通过该指针委托实现
-	MineGEDraw* m_pCurrentGEDraw;
 	// 图元关联的数据对象
 	AcDbObjectId m_dataObjectId;
 	//是否实现跟随效果(关联图元TagGE跟随移动,默认是禁用的!)

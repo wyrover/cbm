@@ -42,15 +42,17 @@ public:
 	//注意:该函数会重新计算MineGE类及派生类的参数(kForWrite)
 	static void Update(const AcDbObjectId& objId);
 
+	static void SwitchDraw(const AcDbObjectId& objId, const CString& drawName);
+
 	// 获取当前的可视化效果
-	static bool GetCurrentDraw(const CString& type, CString& draw);
+	//static bool GetCurrentDraw(const CString& type, CString& draw);
 
 	// 切换所有geType图元的显示效果
-	static void SwitchDraw(const CString& geType, const CString& drawName);
+	//static void SwitchDraw(const CString& geType, const CString& drawName);
 
 	// 配置图元的附加参数
 	// 但不更新图形效果
-	static void ConfigDraw(const CString& geType, const CString& drawName);
+	//static void ConfigDraw(const CString& geType, const CString& drawName);
 
 	// 判断图元类型geType当前绘制效果是否实现了jig过程
 	static bool IsGETypeHasDrawJig(const CString& geType);

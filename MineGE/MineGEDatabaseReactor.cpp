@@ -1,13 +1,14 @@
 #include "StdAfx.h"
-#include "MineGEErase_DbReactor.h"
+#include "MineGEDatabaseReactor.h"
 #include "HelperClass.h"
 #include "TagGE.h"
 #include "ModelGE.h"
+#include "LinkedGE.h"
 #include "DataObject.h"
 
 #include <ArxHelper/HelperClass.h>
 
-MineGEErase_DbReactor::MineGEErase_DbReactor ( AcDbDatabase* pDb ) : AcDbDatabaseReactor(), mpDatabase( pDb )
+MineGEDatabaseReactor::MineGEDatabaseReactor ( AcDbDatabase* pDb ) : AcDbDatabaseReactor(), mpDatabase( pDb )
 {
     if ( pDb )
     {
@@ -16,12 +17,12 @@ MineGEErase_DbReactor::MineGEErase_DbReactor ( AcDbDatabase* pDb ) : AcDbDatabas
     }
 }
 
-MineGEErase_DbReactor::~MineGEErase_DbReactor ()
+MineGEDatabaseReactor::~MineGEDatabaseReactor ()
 {
     Detach () ;
 }
 
-void MineGEErase_DbReactor::Attach ( AcDbDatabase* pDb )
+void MineGEDatabaseReactor::Attach ( AcDbDatabase* pDb )
 {
     Detach () ;
     if ( mpDatabase == NULL )
@@ -31,7 +32,7 @@ void MineGEErase_DbReactor::Attach ( AcDbDatabase* pDb )
     }
 }
 
-void MineGEErase_DbReactor::Detach ()
+void MineGEDatabaseReactor::Detach ()
 {
     if ( mpDatabase )
     {
@@ -40,12 +41,12 @@ void MineGEErase_DbReactor::Detach ()
     }
 }
 
-AcDbDatabase* MineGEErase_DbReactor::Subject () const
+AcDbDatabase* MineGEDatabaseReactor::Subject () const
 {
     return ( mpDatabase ) ;
 }
 
-bool MineGEErase_DbReactor::IsAttached () const
+bool MineGEDatabaseReactor::IsAttached () const
 {
     return ( mpDatabase != NULL ) ;
 }
@@ -158,7 +159,7 @@ static void EraseAllModelGE( const AcDbObjectId& objId, Adesk::Boolean pErased )
     ArxEntityHelper::EraseObjects2( objIds, pErased );
 }
 
-void MineGEErase_DbReactor::objectErased( const AcDbDatabase* dwg, const AcDbObject* dbObj, Adesk::Boolean pErased )
+void MineGEDatabaseReactor::objectErased( const AcDbDatabase* dwg, const AcDbObject* dbObj, Adesk::Boolean pErased )
 {
     AcDbDatabaseReactor::objectErased ( dwg, dbObj, pErased );
 
@@ -192,14 +193,40 @@ void MineGEErase_DbReactor::objectErased( const AcDbDatabase* dwg, const AcDbObj
     //acutPrintf(_T("\n结束 ==> 数据库监视：id:%ld  %s"), dbObj->objectId(), (pErased?_T("删除"):_T("反删除")));
 }
 
+static void DoEdgeGEJunctionClosure( LinkedGE* pEdge )
+{
+	AcGePoint3d spt, ept;
+	pEdge->getSEPoint( spt, ept );
+
+	DrawHelper::LinkedGEJunctionClosure( spt );
+	DrawHelper::LinkedGEJunctionClosure( ept );
+}
+
+static void DoEdgeGEJunctionClosure2( const AcDbObject* pObj )
+{
+	LinkedGE* pEdge = LinkedGE::cast( pObj );
+	if( pEdge != 0 )
+	{
+		//DrawHelper::LinkedGEJunctionClosure2(pEdge->objectId());
+		DoEdgeGEJunctionClosure( pEdge );
+	}
+}
+
 // 在objectModified中无法启动事务
-void MineGEErase_DbReactor::objectModified( const AcDbDatabase* dwg, const AcDbObject* dbObj )
+void MineGEDatabaseReactor::objectModified( const AcDbDatabase* dwg, const AcDbObject* dbObj )
 {
     AcDbDatabaseReactor::objectModified ( dwg, dbObj );
-    if( dbObj->isKindOf( DataObject::desc() ) )
+	DataObject* pDO = DataObject::cast( dbObj );
+    if(pDO != 0)
     {
-        DataObject* pDO = DataObject::cast( dbObj );
-        //ArxEntityHelper::Update( pDO->getGE() ); // 强制更新显示效果
 		DrawHelper::Update(pDO->getGE());
+		DrawHelper::LinkedGEJunctionClosure2(pDO->getGE());
     }
+}
+
+void MineGEDatabaseReactor::objectAppended( const AcDbDatabase* db, const AcDbObject* pObj )
+{
+	//acutPrintf(_T("\noid:%d call objectAppended()...:%s"), pObj->objectId());
+
+	DoEdgeGEJunctionClosure2( pObj );
 }

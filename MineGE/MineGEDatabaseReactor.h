@@ -4,19 +4,21 @@
  * 当删除一个图元，要同时删除图元上的标签图元TagGE
  * 以及关联的模型图元ModelGE
  */
-class MineGEErase_DbReactor : public AcDbDatabaseReactor 
+class MineGEDatabaseReactor : public AcDbDatabaseReactor 
 {
 protected:
 	AcDbDatabase *mpDatabase ;
 
 public:
-	MineGEErase_DbReactor (AcDbDatabase *pDb =NULL) ;
-	virtual ~MineGEErase_DbReactor () ;
+	MineGEDatabaseReactor (AcDbDatabase *pDb =NULL) ;
+	virtual ~MineGEDatabaseReactor () ;
 
 	virtual void Attach (AcDbDatabase *pDb) ;
 	virtual void Detach () ;
 	virtual AcDbDatabase *Subject () const ;
 	virtual bool IsAttached () const ;
+
+	virtual void objectAppended(const AcDbDatabase* db, const AcDbObject* pObj);
 
 	/*
 	 * 当数据对象在后台被改变，强制更新与之关联的图形效果

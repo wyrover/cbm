@@ -1,11 +1,10 @@
 #include "StdAfx.h"
 #include "DrawHelper.h"
+#include "DefaultCurDrawHelper.h"
 
 #include "LinkedGE.h"
 #include "TagGE.h"
 #include "ModelGE.h"
-
-#include "CurDrawTool.h"
 
 #include <ArxHelper/HelperClass.h>
 #include <MineGEDraw/MineGEDrawSystem.h>
@@ -46,7 +45,7 @@ static void UpdateLinkedGE( const AcDbObjectIdArray& objIds )
 static void UpdateEntity1( const AcDbObjectId& objId )
 {
 	AcTransaction* pTrans = actrTransactionManager->startTransaction();
-	if( pTrans == 0 ) return;
+	if(pTrans == 0) return;
 
 	AcDbObject* pObj;
 	if( Acad::eOk != pTrans->getObject( pObj, objId, AcDb::kForWrite ) ) // 打开图元失败
@@ -60,7 +59,7 @@ static void UpdateEntity1( const AcDbObjectId& objId )
 		actrTransactionManager->abortTransaction();
 		return;
 	}
-	//pEnt->recordGraphicsModified( true ); // 标签图元状态已修改，需要更新图形
+	pEnt->recordGraphicsModified( true ); // 标签图元状态已修改，需要更新图形
 	pEnt->updateDraw(); // 更新可视化参数及效果
 	actrTransactionManager->endTransaction();
 }
@@ -73,7 +72,7 @@ static void UpdateEntity2( const AcDbObjectId& objId )
 	MineGE* pEnt = MineGE::cast( pObj );
 	if( pEnt != 0 )
 	{
-		//pEnt->recordGraphicsModified( true ); // 标签图元状态已修改，需要更新图形
+		pEnt->recordGraphicsModified( true ); // 标签图元状态已修改，需要更新图形
 		pEnt->updateDraw(); // 更新可视化参数及效果
 	}
 	pEnt->close();
@@ -90,10 +89,40 @@ void DrawHelper::Update(const AcDbObjectId& objId)
     UpdateEntity2( objId );
 }
 
+void DrawHelper::SwitchDraw(const AcDbObjectId& objId, const CString& drawName)
+{
+	AcTransaction* pTrans = actrTransactionManager->startTransaction();
+	if( pTrans == 0 ) return;
+
+	AcDbObject* pObj;
+	if( Acad::eOk != pTrans->getObject( pObj, objId, AcDb::kForWrite ) )
+	{
+		actrTransactionManager->abortTransaction();
+		return;
+	}
+
+	MineGE* pGE = MineGE::cast( pObj );
+	if( pGE == 0 )
+	{
+		actrTransactionManager->abortTransaction();
+		return;
+	}
+
+	pGE->switchDraw(drawName);
+
+	actrTransactionManager->endTransaction();
+}
+
+/*
+bool DrawHelper::GetCurrentDraw( const CString& type, CString& draw )
+{
+    return GetDefaultCurDraw( type, draw );
+}
+
 void DrawHelper::SwitchDraw( const CString& geType, const CString& drawName )
 {
     // 设置当前可视化效果
-    if( !SetCurDraw( geType, drawName ) ) return;
+    if( !SetDefaultCurDraw( geType, drawName ) ) return;
 
     // 更新所有指定类型的图元
     AcDbObjectIdArray objIds;
@@ -160,6 +189,7 @@ void DrawHelper::ConfigDraw( const CString& geType, const CString& drawName )
         UpdateLinkedGE( objIds );
     }
 }
+*/
 
 void DrawHelper::LinkedGEJunctionClosure2( const AcDbObjectId& objId )
 {
@@ -177,8 +207,8 @@ void DrawHelper::LinkedGEJunctionClosure2( const AcDbObjectId& objId )
     AcGePoint3d startPt, endPt;
     pEdge->getSEPoint( startPt, endPt );
 
-    LinkedGEJunctionClosure( startPt );
-    LinkedGEJunctionClosure( endPt );
+    DrawHelper::LinkedGEJunctionClosure( startPt );
+    DrawHelper::LinkedGEJunctionClosure( endPt );
 }
 
 void DrawHelper::GetAllRegGETypesForDraw( AcStringArray& allGETypes )
@@ -459,11 +489,6 @@ void DrawHelper::ShowHostGE( const AcDbObjectId& objId, unsigned short colorInde
 
     // 恢复宿主的原有颜色
     ArxEntityHelper::SetEntitiesColor2( objIds, colors );
-}
-
-bool DrawHelper::GetCurrentDraw( const CString& type, CString& draw )
-{
-    return GetCurDraw( type, draw );
 }
 
 static void GetSEPointById( const AcDbObjectId& objId, AcGePoint3d& spt, AcGePoint3d& ept )
