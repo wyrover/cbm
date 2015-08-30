@@ -1,6 +1,6 @@
 #include "StdAfx.h"
 #include "MineGEErase_DbReactor.h"
-
+#include "HelperClass.h"
 #include "TagGE.h"
 #include "ModelGE.h"
 #include "DataObject.h"
@@ -199,6 +199,7 @@ void MineGEErase_DbReactor::objectModified( const AcDbDatabase* dwg, const AcDbO
     if( dbObj->isKindOf( DataObject::desc() ) )
     {
         DataObject* pDO = DataObject::cast( dbObj );
-        ArxEntityHelper::UpdateEntity( pDO->getGE() ); // 强制更新显示效果
+        //ArxEntityHelper::Update( pDO->getGE() ); // 强制更新显示效果
+		DrawHelper::Update(pDO->getGE());
     }
 }

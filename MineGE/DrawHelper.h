@@ -38,6 +38,10 @@ public:
 	// 同时反向关联的方向类图元,例如风流方向，风门等
 	static void ReverseDirection( const AcDbObjectId& objId );
 
+	// 立即更新图元效果
+	//注意:该函数会重新计算MineGE类及派生类的参数(kForWrite)
+	static void Update(const AcDbObjectId& objId);
+
 	// 获取当前的可视化效果
 	static bool GetCurrentDraw(const CString& type, CString& draw);
 
@@ -79,8 +83,4 @@ public:
 	static void ShowHostGE(const AcDbObjectId& objId, unsigned short colorIndex);
 
 	static bool GetHostGE(const AcDbObjectId& objId, AcDbObjectId& host);
-
-	static AcDbObjectId GetRelatedTW(AcDbObjectId objId);
-
-	static AcDbObjectIdArray GetRelatedTunnel(AcDbObjectId tunnelId);
 };

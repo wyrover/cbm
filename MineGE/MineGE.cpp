@@ -142,9 +142,9 @@ void MineGE::updateDrawParams( MineGEDraw* pGEDraw )
 {
     if( pGEDraw != 0 )
     {
-        writeKeyParamToGEDraw( pGEDraw );
+		writeParamToGEDraw(pGEDraw);
         pGEDraw->updateExtraParams();
-        readExtraParamFromGEDraw( pGEDraw );
+		readParamFromGEDraw(pGEDraw);
     }
 }
 

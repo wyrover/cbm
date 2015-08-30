@@ -196,7 +196,7 @@ static void UpdateEntity2( const AcDbObjectId& objId )
     pEnt->close();
 }
 
-void ArxEntityHelper::UpdateEntity( const AcDbObjectId& objId )
+void ArxEntityHelper::Update( const AcDbObjectId& objId )
 {
     if( objId.isNull() ) return;
     /*

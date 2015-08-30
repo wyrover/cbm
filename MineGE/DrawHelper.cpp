@@ -42,6 +42,54 @@ static void UpdateLinkedGE( const AcDbObjectIdArray& objIds )
     }
 }
 
+// 使用事务
+static void UpdateEntity1( const AcDbObjectId& objId )
+{
+	AcTransaction* pTrans = actrTransactionManager->startTransaction();
+	if( pTrans == 0 ) return;
+
+	AcDbObject* pObj;
+	if( Acad::eOk != pTrans->getObject( pObj, objId, AcDb::kForWrite ) ) // 打开图元失败
+	{
+		actrTransactionManager->abortTransaction();
+		return;
+	}
+	MineGE* pEnt = MineGE::cast( pObj );
+	if( pEnt == 0 )
+	{
+		actrTransactionManager->abortTransaction();
+		return;
+	}
+	//pEnt->recordGraphicsModified( true ); // 标签图元状态已修改，需要更新图形
+	pEnt->updateDraw(); // 更新可视化参数及效果
+	actrTransactionManager->endTransaction();
+}
+
+// 使用常规的Open/Close机制
+static void UpdateEntity2( const AcDbObjectId& objId )
+{
+	AcDbObject* pObj;
+	if( Acad::eOk != acdbOpenObject( pObj, objId, AcDb::kForWrite ) ) return;
+	MineGE* pEnt = MineGE::cast( pObj );
+	if( pEnt != 0 )
+	{
+		//pEnt->recordGraphicsModified( true ); // 标签图元状态已修改，需要更新图形
+		pEnt->updateDraw(); // 更新可视化参数及效果
+	}
+	pEnt->close();
+}
+
+void DrawHelper::Update(const AcDbObjectId& objId)
+{
+    if( objId.isNull() ) return;
+    /*
+     * 使用常规的Open/Close机制更新实体
+     * 注：使用事务机制更新实体有时候好使, 有时候不好使
+     *      原因暂时不明
+     */
+    UpdateEntity2( objId );
+}
+
 void DrawHelper::SwitchDraw( const CString& geType, const CString& drawName )
 {
     // 设置当前可视化效果
@@ -418,63 +466,6 @@ bool DrawHelper::GetCurrentDraw( const CString& type, CString& draw )
     return GetCurDraw( type, draw );
 }
 
-AcDbObjectId DrawHelper::GetRelatedTW( AcDbObjectId objId )
-{
-    AcDbObjectId tWorkId;
-    AcDbObjectIdArray objIds;
-    DrawHelper::FindMineGEs( _T( "LinkedGE" ), objIds );
-    int len = objIds.length();
-
-    AcGePoint3d spt, ept;
-    //获取选择巷道的始末节点
-    AcDbObject* pObj;
-    acdbOpenObject( pObj, objId, AcDb::kForRead );
-
-    LinkedGE* pEdge = LinkedGE::cast( pObj );
-    pObj->close();
-    pEdge->getSEPoint( spt, ept );
-
-    AcGePoint3dArray findedPts;
-    findedPts.append( spt );
-    findedPts.append( ept );
-
-    for ( int i = 0; i < len; i++ )
-    {
-        bool isTTunnel = ArxUtilHelper::IsEqualType( _T( "TTunnel" ), objIds[i] );
-
-        //获取其他巷道的始末节点
-        AcDbObject* pObj;
-        acdbOpenObject( pObj, objIds[i], AcDb::kForRead );
-
-        LinkedGE* pEdge = LinkedGE::cast( pObj );
-        pObj->close();
-        pEdge->getSEPoint( spt, ept );
-
-        //acutPrintf(_T("\n始节点:(%f,%f),末节点(%f,%f)"),spt.x,spt.y,ept.x,ept.y);
-        if ( findedPts.contains( spt ) && findedPts.contains( ept ) )
-        {
-            continue;
-        }
-        else if ( findedPts.contains( spt ) && !isTTunnel )
-        {
-            findedPts.append( ept );
-            i = -1;
-        }
-        else if ( findedPts.contains( ept ) && !isTTunnel )
-        {
-            findedPts.append( spt );
-            i = -1;
-        }
-        else if ( ( findedPts.contains( spt ) || findedPts.contains( ept ) ) && isTTunnel )
-        {
-            tWorkId = objIds[i];
-            break;
-        }
-    }
-
-    return tWorkId;
-}
-
 static void GetSEPointById( const AcDbObjectId& objId, AcGePoint3d& spt, AcGePoint3d& ept )
 {
     AcTransaction* pTran = actrTransactionManager->startTransaction();
@@ -488,53 +479,6 @@ static void GetSEPointById( const AcDbObjectId& objId, AcGePoint3d& spt, AcGePoi
 
     actrTransactionManager->endTransaction();
 
-}
-
-AcDbObjectIdArray DrawHelper::GetRelatedTunnel( AcDbObjectId ttunnelId )
-{
-    AcDbObjectIdArray objIds;
-    DrawHelper::FindMineGEs( _T( "LinkedGE" ), objIds );
-    int len = objIds.length();
-
-    //acutPrintf(_T("\nLinkedGE的数目：%d"),len);
-    AcGePoint3d ttunnelSpt, ttunnelEpt;
-    //获取选择工作面的始末节点
-    GetSEPointById( ttunnelId, ttunnelSpt, ttunnelEpt );
-
-    AcDbObjectIdArray tunnelsRetIds;
-    //AcGePoint3d pt = ttunnelSpt;
-
-    AcGePoint3dArray findedPts;
-    findedPts.append( ttunnelSpt );
-
-    for ( int i = 0; i < len; i++ )
-    {
-        AcGePoint3d tunnelSpt, tunnelEpt;
-        GetSEPointById( objIds[i], tunnelSpt, tunnelEpt );
-
-        if ( findedPts.contains( tunnelSpt ) && !findedPts.contains( tunnelEpt ) )
-        {
-            findedPts.append( tunnelEpt );
-            i = -1;
-        }
-        else if ( findedPts.contains( tunnelEpt ) && !findedPts.contains( tunnelSpt ) )
-        {
-            findedPts.append( tunnelSpt );
-            i = -1;
-        }
-    }
-
-    for ( int i = 0; i < len; i++ )
-    {
-        AcGePoint3d tunnelSpt, tunnelEpt;
-        GetSEPointById( objIds[i], tunnelSpt, tunnelEpt );
-
-        if ( ( findedPts.contains( tunnelSpt ) || findedPts.contains( tunnelEpt ) ) )
-        {
-            tunnelsRetIds.append( objIds[i] );
-        }
-    }
-    return tunnelsRetIds;
 }
 
 void DrawHelper::HighLightShowGE( const AcDbObjectId& objId, unsigned short colorIndex )
@@ -554,5 +498,4 @@ void DrawHelper::HighLightShowGE( const AcDbObjectId& objId, unsigned short colo
 
     // 恢复原有颜色
     ArxEntityHelper::SetEntitiesColor2( objIds, colors );
-
 }

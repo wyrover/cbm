@@ -56,7 +56,7 @@ public:
 	static void ShowEntity(const AcDbObjectId& objId, bool isVisible);
 
 	// 立即更新图元效果
-	static void UpdateEntity(const AcDbObjectId& objId);
+	static void Update(const AcDbObjectId& objId);
 
 	// 缩放到图元实体
 	static void ZoomToEntity(const AcDbObjectId& objId);

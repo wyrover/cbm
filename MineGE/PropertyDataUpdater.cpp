@@ -370,7 +370,7 @@ static void Update( )
     DrawHelper::FindMineGEs( _T( "GasFlowTagGE" ), objIds );
     for( int i = 0; i < objIds.length(); i++ )
     {
-        ArxEntityHelper::UpdateEntity( objIds[i] ); // 强制更新显示效果
+        ArxEntityHelper::Update( objIds[i] ); // 强制更新显示效果
     }
 
 }
