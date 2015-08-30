@@ -199,13 +199,12 @@ void DrawHelper::LinkedGEJunctionClosure2( const AcDbObjectId& objId )
     LinkedGE* pEdge = LinkedGE::cast( pEnt );
     if( pEdge == 0 )
     {
-        pEdge->close();
+        pEnt->close();
         return;
     }
-    pEdge->close();
-
     AcGePoint3d startPt, endPt;
     pEdge->getSEPoint( startPt, endPt );
+	pEdge->close();
 
     DrawHelper::LinkedGEJunctionClosure( startPt );
     DrawHelper::LinkedGEJunctionClosure( endPt );

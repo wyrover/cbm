@@ -393,6 +393,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\ArxDrawHelper.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\ArxDwgHelper.cpp"
 				>
 			</File>
@@ -487,6 +491,10 @@
 			</File>
 			<File
 				RelativePath=".\ArxDictTool.h"
+				>
+			</File>
+			<File
+				RelativePath=".\ArxDrawHelper.h"
 				>
 			</File>
 			<File

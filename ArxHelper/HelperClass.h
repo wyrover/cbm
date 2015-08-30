@@ -14,3 +14,4 @@
 #include "ArxDwgHelper.h"
 #include "LayerHelper.h"
 #include "ArxTolSetter.h"
+#include "ArxDrawHelper.h"
