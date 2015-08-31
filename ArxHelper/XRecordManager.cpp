@@ -1,15 +1,15 @@
 #include "StdAfx.h"
-#include "XRecorManager.h"
+#include "XRecordManager.h"
 #include "ArxDictTool.h"
 
-XRecorManager::XRecorManager( AcDbXrecord* pXrec ) : m_pXrec( pXrec ), m_pHead( 0 )
+XRecordManager::XRecordManager( AcDbXrecord* pXrec ) : m_pXrec( pXrec ), m_pHead( 0 )
 {
 	struct resbuf* pRbList = 0;
 	pXrec->rbChain( &pRbList );
 	m_pHead = pRbList;
 }
 
-XRecorManager::~XRecorManager()
+XRecordManager::~XRecordManager()
 {
 	m_pXrec->setFromRbChain( *m_pHead );
 	acutRelRb( m_pHead );
@@ -19,7 +19,7 @@ XRecorManager::~XRecorManager()
 	m_pXrec = 0;
 }
 
-int XRecorManager::addEntry( const CString& entry )
+int XRecordManager::addEntry( const CString& entry )
 {
 	if( m_pHead == 0 )
 	{
@@ -55,7 +55,7 @@ int XRecorManager::addEntry( const CString& entry )
 	return index + 1;
 }
 
-int XRecorManager::removeEntry( const CString& entry )
+int XRecordManager::removeEntry( const CString& entry )
 {
 	if( m_pHead == 0 ) return INVALID_ENTRY; // resbuf list为空，无效!
 
@@ -102,7 +102,7 @@ int XRecorManager::removeEntry( const CString& entry )
 	return index;
 }
 
-int XRecorManager::findEntry( const CString& entry )
+int XRecordManager::findEntry( const CString& entry )
 {
 	if( m_pHead == 0 ) return INVALID_ENTRY; // resbuf list为空，返回0表示无效!
 
@@ -117,7 +117,7 @@ int XRecorManager::findEntry( const CString& entry )
 	return ( ( pTemp == 0 ) ? INVALID_ENTRY : index );
 }
 
-int XRecorManager::countEntries()
+int XRecordManager::countEntries()
 {
 	if( m_pHead == 0 ) return 0;
 
@@ -130,7 +130,7 @@ int XRecorManager::countEntries()
 	return count;
 }
 
-void XRecorManager::getAllEntries( AcStringArray& entries )
+void XRecordManager::getAllEntries( AcStringArray& entries )
 {
 	if( m_pHead == 0 ) return;
 
@@ -141,7 +141,7 @@ void XRecorManager::getAllEntries( AcStringArray& entries )
 	}
 }
 
-bool XRecorManager::modifyEntry( int index, const CString& newEntry )
+bool XRecordManager::modifyEntry( int index, const CString& newEntry )
 {
 	if( m_pHead == 0 ) return false;
 
@@ -162,7 +162,7 @@ bool XRecorManager::modifyEntry( int index, const CString& newEntry )
 	return ( pTemp != 0 );
 }
 
-bool XRecorManager::getEntry( int index, CString& entry )
+bool XRecordManager::getEntry( int index, CString& entry )
 {
 	if( m_pHead == 0 ) return false;
 

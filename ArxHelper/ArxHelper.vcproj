@@ -457,7 +457,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\XRecorManager.cpp"
+				RelativePath=".\XRecordManager.cpp"
 				>
 			</File>
 			<File
@@ -578,7 +578,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\XRecorManager.h"
+				RelativePath=".\XRecordManager.h"
 				>
 			</File>
 			<Filter

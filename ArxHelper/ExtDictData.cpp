@@ -1,7 +1,7 @@
 #include "StdAfx.h"
 #include "ExtDictData.h"
 #include "HelperClass.h"
-#include "XRecorManager.h"
+#include "XRecordManager.h"
 
 void ExtDictData::mapString( const CString& field, CString* pValue )
 {
@@ -46,7 +46,7 @@ public:
 		if(objId.isNull()) return;
 
 		//获取扩展词典id
-		AcDbObjectId dictId = ArxDataTool::GetExtensionDict(objId);
+		AcDbObjectId dictId = ArxDictTool::GetExtensionDict(objId);
 		if(dictId.isNull()) return;
 
 		AcTransaction* pTrans = actrTransactionManager->startTransaction();
@@ -119,7 +119,7 @@ public:
 			}
 		}
 
-		XRecorManager dem(pXrec);
+		XRecordManager dem(pXrec);
 		CString temp_value;
 		if(!dem.getEntry(0, temp_value))
 		{
@@ -141,7 +141,7 @@ public:
 		{
 			return false;
 		}
-		XRecorManager dem(pXrec);
+		XRecordManager dem(pXrec);
 		return dem.getEntry(0, value); // 每个XRECORD只存放一个数据
 	}
 

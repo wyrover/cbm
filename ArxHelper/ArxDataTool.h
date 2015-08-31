@@ -25,18 +25,6 @@ public:
 	static bool GetDataFromXData(const AcDbObjectId& objId, const CString& appName, int index, CString& value);
 	static bool SetDataToXData(const AcDbObjectId& objId, const CString& appName, int index, const CString& value);
 
-	//获取扩展词典
-	static AcDbObjectId GetExtensionDict(const AcDbObjectId& objId);
-
-	/* 判断词典是否存在 */
-	static bool IsDictExist(const CString& dictName);
-	
-	/* 注册添加词典 */
-	static void RegDict(const CString& dictName);
-
-	/* 获取词典id */
-	static AcDbObjectId GetDict(const CString& dictName);
-
 	/* 获取类型名称 */
 	//static CString GetTypeName(const AcDbObjectId& objId);
 

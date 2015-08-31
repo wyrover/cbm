@@ -15,6 +15,19 @@
 class ARXHELPER_DLLIMPEXP ArxDictTool
 {
 public:
+	//ªÒ»°¿©’π¥ µ‰
+	static AcDbObjectId GetExtensionDict(const AcDbObjectId& objId);
+
+	/* ≈–∂œ¥ µ‰ «∑Ò¥Ê‘⁄ */
+	static bool IsDictExist(const CString& dictName);
+
+	/* ◊¢≤·ÃÌº”¥ µ‰ */
+	static void RegDict(const CString& dictName);
+
+	/* ªÒ»°¥ µ‰id */
+	static AcDbObjectId GetDict(const CString& dictName);
+
+public:
 	static ArxDictTool* GetDictTool(const CString& dictName);
 	static ArxDictTool* GetDictTool(const AcDbObjectId& dictId);
 

@@ -1,10 +1,10 @@
 #pragma once
 
-class XRecorManager
+class XRecordManager
 {
 public:
-	XRecorManager( AcDbXrecord* pXrec );
-	~XRecorManager();
+	XRecordManager( AcDbXrecord* pXrec );
+	~XRecordManager();
 
 	int addEntry( const CString& entry );
 	int removeEntry( const CString& entry );

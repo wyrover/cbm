@@ -6,9 +6,9 @@
 void SystemHelper::Start()
 {
 	// ×¢²ádictionaryºÍregAppName
-	ArxDataTool::RegDict( PROPERTY_DATA_FIELD_DICT );
-	ArxDataTool::RegDict( PROPERTY_DATA_FIELD_INFO_DICT );
-	ArxDataTool::RegDict( FUNC_FIELD_DICT );
+	ArxDictTool::RegDict( PROPERTY_DATA_FIELD_DICT );
+	ArxDictTool::RegDict( PROPERTY_DATA_FIELD_INFO_DICT );
+	ArxDictTool::RegDict( FUNC_FIELD_DICT );
 
 	//ArxDataTool::RegAppName( acdbHostApplicationServices()->workingDatabase(), DRAW_PARAMS_XDATA_GROUP );
 }
