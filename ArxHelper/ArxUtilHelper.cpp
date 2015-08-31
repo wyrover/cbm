@@ -33,7 +33,7 @@ bool ArxUtilHelper::PostToModelSpace( AcDbEntity* pEnt )
     return true;
 }
 
-AcDbObjectId ArxUtilHelper::SelectObject( const CString& msg )
+AcDbObjectId ArxUtilHelper::SelectEntity( const CString& msg )
 {
     ads_name en;
     ads_point pt;
@@ -48,6 +48,26 @@ AcDbObjectId ArxUtilHelper::SelectObject( const CString& msg )
     return eId;
 }
 
+void ArxUtilHelper::SelectEntities( AcDbObjectIdArray& objIds )
+{
+	ads_name ss;
+	if( RTNORM != acedSSGet(NULL, NULL, NULL, NULL, ss) ) return;
+
+	long n = 0;
+	acedSSLength ( ss, &n );
+	for( long i = 0; i < n; i++ )
+	{
+		ads_name ename;
+		if( RTNORM != acedSSName ( ss, i, ename ) ) continue;
+
+		AcDbObjectId objId;
+		if( Acad::eOk != acdbGetObjectId( objId, ename ) ) continue;
+
+		objIds.append( objId );
+	}
+	acedSSFree( ss );
+}
+
 void ArxUtilHelper::GetPickSetEntity2( AcDbObjectIdArray& objIds )
 {
     resbuf* pset;  // standard out of mem handler??
@@ -58,7 +78,7 @@ void ArxUtilHelper::GetPickSetEntity2( AcDbObjectIdArray& objIds )
     acutPrintf( _T( "\nseett   type:%d" ), pset->restype );
     acutRelRb( pset );
 
-    acutPrintf( _T( "\n遍历选择集.." ) );
+    //acutPrintf( _T( "\n遍历选择集.." ) );
     long n = 0;
     acedSSLength ( ss, &n );
     for( long i = 0; i < n; i++ )
@@ -72,8 +92,9 @@ void ArxUtilHelper::GetPickSetEntity2( AcDbObjectIdArray& objIds )
         objIds.append( objId );
     }
     acedSSFree( ss );
-    acutPrintf( _T( "\n释放选择集.." ) );
+    //acutPrintf( _T( "\n释放选择集.." ) );
 }
+
 void ArxUtilHelper::GetPickSetEntity( AcDbObjectIdArray& objIds )
 {
     ads_name ss;

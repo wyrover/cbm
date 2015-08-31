@@ -405,6 +405,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\ArxGroupHelper.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\ArxHelper_DllMain.cpp"
 				>
 			</File>
@@ -539,6 +543,10 @@
 			</File>
 			<File
 				RelativePath=".\ArxEntityHelper.h"
+				>
+			</File>
+			<File
+				RelativePath=".\ArxGroupHelper.h"
 				>
 			</File>
 			<File

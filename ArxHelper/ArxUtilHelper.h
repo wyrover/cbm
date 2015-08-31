@@ -10,7 +10,9 @@ public:
 	static bool PostToModelSpace(AcDbEntity* pEnt);
 
 	// 命令交互选择一个实体
-	static AcDbObjectId SelectObject(const CString& msg);
+	static AcDbObjectId SelectEntity(const CString& msg);
+	// 命令交互选择多个实体
+	static void SelectEntities(AcDbObjectIdArray& objIds);
 
 	// 获取当前已选择的图元(PickSet)
 	static void GetPickSetEntity(AcDbObjectIdArray& objIds);

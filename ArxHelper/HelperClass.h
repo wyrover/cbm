@@ -15,6 +15,7 @@
 #include "ArxLayerHelper.h"
 #include "ArxTolSetter.h"
 #include "ArxDrawHelper.h"
+#include "ArxGroupHelper.h"
 
 // 属性数据字段管理辅助类
 #include "FieldHelper.h"
