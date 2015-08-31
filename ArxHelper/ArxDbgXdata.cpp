@@ -904,6 +904,11 @@ ArxDbgAppXdata::remove( int tag )
         return false;
 }
 
+void ArxDbgAppXdata::removeAll()
+{
+	m_xdata.removeAll();
+}
+
 /****************************************************************************
 **
 **  ArxDbgAppXdata::isBeginList

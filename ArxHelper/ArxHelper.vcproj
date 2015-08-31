@@ -413,6 +413,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\DictEntryManager.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\LayerHelper.cpp"
 				>
 			</File>
@@ -476,6 +480,22 @@
 					>
 				</File>
 			</Filter>
+			<Filter
+				Name="data"
+				>
+				<File
+					RelativePath=".\DataMapper.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\ExtDictData.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\XData.cpp"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Include Files"
@@ -511,6 +531,10 @@
 			</File>
 			<File
 				RelativePath=".\ArxUtilHelper.h"
+				>
+			</File>
+			<File
+				RelativePath=".\DictEntryManager.h"
 				>
 			</File>
 			<File
@@ -550,6 +574,22 @@
 				</File>
 				<File
 					RelativePath=".\XDataStream.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="data"
+				>
+				<File
+					RelativePath=".\DataMapper.h"
+					>
+				</File>
+				<File
+					RelativePath=".\ExtDictData.h"
+					>
+				</File>
+				<File
+					RelativePath=".\XData.h"
 					>
 				</File>
 			</Filter>

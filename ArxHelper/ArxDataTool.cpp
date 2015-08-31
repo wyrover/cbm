@@ -1,5 +1,6 @@
 #include "StdAfx.h"
 #include "ArxDataTool.h"
+#include "ArxDbgXdata.h"
 
 void ArxDataTool::RegAppName( AcDbDatabase* db, const CString& appName )
 {
@@ -61,6 +62,51 @@ bool ArxDataTool::GetDataFromXData( AcDbObject* pObj, const CString& appName, in
     acutRelRb( pAppNode );
 
     return true;
+}
+
+bool ArxDataTool::GetDataFromXData(const AcDbObjectId& objId, const CString& appName, int index, CString& value)
+{
+	AcTransaction* pTrans = actrTransactionManager->startTransaction();
+	if( pTrans == 0 ) return false;
+	
+	AcDbObject* pObj;
+	if( Acad::eOk != pTrans->getObject( pObj, objId, AcDb::kForRead ) )
+	{
+		actrTransactionManager->abortTransaction();
+		return false;
+	}
+	
+	ArxDbgAppXdata xdata( appName, acdbHostApplicationServices()->workingDatabase() );
+	xdata.getXdata(pObj);
+
+	bool ret = false;
+	if(!xdata.isEmpty())
+	{
+		ret = xdata.getString( index, value );
+	}
+	actrTransactionManager->endTransaction();
+
+	return ret;
+}
+
+bool ArxDataTool::SetDataToXData(const AcDbObjectId& objId, const CString& appName, int index, const CString& value)
+{
+	AcTransaction* pTrans = actrTransactionManager->startTransaction();
+	if( pTrans == 0 ) return false;
+
+	AcDbObject* pObj;
+	if( Acad::eOk != pTrans->getObject( pObj, objId, AcDb::kForWrite ) )
+	{
+		actrTransactionManager->abortTransaction();
+		return false;
+	}
+
+	ArxDbgAppXdata xdata( appName, acdbHostApplicationServices()->workingDatabase() );
+	xdata.getXdata(pObj);
+	xdata.setString( index, value );
+	actrTransactionManager->endTransaction();
+
+	return true;
 }
 
 bool ArxDataTool::SetDataToXData( AcDbObject* pObj, const CString& appName, int index, const CString& value )
@@ -161,6 +207,31 @@ void ArxDataTool::RemoveDataFromObjects( const AcDbObjectIdArray& objIds, const 
     actrTransactionManager->endTransaction();
 }
 
+AcDbObjectId ArxDataTool::GetExtensionDict(const AcDbObjectId& objId)
+{
+	AcTransaction* pTrans = actrTransactionManager->startTransaction();
+	if( pTrans == 0 ) return AcDbObjectId::kNull;
+
+	AcDbObject* pObj;
+	if( Acad::eOk != pTrans->getObject( pObj, objId, AcDb::kForWrite ) )
+	{
+		actrTransactionManager->abortTransaction();
+		return AcDbObjectId::kNull;
+	}
+
+	AcDbObjectId dictId = pObj->extensionDictionary();
+	if(dictId.isNull())
+	{
+		if(Acad::eOk == pObj->createExtensionDictionary())
+		{
+			dictId = pObj->extensionDictionary();
+		}
+	}
+	actrTransactionManager->endTransaction();
+
+	return dictId;
+}
+
 bool ArxDataTool::IsDictExist( const CString& dictName )
 {
     AcDbDictionary* pNamedobj;
@@ -198,6 +269,21 @@ void ArxDataTool::RegDict( const CString& dictName )
         }
     }
     pNamedobj->close();
+}
+
+AcDbObjectId ArxDataTool::GetDict(const CString& dictName)
+{
+	AcDbDictionary* pNameObjDict;
+	if( Acad::eOk != acdbHostApplicationServices()->workingDatabase()->getNamedObjectsDictionary( pNameObjDict, AcDb::kForRead ) )
+	{
+		return AcDbObjectId::kNull;
+	}
+
+	AcDbObjectId dictId;
+	Acad::ErrorStatus es = pNameObjDict->getAt( dictName, dictId );
+	pNameObjDict->close();
+
+	return dictId;
 }
 
 static bool IsEqualObject( AcRxClass* pClass, AcDbObject* pObj, bool isDerivedFromParent )

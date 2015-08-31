@@ -53,6 +53,7 @@ public:
 
 	// removal
 	bool		remove(int tag);
+	void        removeAll();
 
 	// operations on lists of items
 	bool		detachList(int tag, ArxDbgXdataList& xdataList);
