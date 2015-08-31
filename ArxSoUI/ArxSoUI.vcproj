@@ -383,6 +383,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\CmdHelper.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\DrawTool.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\SouiDialog.cpp"
 				>
 			</File>
@@ -660,6 +668,18 @@
 			Filter="h;hh;hxx"
 			>
 			<File
+				RelativePath=".\CmdHelper.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Data.h"
+				>
+			</File>
+			<File
+				RelativePath=".\DrawTool.h"
+				>
+			</File>
+			<File
 				RelativePath=".\MySoUiLoader.h"
 				>
 			</File>
@@ -677,10 +697,6 @@
 			</File>
 			<File
 				RelativePath=".\SoUILoader.h"
-				>
-			</File>
-			<File
-				RelativePath=".\SouiMath.h"
 				>
 			</File>
 			<File

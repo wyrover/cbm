@@ -26,9 +26,18 @@ CString ArxDrawHelper::MakeLowerText( const CString& inStr )
 	return str;
 }
 
-AcGePoint3d ArxDrawHelper::CaclPt( const AcGePoint3d& pt, const AcGeVector3d& v1, double width, const AcGeVector3d& v2, double height )
+AcGePoint3d ArxDrawHelper::CaclPt( const AcGePoint3d& pt, 
+								  const AcGeVector3d& v1, double width, 
+								  const AcGeVector3d& v2, double height )
 {
 	return ( pt + v1 * width / 2 + v2 * height / 2 );
+}
+
+AcGePoint3d ArxDrawHelper::CacLineClosePt( const AcGePoint3d& spt, const AcGePoint3d& ept, const AcGePoint3d& pt)
+{
+	// 构造一条几何线段
+	AcGeLineSeg3d line( spt, ept );
+	return line.closestPointTo( pt ); // 计算距离中线最近的点
 }
 
 void ArxDrawHelper::BuildRect( const AcGePoint3d& pt, double angle, double width, double height, AcGePoint3dArray& pts )

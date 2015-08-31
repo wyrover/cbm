@@ -4,7 +4,6 @@
 // 配置文件
 #include "config.h"
 
-#include <MineGEDraw/MineGEDrawSystem.h>
 #include <ArxHelper/HelperClass.h>
 #include <Util/HelperClass.h>
 
@@ -138,12 +137,11 @@ public:
 
 	bool initDrawSystem()
 	{
-		if( !loadArxModule( _T( "MineGEDraw" ) ) ) return false;
-		//if( !loadArxModule( _T( "ContextMenuHelper" ) ) ) return false;
-		// 初始化MineGEDrawSystem
-		MineGEDrawSystem::CreateInstance();
-		MineGEDrawSystem* pDrawSystem = MineGEDrawSystem::GetInstance();
-		pDrawSystem->loadPlugin( ArxUtilHelper::BuildPath( ArxUtilHelper::GetAppPathDir(_hdllInstance), _T( "DefGEPlugin.arx" ) ) );
+		//if( !loadArxModule( _T( "MineGEDraw" ) ) ) return false;
+		//// 初始化MineGEDrawSystem
+		//MineGEDrawSystem::CreateInstance();
+		//MineGEDrawSystem* pDrawSystem = MineGEDrawSystem::GetInstance();
+		//pDrawSystem->loadPlugin( ArxUtilHelper::BuildPath( ArxUtilHelper::GetAppPathDir(_hdllInstance), _T( "DefGEPlugin.arx" ) ) );
 
 		return true;
 	}
@@ -151,10 +149,8 @@ public:
 	void unInitDrawSystem()
 	{
 		// 退出并清理MineGEService系统
-		MineGEDrawSystem::DestroyInstance();
-
-		unloadArxModule( _T( "MineGEDraw" ) );
-		//unloadArxModule( _T("ContextMenuHelper") );
+		//MineGEDrawSystem::DestroyInstance();
+		//unloadArxModule( _T( "MineGEDraw" ) );
 	}
 
 	// 加载图元模块
@@ -162,8 +158,8 @@ public:
 	{
 		acutPrintf( _T( "\n-------- 加载图元模块 ------------\n" ) );
 
-		if( !loadArxModule( _T( "MineGE" ) ) ) return false;
-		if( !loadArxModule( _T( "DefGE" ) ) ) return false;
+		//if( !loadArxModule( _T( "MineGE" ) ) ) return false;
+		//if( !loadArxModule( _T( "DefGE" ) ) ) return false;
 
 		return true;
 	}
@@ -172,8 +168,8 @@ public:
 	{
 		acutPrintf( _T( "\n-------- 卸载图元模块 ------------" ) );
 
-		unloadArxModule( _T( "DefGE" ) );
-		unloadArxModule( _T( "MineGE" ) );
+		//unloadArxModule( _T( "DefGE" ) );
+		//unloadArxModule( _T( "MineGE" ) );
 	}
 
 	bool loadCmdModule()
@@ -214,7 +210,6 @@ public:
 
 	static void VVTest_testVector()
 	{
-		const double PI = 3.1415926535897932384626433832795;
 		AcGeVector3d v(AcGeVector3d::kXAxis);
 		v.rotateBy(PI/6, AcGeVector3d::kZAxis);
 

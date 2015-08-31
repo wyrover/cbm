@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "HighDrillingTunnelDialog.h"
 #include "SouiListHelper.h"
-#include "SouiMath.h"
 
 #include <ArxHelper/HelperClass.h>
 #include <ArxDao/DaoHelper.h>

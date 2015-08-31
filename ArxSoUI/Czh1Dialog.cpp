@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "Czh1Dialog.h"
-#include "SouiMath.h"
 
 #include <ArxHelper/HelperClass.h>
 #include <ArxDao/DaoHelper.h>

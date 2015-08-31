@@ -5,8 +5,8 @@
 
 #include <ArxHelper/HelperClass.h>
 #include <Util/HelperClass.h>
-#include <ArxDao/Entity.h>
-using namespace cbm;
+//#include <ArxDao/Entity.h>
+//using namespace cbm;
 
 // 定义注册服务名称
 #ifndef ARX_SOUI_SERVICE_NAME
@@ -66,6 +66,9 @@ public:
         AcRx::AppRetCode retCode = AcRxArxApp::On_kLoadDwgMsg ( pkt );
 
         acutPrintf( _T( "\nArxSoUI::On_kLoadDwgMsg\n" ) );
+
+		ArxDataTool::RegAppName( acdbHostApplicationServices()->workingDatabase(), _T("扩展数据") );
+
 		//初始化数据字段
 		UIHelper::InitAllData();
 
@@ -139,6 +142,16 @@ public:
 	{
 		CmdHelper::TestTunnel();
 	}
+
+	static void JL_DrawCoalSurf()
+	{
+		CmdHelper::DrawCoalSurf();
+	}
+
+	static void JL_TestCoalSurf()
+	{
+		CmdHelper::TestCoalSurf();
+	}
 } ;
 
 //-----------------------------------------------------------------------------
@@ -155,3 +168,5 @@ ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _Main, main, ACRX_CMD_TRANSPARENT, 
 
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _DrawTunnel, tunnel, ACRX_CMD_TRANSPARENT, NULL )
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _TestTunnel, tt, ACRX_CMD_TRANSPARENT, NULL )
+ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _DrawCoalSurf, coal, ACRX_CMD_TRANSPARENT, NULL )
+ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _TestCoalSurf, tc, ACRX_CMD_TRANSPARENT, NULL )

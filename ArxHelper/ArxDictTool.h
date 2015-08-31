@@ -16,6 +16,7 @@ class ARXHELPER_DLLIMPEXP ArxDictTool
 {
 public:
 	static ArxDictTool* GetDictTool(const CString& dictName);
+	static ArxDictTool* GetDictTool(const AcDbObjectId& dictId);
 
 	bool findKey(const CString& key);
 	void removeKey(const CString& key);
@@ -32,8 +33,8 @@ public:
 	bool getEntry(const CString& key, int index, CString& entry);             // 获取key中第index项的值
 
 private:
-	ArxDictTool(const CString& dictName);
-	CString m_dictName;
+	ArxDictTool(const AcDbObjectId& dictId);
+	AcDbObjectId m_dictId;
 };
 
 // 一个key->AcDbObject
@@ -41,6 +42,7 @@ class ARXHELPER_DLLIMPEXP ArxDictTool2
 {
 public:
 	static ArxDictTool2* GetDictTool(const CString& dictName);
+	static ArxDictTool2* GetDictTool(const AcDbObjectId& dictId);
 
 	// 添加到词典中，同时自动关闭对象pObj->close();
 	bool addEntry(const CString& key, AcDbObject* pObj);         // 添加
@@ -50,8 +52,8 @@ public:
 	void getAllEntries(AcDbObjectIdArray& objIds);               // 获取所有的对象
 
 private:
-	ArxDictTool2(const CString& dictName);
-	CString m_dictName;
+	ArxDictTool2(const AcDbObjectId& dictId);
+	AcDbObjectId m_dictId;
 };
 
 class ARXHELPER_DLLIMPEXP ArxDictHelper

@@ -16,9 +16,12 @@ public:
 	static void GetPickSetEntity(AcDbObjectIdArray& objIds);
 	static void GetPickSetEntity2(AcDbObjectIdArray& objIds);
 
+	static double Angle(AcGePoint3d& startPt, AcGePoint3d& endPt);
+
 	// 交互选择一个点坐标
 	static bool PromptPt(const CString& msg, AcGePoint3d& pt);
 	static bool PromptPt2(const CString& msg, const AcGePoint3d& basePt, AcGePoint3d& pt);
+	static bool PromptSEPt(AcGePoint3d& startPt, AcGePoint3d& endPt);
 
 	// 计算向量v与x轴逆时针旋转的角度
 	static double AngleToXAxis(const AcGeVector3d& v);

@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "HighDrillingPoreDialog.h"
-#include "SouiMath.h"
 
 #include <ArxHelper/HelperClass.h>
 #include <ArxDao/DaoHelper.h>

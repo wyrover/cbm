@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "DrillingRadiusDesignDialog.h"
 #include "SouiListHelper.h"
-#include "SouiMath.h"
 
 #include <ArxHelper/HelperClass.h>
 #include <ArxDao/DaoHelper.h>

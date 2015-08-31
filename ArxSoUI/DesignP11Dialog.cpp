@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "DesignP11Dialog.h"
-#include "SouiMath.h"
 
 #include <ArxHelper/HelperClass.h>
 #include <ArxDao/DaoHelper.h>
@@ -8,10 +7,10 @@
 using namespace orm;
 using namespace cbm;
 
-#include <DefGE/CoalSurface.h>
-#include <DefGE/DrillSite.h>
-#include <DefGE/Pore.h>
-#include <DefGE/Tunnel.h>
+//#include <DefGE/CoalSurface.h>
+//#include <DefGE/DrillSite.h>
+//#include <DefGE/DrillPore.h>
+//#include <DefGE/Tunnel.h>
 
 DesignP11Dialog::DesignP11Dialog( BOOL bModal ) : AcadSouiDialog( _T( "layout:design_p1_1" ), bModal )
 {

@@ -257,6 +257,34 @@ bool ArxUtilHelper::PromptPt2( const CString& msg, const AcGePoint3d& basePt, Ac
     return true;
 }
 
+double ArxUtilHelper::Angle(AcGePoint3d& startPt, AcGePoint3d& endPt)
+{
+	AcGeVector3d v = endPt - startPt;
+	return v.angleTo( AcGeVector3d::kXAxis, -AcGeVector3d::kZAxis );
+}
+
+bool ArxUtilHelper::PromptSEPt( AcGePoint3d& startPt, AcGePoint3d& endPt)
+{
+	ads_point start_pt, end_pt;
+	if( acedGetPoint( NULL, _T( "\n请选择第一点: " ), start_pt ) != RTNORM )
+	{
+		acutPrintf( _T( "\n选择点坐标失败" ) );
+		return false;
+	}
+
+	if( acedGetPoint( start_pt, _T( "\n请选择第二点：" ), end_pt ) != RTNORM )
+	{
+		acutPrintf( _T( "\n选择点坐标失败" ) );
+		return false;
+	}
+
+	// 返回结果
+	startPt = asPnt3d( start_pt );
+	endPt = asPnt3d( end_pt );
+
+	return true;
+}
+
 double ArxUtilHelper::AngleToXAxis( const AcGeVector3d& v )
 {
     return v.angleTo( AcGeVector3d::kXAxis, -AcGeVector3d::kZAxis );

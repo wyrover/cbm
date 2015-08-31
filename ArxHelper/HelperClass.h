@@ -12,6 +12,12 @@
 #include "ArxEntityHelper.h"
 #include "ArxUtilHelper.h"
 #include "ArxDwgHelper.h"
-#include "LayerHelper.h"
+#include "ArxLayerHelper.h"
 #include "ArxTolSetter.h"
 #include "ArxDrawHelper.h"
+
+// 属性数据字段管理辅助类
+#include "FieldHelper.h"
+#include "FieldInfoHelper.h"
+
+#include "SystemHelper.h"

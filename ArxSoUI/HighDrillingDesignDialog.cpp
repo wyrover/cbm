@@ -3,7 +3,6 @@
 #include "HighDrillingSiteDialog.h"
 #include "HighDrillingPoreDialog.h"
 #include "SouiListHelper.h"
-#include "SouiMath.h"
 
 #include <ArxHelper/HelperClass.h>
 #include <ArxDao/DaoHelper.h>

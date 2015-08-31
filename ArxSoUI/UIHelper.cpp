@@ -2,7 +2,6 @@
 #include "UIHelper.h"
 
 #include <ArxHelper/HelperClass.h>
-#include <MineGE/HelperClass.h>
 #include <Util/HelperClass.h>
 
 #include <ArxDao/DaoHelper.h>
@@ -22,8 +21,11 @@ using namespace SOUI;
 
 void UIHelper::InitAllData()
 {
+	//初始化必须数据(建立词典、扩展数据appname等)
+	SystemHelper::Start();
+	//读取字段
     CString appDir = ArxUtilHelper::GetAppPathDir( _hdllInstance );
-    DataInitHelper::InitDataField( ArxUtilHelper::BuildPath( appDir, _T( "Datas\\煤层气抽采-字段-图元属性.txt" ) ) );
+    FieldHelper::InitDataField( ArxUtilHelper::BuildPath( appDir, _T( "Datas\\煤层气抽采-字段-图元属性.txt" ) ) );
 }
 
 void UIHelper::InitSouiEnviroment()

@@ -1,33 +1,22 @@
 #include "StdAfx.h"
 #include "ArxDictTool.h"
-#include "ArxEntityHelper.h"
-#include "DictEntryManager.h"
+#include "XRecorManager.h"
+#include "HelperClass.h"
 
-static AcDbDictionary* GetDictObject( const CString& dictName )
+static AcDbDictionary* GetDictObject( const AcDbObjectId& dictId )
 {
-    AcDbDictionary* pNameObjDict;
-    if( Acad::eOk != acdbHostApplicationServices()->workingDatabase()->getNamedObjectsDictionary( pNameObjDict, AcDb::kForRead ) )
-    {
-        return 0;
-    }
-
-    AcDbObject* pObj;
-    Acad::ErrorStatus es = pNameObjDict->getAt( dictName, pObj, AcDb::kForWrite );
-    pNameObjDict->close();
-
     AcDbDictionary* pDict = 0;
-    if( es == Acad::eOk )
-    {
-        pDict = AcDbDictionary::cast( pObj );
-    }
-    return pDict;
+	if(Acad::eOk != acdbOpenAcDbObject(( AcDbObject*& ) pDict, dictId, AcDb::kForWrite))
+		return 0;
+	else
+		return pDict;
 }
 
-static DictEntryManager* GetDictEntryManager( const CString& dictName, const CString& key, bool createNewKey = false )
+static XRecorManager* GetXRecordManager( const AcDbObjectId& dictId, const CString& key, bool createNewKey = false )
 {
     //acutPrintf(_T("\n注册: %s"), dictName);
 
-    AcDbDictionary* pDict = GetDictObject( dictName );
+    AcDbDictionary* pDict = GetDictObject( dictId );
     if( pDict == 0 ) return 0;
 
     AcDbXrecord* pXrec = 0;
@@ -54,12 +43,12 @@ static DictEntryManager* GetDictEntryManager( const CString& dictName, const CSt
         }
     }
     pDict->close();
-    return new DictEntryManager( pXrec );
+    return new XRecorManager( pXrec );
 }
 
-static bool FindDictKey( const CString& dictName, const CString& key )
+static bool FindDictKey( const AcDbObjectId& dictId, const CString& key )
 {
-    AcDbDictionary* pDict = GetDictObject( dictName );
+    AcDbDictionary* pDict = GetDictObject( dictId );
     if( pDict == 0 ) return false;
 
     bool ret = pDict->has( key );
@@ -67,9 +56,9 @@ static bool FindDictKey( const CString& dictName, const CString& key )
     return ret;
 }
 
-static void RemoveDictKey( const CString& dictName, const CString& key )
+static void RemoveDictKey( const AcDbObjectId& dictId, const CString& key )
 {
-    AcDbDictionary* pDict = GetDictObject( dictName );
+    AcDbDictionary* pDict = GetDictObject( dictId );
     if( pDict == 0 ) return;
 
     AcDbObjectId objId;
@@ -78,24 +67,24 @@ static void RemoveDictKey( const CString& dictName, const CString& key )
     pDict->close();
 }
 
-ArxDictTool::ArxDictTool( const CString& dictName ) : m_dictName( dictName )
+ArxDictTool::ArxDictTool( const AcDbObjectId& dictId ) : m_dictId( dictId )
 {
 
 }
 
 bool ArxDictTool::findKey( const CString& key )
 {
-    return FindDictKey( m_dictName, key );
+    return FindDictKey( m_dictId, key );
 }
 
 void ArxDictTool::removeKey( const CString& key )
 {
-    RemoveDictKey( m_dictName, key );
+    RemoveDictKey( m_dictId, key );
 }
 
 void ArxDictTool::getAllKeys( AcStringArray& keys )
 {
-    AcDbDictionary* pDict = GetDictObject( m_dictName );
+    AcDbDictionary* pDict = GetDictObject( m_dictId );
     if( pDict == 0 ) return;
 
     AcDbDictionaryIterator* pIter = pDict->newIterator();
@@ -111,7 +100,7 @@ int ArxDictTool::addEntry( const CString& key, const CString& entry )
 {
     // 1、获取图元对应的AcDbXrecord
     //    并封装成DataFieldManager对象
-    DictEntryManager* pDEM = GetDictEntryManager( m_dictName, key, true );
+    XRecorManager* pDEM = GetXRecordManager( m_dictId, key, true );
     if( pDEM == 0 ) return INVALID_ENTRY;
 
     // 2、添加字段
@@ -125,7 +114,7 @@ int ArxDictTool::removeEntry( const CString& key, const CString& entry )
 {
     // 1、获取图元对应的AcDbXrecord
     //    并封装成DataFieldManager对象
-    DictEntryManager* pDEM = GetDictEntryManager( m_dictName, key );
+    XRecorManager* pDEM = GetXRecordManager( m_dictId, key );
     if( pDEM == 0 ) return INVALID_ENTRY;
 
     // 2、删除字段
@@ -139,7 +128,7 @@ int ArxDictTool::countEntries( const CString& key )
 {
     // 1、获取图元对应的AcDbXrecord
     //    并封装成DataFieldManager对象
-    DictEntryManager* pDEM = GetDictEntryManager( m_dictName, key );
+    XRecorManager* pDEM = GetXRecordManager( m_dictId, key );
     if( pDEM == 0 ) return INVALID_ENTRY;
 
     int count = pDEM->countEntries();
@@ -152,7 +141,7 @@ int ArxDictTool::findEntry( const CString& key, const CString& entry )
 {
     // 1、获取图元对应的AcDbXrecord
     //    并封装成DataFieldManager对象
-    DictEntryManager* pDEM = GetDictEntryManager( m_dictName, key );
+    XRecorManager* pDEM = GetXRecordManager( m_dictId, key );
     if( pDEM == 0 ) return INVALID_ENTRY;
 
     // 2、查找字段索引位置
@@ -166,7 +155,7 @@ void ArxDictTool::getAllEntries( const CString& key, AcStringArray& entries )
 {
     // 1、获取图元对应的AcDbXrecord
     //    并封装成DataFieldManager对象
-    DictEntryManager* pDEM = GetDictEntryManager( m_dictName, key );
+    XRecorManager* pDEM = GetXRecordManager( m_dictId, key );
     if( pDEM == 0 ) return;
 
     pDEM->getAllEntries( entries );
@@ -177,7 +166,7 @@ bool ArxDictTool::modifyEntry( const CString& key, int index, const CString& new
 {
     if( index == INVALID_ENTRY ) return false;
 
-    DictEntryManager* pDEM = GetDictEntryManager( m_dictName, key );
+    XRecorManager* pDEM = GetXRecordManager( m_dictId, key );
     if( pDEM == 0 ) return false;
 
     bool flag = pDEM->modifyEntry( index, newEntry );
@@ -190,7 +179,7 @@ bool ArxDictTool::getEntry( const CString& key, int index, CString& entry )
 {
     if( index == INVALID_ENTRY ) return false;
 
-    DictEntryManager* pDEM = GetDictEntryManager( m_dictName, key );
+    XRecorManager* pDEM = GetXRecordManager( m_dictId, key );
     if( pDEM == 0 ) return false;
 
     bool flag = pDEM->getEntry( index, entry );
@@ -201,7 +190,16 @@ bool ArxDictTool::getEntry( const CString& key, int index, CString& entry )
 
 ArxDictTool* ArxDictTool::GetDictTool( const CString& dictName )
 {
-    return new ArxDictTool( dictName );
+	AcDbObjectId dictId = ArxDataTool::GetDict(dictName);
+	if(dictId.isNull()) 
+		return 0;
+	else
+		return new ArxDictTool( dictId );
+}
+
+ArxDictTool* ArxDictTool::GetDictTool(const AcDbObjectId& dictId)
+{
+	return new ArxDictTool( dictId );
 }
 
 
@@ -211,17 +209,26 @@ ArxDictTool* ArxDictTool::GetDictTool( const CString& dictName )
 
 ArxDictTool2* ArxDictTool2::GetDictTool( const CString& dictName )
 {
-    return new ArxDictTool2( dictName );
+	AcDbObjectId dictId = ArxDataTool::GetDict(dictName);
+	if(dictId.isNull()) 
+		return 0;
+	else
+		return new ArxDictTool2( dictId );
 }
 
-ArxDictTool2::ArxDictTool2( const CString& dictName ) : m_dictName( dictName )
+ArxDictTool2* ArxDictTool2::GetDictTool( const AcDbObjectId& dictId )
+{
+	return new ArxDictTool2( dictId );
+}
+
+ArxDictTool2::ArxDictTool2( const AcDbObjectId& dictId ) : m_dictId( dictId )
 {
 
 }
 
 bool ArxDictTool2::addEntry( const CString& key, AcDbObject* pObj )
 {
-    AcDbDictionary* pDict = GetDictObject( m_dictName );
+    AcDbDictionary* pDict = GetDictObject( m_dictId );
     if( pDict == 0 ) return false;
 
     bool ret = false;
@@ -241,7 +248,7 @@ bool ArxDictTool2::addEntry( const CString& key, AcDbObject* pObj )
 
 bool ArxDictTool2::removeEntry( const CString& key )
 {
-    AcDbDictionary* pDict = GetDictObject( m_dictName );
+    AcDbDictionary* pDict = GetDictObject( m_dictId );
     if( pDict == 0 ) return false;
 
     AcDbObjectId objId;
@@ -257,7 +264,7 @@ bool ArxDictTool2::removeEntry( const CString& key )
 
 bool ArxDictTool2::findEntry( const CString& key, AcDbObjectId& objId )
 {
-    AcDbDictionary* pDict = GetDictObject( m_dictName );
+    AcDbDictionary* pDict = GetDictObject( m_dictId );
     if( pDict == 0 ) return false;
 
     bool ret = ( Acad::eOk == pDict->getAt( key, objId ) );
@@ -269,7 +276,7 @@ bool ArxDictTool2::findEntry( const CString& key, AcDbObjectId& objId )
 
 void ArxDictTool2::getAllKeys( AcStringArray& keys )
 {
-    AcDbDictionary* pDict = GetDictObject( m_dictName );
+    AcDbDictionary* pDict = GetDictObject( m_dictId );
     if( pDict == 0 ) return;
 
     AcDbDictionaryIterator* pIter = pDict->newIterator();
@@ -283,7 +290,7 @@ void ArxDictTool2::getAllKeys( AcStringArray& keys )
 
 void ArxDictTool2::getAllEntries( AcDbObjectIdArray& objIds )
 {
-    AcDbDictionary* pDict = GetDictObject( m_dictName );
+    AcDbDictionary* pDict = GetDictObject( m_dictId );
     if( pDict == 0 ) return;
 
     AcDbDictionaryIterator* pIter = pDict->newIterator();

@@ -409,15 +409,11 @@
 				>
 			</File>
 			<File
+				RelativePath=".\ArxLayerHelper.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\ArxUtilHelper.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\DictEntryManager.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\LayerHelper.cpp"
 				>
 			</File>
 			<File
@@ -455,6 +451,14 @@
 						UsePrecompiledHeader="1"
 					/>
 				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\SystemHelper.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\XRecorManager.cpp"
+				>
 			</File>
 			<File
 				RelativePath=".\ZoomHelper.cpp"
@@ -496,6 +500,18 @@
 					>
 				</File>
 			</Filter>
+			<Filter
+				Name="field"
+				>
+				<File
+					RelativePath=".\FieldHelper.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\FieldInfoHelper.cpp"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Include Files"
@@ -526,6 +542,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\ArxLayerHelper.h"
+				>
+			</File>
+			<File
 				RelativePath=".\ArxTolSetter.h"
 				>
 			</File>
@@ -534,7 +554,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\DictEntryManager.h"
+				RelativePath=".\config.h"
 				>
 			</File>
 			<File
@@ -546,15 +566,19 @@
 				>
 			</File>
 			<File
-				RelativePath=".\LayerHelper.h"
-				>
-			</File>
-			<File
 				RelativePath=".\Resource.h"
 				>
 			</File>
 			<File
 				RelativePath=".\StdAfx.h"
+				>
+			</File>
+			<File
+				RelativePath=".\SystemHelper.h"
+				>
+			</File>
+			<File
+				RelativePath=".\XRecorManager.h"
 				>
 			</File>
 			<Filter
@@ -590,6 +614,18 @@
 				</File>
 				<File
 					RelativePath=".\XData.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="field"
+				>
+				<File
+					RelativePath=".\FieldHelper.h"
+					>
+				</File>
+				<File
+					RelativePath=".\FieldInfoHelper.h"
 					>
 				</File>
 			</Filter>
