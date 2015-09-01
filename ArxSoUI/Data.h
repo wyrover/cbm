@@ -3,10 +3,10 @@
 #include <ArxHelper/XData.h>
 #include <ArxHelper/ExtDictData.h>
 
-class TestLink : public XData
+class TestData : public XData
 {
 public:
-	TestLink() : m_width(0), m_height(0), m_projType(0)
+	TestData() : m_width(0), m_height(0), m_projType(0)
 	{
 
 	}
@@ -27,10 +27,10 @@ public:
 };
 
 
-class TunnelLink : public ExtDictData
+class TunnelData : public ExtDictData
 {
 public:
-	TunnelLink() : m_width(0), m_height(0), m_projType(0)
+	TunnelData() : m_width(0), m_height(0), m_projType(0)
 	{
 
 	}
@@ -50,10 +50,10 @@ public:
 	int m_projType;
 };
 
-class CoalSurfaceLink : public ExtDictData
+class CoalData : public ExtDictData
 {
 public:
-	CoalSurfaceLink() : m_thick(0), m_angle(0), m_width(0), m_height(0)
+	CoalData() : m_thick(0), m_angle(0), m_width(0), m_height(0)
 	{
 
 	}
@@ -84,10 +84,10 @@ public:
 	AcGeVector3d m_dipV;
 };
 
-class DrillSiteLink : public ExtDictData
+class DrillSiteData : public ExtDictData
 {
 public:
-	DrillSiteLink() : m_width(0), m_height(0)
+	DrillSiteData() : m_width(0), m_height(0)
 	{
 
 	}
@@ -105,10 +105,10 @@ public:
 	double m_height;
 };
 
-class DrillPoreLink : public ExtDictData
+class DrillPoreData : public ExtDictData
 {
 public:
-	DrillPoreLink() : m_pore_num(0), m_pore_size(0)
+	DrillPoreData() : m_pore_num(0), m_pore_size(0)
 	{
 
 	}

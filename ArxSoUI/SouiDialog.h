@@ -125,3 +125,21 @@ private:
 		REFLECT_NOTIFICATIONS_EX()
 	END_MSG_MAP()
 };
+
+class SouiDialogShowSwitch
+{
+public:
+	//构造函数隐藏
+	SouiDialogShowSwitch(SOUI::CSimpleWnd* _dlg) : dlg(_dlg)
+	{
+		dlg->ShowWindow(SW_HIDE);
+		////当隐藏之后整个CAD窗口失去焦点
+		//dlg->SetFocus();
+	}
+	//析构函数显示
+	~SouiDialogShowSwitch()
+	{
+		dlg->ShowWindow(SW_SHOW);
+	}
+	SOUI::CSimpleWnd* dlg;
+};

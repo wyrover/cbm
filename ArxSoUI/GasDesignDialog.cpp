@@ -1,6 +1,6 @@
 #include "stdafx.h"
-#include "DesignDialog.h"
-#include "DesignP11Dialog.h"
+#include "GasDesignDialog.h"
+#include "GasDesignP11Dialog.h"
 #include "SouiListHelper.h"
 
 #include <ArxHelper/HelperClass.h>
@@ -9,16 +9,16 @@
 using namespace orm;
 using namespace cbm;
 
-DesignDialog::DesignDialog( BOOL bModal ) : AcadSouiDialog( _T( "layout:design" ), bModal )
+GasDesignDialog::GasDesignDialog( BOOL bModal ) : AcadSouiDialog( _T( "layout:gas_design" ), bModal )
 {
     mine_id = 0;
 }
 
-DesignDialog::~DesignDialog()
+GasDesignDialog::~GasDesignDialog()
 {
 }
 
-void DesignDialog::OnCommand( UINT uNotifyCode, int nID, HWND wndCtl )
+void GasDesignDialog::OnCommand( UINT uNotifyCode, int nID, HWND wndCtl )
 {
     if( uNotifyCode == 0 )
     {
@@ -28,7 +28,7 @@ void DesignDialog::OnCommand( UINT uNotifyCode, int nID, HWND wndCtl )
     }
 }
 
-LRESULT DesignDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
+LRESULT GasDesignDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 {
     AcadSouiDialog::OnInitDialog( hWnd, lParam );
     //do something
@@ -40,7 +40,7 @@ LRESULT DesignDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 }
 
 
-void DesignDialog::OnP11ButtonClick()
+void GasDesignDialog::OnP11ButtonClick()
 {
     int coal_id = SComboBoxHelper::GetCurSelItemID( m_CoalCombox );
     if( coal_id == 0 )
@@ -50,56 +50,56 @@ void DesignDialog::OnP11ButtonClick()
     }
 
     AcadSouiDialog::OnOK();
-    DesignP11Dialog* dlg = new DesignP11Dialog( TRUE );
+    GasDesignP11Dialog* dlg = new GasDesignP11Dialog( FALSE );
     dlg->coal_id = coal_id;
     dlg->Run( acedGetAcadFrame()->GetSafeHwnd() );
 }
 
-void DesignDialog::OnP12ButtonClick()
+void GasDesignDialog::OnP12ButtonClick()
 {
 }
 
-void DesignDialog::OnP13ButtonClick()
+void GasDesignDialog::OnP13ButtonClick()
 {
 }
 
-void DesignDialog::OnP21ButtonClick()
+void GasDesignDialog::OnP21ButtonClick()
 {
 }
 
-void DesignDialog::OnP22ButtonClick()
+void GasDesignDialog::OnP22ButtonClick()
 {
 }
 
-void DesignDialog::OnP23ButtonClick()
+void GasDesignDialog::OnP23ButtonClick()
 {
 }
 
-void DesignDialog::OnP24ButtonClick()
+void GasDesignDialog::OnP24ButtonClick()
 {
 }
 
-void DesignDialog::OnP25ButtonClick()
+void GasDesignDialog::OnP25ButtonClick()
 {
 }
 
-void DesignDialog::OnP31ButtonClick()
+void GasDesignDialog::OnP31ButtonClick()
 {
 }
 
-void DesignDialog::OnP32ButtonClick()
+void GasDesignDialog::OnP32ButtonClick()
 {
 }
 
-void DesignDialog::OnP33ButtonClick()
+void GasDesignDialog::OnP33ButtonClick()
 {
 }
 
-void DesignDialog::OnP34ButtonClick()
+void GasDesignDialog::OnP34ButtonClick()
 {
 }
 
-void DesignDialog::OnCoalComboxSelChanged( SOUI::EventArgs* pEvt )
+void GasDesignDialog::OnCoalComboxSelChanged( SOUI::EventArgs* pEvt )
 {
     if( !isLayoutInited() ) return;
     EventCBSelChange* pEvtOfCB = ( EventCBSelChange* )pEvt;
@@ -110,14 +110,14 @@ void DesignDialog::OnCoalComboxSelChanged( SOUI::EventArgs* pEvt )
     // do something
 }
 
-void DesignDialog::OnDestroyWindow()
+void GasDesignDialog::OnDestroyWindow()
 {
     //删除所有的附加数据
     SComboBoxHelper::Clear( m_CoalCombox );
     AcadSouiDialog::OnDestroyWindow();
 }
 
-void DesignDialog::fillCoalCombox()
+void GasDesignDialog::fillCoalCombox()
 {
     MinePtr mine = FIND_BY_ID( Mine, mine_id );
     if( mine == 0 ) return;

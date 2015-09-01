@@ -6,7 +6,6 @@
   <layout>
     <file name="about" path="xml\about.xml"/>
     <file name="adj_layer" path="xml\adj_layer.xml"/>
-    <file name="cbm" path="xml\cbm.xml"/>
     <file name="coal" path="xml\coal.xml"/>
     <file name="coal_layer_method" path="xml\coal_layer_method.xml"/>
     <file name="coal_layer_more" path="xml\coal_layer_more.xml"/>
@@ -19,11 +18,11 @@
     <file name="czh_4" path="xml\czh_4.xml"/>
     <file name="decision" path="xml\decision.xml"/>
     <file name="demo" path="xml\demo.xml"/>
-    <file name="design" path="xml\design.xml"/>
-    <file name="design_p1_1" path="xml\design_p1_1.xml"/>
     <file name="difficult_eval" path="xml\difficult_eval.xml"/>
     <file name="drilling_radius_design" path="xml\drilling_radius_design.xml"/>
     <file name="function_manage" path="xml\function_manage.xml"/>
+    <file name="gas_design" path="xml\gas_design.xml"/>
+    <file name="gas_design_p1_1" path="xml\gas_design_p1_1.xml"/>
     <file name="high_drilling_design" path="xml\high_drilling_design.xml"/>
     <file name="high_drilling_pore" path="xml\high_drilling_pore.xml"/>
     <file name="high_drilling_site" path="xml\high_drilling_site.xml"/>

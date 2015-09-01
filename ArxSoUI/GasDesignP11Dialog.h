@@ -1,17 +1,19 @@
 #pragma once
 #include "AcadSouiDialog.h"
 
-class DesignP11Dialog : public AcadSouiDialog
+class GasDesignP11Dialog : public AcadSouiDialog
 {
 
 	/** 构造和析构函数 */
 public:
-	DesignP11Dialog(BOOL bModal = FALSE);
-	~DesignP11Dialog(void);
+	GasDesignP11Dialog(BOOL bModal = FALSE);
+	~GasDesignP11Dialog(void);
 
 	/** 控件消息处理 */
 protected:
 	void OnSaveButtonClick();
+	void OnPtButtonClick();
+	void OnHelpButtonClick();
 
 	/** 菜单消息 */
 protected:
@@ -26,11 +28,13 @@ protected:
 	//控件消息映射表
 	EVENT_MAP_BEGIN()
 		EVENT_NAME_COMMAND(_T("save"), OnSaveButtonClick)
+		EVENT_NAME_COMMAND(_T("pt"), OnPtButtonClick)
+		EVENT_NAME_COMMAND(_T("help"), OnHelpButtonClick)
 		CHAIN_EVENT_MAP(AcadSouiDialog)
 		EVENT_MAP_END()
 
 		//HOST消息(WINDOWS消息)映射表
-		BEGIN_MSG_MAP_EX(DesignP11Dialog)
+		BEGIN_MSG_MAP_EX(GasDesignP11Dialog)
 		MSG_WM_INITDIALOG(OnInitDialog)
 		MSG_WM_COMMAND(OnCommand)
 		CHAIN_MSG_MAP(AcadSouiDialog)
@@ -57,10 +61,15 @@ protected:
 	SEdit* m_VOffsetEdit;
 	SEdit* m_HOffsetEdit;
 	SEdit* m_NameEdit;
+	SEdit* m_ZEdit;
+	SEdit* m_XEdit;
+	SEdit* m_YEdit;
 
 public:
 	int coal_id;
 
 private:
 	void initDatas();
+	AcGePoint3d getPoint() const;
+	void setPoint(const AcGePoint3d& pt);
 };

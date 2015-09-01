@@ -1,7 +1,6 @@
 #include "StdAfx.h"
 #include "resource.h"
 #include "UIHelper.h"
-#include "CmdHelper.h"
 
 #include <ArxHelper/HelperClass.h>
 #include <Util/HelperClass.h>
@@ -132,26 +131,6 @@ public:
     {
         UIHelper::Main();
     }
-
-	static void JL_DrawTunnel()
-	{
-		CmdHelper::DrawTunnel();
-	}
-
-	static void JL_TestTunnel()
-	{
-		CmdHelper::TestTunnel();
-	}
-
-	static void JL_DrawCoalSurf()
-	{
-		CmdHelper::DrawCoalSurf();
-	}
-
-	static void JL_TestCoalSurf()
-	{
-		CmdHelper::TestCoalSurf();
-	}
 } ;
 
 //-----------------------------------------------------------------------------
@@ -165,8 +144,3 @@ ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _GasTechModeDecision, gtmd, ACRX_CM
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _KeyParamCacl, kpc, ACRX_CMD_TRANSPARENT, NULL )
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _PolicyHelp, phelp, ACRX_CMD_TRANSPARENT, NULL )
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _Main, main, ACRX_CMD_TRANSPARENT, NULL )
-
-ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _DrawTunnel, tunnel, ACRX_CMD_TRANSPARENT, NULL )
-ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _TestTunnel, tt, ACRX_CMD_TRANSPARENT, NULL )
-ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _DrawCoalSurf, coal, ACRX_CMD_TRANSPARENT, NULL )
-ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _TestCoalSurf, tc, ACRX_CMD_TRANSPARENT, NULL )

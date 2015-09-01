@@ -4,7 +4,7 @@
 #include "MineDialog.h"
 #include "KeyParamDialog.h"
 #include "PolicyDialog.h"
-#include "DesignDialog.h"
+#include "GasDesignDialog.h"
 
 #include <ArxHelper/HelperClass.h>
 #include <ArxDao/DaoHelper.h>
@@ -38,9 +38,9 @@ LRESULT MainDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
     return 0;
 }
 
-
 void MainDialog::OnF1ButtonClick()
 {
+	AcadSouiDialog::OnOK();
     MineDialog* dlg = new MineDialog( FALSE );
     dlg->mine_id = mine_id;
     dlg->Run( acedGetAcadFrame()->GetSafeHwnd() );
@@ -48,6 +48,7 @@ void MainDialog::OnF1ButtonClick()
 
 void MainDialog::OnF2ButtonClick()
 {
+	AcadSouiDialog::OnOK();
     KeyParamDialog* dlg = new KeyParamDialog( FALSE );
     dlg->mine_id = mine_id;
     dlg->Run( acedGetAcadFrame()->GetSafeHwnd() );
@@ -55,13 +56,15 @@ void MainDialog::OnF2ButtonClick()
 
 void MainDialog::OnF3ButtonClick()
 {
-    DesignDialog* dlg = new DesignDialog( FALSE );
+	AcadSouiDialog::OnOK();
+    GasDesignDialog* dlg = new GasDesignDialog( FALSE );
     dlg->mine_id = mine_id;
     dlg->Run( acedGetAcadFrame()->GetSafeHwnd() );
 }
 
 void MainDialog::OnF0ButtonClick()
 {
+	AcadSouiDialog::OnOK();
     MineDesignDialog* dlg = new MineDesignDialog( FALSE );
     dlg->mine_id = mine_id;
     dlg->Run( acedGetAcadFrame()->GetSafeHwnd() );
@@ -69,6 +72,7 @@ void MainDialog::OnF0ButtonClick()
 
 void MainDialog::OnF4ButtonClick()
 {
+	AcadSouiDialog::OnOK();
     PolicyDialog* dlg = new PolicyDialog( FALSE );
     //dlg->mine_id = mine_id;
     dlg->Run( acedGetAcadFrame()->GetSafeHwnd() );

@@ -1,13 +1,13 @@
 #pragma once
 #include "AcadSouiDialog.h"
 
-class DesignDialog : public AcadSouiDialog
+class GasDesignDialog : public AcadSouiDialog
 {
 
 	/** 构造和析构函数 */
 public:
-	DesignDialog(BOOL bModal = FALSE);
-	~DesignDialog(void);
+	GasDesignDialog(BOOL bModal = FALSE);
+	~GasDesignDialog(void);
 
 	/** 控件消息处理 */
 protected:
@@ -54,7 +54,7 @@ protected:
 	EVENT_MAP_END()
 	
 //HOST消息(WINDOWS消息)映射表
-	BEGIN_MSG_MAP_EX(DesignDialog)
+	BEGIN_MSG_MAP_EX(GasDesignDialog)
 		MSG_WM_INITDIALOG(OnInitDialog)
 		MSG_WM_COMMAND(OnCommand)
 		CHAIN_MSG_MAP(AcadSouiDialog)
