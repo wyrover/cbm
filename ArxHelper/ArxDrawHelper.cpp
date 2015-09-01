@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "ArxDrawHelper.h"
 #include "ArxUtilHelper.h"
+#include "config.h"
 
 AcGePoint2d ArxDrawHelper::Point3D_To_2D( const AcGePoint3d& pt )
 {
@@ -35,7 +36,7 @@ AcGePoint3d ArxDrawHelper::CaclPt( const AcGePoint3d& pt,
 								  const AcGeVector3d& v1, double width, 
 								  const AcGeVector3d& v2, double height )
 {
-	return ( pt + v1 * width / 2 + v2 * height / 2 );
+	return ( pt + v1 * width + v2 * height );
 }
 
 AcGePoint3d ArxDrawHelper::CacLineClosePt( const AcGePoint3d& spt, const AcGePoint3d& ept, const AcGePoint3d& pt)
@@ -49,18 +50,18 @@ void ArxDrawHelper::BuildRect( const AcGePoint3d& pt, double angle, double width
 {
 	AcGeVector3d v1( AcGeVector3d::kXAxis ), v2( AcGeVector3d::kXAxis );
 	v1.rotateBy( angle, AcGeVector3d::kZAxis );
-	v2.rotateBy( angle + PI / 2, AcGeVector3d::kZAxis );
+	v2.rotateBy( angle + PI*0.5, AcGeVector3d::kZAxis );
 
-	pts.append( CaclPt( pt, v1, width, v2, height ) );
+	pts.append( ArxDrawHelper::CaclPt( pt, v1, width*0.5, v2, height*0.5 ) );
 
 	v1.rotateBy( PI, AcGeVector3d::kZAxis );
-	pts.append( CaclPt( pt, v1, width, v2, height ) );
+	pts.append( ArxDrawHelper::CaclPt( pt, v1, width*0.5, v2, height*0.5 ) );
 
 	v2.rotateBy( PI, AcGeVector3d::kZAxis );
-	pts.append( CaclPt( pt, v1, width, v2, height ) );
+	pts.append( ArxDrawHelper::CaclPt( pt, v1, width*00.5, v2, height*0.5 ) );
 
 	v1.rotateBy( PI, AcGeVector3d::kZAxis );
-	pts.append( CaclPt( pt, v1, width, v2, height ) );
+	pts.append( ArxDrawHelper::CaclPt( pt, v1, width*0.5, v2, height*0.5 ) );
 }
 
 AcDbObjectId ArxDrawHelper::DrawEllipse( const AcGePoint3d& pt, double width, double height )
@@ -679,6 +680,13 @@ AcDbObjectId ArxDrawHelper::Make2LineAngularDim(const AcGePoint3d& pt1, const Ac
 	dim->setTextPosition(textPt);
 	dim->useSetTextPosition();    // make text go where user picked
 	dim->setDatabaseDefaults();
+
+	AcDbObjectId dimStyleId = ArxDrawHelper::GetDimStyle(DIM_STYLE_NAME);
+	if(!dimStyleId.isNull())
+	{
+		dim->setDimensionStyle(dimStyleId);
+	}
+
 	if(!ArxUtilHelper::PostToModelSpace(dim))
 	{
 		delete dim;
@@ -701,6 +709,13 @@ AcDbObjectId ArxDrawHelper::Make3PointAngularDim(const AcGePoint3d& centerPt, co
 	dim->setTextPosition(textPt);
 	dim->useSetTextPosition();    // make text go where user picked
 	dim->setDatabaseDefaults();
+	
+	AcDbObjectId dimStyleId = ArxDrawHelper::GetDimStyle(DIM_STYLE_NAME);
+	if(!dimStyleId.isNull())
+	{
+		dim->setDimensionStyle(dimStyleId);
+	}
+
 	if(!ArxUtilHelper::PostToModelSpace(dim))
 	{
 		delete dim;
@@ -714,7 +729,11 @@ AcDbObjectId ArxDrawHelper::Make3PointAngularDim(const AcGePoint3d& centerPt, co
 
 AcDbObjectId ArxDrawHelper::MakeAlignedDim(const AcGePoint3d& pt1, const AcGePoint3d& pt2)
 {
-	AcGePoint3d dimLinePoint = ArxDrawHelper::MidPoint(pt1, pt2);
+	AcGeVector3d v = pt2-pt1;
+	double angle = v.angleTo( AcGeVector3d::kXAxis, -AcGeVector3d::kZAxis );
+	v.normalize();
+	v.rotateBy(PI*0.5, AcGeVector3d::kZAxis);
+	AcGePoint3d dimLinePoint = ArxDrawHelper::MidPoint(pt1, pt2) + v*20;
 
 	AcDbAlignedDimension* dim = new AcDbAlignedDimension;
 	dim->setXLine1Point(pt1);
@@ -722,10 +741,17 @@ AcDbObjectId ArxDrawHelper::MakeAlignedDim(const AcGePoint3d& pt1, const AcGePoi
 
 	// dimLinePt automatically set from where text was placed,
 	// unless you deliberately set the dimLinePt
-	dim->setHorizontalRotation(0);
+	dim->setHorizontalRotation(angle);
 	dim->setTextPosition(dimLinePoint);
 	dim->useSetTextPosition();    // make text go where user picked
 	dim->setDatabaseDefaults();
+	
+	AcDbObjectId dimStyleId = ArxDrawHelper::GetDimStyle(DIM_STYLE_NAME);
+	if(!dimStyleId.isNull())
+	{
+		dim->setDimensionStyle(dimStyleId);
+	}
+
 	if(!ArxUtilHelper::PostToModelSpace(dim))
 	{
 		delete dim;
@@ -751,6 +777,13 @@ AcDbObjectId ArxDrawHelper::MakeDiametricDim(const AcGePoint3d& centerPt, double
 	dim->setTextPosition(textPt);
 	dim->useSetTextPosition();    // make text go where user picked
 	dim->setDatabaseDefaults();
+
+	AcDbObjectId dimStyleId = ArxDrawHelper::GetDimStyle(DIM_STYLE_NAME);
+	if(!dimStyleId.isNull())
+	{
+		dim->setDimensionStyle(dimStyleId);
+	}
+
 	if(!ArxUtilHelper::PostToModelSpace(dim))
 	{
 		delete dim;
@@ -766,6 +799,13 @@ AcDbObjectId ArxDrawHelper::MakeOrdinateDim(Adesk::Boolean useXAxis, const AcGeP
 {
 	AcDbOrdinateDimension* dim = new AcDbOrdinateDimension(useXAxis, featurePt, leaderPt);
 	dim->setDatabaseDefaults();
+
+	AcDbObjectId dimStyleId = ArxDrawHelper::GetDimStyle(DIM_STYLE_NAME);
+	if(!dimStyleId.isNull())
+	{
+		dim->setDimensionStyle(dimStyleId);
+	}
+
 	if(!ArxUtilHelper::PostToModelSpace(dim))
 	{
 		delete dim;
@@ -793,6 +833,13 @@ AcDbObjectId ArxDrawHelper::MakeRadialDim(const AcGePoint3d& centerPt, double ra
 	dim->setTextPosition(textPt);
 	dim->useSetTextPosition();    // make text go where user picked
 	dim->setDatabaseDefaults();
+
+	AcDbObjectId dimStyleId = ArxDrawHelper::GetDimStyle(DIM_STYLE_NAME);
+	if(!dimStyleId.isNull())
+	{
+		dim->setDimensionStyle(dimStyleId);
+	}
+
 	if(!ArxUtilHelper::PostToModelSpace(dim))
 	{
 		delete dim;
@@ -817,6 +864,13 @@ AcDbObjectId ArxDrawHelper::MakeRotatedDim(	const AcGePoint3d& pt1, const AcGePo
 	dim->setTextPosition(textPt);
 	dim->useSetTextPosition();    // make text go where user picked
 	dim->setDatabaseDefaults();
+
+	AcDbObjectId dimStyleId = ArxDrawHelper::GetDimStyle(DIM_STYLE_NAME);
+	if(!dimStyleId.isNull())
+	{
+		dim->setDimensionStyle(dimStyleId);
+	}
+
 	if(!ArxUtilHelper::PostToModelSpace(dim))
 	{
 		delete dim;
@@ -828,7 +882,7 @@ AcDbObjectId ArxDrawHelper::MakeRotatedDim(	const AcGePoint3d& pt1, const AcGePo
 	}
 }
 
-AcDbObjectId ArxDrawHelper::CreateTextstyle(const CString& textStyleName)
+AcDbObjectId ArxDrawHelper::CreateTextstyle(const CString& textStyleName, bool modifyExistStyle)
 {
 	AcDbTextStyleTable* pTextStyleTbl;
 	if(Acad::eOk != acdbHostApplicationServices()->workingDatabase()->getTextStyleTable(pTextStyleTbl, AcDb::kForRead)) 
@@ -843,7 +897,16 @@ AcDbObjectId ArxDrawHelper::CreateTextstyle(const CString& textStyleName)
 	}
 	else
 	{
-		pTextStyleTbl->getAt(textStyleName, pTextStyleTblRcd, AcDb::kForWrite);
+		if(!modifyExistStyle)
+		{
+			pTextStyleTbl->getAt(textStyleName, textRecordId);
+			pTextStyleTbl->close();
+			return textRecordId;
+		}
+		else
+		{
+			pTextStyleTbl->getAt(textStyleName, pTextStyleTblRcd, AcDb::kForWrite);
+		}		
 	}
 	pTextStyleTbl->close();
 
@@ -872,7 +935,7 @@ AcDbObjectId ArxDrawHelper::GetTextStyleId(const CString& textStyleName)
 	return textStyleId;
 }
 
-AcDbObjectId ArxDrawHelper::CreateDimStyle(const CString& dimStyleName/*, const CString& textStyleName*/)
+AcDbObjectId ArxDrawHelper::CreateDimStyle(const CString& dimStyleName, bool modifyExistStyle)
 {
 	AcDbDimStyleTable *pDimStyleTbl;
 	if(Acad::eOk != acdbHostApplicationServices()->workingDatabase()->getSymbolTable(pDimStyleTbl,AcDb::kForWrite))
@@ -887,7 +950,16 @@ AcDbObjectId ArxDrawHelper::CreateDimStyle(const CString& dimStyleName/*, const 
 	}
 	else
 	{
-		pDimStyleTbl->getAt(dimStyleName, pDimStyleTblRcd, AcDb::kForWrite);
+		if(!modifyExistStyle)
+		{
+			pDimStyleTbl->getAt(dimStyleName, dimRecordId);
+			pDimStyleTbl->close();
+			return dimRecordId;
+		}
+		else
+		{
+			pDimStyleTbl->getAt(dimStyleName, pDimStyleTblRcd, AcDb::kForWrite);
+		}
 	}
 	pDimStyleTbl->close();
 	
@@ -895,17 +967,17 @@ AcDbObjectId ArxDrawHelper::CreateDimStyle(const CString& dimStyleName/*, const 
 	int bili = 1.0;
 	//设置标注样式的特性
 	pDimStyleTblRcd->setName(dimStyleName); // 样式名称
-	pDimStyleTblRcd->setDimasz(50*bili); // 箭头长度
+	pDimStyleTblRcd->setDimasz(15*bili); // 箭头长度
 	//pDimStyleTblRcd->setDimblk("_Oblique");//设置箭头的形状为建筑标记
-	pDimStyleTblRcd->setDimexe(30*bili); // 指定尺寸界线超出尺寸线的距离
+	pDimStyleTblRcd->setDimexe(20*bili); // 指定尺寸界线超出尺寸线的距离
 	pDimStyleTblRcd->setDimlfac(1);//比例因子
-	pDimStyleTblRcd->setDimdec(0);//设置标注主单位显示的小数位位数，0为随图层
+	pDimStyleTblRcd->setDimdec(0);//设置标注主单位显示的小数位位数，0为byblock、256为bylayer
 	AcCmColor clr;
 	clr.setColorIndex(256);
-	pDimStyleTblRcd->setDimclrd(clr);//为尺寸线、箭头和标注引线指定颜色，0为随图层
+	pDimStyleTblRcd->setDimclrd(clr);//为尺寸线、箭头和标注引线指定颜色，0为byblock、256为bylayer
 	pDimStyleTblRcd->setDimclre(clr);//为尺寸界线指定颜色。此颜色可以是任意有效的颜色编号
-	pDimStyleTblRcd->setDimclrt(clr);//为标注文字指定颜色，0为随图层
-	pDimStyleTblRcd->setDimexo(30*bili);//指定尺寸界线偏移原点的距离
+	pDimStyleTblRcd->setDimclrt(clr);//为标注文字指定颜色，0为byblock、256为bylayer
+	pDimStyleTblRcd->setDimexo(10*bili);//指定尺寸界线偏移原点的距离
 	pDimStyleTblRcd->setDimgap(10*bili);//文字从尺寸线偏移 '当尺寸线分成段以在两段之间放置标注文字时，设置标注文字周围的距离
 	pDimStyleTblRcd->setDimjust(0);//控制标注文字的水平位置
 	pDimStyleTblRcd->setDimtix(1);//设置标注文字始终绘制在尺寸界线之间
@@ -926,7 +998,7 @@ AcDbObjectId ArxDrawHelper::CreateDimStyle(const CString& dimStyleName/*, const 
 	//{
 	//	pDimStyleTblRcd->setDimtxsty(textStyleId);//指定标注的文字样式
 	//}
-	pDimStyleTblRcd->setDimtxt(100);//指定标注文字的高度，除非当前文字样式具有固定的高度
+	pDimStyleTblRcd->setDimtxt(30);//指定标注文字的高度，除非当前文字样式具有固定的高度
 	pDimStyleTblRcd->setDimtad(1*bili); // 文字位于标注线的上方
 
 	pDimStyleTblRcd->close();

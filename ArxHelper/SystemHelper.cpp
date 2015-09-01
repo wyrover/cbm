@@ -11,6 +11,9 @@ void SystemHelper::Start()
 	ArxDictTool::RegDict( FUNC_FIELD_DICT );
 
 	//ArxDataTool::RegAppName( acdbHostApplicationServices()->workingDatabase(), DRAW_PARAMS_XDATA_GROUP );
+
+	//创建标注样式
+	ArxDrawHelper::CreateDimStyle(DIM_STYLE_NAME, false);
 }
 
 void SystemHelper::ShutDown()

@@ -77,11 +77,11 @@ public:
 	static AcDbObjectId MakeRotatedDim(const AcGePoint3d& pt1, const AcGePoint3d& pt2, double ang, const AcGePoint3d& textPt);
 
 	//创建文字样式
-	static AcDbObjectId CreateTextstyle(const CString& textStyleName);
+	static AcDbObjectId CreateTextstyle(const CString& textStyleName, bool modifyExistStyle=false);
 	//获取文字样式id
 	static AcDbObjectId GetTextStyleId(const CString& textStyleName);
 	//创建标注样式
-	static AcDbObjectId CreateDimStyle(const CString& dimStyleName/*, const CString& textStyleName*/);
+	static AcDbObjectId CreateDimStyle(const CString& dimStyleName, bool modifyExistStyle=false);
 	//获取标注样式id
 	static AcDbObjectId GetDimStyle(const CString& dimStyleName);
 };
