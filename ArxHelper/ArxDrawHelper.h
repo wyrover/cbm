@@ -22,6 +22,7 @@ class ARXHELPER_DLLIMPEXP ArxDrawHelper
 public:
 	static AcGePoint2d Point3D_To_2D( const AcGePoint3d& pt );
 	static AcGePoint3d Point2D_To_3D( const AcGePoint2d& pt );
+	static AcGePoint3d MidPoint(const AcGePoint3d& pt1, const AcGePoint3d& pt2);
 	static CString MakeUpperText( const CString& inStr );
 	static CString MakeLowerText( const CString& inStr );
 	static AcGePoint3d CacLineClosePt( const AcGePoint3d& spt, const AcGePoint3d& ept, const AcGePoint3d& pt);
@@ -58,4 +59,29 @@ public:
 	static void CreateGradientObject( AcDbHatch* pHatch, const CString& gradName, const AcCmColor& c1, const AcCmColor& c2 );
 	static AcDbObjectId DrawPolygonHatch( const AcGePoint3dArray& pts, const CString& patName, double scale );
 	static AcDbObjectId DrawCircleGradient( const AcGePoint3d& pt, double radius, const CString& gradName, const AcCmColor& c1, const AcCmColor& c2 );
+
+	//两条直线夹角的角度标注
+	static AcDbObjectId Make2LineAngularDim(const AcGePoint3d& pt1, const AcGePoint3d& pt2, 
+		const AcGePoint3d& pt3, const AcGePoint3d& pt4, const AcGePoint3d& textPt);
+	//圆或圆弧的角度标注
+	static AcDbObjectId Make3PointAngularDim(const AcGePoint3d& centerPt, const AcGePoint3d& pt1, 
+		const AcGePoint3d& pt2, const AcGePoint3d& textPt);
+	//对齐标注
+	static AcDbObjectId MakeAlignedDim(const AcGePoint3d& pt1, const AcGePoint3d& pt2);
+	//直径标注
+	static AcDbObjectId MakeDiametricDim(const AcGePoint3d& centerPt, double radius, const AcGePoint3d& textPt);
+	//坐标/基线/连续标注
+	static AcDbObjectId MakeOrdinateDim(Adesk::Boolean useXAxis, const AcGePoint3d& featurePt, const AcGePoint3d& leaderPt);
+	//半径/折弯标注
+	static AcDbObjectId MakeRadialDim(const AcGePoint3d& centerPt, double radius, const AcGePoint3d& textPt);
+	static AcDbObjectId MakeRotatedDim(const AcGePoint3d& pt1, const AcGePoint3d& pt2, double ang, const AcGePoint3d& textPt);
+
+	//创建文字样式
+	static AcDbObjectId CreateTextstyle(const CString& textStyleName);
+	//获取文字样式id
+	static AcDbObjectId GetTextStyleId(const CString& textStyleName);
+	//创建标注样式
+	static AcDbObjectId CreateDimStyle(const CString& dimStyleName/*, const CString& textStyleName*/);
+	//获取标注样式id
+	static AcDbObjectId GetDimStyle(const CString& dimStyleName);
 };

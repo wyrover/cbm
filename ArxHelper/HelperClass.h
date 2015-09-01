@@ -13,9 +13,9 @@
 #include "ArxUtilHelper.h"
 #include "ArxDwgHelper.h"
 #include "ArxLayerHelper.h"
-#include "ArxTolSetter.h"
 #include "ArxDrawHelper.h"
 #include "ArxGroupHelper.h"
+#include "ArxSwitchHelper.h"
 
 // 属性数据字段管理辅助类
 #include "FieldHelper.h"
