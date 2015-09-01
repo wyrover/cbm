@@ -20,21 +20,23 @@
 class ARXHELPER_DLLIMPEXP ArxDrawHelper
 {
 public:
-	static AcGePoint2d Point3D_To_2D( const AcGePoint3d& pt );
-	static AcGePoint3d Point2D_To_3D( const AcGePoint2d& pt );
+	static AcGePoint2d Point3D_To_2D(const AcGePoint3d& pt);
+	static AcGePoint3d Point2D_To_3D(const AcGePoint2d& pt);
 	static AcGePoint3d MidPoint(const AcGePoint3d& pt1, const AcGePoint3d& pt2);
-	static CString MakeUpperText( const CString& inStr );
-	static CString MakeLowerText( const CString& inStr );
-	static AcGePoint3d CacLineClosePt( const AcGePoint3d& spt, const AcGePoint3d& ept, const AcGePoint3d& pt);
-	static AcGePoint3d CaclPt( const AcGePoint3d& pt, 
-		const AcGeVector3d& v1, double width, 
-		const AcGeVector3d& v2, double height );
-	static void BuildRect( const AcGePoint3d& pt, double angle, double width, double height, AcGePoint3dArray& pts );
-	static int ClockWise( const AcGePoint3dArray& polygon );
+	static CString MakeUpperText(const CString& inStr);
+	static CString MakeLowerText(const CString& inStr);
+	static void MakeGridWithHole(const AcGePoint3d& basePt,double w,double h,double gap_x,double gap_y,double left, double right, double top, double bottom,AcGePoint3dArray& pts);
+	static void MakeGridWithHole(const AcGePoint3d& basePt, double w, double h, int nx, int ny, double left,double right, double top,double bottom,AcGePoint3dArray& pts);
+	static void MakeGrid(const AcGePoint3d& basePt,double w,double h,double gap_x,double gap_y,AcGePoint3dArray& pts);
+	static void MakeGrid(const AcGePoint3d& basePt, double w, double h,int nx,int ny,AcGePoint3dArray& pts);
+	static AcGePoint3d CacLineClosePt(const AcGePoint3d& spt, const AcGePoint3d& ept, const AcGePoint3d& pt);
+	static AcGePoint3d CaclPt(const AcGePoint3d& pt, const AcGeVector3d& v1, double width, const AcGeVector3d& v2, double height);
+	static void BuildRect(const AcGePoint3d& pt, double angle,double width,double height,AcGePoint3dArray& pts);
+	static int ClockWise(const AcGePoint3dArray& polygon);
 	static bool OffSetPolygon( const AcGePoint3dArray& polygon, double offset, bool is_inner, AcGePoint3dArray& offset_polygon );
 
-	static AcDbObjectId GetTextStyle( const CString& style );
-	static AcDbObjectId CreateTextStyle( const CString& style, const CString& winFont, Adesk::Boolean bold, Adesk::Boolean italic, int charset, int pitchAndFamily );
+	static AcDbObjectId GetTextStyle(const CString& style);
+	static AcDbObjectId CreateTextStyle(const CString& style, const CString& winFont, Adesk::Boolean bold, Adesk::Boolean italic, int charset, int pitchAndFamily);
 	static AcDbObjectId DrawText(const AcGePoint3d& pt, const CString& text, double height, AcDb::TextHorzMode hm=AcDb::kTextLeft, AcDb::TextVertMode vm=AcDb::kTextBase);
 	static AcDbObjectId DrawMText(const AcGePoint3d& pt, double angle, const CString& text, double height);
 
@@ -67,7 +69,7 @@ public:
 	static AcDbObjectId Make3PointAngularDim(const AcGePoint3d& centerPt, const AcGePoint3d& pt1, 
 		const AcGePoint3d& pt2, const AcGePoint3d& textPt);
 	//对齐标注
-	static AcDbObjectId MakeAlignedDim(const AcGePoint3d& pt1, const AcGePoint3d& pt2);
+	static AcDbObjectId MakeAlignedDim(const AcGePoint3d& pt1, const AcGePoint3d& pt2, double offset = 30, bool clockwise=true);
 	//直径标注
 	static AcDbObjectId MakeDiametricDim(const AcGePoint3d& centerPt, double radius, const AcGePoint3d& textPt);
 	//坐标/基线/连续标注

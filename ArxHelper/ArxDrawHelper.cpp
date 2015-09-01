@@ -31,6 +31,42 @@ CString ArxDrawHelper::MakeLowerText( const CString& inStr )
 	str.Format( _T( "{\\H0.618x;\\S^%s;}" ), inStr );
 	return str;
 }
+void ArxDrawHelper::MakeGridWithHole(const AcGePoint3d& basePt,double w,double h,double gap_x,double gap_y,double left, double right, double top, double bottom, AcGePoint3dArray& pts)
+{
+	int nx = floor(w/gap_x+0.5);
+	int ny = floor(h/gap_y+0.5);
+	MakeGridWithHole(basePt, w, h, nx, ny, left, right, top, bottom, pts);
+}
+
+void ArxDrawHelper::MakeGridWithHole(const AcGePoint3d& basePt, double w, double h, int nx, int ny, double left,double right, double top,double bottom,AcGePoint3dArray& pts)
+{
+	double gap_x = w/nx, gap_y = h/ny;
+	int x1 = floor(left/gap_x+0.5);
+	int x2 = floor((w-right)/gap_x+0.5);
+	int y1 = floor(bottom/gap_y+0.5);
+	int y2 = floor((h-top)/gap_y+0.5);
+	AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis;
+	for(int i=0;i<nx;i++)
+	{
+		for(int j=0;j<ny;j++)
+		{
+			if(x1<i && i<x2 && y1<j && j<y2) continue;
+			pts.append(basePt+v1*i*gap_x+v2*j*gap_y);
+		}
+	}
+}
+
+void ArxDrawHelper::MakeGrid(const AcGePoint3d& basePt, double w, double h, double gap_x, double gap_y, AcGePoint3dArray& pts)
+{
+	int nx = floor(w/gap_x+0.5);
+	int ny = floor(h/gap_y+0.5);
+	ArxDrawHelper::MakeGrid(basePt, w, h, nx, ny, pts);
+}
+
+void ArxDrawHelper::MakeGrid(const AcGePoint3d& basePt, double w, double h, int nx, int ny, AcGePoint3dArray& pts)
+{
+	ArxDrawHelper::MakeGridWithHole(basePt, w, h, nx, ny, 0, 0, 0, 0, pts);
+}
 
 AcGePoint3d ArxDrawHelper::CaclPt( const AcGePoint3d& pt, 
 								  const AcGeVector3d& v1, double width, 
@@ -216,7 +252,7 @@ AcDbObjectId ArxDrawHelper::DrawMText( const AcGePoint3d& pt, double angle, cons
     pMText->setRotation( angle );
     //pMText->setWidth(width); // 不设置宽度，自动调整
     pMText->setTextHeight( height );
-    pMText->setAttachment( AcDbMText::kMiddleCenter ); // 默认居中
+    pMText->setAttachment( AcDbMText::kMiddleLeft ); // 默认居中
     pMText->setContents( text );
 
     //acutPrintf(_T("\n文字宽度:%.3f"), pMText->actualWidth());
@@ -727,13 +763,14 @@ AcDbObjectId ArxDrawHelper::Make3PointAngularDim(const AcGePoint3d& centerPt, co
 	}
 }
 
-AcDbObjectId ArxDrawHelper::MakeAlignedDim(const AcGePoint3d& pt1, const AcGePoint3d& pt2)
+AcDbObjectId ArxDrawHelper::MakeAlignedDim(const AcGePoint3d& pt1,const AcGePoint3d& pt2,double offset,bool clockwise)
 {
-	AcGeVector3d v = pt2-pt1;
+	AcGeVector3d v = pt2 - pt1;
 	double angle = v.angleTo( AcGeVector3d::kXAxis, -AcGeVector3d::kZAxis );
 	v.normalize();
-	v.rotateBy(PI*0.5, AcGeVector3d::kZAxis);
-	AcGePoint3d dimLinePoint = ArxDrawHelper::MidPoint(pt1, pt2) + v*20;
+	int c = clockwise?1:-1;
+	v.rotateBy(c*PI*0.5, AcGeVector3d::kZAxis);
+	AcGePoint3d dimLinePoint = ArxDrawHelper::MidPoint(pt1, pt2) + v*offset;
 
 	AcDbAlignedDimension* dim = new AcDbAlignedDimension;
 	dim->setXLine1Point(pt1);
@@ -741,7 +778,7 @@ AcDbObjectId ArxDrawHelper::MakeAlignedDim(const AcGePoint3d& pt1, const AcGePoi
 
 	// dimLinePt automatically set from where text was placed,
 	// unless you deliberately set the dimLinePt
-	dim->setHorizontalRotation(angle);
+	dim->setHorizontalRotation(0);
 	dim->setTextPosition(dimLinePoint);
 	dim->useSetTextPosition();    // make text go where user picked
 	dim->setDatabaseDefaults();
@@ -998,7 +1035,7 @@ AcDbObjectId ArxDrawHelper::CreateDimStyle(const CString& dimStyleName, bool mod
 	//{
 	//	pDimStyleTblRcd->setDimtxsty(textStyleId);//指定标注的文字样式
 	//}
-	pDimStyleTblRcd->setDimtxt(30);//指定标注文字的高度，除非当前文字样式具有固定的高度
+	pDimStyleTblRcd->setDimtxt(20);//指定标注文字的高度，除非当前文字样式具有固定的高度
 	pDimStyleTblRcd->setDimtad(1*bili); // 文字位于标注线的上方
 
 	pDimStyleTblRcd->close();
