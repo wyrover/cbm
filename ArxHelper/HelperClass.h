@@ -16,6 +16,7 @@
 #include "ArxDrawHelper.h"
 #include "ArxGroupHelper.h"
 #include "ArxSwitchHelper.h"
+#include "ArxUcsHelper.h"
 
 // 属性数据字段管理辅助类
 #include "FieldHelper.h"

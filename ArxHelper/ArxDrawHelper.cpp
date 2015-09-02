@@ -33,6 +33,7 @@ CString ArxDrawHelper::MakeLowerText( const CString& inStr )
 }
 void ArxDrawHelper::MakeGridWithHole(const AcGePoint3d& basePt,double w,double h,double gap_x,double gap_y,double left, double right, double top, double bottom, AcGePoint3dArray& pts)
 {
+	if(gap_x<=0 || gap_y<=0) return;
 	int nx = floor(w/gap_x+0.5);
 	int ny = floor(h/gap_y+0.5);
 	MakeGridWithHole(basePt, w, h, nx, ny, left, right, top, bottom, pts);
@@ -40,6 +41,7 @@ void ArxDrawHelper::MakeGridWithHole(const AcGePoint3d& basePt,double w,double h
 
 void ArxDrawHelper::MakeGridWithHole(const AcGePoint3d& basePt, double w, double h, int nx, int ny, double left,double right, double top,double bottom,AcGePoint3dArray& pts)
 {
+	if(nx<=0 || ny<=0) return;
 	double gap_x = w/nx, gap_y = h/ny;
 	int x1 = floor(left/gap_x+0.5);
 	int x2 = floor((w-right)/gap_x+0.5);
@@ -58,6 +60,7 @@ void ArxDrawHelper::MakeGridWithHole(const AcGePoint3d& basePt, double w, double
 
 void ArxDrawHelper::MakeGrid(const AcGePoint3d& basePt, double w, double h, double gap_x, double gap_y, AcGePoint3dArray& pts)
 {
+	if(gap_x<=0 || gap_y<=0) return;
 	int nx = floor(w/gap_x+0.5);
 	int ny = floor(h/gap_y+0.5);
 	ArxDrawHelper::MakeGrid(basePt, w, h, nx, ny, pts);
@@ -66,6 +69,25 @@ void ArxDrawHelper::MakeGrid(const AcGePoint3d& basePt, double w, double h, doub
 void ArxDrawHelper::MakeGrid(const AcGePoint3d& basePt, double w, double h, int nx, int ny, AcGePoint3dArray& pts)
 {
 	ArxDrawHelper::MakeGridWithHole(basePt, w, h, nx, ny, 0, 0, 0, 0, pts);
+}
+
+void ArxDrawHelper::Divide(const AcGePoint3d& spt, const AcGePoint3d& ept, double gap_x, double gap_y,  AcGePoint3dArray& pts)
+{
+	if(gap_x <= 0) return;
+	AcGeVector3d v1 = ept - spt;
+	int n = floor(v1.length()/gap_x);
+	v1.normalize();
+	
+	int c = (gap_y<0)?-1:1;
+	AcGeVector3d v2 = v1;
+	v2.rotateBy(c*PI*0.5, AcGeVector3d::kZAxis);
+
+	gap_x = abs(gap_x);
+	gap_y = abs(gap_y);
+	for(int i=0;i<n;i++)
+	{
+		pts.append(spt+v1*i*gap_x+v2*gap_y);
+	}
 }
 
 AcGePoint3d ArxDrawHelper::CaclPt( const AcGePoint3d& pt, 
@@ -919,6 +941,28 @@ AcDbObjectId ArxDrawHelper::MakeRotatedDim(	const AcGePoint3d& pt1, const AcGePo
 	}
 }
 
+//http://blog.csdn.net/foreverling/article/details/28267307
+/*
+static void qxzyOperateLayer_AddStyle(void)
+{
+AcDbTextStyleTable *pTextStyleTbl;
+acdbHostApplicationServices()->workingDatabase()
+->getTextStyleTable(pTextStyleTbl, AcDb::kForWrite);
+
+AcDbTextStyleTableRecord *pTextStyleTblRcd;
+pTextStyleTblRcd = new AcDbTextStyleTableRecord();
+pTextStyleTblRcd->setName(_T("仿宋体"));
+pTextStyleTblRcd->setFileName(_T("simfang.ttf"));
+pTextStyleTblRcd->setXScale(0.7);
+
+pTextStyleTbl->add(pTextStyleTblRcd);
+
+pTextStyleTblRcd->close();
+pTextStyleTbl->close();
+}
+
+字体的名称不一定与字体文件的名称相同。打开控制面板，进入“字体”文件夹，右键单击“仿宋体”图标，从弹出的快捷菜单中选择【属性】菜单项，系统会弹出对话框显示字体文件的名称。
+*/
 AcDbObjectId ArxDrawHelper::CreateTextstyle(const CString& textStyleName, bool modifyExistStyle)
 {
 	AcDbTextStyleTable* pTextStyleTbl;
@@ -972,6 +1016,41 @@ AcDbObjectId ArxDrawHelper::GetTextStyleId(const CString& textStyleName)
 	return textStyleId;
 }
 
+//http://blog.csdn.net/foreverling/article/details/28268811
+/*
+static void qxzyAddDimStyle_AddDimStyle(void)  
+{  
+ACHAR styleName[50];  
+if(acedGetString(Adesk::kFalse, _T("请输入样式名称:"), styleName) != RTNORM)  
+{  
+return;  
+}  
+
+AcDbDimStyleTable *pDimStyleTbl;  
+acdbHostApplicationServices()->workingDatabase()  
+->getDimStyleTable(pDimStyleTbl, AcDb::kForWrite);  
+
+if(pDimStyleTbl->has(styleName))  
+{  
+pDimStyleTbl->close();  
+return;  
+}  
+
+AcDbDimStyleTableRecord *pDimStyleTblRcd;  
+pDimStyleTblRcd = new AcDbDimStyleTableRecord();  
+
+pDimStyleTblRcd->setName(styleName);//样式名称  
+pDimStyleTblRcd->setDimasz(3);//箭头长度  
+pDimStyleTblRcd->setDimexe(3);//尺寸界线与标注  
+pDimStyleTblRcd->setDimtad(1);//文字位于标注线的上方  
+pDimStyleTblRcd->setDimtxt(3);//标注文字的高度  
+
+pDimStyleTbl->add(pDimStyleTblRcd);  
+
+pDimStyleTblRcd->close();  
+pDimStyleTbl->close();  
+}  
+*/
 AcDbObjectId ArxDrawHelper::CreateDimStyle(const CString& dimStyleName, bool modifyExistStyle)
 {
 	AcDbDimStyleTable *pDimStyleTbl;

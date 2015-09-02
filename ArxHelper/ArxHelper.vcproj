@@ -417,6 +417,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\ArxUcsHelper.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\ArxUtilHelper.cpp"
 				>
 			</File>
@@ -555,6 +559,10 @@
 			</File>
 			<File
 				RelativePath=".\ArxSwitchHelper.h"
+				>
+			</File>
+			<File
+				RelativePath=".\ArxUcsHelper.h"
 				>
 			</File>
 			<File
