@@ -383,7 +383,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Proxy.cpp"
+				RelativePath=".\Graph.cpp"
 				>
 			</File>
 			<File
@@ -668,11 +668,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\MySoUiLoader.h"
+				RelativePath=".\Graph.h"
 				>
 			</File>
 			<File
-				RelativePath=".\Proxy.h"
+				RelativePath=".\MySoUiLoader.h"
 				>
 			</File>
 			<File

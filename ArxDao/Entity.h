@@ -278,6 +278,8 @@ public:
 	double hs;
 	double wd;
 	double hd;
+	double gs;
+	double ds;
 
 }; // class DesignTechnology
 

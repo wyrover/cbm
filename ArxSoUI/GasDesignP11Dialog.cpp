@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "GasDesignP11Dialog.h"
 #include "Data.h"
-#include "Proxy.h"
+#include "Graph.h"
 
 #include <ArxHelper/HelperClass.h>
 #include <ArxDao/DaoHelper.h>
@@ -50,85 +50,86 @@ LRESULT GasDesignP11Dialog::OnInitDialog( HWND hWnd, LPARAM lParam )
     m_VOffsetEdit = FindChildByName2<SEdit>( L"V_offset" );
     m_HOffsetEdit = FindChildByName2<SEdit>( L"H_offset" );
     m_NameEdit = FindChildByName2<SEdit>( L"name" );
-	m_ZEdit = FindChildByName2<SEdit>(L"z");
-	m_XEdit = FindChildByName2<SEdit>(L"x");
-	m_YEdit = FindChildByName2<SEdit>(L"y");
+	m_GsEdit = FindChildByName2<SEdit>(L"Gs");
+	m_DsEdit = FindChildByName2<SEdit>(L"Ds");
 
     initDatas();
 
     return 0;
 }
 
-void GasDesignP11Dialog::OnSaveButtonClick()
+void GasDesignP11Dialog::OnPlaneGraphButtonClick()
 {
-    CoalPtr coal = FIND_BY_ID( Coal, coal_id );
-    if( coal == 0 ) return;
+	CoalPtr coal = FIND_BY_ID( Coal, coal_id );
+	if( coal == 0 ) return;
 
-    //保存煤层数据到数据库
-    Utils::cstring_to_double( ( LPCTSTR )m_ThickEdit->GetWindowText(), coal->thick );
-    Utils::cstring_to_double( ( LPCTSTR )m_DipAngleEdit->GetWindowText(), coal->dip_angle );
-    if( !coal->save() ) return;
+	//保存煤层数据到数据库
+	Utils::cstring_to_double( ( LPCTSTR )m_ThickEdit->GetWindowText(), coal->thick );
+	Utils::cstring_to_double( ( LPCTSTR )m_DipAngleEdit->GetWindowText(), coal->dip_angle );
+	if( !coal->save() ) return;
 
-    //保存工作面数据
-    //查找煤层关联的设计工作面
-    DesignWorkSurfPtr work_surf = FIND_ONE( DesignWorkSurf, FKEY( Coal ), coal->getStringID() );
-    if( work_surf == 0 )
-    {
-        work_surf.reset( new DesignWorkSurf );
+	//保存工作面数据
+	//查找煤层关联的设计工作面
+	DesignWorkSurfPtr work_surf = FIND_ONE( DesignWorkSurf, FKEY( Coal ), coal->getStringID() );
+	if( work_surf == 0 )
+	{
+		work_surf.reset( new DesignWorkSurf );
 		work_surf->coal = coal;
-    }
-    work_surf->name = m_NameEdit->GetWindowText();
-    Utils::cstring_to_double( ( LPCTSTR )m_L1Edit->GetWindowText(), work_surf->l1 );
-    Utils::cstring_to_double( ( LPCTSTR )m_L2Edit->GetWindowText(), work_surf->l2 );
-    Utils::cstring_to_double( ( LPCTSTR )m_WEdit->GetWindowText(), work_surf->w );
-    Utils::cstring_to_double( ( LPCTSTR )m_HEdit->GetWindowText(), work_surf->h );
-    if( !work_surf->save() ) return;
+	}
+	work_surf->name = m_NameEdit->GetWindowText();
+	Utils::cstring_to_double( ( LPCTSTR )m_L1Edit->GetWindowText(), work_surf->l1 );
+	Utils::cstring_to_double( ( LPCTSTR )m_L2Edit->GetWindowText(), work_surf->l2 );
+	Utils::cstring_to_double( ( LPCTSTR )m_WEdit->GetWindowText(), work_surf->w );
+	Utils::cstring_to_double( ( LPCTSTR )m_HEdit->GetWindowText(), work_surf->h );
+	if( !work_surf->save() ) return;
 
-    //保存抽采技术参数
-    DesignTechnologyPtr technology = FIND_ONE( DesignTechnology, FKEY( Coal ), coal->getStringID() );
-    if( technology == 0 )
-    {
-        technology.reset( new DesignTechnology );
+	//保存抽采技术参数
+	DesignTechnologyPtr technology = FIND_ONE( DesignTechnology, FKEY( Coal ), coal->getStringID() );
+	if( technology == 0 )
+	{
+		technology.reset( new DesignTechnology );
 		technology->coal = coal;
-    }
-    Utils::cstring_to_double( ( LPCTSTR )m_WdEdit->GetWindowText(), technology->wd );
-    Utils::cstring_to_double( ( LPCTSTR )m_HdEdit->GetWindowText(), technology->hd );
-    Utils::cstring_to_double( ( LPCTSTR )m_VOffsetEdit->GetWindowText(), technology->v_offset );
-    Utils::cstring_to_double( ( LPCTSTR )m_HOffsetEdit->GetWindowText(), technology->h_offset );
-    Utils::cstring_to_double( ( LPCTSTR )m_DpEdit->GetWindowText(), technology->dp );
-    Utils::cstring_to_double( ( LPCTSTR )m_GpEdit->GetWindowText(), technology->gp );
-    Utils::cstring_to_double( ( LPCTSTR )m_LeftEdit->GetWindowText(), technology->left_side );
-    Utils::cstring_to_double( ( LPCTSTR )m_RightEdit->GetWindowText(), technology->right_side );
-    Utils::cstring_to_double( ( LPCTSTR )m_TopEdit->GetWindowText(), technology->top_side );
-    Utils::cstring_to_double( ( LPCTSTR )m_BottomEdit->GetWindowText(), technology->bottom_side );
-    Utils::cstring_to_double( ( LPCTSTR )m_WsEdit->GetWindowText(), technology->ws );
-    Utils::cstring_to_double( ( LPCTSTR )m_HsEdit->GetWindowText(), technology->hs );
-	//基点点坐标
-	AcGePoint3d pt = getPoint();
+	}
+	Utils::cstring_to_double( ( LPCTSTR )m_WdEdit->GetWindowText(), technology->wd );
+	Utils::cstring_to_double( ( LPCTSTR )m_HdEdit->GetWindowText(), technology->hd );
+	Utils::cstring_to_double( ( LPCTSTR )m_VOffsetEdit->GetWindowText(), technology->v_offset );
+	Utils::cstring_to_double( ( LPCTSTR )m_HOffsetEdit->GetWindowText(), technology->h_offset );
+	Utils::cstring_to_double( ( LPCTSTR )m_DpEdit->GetWindowText(), technology->dp );
+	Utils::cstring_to_double( ( LPCTSTR )m_GpEdit->GetWindowText(), technology->gp );
+	Utils::cstring_to_double( ( LPCTSTR )m_LeftEdit->GetWindowText(), technology->left_side );
+	Utils::cstring_to_double( ( LPCTSTR )m_RightEdit->GetWindowText(), technology->right_side );
+	Utils::cstring_to_double( ( LPCTSTR )m_TopEdit->GetWindowText(), technology->top_side );
+	Utils::cstring_to_double( ( LPCTSTR )m_BottomEdit->GetWindowText(), technology->bottom_side );
+	Utils::cstring_to_double( ( LPCTSTR )m_WsEdit->GetWindowText(), technology->ws );
+	Utils::cstring_to_double( ( LPCTSTR )m_HsEdit->GetWindowText(), technology->hs );
+	Utils::cstring_to_double( ( LPCTSTR )m_GsEdit->GetWindowText(), technology->gs );
+	Utils::cstring_to_double( ( LPCTSTR )m_DsEdit->GetWindowText(), technology->ds );
 	//保存到数据库
-    if( !technology->save() ) return;
+	if( !technology->save() ) return;
 
 	SMessageBox( GetSafeHwnd(), _T( "保存数据成功" ), _T( "友情提示" ), MB_OK );
 
+	//交互选择基点坐标
+	AcGePoint3d pt;
+	getPoint(pt);
+
 	//计算煤层平面图并绘制
-	CoalProxy cp;
+	PlanGraph cp;
 	cp.coal = coal;
 	cp.ws = work_surf;
 	cp.tech = technology;
-	cp.pt = pt;
+	cp.setPoint(pt);
 	cp.draw();
 
 	AcadSouiDialog::OnOK();
 }
 
-void GasDesignP11Dialog::OnPtButtonClick()
+void GasDesignP11Dialog::OnHeadGraphButtonClick()
 {
-	SouiDialogShowSwitch show_switch(this);
-	AcGePoint3d pt;
-	if(ArxUtilHelper::PromptPt(_T("请选择一点:"), pt))
-	{
-		setPoint(pt);
-	}
+}
+
+void GasDesignP11Dialog::OnDipGraphButtonClick()
+{
 }
 
 static int DipAngle( double angle )
@@ -194,21 +195,13 @@ void GasDesignP11Dialog::initDatas()
         m_BottomEdit->SetWindowText( Utils::double_to_cstring( technology->bottom_side ) );
         m_WsEdit->SetWindowText( Utils::double_to_cstring( technology->ws ) );
         m_HsEdit->SetWindowText( Utils::double_to_cstring( technology->hs ) );
+		m_GsEdit->SetWindowText( Utils::double_to_cstring( technology->gs ) );
+		m_DsEdit->SetWindowText( Utils::double_to_cstring( technology->ds ) );
     }
 }
 
-AcGePoint3d GasDesignP11Dialog::getPoint() const
+bool GasDesignP11Dialog::getPoint(AcGePoint3d& pt)
 {
-	AcGePoint3d pt;
-	Utils::cstring_to_double( ( LPCTSTR )m_XEdit->GetWindowText(),  pt.x );
-	Utils::cstring_to_double( ( LPCTSTR )m_YEdit->GetWindowText(),  pt.y );
-	Utils::cstring_to_double( ( LPCTSTR )m_ZEdit->GetWindowText(),  pt.z );
-	return pt;
-}
-
-void GasDesignP11Dialog::setPoint(const AcGePoint3d& pt)
-{
-	m_XEdit->SetWindowText( Utils::double_to_cstring( pt.x ) );
-	m_YEdit->SetWindowText( Utils::double_to_cstring( pt.y ) );
-	m_ZEdit->SetWindowText( Utils::double_to_cstring( pt.z ) );
+	SouiDialogShowSwitch show_switch(this);
+	return ArxUtilHelper::PromptPt(_T("请选择一点:"), pt);
 }

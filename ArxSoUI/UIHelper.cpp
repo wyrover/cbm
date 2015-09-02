@@ -154,6 +154,20 @@ void UIHelper::PolicyHelp()
 
 void UIHelper::Main()
 {
+	AcGePoint3d pt(100,20,0);
+	ArxUcsSwitch ucs_switch(pt, AcGeVector3d(1,1,0), AcGeVector3d(-1,1,0));
+
+	AcDbObjectIdArray ents;
+	//AcGePoint3d spt(0, 0, 0), ept(100,100,0);
+	//spt = ArxUcsHelper::ucsToWcs(spt);
+	//ept = ArxUcsHelper::ucsToWcs(ept);
+	ents.append(ArxDrawHelper::DrawLine(AcGePoint3d(0, 0, 0), AcGePoint3d(100,100,0)));
+	ents.append(ArxDrawHelper::DrawLine(AcGePoint3d(100, 100, 0), AcGePoint3d(100,0,0)));
+	ents.append(ArxDrawHelper::DrawLine(AcGePoint3d(100, 0, 0), AcGePoint3d(0,100,0)));
+
+	//ArxUcsHelper::ucsToWcs(ents);
+	return;
+
     int account_id = DaoHelper::GetOnlineAccountId();
     if( account_id == 0 )
     {

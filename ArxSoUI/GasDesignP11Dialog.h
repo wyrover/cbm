@@ -11,8 +11,9 @@ public:
 
 	/** 控件消息处理 */
 protected:
-	void OnSaveButtonClick();
-	void OnPtButtonClick();
+	void OnHeadGraphButtonClick();
+	void OnDipGraphButtonClick();
+	void OnPlaneGraphButtonClick();
 	void OnHelpButtonClick();
 
 	/** 菜单消息 */
@@ -27,8 +28,9 @@ protected:
 
 	//控件消息映射表
 	EVENT_MAP_BEGIN()
-		EVENT_NAME_COMMAND(_T("save"), OnSaveButtonClick)
-		EVENT_NAME_COMMAND(_T("pt"), OnPtButtonClick)
+		EVENT_NAME_COMMAND(_T("head_graph"), OnHeadGraphButtonClick)
+		EVENT_NAME_COMMAND(_T("dip_graph"), OnDipGraphButtonClick)
+		EVENT_NAME_COMMAND(_T("plane_graph"), OnPlaneGraphButtonClick)
 		EVENT_NAME_COMMAND(_T("help"), OnHelpButtonClick)
 		CHAIN_EVENT_MAP(AcadSouiDialog)
 		EVENT_MAP_END()
@@ -61,15 +63,13 @@ protected:
 	SEdit* m_VOffsetEdit;
 	SEdit* m_HOffsetEdit;
 	SEdit* m_NameEdit;
-	SEdit* m_ZEdit;
-	SEdit* m_XEdit;
-	SEdit* m_YEdit;
+	SEdit* m_GsEdit;
+	SEdit* m_DsEdit;
 
 public:
 	int coal_id;
 
 private:
 	void initDatas();
-	AcGePoint3d getPoint() const;
-	void setPoint(const AcGePoint3d& pt);
+	bool getPoint(AcGePoint3d& pt);
 };

@@ -229,6 +229,8 @@ create table cbm_design_technology
    gp                   decimal(8,2),
    ws                   decimal(8,2),
    hs                   decimal(8,2),
+   ds                   decimal(8,2),
+   gs                   decimal(8,2),
    wd                   decimal(8,2),
    hd                   decimal(8,2),
    primary key (id)
