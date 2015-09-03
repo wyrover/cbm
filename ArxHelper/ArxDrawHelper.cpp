@@ -31,22 +31,44 @@ CString ArxDrawHelper::MakeLowerText( const CString& inStr )
 	str.Format( _T( "{\\H0.618x;\\S^%s;}" ), inStr );
 	return str;
 }
-void ArxDrawHelper::MakeGridWithHole(const AcGePoint3d& basePt,double w,double h,double gap_x,double gap_y,double left, double right, double top, double bottom, AcGePoint3dArray& pts)
+
+void ArxDrawHelper::Shuffle(int n, int m, std::vector<int>& nums)
 {
-	if(gap_x<=0 || gap_y<=0) return;
-	int nx = floor(w/gap_x+0.5);
-	int ny = floor(h/gap_y+0.5);
-	MakeGridWithHole(basePt, w, h, nx, ny, left, right, top, bottom, pts);
+	int d = ArxDrawHelper::DivideNum(n, m);
+	int dn = n - d*m;
+	for(int i=0;i<m;i++)
+	{
+		nums.push_back(d);
+	}
+	int c = (dn<0)?-1:1;
+	for(int i=0;i<abs(dn);i++)
+	{
+		nums[i] += c;
+	}
 }
 
-void ArxDrawHelper::MakeGridWithHole(const AcGePoint3d& basePt, double w, double h, int nx, int ny, double left,double right, double top,double bottom,AcGePoint3dArray& pts)
+int ArxDrawHelper::DivideNum(double L, double gap, bool round/*=false*/)
+{
+	double detla = round?0.5:0;
+	return floor(L/gap+detla);
+}
+
+void ArxDrawHelper::MakeGridWithHole(const AcGePoint3d& basePt,double w,double h,double gap_x,double gap_y,double left, double right, double top, double bottom, AcGePoint3dArray& pts, bool round)
+{
+	if(gap_x<=0 || gap_y<=0) return;
+	int nx = ArxDrawHelper::DivideNum(w, gap_x, round);
+	int ny = ArxDrawHelper::DivideNum(h, gap_y, round);
+	MakeGridWithHole(basePt, w, h, nx, ny, left, right, top, bottom, pts, round);
+}
+
+void ArxDrawHelper::MakeGridWithHole(const AcGePoint3d& basePt, double w, double h, int nx, int ny, double left,double right, double top,double bottom,AcGePoint3dArray& pts, bool round)
 {
 	if(nx<=0 || ny<=0) return;
 	double gap_x = w/nx, gap_y = h/ny;
-	int x1 = floor(left/gap_x+0.5);
-	int x2 = floor((w-right)/gap_x+0.5);
-	int y1 = floor(bottom/gap_y+0.5);
-	int y2 = floor((h-top)/gap_y+0.5);
+	int x1 = ArxDrawHelper::DivideNum(left, gap_x, round);
+	int x2 = ArxDrawHelper::DivideNum(w-right, gap_x, round);
+	int y1 = ArxDrawHelper::DivideNum(bottom, gap_y, round);
+	int y2 = ArxDrawHelper::DivideNum(h-top, gap_y, round);
 	AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis;
 	for(int i=0;i<nx;i++)
 	{
@@ -58,24 +80,24 @@ void ArxDrawHelper::MakeGridWithHole(const AcGePoint3d& basePt, double w, double
 	}
 }
 
-void ArxDrawHelper::MakeGrid(const AcGePoint3d& basePt, double w, double h, double gap_x, double gap_y, AcGePoint3dArray& pts)
+void ArxDrawHelper::MakeGrid(const AcGePoint3d& basePt, double w, double h, double gap_x, double gap_y, AcGePoint3dArray& pts, bool round)
 {
 	if(gap_x<=0 || gap_y<=0) return;
-	int nx = floor(w/gap_x+0.5);
-	int ny = floor(h/gap_y+0.5);
+	int nx = ArxDrawHelper::DivideNum(w, gap_x, round);
+	int ny = ArxDrawHelper::DivideNum(h, gap_y, round);
 	ArxDrawHelper::MakeGrid(basePt, w, h, nx, ny, pts);
 }
 
-void ArxDrawHelper::MakeGrid(const AcGePoint3d& basePt, double w, double h, int nx, int ny, AcGePoint3dArray& pts)
+void ArxDrawHelper::MakeGrid(const AcGePoint3d& basePt, double w, double h, int nx, int ny, AcGePoint3dArray& pts, bool round)
 {
-	ArxDrawHelper::MakeGridWithHole(basePt, w, h, nx, ny, 0, 0, 0, 0, pts);
+	ArxDrawHelper::MakeGridWithHole(basePt, w, h, nx, ny, 0, 0, 0, 0, pts, round);
 }
 
-void ArxDrawHelper::Divide(const AcGePoint3d& spt, const AcGePoint3d& ept, double gap_x, double gap_y,  AcGePoint3dArray& pts)
+void ArxDrawHelper::Divide(const AcGePoint3d& spt, const AcGePoint3d& ept, double gap_x, double gap_y,  AcGePoint3dArray& pts, bool round)
 {
 	if(gap_x <= 0) return;
 	AcGeVector3d v1 = ept - spt;
-	int n = floor(v1.length()/gap_x);
+	int n = ArxDrawHelper::DivideNum(v1.length(), gap_x, round);
 	v1.normalize();
 	
 	int c = (gap_y<0)?-1:1;
@@ -468,6 +490,12 @@ AcDbObjectId ArxDrawHelper::DrawRect( const AcGePoint3d& pt, double angle, doubl
 	AcGePoint3dArray pts;
 	BuildRect( pt, angle, width, height, pts );
 	return ArxDrawHelper::DrawPolyLine(pts, true);
+}
+
+AcDbObjectId ArxDrawHelper::DrawRect2(const AcGePoint3d& pt, double angle, double width, double height)
+{
+	AcGePoint3d insertPt = ArxDrawHelper::CaclPt(pt,AcGeVector3d::kXAxis,0.5*width,AcGeVector3d::kYAxis,0.5*height);
+	return ArxDrawHelper::DrawRect(insertPt, angle, width, height);
 }
 
 void ArxDrawHelper::CreatePolygonLoop( AcDbHatch* pHatch, const AcGePoint3dArray& pts )

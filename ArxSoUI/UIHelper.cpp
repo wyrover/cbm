@@ -152,7 +152,7 @@ void UIHelper::PolicyHelp()
     dlg->Run( acedGetAcadFrame()->GetSafeHwnd() );
 }
 
-void UIHelper::Main()
+static void test_ucs()
 {
 	AcGePoint3d pt(100,20,0);
 	ArxUcsSwitch ucs_switch(pt, AcGeVector3d(1,1,0), AcGeVector3d(-1,1,0));
@@ -165,9 +165,11 @@ void UIHelper::Main()
 	ents.append(ArxDrawHelper::DrawLine(AcGePoint3d(100, 100, 0), AcGePoint3d(100,0,0)));
 	ents.append(ArxDrawHelper::DrawLine(AcGePoint3d(100, 0, 0), AcGePoint3d(0,100,0)));
 
-	//ArxUcsHelper::ucsToWcs(ents);
-	return;
+	ArxUcsHelper::ucsToWcs(ents);
+}
 
+void UIHelper::Main()
+{
     int account_id = DaoHelper::GetOnlineAccountId();
     if( account_id == 0 )
     {

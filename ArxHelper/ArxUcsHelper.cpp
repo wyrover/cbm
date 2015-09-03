@@ -712,9 +712,20 @@ ArxUcsSwitch::~ArxUcsSwitch()
 
 void ArxUcsHelper::ucsToWcs(const AcDbObjectIdArray& ents)
 {
-	AcGeMatrix3d m;
-	getUcsToWcsMatrix(m, acdbHostApplicationServices()->workingDatabase());
+	AcGeMatrix3d mat;
+	ArxUcsHelper::getUcsToWcsMatrix(mat, acdbHostApplicationServices()->workingDatabase());
 
+	ArxUcsHelper::TransformEntities(ents, mat);
+}
+
+void ArxUcsHelper::MakeTransformMatrix(AcGeMatrix3d& mat, const AcGePoint3d& origin, const AcGeVector3d& xAxis, const AcGeVector3d& yAxis)
+{
+	AcGeVector3d vecZAxis = xAxis.crossProduct(yAxis);
+	mat.setCoordSystem(origin, xAxis, yAxis, vecZAxis);
+}
+
+void ArxUcsHelper::TransformEntities(const AcDbObjectIdArray& ents, const AcGeMatrix3d& mat)
+{
 	AcTransaction* pTrans = actrTransactionManager->startTransaction();
 	if( pTrans == 0 ) return;
 
@@ -726,7 +737,7 @@ void ArxUcsHelper::ucsToWcs(const AcDbObjectIdArray& ents)
 		AcDbEntity* pEnt = AcDbEntity::cast(pObj);
 		if(pEnt == 0) continue;
 
-		pEnt->transformBy(m);
+		pEnt->transformBy(mat);
 	}
 	actrTransactionManager->endTransaction();
 }

@@ -15,6 +15,7 @@ protected:
 	void OnDipGraphButtonClick();
 	void OnPlaneGraphButtonClick();
 	void OnHelpButtonClick();
+	void OnSaveButtonClick();
 
 	/** ²Ëµ¥ÏûÏ¢ */
 protected:
@@ -32,6 +33,7 @@ protected:
 		EVENT_NAME_COMMAND(_T("dip_graph"), OnDipGraphButtonClick)
 		EVENT_NAME_COMMAND(_T("plane_graph"), OnPlaneGraphButtonClick)
 		EVENT_NAME_COMMAND(_T("help"), OnHelpButtonClick)
+		EVENT_NAME_COMMAND(_T("save"), OnSaveButtonClick)
 		CHAIN_EVENT_MAP(AcadSouiDialog)
 		EVENT_MAP_END()
 

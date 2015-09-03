@@ -63,6 +63,110 @@ void GasDesignP11Dialog::OnPlaneGraphButtonClick()
 	CoalPtr coal = FIND_BY_ID( Coal, coal_id );
 	if( coal == 0 ) return;
 
+	//查找煤层关联的设计工作面
+	DesignWorkSurfPtr work_surf = FIND_ONE( DesignWorkSurf, FKEY( Coal ), coal->getStringID() );
+	if( work_surf == 0 ) return;
+
+	//查找抽采技术
+	DesignTechnologyPtr technology = FIND_ONE( DesignTechnology, FKEY( Coal ), coal->getStringID() );
+	if( technology == 0 ) return;
+
+	//交互选择基点坐标
+	AcGePoint3d pt;
+	getPoint(pt);
+
+	//绘制平面图
+	PlanGraph graph(coal, work_surf, technology);
+	graph.setPoint(pt);
+	graph.draw();
+
+	AcadSouiDialog::OnOK();
+}
+
+void GasDesignP11Dialog::OnHeadGraphButtonClick()
+{
+	CoalPtr coal = FIND_BY_ID( Coal, coal_id );
+	if( coal == 0 ) return;
+
+	//查找煤层关联的设计工作面
+	DesignWorkSurfPtr work_surf = FIND_ONE( DesignWorkSurf, FKEY( Coal ), coal->getStringID() );
+	if( work_surf == 0 ) return;
+
+	//查找抽采技术
+	DesignTechnologyPtr technology = FIND_ONE( DesignTechnology, FKEY( Coal ), coal->getStringID() );
+	if( technology == 0 ) return;
+
+	//交互选择基点坐标
+	AcGePoint3d pt;
+	getPoint(pt);
+
+	//绘制走向剖面图
+	HeadGraph graph(coal, work_surf, technology);
+	graph.setPoint(pt);
+	graph.draw();
+
+	AcadSouiDialog::OnOK();
+}
+
+void GasDesignP11Dialog::OnDipGraphButtonClick()
+{
+	CoalPtr coal = FIND_BY_ID( Coal, coal_id );
+	if( coal == 0 ) return;
+
+	//查找煤层关联的设计工作面
+	DesignWorkSurfPtr work_surf = FIND_ONE( DesignWorkSurf, FKEY( Coal ), coal->getStringID() );
+	if( work_surf == 0 ) return;
+
+	//查找抽采技术
+	DesignTechnologyPtr technology = FIND_ONE( DesignTechnology, FKEY( Coal ), coal->getStringID() );
+	if( technology == 0 ) return;
+
+	//交互选择基点坐标
+	AcGePoint3d pt;
+	getPoint(pt);
+
+	//绘制走向剖面图
+	DipGraph graph(coal, work_surf, technology);
+	graph.setPoint(pt);
+	graph.draw();
+
+	AcadSouiDialog::OnOK();
+}
+
+static int DipAngle( double angle )
+{
+	if( angle <= 8 ) // 近水平
+		return 1;
+	else if( angle <= 25 ) // 缓倾斜
+		return 2;
+	else if(angle <= 45)  // 倾斜
+		return 3;
+	else                  // 急倾斜         
+		return 4;
+}
+
+void GasDesignP11Dialog::OnHelpButtonClick()
+{
+	double angle = 0;
+	Utils::cstring_to_double((LPCTSTR)m_DipAngleEdit->GetWindowText(), angle);
+	int k = DipAngle(angle);
+	double left=15, right=15, top=15, bottom=15;
+	if(k > 2)
+	{
+		top = 20;
+		bottom = 10;
+	}
+	m_LeftEdit->SetWindowText( Utils::double_to_cstring( left ) );
+	m_RightEdit->SetWindowText( Utils::double_to_cstring( right ) );
+	m_TopEdit->SetWindowText( Utils::double_to_cstring( top ) );
+	m_BottomEdit->SetWindowText( Utils::double_to_cstring( bottom ) );
+}
+
+void GasDesignP11Dialog::OnSaveButtonClick()
+{
+	CoalPtr coal = FIND_BY_ID( Coal, coal_id );
+	if( coal == 0 ) return;
+
 	//保存煤层数据到数据库
 	Utils::cstring_to_double( ( LPCTSTR )m_ThickEdit->GetWindowText(), coal->thick );
 	Utils::cstring_to_double( ( LPCTSTR )m_DipAngleEdit->GetWindowText(), coal->dip_angle );
@@ -108,57 +212,6 @@ void GasDesignP11Dialog::OnPlaneGraphButtonClick()
 	if( !technology->save() ) return;
 
 	SMessageBox( GetSafeHwnd(), _T( "保存数据成功" ), _T( "友情提示" ), MB_OK );
-
-	//交互选择基点坐标
-	AcGePoint3d pt;
-	getPoint(pt);
-
-	//计算煤层平面图并绘制
-	PlanGraph cp;
-	cp.coal = coal;
-	cp.ws = work_surf;
-	cp.tech = technology;
-	cp.setPoint(pt);
-	cp.draw();
-
-	AcadSouiDialog::OnOK();
-}
-
-void GasDesignP11Dialog::OnHeadGraphButtonClick()
-{
-}
-
-void GasDesignP11Dialog::OnDipGraphButtonClick()
-{
-}
-
-static int DipAngle( double angle )
-{
-	if( angle <= 8 ) // 近水平
-		return 1;
-	else if( angle <= 25 ) // 缓倾斜
-		return 2;
-	else if(angle <= 45)  // 倾斜
-		return 3;
-	else                  // 急倾斜         
-		return 4;
-}
-
-void GasDesignP11Dialog::OnHelpButtonClick()
-{
-	double angle = 0;
-	Utils::cstring_to_double((LPCTSTR)m_DipAngleEdit->GetWindowText(), angle);
-	int k = DipAngle(angle);
-	double left=15, right=15, top=15, bottom=15;
-	if(k > 2)
-	{
-		top = 20;
-		bottom = 10;
-	}
-	m_LeftEdit->SetWindowText( Utils::double_to_cstring( left ) );
-	m_RightEdit->SetWindowText( Utils::double_to_cstring( right ) );
-	m_TopEdit->SetWindowText( Utils::double_to_cstring( top ) );
-	m_BottomEdit->SetWindowText( Utils::double_to_cstring( bottom ) );
 }
 
 void GasDesignP11Dialog::initDatas()

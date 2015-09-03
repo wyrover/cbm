@@ -42,6 +42,12 @@ public:
 	static void MoveCurrentUCSOrigin(const AcGeVector3d& v);
 	static void RotateCurrentUCS(double angle, int axis); // axis表示绕哪个轴旋转(0-x, 1-y, 2-z)
 	static void ucsToWcs(const AcDbObjectIdArray& ents);;
+
+	//前面的这些方法都是针对的当前ucs
+
+	//下面的方法提供坐标系转换(实质就是矩阵运算)
+	static void MakeTransformMatrix(AcGeMatrix3d& mat, const AcGePoint3d& origin, const AcGeVector3d& xAxis, const AcGeVector3d& yAxis);
+	static void TransformEntities(const AcDbObjectIdArray& ents, const AcGeMatrix3d& mat);
 };
 
 class ARXHELPER_DLLIMPEXP ArxUcsSwitch

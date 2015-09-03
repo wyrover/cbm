@@ -2,6 +2,7 @@
 
 #include "dlimexp.h"
 #include <math.h>
+#include <vector>
 
 #ifndef PI
 	#define PI 3.1415926535897932384626433832795
@@ -25,11 +26,13 @@ public:
 	static AcGePoint3d MidPoint(const AcGePoint3d& pt1, const AcGePoint3d& pt2);
 	static CString MakeUpperText(const CString& inStr);
 	static CString MakeLowerText(const CString& inStr);
-	static void MakeGridWithHole(const AcGePoint3d& basePt,double w,double h,double gap_x,double gap_y,double left, double right, double top, double bottom,AcGePoint3dArray& pts);
-	static void MakeGridWithHole(const AcGePoint3d& basePt, double w, double h, int nx, int ny, double left,double right, double top,double bottom,AcGePoint3dArray& pts);
-	static void MakeGrid(const AcGePoint3d& basePt,double w,double h,double gap_x,double gap_y,AcGePoint3dArray& pts);
-	static void MakeGrid(const AcGePoint3d& basePt, double w, double h,int nx,int ny,AcGePoint3dArray& pts);
-	static void Divide(const AcGePoint3d& spt, const AcGePoint3d& ept, double gap_x, double gap_y, AcGePoint3dArray& pts);
+	static void Shuffle(int n, int m, std::vector<int>& nums);
+	static int DivideNum(double L, double gap, bool round=false);
+	static void MakeGridWithHole(const AcGePoint3d& basePt,double w,double h,double gap_x,double gap_y,double left, double right, double top, double bottom,AcGePoint3dArray& pts, bool round=true);
+	static void MakeGridWithHole(const AcGePoint3d& basePt, double w, double h, int nx, int ny, double left,double right, double top,double bottom,AcGePoint3dArray& pts, bool round=true);
+	static void MakeGrid(const AcGePoint3d& basePt,double w,double h,double gap_x,double gap_y,AcGePoint3dArray& pts, bool round=true);
+	static void MakeGrid(const AcGePoint3d& basePt, double w, double h,int nx,int ny,AcGePoint3dArray& pts, bool round=true);
+	static void Divide(const AcGePoint3d& spt, const AcGePoint3d& ept, double gap_x, double gap_y, AcGePoint3dArray& pts, bool round=true);
 	static AcGePoint3d CacLineClosePt(const AcGePoint3d& spt, const AcGePoint3d& ept, const AcGePoint3d& pt);
 	static AcGePoint3d CaclPt(const AcGePoint3d& pt, const AcGeVector3d& v1, double width, const AcGeVector3d& v2, double height);
 	static void BuildRect(const AcGePoint3d& pt, double angle,double width,double height,AcGePoint3dArray& pts);
@@ -55,6 +58,7 @@ public:
 	static void DrawArrow( const AcGePoint3d& pt, double angle, double width, double length );
 	static void DrawLines(const AcGePoint3dArray& pts);
 	static AcDbObjectId DrawRect( const AcGePoint3d& pt, double angle, double width, double height );
+	static AcDbObjectId DrawRect2( const AcGePoint3d& pt, double angle, double width, double height );
 
 	static void CreatePolygonLoop( AcDbHatch* pHatch, const AcGePoint3dArray& pts );
 	static void CreateCircleLoop( AcDbHatch* pHatch, const AcGePoint3d& pt, double radius );
