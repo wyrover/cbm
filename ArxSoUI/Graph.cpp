@@ -104,8 +104,8 @@ Graph::Graph(const cbm::CoalPtr& _coal, const cbm::DesignWorkSurfPtr& _ws, const
 	ws = tech->ws, hs = tech->hs, ds = tech->ds;
 	//岩巷和工作面的水平投影距离、垂距
 	h_offset = tech->h_offset, v_offset = tech->v_offset;
-	//钻孔半径和抽采半径
-	radius = tech->dp*0.5, pore_gap = tech->gp;
+	//钻孔半径和抽采半径(孔径的单位是mm)
+	radius = tech->dp*0.5*0.001, pore_gap = tech->gp;
 	//钻场间距
 	site_gap = tech->gs;
 
