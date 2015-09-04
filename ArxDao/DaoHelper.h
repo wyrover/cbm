@@ -6,6 +6,7 @@
 #include <vector>
 typedef std::vector<CString> StringArray;
 typedef std::vector<int> IntArray;
+typedef std::vector<double> DoubleArray;
 
 class ARXDAO_DLLIMPEXP DaoHelper
 {

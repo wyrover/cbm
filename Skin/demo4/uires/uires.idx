@@ -23,6 +23,7 @@
     <file name="function_manage" path="xml\function_manage.xml"/>
     <file name="gas_design" path="xml\gas_design.xml"/>
     <file name="gas_design_p1_1" path="xml\gas_design_p1_1.xml"/>
+    <file name="gas_design_p1_2" path="xml\gas_design_p1_2.xml"/>
     <file name="high_drilling_design" path="xml\high_drilling_design.xml"/>
     <file name="high_drilling_pore" path="xml\high_drilling_pore.xml"/>
     <file name="high_drilling_site" path="xml\high_drilling_site.xml"/>

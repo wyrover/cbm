@@ -26,6 +26,16 @@ public:
 	static AcGePoint3d MidPoint(const AcGePoint3d& pt1, const AcGePoint3d& pt2);
 	static CString MakeUpperText(const CString& inStr);
 	static CString MakeLowerText(const CString& inStr);
+	//相邻2个顺层扇形钻孔的水平间距
+	//该计算过程比较复杂,我是用matlab的符号运算求出来的公式
+	static double Solve1(double L0, double W0, double d);
+	//在长度为L的范围分配的钻孔水平间距
+	static void Solve1(double L0, double W0, double d, double L, std::vector<double>& dists);
+	//相邻2个顺层扇形钻孔的垂直间距(从轮廓线->巷道中心线，垂直方向)
+	//该计算过程比较复杂,我是用matlab的符号运算求出来的公式
+	static double Solve2(double Ls, double W0, double d);
+	//在高度为W0的范围分配的钻孔垂直间距
+	static void Solve2(double Ls, double W0, double d, std::vector<double>& dists);
 	static void Shuffle(int n, int m, std::vector<int>& nums);
 	static int DivideNum(double L, double gap, bool round=false);
 	static void MakeGridWithHole(const AcGePoint3d& basePt,double w,double h,double gap_x,double gap_y,double left, double right, double top, double bottom,AcGePoint3dArray& pts, bool round=true);
@@ -91,4 +101,7 @@ public:
 	static AcDbObjectId CreateDimStyle(const CString& dimStyleName, bool modifyExistStyle=false);
 	//获取标注样式id
 	static AcDbObjectId GetDimStyle(const CString& dimStyleName);
+	//设置线型
+	static void SetLineType(const AcDbObjectId& objId, const CString& ltName);
+	static void SetLineType(const AcDbObjectIdArray& objIds, const CString& ltName);
 };

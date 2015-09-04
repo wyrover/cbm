@@ -334,6 +334,9 @@ DesignTechnology::DesignTechnology() : orm::Record(DesignTechnology::Table())
 	hd = 0.0;
 	gs = 0.0;
 	ds = 0.0;
+	gbp = 0.0;
+	leading = 0.0;
+	l_stripe = 0.0;
 	REG_ATTRIB(name, name);
 	REG_ATTRIB(v_offset, v_offset);
 	REG_ATTRIB(h_offset, h_offset);
@@ -350,6 +353,9 @@ DesignTechnology::DesignTechnology() : orm::Record(DesignTechnology::Table())
 	REG_ATTRIB(hd, hd);
 	REG_ATTRIB(gs, gs);
 	REG_ATTRIB(ds, ds);
+	REG_ATTRIB(gbp, gbp);
+	REG_ATTRIB(leading, leading);
+	REG_ATTRIB(l_stripe, l_stripe);
 	REG_FOREGIN_KEY(cbm_coal_id, coal, &Coal::Create);
 }
 

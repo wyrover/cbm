@@ -32,6 +32,61 @@ CString ArxDrawHelper::MakeLowerText( const CString& inStr )
 	return str;
 }
 
+double ArxDrawHelper::Solve1(double L0, double W0, double d)
+{
+	double x = W0*sqrt(L0*L0+W0*W0-d*d);
+	//double x = -1*W0*sqrt(L0*L0+W0*W0-d*d);
+	x += d*L0;
+	x *= -1*d;
+	x /= (d*d-W0*W0);
+	return x;
+}
+
+void ArxDrawHelper::Solve1(double L0, double W0, double d, double Lp, std::vector<double>& dists)
+{
+	double Ld = L0;
+	double nd = ArxDrawHelper::Solve1(Ld, W0, d);
+	if(nd <= 0) return;
+
+	//表示剩余的长度
+	double L = Lp;
+	while(L - nd > 0)
+	{
+		dists.push_back(nd);
+		L -= nd;
+		Ld += nd;
+		nd = ArxDrawHelper::Solve1(Ld, W0, d);
+	}
+	if(L > 0)
+	{
+		dists.push_back(L);
+	}
+}
+
+double ArxDrawHelper::Solve2(double Ls, double W0, double d)
+{
+	return d*sqrt(W0*W0+Ls*Ls)/Ls;
+}
+
+void ArxDrawHelper::Solve2(double Ls, double W0, double d, std::vector<double>& dists)
+{
+	double W = W0;
+	double nd = ArxDrawHelper::Solve2(Ls, W, d);
+	if(nd <= 0) return;
+
+	//W表示剩余的高度
+	while(W - nd > 0)
+	{
+		dists.push_back(nd);
+		W -= nd;
+		nd = ArxDrawHelper::Solve2(Ls, W, d);
+	}
+	if(W > 0)
+	{
+		dists.push_back(W);
+	}
+}
+
 void ArxDrawHelper::Shuffle(int n, int m, std::vector<int>& nums)
 {
 	int d = ArxDrawHelper::DivideNum(n, m);
@@ -1111,7 +1166,7 @@ AcDbObjectId ArxDrawHelper::CreateDimStyle(const CString& dimStyleName, bool mod
 	int bili = 1.0;
 	//设置标注样式的特性
 	pDimStyleTblRcd->setName(dimStyleName); // 样式名称
-	pDimStyleTblRcd->setDimasz(15*bili); // 箭头长度
+	pDimStyleTblRcd->setDimasz(9*bili); // 箭头长度
 	//pDimStyleTblRcd->setDimblk("_Oblique");//设置箭头的形状为建筑标记
 	pDimStyleTblRcd->setDimexe(20*bili); // 指定尺寸界线超出尺寸线的距离
 	pDimStyleTblRcd->setDimlfac(1);//比例因子
@@ -1122,7 +1177,7 @@ AcDbObjectId ArxDrawHelper::CreateDimStyle(const CString& dimStyleName, bool mod
 	pDimStyleTblRcd->setDimclre(clr);//为尺寸界线指定颜色。此颜色可以是任意有效的颜色编号
 	pDimStyleTblRcd->setDimclrt(clr);//为标注文字指定颜色，0为byblock、256为bylayer
 	pDimStyleTblRcd->setDimexo(10*bili);//指定尺寸界线偏移原点的距离
-	pDimStyleTblRcd->setDimgap(10*bili);//文字从尺寸线偏移 '当尺寸线分成段以在两段之间放置标注文字时，设置标注文字周围的距离
+	pDimStyleTblRcd->setDimgap(2*bili);//文字从尺寸线偏移 '当尺寸线分成段以在两段之间放置标注文字时，设置标注文字周围的距离
 	pDimStyleTblRcd->setDimjust(0);//控制标注文字的水平位置
 	pDimStyleTblRcd->setDimtix(1);//设置标注文字始终绘制在尺寸界线之间
 
@@ -1142,7 +1197,7 @@ AcDbObjectId ArxDrawHelper::CreateDimStyle(const CString& dimStyleName, bool mod
 	//{
 	//	pDimStyleTblRcd->setDimtxsty(textStyleId);//指定标注的文字样式
 	//}
-	pDimStyleTblRcd->setDimtxt(20);//指定标注文字的高度，除非当前文字样式具有固定的高度
+	pDimStyleTblRcd->setDimtxt(10);//指定标注文字的高度，除非当前文字样式具有固定的高度
 	pDimStyleTblRcd->setDimtad(1*bili); // 文字位于标注线的上方
 
 	pDimStyleTblRcd->close();
@@ -1161,4 +1216,48 @@ AcDbObjectId ArxDrawHelper::GetDimStyle(const CString& dimStyleName)
 	pDimStyleTbl->close();
 
 	return dimStyleId;
+}
+
+void ArxDrawHelper::SetLineType(const AcDbObjectId& objId, const CString& ltName)
+{
+	AcTransaction* pTrans = actrTransactionManager->startTransaction();
+	if( pTrans == 0 ) return;
+
+	//AcDb::OpenMode om = ( save ? ( AcDb::kForWrite ) : ( AcDb::kForRead ) );
+	AcDbObject* pObj;
+	if( Acad::eOk != pTrans->getObject( pObj, objId, AcDb::kForWrite ) )
+	{
+		actrTransactionManager->abortTransaction();
+		return;
+	}
+
+	AcDbEntity* pEnt = AcDbEntity::cast(pObj);
+	if(pEnt == 0)
+	{
+		actrTransactionManager->abortTransaction();
+		return;
+	}
+
+	pEnt->setLinetype(ltName);
+
+	actrTransactionManager->endTransaction();
+}
+
+void ArxDrawHelper::SetLineType(const AcDbObjectIdArray& objIds, const CString& ltName)
+{
+	AcTransaction* pTrans = actrTransactionManager->startTransaction();
+	if( pTrans == 0 ) return;
+
+	for(int i=0;i<objIds.length();i++)
+	{
+		//AcDb::OpenMode om = ( save ? ( AcDb::kForWrite ) : ( AcDb::kForRead ) );
+		AcDbObject* pObj;
+		if( Acad::eOk != pTrans->getObject( pObj, objIds[i], AcDb::kForWrite ) ) continue;
+
+		AcDbEntity* pEnt = AcDbEntity::cast(pObj);
+		if(pEnt == 0) continue;;
+
+		pEnt->setLinetype(ltName);
+	}
+	actrTransactionManager->endTransaction();
 }

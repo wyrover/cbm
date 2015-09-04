@@ -280,6 +280,9 @@ public:
 	double hd;
 	double gs;
 	double ds;
+	double gbp;
+	double leading;
+	double l_stripe;
 
 }; // class DesignTechnology
 

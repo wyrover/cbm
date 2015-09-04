@@ -1,6 +1,5 @@
 #include "StdAfx.h"
 #include "Graph1.h"
-#include "DoubleLine.h"
 
 #include <Util/HelperClass.h>
 #include <ArxHelper/HelperClass.h>
@@ -9,7 +8,7 @@ namespace P1
 {
 
 Graph::Graph(const cbm::CoalPtr& _coal, const cbm::DesignWorkSurfPtr& _ws, const cbm::DesignTechnologyPtr& _tech)
-: coal(_coal), work_surf(_ws), tech(_tech)
+: BaseGraph(), coal(_coal), work_surf(_ws), tech(_tech)
 {
 	left_margin = 20;
 	right_margin = 20;
@@ -28,64 +27,23 @@ Graph::Graph(const cbm::CoalPtr& _coal, const cbm::DesignWorkSurfPtr& _ws, const
 	left = tech->left_side, right = tech->right_side;
 	top = tech->top_side, bottom = tech->bottom_side;
 	//钻场宽度、高度和深度
-	ws = tech->ws, hs = tech->hs, ds = tech->ds;
+	Ls = tech->ws, Ws = tech->hs, Hs = tech->ds;
 	//岩巷和工作面的水平投影距离、垂距
 	h_offset = tech->h_offset, v_offset = tech->v_offset;
 	//钻孔半径和抽采半径(孔径的单位是mm)
 	radius = tech->dp*0.5*0.001, pore_gap = tech->gp;
 	//钻场间距
 	site_gap = tech->gs;
-
-	//默认为单位矩阵(即不做任何变换)
-	m_mat.setToIdentity();
-}
-
-void Graph::setPoint(const AcGePoint3d& pt)
-{
-	this->m_basePt = pt;
-}
-
-AcGePoint3d Graph::getPoint() const
-{
-	return this->m_basePt;
-}
-
-void Graph::addEnt(const AcDbObjectId& objId)
-{
-	if(objId.isNull()) return;
-	if(ArxUtilHelper::IsEqualType(_T("AcDbGroup"), objId))
-	{
-		ArxGroupHelper::GetObjectIds(objId, m_ents);
-	}
-	else if(ArxUtilHelper::IsEqualType(_T("AcDbEntity"), objId))
-	{
-		m_ents.append(objId);
-	}
 }
 
 void Graph::subDraw()
 {
-	//坐标系变换为ucs
-	m_mat.setTranslation(getPoint().asVector());
-	
-	//当前坐标系为ucs,需要将基点设置为原点
-	setPoint(AcGePoint3d::kOrigin);
-
 	//绘制图形
 	drawCoal();
-	drawWsTunnel();
+	drawTunnel();
 	drawRockTunnel();
 	drawPores();
 	drawSites();
-
-	//将ucs坐标系下绘制的图形变换到wcs坐标系
-	ArxUcsHelper::TransformEntities(m_ents, m_mat);
-}
-
-void Graph::draw()
-{
-	ArxDocLockSwitch lock_switch;
-	subDraw();
 }
 
 void Graph::caclCoalExtent(double& Lc, double& Wc, double& Hc) const
@@ -163,10 +121,6 @@ AcGePoint3d Graph::caclSiteBasePoint3() const
 	return getPoint();
 }
 
-PlanGraph::PlanGraph(const cbm::CoalPtr& coal, const cbm::DesignWorkSurfPtr& work_surf, const cbm::DesignTechnologyPtr& tech) : Graph(coal, work_surf, tech)
-{
-}
-
 //绘制一条巷道上的钻场
 void Graph::drawSitesOnTunnel(const AcGePoint3d& spt, const AcGePoint3d& ept, double gap_x, double gap_y, double w, double h, double angle, bool excludeFirst)
 {
@@ -179,65 +133,8 @@ void Graph::drawSitesOnTunnel(const AcGePoint3d& spt, const AcGePoint3d& ept, do
 	}
 }
 
-void Graph::setUcs(const AcGePoint3d& origin, const AcGeVector3d& xAxis, const AcGeVector3d& yAxis)
+PlanGraph::PlanGraph(const cbm::CoalPtr& coal, const cbm::DesignWorkSurfPtr& work_surf, const cbm::DesignTechnologyPtr& tech) : Graph(coal, work_surf, tech)
 {
-	ArxUcsHelper::MakeTransformMatrix(m_mat, origin, xAxis, yAxis);
-}
-
-AcDbObjectId Graph::drawRect(const AcGePoint3d& cnt, double angle, double width, double height)
-{
-	AcDbObjectId objId = ArxDrawHelper::DrawRect(cnt, angle, width, height);
-	this->addEnt(objId);
-	return objId;
-}
-
-AcDbObjectId Graph::drawRect2(const AcGePoint3d& pt, double angle, double width, double height)
-{
-	AcDbObjectId objId = ArxDrawHelper::DrawRect2(pt, angle, width, height);
-	this->addEnt(objId);
-	return objId;
-}
-
-AcDbObjectId Graph::drawCircle(const AcGePoint3d& pt, double radius)
-{
-	AcDbObjectId objId = ArxDrawHelper::DrawCircle(pt, radius);
-	this->addEnt(objId);
-	return objId;
-}
-
-AcDbObjectId Graph::drawDoubleLine(const AcGePoint3d& spt, const AcGePoint3d& ept, double width)
-{
-	AcDbObjectId objId = DoubleLine::Draw(spt, ept, width);
-	this->addEnt(objId);
-	return objId;
-}
-
-AcDbObjectId Graph::drawMText(const AcGePoint3d& pt, double angle, const CString& text, double height)
-{
-	AcDbObjectId objId = ArxDrawHelper::DrawMText(pt, angle, text, height);
-	this->addEnt(objId);
-	return objId;
-}
-
-AcDbObjectId Graph::drawLine(const AcGePoint3d& pt, double angle, double length)
-{
-	AcDbObjectId objId = ArxDrawHelper::DrawLine(pt, angle, length);
-	this->addEnt(objId);
-	return objId;
-}
-
-AcDbObjectId Graph::drawLine(const AcGePoint3d& spt, const AcGePoint3d& ept)
-{
-	AcDbObjectId objId = ArxDrawHelper::DrawLine(spt, ept);
-	this->addEnt(objId);
-	return objId;
-}
-
-AcDbObjectId Graph::drawAlignedDim(const AcGePoint3d& pt1, const AcGePoint3d& pt2, double offset /*= 30*/, bool clockwise/*=true*/)
-{
-	AcDbObjectId objId = ArxDrawHelper::MakeAlignedDim(pt1, pt2, offset, clockwise);
-	this->addEnt(objId);
-	return objId;
 }
 
 void PlanGraph::drawSites()
@@ -248,9 +145,9 @@ void PlanGraph::drawSites()
 	AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis;
 	AcGePoint3d basePt = caclSiteBasePoint1();
 	//绘制钻场
-	drawSitesOnTunnel(basePt-v2*L2*0.5, basePt+v1*Ld-v2*0.5*L2, site_gap, -0.5*(hs+wd), ws, hs, 0);
-	drawSitesOnTunnel(basePt-v2*L2*0.5, basePt+v2*L2*0.5, site_gap, 0.5*(hs+wd), ws, hs, -PI*0.5);
-	drawSitesOnTunnel(basePt+v2*L2*0.5, basePt+v1*Ld+v2*L2*0.5, site_gap, -0.5*(hs+wd), ws, hs, 0);
+	drawSitesOnTunnel(basePt-v2*L2*0.5, basePt+v1*Ld-v2*0.5*L2, site_gap, -0.5*(Ws+wd), Ls, Ws, 0);
+	drawSitesOnTunnel(basePt-v2*L2*0.5, basePt+v2*L2*0.5, site_gap, 0.5*(Ws+wd), Ls, Ws, -PI*0.5);
+	drawSitesOnTunnel(basePt+v2*L2*0.5, basePt+v1*Ld+v2*L2*0.5, site_gap, -0.5*(Ws+wd), Ls, Ws, 0);
 }
 
 void PlanGraph::drawPores()
@@ -289,7 +186,7 @@ void PlanGraph::drawRockTunnel()
 	this->drawMText(basePt+v1*Ld+v2*L2*0.5, 0, _T("上区段岩巷"), 10);
 }
 
-void PlanGraph::drawWsTunnel()
+void PlanGraph::drawTunnel()
 {
 	//工作面巷道的中点位置作为基点
 	AcGePoint3d basePt = getPoint();
@@ -344,7 +241,7 @@ void HeadGraph::drawSites()
 	AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis;
 	AcGePoint3d basePt = caclSiteBasePoint2();
 	//绘制钻场
-	drawSitesOnTunnel(basePt, basePt+v1*Ld, site_gap, 0, ws, hs, 0, false);
+	drawSitesOnTunnel(basePt, basePt+v1*Ld, site_gap, 0, Ls, Ws, 0, false);
 }
 
 void HeadGraph::drawPores()
@@ -402,10 +299,10 @@ void HeadGraph::drawRockTunnel()
 	//绘制底板岩巷
 	AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis;
 	AcGePoint3d basePt = ArxDrawHelper::CaclPt(getPoint(), v1, right, v2, -1*(v_offset+0.5*thick));
-	AcDbObjectId t1 = this->drawDoubleLine(basePt-v1*ds*0.5, basePt+v1*Ld, wd);
+	AcDbObjectId t1 = this->drawDoubleLine(basePt-v1*Hs*0.5, basePt+v1*Ld, wd);
 }
 
-void HeadGraph::drawWsTunnel()
+void HeadGraph::drawTunnel()
 {
 
 }
@@ -475,7 +372,7 @@ void DipGraph::drawRockTunnel()
 	AcDbObjectId t1 = this->drawRect(basePt+v1*L2*0.5, angle, wd, hd); // 底板岩巷
 }
 
-void DipGraph::drawWsTunnel()
+void DipGraph::drawTunnel()
 {
 	AcGePoint3d basePt = getPoint();
 	AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis;

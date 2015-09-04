@@ -1,6 +1,5 @@
 #include "StdAfx.h"
 #include "Graph2.h"
-#include "DoubleLine.h"
 
 #include <Util/HelperClass.h>
 #include <ArxHelper/HelperClass.h>
@@ -9,12 +8,12 @@ namespace P2
 {
 
 	Graph::Graph(const cbm::CoalPtr& _coal, const cbm::DesignWorkSurfPtr& _ws, const cbm::DesignTechnologyPtr& _tech)
-		: coal(_coal), work_surf(_ws), tech(_tech)
+		: BaseGraph(), coal(_coal), work_surf(_ws), tech(_tech)
 	{
 		left_margin = 20;
 		right_margin = 20;
 		bottom_margin = 20;
-		top_margin = 40;
+		top_margin = 20;
 
 		//倾向长度和走向长度
 		L1 = work_surf->l1, L2 = work_surf->l2;
@@ -22,70 +21,23 @@ namespace P2
 		thick = coal->thick, angle = DegToRad(coal->dip_angle);
 		//工作面巷道的宽度和高度
 		w = work_surf->w, h = work_surf->h;
-		//底板巷的宽度和高度
-		wd = tech->wd, hd = tech->hd;
 		//左右上下帮距
 		left = tech->left_side, right = tech->right_side;
 		top = tech->top_side, bottom = tech->bottom_side;
-		//钻场宽度、高度和深度
-		ws = tech->ws, hs = tech->hs, ds = tech->ds;
-		//岩巷和工作面的水平投影距离、垂距
-		h_offset = tech->h_offset, v_offset = tech->v_offset;
-		//钻孔半径和抽采半径(孔径的单位是mm)
-		radius = tech->dp*0.5*0.001, pore_gap = tech->gp;
-		//钻场间距
-		site_gap = tech->gs;
-
-		//默认为单位矩阵(即不做任何变换)
-		m_mat.setToIdentity();
-	}
-
-	void Graph::setPoint(const AcGePoint3d& pt)
-	{
-		this->m_basePt = pt;
-	}
-
-	AcGePoint3d Graph::getPoint() const
-	{
-		return this->m_basePt;
-	}
-
-	void Graph::addEnt(const AcDbObjectId& objId)
-	{
-		if(objId.isNull()) return;
-		if(ArxUtilHelper::IsEqualType(_T("AcDbGroup"), objId))
-		{
-			ArxGroupHelper::GetObjectIds(objId, m_ents);
-		}
-		else if(ArxUtilHelper::IsEqualType(_T("AcDbEntity"), objId))
-		{
-			m_ents.append(objId);
-		}
+		//钻孔半径和钻孔底间距(孔径的单位是mm)
+		radius = tech->dp*0.5*0.001, pore_gap = tech->gbp;
+		//钻孔超前距
+		leading = tech->leading;
+		//钻孔控制条带长度
+		L_stripe = tech->l_stripe;
 	}
 
 	void Graph::subDraw()
 	{
-		//坐标系变换为ucs
-		m_mat.setTranslation(getPoint().asVector());
-
-		//当前坐标系为ucs,需要将基点设置为原点
-		setPoint(AcGePoint3d::kOrigin);
-
 		//绘制图形
 		drawCoal();
-		drawWsTunnel();
-		drawRockTunnel();
+		drawTunnel();
 		drawPores();
-		drawSites();
-
-		//将ucs坐标系下绘制的图形变换到wcs坐标系
-		ArxUcsHelper::TransformEntities(m_ents, m_mat);
-	}
-
-	void Graph::draw()
-	{
-		ArxDocLockSwitch lock_switch;
-		subDraw();
 	}
 
 	void Graph::caclCoalExtent(double& Lc, double& Wc, double& Hc) const
@@ -93,215 +45,118 @@ namespace P2
 		//计算宽度(倾向长度L2+工作面左帮控制范围left+偏移)
 		//Lc = (L1 + left + left_margin + right_margin)*cos(angle);
 		Lc = L1 + left + left_margin + right_margin;
-		Wc = L2 + left + right + bottom_margin + top_margin;
+		//Wc = L2 + left + right + bottom_margin + top_margin;
+		Wc = w + left + right + bottom_margin + top_margin;
 		Hc = thick;
-	}
-
-	AcGePoint3d Graph::caclCoalBasePoint1() const
-	{
-		AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis;
-		return ArxDrawHelper::CaclPt(getPoint(),v1,-1*(left+left_margin),v2,-1*(0.5*L2+left+bottom_margin));
-	}
-
-	AcGePoint3d Graph::caclCoalBasePoint2() const
-	{
-		AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis;
-		return ArxDrawHelper::CaclPt(getPoint(),v1,-1*(left+left_margin),v2,-0.5*thick);;
-	}
-
-	AcGePoint3d Graph::caclCoalBasePoint3() const
-	{
-		double Lc = 0, Wc = 0, Hc = 0;
-		caclCoalExtent(Lc, Wc, Hc);
-
-		AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis;
-		return ArxDrawHelper::CaclPt(getPoint(),v1,-0.5*Wc,v2,-0.5*thick);;
-	}
-
-	void Graph::caclPoreExtent( double& Lp, double& Wp, double& Hp ) const
-	{
-		//计算长度(倾向长度L2+工作面左帮控制范围left+偏移)
-		//Lp = (L1 + left)*cos(angle);
-		Lp = L1 + left;
-		Wp = L2 + left + right;
-		Hp = 0.5;
-	}
-
-	AcGePoint3d Graph::caclPoreBasePoint1() const
-	{
-		AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis;
-		return ArxDrawHelper::CaclPt(getPoint(), v1, -1*left, v2, -1*(left+0.5*L2));
-	}
-
-	AcGePoint3d Graph::caclPoreBasePoint2() const
-	{
-		double Lp = 0, Wp = 0, Hp = 0;
-		caclPoreExtent(Lp, Wp, Hp);
-		AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis;
-		return ArxDrawHelper::CaclPt(getPoint(), v1, -1*left, v2, 0.5*thick+Hp);
-	}
-
-	AcGePoint3d Graph::caclPoreBasePoint3() const
-	{
-		return getPoint();
-	}
-
-	AcGePoint3d Graph::caclSiteBasePoint1() const
-	{
-		AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis;
-		return ArxDrawHelper::CaclPt(getPoint(), v1, right, v2, h_offset);
-	}
-
-	AcGePoint3d Graph::caclSiteBasePoint2() const
-	{
-		AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis;
-		return ArxDrawHelper::CaclPt(getPoint(), v1, right, v2, -1*(v_offset+0.5*thick));
-	}
-
-	AcGePoint3d Graph::caclSiteBasePoint3() const
-	{
-		return getPoint();
 	}
 
 	PlanGraph::PlanGraph(const cbm::CoalPtr& coal, const cbm::DesignWorkSurfPtr& work_surf, const cbm::DesignTechnologyPtr& tech) : Graph(coal, work_surf, tech)
 	{
 	}
 
-	//绘制一条巷道上的钻场
-	void Graph::drawSitesOnTunnel(const AcGePoint3d& spt, const AcGePoint3d& ept, double gap_x, double gap_y, double w, double h, double angle, bool excludeFirst)
-	{
-		AcGePoint3dArray pts;
-		ArxDrawHelper::Divide(spt, ept, gap_x, gap_y, pts,false);
-		int start = excludeFirst?1:0; // 是否绘制第一个钻场
-		for(int i=start;i<pts.length();i++)
-		{
-			AcDbObjectId siteId = this->drawRect(pts[i], angle, w, h);
-		}
-	}
-
-	void Graph::setUcs(const AcGePoint3d& origin, const AcGeVector3d& xAxis, const AcGeVector3d& yAxis)
-	{
-		ArxUcsHelper::MakeTransformMatrix(m_mat, origin, xAxis, yAxis);
-	}
-
-	AcDbObjectId Graph::drawRect(const AcGePoint3d& cnt, double angle, double width, double height)
-	{
-		AcDbObjectId objId = ArxDrawHelper::DrawRect(cnt, angle, width, height);
-		this->addEnt(objId);
-		return objId;
-	}
-
-	AcDbObjectId Graph::drawRect2(const AcGePoint3d& pt, double angle, double width, double height)
-	{
-		AcDbObjectId objId = ArxDrawHelper::DrawRect2(pt, angle, width, height);
-		this->addEnt(objId);
-		return objId;
-	}
-
-	AcDbObjectId Graph::drawCircle(const AcGePoint3d& pt, double radius)
-	{
-		AcDbObjectId objId = ArxDrawHelper::DrawCircle(pt, radius);
-		this->addEnt(objId);
-		return objId;
-	}
-
-	AcDbObjectId Graph::drawDoubleLine(const AcGePoint3d& spt, const AcGePoint3d& ept, double width)
-	{
-		AcDbObjectId objId = DoubleLine::Draw(spt, ept, width);
-		this->addEnt(objId);
-		return objId;
-	}
-
-	AcDbObjectId Graph::drawMText(const AcGePoint3d& pt, double angle, const CString& text, double height)
-	{
-		AcDbObjectId objId = ArxDrawHelper::DrawMText(pt, angle, text, height);
-		this->addEnt(objId);
-		return objId;
-	}
-
-	AcDbObjectId Graph::drawLine(const AcGePoint3d& pt, double angle, double length)
-	{
-		AcDbObjectId objId = ArxDrawHelper::DrawLine(pt, angle, length);
-		this->addEnt(objId);
-		return objId;
-	}
-
-	AcDbObjectId Graph::drawLine(const AcGePoint3d& spt, const AcGePoint3d& ept)
-	{
-		AcDbObjectId objId = ArxDrawHelper::DrawLine(spt, ept);
-		this->addEnt(objId);
-		return objId;
-	}
-
-	AcDbObjectId Graph::drawAlignedDim(const AcGePoint3d& pt1, const AcGePoint3d& pt2, double offset /*= 30*/, bool clockwise/*=true*/)
-	{
-		AcDbObjectId objId = ArxDrawHelper::MakeAlignedDim(pt1, pt2, offset, clockwise);
-		this->addEnt(objId);
-		return objId;
-	}
-
-	void PlanGraph::drawSites()
-	{	
-		//扣除右帮
-		double Ld = L1 - right;
-
-		AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis;
-		AcGePoint3d basePt = caclSiteBasePoint1();
-		//绘制钻场
-		drawSitesOnTunnel(basePt-v2*L2*0.5, basePt+v1*Ld-v2*0.5*L2, site_gap, -0.5*(hs+wd), ws, hs, 0);
-		drawSitesOnTunnel(basePt-v2*L2*0.5, basePt+v2*L2*0.5, site_gap, 0.5*(hs+wd), ws, hs, -PI*0.5);
-		drawSitesOnTunnel(basePt+v2*L2*0.5, basePt+v1*Ld+v2*L2*0.5, site_gap, -0.5*(hs+wd), ws, hs, 0);
-	}
-
 	void PlanGraph::drawPores()
 	{
 		if(pore_gap <= 0) return;
 
-		//计算钻孔平面投影范围
-		double Lp = 0, Wp = 0, Hp = 0;
-		caclPoreExtent(Lp, Wp, Hp);
-		//平面图钻孔范围的左下角基点坐标
-		AcGePoint3d basePt = caclPoreBasePoint1();
+		//巷道的中点位置作为基点
+		AcGePoint3d basePt = getPoint();
+		AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis;
 
-		//绘制钻孔
+		//绘制钻孔抽采控制范围
+		double Lp = 0, Wp = 0, Hp = 0;
+		Lp = L1; Wp = left+right+w;
+		drawLine(basePt+v1*0+v2*Wp*0.5, 0, Lp);
+		drawLine(basePt+v1*0-v2*Wp*0.5, 0, Lp);
+
+		//计算扇形钻孔在抽采轮廓线的水平间距
+		double L0 = leading, W0 = left, D = pore_gap, Ls = L_stripe;
+		DoubleArray h_dists;
+		ArxDrawHelper::Solve1(L0, W0, D, L_stripe-leading, h_dists);
+
+		//计算扇形钻孔在条带边界上的垂直间距
+		DoubleArray v_dists;
+		ArxDrawHelper::Solve2(Ls, W0, D, v_dists);
+
+		//标注
+		this->drawAlignedDim(basePt, basePt+v1*Ls, 50, false);            //条带范围
+		this->drawAlignedDim(basePt+v1*(Ls-L0), basePt+v1*Ls, 30, false); //钻孔超前距
+
+		//计算每个条带的起始位置
 		AcGePoint3dArray pts;
-		ArxDrawHelper::MakeGridWithHole(basePt, Lp, Wp, pore_gap, pore_gap, left+right, 0, left+right, left+right, pts, true);
+		ArxDrawHelper::Divide(basePt, basePt+v1*L1, L_stripe-leading, 0, pts, true);
 		for(int i=0;i<pts.length();i++)
 		{
-			AcDbObjectId poreId = this->drawCircle(pts[i], radius);
+			//绘制掘进面
+			AcGePoint3d pt = pts[i];
+			drawLine(pt-v2*w*0.5, pt+v2*w*0.5);
+			//绘制掘进面的起始垂线
+			drawLine(pt-v2*W0, pt+v2*W0);
+
+			//记录钻孔图元id
+			AcDbObjectIdArray objIds;
+
+			//超前距的断面中心点坐标
+			AcGePoint3d poreBeginPt = pt+v1*L0;
+			//绘制上部轮廓线的扇形钻孔
+			double pore_dist = 0;
+			for(int j=0;j<h_dists.size();j++)
+			{
+				AcDbObjectId poreId = drawLine(pt, poreBeginPt+v1*pore_dist+v2*W0);
+				pore_dist += h_dists[j];
+				objIds.append(poreId);
+			}
+			//绘制下部轮廓线的扇形钻孔
+			pore_dist = 0;
+			for(int j=0;j<h_dists.size();j++)
+			{
+				AcDbObjectId poreId = drawLine(pt, poreBeginPt+v1*pore_dist-v2*W0);
+				pore_dist += h_dists[j];
+				objIds.append(poreId);
+			}
+
+			//绘制上部条带断面的扇形钻孔
+			pore_dist = 0;
+			for(int j=0;j<v_dists.size();j++)
+			{
+				AcDbObjectId poreId = drawLine(pt, pt+v1*Ls+v2*(W0+pore_dist));
+				pore_dist -= v_dists[j];
+				objIds.append(poreId);
+			}
+			//绘制下部条带断面的扇形钻孔
+			pore_dist = 0;
+			for(int j=0;j<v_dists.size();j++)
+			{
+				AcDbObjectId poreId = drawLine(pt, pt+v1*Ls-v2*(W0+pore_dist));
+				pore_dist -= v_dists[j];
+				objIds.append(poreId);
+			}
+
+			//绘制中心线的钻孔
+			{
+				AcDbObjectId poreId = drawLine(pt, pt+v1*Ls);
+				objIds.append(poreId);
+			}
+
+			// 绘制条带断面
+			AcGePoint3d poreEndPt = pt+v1*L_stripe;
+			drawLine(poreEndPt-v2*W0, poreEndPt+v2*W0);
+
+			//i为奇数修改线型为虚线
+			if(i%2 != 0)
+			{
+				ArxDrawHelper::SetLineType(objIds, _T("JIS_02_0.7"));
+			}
+			objIds.removeAll();
 		}
 	}
 
-	void PlanGraph::drawRockTunnel()
+	void PlanGraph::drawTunnel()
 	{
-		//扣除偏移的部分
-		double Ld = L1 - right;
-
-		//绘制底板岩巷
-		AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis;
-		AcGePoint3d basePt = ArxDrawHelper::CaclPt(getPoint(), v1, right, v2, h_offset);
-		AcDbObjectId t1 = this->drawDoubleLine(basePt-v2*L2*0.5, basePt+v1*Ld-v2*L2*0.5, wd);
-		//绘制上区段岩巷
-		AcDbObjectId t2 = this->drawDoubleLine(basePt+0.5*v2*L2, basePt+v1*Ld+0.5*v2*L2, wd);
-		//绘制切眼
-		AcDbObjectId t3 = this->drawDoubleLine(basePt-v2*L2*0.5, basePt+v2*L2*0.5, wd);
-		this->drawMText(basePt+v1*Ld-v2*L2*0.5, 0, _T("底板岩巷"), 10);
-		this->drawMText(basePt+v1*Ld+v2*L2*0.5, 0, _T("上区段岩巷"), 10);
-	}
-
-	void PlanGraph::drawWsTunnel()
-	{
-		//工作面巷道的中点位置作为基点
+		//巷道的中点位置作为基点
 		AcGePoint3d basePt = getPoint();
-		//绘制机巷
+		//绘制掘进巷
 		AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis;
-		AcDbObjectId t1 = this->drawDoubleLine(basePt-v2*L2*0.5, basePt+v1*L1-v2*L2*0.5, w);
-		//绘制风巷
-		AcDbObjectId t2 = this->drawDoubleLine(basePt+v2*L2*0.5, basePt+v1*L1+v2*L2*0.5, w);
-		//绘制工作面切眼
-		AcDbObjectId t3 = this->drawDoubleLine(basePt-v2*L2*0.5, basePt+v2*L2*0.5, w);
-		this->drawMText(basePt+v1*L1-v2*L2*0.5, 0, _T("待掘机巷"), 10);
-		this->drawMText(basePt+v1*L1+v2*L2*0.5, 0, _T("待掘风巷"), 10);
+		AcDbObjectId t1 = this->drawDoubleLine(basePt, basePt+v1*L1, w);
 	}
 
 	void PlanGraph::drawCoal()
@@ -309,190 +164,14 @@ namespace P2
 		//计算煤层的长宽高
 		double Lc = 0, Wc = 0, Hc = 0;
 		caclCoalExtent(Lc, Wc, Hc);
+
 		//计算平面图中煤层的左下角基点坐标
-		AcGePoint3d basePt = caclCoalBasePoint1();
+		AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis;
+		AcGePoint3d basePt = ArxDrawHelper::CaclPt(getPoint(),v1,-1*left_margin,v2,-0.5*Wc);
 
 		//绘制煤层面
 		AcDbObjectId coalId = this->drawRect2(basePt, 0, Lc, Wc);
-		this->drawAlignedDim(basePt, basePt+AcGeVector3d::kXAxis*Lc, 50, false);
-		this->drawAlignedDim(basePt, basePt+AcGeVector3d::kYAxis*Wc, 30, true);
-		//附加数据
-		if(!coalId.isNull())
-		{
-			CoalData data;
-			data.setDataSource(coalId);
-			data.m_name = _T("测试");
-			data.m_thick = coal->thick;
-			data.m_angle = coal->dip_angle;
-			data.m_width = work_surf->l1;
-			data.m_height = work_surf->l2;
-			data.m_pt = basePt;
-			data.update(true);
-		}
+		this->drawAlignedDim(basePt, basePt+v1*Lc, 50, false);
+		this->drawAlignedDim(basePt, basePt+v2*Wc, 30, true);
 	}
-
-	HeadGraph::HeadGraph(const cbm::CoalPtr& coal, const cbm::DesignWorkSurfPtr& work_surf, const cbm::DesignTechnologyPtr& tech) : Graph(coal, work_surf, tech)
-	{
-
-	}
-
-	void HeadGraph::drawSites()
-	{
-		//扣除右帮
-		double Ld = L1 - right;
-
-		AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis;
-		AcGePoint3d basePt = caclSiteBasePoint2();
-		//绘制钻场
-		drawSitesOnTunnel(basePt, basePt+v1*Ld, site_gap, 0, ws, hs, 0, false);
-	}
-
-	void HeadGraph::drawPores()
-	{
-		//扣除右帮
-		double Ld = L1 - right;
-
-		//计算钻孔范围
-		double Lp = 0, Wp = 0, Hp = 0;
-		caclPoreExtent(Lp, Wp, Hp);
-
-		//计算钻孔在倾向方向的个数
-		int nx = ArxDrawHelper::DivideNum(Lp, pore_gap, true);
-		//计算钻场的个数
-		int nd = ArxDrawHelper::DivideNum(Ld, site_gap, false);
-
-		//第1列钻场(工作面巷道上的布置的钻场)
-		int n1 = ArxDrawHelper::DivideNum(left+right, pore_gap, true);
-		//每个钻场之间的钻孔个数(倾向方向)
-		int dn = ArxDrawHelper::DivideNum(nx, nd, true);
-		//第2列钻场
-		int n2 = dn + dn/2;
-
-		//建立钻孔和钻场的个数联系
-		IntArray nums;
-		nums.push_back(n1);
-		nums.push_back(n2);
-		ArxDrawHelper::Shuffle(nx-n1-n2, nd-2, nums);
-
-		//计算钻孔的基点
-		AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis;
-		AcGePoint3d poreBasePt = caclPoreBasePoint2();
-
-		//依次计算钻场与钻孔的关联
-		AcGePoint3d siteBasePt = caclSiteBasePoint2();
-		int start = 0;
-		for(int i=0;i<nd;i++)
-		{
-			AcGePoint3d site_pt = siteBasePt + v1*i*site_gap + v2*0;
-			int end = start + nums[i];
-			for(int j=start;j<end;j++)
-			{
-				AcGePoint3d pore_pt = poreBasePt + v1*j*pore_gap + v2*0;
-				AcDbObjectId poreId = this->drawLine(site_pt, pore_pt);
-			}
-			start = end;
-		}
-	}
-
-	void HeadGraph::drawRockTunnel()
-	{
-		//扣除偏移的部分
-		double Ld = L1 - right;
-
-		//绘制底板岩巷
-		AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis;
-		AcGePoint3d basePt = ArxDrawHelper::CaclPt(getPoint(), v1, right, v2, -1*(v_offset+0.5*thick));
-		AcDbObjectId t1 = this->drawDoubleLine(basePt-v1*ds*0.5, basePt+v1*Ld, wd);
-	}
-
-	void HeadGraph::drawWsTunnel()
-	{
-
-	}
-
-	void HeadGraph::drawCoal()
-	{
-		double Lc = 0, Wc = 0, Hc = 0;
-		caclCoalExtent(Lc, Wc, Hc);
-		AcGePoint3d basePt = caclCoalBasePoint2();
-
-		//绘制煤层
-		AcDbObjectId coalId = this->drawRect2(basePt, 0, Lc, Hc);
-	}
-
-	DipGraph::DipGraph(const cbm::CoalPtr& coal, const cbm::DesignWorkSurfPtr& work_surf, const cbm::DesignTechnologyPtr& tech) : Graph(coal, work_surf, tech)
-	{
-		//建立ucs
-		AcGeVector3d xAxis(AcGeVector3d::kXAxis), yAxis(AcGeVector3d::kYAxis);
-		xAxis.rotateBy(-1*angle, AcGeVector3d::kZAxis);
-		yAxis.rotateBy(-1*angle, AcGeVector3d::kZAxis);
-		setUcs(AcGePoint3d::kOrigin, xAxis, yAxis);
-	}
-
-	void DipGraph::drawSites()
-	{
-
-	}
-
-	void DipGraph::drawPores()
-	{
-		//计算钻孔范围
-		double Lp = 0, Wp = 0, Hp = 0;
-		caclPoreExtent(Lp, Wp, Hp);
-
-		//计算钻孔在走向方向的个数(只计算在控制范围内的)
-		int nx = ArxDrawHelper::DivideNum(left+right, pore_gap, true);
-
-		//计算钻孔的基点
-		AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis;
-		AcGePoint3d poreBasePt1 = ArxDrawHelper::CaclPt(getPoint(), v1, -0.5*Wp, v2, 0.5*thick+Hp);
-		AcGePoint3d poreBasePt2 = ArxDrawHelper::CaclPt(getPoint(), v1, 0.5*Wp, v2, 0.5*thick+Hp);
-
-		//计算钻场的基点
-		AcGePoint3d rockBasePt = ArxDrawHelper::CaclPt(getPoint(), v1, -1*h_offset, v2, -1*v_offset); //岩巷切眼中点
-		AcGePoint3d siteBasePt1 = rockBasePt-v1*L2*0.5; // 上区段岩巷
-		AcGePoint3d siteBasePt2 = rockBasePt+v1*L2*0.5; // 底板岩巷
-
-		for(int i=0;i<nx;i++)
-		{
-			AcGePoint3d pore_pt = poreBasePt1 + v1*i*pore_gap + v2*0; // 从左至右计算
-			AcDbObjectId poreId = this->drawLine(siteBasePt1, pore_pt);
-		}
-		for(int i=0;i<nx;i++)
-		{
-			AcGePoint3d pore_pt = poreBasePt2 - v1*i*pore_gap + v2*0; // 从右至左计算
-			AcDbObjectId poreId = this->drawLine(siteBasePt2, pore_pt);
-		}
-	}
-
-	void DipGraph::drawRockTunnel()
-	{
-		AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis;
-		AcGePoint3d basePt = ArxDrawHelper::CaclPt(getPoint(), v1, -1*h_offset, v2, -1*v_offset);
-		AcDbObjectId t3 = this->drawDoubleLine(basePt-v1*L2*0.5, basePt+v1*L2*0.5, hd); // 底板切眼
-		//为了画出来的巷道(矩形)是水平的,特殊处理下(旋转)
-		AcDbObjectId t2 = this->drawRect(basePt-v1*L2*0.5, angle, wd, hd); // 上区段岩巷
-		AcDbObjectId t1 = this->drawRect(basePt+v1*L2*0.5, angle, wd, hd); // 底板岩巷
-	}
-
-	void DipGraph::drawWsTunnel()
-	{
-		AcGePoint3d basePt = getPoint();
-		AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis;
-		//为了画出来的巷道(矩形)是水平的,特殊处理下(旋转)
-		AcDbObjectId t1 = this->drawRect(basePt+v1*L2*0.5, angle, w, h); // 待掘机巷
-		AcDbObjectId t2 = this->drawRect(basePt-v1*L2*0.5, angle, w, h); // 待掘风巷
-		AcDbObjectId t3 = this->drawDoubleLine(basePt-v1*L2*0.5, basePt+v1*L2*0.5, h); // 工作面切眼
-	}
-
-	void DipGraph::drawCoal()
-	{
-		double Lc = 0, Wc = 0, Hc = 0;
-		caclCoalExtent(Lc, Wc, Hc);
-		AcGePoint3d basePt = caclCoalBasePoint3();
-
-		//绘制煤层
-		AcDbObjectId coalId = this->drawRect2(basePt, 0, Wc, Hc);
-	}
-
 } // namespace P2

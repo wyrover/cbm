@@ -26,6 +26,8 @@ void UIHelper::InitAllData()
 	//读取字段
     CString appDir = ArxUtilHelper::GetAppPathDir( _hdllInstance );
     FieldHelper::InitDataField( ArxUtilHelper::BuildPath( appDir, _T( "Datas\\煤层气抽采-字段-图元属性.txt" ) ) );
+	//加载线型
+	acdbHostApplicationServices()->workingDatabase()->loadLineTypeFile(_T("JIS_02_0.7"), _T("acadiso.lin"));
 }
 
 void UIHelper::InitSouiEnviroment()
@@ -168,8 +170,40 @@ static void test_ucs()
 	ArxUcsHelper::ucsToWcs(ents);
 }
 
+#include "Graph2.h"
+static void test()
+{
+	int coal_id = 4;
+	CoalPtr coal = FIND_BY_ID( Coal, coal_id );
+	if( coal == 0 ) return;
+
+	//查找煤层关联的设计工作面
+	DesignWorkSurfPtr work_surf = FIND_ONE( DesignWorkSurf, FKEY( Coal ), coal->getStringID() );
+	if( work_surf == 0 ) return;
+
+	//查找抽采技术
+	DesignTechnologyPtr technology = FIND_ONE( DesignTechnology, FKEY( Coal ), coal->getStringID() );
+	if( technology == 0 ) return;
+
+	technology->l_stripe = 60;
+	technology->leading = 30;
+	technology->gbp = 3;
+
+	//交互选择基点坐标
+	AcGePoint3d pt;
+	ArxUtilHelper::PromptPt(_T("请选择一点:"), pt);
+
+	//绘制平面图
+	P2::PlanGraph graph(coal, work_surf, technology);
+	graph.setPoint(pt);
+	graph.draw();
+}
+
 void UIHelper::Main()
 {
+	test();
+	return;
+
     int account_id = DaoHelper::GetOnlineAccountId();
     if( account_id == 0 )
     {
