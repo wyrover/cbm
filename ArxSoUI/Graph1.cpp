@@ -1,85 +1,12 @@
 #include "StdAfx.h"
-#include "Graph.h"
+#include "Graph1.h"
+#include "DoubleLine.h"
 
 #include <Util/HelperClass.h>
 #include <ArxHelper/HelperClass.h>
 
-//绘制双线
-class DoubleLine
+namespace P1
 {
-public:
-	static AcDbObjectId Draw(const AcGePoint3d& spt, const AcGePoint3d& ept, double width)
-	{
-		DoubleLine line(spt, ept, width);
-		return line.draw();
-	}
-
-public:
-	DoubleLine(const AcGePoint3d& spt, const AcGePoint3d& ept, double width)
-		: m_spt(spt), m_ept(ept), m_width(width)
-	{
-
-	}
-	AcDbObjectId draw()
-	{
-		//计算始端的2个坐标
-		AcGePoint3d m_leftStartPt, m_leftEndPt;
-		AcGePoint3d m_rightStartPt, m_rightEndPt;
-		caclStartPoint(m_leftStartPt, m_rightStartPt);
-		//计算末端的2个坐标
-		caclEndPoint(m_leftEndPt, m_rightEndPt);
-		//绘制2条直线
-		AcDbObjectId line1 = ArxDrawHelper::DrawLine( m_leftStartPt, m_leftEndPt );
-		AcDbObjectId line2 = ArxDrawHelper::DrawLine( m_rightStartPt, m_rightEndPt );
-
-		//构造group
-		AcDbObjectIdArray objIds;
-		objIds.append(line1);
-		objIds.append(line2);
-		//构造临时的组名
-		CString name;
-		name.Format(_T("巷道%d"), count++);
-		AcDbObjectId groupId = ArxGroupHelper::CreateGroup(name, objIds);
-		if(!groupId.isNull())
-		{
-			ArxGroupHelper::ConvertToAnonymousGroup(groupId);
-		}
-		return groupId;
-	}
-
-protected:
-	void caclStartPoint( AcGePoint3d& startPt1, AcGePoint3d& startPt2 )
-	{
-		AcGeVector3d v = m_ept - m_spt;
-		v.normalize();
-
-		v.rotateBy( PI * 0.5, AcGeVector3d::kZAxis );
-		startPt1 = m_spt + v * m_width * 0.5;
-
-		v.rotateBy( PI, AcGeVector3d::kZAxis );
-		startPt2 = m_spt + v * m_width * 0.5;
-	}
-
-	void caclEndPoint( AcGePoint3d& endPt1, AcGePoint3d& endPt2 )
-	{
-		AcGeVector3d v = m_ept - m_spt;
-		v.normalize();
-
-		v.rotateBy( PI * 0.5, AcGeVector3d::kZAxis );
-		endPt1 = m_ept + v * m_width * 0.5;
-
-		v.rotateBy( PI, AcGeVector3d::kZAxis );
-		endPt2 = m_ept + v * m_width * 0.5;
-	}
-
-private:
-	AcGePoint3d m_spt, m_ept;
-	double m_width;
-	//静态成员变量，用于统计对象个数
-	static int count;
-};
-//初始化类静态成员变量
-int DoubleLine::count = 0;
 
 Graph::Graph(const cbm::CoalPtr& _coal, const cbm::DesignWorkSurfPtr& _ws, const cbm::DesignTechnologyPtr& _tech)
 : coal(_coal), work_surf(_ws), tech(_tech)
@@ -567,3 +494,5 @@ void DipGraph::drawCoal()
 	//绘制煤层
 	AcDbObjectId coalId = this->drawRect2(basePt, 0, Wc, Hc);
 }
+
+} // namespace P1

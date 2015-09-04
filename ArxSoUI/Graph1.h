@@ -8,6 +8,9 @@
 using namespace orm;
 using namespace cbm;
 
+namespace P1
+{
+
 //剖面图绘制基类
 class Graph
 {
@@ -107,8 +110,7 @@ private:
 	AcGePoint3d m_basePt;      // 绘图基点
 	AcDbObjectIdArray m_ents;  // 所有绘制的图元
 	AcGeMatrix3d m_mat;        // ucs坐标系变换矩阵
-
-};
+}; // class Graph
 
 //平面图(注:内部计算忽略了巷道的宽度值)
 //以工作面切眼巷道的中点为原点,煤层倾向方向为x轴正方向,走向方向(机巷->风巷)为y轴正方向
@@ -128,7 +130,7 @@ protected:
 	virtual void drawWsTunnel();
 	//绘制煤层
 	virtual void drawCoal();
-};
+}; // class PlanGraph
 
 //倾向剖面图
 //以工作面切眼巷道沿倾向剖面的的中点为原点,煤层倾向方向为x轴正方向,巷道的高度方向为y轴正方向
@@ -148,7 +150,7 @@ protected:
 	virtual void drawWsTunnel();
 	//绘制煤层
 	virtual void drawCoal();
-};
+}; // class HeadGraph
 
 //走向剖面图(利用自定义ucs简化计算过程)
 //以工作面切眼巷道的中点为原点,煤层走向方向(风巷->机巷)为x轴正方向,剖面的向上方向为y轴正方向
@@ -168,4 +170,6 @@ protected:
 	virtual void drawWsTunnel();
 	//绘制煤层
 	virtual void drawCoal();
-};
+}; // class DipGraph
+
+} // namespace P1

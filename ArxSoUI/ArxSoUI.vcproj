@@ -383,7 +383,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Graph.cpp"
+				RelativePath=".\DoubleLine.cpp"
 				>
 			</File>
 			<File
@@ -658,6 +658,18 @@
 					>
 				</File>
 			</Filter>
+			<Filter
+				Name="graph"
+				>
+				<File
+					RelativePath=".\Graph1.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Graph2.cpp"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Include Files"
@@ -665,10 +677,6 @@
 			>
 			<File
 				RelativePath=".\Data.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Graph.h"
 				>
 			</File>
 			<File
@@ -920,6 +928,22 @@
 				</File>
 				<File
 					RelativePath=".\WsGasFlowPredictWorkDialog.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="graph"
+				>
+				<File
+					RelativePath=".\DoubleLine.h"
+					>
+				</File>
+				<File
+					RelativePath=".\Graph1.h"
+					>
+				</File>
+				<File
+					RelativePath=".\Graph2.h"
 					>
 				</File>
 			</Filter>
