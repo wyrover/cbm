@@ -485,10 +485,10 @@ void ArxDrawHelper::DrawArrow( const AcGePoint3d& pt, double angle, double width
 	ArxUtilHelper::PostToModelSpace( pl );
 }
 
-AcDbObjectId ArxDrawHelper::DrawRect( const AcGePoint3d& pt, double angle, double width, double height )
+AcDbObjectId ArxDrawHelper::DrawRect( const AcGePoint3d& cnt, double angle, double width, double height )
 {
 	AcGePoint3dArray pts;
-	BuildRect( pt, angle, width, height, pts );
+	BuildRect( cnt, angle, width, height, pts );
 	return ArxDrawHelper::DrawPolyLine(pts, true);
 }
 

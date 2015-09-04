@@ -22,9 +22,8 @@ public:
 	AcGePoint3d getPoint() const;
 
 protected:
-	//绘图(煤层、工作面巷道、钻场、钻孔、底板岩巷)
-	//该虚函数被draw()函数调用
-	//如果派生类有其他处理,可重载该虚函数
+	//执行具体的绘图工作(设置坐标系、绘制煤层、工作面巷道、钻场、钻孔、底板岩巷)
+	//该虚函数被draw()函数调用。如果派生类有其他处理或特殊需要,可重载该虚函数
 	virtual void subDraw();
 	//绘制钻场
 	virtual void drawSites() = 0;
@@ -40,8 +39,11 @@ protected:
 protected:
 	//构造函数
 	Graph(const cbm::CoalPtr& coal, const cbm::DesignWorkSurfPtr& work_surf, const cbm::DesignTechnologyPtr& tech);
-	//记录所绘制的图元
-	void addEnt(const AcDbObjectId& objId);
+	//设置ucs坐标系(派生类如有需要,应在构造函数中调用该方法)
+	void setUcs(const AcGePoint3d& origin, const AcGeVector3d& xAxis, const AcGeVector3d& yAxis);
+
+	/** 辅助计算方法. */
+protected:
 	//计算煤层的尺寸(长-倾向, 宽-走向, 高-厚度)
 	void caclCoalExtent(double& Lc, double& Wc, double& Hc) const;
 	AcGePoint3d caclCoalBasePoint1() const;
@@ -56,11 +58,23 @@ protected:
 	AcGePoint3d caclSiteBasePoint1() const;
 	AcGePoint3d caclSiteBasePoint2() const;
 	AcGePoint3d caclSiteBasePoint3() const;
-	//图元坐标系变换
-	void tranform(const AcGeMatrix3d& mat);
 	//绘制一条巷道巷道上的钻场(gap_y有正负之分,决定钻场在巷道的哪一侧)
 	void drawSitesOnTunnel(const AcGePoint3d& spt, const AcGePoint3d& ept, double gap_x, double gap_y, double w, double h, double angle=0, bool excludeFirst=true);
 
+	/** 辅助绘图方法. */
+protected:
+	AcDbObjectId drawRect(const AcGePoint3d& cnt, double angle, double width, double height);
+	AcDbObjectId drawRect2(const AcGePoint3d& pt, double angle, double width, double height);
+	AcDbObjectId drawCircle(const AcGePoint3d& pt, double radius);
+	AcDbObjectId drawDoubleLine(const AcGePoint3d& spt, const AcGePoint3d& ept, double width);
+	AcDbObjectId drawMText(const AcGePoint3d& pt, double angle, const CString& text, double height);
+	AcDbObjectId drawLine(const AcGePoint3d& pt, double angle, double length);
+	AcDbObjectId drawLine(const AcGePoint3d& spt, const AcGePoint3d& ept);
+	AcDbObjectId drawAlignedDim(const AcGePoint3d& pt1,const AcGePoint3d& pt2,double offset=30,bool clockwise=true);
+	//记录所绘制的图元(仅Graph内部使用)
+	void addEnt(const AcDbObjectId& objId);
+
+	/** 计算和绘图用到的参数. */
 protected:
 	//必须的计算参数
 	//倾向长度和走向长度
@@ -81,15 +95,19 @@ protected:
 	double radius, pore_gap;
 	//上下左右边距(仅用于绘图美观,不参与实际计算)
 	double left_margin, right_margin, top_margin, bottom_margin;
-	
+
+	/** 上述计算参数都是从这3个对象指针中提取出来的. */
 protected:
+	cbm::CoalPtr coal;                 // 煤层指针
+	cbm::DesignWorkSurfPtr work_surf;  // 设计工作面指针
+	cbm::DesignTechnologyPtr tech;     // 设计抽采技术参数指针
+
+	/** ucs相关的数据. */
+private:
 	AcGePoint3d m_basePt;      // 绘图基点
 	AcDbObjectIdArray m_ents;  // 所有绘制的图元
+	AcGeMatrix3d m_mat;        // ucs坐标系变换矩阵
 
-protected:
-	cbm::CoalPtr coal;         // 煤层
-	cbm::DesignWorkSurfPtr work_surf; // 设计工作面
-	cbm::DesignTechnologyPtr tech; // 设计抽采技术参数
 };
 
 //平面图(注:内部计算忽略了巷道的宽度值)
@@ -140,7 +158,6 @@ public:
 	DipGraph(const cbm::CoalPtr& coal, const cbm::DesignWorkSurfPtr& work_surf, const cbm::DesignTechnologyPtr& tech);
 
 protected:
-	virtual void subDraw();
 	//绘制钻场
 	virtual void drawSites();
 	//绘制钻孔

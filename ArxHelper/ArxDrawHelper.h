@@ -57,7 +57,7 @@ public:
 	
 	static void DrawArrow( const AcGePoint3d& pt, double angle, double width, double length );
 	static void DrawLines(const AcGePoint3dArray& pts);
-	static AcDbObjectId DrawRect( const AcGePoint3d& pt, double angle, double width, double height );
+	static AcDbObjectId DrawRect( const AcGePoint3d& cnt, double angle, double width, double height );
 	static AcDbObjectId DrawRect2( const AcGePoint3d& pt, double angle, double width, double height );
 
 	static void CreatePolygonLoop( AcDbHatch* pHatch, const AcGePoint3dArray& pts );
