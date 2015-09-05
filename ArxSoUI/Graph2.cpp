@@ -7,8 +7,8 @@
 namespace P2
 {
 
-	Graph::Graph(const cbm::CoalPtr& _coal, const cbm::DesignWorkSurfPtr& _ws, const cbm::DesignTechnologyPtr& _tech)
-		: BaseGraph(), coal(_coal), work_surf(_ws), tech(_tech)
+	Graph::Graph(const cbm::CoalPtr& _coal, const cbm::DesignDrillingSurfTechnologyPtr& _tech)
+		: BaseGraph(), coal(_coal), tech(_tech)
 	{
 		left_margin = 20;
 		right_margin = 20;
@@ -16,18 +16,18 @@ namespace P2
 		top_margin = 20;
 
 		//倾向长度和走向长度
-		L1 = work_surf->l1, L2 = work_surf->l2;
+		L1 = tech->l1, L2 = tech->l2;
 		//煤层厚度和倾角(弧度)
 		thick = coal->thick, angle = DegToRad(coal->dip_angle);
 		//工作面巷道的宽度和高度
-		w = work_surf->w, h = work_surf->h;
+		w = tech->w, h = tech->h;
 		//左右上下帮距
 		left = tech->left_side, right = tech->right_side;
 		top = tech->top_side, bottom = tech->bottom_side;
 		//钻孔半径和钻孔底间距(孔径的单位是mm)
 		radius = tech->dp*0.5*0.001, pore_gap = tech->gbp;
 		//钻孔超前距
-		leading = tech->leading;
+		leading = tech->leading_dist;
 		//钻孔控制条带长度
 		L_stripe = tech->l_stripe;
 	}
@@ -50,7 +50,7 @@ namespace P2
 		Hc = thick;
 	}
 
-	PlanGraph::PlanGraph(const cbm::CoalPtr& coal, const cbm::DesignWorkSurfPtr& work_surf, const cbm::DesignTechnologyPtr& tech) : Graph(coal, work_surf, tech)
+	PlanGraph::PlanGraph(const cbm::CoalPtr& coal, const cbm::DesignDrillingSurfTechnologyPtr& tech) : Graph(coal,  tech)
 	{
 	}
 

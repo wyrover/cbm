@@ -11,6 +11,8 @@ using namespace cbm;
 
 GasDesignP11Dialog::GasDesignP11Dialog( BOOL bModal ) : AcadSouiDialog( _T( "layout:gas_design_p1_1" ), bModal )
 {
+	coal_id = 0;
+	region = 0;
 }
 
 GasDesignP11Dialog::~GasDesignP11Dialog()
@@ -40,9 +42,9 @@ LRESULT GasDesignP11Dialog::OnInitDialog( HWND hWnd, LPARAM lParam )
     m_WdEdit = FindChildByName2<SEdit>( L"Wd" );
     m_HdEdit = FindChildByName2<SEdit>( L"Hd" );
     m_DpEdit = FindChildByName2<SEdit>( L"Dp" );
-    m_GpEdit = FindChildByName2<SEdit>( L"Gp" );
+    m_PoreGapEdit = FindChildByName2<SEdit>( L"pore_gap" );
+    m_LsEdit = FindChildByName2<SEdit>( L"Ls" );
     m_WsEdit = FindChildByName2<SEdit>( L"Ws" );
-    m_HsEdit = FindChildByName2<SEdit>( L"Hs" );
     m_LeftEdit = FindChildByName2<SEdit>( L"left" );
     m_RightEdit = FindChildByName2<SEdit>( L"right" );
     m_TopEdit = FindChildByName2<SEdit>( L"top" );
@@ -50,8 +52,8 @@ LRESULT GasDesignP11Dialog::OnInitDialog( HWND hWnd, LPARAM lParam )
     m_VOffsetEdit = FindChildByName2<SEdit>( L"V_offset" );
     m_HOffsetEdit = FindChildByName2<SEdit>( L"H_offset" );
     m_NameEdit = FindChildByName2<SEdit>( L"name" );
-	m_GsEdit = FindChildByName2<SEdit>(L"Gs");
-	m_DsEdit = FindChildByName2<SEdit>(L"Ds");
+	m_SiteGapEdit = FindChildByName2<SEdit>(L"site_gap");
+	m_HsEdit = FindChildByName2<SEdit>(L"Hs");
 
     initDatas();
 
@@ -64,19 +66,19 @@ void GasDesignP11Dialog::OnPlaneGraphButtonClick()
 	if( coal == 0 ) return;
 
 	//查找煤层关联的设计工作面
-	DesignWorkSurfPtr work_surf = FIND_ONE( DesignWorkSurf, FKEY( Coal ), coal->getStringID() );
-	if( work_surf == 0 ) return;
+	DesignTechnologyPtr tech = FIND_ONE2( DesignTechnology, FKEY( Coal ), coal->getStringID(), FIELD(region), Utils::int_to_cstring(region) );
+	if( tech == 0 ) return;
 
 	//查找抽采技术
-	DesignTechnologyPtr technology = FIND_ONE( DesignTechnology, FKEY( Coal ), coal->getStringID() );
-	if( technology == 0 ) return;
+	DesignDrillingSurfTechnologyPtr tws_tech = FIND_BY_ID( DesignDrillingSurfTechnology, tech->param );
+	if( tws_tech == 0 ) return;
 
 	//交互选择基点坐标
 	AcGePoint3d pt;
 	getPoint(pt);
 
 	//绘制平面图
-	P1::PlanGraph graph(coal, work_surf, technology);
+	P1::PlanGraph graph(coal, tws_tech);
 	graph.setPoint(pt);
 	graph.draw();
 
@@ -89,19 +91,19 @@ void GasDesignP11Dialog::OnHeadGraphButtonClick()
 	if( coal == 0 ) return;
 
 	//查找煤层关联的设计工作面
-	DesignWorkSurfPtr work_surf = FIND_ONE( DesignWorkSurf, FKEY( Coal ), coal->getStringID() );
-	if( work_surf == 0 ) return;
+	DesignTechnologyPtr tech = FIND_ONE2( DesignTechnology, FKEY( Coal ), coal->getStringID(), FIELD(region), Utils::int_to_cstring(region) );
+	if( tech == 0 ) return;
 
 	//查找抽采技术
-	DesignTechnologyPtr technology = FIND_ONE( DesignTechnology, FKEY( Coal ), coal->getStringID() );
-	if( technology == 0 ) return;
+	DesignDrillingSurfTechnologyPtr tws_tech = FIND_BY_ID( DesignDrillingSurfTechnology, tech->param );
+	if( tws_tech == 0 ) return;
 
 	//交互选择基点坐标
 	AcGePoint3d pt;
 	getPoint(pt);
 
-	//绘制走向剖面图
-	P1::HeadGraph graph(coal, work_surf, technology);
+	//绘制平面图
+	P1::HeadGraph graph(coal, tws_tech);
 	graph.setPoint(pt);
 	graph.draw();
 
@@ -114,19 +116,19 @@ void GasDesignP11Dialog::OnDipGraphButtonClick()
 	if( coal == 0 ) return;
 
 	//查找煤层关联的设计工作面
-	DesignWorkSurfPtr work_surf = FIND_ONE( DesignWorkSurf, FKEY( Coal ), coal->getStringID() );
-	if( work_surf == 0 ) return;
+	DesignTechnologyPtr tech = FIND_ONE2( DesignTechnology, FKEY( Coal ), coal->getStringID(), FIELD(region), Utils::int_to_cstring(region) );
+	if( tech == 0 ) return;
 
 	//查找抽采技术
-	DesignTechnologyPtr technology = FIND_ONE( DesignTechnology, FKEY( Coal ), coal->getStringID() );
-	if( technology == 0 ) return;
+	DesignDrillingSurfTechnologyPtr tws_tech = FIND_BY_ID( DesignDrillingSurfTechnology, tech->param );
+	if( tws_tech == 0 ) return;
 
 	//交互选择基点坐标
 	AcGePoint3d pt;
 	getPoint(pt);
 
-	//绘制走向剖面图
-	P1::DipGraph graph(coal, work_surf, technology);
+	//绘制平面图
+	P1::DipGraph graph(coal, tws_tech);
 	graph.setPoint(pt);
 	graph.draw();
 
@@ -172,44 +174,49 @@ void GasDesignP11Dialog::OnSaveButtonClick()
 	Utils::cstring_to_double( ( LPCTSTR )m_DipAngleEdit->GetWindowText(), coal->dip_angle );
 	if( !coal->save() ) return;
 
-	//保存工作面数据
-	//查找煤层关联的设计工作面
-	DesignWorkSurfPtr work_surf = FIND_ONE( DesignWorkSurf, FKEY( Coal ), coal->getStringID() );
-	if( work_surf == 0 )
+	//查找掘进面抽采设计数据
+	DesignTechnologyPtr tech = FIND_ONE2( DesignTechnology, FKEY( Coal ), coal->getStringID(), FIELD(region), Utils::int_to_cstring(region) );
+	if( tech == 0 )
 	{
-		work_surf.reset( new DesignWorkSurf );
-		work_surf->coal = coal;
+		tech.reset( new DesignTechnology );
+		tech->region = region; // 属于掘进面抽采设计
+		tech->coal = coal;
+		//保存到数据库
+		if( !tech->save() ) return;
 	}
-	work_surf->name = m_NameEdit->GetWindowText();
-	Utils::cstring_to_double( ( LPCTSTR )m_L1Edit->GetWindowText(), work_surf->l1 );
-	Utils::cstring_to_double( ( LPCTSTR )m_L2Edit->GetWindowText(), work_surf->l2 );
-	Utils::cstring_to_double( ( LPCTSTR )m_WEdit->GetWindowText(), work_surf->w );
-	Utils::cstring_to_double( ( LPCTSTR )m_HEdit->GetWindowText(), work_surf->h );
-	if( !work_surf->save() ) return;
 
-	//保存抽采技术参数
-	DesignTechnologyPtr technology = FIND_ONE( DesignTechnology, FKEY( Coal ), coal->getStringID() );
-	if( technology == 0 )
+	DesignDrillingSurfTechnologyPtr tws_tech = FIND_BY_ID( DesignDrillingSurfTechnology, tech->param );
+	if( tws_tech == 0 )
 	{
-		technology.reset( new DesignTechnology );
-		technology->coal = coal;
+		tws_tech.reset( new DesignDrillingSurfTechnology );
+		tws_tech->design_technology = tech;
 	}
-	Utils::cstring_to_double( ( LPCTSTR )m_WdEdit->GetWindowText(), technology->wd );
-	Utils::cstring_to_double( ( LPCTSTR )m_HdEdit->GetWindowText(), technology->hd );
-	Utils::cstring_to_double( ( LPCTSTR )m_VOffsetEdit->GetWindowText(), technology->v_offset );
-	Utils::cstring_to_double( ( LPCTSTR )m_HOffsetEdit->GetWindowText(), technology->h_offset );
-	Utils::cstring_to_double( ( LPCTSTR )m_DpEdit->GetWindowText(), technology->dp );
-	Utils::cstring_to_double( ( LPCTSTR )m_GpEdit->GetWindowText(), technology->gp );
-	Utils::cstring_to_double( ( LPCTSTR )m_LeftEdit->GetWindowText(), technology->left_side );
-	Utils::cstring_to_double( ( LPCTSTR )m_RightEdit->GetWindowText(), technology->right_side );
-	Utils::cstring_to_double( ( LPCTSTR )m_TopEdit->GetWindowText(), technology->top_side );
-	Utils::cstring_to_double( ( LPCTSTR )m_BottomEdit->GetWindowText(), technology->bottom_side );
-	Utils::cstring_to_double( ( LPCTSTR )m_WsEdit->GetWindowText(), technology->ws );
-	Utils::cstring_to_double( ( LPCTSTR )m_HsEdit->GetWindowText(), technology->hs );
-	Utils::cstring_to_double( ( LPCTSTR )m_GsEdit->GetWindowText(), technology->gs );
-	Utils::cstring_to_double( ( LPCTSTR )m_DsEdit->GetWindowText(), technology->ds );
+	tws_tech->name = m_NameEdit->GetWindowText();
+	Utils::cstring_to_double( ( LPCTSTR )m_L1Edit->GetWindowText(), tws_tech->l1 );
+	Utils::cstring_to_double( ( LPCTSTR )m_L2Edit->GetWindowText(), tws_tech->l2 );
+	Utils::cstring_to_double( ( LPCTSTR )m_WEdit->GetWindowText(), tws_tech->w );
+	Utils::cstring_to_double( ( LPCTSTR )m_HEdit->GetWindowText(), tws_tech->h );
+	Utils::cstring_to_double( ( LPCTSTR )m_WdEdit->GetWindowText(), tws_tech->wd );
+	Utils::cstring_to_double( ( LPCTSTR )m_HdEdit->GetWindowText(), tws_tech->hd );
+	Utils::cstring_to_double( ( LPCTSTR )m_VOffsetEdit->GetWindowText(), tws_tech->v_offset );
+	Utils::cstring_to_double( ( LPCTSTR )m_HOffsetEdit->GetWindowText(), tws_tech->h_offset );
+	Utils::cstring_to_double( ( LPCTSTR )m_DpEdit->GetWindowText(), tws_tech->dp );
+	Utils::cstring_to_double( ( LPCTSTR )m_PoreGapEdit->GetWindowText(), tws_tech->gp );
+	Utils::cstring_to_double( ( LPCTSTR )m_LeftEdit->GetWindowText(), tws_tech->left_side );
+	Utils::cstring_to_double( ( LPCTSTR )m_RightEdit->GetWindowText(), tws_tech->right_side );
+	Utils::cstring_to_double( ( LPCTSTR )m_TopEdit->GetWindowText(), tws_tech->top_side );
+	Utils::cstring_to_double( ( LPCTSTR )m_BottomEdit->GetWindowText(), tws_tech->bottom_side );
+	Utils::cstring_to_double( ( LPCTSTR )m_LsEdit->GetWindowText(), tws_tech->ls );
+	Utils::cstring_to_double( ( LPCTSTR )m_WsEdit->GetWindowText(), tws_tech->ws );
+	Utils::cstring_to_double( ( LPCTSTR )m_SiteGapEdit->GetWindowText(), tws_tech->gs );
+	Utils::cstring_to_double( ( LPCTSTR )m_HsEdit->GetWindowText(), tws_tech->hs );
 	//保存到数据库
-	if( !technology->save() ) return;
+	if( !tws_tech->save() ) return;
+
+	//更新param id
+	/*DesignTechnologyPtr*/ tech = FIND_ONE( DesignTechnology, FKEY( Coal ), coal->getStringID() );
+	tech->param = tws_tech->getID();
+	if(!tech->save()) return;
 
 	SMessageBox( GetSafeHwnd(), _T( "保存数据成功" ), _T( "友情提示" ), MB_OK );
 }
@@ -223,34 +230,31 @@ void GasDesignP11Dialog::initDatas()
     m_ThickEdit->SetWindowText( Utils::double_to_cstring( coal->thick ) );
     m_DipAngleEdit->SetWindowText( Utils::double_to_cstring( coal->dip_angle ) );
 
-    //查找煤层关联的设计工作面
-    DesignWorkSurfPtr work_surf = FIND_ONE( DesignWorkSurf, FKEY( Coal ), coal->getStringID() );
-    if( work_surf != 0 )
-    {
-        m_L1Edit->SetWindowText( Utils::double_to_cstring( work_surf->l1 ) );
-        m_L2Edit->SetWindowText( Utils::double_to_cstring( work_surf->l2 ) );
-        m_WEdit->SetWindowText( Utils::double_to_cstring( work_surf->w ) );
-        m_HEdit->SetWindowText( Utils::double_to_cstring( work_surf->h ) );
-    }
-    //查找与煤层关联的抽采技术参数
-    DesignTechnologyPtr technology = FIND_ONE( DesignTechnology, FKEY( Coal ), coal->getStringID() );
-    if( technology != 0 )
-    {
-        m_WdEdit->SetWindowText( Utils::double_to_cstring( technology->wd ) );
-        m_HdEdit->SetWindowText( Utils::double_to_cstring( technology->hd ) );
-        m_VOffsetEdit->SetWindowText( Utils::double_to_cstring( technology->v_offset ) );
-        m_HOffsetEdit->SetWindowText( Utils::double_to_cstring( technology->h_offset ) );
-        m_DpEdit->SetWindowText( Utils::double_to_cstring( technology->dp ) );
-        m_GpEdit->SetWindowText( Utils::double_to_cstring( technology->gp ) );
-        m_LeftEdit->SetWindowText( Utils::double_to_cstring( technology->left_side ) );
-        m_RightEdit->SetWindowText( Utils::double_to_cstring( technology->right_side ) );
-        m_TopEdit->SetWindowText( Utils::double_to_cstring( technology->top_side ) );
-        m_BottomEdit->SetWindowText( Utils::double_to_cstring( technology->bottom_side ) );
-        m_WsEdit->SetWindowText( Utils::double_to_cstring( technology->ws ) );
-        m_HsEdit->SetWindowText( Utils::double_to_cstring( technology->hs ) );
-		m_GsEdit->SetWindowText( Utils::double_to_cstring( technology->gs ) );
-		m_DsEdit->SetWindowText( Utils::double_to_cstring( technology->ds ) );
-    }
+	//查找掘进面抽采设计数据
+	DesignTechnologyPtr tech = FIND_ONE2( DesignTechnology, FKEY( Coal ), coal->getStringID(), FIELD(region), Utils::int_to_cstring(region) );
+	if( tech == 0 ) return;
+
+	DesignDrillingSurfTechnologyPtr tws_tech = FIND_BY_ID( DesignDrillingSurfTechnology, tech->param );
+	if( tws_tech == 0 ) return;
+
+    m_L1Edit->SetWindowText( Utils::double_to_cstring( tws_tech->l1 ) );
+    m_L2Edit->SetWindowText( Utils::double_to_cstring( tws_tech->l2 ) );
+    m_WEdit->SetWindowText( Utils::double_to_cstring( tws_tech->w ) );
+    m_HEdit->SetWindowText( Utils::double_to_cstring( tws_tech->h ) );
+    m_WdEdit->SetWindowText( Utils::double_to_cstring( tws_tech->wd ) );
+    m_HdEdit->SetWindowText( Utils::double_to_cstring( tws_tech->hd ) );
+    m_VOffsetEdit->SetWindowText( Utils::double_to_cstring( tws_tech->v_offset ) );
+    m_HOffsetEdit->SetWindowText( Utils::double_to_cstring( tws_tech->h_offset ) );
+    m_DpEdit->SetWindowText( Utils::double_to_cstring( tws_tech->dp ) );
+    m_PoreGapEdit->SetWindowText( Utils::double_to_cstring( tws_tech->gp ) );
+    m_LeftEdit->SetWindowText( Utils::double_to_cstring( tws_tech->left_side ) );
+    m_RightEdit->SetWindowText( Utils::double_to_cstring( tws_tech->right_side ) );
+    m_TopEdit->SetWindowText( Utils::double_to_cstring( tws_tech->top_side ) );
+    m_BottomEdit->SetWindowText( Utils::double_to_cstring( tws_tech->bottom_side ) );
+    m_LsEdit->SetWindowText( Utils::double_to_cstring( tws_tech->ls ) );
+    m_WsEdit->SetWindowText( Utils::double_to_cstring( tws_tech->ws ) );
+	m_SiteGapEdit->SetWindowText( Utils::double_to_cstring( tws_tech->gs ) );
+	m_HsEdit->SetWindowText( Utils::double_to_cstring( tws_tech->hs ) );
 }
 
 bool GasDesignP11Dialog::getPoint(AcGePoint3d& pt)

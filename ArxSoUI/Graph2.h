@@ -25,7 +25,7 @@ namespace P2
 
 	protected:
 		//构造函数
-		Graph(const cbm::CoalPtr& coal, const cbm::DesignWorkSurfPtr& work_surf, const cbm::DesignTechnologyPtr& tech);
+		Graph(const cbm::CoalPtr& coal, const cbm::DesignDrillingSurfTechnologyPtr& tech);
 		//执行具体的绘图工作(绘制煤层、工作面巷道、钻场、钻孔等等)
 		virtual void subDraw();
 
@@ -53,8 +53,7 @@ namespace P2
 		/** 上述计算参数都是从这3个对象指针中提取出来的. */
 	protected:
 		cbm::CoalPtr coal;                 // 煤层指针
-		cbm::DesignWorkSurfPtr work_surf;  // 设计工作面指针
-		cbm::DesignTechnologyPtr tech;     // 设计抽采技术参数指针
+		cbm::DesignDrillingSurfTechnologyPtr tech;     // 设计抽采技术参数指针
 
 	}; // class Graph
 
@@ -63,7 +62,7 @@ namespace P2
 	class PlanGraph : public Graph
 	{
 	public:
-		PlanGraph(const cbm::CoalPtr& coal, const cbm::DesignWorkSurfPtr& work_surf, const cbm::DesignTechnologyPtr& tech);
+		PlanGraph(const cbm::CoalPtr& coal, const cbm::DesignDrillingSurfTechnologyPtr& tech);
 
 	protected:
 		//绘制钻孔

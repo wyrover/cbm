@@ -7,8 +7,8 @@
 namespace P1
 {
 
-Graph::Graph(const cbm::CoalPtr& _coal, const cbm::DesignWorkSurfPtr& _ws, const cbm::DesignTechnologyPtr& _tech)
-: BaseGraph(), coal(_coal), work_surf(_ws), tech(_tech)
+Graph::Graph(const cbm::CoalPtr& _coal, const cbm::DesignDrillingSurfTechnologyPtr& _tech)
+: BaseGraph(), coal(_coal), tech(_tech)
 {
 	left_margin = 20;
 	right_margin = 20;
@@ -16,18 +16,18 @@ Graph::Graph(const cbm::CoalPtr& _coal, const cbm::DesignWorkSurfPtr& _ws, const
 	top_margin = 40;
 
 	//倾向长度和走向长度
-	L1 = work_surf->l1, L2 = work_surf->l2;
+	L1 = tech->l1, L2 = tech->l2;
 	//煤层厚度和倾角(弧度)
 	thick = coal->thick, angle = DegToRad(coal->dip_angle);
 	//工作面巷道的宽度和高度
-	w = work_surf->w, h = work_surf->h;
+	w = tech->w, h = tech->h;
 	//底板巷的宽度和高度
 	wd = tech->wd, hd = tech->hd;
 	//左右上下帮距
 	left = tech->left_side, right = tech->right_side;
 	top = tech->top_side, bottom = tech->bottom_side;
-	//钻场宽度、高度和深度
-	Ls = tech->ws, Ws = tech->hs, Hs = tech->ds;
+	//钻场长度、宽度和高度
+	Ls = tech->ls, Ws = tech->ws, Hs = tech->hs;
 	//岩巷和工作面的水平投影距离、垂距
 	h_offset = tech->h_offset, v_offset = tech->v_offset;
 	//钻孔半径和抽采半径(孔径的单位是mm)
@@ -133,7 +133,7 @@ void Graph::drawSitesOnTunnel(const AcGePoint3d& spt, const AcGePoint3d& ept, do
 	}
 }
 
-PlanGraph::PlanGraph(const cbm::CoalPtr& coal, const cbm::DesignWorkSurfPtr& work_surf, const cbm::DesignTechnologyPtr& tech) : Graph(coal, work_surf, tech)
+PlanGraph::PlanGraph(const cbm::CoalPtr& coal, const cbm::DesignDrillingSurfTechnologyPtr& tech) : Graph(coal, tech)
 {
 }
 
@@ -221,14 +221,14 @@ void PlanGraph::drawCoal()
 		data.m_name = _T("测试");
 		data.m_thick = coal->thick;
 		data.m_angle = coal->dip_angle;
-		data.m_width = work_surf->l1;
-		data.m_height = work_surf->l2;
+		data.m_width = tech->l1;
+		data.m_height = tech->l2;
 		data.m_pt = basePt;
 		data.update(true);
 	}
 }
 
-HeadGraph::HeadGraph(const cbm::CoalPtr& coal, const cbm::DesignWorkSurfPtr& work_surf, const cbm::DesignTechnologyPtr& tech) : Graph(coal, work_surf, tech)
+HeadGraph::HeadGraph(const cbm::CoalPtr& coal, const cbm::DesignDrillingSurfTechnologyPtr& tech) : Graph(coal, tech)
 {
 
 }
@@ -317,7 +317,7 @@ void HeadGraph::drawCoal()
 	AcDbObjectId coalId = this->drawRect2(basePt, 0, Lc, Hc);
 }
 
-DipGraph::DipGraph(const cbm::CoalPtr& coal, const cbm::DesignWorkSurfPtr& work_surf, const cbm::DesignTechnologyPtr& tech) : Graph(coal, work_surf, tech)
+DipGraph::DipGraph(const cbm::CoalPtr& coal, const cbm::DesignDrillingSurfTechnologyPtr& tech) : Graph(coal, tech)
 {
 	//建立ucs
 	AcGeVector3d xAxis(AcGeVector3d::kXAxis), yAxis(AcGeVector3d::kYAxis);

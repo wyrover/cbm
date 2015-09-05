@@ -1,20 +1,20 @@
 #pragma once
 #include "AcadSouiDialog.h"
 
-class GasDesignP11Dialog : public AcadSouiDialog
+class GasDesignP12Dialog : public AcadSouiDialog
 {
 
 	/** 构造和析构函数 */
 public:
-	GasDesignP11Dialog(BOOL bModal = FALSE);
-	~GasDesignP11Dialog(void);
+	GasDesignP12Dialog(BOOL bModal = FALSE);
+	~GasDesignP12Dialog(void);
 
 	/** 控件消息处理 */
 protected:
 	void OnHeadGraphButtonClick();
+	void OnHelpButtonClick();
 	void OnDipGraphButtonClick();
 	void OnPlaneGraphButtonClick();
-	void OnHelpButtonClick();
 	void OnSaveButtonClick();
 
 	/** 菜单消息 */
@@ -30,43 +30,36 @@ protected:
 	//控件消息映射表
 	EVENT_MAP_BEGIN()
 		EVENT_NAME_COMMAND(_T("head_graph"), OnHeadGraphButtonClick)
+		EVENT_NAME_COMMAND(_T("help"), OnHelpButtonClick)
 		EVENT_NAME_COMMAND(_T("dip_graph"), OnDipGraphButtonClick)
 		EVENT_NAME_COMMAND(_T("plane_graph"), OnPlaneGraphButtonClick)
-		EVENT_NAME_COMMAND(_T("help"), OnHelpButtonClick)
 		EVENT_NAME_COMMAND(_T("save"), OnSaveButtonClick)
 		CHAIN_EVENT_MAP(AcadSouiDialog)
-		EVENT_MAP_END()
-
-		//HOST消息(WINDOWS消息)映射表
-		BEGIN_MSG_MAP_EX(GasDesignP11Dialog)
+	EVENT_MAP_END()
+	
+//HOST消息(WINDOWS消息)映射表
+	BEGIN_MSG_MAP_EX(GasDesignP12Dialog)
 		MSG_WM_INITDIALOG(OnInitDialog)
 		MSG_WM_COMMAND(OnCommand)
 		CHAIN_MSG_MAP(AcadSouiDialog)
 		REFLECT_NOTIFICATIONS_EX()
-		END_MSG_MAP()
+	END_MSG_MAP()
 
 protected:
 	SEdit* m_ThickEdit;
 	SEdit* m_DipAngleEdit;
-	SEdit* m_L1Edit;
-	SEdit* m_L2Edit;
+	SEdit* m_LmEdit;
 	SEdit* m_WEdit;
 	SEdit* m_HEdit;
-	SEdit* m_WdEdit;
-	SEdit* m_HdEdit;
 	SEdit* m_DpEdit;
-	SEdit* m_PoreGapEdit;
-	SEdit* m_LsEdit;
-	SEdit* m_WsEdit;
+	SEdit* m_GbpEdit;
 	SEdit* m_LeftEdit;
 	SEdit* m_RightEdit;
 	SEdit* m_TopEdit;
 	SEdit* m_BottomEdit;
-	SEdit* m_VOffsetEdit;
-	SEdit* m_HOffsetEdit;
 	SEdit* m_NameEdit;
-	SEdit* m_SiteGapEdit;
-	SEdit* m_HsEdit;
+	SEdit* m_LeadingDistEdit;
+	SEdit* m_LStripeEdit;
 
 public:
 	int coal_id; // 外部传入
@@ -75,4 +68,5 @@ public:
 private:
 	void initDatas();
 	bool getPoint(AcGePoint3d& pt);
+
 };

@@ -8,15 +8,17 @@ drop table if exists cbm_coal;
 
 drop table if exists cbm_complexity;
 
+drop table if exists cbm_design_drilling_surf_technology;
+
+drop table if exists cbm_design_goaf_technology;
+
 drop table if exists cbm_design_pore;
 
 drop table if exists cbm_design_site;
 
 drop table if exists cbm_design_technology;
 
-drop table if exists cbm_design_tunnel;
-
-drop table if exists cbm_design_work_surf;
+drop table if exists cbm_design_work_surf_technology;
 
 drop table if exists cbm_drilling_radius_param;
 
@@ -180,6 +182,46 @@ create table cbm_complexity
    primary key (id)
 );
 
+create table cbm_design_drilling_surf_technology
+(
+   id                   int not null auto_increment,
+   cbm_design_technology_id int,
+   name                 varchar(255),
+   comment              varchar(255),
+   v_offset             decimal(8,2),
+   h_offset             decimal(8,2),
+   dp                   decimal(8,2),
+   gp                   decimal(8,2),
+   leading_dist         decimal(8,2),
+   gbp                  decimal(8,2),
+   l_stripe             decimal(8,2),
+   ls                   decimal(8,2),
+   ws                   decimal(8,2),
+   hs                   decimal(8,2),
+   gs                   decimal(8,2),
+   wd                   decimal(8,2),
+   hd                   decimal(8,2),
+   l1                   decimal(8,2),
+   l2                   decimal(8,2),
+   w                    decimal(8,2),
+   h                    decimal(8,2),
+   top_side             decimal(8,2),
+   bottom_side          decimal(8,2),
+   left_side            decimal(8,2),
+   right_side           decimal(8,2),
+   lm                   decimal(8,2),
+   primary key (id)
+);
+
+create table cbm_design_goaf_technology
+(
+   id                   int not null,
+   cbm_design_technology_id int,
+   name                 varchar(255),
+   comment              varchar(255),
+   primary key (id)
+);
+
 create table cbm_design_pore
 (
    id                   int not null auto_increment,
@@ -202,7 +244,6 @@ create table cbm_design_pore
 create table cbm_design_site
 (
    id                   int not null auto_increment,
-   cbm_design_tunnel_id int,
    name                 varchar(255),
    w                    decimal(8,2),
    h                    decimal(8,2),
@@ -216,60 +257,21 @@ create table cbm_design_site
 create table cbm_design_technology
 (
    id                   int not null auto_increment,
+   cbm_design_site_id   int,
    cbm_coal_id          int,
    name                 varchar(255),
-   v_offset             decimal(8,2),
-   h_offset             decimal(8,2),
-   comment              varchar(255),
-   top_side             decimal(8,2),
-   bottom_side          decimal(8,2),
-   left_side            decimal(8,2),
-   right_side           decimal(8,2),
-   dp                   decimal(8,2),
-   gp                   decimal(8,2),
-   gbp                  decimal(8,2),
-   "leading"            decimal(8,2),
-   l_stripe             decimal(8,2),
-   ws                   decimal(8,2),
-   hs                   decimal(8,2),
-   ds                   decimal(8,2),
-   gs                   decimal(8,2),
-   wd                   decimal(8,2),
-   hd                   decimal(8,2),
-   primary key (id)
-);
-
-create table cbm_design_tunnel
-(
-   id                   int not null auto_increment,
-   cbm_design_work_surf_id int,
-   name                 varchar(255),
-   w                    decimal(8,2),
-   h                    decimal(8,2),
-   type                 int,
-   x1                   decimal(8,2),
-   y1                   decimal(8,2),
-   z1                   decimal(8,2),
-   x2                   decimal(8,2),
-   y2                   decimal(8,2),
-   z2                   decimal(8,2),
+   region               int,
+   param                int,
    comment              varchar(255),
    primary key (id)
 );
 
-create table cbm_design_work_surf
+create table cbm_design_work_surf_technology
 (
-   id                   int not null auto_increment,
-   cbm_coal_id          int,
+   id                   int not null,
+   cbm_design_technology_id int,
    name                 varchar(255),
-   l1                   decimal(8,2),
-   l2                   decimal(8,2),
    comment              varchar(255),
-   x0                   decimal(8,2),
-   y0                   decimal(8,2),
-   z0                   decimal(8,2),
-   w                    decimal(8,2),
-   h                    decimal(8,2),
    primary key (id)
 );
 
@@ -620,20 +622,23 @@ alter table cbm_adj_layer add constraint fk_relationship_32 foreign key (cbm_coa
 alter table cbm_coal add constraint fk_relationship_1 foreign key (cbm_mine_id)
       references cbm_mine (id) on delete cascade on update restrict;
 
+alter table cbm_design_drilling_surf_technology add constraint fk_relationship_31 foreign key (cbm_design_technology_id)
+      references cbm_design_technology (id) on delete cascade on update restrict;
+
+alter table cbm_design_goaf_technology add constraint fk_relationship_39 foreign key (cbm_design_technology_id)
+      references cbm_design_technology (id) on delete cascade on update restrict;
+
 alter table cbm_design_pore add constraint fk_relationship_38 foreign key (cbm_design_site_id)
       references cbm_design_site (id) on delete cascade on update restrict;
-
-alter table cbm_design_site add constraint fk_relationship_31 foreign key (cbm_design_tunnel_id)
-      references cbm_design_tunnel (id) on delete cascade on update restrict;
 
 alter table cbm_design_technology add constraint fk_relationship_35 foreign key (cbm_coal_id)
       references cbm_coal (id) on delete cascade on update restrict;
 
-alter table cbm_design_tunnel add constraint fk_relationship_36 foreign key (cbm_design_work_surf_id)
-      references cbm_design_work_surf (id) on delete cascade on update restrict;
+alter table cbm_design_technology add constraint fk_relationship_36 foreign key (cbm_design_site_id)
+      references cbm_design_site (id) on delete cascade on update restrict;
 
-alter table cbm_design_work_surf add constraint fk_relationship_37 foreign key (cbm_coal_id)
-      references cbm_coal (id) on delete cascade on update restrict;
+alter table cbm_design_work_surf_technology add constraint fk_relationship_37 foreign key (cbm_design_technology_id)
+      references cbm_design_technology (id) on delete cascade on update restrict;
 
 alter table cbm_drilling_radius_param add constraint fk_relationship_12 foreign key (cbm_coal_id)
       references cbm_coal (id) on delete cascade on update restrict;

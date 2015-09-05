@@ -534,6 +534,14 @@
 					>
 				</File>
 				<File
+					RelativePath=".\GasDesignP12Dialog.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\GasDesignQuestionDialog.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\HighDrillingDesignDialog.cpp"
 					>
 				</File>
@@ -808,6 +816,14 @@
 				</File>
 				<File
 					RelativePath=".\GasDesignP11Dialog.h"
+					>
+				</File>
+				<File
+					RelativePath=".\GasDesignP12Dialog.h"
+					>
+				</File>
+				<File
+					RelativePath=".\GasDesignQuestionDialog.h"
 					>
 				</File>
 				<File

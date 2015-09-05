@@ -14,11 +14,12 @@ class AdjLayer;
 class Base;
 class Coal;
 class Complexity;
+class DesignDrillingSurfTechnology;
+class DesignGoafTechnology;
 class DesignPore;
 class DesignSite;
 class DesignTechnology;
-class DesignTunnel;
-class DesignWorkSurf;
+class DesignWorkSurfTechnology;
 class DrillingRadiusParam;
 class DrillingSurf;
 class EvalUnit;
@@ -46,11 +47,12 @@ typedef boost::shared_ptr<AdjLayer> AdjLayerPtr;
 typedef boost::shared_ptr<Base> BasePtr;
 typedef boost::shared_ptr<Coal> CoalPtr;
 typedef boost::shared_ptr<Complexity> ComplexityPtr;
+typedef boost::shared_ptr<DesignDrillingSurfTechnology> DesignDrillingSurfTechnologyPtr;
+typedef boost::shared_ptr<DesignGoafTechnology> DesignGoafTechnologyPtr;
 typedef boost::shared_ptr<DesignPore> DesignPorePtr;
 typedef boost::shared_ptr<DesignSite> DesignSitePtr;
 typedef boost::shared_ptr<DesignTechnology> DesignTechnologyPtr;
-typedef boost::shared_ptr<DesignTunnel> DesignTunnelPtr;
-typedef boost::shared_ptr<DesignWorkSurf> DesignWorkSurfPtr;
+typedef boost::shared_ptr<DesignWorkSurfTechnology> DesignWorkSurfTechnologyPtr;
 typedef boost::shared_ptr<DrillingRadiusParam> DrillingRadiusParamPtr;
 typedef boost::shared_ptr<DrillingSurf> DrillingSurfPtr;
 typedef boost::shared_ptr<EvalUnit> EvalUnitPtr;
@@ -212,6 +214,56 @@ public:
 
 }; // class Complexity
 
+class ARXDAO_DLLIMPEXP DesignDrillingSurfTechnology : public orm::Record
+{
+public:
+	static CString Table();
+	static orm::RecordPtr Create();
+
+public:
+	DesignDrillingSurfTechnology();
+	orm::RecordPtr design_technology;
+	CString name;
+	CString comment;
+	double v_offset;
+	double h_offset;
+	double dp;
+	double gp;
+	double leading_dist;
+	double gbp;
+	double l_stripe;
+	double ls;
+	double ws;
+	double hs;
+	double gs;
+	double wd;
+	double hd;
+	double l1;
+	double l2;
+	double w;
+	double h;
+	double top_side;
+	double bottom_side;
+	double left_side;
+	double right_side;
+	double lm;
+
+}; // class DesignDrillingSurfTechnology
+
+class ARXDAO_DLLIMPEXP DesignGoafTechnology : public orm::Record
+{
+public:
+	static CString Table();
+	static orm::RecordPtr Create();
+
+public:
+	DesignGoafTechnology();
+	orm::RecordPtr design_technology;
+	CString name;
+	CString comment;
+
+}; // class DesignGoafTechnology
+
 class ARXDAO_DLLIMPEXP DesignPore : public orm::Record
 {
 public:
@@ -244,7 +296,6 @@ public:
 
 public:
 	DesignSite();
-	orm::RecordPtr design_tunnel;
 	CString name;
 	double w;
 	double h;
@@ -263,72 +314,28 @@ public:
 
 public:
 	DesignTechnology();
+	orm::RecordPtr design_site;
 	orm::RecordPtr coal;
 	CString name;
-	double v_offset;
-	double h_offset;
+	int region;
+	int param;
 	CString comment;
-	double top_side;
-	double bottom_side;
-	double left_side;
-	double right_side;
-	double dp;
-	double gp;
-	double ws;
-	double hs;
-	double wd;
-	double hd;
-	double gs;
-	double ds;
-	double gbp;
-	double leading;
-	double l_stripe;
 
 }; // class DesignTechnology
 
-class ARXDAO_DLLIMPEXP DesignTunnel : public orm::Record
+class ARXDAO_DLLIMPEXP DesignWorkSurfTechnology : public orm::Record
 {
 public:
 	static CString Table();
 	static orm::RecordPtr Create();
 
 public:
-	DesignTunnel();
-	orm::RecordPtr design_work_surf;
+	DesignWorkSurfTechnology();
+	orm::RecordPtr design_technology;
 	CString name;
-	double w;
-	double h;
-	int type;
-	double x1;
-	double y1;
-	double z1;
-	double x2;
-	double y2;
-	double z2;
 	CString comment;
 
-}; // class DesignTunnel
-
-class ARXDAO_DLLIMPEXP DesignWorkSurf : public orm::Record
-{
-public:
-	static CString Table();
-	static orm::RecordPtr Create();
-
-public:
-	DesignWorkSurf();
-	orm::RecordPtr coal;
-	CString name;
-	double l1;
-	double l2;
-	CString comment;
-	double x0;
-	double y0;
-	double z0;
-	double w;
-	double h;
-
-}; // class DesignWorkSurf
+}; // class DesignWorkSurfTechnology
 
 class ARXDAO_DLLIMPEXP DrillingRadiusParam : public orm::Record
 {

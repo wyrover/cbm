@@ -11,19 +11,11 @@ public:
 
 	/** 控件消息处理 */
 protected:
-	void OnP11ButtonClick();
-	void OnP12ButtonClick();
-	void OnP13ButtonClick();
-	void OnP21ButtonClick();
-	void OnP22ButtonClick();
-	void OnP23ButtonClick();
-	void OnP24ButtonClick();
-	void OnP25ButtonClick();
-	void OnP31ButtonClick();
-	void OnP32ButtonClick();
-	void OnP33ButtonClick();
-	void OnP34ButtonClick();
 	void OnCoalComboxSelChanged(SOUI::EventArgs *pEvt);
+	void OnTwsDesignButtonClick();
+	void OnWsDesignButtonClick();
+	void OnGoafDesignButtonClick();
+	void OnSaveButtonClick();
 
 	/** 菜单消息 */
 protected:
@@ -37,19 +29,11 @@ protected:
 
 	//控件消息映射表
 	EVENT_MAP_BEGIN()
-		EVENT_NAME_COMMAND(_T("P1_1"), OnP11ButtonClick)
-		EVENT_NAME_COMMAND(_T("P1_2"), OnP12ButtonClick)
-		EVENT_NAME_COMMAND(_T("P1_3"), OnP13ButtonClick)
-		EVENT_NAME_COMMAND(_T("P2_1"), OnP21ButtonClick)
-		EVENT_NAME_COMMAND(_T("P2_2"), OnP22ButtonClick)
-		EVENT_NAME_COMMAND(_T("P2_3"), OnP23ButtonClick)
-		EVENT_NAME_COMMAND(_T("P2_4"), OnP24ButtonClick)
-		EVENT_NAME_COMMAND(_T("P2_5"), OnP25ButtonClick)
-		EVENT_NAME_COMMAND(_T("P3_1"), OnP31ButtonClick)
-		EVENT_NAME_COMMAND(_T("P3_2"), OnP32ButtonClick)
-		EVENT_NAME_COMMAND(_T("P3_3"), OnP33ButtonClick)
-		EVENT_NAME_COMMAND(_T("P3_4"), OnP34ButtonClick)
 		EVENT_NAME_HANDLER(_T("coal"), EVT_CB_SELCHANGE, OnCoalComboxSelChanged)
+		EVENT_NAME_COMMAND(_T("tws_design"), OnTwsDesignButtonClick)
+		EVENT_NAME_COMMAND(_T("ws_design"), OnWsDesignButtonClick)
+		EVENT_NAME_COMMAND(_T("goaf_design"), OnGoafDesignButtonClick)
+		EVENT_NAME_COMMAND(_T("save"), OnSaveButtonClick)
 		CHAIN_EVENT_MAP(AcadSouiDialog)
 	EVENT_MAP_END()
 	
@@ -63,6 +47,8 @@ protected:
 
 protected:
 	SComboBox* m_CoalCombox;
+	SEdit* m_ThickEdit;
+	SEdit* m_DipAngleEdit;
 
 public:
 	int mine_id;

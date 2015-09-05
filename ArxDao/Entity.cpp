@@ -238,6 +238,88 @@ Complexity::Complexity() : orm::Record(Complexity::Table())
 	REG_ATTRIB(comment, comment);
 }
 
+CString DesignDrillingSurfTechnology::Table()
+{
+	return _T("cbm_design_drilling_surf_technology");
+}
+
+orm::RecordPtr DesignDrillingSurfTechnology::Create()
+{
+	return orm::RecordPtr(new DesignDrillingSurfTechnology());
+}
+
+DesignDrillingSurfTechnology::DesignDrillingSurfTechnology() : orm::Record(DesignDrillingSurfTechnology::Table())
+{
+	name = _T("");
+	comment = _T("");
+	v_offset = 0.0;
+	h_offset = 0.0;
+	dp = 0.0;
+	gp = 0.0;
+	leading_dist = 0.0;
+	gbp = 0.0;
+	l_stripe = 0.0;
+	ls = 0.0;
+	ws = 0.0;
+	hs = 0.0;
+	gs = 0.0;
+	wd = 0.0;
+	hd = 0.0;
+	l1 = 0.0;
+	l2 = 0.0;
+	w = 0.0;
+	h = 0.0;
+	top_side = 0.0;
+	bottom_side = 0.0;
+	left_side = 0.0;
+	right_side = 0.0;
+	lm = 0.0;
+	REG_ATTRIB(name, name);
+	REG_ATTRIB(comment, comment);
+	REG_ATTRIB(v_offset, v_offset);
+	REG_ATTRIB(h_offset, h_offset);
+	REG_ATTRIB(dp, dp);
+	REG_ATTRIB(gp, gp);
+	REG_ATTRIB(leading_dist, leading_dist);
+	REG_ATTRIB(gbp, gbp);
+	REG_ATTRIB(l_stripe, l_stripe);
+	REG_ATTRIB(ls, ls);
+	REG_ATTRIB(ws, ws);
+	REG_ATTRIB(hs, hs);
+	REG_ATTRIB(gs, gs);
+	REG_ATTRIB(wd, wd);
+	REG_ATTRIB(hd, hd);
+	REG_ATTRIB(l1, l1);
+	REG_ATTRIB(l2, l2);
+	REG_ATTRIB(w, w);
+	REG_ATTRIB(h, h);
+	REG_ATTRIB(top_side, top_side);
+	REG_ATTRIB(bottom_side, bottom_side);
+	REG_ATTRIB(left_side, left_side);
+	REG_ATTRIB(right_side, right_side);
+	REG_ATTRIB(lm, lm);
+	REG_FOREGIN_KEY(cbm_design_technology_id, design_technology, &DesignTechnology::Create);
+}
+
+CString DesignGoafTechnology::Table()
+{
+	return _T("cbm_design_goaf_technology");
+}
+
+orm::RecordPtr DesignGoafTechnology::Create()
+{
+	return orm::RecordPtr(new DesignGoafTechnology());
+}
+
+DesignGoafTechnology::DesignGoafTechnology() : orm::Record(DesignGoafTechnology::Table())
+{
+	name = _T("");
+	comment = _T("");
+	REG_ATTRIB(name, name);
+	REG_ATTRIB(comment, comment);
+	REG_FOREGIN_KEY(cbm_design_technology_id, design_technology, &DesignTechnology::Create);
+}
+
 CString DesignPore::Table()
 {
 	return _T("cbm_design_pore");
@@ -303,7 +385,6 @@ DesignSite::DesignSite() : orm::Record(DesignSite::Table())
 	REG_ATTRIB(y, y);
 	REG_ATTRIB(z, z);
 	REG_ATTRIB(comment, comment);
-	REG_FOREGIN_KEY(cbm_design_tunnel_id, design_tunnel, &DesignTunnel::Create);
 }
 
 CString DesignTechnology::Table()
@@ -319,114 +400,34 @@ orm::RecordPtr DesignTechnology::Create()
 DesignTechnology::DesignTechnology() : orm::Record(DesignTechnology::Table())
 {
 	name = _T("");
-	v_offset = 0.0;
-	h_offset = 0.0;
+	region = 0;
+	param = 0;
 	comment = _T("");
-	top_side = 0.0;
-	bottom_side = 0.0;
-	left_side = 0.0;
-	right_side = 0.0;
-	dp = 0.0;
-	gp = 0.0;
-	ws = 0.0;
-	hs = 0.0;
-	wd = 0.0;
-	hd = 0.0;
-	gs = 0.0;
-	ds = 0.0;
-	gbp = 0.0;
-	leading = 0.0;
-	l_stripe = 0.0;
 	REG_ATTRIB(name, name);
-	REG_ATTRIB(v_offset, v_offset);
-	REG_ATTRIB(h_offset, h_offset);
+	REG_ATTRIB(region, region);
+	REG_ATTRIB(param, param);
 	REG_ATTRIB(comment, comment);
-	REG_ATTRIB(top_side, top_side);
-	REG_ATTRIB(bottom_side, bottom_side);
-	REG_ATTRIB(left_side, left_side);
-	REG_ATTRIB(right_side, right_side);
-	REG_ATTRIB(dp, dp);
-	REG_ATTRIB(gp, gp);
-	REG_ATTRIB(ws, ws);
-	REG_ATTRIB(hs, hs);
-	REG_ATTRIB(wd, wd);
-	REG_ATTRIB(hd, hd);
-	REG_ATTRIB(gs, gs);
-	REG_ATTRIB(ds, ds);
-	REG_ATTRIB(gbp, gbp);
-	REG_ATTRIB(leading, leading);
-	REG_ATTRIB(l_stripe, l_stripe);
+	REG_FOREGIN_KEY(cbm_design_site_id, design_site, &DesignSite::Create);
 	REG_FOREGIN_KEY(cbm_coal_id, coal, &Coal::Create);
 }
 
-CString DesignTunnel::Table()
+CString DesignWorkSurfTechnology::Table()
 {
-	return _T("cbm_design_tunnel");
+	return _T("cbm_design_work_surf_technology");
 }
 
-orm::RecordPtr DesignTunnel::Create()
+orm::RecordPtr DesignWorkSurfTechnology::Create()
 {
-	return orm::RecordPtr(new DesignTunnel());
+	return orm::RecordPtr(new DesignWorkSurfTechnology());
 }
 
-DesignTunnel::DesignTunnel() : orm::Record(DesignTunnel::Table())
+DesignWorkSurfTechnology::DesignWorkSurfTechnology() : orm::Record(DesignWorkSurfTechnology::Table())
 {
 	name = _T("");
-	w = 0.0;
-	h = 0.0;
-	type = 0;
-	x1 = 0.0;
-	y1 = 0.0;
-	z1 = 0.0;
-	x2 = 0.0;
-	y2 = 0.0;
-	z2 = 0.0;
 	comment = _T("");
 	REG_ATTRIB(name, name);
-	REG_ATTRIB(w, w);
-	REG_ATTRIB(h, h);
-	REG_ATTRIB(type, type);
-	REG_ATTRIB(x1, x1);
-	REG_ATTRIB(y1, y1);
-	REG_ATTRIB(z1, z1);
-	REG_ATTRIB(x2, x2);
-	REG_ATTRIB(y2, y2);
-	REG_ATTRIB(z2, z2);
 	REG_ATTRIB(comment, comment);
-	REG_FOREGIN_KEY(cbm_design_work_surf_id, design_work_surf, &DesignWorkSurf::Create);
-}
-
-CString DesignWorkSurf::Table()
-{
-	return _T("cbm_design_work_surf");
-}
-
-orm::RecordPtr DesignWorkSurf::Create()
-{
-	return orm::RecordPtr(new DesignWorkSurf());
-}
-
-DesignWorkSurf::DesignWorkSurf() : orm::Record(DesignWorkSurf::Table())
-{
-	name = _T("");
-	l1 = 0.0;
-	l2 = 0.0;
-	comment = _T("");
-	x0 = 0.0;
-	y0 = 0.0;
-	z0 = 0.0;
-	w = 0.0;
-	h = 0.0;
-	REG_ATTRIB(name, name);
-	REG_ATTRIB(l1, l1);
-	REG_ATTRIB(l2, l2);
-	REG_ATTRIB(comment, comment);
-	REG_ATTRIB(x0, x0);
-	REG_ATTRIB(y0, y0);
-	REG_ATTRIB(z0, z0);
-	REG_ATTRIB(w, w);
-	REG_ATTRIB(h, h);
-	REG_FOREGIN_KEY(cbm_coal_id, coal, &Coal::Create);
+	REG_FOREGIN_KEY(cbm_design_technology_id, design_technology, &DesignTechnology::Create);
 }
 
 CString DrillingRadiusParam::Table()
