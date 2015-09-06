@@ -387,6 +387,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\GasDesignP21Dialog.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Graph3.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\SouiDialog.cpp"
 				>
 			</File>
@@ -689,6 +697,14 @@
 			>
 			<File
 				RelativePath=".\Data.h"
+				>
+			</File>
+			<File
+				RelativePath=".\GasDesignP21Dialog.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Graph3.h"
 				>
 			</File>
 			<File

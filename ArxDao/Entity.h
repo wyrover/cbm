@@ -333,6 +333,27 @@ public:
 	orm::RecordPtr design_technology;
 	CString name;
 	CString comment;
+	double top_side;
+	double bottom_side;
+	double right_side;
+	double l1;
+	double w;
+	double h;
+	double l2;
+	double left_side;
+	double v_offset;
+	double h_offset;
+	double wd;
+	double hd;
+	double lm;
+	double ws;
+	double ls;
+	double gs;
+	double hs;
+	double dp;
+	double gp;
+	int single_rock_tunnel;
+	double d_offset;
 
 }; // class DesignWorkSurfTechnology
 
