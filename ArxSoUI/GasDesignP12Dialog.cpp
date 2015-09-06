@@ -12,7 +12,7 @@ using namespace cbm;
 GasDesignP12Dialog::GasDesignP12Dialog(BOOL bModal) : AcadSouiDialog(_T("layout:gas_design_p1_2"), bModal)
 {
 	coal_id = 0;
-	region = 0;
+	tech_id = 0;
 }
 
 GasDesignP12Dialog::~GasDesignP12Dialog()
@@ -44,7 +44,6 @@ LRESULT GasDesignP12Dialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 	m_RightEdit = FindChildByName2<SEdit>(L"right");
 	m_TopEdit = FindChildByName2<SEdit>(L"top");
 	m_BottomEdit = FindChildByName2<SEdit>(L"bottom");
-	m_NameEdit = FindChildByName2<SEdit>(L"name");
 	m_LeadingDistEdit = FindChildByName2<SEdit>(L"leading_dist");
 	m_LStripeEdit = FindChildByName2<SEdit>(L"L_stripe");
 
@@ -97,12 +96,8 @@ void GasDesignP12Dialog::OnPlaneGraphButtonClick()
 	CoalPtr coal = FIND_BY_ID( Coal, coal_id );
 	if( coal == 0 ) return;
 
-	//查找煤层关联的设计工作面
-	DesignTechnologyPtr tech = FIND_ONE2( DesignTechnology, FKEY( Coal ), coal->getStringID(), FIELD(region), Utils::int_to_cstring(region) );
-	if( tech == 0 ) return;
-
 	//查找抽采技术
-	DesignDrillingSurfTechnologyPtr tws_tech = FIND_BY_ID( DesignDrillingSurfTechnology, tech->param );
+	DesignDrillingSurfTechnologyPtr tws_tech = FIND_BY_ID( DesignDrillingSurfTechnology, this->tech_id );
 	if( tws_tech == 0 ) return;
 
 	//交互选择基点坐标
@@ -114,37 +109,17 @@ void GasDesignP12Dialog::OnPlaneGraphButtonClick()
 	graph.setPoint(pt);
 	graph.draw();
 
-	AcadSouiDialog::OnOK();
+	//AcadSouiDialog::OnOK();
 }
 
 void GasDesignP12Dialog::OnSaveButtonClick()
 {
-	CoalPtr coal = FIND_BY_ID( Coal, coal_id );
+	CoalPtr coal = FIND_BY_ID( Coal, this->coal_id );
 	if( coal == 0 ) return;
 
-	//保存煤层数据到数据库
-	Utils::cstring_to_double( ( LPCTSTR )m_ThickEdit->GetWindowText(), coal->thick );
-	Utils::cstring_to_double( ( LPCTSTR )m_DipAngleEdit->GetWindowText(), coal->dip_angle );
-	if( !coal->save() ) return;
+	DesignDrillingSurfTechnologyPtr tws_tech = FIND_BY_ID( DesignDrillingSurfTechnology, this->tech_id );
+	if( tws_tech == 0 ) return;
 
-	//查找掘进面抽采设计数据
-	DesignTechnologyPtr tech = FIND_ONE2( DesignTechnology, FKEY( Coal ), coal->getStringID(), FIELD(region), Utils::int_to_cstring(region) );
-	if( tech == 0 )
-	{
-		tech.reset( new DesignTechnology );
-		tech->region = region; // 属于掘进面抽采设计
-		tech->coal = coal;
-		//保存到数据库
-		if( !tech->save() ) return;
-	}
-
-	DesignDrillingSurfTechnologyPtr tws_tech = FIND_BY_ID( DesignDrillingSurfTechnology, tech->param );
-	if( tws_tech == 0 )
-	{
-		tws_tech.reset( new DesignDrillingSurfTechnology );
-		tws_tech->design_technology = tech;
-	}
-	tws_tech->name = m_NameEdit->GetWindowText();
 	Utils::cstring_to_double( ( LPCTSTR )m_LmEdit->GetWindowText(), tws_tech->lm );
 	Utils::cstring_to_double( ( LPCTSTR )m_WEdit->GetWindowText(), tws_tech->w );
 	Utils::cstring_to_double( ( LPCTSTR )m_HEdit->GetWindowText(), tws_tech->h );
@@ -159,28 +134,19 @@ void GasDesignP12Dialog::OnSaveButtonClick()
 	//保存到数据库
 	if( !tws_tech->save() ) return;
 
-	//更新param id
-	/*DesignTechnologyPtr*/ tech = FIND_ONE( DesignTechnology, FKEY( Coal ), coal->getStringID() );
-	tech->param = tws_tech->getID();
-	if(!tech->save()) return;
-
 	SMessageBox( GetSafeHwnd(), _T( "保存数据成功" ), _T( "友情提示" ), MB_OK );
 }
 
 void GasDesignP12Dialog::initDatas()
 {
-	CoalPtr coal = FIND_BY_ID( Coal, coal_id );
+	CoalPtr coal = FIND_BY_ID( Coal, this->coal_id );
 	if( coal == 0 ) return;
 
 	//填充煤层数据
 	m_ThickEdit->SetWindowText( Utils::double_to_cstring( coal->thick ) );
 	m_DipAngleEdit->SetWindowText( Utils::double_to_cstring( coal->dip_angle ) );
 
-	//查找掘进面抽采设计数据
-	DesignTechnologyPtr tech = FIND_ONE2( DesignTechnology, FKEY( Coal ), coal->getStringID(), FIELD(region), Utils::int_to_cstring(region) );
-	if( tech == 0 ) return;
-
-	DesignDrillingSurfTechnologyPtr tws_tech = FIND_BY_ID( DesignDrillingSurfTechnology, tech->param );
+	DesignDrillingSurfTechnologyPtr tws_tech = FIND_BY_ID( DesignDrillingSurfTechnology, this->tech_id );
 	if( tws_tech == 0 ) return;
 
 	m_LmEdit->SetWindowText( Utils::double_to_cstring( tws_tech->lm ) );

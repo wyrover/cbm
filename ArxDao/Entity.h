@@ -296,6 +296,7 @@ public:
 
 public:
 	DesignSite();
+	orm::RecordPtr design_technology;
 	CString name;
 	double w;
 	double h;
@@ -314,11 +315,9 @@ public:
 
 public:
 	DesignTechnology();
-	orm::RecordPtr design_site;
 	orm::RecordPtr coal;
 	CString name;
 	int region;
-	int param;
 	CString comment;
 
 }; // class DesignTechnology

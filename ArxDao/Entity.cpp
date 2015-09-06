@@ -385,6 +385,7 @@ DesignSite::DesignSite() : orm::Record(DesignSite::Table())
 	REG_ATTRIB(y, y);
 	REG_ATTRIB(z, z);
 	REG_ATTRIB(comment, comment);
+	REG_FOREGIN_KEY(cbm_design_technology_id, design_technology, &DesignTechnology::Create);
 }
 
 CString DesignTechnology::Table()
@@ -401,13 +402,10 @@ DesignTechnology::DesignTechnology() : orm::Record(DesignTechnology::Table())
 {
 	name = _T("");
 	region = 0;
-	param = 0;
 	comment = _T("");
 	REG_ATTRIB(name, name);
 	REG_ATTRIB(region, region);
-	REG_ATTRIB(param, param);
 	REG_ATTRIB(comment, comment);
-	REG_FOREGIN_KEY(cbm_design_site_id, design_site, &DesignSite::Create);
 	REG_FOREGIN_KEY(cbm_coal_id, coal, &Coal::Create);
 }
 

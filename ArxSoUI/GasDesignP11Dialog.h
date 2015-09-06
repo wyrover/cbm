@@ -64,13 +64,12 @@ protected:
 	SEdit* m_BottomEdit;
 	SEdit* m_VOffsetEdit;
 	SEdit* m_HOffsetEdit;
-	SEdit* m_NameEdit;
 	SEdit* m_SiteGapEdit;
 	SEdit* m_HsEdit;
 
 public:
 	int coal_id; // 外部传入
-	int region;  // 外部传入
+	int tech_id;  // 外部传入
 
 private:
 	void initDatas();

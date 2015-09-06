@@ -13,6 +13,9 @@ public:
 protected:
 	void OnTechnologyListboxSelChanged(SOUI::EventArgs *pEvt);
 	void OnGoButtonClick();
+	void OnDesignComboxSelChanged(SOUI::EventArgs *pEvt);
+	void OnNewDesignButtonClick();
+	void OnDelDesignButtonClick();
 
 	/** 菜单消息 */
 protected:
@@ -28,6 +31,9 @@ protected:
 	EVENT_MAP_BEGIN()
 		EVENT_NAME_HANDLER(_T("technology"), EVT_LB_SELCHANGED, OnTechnologyListboxSelChanged)
 		EVENT_NAME_COMMAND(_T("go"), OnGoButtonClick)
+		EVENT_NAME_HANDLER(_T("design"), EVT_CB_SELCHANGE, OnDesignComboxSelChanged)
+		EVENT_NAME_COMMAND(_T("new_design"), OnNewDesignButtonClick)
+		EVENT_NAME_COMMAND(_T("del_design"), OnDelDesignButtonClick)
 		CHAIN_EVENT_MAP(AcadSouiDialog)
 	EVENT_MAP_END()
 	
@@ -41,8 +47,16 @@ protected:
 
 protected:
 	SListBox* m_TechnologyListbox;
+	SComboBox* m_DesignCombox;
 
 public:
-	int region; // 传入的参数(在哪个区域做抽采)
-	int tech;   // 传出的参数(哪种抽采技术,都是从1开始,如果是0表示没有选择)
+	int coal_id; // 煤层id
+	int region;  // 传入的参数(表示在哪个区域做抽采,工作面、掘进面、采空区???)
+	int tech_id; // 传出的参数
+
+protected:
+	virtual void OnDestroyWindow();
+
+private:
+	void fillDatas();
 };

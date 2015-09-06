@@ -57,13 +57,12 @@ protected:
 	SEdit* m_RightEdit;
 	SEdit* m_TopEdit;
 	SEdit* m_BottomEdit;
-	SEdit* m_NameEdit;
 	SEdit* m_LeadingDistEdit;
 	SEdit* m_LStripeEdit;
 
 public:
 	int coal_id; // 外部传入
-	int region;  // 外部传入
+	int tech_id;
 
 private:
 	void initDatas();

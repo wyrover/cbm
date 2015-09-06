@@ -244,6 +244,7 @@ create table cbm_design_pore
 create table cbm_design_site
 (
    id                   int not null auto_increment,
+   cbm_design_technology_id int,
    name                 varchar(255),
    w                    decimal(8,2),
    h                    decimal(8,2),
@@ -257,11 +258,9 @@ create table cbm_design_site
 create table cbm_design_technology
 (
    id                   int not null auto_increment,
-   cbm_design_site_id   int,
    cbm_coal_id          int,
    name                 varchar(255),
    region               int,
-   param                int,
    comment              varchar(255),
    primary key (id)
 );
@@ -631,11 +630,11 @@ alter table cbm_design_goaf_technology add constraint fk_relationship_39 foreign
 alter table cbm_design_pore add constraint fk_relationship_38 foreign key (cbm_design_site_id)
       references cbm_design_site (id) on delete cascade on update restrict;
 
+alter table cbm_design_site add constraint fk_relationship_36 foreign key (cbm_design_technology_id)
+      references cbm_design_technology (id) on delete cascade on update restrict;
+
 alter table cbm_design_technology add constraint fk_relationship_35 foreign key (cbm_coal_id)
       references cbm_coal (id) on delete cascade on update restrict;
-
-alter table cbm_design_technology add constraint fk_relationship_36 foreign key (cbm_design_site_id)
-      references cbm_design_site (id) on delete cascade on update restrict;
 
 alter table cbm_design_work_surf_technology add constraint fk_relationship_37 foreign key (cbm_design_technology_id)
       references cbm_design_technology (id) on delete cascade on update restrict;

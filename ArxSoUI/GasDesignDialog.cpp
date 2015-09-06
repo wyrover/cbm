@@ -2,8 +2,6 @@
 #include "SouiListHelper.h"
 #include "GasDesignDialog.h"
 #include "GasDesignQuestionDialog.h"
-#include "GasDesignP11Dialog.h"
-#include "GasDesignP12Dialog.h"
 
 #include <ArxHelper/HelperClass.h>
 #include <ArxDao/DaoHelper.h>
@@ -64,12 +62,6 @@ void GasDesignDialog::OnCoalComboxSelChanged(SOUI::EventArgs *pEvt)
 
 void GasDesignDialog::OnTwsDesignButtonClick()
 {
-	GasDesignQuestionDialog dlg(true);
-	dlg.region = 1;
-	dlg.Run(GetSafeHwnd());
-	int tech = dlg.tech;
-	if(tech == 0) return;
-	
 	int coal_id = SComboBoxHelper::GetCurSelItemID( m_CoalCombox );
 	if( coal_id == 0 )
 	{
@@ -77,33 +69,55 @@ void GasDesignDialog::OnTwsDesignButtonClick()
 		return;
 	}
 
-	AcadSouiDialog::OnOK();
-	if(tech == 1)
-	{
-		GasDesignP11Dialog* dlg = new GasDesignP11Dialog( FALSE );
-		dlg->coal_id = coal_id;
-		dlg->region = 1;
-		dlg->Run( acedGetAcadFrame()->GetSafeHwnd() );
-	}
-	else if(tech == 2)
-	{
-		GasDesignP12Dialog* dlg = new GasDesignP12Dialog( FALSE );
-		dlg->coal_id = coal_id;
-		dlg->region = 1;
-		dlg->Run( acedGetAcadFrame()->GetSafeHwnd() );
-	}
-	else
-	{
+	GasDesignQuestionDialog dlg(true);
+	dlg.coal_id = coal_id;
+	dlg.region = 1; // 对掘进面进行抽采设计
+	dlg.Run(GetSafeHwnd());
 
+	if(dlg.tech_id != 0)
+	{
+		AcadSouiDialog::OnOK();
 	}
 }
 
 void GasDesignDialog::OnWsDesignButtonClick()
 {
+	int coal_id = SComboBoxHelper::GetCurSelItemID( m_CoalCombox );
+	if( coal_id == 0 )
+	{
+		SMessageBox( GetSafeHwnd(), _T( "请选择一个【煤层】进行抽采设计!!!" ), _T( "友情提示" ), MB_OK );
+		return;
+	}
+
+	GasDesignQuestionDialog dlg(true);
+	dlg.coal_id = coal_id;
+	dlg.region = 2;  // 对工作面进行抽采设计
+	dlg.Run(GetSafeHwnd());
+
+	if(dlg.tech_id != 0)
+	{
+		AcadSouiDialog::OnOK();
+	}
 }
 
 void GasDesignDialog::OnGoafDesignButtonClick()
 {
+	int coal_id = SComboBoxHelper::GetCurSelItemID( m_CoalCombox );
+	if( coal_id == 0 )
+	{
+		SMessageBox( GetSafeHwnd(), _T( "请选择一个【煤层】进行抽采设计!!!" ), _T( "友情提示" ), MB_OK );
+		return;
+	}
+
+	GasDesignQuestionDialog dlg(true);
+	dlg.coal_id = coal_id;
+	dlg.region = 3;  // 对采空区进行抽采设计
+	dlg.Run(GetSafeHwnd());
+
+	if(dlg.tech_id != 0)
+	{
+		AcadSouiDialog::OnOK();
+	}
 }
 
 void GasDesignDialog::OnSaveButtonClick()
