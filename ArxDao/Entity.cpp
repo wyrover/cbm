@@ -445,6 +445,9 @@ DesignWorkSurfTechnology::DesignWorkSurfTechnology() : orm::Record(DesignWorkSur
 	gp = 0.0;
 	single_rock_tunnel = 0;
 	d_offset = 0.0;
+	pore_stubble = 0.0;
+	pore_angle = 0.0;
+	pore_type = 0;
 	REG_ATTRIB(name, name);
 	REG_ATTRIB(comment, comment);
 	REG_ATTRIB(top_side, top_side);
@@ -469,6 +472,9 @@ DesignWorkSurfTechnology::DesignWorkSurfTechnology() : orm::Record(DesignWorkSur
 	REG_ATTRIB(gp, gp);
 	REG_ATTRIB(single_rock_tunnel, single_rock_tunnel);
 	REG_ATTRIB(d_offset, d_offset);
+	REG_ATTRIB(pore_stubble, pore_stubble);
+	REG_ATTRIB(pore_angle, pore_angle);
+	REG_ATTRIB(pore_type, pore_type);
 	REG_FOREGIN_KEY(cbm_design_technology_id, design_technology, &DesignTechnology::Create);
 }
 

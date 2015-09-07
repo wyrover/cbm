@@ -26,6 +26,7 @@
     <file name="gas_design_p1_2" path="xml\gas_design_p1_2.xml"/>
     <file name="gas_design_p1_3" path="xml\gas_design_p1_3.xml"/>
     <file name="gas_design_p2_1" path="xml\gas_design_p2_1.xml"/>
+    <file name="gas_design_p2_3" path="xml\gas_design_p2_3.xml"/>
     <file name="gas_design_question" path="xml\gas_design_question.xml"/>
     <file name="high_drilling_design" path="xml\high_drilling_design.xml"/>
     <file name="high_drilling_pore" path="xml\high_drilling_pore.xml"/>
@@ -53,6 +54,7 @@
     <file name="pore_flow_delta_T" path="xml\pore_flow_delta_T.xml"/>
     <file name="pore_flow_delta_p" path="xml\pore_flow_delta_p.xml"/>
     <file name="pore_size" path="xml\pore_size.xml"/>
+    <file name="pore_type" path="xml\pore_type.xml"/>
     <file name="reg" path="xml\reg.xml"/>
     <file name="reserves_predict" path="xml\reserves_predict.xml"/>
     <file name="sample_manage" path="xml\sample_manage.xml"/>

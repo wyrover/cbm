@@ -9,7 +9,7 @@
 using namespace orm;
 using namespace cbm;
 
-namespace P2
+namespace P12
 {
 
 	//剖面图绘制基类
@@ -74,4 +74,4 @@ namespace P2
 
 	}; // class PlanGraph
 
-} // namespace P2
+} // namespace P12

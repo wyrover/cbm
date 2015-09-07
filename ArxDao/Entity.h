@@ -355,6 +355,9 @@ public:
 	double gp;
 	int single_rock_tunnel;
 	double d_offset;
+	double pore_stubble;
+	double pore_angle;
+	int pore_type;
 
 }; // class DesignWorkSurfTechnology
 

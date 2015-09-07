@@ -9,7 +9,7 @@
 using namespace orm;
 using namespace cbm;
 
-namespace P1
+namespace P11
 {
 
 //剖面图绘制基类
@@ -136,4 +136,4 @@ protected:
 	virtual void drawCoal();
 }; // class DipGraph
 
-} // namespace P1
+} // namespace P11

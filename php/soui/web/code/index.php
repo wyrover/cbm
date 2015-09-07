@@ -981,7 +981,7 @@ function writeImgSrcToDB($uiResFile='uires.idx', $resType='img')
 function genResNameTxtFile()
 {
   $file = fopen("ResName.txt", 'w');
-  fwrite($file, "layout:main");
+  fwrite($file, "layout:gas_design_p2_3");
   fclose($file);
 }
 

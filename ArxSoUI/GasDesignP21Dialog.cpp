@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "GasDesignP21Dialog.h"
 #include "Data.h"
-#include "Graph3.h"
+#include "Graph21.h"
 
 #include <ArxHelper/HelperClass.h>
 #include <ArxDao/DaoHelper.h>
@@ -76,7 +76,7 @@ void GasDesignP21Dialog::OnPlaneGraphButtonClick()
 	getPoint(pt);
 
 	//绘制平面图
-	P3::PlanGraph graph(coal, ws_tech);
+	P21::PlanGraph graph(coal, ws_tech);
 	graph.setPoint(pt);
 	graph.draw();
 
@@ -97,7 +97,7 @@ void GasDesignP21Dialog::OnHeadGraphButtonClick()
 	getPoint(pt);
 
 	//绘制平面图
-	P3::HeadGraph graph(coal, ws_tech);
+	P21::HeadGraph graph(coal, ws_tech);
 	graph.setPoint(pt);
 	graph.draw();
 
@@ -118,7 +118,7 @@ void GasDesignP21Dialog::OnDipGraphButtonClick()
 	getPoint(pt);
 
 	//绘制平面图
-	P3::DipGraph graph(coal, ws_tech);
+	P21::DipGraph graph(coal, ws_tech);
 	graph.setPoint(pt);
 	graph.draw();
 

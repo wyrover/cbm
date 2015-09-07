@@ -5,6 +5,7 @@
 #include "GasDesignP11Dialog.h"
 #include "GasDesignP12Dialog.h"
 #include "GasDesignP21Dialog.h"
+#include "GasDesignP23Dialog.h"
 
 #include <ArxHelper/HelperClass.h>
 #include <ArxDao/DaoHelper.h>
@@ -88,7 +89,10 @@ static void RunGasDesignDlg(int coal_id, int region, int whick_tech, int tech_id
 		}
 		else if(whick_tech == 3)
 		{
-
+			GasDesignP23Dialog* dlg = new GasDesignP23Dialog( FALSE );
+			dlg->coal_id = coal_id;
+			dlg->tech_id = tech_id;
+			dlg->Run( acedGetAcadFrame()->GetSafeHwnd() );
 		}
 		else if(whick_tech == 4)
 		{

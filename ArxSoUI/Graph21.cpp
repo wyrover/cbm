@@ -1,10 +1,10 @@
 #include "StdAfx.h"
-#include "Graph3.h"
+#include "Graph21.h"
 
 #include <Util/HelperClass.h>
 #include <ArxHelper/HelperClass.h>
 
-namespace P3
+namespace P21
 {
 
 Graph::Graph(const cbm::CoalPtr& _coal, const cbm::DesignWorkSurfTechnologyPtr& _tech)
@@ -408,4 +408,4 @@ void DipGraph::drawCoal()
 	AcDbObjectId coalId = this->drawRect2(basePt, 0, Wc, Hc);
 }
 
-} // namespace P3
+} // namespace P21

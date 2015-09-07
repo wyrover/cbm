@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "GasDesignP12Dialog.h"
 #include "Data.h"
-#include "Graph2.h"
+#include "Graph12.h"
 
 #include <ArxHelper/HelperClass.h>
 #include <ArxDao/DaoHelper.h>
@@ -105,7 +105,7 @@ void GasDesignP12Dialog::OnPlaneGraphButtonClick()
 	getPoint(pt);
 
 	//ªÊ÷∆∆Ω√ÊÕº
-	P2::PlanGraph graph(coal, tws_tech);
+	P12::PlanGraph graph(coal, tws_tech);
 	graph.setPoint(pt);
 	graph.draw();
 

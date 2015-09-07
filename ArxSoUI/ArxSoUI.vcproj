@@ -387,14 +387,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\GasDesignP21Dialog.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Graph3.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\SouiDialog.cpp"
 				>
 			</File>
@@ -546,6 +538,14 @@
 					>
 				</File>
 				<File
+					RelativePath=".\GasDesignP21Dialog.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\GasDesignP23Dialog.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\GasDesignQuestionDialog.cpp"
 					>
 				</File>
@@ -682,11 +682,19 @@
 					>
 				</File>
 				<File
-					RelativePath=".\Graph1.cpp"
+					RelativePath=".\Graph11.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\Graph2.cpp"
+					RelativePath=".\Graph12.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Graph21.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Graph23.cpp"
 					>
 				</File>
 			</Filter>
@@ -697,14 +705,6 @@
 			>
 			<File
 				RelativePath=".\Data.h"
-				>
-			</File>
-			<File
-				RelativePath=".\GasDesignP21Dialog.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Graph3.h"
 				>
 			</File>
 			<File
@@ -836,6 +836,14 @@
 				</File>
 				<File
 					RelativePath=".\GasDesignP12Dialog.h"
+					>
+				</File>
+				<File
+					RelativePath=".\GasDesignP21Dialog.h"
+					>
+				</File>
+				<File
+					RelativePath=".\GasDesignP23Dialog.h"
 					>
 				</File>
 				<File
@@ -979,11 +987,19 @@
 					>
 				</File>
 				<File
-					RelativePath=".\Graph1.h"
+					RelativePath=".\Graph11.h"
 					>
 				</File>
 				<File
-					RelativePath=".\Graph2.h"
+					RelativePath=".\Graph12.h"
+					>
+				</File>
+				<File
+					RelativePath=".\Graph21.h"
+					>
+				</File>
+				<File
+					RelativePath=".\Graph23.h"
 					>
 				</File>
 			</Filter>

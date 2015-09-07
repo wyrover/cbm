@@ -1,10 +1,10 @@
 #include "StdAfx.h"
-#include "Graph2.h"
+#include "Graph12.h"
 
 #include <Util/HelperClass.h>
 #include <ArxHelper/HelperClass.h>
 
-namespace P2
+namespace P12
 {
 
 	Graph::Graph(const cbm::CoalPtr& _coal, const cbm::DesignDrillingSurfTechnologyPtr& _tech)
@@ -174,4 +174,4 @@ namespace P2
 		this->drawAlignedDim(basePt, basePt+v1*Lc, 50, false);
 		this->drawAlignedDim(basePt, basePt+v2*Wc, 30, true);
 	}
-} // namespace P2
+} // namespace P12
