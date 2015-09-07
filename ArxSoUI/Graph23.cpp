@@ -10,10 +10,10 @@ namespace P23
 	Graph::Graph(const cbm::CoalPtr& _coal, const cbm::DesignWorkSurfTechnologyPtr& _tech)
 		: BaseGraph(), coal(_coal), tech(_tech)
 	{
-		left_margin = 20;
-		right_margin = 20;
-		bottom_margin = 20;
-		top_margin = 20;
+		left_margin = 8;
+		right_margin = 8;
+		bottom_margin = 8;
+		top_margin = 8;
 
 		//倾向长度和走向长度
 		L1 = tech->l1, L2 = tech->l2;
@@ -26,7 +26,7 @@ namespace P23
 		//钻孔压茬长度
 		pore_stubble = tech->pore_stubble;
 		//顺层斜交钻孔倾角
-		pore_angle = tech->pore_angle;
+		pore_angle = DegToRad(tech->pore_angle);
 		//顺层钻孔类型
 		pore_type = tech->pore_type;
 	}
@@ -44,7 +44,7 @@ namespace P23
 		//计算宽度(倾向长度L2+工作面左帮控制范围left+偏移)
 		//Lc = (L1 + left_margin + right_margin)*cos(angle);
 		Lc = L1 + left_margin + right_margin;
-		Wc = w + bottom_margin + top_margin;
+		Wc = L2 + bottom_margin + top_margin;
 		Hc = thick;
 	}
 
@@ -60,15 +60,34 @@ namespace P23
 		AcGePoint3d basePt = getPoint();
 		AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis;
 
+		double PL = pore_stubble + L2*0.5;
+		AcGePoint3dArray pts;
+		ArxDrawHelper::Divide(basePt+v1*w*0.5+v2*L2*0.5, basePt+v1*L1+v2*L2*0.5, pore_gap, 0, pts);
+		v2.rotateBy(PI, AcGeVector3d::kZAxis);
+		for(int i=0;i<pts.length();i++)
+		{
+			AcGePoint3d pt = pts[i];
+			this->drawLine(pt, pt+v2*PL);
+		}
+		v2.rotateBy(PI, AcGeVector3d::kZAxis);
+		for(int i=0;i<pts.length();i++)
+		{
+			AcGePoint3d pt = pts[i]-v2*L2+v1*pore_gap*0.5;
+			this->drawLine(pt, pt+v2*PL);
+		}
 	}
 
 	void PlanGraph::drawTunnel()
 	{
 		//巷道的中点位置作为基点
 		AcGePoint3d basePt = getPoint();
-		//绘制掘进巷
+		//绘制工作面
 		AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis;
-		AcDbObjectId t1 = this->drawDoubleLine(basePt, basePt+v1*L1, w);
+		AcDbObjectId t1 = this->drawDoubleLine(basePt-v2*L2*0.5, basePt+v1*L1-v2*L2*0.5, w);
+		//绘制风巷
+		AcDbObjectId t2 = this->drawDoubleLine(basePt+v2*L2*0.5, basePt+v1*L1+v2*L2*0.5, w);
+		//绘制工作面切眼		
+		AcDbObjectId t3 = this->drawDoubleLine(basePt-v2*L2*0.5, basePt+v2*L2*0.5, w);
 	}
 
 	void PlanGraph::drawCoal()
