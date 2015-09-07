@@ -433,6 +433,7 @@ DesignWorkSurfTechnology::DesignWorkSurfTechnology() : orm::Record(DesignWorkSur
 	left_side = 0.0;
 	v_offset = 0.0;
 	h_offset = 0.0;
+	p_offset = 0.0;
 	wd = 0.0;
 	hd = 0.0;
 	lm = 0.0;
@@ -456,6 +457,7 @@ DesignWorkSurfTechnology::DesignWorkSurfTechnology() : orm::Record(DesignWorkSur
 	REG_ATTRIB(left_side, left_side);
 	REG_ATTRIB(v_offset, v_offset);
 	REG_ATTRIB(h_offset, h_offset);
+	REG_ATTRIB(p_offset, p_offset);
 	REG_ATTRIB(wd, wd);
 	REG_ATTRIB(hd, hd);
 	REG_ATTRIB(lm, lm);

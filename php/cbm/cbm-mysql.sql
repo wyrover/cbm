@@ -215,7 +215,7 @@ create table cbm_design_drilling_surf_technology
 
 create table cbm_design_goaf_technology
 (
-   id                   int not null,
+   id                   int not null auto_increment,
    cbm_design_technology_id int,
    name                 varchar(255),
    comment              varchar(255),
@@ -267,7 +267,7 @@ create table cbm_design_technology
 
 create table cbm_design_work_surf_technology
 (
-   id                   int not null,
+   id                   int not null auto_increment,
    cbm_design_technology_id int,
    name                 varchar(255),
    comment              varchar(255),
@@ -281,6 +281,7 @@ create table cbm_design_work_surf_technology
    left_side            decimal(8,2),
    v_offset             decimal(8,2),
    h_offset             decimal(8,2),
+   p_offset             decimal(8,2),
    wd                   decimal(8,2),
    hd                   decimal(8,2),
    lm                   decimal(8,2),

@@ -99,28 +99,6 @@ AcGePoint3d Graph::caclPoreBasePoint2() const
 	return ArxDrawHelper::CaclPt(getPoint(), v1, -1*left, v2, 0.5*thick+Hp);
 }
 
-AcGePoint3d Graph::caclPoreBasePoint3() const
-{
-	return getPoint();
-}
-
-AcGePoint3d Graph::caclSiteBasePoint1() const
-{
-	AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis;
-	return ArxDrawHelper::CaclPt(getPoint(), v1, right, v2, h_offset);
-}
-
-AcGePoint3d Graph::caclSiteBasePoint2() const
-{
-	AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis;
-	return ArxDrawHelper::CaclPt(getPoint(), v1, right, v2, -1*(v_offset+0.5*thick));
-}
-
-AcGePoint3d Graph::caclSiteBasePoint3() const
-{
-	return getPoint();
-}
-
 //绘制一条巷道上的钻场
 void Graph::drawSitesOnTunnel(const AcGePoint3d& spt, const AcGePoint3d& ept, double gap_x, double gap_y, double w, double h, double angle, bool excludeFirst)
 {
@@ -143,7 +121,7 @@ void PlanGraph::drawSites()
 	double Ld = L1 - right;
 
 	AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis;
-	AcGePoint3d basePt = caclSiteBasePoint1();
+	AcGePoint3d basePt = ArxDrawHelper::CaclPt(getPoint(), v1, right, v2, h_offset);
 	//绘制钻场
 	drawSitesOnTunnel(basePt-v2*L2*0.5, basePt+v1*Ld-v2*0.5*L2, site_gap, -0.5*(Ws+wd), Ls, Ws, 0);
 	drawSitesOnTunnel(basePt-v2*L2*0.5, basePt+v2*L2*0.5, site_gap, 0.5*(Ws+wd), Ls, Ws, -PI*0.5);
@@ -239,7 +217,7 @@ void HeadGraph::drawSites()
 	double Ld = L1 - right;
 
 	AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis;
-	AcGePoint3d basePt = caclSiteBasePoint2();
+	AcGePoint3d basePt = ArxDrawHelper::CaclPt(getPoint(), v1, right, v2, -1*(v_offset+0.5*thick));
 	//绘制钻场
 	drawSitesOnTunnel(basePt, basePt+v1*Ld, site_gap, 0, Ls, Ws, 0, false);
 }
@@ -276,7 +254,7 @@ void HeadGraph::drawPores()
 	AcGePoint3d poreBasePt = caclPoreBasePoint2();
 
 	//依次计算钻场与钻孔的关联
-	AcGePoint3d siteBasePt = caclSiteBasePoint2();
+	AcGePoint3d siteBasePt = ArxDrawHelper::CaclPt(getPoint(), v1, right, v2, -1*(v_offset+0.5*thick));
 	int start = 0;
 	for(int i=0;i<nd;i++)
 	{
@@ -342,19 +320,20 @@ void DipGraph::drawPores()
 
 	//计算钻孔的基点
 	AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis;
-	AcGePoint3d poreBasePt1 = ArxDrawHelper::CaclPt(getPoint(), v1, -0.5*Wp, v2, 0.5*thick+Hp);
-	AcGePoint3d poreBasePt2 = ArxDrawHelper::CaclPt(getPoint(), v1, 0.5*Wp, v2, 0.5*thick+Hp);
-
+	
 	//计算钻场的基点
 	AcGePoint3d rockBasePt = ArxDrawHelper::CaclPt(getPoint(), v1, -1*h_offset, v2, -1*v_offset); //岩巷切眼中点
+	
+	AcGePoint3d poreBasePt1 = ArxDrawHelper::CaclPt(getPoint(), v1, -0.5*Wp, v2, 0.5*thick+Hp);
 	AcGePoint3d siteBasePt1 = rockBasePt-v1*L2*0.5; // 上区段岩巷
-	AcGePoint3d siteBasePt2 = rockBasePt+v1*L2*0.5; // 底板岩巷
-
 	for(int i=0;i<nx;i++)
 	{
 		AcGePoint3d pore_pt = poreBasePt1 + v1*i*pore_gap + v2*0; // 从左至右计算
 		AcDbObjectId poreId = this->drawLine(siteBasePt1, pore_pt);
 	}
+
+	AcGePoint3d poreBasePt2 = ArxDrawHelper::CaclPt(getPoint(), v1, 0.5*Wp, v2, 0.5*thick+Hp);
+	AcGePoint3d siteBasePt2 = rockBasePt+v1*L2*0.5; // 底板岩巷
 	for(int i=0;i<nx;i++)
 	{
 		AcGePoint3d pore_pt = poreBasePt2 - v1*i*pore_gap + v2*0; // 从右至左计算

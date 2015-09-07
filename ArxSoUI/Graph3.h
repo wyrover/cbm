@@ -44,11 +44,6 @@ protected:
 	void caclPoreExtent(double& Lp, double& Wp, double& Hp) const;
 	AcGePoint3d caclPoreBasePoint1() const;
 	AcGePoint3d caclPoreBasePoint2() const;
-	AcGePoint3d caclPoreBasePoint3() const;
-	//计算钻场的基点位置
-	AcGePoint3d caclSiteBasePoint1() const;
-	AcGePoint3d caclSiteBasePoint2() const;
-	AcGePoint3d caclSiteBasePoint3() const;
 	//绘制一条巷道巷道上的钻场(gap_y有正负之分,决定钻场在巷道的哪一侧)
 	void drawSitesOnTunnel(const AcGePoint3d& spt, const AcGePoint3d& ept, double gap_x, double gap_y, double w, double h, double angle=0, bool excludeFirst=true);
 
@@ -76,6 +71,8 @@ protected:
 	bool single_rock_tunnel;
 	//2条岩巷之间的水平距离
 	double d_offset;
+	//底板巷与工作面切眼的水平投影距离
+	double p_offset;
 
 	/** 上述计算参数都是从这2个对象指针中提取出来的. */
 protected:

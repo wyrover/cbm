@@ -118,6 +118,54 @@ static void RunGasDesignDlg(int coal_id, int region, int whick_tech, int tech_id
 	}
 }
 
+static void GetTechnologies(int region, AcStringArray& techs)
+{
+	if(region == 1)
+	{
+		techs.append(_T("底板岩巷密集穿层钻孔抽采煤巷条带瓦斯"));
+		techs.append(_T("顺层钻孔条带掩护巷道掘进抽采法"));
+		techs.append(_T("单巷、双巷或多巷循环迈步式抽采技术"));
+	}
+	//回采面抽采设计
+	else if(region == 2)
+	{
+		techs.append(_T("底板岩巷大面积穿层钻孔抽采工作面瓦斯"));
+		techs.append(_T("顺层钻孔递进式掩护抽采工作面瓦斯法"));
+		techs.append(_T("顺层平行钻孔抽采工作面瓦斯"));
+		techs.append(_T("顺层交叉钻孔抽采工作面瓦斯"));
+		techs.append(_T("千米钻机定向长钻孔抽采法"));
+
+	}
+	//采空区抽采设计
+	else
+	{
+		techs.append(_T("高抽巷卸压瓦斯抽采法"));
+		techs.append(_T("顶板高位走向钻孔瓦斯抽采法"));
+		techs.append(_T("沿空留巷穿层钻孔抽采"));
+		techs.append(_T("采空区埋管瓦斯抽采方法"));
+	}
+}
+
+static RecordPtrListPtr Select(int region, const CString& id)
+{
+	if(region == 1)
+	{
+		return FIND_MANY( DesignDrillingSurfTechnology, FKEY(DesignTechnology), id );
+	}
+	else if(region == 2)
+	{
+		return FIND_MANY( DesignWorkSurfTechnology, FKEY(DesignTechnology), id );
+	}
+	else if(region == 3)
+	{
+		return FIND_MANY( DesignGoafTechnology, FKEY(DesignTechnology), id );
+	}
+	else
+	{
+		return RecordPtrListPtr();
+	}
+}
+
 GasDesignQuestionDialog::GasDesignQuestionDialog(BOOL bModal) : AcadSouiDialog(_T("layout:gas_design_question"), bModal)
 {
 	coal_id = 0;
@@ -247,30 +295,11 @@ void GasDesignQuestionDialog::OnNewDesignButtonClick()
 void GasDesignQuestionDialog::fillDatas()
 {
 	m_TechnologyListbox->DeleteAll();
-	//掘进抽采设计
-	if(region == 1)
+	AcStringArray techs;
+	GetTechnologies(this->region, techs);
+	for(int i=0;i<techs.length();i++)
 	{
-		m_TechnologyListbox->AddString(_T("底板岩巷密集穿层钻孔抽采煤巷条带瓦斯"));
-		m_TechnologyListbox->AddString(_T("顺层钻孔条带掩护巷道掘进抽采法"));
-		m_TechnologyListbox->AddString(_T("单巷、双巷或多巷循环迈步式抽采技术"));
-	}
-	//回采面抽采设计
-	else if(region == 2)
-	{
-		m_TechnologyListbox->AddString(_T("底板岩巷大面积穿层钻孔抽采工作面瓦斯"));
-		m_TechnologyListbox->AddString(_T("顺层钻孔递进式掩护抽采工作面瓦斯法"));
-		m_TechnologyListbox->AddString(_T("顺层平行钻孔抽采工作面瓦斯"));
-		m_TechnologyListbox->AddString(_T("顺层交叉钻孔抽采工作面瓦斯"));
-		m_TechnologyListbox->AddString(_T("千米钻机定向长钻孔抽采法"));
-
-	}
-	//采空区抽采设计
-	else
-	{
-		m_TechnologyListbox->AddString(_T("高抽巷卸压瓦斯抽采法"));
-		m_TechnologyListbox->AddString(_T("顶板高位走向钻孔瓦斯抽采法"));
-		m_TechnologyListbox->AddString(_T("沿空留巷穿层钻孔抽采"));
-		m_TechnologyListbox->AddString(_T("采空区埋管瓦斯抽采方法"));
+		m_TechnologyListbox->AddString(techs[i].kACharPtr());
 	}
 	m_TechnologyListbox->SetCurSel(0);
 
@@ -291,7 +320,7 @@ void GasDesignQuestionDialog::fillDatas()
 	}
 	else
 	{
-		RecordPtrListPtr tech_list = FIND_MANY( DesignDrillingSurfTechnology, FKEY(DesignTechnology), tech->getStringID() );
+		RecordPtrListPtr tech_list = Select(this->region, tech->getStringID());
 		if( tech_list != 0 )
 		{
 			for(int i=0;i<tech_list->size();i++)

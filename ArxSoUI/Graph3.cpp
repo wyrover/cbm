@@ -38,6 +38,8 @@ Graph::Graph(const cbm::CoalPtr& _coal, const cbm::DesignWorkSurfTechnologyPtr& 
 	single_rock_tunnel = (tech->single_rock_tunnel != 0);
 	//两条岩巷之间的距离
 	d_offset = tech->d_offset;
+	//底板巷与工作面切眼的水平投影距离
+	p_offset = tech->p_offset;
 }
 
 void Graph::subDraw()
@@ -103,28 +105,6 @@ AcGePoint3d Graph::caclPoreBasePoint2() const
 	return ArxDrawHelper::CaclPt(getPoint(), v1, -1*left, v2, 0.5*thick+Hp);
 }
 
-AcGePoint3d Graph::caclPoreBasePoint3() const
-{
-	return getPoint();
-}
-
-AcGePoint3d Graph::caclSiteBasePoint1() const
-{
-	AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis;
-	return ArxDrawHelper::CaclPt(getPoint(), v1, right, v2, h_offset);
-}
-
-AcGePoint3d Graph::caclSiteBasePoint2() const
-{
-	AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis;
-	return ArxDrawHelper::CaclPt(getPoint(), v1, right, v2, -1*(v_offset+0.5*thick));
-}
-
-AcGePoint3d Graph::caclSiteBasePoint3() const
-{
-	return getPoint();
-}
-
 //绘制一条巷道上的钻场
 void Graph::drawSitesOnTunnel(const AcGePoint3d& spt, const AcGePoint3d& ept, double gap_x, double gap_y, double w, double h, double angle, bool excludeFirst)
 {
@@ -142,16 +122,26 @@ PlanGraph::PlanGraph(const cbm::CoalPtr& coal, const cbm::DesignWorkSurfTechnolo
 }
 
 void PlanGraph::drawSites()
-{	
+{
+	double right_offset = p_offset;
+	double rock_L2 = d_offset;
+
 	//扣除右帮
-	double Ld = L1 - right;
+	double Ld = L1 - right_offset;
 
 	AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis;
-	AcGePoint3d basePt = caclSiteBasePoint1();
+	AcGePoint3d basePt = ArxDrawHelper::CaclPt(getPoint(), v1, right_offset, v2, h_offset);
 	//绘制钻场
-	drawSitesOnTunnel(basePt-v2*L2*0.5, basePt+v1*Ld-v2*0.5*L2, site_gap, -0.5*(Ws+wd), Ls, Ws, 0);
-	drawSitesOnTunnel(basePt-v2*L2*0.5, basePt+v2*L2*0.5, site_gap, 0.5*(Ws+wd), Ls, Ws, -PI*0.5);
-	drawSitesOnTunnel(basePt+v2*L2*0.5, basePt+v1*Ld+v2*L2*0.5, site_gap, -0.5*(Ws+wd), Ls, Ws, 0);
+	if(single_rock_tunnel)
+	{
+		drawSitesOnTunnel(basePt-v2*rock_L2*0.5, basePt+v1*Ld-v2*0.5*rock_L2, site_gap, -0.5*(Ws+wd), Ls, Ws, 0, false);
+	}
+	else
+	{
+		drawSitesOnTunnel(basePt-v2*rock_L2*0.5, basePt+v1*Ld-v2*0.5*rock_L2, site_gap, -0.5*(Ws+wd), Ls, Ws, 0);
+		drawSitesOnTunnel(basePt-v2*rock_L2*0.5, basePt+v2*rock_L2*0.5, site_gap, 0.5*(Ws+wd), Ls, Ws, -PI*0.5);
+		drawSitesOnTunnel(basePt+v2*rock_L2*0.5, basePt+v1*Ld+v2*rock_L2*0.5, site_gap, -0.5*(Ws+wd), Ls, Ws, 0);
+	}
 }
 
 void PlanGraph::drawPores()
@@ -166,7 +156,7 @@ void PlanGraph::drawPores()
 
 	//绘制钻孔
 	AcGePoint3dArray pts;
-	ArxDrawHelper::MakeGridWithHole(basePt, Lp, Wp, pore_gap, pore_gap, left+right, 0, left+right, left+right, pts, true);
+	ArxDrawHelper::MakeGridWithHole(basePt, Lp, Wp, pore_gap, pore_gap, 0, Lp, 0, Wp, pts, true);
 	for(int i=0;i<pts.length();i++)
 	{
 		AcDbObjectId poreId = this->drawCircle(pts[i], radius);
@@ -175,19 +165,26 @@ void PlanGraph::drawPores()
 
 void PlanGraph::drawRockTunnel()
 {
+	//double right_offset = right;
+	double right_offset = p_offset;
+	double rock_L2 = d_offset;
+
 	//扣除偏移的部分
-	double Ld = L1 - right;
+	double Ld = L1 - right_offset;
 	
 	//绘制底板岩巷
 	AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis;
-	AcGePoint3d basePt = ArxDrawHelper::CaclPt(getPoint(), v1, right, v2, h_offset);
-	AcDbObjectId t1 = this->drawDoubleLine(basePt-v2*L2*0.5, basePt+v1*Ld-v2*L2*0.5, wd);
-	//绘制上区段岩巷
-	AcDbObjectId t2 = this->drawDoubleLine(basePt+0.5*v2*L2, basePt+v1*Ld+0.5*v2*L2, wd);
-	//绘制切眼
-	AcDbObjectId t3 = this->drawDoubleLine(basePt-v2*L2*0.5, basePt+v2*L2*0.5, wd);
-	this->drawMText(basePt+v1*Ld-v2*L2*0.5, 0, _T("底板岩巷"), 10);
-	this->drawMText(basePt+v1*Ld+v2*L2*0.5, 0, _T("上区段岩巷"), 10);
+	AcGePoint3d basePt = ArxDrawHelper::CaclPt(getPoint(), v1, right_offset, v2, h_offset);
+	AcDbObjectId t1 = this->drawDoubleLine(basePt-v2*rock_L2*0.5, basePt+v1*Ld-v2*rock_L2*0.5, wd);
+	this->drawMText(basePt+v1*Ld-v2*rock_L2*0.5, 0, _T("底板岩巷"), 10);
+	if(!single_rock_tunnel)
+	{
+		//绘制上区段岩巷
+		AcDbObjectId t2 = this->drawDoubleLine(basePt+0.5*v2*rock_L2, basePt+v1*Ld+0.5*v2*rock_L2, wd);
+		//绘制切眼
+		AcDbObjectId t3 = this->drawDoubleLine(basePt-v2*rock_L2*0.5, basePt+v2*rock_L2*0.5, wd);
+		this->drawMText(basePt+v1*Ld+v2*rock_L2*0.5, 0, _T("上区段岩巷"), 10);
+	}
 }
 
 void PlanGraph::drawTunnel()
@@ -239,19 +236,22 @@ HeadGraph::HeadGraph(const cbm::CoalPtr& coal, const cbm::DesignWorkSurfTechnolo
 
 void HeadGraph::drawSites()
 {
+	double right_offset = p_offset;
 	//扣除右帮
-	double Ld = L1 - right;
+	double Ld = L1 - right_offset;
 
 	AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis;
-	AcGePoint3d basePt = caclSiteBasePoint2();
+	AcGePoint3d basePt = ArxDrawHelper::CaclPt(getPoint(), v1, right_offset, v2, -1*(v_offset+0.5*thick));
 	//绘制钻场
 	drawSitesOnTunnel(basePt, basePt+v1*Ld, site_gap, 0, Ls, Ws, 0, false);
 }
 
 void HeadGraph::drawPores()
 {
+	double right_offset = p_offset;
+
 	//扣除右帮
-	double Ld = L1 - right;
+	double Ld = L1 - right_offset;
 
 	//计算钻孔范围
 	double Lp = 0, Wp = 0, Hp = 0;
@@ -280,7 +280,7 @@ void HeadGraph::drawPores()
 	AcGePoint3d poreBasePt = caclPoreBasePoint2();
 
 	//依次计算钻场与钻孔的关联
-	AcGePoint3d siteBasePt = caclSiteBasePoint2();
+	AcGePoint3d siteBasePt = ArxDrawHelper::CaclPt(getPoint(), v1, right_offset, v2, -1*(v_offset+0.5*thick));
 	int start = 0;
 	for(int i=0;i<nd;i++)
 	{
@@ -297,12 +297,14 @@ void HeadGraph::drawPores()
 
 void HeadGraph::drawRockTunnel()
 {
+	double right_offset = p_offset;
+
 	//扣除偏移的部分
-	double Ld = L1 - right;
+	double Ld = L1 - right_offset;
 
 	//绘制底板岩巷
 	AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis;
-	AcGePoint3d basePt = ArxDrawHelper::CaclPt(getPoint(), v1, right, v2, -1*(v_offset+0.5*thick));
+	AcGePoint3d basePt = ArxDrawHelper::CaclPt(getPoint(), v1, right_offset, v2, -1*(v_offset+0.5*thick));
 	AcDbObjectId t1 = this->drawDoubleLine(basePt-v1*Hs*0.5, basePt+v1*Ld, wd);
 }
 
@@ -337,28 +339,33 @@ void DipGraph::drawSites()
 
 void DipGraph::drawPores()
 {
+	double rock_L2 = d_offset;
+
 	//计算钻孔范围
 	double Lp = 0, Wp = 0, Hp = 0;
 	caclPoreExtent(Lp, Wp, Hp);
 
 	//计算钻孔在走向方向的个数(只计算在控制范围内的)
-	int nx = ArxDrawHelper::DivideNum(left+right, pore_gap, true);
+	int nx = ArxDrawHelper::DivideNum(0.5*Wp, pore_gap, true);
 
 	//计算钻孔的基点
 	AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis;
-	AcGePoint3d poreBasePt1 = ArxDrawHelper::CaclPt(getPoint(), v1, -0.5*Wp, v2, 0.5*thick+Hp);
-	AcGePoint3d poreBasePt2 = ArxDrawHelper::CaclPt(getPoint(), v1, 0.5*Wp, v2, 0.5*thick+Hp);
-
-	//计算钻场的基点
 	AcGePoint3d rockBasePt = ArxDrawHelper::CaclPt(getPoint(), v1, -1*h_offset, v2, -1*v_offset); //岩巷切眼中点
-	AcGePoint3d siteBasePt1 = rockBasePt-v1*L2*0.5; // 上区段岩巷
-	AcGePoint3d siteBasePt2 = rockBasePt+v1*L2*0.5; // 底板岩巷
+	AcGePoint3d siteBasePt1 = rockBasePt-v1*rock_L2*0.5; // 上区段岩巷
+	AcGePoint3d siteBasePt2 = rockBasePt+v1*rock_L2*0.5; // 底板岩巷
 
+	if(single_rock_tunnel)
+	{
+		siteBasePt1 = siteBasePt2;
+	}
+	//计算钻场的基点
+	AcGePoint3d poreBasePt1 = ArxDrawHelper::CaclPt(getPoint(), v1, -0.5*Wp, v2, 0.5*thick+Hp);
 	for(int i=0;i<nx;i++)
 	{
 		AcGePoint3d pore_pt = poreBasePt1 + v1*i*pore_gap + v2*0; // 从左至右计算
 		AcDbObjectId poreId = this->drawLine(siteBasePt1, pore_pt);
 	}
+	AcGePoint3d poreBasePt2 = ArxDrawHelper::CaclPt(getPoint(), v1, 0.5*Wp, v2, 0.5*thick+Hp);
 	for(int i=0;i<nx;i++)
 	{
 		AcGePoint3d pore_pt = poreBasePt2 - v1*i*pore_gap + v2*0; // 从右至左计算
@@ -368,12 +375,17 @@ void DipGraph::drawPores()
 
 void DipGraph::drawRockTunnel()
 {
+	double rock_L2 = d_offset;
+
 	AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis;
 	AcGePoint3d basePt = ArxDrawHelper::CaclPt(getPoint(), v1, -1*h_offset, v2, -1*v_offset);
 	AcDbObjectId t3 = this->drawDoubleLine(basePt-v1*L2*0.5, basePt+v1*L2*0.5, hd); // 底板切眼
 	//为了画出来的巷道(矩形)是水平的,特殊处理下(旋转)
-	AcDbObjectId t2 = this->drawRect(basePt-v1*L2*0.5, angle, wd, hd); // 上区段岩巷
-	AcDbObjectId t1 = this->drawRect(basePt+v1*L2*0.5, angle, wd, hd); // 底板岩巷
+	AcDbObjectId t1 = this->drawRect(basePt+v1*rock_L2*0.5, angle, wd, hd); // 底板岩巷
+	if(!single_rock_tunnel)
+	{
+		AcDbObjectId t2 = this->drawRect(basePt-v1*rock_L2*0.5, angle, wd, hd); // 上区段岩巷
+	}
 }
 
 void DipGraph::drawTunnel()

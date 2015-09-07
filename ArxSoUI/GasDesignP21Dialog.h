@@ -68,6 +68,7 @@ protected:
 	SEdit* m_HsEdit;
 	SEdit* m_DOffsetEdit;
 	SCheckBox* m_SingleRockTunnelCheck;
+	SEdit* m_POffsetEdit;
 
 public:
 	int coal_id; // 外部传入

@@ -55,6 +55,7 @@ LRESULT GasDesignP21Dialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 	m_HsEdit = FindChildByName2<SEdit>(L"Hs");
 	m_DOffsetEdit = FindChildByName2<SEdit>(L"D_offset");
 	m_SingleRockTunnelCheck = FindChildByName2<SCheckBox>(L"single_rock_tunnel");
+	m_POffsetEdit = FindChildByName2<SEdit>(L"P_offset");
 
     initDatas();
 
@@ -180,6 +181,7 @@ void GasDesignP21Dialog::OnSaveButtonClick()
 	Utils::cstring_to_double( ( LPCTSTR )m_SiteGapEdit->GetWindowText(), ws_tech->gs );
 	Utils::cstring_to_double( ( LPCTSTR )m_HsEdit->GetWindowText(), ws_tech->hs );
 	Utils::cstring_to_double( ( LPCTSTR )m_DOffsetEdit->GetWindowText(), ws_tech->d_offset );
+	Utils::cstring_to_double( ( LPCTSTR )m_POffsetEdit->GetWindowText(), ws_tech->p_offset );
 	ws_tech->single_rock_tunnel = m_SingleRockTunnelCheck->IsChecked();
 
 	//保存到数据库
@@ -220,6 +222,7 @@ void GasDesignP21Dialog::initDatas()
 	m_HsEdit->SetWindowText( Utils::double_to_cstring( ws_tech->hs ) );
 	m_SingleRockTunnelCheck->SetCheck(BOOL_2_INT(ws_tech->single_rock_tunnel!=0));
 	m_DOffsetEdit->SetWindowText( Utils::double_to_cstring( ws_tech->d_offset ) );
+	m_POffsetEdit->SetWindowText( Utils::double_to_cstring( ws_tech->p_offset ) );
 }
 
 bool GasDesignP21Dialog::getPoint(AcGePoint3d& pt)

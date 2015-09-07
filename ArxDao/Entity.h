@@ -343,6 +343,7 @@ public:
 	double left_side;
 	double v_offset;
 	double h_offset;
+	double p_offset;
 	double wd;
 	double hd;
 	double lm;
