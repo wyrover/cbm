@@ -60,20 +60,43 @@ namespace P23
 		AcGePoint3d basePt = getPoint();
 		AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis;
 
-		double PL = pore_stubble + L2*0.5;
-		AcGePoint3dArray pts;
-		ArxDrawHelper::Divide(basePt+v1*w*0.5+v2*L2*0.5, basePt+v1*L1+v2*L2*0.5, pore_gap, 0, pts);
-		v2.rotateBy(PI, AcGeVector3d::kZAxis);
-		for(int i=0;i<pts.length();i++)
+		//Ë³²ãÆ½ÐÐ×ê¿×
+		if(pore_type == 1)
 		{
-			AcGePoint3d pt = pts[i];
-			this->drawLine(pt, pt+v2*PL);
+			double PL = pore_stubble + L2*0.5;
+			AcGePoint3dArray pts;
+			ArxDrawHelper::Divide(basePt+v1*w*0.5+v2*L2*0.5, basePt+v1*L1+v2*L2*0.5, pore_gap, 0, pts);
+			v2.rotateBy(PI, AcGeVector3d::kZAxis);
+			for(int i=0;i<pts.length();i++)
+			{
+				AcGePoint3d pt = pts[i];
+				this->drawLine(pt, pt+v2*PL);
+			}
+			v2.rotateBy(PI, AcGeVector3d::kZAxis);
+			for(int i=0;i<pts.length();i++)
+			{
+				AcGePoint3d pt = pts[i]-v2*L2+v1*pore_gap*0.5;
+				this->drawLine(pt, pt+v2*PL);
+			}
 		}
-		v2.rotateBy(PI, AcGeVector3d::kZAxis);
-		for(int i=0;i<pts.length();i++)
+		//Ë³²ãÇãÐ±Æ½ÐÐ×ê¿×
+		else if(pore_type == 2)
 		{
-			AcGePoint3d pt = pts[i]-v2*L2+v1*pore_gap*0.5;
-			this->drawLine(pt, pt+v2*PL);
+			double d = 0.5*L2/tan(pore_angle);
+			AcGePoint3dArray pts;
+			ArxDrawHelper::Divide(basePt+v1*0.5*w, basePt+v1*(L1-d), pore_gap, 0, pts, true);
+			AcGePoint3dArray pts1;
+			ArxDrawHelper::Divide(basePt+v1*(d+w*0.5)+v2*L2*0.5, basePt+v1*L1+v2*L2*0.5, pore_gap, 0, pts1, true);
+			for(int i=0;i<pts.length();i++)
+			{
+				this->drawLine(pts1[i], pts[i]);
+			}
+			AcGePoint3dArray pts2;
+			ArxDrawHelper::Divide(basePt+v1*(d+w*0.5)-v2*L2*0.5, basePt+v1*L1-v2*L2*0.5, pore_gap, 0, pts2, true);
+			for(int i=0;i<pts.length();i++)
+			{
+				this->drawLine(pts2[i]+v1*pore_gap*0.5, pts[i]+v1*pore_gap*0.5);
+			}
 		}
 	}
 
