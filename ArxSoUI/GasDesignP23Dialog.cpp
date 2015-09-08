@@ -45,6 +45,7 @@ LRESULT GasDesignP23Dialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 	m_PoreType1Radio = FindChildByName2<SRadioBox>(L"pore_type_1");
 	m_PoreType2Radio = FindChildByName2<SRadioBox>(L"pore_type_2");
 	m_PoreType3Radio = FindChildByName2<SRadioBox>(L"pore_type_3");
+	m_PoreType4Radio = FindChildByName2<SRadioBox>(L"pore_type_4");
 	m_PoreAngleEdit = FindChildByName2<SEdit>(L"pore_angle");
 
 	initDatas();
@@ -103,6 +104,7 @@ void GasDesignP23Dialog::OnSaveButtonClick()
 	if(m_PoreType1Radio->IsChecked()) ws_tech->pore_type = 1;
 	else if(m_PoreType2Radio->IsChecked()) ws_tech->pore_type = 2;
 	else if(m_PoreType3Radio->IsChecked()) ws_tech->pore_type = 3;
+	else if(m_PoreType4Radio->IsChecked()) ws_tech->pore_type = 4;
 
 	//保存到数据库
 	if( !ws_tech->save() ) return;
@@ -148,6 +150,10 @@ void GasDesignP23Dialog::initDatas()
 	else if(type == 3)
 	{
 		m_PoreType3Radio->SetCheck(TRUE);
+	}
+	else if(type == 4)
+	{
+		m_PoreType4Radio->SetCheck(TRUE);
 	}
 }
 

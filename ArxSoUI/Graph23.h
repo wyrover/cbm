@@ -72,6 +72,9 @@ namespace P23
 		//ªÊ÷∆√∫≤„
 		virtual void drawCoal();
 
+	private:
+		void drawParallelPores();
+		void drawCrossPores();
 	}; // class PlanGraph
 
 } // namespace P23

@@ -96,6 +96,10 @@ static void RunGasDesignDlg(int coal_id, int region, int whick_tech, int tech_id
 		}
 		else if(whick_tech == 4)
 		{
+			GasDesignP23Dialog* dlg = new GasDesignP23Dialog( FALSE );
+			dlg->coal_id = coal_id;
+			dlg->tech_id = tech_id;
+			dlg->Run( acedGetAcadFrame()->GetSafeHwnd() );
 		}
 		else if(whick_tech == 5)
 		{

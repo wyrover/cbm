@@ -33,7 +33,7 @@ protected:
 		EVENT_NAME_COMMAND(_T("dip_graph"), OnDipGraphButtonClick)
 		EVENT_NAME_COMMAND(_T("plane_graph"), OnPlaneGraphButtonClick)
 		EVENT_NAME_COMMAND(_T("save"), OnSaveButtonClick)
-		EVENT_ID_COMMAND_RANGE(120, 122, OnRadioGroup1Switch)
+		EVENT_ID_COMMAND_RANGE(120, 123, OnRadioGroup1Switch)
 		CHAIN_EVENT_MAP(AcadSouiDialog)
 	EVENT_MAP_END()
 	
@@ -58,6 +58,7 @@ protected:
 	SRadioBox* m_PoreType1Radio;
 	SRadioBox* m_PoreType2Radio;
 	SRadioBox* m_PoreType3Radio;
+	SRadioBox* m_PoreType4Radio;
 	SEdit* m_PoreAngleEdit;
 
 public:

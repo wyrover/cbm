@@ -52,6 +52,52 @@ namespace P23
 	{
 	}
 
+	void PlanGraph::drawParallelPores()
+	{
+		//巷道的中点位置作为基点
+		AcGePoint3d basePt = getPoint();
+		AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis;
+
+		double PL = pore_stubble + L2*0.5;
+		AcGePoint3dArray pts;
+		ArxDrawHelper::Divide(basePt+v1*w*0.5+v2*L2*0.5, basePt+v1*L1+v2*L2*0.5, pore_gap, 0, pts);
+		v2.rotateBy(PI, AcGeVector3d::kZAxis);
+		for(int i=0;i<pts.length();i++)
+		{
+			AcGePoint3d pt = pts[i];
+			this->drawLine(pt, pt+v2*PL);
+		}
+		v2.rotateBy(PI, AcGeVector3d::kZAxis);
+		for(int i=0;i<pts.length();i++)
+		{
+			AcGePoint3d pt = pts[i]-v2*L2+v1*pore_gap*0.5;
+			this->drawLine(pt, pt+v2*PL);
+		}
+	}
+
+	void PlanGraph::drawCrossPores()
+	{
+		//巷道的中点位置作为基点
+		AcGePoint3d basePt = getPoint();
+		AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis;
+
+		double d = 0.5*L2/tan(pore_angle);
+		AcGePoint3dArray pts;
+		ArxDrawHelper::Divide(basePt+v1*0.5*w, basePt+v1*(L1-d), pore_gap, 0, pts, true);
+		AcGePoint3dArray pts1;
+		ArxDrawHelper::Divide(basePt+v1*(d+w*0.5)+v2*L2*0.5, basePt+v1*L1+v2*L2*0.5, pore_gap, 0, pts1, true);
+		for(int i=0;i<pts.length();i++)
+		{
+			this->drawLine(pts1[i], pts[i]);
+		}
+		AcGePoint3dArray pts2;
+		ArxDrawHelper::Divide(basePt+v1*(d+w*0.5)-v2*L2*0.5, basePt+v1*L1-v2*L2*0.5, pore_gap, 0, pts2, true);
+		for(int i=0;i<pts.length();i++)
+		{
+			this->drawLine(pts2[i]+v1*pore_gap*0.5, pts[i]+v1*pore_gap*0.5);
+		}
+	}
+
 	void PlanGraph::drawPores()
 	{
 		if(pore_gap <= 0) return;
@@ -63,40 +109,21 @@ namespace P23
 		//顺层平行钻孔
 		if(pore_type == 1)
 		{
-			double PL = pore_stubble + L2*0.5;
-			AcGePoint3dArray pts;
-			ArxDrawHelper::Divide(basePt+v1*w*0.5+v2*L2*0.5, basePt+v1*L1+v2*L2*0.5, pore_gap, 0, pts);
-			v2.rotateBy(PI, AcGeVector3d::kZAxis);
-			for(int i=0;i<pts.length();i++)
-			{
-				AcGePoint3d pt = pts[i];
-				this->drawLine(pt, pt+v2*PL);
-			}
-			v2.rotateBy(PI, AcGeVector3d::kZAxis);
-			for(int i=0;i<pts.length();i++)
-			{
-				AcGePoint3d pt = pts[i]-v2*L2+v1*pore_gap*0.5;
-				this->drawLine(pt, pt+v2*PL);
-			}
+			drawParallelPores();
 		}
 		//顺层倾斜平行钻孔
 		else if(pore_type == 2)
 		{
-			double d = 0.5*L2/tan(pore_angle);
-			AcGePoint3dArray pts;
-			ArxDrawHelper::Divide(basePt+v1*0.5*w, basePt+v1*(L1-d), pore_gap, 0, pts, true);
-			AcGePoint3dArray pts1;
-			ArxDrawHelper::Divide(basePt+v1*(d+w*0.5)+v2*L2*0.5, basePt+v1*L1+v2*L2*0.5, pore_gap, 0, pts1, true);
-			for(int i=0;i<pts.length();i++)
-			{
-				this->drawLine(pts1[i], pts[i]);
-			}
-			AcGePoint3dArray pts2;
-			ArxDrawHelper::Divide(basePt+v1*(d+w*0.5)-v2*L2*0.5, basePt+v1*L1-v2*L2*0.5, pore_gap, 0, pts2, true);
-			for(int i=0;i<pts.length();i++)
-			{
-				this->drawLine(pts2[i]+v1*pore_gap*0.5, pts[i]+v1*pore_gap*0.5);
-			}
+			drawCrossPores();
+		}
+		else if(pore_type == 3)
+		{
+
+		}
+		else if(pore_type == 4)
+		{
+			drawParallelPores();
+			drawCrossPores();
 		}
 	}
 

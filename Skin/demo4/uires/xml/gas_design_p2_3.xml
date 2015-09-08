@@ -36,6 +36,7 @@
       <radio pos="11,23" width="96" height="21" checked="1" name="pore_type_1" id="120" margin-x="1" margin-y="1">平行钻孔</radio>
       <radio pos="91,23" width="96" height="21" name="pore_type_2" id="121" margin-x="1" margin-y="1">斜交钻孔</radio>
       <radio pos="172,23" width="96" height="21" name="pore_type_3" id="122" margin-x="1" margin-y="1">扇形钻孔</radio>
+      <radio pos="246,23" width="96" height="21" name="pore_type_4" id="123" margin-x="1" margin-y="1">交叉钻孔</radio>
     </window>
     <text pos="201,232" width="92" height="23" name="text44" margin-x="1" margin-y="1">斜交钻孔角度</text>
     <edit pos="291,231" width="67" height="26" name="pore_angle" margin-x="1" margin-y="1"/>
