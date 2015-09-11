@@ -8,6 +8,27 @@ using namespace orm;
 using namespace cbm;
 
 #include <ArxHelper/HelperClass.h>
+#include <Util/HelperClass.h>
+
+bool DaoHelper::ConfigureFromFile(const CString& cfgFile)
+{
+	std::string strfile = W2C((LPCTSTR)cfgFile);
+
+	////从配置文件中读取数据
+	//ConfigParser setting(strfile);
+	//std::string host="localhost",username="root",password="", database="cbm";
+	//int port = 3306;
+	////主机或url
+	//host = setting.Read("host", host);
+	////端口
+	//port = setting.Read("port", port);
+	////用户名
+	//username = setting.Read("username", username);
+	////密码
+	//password = setting.Read("password", password);
+	
+	return false;
+}
 
 bool DaoHelper::ConfigureDao( const CString& user, const CString& password, const CString& database, const CString& host/*=_T("localhost")*/, const CString& port/*=_T("3306")*/ )
 {

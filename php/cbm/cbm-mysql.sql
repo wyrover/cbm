@@ -295,6 +295,7 @@ create table cbm_design_work_surf_technology
    d_offset             decimal(8,2),
    pore_stubble         decimal(8,2),
    pore_angle           decimal(8,2),
+   pore_type            int,
    primary key (id)
 );
 

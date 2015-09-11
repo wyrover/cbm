@@ -2,7 +2,6 @@
 #include "LauncherApp.h"
 #include "MySoUiLoader.h"
 #include "MainuiDialog.h"
-#include "SouiXmlName.h"
 #include "ThreadHelper.h"
 
 BEGIN_MESSAGE_MAP( CLauncherApp, CWinAppEx )

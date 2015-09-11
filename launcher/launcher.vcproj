@@ -48,7 +48,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..;..\ThirdParty\boost;..\ThirdParty\soui;..\ThirdParty\soui\soui\include;..\ThirdParty\soui\utilities\include;..\ThirdParty\soui\config;..\ThirdParty\soui\components"
+				AdditionalIncludeDirectories="..;..\ThirdParty\boost;..\ThirdParty\soui;..\ThirdParty\soui\soui\include;..\ThirdParty\soui\utilities\include;..\ThirdParty\soui\config;..\ThirdParty\soui\components;&quot;..\ThirdParty\json-cpp\include&quot;"
 				PreprocessorDefinitions="WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -71,9 +71,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="soui.lib utilities.lib"
+				AdditionalDependencies="souid.lib utilitiesd.lib jsoncppd.lib"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="..\ThirdParty\soui\bin"
+				AdditionalLibraryDirectories="..\ThirdParty\soui\bin;&quot;..\ThirdParty\json-cpp\lib&quot;"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/Launcher.pdb"
 				SubSystem="2"
@@ -130,7 +130,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..;..\ThirdParty\boost;..\ThirdParty\soui;..\ThirdParty\soui\soui\include;..\ThirdParty\soui\utilities\include;..\ThirdParty\soui\config;..\ThirdParty\soui\components"
+				AdditionalIncludeDirectories="..;..\ThirdParty\boost;..\ThirdParty\soui;..\ThirdParty\soui\soui\include;..\ThirdParty\soui\utilities\include;..\ThirdParty\soui\config;..\ThirdParty\soui\components;&quot;..\ThirdParty\json-cpp\include&quot;"
 				PreprocessorDefinitions="WIN32;_WINDOWS;_DEBUG;_CRT_SECURE_NO_WARNINGS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -153,9 +153,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="souid.lib utilitiesd.lib"
+				AdditionalDependencies="souid.lib utilitiesd.lib jsoncppd-x64.lib"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="..\ThirdParty\soui\bin64"
+				AdditionalLibraryDirectories="..\ThirdParty\soui\bin64;&quot;..\ThirdParty\json-cpp\lib&quot;"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/Launcher.pdb"
 				SubSystem="2"
@@ -214,7 +214,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="..;..\ThirdParty\boost;..\ThirdParty\soui;..\ThirdParty\soui\soui\include;..\ThirdParty\soui\utilities\include;..\ThirdParty\soui\config;..\ThirdParty\soui\components"
+				AdditionalIncludeDirectories="..;..\ThirdParty\boost;..\ThirdParty\soui;..\ThirdParty\soui\soui\include;..\ThirdParty\soui\utilities\include;..\ThirdParty\soui\config;..\ThirdParty\soui\components;&quot;..\ThirdParty\json-cpp\include&quot;"
 				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS"
 				MinimalRebuild="false"
 				RuntimeLibrary="2"
@@ -237,9 +237,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="soui.lib utilities.lib"
+				AdditionalDependencies="soui.lib utilities.lib jsoncpp.lib"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="..\ThirdParty\soui\bin"
+				AdditionalLibraryDirectories="..\ThirdParty\soui\bin;&quot;..\ThirdParty\json-cpp\lib&quot;"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				OptimizeReferences="2"
@@ -299,7 +299,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="..;..\ThirdParty\boost;..\ThirdParty\soui;..\ThirdParty\soui\soui\include;..\ThirdParty\soui\utilities\include;..\ThirdParty\soui\config;..\ThirdParty\soui\components"
+				AdditionalIncludeDirectories="..;..\ThirdParty\boost;..\ThirdParty\soui;..\ThirdParty\soui\soui\include;..\ThirdParty\soui\utilities\include;..\ThirdParty\soui\config;..\ThirdParty\soui\components;&quot;..\ThirdParty\json-cpp\include&quot;"
 				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS"
 				MinimalRebuild="false"
 				RuntimeLibrary="2"
@@ -322,9 +322,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="soui.lib utilities.lib"
+				AdditionalDependencies="soui.lib utilities.lib jsoncpp-x64.lib"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="..\ThirdParty\soui\bin64"
+				AdditionalLibraryDirectories="..\ThirdParty\soui\bin64;&quot;..\ThirdParty\json-cpp\lib&quot;"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				OptimizeReferences="2"
@@ -380,10 +380,6 @@
 			</File>
 			<File
 				RelativePath=".\SoUILoader.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\SouiXmlName.cpp"
 				>
 			</File>
 			<File
@@ -482,10 +478,6 @@
 			</File>
 			<File
 				RelativePath=".\SoUILoader.h"
-				>
-			</File>
-			<File
-				RelativePath=".\SouiXmlName.h"
 				>
 			</File>
 			<File
