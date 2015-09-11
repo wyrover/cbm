@@ -9,7 +9,7 @@ namespace orm
 	//¸¡µãÊý->×Ö·û´®
 	#define F2S(v, precision) Utils::double_to_cstring(v, precision)
 
-	class ARXDAO_DLLIMPEXP Utils
+	class DAO_DLLIMPEXP Utils
 	{
 	public:
 		static std::string string_tolower(const std::string& s);

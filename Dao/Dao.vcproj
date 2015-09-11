@@ -2,9 +2,10 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9.00"
-	Name="ArxDao"
-	ProjectGUID="{639177D9-3781-4398-AEF1-8E248C6E0FBD}"
-	RootNamespace="ArxDao"
+	Name="Dao"
+	ProjectGUID="{BDF6D1BB-CDF3-42F6-AA10-68567E244051}"
+	RootNamespace="Dao"
+	Keyword="MFCDLLProj"
 	TargetFrameworkVersion="196613"
 	>
 	<Platforms>
@@ -24,9 +25,7 @@
 			IntermediateDirectory="$(PlatformName)\$(ConfigurationName)"
 			ConfigurationType="2"
 			UseOfMFC="2"
-			UseOfATL="0"
 			CharacterSet="1"
-			ManagedExtensions="0"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -42,23 +41,19 @@
 			/>
 			<Tool
 				Name="VCMIDLTool"
+				PreprocessorDefinitions="_DEBUG"
+				MkTypLibCompatible="false"
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\lemon;..\ThirdParty\soci\include;..\ThirdParty\boost;&quot;..\ThirdParty\json-cpp\include&quot;"
-				AdditionalUsingDirectories="C:\Program Files\AutoCAD 2010\"
-				PreprocessorDefinitions="WIN32;_WINDOWS;ARXDAO_MODULE;_AFXEXT;_ACRXAPP"
-				StringPooling="false"
+				PreprocessorDefinitions="WIN32;_WINDOWS;_USRDLL;DAO_MODULE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="2"
-				BufferSecurityCheck="true"
-				TreatWChar_tAsBuiltInType="true"
-				ForceConformanceInForLoopScope="true"
-				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="2"
-				WarningLevel="1"
+				WarningLevel="3"
 				DebugInformationFormat="4"
 			/>
 			<Tool
@@ -66,21 +61,106 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="_DEBUG"
+				Culture="2052"
+				AdditionalIncludeDirectories="$(IntDir)"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="log4cplusSU.lib lemon.lib soci_core.lib soci_mysql.lib libmysql.lib jsoncpp.lib"
-				OutputFile="$(outdir)/ArxDao.arx"
+				AdditionalDependencies="log4cplusSU.lib lemon.lib soci_core.lib soci_mysql.lib libmysql.lib ws2_32.lib jsoncpp.lib"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\lemon\lib;..\ThirdParty\soci\lib\win32;&quot;..\ThirdParty\json-cpp\lib&quot;"
-				LinkDLL="true"
+				ModuleDefinitionFile=""
 				GenerateDebugInformation="true"
-				ProgramDatabaseFile="$(OutDir)/ArxDao.pdb"
+				ProgramDatabaseFile="$(OutDir)/Dao.pdb"
 				SubSystem="2"
-				ImportLibrary="$(OutDir)/ArxDao.lib"
+				TargetMachine="1"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
+		<Configuration
+			Name="Release|Win32"
+			OutputDirectory="$(SolutionDir)$(PlatformName)\$(ConfigurationName)"
+			IntermediateDirectory="$(PlatformName)\$(ConfigurationName)"
+			ConfigurationType="2"
+			UseOfMFC="2"
+			CharacterSet="1"
+			WholeProgramOptimization="1"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="NDEBUG"
+				MkTypLibCompatible="false"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="2"
+				EnableIntrinsicFunctions="true"
+				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\lemon;..\ThirdParty\soci\include;..\ThirdParty\boost;&quot;..\ThirdParty\json-cpp\include&quot;"
+				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;_USRDLL;DAO_MODULE"
+				RuntimeLibrary="2"
+				EnableFunctionLevelLinking="true"
+				UsePrecompiledHeader="2"
+				WarningLevel="3"
+				DebugInformationFormat="3"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="NDEBUG"
+				Culture="2052"
+				AdditionalIncludeDirectories="$(IntDir)"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="log4cplusSU.lib lemon.lib soci_core.lib soci_mysql.lib libmysql.lib ws2_32.lib jsoncpp.lib"
+				LinkIncremental="1"
+				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\lemon\lib;..\ThirdParty\soci\lib\win32;&quot;..\ThirdParty\json-cpp\lib&quot;"
+				ModuleDefinitionFile=""
+				GenerateDebugInformation="true"
+				SubSystem="2"
+				OptimizeReferences="2"
+				EnableCOMDATFolding="2"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -111,9 +191,7 @@
 			IntermediateDirectory="$(PlatformName)\$(ConfigurationName)"
 			ConfigurationType="2"
 			UseOfMFC="2"
-			UseOfATL="0"
 			CharacterSet="1"
-			ManagedExtensions="0"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -129,23 +207,20 @@
 			/>
 			<Tool
 				Name="VCMIDLTool"
+				PreprocessorDefinitions="_DEBUG"
+				MkTypLibCompatible="false"
+				TargetEnvironment="3"
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\lemon;..\ThirdParty\soci\include;..\ThirdParty\boost;&quot;..\ThirdParty\json-cpp\include&quot;"
-				AdditionalUsingDirectories="C:\Program Files\AutoCAD 2010\"
-				PreprocessorDefinitions="_WIN64;_WINDOWS;ARXDAO_MODULE;_AFXEXT;_ACRXAPP"
-				StringPooling="false"
+				PreprocessorDefinitions="WIN32;_WINDOWS;_USRDLL;DAO_MODULE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="2"
-				BufferSecurityCheck="true"
-				TreatWChar_tAsBuiltInType="true"
-				ForceConformanceInForLoopScope="true"
-				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="2"
-				WarningLevel="1"
+				WarningLevel="3"
 				DebugInformationFormat="3"
 			/>
 			<Tool
@@ -153,109 +228,23 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="_DEBUG"
+				Culture="2052"
+				AdditionalIncludeDirectories="$(IntDir)"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="log4cplusSU-x64.lib lemon_x64.lib soci_core.lib soci_mysql.lib libmysql.lib jsoncpp-x64.lib"
-				OutputFile="$(outdir)/ArxDao.arx"
+				AdditionalDependencies="log4cplusSU-x64.lib lemon_x64.lib soci_core.lib soci_mysql.lib libmysql.lib ws2_32.lib jsoncpp-x64.lib"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\lemon\lib;..\ThirdParty\soci\lib\x64;&quot;..\ThirdParty\json-cpp\lib&quot;"
-				LinkDLL="true"
+				ModuleDefinitionFile=""
 				GenerateDebugInformation="true"
-				ProgramDatabaseFile="$(OutDir)/ArxDao.pdb"
+				ProgramDatabaseFile="$(OutDir)/Dao.pdb"
 				SubSystem="2"
-				ImportLibrary="$(OutDir)/ArxDao.lib"
 				TargetMachine="17"
-			/>
-			<Tool
-				Name="VCALinkTool"
-			/>
-			<Tool
-				Name="VCManifestTool"
-			/>
-			<Tool
-				Name="VCXDCMakeTool"
-			/>
-			<Tool
-				Name="VCBscMakeTool"
-			/>
-			<Tool
-				Name="VCFxCopTool"
-			/>
-			<Tool
-				Name="VCAppVerifierTool"
-			/>
-			<Tool
-				Name="VCPostBuildEventTool"
-			/>
-		</Configuration>
-		<Configuration
-			Name="Release|Win32"
-			OutputDirectory="$(SolutionDir)$(PlatformName)\$(ConfigurationName)"
-			IntermediateDirectory="$(PlatformName)\$(ConfigurationName)"
-			ConfigurationType="2"
-			UseOfMFC="2"
-			UseOfATL="0"
-			CharacterSet="1"
-			ManagedExtensions="0"
-			>
-			<Tool
-				Name="VCPreBuildEventTool"
-			/>
-			<Tool
-				Name="VCCustomBuildTool"
-			/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-			/>
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="2"
-				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\lemon;..\ThirdParty\soci\include;..\ThirdParty\boost;&quot;..\ThirdParty\json-cpp\include&quot;"
-				AdditionalUsingDirectories="C:\Program Files\AutoCAD 2010\"
-				PreprocessorDefinitions="WIN32;_WINDOWS;ARXDAO_MODULE;NDEBUG;_AFXEXT;_ACRXAPP"
-				StringPooling="true"
-				MinimalRebuild="false"
-				BasicRuntimeChecks="0"
-				RuntimeLibrary="2"
-				BufferSecurityCheck="true"
-				TreatWChar_tAsBuiltInType="true"
-				ForceConformanceInForLoopScope="true"
-				RuntimeTypeInfo="true"
-				UsePrecompiledHeader="2"
-				WarningLevel="1"
-				DebugInformationFormat="0"
-			/>
-			<Tool
-				Name="VCManagedResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCPreLinkEventTool"
-			/>
-			<Tool
-				Name="VCLinkerTool"
-				AdditionalDependencies="log4cplusSU.lib lemon.lib soci_core.lib soci_mysql.lib libmysql.lib jsoncpp.lib"
-				OutputFile="$(outdir)/ArxDao.arx"
-				LinkIncremental="2"
-				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\lemon\lib;..\ThirdParty\soci\lib\win32;&quot;..\ThirdParty\json-cpp\lib&quot;"
-				LinkDLL="true"
-				GenerateDebugInformation="false"
-				ProgramDatabaseFile=""
-				SubSystem="2"
-				ImportLibrary="$(OutDir)/ArxDao.lib"
-				TargetMachine="1"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -285,9 +274,8 @@
 			IntermediateDirectory="$(PlatformName)\$(ConfigurationName)"
 			ConfigurationType="2"
 			UseOfMFC="2"
-			UseOfATL="0"
 			CharacterSet="1"
-			ManagedExtensions="0"
+			WholeProgramOptimization="1"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -303,45 +291,44 @@
 			/>
 			<Tool
 				Name="VCMIDLTool"
+				PreprocessorDefinitions="NDEBUG"
+				MkTypLibCompatible="false"
+				TargetEnvironment="3"
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="2"
+				EnableIntrinsicFunctions="true"
 				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\lemon;..\ThirdParty\soci\include;..\ThirdParty\boost;&quot;..\ThirdParty\json-cpp\include&quot;"
-				AdditionalUsingDirectories="C:\Program Files\AutoCAD 2010\"
-				PreprocessorDefinitions="_WIN64;_WINDOWS;ARXDAO_MODULE;NDEBUG;_AFXEXT;_ACRXAPP"
-				StringPooling="true"
-				MinimalRebuild="false"
-				BasicRuntimeChecks="0"
+				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;_USRDLL;DAO_MODULE"
 				RuntimeLibrary="2"
-				BufferSecurityCheck="true"
-				TreatWChar_tAsBuiltInType="true"
-				ForceConformanceInForLoopScope="true"
-				RuntimeTypeInfo="true"
+				EnableFunctionLevelLinking="true"
 				UsePrecompiledHeader="2"
-				WarningLevel="1"
-				DebugInformationFormat="0"
+				WarningLevel="3"
+				DebugInformationFormat="3"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="NDEBUG"
+				Culture="2052"
+				AdditionalIncludeDirectories="$(IntDir)"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="log4cplusSU-x64.lib lemon_x64.lib soci_core.lib soci_mysql.lib libmysql.lib jsoncpp-x64.lib"
-				OutputFile="$(outdir)/ArxDao.arx"
-				LinkIncremental="2"
+				AdditionalDependencies="log4cplusSU-x64.lib lemon_x64.lib soci_core.lib soci_mysql.lib libmysql.lib ws2_32.lib jsoncpp-x64.lib"
+				LinkIncremental="1"
 				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\lemon\lib;..\ThirdParty\soci\lib\x64;&quot;..\ThirdParty\json-cpp\lib&quot;"
-				LinkDLL="true"
-				GenerateDebugInformation="false"
-				ProgramDatabaseFile=""
+				ModuleDefinitionFile=""
+				GenerateDebugInformation="true"
 				SubSystem="2"
-				ImportLibrary="$(OutDir)/ArxDao.lib"
+				OptimizeReferences="2"
+				EnableCOMDATFolding="2"
 				TargetMachine="17"
 			/>
 			<Tool
@@ -371,15 +358,12 @@
 	</References>
 	<Files>
 		<Filter
-			Name="Source Files"
-			Filter="cpp;c;cc;cxx;def;idl;odl"
+			Name="源文件"
+			Filter="cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx"
+			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\acrxEntryPoint.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\ArxDao_DllMain.cpp"
+				RelativePath=".\DaoApp.cpp"
 				>
 			</File>
 			<File
@@ -387,18 +371,14 @@
 				>
 			</File>
 			<File
-				RelativePath=".\StdAfx.cpp"
+				RelativePath=".\Entity.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\stdafx.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|x64"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -414,6 +394,14 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="1"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
 					Name="Release|x64"
 					>
 					<Tool
@@ -421,6 +409,10 @@
 						UsePrecompiledHeader="1"
 					/>
 				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\stdafx.h"
+				>
 			</File>
 			<Filter
 				Name="dao"
@@ -454,19 +446,16 @@
 					>
 				</File>
 			</Filter>
-			<Filter
-				Name="entity"
-				>
-				<File
-					RelativePath=".\Entity.cpp"
-					>
-				</File>
-			</Filter>
 		</Filter>
 		<Filter
-			Name="Include Files"
-			Filter="h;hh;hxx"
+			Name="头文件"
+			Filter="h;hpp;hxx;hm;inl;inc;xsd"
+			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
+			<File
+				RelativePath=".\DaoApp.h"
+				>
+			</File>
 			<File
 				RelativePath=".\DaoHelper.h"
 				>
@@ -476,11 +465,15 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Entity.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Resource.h"
 				>
 			</File>
 			<File
-				RelativePath=".\StdAfx.h"
+				RelativePath=".\targetver.h"
 				>
 			</File>
 			<Filter
@@ -523,29 +516,22 @@
 					>
 				</File>
 			</Filter>
-			<Filter
-				Name="entity"
-				>
-				<File
-					RelativePath=".\Entity.h"
-					>
-				</File>
-			</Filter>
 		</Filter>
 		<Filter
-			Name="Resource Files"
-			Filter="rc;ico;bmp;cur;jpg;gif"
+			Name="资源文件"
+			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav"
+			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
 			>
 			<File
-				RelativePath=".\ArxDao.rc"
+				RelativePath=".\Dao.rc"
+				>
+			</File>
+			<File
+				RelativePath=".\res\Dao.rc2"
 				>
 			</File>
 		</Filter>
 	</Files>
 	<Globals>
-		<Global
-			Name="RESOURCE_FILE"
-			Value="ArxDao.rc"
-		/>
 	</Globals>
 </VisualStudioProject>

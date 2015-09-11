@@ -94,7 +94,7 @@
 #include <helper/SMenu.h>
 using namespace SOUI;
 
-#include <ArxDao/DaoHelper.h>
-#include <ArxDao/Entity.h>
+#include <Dao/DaoHelper.h>
+
 
 #pragma pack (pop)

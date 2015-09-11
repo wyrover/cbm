@@ -4,8 +4,7 @@
 
 #include <ArxHelper/HelperClass.h>
 #include <Util/HelperClass.h>
-//#include <ArxDao/Entity.h>
-//using namespace cbm;
+#include <Dao/DaoHelper.h>
 
 // 定义注册服务名称
 #ifndef ARX_SOUI_SERVICE_NAME
@@ -34,6 +33,16 @@ public:
 
         AfxEnableControlContainer();
         AfxInitRichEdit2();
+
+		//初始化数据库连接
+		if(!DaoHelper::ConfigureDao( _T( "root" ), _T( "" ), _T( "cbm" ), _T( "localhost" ), _T( "3306" ) ))
+		{
+			AfxMessageBox( _T( "连接MySQL数据库失败，请联系技术人员!!!" ) );
+			return AcRx::kRetError;
+		}
+
+		//初始化示范矿区数据
+		DaoHelper::InitSampleRegion();
 
         //初始化soui环境
         UIHelper::InitSouiEnviroment();

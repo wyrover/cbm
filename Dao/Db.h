@@ -5,7 +5,7 @@
 namespace orm 
 {
 	//单件模式
-	class ARXDAO_DLLIMPEXP Db
+	class DAO_DLLIMPEXP Db
 	{
 	public:
 		//静态方法--获取实例指针
@@ -54,5 +54,5 @@ namespace orm
 	};
 
 	//全局函数
-	extern ARXDAO_DLLIMPEXP DbPrt get_db();
+	extern DAO_DLLIMPEXP DbPrt get_db();
 }

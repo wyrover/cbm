@@ -7,7 +7,6 @@ using namespace orm;
 #include "Entity.h"
 using namespace cbm;
 
-#include <ArxHelper/HelperClass.h>
 #include <Util/HelperClass.h>
 
 bool DaoHelper::ConfigureFromFile(const CString& cfgFile)
@@ -48,11 +47,11 @@ void DaoHelper::TestDao()
     mine->save();
 
     RegionPtr region = DYNAMIC_POINTER_CAST( Region, mine->region );
-    acutPrintf( _T( "¿óÇøÃû³Æ:%s" ), region->name );
+    //cout<<"¿óÇøÃû³Æ:"<<region->name;
 
     MinePtr mine2( new Mine );
     mine->clone( mine2 );
-    acutPrintf( _T( "\n¿ó¾®Ãû³Æ:%s" ), mine2->name );
+    //cout<<"¿ó¾®Ãû³Æ:%s" <<mine2->name;
 }
 
 int DaoHelper::VerifyMineAccount( const CString& username, const CString& pwd )

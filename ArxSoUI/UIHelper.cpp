@@ -4,8 +4,7 @@
 #include <ArxHelper/HelperClass.h>
 #include <Util/HelperClass.h>
 
-#include <ArxDao/DaoHelper.h>
-#include <ArxDao/Entity.h>
+#include <Dao/DaoHelper.h>
 using namespace orm;
 using namespace cbm;
 

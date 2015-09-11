@@ -75,7 +75,7 @@ typedef boost::shared_ptr<Tunnel> TunnelPtr;
 typedef boost::shared_ptr<WorkArea> WorkAreaPtr;
 typedef boost::shared_ptr<WorkSurf> WorkSurfPtr;
 
-class ARXDAO_DLLIMPEXP Account : public orm::Record
+class DAO_DLLIMPEXP Account : public orm::Record
 {
 public:
 	static CString Table();
@@ -89,7 +89,7 @@ public:
 
 }; // class Account
 
-class ARXDAO_DLLIMPEXP AdjLayer : public orm::Record
+class DAO_DLLIMPEXP AdjLayer : public orm::Record
 {
 public:
 	static CString Table();
@@ -108,7 +108,7 @@ public:
 
 }; // class AdjLayer
 
-class ARXDAO_DLLIMPEXP Base : public orm::Record
+class DAO_DLLIMPEXP Base : public orm::Record
 {
 public:
 	static CString Table();
@@ -121,7 +121,7 @@ public:
 
 }; // class Base
 
-class ARXDAO_DLLIMPEXP Coal : public orm::Record
+class DAO_DLLIMPEXP Coal : public orm::Record
 {
 public:
 	static CString Table();
@@ -200,7 +200,7 @@ public:
 
 }; // class Coal
 
-class ARXDAO_DLLIMPEXP Complexity : public orm::Record
+class DAO_DLLIMPEXP Complexity : public orm::Record
 {
 public:
 	static CString Table();
@@ -214,7 +214,7 @@ public:
 
 }; // class Complexity
 
-class ARXDAO_DLLIMPEXP DesignDrillingSurfTechnology : public orm::Record
+class DAO_DLLIMPEXP DesignDrillingSurfTechnology : public orm::Record
 {
 public:
 	static CString Table();
@@ -250,7 +250,7 @@ public:
 
 }; // class DesignDrillingSurfTechnology
 
-class ARXDAO_DLLIMPEXP DesignGoafTechnology : public orm::Record
+class DAO_DLLIMPEXP DesignGoafTechnology : public orm::Record
 {
 public:
 	static CString Table();
@@ -264,7 +264,7 @@ public:
 
 }; // class DesignGoafTechnology
 
-class ARXDAO_DLLIMPEXP DesignPore : public orm::Record
+class DAO_DLLIMPEXP DesignPore : public orm::Record
 {
 public:
 	static CString Table();
@@ -288,7 +288,7 @@ public:
 
 }; // class DesignPore
 
-class ARXDAO_DLLIMPEXP DesignSite : public orm::Record
+class DAO_DLLIMPEXP DesignSite : public orm::Record
 {
 public:
 	static CString Table();
@@ -307,7 +307,7 @@ public:
 
 }; // class DesignSite
 
-class ARXDAO_DLLIMPEXP DesignTechnology : public orm::Record
+class DAO_DLLIMPEXP DesignTechnology : public orm::Record
 {
 public:
 	static CString Table();
@@ -322,7 +322,7 @@ public:
 
 }; // class DesignTechnology
 
-class ARXDAO_DLLIMPEXP DesignWorkSurfTechnology : public orm::Record
+class DAO_DLLIMPEXP DesignWorkSurfTechnology : public orm::Record
 {
 public:
 	static CString Table();
@@ -361,7 +361,7 @@ public:
 
 }; // class DesignWorkSurfTechnology
 
-class ARXDAO_DLLIMPEXP DrillingRadiusParam : public orm::Record
+class DAO_DLLIMPEXP DrillingRadiusParam : public orm::Record
 {
 public:
 	static CString Table();
@@ -384,7 +384,7 @@ public:
 
 }; // class DrillingRadiusParam
 
-class ARXDAO_DLLIMPEXP DrillingSurf : public orm::Record
+class DAO_DLLIMPEXP DrillingSurf : public orm::Record
 {
 public:
 	static CString Table();
@@ -404,7 +404,7 @@ public:
 
 }; // class DrillingSurf
 
-class ARXDAO_DLLIMPEXP EvalUnit : public orm::Record
+class DAO_DLLIMPEXP EvalUnit : public orm::Record
 {
 public:
 	static CString Table();
@@ -420,7 +420,7 @@ public:
 
 }; // class EvalUnit
 
-class ARXDAO_DLLIMPEXP HighDrillingPore : public orm::Record
+class DAO_DLLIMPEXP HighDrillingPore : public orm::Record
 {
 public:
 	static CString Table();
@@ -437,7 +437,7 @@ public:
 
 }; // class HighDrillingPore
 
-class ARXDAO_DLLIMPEXP HighDrillingPoreParam : public orm::Record
+class DAO_DLLIMPEXP HighDrillingPoreParam : public orm::Record
 {
 public:
 	static CString Table();
@@ -458,7 +458,7 @@ public:
 
 }; // class HighDrillingPoreParam
 
-class ARXDAO_DLLIMPEXP HighDrillingSiteParam : public orm::Record
+class DAO_DLLIMPEXP HighDrillingSiteParam : public orm::Record
 {
 public:
 	static CString Table();
@@ -480,7 +480,7 @@ public:
 
 }; // class HighDrillingSiteParam
 
-class ARXDAO_DLLIMPEXP HighDrillingTunnel : public orm::Record
+class DAO_DLLIMPEXP HighDrillingTunnel : public orm::Record
 {
 public:
 	static CString Table();
@@ -498,7 +498,7 @@ public:
 
 }; // class HighDrillingTunnel
 
-class ARXDAO_DLLIMPEXP HydrGeo : public orm::Record
+class DAO_DLLIMPEXP HydrGeo : public orm::Record
 {
 public:
 	static CString Table();
@@ -518,7 +518,7 @@ public:
 
 }; // class HydrGeo
 
-class ARXDAO_DLLIMPEXP Mine : public orm::Record
+class DAO_DLLIMPEXP Mine : public orm::Record
 {
 public:
 	static CString Table();
@@ -560,7 +560,7 @@ public:
 
 }; // class Mine
 
-class ARXDAO_DLLIMPEXP PoreFlow : public orm::Record
+class DAO_DLLIMPEXP PoreFlow : public orm::Record
 {
 public:
 	static CString Table();
@@ -588,7 +588,7 @@ public:
 
 }; // class PoreFlow
 
-class ARXDAO_DLLIMPEXP PoreSize : public orm::Record
+class DAO_DLLIMPEXP PoreSize : public orm::Record
 {
 public:
 	static CString Table();
@@ -607,7 +607,7 @@ public:
 
 }; // class PoreSize
 
-class ARXDAO_DLLIMPEXP Region : public orm::Record
+class DAO_DLLIMPEXP Region : public orm::Record
 {
 public:
 	static CString Table();
@@ -621,7 +621,7 @@ public:
 
 }; // class Region
 
-class ARXDAO_DLLIMPEXP ResAbundance : public orm::Record
+class DAO_DLLIMPEXP ResAbundance : public orm::Record
 {
 public:
 	static CString Table();
@@ -635,7 +635,7 @@ public:
 
 }; // class ResAbundance
 
-class ARXDAO_DLLIMPEXP Rock : public orm::Record
+class DAO_DLLIMPEXP Rock : public orm::Record
 {
 public:
 	static CString Table();
@@ -651,7 +651,7 @@ public:
 
 }; // class Rock
 
-class ARXDAO_DLLIMPEXP SysInfo : public orm::Record
+class DAO_DLLIMPEXP SysInfo : public orm::Record
 {
 public:
 	static CString Table();
@@ -665,7 +665,7 @@ public:
 
 }; // class SysInfo
 
-class ARXDAO_DLLIMPEXP TechMode : public orm::Record
+class DAO_DLLIMPEXP TechMode : public orm::Record
 {
 public:
 	static CString Table();
@@ -683,7 +683,7 @@ public:
 
 }; // class TechMode
 
-class ARXDAO_DLLIMPEXP Technology : public orm::Record
+class DAO_DLLIMPEXP Technology : public orm::Record
 {
 public:
 	static CString Table();
@@ -700,7 +700,7 @@ public:
 
 }; // class Technology
 
-class ARXDAO_DLLIMPEXP TopoGeo : public orm::Record
+class DAO_DLLIMPEXP TopoGeo : public orm::Record
 {
 public:
 	static CString Table();
@@ -714,7 +714,7 @@ public:
 
 }; // class TopoGeo
 
-class ARXDAO_DLLIMPEXP Tunnel : public orm::Record
+class DAO_DLLIMPEXP Tunnel : public orm::Record
 {
 public:
 	static CString Table();
@@ -747,7 +747,7 @@ public:
 
 }; // class Tunnel
 
-class ARXDAO_DLLIMPEXP WorkArea : public orm::Record
+class DAO_DLLIMPEXP WorkArea : public orm::Record
 {
 public:
 	static CString Table();
@@ -767,7 +767,7 @@ public:
 
 }; // class WorkArea
 
-class ARXDAO_DLLIMPEXP WorkSurf : public orm::Record
+class DAO_DLLIMPEXP WorkSurf : public orm::Record
 {
 public:
 	static CString Table();

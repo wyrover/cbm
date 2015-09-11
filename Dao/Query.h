@@ -4,7 +4,7 @@
 
 namespace orm
 {
-    class ARXDAO_DLLIMPEXP Query
+    class DAO_DLLIMPEXP Query
     {
 	public:
 		static Query* From( const CString& table );

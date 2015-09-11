@@ -1,7 +1,7 @@
 #pragma once
 
-#ifdef ARXDAO_MODULE
-#define ARXDAO_DLLIMPEXP __declspec(dllexport)
+#ifdef DAO_MODULE
+#define DAO_DLLIMPEXP __declspec(dllexport)
 #else
 //----- Note: we don't use __declspec(dllimport) here, because of the
 //----- "local vtable" problem with msvc. If you use __declspec(dllimport),
@@ -17,5 +17,5 @@
 //----- the ctor. And, since we expect the server dll to remain in
 //----- memory indefinitely, there is no problem with vtables unexpectedly
 //----- going away.
-#define ARXDAO_DLLIMPEXP
+#define DAO_DLLIMPEXP
 #endif
