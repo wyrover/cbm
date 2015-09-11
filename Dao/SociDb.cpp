@@ -9,6 +9,7 @@ typedef soci::rowset<soci::row> SociRowSet;
 
 namespace orm
 {
+
     soci::session* soci_Db::getConnection()
     {
         return &sql;

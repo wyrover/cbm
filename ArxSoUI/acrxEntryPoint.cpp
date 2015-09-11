@@ -34,6 +34,10 @@ public:
         AfxEnableControlContainer();
         AfxInitRichEdit2();
 
+		//初始化log4cplus日志系统
+		//为了保证日志功能正常使用，在加载所有模块之前初始化日志系统
+		log_init(_T(".\\log\\log4cplus.properties"));
+
 		//初始化数据库连接
 		CString iniFile = ArxUtilHelper::BuildPath(ArxUtilHelper::GetAppPathDir(_hdllInstance), _T("config.ini"));
 		if(!DaoHelper::ConfigureFromFile(iniFile))
@@ -41,10 +45,8 @@ public:
 			AfxMessageBox( _T( "连接MySQL数据库失败，请联系技术人员!!!" ) );
 			return AcRx::kRetError;
 		}
-
 		//初始化示范矿区数据
 		DaoHelper::InitSampleRegion();
-
         //初始化soui环境
         UIHelper::InitSouiEnviroment();
 
@@ -65,7 +67,10 @@ public:
 
         //退出登录状态
         UIHelper::Logout();
+		//退出soui环境
         UIHelper::UnInitSouiEnviroment();
+		//关闭log4cplus日志系统
+		log_uinit();
 
         return ( retCode ) ;
     }

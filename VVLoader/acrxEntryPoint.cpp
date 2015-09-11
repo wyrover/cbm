@@ -49,10 +49,6 @@ public:
 	{
 		AcRx::AppRetCode retCode = AcRxArxApp::On_kInitAppMsg ( pkt ) ;
 
-		//初始化log4cplus日志系统
-		//为了保证日志功能正常使用，在加载所有模块之前初始化日志系统
-		log_init(_T(".\\log\\log4cplus.properties"));
-
 		// 修改cad系统全局精度
 		pTS = new ArxTolSetter( GLOBAL_TOLERANCE );
 
@@ -96,9 +92,6 @@ public:
 		unInitDrawSystem();
 
 		acutPrintf( _T( "\nVVLoader::On_kUnloadAppMsg\n" ) );
-
-		//关闭log4cplus日志系统
-		log_uinit();
 
 		return ( retCode ) ;
 	}

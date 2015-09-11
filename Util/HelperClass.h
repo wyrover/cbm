@@ -2,4 +2,4 @@
 
 #include "LogHelper.h"
 #include "EncodeHelper.h"
-#include "Singleton.h"
+//#include "Singleton.h"

@@ -4,6 +4,9 @@
 #include "MainuiDialog.h"
 #include "ThreadHelper.h"
 
+#include <Dao/DaoHelper.h>
+#include <Util/HelperClass.h>
+
 BEGIN_MESSAGE_MAP( CLauncherApp, CWinAppEx )
     ON_COMMAND( ID_HELP, &CWinApp::OnHelp )
 END_MESSAGE_MAP()
@@ -65,6 +68,48 @@ static void StartFromMFC(CDialog* dlg)
 	}
 }
 
+// 获取当前模块的路径
+static CString GetAppPathDir( HINSTANCE hInstance )
+{
+	TCHAR szMoudlePath[_MAX_PATH];
+	GetModuleFileName( hInstance, szMoudlePath, _MAX_PATH );
+
+	TCHAR drive[_MAX_DRIVE];
+	TCHAR dir[_MAX_DIR];
+	_tsplitpath( szMoudlePath, drive, dir, NULL, NULL );
+
+	TCHAR path[_MAX_PATH];
+	_tmakepath( path, drive, dir, NULL, NULL );
+
+	return CString( path );
+}
+
+// 生成路径
+static CString BuildPath( const CString& dir, const CString& fileName )
+{
+	int n1 = dir.GetLength();
+	int n2 = fileName.GetLength();
+	CString path;
+	if(dir.GetAt(n1-1) == _T('\\')) 
+	{
+		path += dir.Left(n1-1);
+	}
+	else
+	{
+		path += dir;
+	}
+	path += _T("\\");
+	if(fileName.GetAt(0) == _T('\\'))
+	{
+		path += fileName.Right(n2-1);
+	}
+	else
+	{
+		path += fileName;
+	}
+	return path;
+}
+
 // ClauncherApp 初始化
 BOOL CLauncherApp::InitInstance()
 {
@@ -91,6 +136,18 @@ BOOL CLauncherApp::InitInstance()
 	if (ThreadHelper::ProcessNum(_T("Launcher.exe")) > 1)
 	{
 		MessageBox(NULL, _T("程序正在运行!"), _T("警告"), MB_OK | MB_ICONWARNING);
+		return FALSE;
+	}
+	
+	//初始化log4cplus日志系统
+	//为了保证日志功能正常使用，在加载所有模块之前初始化日志系统
+	log_init(_T(".\\log\\log4cplus.properties"));
+
+	//连接mysql数据库
+	CString iniFile = BuildPath(GetAppPathDir(m_hInstance), _T("config.ini"));
+	if(!DaoHelper::ConfigureFromFile(iniFile))
+	{
+		AfxMessageBox( _T( "连接MySQL数据库失败，请联系技术人员!!!" ) );
 		return FALSE;
 	}
 
@@ -125,5 +182,7 @@ int CLauncherApp::ExitInstance()
 {
     //退出soui环境
     UnInitSouiEnviroment();
+	//关闭log4cplus日志系统
+	log_uinit();
     return CWinAppEx::ExitInstance();
 }

@@ -19,6 +19,10 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Util", "Util\Util.vcproj", "{DCD1E333-5AFE-407C-B395-B75BE37A2936}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Launcher", "launcher\launcher.vcproj", "{CE268375-59DA-4FF5-8707-D28D99C24960}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DCD1E333-5AFE-407C-B395-B75BE37A2936} = {DCD1E333-5AFE-407C-B395-B75BE37A2936}
+		{BDF6D1BB-CDF3-42F6-AA10-68567E244051} = {BDF6D1BB-CDF3-42F6-AA10-68567E244051}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Dao", "Dao\Dao.vcproj", "{BDF6D1BB-CDF3-42F6-AA10-68567E244051}"
 	ProjectSection(ProjectDependencies) = postProject
