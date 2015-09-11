@@ -15,7 +15,7 @@ define ('THREE_TAB', "\t\t\t");
 define ('FOUR_TAB', "\t\t\t\t");
 define ("ID_SUBFIX", "_id");
 define ('VC_PRECOM', TRUE);
-define ('DLL_EXPORT', " ARXDAO_DLLIMPEXP ");
+define ('DLL_EXPORT', " DAO_DLLIMPEXP ");
 //define ('DLL_EXPORT', " ");
 
 function tchar($str)

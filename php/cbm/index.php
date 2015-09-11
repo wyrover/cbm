@@ -546,8 +546,8 @@ $projDir = file_get_contents('root.txt');
 //生成c++代码
 gen_dao_cpp_codes($relations);
 //将c++代码复制到cbm项目
-copy('Entity.h', $projDir.'ArxDao\Entity.h');
-copy('Entity.cpp', $projDir.'ArxDao\Entity.cpp');
+copy('Entity.h', $projDir.'Dao\Entity.h');
+copy('Entity.cpp', $projDir.'Dao\Entity.cpp');
 
 //将建表的sql文件一次性追加到新sql文件中
 // file_put_contents('cbm.sql', file_get_contents('cbm-mysql.sql'));
