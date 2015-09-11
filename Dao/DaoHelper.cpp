@@ -1,37 +1,31 @@
 #include "StdAfx.h"
 #include "DaoHelper.h"
-
+#include "IniFile.h"
 #include "Db.h"
-using namespace orm;
-
 #include "Entity.h"
+using namespace orm;
 using namespace cbm;
 
 #include <Util/HelperClass.h>
 
 bool DaoHelper::ConfigureFromFile(const CString& cfgFile)
 {
-	std::string strfile = W2C((LPCTSTR)cfgFile);
+	CIniFile iniFile;
+	if(FALSE == iniFile.SetPath( cfgFile )) return false;
 
-	////从配置文件中读取数据
-	//ConfigParser setting(strfile);
-	//std::string host="localhost",username="root",password="", database="cbm";
-	//int port = 3306;
-	////主机或url
-	//host = setting.Read("host", host);
-	////端口
-	//port = setting.Read("port", port);
-	////用户名
-	//username = setting.Read("username", username);
-	////密码
-	//password = setting.Read("password", password);
-	
-	return false;
+	CString section = _T("mysql");
+	CString host = iniFile.GetKeyValue(section, _T("host"));
+	CString port = iniFile.GetKeyValue(section, _T("port"));
+	CString username = iniFile.GetKeyValue(section, _T("username"));
+	CString password = iniFile.GetKeyValue(section, _T("password"));
+	CString database = iniFile.GetKeyValue(section, _T("database"));
+
+	return DaoHelper::ConfigureDao(username, password, database, host, port);
 }
 
-bool DaoHelper::ConfigureDao( const CString& user, const CString& password, const CString& database, const CString& host/*=_T("localhost")*/, const CString& port/*=_T("3306")*/ )
+bool DaoHelper::ConfigureDao( const CString& username, const CString& password, const CString& database, const CString& host/*=_T("localhost")*/, const CString& port/*=_T("3306")*/ )
 {
-    return Db::Instance()->config( user, password, database, host, port );
+    return Db::Instance()->config( username, password, database, host, port );
 }
 
 void DaoHelper::TestDao()

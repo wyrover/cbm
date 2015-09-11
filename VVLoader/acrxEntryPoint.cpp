@@ -194,7 +194,6 @@ public:
 	{
 		acutPrintf( _T( "\n-------- 加载功能模块 ------------" ) );
 
-		if( !loadArxModule( _T( "ArxDao" ) ) ) return false;
 		if( !loadArxModule( _T( "ArxSoUI" ) ) ) return false;
 
 		return true;
@@ -205,7 +204,6 @@ public:
 		acutPrintf( _T( "\n-------- 卸载功能模块 ------------" ) );
 
 		unloadArxModule( _T( "ArxSoUI" ) );
-		unloadArxModule( _T( "ArxDao" ) );
 	}
 
 	static void VVTest_testVector()

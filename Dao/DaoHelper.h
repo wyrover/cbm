@@ -12,7 +12,7 @@ class DAO_DLLIMPEXP DaoHelper
 {
 public:
 	static bool ConfigureFromFile(const CString& cfgFile);
-	static bool ConfigureDao(const CString& user, const CString& password, const CString& database, const CString& host=_T("localhost"), const CString& port=_T("3306"));
+	static bool ConfigureDao(const CString& username, const CString& password, const CString& database, const CString& host=_T("localhost"), const CString& port=_T("3306"));
 	static void TestDao();
 
 	//初始化示范矿区(虚拟的矿井和煤层)

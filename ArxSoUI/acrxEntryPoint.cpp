@@ -35,7 +35,8 @@ public:
         AfxInitRichEdit2();
 
 		//初始化数据库连接
-		if(!DaoHelper::ConfigureDao( _T( "root" ), _T( "" ), _T( "cbm" ), _T( "localhost" ), _T( "3306" ) ))
+		CString iniFile = ArxUtilHelper::BuildPath(ArxUtilHelper::GetAppPathDir(_hdllInstance), _T("config.ini"));
+		if(!DaoHelper::ConfigureFromFile(iniFile))
 		{
 			AfxMessageBox( _T( "连接MySQL数据库失败，请联系技术人员!!!" ) );
 			return AcRx::kRetError;
