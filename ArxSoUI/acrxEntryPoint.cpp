@@ -29,7 +29,6 @@ public:
         acrxRegisterService( ARX_SOUI_SERVICE_NAME );
 
         acutPrintf( _T( "\nArxSoUI::On_kInitAppMsg\n" ) );
-        LOG_TRACE( _T( "ArxSoUI::On_kInitAppMsg" ) );
 
         AfxEnableControlContainer();
         AfxInitRichEdit2();
@@ -37,6 +36,8 @@ public:
 		//初始化log4cplus日志系统
 		//为了保证日志功能正常使用，在加载所有模块之前初始化日志系统
 		log_init(_T(".\\log\\log4cplus.properties"));
+
+		LOG_TRACE( _T( "ArxSoUI::On_kInitAppMsg" ) );
 
 		//初始化数据库连接
 		CString iniFile = ArxUtilHelper::BuildPath(ArxUtilHelper::GetAppPathDir(_hdllInstance), _T("config.ini"));
