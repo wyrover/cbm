@@ -6,10 +6,10 @@
       <text pos="0,8" name="wnd_title">测试程序v1.0</text>
       <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
     </caption>
-    <text pos="15,73" width="74" height="23" name="text176" margin-x="1" margin-y="1">煤层采高M</text>
+    <text pos="15,73" width="62" height="23" name="text176" margin-x="1" margin-y="1">煤层采高</text>
     <edit pos="95,73" width="70" height="26" readOnly="1" name="hw" margin-x="1" margin-y="1"/>
     <text pos="203,71" width="70" height="23" name="text178" margin-x="1" margin-y="1">未知变量h</text>
-    <edit pos="283,71" width="70" height="26" readOnly="1" name="h" margin-x="1" margin-y="1"/>
+    <edit pos="274,71" width="70" height="26" readOnly="1" name="h" margin-x="1" margin-y="1"/>
     <text pos="16,109" width="77" height="23" name="text196" margin-x="1" margin-y="1">冒落带高度</text>
     <edit pos="96,108" width="65" height="26" readOnly="1" name="caving_zone_height" margin-x="1" margin-y="1"/>
     <text pos="10,39" width="62" height="23" name="text198" margin-x="1" margin-y="1">覆岩岩性</text>
@@ -23,7 +23,7 @@
       </items>
     </combobox>
     <text pos="203,109" width="62" height="23" name="text200" margin-x="1" margin-y="1">误差范围</text>
-    <edit pos="266,107" width="59" height="26" readOnly="1" name="tolerance" margin-x="1" margin-y="1"/>
+    <edit pos="274,107" width="70" height="26" readOnly="1" name="tolerance" margin-x="1" margin-y="1"/>
     <button pos="148,142" width="124" height="40" name="save" margin-x="1" margin-y="1">确定</button>
   </root>
 </SOUI>

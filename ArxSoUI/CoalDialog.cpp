@@ -291,9 +291,9 @@ void CoalDialog::OnVarCoeffCaclButtonClick()
     //取出数据
     CString str = dlg.datas;
 
-    //拆分数据
+    //拆分数据(空格、制表符、换行)
     StringArray str_datas;
-    Utils::cstring_explode( str, _T( " \t," ), str_datas );
+    Utils::cstring_explode( str, _T( " \t\n," ), str_datas );
 
     //得到浮点型的数据
     typedef std::vector<double> DoubleArray;
