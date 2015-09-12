@@ -426,10 +426,6 @@
 			Filter="h;hh;hxx"
 			>
 			<File
-				RelativePath=".\config.h"
-				>
-			</File>
-			<File
 				RelativePath=".\Resource.h"
 				>
 			</File>

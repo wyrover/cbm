@@ -1,8 +1,9 @@
 #include "StdAfx.h"
 #include "resource.h"
 
-// 配置文件
-#include "config.h"
+// 全局浮点数精度
+// 主要用于几何坐标判断
+#define GLOBAL_TOLERANCE 1e-5
 
 #include <ArxHelper/HelperClass.h>
 #include <Util/HelperClass.h>
