@@ -3,6 +3,8 @@
 /**
 * 参考来源: http://blog.csdn.net/fksec/article/details/41959005
 */
+//初始化单例模式的静态成员变量
+template<> cruise_log4cplus* Singleton<cruise_log4cplus>::ms_Singleton = 0;
 
 static log4cplus::tstring file_name_add_prefix(log4cplus::tstring& old_name,log4cplus::tstring prefix_flie)
 {
@@ -147,37 +149,18 @@ cruise_log4cplus::cruise_log4cplus()
 //	
 //}
 
-cruise_log4cplus::cruise_log4cplus(const cruise_log4cplus& obj) : m_logger(obj.m_logger)
-{
-
-}
-
-cruise_log4cplus& cruise_log4cplus::operator=(const cruise_log4cplus& obj)
-{ 
-	m_logger = obj.m_logger;
-	return *this;
-}
-
-cruise_log4cplus& cruise_log4cplus::get_singleton()
-{
-	static cruise_log4cplus _instance;
-	return _instance;
-}
-
-cruise_log4cplus* cruise_log4cplus::get_singleton_ptr()
-{   return &get_singleton();   }
-
-log4cplus::Logger& cruise_log4cplus::get_logger()
-{   return get_singleton().m_logger;   }
+log4cplus::Logger& cruise_log4cplus::getLogger()
+{   return cruise_log4cplus::getSingleton().m_logger;   }
 
 
 void log_init(tchar* prop_file, tchar* prefix_log_flie, tchar* sub_logger_name)
 {
-	g_Log4cplus;  // 通过该语句提前构造全局静态对象
-	g_Log4cplus.log_init(prop_file, prefix_log_flie, sub_logger_name);
+	new cruise_log4cplus();
+	cruise_log4cplus::getSingletonPtr()->log_init(prop_file, prefix_log_flie, sub_logger_name);
 }
 
 void log_uinit()
 {
-	g_Log4cplus.log_uinit();
+	cruise_log4cplus::getSingletonPtr()->log_uinit();
+	delete cruise_log4cplus::getSingletonPtr();
 }

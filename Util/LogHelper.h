@@ -7,15 +7,15 @@
 #include <log4cplus/loggingmacros.h>
 
 #include "dlimexp.h"
+#include "Singleton.h"
 
-class UTIL_DLLIMPEXP cruise_log4cplus
+class UTIL_DLLIMPEXP cruise_log4cplus : public Singleton<cruise_log4cplus>
 {
 public:
-	static cruise_log4cplus& get_singleton();
-	static cruise_log4cplus* get_singleton_ptr();
-	static log4cplus::Logger& get_logger();
+	static log4cplus::Logger& getLogger();
 
 public:
+	cruise_log4cplus();
 	//~cruise_log4cplus();
 	void log_init(log4cplus::tchar* prop_file, log4cplus::tchar* prefix_log_flie = NULL, log4cplus::tchar* sub_logger_name = NULL);
 	void log_uinit();
@@ -29,17 +29,11 @@ public:
 //	void Trace(const char* file, const int line, const char* function, const log4cplus::tchar* format_msg, ...);
 
 private:
-	cruise_log4cplus();
-	cruise_log4cplus(const cruise_log4cplus& obj);
-	cruise_log4cplus& operator=(const cruise_log4cplus& obj);
-private:
 	std::locale m_origin_locale;
 	log4cplus::Logger m_logger;
 };
 
-#define g_Log4cplus cruise_log4cplus::get_singleton()
-#define g_pLog4cplus cruise_log4cplus::get_singleton_ptr()
-#define g_Logger cruise_log4cplus::get_logger()
+#define g_Logger cruise_log4cplus::getLogger()
 
 /************************************************************************/
 /*  Log out  macro                                                                                 */
