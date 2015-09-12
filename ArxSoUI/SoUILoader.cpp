@@ -12,7 +12,7 @@ using namespace SOUI;
 #define SYS_NAMED_RESOURCE _T("soui-sys-resource.dll")
 #endif
 
-//初始化静态成员变量
+//初始化单例模式的静态成员变量
 template<> SoUILoader* Singleton<SoUILoader>::ms_Singleton = 0;
 
 SoUILoader::SoUILoader( HINSTANCE _hInstance ) : hInstance( _hInstance ), pSouiApp( 0 )

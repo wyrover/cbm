@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Singleton.h"
+#include <Util/Singleton.h>
 
 //µ¥ÀýÄ£Ê½
 class SoUILoader : public Singleton<SoUILoader>
