@@ -43,4 +43,7 @@ public:
 	static orm::RecordPtrListPtr GetWorkSurfs(int mine_id);
 	//查询矿井所有的掘进面
 	static orm::RecordPtrListPtr GetDrillingSurfs(int mine_id);
+
+	static int DifficultEval(cbm::CoalPtr coal);
+	static CString DifficultEvalString(cbm::CoalPtr coal);
 };

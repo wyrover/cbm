@@ -29,7 +29,7 @@ public:
 protected:
 	virtual LPCTSTR getSkinDir() const
 	{
-		return _T("..\\..\\Skin\\demo4");
+		return _T("..\\..\\ArxSoUI");
 	}
 
 	virtual bool initExtendControls()
