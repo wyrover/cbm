@@ -39,5 +39,11 @@ protected:
 	SRichEdit* m_RtfViewerRichedit;
 
 public:
-	CString rtf_res; // rtf资源(外部指定)
+	void setRtfRes(const CString& rtf_res);
+	void setRtfFile(const CString& rtf_file);
+
+private:
+	CString m_rtf_res; // rtf资源(外部指定)
+	CString m_rtf_file; // rtf文件
+	bool m_use_res;     // 使用资源还是加载rtf文件(默认使用资源)
 };

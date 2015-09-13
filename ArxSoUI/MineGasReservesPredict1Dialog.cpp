@@ -75,22 +75,11 @@ void MineGasReservesPredict1Dialog::OnW1CaclButtonClick()
 {
     //提取数据进行计算
     MineGasReservesPredictInputDialog dlg( TRUE );
-    dlg.mine_id = mine_id;
+    dlg.mine_id = this->mine_id;
     dlg.Run( GetSafeHwnd() );
 
-    //查找所有的可采煤层
-    RecordPtrListPtr lists = FIND_MANY2( Coal, FKEY( Mine ), Utils::int_to_cstring( mine_id ), FIELD( minable ), _T( "1" ) );
-    if( lists == 0 ) return;
-    //计算可采煤层的瓦斯储量
-    double S = 0;
-    for( int i = 0; i < lists->size(); i++ )
-    {
-        CoalPtr coal = DYNAMIC_POINTER_CAST( Coal, lists->at( i ) );
-        S += coal->res_a1 * coal->gas_x1;
-    }
-    double W1 = S;
-
-    //更新到界面
+	//计算并更新到界面
+	double W1 = DaoHelper::MineGasReservesW1(mine_id);
     m_ReserveW1Edit->SetWindowText( Utils::double_to_cstring( W1 ) );
 }
 
@@ -103,19 +92,8 @@ void MineGasReservesPredict1Dialog::OnW2CaclButtonClick()
     //dlg.mine_id = mine_id;
     //dlg.Run(GetSafeWnd());
 
-    ////查找所有的不可采煤层
-    //RecordPtrListPtr lists = FIND_MANY2(Coal, FKEY(Mine), Utils::int_to_cstring(mine_id), FIELD(minable), _T("0"));
-    //if(lists == 0) return;
-    ////计算不可采煤层的瓦斯储量
-    //double S = 0;
-    //for(int i=0;i<lists->size();i++)
-    //{
-    //	CoalPtr coal = DYNAMIC_POINTER_CAST(Coal, lists->at(i));
-    //	S += coal->res_a1 * coal->gas_x1;
-    //}
-    //double W2 = S;
-
-    ////更新到界面
+	//计算并更新到界面
+	//double W2 = DaoHelper::MineGasReservesW2(mine_id);
     //m_ReserveW2Edit->SetWindowText(Utils::double_to_cstring(W2));
 }
 

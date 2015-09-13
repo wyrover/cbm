@@ -46,4 +46,8 @@ public:
 
 	static int DifficultEval(cbm::CoalPtr coal);
 	static CString DifficultEvalString(cbm::CoalPtr coal);
+	//可采煤层瓦斯涌出量计算W1
+	static double MineGasReservesW1(int mine_id);
+	//不可采煤层瓦斯涌出量计算W2
+	static double MineGasReservesW2(int mine_id);
 };

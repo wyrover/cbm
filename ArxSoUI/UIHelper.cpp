@@ -66,7 +66,10 @@ void UIHelper::ShowModalDemo()
 void UIHelper::TestRtfViewer()
 {
 	RtfViewerDialog dlg(TRUE);
-	dlg.rtf_res = _T("HELP1");
+	//直接指定rtf资源(无  rtf:  前缀)
+	dlg.setRtfRes(_T("HELP1"));
+	//或者直接一个rtf文件(最好是使用绝对路径)
+	//dlg.setRtfFile(ArxUtilHelper::BuildPath(ArxUtilHelper::GetAppPathDir(_hdllInstance), _T("help2.rtf")));
 	dlg.Run( acedGetAcadFrame()->GetSafeHwnd() );
 }
 

@@ -11,6 +11,7 @@ using namespace cbm;
 
 RtfViewerDialog::RtfViewerDialog(BOOL bModal) : AcadSouiDialog(_T("layout:rtf_viewer"), bModal)
 {
+	m_use_res = true;
 }
 
 RtfViewerDialog::~RtfViewerDialog()
@@ -58,12 +59,30 @@ LRESULT RtfViewerDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 	{
 		//必须要设置ole回调,否则rtf文件中图片、表格等内容无法显示
 		SetSRicheditOleCallback(m_RtfViewerRichedit,CreateSource2);
-		//修改richedit的rtf属性
-		CString rtf;
-		rtf.Format(_T("rtf:%s"), this->rtf_res);
-		m_RtfViewerRichedit->SetAttribute(L"rtf", (LPCTSTR)rtf);
-		//m_RtfViewerRichedit->LoadRtf(_T("c:\\RTF测试.rtf"));
+
+		if(this->m_use_res)
+		{
+			//修改richedit的rtf属性
+			CString rtf;
+			rtf.Format(_T("rtf:%s"), this->m_rtf_res);
+			m_RtfViewerRichedit->SetAttribute(L"rtf", (LPCTSTR)rtf);
+		}
+		else
+		{
+			m_RtfViewerRichedit->LoadRtf(m_rtf_file);
+		}
 	}
 	return 0;
 }
 
+void RtfViewerDialog::setRtfRes(const CString& rtf_res)
+{
+	m_rtf_res = rtf_res;
+	m_use_res = true;
+}
+
+void RtfViewerDialog::setRtfFile(const CString& rtf_file)
+{
+	m_rtf_file = rtf_file;
+	m_use_res = false;
+}

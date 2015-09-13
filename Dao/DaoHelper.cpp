@@ -351,3 +351,35 @@ CString DaoHelper::DifficultEvalString(cbm::CoalPtr coal)
 	msg.AppendFormat( _T( "瓦斯抽采难易程度:%s" ), EvalDifficultString(coal->eval_difficult ));
 	return msg;
 }
+
+double DaoHelper::MineGasReservesW1(int mine_id)
+{
+	//查找所有的可采煤层
+	RecordPtrListPtr lists = FIND_MANY2( Coal, FKEY( Mine ), Utils::int_to_cstring( mine_id ), FIELD( minable ), _T( "1" ) );
+	if( lists == 0 ) return 0;
+
+	//计算可采煤层的瓦斯储量
+	double S = 0;
+	for( int i = 0; i < lists->size(); i++ )
+	{
+		CoalPtr coal = DYNAMIC_POINTER_CAST( Coal, lists->at( i ) );
+		S += coal->res_a1 * coal->gas_x1;
+	}
+	return S;
+}
+
+double DaoHelper::MineGasReservesW2(int mine_id)
+{
+	//查找所有的可采煤层
+	RecordPtrListPtr lists = FIND_MANY2( Coal, FKEY( Mine ), Utils::int_to_cstring( mine_id ), FIELD( minable ), _T( "0" ) );
+	if( lists == 0 ) return 0;
+
+	//计算可采煤层的瓦斯储量
+	double S = 0;
+	for( int i = 0; i < lists->size(); i++ )
+	{
+		CoalPtr coal = DYNAMIC_POINTER_CAST( Coal, lists->at( i ) );
+		S += coal->res_a1 * coal->gas_x1;
+	}
+	return S;
+}
