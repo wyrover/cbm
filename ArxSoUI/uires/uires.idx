@@ -69,4 +69,9 @@
     <file name="ws_gas_flow_predict_adj" path="xml\ws_gas_flow_predict_adj.xml"/>
     <file name="ws_gas_flow_predict_work" path="xml\ws_gas_flow_predict_work.xml"/>
   </layout>
+  <icon/>
+  <cursor/>
+  <img>
+    <file name="EVAL_PROOF" path="image\eval_proof.png"/>
+  </img>
 </resource>

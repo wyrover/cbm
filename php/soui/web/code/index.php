@@ -449,6 +449,12 @@ else if($type == 'tabctrl') {
       $node->setAttribute('visible', '0');
     }
   }
+  else if($type == 'img') {
+    $node->setAttribute('ncSkin', '_skin.sys.border');
+    //删除combobox属性和combobox的节点文本值
+    //$node->removeAttribute("width");
+    //$node->removeAttribute("height");
+  }
 }
 
 function create_root($doc, $attribs)
@@ -906,7 +912,7 @@ function createUIResFile($dir, $uiResFile)
     $dir = $dir.'\\';
   }
 
-//创建一个XML文档并设置XML版本和编码
+  //创建一个XML文档并设置XML版本和编码
   $doc = new DomDocument();
   //$doc->preserveWhiteSpace = false;
   //$doc->formatOutput = true;
@@ -923,7 +929,7 @@ function createUIResFile($dir, $uiResFile)
   xml_append_child($res, createFileNodes($doc, 'layout', $dir, 'xml'));
 
   //创建<img>、<icon>等图片资源节点
-  // addImgToRes($res, $doc, $dir);
+  addImgToRes($res, $doc, $dir);
   //创建<rtf>、<script>等资源节点
   // addOtherToRes($res, $doc, $dir);
 
@@ -978,12 +984,62 @@ function writeImgSrcToDB($uiResFile='uires.idx', $resType='img')
  $mysqli->close();
 }
 
+function UpdateInitXml($dir, $resType='img')
+{
+  $uiResFile = $dir.'\uires.idx';
+  $styleFile = $dir.'\xml\init.xml';
+  echo $uiResFile."<br>";
+  echo $styleFile."<br>";
+  //解析uires.idx文件,得到图片资源
+  //创建一个XML文档并设置XML版本和编码
+  $doc = new DomDocument();
+  $doc->preserveWhiteSpace = false;
+  $doc->load($uiResFile);
+  // $doc->formatOutput = true;
+  //xml输出的时候要加上编码,否则输出的中文变成一堆奇怪的符号
+  $doc->encoding = 'UTF-8';
+  // echo htmlspecialchars($doc->saveXML());
+
+  //读取init.xml文件
+  $doc2 = new DomDocument();
+  $doc2->preserveWhiteSpace = false;
+  $doc2->load($styleFile);
+  $doc2->encoding = 'UTF-8';
+
+  $skin_node = $doc2->getElementsByTagName("skin")->item(0);
+  //扫描<skin>下的所有name
+  $names = array();
+  foreach ($skin_node->childNodes as $node) {
+    $name = $node->getAttribute('name');
+    $names[] = $name;
+  }
+
+  //扫描uires.idx文件中的<img>标签
+  foreach ($doc->getElementsByTagName($resType) as $nodes) {
+   foreach ($nodes->childNodes as $node) {
+     $name = $node->getAttribute('name');
+     $src = $node->getAttribute('path');
+    
+     $skin_name = "skin_".strtolower($name);
+     $src_name = $resType.":".$name;
+     if(in_array($skin_name, $names)) continue;
+
+     echo $skin_name.'-->'.$src_name.'<br>';
+     xml_append_child($skin_node, create_node($doc2, 'imgframe', null, array('name'=>$skin_name, 'src'=>$src_name)));
+    }
+  }
+  prettyXml($doc2->saveXML(), $styleFile);
+}
+
 function genResNameTxtFile()
 {
   $file = fopen("ResName.txt", 'w');
-  fwrite($file, "layout:gas_design_p2_3");
+  fwrite($file, "layout:demo");
   fclose($file);
 }
+
+//项目路径(读取root.txt文件得到)
+$projDir = file_get_contents('root.txt');
 
 //执行转换,扫描json文件夹里的json文件,解析并生成xml文件,保存到xml文件夹
 mockups_to_soui_converter('json', '..\uires\xml');
@@ -991,14 +1047,13 @@ mockups_to_soui_converter('json', '..\uires\xml');
 createUIResFile('..\uires', '..\uires\uires.idx');
 //生成图片资源索引数据库
 // writeImgSrcToDB('../uires/uires.idx', 'img');
-
+//生成图片皮肤
+UpdateInitXml("..\uires", "img");
+//在文件中指定layout名称(测试的时候可以动态显示不同的xml模板)
 genResNameTxtFile();
 
 //解析xml文件,生成cpp代码
 xml_to_dialog('..\uires\xml', 'cpp');
-
-//项目路径(读取root.txt文件得到)
-$projDir = file_get_contents('root.txt');
 
 //将uires复制到cbm项目
 recurse_copy('..\uires', $projDir.'ArxSoUI\uires');
