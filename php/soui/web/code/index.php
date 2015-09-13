@@ -1001,11 +1001,10 @@ xml_to_dialog('..\uires\xml', 'cpp');
 $projDir = file_get_contents('root.txt');
 
 //将uires复制到cbm项目
-recurse_copy('..\uires', $projDir.'Skin\demo4\uires');
+recurse_copy('..\uires', $projDir.'ArxSoUI\uires');
 //将uires复制到soui\bin(方便mfc_test进行预览)
 recurse_copy('..\uires', $projDir.'ThirdParty\soui\bin\uires');
 copy('ResName.txt', $projDir.'ThirdParty\soui\bin\uires\ResName.txt');
-copy('ResName.txt', $projDir.'Skin\demo4\uires\ResName.txt');
 
 //将php代码复制到cbm项目
 // copy('root.txt', $projDir.'php\soui\web\code\root.txt');
