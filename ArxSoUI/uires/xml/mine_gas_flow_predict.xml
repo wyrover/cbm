@@ -3,11 +3,11 @@
   <skin/>
   <style/>
   <root cache="1" skin="_skin.sys.wnd.bkgnd">
-    <text pos="27,124" width="77" height="23" name="text15" margin-x="1" margin-y="1">平均日产量</text>
-    <edit pos="111,122" width="115" height="26" name="work_area_A" margin-x="1" margin-y="1"/>
-    <text pos="15,200" width="211" height="23" name="text18" margin-x="1" margin-y="1">生产采区采空区瓦斯涌出系数K'</text>
-    <edit pos="231,198" width="58" height="26" name="K1_gas" margin-x="1" margin-y="1"/>
-    <button pos="297,198" width="56" height="27" name="k1_help" margin-x="1" margin-y="1">帮助</button>
+    <text pos="27,197" width="77" height="23" name="text15" margin-x="1" margin-y="1">平均日产量</text>
+    <edit pos="111,195" width="115" height="26" name="work_area_A" margin-x="1" margin-y="1"/>
+    <text pos="12,42" width="211" height="23" name="text18" margin-x="1" margin-y="1">生产采区采空区瓦斯涌出系数K'</text>
+    <edit pos="228,40" width="58" height="26" name="K1_gas" margin-x="1" margin-y="1"/>
+    <button pos="294,40" width="56" height="27" name="k1_help" margin-x="1" margin-y="1">帮助</button>
     <window pos="0,0" width="363" height="326" name="window29" margin-x="1" margin-y="1" enable="0" visible="0"/>
     <caption pos="4,0" width="357" height="40" name="caption30">
       <text pos="0,8" name="wnd_title">测试程序v1.0</text>
@@ -16,29 +16,29 @@
     <button pos="257,273" width="96" height="43" name="save" margin-x="1" margin-y="1">保存</button>
     <text pos="15,267" width="219" height="23" name="text32" margin-x="1" margin-y="1">&gt;&gt;矿井相对瓦斯涌出量预测结果</text>
     <edit pos="40,290" width="142" height="26" name="qr" margin-x="1" margin-y="1"/>
-    <text pos="15,234" width="213" height="23" name="text37" margin-x="1" margin-y="1">已采采区采空区瓦斯涌出系数K''</text>
-    <edit pos="231,232" width="55" height="26" name="K2_gas" margin-x="1" margin-y="1"/>
-    <button pos="297,232" width="56" height="27" name="k2_help" margin-x="1" margin-y="1">帮助</button>
-    <combobox pos="111,61" width="115" height="24" dropDown="1" curSel="0" name="work_area" margin-x="1" margin-y="1" ncSkin="_skin.sys.border">
+    <text pos="12,76" width="213" height="23" name="text37" margin-x="1" margin-y="1">已采采区采空区瓦斯涌出系数K''</text>
+    <edit pos="228,74" width="55" height="26" name="K2_gas" margin-x="1" margin-y="1"/>
+    <button pos="294,74" width="56" height="27" name="k2_help" margin-x="1" margin-y="1">帮助</button>
+    <combobox pos="111,134" width="115" height="24" dropDown="1" curSel="0" name="work_area" margin-x="1" margin-y="1" ncSkin="_skin.sys.border">
       <liststyle itemHeight="30" colorText="#000000" colorSelText="#FFFFFF" colorItemBkgnd="#FFFFFF" colorItemSelBkgnd="#000088"/>
       <items>
         <item text=""/>
       </items>
     </combobox>
-    <text pos="27,62" width="62" height="23" name="text49" margin-x="1" margin-y="1">生产采区</text>
-    <edit pos="135,156" width="91" height="26" name="work_area_qr" margin-x="1" margin-y="1"/>
-    <button pos="231,156" width="56" height="27" name="work_area_cacl" margin-x="1" margin-y="1">计算</button>
-    <text pos="26,158" width="107" height="23" name="text53" margin-x="1" margin-y="1">相对瓦斯涌出量</text>
+    <text pos="27,135" width="62" height="23" name="text49" margin-x="1" margin-y="1">生产采区</text>
+    <edit pos="135,229" width="91" height="26" name="work_area_qr" margin-x="1" margin-y="1"/>
+    <button pos="231,229" width="56" height="27" name="work_area_cacl" margin-x="1" margin-y="1">计算</button>
+    <text pos="26,231" width="107" height="23" name="text53" margin-x="1" margin-y="1">相对瓦斯涌出量</text>
     <button pos="184,290" width="56" height="27" name="cacl" margin-x="1" margin-y="1">预测</button>
-    <text pos="27,93" width="80" height="23" name="text61" margin-x="1" margin-y="1">开采煤层</text>
-    <combobox pos="111,92" width="115" height="24" dropDown="1" curSel="0" name="coal" margin-x="1" margin-y="1" ncSkin="_skin.sys.border">
+    <text pos="27,166" width="80" height="23" name="text61" margin-x="1" margin-y="1">开采煤层</text>
+    <combobox pos="111,165" width="115" height="24" dropDown="1" curSel="0" name="coal" margin-x="1" margin-y="1" ncSkin="_skin.sys.border">
       <liststyle itemHeight="30" colorText="#000000" colorSelText="#FFFFFF" colorItemBkgnd="#FFFFFF" colorItemSelBkgnd="#000088"/>
       <items>
         <item text=""/>
       </items>
     </combobox>
-    <button pos="231,92" width="56" height="27" name="assign" margin-x="1" margin-y="1">布置</button>
-    <button pos="231,61" width="56" height="27" name="design_work_area" margin-x="1" margin-y="1">设计</button>
-    <text pos="15,37" width="114" height="23" name="text85" margin-x="1" margin-y="1">&gt;&gt;生产采区参数</text>
+    <button pos="231,165" width="56" height="27" name="assign" margin-x="1" margin-y="1">布置</button>
+    <button pos="231,134" width="56" height="27" name="design_work_area" margin-x="1" margin-y="1">设计</button>
+    <text pos="15,110" width="114" height="23" name="text85" margin-x="1" margin-y="1">&gt;&gt;生产采区参数</text>
   </root>
 </SOUI>

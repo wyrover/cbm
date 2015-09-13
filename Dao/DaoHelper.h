@@ -44,10 +44,14 @@ public:
 	//查询矿井所有的掘进面
 	static orm::RecordPtrListPtr GetDrillingSurfs(int mine_id);
 
+	//抽采难易程度评价
 	static int DifficultEval(cbm::CoalPtr coal);
 	static CString DifficultEvalString(cbm::CoalPtr coal);
 	//可采煤层瓦斯涌出量计算W1
 	static double MineGasReservesW1(int mine_id);
 	//不可采煤层瓦斯涌出量计算W2
 	static double MineGasReservesW2(int mine_id);
+	//计算采区的瓦斯涌出量
+	static double WorkAreaGasFlow(cbm::WorkAreaPtr work_area, double K1);
+	static double MineGasFlow(cbm::MinePtr mine);
 };

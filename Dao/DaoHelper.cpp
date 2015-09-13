@@ -383,3 +383,73 @@ double DaoHelper::MineGasReservesW2(int mine_id)
 	}
 	return S;
 }
+
+double DaoHelper::WorkAreaGasFlow(WorkAreaPtr work_area, double K1)
+{
+	//查找所有的回采工作面
+	double S1 = 0;
+	RecordPtrListPtr ws_lists = FIND_MANY( WorkSurf, FKEY( WorkArea ), work_area->getStringID() );
+	if( ws_lists != 0 )
+	{
+		for( int i = 0; i < ws_lists->size(); i++ )
+		{
+			WorkSurfPtr ws = DYNAMIC_POINTER_CAST( WorkSurf, ws_lists->at( i ) );
+			if( ws == 0 ) continue;
+
+			double qr = ws->qr;
+			double A = ws->a;
+			S1 += A * qr;
+		}
+	}
+	//查找所有的掘进面
+	double S2 = 0;
+	RecordPtrListPtr tws_lists = FIND_MANY( DrillingSurf, FKEY( WorkArea ), work_area->getStringID() );
+	if( tws_lists != 0 )
+	{
+		for( int i = 0; i < tws_lists->size(); i++ )
+		{
+			DrillingSurfPtr tws = DYNAMIC_POINTER_CAST( DrillingSurf, tws_lists->at( i ) );
+			if( tws == 0 ) continue;
+
+			double qr = tws->qa;
+			S2 += qr;
+		}
+	}
+	//采区平均日产量
+	double A0 = work_area->a;
+	if( A0 <= 0 )
+	{
+		return -1;
+	}
+	else
+	{
+		return K1 * ( S1 + S2 ) / A0;
+	}
+}
+
+double DaoHelper::MineGasFlow(MinePtr mine)
+{
+	//查找该矿所有的采区
+	RecordPtrListPtr lists = DaoHelper::GetWorkAreas( mine->getID() );
+	if( lists == 0 ) return 0;
+
+	double S1 = 0, S2 = 0;
+	for( int i = 0; i < lists->size(); i++ )
+	{
+		WorkAreaPtr work_area = DYNAMIC_POINTER_CAST( WorkArea, lists->at( i ) );
+		double qr = work_area->qr;
+		double A0 = work_area->a;
+		S1 += qr * A0;
+		S2 += A0;
+	}
+	if( S2 <= 0 )
+	{
+		return -1;
+	}
+	else
+	{
+		double K2 = mine->gas_k2;;
+		//计算并更新矿井的瓦斯涌出量
+		return K2 * S1 / S2;
+	}
+}

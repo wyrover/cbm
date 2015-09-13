@@ -387,14 +387,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\PicViewerDialog.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\RtfViewerDialog.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\SouiDialog.cpp"
 				>
 			</File>
@@ -626,6 +618,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\PicViewerDialog.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\PolicyDialog.cpp"
 					>
 				</File>
@@ -647,6 +643,10 @@
 				</File>
 				<File
 					RelativePath=".\RegDialog.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\RtfViewerDialog.cpp"
 					>
 				</File>
 				<File
@@ -720,15 +720,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\PicViewerDialog.h"
-				>
-			</File>
-			<File
 				RelativePath=".\Resource.h"
-				>
-			</File>
-			<File
-				RelativePath=".\RtfViewerDialog.h"
 				>
 			</File>
 			<File
@@ -935,6 +927,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\PicViewerDialog.h"
+					>
+				</File>
+				<File
 					RelativePath=".\PolicyDialog.h"
 					>
 				</File>
@@ -956,6 +952,10 @@
 				</File>
 				<File
 					RelativePath=".\RegDialog.h"
+					>
+				</File>
+				<File
+					RelativePath=".\RtfViewerDialog.h"
 					>
 				</File>
 				<File
