@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SOUI width="452" height="262" translucent="0" alpha="255" resizable="0">
+  <skin/>
+  <style/>
   <root cache="1" skin="_skin.sys.wnd.bkgnd">
     <text pos="0,87" width="62" height="23" name="text31" margin-x="1" margin-y="1">储层压力</text>
     <text pos="296,88" width="47" height="23" name="text35" margin-x="1" margin-y="1">渗透率</text>

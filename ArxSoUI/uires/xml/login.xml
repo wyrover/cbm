@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SOUI width="280" height="159" translucent="0" alpha="255" resizable="0">
+  <skin/>
+  <style/>
   <root cache="1" skin="_skin.sys.wnd.bkgnd">
     <text pos="7,41" width="55" height="23" name="text5" margin-x="1" margin-y="1">用户名</text>
     <edit pos="66,38" width="204" height="26" name="username" margin-x="1" margin-y="1"/>

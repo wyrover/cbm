@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SOUI width="399" height="352" translucent="0" alpha="255" resizable="0">
+  <skin/>
+  <style/>
   <root cache="1" skin="_skin.sys.wnd.bkgnd">
     <text pos="18,42" width="183" height="23" name="text4" margin-x="1" margin-y="1">工作面围岩瓦斯涌出系数K1</text>
     <edit pos="211,40" width="89" height="26" name="K1" margin-x="1" margin-y="1"/>

@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SOUI width="1183" height="649" translucent="0" alpha="255" resizable="0">
+  <skin>
+    <imgframe name="skin_eval_proof" src="img:EVAL_PROOF"/>
+    <imgframe name="skin_help" src="img:HELP"/>
+  </skin>
+  <style/>
   <root cache="1" skin="_skin.sys.wnd.bkgnd">
     <text pos="81,79" width="52" height="21" name="text7" margin-x="1" margin-y="1">用户名</text>
     <edit pos="139,76" width="208" height="26" name="edit_user" test="中文测试" margin-x="1" margin-y="1"/>
@@ -7,7 +12,7 @@
     <edit pos="139,121" width="208" height="26" name="edit11" margin-x="1" margin-y="1"/>
     <button pos="58,158" width="127" height="55" name="button12" margin-x="1" margin-y="1">'有引号的汉字'</button>
     <button pos="202,159" width="118" height="30" name="button13" margin-x="1" margin-y="1">注册</button>
-    <img pos="598,482" width="480" height="133" name="img17" skin="skin_eval_proof" margin-x="1" margin-y="1" ncSkin="_skin.sys.border"/>
+    <img pos="598,482" width="480" height="133" name="img17" skin="skin_eval_proof"/>
     <listbox pos="399,266" width="144" height="104" itemHeight="24" hotTrack="1" name="listbox29" margin-x="1" margin-y="1" ncSkin="_skin.sys.border">
       <items>
         <item text="Item One"/>

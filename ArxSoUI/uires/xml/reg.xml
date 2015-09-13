@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SOUI width="383" height="400" translucent="0" alpha="255" resizable="0">
+  <skin/>
+  <style/>
   <root cache="1" skin="_skin.sys.wnd.bkgnd">
     <text pos="16,138" width="62" height="23" name="text22" margin-x="1" margin-y="1">矿井名称</text>
     <edit pos="82,136" width="294" height="26" name="name" margin-x="1" margin-y="1"/>

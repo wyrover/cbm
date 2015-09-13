@@ -16,6 +16,7 @@ using namespace cbm;
 #include "KeyParamDialog.h"
 #include "PolicyDialog.h"
 #include "MainDialog.h"
+#include "PictureDialog.h"
 using namespace SOUI;
 
 void UIHelper::InitAllData()
@@ -57,8 +58,11 @@ void UIHelper::ShowModalDemo()
     CAcModuleResourceOverride myResources;
 
     LOG_TRACE( _T( "启动soui模态对话框" ) );
-    DemoDialog dlg( TRUE );
-    dlg.Run( acedGetAcadFrame()->GetSafeHwnd() );
+    //DemoDialog dlg( TRUE );
+    //dlg.Run( acedGetAcadFrame()->GetSafeHwnd() );
+	PictureDialog dlg( TRUE );
+	dlg.pic_skin = _T("skin_eval_proof");
+	dlg.Run( acedGetAcadFrame()->GetSafeHwnd() );
 }
 
 void UIHelper::Login()

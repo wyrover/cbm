@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SOUI width="361" height="370" translucent="0" alpha="255" resizable="0">
+  <skin/>
+  <style/>
   <root cache="1" skin="_skin.sys.wnd.bkgnd">
     <text pos="27,124" width="77" height="23" name="text15" margin-x="1" margin-y="1">平均日产量</text>
     <edit pos="111,122" width="115" height="26" name="work_area_A" margin-x="1" margin-y="1"/>

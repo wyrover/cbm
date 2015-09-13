@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SOUI width="273" height="311" translucent="0" alpha="255" resizable="0">
+  <skin/>
+  <style/>
   <root cache="1" skin="_skin.sys.wnd.bkgnd">
     <text pos="16,36" width="143" height="23" name="text36" margin-x="1" margin-y="1">可采煤层瓦斯储量W1</text>
     <edit pos="16,59" width="98" height="26" name="reserve_w1" margin-x="1" margin-y="1"/>

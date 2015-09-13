@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SOUI width="400" height="316" translucent="0" alpha="255" resizable="0">
+  <skin/>
+  <style/>
   <root cache="1" skin="_skin.sys.wnd.bkgnd">
     <text pos="16,35" width="326" height="23" name="text26" margin-x="1" margin-y="1">垮落带范围内自上而下最上一个关键层n的厚度hn</text>
     <edit pos="16,58" width="139" height="26" name="hn" margin-x="1" margin-y="1"/>

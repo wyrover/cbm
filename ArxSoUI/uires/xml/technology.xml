@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SOUI width="527" height="341" translucent="0" alpha="255" resizable="0">
+  <skin/>
+  <style/>
   <root cache="1" skin="_skin.sys.wnd.bkgnd">
     <listbox pos="27,65" width="486" height="197" itemHeight="24" hotTrack="1" name="technology" margin-x="1" margin-y="1" ncSkin="_skin.sys.border">
       <items>

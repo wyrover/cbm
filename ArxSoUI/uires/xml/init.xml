@@ -24,6 +24,7 @@
     <imglist name="_skin.skin" src="img:CBM_SKIN_SKIN" states="3"/>
     <imglist name="_skin.menu" src="img:CBM_SKIN_MENU" states="3"/>
     <imgframe name="skin_eval_proof" src="img:EVAL_PROOF"/>
+    <imgframe name="skin_help" src="img:HELP"/>
   </skin>
   <style>
     <!--定义超链接样式-->

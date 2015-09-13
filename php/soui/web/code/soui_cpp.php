@@ -302,8 +302,8 @@ function dlg_cpp_file($file, $dlg, $vars, $ids)
   fwrite($file, "#include ".DBL_QUOT."$ChildDlg.h".DBL_QUOT.ENTER);
 
   fwrite($file, ENTER."#include <ArxHelper/HelperClass.h>".ENTER);
-  fwrite($file, "#include <ArxDao/DaoHelper.h>".ENTER);
-  fwrite($file, "#include <ArxDao/Entity.h>".ENTER);
+  fwrite($file, "#include <Dao/DaoHelper.h>".ENTER);
+  fwrite($file, "#include <Dao/Entity.h>".ENTER);
   fwrite($file, "using namespace orm;".ENTER);
   fwrite($file, "using namespace cbm;".ENTER);
 

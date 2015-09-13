@@ -387,6 +387,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\PictureDialog.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\SouiDialog.cpp"
 				>
 			</File>
@@ -709,6 +713,10 @@
 			</File>
 			<File
 				RelativePath=".\MySoUiLoader.h"
+				>
+			</File>
+			<File
+				RelativePath=".\PictureDialog.h"
 				>
 			</File>
 			<File

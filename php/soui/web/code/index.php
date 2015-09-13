@@ -450,10 +450,9 @@ else if($type == 'tabctrl') {
     }
   }
   else if($type == 'img') {
-    $node->setAttribute('ncSkin', '_skin.sys.border');
-    //删除combobox属性和combobox的节点文本值
-    //$node->removeAttribute("width");
-    //$node->removeAttribute("height");
+    //$node->setAttribute('ncSkin', '_skin.sys.border');
+    $node->removeAttribute('margin-x');
+    $node->removeAttribute('margin-y');
   }
 }
 
@@ -468,10 +467,51 @@ function create_root($doc, $attribs)
     //创建SOUI根节点
     $soui = create_node($doc, 'SOUI', null, array('width'=>$attribs['width'], 'height'=>$attribs['height'], 'translucent'=>0, 'alpha'=>255, 'resizable'=>0));
     $doc->appendChild($soui);
+    //创建skin节点
+    $skin = create_node($doc, 'skin', null, null);
+    $soui->appendChild($skin);
+    //创建style节点
+    $style = create_node($doc, 'style', null, null);
+    $soui->appendChild($style);
     //创建root节点
     $root = create_node($doc, 'root', null, array('cache'=>1, 'skin'=>'_skin.sys.wnd.bkgnd'));
     $soui->appendChild($root);  
     return $root;
+  }
+}
+
+function addToSkin($doc, $skin_name, $resType)
+{
+  $skin_node = $doc->getElementsByTagName("skin")->item(0);
+  // 扫描<skin>下的所有name
+  $names = array();
+  foreach ($skin_node->childNodes as $node) {
+    $name = $node->getAttribute('name');
+    $names[] = $name;
+  }
+    
+   // $skin_name = "skin_".strtolower($name);
+  $name = substr($skin_name, strlen("skin_"));
+   $src_name = $resType.":".strtoupper($name);
+   if(!in_array($skin_name, $names)) {
+     xml_append_child($skin_node, create_node($doc, 'imgframe', null, array('name'=>$skin_name, 'src'=>$src_name)));  
+   }
+}
+
+function postProcessSkin($doc, $node, $type, $resType)
+{
+  if($node->hasAttribute('skin')) {
+    //设置皮肤
+    $name = $node->getAttribute('skin');
+    if(substr($name, strlen('_skin.sys')) == '_skin.sys') {
+
+    }
+    // $skin_name = "skin_".strtolower($name);
+    //删除combobox属性和combobox的节点文本值
+    // $node->setAttribute("skin", $skin_name);
+  
+    //添加到局部<skin>节点下
+    addToSkin($doc, $name, $resType);
   }
 }
 
@@ -536,9 +576,20 @@ function mockups_to_soui_xml($jsonfile, $bMainWnd = true)
     //控件类型(mockups类型映射到soui控件类型)
     $type = mockups_type_to_soui_type($control['typeID']);
     if($type == 'unknown') {
+      if($control['typeID'] == 'StickyNote') {
+        //从Comment中提取skin(字符串用换行分隔)
+        $skin_text = $control['properties']['text'];
+        $skins = explode("\\n", $skin_text);
+        foreach($skins as $skin_name) {
+          addToSkin($doc, $skin_name, "img");
+          // addToSkin($doc, $skin_name, "ico");
+        }
+      }
+      else {
+        echo '<h1>暂不支持'.$control['typeID'].'控件!!!</h1><br>';
+      }
       //销毁内存
       unset($attribs);
-      echo '<h1>暂不支持'.$control['typeID'].'控件!!!</h1><br>';
       //跳过该次循环
       continue;
     }
@@ -759,6 +810,8 @@ $root->appendChild($control);
 
   //某些控件需要增加子节点,比如listbox
 postProcess($doc, $control, $type);
+//增加局部皮肤
+postProcessSkin($doc, $control, $type, "img");
 
   //销毁内存
 unset($attribs);
@@ -1021,7 +1074,7 @@ function UpdateInitXml($dir, $resType='img')
      $src = $node->getAttribute('path');
     
      $skin_name = "skin_".strtolower($name);
-     $src_name = $resType.":".$name;
+     $src_name = $resType.":".strtoupper($name);
      if(in_array($skin_name, $names)) continue;
 
      echo $skin_name.'-->'.$src_name.'<br>';

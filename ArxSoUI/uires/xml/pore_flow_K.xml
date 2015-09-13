@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SOUI width="292" height="217" translucent="0" alpha="255" resizable="0">
+  <skin/>
+  <style/>
   <root cache="1" skin="_skin.sys.wnd.bkgnd">
     <text pos="16,106" width="140" height="23" name="text32" margin-x="1" margin-y="1">标准孔板流量系数a0</text>
     <edit pos="187,104" width="93" height="26" name="a0" margin-x="1" margin-y="1"/>

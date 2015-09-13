@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SOUI width="446" height="59" translucent="0" alpha="255" resizable="0">
+  <skin/>
+  <style/>
   <root cache="1" skin="_skin.sys.wnd.bkgnd">
     <text pos="0,1" width="92" height="23" name="text16" margin-x="1" margin-y="1">地形地貌特征</text>
     <text pos="231,1" width="92" height="23" name="text18" margin-x="1" margin-y="1">水文地质条件</text>

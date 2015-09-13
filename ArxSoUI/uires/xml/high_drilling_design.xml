@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SOUI width="611" height="386" translucent="0" alpha="255" resizable="0">
+  <skin/>
+  <style/>
   <root cache="1" skin="_skin.sys.wnd.bkgnd">
     <text pos="34,227" width="138" height="23" name="text20" margin-x="1" margin-y="1">ABC范围内钻孔参数</text>
     <text pos="319,227" width="138" height="23" name="text22" margin-x="1" margin-y="1">BCD范围内钻孔参数</text>

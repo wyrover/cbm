@@ -47,6 +47,7 @@
     <file name="mine_part" path="xml\mine_part.xml"/>
     <file name="monitor" path="xml\monitor.xml"/>
     <file name="name" path="xml\name.xml"/>
+    <file name="picture" path="xml\picture.xml"/>
     <file name="policy" path="xml\policy.xml"/>
     <file name="pore_flow" path="xml\pore_flow.xml"/>
     <file name="pore_flow_K" path="xml\pore_flow_K.xml"/>
@@ -73,5 +74,6 @@
   <cursor/>
   <img>
     <file name="EVAL_PROOF" path="image\eval_proof.png"/>
+    <file name="HELP" path="image\help.png"/>
   </img>
 </resource>

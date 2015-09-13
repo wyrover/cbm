@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SOUI width="223" height="228" translucent="0" alpha="255" resizable="0">
+  <skin/>
+  <style/>
   <root cache="1" skin="_skin.sys.wnd.bkgnd">
     <text pos="17,41" width="62" height="23" name="text146" margin-x="1" margin-y="1">煤层采高</text>
     <edit pos="83,39" width="70" height="26" readOnly="1" name="hw" margin-x="1" margin-y="1"/>
