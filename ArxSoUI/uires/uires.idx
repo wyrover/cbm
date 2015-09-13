@@ -47,7 +47,7 @@
     <file name="mine_part" path="xml\mine_part.xml"/>
     <file name="monitor" path="xml\monitor.xml"/>
     <file name="name" path="xml\name.xml"/>
-    <file name="picture" path="xml\picture.xml"/>
+    <file name="pic_viewer" path="xml\pic_viewer.xml"/>
     <file name="policy" path="xml\policy.xml"/>
     <file name="pore_flow" path="xml\pore_flow.xml"/>
     <file name="pore_flow_K" path="xml\pore_flow_K.xml"/>
@@ -58,6 +58,7 @@
     <file name="pore_type" path="xml\pore_type.xml"/>
     <file name="reg" path="xml\reg.xml"/>
     <file name="reserves_predict" path="xml\reserves_predict.xml"/>
+    <file name="rtf_viewer" path="xml\rtf_viewer.xml"/>
     <file name="sample_manage" path="xml\sample_manage.xml"/>
     <file name="tech_mode" path="xml\tech_mode.xml"/>
     <file name="tech_mode_condition_1" path="xml\tech_mode_condition_1.xml"/>
@@ -76,4 +77,7 @@
     <file name="EVAL_PROOF" path="image\eval_proof.png"/>
     <file name="HELP" path="image\help.png"/>
   </img>
+  <rtf>
+    <file name="HELP1" path="rtf\help1.rtf"/>
+  </rtf>
 </resource>

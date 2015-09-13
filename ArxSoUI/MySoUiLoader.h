@@ -5,11 +5,11 @@
 //#include <controls.extend/SListCtrl2.h>
 //#include <controls.extend/SVscrollbar.h>
 //#include <controls.extend/SIPAddressCtrl.h>
-//#include <controls.extend/SChatEdit.h>
+#include <controls.extend/SChatEdit.h>
 //#include <controls.extend/SScrollText.h>
 //#include <controls.extend/SListCtrlEx.h>
-//#include <controls.extend/gif/SGifPlayer.h>
-//#include <controls.extend/gif/SSkinGif.h>
+#include <controls.extend/gif/SGifPlayer.h>
+#include <controls.extend/gif/SSkinGif.h>
 
 using namespace SOUI;
 
@@ -34,13 +34,13 @@ protected:
 
 	virtual bool initExtendControls()
 	{
-		//pSouiApp->RegisterWndFactory(TplSWindowFactory<SGifPlayer>());//×¢²áGIFPlayer
-		//pSouiApp->RegisterSkinFactory(TplSkinFactory<SSkinGif>());//×¢²áSkinGif
+		pSouiApp->RegisterWndFactory(TplSWindowFactory<SGifPlayer>());//×¢²áGIFPlayer
+		pSouiApp->RegisterSkinFactory(TplSkinFactory<SSkinGif>());//×¢²áSkinGif
 		////pSouiApp->RegisterSkinFactory(TplSkinFactory<SSkinAPNG>());//×¢²áSSkinAPNG
 		//pSouiApp->RegisterSkinFactory(TplSkinFactory<SSkinVScrollbar>());//×¢²á×ÝÏò¹ö¶¯ÌõÆ¤·ô
 
 		//pSouiApp->RegisterWndFactory(TplSWindowFactory<SIPAddressCtrl>());//×¢²áIP¿Ø¼þ
-		//pSouiApp->RegisterWndFactory(TplSWindowFactory<SChatEdit>());//×¢²áChatEdit
+		pSouiApp->RegisterWndFactory(TplSWindowFactory<SOUI::SChatEdit>());//×¢²áChatEdit
 		//pSouiApp->RegisterWndFactory(TplSWindowFactory<SScrollText>());//×¢²áSScrollText
 		//pSouiApp->RegisterWndFactory(TplSWindowFactory<SListCtrlEx>());//×¢²áSListCtrlEx
 		//pSouiApp->RegisterWndFactory(TplSWindowFactory<SListCtrl2>()); //×¢²áSListCtrl2

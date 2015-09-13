@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SOUI width="1183" height="649" translucent="0" alpha="255" resizable="0">
   <skin>
-    <imgframe name="skin_eval_proof" src="img:EVAL_PROOF"/>
-    <imgframe name="skin_help" src="img:HELP"/>
+    <imgframe name="skin_eval_proof" src="img:EVAL_PROOF" tile="1"/>
+    <imgframe name="skin_help" src="img:HELP" tile="1"/>
   </skin>
   <style/>
   <root cache="1" skin="_skin.sys.wnd.bkgnd">

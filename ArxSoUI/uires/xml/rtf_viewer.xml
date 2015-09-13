@@ -1,0 +1,13 @@
+﻿<SOUI width="900" height="540" margin="5,5,5,5" resizable="0" translucent="0" alpha="255">
+  <style>
+    <!--局部style对象-->
+    <class name="cls_edit" ncSkin="_skin.sys.border" margin-x="1" margin-y="1" />
+  </style>
+  <root skin="_skin.sys.wnd.bkgnd" cache="1">
+    <caption pos="8,0,-0,30" name="caption71">
+      <text pos="0,8" name="wnd_title">帮助</text>
+      <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
+    </caption>
+    <richedit name="rtf_viewer" pos="5,[5,-5,-5" bkgndBlend="1" class="cls_edit" enableDragdrop="0" multiLines="1" vscrollBar="1"  wordWrap="1"  autoVscroll="1" hscrollBar="0" wantReturn="1" readOnly="1" />
+  </root>
+</SOUI>

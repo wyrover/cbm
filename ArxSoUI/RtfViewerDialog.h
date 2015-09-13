@@ -1,13 +1,13 @@
 #pragma once
 #include "AcadSouiDialog.h"
 
-class PictureDialog : public AcadSouiDialog
+class RtfViewerDialog : public AcadSouiDialog
 {
 
 	/** 构造和析构函数 */
 public:
-	PictureDialog(BOOL bModal = FALSE);
-	~PictureDialog(void);
+	RtfViewerDialog(BOOL bModal = FALSE);
+	~RtfViewerDialog(void);
 
 	/** 控件消息处理 */
 protected:
@@ -28,7 +28,7 @@ protected:
 	EVENT_MAP_END()
 	
 //HOST消息(WINDOWS消息)映射表
-	BEGIN_MSG_MAP_EX(PictureDialog)
+	BEGIN_MSG_MAP_EX(RtfViewerDialog)
 		MSG_WM_INITDIALOG(OnInitDialog)
 		MSG_WM_COMMAND(OnCommand)
 		CHAIN_MSG_MAP(AcadSouiDialog)
@@ -36,8 +36,8 @@ protected:
 	END_MSG_MAP()
 
 protected:
-	SImageWnd* m_PicImg;
+	SRichEdit* m_RtfViewerRichedit;
 
 public:
-	CString pic_skin;
+	CString rtf_res; // rtf资源(外部指定)
 };

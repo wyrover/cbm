@@ -387,7 +387,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\PictureDialog.cpp"
+				RelativePath=".\PicViewerDialog.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\RtfViewerDialog.cpp"
 				>
 			</File>
 			<File
@@ -716,11 +720,15 @@
 				>
 			</File>
 			<File
-				RelativePath=".\PictureDialog.h"
+				RelativePath=".\PicViewerDialog.h"
 				>
 			</File>
 			<File
 				RelativePath=".\Resource.h"
+				>
+			</File>
+			<File
+				RelativePath=".\RtfViewerDialog.h"
 				>
 			</File>
 			<File

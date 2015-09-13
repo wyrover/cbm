@@ -494,7 +494,7 @@ function addToSkin($doc, $skin_name, $resType)
   $name = substr($skin_name, strlen("skin_"));
    $src_name = $resType.":".strtoupper($name);
    if(!in_array($skin_name, $names)) {
-     xml_append_child($skin_node, create_node($doc, 'imgframe', null, array('name'=>$skin_name, 'src'=>$src_name)));  
+     xml_append_child($skin_node, create_node($doc, 'imgframe', null, array('name'=>$skin_name, 'src'=>$src_name, 'tile'=>1)));  
    }
 }
 
@@ -954,9 +954,9 @@ function addOtherToRes($res, $doc, $dir)
   //扫描rtf文件,创建<rtf>子节点
   xml_append_child($res, createFileNodes($doc, 'rtf', $dir, 'rtf', $filters='*.rtf', $prefx='', $bDfs=false));
   //扫描lua文件,创建<script>子节点
-  xml_append_child($res, createFileNodes($doc, 'script', $dir, 'lua', $filters='*.lua', $prefx='', $bDfs=false));
+  // xml_append_child($res, createFileNodes($doc, 'script', $dir, 'lua', $filters='*.lua', $prefx='', $bDfs=false));
   //扫描translator文件,创建<translator>子节点
-  xml_append_child($res, createFileNodes($doc, 'translator', $dir, 'translator', $filters='*.xml', $prefx='', $bDfs=false));
+  // xml_append_child($res, createFileNodes($doc, 'translator', $dir, 'translator', $filters='*.xml', $prefx='', $bDfs=false));
 }
 
 function createUIResFile($dir, $uiResFile)
@@ -984,7 +984,7 @@ function createUIResFile($dir, $uiResFile)
   //创建<img>、<icon>等图片资源节点
   addImgToRes($res, $doc, $dir);
   //创建<rtf>、<script>等资源节点
-  // addOtherToRes($res, $doc, $dir);
+  addOtherToRes($res, $doc, $dir);
 
   //美化xml结构并保存到文件中
   prettyXml($doc->saveXML(), $uiResFile); 
@@ -1078,7 +1078,7 @@ function UpdateInitXml($dir, $resType='img')
      if(in_array($skin_name, $names)) continue;
 
      echo $skin_name.'-->'.$src_name.'<br>';
-     xml_append_child($skin_node, create_node($doc2, 'imgframe', null, array('name'=>$skin_name, 'src'=>$src_name)));
+     xml_append_child($skin_node, create_node($doc2, 'imgframe', null, array('name'=>$skin_name, 'src'=>$src_name, 'tile'=>1)));
     }
   }
   prettyXml($doc2->saveXML(), $styleFile);
@@ -1087,7 +1087,7 @@ function UpdateInitXml($dir, $resType='img')
 function genResNameTxtFile()
 {
   $file = fopen("ResName.txt", 'w');
-  fwrite($file, "layout:demo");
+  fwrite($file, "layout:rtf_viewer");
   fclose($file);
 }
 

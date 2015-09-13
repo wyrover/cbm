@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "PictureDialog.h"
+#include "PicViewerDialog.h"
 
 #include <ArxHelper/HelperClass.h>
 #include <Dao/DaoHelper.h>
@@ -7,15 +7,15 @@
 using namespace orm;
 using namespace cbm;
 
-PictureDialog::PictureDialog(BOOL bModal) : AcadSouiDialog(_T("layout:picture"), bModal)
+PicViewerDialog::PicViewerDialog(BOOL bModal) : AcadSouiDialog(_T("layout:pic_viewer"), bModal)
 {
 }
 
-PictureDialog::~PictureDialog()
+PicViewerDialog::~PicViewerDialog()
 {
 }
 
-void PictureDialog::OnCommand( UINT uNotifyCode, int nID, HWND wndCtl )
+void PicViewerDialog::OnCommand( UINT uNotifyCode, int nID, HWND wndCtl )
 {
 	if(uNotifyCode==0)
 	{
@@ -25,7 +25,7 @@ void PictureDialog::OnCommand( UINT uNotifyCode, int nID, HWND wndCtl )
 	}
 }
 
-LRESULT PictureDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
+LRESULT PicViewerDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 {
 	AcadSouiDialog::OnInitDialog(hWnd, lParam);
 	//do something

@@ -113,6 +113,16 @@ public:
         UIHelper::ShowModalDemo();
     }
 
+	static void JL_TestPicViewer()
+	{
+		UIHelper::TestPicViewer();
+	}
+
+	static void JL_TestRtfViewer()
+	{
+		UIHelper::TestRtfViewer();
+	}
+
     static void JL_Login()
     {
         UIHelper::Login();
@@ -153,6 +163,9 @@ public:
 IMPLEMENT_ARX_ENTRYPOINT( CArxSoUIApp )
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _ShowModelessDemo, sd1, ACRX_CMD_TRANSPARENT, NULL )
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _ShowModalDemo, sd2, ACRX_CMD_TRANSPARENT, NULL )
+ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _TestPicViewer, tpv, ACRX_CMD_TRANSPARENT, NULL )
+ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _TestRtfViewer, trv, ACRX_CMD_TRANSPARENT, NULL )
+
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _Login, login, ACRX_CMD_TRANSPARENT, NULL )
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _Logout, logout, ACRX_CMD_TRANSPARENT, NULL )
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _SampleManage, sm, ACRX_CMD_TRANSPARENT, NULL )
