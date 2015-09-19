@@ -1,0 +1,9 @@
+http://www.bubuko.com/infodetail-694052.html
+根据上一个链接，lua的c++ bind有 tolua++、luaplus、fflua、luatinker
+
+其中fflua是国内开发的(偶尔还在更新)
+http://www.cnblogs.com/zhiranok/archive/2013/01/27/fflua.html
+http://www.oschina.net/p/fflua
+
+luatinker是韩国人开发的(已经停止更新了)
+http://www.oschina.net/p/luatinker
