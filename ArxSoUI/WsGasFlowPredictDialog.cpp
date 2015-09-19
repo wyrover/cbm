@@ -68,27 +68,14 @@ void WsGasFlowPredictDialog::OnQr1CaclButtonClick()
     CoalPtr coal = DYNAMIC_POINTER_CAST( Coal, work_area->coal );
     if( coal == 0 ) return;
 
-    double K1 = work_surf->k1;
-    double K2 = work_surf->k1;
-    double K3 = work_surf->k1;
-    double kf = work_surf->kf;
-    //开采层厚度(????分层如何考虑???)
-    double m = coal->thick;
-    Utils::cstring_to_double( ( LPCTSTR )m_WsThickEdit->GetWindowText(), m );
-    //工作面采高
-    double M = coal->hw;
-    double W0 = coal->gas_w0;
-    double Wc = coal->gas_wc2;
-    //计算开采层相对瓦斯涌出量q1
-    double q1 = 0;
-    if( m_MethodThinRadio->IsChecked() )
-    {
-        q1 = K1 * K2 * K3 * ( W0 - Wc ) * m / M;
-    }
-    else
-    {
-        q1 = K1 * K2 * K3 * ( W0 - Wc ) * kf;
-    }
+	//从界面中读取数据
+	//开采层厚度(????分层如何考虑???)
+	Utils::cstring_to_double( ( LPCTSTR )m_WsThickEdit->GetWindowText(), coal->thick );
+	//是否分层开采
+	work_surf->layerable = BOOL_2_INT( m_MethodThickRadio->IsChecked() == 0 );
+
+	//计算工作面瓦斯涌出量
+	double q1 = DaoHelper::WorkSurfGasFlow1(coal, work_area, work_surf);
     //更新到界面
     m_Qr1Edit->SetWindowText( Utils::double_to_cstring( q1 ) );
 }
@@ -110,28 +97,8 @@ void WsGasFlowPredictDialog::OnQr2CaclButtonClick()
     CoalPtr coal = DYNAMIC_POINTER_CAST( Coal, work_area->coal );
     if( coal == 0 ) return;
 
-    //查找所有的邻近层
-    RecordPtrListPtr lists = FIND_MANY( AdjLayer, FKEY( WorkSurf ), work_surf->getStringID() );
-    if( lists == 0 ) return;
-
-    double S = 0;
-    for( int i = 0; i < lists->size(); i++ )
-    {
-        AdjLayerPtr adj_layer = DYNAMIC_POINTER_CAST( AdjLayer, lists->at( i ) );
-        if( adj_layer == 0 ) continue;
-        CoalPtr adj_coal = DYNAMIC_POINTER_CAST( Coal, adj_layer->coal );
-        if( adj_coal == 0 ) continue;
-
-        double W0 = adj_coal->gas_w0;
-        double Wc = adj_coal->gas_wc2;
-        double m = adj_coal->thick;
-        double eta = adj_coal->gas_eta;
-
-        S += ( W0 - Wc ) * m * eta;
-    }
-    double M = coal->hw;
-    double q2 = S / M;
-
+    //计算邻近层瓦斯涌出量
+	double q2 = DaoHelper::WorkSurfGasFlow2(coal, work_area, work_surf);
     //更新到界面
     m_Qr2Edit->SetWindowText( Utils::double_to_cstring( q2 ) );
 }

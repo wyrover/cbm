@@ -53,5 +53,12 @@ public:
 	static double MineGasReservesW2(int mine_id);
 	//计算采区的瓦斯涌出量
 	static double WorkAreaGasFlow(cbm::WorkAreaPtr work_area, double K1);
+	//计算矿井的瓦斯涌出量
 	static double MineGasFlow(cbm::MinePtr mine);
+	//工作面开采层瓦斯涌出量
+	static double WorkSurfGasFlow1(cbm::CoalPtr coal, cbm::WorkAreaPtr work_area, cbm::WorkSurfPtr work_surf);
+	//工作面邻近层瓦斯涌出量
+	static double WorkSurfGasFlow2(cbm::CoalPtr coal, cbm::WorkAreaPtr work_area, cbm::WorkSurfPtr work_surf);
+	//掘进面瓦斯涌出量
+	static void DrillingSurfGasFlow(cbm::CoalPtr coal, cbm::DrillingSurfPtr drilling_surf, cbm::TunnelPtr tunnel);
 };

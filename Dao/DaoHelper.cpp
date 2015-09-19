@@ -453,3 +453,78 @@ double DaoHelper::MineGasFlow(MinePtr mine)
 		return K2 * S1 / S2;
 	}
 }
+
+double DaoHelper::WorkSurfGasFlow1(CoalPtr coal, WorkAreaPtr work_area, WorkSurfPtr work_surf)
+{
+	double K1 = work_surf->k1;
+	double K2 = work_surf->k1;
+	double K3 = work_surf->k1;
+	double kf = work_surf->kf;
+	//开采层厚度(????分层如何考虑???)
+	double m = coal->thick;
+	//工作面采高
+	double M = coal->hw;
+	double W0 = coal->gas_w0;
+	double Wc = coal->gas_wc2;
+
+	//计算开采层相对瓦斯涌出量q1
+	double q1 = 0;
+	if( work_surf->layerable == 0 )
+	{
+		q1 = K1 * K2 * K3 * ( W0 - Wc ) * m / M;
+	}
+	else
+	{
+		q1 = K1 * K2 * K3 * ( W0 - Wc ) * kf;
+	}
+	return q1;
+}
+
+double DaoHelper::WorkSurfGasFlow2(CoalPtr coal, WorkAreaPtr work_area, WorkSurfPtr work_surf)
+{
+	//查找所有的邻近层
+	RecordPtrListPtr lists = FIND_MANY( AdjLayer, FKEY( WorkSurf ), work_surf->getStringID() );
+	if( lists == 0 ) return 0;
+
+	double S = 0;
+	for( int i = 0; i < lists->size(); i++ )
+	{
+		AdjLayerPtr adj_layer = DYNAMIC_POINTER_CAST( AdjLayer, lists->at( i ) );
+		if( adj_layer == 0 ) continue;
+		CoalPtr adj_coal = DYNAMIC_POINTER_CAST( Coal, adj_layer->coal );
+		if( adj_coal == 0 ) continue;
+
+		double W0 = adj_coal->gas_w0;
+		double Wc = adj_coal->gas_wc2;
+		double m = adj_coal->thick;
+		double eta = adj_coal->gas_eta;
+
+		S += ( W0 - Wc ) * m * eta;
+	}
+	double M = coal->hw;
+	return S / M;
+}
+
+void DaoHelper::DrillingSurfGasFlow(CoalPtr coal, DrillingSurfPtr drilling_surf, TunnelPtr tunnel)
+{
+	//计算q0
+	double Vr = coal->vr;
+	double W0 = coal->gas_w0;
+	double D = tunnel->d;
+	double v = tunnel->v;
+	double L = tunnel->l;
+	double S = tunnel->s;
+	double r = coal->rho;
+	double Wc = coal->gas_wc2;
+	double q0 = ( 0.0004 * pow( Vr, 2 ) + 0.16 ) * 0.026 * W0;
+	double q3 = D * v * q0 * ( 2 * sqrt( L / v ) - 1 );
+	double q4 = S * v * r * ( W0 - Wc );
+	double qa = q3 + q4; // 掘进面瓦斯涌出量
+
+	//计算结果保存到各对象中
+	//如果直接用参数返回,返回参数太多了
+	tunnel->q0 = q0;
+	tunnel->q3 = q3;
+	drilling_surf->q4 = q4;
+	drilling_surf->qa = qa;
+}
