@@ -194,7 +194,7 @@ static BOOL CopyCUIXandMNR(LPCTSTR cuixPath,LPCTSTR mnrPath)
 	CString JLmnrPath = CurrentPath + mnrPath;
 
 	if(!CopyFile(JLcuixPath,CADcuixPath,false)) return FALSE;
-	if(!CopyFile(JLmnrPath,CADmnrPath,false)) return FALSE;
+	//if(!CopyFile(JLmnrPath,CADmnrPath,false)) return FALSE;
 	return TRUE;
 }
 
