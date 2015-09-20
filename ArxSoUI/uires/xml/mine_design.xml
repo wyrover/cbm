@@ -1,51 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<SOUI width="365" height="221" translucent="0" alpha="255" resizable="0">
+<SOUI width="416" height="312" translucent="0" alpha="255" resizable="0">
   <skin/>
   <style/>
   <root cache="1" skin="_skin.sys.wnd.bkgnd">
-    <caption pos="0,0,-0,40" name="caption">
+    <caption pos="0,0,-0,32" name="caption">
       <text pos="0,8" name="wnd_title">测试程序v1.0</text>
       <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
     </caption>
-    <window pos="0,0" width="367" height="221" name="window0" margin-x="1" margin-y="1" enable="0" visible="0"/>
-    <text pos="22,40" width="62" height="23" name="text1" margin-x="1" margin-y="1">矿井名称</text>
-    <edit pos="93,38" width="201" height="26" name="name" margin-x="1" margin-y="1"/>
-    <button pos="292,77" width="50" height="27" name="del_coal" margin-x="1" margin-y="1">删除</button>
-    <button pos="234,77" width="50" height="27" name="add_coal" margin-x="1" margin-y="1">增加</button>
-    <text pos="22,79" width="62" height="23" name="text6" margin-x="1" margin-y="1">煤层列表</text>
-    <combobox pos="102,78" width="118" height="24" dropDown="1" curSel="0" name="coal" margin-x="1" margin-y="1" ncSkin="_skin.sys.border">
+    <window pos="0,0" width="418" height="312" name="window0" margin-x="1" margin-y="1" enable="0" visible="0"/>
+    <text pos="17,34" width="78" height="23" name="text1" margin-x="1" margin-y="1">矿井名称</text>
+    <edit pos="93,32" width="235" height="26" name="name" margin-x="1" margin-y="1"/>
+    <button pos="339,146" width="63" height="35" name="del_coal" margin-x="1" margin-y="1">删除</button>
+    <button pos="265,146" width="63" height="35" name="add_coal" margin-x="1" margin-y="1">增加</button>
+    <text pos="17,148" width="78" height="23" name="text6" margin-x="1" margin-y="1">煤层列表</text>
+    <combobox pos="97,147" width="150" height="24" dropDown="1" curSel="0" name="coal" margin-x="1" margin-y="1" ncSkin="_skin.sys.border">
       <liststyle itemHeight="30" colorText="#000000" colorSelText="#FFFFFF" colorItemBkgnd="#FFFFFF" colorItemSelBkgnd="#000088"/>
       <items>
         <item text=""/>
       </items>
     </combobox>
-    <combobox pos="102,114" width="118" height="24" dropDown="1" curSel="0" name="work_area" margin-x="1" margin-y="1" ncSkin="_skin.sys.border">
+    <combobox pos="97,193" width="150" height="24" dropDown="1" curSel="0" name="work_area" margin-x="1" margin-y="1" ncSkin="_skin.sys.border">
       <liststyle itemHeight="30" colorText="#000000" colorSelText="#FFFFFF" colorItemBkgnd="#FFFFFF" colorItemSelBkgnd="#000088"/>
       <items>
         <item text=""/>
       </items>
     </combobox>
-    <text pos="22,115" width="62" height="23" name="text10" margin-x="1" margin-y="1">生产采区</text>
-    <button pos="292,113" width="50" height="27" name="del_work_area" margin-x="1" margin-y="1">删除</button>
-    <button pos="234,113" width="50" height="27" name="add_work_area" margin-x="1" margin-y="1">增加</button>
-    <text pos="22,150" width="77" height="23" name="text14" margin-x="1" margin-y="1">回采工作面</text>
-    <combobox pos="102,149" width="118" height="24" dropDown="1" curSel="0" name="ws" margin-x="1" margin-y="1" ncSkin="_skin.sys.border">
+    <text pos="17,194" width="78" height="23" name="text10" margin-x="1" margin-y="1">生产采区</text>
+    <button pos="339,192" width="63" height="35" name="del_work_area" margin-x="1" margin-y="1">删除</button>
+    <button pos="265,192" width="63" height="35" name="add_work_area" margin-x="1" margin-y="1">增加</button>
+    <text pos="17,239" width="98" height="23" name="text14" margin-x="1" margin-y="1">回采工作面</text>
+    <combobox pos="97,238" width="150" height="24" dropDown="1" curSel="0" name="ws" margin-x="1" margin-y="1" ncSkin="_skin.sys.border">
       <liststyle itemHeight="30" colorText="#000000" colorSelText="#FFFFFF" colorItemBkgnd="#FFFFFF" colorItemSelBkgnd="#000088"/>
       <items>
         <item text=""/>
       </items>
     </combobox>
-    <text pos="22,182" width="77" height="23" name="text16" margin-x="1" margin-y="1">掘进工作面</text>
-    <combobox pos="102,181" width="118" height="24" dropDown="1" curSel="0" name="tws" margin-x="1" margin-y="1" ncSkin="_skin.sys.border">
+    <text pos="17,280" width="98" height="23" name="text16" margin-x="1" margin-y="1">掘进工作面</text>
+    <combobox pos="97,279" width="150" height="24" dropDown="1" curSel="0" name="tws" margin-x="1" margin-y="1" ncSkin="_skin.sys.border">
       <liststyle itemHeight="30" colorText="#000000" colorSelText="#FFFFFF" colorItemBkgnd="#FFFFFF" colorItemSelBkgnd="#000088"/>
       <items>
         <item text=""/>
       </items>
     </combobox>
-    <button pos="292,148" width="50" height="27" name="del_ws" margin-x="1" margin-y="1">删除</button>
-    <button pos="234,147" width="50" height="27" name="add_ws" margin-x="1" margin-y="1">增加</button>
-    <button pos="292,180" width="50" height="27" name="del_tws" margin-x="1" margin-y="1">删除</button>
-    <button pos="234,180" width="50" height="27" name="add_tws" margin-x="1" margin-y="1">增加</button>
-    <button pos="298,38" width="59" height="27" name="save" margin-x="1" margin-y="1">保存</button>
+    <button pos="339,237" width="63" height="35" name="del_ws" margin-x="1" margin-y="1">删除</button>
+    <button pos="265,235" width="63" height="35" name="add_ws" margin-x="1" margin-y="1">增加</button>
+    <button pos="339,277" width="63" height="35" name="del_tws" margin-x="1" margin-y="1">删除</button>
+    <button pos="265,277" width="63" height="35" name="add_tws" margin-x="1" margin-y="1">增加</button>
+    <button pos="339,31" width="62" height="29" name="save" margin-x="1" margin-y="1">保存</button>
+    <text pos="17,70" width="62" height="23" name="text24" margin-x="1" margin-y="1">煤炭基地</text>
+    <text pos="17,109" width="47" height="23" name="text25" margin-x="1" margin-y="1">所在地</text>
+    <edit pos="83,107" width="71" height="26" name="province" margin-x="1" margin-y="1"/>
+    <text pos="163,111" width="17" height="23" name="text27" margin-x="1" margin-y="1">省</text>
+    <edit pos="191,107" width="88" height="26" name="city" margin-x="1" margin-y="1"/>
+    <text pos="288,109" width="77" height="23" name="text29" margin-x="1" margin-y="1">市（地区）</text>
+    <combobox pos="83,69" width="104" height="24" dropDown="1" curSel="0" name="base" margin-x="1" margin-y="1" ncSkin="_skin.sys.border">
+      <liststyle itemHeight="30" colorText="#000000" colorSelText="#FFFFFF" colorItemBkgnd="#FFFFFF" colorItemSelBkgnd="#000088"/>
+      <items>
+        <item text=""/>
+      </items>
+    </combobox>
+    <text pos="226,70" width="62" height="23" name="text31" margin-x="1" margin-y="1">所在矿区</text>
+    <combobox pos="291,69" width="111" height="24" dropDown="1" curSel="0" name="region" margin-x="1" margin-y="1" ncSkin="_skin.sys.border">
+      <liststyle itemHeight="30" colorText="#000000" colorSelText="#FFFFFF" colorItemBkgnd="#FFFFFF" colorItemSelBkgnd="#000088"/>
+      <items>
+        <item text=""/>
+      </items>
+    </combobox>
   </root>
 </SOUI>

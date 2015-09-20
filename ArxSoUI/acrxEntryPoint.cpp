@@ -33,21 +33,21 @@ public:
         AfxEnableControlContainer();
         AfxInitRichEdit2();
 
-		//初始化log4cplus日志系统
-		//为了保证日志功能正常使用，在加载所有模块之前初始化日志系统
-		log_init(_T(".\\log\\log4cplus.properties"));
+        //初始化log4cplus日志系统
+        //为了保证日志功能正常使用，在加载所有模块之前初始化日志系统
+        log_init( _T( ".\\log\\log4cplus.properties" ) );
 
-		LOG_TRACE( _T( "ArxSoUI::On_kInitAppMsg" ) );
+        LOG_TRACE( _T( "ArxSoUI::On_kInitAppMsg" ) );
 
-		//初始化数据库连接
-		CString iniFile = ArxUtilHelper::BuildPath(ArxUtilHelper::GetAppPathDir(_hdllInstance), _T("config.ini"));
-		if(!DaoHelper::ConfigureFromFile(iniFile))
-		{
-			AfxMessageBox( _T( "连接MySQL数据库失败，请联系技术人员!!!" ) );
-			return AcRx::kRetError;
-		}
-		//初始化示范矿区数据
-		DaoHelper::InitSampleRegion();
+        //初始化数据库连接
+        CString iniFile = ArxUtilHelper::BuildPath( ArxUtilHelper::GetAppPathDir( _hdllInstance ), _T( "config.ini" ) );
+        if( !DaoHelper::ConfigureFromFile( iniFile ) )
+        {
+            AfxMessageBox( _T( "连接MySQL数据库失败，请联系技术人员!!!" ) );
+            return AcRx::kRetError;
+        }
+        //初始化示范矿区数据
+        DaoHelper::InitSampleRegion();
         //初始化soui环境
         UIHelper::InitSouiEnviroment();
 
@@ -68,10 +68,10 @@ public:
 
         //退出登录状态
         UIHelper::Logout();
-		//退出soui环境
+        //退出soui环境
         UIHelper::UnInitSouiEnviroment();
-		//关闭log4cplus日志系统
-		log_uinit();
+        //关闭log4cplus日志系统
+        log_uinit();
 
         return ( retCode ) ;
     }
@@ -82,10 +82,10 @@ public:
 
         acutPrintf( _T( "\nArxSoUI::On_kLoadDwgMsg\n" ) );
 
-		ArxDataTool::RegAppName( acdbHostApplicationServices()->workingDatabase(), _T("扩展数据") );
+        ArxDataTool::RegAppName( acdbHostApplicationServices()->workingDatabase(), _T( "扩展数据" ) );
 
-		//初始化数据字段
-		UIHelper::InitAllData();
+        //初始化数据字段
+        UIHelper::InitAllData();
 
         return retCode;
     }
@@ -113,25 +113,25 @@ public:
         UIHelper::ShowModalDemo();
     }
 
-	static void JL_TestPicViewer()
-	{
-		UIHelper::TestPicViewer();
-	}
+    static void JL_TestPicViewer()
+    {
+        UIHelper::TestPicViewer();
+    }
 
-	static void JL_TestRtfViewer()
-	{
-		UIHelper::TestRtfViewer();
-	}
+    static void JL_TestRtfViewer()
+    {
+        UIHelper::TestRtfViewer();
+    }
 
     static void JL_Login()
     {
         UIHelper::Login();
     }
 
-	static void JL_RegMine()
-	{
-		UIHelper::RegMine();
-	}
+    static void JL_RegMine()
+    {
+        UIHelper::RegMine();
+    }
 
     static void JL_Logout()
     {
@@ -141,6 +141,11 @@ public:
     static void JL_SampleManage()
     {
         UIHelper::SampleManage();
+    }
+
+    static void JL_MineDesign()
+    {
+        UIHelper::MineDesign();
     }
 
     static void JL_GasTechModeDecision()
@@ -153,66 +158,66 @@ public:
         UIHelper::KeyParamCacl();
     }
 
-	static void JL_KP1()
-	{
-		UIHelper::KP1();
-	}
+    static void JL_KP1()
+    {
+        UIHelper::KP1();
+    }
 
-	static void JL_KP2()
-	{
-		UIHelper::KP2();
-	}
+    static void JL_KP2()
+    {
+        UIHelper::KP2();
+    }
 
-	static void JL_KP3()
-	{
-		UIHelper::KP3();
-	}
+    static void JL_KP3()
+    {
+        UIHelper::KP3();
+    }
 
-	static void JL_KP4()
-	{
-		UIHelper::KP4();
-	}
+    static void JL_KP4()
+    {
+        UIHelper::KP4();
+    }
 
-	static void JL_KP5()
-	{
-		UIHelper::KP5();
-	}
+    static void JL_KP5()
+    {
+        UIHelper::KP5();
+    }
 
-	static void JL_KP6()
-	{
-		UIHelper::KP6();
-	}
+    static void JL_KP6()
+    {
+        UIHelper::KP6();
+    }
 
-	static void JL_KP7()
-	{
-		UIHelper::KP7();
-	}
+    static void JL_KP7()
+    {
+        UIHelper::KP7();
+    }
 
-	static void JL_KP8()
-	{
-		UIHelper::KP8();
-	}
+    static void JL_KP8()
+    {
+        UIHelper::KP8();
+    }
 
-	static void JL_KP9()
-	{
-		UIHelper::KP9();
-	}
+    static void JL_KP9()
+    {
+        UIHelper::KP9();
+    }
 
-	static void JL_KP10()
-	{
-		UIHelper::KP10();
-	}
-	
-	static void JL_KP11()
-	{
-		UIHelper::KP11();
-	}
+    static void JL_KP10()
+    {
+        UIHelper::KP10();
+    }
 
-	static void JL_GasDesign()
-	{
-		UIHelper::GasDesign();
-	}
-	
+    static void JL_KP11()
+    {
+        UIHelper::KP11();
+    }
+
+    static void JL_GasDesign()
+    {
+        UIHelper::GasDesign();
+    }
+
     static void JL_PolicyHelp()
     {
         UIHelper::PolicyHelp();
@@ -235,6 +240,7 @@ ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _Login, login, ACRX_CMD_TRANSPARENT
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _RegMine, regMine, ACRX_CMD_TRANSPARENT, NULL )
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _Logout, logout, ACRX_CMD_TRANSPARENT, NULL )
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _SampleManage, sm, ACRX_CMD_TRANSPARENT, NULL )
+ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _MineDesign, mineDesign, ACRX_CMD_TRANSPARENT, NULL )
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _GasTechModeDecision, gtmd, ACRX_CMD_TRANSPARENT, NULL )
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _KeyParamCacl, kpc, ACRX_CMD_TRANSPARENT, NULL )
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _KP1, kp1, ACRX_CMD_TRANSPARENT, NULL )

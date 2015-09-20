@@ -140,8 +140,8 @@ void TwsGasFlowPredictDialog::OnCaclButtonClick()
     Utils::cstring_to_double( ( LPCTSTR )m_GasW0Edit->GetWindowText(), coal->gas_w0 );
     Utils::cstring_to_double( ( LPCTSTR )m_GasWc2Edit->GetWindowText(), coal->gas_wc2 );
 
-	//计算掘进面瓦斯涌出量
-	DaoHelper::DrillingSurfGasFlow(coal, drilling_surf, tunnel);
+    //计算掘进面瓦斯涌出量
+    DaoHelper::DrillingSurfGasFlow( coal, drilling_surf, tunnel );
 
     //将计算结果(q0、q3、q4、qa)更新到界面
     m_Q0Edit->SetWindowText( Utils::double_to_cstring( tunnel->q0 ) );

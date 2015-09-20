@@ -8,9 +8,9 @@
 class ARXHELPER_DLLIMPEXP ArxDwgHelper
 {
 public:
-	//插入dwg文件
-	static bool InsertDwg( const CString& dwgFilePath);
+    //插入dwg文件
+    static bool InsertDwg( const CString& dwgFilePath );
 
-	//更新图形
-	static void UpdateDwg();
+    //更新图形
+    static void UpdateDwg();
 };

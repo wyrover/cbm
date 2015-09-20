@@ -7,24 +7,24 @@
 class ARXHELPER_DLLIMPEXP ArxTolSetter
 {
 public:
-	ArxTolSetter(double eq)
-	{
-		m_originEq = AcGeContext::gTol.equalPoint();
-		setEq(eq);
-	}
+    ArxTolSetter( double eq )
+    {
+        m_originEq = AcGeContext::gTol.equalPoint();
+        setEq( eq );
+    }
 
-	void setEq(double eq)
-	{
-		AcGeContext::gTol.setEqualPoint(eq);
-	}
+    void setEq( double eq )
+    {
+        AcGeContext::gTol.setEqualPoint( eq );
+    }
 
-	~ArxTolSetter()
-	{
-		AcGeContext::gTol.setEqualPoint(m_originEq);
-	}
+    ~ArxTolSetter()
+    {
+        AcGeContext::gTol.setEqualPoint( m_originEq );
+    }
 
 private:
-	double m_originEq;
+    double m_originEq;
 };
 
 /*
@@ -48,61 +48,61 @@ AcGeContext::gTol.setEqualPoint(ep);
 class ArxDocLockSwitch
 {
 public:
-	ArxDocLockSwitch()
-	{
-		acDocManager->lockDocument( curDoc() );
-	}
-	~ArxDocLockSwitch()
-	{
-		acDocManager->unlockDocument( curDoc() );
-	}
+    ArxDocLockSwitch()
+    {
+        acDocManager->lockDocument( curDoc() );
+    }
+    ~ArxDocLockSwitch()
+    {
+        acDocManager->unlockDocument( curDoc() );
+    }
 };
 
 //切换controlbar显示
 class ArxCtrlBarShowSwitch
 {
 public:
-	//构造函数隐藏controlbar
-	ArxCtrlBarShowSwitch(CWnd* _dlg) : dlg(_dlg)
-	{
-		ShowParentControlBar(dlg, FALSE);
-	}
-	//析构函数显示controlbar
-	~ArxCtrlBarShowSwitch()
-	{
-		ShowParentControlBar(dlg, TRUE);
-	}
+    //构造函数隐藏controlbar
+    ArxCtrlBarShowSwitch( CWnd* _dlg ) : dlg( _dlg )
+    {
+        ShowParentControlBar( dlg, FALSE );
+    }
+    //析构函数显示controlbar
+    ~ArxCtrlBarShowSwitch()
+    {
+        ShowParentControlBar( dlg, TRUE );
+    }
 
 private:
-	static void ShowParentControlBar(CWnd* pWnd, BOOL bShow)
-	{
-		CAcModuleResourceOverride myResources;
-		CControlBar* pBar = reinterpret_cast<CControlBar*>(pWnd->GetParent());
-		if(pBar == 0) return;
+    static void ShowParentControlBar( CWnd* pWnd, BOOL bShow )
+    {
+        CAcModuleResourceOverride myResources;
+        CControlBar* pBar = reinterpret_cast<CControlBar*>( pWnd->GetParent() );
+        if( pBar == 0 ) return;
 
-		CMDIFrameWnd* pAcadFrame = acedGetAcadFrame();
-		if(pAcadFrame == 0) return;
+        CMDIFrameWnd* pAcadFrame = acedGetAcadFrame();
+        if( pAcadFrame == 0 ) return;
 
-		pAcadFrame->ShowControlBar( pBar, bShow, FALSE );
-	}
-	CWnd* dlg;
+        pAcadFrame->ShowControlBar( pBar, bShow, FALSE );
+    }
+    CWnd* dlg;
 };
 
 //切换窗口显示/隐藏
 class ArxDialogShowSwitch
 {
 public:
-	//构造函数隐藏
-	ArxDialogShowSwitch(CWnd* _dlg) : dlg(_dlg)
-	{
-		dlg->ShowWindow(SW_HIDE);
-		////当隐藏之后整个CAD窗口失去焦点
-		//dlg->SetFocus();
-	}
-	//析构函数显示
-	~ArxDialogShowSwitch()
-	{
-		dlg->ShowWindow(SW_SHOW);
-	}
-	CWnd* dlg;
+    //构造函数隐藏
+    ArxDialogShowSwitch( CWnd* _dlg ) : dlg( _dlg )
+    {
+        dlg->ShowWindow( SW_HIDE );
+        ////当隐藏之后整个CAD窗口失去焦点
+        //dlg->SetFocus();
+    }
+    //析构函数显示
+    ~ArxDialogShowSwitch()
+    {
+        dlg->ShowWindow( SW_SHOW );
+    }
+    CWnd* dlg;
 };

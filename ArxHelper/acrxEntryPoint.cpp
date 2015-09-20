@@ -19,17 +19,17 @@ public:
         return ( retCode ) ;
     }
 
-	virtual AcRx::AppRetCode On_kLoadDwgMsg( void* pkt )
-	{
-		AcRx::AppRetCode retCode = AcRxArxApp::On_kLoadDwgMsg ( pkt ) ;
-		return retCode;
-	}
+    virtual AcRx::AppRetCode On_kLoadDwgMsg( void* pkt )
+    {
+        AcRx::AppRetCode retCode = AcRxArxApp::On_kLoadDwgMsg ( pkt ) ;
+        return retCode;
+    }
 
-	virtual AcRx::AppRetCode On_kUnloadDwgMsg( void* pkt )
-	{
-		AcRx::AppRetCode retCode = AcRxArxApp::On_kUnloadDwgMsg ( pkt ) ;
-		return retCode;
-	}
+    virtual AcRx::AppRetCode On_kUnloadDwgMsg( void* pkt )
+    {
+        AcRx::AppRetCode retCode = AcRxArxApp::On_kUnloadDwgMsg ( pkt ) ;
+        return retCode;
+    }
 
     virtual void RegisterServerComponents ()
     {

@@ -78,8 +78,8 @@ void MineGasReservesPredict1Dialog::OnW1CaclButtonClick()
     dlg.mine_id = this->mine_id;
     dlg.Run( GetSafeHwnd() );
 
-	//计算并更新到界面
-	double W1 = DaoHelper::MineGasReservesW1(mine_id);
+    //计算并更新到界面
+    double W1 = DaoHelper::MineGasReservesW1( mine_id );
     m_ReserveW1Edit->SetWindowText( Utils::double_to_cstring( W1 ) );
 }
 
@@ -92,8 +92,8 @@ void MineGasReservesPredict1Dialog::OnW2CaclButtonClick()
     //dlg.mine_id = mine_id;
     //dlg.Run(GetSafeWnd());
 
-	//计算并更新到界面
-	//double W2 = DaoHelper::MineGasReservesW2(mine_id);
+    //计算并更新到界面
+    //double W2 = DaoHelper::MineGasReservesW2(mine_id);
     //m_ReserveW2Edit->SetWindowText(Utils::double_to_cstring(W2));
 }
 

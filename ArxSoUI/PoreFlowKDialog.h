@@ -4,49 +4,49 @@
 class PoreFlowKDialog : public AcadSouiDialog
 {
 
-	/** 构造和析构函数 */
+    /** 构造和析构函数 */
 public:
-	PoreFlowKDialog(BOOL bModal = FALSE);
-	~PoreFlowKDialog(void);
+    PoreFlowKDialog( BOOL bModal = FALSE );
+    ~PoreFlowKDialog( void );
 
-	/** 控件消息处理 */
+    /** 控件消息处理 */
 protected:
-	void OnSaveButtonClick();
+    void OnSaveButtonClick();
 
-	/** 菜单消息 */
+    /** 菜单消息 */
 protected:
-	//处理菜单消息(菜单在一个单独的xml文件中描述，每个菜单项都有一个id号)
-	void OnCommand(UINT uNotifyCode, int nID, HWND wndCtl);
+    //处理菜单消息(菜单在一个单独的xml文件中描述，每个菜单项都有一个id号)
+    void OnCommand( UINT uNotifyCode, int nID, HWND wndCtl );
 
-	/** 窗口消息 */
+    /** 窗口消息 */
 protected:
-	//对话框初始化过程
-	LRESULT OnInitDialog(HWND hWnd, LPARAM lParam);
+    //对话框初始化过程
+    LRESULT OnInitDialog( HWND hWnd, LPARAM lParam );
 
-	//控件消息映射表
-	EVENT_MAP_BEGIN()
-		EVENT_NAME_COMMAND(_T("save"), OnSaveButtonClick)
-		CHAIN_EVENT_MAP(AcadSouiDialog)
-	EVENT_MAP_END()
-	
+    //控件消息映射表
+    EVENT_MAP_BEGIN()
+    EVENT_NAME_COMMAND( _T( "save" ), OnSaveButtonClick )
+    CHAIN_EVENT_MAP( AcadSouiDialog )
+    EVENT_MAP_END()
+
 //HOST消息(WINDOWS消息)映射表
-	BEGIN_MSG_MAP_EX(PoreFlowKDialog)
-		MSG_WM_INITDIALOG(OnInitDialog)
-		MSG_WM_COMMAND(OnCommand)
-		CHAIN_MSG_MAP(AcadSouiDialog)
-		REFLECT_NOTIFICATIONS_EX()
-	END_MSG_MAP()
+    BEGIN_MSG_MAP_EX( PoreFlowKDialog )
+    MSG_WM_INITDIALOG( OnInitDialog )
+    MSG_WM_COMMAND( OnCommand )
+    CHAIN_MSG_MAP( AcadSouiDialog )
+    REFLECT_NOTIFICATIONS_EX()
+    END_MSG_MAP()
 
 protected:
-	SEdit* m_A0Edit;
-	SEdit* m_DEdit;
-	SEdit* m_D1Edit;
-	SEdit* m_KEdit;
+    SEdit* m_A0Edit;
+    SEdit* m_DEdit;
+    SEdit* m_D1Edit;
+    SEdit* m_KEdit;
 
 public:
-	int pore_flow_id; // 外部传入
+    int pore_flow_id; // 外部传入
 
 private:
-	void initDatas();
-	void fillDatas();
+    void initDatas();
+    void fillDatas();
 };

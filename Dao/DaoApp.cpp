@@ -32,7 +32,7 @@
 
 // CDaoApp
 
-BEGIN_MESSAGE_MAP(CDaoApp, CWinApp)
+BEGIN_MESSAGE_MAP( CDaoApp, CWinApp )
 END_MESSAGE_MAP()
 
 
@@ -40,8 +40,8 @@ END_MESSAGE_MAP()
 
 CDaoApp::CDaoApp()
 {
-	// TODO: 在此处添加构造代码，
-	// 将所有重要的初始化放置在 InitInstance 中
+    // TODO: 在此处添加构造代码，
+    // 将所有重要的初始化放置在 InitInstance 中
 }
 
 
@@ -54,7 +54,7 @@ CDaoApp theApp;
 
 BOOL CDaoApp::InitInstance()
 {
-	CWinApp::InitInstance();
+    CWinApp::InitInstance();
 
-	return TRUE;
+    return TRUE;
 }

@@ -40,7 +40,7 @@ LRESULT MainDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 
 void MainDialog::OnF1ButtonClick()
 {
-	AcadSouiDialog::OnOK();
+    AcadSouiDialog::OnOK();
     MineDialog* dlg = new MineDialog( FALSE );
     dlg->mine_id = mine_id;
     dlg->Run( acedGetAcadFrame()->GetSafeHwnd() );
@@ -48,7 +48,7 @@ void MainDialog::OnF1ButtonClick()
 
 void MainDialog::OnF2ButtonClick()
 {
-	AcadSouiDialog::OnOK();
+    AcadSouiDialog::OnOK();
     KeyParamDialog* dlg = new KeyParamDialog( FALSE );
     dlg->mine_id = mine_id;
     dlg->Run( acedGetAcadFrame()->GetSafeHwnd() );
@@ -56,7 +56,7 @@ void MainDialog::OnF2ButtonClick()
 
 void MainDialog::OnF3ButtonClick()
 {
-	AcadSouiDialog::OnOK();
+    AcadSouiDialog::OnOK();
     GasDesignDialog* dlg = new GasDesignDialog( FALSE );
     dlg->mine_id = mine_id;
     dlg->Run( acedGetAcadFrame()->GetSafeHwnd() );
@@ -64,7 +64,7 @@ void MainDialog::OnF3ButtonClick()
 
 void MainDialog::OnF0ButtonClick()
 {
-	AcadSouiDialog::OnOK();
+    AcadSouiDialog::OnOK();
     MineDesignDialog* dlg = new MineDesignDialog( FALSE );
     dlg->mine_id = mine_id;
     dlg->Run( acedGetAcadFrame()->GetSafeHwnd() );
@@ -72,7 +72,7 @@ void MainDialog::OnF0ButtonClick()
 
 void MainDialog::OnF4ButtonClick()
 {
-	AcadSouiDialog::OnOK();
+    AcadSouiDialog::OnOK();
     PolicyDialog* dlg = new PolicyDialog( FALSE );
     //dlg->mine_id = mine_id;
     dlg->Run( acedGetAcadFrame()->GetSafeHwnd() );

@@ -56,15 +56,15 @@ void MineGasFlowPredictDialog::OnK1HelpButtonClick()
 
 void MineGasFlowPredictDialog::OnSaveButtonClick()
 {
-	//保存矿井的数据
-	MinePtr mine = FIND_BY_ID( Mine, mine_id );
-	if( mine == 0 ) return;
+    //保存矿井的数据
+    MinePtr mine = FIND_BY_ID( Mine, mine_id );
+    if( mine == 0 ) return;
 
-	Utils::cstring_to_double( ( LPCTSTR )m_K1GasEdit->GetWindowText(), mine->gas_k1 );
-	Utils::cstring_to_double( ( LPCTSTR )m_K2GasEdit->GetWindowText(), mine->gas_k2 );
-	Utils::cstring_to_double( ( LPCTSTR )m_QrEdit->GetWindowText(), mine->qr );
-	//更新到数据库
-	if( !mine->save() ) return;
+    Utils::cstring_to_double( ( LPCTSTR )m_K1GasEdit->GetWindowText(), mine->gas_k1 );
+    Utils::cstring_to_double( ( LPCTSTR )m_K2GasEdit->GetWindowText(), mine->gas_k2 );
+    Utils::cstring_to_double( ( LPCTSTR )m_QrEdit->GetWindowText(), mine->qr );
+    //更新到数据库
+    if( !mine->save() ) return;
 
     //保存当前采区的数据
     WorkAreaPtr work_area = getCurSelWorkArea();
@@ -76,7 +76,7 @@ void MineGasFlowPredictDialog::OnSaveButtonClick()
     //更新到数据库
     if( !work_area->save() ) return;
 
-	SMessageBox( GetSafeHwnd(), _T( "更新数据成功!" ), _T( "友情提示" ), MB_OK );
+    SMessageBox( GetSafeHwnd(), _T( "更新数据成功!" ), _T( "友情提示" ), MB_OK );
 }
 
 void MineGasFlowPredictDialog::OnK2HelpButtonClick()
@@ -123,20 +123,20 @@ void MineGasFlowPredictDialog::OnWorkAreaCaclButtonClick()
     WorkAreaPtr work_area = getCurSelWorkArea();
     if( work_area == 0 ) return;
 
-	Utils::cstring_to_double( ( LPCTSTR )m_WorkAreaAEdit->GetWindowText(), work_area->a );
-	if(work_area->a <= 0)
-	{
-		SMessageBox( GetSafeHwnd(), _T( "采区的日产量A必须大于0!!!" ), _T( "友情提示" ), MB_OK );
-	}
-	else
-	{
-		//计算采区的瓦斯涌出量
-		double K1 = 0;
-		Utils::cstring_to_double( ( LPCTSTR )m_K1GasEdit->GetWindowText(), K1 );
-		double qr = DaoHelper::WorkAreaGasFlow(work_area, K1);
-		//将采区瓦斯涌出量计算结果更新到界面
-		m_WorkAreaQrEdit->SetWindowText( Utils::double_to_cstring( qr ) );
-	}
+    Utils::cstring_to_double( ( LPCTSTR )m_WorkAreaAEdit->GetWindowText(), work_area->a );
+    if( work_area->a <= 0 )
+    {
+        SMessageBox( GetSafeHwnd(), _T( "采区的日产量A必须大于0!!!" ), _T( "友情提示" ), MB_OK );
+    }
+    else
+    {
+        //计算采区的瓦斯涌出量
+        double K1 = 0;
+        Utils::cstring_to_double( ( LPCTSTR )m_K1GasEdit->GetWindowText(), K1 );
+        double qr = DaoHelper::WorkAreaGasFlow( work_area, K1 );
+        //将采区瓦斯涌出量计算结果更新到界面
+        m_WorkAreaQrEdit->SetWindowText( Utils::double_to_cstring( qr ) );
+    }
 }
 
 void MineGasFlowPredictDialog::OnCaclButtonClick()
@@ -144,9 +144,9 @@ void MineGasFlowPredictDialog::OnCaclButtonClick()
     MinePtr mine = FIND_BY_ID( Mine, mine_id );
     if( mine == 0 ) return;
 
-	//将数据临时保存到矿井对象中(便于后续计算)
-	Utils::cstring_to_double( ( LPCTSTR )m_K2GasEdit->GetWindowText(), mine->gas_k2 );
-	double qr = DaoHelper::MineGasFlow(mine);
+    //将数据临时保存到矿井对象中(便于后续计算)
+    Utils::cstring_to_double( ( LPCTSTR )m_K2GasEdit->GetWindowText(), mine->gas_k2 );
+    double qr = DaoHelper::MineGasFlow( mine );
     if( qr < 0 )
     {
         SMessageBox( GetSafeHwnd(), _T( "错误:采区的日产量之和等于0!!!" ), _T( "友情提示" ), MB_OK );

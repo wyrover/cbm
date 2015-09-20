@@ -183,7 +183,7 @@ void MineDialog::fillMineDatas()
 
     //根据矿区反查基地
     CString regionName = mine->region->get( FIELD( name ) );
-    CString baseName = DaoHelper::GetBaeByRegion( regionName );
+    CString baseName = DaoHelper::GetBaseByRegion( regionName );
     m_BaseCombox->SetCurSel( m_BaseCombox->FindString( baseName ) );
     m_RegionCombox->SetCurSel( m_RegionCombox->FindString( regionName ) );
 

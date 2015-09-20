@@ -71,7 +71,7 @@ int SComboBoxHelper::GetItemID( SComboBox* combox, int i )
 {
     if( i < 0 || i >= combox->GetCount() ) return 0;
     ItemData* pData = ( ItemData* )combox->GetItemData( i );
-	return (pData == 0)?0:pData->id;
+    return ( pData == 0 ) ? 0 : pData->id;
 }
 
 void SComboBoxHelper::SetCurSelByString( SComboBox* combox, const CString& name )
@@ -202,7 +202,7 @@ int SListBoxHelper::GetItemID( SListBox* listbox, int i )
 {
     if( i < 0 || i >= listbox->GetCount() ) return 0;
     ItemData* pData = ( ItemData* )listbox->GetItemData( i );
-    return (pData == 0)?0:pData->id;
+    return ( pData == 0 ) ? 0 : pData->id;
 }
 
 void SListBoxHelper::SetCurSelByString( SListBox* listbox, const CString& name )
@@ -310,7 +310,7 @@ int SListCtrlHelper::GetItemID( SListCtrl* listctrl, int i )
 {
     if( i < 0 || i >= listctrl->GetItemCount() ) return 0;
     ItemData* pData = ( ItemData* )listctrl->GetItemData( i );
-    return (pData == 0)?0:pData->id;
+    return ( pData == 0 ) ? 0 : pData->id;
 }
 
 void SListCtrlHelper::DeleteCurSel( SListCtrl* listctrl )

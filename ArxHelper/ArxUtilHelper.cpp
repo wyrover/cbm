@@ -50,22 +50,22 @@ AcDbObjectId ArxUtilHelper::SelectEntity( const CString& msg )
 
 void ArxUtilHelper::SelectEntities( AcDbObjectIdArray& objIds )
 {
-	ads_name ss;
-	if( RTNORM != acedSSGet(NULL, NULL, NULL, NULL, ss) ) return;
+    ads_name ss;
+    if( RTNORM != acedSSGet( NULL, NULL, NULL, NULL, ss ) ) return;
 
-	long n = 0;
-	acedSSLength ( ss, &n );
-	for( long i = 0; i < n; i++ )
-	{
-		ads_name ename;
-		if( RTNORM != acedSSName ( ss, i, ename ) ) continue;
+    long n = 0;
+    acedSSLength ( ss, &n );
+    for( long i = 0; i < n; i++ )
+    {
+        ads_name ename;
+        if( RTNORM != acedSSName ( ss, i, ename ) ) continue;
 
-		AcDbObjectId objId;
-		if( Acad::eOk != acdbGetObjectId( objId, ename ) ) continue;
+        AcDbObjectId objId;
+        if( Acad::eOk != acdbGetObjectId( objId, ename ) ) continue;
 
-		objIds.append( objId );
-	}
-	acedSSFree( ss );
+        objIds.append( objId );
+    }
+    acedSSFree( ss );
 }
 
 void ArxUtilHelper::GetPickSetEntity2( AcDbObjectIdArray& objIds )
@@ -278,32 +278,32 @@ bool ArxUtilHelper::PromptPt2( const CString& msg, const AcGePoint3d& basePt, Ac
     return true;
 }
 
-double ArxUtilHelper::Angle(AcGePoint3d& startPt, AcGePoint3d& endPt)
+double ArxUtilHelper::Angle( AcGePoint3d& startPt, AcGePoint3d& endPt )
 {
-	AcGeVector3d v = endPt - startPt;
-	return v.angleTo( AcGeVector3d::kXAxis, -AcGeVector3d::kZAxis );
+    AcGeVector3d v = endPt - startPt;
+    return v.angleTo( AcGeVector3d::kXAxis, -AcGeVector3d::kZAxis );
 }
 
-bool ArxUtilHelper::PromptSEPt( AcGePoint3d& startPt, AcGePoint3d& endPt)
+bool ArxUtilHelper::PromptSEPt( AcGePoint3d& startPt, AcGePoint3d& endPt )
 {
-	ads_point start_pt, end_pt;
-	if( acedGetPoint( NULL, _T( "\n请选择第一点: " ), start_pt ) != RTNORM )
-	{
-		acutPrintf( _T( "\n选择点坐标失败" ) );
-		return false;
-	}
+    ads_point start_pt, end_pt;
+    if( acedGetPoint( NULL, _T( "\n请选择第一点: " ), start_pt ) != RTNORM )
+    {
+        acutPrintf( _T( "\n选择点坐标失败" ) );
+        return false;
+    }
 
-	if( acedGetPoint( start_pt, _T( "\n请选择第二点：" ), end_pt ) != RTNORM )
-	{
-		acutPrintf( _T( "\n选择点坐标失败" ) );
-		return false;
-	}
+    if( acedGetPoint( start_pt, _T( "\n请选择第二点：" ), end_pt ) != RTNORM )
+    {
+        acutPrintf( _T( "\n选择点坐标失败" ) );
+        return false;
+    }
 
-	// 返回结果
-	startPt = asPnt3d( start_pt );
-	endPt = asPnt3d( end_pt );
+    // 返回结果
+    startPt = asPnt3d( start_pt );
+    endPt = asPnt3d( end_pt );
 
-	return true;
+    return true;
 }
 
 double ArxUtilHelper::AngleToXAxis( const AcGeVector3d& v )
@@ -340,26 +340,26 @@ CString ArxUtilHelper::GetAppPathDir( HINSTANCE hInstance )
 // 生成路径
 CString ArxUtilHelper::BuildPath( const CString& dir, const CString& fileName )
 {
-	int n1 = dir.GetLength();
-	int n2 = fileName.GetLength();
-	CString path;
-	if(dir.GetAt(n1-1) == _T('\\')) 
-	{
-		path += dir.Left(n1-1);
-	}
-	else
-	{
-		path += dir;
-	}
-	path += _T("\\");
-	if(fileName.GetAt(0) == _T('\\'))
-	{
-		path += fileName.Right(n2-1);
-	}
-	else
-	{
-		path += fileName;
-	}
+    int n1 = dir.GetLength();
+    int n2 = fileName.GetLength();
+    CString path;
+    if( dir.GetAt( n1 - 1 ) == _T( '\\' ) )
+    {
+        path += dir.Left( n1 - 1 );
+    }
+    else
+    {
+        path += dir;
+    }
+    path += _T( "\\" );
+    if( fileName.GetAt( 0 ) == _T( '\\' ) )
+    {
+        path += fileName.Right( n2 - 1 );
+    }
+    else
+    {
+        path += fileName;
+    }
     return path;
 }
 

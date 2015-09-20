@@ -6,48 +6,48 @@
 //初始化单例模式的静态成员变量
 template<> cruise_log4cplus* Singleton<cruise_log4cplus>::ms_Singleton = 0;
 
-static log4cplus::tstring file_name_add_prefix(log4cplus::tstring& old_name,log4cplus::tstring prefix_flie)
+static log4cplus::tstring file_name_add_prefix( log4cplus::tstring& old_name, log4cplus::tstring prefix_flie )
 {
-	size_t pos = 0;
-	if (log4cplus::tstring::npos != (
-		pos = old_name.find_last_of(LOG4CPLUS_TEXT('\\')))
-		|| log4cplus::tstring::npos != (
-		pos = old_name.find_last_of(LOG4CPLUS_TEXT('/'))))
-	{
-		++pos;
-	}
+    size_t pos = 0;
+    if ( log4cplus::tstring::npos != (
+                pos = old_name.find_last_of( LOG4CPLUS_TEXT( '\\' ) ) )
+            || log4cplus::tstring::npos != (
+                pos = old_name.find_last_of( LOG4CPLUS_TEXT( '/' ) ) ) )
+    {
+        ++pos;
+    }
 
-	prefix_flie.append(LOG4CPLUS_TEXT("_"));
-	return old_name.insert(pos, prefix_flie);
+    prefix_flie.append( LOG4CPLUS_TEXT( "_" ) );
+    return old_name.insert( pos, prefix_flie );
 }
 
-static void change_log_file_name(log4cplus::tchar* prop_file, log4cplus::tchar* prefix_log_flie)
+static void change_log_file_name( log4cplus::tchar* prop_file, log4cplus::tchar* prefix_log_flie )
 {
-	log4cplus::PropertyConfigurator prop_config(prop_file);
-	log4cplus::helpers::Properties& prop
-		= const_cast<log4cplus::helpers::Properties &>(
-		prop_config.getProperties());
-	log4cplus::helpers::Properties appender_properties
-		= prop.getPropertySubset(LOG4CPLUS_TEXT("appender."));
-	std::vector<log4cplus::tstring> appenders_props
-		= appender_properties.propertyNames();
+    log4cplus::PropertyConfigurator prop_config( prop_file );
+    log4cplus::helpers::Properties& prop
+        = const_cast<log4cplus::helpers::Properties&>(
+              prop_config.getProperties() );
+    log4cplus::helpers::Properties appender_properties
+        = prop.getPropertySubset( LOG4CPLUS_TEXT( "appender." ) );
+    std::vector<log4cplus::tstring> appenders_props
+        = appender_properties.propertyNames();
 
-	for (std::vector<log4cplus::tstring>::iterator
-		it = appenders_props.begin(); it != appenders_props.end(); ++it)
-	{
-		if (log4cplus::tstring::npos != it->find(
-			LOG4CPLUS_TEXT(".File")))
-		{
-			log4cplus::tstring file_name_old
-				= appender_properties.getProperty(*it);
-			log4cplus::tstring file_name_new
-				= file_name_add_prefix(file_name_old, prefix_log_flie);
+    for ( std::vector<log4cplus::tstring>::iterator
+            it = appenders_props.begin(); it != appenders_props.end(); ++it )
+    {
+        if ( log4cplus::tstring::npos != it->find(
+                    LOG4CPLUS_TEXT( ".File" ) ) )
+        {
+            log4cplus::tstring file_name_old
+                = appender_properties.getProperty( *it );
+            log4cplus::tstring file_name_new
+                = file_name_add_prefix( file_name_old, prefix_log_flie );
 
-			prop.setProperty(LOG4CPLUS_TEXT("appender.") + *it, file_name_new);
-		}
-	}
+            prop.setProperty( LOG4CPLUS_TEXT( "appender." ) + *it, file_name_new );
+        }
+    }
 
-	prop_config.configure();
+    prop_config.configure();
 }
 
 //#define DO_LOGGER(log_level/*, file, line, function, format_msg, __VA_ARGS__*/)    \
@@ -69,7 +69,7 @@ static void change_log_file_name(log4cplus::tchar* prop_file, log4cplus::tchar* 
 //}                                                                 \
 //	retval = 0;                                                       \
 //}                                                                     \
-//	catch (...) {}                                                          
+//	catch (...) {}
 //
 //void cruise_log4cplus::Fatal(const char* file, const int line, const char* function,
 //		   const log4cplus::tchar* format_msg, ...)
@@ -95,49 +95,49 @@ static void change_log_file_name(log4cplus::tchar* prop_file, log4cplus::tchar* 
 //		   const log4cplus::tchar* format_msg, ...)
 //{   DO_LOGGER(log4cplus::TRACE_LOG_LEVEL);   }
 
-void cruise_log4cplus::log_init(log4cplus::tchar* prop_file, 
-			  log4cplus::tchar* prefix_log_flie,
-			  log4cplus::tchar* sub_logger_name)
+void cruise_log4cplus::log_init( log4cplus::tchar* prop_file,
+                                 log4cplus::tchar* prefix_log_flie,
+                                 log4cplus::tchar* sub_logger_name )
 {
-	//为了使log4cplus输出中文，需要设置locale为中文
-	m_origin_locale = std::locale::global(std::locale("chs"));
+    //为了使log4cplus输出中文，需要设置locale为中文
+    m_origin_locale = std::locale::global( std::locale( "chs" ) );
 
-	log4cplus::initialize();
-	m_logger = log4cplus::Logger::getRoot();
+    log4cplus::initialize();
+    m_logger = log4cplus::Logger::getRoot();
 
-	if (NULL == prop_file) return;
+    if ( NULL == prop_file ) return;
 
-	try
-	{
-		if (NULL != prefix_log_flie && '\0' != prefix_log_flie[0])
-			change_log_file_name(prop_file, prefix_log_flie);
-		else
-			log4cplus::PropertyConfigurator::doConfigure(prop_file);
-		//log4cplus::ConfigureAndWatchThread cfg_thread(prop_file, 24*60*60*1000);
+    try
+    {
+        if ( NULL != prefix_log_flie && '\0' != prefix_log_flie[0] )
+            change_log_file_name( prop_file, prefix_log_flie );
+        else
+            log4cplus::PropertyConfigurator::doConfigure( prop_file );
+        //log4cplus::ConfigureAndWatchThread cfg_thread(prop_file, 24*60*60*1000);
 
-		if (NULL != sub_logger_name && '\0' != sub_logger_name[0]
-		&& log4cplus::Logger::exists(sub_logger_name))
-			m_logger = log4cplus::Logger::getInstance(sub_logger_name);
-		//else
-		//    m_logger = log4cplus::Logger::getRoot();
+        if ( NULL != sub_logger_name && '\0' != sub_logger_name[0]
+                && log4cplus::Logger::exists( sub_logger_name ) )
+            m_logger = log4cplus::Logger::getInstance( sub_logger_name );
+        //else
+        //    m_logger = log4cplus::Logger::getRoot();
 
-		LOG4CPLUS_INFO(m_logger, LOG4CPLUS_TEXT("Log System Start."));
-	}
-	catch (...)
-	{
-		LOG4CPLUS_FATAL(m_logger, LOG4CPLUS_TEXT("Exception occured..."));
-		//恢复原来的locale设置
-		std::locale::global(m_origin_locale);
-		abort();
-	}
+        LOG4CPLUS_INFO( m_logger, LOG4CPLUS_TEXT( "Log System Start." ) );
+    }
+    catch ( ... )
+    {
+        LOG4CPLUS_FATAL( m_logger, LOG4CPLUS_TEXT( "Exception occured..." ) );
+        //恢复原来的locale设置
+        std::locale::global( m_origin_locale );
+        abort();
+    }
 }
 
 void cruise_log4cplus::log_uinit()
 {
-	LOG4CPLUS_INFO(m_logger, LOG4CPLUS_TEXT("Log System Stop."));
-	log4cplus::Logger::shutdown();
-	//恢复原来的locale设置
-	std::locale::global(m_origin_locale);
+    LOG4CPLUS_INFO( m_logger, LOG4CPLUS_TEXT( "Log System Stop." ) );
+    log4cplus::Logger::shutdown();
+    //恢复原来的locale设置
+    std::locale::global( m_origin_locale );
 }
 
 cruise_log4cplus::cruise_log4cplus()
@@ -146,21 +146,23 @@ cruise_log4cplus::cruise_log4cplus()
 
 //cruise_log4cplus::~cruise_log4cplus()
 //{
-//	
+//
 //}
 
 log4cplus::Logger& cruise_log4cplus::getLogger()
-{   return cruise_log4cplus::getSingleton().m_logger;   }
-
-
-void log_init(tchar* prop_file, tchar* prefix_log_flie, tchar* sub_logger_name)
 {
-	new cruise_log4cplus();
-	cruise_log4cplus::getSingletonPtr()->log_init(prop_file, prefix_log_flie, sub_logger_name);
+    return cruise_log4cplus::getSingleton().m_logger;
+}
+
+
+void log_init( tchar* prop_file, tchar* prefix_log_flie, tchar* sub_logger_name )
+{
+    new cruise_log4cplus();
+    cruise_log4cplus::getSingletonPtr()->log_init( prop_file, prefix_log_flie, sub_logger_name );
 }
 
 void log_uinit()
 {
-	cruise_log4cplus::getSingletonPtr()->log_uinit();
-	delete cruise_log4cplus::getSingletonPtr();
+    cruise_log4cplus::getSingletonPtr()->log_uinit();
+    delete cruise_log4cplus::getSingletonPtr();
 }

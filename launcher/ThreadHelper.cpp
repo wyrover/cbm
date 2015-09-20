@@ -5,27 +5,27 @@
 #include <vector>
 
 // 获取当前模块的路径
-CString ThreadHelper::GetAppPathDir(HINSTANCE hdllInstance/*=NULL*/)
+CString ThreadHelper::GetAppPathDir( HINSTANCE hdllInstance/*=NULL*/ )
 {
-	TCHAR szMoudlePath[_MAX_PATH];
-	GetModuleFileName( hdllInstance, szMoudlePath, _MAX_PATH );
+    TCHAR szMoudlePath[_MAX_PATH];
+    GetModuleFileName( hdllInstance, szMoudlePath, _MAX_PATH );
 
-	TCHAR drive[_MAX_DRIVE];
-	TCHAR dir[_MAX_DIR];
-	_tsplitpath( szMoudlePath, drive, dir, NULL, NULL );
+    TCHAR drive[_MAX_DRIVE];
+    TCHAR dir[_MAX_DIR];
+    _tsplitpath( szMoudlePath, drive, dir, NULL, NULL );
 
-	TCHAR path[_MAX_PATH];
-	_tmakepath( path, drive, dir, NULL, NULL );
+    TCHAR path[_MAX_PATH];
+    _tmakepath( path, drive, dir, NULL, NULL );
 
-	return CString( path );
+    return CString( path );
 }
 
 // 生成路径
 CString ThreadHelper::BuildPath( const CString& dir, const CString& fileName )
 {
-	CString path;
-	path.Format( _T( "%s%s" ), dir, fileName );
-	return path;
+    CString path;
+    path.Format( _T( "%s%s" ), dir, fileName );
+    return path;
 }
 
 static void FindProcessIdByName( const CString& name, std::vector<DWORD>& pids )
@@ -88,11 +88,11 @@ void ThreadHelper::KillProcess( const CString& name )
     }
 }
 
-int ThreadHelper::ProcessNum(const CString& name)
+int ThreadHelper::ProcessNum( const CString& name )
 {
-	std::vector<DWORD> pids;
-	FindProcessIdByName( name, pids );
-	return (int)pids.size();
+    std::vector<DWORD> pids;
+    FindProcessIdByName( name, pids );
+    return ( int )pids.size();
 }
 
 bool ThreadHelper::IsProcessActive( const CString& name )
@@ -104,54 +104,54 @@ bool ThreadHelper::IsProcessActive( const CString& name )
 
 bool ThreadHelper::IsProcessActive2( HANDLE hProcess )
 {
-	DWORD exitCode;
-	GetExitCodeProcess( hProcess, &exitCode );
-	return ( exitCode == STILL_ACTIVE );
+    DWORD exitCode;
+    GetExitCodeProcess( hProcess, &exitCode );
+    return ( exitCode == STILL_ACTIVE );
 }
 
 bool ThreadHelper::RunProecess( const CString& exePath, const CString& cmdLine, const CString& cwdPath, HANDLE& hProcess, HANDLE& hThread, bool bShow )
 {
-	PROCESS_INFORMATION pi;
-	STARTUPINFO si;
-	memset( &si, 0, sizeof( si ) );
-	si.cb = sizeof( si );
-	si.wShowWindow = bShow ? SW_SHOW : SW_HIDE;
-	si.dwFlags = STARTF_USESHOWWINDOW;
+    PROCESS_INFORMATION pi;
+    STARTUPINFO si;
+    memset( &si, 0, sizeof( si ) );
+    si.cb = sizeof( si );
+    si.wShowWindow = bShow ? SW_SHOW : SW_HIDE;
+    si.dwFlags = STARTF_USESHOWWINDOW;
 
-	BOOL ret = CreateProcess( ( LPCTSTR )exePath, ( LPTSTR )( LPCTSTR )cmdLine, NULL, FALSE, NULL, NULL, NULL, ( LPCTSTR )cwdPath, &si, &pi );
-	if( ret )
-	{
-		//WaitForSingleObject(pi.hProcess, INFINITE);
-		//CloseHandle(pi.hThread);
-		//CloseHandle(pi.hProcess);
+    BOOL ret = CreateProcess( ( LPCTSTR )exePath, ( LPTSTR )( LPCTSTR )cmdLine, NULL, FALSE, NULL, NULL, NULL, ( LPCTSTR )cwdPath, &si, &pi );
+    if( ret )
+    {
+        //WaitForSingleObject(pi.hProcess, INFINITE);
+        //CloseHandle(pi.hThread);
+        //CloseHandle(pi.hProcess);
 
-		// 返回进程和线程句柄
-		hProcess = pi.hProcess;
-		hThread = pi.hThread;
-	}
-	return ( ret == TRUE );
+        // 返回进程和线程句柄
+        hProcess = pi.hProcess;
+        hThread = pi.hThread;
+    }
+    return ( ret == TRUE );
 }
 
 void ThreadHelper::MsgWaitForThread( HANDLE hThread )
 {
-	// http://www.cnblogs.com/Sunwayking/articles/1976980.html
-	while( TRUE )
-	{
-		//wait for m_hThread to be over，and wait for
-		//QS_ALLINPUT（Any message is in the queue)
-		DWORD dwRet = MsgWaitForMultipleObjects( 1, &hThread, FALSE, INFINITE, QS_ALLINPUT );
-		if( WAIT_OBJECT_0 + 1 == dwRet )
-		{
-			//get the message from Queue
-			//and dispatch it to specific window
-			MSG msg;
-			PeekMessage( &msg, NULL, 0, 0, PM_REMOVE );
-			DispatchMessage( &msg );
-			continue;
-		}
-		else
-		{
-			break;
-		}
-	}
+    // http://www.cnblogs.com/Sunwayking/articles/1976980.html
+    while( TRUE )
+    {
+        //wait for m_hThread to be over，and wait for
+        //QS_ALLINPUT（Any message is in the queue)
+        DWORD dwRet = MsgWaitForMultipleObjects( 1, &hThread, FALSE, INFINITE, QS_ALLINPUT );
+        if( WAIT_OBJECT_0 + 1 == dwRet )
+        {
+            //get the message from Queue
+            //and dispatch it to specific window
+            MSG msg;
+            PeekMessage( &msg, NULL, 0, 0, PM_REMOVE );
+            DispatchMessage( &msg );
+            continue;
+        }
+        else
+        {
+            break;
+        }
+    }
 }

@@ -906,7 +906,7 @@ ArxDbgAppXdata::remove( int tag )
 
 void ArxDbgAppXdata::removeAll()
 {
-	m_xdata.removeAll();
+    m_xdata.removeAll();
 }
 
 /****************************************************************************

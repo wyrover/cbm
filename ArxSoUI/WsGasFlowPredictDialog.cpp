@@ -68,14 +68,14 @@ void WsGasFlowPredictDialog::OnQr1CaclButtonClick()
     CoalPtr coal = DYNAMIC_POINTER_CAST( Coal, work_area->coal );
     if( coal == 0 ) return;
 
-	//从界面中读取数据
-	//开采层厚度(????分层如何考虑???)
-	Utils::cstring_to_double( ( LPCTSTR )m_WsThickEdit->GetWindowText(), coal->thick );
-	//是否分层开采
-	work_surf->layerable = BOOL_2_INT( m_MethodThickRadio->IsChecked() == 0 );
+    //从界面中读取数据
+    //开采层厚度(????分层如何考虑???)
+    Utils::cstring_to_double( ( LPCTSTR )m_WsThickEdit->GetWindowText(), coal->thick );
+    //是否分层开采
+    work_surf->layerable = BOOL_2_INT( m_MethodThickRadio->IsChecked() == 0 );
 
-	//计算工作面瓦斯涌出量
-	double q1 = DaoHelper::WorkSurfGasFlow1(coal, work_area, work_surf);
+    //计算工作面瓦斯涌出量
+    double q1 = DaoHelper::WorkSurfGasFlow1( coal, work_area, work_surf );
     //更新到界面
     m_Qr1Edit->SetWindowText( Utils::double_to_cstring( q1 ) );
 }
@@ -98,7 +98,7 @@ void WsGasFlowPredictDialog::OnQr2CaclButtonClick()
     if( coal == 0 ) return;
 
     //计算邻近层瓦斯涌出量
-	double q2 = DaoHelper::WorkSurfGasFlow2(coal, work_area, work_surf);
+    double q2 = DaoHelper::WorkSurfGasFlow2( coal, work_area, work_surf );
     //更新到界面
     m_Qr2Edit->SetWindowText( Utils::double_to_cstring( q2 ) );
 }

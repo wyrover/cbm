@@ -5,6 +5,6 @@
 class ARXHELPER_DLLIMPEXP SystemHelper
 {
 public:
-	static void Start();
-	static void ShutDown();
+    static void Start();
+    static void ShutDown();
 };

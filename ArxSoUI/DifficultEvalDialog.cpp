@@ -62,7 +62,7 @@ void DifficultEvalDialog::OnEvalButtonClick()
     Utils::cstring_to_double( ( LPCTSTR )m_DecayAlphaEdit->GetWindowText(), coal->decay_alpha );
 
     //根据钻孔流量衰减系数 和 煤层透气性系数进行评价
-	coal->eval_difficult = DaoHelper::DifficultEval(coal);
+    coal->eval_difficult = DaoHelper::DifficultEval( coal );
 
     if( coal->eval_difficult != 0 )
     {
@@ -70,11 +70,11 @@ void DifficultEvalDialog::OnEvalButtonClick()
         coal->eval_difficult = m_EvalDifficultCombox->GetCurSel() + 1;
         if( coal->save() )
         {
-			SMessageBox( GetSafeHwnd(), DaoHelper::DifficultEvalString(coal), _T( "友情提示" ), MB_OK );
+            SMessageBox( GetSafeHwnd(), DaoHelper::DifficultEvalString( coal ), _T( "友情提示" ), MB_OK );
         }
     }
-	//更新评价结论到界面
-	m_EvalDifficultCombox->SetCurSel( coal->eval_difficult - 1 );
+    //更新评价结论到界面
+    m_EvalDifficultCombox->SetCurSel( coal->eval_difficult - 1 );
 }
 
 void DifficultEvalDialog::OnEvalProofButtonClick()

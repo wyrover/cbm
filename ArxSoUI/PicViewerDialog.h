@@ -4,46 +4,46 @@
 class PicViewerDialog : public AcadSouiDialog
 {
 
-	/** 构造和析构函数 */
+    /** 构造和析构函数 */
 public:
-	PicViewerDialog(BOOL bModal = FALSE);
-	~PicViewerDialog(void);
+    PicViewerDialog( BOOL bModal = FALSE );
+    ~PicViewerDialog( void );
 
-	/** 控件消息处理 */
+    /** 控件消息处理 */
 protected:
 
-	/** 菜单消息 */
+    /** 菜单消息 */
 protected:
-	//处理菜单消息(菜单在一个单独的xml文件中描述，每个菜单项都有一个id号)
-	void OnCommand(UINT uNotifyCode, int nID, HWND wndCtl);
+    //处理菜单消息(菜单在一个单独的xml文件中描述，每个菜单项都有一个id号)
+    void OnCommand( UINT uNotifyCode, int nID, HWND wndCtl );
 
-	/** 窗口消息 */
+    /** 窗口消息 */
 protected:
-	//对话框初始化过程
-	LRESULT OnInitDialog(HWND hWnd, LPARAM lParam);
+    //对话框初始化过程
+    LRESULT OnInitDialog( HWND hWnd, LPARAM lParam );
 
-	//控件消息映射表
-	EVENT_MAP_BEGIN()
-		CHAIN_EVENT_MAP(AcadSouiDialog)
-	EVENT_MAP_END()
-	
+    //控件消息映射表
+    EVENT_MAP_BEGIN()
+    CHAIN_EVENT_MAP( AcadSouiDialog )
+    EVENT_MAP_END()
+
 //HOST消息(WINDOWS消息)映射表
-	BEGIN_MSG_MAP_EX(PicViewerDialog)
-		MSG_WM_INITDIALOG(OnInitDialog)
-		MSG_WM_COMMAND(OnCommand)
-		CHAIN_MSG_MAP(AcadSouiDialog)
-		REFLECT_NOTIFICATIONS_EX()
-	END_MSG_MAP()
+    BEGIN_MSG_MAP_EX( PicViewerDialog )
+    MSG_WM_INITDIALOG( OnInitDialog )
+    MSG_WM_COMMAND( OnCommand )
+    CHAIN_MSG_MAP( AcadSouiDialog )
+    REFLECT_NOTIFICATIONS_EX()
+    END_MSG_MAP()
 
 protected:
-	SImageWnd* m_PicImg;
+    SImageWnd* m_PicImg;
 
 public:
-	void setPicSkin(const CString& pic_skin);
-	void setPicFile(const CString& pic_file);
+    void setPicSkin( const CString& pic_skin );
+    void setPicFile( const CString& pic_file );
 
 private:
-	CString m_pic_skin; // 图片资源皮肤
-	CString m_pic_file; // 图片文件路径
-	bool m_use_res;     // 使用资源还是加载rtf文件(默认使用资源)
+    CString m_pic_skin; // 图片资源皮肤
+    CString m_pic_file; // 图片文件路径
+    bool m_use_res;     // 使用资源还是加载rtf文件(默认使用资源)
 };

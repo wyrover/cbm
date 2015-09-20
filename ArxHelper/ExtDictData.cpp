@@ -41,149 +41,150 @@ void ExtDictData::mapVector( const CString& field, AcGeVector3d* pValue )
 class ExtDictDao : public Dao
 {
 public:
-	ExtDictDao(const AcDbObjectId& objId) : m_pDict(0), m_createNewKey(true)
-	{
-		if(objId.isNull()) return;
+    ExtDictDao( const AcDbObjectId& objId ) : m_pDict( 0 ), m_createNewKey( true )
+    {
+        if( objId.isNull() ) return;
 
-		//获取扩展词典id
-		AcDbObjectId dictId = ArxDictTool::GetExtensionDict(objId);
-		if(dictId.isNull()) return;
+        //获取扩展词典id
+        AcDbObjectId dictId = ArxDictTool::GetExtensionDict( objId );
+        if( dictId.isNull() ) return;
 
-		AcTransaction* pTrans = actrTransactionManager->startTransaction();
-		if( pTrans == 0 ) return;
+        AcTransaction* pTrans = actrTransactionManager->startTransaction();
+        if( pTrans == 0 ) return;
 
-		//AcDb::OpenMode om = ( save ? ( AcDb::kForWrite ) : ( AcDb::kForRead ) );
-		AcDbObject* pObj;
-		if( Acad::eOk != pTrans->getObject( pObj, dictId, AcDb::kForWrite ) )
-		{
-			actrTransactionManager->abortTransaction();
-			m_pDict = 0; return;
-		}
-		m_pDict = AcDbDictionary::cast(pObj);
-		if(m_pDict == 0)
-		{
-			actrTransactionManager->abortTransaction();
-			return;
-		}
-	}
-	~ExtDictDao()
-	{
-		if(m_pDict != 0)
-		{
-			actrTransactionManager->endTransaction();
-		}
-	}
-	virtual void clear()
-	{
-		//清空
-		//pDict->erase();
-		AcStringArray names;
-		AcDbDictionaryIterator* itr = m_pDict->newIterator();
-		while(!itr->done())
-		{
-			names.append(itr->name());
-			itr->next();
-		}
-		delete itr;
+        //AcDb::OpenMode om = ( save ? ( AcDb::kForWrite ) : ( AcDb::kForRead ) );
+        AcDbObject* pObj;
+        if( Acad::eOk != pTrans->getObject( pObj, dictId, AcDb::kForWrite ) )
+        {
+            actrTransactionManager->abortTransaction();
+            m_pDict = 0;
+            return;
+        }
+        m_pDict = AcDbDictionary::cast( pObj );
+        if( m_pDict == 0 )
+        {
+            actrTransactionManager->abortTransaction();
+            return;
+        }
+    }
+    ~ExtDictDao()
+    {
+        if( m_pDict != 0 )
+        {
+            actrTransactionManager->endTransaction();
+        }
+    }
+    virtual void clear()
+    {
+        //清空
+        //pDict->erase();
+        AcStringArray names;
+        AcDbDictionaryIterator* itr = m_pDict->newIterator();
+        while( !itr->done() )
+        {
+            names.append( itr->name() );
+            itr->next();
+        }
+        delete itr;
 
-		for(int i=0;i<names.length();i++)
-		{
-			m_pDict->remove(names[i].kACharPtr());
-		}
-	}
-	virtual bool set(const CString& key, const CString& value)
-	{
-		if(m_pDict == 0) return false;
+        for( int i = 0; i < names.length(); i++ )
+        {
+            m_pDict->remove( names[i].kACharPtr() );
+        }
+    }
+    virtual bool set( const CString& key, const CString& value )
+    {
+        if( m_pDict == 0 ) return false;
 
-		AcDbXrecord* pXrec = 0;
-		// key不存在或者其它原因
-		Acad::ErrorStatus es = m_pDict->getAt( key, ( AcDbObject*& ) pXrec, AcDb::kForWrite );
-		if( Acad::eOk != es && Acad::eKeyNotFound != es )
-		{
-			return false;
-		}
-		if( Acad::eKeyNotFound == es )
-		{
-			if( m_createNewKey )
-			{
-				pXrec = new AcDbXrecord();
-				AcDbObjectId xrecObjId;
-				if(Acad::eOk != m_pDict->setAt( key, pXrec, xrecObjId ))
-				{
-					return false;
-				}
-			}
-			else
-			{
-				return false;
-			}
-		}
+        AcDbXrecord* pXrec = 0;
+        // key不存在或者其它原因
+        Acad::ErrorStatus es = m_pDict->getAt( key, ( AcDbObject*& ) pXrec, AcDb::kForWrite );
+        if( Acad::eOk != es && Acad::eKeyNotFound != es )
+        {
+            return false;
+        }
+        if( Acad::eKeyNotFound == es )
+        {
+            if( m_createNewKey )
+            {
+                pXrec = new AcDbXrecord();
+                AcDbObjectId xrecObjId;
+                if( Acad::eOk != m_pDict->setAt( key, pXrec, xrecObjId ) )
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
 
-		XRecordManager dem(pXrec);
-		CString temp_value;
-		if(!dem.getEntry(0, temp_value))
-		{
-			return (dem.addEntry(value) != INVALID_ENTRY);
-		}
-		else
-		{
-			return dem.modifyEntry(0, value); // 每个XRECORD只存放一个数据
-		}
-	}
-	virtual bool get(const CString& key, CString& value)
-	{
-		if(m_pDict == 0) return false;
+        XRecordManager dem( pXrec );
+        CString temp_value;
+        if( !dem.getEntry( 0, temp_value ) )
+        {
+            return ( dem.addEntry( value ) != INVALID_ENTRY );
+        }
+        else
+        {
+            return dem.modifyEntry( 0, value ); // 每个XRECORD只存放一个数据
+        }
+    }
+    virtual bool get( const CString& key, CString& value )
+    {
+        if( m_pDict == 0 ) return false;
 
-		AcDbXrecord* pXrec = 0;
-		// key不存在或者其它原因
-		Acad::ErrorStatus es = m_pDict->getAt( key, ( AcDbObject*& ) pXrec, AcDb::kForWrite );
-		if( Acad::eOk != es && Acad::eKeyNotFound != es )
-		{
-			return false;
-		}
-		XRecordManager dem(pXrec);
-		return dem.getEntry(0, value); // 每个XRECORD只存放一个数据
-	}
+        AcDbXrecord* pXrec = 0;
+        // key不存在或者其它原因
+        Acad::ErrorStatus es = m_pDict->getAt( key, ( AcDbObject*& ) pXrec, AcDb::kForWrite );
+        if( Acad::eOk != es && Acad::eKeyNotFound != es )
+        {
+            return false;
+        }
+        XRecordManager dem( pXrec );
+        return dem.getEntry( 0, value ); // 每个XRECORD只存放一个数据
+    }
 
 private:
-	AcDbDictionary* m_pDict;
-	bool m_createNewKey;
+    AcDbDictionary* m_pDict;
+    bool m_createNewKey;
 };
 
-Dao* ExtDictData::createDao(const AcDbObjectId& objId)
+Dao* ExtDictData::createDao( const AcDbObjectId& objId )
 {
-	return new ExtDictDao(objId);
+    return new ExtDictDao( objId );
 }
 
-void ExtDictData::Init(const AcDbObjectId& objId, const AcStringArray& fields, const AcStringArray& values)
+void ExtDictData::Init( const AcDbObjectId& objId, const AcStringArray& fields, const AcStringArray& values )
 {
-	if( objId.isNull() ) return;
+    if( objId.isNull() ) return;
 
-	ExtDictDao dao(objId);
-	dao.clear(); // 清空
-	for(int i=0;i<values.length();i++)
-	{
-		dao.set(fields[i].kACharPtr(), values[i].kACharPtr());
-	}
+    ExtDictDao dao( objId );
+    dao.clear(); // 清空
+    for( int i = 0; i < values.length(); i++ )
+    {
+        dao.set( fields[i].kACharPtr(), values[i].kACharPtr() );
+    }
 }
 
 bool ExtDictData::Get( const AcDbObjectId& objId, const CString& field, CString& value )
 {
-	if( objId.isNull() ) return false;
+    if( objId.isNull() ) return false;
 
-	ExtDictDao dao(objId);
-	return dao.get(field, value);
+    ExtDictDao dao( objId );
+    return dao.get( field, value );
 }
 
 bool ExtDictData::Set( const AcDbObjectId& objId, const CString& field, const CString& value )
 {
-	if( objId.isNull() ) return false;
+    if( objId.isNull() ) return false;
 
-	ExtDictDao dao(objId);
-	return dao.set(field, value);
+    ExtDictDao dao( objId );
+    return dao.set( field, value );
 }
 
 void ExtDictData::Copy( const AcDbObjectId& sourceObjId, const AcDbObjectId& targetObjId )
 {
-	
+
 }

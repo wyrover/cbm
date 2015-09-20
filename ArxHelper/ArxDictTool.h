@@ -15,67 +15,67 @@
 class ARXHELPER_DLLIMPEXP ArxDictTool
 {
 public:
-	//获取扩展词典
-	static AcDbObjectId GetExtensionDict(const AcDbObjectId& objId);
+    //获取扩展词典
+    static AcDbObjectId GetExtensionDict( const AcDbObjectId& objId );
 
-	/* 判断词典是否存在 */
-	static bool IsDictExist(const CString& dictName);
+    /* 判断词典是否存在 */
+    static bool IsDictExist( const CString& dictName );
 
-	/* 注册添加词典 */
-	static void RegDict(const CString& dictName);
+    /* 注册添加词典 */
+    static void RegDict( const CString& dictName );
 
-	/* 获取词典id */
-	static AcDbObjectId GetDict(const CString& dictName);
+    /* 获取词典id */
+    static AcDbObjectId GetDict( const CString& dictName );
 
 public:
-	static ArxDictTool* GetDictTool(const CString& dictName);
-	static ArxDictTool* GetDictTool(const AcDbObjectId& dictId);
+    static ArxDictTool* GetDictTool( const CString& dictName );
+    static ArxDictTool* GetDictTool( const AcDbObjectId& dictId );
 
-	bool findKey(const CString& key);
-	void removeKey(const CString& key);
-	void getAllKeys(AcStringArray& keys);
+    bool findKey( const CString& key );
+    void removeKey( const CString& key );
+    void getAllKeys( AcStringArray& keys );
 
-	int addEntry(const CString& key, const CString& entry);         // 添加entry,如果key不存在，则自动添加
-	int removeEntry(const CString& key, const CString& entry);      // 删除entry
-	int findEntry(const CString& key, const CString& entry);        // 查找entry的索引位置
-	void getAllEntries(const CString& key, AcStringArray& entries); // 获取key包含的所有的entry
-	int countEntries(const CString& key);                           // 统计key包含所有的entry个数
+    int addEntry( const CString& key, const CString& entry );       // 添加entry,如果key不存在，则自动添加
+    int removeEntry( const CString& key, const CString& entry );    // 删除entry
+    int findEntry( const CString& key, const CString& entry );      // 查找entry的索引位置
+    void getAllEntries( const CString& key, AcStringArray& entries ); // 获取key包含的所有的entry
+    int countEntries( const CString& key );                         // 统计key包含所有的entry个数
 
-	// index必须要大于0
-	bool modifyEntry(const CString& key, int index, const CString& newEntry); // 修改key中第index项的值
-	bool getEntry(const CString& key, int index, CString& entry);             // 获取key中第index项的值
+    // index必须要大于0
+    bool modifyEntry( const CString& key, int index, const CString& newEntry ); // 修改key中第index项的值
+    bool getEntry( const CString& key, int index, CString& entry );           // 获取key中第index项的值
 
 private:
-	ArxDictTool(const AcDbObjectId& dictId);
-	AcDbObjectId m_dictId;
+    ArxDictTool( const AcDbObjectId& dictId );
+    AcDbObjectId m_dictId;
 };
 
 // 一个key->AcDbObject
 class ARXHELPER_DLLIMPEXP ArxDictTool2
 {
 public:
-	static ArxDictTool2* GetDictTool(const CString& dictName);
-	static ArxDictTool2* GetDictTool(const AcDbObjectId& dictId);
+    static ArxDictTool2* GetDictTool( const CString& dictName );
+    static ArxDictTool2* GetDictTool( const AcDbObjectId& dictId );
 
-	// 添加到词典中，同时自动关闭对象pObj->close();
-	bool addEntry(const CString& key, AcDbObject* pObj);         // 添加
-	bool removeEntry(const CString& key);                        // 删除
-	bool findEntry(const CString& key, AcDbObjectId& objId);     // 查找
-	void getAllKeys(AcStringArray& keys);
-	void getAllEntries(AcDbObjectIdArray& objIds);               // 获取所有的对象
+    // 添加到词典中，同时自动关闭对象pObj->close();
+    bool addEntry( const CString& key, AcDbObject* pObj );       // 添加
+    bool removeEntry( const CString& key );                      // 删除
+    bool findEntry( const CString& key, AcDbObjectId& objId );   // 查找
+    void getAllKeys( AcStringArray& keys );
+    void getAllEntries( AcDbObjectIdArray& objIds );             // 获取所有的对象
 
 private:
-	ArxDictTool2(const AcDbObjectId& dictId);
-	AcDbObjectId m_dictId;
+    ArxDictTool2( const AcDbObjectId& dictId );
+    AcDbObjectId m_dictId;
 };
 
 class ARXHELPER_DLLIMPEXP ArxDictHelper
 {
 public:
-	static void GetAllKeys( const CString& dictName, AcStringArray& keys);
-	static bool GetAllEntries(const CString& dictName, const CString& key, AcStringArray& entries);
-	static bool AddEntry(const CString& dictName, const CString& key, const CString& entry);
-	static void RemoveAllEntries(const CString& dictName, const CString& key);
-	static bool RemoveEntry(const CString& dictName, const CString& key, const CString& entry);
-	static void RemoveKey(const CString& dictName, const CString& key);
+    static void GetAllKeys( const CString& dictName, AcStringArray& keys );
+    static bool GetAllEntries( const CString& dictName, const CString& key, AcStringArray& entries );
+    static bool AddEntry( const CString& dictName, const CString& key, const CString& entry );
+    static void RemoveAllEntries( const CString& dictName, const CString& key );
+    static bool RemoveEntry( const CString& dictName, const CString& key, const CString& entry );
+    static void RemoveKey( const CString& dictName, const CString& key );
 };

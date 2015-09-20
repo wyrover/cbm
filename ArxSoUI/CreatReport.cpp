@@ -13,36 +13,36 @@ using namespace std;
 
 static CString GetAppPathDir()
 {
-	TCHAR szModulePath[_MAX_PATH];
-	GetModuleFileName( _hdllInstance, szModulePath, _MAX_PATH );
+    TCHAR szModulePath[_MAX_PATH];
+    GetModuleFileName( _hdllInstance, szModulePath, _MAX_PATH );
 
-	TCHAR drive[_MAX_DRIVE];
-	TCHAR dir[_MAX_DIR];
-	_tsplitpath( szModulePath, drive, dir, NULL, NULL );
+    TCHAR drive[_MAX_DRIVE];
+    TCHAR dir[_MAX_DIR];
+    _tsplitpath( szModulePath, drive, dir, NULL, NULL );
 
-	TCHAR szPath[_MAX_PATH] = {0};
-	_tmakepath( szPath, drive, dir, NULL, NULL );
+    TCHAR szPath[_MAX_PATH] = {0};
+    _tmakepath( szPath, drive, dir, NULL, NULL );
 
-	return CString( szPath );
+    return CString( szPath );
 }
 
 static CString BuildPath( const CString& dir, const CString& fileName )
 {
-	CString path;
-	path.Format( _T( "%s%s" ), dir, fileName );
-	return path;
+    CString path;
+    path.Format( _T( "%s%s" ), dir, fileName );
+    return path;
 }
 
-static BOOL CheckDocIsUsing(const CString& fileName)
+static BOOL CheckDocIsUsing( const CString& fileName )
 {
-	if (MyWord->isUsing(fileName))
-	{
-		CString msg;
-		msg.Format(_T("\"%s\"\n文档已经打开，请先关闭。。。"),fileName);
-		AfxMessageBox(msg,MB_OK|MB_ICONSTOP);
-		return TRUE;
-	}
-	return FALSE;
+    if ( MyWord->isUsing( fileName ) )
+    {
+        CString msg;
+        msg.Format( _T( "\"%s\"\n文档已经打开，请先关闭。。。" ), fileName );
+        AfxMessageBox( msg, MB_OK | MB_ICONSTOP );
+        return TRUE;
+    }
+    return FALSE;
 }
 
 /*
@@ -152,7 +152,7 @@ static void CreatPoreTable(const AcDbObjectId& drill_site, const AcDbObjectId& c
 	MyWord->SetTableText(1,5,_T("仰角(度)"));
 	MyWord->SetTableText(1,6,_T("偏角(度)"));
 	MyWord->SetTableText(1,7,_T("长度(m)"));
-	
+
 	//数据填充，从表格中的第三行开始些数据
 	//列数据分别为:开孔编号、开孔坐标、终孔编号、终孔坐标、仰角、偏角、长度
 	double drillLenth = 0;
@@ -241,78 +241,78 @@ static bool WriteRCUDataToReport(const AcDbObjectId& drill_site)
 }
 */
 
-static BOOL SaveReport(CString savePath)
+static BOOL SaveReport( CString savePath )
 {
-	if(CheckDocIsUsing(savePath)) return FALSE;
-	return MyWord->SaveDocumentAs(savePath);
+    if( CheckDocIsUsing( savePath ) ) return FALSE;
+    return MyWord->SaveDocumentAs( savePath );
 }
 
-static bool wordOprate(CString savePath,const AcDbObjectId& drill_site)
+static bool wordOprate( CString savePath, const AcDbObjectId& drill_site )
 {
-	AfxGetMainWnd()->BeginWaitCursor();//设置等待光标
-	if(!MyWord->CreateDocuments())
-	{
-		return false;
-	}
-	if(!MyWord->CreateDocument())
-	{
-		return false;
-	}
+    AfxGetMainWnd()->BeginWaitCursor();//设置等待光标
+    if( !MyWord->CreateDocuments() )
+    {
+        return false;
+    }
+    if( !MyWord->CreateDocument() )
+    {
+        return false;
+    }
 
-	//写入数据到word
-	//if(!WriteRCUDataToReport(drill_site)) 
-	//{
-	//	MyWord->CloseDocument();
-	//	MyWord->CloseApp();
-	//	AfxGetMainWnd()->EndWaitCursor();//结束等待光标
-	//	return false;
-	//}
+    //写入数据到word
+    //if(!WriteRCUDataToReport(drill_site))
+    //{
+    //	MyWord->CloseDocument();
+    //	MyWord->CloseApp();
+    //	AfxGetMainWnd()->EndWaitCursor();//结束等待光标
+    //	return false;
+    //}
 
-	//保存报告
-	bool ret;
-	if(!SaveReport(savePath)) ret = false;
-	else ret = true;
+    //保存报告
+    bool ret;
+    if( !SaveReport( savePath ) ) ret = false;
+    else ret = true;
 
-	MyWord->ShowBookmarks(FALSE);
-	MyWord->CloseDocument();
-	MyWord->CloseApp();
-	AfxGetMainWnd()->EndWaitCursor();//结束等待光标
-	return ret;
+    MyWord->ShowBookmarks( FALSE );
+    MyWord->CloseDocument();
+    MyWord->CloseApp();
+    AfxGetMainWnd()->EndWaitCursor();//结束等待光标
+    return ret;
 }
 
 bool initword()
 {
-	//CoInitialize返回的是HResult类型的值
-	//要用SUCCEDED或FAILED宏来判断成功或失败
-	//如果用S_OK或S_FALSE来判断是错误的!!!
-	//你可以用VC助手看看这4个宏的定义!!!
-	if(FAILED(CoInitialize(NULL)))
-	//if(CoInitialize(NULL)!=S_OK) // 错误的判断方法!!!
-	{
-		AfxMessageBox(_T("初始化com库失败"));
-		return false;
-	}
+    //CoInitialize返回的是HResult类型的值
+    //要用SUCCEDED或FAILED宏来判断成功或失败
+    //如果用S_OK或S_FALSE来判断是错误的!!!
+    //你可以用VC助手看看这4个宏的定义!!!
+    if( FAILED( CoInitialize( NULL ) ) )
+        //if(CoInitialize(NULL)!=S_OK) // 错误的判断方法!!!
+    {
+        AfxMessageBox( _T( "初始化com库失败" ) );
+        return false;
+    }
 
-	MyWord = new CmyWord;
-	return true;
+    MyWord = new CmyWord;
+    return true;
 }
 
 void uninitword()
 {
-	delete MyWord;
-	MyWord = 0;
+    delete MyWord;
+    MyWord = 0;
 
-	//释放资源最好从 小到大的顺序来释放。这个和c里面一些释放资源的道理是一样的
-	//和c+= 先析构儿子 再析构父亲是一样的。
-	CoUninitialize();
+    //释放资源最好从 小到大的顺序来释放。这个和c里面一些释放资源的道理是一样的
+    //和c+= 先析构儿子 再析构父亲是一样的。
+    CoUninitialize();
 }
 
-bool CreatReport( const CString& savePath,const AcDbObjectId& drill_site )
+bool CreatReport( const CString& savePath, const AcDbObjectId& drill_site )
 {
-	return wordOprate(savePath,drill_site);
+    return wordOprate( savePath, drill_site );
 }
 
 void OpenWordDocument( const CString& filePath )
 {
-	ShellExecute( NULL, _T( "open" ), filePath, NULL, NULL, SW_SHOWNORMAL );
+    ShellExecute( NULL, _T( "open" ), filePath, NULL, NULL, SW_SHOWNORMAL );
 }

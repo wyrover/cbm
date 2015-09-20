@@ -12,13 +12,13 @@
 class UTIL_DLLIMPEXP cruise_log4cplus : public Singleton<cruise_log4cplus>
 {
 public:
-	static log4cplus::Logger& getLogger();
+    static log4cplus::Logger& getLogger();
 
 public:
-	cruise_log4cplus();
-	//~cruise_log4cplus();
-	void log_init(log4cplus::tchar* prop_file, log4cplus::tchar* prefix_log_flie = NULL, log4cplus::tchar* sub_logger_name = NULL);
-	void log_uinit();
+    cruise_log4cplus();
+    //~cruise_log4cplus();
+    void log_init( log4cplus::tchar* prop_file, log4cplus::tchar* prefix_log_flie = NULL, log4cplus::tchar* sub_logger_name = NULL );
+    void log_uinit();
 
 //public:
 //	void Fatal(const char* file, const int line, const char* function, const log4cplus::tchar* format_msg, ...);
@@ -29,8 +29,8 @@ public:
 //	void Trace(const char* file, const int line, const char* function, const log4cplus::tchar* format_msg, ...);
 
 private:
-	std::locale m_origin_locale;
-	log4cplus::Logger m_logger;
+    std::locale m_origin_locale;
+    log4cplus::Logger m_logger;
 };
 
 #define g_Logger cruise_log4cplus::getLogger()
@@ -96,5 +96,5 @@ using log4cplus::tcerr;
 #define CRUISE_CALLER_LINE()            LOG4CPLUS_CALLER_LINE()
 #define CRUISE_CALLER_FUNCTION()        LOG4CPLUS_CALLER_FUNCTION()
 
-extern UTIL_DLLIMPEXP void log_init(tchar* prop_file, tchar* prefix_log_flie = NULL, tchar* sub_logger_name = NULL);
+extern UTIL_DLLIMPEXP void log_init( tchar* prop_file, tchar* prefix_log_flie = NULL, tchar* sub_logger_name = NULL );
 extern UTIL_DLLIMPEXP void log_uinit();

@@ -90,36 +90,36 @@ void PolicyDialog::OnP1ButtonClick()
 void PolicyDialog::OnP2ButtonClick()
 {
     //OpenHtml( _T( "help\\index.html" ) );
-	OpenPdf( _T( "pdf.exe" ), _T( "." ), _T( "help\\煤层气(煤矿瓦斯)开发利用十二五规划.pdf" ) );
+    OpenPdf( _T( "pdf.exe" ), _T( "." ), _T( "help\\煤层气(煤矿瓦斯)开发利用十二五规划.pdf" ) );
 }
 
 void PolicyDialog::OnP3ButtonClick()
 {
-	OpenPdf( _T( "pdf.exe" ), _T( "." ), _T( "help\\保护层开采技术规范.pdf" ) );
+    OpenPdf( _T( "pdf.exe" ), _T( "." ), _T( "help\\保护层开采技术规范.pdf" ) );
 }
 
 void PolicyDialog::OnP4ButtonClick()
 {
-	OpenPdf( _T( "pdf.exe" ), _T( "." ), _T( "help\\煤矿瓦斯抽放技术规范.pdf" ) );
+    OpenPdf( _T( "pdf.exe" ), _T( "." ), _T( "help\\煤矿瓦斯抽放技术规范.pdf" ) );
 }
 
 void PolicyDialog::OnP5ButtonClick()
 {
-	OpenPdf( _T( "pdf.exe" ), _T( "." ), _T( "help\\煤矿瓦斯抽采达标暂行规定.pdf" ) );
+    OpenPdf( _T( "pdf.exe" ), _T( "." ), _T( "help\\煤矿瓦斯抽采达标暂行规定.pdf" ) );
 }
 
 void PolicyDialog::OnP6ButtonClick()
 {
-	OpenPdf( _T( "pdf.exe" ), _T( "." ), _T( "help\\煤矿瓦斯抽采工程设计规范.pdf" ) );
+    OpenPdf( _T( "pdf.exe" ), _T( "." ), _T( "help\\煤矿瓦斯抽采工程设计规范.pdf" ) );
 }
 
 void PolicyDialog::OnP7ButtonClick()
 {
-	OpenPdf( _T( "pdf.exe" ), _T( "." ), _T( "help\\煤矿瓦斯抽放规范.pdf" ) );
+    OpenPdf( _T( "pdf.exe" ), _T( "." ), _T( "help\\煤矿瓦斯抽放规范.pdf" ) );
 }
 
 void PolicyDialog::OnP8ButtonClick()
 {
-	OpenPdf( _T( "pdf.exe" ), _T( "." ), _T( "help\\煤矿瓦斯抽采基本指标.pdf" ) );
+    OpenPdf( _T( "pdf.exe" ), _T( "." ), _T( "help\\煤矿瓦斯抽采基本指标.pdf" ) );
 }
 

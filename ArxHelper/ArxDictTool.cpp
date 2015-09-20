@@ -6,10 +6,10 @@
 static AcDbDictionary* GetDictObject( const AcDbObjectId& dictId )
 {
     AcDbDictionary* pDict = 0;
-	if(Acad::eOk != acdbOpenAcDbObject(( AcDbObject*& ) pDict, dictId, AcDb::kForWrite))
-		return 0;
-	else
-		return pDict;
+    if( Acad::eOk != acdbOpenAcDbObject( ( AcDbObject*& ) pDict, dictId, AcDb::kForWrite ) )
+        return 0;
+    else
+        return pDict;
 }
 
 static XRecordManager* GetXRecordManager( const AcDbObjectId& dictId, const CString& key, bool createNewKey = false )
@@ -67,83 +67,83 @@ static void RemoveDictKey( const AcDbObjectId& dictId, const CString& key )
     pDict->close();
 }
 
-AcDbObjectId ArxDictTool::GetExtensionDict(const AcDbObjectId& objId)
+AcDbObjectId ArxDictTool::GetExtensionDict( const AcDbObjectId& objId )
 {
-	AcTransaction* pTrans = actrTransactionManager->startTransaction();
-	if( pTrans == 0 ) return AcDbObjectId::kNull;
+    AcTransaction* pTrans = actrTransactionManager->startTransaction();
+    if( pTrans == 0 ) return AcDbObjectId::kNull;
 
-	AcDbObject* pObj;
-	if( Acad::eOk != pTrans->getObject( pObj, objId, AcDb::kForWrite ) )
-	{
-		actrTransactionManager->abortTransaction();
-		return AcDbObjectId::kNull;
-	}
+    AcDbObject* pObj;
+    if( Acad::eOk != pTrans->getObject( pObj, objId, AcDb::kForWrite ) )
+    {
+        actrTransactionManager->abortTransaction();
+        return AcDbObjectId::kNull;
+    }
 
-	AcDbObjectId dictId = pObj->extensionDictionary();
-	if(dictId.isNull())
-	{
-		if(Acad::eOk == pObj->createExtensionDictionary())
-		{
-			dictId = pObj->extensionDictionary();
-		}
-	}
-	actrTransactionManager->endTransaction();
+    AcDbObjectId dictId = pObj->extensionDictionary();
+    if( dictId.isNull() )
+    {
+        if( Acad::eOk == pObj->createExtensionDictionary() )
+        {
+            dictId = pObj->extensionDictionary();
+        }
+    }
+    actrTransactionManager->endTransaction();
 
-	return dictId;
+    return dictId;
 }
 
 bool ArxDictTool::IsDictExist( const CString& dictName )
 {
-	AcDbDictionary* pNamedobj;
-	acdbHostApplicationServices()->workingDatabase()->getNamedObjectsDictionary( pNamedobj, AcDb::kForRead );
+    AcDbDictionary* pNamedobj;
+    acdbHostApplicationServices()->workingDatabase()->getNamedObjectsDictionary( pNamedobj, AcDb::kForRead );
 
-	bool ret = pNamedobj->has( dictName );
-	pNamedobj->close();
+    bool ret = pNamedobj->has( dictName );
+    pNamedobj->close();
 
-	return ret;
+    return ret;
 }
 
 void ArxDictTool::RegDict( const CString& dictName )
 {
-	// 初始化工作，建立存储词典
-	AcDbDictionary* pNamedobj;
-	acdbHostApplicationServices()->workingDatabase()->getNamedObjectsDictionary( pNamedobj, AcDb::kForWrite );
+    // 初始化工作，建立存储词典
+    AcDbDictionary* pNamedobj;
+    acdbHostApplicationServices()->workingDatabase()->getNamedObjectsDictionary( pNamedobj, AcDb::kForWrite );
 
-	AcDbObject* pObj;
-	Acad::ErrorStatus es = pNamedobj->getAt( dictName, pObj, AcDb::kForRead );
-	if( Acad::eOk ==  es )
-	{
-		pObj->close();
-	}
-	else if( Acad::eKeyNotFound == es )
-	{
-		AcDbDictionary* pDict = new AcDbDictionary();
-		AcDbObjectId dictId;
-		if( Acad::eOk != pNamedobj->setAt( dictName, pDict, dictId ) )
-		{
-			delete pDict;
-		}
-		else
-		{
-			pDict->close();
-		}
-	}
-	pNamedobj->close();
+    AcDbObject* pObj;
+    Acad::ErrorStatus es = pNamedobj->getAt( dictName, pObj, AcDb::kForRead );
+    if( Acad::eOk ==  es )
+    {
+        pObj->close();
+    }
+    else if( Acad::eKeyNotFound == es )
+    {
+        AcDbDictionary* pDict = new AcDbDictionary();
+        AcDbObjectId dictId;
+        if( Acad::eOk != pNamedobj->setAt( dictName, pDict, dictId ) )
+        {
+            delete pDict;
+        }
+        else
+        {
+            pDict->close();
+        }
+    }
+    pNamedobj->close();
 }
 
-AcDbObjectId ArxDictTool::GetDict(const CString& dictName)
+AcDbObjectId ArxDictTool::GetDict( const CString& dictName )
 {
-	AcDbDictionary* pNameObjDict;
-	if( Acad::eOk != acdbHostApplicationServices()->workingDatabase()->getNamedObjectsDictionary( pNameObjDict, AcDb::kForRead ) )
-	{
-		return AcDbObjectId::kNull;
-	}
+    AcDbDictionary* pNameObjDict;
+    if( Acad::eOk != acdbHostApplicationServices()->workingDatabase()->getNamedObjectsDictionary( pNameObjDict, AcDb::kForRead ) )
+    {
+        return AcDbObjectId::kNull;
+    }
 
-	AcDbObjectId dictId;
-	Acad::ErrorStatus es = pNameObjDict->getAt( dictName, dictId );
-	pNameObjDict->close();
+    AcDbObjectId dictId;
+    Acad::ErrorStatus es = pNameObjDict->getAt( dictName, dictId );
+    pNameObjDict->close();
 
-	return dictId;
+    return dictId;
 }
 
 ArxDictTool::ArxDictTool( const AcDbObjectId& dictId ) : m_dictId( dictId )
@@ -269,16 +269,16 @@ bool ArxDictTool::getEntry( const CString& key, int index, CString& entry )
 
 ArxDictTool* ArxDictTool::GetDictTool( const CString& dictName )
 {
-	AcDbObjectId dictId = ArxDictTool::GetDict(dictName);
-	if(dictId.isNull()) 
-		return 0;
-	else
-		return new ArxDictTool( dictId );
+    AcDbObjectId dictId = ArxDictTool::GetDict( dictName );
+    if( dictId.isNull() )
+        return 0;
+    else
+        return new ArxDictTool( dictId );
 }
 
-ArxDictTool* ArxDictTool::GetDictTool(const AcDbObjectId& dictId)
+ArxDictTool* ArxDictTool::GetDictTool( const AcDbObjectId& dictId )
 {
-	return new ArxDictTool( dictId );
+    return new ArxDictTool( dictId );
 }
 
 
@@ -288,16 +288,16 @@ ArxDictTool* ArxDictTool::GetDictTool(const AcDbObjectId& dictId)
 
 ArxDictTool2* ArxDictTool2::GetDictTool( const CString& dictName )
 {
-	AcDbObjectId dictId = ArxDictTool::GetDict(dictName);
-	if(dictId.isNull()) 
-		return 0;
-	else
-		return new ArxDictTool2( dictId );
+    AcDbObjectId dictId = ArxDictTool::GetDict( dictName );
+    if( dictId.isNull() )
+        return 0;
+    else
+        return new ArxDictTool2( dictId );
 }
 
 ArxDictTool2* ArxDictTool2::GetDictTool( const AcDbObjectId& dictId )
 {
-	return new ArxDictTool2( dictId );
+    return new ArxDictTool2( dictId );
 }
 
 ArxDictTool2::ArxDictTool2( const AcDbObjectId& dictId ) : m_dictId( dictId )

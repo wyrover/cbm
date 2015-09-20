@@ -8,19 +8,19 @@ using namespace cbm;
 
 #include <Util/HelperClass.h>
 
-bool DaoHelper::ConfigureFromFile(const CString& cfgFile)
+bool DaoHelper::ConfigureFromFile( const CString& cfgFile )
 {
-	CIniFile iniFile;
-	if(FALSE == iniFile.SetPath( cfgFile )) return false;
+    CIniFile iniFile;
+    if( FALSE == iniFile.SetPath( cfgFile ) ) return false;
 
-	CString section = _T("mysql");
-	CString host = iniFile.GetKeyValue(section, _T("host"));
-	CString port = iniFile.GetKeyValue(section, _T("port"));
-	CString username = iniFile.GetKeyValue(section, _T("username"));
-	CString password = iniFile.GetKeyValue(section, _T("password"));
-	CString database = iniFile.GetKeyValue(section, _T("database"));
+    CString section = _T( "mysql" );
+    CString host = iniFile.GetKeyValue( section, _T( "host" ) );
+    CString port = iniFile.GetKeyValue( section, _T( "port" ) );
+    CString username = iniFile.GetKeyValue( section, _T( "username" ) );
+    CString password = iniFile.GetKeyValue( section, _T( "password" ) );
+    CString database = iniFile.GetKeyValue( section, _T( "database" ) );
 
-	return DaoHelper::ConfigureDao(username, password, database, host, port);
+    return DaoHelper::ConfigureDao( username, password, database, host, port );
 }
 
 bool DaoHelper::ConfigureDao( const CString& username, const CString& password, const CString& database, const CString& host/*=_T("localhost")*/, const CString& port/*=_T("3306")*/ )
@@ -91,7 +91,7 @@ void DaoHelper::GetAllMineRegions( const CString& baseName, StringArray& regions
     }
 }
 
-CString DaoHelper::GetBaeByRegion( const CString& regionName )
+CString DaoHelper::GetBaseByRegion( const CString& regionName )
 {
     RegionPtr region = FIND_ONE( Region, FIELD( name ), regionName );
     if( region == 0 ) return _T( "" );
@@ -280,251 +280,251 @@ void DaoHelper::InitSampleRegion()
 
 static int DifficultEval1( double decay_alpha )
 {
-	if( decay_alpha < 0.003 )
-		return 1;
-	else if( decay_alpha < 0.05 )
-		return 2;
-	else
-		return 3;
+    if( decay_alpha < 0.003 )
+        return 1;
+    else if( decay_alpha < 0.05 )
+        return 2;
+    else
+        return 3;
 }
 
 static int DifficultEval2( double permeability_lambda )
 {
-	if( permeability_lambda > 10 )
-		return 1;
-	else if( permeability_lambda > 0.1 )
-		return 2;
-	else
-		return 3;
+    if( permeability_lambda > 10 )
+        return 1;
+    else if( permeability_lambda > 0.1 )
+        return 2;
+    else
+        return 3;
 }
 
 static int DifficultEvalHelper( int k1, int k2 )
 {
-	static int ret[] = { 1, 4, 5, 4, 2, 6, 5, 6, 3 };
-	if( k1 < 1 || k1 > 3 || k2 < 1 || k2 > 3 ) return 0;
-	return ret[k1 * 3 + k2 - 4];
+    static int ret[] = { 1, 4, 5, 4, 2, 6, 5, 6, 3 };
+    if( k1 < 1 || k1 > 3 || k2 < 1 || k2 > 3 ) return 0;
+    return ret[k1 * 3 + k2 - 4];
 }
 
-int DaoHelper::DifficultEval(CoalPtr coal)
+int DaoHelper::DifficultEval( CoalPtr coal )
 {
-	//根据钻孔流量衰减系数 和 煤层透气性系数进行评价
-	int k1 = DifficultEval1( coal->decay_alpha );
-	int k2 = DifficultEval2( coal->permeability_lambda );
-	return DifficultEvalHelper( k1, k2 );
+    //根据钻孔流量衰减系数 和 煤层透气性系数进行评价
+    int k1 = DifficultEval1( coal->decay_alpha );
+    int k2 = DifficultEval2( coal->permeability_lambda );
+    return DifficultEvalHelper( k1, k2 );
 }
 
 static CString PermeabilityString( double permeability_k )
 {
-	if( permeability_k < 5 )
-		return _T( "低渗煤层" );
-	else if( permeability_k < 20 )
-		return _T( "中渗煤层" );
-	else
-		return _T( "高渗煤层" );
+    if( permeability_k < 5 )
+        return _T( "低渗煤层" );
+    else if( permeability_k < 20 )
+        return _T( "中渗煤层" );
+    else
+        return _T( "高渗煤层" );
 }
 
 static CString EvalDifficultString( int eval )
 {
-	static CString ret[] =
-	{
-		_T( "容易抽采" ),               // 1
-		_T( "可以抽采" ),               // 2
-		_T( "较难抽采" ),               // 3
-		_T( "容易抽采~可以抽采" ),     // 4
-		_T( "容易抽采~较难抽采" ),     // 5
-		_T( "可以抽采~较难抽采" )      // 6
-	};
-	if( eval < 1 || eval > 6 )
-	{
-		return _T( "NULL" );
-	}
-	else
-	{
-		return ret[eval - 1];
-	}
+    static CString ret[] =
+    {
+        _T( "容易抽采" ),               // 1
+        _T( "可以抽采" ),               // 2
+        _T( "较难抽采" ),               // 3
+        _T( "容易抽采~可以抽采" ),     // 4
+        _T( "容易抽采~较难抽采" ),     // 5
+        _T( "可以抽采~较难抽采" )      // 6
+    };
+    if( eval < 1 || eval > 6 )
+    {
+        return _T( "NULL" );
+    }
+    else
+    {
+        return ret[eval - 1];
+    }
 }
 
-CString DaoHelper::DifficultEvalString(cbm::CoalPtr coal)
+CString DaoHelper::DifficultEvalString( cbm::CoalPtr coal )
 {
-	CString msg;
-	msg.Format( _T( "该煤层属于:%s\\n" ), PermeabilityString( coal->permeability_k ) );
-	msg.AppendFormat( _T( "瓦斯抽采难易程度:%s" ), EvalDifficultString(coal->eval_difficult ));
-	return msg;
+    CString msg;
+    msg.Format( _T( "该煤层属于:%s\\n" ), PermeabilityString( coal->permeability_k ) );
+    msg.AppendFormat( _T( "瓦斯抽采难易程度:%s" ), EvalDifficultString( coal->eval_difficult ) );
+    return msg;
 }
 
-double DaoHelper::MineGasReservesW1(int mine_id)
+double DaoHelper::MineGasReservesW1( int mine_id )
 {
-	//查找所有的可采煤层
-	RecordPtrListPtr lists = FIND_MANY2( Coal, FKEY( Mine ), Utils::int_to_cstring( mine_id ), FIELD( minable ), _T( "1" ) );
-	if( lists == 0 ) return 0;
+    //查找所有的可采煤层
+    RecordPtrListPtr lists = FIND_MANY2( Coal, FKEY( Mine ), Utils::int_to_cstring( mine_id ), FIELD( minable ), _T( "1" ) );
+    if( lists == 0 ) return 0;
 
-	//计算可采煤层的瓦斯储量
-	double S = 0;
-	for( int i = 0; i < lists->size(); i++ )
-	{
-		CoalPtr coal = DYNAMIC_POINTER_CAST( Coal, lists->at( i ) );
-		S += coal->res_a1 * coal->gas_x1;
-	}
-	return S;
+    //计算可采煤层的瓦斯储量
+    double S = 0;
+    for( int i = 0; i < lists->size(); i++ )
+    {
+        CoalPtr coal = DYNAMIC_POINTER_CAST( Coal, lists->at( i ) );
+        S += coal->res_a1 * coal->gas_x1;
+    }
+    return S;
 }
 
-double DaoHelper::MineGasReservesW2(int mine_id)
+double DaoHelper::MineGasReservesW2( int mine_id )
 {
-	//查找所有的可采煤层
-	RecordPtrListPtr lists = FIND_MANY2( Coal, FKEY( Mine ), Utils::int_to_cstring( mine_id ), FIELD( minable ), _T( "0" ) );
-	if( lists == 0 ) return 0;
+    //查找所有的可采煤层
+    RecordPtrListPtr lists = FIND_MANY2( Coal, FKEY( Mine ), Utils::int_to_cstring( mine_id ), FIELD( minable ), _T( "0" ) );
+    if( lists == 0 ) return 0;
 
-	//计算可采煤层的瓦斯储量
-	double S = 0;
-	for( int i = 0; i < lists->size(); i++ )
-	{
-		CoalPtr coal = DYNAMIC_POINTER_CAST( Coal, lists->at( i ) );
-		S += coal->res_a1 * coal->gas_x1;
-	}
-	return S;
+    //计算可采煤层的瓦斯储量
+    double S = 0;
+    for( int i = 0; i < lists->size(); i++ )
+    {
+        CoalPtr coal = DYNAMIC_POINTER_CAST( Coal, lists->at( i ) );
+        S += coal->res_a1 * coal->gas_x1;
+    }
+    return S;
 }
 
-double DaoHelper::WorkAreaGasFlow(WorkAreaPtr work_area, double K1)
+double DaoHelper::WorkAreaGasFlow( WorkAreaPtr work_area, double K1 )
 {
-	//查找所有的回采工作面
-	double S1 = 0;
-	RecordPtrListPtr ws_lists = FIND_MANY( WorkSurf, FKEY( WorkArea ), work_area->getStringID() );
-	if( ws_lists != 0 )
-	{
-		for( int i = 0; i < ws_lists->size(); i++ )
-		{
-			WorkSurfPtr ws = DYNAMIC_POINTER_CAST( WorkSurf, ws_lists->at( i ) );
-			if( ws == 0 ) continue;
+    //查找所有的回采工作面
+    double S1 = 0;
+    RecordPtrListPtr ws_lists = FIND_MANY( WorkSurf, FKEY( WorkArea ), work_area->getStringID() );
+    if( ws_lists != 0 )
+    {
+        for( int i = 0; i < ws_lists->size(); i++ )
+        {
+            WorkSurfPtr ws = DYNAMIC_POINTER_CAST( WorkSurf, ws_lists->at( i ) );
+            if( ws == 0 ) continue;
 
-			double qr = ws->qr;
-			double A = ws->a;
-			S1 += A * qr;
-		}
-	}
-	//查找所有的掘进面
-	double S2 = 0;
-	RecordPtrListPtr tws_lists = FIND_MANY( DrillingSurf, FKEY( WorkArea ), work_area->getStringID() );
-	if( tws_lists != 0 )
-	{
-		for( int i = 0; i < tws_lists->size(); i++ )
-		{
-			DrillingSurfPtr tws = DYNAMIC_POINTER_CAST( DrillingSurf, tws_lists->at( i ) );
-			if( tws == 0 ) continue;
+            double qr = ws->qr;
+            double A = ws->a;
+            S1 += A * qr;
+        }
+    }
+    //查找所有的掘进面
+    double S2 = 0;
+    RecordPtrListPtr tws_lists = FIND_MANY( DrillingSurf, FKEY( WorkArea ), work_area->getStringID() );
+    if( tws_lists != 0 )
+    {
+        for( int i = 0; i < tws_lists->size(); i++ )
+        {
+            DrillingSurfPtr tws = DYNAMIC_POINTER_CAST( DrillingSurf, tws_lists->at( i ) );
+            if( tws == 0 ) continue;
 
-			double qr = tws->qa;
-			S2 += qr;
-		}
-	}
-	//采区平均日产量
-	double A0 = work_area->a;
-	if( A0 <= 0 )
-	{
-		return -1;
-	}
-	else
-	{
-		return K1 * ( S1 + S2 ) / A0;
-	}
+            double qr = tws->qa;
+            S2 += qr;
+        }
+    }
+    //采区平均日产量
+    double A0 = work_area->a;
+    if( A0 <= 0 )
+    {
+        return -1;
+    }
+    else
+    {
+        return K1 * ( S1 + S2 ) / A0;
+    }
 }
 
-double DaoHelper::MineGasFlow(MinePtr mine)
+double DaoHelper::MineGasFlow( MinePtr mine )
 {
-	//查找该矿所有的采区
-	RecordPtrListPtr lists = DaoHelper::GetWorkAreas( mine->getID() );
-	if( lists == 0 ) return 0;
+    //查找该矿所有的采区
+    RecordPtrListPtr lists = DaoHelper::GetWorkAreas( mine->getID() );
+    if( lists == 0 ) return 0;
 
-	double S1 = 0, S2 = 0;
-	for( int i = 0; i < lists->size(); i++ )
-	{
-		WorkAreaPtr work_area = DYNAMIC_POINTER_CAST( WorkArea, lists->at( i ) );
-		double qr = work_area->qr;
-		double A0 = work_area->a;
-		S1 += qr * A0;
-		S2 += A0;
-	}
-	if( S2 <= 0 )
-	{
-		return -1;
-	}
-	else
-	{
-		double K2 = mine->gas_k2;;
-		//计算并更新矿井的瓦斯涌出量
-		return K2 * S1 / S2;
-	}
+    double S1 = 0, S2 = 0;
+    for( int i = 0; i < lists->size(); i++ )
+    {
+        WorkAreaPtr work_area = DYNAMIC_POINTER_CAST( WorkArea, lists->at( i ) );
+        double qr = work_area->qr;
+        double A0 = work_area->a;
+        S1 += qr * A0;
+        S2 += A0;
+    }
+    if( S2 <= 0 )
+    {
+        return -1;
+    }
+    else
+    {
+        double K2 = mine->gas_k2;;
+        //计算并更新矿井的瓦斯涌出量
+        return K2 * S1 / S2;
+    }
 }
 
-double DaoHelper::WorkSurfGasFlow1(CoalPtr coal, WorkAreaPtr work_area, WorkSurfPtr work_surf)
+double DaoHelper::WorkSurfGasFlow1( CoalPtr coal, WorkAreaPtr work_area, WorkSurfPtr work_surf )
 {
-	double K1 = work_surf->k1;
-	double K2 = work_surf->k1;
-	double K3 = work_surf->k1;
-	double kf = work_surf->kf;
-	//开采层厚度(????分层如何考虑???)
-	double m = coal->thick;
-	//工作面采高
-	double M = coal->hw;
-	double W0 = coal->gas_w0;
-	double Wc = coal->gas_wc2;
+    double K1 = work_surf->k1;
+    double K2 = work_surf->k1;
+    double K3 = work_surf->k1;
+    double kf = work_surf->kf;
+    //开采层厚度(????分层如何考虑???)
+    double m = coal->thick;
+    //工作面采高
+    double M = coal->hw;
+    double W0 = coal->gas_w0;
+    double Wc = coal->gas_wc2;
 
-	//计算开采层相对瓦斯涌出量q1
-	double q1 = 0;
-	if( work_surf->layerable == 0 )
-	{
-		q1 = K1 * K2 * K3 * ( W0 - Wc ) * m / M;
-	}
-	else
-	{
-		q1 = K1 * K2 * K3 * ( W0 - Wc ) * kf;
-	}
-	return q1;
+    //计算开采层相对瓦斯涌出量q1
+    double q1 = 0;
+    if( work_surf->layerable == 0 )
+    {
+        q1 = K1 * K2 * K3 * ( W0 - Wc ) * m / M;
+    }
+    else
+    {
+        q1 = K1 * K2 * K3 * ( W0 - Wc ) * kf;
+    }
+    return q1;
 }
 
-double DaoHelper::WorkSurfGasFlow2(CoalPtr coal, WorkAreaPtr work_area, WorkSurfPtr work_surf)
+double DaoHelper::WorkSurfGasFlow2( CoalPtr coal, WorkAreaPtr work_area, WorkSurfPtr work_surf )
 {
-	//查找所有的邻近层
-	RecordPtrListPtr lists = FIND_MANY( AdjLayer, FKEY( WorkSurf ), work_surf->getStringID() );
-	if( lists == 0 ) return 0;
+    //查找所有的邻近层
+    RecordPtrListPtr lists = FIND_MANY( AdjLayer, FKEY( WorkSurf ), work_surf->getStringID() );
+    if( lists == 0 ) return 0;
 
-	double S = 0;
-	for( int i = 0; i < lists->size(); i++ )
-	{
-		AdjLayerPtr adj_layer = DYNAMIC_POINTER_CAST( AdjLayer, lists->at( i ) );
-		if( adj_layer == 0 ) continue;
-		CoalPtr adj_coal = DYNAMIC_POINTER_CAST( Coal, adj_layer->coal );
-		if( adj_coal == 0 ) continue;
+    double S = 0;
+    for( int i = 0; i < lists->size(); i++ )
+    {
+        AdjLayerPtr adj_layer = DYNAMIC_POINTER_CAST( AdjLayer, lists->at( i ) );
+        if( adj_layer == 0 ) continue;
+        CoalPtr adj_coal = DYNAMIC_POINTER_CAST( Coal, adj_layer->coal );
+        if( adj_coal == 0 ) continue;
 
-		double W0 = adj_coal->gas_w0;
-		double Wc = adj_coal->gas_wc2;
-		double m = adj_coal->thick;
-		double eta = adj_coal->gas_eta;
+        double W0 = adj_coal->gas_w0;
+        double Wc = adj_coal->gas_wc2;
+        double m = adj_coal->thick;
+        double eta = adj_coal->gas_eta;
 
-		S += ( W0 - Wc ) * m * eta;
-	}
-	double M = coal->hw;
-	return S / M;
+        S += ( W0 - Wc ) * m * eta;
+    }
+    double M = coal->hw;
+    return S / M;
 }
 
-void DaoHelper::DrillingSurfGasFlow(CoalPtr coal, DrillingSurfPtr drilling_surf, TunnelPtr tunnel)
+void DaoHelper::DrillingSurfGasFlow( CoalPtr coal, DrillingSurfPtr drilling_surf, TunnelPtr tunnel )
 {
-	//计算q0
-	double Vr = coal->vr;
-	double W0 = coal->gas_w0;
-	double D = tunnel->d;
-	double v = tunnel->v;
-	double L = tunnel->l;
-	double S = tunnel->s;
-	double r = coal->rho;
-	double Wc = coal->gas_wc2;
-	double q0 = ( 0.0004 * pow( Vr, 2 ) + 0.16 ) * 0.026 * W0;
-	double q3 = D * v * q0 * ( 2 * sqrt( L / v ) - 1 );
-	double q4 = S * v * r * ( W0 - Wc );
-	double qa = q3 + q4; // 掘进面瓦斯涌出量
+    //计算q0
+    double Vr = coal->vr;
+    double W0 = coal->gas_w0;
+    double D = tunnel->d;
+    double v = tunnel->v;
+    double L = tunnel->l;
+    double S = tunnel->s;
+    double r = coal->rho;
+    double Wc = coal->gas_wc2;
+    double q0 = ( 0.0004 * pow( Vr, 2 ) + 0.16 ) * 0.026 * W0;
+    double q3 = D * v * q0 * ( 2 * sqrt( L / v ) - 1 );
+    double q4 = S * v * r * ( W0 - Wc );
+    double qa = q3 + q4; // 掘进面瓦斯涌出量
 
-	//计算结果保存到各对象中
-	//如果直接用参数返回,返回参数太多了
-	tunnel->q0 = q0;
-	tunnel->q3 = q3;
-	drilling_surf->q4 = q4;
-	drilling_surf->qa = qa;
+    //计算结果保存到各对象中
+    //如果直接用参数返回,返回参数太多了
+    tunnel->q0 = q0;
+    tunnel->q3 = q3;
+    drilling_surf->q4 = q4;
+    drilling_surf->qa = qa;
 }

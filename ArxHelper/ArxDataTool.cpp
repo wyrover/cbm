@@ -64,49 +64,49 @@ bool ArxDataTool::GetDataFromXData( AcDbObject* pObj, const CString& appName, in
     return true;
 }
 
-bool ArxDataTool::GetDataFromXData(const AcDbObjectId& objId, const CString& appName, int index, CString& value)
+bool ArxDataTool::GetDataFromXData( const AcDbObjectId& objId, const CString& appName, int index, CString& value )
 {
-	AcTransaction* pTrans = actrTransactionManager->startTransaction();
-	if( pTrans == 0 ) return false;
-	
-	AcDbObject* pObj;
-	if( Acad::eOk != pTrans->getObject( pObj, objId, AcDb::kForRead ) )
-	{
-		actrTransactionManager->abortTransaction();
-		return false;
-	}
-	
-	ArxDbgAppXdata xdata( appName, acdbHostApplicationServices()->workingDatabase() );
-	xdata.getXdata(pObj);
+    AcTransaction* pTrans = actrTransactionManager->startTransaction();
+    if( pTrans == 0 ) return false;
 
-	bool ret = false;
-	if(!xdata.isEmpty())
-	{
-		ret = xdata.getString( index, value );
-	}
-	actrTransactionManager->endTransaction();
+    AcDbObject* pObj;
+    if( Acad::eOk != pTrans->getObject( pObj, objId, AcDb::kForRead ) )
+    {
+        actrTransactionManager->abortTransaction();
+        return false;
+    }
 
-	return ret;
+    ArxDbgAppXdata xdata( appName, acdbHostApplicationServices()->workingDatabase() );
+    xdata.getXdata( pObj );
+
+    bool ret = false;
+    if( !xdata.isEmpty() )
+    {
+        ret = xdata.getString( index, value );
+    }
+    actrTransactionManager->endTransaction();
+
+    return ret;
 }
 
-bool ArxDataTool::SetDataToXData(const AcDbObjectId& objId, const CString& appName, int index, const CString& value)
+bool ArxDataTool::SetDataToXData( const AcDbObjectId& objId, const CString& appName, int index, const CString& value )
 {
-	AcTransaction* pTrans = actrTransactionManager->startTransaction();
-	if( pTrans == 0 ) return false;
+    AcTransaction* pTrans = actrTransactionManager->startTransaction();
+    if( pTrans == 0 ) return false;
 
-	AcDbObject* pObj;
-	if( Acad::eOk != pTrans->getObject( pObj, objId, AcDb::kForWrite ) )
-	{
-		actrTransactionManager->abortTransaction();
-		return false;
-	}
+    AcDbObject* pObj;
+    if( Acad::eOk != pTrans->getObject( pObj, objId, AcDb::kForWrite ) )
+    {
+        actrTransactionManager->abortTransaction();
+        return false;
+    }
 
-	ArxDbgAppXdata xdata( appName, acdbHostApplicationServices()->workingDatabase() );
-	xdata.getXdata(pObj);
-	xdata.setString( index, value );
-	actrTransactionManager->endTransaction();
+    ArxDbgAppXdata xdata( appName, acdbHostApplicationServices()->workingDatabase() );
+    xdata.getXdata( pObj );
+    xdata.setString( index, value );
+    actrTransactionManager->endTransaction();
 
-	return true;
+    return true;
 }
 
 bool ArxDataTool::SetDataToXData( AcDbObject* pObj, const CString& appName, int index, const CString& value )

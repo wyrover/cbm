@@ -1,10 +1,10 @@
 #pragma once
 
-class PolyLineJig : public AcEdJig 
+class PolyLineJig : public AcEdJig
 {
 public:
-	PolyLineJig () ;
-	~PolyLineJig () ;
+    PolyLineJig () ;
+    ~PolyLineJig () ;
 
-	Adesk::Boolean doJig(AcGePoint3dArray& polygon);
+    Adesk::Boolean doJig( AcGePoint3dArray& polygon );
 } ;

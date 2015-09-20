@@ -74,9 +74,9 @@ void KeyParamDialog::OnKP4ButtonClick()
 
 void KeyParamDialog::OnKP5ButtonClick()
 {
-	WsGasFlowPredictDialog dlg( TRUE );
-	dlg.mine_id = mine_id;
-	dlg.Run( GetSafeHwnd() );
+    WsGasFlowPredictDialog dlg( TRUE );
+    dlg.mine_id = mine_id;
+    dlg.Run( GetSafeHwnd() );
 }
 
 void KeyParamDialog::OnKP6ButtonClick()

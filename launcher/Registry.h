@@ -13,7 +13,7 @@
 
 #ifdef _UNICODE
 #if !defined(UNICODE)
-#define UNICODE 
+#define UNICODE
 #endif
 #endif
 
@@ -74,7 +74,7 @@ typedef	std::string tstring;
 	SetMulti(lpszBuffer, MultiLength(true), true); \
 	delete [] lpszBuffer;
 
-	
+
 #define REGENTRY_KEYVALID(auto_access) \
 	lpszName && ((REGENTRY_AUTO && __cregOwner->AutoOpen(auto_access)) || (!(REGENTRY_AUTO) && __cregOwner->hKey != NULL))
 
@@ -85,7 +85,7 @@ typedef	std::string tstring;
 	__cregOwner->__dwFlags op= CREG_LOADING
 
 #define REGENTRY_BINARYTOSTRING \
-	if (iType == REG_BINARY) { ForceStr(); lpszStr = *this; } 
+	if (iType == REG_BINARY) { ForceStr(); lpszStr = *this; }
 
 #define REGENTRY_NONCONV_STORAGETYPE(type) \
 	CRegEntry& operator=( type &Value ){ REGENTRY_ALLOWCONV(false) SetStruct(Value); return *this; }  \
@@ -111,49 +111,65 @@ typedef	std::string tstring;
 
 using namespace std;
 
-class CRegistry {
+class CRegistry
+{
 
 public:
-	
-	CRegistry	(DWORD flags = CREG_CREATE);	
-	virtual		~CRegistry() { Close(); for (int i=0; i < (int)_reEntries.size(); ++i) delete _reEntries[i]; delete [] _lpszSubKey; }
 
-	CRegEntry&	operator[](LPCTSTR lpszVName);
-	CRegEntry*	GetAt(int n) { assert(n < Count());  return _reEntries.at(n); }
-	
-	bool		Open(LPCTSTR lpszRegPath, HKEY hRootKey = HKEY_LOCAL_MACHINE,
-				DWORD dwAccess = KEY_QUERY_VALUE | KEY_SET_VALUE, bool bAuto = false);
-	
-	bool		AutoOpen(DWORD dwAccess);
-	void		AutoClose();
-	void		Close();
-	bool		Refresh();	
+    CRegistry	( DWORD flags = CREG_CREATE );
+    virtual		~CRegistry()
+    {
+        Close();
+        for ( int i = 0; i < ( int )_reEntries.size(); ++i ) delete _reEntries[i];
+        delete [] _lpszSubKey;
+    }
 
-	static bool	KeyExists(LPCTSTR lpszRegPath, HKEY hRootKey = HKEY_LOCAL_MACHINE);
-	bool		SubKeyExists(LPCTSTR lpszSub);	
-	
-	void		Clear(HKEY hRoot,LPCTSTR strPath, LPCTSTR strSub,DWORD dwAccess);	
+    CRegEntry&	operator[]( LPCTSTR lpszVName );
+    CRegEntry*	GetAt( int n )
+    {
+        assert( n < Count() );
+        return _reEntries.at( n );
+    }
 
-	__inline	DWORD GetFlags()	{	return __dwFlags; }
-	__inline	int Count()		{	return (int)_reEntries.size(); }
-	
-	HKEY		hKey;		/* Registry key handle */
+    bool		Open( LPCTSTR lpszRegPath, HKEY hRootKey = HKEY_LOCAL_MACHINE,
+                      DWORD dwAccess = KEY_QUERY_VALUE | KEY_SET_VALUE, bool bAuto = false );
+
+    bool		AutoOpen( DWORD dwAccess );
+    void		AutoClose();
+    void		Close();
+    bool		Refresh();
+
+    static bool	KeyExists( LPCTSTR lpszRegPath, HKEY hRootKey = HKEY_LOCAL_MACHINE );
+    bool		SubKeyExists( LPCTSTR lpszSub );
+
+    void		Clear( HKEY hRoot, LPCTSTR strPath, LPCTSTR strSub, DWORD dwAccess );
+
+    __inline	DWORD GetFlags()
+    {
+        return __dwFlags;
+    }
+    __inline	int Count()
+    {
+        return ( int )_reEntries.size();
+    }
+
+    HKEY		hKey;		/* Registry key handle */
 
 protected:
-	
-	DWORD		__dwFlags;
-	friend		void CRegEntry::MultiSetAt(size_t nIndex, LPCTSTR lpszVal);
-	friend		void CRegEntry::MultiRemoveAt(size_t nIndex);
+
+    DWORD		__dwFlags;
+    friend		void CRegEntry::MultiSetAt( size_t nIndex, LPCTSTR lpszVal );
+    friend		void CRegEntry::MultiRemoveAt( size_t nIndex );
 
 private:
 
-	void		InitData();	
-	void		DeleteKey(HKEY hPrimaryKey, LPCTSTR lpszSubKey);
+    void		InitData();
+    void		DeleteKey( HKEY hPrimaryKey, LPCTSTR lpszSubKey );
 
-	HKEY		_hRootKey;
-	LPTSTR		_lpszSubKey;
+    HKEY		_hRootKey;
+    LPTSTR		_lpszSubKey;
 
-	std::vector<CRegEntry *> _reEntries;
+    std::vector<CRegEntry*> _reEntries;
 };
 
 #pragma warning(pop)
