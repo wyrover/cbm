@@ -19,4 +19,5 @@ public:
 
 	static void InitSouiEnviroment();
 	static void UnInitSouiEnviroment();
+	static void ShowImgView(const CString& bstrFileName);
 };

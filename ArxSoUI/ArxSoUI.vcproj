@@ -1044,10 +1044,6 @@
 				RelativePath=".\ArxSoUI.rc"
 				>
 			</File>
-			<File
-				RelativePath=".\icon.ico"
-				>
-			</File>
 		</Filter>
 	</Files>
 	<Globals>

@@ -1,12 +1,6 @@
 #include "StdAfx.h"
 #include "UIHelper.h"
-
-#include <ArxHelper/HelperClass.h>
-#include <Util/HelperClass.h>
-
-#include <Dao/DaoHelper.h>
-using namespace orm;
-using namespace cbm;
+#include "Path.h"
 
 #include "MySoUiLoader.h"
 #include "DemoDialog.h"
@@ -19,6 +13,13 @@ using namespace cbm;
 #include "PicViewerDialog.h"
 #include "RtfViewerDialog.h"
 using namespace SOUI;
+
+#include <ArxHelper/HelperClass.h>
+#include <Util/HelperClass.h>
+
+#include <Dao/DaoHelper.h>
+using namespace orm;
+using namespace cbm;
 
 void UIHelper::InitAllData()
 {
@@ -78,6 +79,11 @@ void UIHelper::TestPicViewer()
 	PicViewerDialog dlg(TRUE);
 	dlg.pic_skin = _T("skin_eval_proof");
 	dlg.Run( acedGetAcadFrame()->GetSafeHwnd() );
+
+	//CString picFile = ArxUtilHelper::BuildPath(
+	//	ArxUtilHelper::GetAppPathDir(_hdllInstance),
+	//	_T("..\\..\\ArxSoUI\\uires\\image\\eval_proof.png"));
+	//UIHelper::ShowImgView(picFile);
 }
 
 void UIHelper::Login()
@@ -207,4 +213,25 @@ void UIHelper::Main()
         dlg->mine_id = mine->getID();
         dlg->Run( acedGetAcadFrame()->GetSafeHwnd() );
     }
+}
+
+void UIHelper::ShowImgView(const CString& bstrFileName)
+{
+	//imgview.exe的路径
+	CString strExeName = ArxUtilHelper::BuildPath(ArxUtilHelper::GetAppPathDir(_hdllInstance), _T("ImageView.exe"));
+	
+	//exe的参数
+	CString strArg = _T("\"");
+	strArg += bstrFileName;
+	strArg += _T("\"");
+
+	if (cbm::CPath::IsFileExist(strExeName))
+	{
+		HWND hWnd = ::FindWindow(_T("DUI_WINDOW"), _T("ImageView"));
+		if (::IsWindow(hWnd))
+			::SendMessage(hWnd, WM_CLOSE, 0, 0);
+		::ShellExecute(NULL, NULL, strExeName, strArg, NULL, SW_SHOWNORMAL);
+	}
+	else
+		::ShellExecute(NULL, _T("open"), bstrFileName, NULL, NULL, SW_SHOWNORMAL);
 }

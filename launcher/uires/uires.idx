@@ -12,10 +12,6 @@
   <cursor>
   </cursor>
   <img>
-
-
-
-  
     <file name="CBM_BG" path="image\cbm\bg.png"/>
     <file name="CBM_SHADOW" path="image\cbm\shadow.png"/>
     <file name="CBM_SKIN_CHECK_BTN" path="image\cbm\skin_check_btn.png"/>
