@@ -387,6 +387,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Path.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\SouiDialog.cpp"
 				>
 			</File>
@@ -436,6 +440,10 @@
 			</File>
 			<File
 				RelativePath=".\UIHelper.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Utils.cpp"
 				>
 			</File>
 			<Filter
@@ -720,6 +728,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Path.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Resource.h"
 				>
 			</File>
@@ -741,6 +753,10 @@
 			</File>
 			<File
 				RelativePath=".\UIHelper.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Utils.h"
 				>
 			</File>
 			<Filter
