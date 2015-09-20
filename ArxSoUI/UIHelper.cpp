@@ -5,6 +5,7 @@
 #include "MySoUiLoader.h"
 #include "DemoDialog.h"
 #include "LoginDialog.h"
+#include "RegDialog.h"
 #include "SampleManageDialog.h"
 #include "MineDialog.h"
 #include "KeyParamDialog.h"
@@ -94,6 +95,14 @@ void UIHelper::Login()
     dlg.Run( acedGetAcadFrame()->GetSafeHwnd() );
 }
 
+void UIHelper::RegMine()
+{
+	CAcModuleResourceOverride myResources;
+
+	RegDialog dlg( TRUE );
+	dlg.Run( acedGetAcadFrame()->GetSafeHwnd() );
+}
+
 void UIHelper::Logout()
 {
     //清空cbm_sys_info表
@@ -104,6 +113,7 @@ void UIHelper::Logout()
     {
         lists->at( i )->remove();
     }
+	AfxMessageBox(_T("成功注销并退出系统!"));
 }
 
 void UIHelper::SampleManage()

@@ -9,7 +9,11 @@ public:
 	static void TestRtfViewer();
 	static void TestPicViewer();
 
+	//µÇÂ¼
 	static void Login();
+	//×¢²á
+	static void RegMine();
+	//×¢Ïú
 	static void Logout();
 	static void SampleManage();
 	static void GasTechModeDecision();

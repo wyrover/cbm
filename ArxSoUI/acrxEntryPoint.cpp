@@ -128,6 +128,11 @@ public:
         UIHelper::Login();
     }
 
+	static void JL_RegMine()
+	{
+		UIHelper::RegMine();
+	}
+
     static void JL_Logout()
     {
         UIHelper::Logout();
@@ -167,6 +172,7 @@ ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _TestPicViewer, tpv, ACRX_CMD_TRANS
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _TestRtfViewer, trv, ACRX_CMD_TRANSPARENT, NULL )
 
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _Login, login, ACRX_CMD_TRANSPARENT, NULL )
+ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _RegMine, regMine, ACRX_CMD_TRANSPARENT, NULL )
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _Logout, logout, ACRX_CMD_TRANSPARENT, NULL )
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _SampleManage, sm, ACRX_CMD_TRANSPARENT, NULL )
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _GasTechModeDecision, gtmd, ACRX_CMD_TRANSPARENT, NULL )
