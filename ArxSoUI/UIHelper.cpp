@@ -11,8 +11,20 @@
 #include "KeyParamDialog.h"
 #include "PolicyDialog.h"
 #include "MainDialog.h"
+#include "DifficultEvalDialog.h"
+#include "MineGasReservesPredictDialog.h"
+#include "MineGasFlowPredictDialog.h"
+#include "TwsGasFlowPredictDialog.h"
+#include "WsGasFlowPredictDialog.h"
+#include "HighDrillingTunnelDialog.h"
+#include "HighDrillingDesignDialog.h"
+#include "DrillingRadiusDesignDialog.h"
+#include "PoreSizeDialog.h"
+#include "PoreFlowDialog.h"
 #include "PicViewerDialog.h"
 #include "RtfViewerDialog.h"
+#include "GasDesignDialog.h"
+
 using namespace SOUI;
 
 #include <ArxHelper/HelperClass.h>
@@ -140,13 +152,23 @@ void UIHelper::SampleManage()
 
 void UIHelper::GasTechModeDecision()
 {
+	//查找管理员帐户
+	AccountPtr admin = FIND_ONE( Account, FIELD( username ), _T( "admin" ) );
+	if( admin == 0 ) return;
+
     int account_id = DaoHelper::GetOnlineAccountId();
-    if( account_id == 0 )
+    if( account_id == 0)
     {
         SMessageBox( acedGetAcadFrame()->GetSafeHwnd(), _T( "请登录!" ), _T( "友情提示" ), MB_OK );
         //调用登录函数
         UIHelper::Login();
     }
+	else if(account_id == admin->getID())
+	{
+		SMessageBox( acedGetAcadFrame()->GetSafeHwnd(), _T( "请注销并以非管理员账号登录!" ), _T( "友情提示" ), MB_OK );
+		//调用登录函数
+		UIHelper::Login();
+	}
     else
     {
         CAcModuleResourceOverride myResources;
@@ -161,6 +183,10 @@ void UIHelper::GasTechModeDecision()
 
 void UIHelper::KeyParamCacl()
 {
+	//查找管理员帐户
+	AccountPtr admin = FIND_ONE( Account, FIELD( username ), _T( "admin" ) );
+	if( admin == 0 ) return;
+
     int account_id = DaoHelper::GetOnlineAccountId();
     if( account_id == 0 )
     {
@@ -168,6 +194,12 @@ void UIHelper::KeyParamCacl()
         //调用登录函数
         UIHelper::Login();
     }
+	else if(account_id == admin->getID())
+	{
+		SMessageBox( acedGetAcadFrame()->GetSafeHwnd(), _T( "请注销并以非管理员账号登录!" ), _T( "友情提示" ), MB_OK );
+		//调用登录函数
+		UIHelper::Login();
+	}
     else
     {
         CAcModuleResourceOverride myResources;
@@ -178,6 +210,378 @@ void UIHelper::KeyParamCacl()
         dlg->mine_id = mine->getID();
         dlg->Run( acedGetAcadFrame()->GetSafeHwnd() );
     }
+}
+
+void UIHelper::KP1()
+{
+	//查找管理员帐户
+	AccountPtr admin = FIND_ONE( Account, FIELD( username ), _T( "admin" ) );
+	if( admin == 0 ) return;
+
+	int account_id = DaoHelper::GetOnlineAccountId();
+	if( account_id == 0 )
+	{
+		SMessageBox( acedGetAcadFrame()->GetSafeHwnd(), _T( "请登录!" ), _T( "友情提示" ), MB_OK );
+		//调用登录函数
+		UIHelper::Login();
+	}
+	else if(account_id == admin->getID())
+	{
+		SMessageBox( acedGetAcadFrame()->GetSafeHwnd(), _T( "请注销并以非管理员账号登录!" ), _T( "友情提示" ), MB_OK );
+		//调用登录函数
+		UIHelper::Login();
+	}
+	else
+	{
+		CAcModuleResourceOverride myResources;
+
+		DifficultEvalDialog* dlg = new DifficultEvalDialog( FALSE );
+		//查询账户关联的矿井
+		MinePtr mine = FIND_ONE( Mine, FKEY( Account ), Utils::int_to_cstring( account_id ) );
+		dlg->mine_id = mine->getID();
+		dlg->Run( acedGetAcadFrame()->GetSafeHwnd() );
+	}
+}
+
+void UIHelper::KP2()
+{
+	//查找管理员帐户
+	AccountPtr admin = FIND_ONE( Account, FIELD( username ), _T( "admin" ) );
+	if( admin == 0 ) return;
+
+	int account_id = DaoHelper::GetOnlineAccountId();
+	if( account_id == 0 )
+	{
+		SMessageBox( acedGetAcadFrame()->GetSafeHwnd(), _T( "请登录!" ), _T( "友情提示" ), MB_OK );
+		//调用登录函数
+		UIHelper::Login();
+	}
+	else if(account_id == admin->getID())
+	{
+		SMessageBox( acedGetAcadFrame()->GetSafeHwnd(), _T( "请注销并以非管理员账号登录!" ), _T( "友情提示" ), MB_OK );
+		//调用登录函数
+		UIHelper::Login();
+	}
+	else
+	{
+		CAcModuleResourceOverride myResources;
+
+		MineGasReservesPredictDialog* dlg = new MineGasReservesPredictDialog( FALSE );
+		//查询账户关联的矿井
+		MinePtr mine = FIND_ONE( Mine, FKEY( Account ), Utils::int_to_cstring( account_id ) );
+		dlg->mine_id = mine->getID();
+		dlg->Run( acedGetAcadFrame()->GetSafeHwnd() );
+	}
+}
+
+void UIHelper::KP3()
+{
+	//查找管理员帐户
+	AccountPtr admin = FIND_ONE( Account, FIELD( username ), _T( "admin" ) );
+	if( admin == 0 ) return;
+
+	int account_id = DaoHelper::GetOnlineAccountId();
+	if( account_id == 0 )
+	{
+		SMessageBox( acedGetAcadFrame()->GetSafeHwnd(), _T( "请登录!" ), _T( "友情提示" ), MB_OK );
+		//调用登录函数
+		UIHelper::Login();
+	}
+	else if(account_id == admin->getID())
+	{
+		SMessageBox( acedGetAcadFrame()->GetSafeHwnd(), _T( "请注销并以非管理员账号登录!" ), _T( "友情提示" ), MB_OK );
+		//调用登录函数
+		UIHelper::Login();
+	}
+	else
+	{
+		CAcModuleResourceOverride myResources;
+
+		MineGasFlowPredictDialog* dlg = new MineGasFlowPredictDialog( FALSE );
+		//查询账户关联的矿井
+		MinePtr mine = FIND_ONE( Mine, FKEY( Account ), Utils::int_to_cstring( account_id ) );
+		dlg->mine_id = mine->getID();
+		dlg->Run( acedGetAcadFrame()->GetSafeHwnd() );
+	}
+}
+
+void UIHelper::KP4()
+{
+	//查找管理员帐户
+	AccountPtr admin = FIND_ONE( Account, FIELD( username ), _T( "admin" ) );
+	if( admin == 0 ) return;
+
+	int account_id = DaoHelper::GetOnlineAccountId();
+	if( account_id == 0 )
+	{
+		SMessageBox( acedGetAcadFrame()->GetSafeHwnd(), _T( "请登录!" ), _T( "友情提示" ), MB_OK );
+		//调用登录函数
+		UIHelper::Login();
+	}
+	else if(account_id == admin->getID())
+	{
+		SMessageBox( acedGetAcadFrame()->GetSafeHwnd(), _T( "请注销并以非管理员账号登录!" ), _T( "友情提示" ), MB_OK );
+		//调用登录函数
+		UIHelper::Login();
+	}
+	else
+	{
+		CAcModuleResourceOverride myResources;
+
+		TwsGasFlowPredictDialog* dlg = new TwsGasFlowPredictDialog( FALSE );
+		//查询账户关联的矿井
+		MinePtr mine = FIND_ONE( Mine, FKEY( Account ), Utils::int_to_cstring( account_id ) );
+		dlg->mine_id = mine->getID();
+		dlg->Run( acedGetAcadFrame()->GetSafeHwnd() );
+	}
+}
+
+void UIHelper::KP5()
+{
+	//查找管理员帐户
+	AccountPtr admin = FIND_ONE( Account, FIELD( username ), _T( "admin" ) );
+	if( admin == 0 ) return;
+
+	int account_id = DaoHelper::GetOnlineAccountId();
+	if( account_id == 0 )
+	{
+		SMessageBox( acedGetAcadFrame()->GetSafeHwnd(), _T( "请登录!" ), _T( "友情提示" ), MB_OK );
+		//调用登录函数
+		UIHelper::Login();
+	}
+	else if(account_id == admin->getID())
+	{
+		SMessageBox( acedGetAcadFrame()->GetSafeHwnd(), _T( "请注销并以非管理员账号登录!" ), _T( "友情提示" ), MB_OK );
+		//调用登录函数
+		UIHelper::Login();
+	}
+	else
+	{
+		CAcModuleResourceOverride myResources;
+
+		WsGasFlowPredictDialog* dlg = new WsGasFlowPredictDialog( FALSE );
+		//查询账户关联的矿井
+		MinePtr mine = FIND_ONE( Mine, FKEY( Account ), Utils::int_to_cstring( account_id ) );
+		dlg->mine_id = mine->getID();
+		dlg->Run( acedGetAcadFrame()->GetSafeHwnd() );
+	}
+}
+
+void UIHelper::KP6()
+{
+	//查找管理员帐户
+	AccountPtr admin = FIND_ONE( Account, FIELD( username ), _T( "admin" ) );
+	if( admin == 0 ) return;
+
+	int account_id = DaoHelper::GetOnlineAccountId();
+	if( account_id == 0 )
+	{
+		SMessageBox( acedGetAcadFrame()->GetSafeHwnd(), _T( "请登录!" ), _T( "友情提示" ), MB_OK );
+		//调用登录函数
+		UIHelper::Login();
+	}
+	else if(account_id == admin->getID())
+	{
+		SMessageBox( acedGetAcadFrame()->GetSafeHwnd(), _T( "请注销并以非管理员账号登录!" ), _T( "友情提示" ), MB_OK );
+		//调用登录函数
+		UIHelper::Login();
+	}
+	else
+	{
+		CAcModuleResourceOverride myResources;
+
+		HighDrillingTunnelDialog* dlg = new HighDrillingTunnelDialog( FALSE );
+		//查询账户关联的矿井
+		MinePtr mine = FIND_ONE( Mine, FKEY( Account ), Utils::int_to_cstring( account_id ) );
+		dlg->mine_id = mine->getID();
+		dlg->Run( acedGetAcadFrame()->GetSafeHwnd() );
+	}
+}
+
+void UIHelper::KP7()
+{
+	//查找管理员帐户
+	AccountPtr admin = FIND_ONE( Account, FIELD( username ), _T( "admin" ) );
+	if( admin == 0 ) return;
+
+	int account_id = DaoHelper::GetOnlineAccountId();
+	if( account_id == 0 )
+	{
+		SMessageBox( acedGetAcadFrame()->GetSafeHwnd(), _T( "请登录!" ), _T( "友情提示" ), MB_OK );
+		//调用登录函数
+		UIHelper::Login();
+	}
+	else if(account_id == admin->getID())
+	{
+		SMessageBox( acedGetAcadFrame()->GetSafeHwnd(), _T( "请注销并以非管理员账号登录!" ), _T( "友情提示" ), MB_OK );
+		//调用登录函数
+		UIHelper::Login();
+	}
+	else
+	{
+		CAcModuleResourceOverride myResources;
+
+		HighDrillingDesignDialog* dlg = new HighDrillingDesignDialog( FALSE );
+		//查询账户关联的矿井
+		MinePtr mine = FIND_ONE( Mine, FKEY( Account ), Utils::int_to_cstring( account_id ) );
+		dlg->mine_id = mine->getID();
+		dlg->Run( acedGetAcadFrame()->GetSafeHwnd() );
+	}
+}
+
+void UIHelper::KP8()
+{
+	//查找管理员帐户
+	AccountPtr admin = FIND_ONE( Account, FIELD( username ), _T( "admin" ) );
+	if( admin == 0 ) return;
+
+	int account_id = DaoHelper::GetOnlineAccountId();
+	if( account_id == 0 )
+	{
+		SMessageBox( acedGetAcadFrame()->GetSafeHwnd(), _T( "请登录!" ), _T( "友情提示" ), MB_OK );
+		//调用登录函数
+		UIHelper::Login();
+	}
+	else if(account_id == admin->getID())
+	{
+		SMessageBox( acedGetAcadFrame()->GetSafeHwnd(), _T( "请注销并以非管理员账号登录!" ), _T( "友情提示" ), MB_OK );
+		//调用登录函数
+		UIHelper::Login();
+	}
+	else
+	{
+		CAcModuleResourceOverride myResources;
+
+		DrillingRadiusDesignDialog* dlg = new DrillingRadiusDesignDialog( FALSE );
+		//查询账户关联的矿井
+		MinePtr mine = FIND_ONE( Mine, FKEY( Account ), Utils::int_to_cstring( account_id ) );
+		dlg->mine_id = mine->getID();
+		dlg->Run( acedGetAcadFrame()->GetSafeHwnd() );
+	}
+}
+
+void UIHelper::KP9()
+{
+	//查找管理员帐户
+	AccountPtr admin = FIND_ONE( Account, FIELD( username ), _T( "admin" ) );
+	if( admin == 0 ) return;
+
+	int account_id = DaoHelper::GetOnlineAccountId();
+	if( account_id == 0 )
+	{
+		SMessageBox( acedGetAcadFrame()->GetSafeHwnd(), _T( "请登录!" ), _T( "友情提示" ), MB_OK );
+		//调用登录函数
+		UIHelper::Login();
+	}
+	else if(account_id == admin->getID())
+	{
+		SMessageBox( acedGetAcadFrame()->GetSafeHwnd(), _T( "请注销并以非管理员账号登录!" ), _T( "友情提示" ), MB_OK );
+		//调用登录函数
+		UIHelper::Login();
+	}
+	else
+	{
+		CAcModuleResourceOverride myResources;
+
+		PoreSizeDialog* dlg = new PoreSizeDialog( FALSE );
+		//查询账户关联的矿井
+		MinePtr mine = FIND_ONE( Mine, FKEY( Account ), Utils::int_to_cstring( account_id ) );
+		dlg->mine_id = mine->getID();
+		dlg->Run( acedGetAcadFrame()->GetSafeHwnd() );
+	}
+}
+
+void UIHelper::KP10()
+{
+	//查找管理员帐户
+	AccountPtr admin = FIND_ONE( Account, FIELD( username ), _T( "admin" ) );
+	if( admin == 0 ) return;
+
+	int account_id = DaoHelper::GetOnlineAccountId();
+	if( account_id == 0 )
+	{
+		SMessageBox( acedGetAcadFrame()->GetSafeHwnd(), _T( "请登录!" ), _T( "友情提示" ), MB_OK );
+		//调用登录函数
+		UIHelper::Login();
+	}
+	else if(account_id == admin->getID())
+	{
+		SMessageBox( acedGetAcadFrame()->GetSafeHwnd(), _T( "请注销并以非管理员账号登录!" ), _T( "友情提示" ), MB_OK );
+		//调用登录函数
+		UIHelper::Login();
+	}
+	else
+	{
+		CAcModuleResourceOverride myResources;
+
+		PoreFlowDialog* dlg = new PoreFlowDialog( FALSE );
+		//查询账户关联的矿井
+		MinePtr mine = FIND_ONE( Mine, FKEY( Account ), Utils::int_to_cstring( account_id ) );
+		dlg->mine_id = mine->getID();
+		dlg->Run( acedGetAcadFrame()->GetSafeHwnd() );
+	}
+}
+
+void UIHelper::KP11()
+{
+	//查找管理员帐户
+	AccountPtr admin = FIND_ONE( Account, FIELD( username ), _T( "admin" ) );
+	if( admin == 0 ) return;
+
+	int account_id = DaoHelper::GetOnlineAccountId();
+	if( account_id == 0 )
+	{
+		SMessageBox( acedGetAcadFrame()->GetSafeHwnd(), _T( "请登录!" ), _T( "友情提示" ), MB_OK );
+		//调用登录函数
+		UIHelper::Login();
+	}
+	else if(account_id == admin->getID())
+	{
+		SMessageBox( acedGetAcadFrame()->GetSafeHwnd(), _T( "请注销并以非管理员账号登录!" ), _T( "友情提示" ), MB_OK );
+		//调用登录函数
+		UIHelper::Login();
+	}
+	else
+	{
+		//CAcModuleResourceOverride myResources;
+
+		//PoreFlowDialog* dlg = new PoreFlowDialog( FALSE );
+		////查询账户关联的矿井
+		//MinePtr mine = FIND_ONE( Mine, FKEY( Account ), Utils::int_to_cstring( account_id ) );
+		//dlg->mine_id = mine->getID();
+		//dlg->Run( acedGetAcadFrame()->GetSafeHwnd() );
+	}
+}
+
+void UIHelper::GasDesign()
+{
+	//查找管理员帐户
+	AccountPtr admin = FIND_ONE( Account, FIELD( username ), _T( "admin" ) );
+	if( admin == 0 ) return;
+
+	int account_id = DaoHelper::GetOnlineAccountId();
+	if( account_id == 0 )
+	{
+		SMessageBox( acedGetAcadFrame()->GetSafeHwnd(), _T( "请登录!" ), _T( "友情提示" ), MB_OK );
+		//调用登录函数
+		UIHelper::Login();
+	}
+	else if(account_id == admin->getID())
+	{
+		SMessageBox( acedGetAcadFrame()->GetSafeHwnd(), _T( "请注销并以非管理员账号登录!" ), _T( "友情提示" ), MB_OK );
+		//调用登录函数
+		UIHelper::Login();
+	}
+	else
+	{
+		CAcModuleResourceOverride myResources;
+
+		GasDesignDialog* dlg = new GasDesignDialog( FALSE );
+		//查询账户关联的矿井
+		MinePtr mine = FIND_ONE( Mine, FKEY( Account ), Utils::int_to_cstring( account_id ) );
+		dlg->mine_id = mine->getID();
+		dlg->Run( acedGetAcadFrame()->GetSafeHwnd() );
+	}
 }
 
 void UIHelper::PolicyHelp()
@@ -206,6 +610,10 @@ static void test_ucs()
 
 void UIHelper::Main()
 {
+	//查找管理员帐户
+	AccountPtr admin = FIND_ONE( Account, FIELD( username ), _T( "admin" ) );
+	if( admin == 0 ) return;
+
     int account_id = DaoHelper::GetOnlineAccountId();
     if( account_id == 0 )
     {
@@ -213,6 +621,12 @@ void UIHelper::Main()
         //调用登录函数
         UIHelper::Login();
     }
+	else if(account_id == admin->getID())
+	{
+		SMessageBox( acedGetAcadFrame()->GetSafeHwnd(), _T( "请注销并以非管理员账号登录!" ), _T( "友情提示" ), MB_OK );
+		//调用登录函数
+		UIHelper::Login();
+	}
     else
     {
         CAcModuleResourceOverride myResources;

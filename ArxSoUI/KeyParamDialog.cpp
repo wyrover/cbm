@@ -72,6 +72,13 @@ void KeyParamDialog::OnKP4ButtonClick()
     dlg.Run( GetSafeHwnd() );
 }
 
+void KeyParamDialog::OnKP5ButtonClick()
+{
+	WsGasFlowPredictDialog dlg( TRUE );
+	dlg.mine_id = mine_id;
+	dlg.Run( GetSafeHwnd() );
+}
+
 void KeyParamDialog::OnKP6ButtonClick()
 {
     HighDrillingTunnelDialog dlg( TRUE );
@@ -111,9 +118,3 @@ void KeyParamDialog::OnKP11ButtonClick()
 {
 }
 
-void KeyParamDialog::OnKP5ButtonClick()
-{
-    WsGasFlowPredictDialog dlg( TRUE );
-    dlg.mine_id = mine_id;
-    dlg.Run( GetSafeHwnd() );
-}

@@ -153,6 +153,66 @@ public:
         UIHelper::KeyParamCacl();
     }
 
+	static void JL_KP1()
+	{
+		UIHelper::KP1();
+	}
+
+	static void JL_KP2()
+	{
+		UIHelper::KP2();
+	}
+
+	static void JL_KP3()
+	{
+		UIHelper::KP3();
+	}
+
+	static void JL_KP4()
+	{
+		UIHelper::KP4();
+	}
+
+	static void JL_KP5()
+	{
+		UIHelper::KP5();
+	}
+
+	static void JL_KP6()
+	{
+		UIHelper::KP6();
+	}
+
+	static void JL_KP7()
+	{
+		UIHelper::KP7();
+	}
+
+	static void JL_KP8()
+	{
+		UIHelper::KP8();
+	}
+
+	static void JL_KP9()
+	{
+		UIHelper::KP9();
+	}
+
+	static void JL_KP10()
+	{
+		UIHelper::KP10();
+	}
+	
+	static void JL_KP11()
+	{
+		UIHelper::KP11();
+	}
+
+	static void JL_GasDesign()
+	{
+		UIHelper::GasDesign();
+	}
+	
     static void JL_PolicyHelp()
     {
         UIHelper::PolicyHelp();
@@ -177,5 +237,17 @@ ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _Logout, logout, ACRX_CMD_TRANSPARE
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _SampleManage, sm, ACRX_CMD_TRANSPARENT, NULL )
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _GasTechModeDecision, gtmd, ACRX_CMD_TRANSPARENT, NULL )
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _KeyParamCacl, kpc, ACRX_CMD_TRANSPARENT, NULL )
+ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _KP1, kp1, ACRX_CMD_TRANSPARENT, NULL )
+ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _KP2, kp2, ACRX_CMD_TRANSPARENT, NULL )
+ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _KP3, kp3, ACRX_CMD_TRANSPARENT, NULL )
+ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _KP4, kp4, ACRX_CMD_TRANSPARENT, NULL )
+ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _KP5, kp5, ACRX_CMD_TRANSPARENT, NULL )
+ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _KP6, kp6, ACRX_CMD_TRANSPARENT, NULL )
+ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _KP7, kp7, ACRX_CMD_TRANSPARENT, NULL )
+ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _KP8, kp8, ACRX_CMD_TRANSPARENT, NULL )
+ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _KP9, kp9, ACRX_CMD_TRANSPARENT, NULL )
+ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _KP10, kp10, ACRX_CMD_TRANSPARENT, NULL )
+ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _KP11, kp11, ACRX_CMD_TRANSPARENT, NULL )
+ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _GasDesign, gasDesign, ACRX_CMD_TRANSPARENT, NULL )
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _PolicyHelp, phelp, ACRX_CMD_TRANSPARENT, NULL )
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _Main, main, ACRX_CMD_TRANSPARENT, NULL )
