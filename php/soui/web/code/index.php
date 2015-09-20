@@ -314,6 +314,16 @@ else if($type == 'caption') {
   $caps = json_decode($text, true);
   // var_dump($text);
 
+  //删除width和height属性
+  $cap_width = intval($node->getAttribute('width'));
+  $cap_height = intval($node->getAttribute('height'));
+  $node->removeAttribute('width');
+  $node->removeAttribute('height');
+  //修改pos属性
+  $node->setAttribute('pos', "0,0,-0,$cap_height");
+  //修改name属性
+  $node->setAttribute('name', "caption");
+
     //(1)标题
   $title = '测试程序v1.0';
   if(isset($caps['title'])) {
@@ -454,6 +464,23 @@ else if($type == 'tabctrl') {
     $node->removeAttribute('margin-x');
     $node->removeAttribute('margin-y');
   }
+}
+
+function adjust_node_seq($doc)
+{
+  //调整标题节点caption的位置(作为root的第一个子节点)
+  $root = $doc->getElementsByTagName("root")->item(0);
+  if(is_null($root)) return;
+
+  $caption = $doc->getElementsByTagName("caption")->item(0);
+  if(is_null($caption)) return;
+
+  $firstSibling = $root->firstChild;
+  if( $caption !== $firstSibling ) {
+    $root->insertBefore( $caption, $firstSibling );
+  }
+
+  //调整window节点的位置和包含关系
 }
 
 function create_root($doc, $attribs)
@@ -816,6 +843,9 @@ postProcessSkin($doc, $control, $type, "img");
   //销毁内存
 unset($attribs);
 }
+
+//调整节点顺序(主要是caption节点)
+adjust_node_seq($doc);
 
 return $doc->saveXML();
   //$doc->save($xmlfile);

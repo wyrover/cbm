@@ -3,11 +3,11 @@
   <skin/>
   <style/>
   <root cache="1" skin="_skin.sys.wnd.bkgnd">
-    <window pos="0,0" width="299" height="208" name="window108" margin-x="1" margin-y="1" enable="0" visible="0"/>
-    <caption pos="7,0" width="292" height="40" name="caption109">
+    <caption pos="0,0,-0,40" name="caption">
       <text pos="0,8" name="wnd_title">测试程序v1.0</text>
       <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
     </caption>
+    <window pos="0,0" width="299" height="208" name="window108" margin-x="1" margin-y="1" enable="0" visible="0"/>
     <button pos="18,156" width="263" height="42" name="graph" margin-x="1" margin-y="1">查看煤层赋存立体示意图</button>
     <button pos="18,98" width="263" height="42" name="technology" margin-x="1" margin-y="1">相关推荐技术</button>
     <text pos="107,40" width="62" height="23" name="text115" margin-x="1" margin-y="1">推荐采用</text>

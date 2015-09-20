@@ -3,6 +3,10 @@
   <skin/>
   <style/>
   <root cache="1" skin="_skin.sys.wnd.bkgnd">
+    <caption pos="0,0,-0,40" name="caption">
+      <text pos="0,8" name="wnd_title">测试程序v1.0</text>
+      <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
+    </caption>
     <listbox pos="27,65" width="486" height="197" itemHeight="24" hotTrack="1" name="technology" margin-x="1" margin-y="1" ncSkin="_skin.sys.border">
       <items>
         <item text="专用瓦斯抽采巷穿层钻孔预抽煤层气技术"/>
@@ -26,10 +30,6 @@
     <button pos="391,267" width="56" height="30" name="doc_select" margin-x="1" margin-y="1">选择</button>
     <button pos="391,302" width="56" height="30" name="video_select" margin-x="1" margin-y="1">选择</button>
     <window pos="0,0" width="529" height="341" name="window146" margin-x="1" margin-y="1" enable="0" visible="0"/>
-    <caption pos="15,0" width="513" height="40" name="caption147">
-      <text pos="0,8" name="wnd_title">测试程序v1.0</text>
-      <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
-    </caption>
     <text pos="27,38" width="160" height="23" name="region" margin-x="1" margin-y="1">&gt;&gt;xx矿区推荐抽采技术</text>
     <button pos="445,34" width="68" height="30" name="save" margin-x="1" margin-y="1">保存</button>
   </root>

@@ -3,14 +3,14 @@
   <skin/>
   <style/>
   <root cache="1" skin="_skin.sys.wnd.bkgnd">
+    <caption pos="0,0,-0,40" name="caption">
+      <text pos="0,8" name="wnd_title">测试程序v1.0</text>
+      <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
+    </caption>
     <window pos="0,0" width="754" height="388" name="window0" margin-x="1" margin-y="1" enable="0" visible="0"/>
     <text pos="39,62" width="62" height="23" name="text3" margin-x="1" margin-y="1">煤层厚度</text>
     <edit pos="115,60" width="67" height="26" readOnly="1" name="thick" margin-x="1" margin-y="1"/>
     <button pos="399,324" width="154" height="48" name="head_graph" margin-x="1" margin-y="1">走向剖面图</button>
-    <caption pos="5,0" width="749" height="40" name="caption10">
-      <text pos="0,8" name="wnd_title">测试程序v1.0</text>
-      <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
-    </caption>
     <text pos="21,37" width="84" height="23" name="text12" margin-x="1" margin-y="1">&gt;&gt;煤层参数</text>
     <text pos="230,64" width="62" height="23" name="text13" margin-x="1" margin-y="1">煤层倾角</text>
     <edit pos="306,62" width="69" height="26" readOnly="1" name="dip_angle" margin-x="1" margin-y="1"/>

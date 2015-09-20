@@ -3,13 +3,13 @@
   <skin/>
   <style/>
   <root cache="1" skin="_skin.sys.wnd.bkgnd">
-    <window pos="0,0" width="367" height="221" name="window0" margin-x="1" margin-y="1" enable="0" visible="0"/>
-    <text pos="22,40" width="62" height="23" name="text1" margin-x="1" margin-y="1">矿井名称</text>
-    <edit pos="93,38" width="201" height="26" name="name" margin-x="1" margin-y="1"/>
-    <caption pos="9,0" width="353" height="40" name="caption3">
+    <caption pos="0,0,-0,40" name="caption">
       <text pos="0,8" name="wnd_title">测试程序v1.0</text>
       <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
     </caption>
+    <window pos="0,0" width="367" height="221" name="window0" margin-x="1" margin-y="1" enable="0" visible="0"/>
+    <text pos="22,40" width="62" height="23" name="text1" margin-x="1" margin-y="1">矿井名称</text>
+    <edit pos="93,38" width="201" height="26" name="name" margin-x="1" margin-y="1"/>
     <button pos="292,77" width="50" height="27" name="del_coal" margin-x="1" margin-y="1">删除</button>
     <button pos="234,77" width="50" height="27" name="add_coal" margin-x="1" margin-y="1">增加</button>
     <text pos="22,79" width="62" height="23" name="text6" margin-x="1" margin-y="1">煤层列表</text>

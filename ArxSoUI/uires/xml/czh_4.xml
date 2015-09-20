@@ -3,11 +3,11 @@
   <skin/>
   <style/>
   <root cache="1" skin="_skin.sys.wnd.bkgnd">
-    <window pos="0,0" width="392" height="188" name="window173" margin-x="1" margin-y="1" enable="0" visible="0"/>
-    <caption pos="2,0" width="386" height="40" name="caption174">
+    <caption pos="0,0,-0,40" name="caption">
       <text pos="0,8" name="wnd_title">测试程序v1.0</text>
       <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
     </caption>
+    <window pos="0,0" width="392" height="188" name="window173" margin-x="1" margin-y="1" enable="0" visible="0"/>
     <text pos="15,73" width="62" height="23" name="text176" margin-x="1" margin-y="1">煤层采高</text>
     <edit pos="95,73" width="70" height="26" readOnly="1" name="hw" margin-x="1" margin-y="1"/>
     <text pos="203,71" width="70" height="23" name="text178" margin-x="1" margin-y="1">未知变量h</text>

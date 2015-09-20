@@ -3,6 +3,10 @@
   <skin/>
   <style/>
   <root cache="1" skin="_skin.sys.wnd.bkgnd">
+    <caption pos="0,0,-0,40" name="caption">
+      <text pos="0,8" name="wnd_title">测试程序v1.0</text>
+      <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
+    </caption>
     <text pos="10,35" width="160" height="23" name="region" margin-x="1" margin-y="1">&gt;&gt;xx矿区抽采技术模式</text>
     <combobox pos="10,60" width="249" height="24" dropDown="1" curSel="0" name="tech_mode" margin-x="1" margin-y="1" ncSkin="_skin.sys.border">
       <liststyle itemHeight="30" colorText="#000000" colorSelText="#FFFFFF" colorItemBkgnd="#FFFFFF" colorItemSelBkgnd="#000088"/>
@@ -23,10 +27,6 @@
       <radio pos="100,0" width="132" height="21" name="c3_no" id="121" margin-x="1" margin-y="1">中远距离煤层群</radio>
     </window>
     <window pos="0,0" width="271" height="359" name="window121" margin-x="1" margin-y="1" enable="0" visible="0"/>
-    <caption pos="10,0" width="261" height="40" name="caption122">
-      <text pos="0,8" name="wnd_title">测试程序v1.0</text>
-      <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
-    </caption>
     <button pos="92,314" width="88" height="37" name="save" margin-x="1" margin-y="1">保存</button>
     <window pos="32,134" width="220" height="35" name="window137" margin-x="1" margin-y="1">
       <radio pos="0,0" width="127" height="21" checked="1" name="c1_yes" id="100" margin-x="1" margin-y="1">中高渗(&gt;5mD)</radio>

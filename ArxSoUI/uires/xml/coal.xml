@@ -3,13 +3,13 @@
   <skin/>
   <style/>
   <root cache="1" skin="_skin.sys.wnd.bkgnd">
-    <window pos="0,0" width="482" height="371" name="window28" margin-x="1" margin-y="1" enable="0" visible="0"/>
-    <button pos="25,313" width="114" height="48" name="next" margin-x="1" margin-y="1">下一步</button>
-    <button pos="346,313" width="114" height="48" name="cancel" margin-x="1" margin-y="1">取消</button>
-    <caption pos="7,0" width="472" height="40" name="caption82">
+    <caption pos="0,0,-0,40" name="caption">
       <text pos="0,8" name="wnd_title">测试程序v1.0</text>
       <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
     </caption>
+    <window pos="0,0" width="482" height="371" name="window28" margin-x="1" margin-y="1" enable="0" visible="0"/>
+    <button pos="25,313" width="114" height="48" name="next" margin-x="1" margin-y="1">下一步</button>
+    <button pos="346,313" width="114" height="48" name="cancel" margin-x="1" margin-y="1">取消</button>
     <button pos="179,313" width="122" height="49" name="save" margin-x="1" margin-y="1">保存</button>
     <window pos="10,38" width="464" height="270" name="window107" margin-x="1" margin-y="1">
       <text pos="0,87" width="62" height="23" name="text31" margin-x="1" margin-y="1">储层压力</text>

@@ -3,6 +3,10 @@
   <skin/>
   <style/>
   <root cache="1" skin="_skin.sys.wnd.bkgnd">
+    <caption pos="0,0,-0,40" name="caption">
+      <text pos="0,8" name="wnd_title">测试程序v1.0</text>
+      <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
+    </caption>
     <text pos="16,36" width="143" height="23" name="text36" margin-x="1" margin-y="1">可采煤层瓦斯储量W1</text>
     <edit pos="16,59" width="98" height="26" name="reserve_w1" margin-x="1" margin-y="1"/>
     <text pos="16,94" width="252" height="23" name="text38" margin-x="1" margin-y="1">受采动影响的不可采煤层瓦斯储量W2</text>
@@ -11,10 +15,6 @@
     <edit pos="16,232" width="98" height="26" name="reserve_w3" margin-x="1" margin-y="1"/>
     <button pos="76,265" width="100" height="36" name="save" margin-x="1" margin-y="1">确定</button>
     <window pos="0,0" width="275" height="311" name="window63" margin-x="1" margin-y="1" enable="0" visible="0"/>
-    <caption pos="7,0" width="268" height="40" name="caption64">
-      <text pos="0,8" name="wnd_title">测试程序v1.0</text>
-      <imgbtn name="btn_close" pos="-30,0" skin="_skin.sys.btn.close" animate="1"/>
-    </caption>
     <button pos="119,59" width="53" height="27" name="w1_cacl" margin-x="1" margin-y="1">计算</button>
     <button pos="119,119" width="53" height="26" name="w2_cacl" margin-x="1" margin-y="1">计算</button>
     <text pos="16,152" width="162" height="23" name="text87" margin-x="1" margin-y="1">矿井围岩瓦斯储量系数K</text>
