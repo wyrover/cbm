@@ -714,6 +714,29 @@
 					>
 				</File>
 			</Filter>
+			<Filter
+				Name="report"
+				>
+				<File
+					RelativePath=".\CmyWord.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\CreatReport.cpp"
+					>
+					<FileConfiguration
+						Name="Debug|x64"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\msword.cpp"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Include Files"
@@ -1032,6 +1055,22 @@
 				</File>
 				<File
 					RelativePath=".\Graph23.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="report"
+				>
+				<File
+					RelativePath=".\CmyWord.h"
+					>
+				</File>
+				<File
+					RelativePath=".\CreatReport.h"
+					>
+				</File>
+				<File
+					RelativePath=".\msword.h"
 					>
 				</File>
 			</Filter>
