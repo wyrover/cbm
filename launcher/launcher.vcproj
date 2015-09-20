@@ -111,9 +111,12 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
+				Description="Ç¶Èësoui×ÊÔ´"
+				CommandLine="build_rc2.bat"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
+				CommandLine=""
 			/>
 			<Tool
 				Name="VCXMLDataGeneratorTool"
@@ -521,6 +524,16 @@
 			<File
 				RelativePath=".\res\soui_res.rc2"
 				>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description=""
+						CommandLine=""
+						Outputs=""
+					/>
+				</FileConfiguration>
 			</File>
 		</Filter>
 	</Files>

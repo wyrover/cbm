@@ -7,13 +7,15 @@
     <file name="cbm" path="xml\cbm.xml"/>
   </layout>
   <icon>
-    <file name="ICON_CBM_SOUI" path="image\cbm\soui.ico"/>
+  <file name="ICON_CBM_SOUI" path="image\cbm\cbm.ico"/>
   </icon>
   <cursor>
-    <file name="CURSOR_ARROW1" path="image\cursor\arrow1.ani"/>
-    <file name="CURSOR_ARROW2" path="image\cursor\arrow2.cur"/>
   </cursor>
   <img>
+
+
+
+  
     <file name="CBM_BG" path="image\cbm\bg.png"/>
     <file name="CBM_SHADOW" path="image\cbm\shadow.png"/>
     <file name="CBM_SKIN_CHECK_BTN" path="image\cbm\skin_check_btn.png"/>
