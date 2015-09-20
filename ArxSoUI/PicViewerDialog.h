@@ -39,5 +39,11 @@ protected:
 	SImageWnd* m_PicImg;
 
 public:
-	CString pic_skin; // 图片资源皮肤(外部指定)
+	void setPicSkin(const CString& pic_skin);
+	void setPicFile(const CString& pic_file);
+
+private:
+	CString m_pic_skin; // 图片资源皮肤
+	CString m_pic_file; // 图片文件路径
+	bool m_use_res;     // 使用资源还是加载rtf文件(默认使用资源)
 };

@@ -481,6 +481,7 @@ function adjust_node_seq($doc)
   }
 
   //调整window节点的位置和包含关系
+  //有待实现!!!
 }
 
 function create_root($doc, $attribs)

@@ -77,13 +77,13 @@ void UIHelper::TestRtfViewer()
 void UIHelper::TestPicViewer()
 {
 	PicViewerDialog dlg(TRUE);
-	dlg.pic_skin = _T("skin_eval_proof");
+	dlg.setPicSkin(_T("skin_eval_proof"));
 	dlg.Run( acedGetAcadFrame()->GetSafeHwnd() );
 
-	//CString picFile = ArxUtilHelper::BuildPath(
-	//	ArxUtilHelper::GetAppPathDir(_hdllInstance),
-	//	_T("..\\..\\ArxSoUI\\uires\\image\\eval_proof.png"));
-	//UIHelper::ShowImgView(picFile);
+	CString picFile = ArxUtilHelper::BuildPath(
+		ArxUtilHelper::GetAppPathDir(_hdllInstance),
+		_T("..\\..\\ArxSoUI\\uires\\image\\bk.png"));
+	UIHelper::ShowImgView(picFile);
 }
 
 void UIHelper::Login()

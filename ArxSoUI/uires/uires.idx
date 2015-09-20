@@ -74,6 +74,7 @@
   <icon/>
   <cursor/>
   <img>
+    <file name="BK" path="image\bk.png"/>
     <file name="EVAL_PROOF" path="image\eval_proof.png"/>
     <file name="HELP" path="image\help.png"/>
   </img>
