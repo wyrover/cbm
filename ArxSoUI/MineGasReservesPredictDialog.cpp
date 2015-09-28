@@ -65,6 +65,7 @@ void MineGasReservesPredictDialog::OnGasCaclButtonClick()
     if( mine == 0 ) return;
 
     MineGasReservesPredict1Dialog dlg( TRUE );
+	dlg.SetWindowTitle(_T("矿井瓦斯储量计算"));
     dlg.mine_id = mine->getID();
     dlg.Run( GetSafeHwnd() );
 
@@ -80,6 +81,7 @@ void MineGasReservesPredictDialog::OnPumpWcCaclButtonClick()
     if( mine == 0 ) return;
 
     MineGasReservesPredict2Dialog dlg( TRUE );
+	dlg.SetWindowTitle(_T("矿井可抽瓦斯量计算"));
     double W = 0; // 矿井瓦斯储量
     Utils::cstring_to_double( ( LPCTSTR )m_ReserveGasEdit->GetWindowText(), W );
     dlg.W = W; // 传入矿井瓦斯储量数据

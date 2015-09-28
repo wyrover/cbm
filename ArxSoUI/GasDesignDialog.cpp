@@ -70,6 +70,7 @@ void GasDesignDialog::OnTwsDesignButtonClick()
     }
 
     GasDesignQuestionDialog dlg( true );
+	dlg.SetWindowTitle(_T("掘进面煤层气规模化抽采设计"));
     dlg.coal_id = coal_id;
     dlg.region = 1; // 对掘进面进行抽采设计
     dlg.Run( GetSafeHwnd() );
@@ -90,6 +91,7 @@ void GasDesignDialog::OnWsDesignButtonClick()
     }
 
     GasDesignQuestionDialog dlg( true );
+	dlg.SetWindowTitle(_T("回采工作面煤层气规模化抽采设计"));
     dlg.coal_id = coal_id;
     dlg.region = 2;  // 对工作面进行抽采设计
     dlg.Run( GetSafeHwnd() );
@@ -110,6 +112,7 @@ void GasDesignDialog::OnGoafDesignButtonClick()
     }
 
     GasDesignQuestionDialog dlg( true );
+	dlg.SetWindowTitle(_T("采空区或采动区煤层气规模化抽采设计"));
     dlg.coal_id = coal_id;
     dlg.region = 3;  // 对采空区进行抽采设计
     dlg.Run( GetSafeHwnd() );

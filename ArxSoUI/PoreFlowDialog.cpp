@@ -79,6 +79,7 @@ void PoreFlowDialog::OnSaveButtonClick()
 void PoreFlowDialog::OnKCaclButtonClick()
 {
     PoreFlowKDialog dlg( TRUE );
+	dlg.SetWindowTitle(_T("实际孔板流量特性系数K计算"));
     dlg.pore_flow_id = pore_flow_id;
     if( IDOK != dlg.Run( GetSafeHwnd() ) ) return;
 
@@ -103,6 +104,7 @@ void PoreFlowDialog::OnBCaclButtonClick()
 void PoreFlowDialog::OnDeltaPCaclButtonClick()
 {
     PoreFlowDeltaPDialog dlg( TRUE );
+	dlg.SetWindowTitle(_T("气压校正系数δp计算"));
     dlg.pore_flow_id = pore_flow_id;
     if( IDOK != dlg.Run( GetSafeHwnd() ) ) return;
 }

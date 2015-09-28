@@ -9,11 +9,11 @@
     </caption>
     <window pos="0,0" width="574" height="397" name="window0" margin-x="1" margin-y="1" enable="0" visible="0"/>
     <text pos="39,62" width="62" height="23" name="text1" margin-x="1" margin-y="1">煤层厚度</text>
-    <edit pos="115,60" width="67" height="26" readOnly="1" name="thick" margin-x="1" margin-y="1"/>
+    <edit pos="115,60" width="67" height="26" name="thick" margin-x="1" margin-y="1"/>
     <button pos="404,180" width="154" height="48" name="head_graph" margin-x="1" margin-y="1">走向剖面图</button>
     <text pos="21,37" width="84" height="23" name="text6" margin-x="1" margin-y="1">&gt;&gt;煤层参数</text>
     <text pos="206,62" width="62" height="23" name="text7" margin-x="1" margin-y="1">煤层倾角</text>
-    <edit pos="282,60" width="69" height="26" readOnly="1" name="dip_angle" margin-x="1" margin-y="1"/>
+    <edit pos="282,60" width="69" height="26" name="dip_angle" margin-x="1" margin-y="1"/>
     <text pos="39,120" width="62" height="23" name="text9" margin-x="1" margin-y="1">掘进长度</text>
     <edit pos="115,118" width="67" height="26" name="Lm" margin-x="1" margin-y="1"/>
     <text pos="21,95" width="114" height="23" name="text11" margin-x="1" margin-y="1">&gt;&gt;掘进巷道参数</text>

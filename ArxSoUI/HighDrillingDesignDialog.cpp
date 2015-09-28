@@ -41,6 +41,7 @@ LRESULT HighDrillingDesignDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
     m_BcdListctrl = FindChildByName2<SListCtrl>( L"bcd" );
 
     initDatas();
+	fillWsCombox();
 
     return 0;
 }
@@ -127,6 +128,7 @@ void HighDrillingDesignDialog::OnDrillSiteButtonClick()
 
     //显示对话框
     HighDrillingSiteDialog dlg( TRUE );
+	dlg.SetWindowTitle(_T("高位抽采钻场范围计算"));
     dlg.ws_id = work_surf->getID(); // 传入工作面id
     if( IDOK != dlg.Run( GetSafeHwnd() ) ) return;
 
@@ -163,6 +165,7 @@ void HighDrillingDesignDialog::OnDrillPoreButtonClick()
 
     //显示对话框
     HighDrillingPoreDialog dlg( TRUE );
+	dlg.SetWindowTitle(_T("高位抽采钻孔有效布设范围计算"));
     dlg.ws_id = work_surf->getID();  //传入工作面id
     dlg.Lg = Lg; // 传入Lg数据
     if( IDOK != dlg.Run( GetSafeHwnd() ) ) return;

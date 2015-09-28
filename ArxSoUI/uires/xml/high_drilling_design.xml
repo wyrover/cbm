@@ -10,11 +10,11 @@
     <text pos="34,227" width="138" height="23" name="text20" margin-x="1" margin-y="1">ABC范围内钻孔参数</text>
     <text pos="319,227" width="138" height="23" name="text22" margin-x="1" margin-y="1">BCD范围内钻孔参数</text>
     <text pos="35,110" width="141" height="23" name="text40" margin-x="1" margin-y="1">初次垮落循环步距L1</text>
-    <edit pos="181,108" width="106" height="26" readOnly="1" name="L1" margin-x="1" margin-y="1"/>
+    <edit pos="181,108" width="106" height="26" name="L1" margin-x="1" margin-y="1"/>
     <text pos="35,145" width="141" height="23" name="text42" margin-x="1" margin-y="1">周期垮落循环步距L2</text>
-    <edit pos="181,143" width="106" height="26" readOnly="1" name="L2" margin-x="1" margin-y="1"/>
+    <edit pos="181,143" width="106" height="26" name="L2" margin-x="1" margin-y="1"/>
     <text pos="35,177" width="111" height="23" name="text44" margin-x="1" margin-y="1">各钻场的间距Lg</text>
-    <edit pos="180,175" width="107" height="26" readOnly="1" name="Lg" margin-x="1" margin-y="1"/>
+    <edit pos="180,175" width="107" height="26" name="Lg" margin-x="1" margin-y="1"/>
     <text pos="15,77" width="114" height="23" name="text63" margin-x="1" margin-y="1">&gt;&gt;钻场布设范围</text>
     <window pos="0,0" width="613" height="386" name="window71" margin-x="1" margin-y="1" enable="0" visible="0"/>
     <text pos="16,46" width="77" height="23" name="text73" margin-x="1" margin-y="1">工作面列表</text>

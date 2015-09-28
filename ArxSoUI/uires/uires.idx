@@ -7,6 +7,7 @@
     <file name="about" path="xml\about.xml"/>
     <file name="adj_layer" path="xml\adj_layer.xml"/>
     <file name="coal" path="xml\coal.xml"/>
+    <file name="coal_design" path="xml\coal_design.xml"/>
     <file name="coal_layer_method" path="xml\coal_layer_method.xml"/>
     <file name="coal_layer_more" path="xml\coal_layer_more.xml"/>
     <file name="coal_layer_one" path="xml\coal_layer_one.xml"/>

@@ -219,7 +219,7 @@ void FieldHelper::InitDataFieldWithMoreInfo( const CString& fileName )
 
 void FieldHelper::InitDataField( const CString& fileName )
 {
-    acutPrintf( _T( "\n-->从路径: %s开始加载字段" ), fileName );
+    acutPrintf( _T( "\n加载数据文件" ), fileName );
 
     AcIfstream inFile( fileName );
     if( !inFile ) return;
@@ -233,7 +233,7 @@ void FieldHelper::InitDataField( const CString& fileName )
         FieldHelper::AddField( getype, field );
     }
     inFile.close();
-    acutPrintf( _T( "\n从路径: %s加载字段结束-->" ), fileName );
+    //acutPrintf( _T( "\n从路径: %s加载字段结束-->" ), fileName );
 }
 
 bool FuncFieldHelper::RemoveFunction( const CString& f )

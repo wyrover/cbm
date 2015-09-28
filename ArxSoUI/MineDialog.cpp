@@ -53,6 +53,7 @@ void MineDialog::OnNextButtonClick()
     AcadSouiDialog::OnOK();
 
     CoalDialog* dlg = new CoalDialog( FALSE );
+	dlg->SetWindowTitle(_T("请输入目标矿井煤层信息"));
     dlg->mine_id = mine_id;
     dlg->Run( acedGetAcadFrame()->GetSafeHwnd() );
 }

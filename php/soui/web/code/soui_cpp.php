@@ -462,7 +462,7 @@ function xxxx($dir)
     gbk_encoding($name);
   }
 }
-// xxxx('C:\Users\dlj\Desktop\ArxSoUI');
+// xxxx('C:\Users\dlj\Desktop\cbm\cbm\ArxSoUI\uires\xml');
 // xml_to_dialog('xml', 'cpp');
 // recurse_copy('cpp', 'C:\Develop\GitProject\cbm\ArxSoUI');
 

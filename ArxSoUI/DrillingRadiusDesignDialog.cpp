@@ -48,6 +48,7 @@ LRESULT DrillingRadiusDesignDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 
     initCoalDatas();
     initDrillingRadiusDatas();
+	fillCoalCombox();
 
     return 0;
 }

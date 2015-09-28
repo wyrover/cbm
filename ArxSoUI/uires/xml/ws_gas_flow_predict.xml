@@ -31,12 +31,12 @@
     </combobox>
     <button pos="231,322" width="70" height="31" name="qr_cacl" margin-x="1" margin-y="1">计算</button>
     <text pos="13,131" width="62" height="23" name="text97" margin-x="1" margin-y="1">煤层厚度</text>
-    <edit pos="94,129" width="79" height="26" readOnly="1" name="thick" margin-x="1" margin-y="1"/>
+    <edit pos="94,129" width="79" height="26" name="thick" margin-x="1" margin-y="1"/>
     <text pos="194,166" width="77" height="23" name="text99" margin-x="1" margin-y="1">工作面采高</text>
     <edit pos="275,164" width="83" height="26" name="hw" margin-x="1" margin-y="1"/>
     <text pos="13,170" width="77" height="23" name="text101" margin-x="1" margin-y="1">工作面长度</text>
     <edit pos="95,168" width="83" height="26" name="L" margin-x="1" margin-y="1"/>
     <text pos="194,131" width="77" height="23" name="text105" margin-x="1" margin-y="1">开采层厚度</text>
-    <edit pos="275,129" width="79" height="26" readOnly="1" name="ws_thick" margin-x="1" margin-y="1"/>
+    <edit pos="275,129" width="79" height="26" name="ws_thick" margin-x="1" margin-y="1"/>
   </root>
 </SOUI>

@@ -9,11 +9,11 @@
     </caption>
     <window pos="0,0" width="392" height="188" name="window173" margin-x="1" margin-y="1" enable="0" visible="0"/>
     <text pos="15,73" width="62" height="23" name="text176" margin-x="1" margin-y="1">煤层采高</text>
-    <edit pos="95,73" width="70" height="26" readOnly="1" name="hw" margin-x="1" margin-y="1"/>
+    <edit pos="95,73" width="70" height="26" name="hw" margin-x="1" margin-y="1"/>
     <text pos="203,71" width="70" height="23" name="text178" margin-x="1" margin-y="1">未知变量h</text>
-    <edit pos="274,71" width="70" height="26" readOnly="1" name="h" margin-x="1" margin-y="1"/>
+    <edit pos="274,71" width="70" height="26" name="h" margin-x="1" margin-y="1"/>
     <text pos="16,109" width="77" height="23" name="text196" margin-x="1" margin-y="1">冒落带高度</text>
-    <edit pos="96,108" width="65" height="26" readOnly="1" name="caving_zone_height" margin-x="1" margin-y="1"/>
+    <edit pos="96,108" width="65" height="26" name="caving_zone_height" margin-x="1" margin-y="1"/>
     <text pos="10,39" width="62" height="23" name="text198" margin-x="1" margin-y="1">覆岩岩性</text>
     <combobox pos="73,38" width="313" height="24" dropDown="1" curSel="0" name="rock" margin-x="1" margin-y="1" ncSkin="_skin.sys.border">
       <liststyle itemHeight="30" colorText="#000000" colorSelText="#FFFFFF" colorItemBkgnd="#FFFFFF" colorItemSelBkgnd="#000088"/>
@@ -25,7 +25,7 @@
       </items>
     </combobox>
     <text pos="203,109" width="62" height="23" name="text200" margin-x="1" margin-y="1">误差范围</text>
-    <edit pos="274,107" width="70" height="26" readOnly="1" name="tolerance" margin-x="1" margin-y="1"/>
+    <edit pos="274,107" width="70" height="26" name="tolerance" margin-x="1" margin-y="1"/>
     <button pos="148,142" width="124" height="40" name="save" margin-x="1" margin-y="1">确定</button>
   </root>
 </SOUI>

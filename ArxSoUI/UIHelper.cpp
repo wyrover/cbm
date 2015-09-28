@@ -75,12 +75,14 @@ void UIHelper::ShowModalDemo()
 
     LOG_TRACE( _T( "启动soui模态对话框" ) );
     DemoDialog dlg( TRUE );
+	dlg.SetWindowTitle(_T("Demo对话框"));
     dlg.Run( acedGetAcadFrame()->GetSafeHwnd() );
 }
 
 void UIHelper::TestRtfViewer()
 {
     RtfViewerDialog dlg( TRUE );
+	dlg.SetWindowTitle(_T("RTF文档阅读器"));
     //直接指定rtf资源(无  rtf:  前缀)
     dlg.setRtfRes( _T( "HELP1" ) );
     //或者直接一个rtf文件(最好是使用绝对路径)
@@ -91,6 +93,7 @@ void UIHelper::TestRtfViewer()
 void UIHelper::TestPicViewer()
 {
     PicViewerDialog dlg( TRUE );
+	dlg.SetWindowTitle(_T("图片查看器"));
     dlg.setPicSkin( _T( "skin_eval_proof" ) );
     dlg.Run( acedGetAcadFrame()->GetSafeHwnd() );
 
@@ -105,6 +108,7 @@ void UIHelper::Login()
     CAcModuleResourceOverride myResources;
 
     LoginDialog dlg( TRUE );
+	dlg.SetWindowTitle(_T("系统用户登录"));
     dlg.Run( acedGetAcadFrame()->GetSafeHwnd() );
 }
 
@@ -113,6 +117,7 @@ void UIHelper::RegMine()
     CAcModuleResourceOverride myResources;
 
     RegDialog dlg( TRUE );
+	dlg.SetWindowTitle(_T("注册新矿井及新用户"));
     dlg.Run( acedGetAcadFrame()->GetSafeHwnd() );
 }
 
@@ -147,6 +152,7 @@ void UIHelper::SampleManage()
         CAcModuleResourceOverride myResources;
 
         SampleManageDialog* dlg = new SampleManageDialog( FALSE );
+		dlg->SetWindowTitle(_T("示范矿区技术库管理"));
         dlg->Run( acedGetAcadFrame()->GetSafeHwnd() );
     }
 }
@@ -164,17 +170,18 @@ void UIHelper::MineDesign()
         //调用登录函数
         UIHelper::Login();
     }
-    else if( account_id == admin->getID() )
-    {
-        SMessageBox( acedGetAcadFrame()->GetSafeHwnd(), _T( "请注销并以非管理员账号登录!" ), _T( "友情提示" ), MB_OK );
-        //调用登录函数
-        UIHelper::Login();
-    }
+    //else if( account_id == admin->getID() )
+    //{
+    //    SMessageBox( acedGetAcadFrame()->GetSafeHwnd(), _T( "请注销并以非管理员账号登录!" ), _T( "友情提示" ), MB_OK );
+    //    //调用登录函数
+    //    UIHelper::Login();
+    //}
     else
     {
         CAcModuleResourceOverride myResources;
 
         MineDesignDialog* dlg = new MineDesignDialog( FALSE );
+		dlg->SetWindowTitle(_T("矿井设计"));
         //查询账户关联的矿井
         MinePtr mine = FIND_ONE( Mine, FKEY( Account ), Utils::int_to_cstring( account_id ) );
         dlg->mine_id = mine->getID();
@@ -206,6 +213,7 @@ void UIHelper::GasTechModeDecision()
         CAcModuleResourceOverride myResources;
 
         MineDialog* dlg = new MineDialog( FALSE );
+		dlg->SetWindowTitle(_T("请输入目标矿井基本信息:"));
         //查询账户关联的矿井
         MinePtr mine = FIND_ONE( Mine, FKEY( Account ), Utils::int_to_cstring( account_id ) );
         dlg->mine_id = mine->getID();
@@ -237,6 +245,7 @@ void UIHelper::KeyParamCacl()
         CAcModuleResourceOverride myResources;
 
         KeyParamDialog* dlg = new KeyParamDialog( FALSE );
+		dlg->SetWindowTitle(_T("抽采关键参数辅助计算"));
         //查询账户关联的矿井
         MinePtr mine = FIND_ONE( Mine, FKEY( Account ), Utils::int_to_cstring( account_id ) );
         dlg->mine_id = mine->getID();
@@ -268,6 +277,7 @@ void UIHelper::KP1()
         CAcModuleResourceOverride myResources;
 
         DifficultEvalDialog* dlg = new DifficultEvalDialog( FALSE );
+		dlg->SetWindowTitle(_T("煤层气抽采难易程度评价"));
         //查询账户关联的矿井
         MinePtr mine = FIND_ONE( Mine, FKEY( Account ), Utils::int_to_cstring( account_id ) );
         dlg->mine_id = mine->getID();
@@ -299,6 +309,7 @@ void UIHelper::KP2()
         CAcModuleResourceOverride myResources;
 
         MineGasReservesPredictDialog* dlg = new MineGasReservesPredictDialog( FALSE );
+		dlg->SetWindowTitle(_T("矿井煤层气储量及可抽量预测"));
         //查询账户关联的矿井
         MinePtr mine = FIND_ONE( Mine, FKEY( Account ), Utils::int_to_cstring( account_id ) );
         dlg->mine_id = mine->getID();
@@ -330,6 +341,7 @@ void UIHelper::KP3()
         CAcModuleResourceOverride myResources;
 
         MineGasFlowPredictDialog* dlg = new MineGasFlowPredictDialog( FALSE );
+		dlg->SetWindowTitle(_T("矿井瓦斯涌出量预测"));
         //查询账户关联的矿井
         MinePtr mine = FIND_ONE( Mine, FKEY( Account ), Utils::int_to_cstring( account_id ) );
         dlg->mine_id = mine->getID();
@@ -361,6 +373,7 @@ void UIHelper::KP4()
         CAcModuleResourceOverride myResources;
 
         TwsGasFlowPredictDialog* dlg = new TwsGasFlowPredictDialog( FALSE );
+		dlg->SetWindowTitle(_T("掘进工作面瓦斯涌出量预测"));
         //查询账户关联的矿井
         MinePtr mine = FIND_ONE( Mine, FKEY( Account ), Utils::int_to_cstring( account_id ) );
         dlg->mine_id = mine->getID();
@@ -392,6 +405,7 @@ void UIHelper::KP5()
         CAcModuleResourceOverride myResources;
 
         WsGasFlowPredictDialog* dlg = new WsGasFlowPredictDialog( FALSE );
+		dlg->SetWindowTitle(_T("回采工作面瓦斯涌出量预测"));
         //查询账户关联的矿井
         MinePtr mine = FIND_ONE( Mine, FKEY( Account ), Utils::int_to_cstring( account_id ) );
         dlg->mine_id = mine->getID();
@@ -423,6 +437,7 @@ void UIHelper::KP6()
         CAcModuleResourceOverride myResources;
 
         HighDrillingTunnelDialog* dlg = new HighDrillingTunnelDialog( FALSE );
+		dlg->SetWindowTitle(_T("高抽巷合理布设层位计算"));
         //查询账户关联的矿井
         MinePtr mine = FIND_ONE( Mine, FKEY( Account ), Utils::int_to_cstring( account_id ) );
         dlg->mine_id = mine->getID();
@@ -454,6 +469,7 @@ void UIHelper::KP7()
         CAcModuleResourceOverride myResources;
 
         HighDrillingDesignDialog* dlg = new HighDrillingDesignDialog( FALSE );
+		dlg->SetWindowTitle(_T("高位抽采钻孔有效布设范围计算"));
         //查询账户关联的矿井
         MinePtr mine = FIND_ONE( Mine, FKEY( Account ), Utils::int_to_cstring( account_id ) );
         dlg->mine_id = mine->getID();
@@ -485,6 +501,7 @@ void UIHelper::KP8()
         CAcModuleResourceOverride myResources;
 
         DrillingRadiusDesignDialog* dlg = new DrillingRadiusDesignDialog( FALSE );
+		dlg->SetWindowTitle(_T("煤层瓦斯抽采半径计算"));
         //查询账户关联的矿井
         MinePtr mine = FIND_ONE( Mine, FKEY( Account ), Utils::int_to_cstring( account_id ) );
         dlg->mine_id = mine->getID();
@@ -516,6 +533,7 @@ void UIHelper::KP9()
         CAcModuleResourceOverride myResources;
 
         PoreSizeDialog* dlg = new PoreSizeDialog( FALSE );
+		dlg->SetWindowTitle(_T("抽采管径大小辅助计算"));
         //查询账户关联的矿井
         MinePtr mine = FIND_ONE( Mine, FKEY( Account ), Utils::int_to_cstring( account_id ) );
         dlg->mine_id = mine->getID();
@@ -547,6 +565,7 @@ void UIHelper::KP10()
         CAcModuleResourceOverride myResources;
 
         PoreFlowDialog* dlg = new PoreFlowDialog( FALSE );
+		dlg->SetWindowTitle(_T("孔板流量计算"));
         //查询账户关联的矿井
         MinePtr mine = FIND_ONE( Mine, FKEY( Account ), Utils::int_to_cstring( account_id ) );
         dlg->mine_id = mine->getID();
@@ -578,6 +597,7 @@ void UIHelper::KP11()
         //CAcModuleResourceOverride myResources;
 
         //PoreFlowDialog* dlg = new PoreFlowDialog( FALSE );
+		//dlg->SetWindowTitle(_T("评价单元划分计算"));
         ////查询账户关联的矿井
         //MinePtr mine = FIND_ONE( Mine, FKEY( Account ), Utils::int_to_cstring( account_id ) );
         //dlg->mine_id = mine->getID();
@@ -609,6 +629,7 @@ void UIHelper::GasDesign()
         CAcModuleResourceOverride myResources;
 
         GasDesignDialog* dlg = new GasDesignDialog( FALSE );
+		dlg->SetWindowTitle(_T("井下规模化抽采煤层气技术辅助设计"));
         //查询账户关联的矿井
         MinePtr mine = FIND_ONE( Mine, FKEY( Account ), Utils::int_to_cstring( account_id ) );
         dlg->mine_id = mine->getID();
@@ -621,6 +642,7 @@ void UIHelper::PolicyHelp()
     CAcModuleResourceOverride myResources;
 
     PolicyDialog* dlg = new PolicyDialog( FALSE );
+	dlg->SetWindowTitle(_T("查看煤层气抽采相关标准、规范及政策"));
     dlg->Run( acedGetAcadFrame()->GetSafeHwnd() );
 }
 
@@ -664,6 +686,7 @@ void UIHelper::Main()
         CAcModuleResourceOverride myResources;
 
         MainDialog* dlg = new MainDialog( FALSE );
+		dlg->SetWindowTitle(_T("井下煤层气规模化抽采计算机辅助设计"));
         //查询账户关联的矿井
         MinePtr mine = FIND_ONE( Mine, FKEY( Account ), Utils::int_to_cstring( account_id ) );
         dlg->mine_id = mine->getID();

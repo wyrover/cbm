@@ -12,7 +12,7 @@
     <text pos="22,60" width="150" height="23" name="text3" margin-x="1" margin-y="1">管路内混合瓦斯流量Q</text>
     <edit pos="178,58" width="86" height="26" name="Q" margin-x="1" margin-y="1"/>
     <text pos="22,126" width="132" height="23" name="text5" margin-x="1" margin-y="1">管路最大工作压力P</text>
-    <edit pos="273,212" width="71" height="26" readOnly="1" name="delta" margin-x="1" margin-y="1"/>
+    <edit pos="273,212" width="71" height="26" name="delta" margin-x="1" margin-y="1"/>
     <text pos="22,93" width="73" height="23" name="text7" margin-x="1" margin-y="1">经济流速V</text>
     <edit pos="96,91" width="71" height="26" name="V" margin-x="1" margin-y="1"/>
     <text pos="22,160" width="70" height="23" name="text9" margin-x="1" margin-y="1">容许压力σ</text>
@@ -20,7 +20,7 @@
     <text pos="200,214" width="70" height="23" name="text11" margin-x="1" margin-y="1">管路壁厚δ</text>
     <edit pos="154,124" width="71" height="26" name="P" margin-x="1" margin-y="1"/>
     <text pos="22,214" width="73" height="23" name="text13" margin-x="1" margin-y="1">管路内径D</text>
-    <edit pos="98,214" width="71" height="26" readOnly="1" name="D" margin-x="1" margin-y="1"/>
+    <edit pos="98,214" width="71" height="26" name="D" margin-x="1" margin-y="1"/>
     <button pos="272,55" width="72" height="32" name="hint" margin-x="1" margin-y="1">提示</button>
     <text pos="171,93" width="139" height="23" name="text18" margin-x="1" margin-y="1">(注：可取5～12m/s)</text>
     <button pos="77,246" width="95" height="40" name="cacl" margin-x="1" margin-y="1">计算</button>

@@ -95,6 +95,9 @@ void SComboBoxHelper::Select( SComboBox* combox, int i )
         {
             i = 0;
         }
+		
+		//EventCBSelChange evtCBSelChange( combox, i );
+		//combox->GetParent()->FireEvent(evtCBSelChange);
         combox->SetCurSel( i );
     }
 }

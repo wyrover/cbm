@@ -14,6 +14,8 @@ protected:
     void OnRegButtonClick();
     void OnBaseComboxSelChanged( SOUI::EventArgs* pEvt );
     void OnRegionComboxSelChanged( SOUI::EventArgs* pEvt );
+	void OnTopoGeoComboxSelChanged(SOUI::EventArgs *pEvt);
+	void OnHydrGeoComboxSelChanged(SOUI::EventArgs *pEvt);
 
     /** ²Ëµ¥ÏûÏ¢ */
 protected:
@@ -30,6 +32,8 @@ protected:
     EVENT_NAME_COMMAND( _T( "reg" ), OnRegButtonClick )
     EVENT_NAME_HANDLER( _T( "base" ), EVT_CB_SELCHANGE, OnBaseComboxSelChanged )
     EVENT_NAME_HANDLER( _T( "region" ), EVT_CB_SELCHANGE, OnRegionComboxSelChanged )
+	EVENT_NAME_HANDLER(_T("topo_geo"), EVT_CB_SELCHANGE, OnTopoGeoComboxSelChanged)
+	EVENT_NAME_HANDLER(_T("hydr_geo"), EVT_CB_SELCHANGE, OnHydrGeoComboxSelChanged)
     CHAIN_EVENT_MAP( AcadSouiDialog )
     EVENT_MAP_END()
 
@@ -50,6 +54,10 @@ protected:
     SEdit* m_PasswordEdit;
     SComboBox* m_BaseCombox;
     SComboBox* m_RegionCombox;
+	SComboBox* m_TopoGeoCombox;
+	SCheckBox* m_GroundCondCheck;
+	SComboBox* m_HydrGeoCombox;
+	SEdit* m_CapacityEdit;
 
 private:
     void fillBaseCombox();

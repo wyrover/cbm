@@ -26,6 +26,13 @@ protected:
     void OnSaveButtonClick();
     void OnBaseComboxSelChanged( SOUI::EventArgs* pEvt );
     void OnRegionComboxSelChanged( SOUI::EventArgs* pEvt );
+	void OnMoreMineButtonClick();
+	void OnMoreCoalButtonClick();
+	void OnMoreWorkAreaButtonClick();
+	void OnMoreWorkSurfButtonClick();
+	void OnMoreDrillingSurfButtonClick();
+	void OnTopoGeoComboxSelChanged(SOUI::EventArgs *pEvt);
+	void OnHydrGeoComboxSelChanged(SOUI::EventArgs *pEvt);
 
     /** ²Ëµ¥ÏûÏ¢ */
 protected:
@@ -54,6 +61,13 @@ protected:
     EVENT_NAME_COMMAND( _T( "save" ), OnSaveButtonClick )
     EVENT_NAME_HANDLER( _T( "base" ), EVT_CB_SELCHANGE, OnBaseComboxSelChanged )
     EVENT_NAME_HANDLER( _T( "region" ), EVT_CB_SELCHANGE, OnRegionComboxSelChanged )
+	EVENT_NAME_COMMAND(_T("more_mine"), OnMoreMineButtonClick)
+	EVENT_NAME_COMMAND(_T("more_coal"), OnMoreCoalButtonClick)
+	EVENT_NAME_COMMAND(_T("more_work_area"), OnMoreWorkAreaButtonClick)
+	EVENT_NAME_COMMAND(_T("more_work_surf"), OnMoreWorkSurfButtonClick)
+	EVENT_NAME_COMMAND(_T("more_drilling_surf"), OnMoreDrillingSurfButtonClick)
+	EVENT_NAME_HANDLER(_T("topo_geo"), EVT_CB_SELCHANGE, OnTopoGeoComboxSelChanged)
+	EVENT_NAME_HANDLER(_T("hydr_geo"), EVT_CB_SELCHANGE, OnHydrGeoComboxSelChanged)
     CHAIN_EVENT_MAP( AcadSouiDialog )
     EVENT_MAP_END()
 
@@ -75,6 +89,10 @@ protected:
     SEdit* m_CityEdit;
     SComboBox* m_BaseCombox;
     SComboBox* m_RegionCombox;
+	SComboBox* m_TopoGeoCombox;
+	SCheckBox* m_GroundCondCheck;
+	SComboBox* m_HydrGeoCombox;
+	SEdit* m_CapacityEdit;
 
 public:
     int mine_id;

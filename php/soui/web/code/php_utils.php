@@ -276,7 +276,7 @@ function escapeUnicodeString($value)
 * @return string|null 返回 编码名 或 null
 */
  function detect_encoding($file) {
-     $list = array('GB2312', 'GBK', 'UTF-8', 'UTF-16LE', 'UTF-16BE', 'ISO-8859-1');
+     $list = array('ASCII', 'GB2312', 'GBK', 'UTF-8', 'UTF-16LE', 'UTF-16BE', 'ISO-8859-1');
      $str = file_get_contents($file);
      foreach ($list as $item) {
          $tmp = mb_convert_encoding($str, $item, $item);

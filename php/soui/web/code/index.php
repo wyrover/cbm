@@ -627,7 +627,7 @@ function mockups_to_soui_xml($jsonfile, $bMainWnd = true)
 
     if(isset($control['properties']['state'])) {
       if($control['properties']['state'] == 'disabled') {
-        $attribs['enable'] = 0;
+        // $attribs['enable'] = 0;
       }
     }
 
@@ -654,7 +654,7 @@ function mockups_to_soui_xml($jsonfile, $bMainWnd = true)
       if(isset($control['properties']['state'])) {
         if($control['properties']['state'] == 'disabled') {
           unset($attribs['enable']);
-          $attribs['readOnly'] = 1;
+          // $attribs['readOnly'] = 1;
         }
       }
     }
@@ -1118,7 +1118,7 @@ function UpdateInitXml($dir, $resType='img')
 function genResNameTxtFile()
 {
   $file = fopen("ResName.txt", 'w');
-  fwrite($file, "layout:rtf_viewer");
+  fwrite($file, "layout:coal_design");
   fclose($file);
 }
 

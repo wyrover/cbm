@@ -9,15 +9,15 @@
     </caption>
     <window pos="0,0" width="225" height="257" name="window155" margin-x="1" margin-y="1" enable="0" visible="0"/>
     <text pos="17,41" width="62" height="23" name="text157" margin-x="1" margin-y="1">煤层采高</text>
-    <edit pos="83,39" width="70" height="26" readOnly="1" name="hw" margin-x="1" margin-y="1"/>
+    <edit pos="83,39" width="70" height="26" name="hw" margin-x="1" margin-y="1"/>
     <text pos="22,76" width="62" height="23" name="text159" margin-x="1" margin-y="1">煤层倾角</text>
-    <edit pos="84,75" width="70" height="26" readOnly="1" name="dip_angle" margin-x="1" margin-y="1"/>
+    <edit pos="84,75" width="70" height="26" name="dip_angle" margin-x="1" margin-y="1"/>
     <text pos="17,146" width="122" height="23" name="text161" margin-x="1" margin-y="1">冒落岩石碎胀系数</text>
     <edit pos="140,144" width="70" height="26" name="czk" margin-x="1" margin-y="1"/>
     <button pos="56,210" width="124" height="40" name="save" margin-x="1" margin-y="1">确定</button>
     <text pos="15,109" width="77" height="23" name="text164" margin-x="1" margin-y="1">顶板下沉值</text>
     <edit pos="90,107" width="70" height="26" name="czw" margin-x="1" margin-y="1"/>
     <text pos="17,177" width="77" height="23" name="text192" margin-x="1" margin-y="1">冒落带高度</text>
-    <edit pos="97,176" width="65" height="26" readOnly="1" name="caving_zone_height" margin-x="1" margin-y="1"/>
+    <edit pos="97,176" width="65" height="26" name="caving_zone_height" margin-x="1" margin-y="1"/>
   </root>
 </SOUI>

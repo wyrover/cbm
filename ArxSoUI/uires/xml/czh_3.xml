@@ -20,10 +20,10 @@
       </items>
     </combobox>
     <text pos="20,72" width="167" height="23" name="text171" margin-x="1" margin-y="1">厚煤层分层开采累计煤厚</text>
-    <edit pos="193,70" width="70" height="26" readOnly="1" name="hw_sum" margin-x="1" margin-y="1"/>
+    <edit pos="193,70" width="70" height="26" name="hw_sum" margin-x="1" margin-y="1"/>
     <text pos="187,106" width="62" height="23" name="text188" margin-x="1" margin-y="1">误差范围</text>
-    <edit pos="250,104" width="59" height="26" readOnly="1" name="tolerance" margin-x="1" margin-y="1"/>
+    <edit pos="250,104" width="59" height="26" name="tolerance" margin-x="1" margin-y="1"/>
     <text pos="20,105" width="77" height="23" name="text194" margin-x="1" margin-y="1">冒落带高度</text>
-    <edit pos="100,104" width="65" height="26" readOnly="1" name="caving_zone_height" margin-x="1" margin-y="1"/>
+    <edit pos="100,104" width="65" height="26" name="caving_zone_height" margin-x="1" margin-y="1"/>
   </root>
 </SOUI>

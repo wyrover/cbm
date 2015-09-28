@@ -383,6 +383,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\CoalDesignDialog.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\DoubleLine.cpp"
 				>
 			</File>
@@ -724,13 +728,6 @@
 				<File
 					RelativePath=".\CreatReport.cpp"
 					>
-					<FileConfiguration
-						Name="Debug|x64"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\msword.cpp"
@@ -742,6 +739,10 @@
 			Name="Include Files"
 			Filter="h;hh;hxx"
 			>
+			<File
+				RelativePath=".\CoalDesignDialog.h"
+				>
+			</File>
 			<File
 				RelativePath=".\Data.h"
 				>

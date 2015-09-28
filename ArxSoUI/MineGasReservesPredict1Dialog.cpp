@@ -75,6 +75,7 @@ void MineGasReservesPredict1Dialog::OnW1CaclButtonClick()
 {
     //提取数据进行计算
     MineGasReservesPredictInputDialog dlg( TRUE );
+	dlg.SetWindowTitle(_T("可采煤层瓦斯储量"));
     dlg.mine_id = this->mine_id;
     dlg.Run( GetSafeHwnd() );
 

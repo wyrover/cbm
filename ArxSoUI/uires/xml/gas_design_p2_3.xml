@@ -13,10 +13,10 @@
     <button pos="411,72" width="154" height="48" name="plane_graph" margin-x="1" margin-y="1">平面图</button>
     <button pos="411,271" width="154" height="48" name="save" margin-x="1" margin-y="1">保存</button>
     <text pos="34,65" width="62" height="23" name="text7" margin-x="1" margin-y="1">煤层厚度</text>
-    <edit pos="110,63" width="67" height="26" readOnly="1" name="thick" margin-x="1" margin-y="1"/>
+    <edit pos="110,63" width="67" height="26" name="thick" margin-x="1" margin-y="1"/>
     <text pos="16,40" width="84" height="23" name="text9" margin-x="1" margin-y="1">&gt;&gt;煤层参数</text>
     <text pos="225,67" width="62" height="23" name="text10" margin-x="1" margin-y="1">煤层倾角</text>
-    <edit pos="301,65" width="69" height="26" readOnly="1" name="dip_angle" margin-x="1" margin-y="1"/>
+    <edit pos="301,65" width="69" height="26" name="dip_angle" margin-x="1" margin-y="1"/>
     <text pos="40,120" width="62" height="23" name="text12" margin-x="1" margin-y="1">顺槽长度</text>
     <edit pos="116,118" width="67" height="26" name="L1" margin-x="1" margin-y="1"/>
     <text pos="16,95" width="99" height="23" name="text14" margin-x="1" margin-y="1">&gt;&gt;工作面参数</text>

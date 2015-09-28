@@ -9,11 +9,11 @@
     </caption>
     <window pos="0,0" width="754" height="388" name="window0" margin-x="1" margin-y="1" enable="0" visible="0"/>
     <text pos="39,62" width="62" height="23" name="text3" margin-x="1" margin-y="1">煤层厚度</text>
-    <edit pos="115,60" width="67" height="26" readOnly="1" name="thick" margin-x="1" margin-y="1"/>
+    <edit pos="115,60" width="67" height="26" name="thick" margin-x="1" margin-y="1"/>
     <button pos="399,324" width="154" height="48" name="head_graph" margin-x="1" margin-y="1">走向剖面图</button>
     <text pos="21,37" width="84" height="23" name="text12" margin-x="1" margin-y="1">&gt;&gt;煤层参数</text>
     <text pos="230,64" width="62" height="23" name="text13" margin-x="1" margin-y="1">煤层倾角</text>
-    <edit pos="306,62" width="69" height="26" readOnly="1" name="dip_angle" margin-x="1" margin-y="1"/>
+    <edit pos="306,62" width="69" height="26" name="dip_angle" margin-x="1" margin-y="1"/>
     <text pos="45,117" width="62" height="23" name="text15" margin-x="1" margin-y="1">顺槽长度</text>
     <edit pos="121,115" width="67" height="26" name="L1" margin-x="1" margin-y="1"/>
     <text pos="21,92" width="99" height="23" name="text17" margin-x="1" margin-y="1">&gt;&gt;工作面参数</text>

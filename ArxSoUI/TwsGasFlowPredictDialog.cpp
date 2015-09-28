@@ -247,7 +247,7 @@ void TwsGasFlowPredictDialog::initTwsDatas()
     m_RhoEdit->SetWindowText( NULL );
     m_SEdit->SetWindowText( NULL );
     m_GasWc2Edit->SetWindowText( NULL );
-    m_TwsCombox->SetCurSel( -1 );
+    //m_TwsCombox->SetCurSel( -1 );
 }
 
 void TwsGasFlowPredictDialog::fillTwsCombox()

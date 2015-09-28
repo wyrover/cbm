@@ -156,6 +156,7 @@ void CoalDialog::OnNextButtonClick()
 {
     AcadSouiDialog::OnOK();
     DecisionDialog* dlg = new DecisionDialog( FALSE );
+	dlg->SetWindowTitle(_T("依据示范矿区技术库智能决策"));
     dlg->mine_id = mine_id;
     dlg->Run( acedGetAcadFrame()->GetSafeHwnd() );
 }
@@ -273,6 +274,7 @@ void CoalDialog::OnCoalComboxSelChanged( SOUI::EventArgs* pEvt )
 void CoalDialog::OnMineIndexCaclButtonClick()
 {
     MineIndexDialog dlg( TRUE );
+	dlg.SetWindowTitle(_T("可采性指数计算"));
     if( IDOK != dlg.Run( GetSafeHwnd() ) ) return;
 
     //取出数据
@@ -286,6 +288,7 @@ void CoalDialog::OnMineIndexCaclButtonClick()
 void CoalDialog::OnVarCoeffCaclButtonClick()
 {
     VarCoeffDialog dlg( TRUE );
+	dlg.SetWindowTitle(_T("煤厚变异系数计算"));
     if( IDOK != dlg.Run( GetSafeHwnd() ) ) return;
 
     //取出数据
@@ -355,6 +358,7 @@ void CoalDialog::OnCzhCaclButtonClick()
         if( IDYES == SMessageBox( GetSafeHwnd(), _T( "煤层顶板覆盖为“极坚硬岩层”?" ), _T( "友情提示" ), MB_YESNO ) )
         {
             Czh1Dialog dlg( TRUE );
+			dlg.SetWindowTitle(_T("冒落带高度计算"));
             dlg.coal_id = coal_id;
             dlg.Run( GetSafeHwnd() );
         }
@@ -363,12 +367,14 @@ void CoalDialog::OnCzhCaclButtonClick()
             if( IDYES == SMessageBox( GetSafeHwnd(), _T( "厚煤层分层开采?" ), _T( "友情提示" ), MB_YESNO ) )
             {
                 Czh3Dialog dlg( TRUE );
+				dlg.SetWindowTitle(_T("冒落带高度计算"));
                 dlg.coal_id = coal_id;
                 dlg.Run( GetSafeHwnd() );
             }
             else
             {
                 Czh2Dialog dlg( TRUE );
+				dlg.SetWindowTitle(_T("冒落带高度计算"));
                 dlg.coal_id = coal_id;
                 dlg.Run( GetSafeHwnd() );
             }
@@ -377,6 +383,7 @@ void CoalDialog::OnCzhCaclButtonClick()
     else
     {
         Czh4Dialog dlg( TRUE );
+		dlg.SetWindowTitle(_T("冒落带高度计算"));
         dlg.coal_id = coal_id;
         dlg.Run( GetSafeHwnd() );
     }

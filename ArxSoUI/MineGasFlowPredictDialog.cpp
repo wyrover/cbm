@@ -198,6 +198,7 @@ void MineGasFlowPredictDialog::OnDesignWorkAreaButtonClick()
     //调用对话框
     //工作面和掘进面的瓦斯涌出量相关参数及设计
     MineGasFlowPredictDesignDialog dlg( TRUE );
+	dlg.SetWindowTitle(_T("工作面和掘进面的瓦斯涌出量相关参数及设计"));
     dlg.work_area_id = work_area->getID(); // 传入采区id编号
     dlg.Run( GetSafeHwnd() );
 }

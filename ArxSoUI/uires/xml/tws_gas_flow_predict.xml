@@ -9,14 +9,14 @@
     </caption>
     <window pos="0,0" width="426" height="542" name="window38" margin-x="1" margin-y="1" enable="0" visible="0"/>
     <text pos="25,384" width="260" height="23" name="text52" margin-x="1" margin-y="1">掘进工作面巷道煤壁绝对瓦斯涌出量q3</text>
-    <edit pos="290,383" width="73" height="26" readOnly="1" name="q3" margin-x="1" margin-y="1"/>
+    <edit pos="290,383" width="73" height="26" name="q3" margin-x="1" margin-y="1"/>
     <text pos="25,416" width="231" height="23" name="text54" margin-x="1" margin-y="1">掘进工作面落煤绝对瓦斯涌出量q4</text>
-    <edit pos="261,415" width="63" height="26" readOnly="1" name="q4" margin-x="1" margin-y="1"/>
+    <edit pos="261,415" width="63" height="26" name="q4" margin-x="1" margin-y="1"/>
     <button pos="251,490" width="109" height="42" name="save" margin-x="1" margin-y="1">保存</button>
     <text pos="25,456" width="182" height="23" name="text66" margin-x="1" margin-y="1">掘进工作面绝对瓦斯涌出量</text>
-    <edit pos="212,455" width="73" height="26" readOnly="1" name="qa" margin-x="1" margin-y="1"/>
+    <edit pos="212,455" width="73" height="26" name="qa" margin-x="1" margin-y="1"/>
     <text pos="25,347" width="245" height="23" name="text69" margin-x="1" margin-y="1">掘进工作面巷道煤壁瓦斯涌出强度q0</text>
-    <edit pos="290,345" width="73" height="26" readOnly="1" name="q0" margin-x="1" margin-y="1"/>
+    <edit pos="290,345" width="73" height="26" name="q0" margin-x="1" margin-y="1"/>
     <text pos="25,219" width="238" height="23" name="text71" margin-x="1" margin-y="1">巷道断面内暴露煤壁面的周边长度D</text>
     <edit pos="266,217" width="73" height="26" name="D" margin-x="1" margin-y="1"/>
     <text pos="26,257" width="130" height="23" name="text73" margin-x="1" margin-y="1">巷道平均掘进速度υ</text>
@@ -24,15 +24,15 @@
     <text pos="25,292" width="101" height="23" name="text75" margin-x="1" margin-y="1">掘进巷道长度L</text>
     <edit pos="129,290" width="73" height="26" name="L" margin-x="1" margin-y="1"/>
     <text pos="25,90" width="124" height="23" name="text77" margin-x="1" margin-y="1">煤中挥发分含量Vr</text>
-    <edit pos="157,88" width="73" height="26" readOnly="1" name="Vr" margin-x="1" margin-y="1"/>
+    <edit pos="157,88" width="73" height="26" name="Vr" margin-x="1" margin-y="1"/>
     <text pos="25,129" width="146" height="23" name="text79" margin-x="1" margin-y="1">煤层原始瓦斯含量W0</text>
-    <edit pos="179,127" width="73" height="26" readOnly="1" name="gas_W0" margin-x="1" margin-y="1"/>
+    <edit pos="179,127" width="73" height="26" name="gas_W0" margin-x="1" margin-y="1"/>
     <text pos="254,91" width="70" height="23" name="text81" margin-x="1" margin-y="1">煤的密度γ</text>
-    <edit pos="330,88" width="73" height="26" readOnly="1" name="rho" margin-x="1" margin-y="1"/>
+    <edit pos="330,88" width="73" height="26" name="rho" margin-x="1" margin-y="1"/>
     <text pos="218,292" width="117" height="23" name="text83" margin-x="1" margin-y="1">掘进巷道断面积S</text>
     <edit pos="337,290" width="73" height="26" name="S" margin-x="1" margin-y="1"/>
     <text pos="25,163" width="220" height="23" name="text85" margin-x="1" margin-y="1">运出矿井后煤的残存瓦斯含量Wc</text>
-    <edit pos="257,161" width="73" height="26" readOnly="1" name="gas_Wc2" margin-x="1" margin-y="1"/>
+    <edit pos="257,161" width="73" height="26" name="gas_Wc2" margin-x="1" margin-y="1"/>
     <button pos="86,491" width="105" height="40" name="cacl" margin-x="1" margin-y="1">计算</button>
     <button pos="337,158" width="80" height="32" name="wc_cacl" margin-x="1" margin-y="1">计算</button>
     <text pos="14,65" width="84" height="23" name="text99" margin-x="1" margin-y="1">&gt;&gt;煤层参数</text>

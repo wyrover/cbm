@@ -206,6 +206,7 @@ void SampleManageDialog::OnTechModeButtonClick()
 {
     CString regionName = m_RegionCombox->GetLBText( m_RegionCombox->GetCurSel() );
     TechModeDialog dlg( TRUE );
+	dlg.SetWindowTitle(_T("煤层气（瓦斯）抽采技术模式参数设定"));
     dlg.regionName = regionName; // 传入示范矿区的名称
     dlg.Run( GetSafeHwnd() );
 }
@@ -214,6 +215,7 @@ void SampleManageDialog::OnTechnologyButtonClick()
 {
     CString regionName = SComboBoxHelper::GetCurSelString( m_RegionCombox );
     TechnologyDialog dlg( TRUE );
+	dlg.SetWindowTitle(_T("推荐煤层气（瓦斯）抽采技术"));
     dlg.regionName = regionName; // 传入示范矿区的名称
     dlg.Run( GetSafeHwnd() );
 }

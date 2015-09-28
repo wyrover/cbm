@@ -58,6 +58,7 @@ static void RunGasDesignDlg( int coal_id, int region, int whick_tech, int tech_i
         if( whick_tech == 1 )
         {
             GasDesignP11Dialog* dlg = new GasDesignP11Dialog( FALSE );
+			dlg->SetWindowTitle(_T("底板岩巷密集穿层钻孔抽采煤巷条带瓦斯"));
             dlg->coal_id = coal_id;
             dlg->tech_id = tech_id;
             dlg->Run( acedGetAcadFrame()->GetSafeHwnd() );
@@ -65,6 +66,7 @@ static void RunGasDesignDlg( int coal_id, int region, int whick_tech, int tech_i
         else if( whick_tech == 2 )
         {
             GasDesignP12Dialog* dlg = new GasDesignP12Dialog( FALSE );
+			dlg->SetWindowTitle(_T("顺层钻孔条带掩护巷道掘进抽采方法"));
             dlg->coal_id = coal_id;
             dlg->tech_id = tech_id;
             dlg->Run( acedGetAcadFrame()->GetSafeHwnd() );
@@ -79,6 +81,7 @@ static void RunGasDesignDlg( int coal_id, int region, int whick_tech, int tech_i
         if( whick_tech == 1 )
         {
             GasDesignP21Dialog* dlg = new GasDesignP21Dialog( FALSE );
+			dlg->SetWindowTitle(_T("底板岩巷大面积穿层钻孔抽采工作面瓦斯"));
             dlg->coal_id = coal_id;
             dlg->tech_id = tech_id;
             dlg->Run( acedGetAcadFrame()->GetSafeHwnd() );
@@ -90,6 +93,7 @@ static void RunGasDesignDlg( int coal_id, int region, int whick_tech, int tech_i
         else if( whick_tech == 3 )
         {
             GasDesignP23Dialog* dlg = new GasDesignP23Dialog( FALSE );
+			dlg->SetWindowTitle(_T("顺层平行钻孔抽采工作面瓦斯"));
             dlg->coal_id = coal_id;
             dlg->tech_id = tech_id;
             dlg->Run( acedGetAcadFrame()->GetSafeHwnd() );
@@ -97,6 +101,7 @@ static void RunGasDesignDlg( int coal_id, int region, int whick_tech, int tech_i
         else if( whick_tech == 4 )
         {
             GasDesignP23Dialog* dlg = new GasDesignP23Dialog( FALSE );
+			dlg->SetWindowTitle(_T("顺层交叉钻孔抽采工作面瓦斯"));
             dlg->coal_id = coal_id;
             dlg->tech_id = tech_id;
             dlg->Run( acedGetAcadFrame()->GetSafeHwnd() );

@@ -36,7 +36,7 @@ LRESULT HighDrillingTunnelDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
     m_DipAngleEdit = FindChildByName2<SEdit>( L"dip_angle" );
     m_RockCombox = FindChildByName2<SComboBox>( L"rock" );
     m_HzMinEdit = FindChildByName2<SEdit>( L"Hz_min" );
-    m_HzMaxEdit = FindChildByName2<SEdit>( L"edit14" );
+    m_HzMaxEdit = FindChildByName2<SEdit>( L"Hz_max" );
     m_WsCombox = FindChildByName2<SComboBox>( L"ws" );
 
     initWsDatas();

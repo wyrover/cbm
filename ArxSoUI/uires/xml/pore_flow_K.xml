@@ -14,7 +14,7 @@
     <text pos="16,77" width="77" height="23" name="text36" margin-x="1" margin-y="1">孔板直径d1</text>
     <edit pos="100,77" width="86" height="26" name="d1" margin-x="1" margin-y="1"/>
     <text pos="16,139" width="162" height="23" name="text38" margin-x="1" margin-y="1">实际孔板流量特性系数K</text>
-    <edit pos="189,137" width="91" height="26" readOnly="1" name="K" margin-x="1" margin-y="1"/>
+    <edit pos="189,137" width="91" height="26" name="K" margin-x="1" margin-y="1"/>
     <button pos="72,170" width="143" height="40" name="save" margin-x="1" margin-y="1">保存</button>
     <window pos="0,0" width="294" height="217" name="window42" margin-x="1" margin-y="1" enable="0" visible="0"/>
   </root>

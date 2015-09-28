@@ -39,6 +39,7 @@ LRESULT LoginDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 void LoginDialog::OnRegButtonClick()
 {
     RegDialog dlg( TRUE );
+	dlg.SetWindowTitle(_T("注册新矿井以及新用户"));
     dlg.Run( this->m_hWnd );
     //SMessageBox(m_hWnd,_T("注册矿井信息"),_T("测试"),MB_OK);
 }

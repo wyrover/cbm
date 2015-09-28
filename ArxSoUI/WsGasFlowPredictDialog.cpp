@@ -55,6 +55,7 @@ void WsGasFlowPredictDialog::OnQr1CaclButtonClick()
 {
     //显示对话框
     WsGasFlowPredictWorkDialog dlg( TRUE );
+	dlg.SetWindowTitle(_T("开采层相对瓦斯涌出量q1计算"));
     dlg.Run( GetSafeHwnd() );
 
     int ws_id = SComboBoxHelper::GetCurSelItemID( m_WsCombox );
@@ -84,6 +85,7 @@ void WsGasFlowPredictDialog::OnQr2CaclButtonClick()
 {
     //显示对话框
     WsGasFlowPredictAdjDialog dlg( TRUE );
+	dlg.SetWindowTitle(_T("邻近层相对瓦斯涌出量q2计算"));
     dlg.Run( GetSafeHwnd() );
 
     int ws_id = SComboBoxHelper::GetCurSelItemID( m_WsCombox );

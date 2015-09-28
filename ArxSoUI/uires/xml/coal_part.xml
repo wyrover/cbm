@@ -52,9 +52,9 @@
     <text pos="0,237" width="122" height="23" name="text71" margin-x="1" margin-y="1">与上覆煤层层间距</text>
     <edit pos="124,235" width="65" height="26" name="layer_gap" margin-x="1" margin-y="1"/>
     <text pos="241,237" width="92" height="23" name="text73" margin-x="1" margin-y="1">采动影响倍数</text>
-    <edit pos="338,235" width="59" height="26" readOnly="1" name="influence_factor" margin-x="1" margin-y="1"/>
+    <edit pos="338,235" width="59" height="26" name="influence_factor" margin-x="1" margin-y="1"/>
     <edit pos="80,165" width="65" height="26" name="mine_index" margin-x="1" margin-y="1"/>
-    <combobox pos="302,203" width="92" height="24" enable="0" dropDown="1" curSel="0" name="stability" margin-x="1" margin-y="1" ncSkin="_skin.sys.border">
+    <combobox pos="302,203" width="92" height="24" dropDown="1" curSel="0" name="stability" margin-x="1" margin-y="1" ncSkin="_skin.sys.border">
       <liststyle itemHeight="30" colorText="#000000" colorSelText="#FFFFFF" colorItemBkgnd="#FFFFFF" colorItemSelBkgnd="#000088"/>
       <items>
         <item text="稳定煤层"/>

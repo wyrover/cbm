@@ -37,6 +37,10 @@ LRESULT RegDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
     m_PasswordEdit = FindChildByName2<SEdit>( L"password" );
     m_BaseCombox = FindChildByName2<SComboBox>( L"base" );
     m_RegionCombox = FindChildByName2<SComboBox>( L"region" );
+	m_TopoGeoCombox = FindChildByName2<SComboBox>(L"topo_geo");
+	m_GroundCondCheck = FindChildByName2<SCheckBox>(L"ground_cond");
+	m_HydrGeoCombox = FindChildByName2<SComboBox>(L"hydr_geo");
+	m_CapacityEdit = FindChildByName2<SEdit>(L"capacity");
 
     fillBaseCombox();
 
@@ -47,14 +51,6 @@ void RegDialog::OnRegButtonClick()
 {
     CString user = m_UsernameEdit->GetWindowText();
     CString pwd = m_PasswordEdit->GetWindowText();
-    CString name = m_NameEdit->GetWindowText();
-    CString regionName = m_RegionCombox->GetWindowText();
-    CString province = m_ProvinceEdit->GetWindowText();
-    CString city = m_CityEdit->GetWindowText();
-    //CString coal_nums = m_CoalNumsEdit->GetWindowText();
-    //分解煤层编号(空格隔开)
-    StringArray coal_nums;
-    Utils::cstring_explode( ( LPCTSTR )m_CoalNumsEdit->GetWindowText(), _T( " " ), coal_nums );
 
     //注册矿井账户
     int ret = DaoHelper::VerifyMineAccount( user, pwd );
@@ -71,15 +67,23 @@ void RegDialog::OnRegButtonClick()
 
         //新建矿井
         MinePtr mine( new Mine );
-        mine->name = name;
-        mine->province = province;
-        mine->city = city;
+        mine->name = m_NameEdit->GetWindowText();
+        mine->province = m_ProvinceEdit->GetWindowText();
+        mine->city = m_CityEdit->GetWindowText();
+		Utils::cstring_to_double( ( LPCTSTR )m_CapacityEdit->GetWindowText(), mine->capacity );
+		mine->topo_geo = m_TopoGeoCombox->GetCurSel() + 1;
+		mine->hydr_geo = m_HydrGeoCombox->GetCurSel() + 1;
+		mine->ground_condition = m_GroundCondCheck->IsChecked();
+
+		//分解煤层编号(空格隔开)
+		StringArray coal_nums;
+		Utils::cstring_explode( ( LPCTSTR )m_CoalNumsEdit->GetWindowText(), _T( " " ), coal_nums );
 
         //矿井关联账户
         mine->account = account;
 
         //矿井关联矿区
-        mine->region = FIND_ONE( Region, FIELD( name ), regionName );
+        mine->region = FIND_ONE( Region, FIELD( name ), (LPCTSTR)m_RegionCombox->GetWindowText() );
         //增加到数据库并返回新增行的id值
         if( account->save() && mine->save() )
         {
@@ -125,6 +129,28 @@ void RegDialog::OnRegionComboxSelChanged( SOUI::EventArgs* pEvt )
     if( pEvtOfCB == 0 ) return;
     int nCurSel = pEvtOfCB->nCurSel;
     if( nCurSel == -1 ) return;
+}
+
+void RegDialog::OnTopoGeoComboxSelChanged(SOUI::EventArgs *pEvt)
+{
+	if(!isLayoutInited()) return;
+	EventCBSelChange* pEvtOfCB = (EventCBSelChange*)pEvt;
+	if(pEvtOfCB == 0) return;
+	int nCurSel = pEvtOfCB->nCurSel;
+	if(nCurSel == -1) return;
+
+	// do something
+}
+
+void RegDialog::OnHydrGeoComboxSelChanged(SOUI::EventArgs *pEvt)
+{
+	if(!isLayoutInited()) return;
+	EventCBSelChange* pEvtOfCB = (EventCBSelChange*)pEvt;
+	if(pEvtOfCB == 0) return;
+	int nCurSel = pEvtOfCB->nCurSel;
+	if(nCurSel == -1) return;
+
+	// do something
 }
 
 void RegDialog::fillBaseCombox()
