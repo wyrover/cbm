@@ -70,6 +70,14 @@ void AppGetSettings(CefSettings& settings) {
 
   if (g_command_line->HasSwitch(cefclient::kOffScreenRenderingEnabled))
     settings.windowless_rendering_enabled = true;
+
+  // http://blog.163.com/yangqingkun816@126/blog/static/1221545162014329615767/
+  // http://www.oschina.net/question/2287292_247845?sort=time
+  // http://www.mamicode.com/info-detail-1049218.html
+  // cef3使用单进程模式
+  // cef3默认是一个标签一个进程,如果设置single_process为1,则始终一个进程用来渲染标签
+  // 但仍然会有2个cefclient.exe进程在运行
+  //settings.single_process = 1;
 }
 
 void AppGetBrowserSettings(CefBrowserSettings& settings) {
