@@ -151,6 +151,11 @@ void ClientHandler::OnBeforeContextMenu(
     CefRefPtr<CefMenuModel> model) {
   CEF_REQUIRE_UI_THREAD();
 
+  // ²Î¿¼:http://www.cnblogs.com/huys03/archive/2013/07/25/3215206.html
+  // CEF3È¥µôÓÒ¼ü
+  model->Clear();
+  return;
+
   if ((params->GetTypeFlags() & (CM_TYPEFLAG_PAGE | CM_TYPEFLAG_FRAME)) != 0) {
     // Add a separator if the menu already has items.
     if (model->GetCount() > 0)
