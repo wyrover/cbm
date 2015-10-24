@@ -69,3 +69,5 @@ acad.err
 [Ww]in32/
 
 *.dwl*
+*.pak
+*.dat
