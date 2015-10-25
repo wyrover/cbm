@@ -46,7 +46,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\lemon;..\ThirdParty\soci\include;..\ThirdParty\boost;..\ThirdParty\soui;..\ThirdParty\soui\soui\include;..\ThirdParty\soui\utilities\include;..\ThirdParty\soui\config;..\ThirdParty\soui\components;&quot;..\ThirdParty\json-cpp\include&quot;"
+				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\lemon;..\ThirdParty\soci\include;..\ThirdParty\boost;..\ThirdParty\soui;..\ThirdParty\soui\soui\include;..\ThirdParty\soui\utilities\include;..\ThirdParty\soui\config;..\ThirdParty\soui\components;&quot;..\ThirdParty\json-cpp\include&quot;;..\ThirdParty\cef3"
 				AdditionalUsingDirectories="C:\Program Files\AutoCAD 2010\"
 				PreprocessorDefinitions="WIN32;_WINDOWS;ARXSOUI_MODULE;_AFXEXT;_ACRXAPP"
 				StringPooling="false"
@@ -72,10 +72,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="log4cplusSU.lib lemon.lib soci_core.lib soci_mysql.lib libmysql.lib soui.lib utilities.lib jsoncpp.lib"
+				AdditionalDependencies="log4cplusSU.lib lemon.lib soci_core.lib soci_mysql.lib libmysql.lib soui.lib utilities.lib jsoncpp.lib libcef_dll_wrapper.lib libcef.lib"
 				OutputFile="$(outdir)/ArxSoUI.arx"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\lemon\lib;..\ThirdParty\soci\lib\win32;..\ThirdParty\soui\bin;&quot;..\ThirdParty\json-cpp\lib&quot;"
+				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\lemon\lib;..\ThirdParty\soci\lib\win32;..\ThirdParty\soui\bin;&quot;..\ThirdParty\json-cpp\lib&quot;;..\ThirdParty\cef3\Release"
 				LinkDLL="true"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/ArxSoUI.pdb"
@@ -220,7 +220,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="2"
-				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\lemon;..\ThirdParty\soci\include;..\ThirdParty\boost;..\ThirdParty\soui;..\ThirdParty\soui\soui\include;..\ThirdParty\soui\utilities\include;..\ThirdParty\soui\config;..\ThirdParty\soui\components;&quot;..\ThirdParty\json-cpp\include&quot;"
+				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\lemon;..\ThirdParty\soci\include;..\ThirdParty\boost;..\ThirdParty\soui;..\ThirdParty\soui\soui\include;..\ThirdParty\soui\utilities\include;..\ThirdParty\soui\config;..\ThirdParty\soui\components;&quot;..\ThirdParty\json-cpp\include&quot;;..\ThirdParty\cef3"
 				AdditionalUsingDirectories="C:\Program Files\AutoCAD 2010\"
 				PreprocessorDefinitions="WIN32;_WINDOWS;ARXSOUI_MODULE;NDEBUG;_AFXEXT;_ACRXAPP"
 				StringPooling="true"
@@ -246,10 +246,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="log4cplusSU.lib lemon.lib soci_core.lib soci_mysql.lib libmysql.lib soui.lib utilities.lib jsoncpp.lib"
+				AdditionalDependencies="log4cplusSU.lib lemon.lib soci_core.lib soci_mysql.lib libmysql.lib soui.lib utilities.lib jsoncpp.lib libcef_dll_wrapper.lib libcef.lib"
 				OutputFile="$(outdir)/ArxSoUI.arx"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\lemon\lib;..\ThirdParty\soci\lib\win32;..\ThirdParty\soui\bin;&quot;..\ThirdParty\json-cpp\lib&quot;"
+				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\lemon\lib;..\ThirdParty\soci\lib\win32;..\ThirdParty\soui\bin;&quot;..\ThirdParty\json-cpp\lib&quot;;..\ThirdParty\cef3\Release"
 				LinkDLL="true"
 				GenerateDebugInformation="false"
 				ProgramDatabaseFile=""
@@ -383,10 +383,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\CoalDesignDialog.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\DoubleLine.cpp"
 				>
 			</File>
@@ -495,6 +491,10 @@
 				>
 				<File
 					RelativePath=".\AcadSouiDialog.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\CoalDesignDialog.cpp"
 					>
 				</File>
 				<File
@@ -734,15 +734,87 @@
 					>
 				</File>
 			</Filter>
+			<Filter
+				Name="cef"
+				>
+				<File
+					RelativePath=".\CefDialog.cpp"
+					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\CefLaoder.cpp"
+					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\cefsimple_win.cpp"
+					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\simple_app.cpp"
+					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\simple_handler.cpp"
+					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\simple_handler_win.cpp"
+					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Include Files"
 			Filter="h;hh;hxx"
 			>
-			<File
-				RelativePath=".\CoalDesignDialog.h"
-				>
-			</File>
 			<File
 				RelativePath=".\Data.h"
 				>
@@ -832,6 +904,10 @@
 				>
 				<File
 					RelativePath=".\AcadSouiDialog.h"
+					>
+				</File>
+				<File
+					RelativePath=".\CoalDesignDialog.h"
 					>
 				</File>
 				<File
@@ -1075,6 +1151,58 @@
 					>
 				</File>
 			</Filter>
+			<Filter
+				Name="cef"
+				>
+				<File
+					RelativePath=".\CefDialog.h"
+					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCustomBuildTool"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\CefLaoder.h"
+					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCustomBuildTool"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\simple_app.h"
+					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCustomBuildTool"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\simple_handler.h"
+					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCustomBuildTool"
+						/>
+					</FileConfiguration>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Resource Files"
@@ -1087,5 +1215,9 @@
 		</Filter>
 	</Files>
 	<Globals>
+		<Global
+			Name="RESOURCE_FILE"
+			Value="ArxSoUI.rc"
+		/>
 	</Globals>
 </VisualStudioProject>

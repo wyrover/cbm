@@ -50,6 +50,8 @@ public:
         DaoHelper::InitSampleRegion();
         //初始化soui环境
         UIHelper::InitSouiEnviroment();
+		//初始化cef环境
+		//UIHelper::InitCefEnviroment();
 
         return ( retCode ) ;
     }
@@ -70,6 +72,8 @@ public:
         UIHelper::Logout();
         //退出soui环境
         UIHelper::UnInitSouiEnviroment();
+		//退出cef环境
+		//UIHelper::UnInitCefEnviroment();
         //关闭log4cplus日志系统
         log_uinit();
 
@@ -227,6 +231,11 @@ public:
     {
         UIHelper::Main();
     }
+
+	static void JL_xxx()
+	{
+		UIHelper::testdlg();
+	}
 } ;
 
 //-----------------------------------------------------------------------------
@@ -257,3 +266,5 @@ ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _KP11, kp11, ACRX_CMD_TRANSPARENT, 
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _GasDesign, gasDesign, ACRX_CMD_TRANSPARENT, NULL )
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _PolicyHelp, phelp, ACRX_CMD_TRANSPARENT, NULL )
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _Main, main, ACRX_CMD_TRANSPARENT, NULL )
+
+ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _xxx, xxx, ACRX_CMD_TRANSPARENT, NULL )

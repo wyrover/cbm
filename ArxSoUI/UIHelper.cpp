@@ -714,3 +714,23 @@ void UIHelper::ShowImgView( const CString& bstrFileName )
     else
         ::ShellExecute( NULL, _T( "open" ), bstrFileName, NULL, NULL, SW_SHOWNORMAL );
 }
+
+//#include "CefLaoder.h"
+//#include "CefDialog.h"
+void UIHelper::InitCefEnviroment()
+{
+	//new CefLaoder( _hdllInstance );
+	//CefLaoder::getSingletonPtr()->init();
+}
+
+void UIHelper::UnInitCefEnviroment()
+{
+	//delete CefLaoder::getSingletonPtr();
+}
+
+void UIHelper::testdlg()
+{
+	//CAcModuleResourceOverride myResources;
+	//CefDialog dlg;
+	//dlg.DoModal();
+}
