@@ -31,6 +31,10 @@ LRESULT MainuiDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 
 void MainuiDialog::OnCadButtonClick()
 {
+	CADHelper::SendCommandToAutoCAD(_T("regen"));
+	CADHelper::SendCommandToAutoCAD(_T("redraw"), false);
+	//查找窗口
+	return;
     //启动CAD进程
     SouiCADThread::RunCAD( this );
 }
@@ -73,10 +77,10 @@ LRESULT MainuiDialog::OnEndMonitor( UINT uMsg, WPARAM wParam, LPARAM lParam, BOO
 
 void MainuiDialog::OnClose()
 {
-    if ( ThreadHelper::IsProcessActive( _T( "acad.exe" ) ) )
-    {
-        MessageBox( NULL, _T( "请先关闭CAD!" ), _T( "警告" ), MB_OK | MB_ICONWARNING );
-        return;
-    }
+    //if ( ThreadHelper::IsProcessActive( _T( "acad.exe" ) ) )
+    //{
+    //    MessageBox( NULL, _T( "请先关闭CAD!" ), _T( "警告" ), MB_OK | MB_ICONWARNING );
+    //    return;
+    //}
     SouiDialog::OnClose();
 }

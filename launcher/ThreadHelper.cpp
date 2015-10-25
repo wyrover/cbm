@@ -28,7 +28,7 @@ CString ThreadHelper::BuildPath( const CString& dir, const CString& fileName )
     return path;
 }
 
-static void FindProcessIdByName( const CString& name, std::vector<DWORD>& pids )
+void ThreadHelper::FindProcessIdByName( const CString& name, std::vector<DWORD>& pids )
 {
     HANDLE hProcessSnap;
     //HANDLE hProcess;
@@ -154,4 +154,67 @@ void ThreadHelper::MsgWaitForThread( HANDLE hThread )
             break;
         }
     }
+}
+
+/*
+向AutoCAD发送命令消息
+http://wenku.baidu.com/link?url=scWyZaJCKCR4qqDcx7vxMVyyWkwi7XFZcgJRaMloR9JYHNupWTLOWzQF-HBqOto1gBN5cgN4-69nwzPcpSH844IGw66eub9_KCdawIgKOFa
+http://wenku.baidu.com/link?url=_I1yuEpWBkLnp5ZtDnVeSp9BGuwai1MUShyJbus_SwGYK5Ml0GdfWhCLb-CR49MSV4QwPNqKHFPX1jgYXD6WQmoX5K9q00fla7v5p3xS75i
+http://www.cnblogs.com/wdhust/archive/2011/04/11/2012004.html  (最终好使的)
+http://www.cnblogs.com/BiffoLee/archive/2011/12/24/2300539.html
+http://www.cnblogs.com/pswzone/archive/2012/07/25/2609121.html
+http://www.cnblogs.com/ganmk/archive/2009/10/29/1592557.html
+http://blog.csdn.net/wawj522527/article/details/7946656
+http://blog.sina.com.cn/s/blog_77a10c8d01019rva.html
+
+*/
+
+typedef struct
+{
+	HWND hWnd;
+	ThreadHelper::WindowNameCmpFunc cmp;
+	CString caption;
+}WNDINFO;
+
+BOOL CALLBACK EnumWindowsProc(HWND hWnd, LPARAM lParam)
+{
+	WNDINFO* pInfo = (WNDINFO*)lParam;
+
+	const int MAX_LEN = 256;
+	TCHAR caption[MAX_LEN];
+	assert(hWnd != NULL);
+	::GetWindowText(hWnd,caption,MAX_LEN);
+
+	if(pInfo->cmp(caption, pInfo->caption))
+	{
+		pInfo->hWnd = hWnd;
+		return FALSE;
+	}
+	return TRUE;
+}
+
+//http://www.cnblogs.com/wdhust/archive/2011/04/11/2012004.html
+//查找cad进程
+BOOL CALLBACK EnumWindowsProc22222(HWND hwnd, LPARAM lParam)
+{
+	COPYDATASTRUCT* pCmdMsg = (COPYDATASTRUCT*)lParam;
+
+	const int MAX_LEN = 256;
+	TCHAR caption[MAX_LEN];
+	assert(hwnd!=NULL);
+	::GetWindowText(hwnd,caption,MAX_LEN);
+	CString captionStr(caption);
+	if (captionStr.Mid(0,7)==_T("AutoCAD"))
+	{
+		::SendMessage(hwnd, WM_COPYDATA, NULL, (LPARAM)pCmdMsg);
+	}
+	return TRUE;
+}
+
+HWND ThreadHelper::GetHwndByWindowName(const CString& name, ThreadHelper::WindowNameCmpFunc cmp)
+{
+	WNDINFO info = {NULL, cmp, name};
+	EnumWindows(EnumWindowsProc, (LPARAM)&info);
+	//EnumDesktopWindows(NULL,EnumWindowsProc,(LPARAM)&info);
+	return info.hWnd;
 }

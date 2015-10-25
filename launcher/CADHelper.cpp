@@ -303,3 +303,55 @@ bool CADHelper::CleanCAD()
     if( !CADHelper::RecoverCADFile() ) return false;
     return true;
 }
+
+void SendCommandToCAD_Helper(HWND cadMainWnd, const CString& cmd, bool useEsc)
+{
+	// \003表示ESC
+	// \r表示回车
+	CString cmdText;
+	if(useEsc)
+	{
+		cmdText.Format(_T("\003\003%s\r"),cmd);
+	}
+	else
+	{
+		cmdText.Format(_T("%s\r"),cmd);
+	}
+
+	COPYDATASTRUCT cmdMsg;
+	cmdMsg.dwData=(DWORD)1;
+	cmdMsg.cbData=(DWORD)(_tcslen(cmdText)+1)*sizeof(TCHAR);;
+	cmdMsg.lpData=cmdText.GetBuffer(cmdText.GetLength()+1);
+	SendMessage(cadMainWnd,WM_COPYDATA,(WPARAM)cadMainWnd,(LPARAM)&cmdMsg);
+}
+
+//比较AutoCAD窗口标题的规则(只取前7个字母)
+static bool CmpAutoCADName(const CString& caption1, const CString& caption2)
+{
+	return caption1.Mid(0,7) == caption2;
+}
+
+bool CADHelper::SendCommandToAutoCAD(const CString& cmd, bool useEsc)
+{
+	std::vector<DWORD> pids;
+	ThreadHelper::FindProcessIdByName(_T("acad.exe"), pids);
+	if(pids.empty())
+	{
+		AfxMessageBox(_T("AutoCAD未启动!!"));
+		return false;
+	}
+	else
+	{
+		// 根据进程id查找窗口句柄(只找第一个)
+		HWND hwnd = ThreadHelper::GetHwndByWindowName(_T("AutoCAD"), &CmpAutoCADName);
+		if(hwnd != NULL)
+		{
+			//打印窗口的标题
+			//TCHAR title[80];
+			//GetWindowText(hwnd, title, 80);
+			//AfxMessageBox(title);
+			SendCommandToCAD_Helper(hwnd, cmd, useEsc);
+		}
+		return (hwnd != NULL);
+	}
+}
