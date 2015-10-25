@@ -18,7 +18,7 @@ class SimpleHandler : public CefClient,
   ~SimpleHandler();
 
   // Provide access to the single global instance of this object.
-  static SimpleHandler* GetInstance();
+  //static SimpleHandler* GetInstance();
 
   // CefClient methods:
   virtual CefRefPtr<CefDisplayHandler> GetDisplayHandler() OVERRIDE {

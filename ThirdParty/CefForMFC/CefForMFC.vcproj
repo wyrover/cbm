@@ -189,6 +189,22 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
+				RelativePath=".\cefclient.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\cefclient_win.cpp"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
 				RelativePath=".\CefForMFC.cpp"
 				>
 			</File>
@@ -197,15 +213,31 @@
 				>
 			</File>
 			<File
-				RelativePath=".\ClientApp.cpp"
+				RelativePath=".\client_app.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\ClientHandler.cpp"
+				RelativePath=".\client_app_delegates.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\ClientV8ExtensionHandler.cpp"
+				RelativePath=".\client_handler.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\client_handler_win.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\client_renderer.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\client_switches.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\resource_util_win.cpp"
 				>
 			</File>
 			<File
@@ -228,12 +260,20 @@
 					/>
 				</FileConfiguration>
 			</File>
+			<File
+				RelativePath=".\string_util.cpp"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Í·ÎÄ¼þ"
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
+			<File
+				RelativePath=".\cefclient.h"
+				>
+			</File>
 			<File
 				RelativePath=".\CefForMFC.h"
 				>
@@ -243,15 +283,19 @@
 				>
 			</File>
 			<File
-				RelativePath=".\ClientApp.h"
+				RelativePath=".\client_app.h"
 				>
 			</File>
 			<File
-				RelativePath=".\ClientHandler.h"
+				RelativePath=".\client_handler.h"
 				>
 			</File>
 			<File
-				RelativePath=".\ClientV8ExtensionHandler.h"
+				RelativePath=".\client_renderer.h"
+				>
+			</File>
+			<File
+				RelativePath=".\client_switches.h"
 				>
 			</File>
 			<File
@@ -259,7 +303,15 @@
 				>
 			</File>
 			<File
+				RelativePath=".\resource_util.h"
+				>
+			</File>
+			<File
 				RelativePath=".\stdafx.h"
+				>
+			</File>
+			<File
+				RelativePath=".\string_util.h"
 				>
 			</File>
 			<File
@@ -285,10 +337,6 @@
 				>
 			</File>
 		</Filter>
-		<File
-			RelativePath=".\ReadMe.txt"
-			>
-		</File>
 	</Files>
 	<Globals>
 	</Globals>

@@ -1,25 +1,16 @@
-
-// CefForMFCDlg.h : 头文件
-//
-
 #pragma once
-
 
 // CefForMFCDlg 对话框
 class CefForMFCDlg : public CDialog
 {
-// 构造
 public:
 	CefForMFCDlg(CWnd* pParent = NULL);	// 标准构造函数
 
-// 对话框数据
 	enum { IDD = IDD_CEFFORMFC_DIALOG };
 
-	protected:
+protected:
 	virtual void DoDataExchange(CDataExchange* pDX);	// DDX/DDV 支持
 
-
-// 实现
 protected:
 	HICON m_hIcon;
 

@@ -2,8 +2,8 @@
 #include "CefForMFC.h"
 #include "CefForMFCDlg.h"
 
-#include "ClientApp.h"
-#include "ClientHandler.h"
+//#include "ClientApp.h"
+//#include "ClientHandler.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -42,30 +42,30 @@ BOOL CefForMFCDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// 设置小图标
 
 	// TODO: 在此添加额外的初始化代码
-	CefMainArgs main_args(AfxGetApp()->m_hInstance);  
+	//CefMainArgs main_args(AfxGetApp()->m_hInstance);  
 
-	CefRefPtr<ClientApp> app(new ClientApp);  
+	//CefRefPtr<ClientApp> app(new ClientApp);  
 
-	int exit_code = CefExecuteProcess(main_args, app.get(), NULL);  
-	if (exit_code >= 0){  
-		exit(exit_code);  
-	}  
+	//int exit_code = CefExecuteProcess(main_args, app.get(), NULL);  
+	//if (exit_code >= 0){  
+	//	exit(exit_code);  
+	//}  
 
-	CefSettings settings;  
-	CefSettingsTraits::init(&settings);  
-	settings.multi_threaded_message_loop = true;  
-	CefInitialize(main_args, settings, app.get(), NULL);  
+	//CefSettings settings;  
+	//CefSettingsTraits::init(&settings);  
+	//settings.multi_threaded_message_loop = true;  
+	//CefInitialize(main_args, settings, app.get(), NULL);  
 
-	CefWindowInfo info;
-	RECT rect;  
-	this->GetClientRect(&rect);  
-	info.SetAsChild(this->GetSafeHwnd(), rect);  
+	//CefWindowInfo info;
+	//RECT rect;  
+	//this->GetClientRect(&rect);  
+	//info.SetAsChild(this->GetSafeHwnd(), rect);  
 
-	CefBrowserSettings b_settings;  
-	CefRefPtr<CefClient> client(new ClientHandler);  
+	//CefBrowserSettings b_settings;  
+	//CefRefPtr<CefClient> client(new ClientHandler);  
 
-	std::string url = "https://www.baidu.com";  
-	CefBrowserHost::CreateBrowser(info, client.get(), url, b_settings, NULL);
+	//std::string url = "https://www.baidu.com";  
+	//CefBrowserHost::CreateBrowser(info, client.get(), url, b_settings, NULL);
 
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
