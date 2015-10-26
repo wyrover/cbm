@@ -91,7 +91,7 @@ absent and prefix them with an 0x01 byte if they are present
 
 #include <thrift/thrift-config.h>
 
-#include <stdint.h>
+//#include <stdint.h>
 #include <thrift/protocol/TDenseProtocol.h>
 #include <thrift/TReflectionLocal.h>
 
