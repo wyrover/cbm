@@ -127,17 +127,17 @@ BOOL CLauncherApp::InitInstance()
     AfxInitRichEdit2();
     SetRegistryKey( _T( "应用程序向导生成的本地应用程序" ) );
 
-    //if ( ThreadHelper::ProcessNum( _T( "acad.exe" ) ) >= 1 )
-    //{
-    //    MessageBox( NULL, _T( "CAD正在运行!" ), _T( "警告" ), MB_OK | MB_ICONWARNING );
-    //    return FALSE;
-    //}
+    if ( ThreadHelper::ProcessNum( _T( "acad.exe" ) ) >= 1 )
+    {
+        MessageBox( NULL, _T( "CAD正在运行!" ), _T( "警告" ), MB_OK | MB_ICONWARNING );
+        return FALSE;
+    }
 
-    //if ( ThreadHelper::ProcessNum( _T( "Launcher.exe" ) ) > 1 )
-    //{
-    //    MessageBox( NULL, _T( "程序正在运行!" ), _T( "警告" ), MB_OK | MB_ICONWARNING );
-    //    return FALSE;
-    //}
+    if ( ThreadHelper::ProcessNum( _T( "Launcher.exe" ) ) > 1 )
+    {
+        MessageBox( NULL, _T( "程序正在运行!" ), _T( "警告" ), MB_OK | MB_ICONWARNING );
+        return FALSE;
+    }
 
     //初始化log4cplus日志系统
     //为了保证日志功能正常使用，在加载所有模块之前初始化日志系统
