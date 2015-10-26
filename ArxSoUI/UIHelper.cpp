@@ -715,10 +715,6 @@ void UIHelper::ShowImgView( const CString& bstrFileName )
         ::ShellExecute( NULL, _T( "open" ), bstrFileName, NULL, NULL, SW_SHOWNORMAL );
 }
 
-//#include "msis_rpc.h"
-
 void UIHelper::testdlg()
 {
-	//msis::Entity ent;
-	//msis_update(ent);
 }

@@ -106,93 +106,6 @@
 			/>
 		</Configuration>
 		<Configuration
-			Name="Release|Win32"
-			OutputDirectory="$(SolutionDir)$(PlatformName)\$(ConfigurationName)"
-			IntermediateDirectory="$(PlatformName)\$(ConfigurationName)"
-			ConfigurationType="2"
-			UseOfMFC="2"
-			UseOfATL="0"
-			CharacterSet="1"
-			ManagedExtensions="0"
-			>
-			<Tool
-				Name="VCPreBuildEventTool"
-			/>
-			<Tool
-				Name="VCCustomBuildTool"
-			/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-			/>
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="2"
-				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\lemon;..\ThirdParty\soci\include;..\ThirdParty\soui;..\ThirdParty\soui\soui\include;..\ThirdParty\soui\utilities\include;..\ThirdParty\soui\config;..\ThirdParty\soui\components;&quot;..\ThirdParty\json-cpp\include&quot;;..\ThirdParty\thrift\lib\cpp\src;..\ThirdParty\boost"
-				AdditionalUsingDirectories="C:\Program Files\AutoCAD 2010\"
-				PreprocessorDefinitions="WIN32;_WINDOWS;ARXSOUI_MODULE;NDEBUG;_AFXEXT;_ACRXAPP"
-				StringPooling="true"
-				MinimalRebuild="false"
-				BasicRuntimeChecks="0"
-				RuntimeLibrary="2"
-				BufferSecurityCheck="true"
-				TreatWChar_tAsBuiltInType="true"
-				ForceConformanceInForLoopScope="true"
-				RuntimeTypeInfo="true"
-				UsePrecompiledHeader="2"
-				WarningLevel="1"
-				DebugInformationFormat="0"
-			/>
-			<Tool
-				Name="VCManagedResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCPreLinkEventTool"
-			/>
-			<Tool
-				Name="VCLinkerTool"
-				AdditionalDependencies="log4cplusSU.lib lemon.lib soci_core.lib soci_mysql.lib libmysql.lib soui.lib utilities.lib jsoncpp.lib libthrift.lib"
-				OutputFile="$(outdir)/ArxSoUI.arx"
-				LinkIncremental="2"
-				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\lemon\lib;..\ThirdParty\soci\lib\win32;..\ThirdParty\soui\bin;&quot;..\ThirdParty\json-cpp\lib&quot;;..\ThirdParty\thrift\win32;..\ThirdParty\boost\lib\win32"
-				LinkDLL="true"
-				GenerateDebugInformation="false"
-				ProgramDatabaseFile=""
-				SubSystem="2"
-				ImportLibrary="$(OutDir)/ArxSoUI.lib"
-				TargetMachine="1"
-			/>
-			<Tool
-				Name="VCALinkTool"
-			/>
-			<Tool
-				Name="VCManifestTool"
-			/>
-			<Tool
-				Name="VCXDCMakeTool"
-			/>
-			<Tool
-				Name="VCBscMakeTool"
-			/>
-			<Tool
-				Name="VCFxCopTool"
-			/>
-			<Tool
-				Name="VCAppVerifierTool"
-			/>
-			<Tool
-				Name="VCPostBuildEventTool"
-			/>
-		</Configuration>
-		<Configuration
 			Name="Debug|x64"
 			OutputDirectory="$(SolutionDir)$(PlatformName)\$(ConfigurationName)"
 			IntermediateDirectory="$(PlatformName)\$(ConfigurationName)"
@@ -256,6 +169,93 @@
 				SubSystem="2"
 				ImportLibrary="$(OutDir)/ArxSoUI.lib"
 				TargetMachine="17"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
+		<Configuration
+			Name="Release|Win32"
+			OutputDirectory="$(SolutionDir)$(PlatformName)\$(ConfigurationName)"
+			IntermediateDirectory="$(PlatformName)\$(ConfigurationName)"
+			ConfigurationType="2"
+			UseOfMFC="2"
+			UseOfATL="0"
+			CharacterSet="1"
+			ManagedExtensions="0"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="2"
+				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\lemon;..\ThirdParty\soci\include;..\ThirdParty\soui;..\ThirdParty\soui\soui\include;..\ThirdParty\soui\utilities\include;..\ThirdParty\soui\config;..\ThirdParty\soui\components;&quot;..\ThirdParty\json-cpp\include&quot;;..\ThirdParty\thrift\lib\cpp\src;..\ThirdParty\boost"
+				AdditionalUsingDirectories="C:\Program Files\AutoCAD 2010\"
+				PreprocessorDefinitions="WIN32;_WINDOWS;ARXSOUI_MODULE;NDEBUG;_AFXEXT;_ACRXAPP"
+				StringPooling="true"
+				MinimalRebuild="false"
+				BasicRuntimeChecks="0"
+				RuntimeLibrary="2"
+				BufferSecurityCheck="true"
+				TreatWChar_tAsBuiltInType="true"
+				ForceConformanceInForLoopScope="true"
+				RuntimeTypeInfo="true"
+				UsePrecompiledHeader="2"
+				WarningLevel="1"
+				DebugInformationFormat="0"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="log4cplusSU.lib lemon.lib soci_core.lib soci_mysql.lib libmysql.lib soui.lib utilities.lib jsoncpp.lib libthrift.lib"
+				OutputFile="$(outdir)/ArxSoUI.arx"
+				LinkIncremental="2"
+				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\lemon\lib;..\ThirdParty\soci\lib\win32;..\ThirdParty\soui\bin;&quot;..\ThirdParty\json-cpp\lib&quot;;..\ThirdParty\thrift\win32;..\ThirdParty\boost\lib\win32"
+				LinkDLL="true"
+				GenerateDebugInformation="false"
+				ProgramDatabaseFile=""
+				SubSystem="2"
+				ImportLibrary="$(OutDir)/ArxSoUI.lib"
+				TargetMachine="1"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -414,7 +414,7 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32"
+					Name="Debug|x64"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -422,7 +422,7 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug|x64"
+					Name="Release|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -731,26 +731,6 @@
 				</File>
 				<File
 					RelativePath=".\msword.cpp"
-					>
-				</File>
-			</Filter>
-			<Filter
-				Name="rpc"
-				>
-				<File
-					RelativePath="..\thrift\gen-cpp\msis_constants.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\msis_rpc.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\thrift\gen-cpp\msis_types.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\thrift\gen-cpp\MsisService.cpp"
 					>
 				</File>
 			</Filter>
@@ -1092,26 +1072,6 @@
 				</File>
 				<File
 					RelativePath=".\msword.h"
-					>
-				</File>
-			</Filter>
-			<Filter
-				Name="rpc"
-				>
-				<File
-					RelativePath="..\thrift\gen-cpp\msis_constants.h"
-					>
-				</File>
-				<File
-					RelativePath=".\msis_rpc.h"
-					>
-				</File>
-				<File
-					RelativePath="..\thrift\gen-cpp\msis_types.h"
-					>
-				</File>
-				<File
-					RelativePath="..\thrift\gen-cpp\MsisService.h"
 					>
 				</File>
 			</Filter>
