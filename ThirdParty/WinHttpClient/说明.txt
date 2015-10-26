@@ -1,0 +1,7 @@
+从codeproject上找到的一个http客户端操作代码，封装的很不错
+http://www.codeproject.com/Articles/66625/A-Fully-Featured-Windows-HTTP-Wrapper-in-C
+注意：在使用的时候，还需要链接comsuppw.lib
+
+短期项目里使用这个还不错，但目前更通用的是对libcurl进行封装
+http://kukuruku.co/hub/cpp/a-cheat-sheet-for-http-libraries-in-c （列举了很多C++的http库）
+https://github.com/mrtazz/restclient-cpp  （这个代码也很简单，干净，内部对libcurl的封装写得也挺不错）
