@@ -3,8 +3,6 @@
 class UIHelper
 {
 public:
-	static void InitCefEnviroment();
-	static void UnInitCefEnviroment();
 	static void testdlg();
 
     static void InitAllData();

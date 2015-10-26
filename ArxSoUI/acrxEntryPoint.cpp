@@ -50,8 +50,6 @@ public:
         DaoHelper::InitSampleRegion();
         //初始化soui环境
         UIHelper::InitSouiEnviroment();
-		//初始化cef环境
-		//UIHelper::InitCefEnviroment();
 
         return ( retCode ) ;
     }
@@ -72,8 +70,6 @@ public:
         UIHelper::Logout();
         //退出soui环境
         UIHelper::UnInitSouiEnviroment();
-		//退出cef环境
-		//UIHelper::UnInitCefEnviroment();
         //关闭log4cplus日志系统
         log_uinit();
 
