@@ -9,12 +9,13 @@
 #pragma comment(lib, "Winhttp.lib")
 //注意：comsuppw.lib这个库是vc9特有的
 #pragma comment(lib, "comsuppw.lib")
-
+#include <windows.h>
+#include <Winhttp.h>
+#include <Wincrypt.h>
 #include "RegExp.h"
 #include "StringProcess.h"
 #include <comutil.h>
-#include <windows.h>
-#include <Winhttp.h>
+
 #include <string>
 using namespace std;
 

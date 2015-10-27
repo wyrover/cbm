@@ -13,7 +13,7 @@ using namespace std;
 
 #pragma warning(push)
 #pragma warning(disable: 6385 6011 4127)
-#include "..\..\ThirdParty\ATLRegExp\atlrx.h"
+#include "atlrx.h"
 #pragma warning(pop)
 
 /*

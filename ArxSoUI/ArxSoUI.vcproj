@@ -46,7 +46,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\lemon;..\ThirdParty\soci\include;..\ThirdParty\soui;..\ThirdParty\soui\soui\include;..\ThirdParty\soui\utilities\include;..\ThirdParty\soui\config;..\ThirdParty\soui\components;&quot;..\ThirdParty\json-cpp\include&quot;;..\ThirdParty\thrift\lib\cpp\src;..\ThirdParty\boost"
+				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\lemon;..\ThirdParty\soci\include;..\ThirdParty\soui;..\ThirdParty\soui\soui\include;..\ThirdParty\soui\utilities\include;..\ThirdParty\soui\config;..\ThirdParty\soui\components;&quot;..\ThirdParty\json-cpp\include&quot;;..\ThirdParty\thrift\lib\cpp\src;..\ThirdParty\WinHttpClient\Include;..\ThirdParty\boost"
 				AdditionalUsingDirectories="C:\Program Files\AutoCAD 2010\"
 				PreprocessorDefinitions="WIN32;_WINDOWS;ARXSOUI_MODULE;_AFXEXT;_ACRXAPP;BOOST_LIB_DIAGNOSTIC"
 				StringPooling="false"
@@ -133,7 +133,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\lemon;..\ThirdParty\soci\include;..\ThirdParty\boost;..\ThirdParty\soui;..\ThirdParty\soui\soui\include;..\ThirdParty\soui\utilities\include;..\ThirdParty\soui\config;..\ThirdParty\soui\components;&quot;..\ThirdParty\json-cpp\include&quot;;..\ThirdParty\thrift\lib\cpp\src"
+				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\lemon;..\ThirdParty\soci\include;..\ThirdParty\soui;..\ThirdParty\soui\soui\include;..\ThirdParty\soui\utilities\include;..\ThirdParty\soui\config;..\ThirdParty\soui\components;&quot;..\ThirdParty\json-cpp\include&quot;;..\ThirdParty\thrift\lib\cpp\src;..\ThirdParty\WinHttpClient\Include;..\ThirdParty\boost"
 				AdditionalUsingDirectories="C:\Program Files\AutoCAD 2010\"
 				PreprocessorDefinitions="_WIN64;_WINDOWS;ARXSOUI_MODULE;_AFXEXT;_ACRXAPP"
 				StringPooling="false"
@@ -220,7 +220,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="2"
-				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\lemon;..\ThirdParty\soci\include;..\ThirdParty\soui;..\ThirdParty\soui\soui\include;..\ThirdParty\soui\utilities\include;..\ThirdParty\soui\config;..\ThirdParty\soui\components;&quot;..\ThirdParty\json-cpp\include&quot;;..\ThirdParty\thrift\lib\cpp\src;..\ThirdParty\boost"
+				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\lemon;..\ThirdParty\soci\include;..\ThirdParty\soui;..\ThirdParty\soui\soui\include;..\ThirdParty\soui\utilities\include;..\ThirdParty\soui\config;..\ThirdParty\soui\components;&quot;..\ThirdParty\json-cpp\include&quot;;..\ThirdParty\thrift\lib\cpp\src;..\ThirdParty\WinHttpClient\Include;..\ThirdParty\boost"
 				AdditionalUsingDirectories="C:\Program Files\AutoCAD 2010\"
 				PreprocessorDefinitions="WIN32;_WINDOWS;ARXSOUI_MODULE;NDEBUG;_AFXEXT;_ACRXAPP"
 				StringPooling="true"
@@ -307,7 +307,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="2"
-				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\lemon;..\ThirdParty\soci\include;..\ThirdParty\boost;..\ThirdParty\soui;..\ThirdParty\soui\soui\include;..\ThirdParty\soui\utilities\include;..\ThirdParty\soui\config;..\ThirdParty\soui\components;&quot;..\ThirdParty\json-cpp\include&quot;;..\ThirdParty\thrift\lib\cpp\src"
+				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\lemon;..\ThirdParty\soci\include;..\ThirdParty\soui;..\ThirdParty\soui\soui\include;..\ThirdParty\soui\utilities\include;..\ThirdParty\soui\config;..\ThirdParty\soui\components;&quot;..\ThirdParty\json-cpp\include&quot;;..\ThirdParty\thrift\lib\cpp\src;..\ThirdParty\WinHttpClient\Include"
 				AdditionalUsingDirectories="C:\Program Files\AutoCAD 2010\"
 				PreprocessorDefinitions="WIN32;_WINDOWS;ARXSOUI_MODULE;NDEBUG;_AFXEXT;_ACRXAPP"
 				StringPooling="true"

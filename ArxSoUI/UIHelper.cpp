@@ -715,6 +715,22 @@ void UIHelper::ShowImgView( const CString& bstrFileName )
         ::ShellExecute( NULL, _T( "open" ), bstrFileName, NULL, NULL, SW_SHOWNORMAL );
 }
 
+#include <WinHttpClient.h>
+
 void UIHelper::testdlg()
 {
+	// Set URL.
+	WinHttpClient client(_T("http://localhost/tt/test.php"));
+
+	// Send http request, a GET request by default.
+	client.SendHttpRequest();
+	string data = "title=≤‚ ‘1&content=ø¥ƒ„µƒ¡À";
+	client.SetAdditionalDataToSend((BYTE *)data.c_str(), data.size());
+
+	// The response header.
+	CString httpResponseHeader = client.GetResponseHeader().c_str();
+	// The response content.
+	CString httpResponseContent = client.GetResponseContent().c_str();
+
+	AfxMessageBox(httpResponseContent);
 }
