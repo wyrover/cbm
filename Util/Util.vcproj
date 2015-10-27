@@ -44,7 +44,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\lemon;..\ThirdParty\soci\include;..\ThirdParty\boost;&quot;..\ThirdParty\json-cpp\include&quot;"
+				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\soci\include;..\ThirdParty\boost;&quot;..\ThirdParty\json-cpp\include&quot;"
 				PreprocessorDefinitions="WIN32;_LIB;_CRT_SECURE_NO_WARNINGS;CBM_UTIL_MODULE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="0"
@@ -64,8 +64,8 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="log4cplusSU.lib lemon.lib soci_core.lib soci_mysql.lib libmysql.lib ws2_32.lib jsoncpp.lib"
-				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\lemon\lib;..\ThirdParty\soci\lib\win32;&quot;..\ThirdParty\json-cpp\lib&quot;"
+				AdditionalDependencies="log4cplusSU.lib soci_core.lib soci_mysql.lib libmysql.lib ws2_32.lib jsoncpp.lib"
+				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\soci\lib\win32;&quot;..\ThirdParty\json-cpp\lib&quot;"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/Util.pdb"
 				SubSystem="2"
@@ -119,7 +119,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\lemon;..\ThirdParty\soci\include;..\ThirdParty\boost;&quot;..\ThirdParty\json-cpp\include&quot;"
+				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\soci\include;..\ThirdParty\boost;&quot;..\ThirdParty\json-cpp\include&quot;"
 				PreprocessorDefinitions="WIN32;_LIB;_CRT_SECURE_NO_WARNINGS;CBM_UTIL_MODULE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="0"
@@ -139,8 +139,8 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="log4cplusSU-x64.lib lemon_x64.lib soci_core.lib soci_mysql.lib libmysql.lib ws2_32.lib jsoncpp-x64.lib"
-				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\lemon\lib;..\ThirdParty\soci\lib\x64;&quot;..\ThirdParty\json-cpp\lib&quot;"
+				AdditionalDependencies="log4cplusSU-x64.lib soci_core.lib soci_mysql.lib libmysql.lib ws2_32.lib jsoncpp-x64.lib"
+				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\soci\lib\x64;&quot;..\ThirdParty\json-cpp\lib&quot;"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/Util.pdb"
 			/>
@@ -193,7 +193,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\lemon;..\ThirdParty\soci\include;..\ThirdParty\boost;&quot;..\ThirdParty\json-cpp\include&quot;"
+				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\soci\include;..\ThirdParty\boost;&quot;..\ThirdParty\json-cpp\include&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;CBM_UTIL_MODULE"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
@@ -212,8 +212,8 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="log4cplusSU.lib lemon.lib soci_core.lib soci_mysql.lib libmysql.lib ws2_32.lib jsoncpp.lib"
-				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\lemon\lib;..\ThirdParty\soci\lib\win32;&quot;..\ThirdParty\json-cpp\lib&quot;"
+				AdditionalDependencies="log4cplusSU.lib soci_core.lib soci_mysql.lib libmysql.lib ws2_32.lib jsoncpp.lib"
+				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\soci\lib\win32;&quot;..\ThirdParty\json-cpp\lib&quot;"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				OptimizeReferences="2"
@@ -270,7 +270,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\lemon;..\ThirdParty\soci\include;..\ThirdParty\boost;&quot;..\ThirdParty\json-cpp\include&quot;"
+				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\soci\include;..\ThirdParty\boost;&quot;..\ThirdParty\json-cpp\include&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;CBM_UTIL_MODULE"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
@@ -289,8 +289,8 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="log4cplusSU-x64.lib lemon_x64.lib soci_core.lib soci_mysql.lib libmysql.lib ws2_32.lib jsoncpp-x64.lib"
-				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\lemon\lib;..\ThirdParty\soci\lib\x64;&quot;..\ThirdParty\json-cpp\lib&quot;"
+				AdditionalDependencies="log4cplusSU-x64.lib soci_core.lib soci_mysql.lib libmysql.lib ws2_32.lib jsoncpp-x64.lib"
+				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\soci\lib\x64;&quot;..\ThirdParty\json-cpp\lib&quot;"
 			/>
 			<Tool
 				Name="VCALinkTool"

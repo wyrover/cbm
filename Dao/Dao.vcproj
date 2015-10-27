@@ -47,7 +47,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\lemon;..\ThirdParty\soci\include;..\ThirdParty\boost;&quot;..\ThirdParty\json-cpp\include&quot;"
+				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\soci\include;..\ThirdParty\boost;&quot;..\ThirdParty\json-cpp\include&quot;"
 				PreprocessorDefinitions="WIN32;_WINDOWS;_USRDLL;DAO_MODULE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="0"
@@ -70,9 +70,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="log4cplusSU.lib lemon.lib soci_core.lib soci_mysql.lib libmysql.lib ws2_32.lib jsoncpp.lib"
+				AdditionalDependencies="log4cplusSU.lib soci_core.lib soci_mysql.lib libmysql.lib jsoncpp.lib"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\lemon\lib;..\ThirdParty\soci\lib\win32;&quot;..\ThirdParty\json-cpp\lib&quot;"
+				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\soci\lib\win32;&quot;..\ThirdParty\json-cpp\lib&quot;"
 				ModuleDefinitionFile=""
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/Dao.pdb"
@@ -130,7 +130,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\lemon;..\ThirdParty\soci\include;..\ThirdParty\boost;&quot;..\ThirdParty\json-cpp\include&quot;"
+				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\soci\include;..\ThirdParty\boost;&quot;..\ThirdParty\json-cpp\include&quot;"
 				PreprocessorDefinitions="WIN32;_WINDOWS;_USRDLL;DAO_MODULE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="0"
@@ -153,9 +153,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="log4cplusSU-x64.lib lemon_x64.lib soci_core.lib soci_mysql.lib libmysql.lib ws2_32.lib jsoncpp-x64.lib"
+				AdditionalDependencies="log4cplusSU-x64.lib soci_core.lib soci_mysql.lib libmysql.lib jsoncpp-x64.lib"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\lemon\lib;..\ThirdParty\soci\lib\x64;&quot;..\ThirdParty\json-cpp\lib&quot;"
+				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\soci\lib\x64;&quot;..\ThirdParty\json-cpp\lib&quot;"
 				ModuleDefinitionFile=""
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/Dao.pdb"
@@ -214,7 +214,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\lemon;..\ThirdParty\soci\include;..\ThirdParty\boost;&quot;..\ThirdParty\json-cpp\include&quot;"
+				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\soci\include;..\ThirdParty\boost;&quot;..\ThirdParty\json-cpp\include&quot;"
 				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;_USRDLL;DAO_MODULE"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
@@ -236,9 +236,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="log4cplusSU.lib lemon.lib soci_core.lib soci_mysql.lib libmysql.lib ws2_32.lib jsoncpp.lib"
+				AdditionalDependencies="log4cplusSU.lib soci_core.lib soci_mysql.lib libmysql.lib jsoncpp.lib"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\lemon\lib;..\ThirdParty\soci\lib\win32;&quot;..\ThirdParty\json-cpp\lib&quot;"
+				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\soci\lib\win32;&quot;..\ThirdParty\json-cpp\lib&quot;"
 				ModuleDefinitionFile=""
 				GenerateDebugInformation="true"
 				SubSystem="2"
@@ -299,7 +299,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\lemon;..\ThirdParty\soci\include;..\ThirdParty\boost;&quot;..\ThirdParty\json-cpp\include&quot;"
+				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\soci\include;..\ThirdParty\boost;&quot;..\ThirdParty\json-cpp\include&quot;"
 				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;_USRDLL;DAO_MODULE"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
@@ -321,9 +321,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="log4cplusSU-x64.lib lemon_x64.lib soci_core.lib soci_mysql.lib libmysql.lib ws2_32.lib jsoncpp-x64.lib"
+				AdditionalDependencies="log4cplusSU-x64.lib soci_core.lib soci_mysql.lib libmysql.lib jsoncpp-x64.lib"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\lemon\lib;..\ThirdParty\soci\lib\x64;&quot;..\ThirdParty\json-cpp\lib&quot;"
+				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\soci\lib\x64;&quot;..\ThirdParty\json-cpp\lib&quot;"
 				ModuleDefinitionFile=""
 				GenerateDebugInformation="true"
 				SubSystem="2"

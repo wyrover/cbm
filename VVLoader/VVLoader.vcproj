@@ -46,7 +46,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\lemon;..\ThirdParty\soci\include;..\ThirdParty\boost;&quot;..\ThirdParty\json-cpp\include&quot;"
+				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\soci\include;..\ThirdParty\boost;&quot;..\ThirdParty\json-cpp\include&quot;"
 				AdditionalUsingDirectories="c:\Program Files\AutoCAD"
 				PreprocessorDefinitions="WIN32;_WINDOWS;VVLOADER_MODULE;_AFXEXT;_ACRXAPP"
 				StringPooling="false"
@@ -72,10 +72,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="log4cplusSU.lib lemon.lib soci_core.lib soci_mysql.lib libmysql.lib jsoncpp.lib"
+				AdditionalDependencies="log4cplusSU.lib soci_core.lib soci_mysql.lib libmysql.lib jsoncpp.lib"
 				OutputFile="$(outdir)/VVLoader.arx"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\lemon\lib;..\ThirdParty\soci\lib\win32;&quot;..\ThirdParty\json-cpp\lib&quot;"
+				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\soci\lib\win32;&quot;..\ThirdParty\json-cpp\lib&quot;"
 				LinkDLL="true"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/VVLoader.pdb"
@@ -134,7 +134,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\lemon;..\ThirdParty\soci\include;..\ThirdParty\boost;&quot;..\ThirdParty\json-cpp\include&quot;"
+				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\soci\include;..\ThirdParty\boost;&quot;..\ThirdParty\json-cpp\include&quot;"
 				AdditionalUsingDirectories="c:\Program Files\AutoCAD"
 				PreprocessorDefinitions="WIN32;_WINDOWS;VVLOADER_MODULE;_AFXEXT;_ACRXAPP;CRUISE_LOG4CPLUS"
 				StringPooling="false"
@@ -160,10 +160,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="log4cplusSU-x64.lib lemon_x64.lib soci_core.lib soci_mysql.lib libmysql.lib jsoncpp-x64.lib"
+				AdditionalDependencies="log4cplusSU-x64.lib soci_core.lib soci_mysql.lib libmysql.lib jsoncpp-x64.lib"
 				OutputFile="$(outdir)/VVLoader.arx"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\lemon\lib;..\ThirdParty\soci\lib\x64;&quot;..\ThirdParty\json-cpp\lib&quot;"
+				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\soci\lib\x64;&quot;..\ThirdParty\json-cpp\lib&quot;"
 				LinkDLL="true"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/VVLoader.pdb"
@@ -221,7 +221,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="2"
-				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\lemon;..\ThirdParty\soci\include;..\ThirdParty\boost;&quot;..\ThirdParty\json-cpp\include&quot;"
+				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\soci\include;..\ThirdParty\boost;&quot;..\ThirdParty\json-cpp\include&quot;"
 				AdditionalUsingDirectories="c:\Program Files\AutoCAD"
 				PreprocessorDefinitions="WIN32;_WINDOWS;VVLOADER_MODULE;NDEBUG;_AFXEXT;_ACRXAPP"
 				StringPooling="true"
@@ -247,10 +247,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="log4cplusSU.lib lemon.lib soci_core.lib soci_mysql.lib libmysql.lib jsoncpp.lib"
+				AdditionalDependencies="log4cplusSU.lib soci_core.lib soci_mysql.lib libmysql.lib jsoncpp.lib"
 				OutputFile="$(outdir)/VVLoader.arx"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\lemon\lib;..\ThirdParty\soci\lib\win32;&quot;..\ThirdParty\json-cpp\lib&quot;"
+				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\soci\lib\win32;&quot;..\ThirdParty\json-cpp\lib&quot;"
 				LinkDLL="true"
 				GenerateDebugInformation="false"
 				ProgramDatabaseFile=""
@@ -309,7 +309,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="2"
-				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\lemon;..\ThirdParty\soci\include;..\ThirdParty\boost;&quot;..\ThirdParty\json-cpp\include&quot;"
+				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\soci\include;..\ThirdParty\boost;&quot;..\ThirdParty\json-cpp\include&quot;"
 				AdditionalUsingDirectories="c:\Program Files\AutoCAD"
 				PreprocessorDefinitions="WIN32;_WINDOWS;VVLOADER_MODULE;NDEBUG;_AFXEXT;_ACRXAPP"
 				StringPooling="true"
@@ -335,10 +335,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="log4cplusSU-x64.lib lemon_x64.lib soci_core.lib soci_mysql.lib libmysql.lib jsoncpp-x64.lib"
+				AdditionalDependencies="log4cplusSU-x64.lib soci_core.lib soci_mysql.lib libmysql.lib jsoncpp-x64.lib"
 				OutputFile="$(outdir)/VVLoader.arx"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\lemon\lib;..\ThirdParty\soci\lib\x64;&quot;..\ThirdParty\json-cpp\lib&quot;"
+				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\soci\lib\x64;&quot;..\ThirdParty\json-cpp\lib&quot;"
 				LinkDLL="true"
 				GenerateDebugInformation="false"
 				ProgramDatabaseFile=""

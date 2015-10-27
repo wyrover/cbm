@@ -46,7 +46,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\lemon;..\ThirdParty\soci\include;..\ThirdParty\soui;..\ThirdParty\soui\soui\include;..\ThirdParty\soui\utilities\include;..\ThirdParty\soui\config;..\ThirdParty\soui\components;&quot;..\ThirdParty\json-cpp\include&quot;;..\ThirdParty\thrift\lib\cpp\src;..\ThirdParty\WinHttpClient\Include;..\ThirdParty\boost"
+				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\soci\include;..\ThirdParty\soui;..\ThirdParty\soui\soui\include;..\ThirdParty\soui\utilities\include;..\ThirdParty\soui\config;..\ThirdParty\soui\components;&quot;..\ThirdParty\json-cpp\include&quot;;..\ThirdParty\thrift\lib\cpp\src;..\ThirdParty\WinHttpClient\Include;..\ThirdParty\boost"
 				AdditionalUsingDirectories="C:\Program Files\AutoCAD 2010\"
 				PreprocessorDefinitions="WIN32;_WINDOWS;ARXSOUI_MODULE;_AFXEXT;_ACRXAPP;BOOST_LIB_DIAGNOSTIC"
 				StringPooling="false"
@@ -72,10 +72,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="log4cplusSU.lib lemon.lib soci_core.lib soci_mysql.lib libmysql.lib soui.lib utilities.lib jsoncpp.lib libthrift.lib"
+				AdditionalDependencies="log4cplusSU.lib soci_core.lib soci_mysql.lib libmysql.lib soui.lib utilities.lib jsoncpp.lib libthrift.lib"
 				OutputFile="$(outdir)/ArxSoUI.arx"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\lemon\lib;..\ThirdParty\soci\lib\win32;..\ThirdParty\soui\bin;&quot;..\ThirdParty\json-cpp\lib&quot;;..\ThirdParty\thrift\win32;..\ThirdParty\boost\lib\win32"
+				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\soci\lib\win32;..\ThirdParty\soui\bin;&quot;..\ThirdParty\json-cpp\lib&quot;;..\ThirdParty\thrift\win32;..\ThirdParty\boost\lib\win32"
 				LinkDLL="true"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/ArxSoUI.pdb"
@@ -133,7 +133,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\lemon;..\ThirdParty\soci\include;..\ThirdParty\soui;..\ThirdParty\soui\soui\include;..\ThirdParty\soui\utilities\include;..\ThirdParty\soui\config;..\ThirdParty\soui\components;&quot;..\ThirdParty\json-cpp\include&quot;;..\ThirdParty\thrift\lib\cpp\src;..\ThirdParty\WinHttpClient\Include;..\ThirdParty\boost"
+				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\soci\include;..\ThirdParty\soui;..\ThirdParty\soui\soui\include;..\ThirdParty\soui\utilities\include;..\ThirdParty\soui\config;..\ThirdParty\soui\components;&quot;..\ThirdParty\json-cpp\include&quot;;..\ThirdParty\thrift\lib\cpp\src;..\ThirdParty\WinHttpClient\Include;..\ThirdParty\boost"
 				AdditionalUsingDirectories="C:\Program Files\AutoCAD 2010\"
 				PreprocessorDefinitions="_WIN64;_WINDOWS;ARXSOUI_MODULE;_AFXEXT;_ACRXAPP"
 				StringPooling="false"
@@ -159,10 +159,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="log4cplusSU-x64.lib lemon_x64.lib soci_core.lib soci_mysql.lib libmysql.lib soui.lib utilities.lib jsoncpp-x64.lib libthrift.lib"
+				AdditionalDependencies="log4cplusSU-x64.lib soci_core.lib soci_mysql.lib libmysql.lib soui.lib utilities.lib jsoncpp-x64.lib libthrift.lib"
 				OutputFile="$(outdir)/ArxSoUI.arx"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="..\ThirdParty\lemon\lib;..\ThirdParty\log4cplus\lib;..\ThirdParty\soci\lib\x64;..\ThirdParty\soui\bin64;&quot;..\ThirdParty\json-cpp\lib&quot;;..\ThirdParty\thrift\x64;..\ThirdParty\boost\lib\x64"
+				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\soci\lib\x64;..\ThirdParty\soui\bin64;&quot;..\ThirdParty\json-cpp\lib&quot;;..\ThirdParty\thrift\x64;..\ThirdParty\boost\lib\x64"
 				LinkDLL="true"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/ArxSoUI.pdb"
@@ -220,7 +220,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="2"
-				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\lemon;..\ThirdParty\soci\include;..\ThirdParty\soui;..\ThirdParty\soui\soui\include;..\ThirdParty\soui\utilities\include;..\ThirdParty\soui\config;..\ThirdParty\soui\components;&quot;..\ThirdParty\json-cpp\include&quot;;..\ThirdParty\thrift\lib\cpp\src;..\ThirdParty\WinHttpClient\Include;..\ThirdParty\boost"
+				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\soci\include;..\ThirdParty\soui;..\ThirdParty\soui\soui\include;..\ThirdParty\soui\utilities\include;..\ThirdParty\soui\config;..\ThirdParty\soui\components;&quot;..\ThirdParty\json-cpp\include&quot;;..\ThirdParty\thrift\lib\cpp\src;..\ThirdParty\WinHttpClient\Include;..\ThirdParty\boost"
 				AdditionalUsingDirectories="C:\Program Files\AutoCAD 2010\"
 				PreprocessorDefinitions="WIN32;_WINDOWS;ARXSOUI_MODULE;NDEBUG;_AFXEXT;_ACRXAPP"
 				StringPooling="true"
@@ -246,10 +246,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="log4cplusSU.lib lemon.lib soci_core.lib soci_mysql.lib libmysql.lib soui.lib utilities.lib jsoncpp.lib libthrift.lib"
+				AdditionalDependencies="log4cplusSU.lib soci_core.lib soci_mysql.lib libmysql.lib soui.lib utilities.lib jsoncpp.lib libthrift.lib"
 				OutputFile="$(outdir)/ArxSoUI.arx"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\lemon\lib;..\ThirdParty\soci\lib\win32;..\ThirdParty\soui\bin;&quot;..\ThirdParty\json-cpp\lib&quot;;..\ThirdParty\thrift\win32;..\ThirdParty\boost\lib\win32"
+				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\soci\lib\win32;..\ThirdParty\soui\bin;&quot;..\ThirdParty\json-cpp\lib&quot;;..\ThirdParty\thrift\win32;..\ThirdParty\boost\lib\win32"
 				LinkDLL="true"
 				GenerateDebugInformation="false"
 				ProgramDatabaseFile=""
@@ -307,7 +307,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="2"
-				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\lemon;..\ThirdParty\soci\include;..\ThirdParty\soui;..\ThirdParty\soui\soui\include;..\ThirdParty\soui\utilities\include;..\ThirdParty\soui\config;..\ThirdParty\soui\components;&quot;..\ThirdParty\json-cpp\include&quot;;..\ThirdParty\thrift\lib\cpp\src;..\ThirdParty\WinHttpClient\Include"
+				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\soci\include;..\ThirdParty\soui;..\ThirdParty\soui\soui\include;..\ThirdParty\soui\utilities\include;..\ThirdParty\soui\config;..\ThirdParty\soui\components;&quot;..\ThirdParty\json-cpp\include&quot;;..\ThirdParty\thrift\lib\cpp\src;..\ThirdParty\WinHttpClient\Include;..\ThirdParty\boost"
 				AdditionalUsingDirectories="C:\Program Files\AutoCAD 2010\"
 				PreprocessorDefinitions="WIN32;_WINDOWS;ARXSOUI_MODULE;NDEBUG;_AFXEXT;_ACRXAPP"
 				StringPooling="true"
@@ -333,10 +333,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="log4cplusSU-x64.lib lemon_x64.lib soci_core.lib soci_mysql.lib libmysql.lib soui.lib utilities.lib jsoncpp-x64.lib libthrift.lib"
+				AdditionalDependencies="log4cplusSU-x64.lib soci_core.lib soci_mysql.lib libmysql.lib soui.lib utilities.lib jsoncpp-x64.lib libthrift.lib"
 				OutputFile="$(outdir)/ArxSoUI.arx"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="..\ThirdParty\lemon\lib;..\ThirdParty\log4cplus\lib;..\ThirdParty\soci\lib\x64;..\ThirdParty\soui\bin64;&quot;..\ThirdParty\json-cpp\lib&quot;;..\ThirdParty\thrift\x64;..\ThirdParty\boost\lib\x64"
+				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\soci\lib\x64;..\ThirdParty\soui\bin64;&quot;..\ThirdParty\json-cpp\lib&quot;;..\ThirdParty\thrift\x64;..\ThirdParty\boost\lib\x64"
 				LinkDLL="true"
 				GenerateDebugInformation="false"
 				ProgramDatabaseFile=""
