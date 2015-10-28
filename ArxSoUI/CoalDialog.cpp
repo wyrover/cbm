@@ -185,8 +185,13 @@ void CoalDialog::OnSaveButtonClick()
     Utils::cstring_to_double( ( LPCTSTR )m_VarCoeffEdit->GetWindowText(), coal->var_coeff ); // 变异系数
     coal->stability = m_StabilityCombox->GetCurSel() + 1; // 煤层稳定性
     Utils::cstring_to_double( ( LPCTSTR )m_DipAngleEdit->GetWindowText(), coal->dip_angle ); // 煤层倾角
+	Utils::cstring_to_double( ( LPCTSTR )m_HwEdit->GetWindowText(), coal->hw ); // 采高
     Utils::cstring_to_double( ( LPCTSTR )m_CavingZoneHeightEdit->GetWindowText(), coal->czh ); // 冒落带高度
     coal->minable = m_MinableCheck->IsChecked(); // 是否可采煤层
+	//上覆煤层间距
+	Utils::cstring_to_double( (LPCTSTR)m_LayerGapEdit->GetWindowText(), coal->layer_gap);
+	//采动影响倍数
+	Utils::cstring_to_double( (LPCTSTR)m_InfluenceFactorEdit->GetWindowText(), coal->influence_factor);
     if( coal->save() )
     {
         SMessageBox( GetSafeHwnd(), _T( "更新成功!" ), _T( "友情提示" ), MB_OK );
@@ -256,6 +261,7 @@ void CoalDialog::OnCoalComboxSelChanged( SOUI::EventArgs* pEvt )
     if( coal == 0 ) return;
 
     m_ThickEdit->SetWindowText( Utils::double_to_cstring( coal->thick ) );
+	m_HwEdit->SetWindowText(Utils::double_to_cstring(coal->hw));
     m_RankCombox->SetCurSel( coal->rank - 1 );
     m_PressureEdit->SetWindowText( Utils::double_to_cstring( coal->pressure ) );
     m_GasContentEdit->SetWindowText( Utils::double_to_cstring( coal->gas_content ) );
@@ -269,6 +275,8 @@ void CoalDialog::OnCoalComboxSelChanged( SOUI::EventArgs* pEvt )
     m_DipAngleEdit->SetWindowText( Utils::double_to_cstring( coal->dip_angle ) );
     m_CavingZoneHeightEdit->SetWindowText( Utils::double_to_cstring( coal->czh ) );
     m_MinableCheck->SetCheck( BOOL_2_INT( coal->minable != 0 ) );
+	m_LayerGapEdit->SetWindowText(Utils::double_to_cstring(coal->layer_gap));
+	m_InfluenceFactorEdit->SetWindowText(Utils::double_to_cstring(coal->influence_factor));
 }
 
 void CoalDialog::OnMineIndexCaclButtonClick()
@@ -434,6 +442,8 @@ void CoalDialog::initCoalDatas()
     m_CavingZoneHeightEdit->SetWindowText( NULL );
     m_MinableCheck->SetCheck( FALSE );
     m_HwEdit->SetWindowText( NULL );
+	m_LayerGapEdit->SetWindowText(NULL);
+	m_InfluenceFactorEdit->SetWindowText(NULL);
 }
 
 void CoalDialog::fillCoalCombox()

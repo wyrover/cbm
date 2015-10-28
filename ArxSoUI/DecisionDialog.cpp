@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "DecisionDialog.h"
-
+#include "OccurrenceGraph.h"
 #include <ArxHelper/HelperClass.h>
 #include <Dao/DaoHelper.h>
 
@@ -38,7 +38,19 @@ LRESULT DecisionDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 
 void DecisionDialog::OnGraphButtonClick()
 {
-    SMessageBox( GetSafeHwnd(), _T( "如何查看煤层赋存图???" ), _T( "友情提示" ), MB_OK );
+	MinePtr mine = FIND_BY_ID( Mine, mine_id );
+	if( mine == 0 ) return;
+
+    //SMessageBox( GetSafeHwnd(), _T( "如何查看煤层赋存图???" ), _T( "友情提示" ), MB_OK );
+
+	//交互选择基点坐标
+	AcGePoint3d pt;
+	getPoint( pt );
+
+	//绘制平面图
+	OccurrenceGraph graph( mine );
+	graph.setPoint( pt );
+	graph.draw();
 }
 
 void DecisionDialog::OnTechnologyButtonClick()
@@ -62,4 +74,10 @@ void DecisionDialog::OnTechnologyButtonClick()
     msg.AppendFormat( _T( "\\n" ) );
     msg.AppendFormat( _T( "如何决策尚不明确???" ) );
     SMessageBox( GetSafeHwnd(), msg, _T( "友情提示" ), MB_OK );
+}
+
+bool DecisionDialog::getPoint( AcGePoint3d& pt )
+{
+	SouiDialogShowSwitch show_switch( this );
+	return ArxUtilHelper::PromptPt( _T( "请选择一点:" ), pt );
 }

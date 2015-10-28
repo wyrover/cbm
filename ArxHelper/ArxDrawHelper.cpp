@@ -174,6 +174,14 @@ AcGePoint3d ArxDrawHelper::CaclPt( const AcGePoint3d& pt,
     return ( pt + v1 * width + v2 * height );
 }
 
+AcGePoint3d ArxDrawHelper::CaclPt2(const AcGePoint3d& pt, double angle, double width, double height)
+{
+	AcGeVector3d v1(AcGeVector3d::kXAxis), v2(AcGeVector3d::kYAxis);
+	v1.rotateBy(angle, AcGeVector3d::kZAxis);
+	v2.rotateBy(angle, AcGeVector3d::kZAxis);
+	return ( pt + v1 * width + v2 * height );
+}
+
 AcGePoint3d ArxDrawHelper::CacLineClosePt( const AcGePoint3d& spt, const AcGePoint3d& ept, const AcGePoint3d& pt )
 {
     // 构造一条几何线段
@@ -549,7 +557,7 @@ AcDbObjectId ArxDrawHelper::DrawRect( const AcGePoint3d& cnt, double angle, doub
 
 AcDbObjectId ArxDrawHelper::DrawRect2( const AcGePoint3d& pt, double angle, double width, double height )
 {
-    AcGePoint3d insertPt = ArxDrawHelper::CaclPt( pt, AcGeVector3d::kXAxis, 0.5 * width, AcGeVector3d::kYAxis, 0.5 * height );
+    AcGePoint3d insertPt = ArxDrawHelper::CaclPt2( pt, angle, 0.5 * width, 0.5 * height );
     return ArxDrawHelper::DrawRect( insertPt, angle, width, height );
 }
 
@@ -883,7 +891,7 @@ AcDbObjectId ArxDrawHelper::MakeAlignedDim( const AcGePoint3d& pt1, const AcGePo
 
     // dimLinePt automatically set from where text was placed,
     // unless you deliberately set the dimLinePt
-    dim->setHorizontalRotation( 0 );
+    dim->setHorizontalRotation( angle );
     dim->setTextPosition( dimLinePoint );
     dim->useSetTextPosition();    // make text go where user picked
     dim->setDatabaseDefaults();

@@ -44,4 +44,7 @@ protected:
 
 public:
     int mine_id; // 外部传入(矿井id)
+
+private:
+	bool getPoint( AcGePoint3d& pt );
 };

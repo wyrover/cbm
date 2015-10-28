@@ -387,6 +387,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\OccurrenceGraph.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Path.cpp"
 				>
 			</File>
@@ -745,6 +749,10 @@
 			</File>
 			<File
 				RelativePath=".\MySoUiLoader.h"
+				>
+			</File>
+			<File
+				RelativePath=".\OccurrenceGraph.h"
 				>
 			</File>
 			<File
