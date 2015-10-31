@@ -1,147 +1,215 @@
 <?php
 
-//带双引号的逗号
-define ('COMMA', "\",\"");
-define ('SEMICOLON', "\";\"");
-define ('STREAM', "<<");
-define ('DBL_QUOT', "\"");
-define ('SINGLE_QUOT', "\"'\"");
-define ('ENTER', "\r\n");
-define ('TWO_ENTER', "\r\n\r\n");
-define ('THREE_ENTER', "\r\n\r\n\r\n");
-define ('TAB', "\t");
-define ('TWO_TAB', "\t\t");
-define ('THREE_TAB', "\t\t\t");
-define ('FOUR_TAB', "\t\t\t\t");
-define ("ID_SUBFIX", "_id");
-define ('VC_PRECOM', TRUE);
-define ('DLL_EXPORT', " DAO_DLLIMPEXP ");
-//define ('DLL_EXPORT', " ");
-
-function tchar($str)
+function truncateDatas($file)
 {
-    return '_T('.DBL_QUOT.$str.DBL_QUOT.')';
-}
-//创建多级目录(递归)
-function mkdirs($dir)
-{
-    if(!is_dir($dir)) {
-        if(!mkdirs(dirname($dir))) {
-            return false;
-        }
-        if(!mkdir($dir, 0777)) {
-            return false;
-        }
-    }
-    return true;  
+	fwrite($file, "truncate table tech_mode;".ENTER);
+	fwrite($file, "truncate table technology;".ENTER);
+	fwrite($file, "truncate table mine_region;".ENTER);
+	fwrite($file, "truncate table mine_base;".ENTER);
+	fwrite($file, "truncate table topo_geo;".ENTER);
+	fwrite($file, "truncate table res_abundance;".ENTER);
 }
 
-//mkdirs('div/css/layout');
-
-//用rmdir和unlink递归删除多级目录
-function rmdirs($dir)  
+function genMineBaseSqlFile($file, $txtfile)
 {
-    if(!is_dir($dir)) return;
-
-    $d = dir($dir);  
-    while (false !== ($child = $d->read())) {
-        if($child != '.' && $child != '..') {
-            if(is_dir($dir.'/'.$child)) {
-                rmdirs($dir.'/'.$child);
-            }
-            else {
-                unlink($dir.'/'.$child);
-            }
-        }
-    }
-    $d->close();
-    rmdir($dir);
-}
-
-function camel_case($name)
-{
-	return str_replace(" ", "", ucwords(str_replace("_", " ", $name)));
-}
-
-//echo camel_case("cbm_adj_layer");
-
-function cpp_type($type)
-{
-	//static $fields_dict = array("NEWDECIMAL" => "double", "LONG"=>"long", "VAR_STRING"=>"std::string", "LONGLONG"=>"long", "INT"=>"int");
-    static $fields_dict = array("NEWDECIMAL" => "double", "LONG"=>"int", "VAR_STRING"=>"CString", "LONGLONG"=>"long", "INT"=>"int");
-	return $fields_dict[$type];
-}
-
-function type_default($type)
-{
-    //static $default_value_dict = array("int"=>"0", "double"=>"0.0", "long"=>"0", "std::string"=>"\"NULL\"", "string"=>"\"NULL\"", "float"=>"0.0f");
-    static $default_value_dict = array("int"=>"0", "double"=>"0.0", "long"=>"0", "CString"=>"_T(\"\")", "float"=>"0.0f");
-    return $default_value_dict[$type];
-}
-
-function h_type2txt($type_id)
-{
-    static $types;
-
-    if (!isset($types)) {
-        $types = array();
-        $constants = get_defined_constants(true);
-        foreach ($constants["mysqli"] as $c => $n) {
-        	if (preg_match("/^MYSQLI_TYPE_(.*)/", $c, $m)) $types[$n] = $m[1];
-        }
-    }
-
-    // var_dump($types);
-    return array_key_exists($type_id, $types)? $types[$type_id] : NULL;
-}
-
-function h_flags2txt($flags_num)
-{
-    static $flags;
-
-    if (!isset($flags)) {
-        $flags = array();
-        $constants = get_defined_constants(true);
-        foreach ($constants["mysqli"] as $c => $n) {
-        	if (preg_match("/MYSQLI_(.*)_FLAG$/", $c, $m)) if (!array_key_exists($n, $flags)) $flags[$n] = $m[1];
-        }
-    }
-
-    $result = array();
-    foreach ($flags as $n => $t) if ($flags_num & $n) $result[] = $t;
-    return implode(" ", $result);
-}
-
-function table_no_prefix($name)
-{
-    $size = strlen("cbm_");
-    $cbm = substr($name, 0, $size);
-    // var_dump($cbm);
-	$tbl_name = substr($name, $size, strlen($name)-$size);
-    return ($cbm=='cbm_')?$tbl_name:$name;
-}
-
-function table_id($name)
-{
-	return table_no_prefix($name).ID_SUBFIX;
-}
-
-function table_no_id($name)
-{
-    $size = strlen(ID_SUBFIX);
-	$id = substr($name, -1*$size);
-	$tbl_name = substr($name, 0, -1*$size);
-	return ($id == ID_SUBFIX)?$tbl_name:$name;
-}
-
-function obj_prefix($obj_name="")
-{
-	$prefix = $obj_name.".";
-	if($obj_name == "" || $obj_name == "this") {
-		$prefix = "(*this).";
+	fwrite($file, ENTER);
+	foreach(file($txtfile) as $line => $content) {
+	    //拆分字符串(制表符分隔)
+	    $data = explode("\t", trim($content));
+		//基地编号
+	    $id = intVal($data[0]);
+	    //基地名称
+	    $name = $data[1];
+	    
+	    fwrite($file, "insert into mine_base(id, name) values($id, '$name');".ENTER);
 	}
-	return $prefix;
 }
 
+function genMineRegionSqlFile($file, $txtfile)
+{
+	fwrite($file, ENTER);
+	foreach(file($txtfile) as $line => $content) {
+	    //拆分字符串(制表符分隔)
+	    $data = explode("\t", trim($content));
+		//矿区编号
+	    $id = intVal($data[0]);
+	    //矿区名称
+	    $name = $data[1];
+	    //基地编号
+	    $mine_base_id = intval($data[2]);
+	    
+	    fwrite($file, "insert into mine_region(id, name, mine_base_id) values($id, '$name', $mine_base_id);".ENTER);
+	}
+}
+
+function genTechModeSqlFile($file, $txtfile)
+{
+	fwrite($file, ENTER);
+	foreach(file($txtfile) as $line => $content) {
+	    //拆分字符串(制表符分隔)
+	    $data = explode("\t", trim($content));
+	    var_dump($data);
+		//技术模式编号
+	    $id = intVal($data[0]);
+	    //技术模式名称
+	    $name = $data[1];
+	    //矿区编号
+	    $mine_region_id = intval($data[2]);
+	    $c1 = intval($data[3]);
+	    $c2 = intval($data[4]);
+	    $c3 = intval($data[5]);
+	    
+	    fwrite($file, "insert into tech_mode(id, name, mine_region_id, c1, c2, c3) values($id, '$name', $mine_region_id, $c1, $c2, $c3);".ENTER);
+	}
+}
+
+function genTechnologySqlFile($file, $txtfile)
+{
+	fwrite($file, ENTER);
+	foreach(file($txtfile) as $line => $content) {
+	    //拆分字符串(制表符分隔)
+	    $data = explode("\t", trim($content));
+		//技术编号
+	    $id = intVal($data[0]);
+	    //技术名称
+	    $name = $data[1];
+	    //矿区编号
+	    $mine_region_id = intval($data[2]);
+	    //是否关键技术
+	    $isKey = intval($data[3]);
+	    
+	    fwrite($file, "insert into technology(id, name, isKey, mine_region_id) values($id, '$name', $isKey, $mine_region_id);".ENTER);
+	}
+}
+
+function genComplexitySqlFile($file, $txtfile)
+{
+	fwrite($file, ENTER);
+	foreach(file($txtfile) as $line => $content) {
+	    //拆分字符串(制表符分隔)
+	    $data = explode("\t", trim($content));
+		//编号
+	    $id = intVal($data[0]);
+	    //名称
+	    $name = $data[1];
+	    //详细说明
+	    $details = $data[2];
+	    
+	    fwrite($file, "insert into complexity(id, name, details) values($id, '$name', '$details');".ENTER);
+	}
+}
+
+function genTopoGeoSqlFile($file, $txtfile)
+{
+	fwrite($file, ENTER);
+	foreach(file($txtfile) as $line => $content) {
+	    //拆分字符串(制表符分隔)
+	    $data = explode("\t", trim($content));
+		//编号
+	    $id = intVal($data[0]);
+	    //分类
+	    $name = $data[2];
+	    //特点
+	    $feature = $data[1];
+	    
+	    fwrite($file, "insert into topo_geo(id, name, feature) values($id, '$name', '$feature');".ENTER);
+	}
+}
+
+function genResAbundanceSqlFile($file, $txtfile)
+{
+	fwrite($file, ENTER);
+	foreach(file($txtfile) as $line => $content) {
+	    //拆分字符串(制表符分隔)
+	    $data = explode("\t", trim($content));
+		//编号
+	    $id = intVal($data[0]);
+	    //分类
+	    $name = $data[1];
+	    //丰度上下限
+	    $min_a = floatval($data[2]);
+	    $max_a = floatval($data[2]);
+	    
+	    fwrite($file, "insert into res_abundance(id, name, min_abundance, max_abundance) values($id, '$name', $min_a, $max_a);".ENTER);
+	}
+}
+
+function genAccountSqlFile($file, $txtfile)
+{
+	fwrite($file, ENTER);
+	foreach(file($txtfile) as $line => $content) {
+	    //拆分字符串(制表符分隔)
+	    $data = explode("\t", trim($content));
+		//编号
+	    $id = intVal($data[0]);
+	    //用户名
+	    $user = $data[1];
+	    //密码
+	    $pwd = $data[2];
+	    
+	    fwrite($file, "insert into account(username, password) values('$user', '$pwd');".ENTER);
+	}
+}
+
+function genMineSqlFile($file, $txtfile)
+{
+	fwrite($file, ENTER);
+	foreach(file($txtfile) as $line => $content) {
+	    //拆分字符串(制表符分隔)
+	    $data = explode("\t", trim($content));
+		//编号
+	    $id = intVal($data[0]);
+	    //用户名
+	    $name = $data[1];
+	    //矿区
+	    $mine_region_id = $data[2];
+	    //账户
+	    $account_id = $data[3];
+	    
+	    fwrite($file, "insert into mine(name, mine_region_id, account_id) values('$name', $mine_region_id, $account_id);".ENTER);
+	}
+}
+
+function genRockSqlFile($file, $txtfile)
+{
+	fwrite($file, ENTER);
+	foreach(file($txtfile) as $line => $content) {
+	    //拆分字符串(制表符分隔)
+	    $data = explode("\t", trim($content));
+		//编号
+	    $id = intVal($data[0]);
+	    //名称
+	    $name = $data[1];
+	    //a
+	    $a = floatval($data[2]);
+	    //b
+	    $b = floatval($data[3]);
+	    //c
+	    $c = floatval($data[3]);
+	    
+	    fwrite($file, "insert into rock(id, name, a, b, c) values($id, '$name', $a, $b, $c);".ENTER);
+	}
+}
+
+//将建表的sql文件一次性追加到cbm-data.sql文件中
+function make_sql_files()
+{
+	// file_put_contents('cbm.sql', file_get_contents('cbm-mysql.sql'));
+	//生成sql插入语句
+	$file = fopen("cbm-data.sql", "w");
+	//生成煤炭基地的sql数据文件
+	// truncateDatas($file);
+	// genAccountSqlFile($file, 'account.txt');
+	genMineBaseSqlFile($file, 'mine_base.txt');
+	genMineRegionSqlFile($file, 'mine_region.txt');
+	// genMineSqlFile($file, 'mine.txt');
+	genTechModeSqlFile($file, 'tech_mode.txt');
+	genTechnologySqlFile($file, 'technology.txt');
+	genTopoGeoSqlFile($file, 'topo_geo.txt');
+	genComplexitySqlFile($file, 'complexity.txt');
+	genResAbundanceSqlFile($file, 'res_abundance.txt');
+	genRockSqlFile($file, 'rock.txt');
+	fclose($file);
+}
 
 ?>

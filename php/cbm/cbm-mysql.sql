@@ -1,68 +1,68 @@
-drop table if exists cbm_account;
+drop table if exists account;
 
-drop table if exists cbm_adj_layer;
+drop table if exists adj_layer;
 
-drop table if exists cbm_base;
+drop table if exists coal;
 
-drop table if exists cbm_coal;
+drop table if exists complexity;
 
-drop table if exists cbm_complexity;
+drop table if exists design_drilling_surf_technology;
 
-drop table if exists cbm_design_drilling_surf_technology;
+drop table if exists design_goaf_technology;
 
-drop table if exists cbm_design_goaf_technology;
+drop table if exists design_pore;
 
-drop table if exists cbm_design_pore;
+drop table if exists design_site;
 
-drop table if exists cbm_design_site;
+drop table if exists design_technology;
 
-drop table if exists cbm_design_technology;
+drop table if exists design_work_surf_technology;
 
-drop table if exists cbm_design_work_surf_technology;
+drop table if exists drilling_radius_param;
 
-drop table if exists cbm_drilling_radius_param;
+drop table if exists drilling_surf;
 
-drop table if exists cbm_drilling_surf;
+drop table if exists eval_unit;
 
-drop table if exists cbm_eval_unit;
+drop table if exists high_drilling_pore;
 
-drop table if exists cbm_high_drilling_pore;
+drop table if exists high_drilling_pore_param;
 
-drop table if exists cbm_high_drilling_pore_param;
+drop table if exists high_drilling_site_param;
 
-drop table if exists cbm_high_drilling_site_param;
+drop table if exists high_drilling_tunnel;
 
-drop table if exists cbm_high_drilling_tunnel;
+drop table if exists hydr_geo;
 
-drop table if exists cbm_hydr_geo;
+drop table if exists mine;
 
-drop table if exists cbm_mine;
+drop table if exists mine_base;
 
-drop table if exists cbm_pore_flow;
+drop table if exists mine_region;
 
-drop table if exists cbm_pore_size;
+drop table if exists pore_flow;
 
-drop table if exists cbm_region;
+drop table if exists pore_size;
 
-drop table if exists cbm_res_abundance;
+drop table if exists res_abundance;
 
-drop table if exists cbm_rock;
+drop table if exists rock;
 
-drop table if exists cbm_sys_info;
+drop table if exists sys_info;
 
-drop table if exists cbm_tech_mode;
+drop table if exists tech_mode;
 
-drop table if exists cbm_technology;
+drop table if exists technology;
 
-drop table if exists cbm_topo_geo;
+drop table if exists topo_geo;
 
-drop table if exists cbm_tunnel;
+drop table if exists tunnel;
 
-drop table if exists cbm_work_area;
+drop table if exists work_area;
 
-drop table if exists cbm_work_surf;
+drop table if exists work_surf;
 
-create table cbm_account
+create table account
 (
    id                   int not null auto_increment,
    username             varchar(20) not null,
@@ -71,11 +71,11 @@ create table cbm_account
    primary key (id)
 );
 
-create table cbm_adj_layer
+create table adj_layer
 (
    id                   int not null auto_increment,
-   cbm_work_surf_id     int,
-   cbm_coal_id          int,
+   work_surf_id         int,
+   coal_id              int,
    name                 varchar(255),
    num                  int,
    h                    decimal(8,2),
@@ -85,22 +85,12 @@ create table cbm_adj_layer
    primary key (id)
 );
 
-alter table cbm_adj_layer comment '回采工作面就是开采层';
+alter table adj_layer comment '回采工作面就是开采层';
 
-create table cbm_base
-(
-   id                   int not null,
-   name                 varchar(50),
-   comment              varchar(255),
-   primary key (id)
-);
-
-alter table cbm_base comment '这个只是一个帮助下拉列表，类似于省市县这种3联动菜单，见文档的P8 3.1';
-
-create table cbm_coal
+create table coal
 (
    id                   int not null auto_increment,
-   cbm_mine_id          int,
+   mine_id              int,
    name                 varchar(20),
    minable              int default 1,
    thick                decimal(8,2),
@@ -171,9 +161,9 @@ create table cbm_coal
    primary key (id)
 );
 
-alter table cbm_coal comment '煤层基本信息参数表';
+alter table coal comment '煤层基本信息参数表';
 
-create table cbm_complexity
+create table complexity
 (
    id                   int not null,
    name                 varchar(255),
@@ -182,10 +172,10 @@ create table cbm_complexity
    primary key (id)
 );
 
-create table cbm_design_drilling_surf_technology
+create table design_drilling_surf_technology
 (
    id                   int not null auto_increment,
-   cbm_design_technology_id int,
+   design_technology_id int,
    name                 varchar(255),
    comment              varchar(255),
    v_offset             decimal(8,2),
@@ -213,19 +203,19 @@ create table cbm_design_drilling_surf_technology
    primary key (id)
 );
 
-create table cbm_design_goaf_technology
+create table design_goaf_technology
 (
    id                   int not null auto_increment,
-   cbm_design_technology_id int,
+   design_technology_id int,
    name                 varchar(255),
    comment              varchar(255),
    primary key (id)
 );
 
-create table cbm_design_pore
+create table design_pore
 (
    id                   int not null auto_increment,
-   cbm_design_site_id   int,
+   design_site_id       int,
    name                 varchar(255),
    d                    decimal(8,2),
    x1                   decimal(8,2),
@@ -241,10 +231,10 @@ create table cbm_design_pore
    primary key (id)
 );
 
-create table cbm_design_site
+create table design_site
 (
    id                   int not null auto_increment,
-   cbm_design_technology_id int,
+   design_technology_id int,
    name                 varchar(255),
    w                    decimal(8,2),
    h                    decimal(8,2),
@@ -255,20 +245,20 @@ create table cbm_design_site
    primary key (id)
 );
 
-create table cbm_design_technology
+create table design_technology
 (
    id                   int not null auto_increment,
-   cbm_coal_id          int,
+   coal_id              int,
    name                 varchar(255),
    region               int,
    comment              varchar(255),
    primary key (id)
 );
 
-create table cbm_design_work_surf_technology
+create table design_work_surf_technology
 (
    id                   int not null auto_increment,
-   cbm_design_technology_id int,
+   design_technology_id int,
    name                 varchar(255),
    comment              varchar(255),
    top_side             decimal(8,2),
@@ -299,10 +289,10 @@ create table cbm_design_work_surf_technology
    primary key (id)
 );
 
-create table cbm_drilling_radius_param
+create table drilling_radius_param
 (
    id                   int not null auto_increment,
-   cbm_coal_id          int,
+   coal_id              int,
    name                 varchar(255),
    r                    decimal(8,2),
    l                    decimal(8,2),
@@ -317,11 +307,11 @@ create table cbm_drilling_radius_param
    primary key (id)
 );
 
-create table cbm_drilling_surf
+create table drilling_surf
 (
    id                   int not null auto_increment,
-   cbm_work_area_id     int,
-   cbm_tunnel_id        int,
+   work_area_id         int,
+   tunnel_id            int,
    name                 varchar(255),
    qr                   decimal(8,2),
    qa                   decimal(8,2),
@@ -332,10 +322,10 @@ create table cbm_drilling_surf
    primary key (id)
 );
 
-create table cbm_eval_unit
+create table eval_unit
 (
    id                   int not null auto_increment,
-   cbm_work_surf_id     int,
+   work_surf_id         int,
    name                 varchar(255),
    l                    decimal(8,2),
    t                    decimal(8,2),
@@ -343,22 +333,22 @@ create table cbm_eval_unit
    primary key (id)
 );
 
-create table cbm_high_drilling_pore
+create table high_drilling_pore
 (
    id                   int not null auto_increment,
-   cbm_high_drilling_pore_param_id int,
+   high_drilling_pore_param_id int,
    num                  int,
    length               decimal(8,2),
    angle                decimal(8,2),
-   type                 int,
+   pore_type            int,
    comment              varchar(255),
    primary key (id)
 );
 
-create table cbm_high_drilling_pore_param
+create table high_drilling_pore_param
 (
    id                   int not null auto_increment,
-   cbm_work_surf_id     int,
+   work_surf_id         int,
    name                 varchar(255),
    lk                   decimal(8,2),
    lc                   decimal(8,2),
@@ -371,10 +361,10 @@ create table cbm_high_drilling_pore_param
    primary key (id)
 );
 
-create table cbm_high_drilling_site_param
+create table high_drilling_site_param
 (
    id                   int not null auto_increment,
-   cbm_work_surf_id     int,
+   work_surf_id         int,
    name                 varchar(255),
    l1                   decimal(8,2),
    l2                   decimal(8,2),
@@ -388,10 +378,10 @@ create table cbm_high_drilling_site_param
    primary key (id)
 );
 
-create table cbm_high_drilling_tunnel
+create table high_drilling_tunnel
 (
    id                   int not null auto_increment,
-   cbm_work_surf_id     int,
+   work_surf_id         int,
    name                 varchar(255),
    k                    decimal(8,2),
    rock                 int,
@@ -401,7 +391,7 @@ create table cbm_high_drilling_tunnel
    primary key (id)
 );
 
-create table cbm_hydr_geo
+create table hydr_geo
 (
    id                   int not null,
    name                 varchar(20),
@@ -416,12 +406,12 @@ create table cbm_hydr_geo
    primary key (id)
 );
 
-create table cbm_mine
+create table mine
 (
    id                   int not null auto_increment,
-   cbm_tech_mode_id     int,
-   cbm_region_id        int,
-   cbm_account_id       int,
+   tech_mode_id         int,
+   mine_region_id       int,
+   account_id           int,
    name                 varchar(255),
    province             varchar(20),
    city                 varchar(20),
@@ -453,9 +443,28 @@ create table cbm_mine
    primary key (id)
 );
 
-alter table cbm_mine comment '账户管理数据表（包括矿井的基本信息）';
+alter table mine comment '账户管理数据表（包括矿井的基本信息）';
 
-create table cbm_pore_flow
+create table mine_base
+(
+   id                   int not null,
+   name                 varchar(50),
+   comment              varchar(255),
+   primary key (id)
+);
+
+alter table mine_base comment '这个只是一个帮助下拉列表，类似于省市县这种3联动菜单，见文档的P8 3.1';
+
+create table mine_region
+(
+   id                   int not null,
+   mine_base_id         int,
+   name                 varchar(20),
+   comment              varchar(255),
+   primary key (id)
+);
+
+create table pore_flow
 (
    id                   int not null auto_increment,
    name                 varchar(255),
@@ -478,7 +487,7 @@ create table cbm_pore_flow
    primary key (id)
 );
 
-create table cbm_pore_size
+create table pore_size
 (
    id                   int not null auto_increment,
    name                 varchar(255),
@@ -492,16 +501,7 @@ create table cbm_pore_size
    primary key (id)
 );
 
-create table cbm_region
-(
-   id                   int not null,
-   cbm_base_id          int,
-   name                 varchar(20),
-   comment              varchar(255),
-   primary key (id)
-);
-
-create table cbm_res_abundance
+create table res_abundance
 (
    id                   int not null,
    name                 varchar(20),
@@ -510,7 +510,7 @@ create table cbm_res_abundance
    primary key (id)
 );
 
-create table cbm_rock
+create table rock
 (
    id                   int not null,
    name                 varchar(50),
@@ -521,23 +521,23 @@ create table cbm_rock
    primary key (id)
 );
 
-create table cbm_sys_info
+create table sys_info
 (
    id                   int not null auto_increment,
-   cbm_account_id       int,
+   account_id           int,
    last_login_time      varchar(255),
    comment              varchar(255),
    primary key (id)
 );
 
-alter table cbm_sys_info comment '记录当前的一些信息，比如当前用户';
+alter table sys_info comment '记录当前的一些信息，比如当前用户';
 
-create table cbm_tech_mode
+create table tech_mode
 (
    id                   int not null,
-   cbm_region_id        int,
+   mine_region_id       int,
    name                 varchar(255),
-   type                 int,
+   mode_type            int,
    c1                   int,
    c2                   int,
    c3                   int,
@@ -545,10 +545,10 @@ create table cbm_tech_mode
    primary key (id)
 );
 
-create table cbm_technology
+create table technology
 (
    id                   int not null,
-   cbm_region_id        int,
+   mine_region_id       int,
    name                 varchar(255),
    iskey                int,
    doc                  varchar(255),
@@ -557,7 +557,7 @@ create table cbm_technology
    primary key (id)
 );
 
-create table cbm_topo_geo
+create table topo_geo
 (
    id                   int not null,
    name                 varchar(20),
@@ -566,7 +566,7 @@ create table cbm_topo_geo
    primary key (id)
 );
 
-create table cbm_tunnel
+create table tunnel
 (
    id                   int not null auto_increment,
    name                 varchar(255),
@@ -580,7 +580,7 @@ create table cbm_tunnel
    q3                   decimal(8,2),
    q0                   decimal(8,2),
    comment              varchar(255),
-   type                 int,
+   tunnel_type          int,
    top_side             decimal(8,2),
    bottom_side          decimal(8,2),
    left_side            decimal(8,2),
@@ -594,12 +594,12 @@ create table cbm_tunnel
    primary key (id)
 );
 
-alter table cbm_tunnel comment '所有的巷道列表';
+alter table tunnel comment '所有的巷道列表';
 
-create table cbm_work_area
+create table work_area
 (
    id                   int not null auto_increment,
-   cbm_coal_id          int,
+   coal_id              int,
    name                 varchar(255),
    mode                 int default 1,
    a                    decimal(8,2),
@@ -611,11 +611,11 @@ create table cbm_work_area
    primary key (id)
 );
 
-create table cbm_work_surf
+create table work_surf
 (
    id                   int not null auto_increment,
-   cbm_work_area_id     int,
-   cbm_tunnel_id        int,
+   work_area_id         int,
+   tunnel_id            int,
    name                 varchar(255),
    a                    decimal(8,2),
    qr                   decimal(8,2),
@@ -637,84 +637,84 @@ create table cbm_work_surf
    primary key (id)
 );
 
-alter table cbm_adj_layer add constraint fk_relationship_16 foreign key (cbm_work_surf_id)
-      references cbm_work_surf (id) on delete cascade on update restrict;
+alter table adj_layer add constraint fk_relationship_16 foreign key (work_surf_id)
+      references work_surf (id) on delete cascade on update restrict;
 
-alter table cbm_adj_layer add constraint fk_relationship_32 foreign key (cbm_coal_id)
-      references cbm_coal (id) on delete cascade on update restrict;
+alter table adj_layer add constraint fk_relationship_32 foreign key (coal_id)
+      references coal (id) on delete cascade on update restrict;
 
-alter table cbm_coal add constraint fk_relationship_1 foreign key (cbm_mine_id)
-      references cbm_mine (id) on delete cascade on update restrict;
+alter table coal add constraint fk_relationship_1 foreign key (mine_id)
+      references mine (id) on delete cascade on update restrict;
 
-alter table cbm_design_drilling_surf_technology add constraint fk_relationship_31 foreign key (cbm_design_technology_id)
-      references cbm_design_technology (id) on delete cascade on update restrict;
+alter table design_drilling_surf_technology add constraint fk_relationship_31 foreign key (design_technology_id)
+      references design_technology (id) on delete cascade on update restrict;
 
-alter table cbm_design_goaf_technology add constraint fk_relationship_39 foreign key (cbm_design_technology_id)
-      references cbm_design_technology (id) on delete cascade on update restrict;
+alter table design_goaf_technology add constraint fk_relationship_39 foreign key (design_technology_id)
+      references design_technology (id) on delete cascade on update restrict;
 
-alter table cbm_design_pore add constraint fk_relationship_38 foreign key (cbm_design_site_id)
-      references cbm_design_site (id) on delete cascade on update restrict;
+alter table design_pore add constraint fk_relationship_38 foreign key (design_site_id)
+      references design_site (id) on delete cascade on update restrict;
 
-alter table cbm_design_site add constraint fk_relationship_36 foreign key (cbm_design_technology_id)
-      references cbm_design_technology (id) on delete cascade on update restrict;
+alter table design_site add constraint fk_relationship_36 foreign key (design_technology_id)
+      references design_technology (id) on delete cascade on update restrict;
 
-alter table cbm_design_technology add constraint fk_relationship_35 foreign key (cbm_coal_id)
-      references cbm_coal (id) on delete cascade on update restrict;
+alter table design_technology add constraint fk_relationship_35 foreign key (coal_id)
+      references coal (id) on delete cascade on update restrict;
 
-alter table cbm_design_work_surf_technology add constraint fk_relationship_37 foreign key (cbm_design_technology_id)
-      references cbm_design_technology (id) on delete cascade on update restrict;
+alter table design_work_surf_technology add constraint fk_relationship_37 foreign key (design_technology_id)
+      references design_technology (id) on delete cascade on update restrict;
 
-alter table cbm_drilling_radius_param add constraint fk_relationship_12 foreign key (cbm_coal_id)
-      references cbm_coal (id) on delete cascade on update restrict;
+alter table drilling_radius_param add constraint fk_relationship_12 foreign key (coal_id)
+      references coal (id) on delete cascade on update restrict;
 
-alter table cbm_drilling_surf add constraint fk_relationship_22 foreign key (cbm_tunnel_id)
-      references cbm_tunnel (id) on delete cascade on update restrict;
+alter table drilling_surf add constraint fk_relationship_22 foreign key (tunnel_id)
+      references tunnel (id) on delete cascade on update restrict;
 
-alter table cbm_drilling_surf add constraint fk_relationship_27 foreign key (cbm_work_area_id)
-      references cbm_work_area (id) on delete cascade on update restrict;
+alter table drilling_surf add constraint fk_relationship_27 foreign key (work_area_id)
+      references work_area (id) on delete cascade on update restrict;
 
-alter table cbm_eval_unit add constraint fk_relationship_13 foreign key (cbm_work_surf_id)
-      references cbm_work_surf (id) on delete cascade on update restrict;
+alter table eval_unit add constraint fk_relationship_13 foreign key (work_surf_id)
+      references work_surf (id) on delete cascade on update restrict;
 
-alter table cbm_high_drilling_pore add constraint fk_relationship_34 foreign key (cbm_high_drilling_pore_param_id)
-      references cbm_high_drilling_pore_param (id) on delete cascade on update restrict;
+alter table high_drilling_pore add constraint fk_relationship_34 foreign key (high_drilling_pore_param_id)
+      references high_drilling_pore_param (id) on delete cascade on update restrict;
 
-alter table cbm_high_drilling_pore_param add constraint fk_relationship_33 foreign key (cbm_work_surf_id)
-      references cbm_work_surf (id) on delete cascade on update restrict;
+alter table high_drilling_pore_param add constraint fk_relationship_33 foreign key (work_surf_id)
+      references work_surf (id) on delete cascade on update restrict;
 
-alter table cbm_high_drilling_site_param add constraint fk_relationship_11 foreign key (cbm_work_surf_id)
-      references cbm_work_surf (id) on delete cascade on update restrict;
+alter table high_drilling_site_param add constraint fk_relationship_11 foreign key (work_surf_id)
+      references work_surf (id) on delete cascade on update restrict;
 
-alter table cbm_high_drilling_tunnel add constraint fk_relationship_5 foreign key (cbm_work_surf_id)
-      references cbm_work_surf (id) on delete cascade on update restrict;
+alter table high_drilling_tunnel add constraint fk_relationship_5 foreign key (work_surf_id)
+      references work_surf (id) on delete cascade on update restrict;
 
-alter table cbm_mine add constraint fk_relationship_19 foreign key (cbm_region_id)
-      references cbm_region (id) on delete cascade on update restrict;
+alter table mine add constraint fk_relationship_19 foreign key (mine_region_id)
+      references mine_region (id) on delete cascade on update restrict;
 
-alter table cbm_mine add constraint fk_relationship_28 foreign key (cbm_account_id)
-      references cbm_account (id) on delete cascade on update restrict;
+alter table mine add constraint fk_relationship_28 foreign key (account_id)
+      references account (id) on delete cascade on update restrict;
 
-alter table cbm_mine add constraint fk_relationship_30 foreign key (cbm_tech_mode_id)
-      references cbm_tech_mode (id) on delete cascade on update restrict;
+alter table mine add constraint fk_relationship_30 foreign key (tech_mode_id)
+      references tech_mode (id) on delete cascade on update restrict;
 
-alter table cbm_region add constraint fk_relationship_23 foreign key (cbm_base_id)
-      references cbm_base (id) on delete cascade on update restrict;
+alter table mine_region add constraint fk_relationship_23 foreign key (mine_base_id)
+      references mine_base (id) on delete cascade on update restrict;
 
-alter table cbm_sys_info add constraint fk_relationship_29 foreign key (cbm_account_id)
-      references cbm_account (id) on delete cascade on update restrict;
+alter table sys_info add constraint fk_relationship_29 foreign key (account_id)
+      references account (id) on delete cascade on update restrict;
 
-alter table cbm_tech_mode add constraint fk_relationship_25 foreign key (cbm_region_id)
-      references cbm_region (id) on delete cascade on update restrict;
+alter table tech_mode add constraint fk_relationship_25 foreign key (mine_region_id)
+      references mine_region (id) on delete cascade on update restrict;
 
-alter table cbm_technology add constraint fk_relationship_24 foreign key (cbm_region_id)
-      references cbm_region (id) on delete cascade on update restrict;
+alter table technology add constraint fk_relationship_24 foreign key (mine_region_id)
+      references mine_region (id) on delete cascade on update restrict;
 
-alter table cbm_work_area add constraint fk_relationship_9 foreign key (cbm_coal_id)
-      references cbm_coal (id) on delete cascade on update restrict;
+alter table work_area add constraint fk_relationship_9 foreign key (coal_id)
+      references coal (id) on delete cascade on update restrict;
 
-alter table cbm_work_surf add constraint fk_relationship_21 foreign key (cbm_tunnel_id)
-      references cbm_tunnel (id) on delete cascade on update restrict;
+alter table work_surf add constraint fk_relationship_21 foreign key (tunnel_id)
+      references tunnel (id) on delete cascade on update restrict;
 
-alter table cbm_work_surf add constraint fk_relationship_26 foreign key (cbm_work_area_id)
-      references cbm_work_area (id) on delete cascade on update restrict;
+alter table work_surf add constraint fk_relationship_26 foreign key (work_area_id)
+      references work_area (id) on delete cascade on update restrict;
 

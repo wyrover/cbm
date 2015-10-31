@@ -1,3 +1,3 @@
 @echo off
 
-thrift.exe --gen cpp msis.thrift
+call gen_code.bat cpp
