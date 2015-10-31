@@ -32,7 +32,6 @@
 *.swp
 *.orig
 
-*.pyd
 *.pyc
 
 *.pidb
