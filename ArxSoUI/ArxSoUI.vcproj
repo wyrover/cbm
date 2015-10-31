@@ -387,10 +387,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\OccurrenceGraph.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\Path.cpp"
 				>
 			</File>
@@ -721,6 +717,10 @@
 					RelativePath=".\Graph23.cpp"
 					>
 				</File>
+				<File
+					RelativePath=".\OccurrenceGraph.cpp"
+					>
+				</File>
 			</Filter>
 			<Filter
 				Name="report"
@@ -749,10 +749,6 @@
 			</File>
 			<File
 				RelativePath=".\MySoUiLoader.h"
-				>
-			</File>
-			<File
-				RelativePath=".\OccurrenceGraph.h"
 				>
 			</File>
 			<File
@@ -1064,6 +1060,10 @@
 				</File>
 				<File
 					RelativePath=".\Graph23.h"
+					>
+				</File>
+				<File
+					RelativePath=".\OccurrenceGraph.h"
 					>
 				</File>
 			</Filter>

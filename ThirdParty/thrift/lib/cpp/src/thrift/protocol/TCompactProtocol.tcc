@@ -255,13 +255,13 @@ uint32_t TCompactProtocolT<Transport_>::writeDouble(const double dub) {
   BOOST_STATIC_ASSERT(std::numeric_limits<double>::is_iec559);
 
   uint64_t bits = bitwise_cast<uint64_t>(dub);
-  bits = htolell(bits);
+  bits = THRIFT_htolell(bits);
   trans_->write((uint8_t*)&bits, 8);
   return 8;
 }
 
 /**
- * Write a string to the wire with a varint size preceeding.
+ * Write a string to the wire with a varint size preceding.
  */
 template <class Transport_>
 uint32_t TCompactProtocolT<Transport_>::writeString(const std::string& str) {
@@ -270,8 +270,15 @@ uint32_t TCompactProtocolT<Transport_>::writeString(const std::string& str) {
 
 template <class Transport_>
 uint32_t TCompactProtocolT<Transport_>::writeBinary(const std::string& str) {
-  uint32_t ssize = str.size();
-  uint32_t wsize = writeVarint32(ssize) + ssize;
+  if(str.size() > (std::numeric_limits<uint32_t>::max)())
+    throw TProtocolException(TProtocolException::SIZE_LIMIT);
+  uint32_t ssize = static_cast<uint32_t>(str.size());
+  uint32_t wsize = writeVarint32(ssize) ;
+  // checking ssize + wsize > uint_max, but we don't want to overflow while checking for overflows.
+  // transforming the check to ssize > uint_max - wsize
+  if(ssize > (std::numeric_limits<uint32_t>::max)() - wsize)
+    throw TProtocolException(TProtocolException::SIZE_LIMIT);
+  wsize += ssize;
   trans_->write((uint8_t*)str.data(), ssize);
   return wsize;
 }
@@ -426,7 +433,7 @@ uint32_t TCompactProtocolT<Transport_>::readMessageBegin(
     throw TProtocolException(TProtocolException::BAD_VERSION, "Bad protocol version");
   }
 
-  messageType = (TMessageType)((versionAndType >> TYPE_SHIFT_AMOUNT) & 0x03);
+  messageType = (TMessageType)((versionAndType >> TYPE_SHIFT_AMOUNT) & TYPE_BITS);
   rsize += readVarint32(seqid);
   rsize += readString(name);
 
@@ -652,7 +659,7 @@ uint32_t TCompactProtocolT<Transport_>::readDouble(double& dub) {
     uint8_t b[8];
   } u;
   trans_->readAll(u.b, 8);
-  u.bits = letohll(u.bits);
+  u.bits = THRIFT_letohll(u.bits);
   dub = bitwise_cast<double>(u.bits);
   return 8;
 }
@@ -768,7 +775,7 @@ uint32_t TCompactProtocolT<Transport_>::readVarint64(int64_t& i64) {
  */
 template <class Transport_>
 int32_t TCompactProtocolT<Transport_>::zigzagToI32(uint32_t n) {
-  return (n >> 1) ^ -static_cast<int32_t>(n & 1);
+  return (n >> 1) ^ static_cast<uint32_t>(-static_cast<int32_t>(n & 1));
 }
 
 /**
@@ -776,7 +783,7 @@ int32_t TCompactProtocolT<Transport_>::zigzagToI32(uint32_t n) {
  */
 template <class Transport_>
 int64_t TCompactProtocolT<Transport_>::zigzagToI64(uint64_t n) {
-  return (n >> 1) ^ -static_cast<int32_t>(n & 1);
+  return (n >> 1) ^ static_cast<uint64_t>(-static_cast<int64_t>(n & 1));
 }
 
 template <class Transport_>
@@ -810,7 +817,6 @@ TType TCompactProtocolT<Transport_>::getTType(int8_t type) {
     default:
       throw TException(std::string("don't know what type: ") + (char)type);
   }
-  return T_STOP;
 }
 
 }}} // apache::thrift::protocol

@@ -17,7 +17,6 @@
  * under the License.
  */
 
-#define __STDC_LIMIT_MACROS
 #define __STDC_FORMAT_MACROS
 
 #ifndef _GNU_SOURCE
@@ -25,22 +24,24 @@
 #endif
 
 #include <stdint.h>
+#ifdef HAVE_INTTYPES_H
 #include <inttypes.h>
-#include <getopt.h>
+#endif
 #include <cstddef>
 #include <fstream>
 #include <iostream>
-#include <tr1/functional>
+#include <thrift/cxxfunctional.h>
 
+#include <boost/function.hpp>
 #include <boost/random.hpp>
 #include <boost/shared_array.hpp>
 #include <boost/test/unit_test.hpp>
+#include <boost/version.hpp>
 
 #include <thrift/transport/TBufferTransports.h>
 #include <thrift/transport/TZlibTransport.h>
 
 using namespace std;
-using namespace boost;
 using namespace apache::thrift::transport;
 
 boost::mt19937 rng;
@@ -50,26 +51,24 @@ boost::mt19937 rng;
  */
 
 class SizeGenerator {
- public:
+public:
   virtual ~SizeGenerator() {}
   virtual unsigned int getSize() = 0;
 };
 
 class ConstantSizeGenerator : public SizeGenerator {
- public:
+public:
   ConstantSizeGenerator(unsigned int value) : value_(value) {}
-  virtual unsigned int getSize() {
-    return value_;
-  }
+  virtual unsigned int getSize() { return value_; }
 
- private:
+private:
   unsigned int value_;
 };
 
 class LogNormalSizeGenerator : public SizeGenerator {
- public:
-  LogNormalSizeGenerator(double mean, double std_dev) :
-      gen_(rng, lognormal_distribution<double>(mean, std_dev)) {}
+public:
+  LogNormalSizeGenerator(double mean, double std_dev)
+    : gen_(rng, boost::lognormal_distribution<double>(mean, std_dev)) {}
 
   virtual unsigned int getSize() {
     // Loop until we get a size of 1 or more
@@ -81,26 +80,26 @@ class LogNormalSizeGenerator : public SizeGenerator {
     }
   }
 
- private:
-  variate_generator< mt19937, lognormal_distribution<double> > gen_;
+private:
+  boost::variate_generator<boost::mt19937, boost::lognormal_distribution<double> > gen_;
 };
 
-uint8_t* gen_uniform_buffer(uint32_t buf_len, uint8_t c) {
+boost::shared_array<uint8_t> gen_uniform_buffer(uint32_t buf_len, uint8_t c) {
   uint8_t* buf = new uint8_t[buf_len];
   memset(buf, c, buf_len);
-  return buf;
+  return boost::shared_array<uint8_t>(buf);
 }
 
-uint8_t* gen_compressible_buffer(uint32_t buf_len) {
+boost::shared_array<uint8_t> gen_compressible_buffer(uint32_t buf_len) {
   uint8_t* buf = new uint8_t[buf_len];
 
   // Generate small runs of alternately increasing and decreasing bytes
   boost::uniform_smallint<uint32_t> run_length_distribution(1, 64);
   boost::uniform_smallint<uint8_t> byte_distribution(0, UINT8_MAX);
-  boost::variate_generator< boost::mt19937, boost::uniform_smallint<uint8_t> >
-    byte_generator(rng, byte_distribution);
-  boost::variate_generator< boost::mt19937, boost::uniform_smallint<uint32_t> >
-    run_len_generator(rng, run_length_distribution);
+  boost::variate_generator<boost::mt19937, boost::uniform_smallint<uint8_t> >
+      byte_generator(rng, byte_distribution);
+  boost::variate_generator<boost::mt19937, boost::uniform_smallint<uint32_t> >
+      run_len_generator(rng, run_length_distribution);
 
   uint32_t idx = 0;
   int8_t step = 1;
@@ -120,41 +119,41 @@ uint8_t* gen_compressible_buffer(uint32_t buf_len) {
     step *= -1;
   }
 
-  return buf;
+  return boost::shared_array<uint8_t>(buf);
 }
 
-uint8_t* gen_random_buffer(uint32_t buf_len) {
+boost::shared_array<uint8_t> gen_random_buffer(uint32_t buf_len) {
   uint8_t* buf = new uint8_t[buf_len];
 
   boost::uniform_smallint<uint8_t> distribution(0, UINT8_MAX);
-  boost::variate_generator< boost::mt19937, boost::uniform_smallint<uint8_t> >
-    generator(rng, distribution);
+  boost::variate_generator<boost::mt19937, boost::uniform_smallint<uint8_t> >
+      generator(rng, distribution);
 
   for (uint32_t n = 0; n < buf_len; ++n) {
     buf[n] = generator();
   }
 
-  return buf;
+  return boost::shared_array<uint8_t>(buf);
 }
 
 /*
  * Test functions
  */
 
-void test_write_then_read(const uint8_t* buf, uint32_t buf_len) {
+void test_write_then_read(const boost::shared_array<uint8_t> buf, uint32_t buf_len) {
   boost::shared_ptr<TMemoryBuffer> membuf(new TMemoryBuffer());
   boost::shared_ptr<TZlibTransport> zlib_trans(new TZlibTransport(membuf));
-  zlib_trans->write(buf, buf_len);
+  zlib_trans->write(buf.get(), buf_len);
   zlib_trans->finish();
 
   boost::shared_array<uint8_t> mirror(new uint8_t[buf_len]);
   uint32_t got = zlib_trans->readAll(mirror.get(), buf_len);
   BOOST_REQUIRE_EQUAL(got, buf_len);
-  BOOST_CHECK_EQUAL(memcmp(mirror.get(), buf, buf_len), 0);
+  BOOST_CHECK_EQUAL(memcmp(mirror.get(), buf.get(), buf_len), 0);
   zlib_trans->verifyChecksum();
 }
 
-void test_separate_checksum(const uint8_t* buf, uint32_t buf_len) {
+void test_separate_checksum(const boost::shared_array<uint8_t> buf, uint32_t buf_len) {
   // This one is tricky.  I separate the last byte of the stream out
   // into a separate crbuf_.  The last byte is part of the checksum,
   // so the entire read goes fine, but when I go to verify the checksum
@@ -163,39 +162,38 @@ void test_separate_checksum(const uint8_t* buf, uint32_t buf_len) {
   // It worked.  Awesome.
   boost::shared_ptr<TMemoryBuffer> membuf(new TMemoryBuffer());
   boost::shared_ptr<TZlibTransport> zlib_trans(new TZlibTransport(membuf));
-  zlib_trans->write(buf, buf_len);
+  zlib_trans->write(buf.get(), buf_len);
   zlib_trans->finish();
   string tmp_buf;
   membuf->appendBufferToString(tmp_buf);
   zlib_trans.reset(new TZlibTransport(membuf,
                                       TZlibTransport::DEFAULT_URBUF_SIZE,
-                                      tmp_buf.length()-1));
+                                      static_cast<uint32_t>(tmp_buf.length() - 1)));
 
   boost::shared_array<uint8_t> mirror(new uint8_t[buf_len]);
   uint32_t got = zlib_trans->readAll(mirror.get(), buf_len);
   BOOST_REQUIRE_EQUAL(got, buf_len);
-  BOOST_CHECK_EQUAL(memcmp(mirror.get(), buf, buf_len), 0);
+  BOOST_CHECK_EQUAL(memcmp(mirror.get(), buf.get(), buf_len), 0);
   zlib_trans->verifyChecksum();
 }
 
-void test_incomplete_checksum(const uint8_t* buf, uint32_t buf_len) {
+void test_incomplete_checksum(const boost::shared_array<uint8_t> buf, uint32_t buf_len) {
   // Make sure we still get that "not complete" error if
   // it really isn't complete.
   boost::shared_ptr<TMemoryBuffer> membuf(new TMemoryBuffer());
   boost::shared_ptr<TZlibTransport> zlib_trans(new TZlibTransport(membuf));
-  zlib_trans->write(buf, buf_len);
+  zlib_trans->write(buf.get(), buf_len);
   zlib_trans->finish();
   string tmp_buf;
   membuf->appendBufferToString(tmp_buf);
   tmp_buf.erase(tmp_buf.length() - 1);
-  membuf->resetBuffer(const_cast<uint8_t*>(
-                        reinterpret_cast<const uint8_t*>(tmp_buf.data())),
-                      tmp_buf.length());
+  membuf->resetBuffer(const_cast<uint8_t*>(reinterpret_cast<const uint8_t*>(tmp_buf.data())),
+                      static_cast<uint32_t>(tmp_buf.length()));
 
   boost::shared_array<uint8_t> mirror(new uint8_t[buf_len]);
   uint32_t got = zlib_trans->readAll(mirror.get(), buf_len);
   BOOST_REQUIRE_EQUAL(got, buf_len);
-  BOOST_CHECK_EQUAL(memcmp(mirror.get(), buf, buf_len), 0);
+  BOOST_CHECK_EQUAL(memcmp(mirror.get(), buf.get(), buf_len), 0);
   try {
     zlib_trans->verifyChecksum();
     BOOST_ERROR("verifyChecksum() did not report an error");
@@ -204,7 +202,8 @@ void test_incomplete_checksum(const uint8_t* buf, uint32_t buf_len) {
   }
 }
 
-void test_read_write_mix(const uint8_t* buf, uint32_t buf_len,
+void test_read_write_mix(const boost::shared_array<uint8_t> buf,
+                         uint32_t buf_len,
                          const boost::shared_ptr<SizeGenerator>& write_gen,
                          const boost::shared_ptr<SizeGenerator>& read_gen) {
   // Try it with a mix of read/write sizes.
@@ -218,7 +217,7 @@ void test_read_write_mix(const uint8_t* buf, uint32_t buf_len,
     if (tot + write_len > buf_len) {
       write_len = buf_len - tot;
     }
-    zlib_trans->write(buf + tot, write_len);
+    zlib_trans->write(buf.get() + tot, write_len);
     tot += write_len;
   }
 
@@ -234,19 +233,19 @@ void test_read_write_mix(const uint8_t* buf, uint32_t buf_len,
     }
     uint32_t got = zlib_trans->read(mirror.get() + tot, read_len);
     BOOST_REQUIRE_LE(got, expected_read_len);
-    BOOST_REQUIRE_NE(got, (uint32_t) 0);
+    BOOST_REQUIRE_NE(got, (uint32_t)0);
     tot += got;
   }
 
-  BOOST_CHECK_EQUAL(memcmp(mirror.get(), buf, buf_len), 0);
+  BOOST_CHECK_EQUAL(memcmp(mirror.get(), buf.get(), buf_len), 0);
   zlib_trans->verifyChecksum();
 }
 
-void test_invalid_checksum(const uint8_t* buf, uint32_t buf_len) {
+void test_invalid_checksum(const boost::shared_array<uint8_t> buf, uint32_t buf_len) {
   // Verify checksum checking.
   boost::shared_ptr<TMemoryBuffer> membuf(new TMemoryBuffer());
   boost::shared_ptr<TZlibTransport> zlib_trans(new TZlibTransport(membuf));
-  zlib_trans->write(buf, buf_len);
+  zlib_trans->write(buf.get(), buf_len);
   zlib_trans->finish();
   string tmp_buf;
   membuf->appendBufferToString(tmp_buf);
@@ -264,11 +263,10 @@ void test_invalid_checksum(const uint8_t* buf, uint32_t buf_len) {
   // (When this occurs, verifyChecksum() throws an exception indicating
   // that the end of the data hasn't been reached.)  I haven't seen this
   // error when only modifying checksum bytes.
-  int index = tmp_buf.size() - 1;
+  int index = static_cast<int>(tmp_buf.size() - 1);
   tmp_buf[index]++;
-  membuf->resetBuffer(const_cast<uint8_t*>(
-                        reinterpret_cast<const uint8_t*>(tmp_buf.data())),
-                      tmp_buf.length());
+  membuf->resetBuffer(const_cast<uint8_t*>(reinterpret_cast<const uint8_t*>(tmp_buf.data())),
+                      static_cast<uint32_t>(tmp_buf.length()));
 
   boost::shared_array<uint8_t> mirror(new uint8_t[buf_len]);
   try {
@@ -280,11 +278,11 @@ void test_invalid_checksum(const uint8_t* buf, uint32_t buf_len) {
   }
 }
 
-void test_write_after_flush(const uint8_t* buf, uint32_t buf_len) {
+void test_write_after_flush(const boost::shared_array<uint8_t> buf, uint32_t buf_len) {
   // write some data
   boost::shared_ptr<TMemoryBuffer> membuf(new TMemoryBuffer());
   boost::shared_ptr<TZlibTransport> zlib_trans(new TZlibTransport(membuf));
-  zlib_trans->write(buf, buf_len);
+  zlib_trans->write(buf.get(), buf_len);
 
   // call finish()
   zlib_trans->finish();
@@ -325,25 +323,38 @@ void test_no_write() {
     TZlibTransport w_zlib_trans(membuf);
   }
 
-  BOOST_CHECK_EQUAL(membuf->available_read(), (uint32_t) 0);
+  BOOST_CHECK_EQUAL(membuf->available_read(), (uint32_t)0);
 }
 
 /*
  * Initialization
  */
 
-#define ADD_TEST_CASE(suite, name, function, ...) \
-  do { \
-    ::std::ostringstream name_ss; \
-    name_ss << name << "-" << BOOST_STRINGIZE(function); \
-    ::boost::unit_test::test_case* tc = ::boost::unit_test::make_test_case( \
-        ::std::tr1::bind(function, ## __VA_ARGS__), \
-        name_ss.str()); \
-    (suite)->add(tc); \
+#if (BOOST_VERSION >= 105900)
+#define ADD_TEST_CASE(suite, name, _FUNC, ...)                                                     \
+  do {                                                                                             \
+    ::std::ostringstream name_ss;                                                                  \
+    name_ss << name << "-" << BOOST_STRINGIZE(_FUNC);                                              \
+    boost::function<void ()> test_func = ::apache::thrift::stdcxx::bind(_FUNC, ##__VA_ARGS__);     \
+    ::boost::unit_test::test_case* tc                                                              \
+        = ::boost::unit_test::make_test_case(test_func, name_ss.str(), __FILE__, __LINE__);        \
+    (suite)->add(tc);                                                                              \
   } while (0)
+#else
+#define ADD_TEST_CASE(suite, name, _FUNC, ...)                                                     \
+  do {                                                                                             \
+    ::std::ostringstream name_ss;                                                                  \
+    name_ss << name << "-" << BOOST_STRINGIZE(_FUNC);                                              \
+    ::boost::unit_test::test_case* tc                                                              \
+        = ::boost::unit_test::make_test_case(::apache::thrift::stdcxx::bind(_FUNC,                 \
+                                                                            ##__VA_ARGS__),        \
+                                             name_ss.str());                                       \
+    (suite)->add(tc);                                                                              \
+  } while (0)
+#endif
 
-void add_tests(unit_test::test_suite* suite,
-               const uint8_t* buf,
+void add_tests(boost::unit_test::test_suite* suite,
+               const boost::shared_array<uint8_t>& buf,
                uint32_t buf_len,
                const char* name) {
   ADD_TEST_CASE(suite, name, test_write_then_read, buf, buf_len);
@@ -352,20 +363,30 @@ void add_tests(unit_test::test_suite* suite,
   ADD_TEST_CASE(suite, name, test_invalid_checksum, buf, buf_len);
   ADD_TEST_CASE(suite, name, test_write_after_flush, buf, buf_len);
 
-  boost::shared_ptr<SizeGenerator> size_32k(new ConstantSizeGenerator(1<<15));
+  boost::shared_ptr<SizeGenerator> size_32k(new ConstantSizeGenerator(1 << 15));
   boost::shared_ptr<SizeGenerator> size_lognormal(new LogNormalSizeGenerator(20, 30));
-  ADD_TEST_CASE(suite, name << "-constant",
-                test_read_write_mix, buf, buf_len,
-                size_32k, size_32k);
-  ADD_TEST_CASE(suite, name << "-lognormal-write",
-                test_read_write_mix, buf, buf_len,
-                size_lognormal, size_32k);
-  ADD_TEST_CASE(suite, name << "-lognormal-read",
-                test_read_write_mix, buf, buf_len,
-                size_32k, size_lognormal);
-  ADD_TEST_CASE(suite, name << "-lognormal-both",
-                test_read_write_mix, buf, buf_len,
-                size_lognormal, size_lognormal);
+  ADD_TEST_CASE(suite, name << "-constant", test_read_write_mix, buf, buf_len, size_32k, size_32k);
+  ADD_TEST_CASE(suite,
+                name << "-lognormal-write",
+                test_read_write_mix,
+                buf,
+                buf_len,
+                size_lognormal,
+                size_32k);
+  ADD_TEST_CASE(suite,
+                name << "-lognormal-read",
+                test_read_write_mix,
+                buf,
+                buf_len,
+                size_32k,
+                size_lognormal);
+  ADD_TEST_CASE(suite,
+                name << "-lognormal-both",
+                test_read_write_mix,
+                buf,
+                buf_len,
+                size_lognormal,
+                size_lognormal);
 
   // Test with a random size distribution,
   // but use the exact same distribution for reading as for writing.
@@ -375,9 +396,13 @@ void add_tests(unit_test::test_suite* suite,
   // both start with random number generators in the same state.
   boost::shared_ptr<SizeGenerator> write_size_gen(new LogNormalSizeGenerator(20, 30));
   boost::shared_ptr<SizeGenerator> read_size_gen(new LogNormalSizeGenerator(20, 30));
-  ADD_TEST_CASE(suite, name << "-lognormal-same-distribution",
-                test_read_write_mix, buf, buf_len,
-                write_size_gen, read_size_gen);
+  ADD_TEST_CASE(suite,
+                name << "-lognormal-same-distribution",
+                test_read_write_mix,
+                buf,
+                buf_len,
+                write_size_gen,
+                read_size_gen);
 }
 
 void print_usage(FILE* f, const char* argv0) {
@@ -387,64 +412,19 @@ void print_usage(FILE* f, const char* argv0) {
   fprintf(f, "  --help\n");
 }
 
-void parse_args(int argc, char* argv[]) {
-  uint32_t seed = 0;
-  bool has_seed = false;
-
-  struct option long_opts[] = {
-    { "help", false, NULL, 'h' },
-    { "seed", true, NULL, 's' },
-    { NULL, 0, NULL, 0 }
-  };
-
-  while (true) {
-    optopt = 1;
-    int optchar = getopt_long(argc, argv, "hs:", long_opts, NULL);
-    if (optchar == -1) {
-      break;
-    }
-
-    switch (optchar) {
-      case 's': {
-        char *endptr;
-        seed = strtol(optarg, &endptr, 0);
-        if (endptr == optarg || *endptr != '\0') {
-          fprintf(stderr, "invalid seed value \"%s\": must be a positive "
-                  "integer\n", optarg);
-          exit(1);
-        }
-        has_seed = true;
-        break;
-      }
-      case 'h':
-        print_usage(stdout, argv[0]);
-        exit(0);
-      case '?':
-        exit(1);
-      default:
-        // Only happens if someone adds another option to the optarg string,
-        // but doesn't update the switch statement to handle it.
-        fprintf(stderr, "unknown option \"-%c\"\n", optchar);
-        exit(1);
-    }
-  }
-
-  if (!has_seed) {
-    seed = time(NULL);
-  }
-
+boost::unit_test::test_suite* init_unit_test_suite(int argc, char* argv[]) {
+  THRIFT_UNUSED_VARIABLE(argc);
+  THRIFT_UNUSED_VARIABLE(argv);
+  uint32_t seed = static_cast<uint32_t>(time(NULL));
+#ifdef HAVE_INTTYPES_H
   printf("seed: %" PRIu32 "\n", seed);
+#endif
   rng.seed(seed);
-}
 
-unit_test::test_suite* init_unit_test_suite(int argc, char* argv[]) {
-  parse_args(argc, argv);
-
-  unit_test::test_suite* suite =
-    &boost::unit_test::framework::master_test_suite();
+  boost::unit_test::test_suite* suite = &boost::unit_test::framework::master_test_suite();
   suite->p_name.value = "ZlibTest";
 
-  uint32_t buf_len = 1024*32;
+  uint32_t buf_len = 1024 * 32;
   add_tests(suite, gen_uniform_buffer(buf_len, 'a'), buf_len, "uniform");
   add_tests(suite, gen_compressible_buffer(buf_len), buf_len, "compressible");
   add_tests(suite, gen_random_buffer(buf_len), buf_len, "random");

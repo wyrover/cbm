@@ -72,7 +72,7 @@ void DecisionDialog::OnTechnologyButtonClick()
         msg.AppendFormat( _T( "  %s" ), coal_names[i] );
     }
     msg.AppendFormat( _T( "\\n" ) );
-    msg.AppendFormat( _T( "如何决策尚不明确???" ) );
+    msg.AppendFormat( _T( "如何决策尚不明确???什么样的推荐技术???" ) );
     SMessageBox( GetSafeHwnd(), msg, _T( "友情提示" ), MB_OK );
 }
 
@@ -80,4 +80,9 @@ bool DecisionDialog::getPoint( AcGePoint3d& pt )
 {
 	SouiDialogShowSwitch show_switch( this );
 	return ArxUtilHelper::PromptPt( _T( "请选择一点:" ), pt );
+}
+
+void DecisionDialog::initDecisionResult()
+{
+	//
 }

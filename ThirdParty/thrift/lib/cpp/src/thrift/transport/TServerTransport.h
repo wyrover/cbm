@@ -24,15 +24,18 @@
 #include <thrift/transport/TTransportException.h>
 #include <boost/shared_ptr.hpp>
 
-namespace apache { namespace thrift { namespace transport {
+namespace apache {
+namespace thrift {
+namespace transport {
 
 /**
  * Server transport framework. A server needs to have some facility for
- * creating base transports to read/write from.
- *
+ * creating base transports to read/write from.  The server is expected
+ * to keep track of TTransport children that it creates for purposes of
+ * controlling their lifetime.
  */
 class TServerTransport {
- public:
+public:
   virtual ~TServerTransport() {}
 
   /**
@@ -65,16 +68,26 @@ class TServerTransport {
    * For "smart" TServerTransport implementations that work in a multi
    * threaded context this can be used to break out of an accept() call.
    * It is expected that the transport will throw a TTransportException
-   * with the interrupted error code.
+   * with the INTERRUPTED error code.
+   *
+   * This will not make an attempt to interrupt any TTransport children.
    */
   virtual void interrupt() {}
+
+  /**
+   * This will interrupt the children created by the server transport.
+   * allowing them to break out of any blocking data reception call.
+   * It is expected that the children will throw a TTransportException
+   * with the INTERRUPTED error code.
+   */
+  virtual void interruptChildren() {}
 
   /**
    * Closes this transport such that future calls to accept will do nothing.
    */
   virtual void close() = 0;
 
- protected:
+protected:
   TServerTransport() {}
 
   /**
@@ -84,9 +97,9 @@ class TServerTransport {
    * @throw TTransportException If an error occurs
    */
   virtual boost::shared_ptr<TTransport> acceptImpl() = 0;
-
 };
-
-}}} // apache::thrift::transport
+}
+}
+} // apache::thrift::transport
 
 #endif // #ifndef _THRIFT_TRANSPORT_TSERVERTRANSPORT_H_

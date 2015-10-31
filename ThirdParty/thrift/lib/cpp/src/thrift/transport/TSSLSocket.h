@@ -26,32 +26,61 @@
 #include <thrift/concurrency/Mutex.h>
 #include <thrift/transport/TSocket.h>
 
-namespace apache { namespace thrift { namespace transport {
+namespace apache {
+namespace thrift {
+namespace transport {
 
 class AccessManager;
 class SSLContext;
 
+enum SSLProtocol {
+  SSLTLS  = 0,  // Supports SSLv2 and SSLv3 handshake but only negotiates at TLSv1_0 or later.
+//SSLv2   = 1,  // HORRIBLY INSECURE!
+  SSLv3   = 2,  // Supports SSLv3 only - also horribly insecure!
+  TLSv1_0 = 3,  // Supports TLSv1_0 or later.
+  TLSv1_1 = 4,  // Supports TLSv1_1 or later.
+  TLSv1_2 = 5,  // Supports TLSv1_2 or later.
+  LATEST  = TLSv1_2
+};
+
+/**
+ * Initialize OpenSSL library.  This function, or some other
+ * equivalent function to initialize OpenSSL, must be called before
+ * TSSLSocket is used.  If you set TSSLSocketFactory to use manual
+ * OpenSSL initialization, you should call this function or otherwise
+ * ensure OpenSSL is initialized yourself.
+ */
+void initializeOpenSSL();
+/**
+ * Cleanup OpenSSL library.  This function should be called to clean
+ * up OpenSSL after use of OpenSSL functionality is finished.  If you
+ * set TSSLSocketFactory to use manual OpenSSL initialization, you
+ * should call this function yourself or ensure that whatever
+ * initialized OpenSSL cleans it up too.
+ */
+void cleanupOpenSSL();
+
 /**
  * OpenSSL implementation for SSL socket interface.
  */
-class TSSLSocket: public TSocket {
- public:
- ~TSSLSocket();
+class TSSLSocket : public TSocket {
+public:
+  ~TSSLSocket();
   /**
    * TTransport interface.
    */
-  bool     isOpen();
-  bool     peek();
-  void     open();
-  void     close();
+  bool isOpen();
+  bool peek();
+  void open();
+  void close();
   uint32_t read(uint8_t* buf, uint32_t len);
-  void     write(const uint8_t* buf, uint32_t len);
-  void     flush();
-   /**
-   * Set whether to use client or server side SSL handshake protocol.
-   *
-   * @param flag  Use server side handshake protocol if true.
-   */
+  void write(const uint8_t* buf, uint32_t len);
+  void flush();
+  /**
+  * Set whether to use client or server side SSL handshake protocol.
+  *
+  * @param flag  Use server side handshake protocol if true.
+  */
   void server(bool flag) { server_ = flag; }
   /**
    * Determine whether the SSL socket is server or client mode.
@@ -62,9 +91,8 @@ class TSSLSocket: public TSocket {
    *
    * @param manager  Instance of AccessManager
    */
-  virtual void access(boost::shared_ptr<AccessManager> manager) {
-    access_ = manager;
-  }
+  virtual void access(boost::shared_ptr<AccessManager> manager) { access_ = manager; }
+
 protected:
   /**
    * Constructor.
@@ -75,16 +103,14 @@ protected:
    *
    * @param socket An existing socket
    */
-  TSSLSocket(boost::shared_ptr<SSLContext> ctx, int socket);
+  TSSLSocket(boost::shared_ptr<SSLContext> ctx, THRIFT_SOCKET socket);
   /**
    * Constructor.
    *
    * @param host  Remote host name
    * @param port  Remote port number
    */
-  TSSLSocket(boost::shared_ptr<SSLContext> ctx,
-                               std::string host,
-                                       int port);
+  TSSLSocket(boost::shared_ptr<SSLContext> ctx, std::string host, int port);
   /**
    * Authorize peer access after SSL handshake completes.
    */
@@ -105,11 +131,13 @@ protected:
  * SSL socket factory. SSL sockets should be created via SSL factory.
  */
 class TSSLSocketFactory {
- public:
+public:
   /**
    * Constructor/Destructor
+   *
+   * @param protocol The SSL/TLS protocol to use.
    */
-  TSSLSocketFactory();
+  TSSLSocketFactory(SSLProtocol protocol = SSLTLS);
   virtual ~TSSLSocketFactory();
   /**
    * Create an instance of TSSLSocket with a fresh new socket.
@@ -120,15 +148,14 @@ class TSSLSocketFactory {
    *
    * @param socket An existing socket.
    */
-  virtual boost::shared_ptr<TSSLSocket> createSocket(int socket);
-   /**
-   * Create an instance of TSSLSocket.
-   *
-   * @param host  Remote host to be connected to
-   * @param port  Remote port to be connected to
-   */
-  virtual boost::shared_ptr<TSSLSocket> createSocket(const std::string& host,
-                                                     int port);
+  virtual boost::shared_ptr<TSSLSocket> createSocket(THRIFT_SOCKET socket);
+  /**
+  * Create an instance of TSSLSocket.
+  *
+  * @param host  Remote host to be connected to
+  * @param port  Remote port to be connected to
+  */
+  virtual boost::shared_ptr<TSSLSocket> createSocket(const std::string& host, int port);
   /**
    * Set ciphers to be used in SSL handshake process.
    *
@@ -186,14 +213,14 @@ class TSSLSocketFactory {
    *
    * @param manager  The AccessManager instance
    */
-  virtual void access(boost::shared_ptr<AccessManager> manager) {
-    access_ = manager;
+  virtual void access(boost::shared_ptr<AccessManager> manager) { access_ = manager; }
+  static void setManualOpenSSLInitialization(bool manualOpenSSLInitialization) {
+    manualOpenSSLInitialization_ = manualOpenSSLInitialization;
   }
- protected:
+
+protected:
   boost::shared_ptr<SSLContext> ctx_;
 
-  static void initializeOpenSSL();
-  static void cleanupOpenSSL();
   /**
    * Override this method for custom password callback. It may be called
    * multiple times at any time during a session as necessary.
@@ -202,12 +229,13 @@ class TSSLSocketFactory {
    * @param size     Maximum length of password including NULL character
    */
   virtual void getPassword(std::string& /* password */, int /* size */) {}
- private:
+
+private:
   bool server_;
   boost::shared_ptr<AccessManager> access_;
-  static bool initialized;
   static concurrency::Mutex mutex_;
   static uint64_t count_;
+  static bool manualOpenSSLInitialization_;
   void setup(boost::shared_ptr<TSSLSocket> ssl);
   static int passwordCallback(char* password, int size, int, void* data);
 };
@@ -215,10 +243,10 @@ class TSSLSocketFactory {
 /**
  * SSL exception.
  */
-class TSSLException: public TTransportException {
- public:
-  TSSLException(const std::string& message):
-    TTransportException(TTransportException::INTERNAL_ERROR, message) {}
+class TSSLException : public TTransportException {
+public:
+  TSSLException(const std::string& message)
+    : TTransportException(TTransportException::INTERNAL_ERROR, message) {}
 
   virtual const char* what() const throw() {
     if (message_.empty()) {
@@ -233,12 +261,13 @@ class TSSLException: public TTransportException {
  * Wrap OpenSSL SSL_CTX into a class.
  */
 class SSLContext {
- public:
-  SSLContext();
+public:
+  SSLContext(const SSLProtocol& protocol = SSLTLS);
   virtual ~SSLContext();
   SSL* createSSL();
   SSL_CTX* get() { return ctx_; }
- private:
+
+private:
   SSL_CTX* ctx_;
 };
 
@@ -249,67 +278,73 @@ class SSLContext {
  * object.
  */
 class AccessManager {
- public:
+public:
   enum Decision {
-    DENY   = -1,    // deny access
-    SKIP   =  0,    // cannot make decision, move on to next (if any)
-    ALLOW  =  1     // allow access
+    DENY = -1, // deny access
+    SKIP = 0,  // cannot make decision, move on to next (if any)
+    ALLOW = 1  // allow access
   };
- /**
-  * Destructor
-  */
- virtual ~AccessManager() {}
- /**
-  * Determine whether the peer should be granted access or not. It's called
-  * once after the SSL handshake completes successfully, before peer certificate
-  * is examined.
-  *
-  * If a valid decision (ALLOW or DENY) is returned, the peer certificate is
-  * not to be verified.
-  *
-  * @param  sa Peer IP address
-  * @return True if the peer is trusted, false otherwise
-  */
- virtual Decision verify(const sockaddr_storage& /* sa */ ) throw() { return DENY; }
- /**
-  * Determine whether the peer should be granted access or not. It's called
-  * every time a DNS subjectAltName/common name is extracted from peer's
-  * certificate.
-  *
-  * @param  host Client mode: host name returned by TSocket::getHost()
-  *              Server mode: host name returned by TSocket::getPeerHost()
-  * @param  name SubjectAltName or common name extracted from peer certificate
-  * @param  size Length of name
-  * @return True if the peer is trusted, false otherwise
-  *
-  * Note: The "name" parameter may be UTF8 encoded.
-  */
- virtual Decision verify(const std::string& /* host */, const char* /* name */, int /* size */)
-   throw() { return DENY; }
- /**
-  * Determine whether the peer should be granted access or not. It's called
-  * every time an IP subjectAltName is extracted from peer's certificate.
-  *
-  * @param  sa   Peer IP address retrieved from the underlying socket
-  * @param  data IP address extracted from certificate
-  * @param  size Length of the IP address
-  * @return True if the peer is trusted, false otherwise
-  */
- virtual Decision verify(const sockaddr_storage& /* sa */, const char* /* data */, int /* size */)
-   throw() { return DENY; }
+  /**
+   * Destructor
+   */
+  virtual ~AccessManager() {}
+  /**
+   * Determine whether the peer should be granted access or not. It's called
+   * once after the SSL handshake completes successfully, before peer certificate
+   * is examined.
+   *
+   * If a valid decision (ALLOW or DENY) is returned, the peer certificate is
+   * not to be verified.
+   *
+   * @param  sa Peer IP address
+   * @return True if the peer is trusted, false otherwise
+   */
+  virtual Decision verify(const sockaddr_storage& /* sa */) throw() { return DENY; }
+  /**
+   * Determine whether the peer should be granted access or not. It's called
+   * every time a DNS subjectAltName/common name is extracted from peer's
+   * certificate.
+   *
+   * @param  host Client mode: host name returned by TSocket::getHost()
+   *              Server mode: host name returned by TSocket::getPeerHost()
+   * @param  name SubjectAltName or common name extracted from peer certificate
+   * @param  size Length of name
+   * @return True if the peer is trusted, false otherwise
+   *
+   * Note: The "name" parameter may be UTF8 encoded.
+   */
+  virtual Decision verify(const std::string& /* host */,
+                          const char* /* name */,
+                          int /* size */) throw() {
+    return DENY;
+  }
+  /**
+   * Determine whether the peer should be granted access or not. It's called
+   * every time an IP subjectAltName is extracted from peer's certificate.
+   *
+   * @param  sa   Peer IP address retrieved from the underlying socket
+   * @param  data IP address extracted from certificate
+   * @param  size Length of the IP address
+   * @return True if the peer is trusted, false otherwise
+   */
+  virtual Decision verify(const sockaddr_storage& /* sa */,
+                          const char* /* data */,
+                          int /* size */) throw() {
+    return DENY;
+  }
 };
 
 typedef AccessManager::Decision Decision;
 
-class DefaultClientAccessManager: public AccessManager {
- public:
+class DefaultClientAccessManager : public AccessManager {
+public:
   // AccessManager interface
   Decision verify(const sockaddr_storage& sa) throw();
   Decision verify(const std::string& host, const char* name, int size) throw();
   Decision verify(const sockaddr_storage& sa, const char* data, int size) throw();
 };
-
-
-}}}
+}
+}
+}
 
 #endif

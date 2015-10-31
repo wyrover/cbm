@@ -23,26 +23,39 @@
 #include <thrift/transport/TTransport.h>
 #include <thrift/transport/TVirtualTransport.h>
 #ifndef _WIN32
-#  include <thrift/transport/TSocket.h>
+#include <thrift/transport/TSocket.h>
+#endif
+#ifdef _WIN32
+#include <thrift/windows/Sync.h>
+#endif
+#include <boost/noncopyable.hpp>
+#ifdef _WIN32
+#include <thrift/windows/Sync.h>
 #endif
 
-namespace apache { namespace thrift { namespace transport {
+namespace apache {
+namespace thrift {
+namespace transport {
 
 /**
  * Windows Pipes implementation of the TTransport interface.
- *
+ * Don't destroy a TPipe at global scope, as that will cause a thread join
+ * during DLLMain.  That also means that client objects using TPipe shouldn't be at global
+ * scope.
  */
 #ifdef _WIN32
-class TPipe : public TVirtualTransport<TPipe> {
- public:
+class TPipeImpl;
 
+class TPipe : public TVirtualTransport<TPipe> {
+public:
   // Constructs a new pipe object.
   TPipe();
   // Named pipe constructors -
-  explicit TPipe(HANDLE Pipe); //HANDLE is a void*
-  //need a const char * overload so string literals don't go to the HANDLE overload
-  explicit TPipe(const char *pipename);
-  explicit TPipe(const std::string &pipename);
+  explicit TPipe(HANDLE Pipe); // HANDLE is a void*
+  explicit TPipe(TAutoHandle &Pipe); // this ctor will clear out / move from Pipe
+  // need a const char * overload so string literals don't go to the HANDLE overload
+  explicit TPipe(const char* pipename);
+  explicit TPipe(const std::string& pipename);
   // Anonymous pipe -
   TPipe(HANDLE PipeRd, HANDLE PipeWrt);
 
@@ -67,30 +80,34 @@ class TPipe : public TVirtualTransport<TPipe> {
   // Writes to the pipe.
   virtual void write(const uint8_t* buf, uint32_t len);
 
-
-  //Accessors
+  // Accessors
   std::string getPipename();
-  void setPipename(const std::string &pipename);
-  HANDLE getPipeHandle(); //doubles as the read handle for anon pipe
+  void setPipename(const std::string& pipename);
+  HANDLE getPipeHandle(); // doubles as the read handle for anon pipe
   void setPipeHandle(HANDLE pipehandle);
   HANDLE getWrtPipeHandle();
   void setWrtPipeHandle(HANDLE pipehandle);
-  long getConnectTimeout();
-  void setConnectTimeout(long seconds);
+  long getConnTimeout();
+  void setConnTimeout(long seconds);
 
- private:
+  // this function is intended to be used in generic / template situations,
+  // so its name needs to be the same as TPipeServer's
+  HANDLE getNativeWaitHandle();
+
+private:
+  boost::shared_ptr<TPipeImpl> impl_;
+
   std::string pipename_;
 
-  //Named pipe handles are R/W, while anonymous pipes are one or the other (half duplex).
-  HANDLE Pipe_, PipeWrt_;
   long TimeoutSeconds_;
-  bool isAnonymous;
+  bool isAnonymous_;
 };
+
 #else
 typedef TSocket TPipe;
 #endif
-
-}}} // apache::thrift::transport
+}
+}
+} // apache::thrift::transport
 
 #endif // #ifndef _THRIFT_TRANSPORT_TPIPE_H_
-

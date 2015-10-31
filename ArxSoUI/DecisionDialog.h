@@ -47,4 +47,5 @@ public:
 
 private:
 	bool getPoint( AcGePoint3d& pt );
+	void initDecisionResult();  // 确定决策模式
 };
