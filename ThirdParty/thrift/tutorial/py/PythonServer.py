@@ -82,7 +82,7 @@ class CalculatorHandler:
 
 handler = CalculatorHandler()
 processor = Calculator.Processor(handler)
-transport = TSocket.TServerSocket(port=9090)
+transport = TSocket.TServerSocket(host='localhost', port=9090)
 tfactory = TTransport.TBufferedTransportFactory()
 pfactory = TBinaryProtocol.TBinaryProtocolFactory()
 

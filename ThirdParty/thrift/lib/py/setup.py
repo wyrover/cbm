@@ -33,7 +33,7 @@ from distutils.errors import CCompilerError, DistutilsExecError, DistutilsPlatfo
 # https://stackoverflow.com/questions/7719380/python-setup-py-sdist-error-operation-not-permitted
 #
 import os
-del os.link
+# del os.link
 
 include_dirs = []
 if sys.platform == 'win32':
