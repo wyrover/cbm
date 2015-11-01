@@ -11,7 +11,6 @@ namespace cbm {
 
 class Account;
 class AdjLayer;
-class Base;
 class Coal;
 class Complexity;
 class DesignDrillingSurfTechnology;
@@ -29,9 +28,10 @@ class HighDrillingSiteParam;
 class HighDrillingTunnel;
 class HydrGeo;
 class Mine;
+class MineBase;
+class MineRegion;
 class PoreFlow;
 class PoreSize;
-class Region;
 class ResAbundance;
 class Rock;
 class SysInfo;
@@ -44,7 +44,6 @@ class WorkSurf;
 
 typedef boost::shared_ptr<Account> AccountPtr;
 typedef boost::shared_ptr<AdjLayer> AdjLayerPtr;
-typedef boost::shared_ptr<Base> BasePtr;
 typedef boost::shared_ptr<Coal> CoalPtr;
 typedef boost::shared_ptr<Complexity> ComplexityPtr;
 typedef boost::shared_ptr<DesignDrillingSurfTechnology> DesignDrillingSurfTechnologyPtr;
@@ -62,9 +61,10 @@ typedef boost::shared_ptr<HighDrillingSiteParam> HighDrillingSiteParamPtr;
 typedef boost::shared_ptr<HighDrillingTunnel> HighDrillingTunnelPtr;
 typedef boost::shared_ptr<HydrGeo> HydrGeoPtr;
 typedef boost::shared_ptr<Mine> MinePtr;
+typedef boost::shared_ptr<MineBase> MineBasePtr;
+typedef boost::shared_ptr<MineRegion> MineRegionPtr;
 typedef boost::shared_ptr<PoreFlow> PoreFlowPtr;
 typedef boost::shared_ptr<PoreSize> PoreSizePtr;
-typedef boost::shared_ptr<Region> RegionPtr;
 typedef boost::shared_ptr<ResAbundance> ResAbundancePtr;
 typedef boost::shared_ptr<Rock> RockPtr;
 typedef boost::shared_ptr<SysInfo> SysInfoPtr;
@@ -107,19 +107,6 @@ public:
 	CString comment;
 
 }; // class AdjLayer
-
-class DAO_DLLIMPEXP Base : public orm::Record
-{
-public:
-	static CString Table();
-	static orm::RecordPtr Create();
-
-public:
-	Base();
-	CString name;
-	CString comment;
-
-}; // class Base
 
 class DAO_DLLIMPEXP Coal : public orm::Record
 {
@@ -317,7 +304,7 @@ public:
 	DesignTechnology();
 	orm::RecordPtr coal;
 	CString name;
-	int region;
+	int mine_region;
 	CString comment;
 
 }; // class DesignTechnology
@@ -432,7 +419,7 @@ public:
 	int num;
 	double length;
 	double angle;
-	int type;
+	int pore_type;
 	CString comment;
 
 }; // class HighDrillingPore
@@ -527,7 +514,7 @@ public:
 public:
 	Mine();
 	orm::RecordPtr tech_mode;
-	orm::RecordPtr region;
+	orm::RecordPtr mine_region;
 	orm::RecordPtr account;
 	CString name;
 	CString province;
@@ -559,6 +546,33 @@ public:
 	CString comment;
 
 }; // class Mine
+
+class DAO_DLLIMPEXP MineBase : public orm::Record
+{
+public:
+	static CString Table();
+	static orm::RecordPtr Create();
+
+public:
+	MineBase();
+	CString name;
+	CString comment;
+
+}; // class MineBase
+
+class DAO_DLLIMPEXP MineRegion : public orm::Record
+{
+public:
+	static CString Table();
+	static orm::RecordPtr Create();
+
+public:
+	MineRegion();
+	orm::RecordPtr mine_base;
+	CString name;
+	CString comment;
+
+}; // class MineRegion
 
 class DAO_DLLIMPEXP PoreFlow : public orm::Record
 {
@@ -606,20 +620,6 @@ public:
 	CString comment;
 
 }; // class PoreSize
-
-class DAO_DLLIMPEXP Region : public orm::Record
-{
-public:
-	static CString Table();
-	static orm::RecordPtr Create();
-
-public:
-	Region();
-	orm::RecordPtr base;
-	CString name;
-	CString comment;
-
-}; // class Region
 
 class DAO_DLLIMPEXP ResAbundance : public orm::Record
 {
@@ -673,9 +673,9 @@ public:
 
 public:
 	TechMode();
-	orm::RecordPtr region;
+	orm::RecordPtr mine_region;
 	CString name;
-	int type;
+	int mode_type;
 	int c1;
 	int c2;
 	int c3;
@@ -691,7 +691,7 @@ public:
 
 public:
 	Technology();
-	orm::RecordPtr region;
+	orm::RecordPtr mine_region;
 	CString name;
 	int iskey;
 	CString doc;
@@ -733,7 +733,7 @@ public:
 	double q3;
 	double q0;
 	CString comment;
-	int type;
+	int tunnel_type;
 	double top_side;
 	double bottom_side;
 	double left_side;

@@ -5,6 +5,6 @@ namespace cpp cbm
 namespace php cbm
 namespace py cbm
 
-service ServerControl {
+service ControlService {
 	void shutdown();
 }

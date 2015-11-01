@@ -5,7 +5,7 @@ namespace cbm {
 
 CString Account::Table()
 {
-	return _T("cbm_account");
+	return _T("account");
 }
 
 orm::RecordPtr Account::Create()
@@ -25,7 +25,7 @@ Account::Account() : orm::Record(Account::Table())
 
 CString AdjLayer::Table()
 {
-	return _T("cbm_adj_layer");
+	return _T("adj_layer");
 }
 
 orm::RecordPtr AdjLayer::Create()
@@ -47,31 +47,13 @@ AdjLayer::AdjLayer() : orm::Record(AdjLayer::Table())
 	REG_ATTRIB(hp, hp);
 	REG_ATTRIB(in_cz, in_cz);
 	REG_ATTRIB(comment, comment);
-	REG_FOREGIN_KEY(cbm_work_surf_id, work_surf, &WorkSurf::Create);
-	REG_FOREGIN_KEY(cbm_coal_id, coal, &Coal::Create);
-}
-
-CString Base::Table()
-{
-	return _T("cbm_base");
-}
-
-orm::RecordPtr Base::Create()
-{
-	return orm::RecordPtr(new Base());
-}
-
-Base::Base() : orm::Record(Base::Table())
-{
-	name = _T("");
-	comment = _T("");
-	REG_ATTRIB(name, name);
-	REG_ATTRIB(comment, comment);
+	REG_FOREGIN_KEY(work_surf_id, work_surf, &WorkSurf::Create);
+	REG_FOREGIN_KEY(coal_id, coal, &Coal::Create);
 }
 
 CString Coal::Table()
 {
-	return _T("cbm_coal");
+	return _T("coal");
 }
 
 orm::RecordPtr Coal::Create()
@@ -215,12 +197,12 @@ Coal::Coal() : orm::Record(Coal::Table())
 	REG_ATTRIB(permeability_k, permeability_k);
 	REG_ATTRIB(eval_difficult, eval_difficult);
 	REG_ATTRIB(comment, comment);
-	REG_FOREGIN_KEY(cbm_mine_id, mine, &Mine::Create);
+	REG_FOREGIN_KEY(mine_id, mine, &Mine::Create);
 }
 
 CString Complexity::Table()
 {
-	return _T("cbm_complexity");
+	return _T("complexity");
 }
 
 orm::RecordPtr Complexity::Create()
@@ -240,7 +222,7 @@ Complexity::Complexity() : orm::Record(Complexity::Table())
 
 CString DesignDrillingSurfTechnology::Table()
 {
-	return _T("cbm_design_drilling_surf_technology");
+	return _T("design_drilling_surf_technology");
 }
 
 orm::RecordPtr DesignDrillingSurfTechnology::Create()
@@ -298,12 +280,12 @@ DesignDrillingSurfTechnology::DesignDrillingSurfTechnology() : orm::Record(Desig
 	REG_ATTRIB(left_side, left_side);
 	REG_ATTRIB(right_side, right_side);
 	REG_ATTRIB(lm, lm);
-	REG_FOREGIN_KEY(cbm_design_technology_id, design_technology, &DesignTechnology::Create);
+	REG_FOREGIN_KEY(design_technology_id, design_technology, &DesignTechnology::Create);
 }
 
 CString DesignGoafTechnology::Table()
 {
-	return _T("cbm_design_goaf_technology");
+	return _T("design_goaf_technology");
 }
 
 orm::RecordPtr DesignGoafTechnology::Create()
@@ -317,12 +299,12 @@ DesignGoafTechnology::DesignGoafTechnology() : orm::Record(DesignGoafTechnology:
 	comment = _T("");
 	REG_ATTRIB(name, name);
 	REG_ATTRIB(comment, comment);
-	REG_FOREGIN_KEY(cbm_design_technology_id, design_technology, &DesignTechnology::Create);
+	REG_FOREGIN_KEY(design_technology_id, design_technology, &DesignTechnology::Create);
 }
 
 CString DesignPore::Table()
 {
-	return _T("cbm_design_pore");
+	return _T("design_pore");
 }
 
 orm::RecordPtr DesignPore::Create()
@@ -356,12 +338,12 @@ DesignPore::DesignPore() : orm::Record(DesignPore::Table())
 	REG_ATTRIB(angle1, angle1);
 	REG_ATTRIB(angle2, angle2);
 	REG_ATTRIB(comment, comment);
-	REG_FOREGIN_KEY(cbm_design_site_id, design_site, &DesignSite::Create);
+	REG_FOREGIN_KEY(design_site_id, design_site, &DesignSite::Create);
 }
 
 CString DesignSite::Table()
 {
-	return _T("cbm_design_site");
+	return _T("design_site");
 }
 
 orm::RecordPtr DesignSite::Create()
@@ -385,12 +367,12 @@ DesignSite::DesignSite() : orm::Record(DesignSite::Table())
 	REG_ATTRIB(y, y);
 	REG_ATTRIB(z, z);
 	REG_ATTRIB(comment, comment);
-	REG_FOREGIN_KEY(cbm_design_technology_id, design_technology, &DesignTechnology::Create);
+	REG_FOREGIN_KEY(design_technology_id, design_technology, &DesignTechnology::Create);
 }
 
 CString DesignTechnology::Table()
 {
-	return _T("cbm_design_technology");
+	return _T("design_technology");
 }
 
 orm::RecordPtr DesignTechnology::Create()
@@ -401,17 +383,17 @@ orm::RecordPtr DesignTechnology::Create()
 DesignTechnology::DesignTechnology() : orm::Record(DesignTechnology::Table())
 {
 	name = _T("");
-	region = 0;
+	mine_region = 0;
 	comment = _T("");
 	REG_ATTRIB(name, name);
-	REG_ATTRIB(region, region);
+	REG_ATTRIB(mine_region, mine_region);
 	REG_ATTRIB(comment, comment);
-	REG_FOREGIN_KEY(cbm_coal_id, coal, &Coal::Create);
+	REG_FOREGIN_KEY(coal_id, coal, &Coal::Create);
 }
 
 CString DesignWorkSurfTechnology::Table()
 {
-	return _T("cbm_design_work_surf_technology");
+	return _T("design_work_surf_technology");
 }
 
 orm::RecordPtr DesignWorkSurfTechnology::Create()
@@ -475,12 +457,12 @@ DesignWorkSurfTechnology::DesignWorkSurfTechnology() : orm::Record(DesignWorkSur
 	REG_ATTRIB(pore_stubble, pore_stubble);
 	REG_ATTRIB(pore_angle, pore_angle);
 	REG_ATTRIB(pore_type, pore_type);
-	REG_FOREGIN_KEY(cbm_design_technology_id, design_technology, &DesignTechnology::Create);
+	REG_FOREGIN_KEY(design_technology_id, design_technology, &DesignTechnology::Create);
 }
 
 CString DrillingRadiusParam::Table()
 {
-	return _T("cbm_drilling_radius_param");
+	return _T("drilling_radius_param");
 }
 
 orm::RecordPtr DrillingRadiusParam::Create()
@@ -512,12 +494,12 @@ DrillingRadiusParam::DrillingRadiusParam() : orm::Record(DrillingRadiusParam::Ta
 	REG_ATTRIB(qm, qm);
 	REG_ATTRIB(qsum, qsum);
 	REG_ATTRIB(eta, eta);
-	REG_FOREGIN_KEY(cbm_coal_id, coal, &Coal::Create);
+	REG_FOREGIN_KEY(coal_id, coal, &Coal::Create);
 }
 
 CString DrillingSurf::Table()
 {
-	return _T("cbm_drilling_surf");
+	return _T("drilling_surf");
 }
 
 orm::RecordPtr DrillingSurf::Create()
@@ -541,13 +523,13 @@ DrillingSurf::DrillingSurf() : orm::Record(DrillingSurf::Table())
 	REG_ATTRIB(fore_qa, fore_qa);
 	REG_ATTRIB(q4, q4);
 	REG_ATTRIB(comment, comment);
-	REG_FOREGIN_KEY(cbm_work_area_id, work_area, &WorkArea::Create);
-	REG_FOREGIN_KEY(cbm_tunnel_id, tunnel, &Tunnel::Create);
+	REG_FOREGIN_KEY(work_area_id, work_area, &WorkArea::Create);
+	REG_FOREGIN_KEY(tunnel_id, tunnel, &Tunnel::Create);
 }
 
 CString EvalUnit::Table()
 {
-	return _T("cbm_eval_unit");
+	return _T("eval_unit");
 }
 
 orm::RecordPtr EvalUnit::Create()
@@ -565,12 +547,12 @@ EvalUnit::EvalUnit() : orm::Record(EvalUnit::Table())
 	REG_ATTRIB(l, l);
 	REG_ATTRIB(t, t);
 	REG_ATTRIB(comment, comment);
-	REG_FOREGIN_KEY(cbm_work_surf_id, work_surf, &WorkSurf::Create);
+	REG_FOREGIN_KEY(work_surf_id, work_surf, &WorkSurf::Create);
 }
 
 CString HighDrillingPore::Table()
 {
-	return _T("cbm_high_drilling_pore");
+	return _T("high_drilling_pore");
 }
 
 orm::RecordPtr HighDrillingPore::Create()
@@ -583,19 +565,19 @@ HighDrillingPore::HighDrillingPore() : orm::Record(HighDrillingPore::Table())
 	num = 0;
 	length = 0.0;
 	angle = 0.0;
-	type = 0;
+	pore_type = 0;
 	comment = _T("");
 	REG_ATTRIB(num, num);
 	REG_ATTRIB(length, length);
 	REG_ATTRIB(angle, angle);
-	REG_ATTRIB(type, type);
+	REG_ATTRIB(pore_type, pore_type);
 	REG_ATTRIB(comment, comment);
-	REG_FOREGIN_KEY(cbm_high_drilling_pore_param_id, high_drilling_pore_param, &HighDrillingPoreParam::Create);
+	REG_FOREGIN_KEY(high_drilling_pore_param_id, high_drilling_pore_param, &HighDrillingPoreParam::Create);
 }
 
 CString HighDrillingPoreParam::Table()
 {
-	return _T("cbm_high_drilling_pore_param");
+	return _T("high_drilling_pore_param");
 }
 
 orm::RecordPtr HighDrillingPoreParam::Create()
@@ -623,12 +605,12 @@ HighDrillingPoreParam::HighDrillingPoreParam() : orm::Record(HighDrillingPorePar
 	REG_ATTRIB(beta, beta);
 	REG_ATTRIB(ld, ld);
 	REG_ATTRIB(comment, comment);
-	REG_FOREGIN_KEY(cbm_work_surf_id, work_surf, &WorkSurf::Create);
+	REG_FOREGIN_KEY(work_surf_id, work_surf, &WorkSurf::Create);
 }
 
 CString HighDrillingSiteParam::Table()
 {
-	return _T("cbm_high_drilling_site_param");
+	return _T("high_drilling_site_param");
 }
 
 orm::RecordPtr HighDrillingSiteParam::Create()
@@ -658,12 +640,12 @@ HighDrillingSiteParam::HighDrillingSiteParam() : orm::Record(HighDrillingSitePar
 	REG_ATTRIB(rtn, rtn);
 	REG_ATTRIB(hs, hs);
 	REG_ATTRIB(comment, comment);
-	REG_FOREGIN_KEY(cbm_work_surf_id, work_surf, &WorkSurf::Create);
+	REG_FOREGIN_KEY(work_surf_id, work_surf, &WorkSurf::Create);
 }
 
 CString HighDrillingTunnel::Table()
 {
-	return _T("cbm_high_drilling_tunnel");
+	return _T("high_drilling_tunnel");
 }
 
 orm::RecordPtr HighDrillingTunnel::Create()
@@ -685,12 +667,12 @@ HighDrillingTunnel::HighDrillingTunnel() : orm::Record(HighDrillingTunnel::Table
 	REG_ATTRIB(hz_min, hz_min);
 	REG_ATTRIB(hz_max, hz_max);
 	REG_ATTRIB(comment, comment);
-	REG_FOREGIN_KEY(cbm_work_surf_id, work_surf, &WorkSurf::Create);
+	REG_FOREGIN_KEY(work_surf_id, work_surf, &WorkSurf::Create);
 }
 
 CString HydrGeo::Table()
 {
-	return _T("cbm_hydr_geo");
+	return _T("hydr_geo");
 }
 
 orm::RecordPtr HydrGeo::Create()
@@ -722,7 +704,7 @@ HydrGeo::HydrGeo() : orm::Record(HydrGeo::Table())
 
 CString Mine::Table()
 {
-	return _T("cbm_mine");
+	return _T("mine");
 }
 
 orm::RecordPtr Mine::Create()
@@ -788,14 +770,51 @@ Mine::Mine() : orm::Record(Mine::Table())
 	REG_ATTRIB(pump_wc, pump_wc);
 	REG_ATTRIB(reserve_gas, reserve_gas);
 	REG_ATTRIB(comment, comment);
-	REG_FOREGIN_KEY(cbm_tech_mode_id, tech_mode, &TechMode::Create);
-	REG_FOREGIN_KEY(cbm_region_id, region, &Region::Create);
-	REG_FOREGIN_KEY(cbm_account_id, account, &Account::Create);
+	REG_FOREGIN_KEY(tech_mode_id, tech_mode, &TechMode::Create);
+	REG_FOREGIN_KEY(mine_region_id, mine_region, &MineRegion::Create);
+	REG_FOREGIN_KEY(account_id, account, &Account::Create);
+}
+
+CString MineBase::Table()
+{
+	return _T("mine_base");
+}
+
+orm::RecordPtr MineBase::Create()
+{
+	return orm::RecordPtr(new MineBase());
+}
+
+MineBase::MineBase() : orm::Record(MineBase::Table())
+{
+	name = _T("");
+	comment = _T("");
+	REG_ATTRIB(name, name);
+	REG_ATTRIB(comment, comment);
+}
+
+CString MineRegion::Table()
+{
+	return _T("mine_region");
+}
+
+orm::RecordPtr MineRegion::Create()
+{
+	return orm::RecordPtr(new MineRegion());
+}
+
+MineRegion::MineRegion() : orm::Record(MineRegion::Table())
+{
+	name = _T("");
+	comment = _T("");
+	REG_ATTRIB(name, name);
+	REG_ATTRIB(comment, comment);
+	REG_FOREGIN_KEY(mine_base_id, mine_base, &MineBase::Create);
 }
 
 CString PoreFlow::Table()
 {
-	return _T("cbm_pore_flow");
+	return _T("pore_flow");
 }
 
 orm::RecordPtr PoreFlow::Create()
@@ -843,7 +862,7 @@ PoreFlow::PoreFlow() : orm::Record(PoreFlow::Table())
 
 CString PoreSize::Table()
 {
-	return _T("cbm_pore_size");
+	return _T("pore_size");
 }
 
 orm::RecordPtr PoreSize::Create()
@@ -871,28 +890,9 @@ PoreSize::PoreSize() : orm::Record(PoreSize::Table())
 	REG_ATTRIB(comment, comment);
 }
 
-CString Region::Table()
-{
-	return _T("cbm_region");
-}
-
-orm::RecordPtr Region::Create()
-{
-	return orm::RecordPtr(new Region());
-}
-
-Region::Region() : orm::Record(Region::Table())
-{
-	name = _T("");
-	comment = _T("");
-	REG_ATTRIB(name, name);
-	REG_ATTRIB(comment, comment);
-	REG_FOREGIN_KEY(cbm_base_id, base, &Base::Create);
-}
-
 CString ResAbundance::Table()
 {
-	return _T("cbm_res_abundance");
+	return _T("res_abundance");
 }
 
 orm::RecordPtr ResAbundance::Create()
@@ -912,7 +912,7 @@ ResAbundance::ResAbundance() : orm::Record(ResAbundance::Table())
 
 CString Rock::Table()
 {
-	return _T("cbm_rock");
+	return _T("rock");
 }
 
 orm::RecordPtr Rock::Create()
@@ -936,7 +936,7 @@ Rock::Rock() : orm::Record(Rock::Table())
 
 CString SysInfo::Table()
 {
-	return _T("cbm_sys_info");
+	return _T("sys_info");
 }
 
 orm::RecordPtr SysInfo::Create()
@@ -950,12 +950,12 @@ SysInfo::SysInfo() : orm::Record(SysInfo::Table())
 	comment = _T("");
 	REG_ATTRIB(last_login_time, last_login_time);
 	REG_ATTRIB(comment, comment);
-	REG_FOREGIN_KEY(cbm_account_id, account, &Account::Create);
+	REG_FOREGIN_KEY(account_id, account, &Account::Create);
 }
 
 CString TechMode::Table()
 {
-	return _T("cbm_tech_mode");
+	return _T("tech_mode");
 }
 
 orm::RecordPtr TechMode::Create()
@@ -966,23 +966,23 @@ orm::RecordPtr TechMode::Create()
 TechMode::TechMode() : orm::Record(TechMode::Table())
 {
 	name = _T("");
-	type = 0;
+	mode_type = 0;
 	c1 = 0;
 	c2 = 0;
 	c3 = 0;
 	comment = _T("");
 	REG_ATTRIB(name, name);
-	REG_ATTRIB(type, type);
+	REG_ATTRIB(mode_type, mode_type);
 	REG_ATTRIB(c1, c1);
 	REG_ATTRIB(c2, c2);
 	REG_ATTRIB(c3, c3);
 	REG_ATTRIB(comment, comment);
-	REG_FOREGIN_KEY(cbm_region_id, region, &Region::Create);
+	REG_FOREGIN_KEY(mine_region_id, mine_region, &MineRegion::Create);
 }
 
 CString Technology::Table()
 {
-	return _T("cbm_technology");
+	return _T("technology");
 }
 
 orm::RecordPtr Technology::Create()
@@ -1002,12 +1002,12 @@ Technology::Technology() : orm::Record(Technology::Table())
 	REG_ATTRIB(doc, doc);
 	REG_ATTRIB(video, video);
 	REG_ATTRIB(comment, comment);
-	REG_FOREGIN_KEY(cbm_region_id, region, &Region::Create);
+	REG_FOREGIN_KEY(mine_region_id, mine_region, &MineRegion::Create);
 }
 
 CString TopoGeo::Table()
 {
-	return _T("cbm_topo_geo");
+	return _T("topo_geo");
 }
 
 orm::RecordPtr TopoGeo::Create()
@@ -1027,7 +1027,7 @@ TopoGeo::TopoGeo() : orm::Record(TopoGeo::Table())
 
 CString Tunnel::Table()
 {
-	return _T("cbm_tunnel");
+	return _T("tunnel");
 }
 
 orm::RecordPtr Tunnel::Create()
@@ -1048,7 +1048,7 @@ Tunnel::Tunnel() : orm::Record(Tunnel::Table())
 	q3 = 0.0;
 	q0 = 0.0;
 	comment = _T("");
-	type = 0;
+	tunnel_type = 0;
 	top_side = 0.0;
 	bottom_side = 0.0;
 	left_side = 0.0;
@@ -1070,7 +1070,7 @@ Tunnel::Tunnel() : orm::Record(Tunnel::Table())
 	REG_ATTRIB(q3, q3);
 	REG_ATTRIB(q0, q0);
 	REG_ATTRIB(comment, comment);
-	REG_ATTRIB(type, type);
+	REG_ATTRIB(tunnel_type, tunnel_type);
 	REG_ATTRIB(top_side, top_side);
 	REG_ATTRIB(bottom_side, bottom_side);
 	REG_ATTRIB(left_side, left_side);
@@ -1085,7 +1085,7 @@ Tunnel::Tunnel() : orm::Record(Tunnel::Table())
 
 CString WorkArea::Table()
 {
-	return _T("cbm_work_area");
+	return _T("work_area");
 }
 
 orm::RecordPtr WorkArea::Create()
@@ -1111,12 +1111,12 @@ WorkArea::WorkArea() : orm::Record(WorkArea::Table())
 	REG_ATTRIB(fore_qr, fore_qr);
 	REG_ATTRIB(fore_qa, fore_qa);
 	REG_ATTRIB(comment, comment);
-	REG_FOREGIN_KEY(cbm_coal_id, coal, &Coal::Create);
+	REG_FOREGIN_KEY(coal_id, coal, &Coal::Create);
 }
 
 CString WorkSurf::Table()
 {
-	return _T("cbm_work_surf");
+	return _T("work_surf");
 }
 
 orm::RecordPtr WorkSurf::Create()
@@ -1162,8 +1162,8 @@ WorkSurf::WorkSurf() : orm::Record(WorkSurf::Table())
 	REG_ATTRIB(qr1, qr1);
 	REG_ATTRIB(qr2, qr2);
 	REG_ATTRIB(comment, comment);
-	REG_FOREGIN_KEY(cbm_work_area_id, work_area, &WorkArea::Create);
-	REG_FOREGIN_KEY(cbm_tunnel_id, tunnel, &Tunnel::Create);
+	REG_FOREGIN_KEY(work_area_id, work_area, &WorkArea::Create);
+	REG_FOREGIN_KEY(tunnel_id, tunnel, &Tunnel::Create);
 }
 
 } // namespace cbm
