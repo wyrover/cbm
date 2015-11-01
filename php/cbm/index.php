@@ -112,7 +112,7 @@ function copy_files()
 	copy('sql.php', $projDir.'php\cbm\php_utils.php');
 
 	//将thrift接口文件复制到cbm项目
-	copy('entity.thrift', $projDir.'thrift\entity.thrift');
+	// copy('entity.thrift', $projDir.'thrift\entity.thrift');
 	copy('cbm.thrift', $projDir.'thrift\cbm.thrift');
 	copy('ctrl.thrift', $projDir.'thrift\ctrl.thrift');
 }
@@ -125,6 +125,7 @@ $relations = build_cbm_relations($tables);
 make_cpp_files($tables, $relations);
 //生成cbm.thrift
 make_thrift_files($tables, $relations);
+merge_thrift_files();
 //生成cbm_data.sql文件
 make_sql_files();
 //复制文件到cbm/php目录下

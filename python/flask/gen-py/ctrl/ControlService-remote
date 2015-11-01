@@ -16,8 +16,8 @@ from thrift.transport import TSSLSocket
 from thrift.transport import THttpClient
 from thrift.protocol import TBinaryProtocol
 
-from cbm import ServerControl
-from cbm.ttypes import *
+from ctrl import ControlService
+from ctrl.ttypes import *
 
 if len(sys.argv) <= 1 or sys.argv[1] == '--help':
   print('')
@@ -78,7 +78,7 @@ else:
   else:
     transport = TTransport.TBufferedTransport(socket)
 protocol = TBinaryProtocol.TBinaryProtocol(transport)
-client = ServerControl.Client(protocol)
+client = ControlService.Client(protocol)
 transport.open()
 
 if cmd == 'shutdown':

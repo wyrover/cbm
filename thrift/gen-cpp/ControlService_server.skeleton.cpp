@@ -14,7 +14,7 @@ using namespace ::apache::thrift::server;
 
 using boost::shared_ptr;
 
-using namespace  ::cbm;
+using namespace  ::ctrl;
 
 class ControlServiceHandler : virtual public ControlServiceIf {
  public:

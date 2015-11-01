@@ -21,8 +21,29 @@ namespace cbm {
 class CbmServiceIf {
  public:
   virtual ~CbmServiceIf() {}
+  virtual void InitSampleRegion() = 0;
+  virtual int32_t GetOnlineAccountId() = 0;
+  virtual void GetOnlineMine(Mine& _return) = 0;
   virtual int32_t VerifyMineAccount(const std::string& username, const std::string& pwd) = 0;
   virtual void GetAllMineBases(std::vector<std::string> & _return) = 0;
+  virtual void GetAllMineRegions(std::vector<std::string> & _return, const std::string& baseName) = 0;
+  virtual void GetBaseByRegion(std::string& _return, const std::string& regionName) = 0;
+  virtual void GetSampleMine(Mine& _return, const std::string& regionName) = 0;
+  virtual void GetSampleCoal(Coal& _return, const std::string& regionName) = 0;
+  virtual void GetCoalNames(std::vector<std::string> & _return, const int32_t mine_id) = 0;
+  virtual void GetCoalIds(std::vector<int32_t> & _return, const int32_t mine_id) = 0;
+  virtual void GetWorkAreas(std::vector<WorkArea> & _return, const int32_t mine_id) = 0;
+  virtual void GetWorkSurfs(std::vector<WorkSurf> & _return, const int32_t mine_id) = 0;
+  virtual void GetDrillingSurfs(std::vector<DrillingSurf> & _return, const int32_t mine_id) = 0;
+  virtual int32_t DifficultEval(const Coal& coal) = 0;
+  virtual void DifficultEvalString(std::string& _return, const Coal& coal) = 0;
+  virtual double MineGasReservesW1(const int32_t mine_id) = 0;
+  virtual double MineGasReservesW2(const int32_t mine_id) = 0;
+  virtual double WorkAreaGasFlow(const WorkArea& work_area, const double K1) = 0;
+  virtual double MineGasFlow(const Mine& mine) = 0;
+  virtual double WorkSurfGasFlow1(const Coal& coal, const WorkArea& work_area, const WorkSurf& work_surf) = 0;
+  virtual double WorkSurfGasFlow2(const Coal& coal, const WorkArea& work_area, const WorkSurf& work_surf) = 0;
+  virtual void DrillingSurfGasFlow(const Coal& coal, const DrillingSurf& drilling_surf, const Tunnel& tunnel) = 0;
 };
 
 class CbmServiceIfFactory {
@@ -52,6 +73,16 @@ class CbmServiceIfSingletonFactory : virtual public CbmServiceIfFactory {
 class CbmServiceNull : virtual public CbmServiceIf {
  public:
   virtual ~CbmServiceNull() {}
+  void InitSampleRegion() {
+    return;
+  }
+  int32_t GetOnlineAccountId() {
+    int32_t _return = 0;
+    return _return;
+  }
+  void GetOnlineMine(Mine& /* _return */) {
+    return;
+  }
   int32_t VerifyMineAccount(const std::string& /* username */, const std::string& /* pwd */) {
     int32_t _return = 0;
     return _return;
@@ -59,6 +90,325 @@ class CbmServiceNull : virtual public CbmServiceIf {
   void GetAllMineBases(std::vector<std::string> & /* _return */) {
     return;
   }
+  void GetAllMineRegions(std::vector<std::string> & /* _return */, const std::string& /* baseName */) {
+    return;
+  }
+  void GetBaseByRegion(std::string& /* _return */, const std::string& /* regionName */) {
+    return;
+  }
+  void GetSampleMine(Mine& /* _return */, const std::string& /* regionName */) {
+    return;
+  }
+  void GetSampleCoal(Coal& /* _return */, const std::string& /* regionName */) {
+    return;
+  }
+  void GetCoalNames(std::vector<std::string> & /* _return */, const int32_t /* mine_id */) {
+    return;
+  }
+  void GetCoalIds(std::vector<int32_t> & /* _return */, const int32_t /* mine_id */) {
+    return;
+  }
+  void GetWorkAreas(std::vector<WorkArea> & /* _return */, const int32_t /* mine_id */) {
+    return;
+  }
+  void GetWorkSurfs(std::vector<WorkSurf> & /* _return */, const int32_t /* mine_id */) {
+    return;
+  }
+  void GetDrillingSurfs(std::vector<DrillingSurf> & /* _return */, const int32_t /* mine_id */) {
+    return;
+  }
+  int32_t DifficultEval(const Coal& /* coal */) {
+    int32_t _return = 0;
+    return _return;
+  }
+  void DifficultEvalString(std::string& /* _return */, const Coal& /* coal */) {
+    return;
+  }
+  double MineGasReservesW1(const int32_t /* mine_id */) {
+    double _return = (double)0;
+    return _return;
+  }
+  double MineGasReservesW2(const int32_t /* mine_id */) {
+    double _return = (double)0;
+    return _return;
+  }
+  double WorkAreaGasFlow(const WorkArea& /* work_area */, const double /* K1 */) {
+    double _return = (double)0;
+    return _return;
+  }
+  double MineGasFlow(const Mine& /* mine */) {
+    double _return = (double)0;
+    return _return;
+  }
+  double WorkSurfGasFlow1(const Coal& /* coal */, const WorkArea& /* work_area */, const WorkSurf& /* work_surf */) {
+    double _return = (double)0;
+    return _return;
+  }
+  double WorkSurfGasFlow2(const Coal& /* coal */, const WorkArea& /* work_area */, const WorkSurf& /* work_surf */) {
+    double _return = (double)0;
+    return _return;
+  }
+  void DrillingSurfGasFlow(const Coal& /* coal */, const DrillingSurf& /* drilling_surf */, const Tunnel& /* tunnel */) {
+    return;
+  }
+};
+
+
+class CbmService_InitSampleRegion_args {
+ public:
+
+  CbmService_InitSampleRegion_args(const CbmService_InitSampleRegion_args&);
+  CbmService_InitSampleRegion_args& operator=(const CbmService_InitSampleRegion_args&);
+  CbmService_InitSampleRegion_args() {
+  }
+
+  virtual ~CbmService_InitSampleRegion_args() throw();
+
+  bool operator == (const CbmService_InitSampleRegion_args & /* rhs */) const
+  {
+    return true;
+  }
+  bool operator != (const CbmService_InitSampleRegion_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_InitSampleRegion_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_InitSampleRegion_pargs {
+ public:
+
+
+  virtual ~CbmService_InitSampleRegion_pargs() throw();
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_InitSampleRegion_result {
+ public:
+
+  CbmService_InitSampleRegion_result(const CbmService_InitSampleRegion_result&);
+  CbmService_InitSampleRegion_result& operator=(const CbmService_InitSampleRegion_result&);
+  CbmService_InitSampleRegion_result() {
+  }
+
+  virtual ~CbmService_InitSampleRegion_result() throw();
+
+  bool operator == (const CbmService_InitSampleRegion_result & /* rhs */) const
+  {
+    return true;
+  }
+  bool operator != (const CbmService_InitSampleRegion_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_InitSampleRegion_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_InitSampleRegion_presult {
+ public:
+
+
+  virtual ~CbmService_InitSampleRegion_presult() throw();
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+
+class CbmService_GetOnlineAccountId_args {
+ public:
+
+  CbmService_GetOnlineAccountId_args(const CbmService_GetOnlineAccountId_args&);
+  CbmService_GetOnlineAccountId_args& operator=(const CbmService_GetOnlineAccountId_args&);
+  CbmService_GetOnlineAccountId_args() {
+  }
+
+  virtual ~CbmService_GetOnlineAccountId_args() throw();
+
+  bool operator == (const CbmService_GetOnlineAccountId_args & /* rhs */) const
+  {
+    return true;
+  }
+  bool operator != (const CbmService_GetOnlineAccountId_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetOnlineAccountId_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetOnlineAccountId_pargs {
+ public:
+
+
+  virtual ~CbmService_GetOnlineAccountId_pargs() throw();
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetOnlineAccountId_result__isset {
+  _CbmService_GetOnlineAccountId_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetOnlineAccountId_result__isset;
+
+class CbmService_GetOnlineAccountId_result {
+ public:
+
+  CbmService_GetOnlineAccountId_result(const CbmService_GetOnlineAccountId_result&);
+  CbmService_GetOnlineAccountId_result& operator=(const CbmService_GetOnlineAccountId_result&);
+  CbmService_GetOnlineAccountId_result() : success(0) {
+  }
+
+  virtual ~CbmService_GetOnlineAccountId_result() throw();
+  int32_t success;
+
+  _CbmService_GetOnlineAccountId_result__isset __isset;
+
+  void __set_success(const int32_t val);
+
+  bool operator == (const CbmService_GetOnlineAccountId_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetOnlineAccountId_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetOnlineAccountId_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetOnlineAccountId_presult__isset {
+  _CbmService_GetOnlineAccountId_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetOnlineAccountId_presult__isset;
+
+class CbmService_GetOnlineAccountId_presult {
+ public:
+
+
+  virtual ~CbmService_GetOnlineAccountId_presult() throw();
+  int32_t* success;
+
+  _CbmService_GetOnlineAccountId_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+
+class CbmService_GetOnlineMine_args {
+ public:
+
+  CbmService_GetOnlineMine_args(const CbmService_GetOnlineMine_args&);
+  CbmService_GetOnlineMine_args& operator=(const CbmService_GetOnlineMine_args&);
+  CbmService_GetOnlineMine_args() {
+  }
+
+  virtual ~CbmService_GetOnlineMine_args() throw();
+
+  bool operator == (const CbmService_GetOnlineMine_args & /* rhs */) const
+  {
+    return true;
+  }
+  bool operator != (const CbmService_GetOnlineMine_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetOnlineMine_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetOnlineMine_pargs {
+ public:
+
+
+  virtual ~CbmService_GetOnlineMine_pargs() throw();
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetOnlineMine_result__isset {
+  _CbmService_GetOnlineMine_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetOnlineMine_result__isset;
+
+class CbmService_GetOnlineMine_result {
+ public:
+
+  CbmService_GetOnlineMine_result(const CbmService_GetOnlineMine_result&);
+  CbmService_GetOnlineMine_result& operator=(const CbmService_GetOnlineMine_result&);
+  CbmService_GetOnlineMine_result() {
+  }
+
+  virtual ~CbmService_GetOnlineMine_result() throw();
+  Mine success;
+
+  _CbmService_GetOnlineMine_result__isset __isset;
+
+  void __set_success(const Mine& val);
+
+  bool operator == (const CbmService_GetOnlineMine_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetOnlineMine_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetOnlineMine_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetOnlineMine_presult__isset {
+  _CbmService_GetOnlineMine_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetOnlineMine_presult__isset;
+
+class CbmService_GetOnlineMine_presult {
+ public:
+
+
+  virtual ~CbmService_GetOnlineMine_presult() throw();
+  Mine* success;
+
+  _CbmService_GetOnlineMine_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
 };
 
 typedef struct _CbmService_VerifyMineAccount_args__isset {
@@ -264,6 +614,1909 @@ class CbmService_GetAllMineBases_presult {
 
 };
 
+typedef struct _CbmService_GetAllMineRegions_args__isset {
+  _CbmService_GetAllMineRegions_args__isset() : baseName(false) {}
+  bool baseName :1;
+} _CbmService_GetAllMineRegions_args__isset;
+
+class CbmService_GetAllMineRegions_args {
+ public:
+
+  CbmService_GetAllMineRegions_args(const CbmService_GetAllMineRegions_args&);
+  CbmService_GetAllMineRegions_args& operator=(const CbmService_GetAllMineRegions_args&);
+  CbmService_GetAllMineRegions_args() : baseName() {
+  }
+
+  virtual ~CbmService_GetAllMineRegions_args() throw();
+  std::string baseName;
+
+  _CbmService_GetAllMineRegions_args__isset __isset;
+
+  void __set_baseName(const std::string& val);
+
+  bool operator == (const CbmService_GetAllMineRegions_args & rhs) const
+  {
+    if (!(baseName == rhs.baseName))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetAllMineRegions_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetAllMineRegions_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetAllMineRegions_pargs {
+ public:
+
+
+  virtual ~CbmService_GetAllMineRegions_pargs() throw();
+  const std::string* baseName;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetAllMineRegions_result__isset {
+  _CbmService_GetAllMineRegions_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetAllMineRegions_result__isset;
+
+class CbmService_GetAllMineRegions_result {
+ public:
+
+  CbmService_GetAllMineRegions_result(const CbmService_GetAllMineRegions_result&);
+  CbmService_GetAllMineRegions_result& operator=(const CbmService_GetAllMineRegions_result&);
+  CbmService_GetAllMineRegions_result() {
+  }
+
+  virtual ~CbmService_GetAllMineRegions_result() throw();
+  std::vector<std::string>  success;
+
+  _CbmService_GetAllMineRegions_result__isset __isset;
+
+  void __set_success(const std::vector<std::string> & val);
+
+  bool operator == (const CbmService_GetAllMineRegions_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetAllMineRegions_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetAllMineRegions_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetAllMineRegions_presult__isset {
+  _CbmService_GetAllMineRegions_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetAllMineRegions_presult__isset;
+
+class CbmService_GetAllMineRegions_presult {
+ public:
+
+
+  virtual ~CbmService_GetAllMineRegions_presult() throw();
+  std::vector<std::string> * success;
+
+  _CbmService_GetAllMineRegions_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetBaseByRegion_args__isset {
+  _CbmService_GetBaseByRegion_args__isset() : regionName(false) {}
+  bool regionName :1;
+} _CbmService_GetBaseByRegion_args__isset;
+
+class CbmService_GetBaseByRegion_args {
+ public:
+
+  CbmService_GetBaseByRegion_args(const CbmService_GetBaseByRegion_args&);
+  CbmService_GetBaseByRegion_args& operator=(const CbmService_GetBaseByRegion_args&);
+  CbmService_GetBaseByRegion_args() : regionName() {
+  }
+
+  virtual ~CbmService_GetBaseByRegion_args() throw();
+  std::string regionName;
+
+  _CbmService_GetBaseByRegion_args__isset __isset;
+
+  void __set_regionName(const std::string& val);
+
+  bool operator == (const CbmService_GetBaseByRegion_args & rhs) const
+  {
+    if (!(regionName == rhs.regionName))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetBaseByRegion_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetBaseByRegion_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetBaseByRegion_pargs {
+ public:
+
+
+  virtual ~CbmService_GetBaseByRegion_pargs() throw();
+  const std::string* regionName;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetBaseByRegion_result__isset {
+  _CbmService_GetBaseByRegion_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetBaseByRegion_result__isset;
+
+class CbmService_GetBaseByRegion_result {
+ public:
+
+  CbmService_GetBaseByRegion_result(const CbmService_GetBaseByRegion_result&);
+  CbmService_GetBaseByRegion_result& operator=(const CbmService_GetBaseByRegion_result&);
+  CbmService_GetBaseByRegion_result() : success() {
+  }
+
+  virtual ~CbmService_GetBaseByRegion_result() throw();
+  std::string success;
+
+  _CbmService_GetBaseByRegion_result__isset __isset;
+
+  void __set_success(const std::string& val);
+
+  bool operator == (const CbmService_GetBaseByRegion_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetBaseByRegion_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetBaseByRegion_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetBaseByRegion_presult__isset {
+  _CbmService_GetBaseByRegion_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetBaseByRegion_presult__isset;
+
+class CbmService_GetBaseByRegion_presult {
+ public:
+
+
+  virtual ~CbmService_GetBaseByRegion_presult() throw();
+  std::string* success;
+
+  _CbmService_GetBaseByRegion_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetSampleMine_args__isset {
+  _CbmService_GetSampleMine_args__isset() : regionName(false) {}
+  bool regionName :1;
+} _CbmService_GetSampleMine_args__isset;
+
+class CbmService_GetSampleMine_args {
+ public:
+
+  CbmService_GetSampleMine_args(const CbmService_GetSampleMine_args&);
+  CbmService_GetSampleMine_args& operator=(const CbmService_GetSampleMine_args&);
+  CbmService_GetSampleMine_args() : regionName() {
+  }
+
+  virtual ~CbmService_GetSampleMine_args() throw();
+  std::string regionName;
+
+  _CbmService_GetSampleMine_args__isset __isset;
+
+  void __set_regionName(const std::string& val);
+
+  bool operator == (const CbmService_GetSampleMine_args & rhs) const
+  {
+    if (!(regionName == rhs.regionName))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetSampleMine_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetSampleMine_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetSampleMine_pargs {
+ public:
+
+
+  virtual ~CbmService_GetSampleMine_pargs() throw();
+  const std::string* regionName;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetSampleMine_result__isset {
+  _CbmService_GetSampleMine_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetSampleMine_result__isset;
+
+class CbmService_GetSampleMine_result {
+ public:
+
+  CbmService_GetSampleMine_result(const CbmService_GetSampleMine_result&);
+  CbmService_GetSampleMine_result& operator=(const CbmService_GetSampleMine_result&);
+  CbmService_GetSampleMine_result() {
+  }
+
+  virtual ~CbmService_GetSampleMine_result() throw();
+  Mine success;
+
+  _CbmService_GetSampleMine_result__isset __isset;
+
+  void __set_success(const Mine& val);
+
+  bool operator == (const CbmService_GetSampleMine_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetSampleMine_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetSampleMine_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetSampleMine_presult__isset {
+  _CbmService_GetSampleMine_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetSampleMine_presult__isset;
+
+class CbmService_GetSampleMine_presult {
+ public:
+
+
+  virtual ~CbmService_GetSampleMine_presult() throw();
+  Mine* success;
+
+  _CbmService_GetSampleMine_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetSampleCoal_args__isset {
+  _CbmService_GetSampleCoal_args__isset() : regionName(false) {}
+  bool regionName :1;
+} _CbmService_GetSampleCoal_args__isset;
+
+class CbmService_GetSampleCoal_args {
+ public:
+
+  CbmService_GetSampleCoal_args(const CbmService_GetSampleCoal_args&);
+  CbmService_GetSampleCoal_args& operator=(const CbmService_GetSampleCoal_args&);
+  CbmService_GetSampleCoal_args() : regionName() {
+  }
+
+  virtual ~CbmService_GetSampleCoal_args() throw();
+  std::string regionName;
+
+  _CbmService_GetSampleCoal_args__isset __isset;
+
+  void __set_regionName(const std::string& val);
+
+  bool operator == (const CbmService_GetSampleCoal_args & rhs) const
+  {
+    if (!(regionName == rhs.regionName))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetSampleCoal_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetSampleCoal_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetSampleCoal_pargs {
+ public:
+
+
+  virtual ~CbmService_GetSampleCoal_pargs() throw();
+  const std::string* regionName;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetSampleCoal_result__isset {
+  _CbmService_GetSampleCoal_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetSampleCoal_result__isset;
+
+class CbmService_GetSampleCoal_result {
+ public:
+
+  CbmService_GetSampleCoal_result(const CbmService_GetSampleCoal_result&);
+  CbmService_GetSampleCoal_result& operator=(const CbmService_GetSampleCoal_result&);
+  CbmService_GetSampleCoal_result() {
+  }
+
+  virtual ~CbmService_GetSampleCoal_result() throw();
+  Coal success;
+
+  _CbmService_GetSampleCoal_result__isset __isset;
+
+  void __set_success(const Coal& val);
+
+  bool operator == (const CbmService_GetSampleCoal_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetSampleCoal_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetSampleCoal_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetSampleCoal_presult__isset {
+  _CbmService_GetSampleCoal_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetSampleCoal_presult__isset;
+
+class CbmService_GetSampleCoal_presult {
+ public:
+
+
+  virtual ~CbmService_GetSampleCoal_presult() throw();
+  Coal* success;
+
+  _CbmService_GetSampleCoal_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetCoalNames_args__isset {
+  _CbmService_GetCoalNames_args__isset() : mine_id(false) {}
+  bool mine_id :1;
+} _CbmService_GetCoalNames_args__isset;
+
+class CbmService_GetCoalNames_args {
+ public:
+
+  CbmService_GetCoalNames_args(const CbmService_GetCoalNames_args&);
+  CbmService_GetCoalNames_args& operator=(const CbmService_GetCoalNames_args&);
+  CbmService_GetCoalNames_args() : mine_id(0) {
+  }
+
+  virtual ~CbmService_GetCoalNames_args() throw();
+  int32_t mine_id;
+
+  _CbmService_GetCoalNames_args__isset __isset;
+
+  void __set_mine_id(const int32_t val);
+
+  bool operator == (const CbmService_GetCoalNames_args & rhs) const
+  {
+    if (!(mine_id == rhs.mine_id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetCoalNames_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetCoalNames_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetCoalNames_pargs {
+ public:
+
+
+  virtual ~CbmService_GetCoalNames_pargs() throw();
+  const int32_t* mine_id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetCoalNames_result__isset {
+  _CbmService_GetCoalNames_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetCoalNames_result__isset;
+
+class CbmService_GetCoalNames_result {
+ public:
+
+  CbmService_GetCoalNames_result(const CbmService_GetCoalNames_result&);
+  CbmService_GetCoalNames_result& operator=(const CbmService_GetCoalNames_result&);
+  CbmService_GetCoalNames_result() {
+  }
+
+  virtual ~CbmService_GetCoalNames_result() throw();
+  std::vector<std::string>  success;
+
+  _CbmService_GetCoalNames_result__isset __isset;
+
+  void __set_success(const std::vector<std::string> & val);
+
+  bool operator == (const CbmService_GetCoalNames_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetCoalNames_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetCoalNames_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetCoalNames_presult__isset {
+  _CbmService_GetCoalNames_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetCoalNames_presult__isset;
+
+class CbmService_GetCoalNames_presult {
+ public:
+
+
+  virtual ~CbmService_GetCoalNames_presult() throw();
+  std::vector<std::string> * success;
+
+  _CbmService_GetCoalNames_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetCoalIds_args__isset {
+  _CbmService_GetCoalIds_args__isset() : mine_id(false) {}
+  bool mine_id :1;
+} _CbmService_GetCoalIds_args__isset;
+
+class CbmService_GetCoalIds_args {
+ public:
+
+  CbmService_GetCoalIds_args(const CbmService_GetCoalIds_args&);
+  CbmService_GetCoalIds_args& operator=(const CbmService_GetCoalIds_args&);
+  CbmService_GetCoalIds_args() : mine_id(0) {
+  }
+
+  virtual ~CbmService_GetCoalIds_args() throw();
+  int32_t mine_id;
+
+  _CbmService_GetCoalIds_args__isset __isset;
+
+  void __set_mine_id(const int32_t val);
+
+  bool operator == (const CbmService_GetCoalIds_args & rhs) const
+  {
+    if (!(mine_id == rhs.mine_id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetCoalIds_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetCoalIds_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetCoalIds_pargs {
+ public:
+
+
+  virtual ~CbmService_GetCoalIds_pargs() throw();
+  const int32_t* mine_id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetCoalIds_result__isset {
+  _CbmService_GetCoalIds_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetCoalIds_result__isset;
+
+class CbmService_GetCoalIds_result {
+ public:
+
+  CbmService_GetCoalIds_result(const CbmService_GetCoalIds_result&);
+  CbmService_GetCoalIds_result& operator=(const CbmService_GetCoalIds_result&);
+  CbmService_GetCoalIds_result() {
+  }
+
+  virtual ~CbmService_GetCoalIds_result() throw();
+  std::vector<int32_t>  success;
+
+  _CbmService_GetCoalIds_result__isset __isset;
+
+  void __set_success(const std::vector<int32_t> & val);
+
+  bool operator == (const CbmService_GetCoalIds_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetCoalIds_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetCoalIds_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetCoalIds_presult__isset {
+  _CbmService_GetCoalIds_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetCoalIds_presult__isset;
+
+class CbmService_GetCoalIds_presult {
+ public:
+
+
+  virtual ~CbmService_GetCoalIds_presult() throw();
+  std::vector<int32_t> * success;
+
+  _CbmService_GetCoalIds_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetWorkAreas_args__isset {
+  _CbmService_GetWorkAreas_args__isset() : mine_id(false) {}
+  bool mine_id :1;
+} _CbmService_GetWorkAreas_args__isset;
+
+class CbmService_GetWorkAreas_args {
+ public:
+
+  CbmService_GetWorkAreas_args(const CbmService_GetWorkAreas_args&);
+  CbmService_GetWorkAreas_args& operator=(const CbmService_GetWorkAreas_args&);
+  CbmService_GetWorkAreas_args() : mine_id(0) {
+  }
+
+  virtual ~CbmService_GetWorkAreas_args() throw();
+  int32_t mine_id;
+
+  _CbmService_GetWorkAreas_args__isset __isset;
+
+  void __set_mine_id(const int32_t val);
+
+  bool operator == (const CbmService_GetWorkAreas_args & rhs) const
+  {
+    if (!(mine_id == rhs.mine_id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetWorkAreas_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetWorkAreas_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetWorkAreas_pargs {
+ public:
+
+
+  virtual ~CbmService_GetWorkAreas_pargs() throw();
+  const int32_t* mine_id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetWorkAreas_result__isset {
+  _CbmService_GetWorkAreas_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetWorkAreas_result__isset;
+
+class CbmService_GetWorkAreas_result {
+ public:
+
+  CbmService_GetWorkAreas_result(const CbmService_GetWorkAreas_result&);
+  CbmService_GetWorkAreas_result& operator=(const CbmService_GetWorkAreas_result&);
+  CbmService_GetWorkAreas_result() {
+  }
+
+  virtual ~CbmService_GetWorkAreas_result() throw();
+  std::vector<WorkArea>  success;
+
+  _CbmService_GetWorkAreas_result__isset __isset;
+
+  void __set_success(const std::vector<WorkArea> & val);
+
+  bool operator == (const CbmService_GetWorkAreas_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetWorkAreas_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetWorkAreas_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetWorkAreas_presult__isset {
+  _CbmService_GetWorkAreas_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetWorkAreas_presult__isset;
+
+class CbmService_GetWorkAreas_presult {
+ public:
+
+
+  virtual ~CbmService_GetWorkAreas_presult() throw();
+  std::vector<WorkArea> * success;
+
+  _CbmService_GetWorkAreas_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetWorkSurfs_args__isset {
+  _CbmService_GetWorkSurfs_args__isset() : mine_id(false) {}
+  bool mine_id :1;
+} _CbmService_GetWorkSurfs_args__isset;
+
+class CbmService_GetWorkSurfs_args {
+ public:
+
+  CbmService_GetWorkSurfs_args(const CbmService_GetWorkSurfs_args&);
+  CbmService_GetWorkSurfs_args& operator=(const CbmService_GetWorkSurfs_args&);
+  CbmService_GetWorkSurfs_args() : mine_id(0) {
+  }
+
+  virtual ~CbmService_GetWorkSurfs_args() throw();
+  int32_t mine_id;
+
+  _CbmService_GetWorkSurfs_args__isset __isset;
+
+  void __set_mine_id(const int32_t val);
+
+  bool operator == (const CbmService_GetWorkSurfs_args & rhs) const
+  {
+    if (!(mine_id == rhs.mine_id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetWorkSurfs_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetWorkSurfs_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetWorkSurfs_pargs {
+ public:
+
+
+  virtual ~CbmService_GetWorkSurfs_pargs() throw();
+  const int32_t* mine_id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetWorkSurfs_result__isset {
+  _CbmService_GetWorkSurfs_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetWorkSurfs_result__isset;
+
+class CbmService_GetWorkSurfs_result {
+ public:
+
+  CbmService_GetWorkSurfs_result(const CbmService_GetWorkSurfs_result&);
+  CbmService_GetWorkSurfs_result& operator=(const CbmService_GetWorkSurfs_result&);
+  CbmService_GetWorkSurfs_result() {
+  }
+
+  virtual ~CbmService_GetWorkSurfs_result() throw();
+  std::vector<WorkSurf>  success;
+
+  _CbmService_GetWorkSurfs_result__isset __isset;
+
+  void __set_success(const std::vector<WorkSurf> & val);
+
+  bool operator == (const CbmService_GetWorkSurfs_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetWorkSurfs_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetWorkSurfs_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetWorkSurfs_presult__isset {
+  _CbmService_GetWorkSurfs_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetWorkSurfs_presult__isset;
+
+class CbmService_GetWorkSurfs_presult {
+ public:
+
+
+  virtual ~CbmService_GetWorkSurfs_presult() throw();
+  std::vector<WorkSurf> * success;
+
+  _CbmService_GetWorkSurfs_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetDrillingSurfs_args__isset {
+  _CbmService_GetDrillingSurfs_args__isset() : mine_id(false) {}
+  bool mine_id :1;
+} _CbmService_GetDrillingSurfs_args__isset;
+
+class CbmService_GetDrillingSurfs_args {
+ public:
+
+  CbmService_GetDrillingSurfs_args(const CbmService_GetDrillingSurfs_args&);
+  CbmService_GetDrillingSurfs_args& operator=(const CbmService_GetDrillingSurfs_args&);
+  CbmService_GetDrillingSurfs_args() : mine_id(0) {
+  }
+
+  virtual ~CbmService_GetDrillingSurfs_args() throw();
+  int32_t mine_id;
+
+  _CbmService_GetDrillingSurfs_args__isset __isset;
+
+  void __set_mine_id(const int32_t val);
+
+  bool operator == (const CbmService_GetDrillingSurfs_args & rhs) const
+  {
+    if (!(mine_id == rhs.mine_id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetDrillingSurfs_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetDrillingSurfs_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetDrillingSurfs_pargs {
+ public:
+
+
+  virtual ~CbmService_GetDrillingSurfs_pargs() throw();
+  const int32_t* mine_id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetDrillingSurfs_result__isset {
+  _CbmService_GetDrillingSurfs_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetDrillingSurfs_result__isset;
+
+class CbmService_GetDrillingSurfs_result {
+ public:
+
+  CbmService_GetDrillingSurfs_result(const CbmService_GetDrillingSurfs_result&);
+  CbmService_GetDrillingSurfs_result& operator=(const CbmService_GetDrillingSurfs_result&);
+  CbmService_GetDrillingSurfs_result() {
+  }
+
+  virtual ~CbmService_GetDrillingSurfs_result() throw();
+  std::vector<DrillingSurf>  success;
+
+  _CbmService_GetDrillingSurfs_result__isset __isset;
+
+  void __set_success(const std::vector<DrillingSurf> & val);
+
+  bool operator == (const CbmService_GetDrillingSurfs_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetDrillingSurfs_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetDrillingSurfs_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetDrillingSurfs_presult__isset {
+  _CbmService_GetDrillingSurfs_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetDrillingSurfs_presult__isset;
+
+class CbmService_GetDrillingSurfs_presult {
+ public:
+
+
+  virtual ~CbmService_GetDrillingSurfs_presult() throw();
+  std::vector<DrillingSurf> * success;
+
+  _CbmService_GetDrillingSurfs_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_DifficultEval_args__isset {
+  _CbmService_DifficultEval_args__isset() : coal(false) {}
+  bool coal :1;
+} _CbmService_DifficultEval_args__isset;
+
+class CbmService_DifficultEval_args {
+ public:
+
+  CbmService_DifficultEval_args(const CbmService_DifficultEval_args&);
+  CbmService_DifficultEval_args& operator=(const CbmService_DifficultEval_args&);
+  CbmService_DifficultEval_args() {
+  }
+
+  virtual ~CbmService_DifficultEval_args() throw();
+  Coal coal;
+
+  _CbmService_DifficultEval_args__isset __isset;
+
+  void __set_coal(const Coal& val);
+
+  bool operator == (const CbmService_DifficultEval_args & rhs) const
+  {
+    if (!(coal == rhs.coal))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_DifficultEval_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_DifficultEval_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_DifficultEval_pargs {
+ public:
+
+
+  virtual ~CbmService_DifficultEval_pargs() throw();
+  const Coal* coal;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_DifficultEval_result__isset {
+  _CbmService_DifficultEval_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_DifficultEval_result__isset;
+
+class CbmService_DifficultEval_result {
+ public:
+
+  CbmService_DifficultEval_result(const CbmService_DifficultEval_result&);
+  CbmService_DifficultEval_result& operator=(const CbmService_DifficultEval_result&);
+  CbmService_DifficultEval_result() : success(0) {
+  }
+
+  virtual ~CbmService_DifficultEval_result() throw();
+  int32_t success;
+
+  _CbmService_DifficultEval_result__isset __isset;
+
+  void __set_success(const int32_t val);
+
+  bool operator == (const CbmService_DifficultEval_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_DifficultEval_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_DifficultEval_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_DifficultEval_presult__isset {
+  _CbmService_DifficultEval_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_DifficultEval_presult__isset;
+
+class CbmService_DifficultEval_presult {
+ public:
+
+
+  virtual ~CbmService_DifficultEval_presult() throw();
+  int32_t* success;
+
+  _CbmService_DifficultEval_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_DifficultEvalString_args__isset {
+  _CbmService_DifficultEvalString_args__isset() : coal(false) {}
+  bool coal :1;
+} _CbmService_DifficultEvalString_args__isset;
+
+class CbmService_DifficultEvalString_args {
+ public:
+
+  CbmService_DifficultEvalString_args(const CbmService_DifficultEvalString_args&);
+  CbmService_DifficultEvalString_args& operator=(const CbmService_DifficultEvalString_args&);
+  CbmService_DifficultEvalString_args() {
+  }
+
+  virtual ~CbmService_DifficultEvalString_args() throw();
+  Coal coal;
+
+  _CbmService_DifficultEvalString_args__isset __isset;
+
+  void __set_coal(const Coal& val);
+
+  bool operator == (const CbmService_DifficultEvalString_args & rhs) const
+  {
+    if (!(coal == rhs.coal))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_DifficultEvalString_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_DifficultEvalString_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_DifficultEvalString_pargs {
+ public:
+
+
+  virtual ~CbmService_DifficultEvalString_pargs() throw();
+  const Coal* coal;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_DifficultEvalString_result__isset {
+  _CbmService_DifficultEvalString_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_DifficultEvalString_result__isset;
+
+class CbmService_DifficultEvalString_result {
+ public:
+
+  CbmService_DifficultEvalString_result(const CbmService_DifficultEvalString_result&);
+  CbmService_DifficultEvalString_result& operator=(const CbmService_DifficultEvalString_result&);
+  CbmService_DifficultEvalString_result() : success() {
+  }
+
+  virtual ~CbmService_DifficultEvalString_result() throw();
+  std::string success;
+
+  _CbmService_DifficultEvalString_result__isset __isset;
+
+  void __set_success(const std::string& val);
+
+  bool operator == (const CbmService_DifficultEvalString_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_DifficultEvalString_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_DifficultEvalString_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_DifficultEvalString_presult__isset {
+  _CbmService_DifficultEvalString_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_DifficultEvalString_presult__isset;
+
+class CbmService_DifficultEvalString_presult {
+ public:
+
+
+  virtual ~CbmService_DifficultEvalString_presult() throw();
+  std::string* success;
+
+  _CbmService_DifficultEvalString_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_MineGasReservesW1_args__isset {
+  _CbmService_MineGasReservesW1_args__isset() : mine_id(false) {}
+  bool mine_id :1;
+} _CbmService_MineGasReservesW1_args__isset;
+
+class CbmService_MineGasReservesW1_args {
+ public:
+
+  CbmService_MineGasReservesW1_args(const CbmService_MineGasReservesW1_args&);
+  CbmService_MineGasReservesW1_args& operator=(const CbmService_MineGasReservesW1_args&);
+  CbmService_MineGasReservesW1_args() : mine_id(0) {
+  }
+
+  virtual ~CbmService_MineGasReservesW1_args() throw();
+  int32_t mine_id;
+
+  _CbmService_MineGasReservesW1_args__isset __isset;
+
+  void __set_mine_id(const int32_t val);
+
+  bool operator == (const CbmService_MineGasReservesW1_args & rhs) const
+  {
+    if (!(mine_id == rhs.mine_id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_MineGasReservesW1_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_MineGasReservesW1_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_MineGasReservesW1_pargs {
+ public:
+
+
+  virtual ~CbmService_MineGasReservesW1_pargs() throw();
+  const int32_t* mine_id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_MineGasReservesW1_result__isset {
+  _CbmService_MineGasReservesW1_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_MineGasReservesW1_result__isset;
+
+class CbmService_MineGasReservesW1_result {
+ public:
+
+  CbmService_MineGasReservesW1_result(const CbmService_MineGasReservesW1_result&);
+  CbmService_MineGasReservesW1_result& operator=(const CbmService_MineGasReservesW1_result&);
+  CbmService_MineGasReservesW1_result() : success(0) {
+  }
+
+  virtual ~CbmService_MineGasReservesW1_result() throw();
+  double success;
+
+  _CbmService_MineGasReservesW1_result__isset __isset;
+
+  void __set_success(const double val);
+
+  bool operator == (const CbmService_MineGasReservesW1_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_MineGasReservesW1_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_MineGasReservesW1_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_MineGasReservesW1_presult__isset {
+  _CbmService_MineGasReservesW1_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_MineGasReservesW1_presult__isset;
+
+class CbmService_MineGasReservesW1_presult {
+ public:
+
+
+  virtual ~CbmService_MineGasReservesW1_presult() throw();
+  double* success;
+
+  _CbmService_MineGasReservesW1_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_MineGasReservesW2_args__isset {
+  _CbmService_MineGasReservesW2_args__isset() : mine_id(false) {}
+  bool mine_id :1;
+} _CbmService_MineGasReservesW2_args__isset;
+
+class CbmService_MineGasReservesW2_args {
+ public:
+
+  CbmService_MineGasReservesW2_args(const CbmService_MineGasReservesW2_args&);
+  CbmService_MineGasReservesW2_args& operator=(const CbmService_MineGasReservesW2_args&);
+  CbmService_MineGasReservesW2_args() : mine_id(0) {
+  }
+
+  virtual ~CbmService_MineGasReservesW2_args() throw();
+  int32_t mine_id;
+
+  _CbmService_MineGasReservesW2_args__isset __isset;
+
+  void __set_mine_id(const int32_t val);
+
+  bool operator == (const CbmService_MineGasReservesW2_args & rhs) const
+  {
+    if (!(mine_id == rhs.mine_id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_MineGasReservesW2_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_MineGasReservesW2_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_MineGasReservesW2_pargs {
+ public:
+
+
+  virtual ~CbmService_MineGasReservesW2_pargs() throw();
+  const int32_t* mine_id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_MineGasReservesW2_result__isset {
+  _CbmService_MineGasReservesW2_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_MineGasReservesW2_result__isset;
+
+class CbmService_MineGasReservesW2_result {
+ public:
+
+  CbmService_MineGasReservesW2_result(const CbmService_MineGasReservesW2_result&);
+  CbmService_MineGasReservesW2_result& operator=(const CbmService_MineGasReservesW2_result&);
+  CbmService_MineGasReservesW2_result() : success(0) {
+  }
+
+  virtual ~CbmService_MineGasReservesW2_result() throw();
+  double success;
+
+  _CbmService_MineGasReservesW2_result__isset __isset;
+
+  void __set_success(const double val);
+
+  bool operator == (const CbmService_MineGasReservesW2_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_MineGasReservesW2_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_MineGasReservesW2_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_MineGasReservesW2_presult__isset {
+  _CbmService_MineGasReservesW2_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_MineGasReservesW2_presult__isset;
+
+class CbmService_MineGasReservesW2_presult {
+ public:
+
+
+  virtual ~CbmService_MineGasReservesW2_presult() throw();
+  double* success;
+
+  _CbmService_MineGasReservesW2_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_WorkAreaGasFlow_args__isset {
+  _CbmService_WorkAreaGasFlow_args__isset() : work_area(false), K1(false) {}
+  bool work_area :1;
+  bool K1 :1;
+} _CbmService_WorkAreaGasFlow_args__isset;
+
+class CbmService_WorkAreaGasFlow_args {
+ public:
+
+  CbmService_WorkAreaGasFlow_args(const CbmService_WorkAreaGasFlow_args&);
+  CbmService_WorkAreaGasFlow_args& operator=(const CbmService_WorkAreaGasFlow_args&);
+  CbmService_WorkAreaGasFlow_args() : K1(0) {
+  }
+
+  virtual ~CbmService_WorkAreaGasFlow_args() throw();
+  WorkArea work_area;
+  double K1;
+
+  _CbmService_WorkAreaGasFlow_args__isset __isset;
+
+  void __set_work_area(const WorkArea& val);
+
+  void __set_K1(const double val);
+
+  bool operator == (const CbmService_WorkAreaGasFlow_args & rhs) const
+  {
+    if (!(work_area == rhs.work_area))
+      return false;
+    if (!(K1 == rhs.K1))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_WorkAreaGasFlow_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_WorkAreaGasFlow_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_WorkAreaGasFlow_pargs {
+ public:
+
+
+  virtual ~CbmService_WorkAreaGasFlow_pargs() throw();
+  const WorkArea* work_area;
+  const double* K1;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_WorkAreaGasFlow_result__isset {
+  _CbmService_WorkAreaGasFlow_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_WorkAreaGasFlow_result__isset;
+
+class CbmService_WorkAreaGasFlow_result {
+ public:
+
+  CbmService_WorkAreaGasFlow_result(const CbmService_WorkAreaGasFlow_result&);
+  CbmService_WorkAreaGasFlow_result& operator=(const CbmService_WorkAreaGasFlow_result&);
+  CbmService_WorkAreaGasFlow_result() : success(0) {
+  }
+
+  virtual ~CbmService_WorkAreaGasFlow_result() throw();
+  double success;
+
+  _CbmService_WorkAreaGasFlow_result__isset __isset;
+
+  void __set_success(const double val);
+
+  bool operator == (const CbmService_WorkAreaGasFlow_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_WorkAreaGasFlow_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_WorkAreaGasFlow_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_WorkAreaGasFlow_presult__isset {
+  _CbmService_WorkAreaGasFlow_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_WorkAreaGasFlow_presult__isset;
+
+class CbmService_WorkAreaGasFlow_presult {
+ public:
+
+
+  virtual ~CbmService_WorkAreaGasFlow_presult() throw();
+  double* success;
+
+  _CbmService_WorkAreaGasFlow_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_MineGasFlow_args__isset {
+  _CbmService_MineGasFlow_args__isset() : mine(false) {}
+  bool mine :1;
+} _CbmService_MineGasFlow_args__isset;
+
+class CbmService_MineGasFlow_args {
+ public:
+
+  CbmService_MineGasFlow_args(const CbmService_MineGasFlow_args&);
+  CbmService_MineGasFlow_args& operator=(const CbmService_MineGasFlow_args&);
+  CbmService_MineGasFlow_args() {
+  }
+
+  virtual ~CbmService_MineGasFlow_args() throw();
+  Mine mine;
+
+  _CbmService_MineGasFlow_args__isset __isset;
+
+  void __set_mine(const Mine& val);
+
+  bool operator == (const CbmService_MineGasFlow_args & rhs) const
+  {
+    if (!(mine == rhs.mine))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_MineGasFlow_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_MineGasFlow_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_MineGasFlow_pargs {
+ public:
+
+
+  virtual ~CbmService_MineGasFlow_pargs() throw();
+  const Mine* mine;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_MineGasFlow_result__isset {
+  _CbmService_MineGasFlow_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_MineGasFlow_result__isset;
+
+class CbmService_MineGasFlow_result {
+ public:
+
+  CbmService_MineGasFlow_result(const CbmService_MineGasFlow_result&);
+  CbmService_MineGasFlow_result& operator=(const CbmService_MineGasFlow_result&);
+  CbmService_MineGasFlow_result() : success(0) {
+  }
+
+  virtual ~CbmService_MineGasFlow_result() throw();
+  double success;
+
+  _CbmService_MineGasFlow_result__isset __isset;
+
+  void __set_success(const double val);
+
+  bool operator == (const CbmService_MineGasFlow_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_MineGasFlow_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_MineGasFlow_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_MineGasFlow_presult__isset {
+  _CbmService_MineGasFlow_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_MineGasFlow_presult__isset;
+
+class CbmService_MineGasFlow_presult {
+ public:
+
+
+  virtual ~CbmService_MineGasFlow_presult() throw();
+  double* success;
+
+  _CbmService_MineGasFlow_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_WorkSurfGasFlow1_args__isset {
+  _CbmService_WorkSurfGasFlow1_args__isset() : coal(false), work_area(false), work_surf(false) {}
+  bool coal :1;
+  bool work_area :1;
+  bool work_surf :1;
+} _CbmService_WorkSurfGasFlow1_args__isset;
+
+class CbmService_WorkSurfGasFlow1_args {
+ public:
+
+  CbmService_WorkSurfGasFlow1_args(const CbmService_WorkSurfGasFlow1_args&);
+  CbmService_WorkSurfGasFlow1_args& operator=(const CbmService_WorkSurfGasFlow1_args&);
+  CbmService_WorkSurfGasFlow1_args() {
+  }
+
+  virtual ~CbmService_WorkSurfGasFlow1_args() throw();
+  Coal coal;
+  WorkArea work_area;
+  WorkSurf work_surf;
+
+  _CbmService_WorkSurfGasFlow1_args__isset __isset;
+
+  void __set_coal(const Coal& val);
+
+  void __set_work_area(const WorkArea& val);
+
+  void __set_work_surf(const WorkSurf& val);
+
+  bool operator == (const CbmService_WorkSurfGasFlow1_args & rhs) const
+  {
+    if (!(coal == rhs.coal))
+      return false;
+    if (!(work_area == rhs.work_area))
+      return false;
+    if (!(work_surf == rhs.work_surf))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_WorkSurfGasFlow1_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_WorkSurfGasFlow1_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_WorkSurfGasFlow1_pargs {
+ public:
+
+
+  virtual ~CbmService_WorkSurfGasFlow1_pargs() throw();
+  const Coal* coal;
+  const WorkArea* work_area;
+  const WorkSurf* work_surf;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_WorkSurfGasFlow1_result__isset {
+  _CbmService_WorkSurfGasFlow1_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_WorkSurfGasFlow1_result__isset;
+
+class CbmService_WorkSurfGasFlow1_result {
+ public:
+
+  CbmService_WorkSurfGasFlow1_result(const CbmService_WorkSurfGasFlow1_result&);
+  CbmService_WorkSurfGasFlow1_result& operator=(const CbmService_WorkSurfGasFlow1_result&);
+  CbmService_WorkSurfGasFlow1_result() : success(0) {
+  }
+
+  virtual ~CbmService_WorkSurfGasFlow1_result() throw();
+  double success;
+
+  _CbmService_WorkSurfGasFlow1_result__isset __isset;
+
+  void __set_success(const double val);
+
+  bool operator == (const CbmService_WorkSurfGasFlow1_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_WorkSurfGasFlow1_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_WorkSurfGasFlow1_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_WorkSurfGasFlow1_presult__isset {
+  _CbmService_WorkSurfGasFlow1_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_WorkSurfGasFlow1_presult__isset;
+
+class CbmService_WorkSurfGasFlow1_presult {
+ public:
+
+
+  virtual ~CbmService_WorkSurfGasFlow1_presult() throw();
+  double* success;
+
+  _CbmService_WorkSurfGasFlow1_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_WorkSurfGasFlow2_args__isset {
+  _CbmService_WorkSurfGasFlow2_args__isset() : coal(false), work_area(false), work_surf(false) {}
+  bool coal :1;
+  bool work_area :1;
+  bool work_surf :1;
+} _CbmService_WorkSurfGasFlow2_args__isset;
+
+class CbmService_WorkSurfGasFlow2_args {
+ public:
+
+  CbmService_WorkSurfGasFlow2_args(const CbmService_WorkSurfGasFlow2_args&);
+  CbmService_WorkSurfGasFlow2_args& operator=(const CbmService_WorkSurfGasFlow2_args&);
+  CbmService_WorkSurfGasFlow2_args() {
+  }
+
+  virtual ~CbmService_WorkSurfGasFlow2_args() throw();
+  Coal coal;
+  WorkArea work_area;
+  WorkSurf work_surf;
+
+  _CbmService_WorkSurfGasFlow2_args__isset __isset;
+
+  void __set_coal(const Coal& val);
+
+  void __set_work_area(const WorkArea& val);
+
+  void __set_work_surf(const WorkSurf& val);
+
+  bool operator == (const CbmService_WorkSurfGasFlow2_args & rhs) const
+  {
+    if (!(coal == rhs.coal))
+      return false;
+    if (!(work_area == rhs.work_area))
+      return false;
+    if (!(work_surf == rhs.work_surf))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_WorkSurfGasFlow2_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_WorkSurfGasFlow2_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_WorkSurfGasFlow2_pargs {
+ public:
+
+
+  virtual ~CbmService_WorkSurfGasFlow2_pargs() throw();
+  const Coal* coal;
+  const WorkArea* work_area;
+  const WorkSurf* work_surf;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_WorkSurfGasFlow2_result__isset {
+  _CbmService_WorkSurfGasFlow2_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_WorkSurfGasFlow2_result__isset;
+
+class CbmService_WorkSurfGasFlow2_result {
+ public:
+
+  CbmService_WorkSurfGasFlow2_result(const CbmService_WorkSurfGasFlow2_result&);
+  CbmService_WorkSurfGasFlow2_result& operator=(const CbmService_WorkSurfGasFlow2_result&);
+  CbmService_WorkSurfGasFlow2_result() : success(0) {
+  }
+
+  virtual ~CbmService_WorkSurfGasFlow2_result() throw();
+  double success;
+
+  _CbmService_WorkSurfGasFlow2_result__isset __isset;
+
+  void __set_success(const double val);
+
+  bool operator == (const CbmService_WorkSurfGasFlow2_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_WorkSurfGasFlow2_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_WorkSurfGasFlow2_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_WorkSurfGasFlow2_presult__isset {
+  _CbmService_WorkSurfGasFlow2_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_WorkSurfGasFlow2_presult__isset;
+
+class CbmService_WorkSurfGasFlow2_presult {
+ public:
+
+
+  virtual ~CbmService_WorkSurfGasFlow2_presult() throw();
+  double* success;
+
+  _CbmService_WorkSurfGasFlow2_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_DrillingSurfGasFlow_args__isset {
+  _CbmService_DrillingSurfGasFlow_args__isset() : coal(false), drilling_surf(false), tunnel(false) {}
+  bool coal :1;
+  bool drilling_surf :1;
+  bool tunnel :1;
+} _CbmService_DrillingSurfGasFlow_args__isset;
+
+class CbmService_DrillingSurfGasFlow_args {
+ public:
+
+  CbmService_DrillingSurfGasFlow_args(const CbmService_DrillingSurfGasFlow_args&);
+  CbmService_DrillingSurfGasFlow_args& operator=(const CbmService_DrillingSurfGasFlow_args&);
+  CbmService_DrillingSurfGasFlow_args() {
+  }
+
+  virtual ~CbmService_DrillingSurfGasFlow_args() throw();
+  Coal coal;
+  DrillingSurf drilling_surf;
+  Tunnel tunnel;
+
+  _CbmService_DrillingSurfGasFlow_args__isset __isset;
+
+  void __set_coal(const Coal& val);
+
+  void __set_drilling_surf(const DrillingSurf& val);
+
+  void __set_tunnel(const Tunnel& val);
+
+  bool operator == (const CbmService_DrillingSurfGasFlow_args & rhs) const
+  {
+    if (!(coal == rhs.coal))
+      return false;
+    if (!(drilling_surf == rhs.drilling_surf))
+      return false;
+    if (!(tunnel == rhs.tunnel))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_DrillingSurfGasFlow_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_DrillingSurfGasFlow_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_DrillingSurfGasFlow_pargs {
+ public:
+
+
+  virtual ~CbmService_DrillingSurfGasFlow_pargs() throw();
+  const Coal* coal;
+  const DrillingSurf* drilling_surf;
+  const Tunnel* tunnel;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_DrillingSurfGasFlow_result {
+ public:
+
+  CbmService_DrillingSurfGasFlow_result(const CbmService_DrillingSurfGasFlow_result&);
+  CbmService_DrillingSurfGasFlow_result& operator=(const CbmService_DrillingSurfGasFlow_result&);
+  CbmService_DrillingSurfGasFlow_result() {
+  }
+
+  virtual ~CbmService_DrillingSurfGasFlow_result() throw();
+
+  bool operator == (const CbmService_DrillingSurfGasFlow_result & /* rhs */) const
+  {
+    return true;
+  }
+  bool operator != (const CbmService_DrillingSurfGasFlow_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_DrillingSurfGasFlow_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_DrillingSurfGasFlow_presult {
+ public:
+
+
+  virtual ~CbmService_DrillingSurfGasFlow_presult() throw();
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
 class CbmServiceClient : virtual public CbmServiceIf {
  public:
   CbmServiceClient(boost::shared_ptr< ::apache::thrift::protocol::TProtocol> prot) {
@@ -289,12 +2542,75 @@ class CbmServiceClient : virtual public CbmServiceIf {
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> getOutputProtocol() {
     return poprot_;
   }
+  void InitSampleRegion();
+  void send_InitSampleRegion();
+  void recv_InitSampleRegion();
+  int32_t GetOnlineAccountId();
+  void send_GetOnlineAccountId();
+  int32_t recv_GetOnlineAccountId();
+  void GetOnlineMine(Mine& _return);
+  void send_GetOnlineMine();
+  void recv_GetOnlineMine(Mine& _return);
   int32_t VerifyMineAccount(const std::string& username, const std::string& pwd);
   void send_VerifyMineAccount(const std::string& username, const std::string& pwd);
   int32_t recv_VerifyMineAccount();
   void GetAllMineBases(std::vector<std::string> & _return);
   void send_GetAllMineBases();
   void recv_GetAllMineBases(std::vector<std::string> & _return);
+  void GetAllMineRegions(std::vector<std::string> & _return, const std::string& baseName);
+  void send_GetAllMineRegions(const std::string& baseName);
+  void recv_GetAllMineRegions(std::vector<std::string> & _return);
+  void GetBaseByRegion(std::string& _return, const std::string& regionName);
+  void send_GetBaseByRegion(const std::string& regionName);
+  void recv_GetBaseByRegion(std::string& _return);
+  void GetSampleMine(Mine& _return, const std::string& regionName);
+  void send_GetSampleMine(const std::string& regionName);
+  void recv_GetSampleMine(Mine& _return);
+  void GetSampleCoal(Coal& _return, const std::string& regionName);
+  void send_GetSampleCoal(const std::string& regionName);
+  void recv_GetSampleCoal(Coal& _return);
+  void GetCoalNames(std::vector<std::string> & _return, const int32_t mine_id);
+  void send_GetCoalNames(const int32_t mine_id);
+  void recv_GetCoalNames(std::vector<std::string> & _return);
+  void GetCoalIds(std::vector<int32_t> & _return, const int32_t mine_id);
+  void send_GetCoalIds(const int32_t mine_id);
+  void recv_GetCoalIds(std::vector<int32_t> & _return);
+  void GetWorkAreas(std::vector<WorkArea> & _return, const int32_t mine_id);
+  void send_GetWorkAreas(const int32_t mine_id);
+  void recv_GetWorkAreas(std::vector<WorkArea> & _return);
+  void GetWorkSurfs(std::vector<WorkSurf> & _return, const int32_t mine_id);
+  void send_GetWorkSurfs(const int32_t mine_id);
+  void recv_GetWorkSurfs(std::vector<WorkSurf> & _return);
+  void GetDrillingSurfs(std::vector<DrillingSurf> & _return, const int32_t mine_id);
+  void send_GetDrillingSurfs(const int32_t mine_id);
+  void recv_GetDrillingSurfs(std::vector<DrillingSurf> & _return);
+  int32_t DifficultEval(const Coal& coal);
+  void send_DifficultEval(const Coal& coal);
+  int32_t recv_DifficultEval();
+  void DifficultEvalString(std::string& _return, const Coal& coal);
+  void send_DifficultEvalString(const Coal& coal);
+  void recv_DifficultEvalString(std::string& _return);
+  double MineGasReservesW1(const int32_t mine_id);
+  void send_MineGasReservesW1(const int32_t mine_id);
+  double recv_MineGasReservesW1();
+  double MineGasReservesW2(const int32_t mine_id);
+  void send_MineGasReservesW2(const int32_t mine_id);
+  double recv_MineGasReservesW2();
+  double WorkAreaGasFlow(const WorkArea& work_area, const double K1);
+  void send_WorkAreaGasFlow(const WorkArea& work_area, const double K1);
+  double recv_WorkAreaGasFlow();
+  double MineGasFlow(const Mine& mine);
+  void send_MineGasFlow(const Mine& mine);
+  double recv_MineGasFlow();
+  double WorkSurfGasFlow1(const Coal& coal, const WorkArea& work_area, const WorkSurf& work_surf);
+  void send_WorkSurfGasFlow1(const Coal& coal, const WorkArea& work_area, const WorkSurf& work_surf);
+  double recv_WorkSurfGasFlow1();
+  double WorkSurfGasFlow2(const Coal& coal, const WorkArea& work_area, const WorkSurf& work_surf);
+  void send_WorkSurfGasFlow2(const Coal& coal, const WorkArea& work_area, const WorkSurf& work_surf);
+  double recv_WorkSurfGasFlow2();
+  void DrillingSurfGasFlow(const Coal& coal, const DrillingSurf& drilling_surf, const Tunnel& tunnel);
+  void send_DrillingSurfGasFlow(const Coal& coal, const DrillingSurf& drilling_surf, const Tunnel& tunnel);
+  void recv_DrillingSurfGasFlow();
  protected:
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> piprot_;
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> poprot_;
@@ -310,13 +2626,55 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   typedef  void (CbmServiceProcessor::*ProcessFunction)(int32_t, ::apache::thrift::protocol::TProtocol*, ::apache::thrift::protocol::TProtocol*, void*);
   typedef std::map<std::string, ProcessFunction> ProcessMap;
   ProcessMap processMap_;
+  void process_InitSampleRegion(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetOnlineAccountId(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetOnlineMine(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_VerifyMineAccount(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetAllMineBases(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetAllMineRegions(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetBaseByRegion(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetSampleMine(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetSampleCoal(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetCoalNames(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetCoalIds(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetWorkAreas(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetWorkSurfs(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetDrillingSurfs(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_DifficultEval(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_DifficultEvalString(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_MineGasReservesW1(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_MineGasReservesW2(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_WorkAreaGasFlow(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_MineGasFlow(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_WorkSurfGasFlow1(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_WorkSurfGasFlow2(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_DrillingSurfGasFlow(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
  public:
   CbmServiceProcessor(boost::shared_ptr<CbmServiceIf> iface) :
     iface_(iface) {
+    processMap_["InitSampleRegion"] = &CbmServiceProcessor::process_InitSampleRegion;
+    processMap_["GetOnlineAccountId"] = &CbmServiceProcessor::process_GetOnlineAccountId;
+    processMap_["GetOnlineMine"] = &CbmServiceProcessor::process_GetOnlineMine;
     processMap_["VerifyMineAccount"] = &CbmServiceProcessor::process_VerifyMineAccount;
     processMap_["GetAllMineBases"] = &CbmServiceProcessor::process_GetAllMineBases;
+    processMap_["GetAllMineRegions"] = &CbmServiceProcessor::process_GetAllMineRegions;
+    processMap_["GetBaseByRegion"] = &CbmServiceProcessor::process_GetBaseByRegion;
+    processMap_["GetSampleMine"] = &CbmServiceProcessor::process_GetSampleMine;
+    processMap_["GetSampleCoal"] = &CbmServiceProcessor::process_GetSampleCoal;
+    processMap_["GetCoalNames"] = &CbmServiceProcessor::process_GetCoalNames;
+    processMap_["GetCoalIds"] = &CbmServiceProcessor::process_GetCoalIds;
+    processMap_["GetWorkAreas"] = &CbmServiceProcessor::process_GetWorkAreas;
+    processMap_["GetWorkSurfs"] = &CbmServiceProcessor::process_GetWorkSurfs;
+    processMap_["GetDrillingSurfs"] = &CbmServiceProcessor::process_GetDrillingSurfs;
+    processMap_["DifficultEval"] = &CbmServiceProcessor::process_DifficultEval;
+    processMap_["DifficultEvalString"] = &CbmServiceProcessor::process_DifficultEvalString;
+    processMap_["MineGasReservesW1"] = &CbmServiceProcessor::process_MineGasReservesW1;
+    processMap_["MineGasReservesW2"] = &CbmServiceProcessor::process_MineGasReservesW2;
+    processMap_["WorkAreaGasFlow"] = &CbmServiceProcessor::process_WorkAreaGasFlow;
+    processMap_["MineGasFlow"] = &CbmServiceProcessor::process_MineGasFlow;
+    processMap_["WorkSurfGasFlow1"] = &CbmServiceProcessor::process_WorkSurfGasFlow1;
+    processMap_["WorkSurfGasFlow2"] = &CbmServiceProcessor::process_WorkSurfGasFlow2;
+    processMap_["DrillingSurfGasFlow"] = &CbmServiceProcessor::process_DrillingSurfGasFlow;
   }
 
   virtual ~CbmServiceProcessor() {}
@@ -345,6 +2703,34 @@ class CbmServiceMultiface : virtual public CbmServiceIf {
     ifaces_.push_back(iface);
   }
  public:
+  void InitSampleRegion() {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->InitSampleRegion();
+    }
+    ifaces_[i]->InitSampleRegion();
+  }
+
+  int32_t GetOnlineAccountId() {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetOnlineAccountId();
+    }
+    return ifaces_[i]->GetOnlineAccountId();
+  }
+
+  void GetOnlineMine(Mine& _return) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetOnlineMine(_return);
+    }
+    ifaces_[i]->GetOnlineMine(_return);
+    return;
+  }
+
   int32_t VerifyMineAccount(const std::string& username, const std::string& pwd) {
     size_t sz = ifaces_.size();
     size_t i = 0;
@@ -362,6 +2748,178 @@ class CbmServiceMultiface : virtual public CbmServiceIf {
     }
     ifaces_[i]->GetAllMineBases(_return);
     return;
+  }
+
+  void GetAllMineRegions(std::vector<std::string> & _return, const std::string& baseName) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetAllMineRegions(_return, baseName);
+    }
+    ifaces_[i]->GetAllMineRegions(_return, baseName);
+    return;
+  }
+
+  void GetBaseByRegion(std::string& _return, const std::string& regionName) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetBaseByRegion(_return, regionName);
+    }
+    ifaces_[i]->GetBaseByRegion(_return, regionName);
+    return;
+  }
+
+  void GetSampleMine(Mine& _return, const std::string& regionName) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetSampleMine(_return, regionName);
+    }
+    ifaces_[i]->GetSampleMine(_return, regionName);
+    return;
+  }
+
+  void GetSampleCoal(Coal& _return, const std::string& regionName) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetSampleCoal(_return, regionName);
+    }
+    ifaces_[i]->GetSampleCoal(_return, regionName);
+    return;
+  }
+
+  void GetCoalNames(std::vector<std::string> & _return, const int32_t mine_id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetCoalNames(_return, mine_id);
+    }
+    ifaces_[i]->GetCoalNames(_return, mine_id);
+    return;
+  }
+
+  void GetCoalIds(std::vector<int32_t> & _return, const int32_t mine_id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetCoalIds(_return, mine_id);
+    }
+    ifaces_[i]->GetCoalIds(_return, mine_id);
+    return;
+  }
+
+  void GetWorkAreas(std::vector<WorkArea> & _return, const int32_t mine_id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetWorkAreas(_return, mine_id);
+    }
+    ifaces_[i]->GetWorkAreas(_return, mine_id);
+    return;
+  }
+
+  void GetWorkSurfs(std::vector<WorkSurf> & _return, const int32_t mine_id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetWorkSurfs(_return, mine_id);
+    }
+    ifaces_[i]->GetWorkSurfs(_return, mine_id);
+    return;
+  }
+
+  void GetDrillingSurfs(std::vector<DrillingSurf> & _return, const int32_t mine_id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetDrillingSurfs(_return, mine_id);
+    }
+    ifaces_[i]->GetDrillingSurfs(_return, mine_id);
+    return;
+  }
+
+  int32_t DifficultEval(const Coal& coal) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->DifficultEval(coal);
+    }
+    return ifaces_[i]->DifficultEval(coal);
+  }
+
+  void DifficultEvalString(std::string& _return, const Coal& coal) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->DifficultEvalString(_return, coal);
+    }
+    ifaces_[i]->DifficultEvalString(_return, coal);
+    return;
+  }
+
+  double MineGasReservesW1(const int32_t mine_id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->MineGasReservesW1(mine_id);
+    }
+    return ifaces_[i]->MineGasReservesW1(mine_id);
+  }
+
+  double MineGasReservesW2(const int32_t mine_id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->MineGasReservesW2(mine_id);
+    }
+    return ifaces_[i]->MineGasReservesW2(mine_id);
+  }
+
+  double WorkAreaGasFlow(const WorkArea& work_area, const double K1) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->WorkAreaGasFlow(work_area, K1);
+    }
+    return ifaces_[i]->WorkAreaGasFlow(work_area, K1);
+  }
+
+  double MineGasFlow(const Mine& mine) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->MineGasFlow(mine);
+    }
+    return ifaces_[i]->MineGasFlow(mine);
+  }
+
+  double WorkSurfGasFlow1(const Coal& coal, const WorkArea& work_area, const WorkSurf& work_surf) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->WorkSurfGasFlow1(coal, work_area, work_surf);
+    }
+    return ifaces_[i]->WorkSurfGasFlow1(coal, work_area, work_surf);
+  }
+
+  double WorkSurfGasFlow2(const Coal& coal, const WorkArea& work_area, const WorkSurf& work_surf) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->WorkSurfGasFlow2(coal, work_area, work_surf);
+    }
+    return ifaces_[i]->WorkSurfGasFlow2(coal, work_area, work_surf);
+  }
+
+  void DrillingSurfGasFlow(const Coal& coal, const DrillingSurf& drilling_surf, const Tunnel& tunnel) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->DrillingSurfGasFlow(coal, drilling_surf, tunnel);
+    }
+    ifaces_[i]->DrillingSurfGasFlow(coal, drilling_surf, tunnel);
   }
 
 };
@@ -394,12 +2952,75 @@ class CbmServiceConcurrentClient : virtual public CbmServiceIf {
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> getOutputProtocol() {
     return poprot_;
   }
+  void InitSampleRegion();
+  int32_t send_InitSampleRegion();
+  void recv_InitSampleRegion(const int32_t seqid);
+  int32_t GetOnlineAccountId();
+  int32_t send_GetOnlineAccountId();
+  int32_t recv_GetOnlineAccountId(const int32_t seqid);
+  void GetOnlineMine(Mine& _return);
+  int32_t send_GetOnlineMine();
+  void recv_GetOnlineMine(Mine& _return, const int32_t seqid);
   int32_t VerifyMineAccount(const std::string& username, const std::string& pwd);
   int32_t send_VerifyMineAccount(const std::string& username, const std::string& pwd);
   int32_t recv_VerifyMineAccount(const int32_t seqid);
   void GetAllMineBases(std::vector<std::string> & _return);
   int32_t send_GetAllMineBases();
   void recv_GetAllMineBases(std::vector<std::string> & _return, const int32_t seqid);
+  void GetAllMineRegions(std::vector<std::string> & _return, const std::string& baseName);
+  int32_t send_GetAllMineRegions(const std::string& baseName);
+  void recv_GetAllMineRegions(std::vector<std::string> & _return, const int32_t seqid);
+  void GetBaseByRegion(std::string& _return, const std::string& regionName);
+  int32_t send_GetBaseByRegion(const std::string& regionName);
+  void recv_GetBaseByRegion(std::string& _return, const int32_t seqid);
+  void GetSampleMine(Mine& _return, const std::string& regionName);
+  int32_t send_GetSampleMine(const std::string& regionName);
+  void recv_GetSampleMine(Mine& _return, const int32_t seqid);
+  void GetSampleCoal(Coal& _return, const std::string& regionName);
+  int32_t send_GetSampleCoal(const std::string& regionName);
+  void recv_GetSampleCoal(Coal& _return, const int32_t seqid);
+  void GetCoalNames(std::vector<std::string> & _return, const int32_t mine_id);
+  int32_t send_GetCoalNames(const int32_t mine_id);
+  void recv_GetCoalNames(std::vector<std::string> & _return, const int32_t seqid);
+  void GetCoalIds(std::vector<int32_t> & _return, const int32_t mine_id);
+  int32_t send_GetCoalIds(const int32_t mine_id);
+  void recv_GetCoalIds(std::vector<int32_t> & _return, const int32_t seqid);
+  void GetWorkAreas(std::vector<WorkArea> & _return, const int32_t mine_id);
+  int32_t send_GetWorkAreas(const int32_t mine_id);
+  void recv_GetWorkAreas(std::vector<WorkArea> & _return, const int32_t seqid);
+  void GetWorkSurfs(std::vector<WorkSurf> & _return, const int32_t mine_id);
+  int32_t send_GetWorkSurfs(const int32_t mine_id);
+  void recv_GetWorkSurfs(std::vector<WorkSurf> & _return, const int32_t seqid);
+  void GetDrillingSurfs(std::vector<DrillingSurf> & _return, const int32_t mine_id);
+  int32_t send_GetDrillingSurfs(const int32_t mine_id);
+  void recv_GetDrillingSurfs(std::vector<DrillingSurf> & _return, const int32_t seqid);
+  int32_t DifficultEval(const Coal& coal);
+  int32_t send_DifficultEval(const Coal& coal);
+  int32_t recv_DifficultEval(const int32_t seqid);
+  void DifficultEvalString(std::string& _return, const Coal& coal);
+  int32_t send_DifficultEvalString(const Coal& coal);
+  void recv_DifficultEvalString(std::string& _return, const int32_t seqid);
+  double MineGasReservesW1(const int32_t mine_id);
+  int32_t send_MineGasReservesW1(const int32_t mine_id);
+  double recv_MineGasReservesW1(const int32_t seqid);
+  double MineGasReservesW2(const int32_t mine_id);
+  int32_t send_MineGasReservesW2(const int32_t mine_id);
+  double recv_MineGasReservesW2(const int32_t seqid);
+  double WorkAreaGasFlow(const WorkArea& work_area, const double K1);
+  int32_t send_WorkAreaGasFlow(const WorkArea& work_area, const double K1);
+  double recv_WorkAreaGasFlow(const int32_t seqid);
+  double MineGasFlow(const Mine& mine);
+  int32_t send_MineGasFlow(const Mine& mine);
+  double recv_MineGasFlow(const int32_t seqid);
+  double WorkSurfGasFlow1(const Coal& coal, const WorkArea& work_area, const WorkSurf& work_surf);
+  int32_t send_WorkSurfGasFlow1(const Coal& coal, const WorkArea& work_area, const WorkSurf& work_surf);
+  double recv_WorkSurfGasFlow1(const int32_t seqid);
+  double WorkSurfGasFlow2(const Coal& coal, const WorkArea& work_area, const WorkSurf& work_surf);
+  int32_t send_WorkSurfGasFlow2(const Coal& coal, const WorkArea& work_area, const WorkSurf& work_surf);
+  double recv_WorkSurfGasFlow2(const int32_t seqid);
+  void DrillingSurfGasFlow(const Coal& coal, const DrillingSurf& drilling_surf, const Tunnel& tunnel);
+  int32_t send_DrillingSurfGasFlow(const Coal& coal, const DrillingSurf& drilling_surf, const Tunnel& tunnel);
+  void recv_DrillingSurfGasFlow(const int32_t seqid);
  protected:
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> piprot_;
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> poprot_;

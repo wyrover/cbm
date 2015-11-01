@@ -11,7 +11,7 @@
 #include <thrift/async/TConcurrentClientSyncInfo.h>
 #include "ctrl_types.h"
 
-namespace cbm {
+namespace ctrl {
 
 #ifdef _WIN32
   #pragma warning( push )

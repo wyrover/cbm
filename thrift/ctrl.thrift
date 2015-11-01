@@ -1,9 +1,6 @@
-include "entity.thrift"
-include "cbm.thrift"
-
-namespace cpp cbm
-namespace php cbm
-namespace py cbm
+namespace cpp ctrl
+namespace php ctrl
+namespace py ctrl
 
 service ControlService {
 	void shutdown();

@@ -3,7 +3,9 @@
 
 import sys
 import ServerHelper
-from cbm import ControlService
+
+from ctrl import ControlService
+from ctrl.ttypes import *
 
 # 关闭服务器的思路:
 # http://grokbase.com/t/thrift/user/11541vwzj4/stop-the-thrift-server

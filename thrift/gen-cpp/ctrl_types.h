@@ -15,11 +15,9 @@
 #include <thrift/transport/TTransport.h>
 
 #include <thrift/cxxfunctional.h>
-#include "entity_types.h"
-#include "cbm_types.h"
 
 
-namespace cbm {
+namespace ctrl {
 
 } // namespace
 

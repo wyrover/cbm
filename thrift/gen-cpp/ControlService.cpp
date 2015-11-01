@@ -6,7 +6,7 @@
  */
 #include "ControlService.h"
 
-namespace cbm {
+namespace ctrl {
 
 
 ControlService_shutdown_args::~ControlService_shutdown_args() throw() {

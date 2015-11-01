@@ -8,3 +8,6 @@ rem call gen_code.bat php
 
 rem ¸´ÖÆphp´úÂë
 xcopy "gen-php" "..\php\gen-php\"  /c /e /y
+
+rem ÔÝÍ£
+pause

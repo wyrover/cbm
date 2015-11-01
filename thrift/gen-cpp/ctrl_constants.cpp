@@ -6,7 +6,7 @@
  */
 #include "ctrl_constants.h"
 
-namespace cbm {
+namespace ctrl {
 
 const ctrlConstants g_ctrl_constants;
 

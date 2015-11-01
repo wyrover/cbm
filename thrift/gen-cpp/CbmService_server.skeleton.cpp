@@ -22,6 +22,21 @@ class CbmServiceHandler : virtual public CbmServiceIf {
     // Your initialization goes here
   }
 
+  void InitSampleRegion() {
+    // Your implementation goes here
+    printf("InitSampleRegion\n");
+  }
+
+  int32_t GetOnlineAccountId() {
+    // Your implementation goes here
+    printf("GetOnlineAccountId\n");
+  }
+
+  void GetOnlineMine(Mine& _return) {
+    // Your implementation goes here
+    printf("GetOnlineMine\n");
+  }
+
   int32_t VerifyMineAccount(const std::string& username, const std::string& pwd) {
     // Your implementation goes here
     printf("VerifyMineAccount\n");
@@ -30,6 +45,96 @@ class CbmServiceHandler : virtual public CbmServiceIf {
   void GetAllMineBases(std::vector<std::string> & _return) {
     // Your implementation goes here
     printf("GetAllMineBases\n");
+  }
+
+  void GetAllMineRegions(std::vector<std::string> & _return, const std::string& baseName) {
+    // Your implementation goes here
+    printf("GetAllMineRegions\n");
+  }
+
+  void GetBaseByRegion(std::string& _return, const std::string& regionName) {
+    // Your implementation goes here
+    printf("GetBaseByRegion\n");
+  }
+
+  void GetSampleMine(Mine& _return, const std::string& regionName) {
+    // Your implementation goes here
+    printf("GetSampleMine\n");
+  }
+
+  void GetSampleCoal(Coal& _return, const std::string& regionName) {
+    // Your implementation goes here
+    printf("GetSampleCoal\n");
+  }
+
+  void GetCoalNames(std::vector<std::string> & _return, const int32_t mine_id) {
+    // Your implementation goes here
+    printf("GetCoalNames\n");
+  }
+
+  void GetCoalIds(std::vector<int32_t> & _return, const int32_t mine_id) {
+    // Your implementation goes here
+    printf("GetCoalIds\n");
+  }
+
+  void GetWorkAreas(std::vector<WorkArea> & _return, const int32_t mine_id) {
+    // Your implementation goes here
+    printf("GetWorkAreas\n");
+  }
+
+  void GetWorkSurfs(std::vector<WorkSurf> & _return, const int32_t mine_id) {
+    // Your implementation goes here
+    printf("GetWorkSurfs\n");
+  }
+
+  void GetDrillingSurfs(std::vector<DrillingSurf> & _return, const int32_t mine_id) {
+    // Your implementation goes here
+    printf("GetDrillingSurfs\n");
+  }
+
+  int32_t DifficultEval(const Coal& coal) {
+    // Your implementation goes here
+    printf("DifficultEval\n");
+  }
+
+  void DifficultEvalString(std::string& _return, const Coal& coal) {
+    // Your implementation goes here
+    printf("DifficultEvalString\n");
+  }
+
+  double MineGasReservesW1(const int32_t mine_id) {
+    // Your implementation goes here
+    printf("MineGasReservesW1\n");
+  }
+
+  double MineGasReservesW2(const int32_t mine_id) {
+    // Your implementation goes here
+    printf("MineGasReservesW2\n");
+  }
+
+  double WorkAreaGasFlow(const WorkArea& work_area, const double K1) {
+    // Your implementation goes here
+    printf("WorkAreaGasFlow\n");
+  }
+
+  double MineGasFlow(const Mine& mine) {
+    // Your implementation goes here
+    printf("MineGasFlow\n");
+  }
+
+  double WorkSurfGasFlow1(const Coal& coal, const WorkArea& work_area, const WorkSurf& work_surf) {
+    // Your implementation goes here
+    printf("WorkSurfGasFlow1\n");
+  }
+
+  double WorkSurfGasFlow2(const Coal& coal, const WorkArea& work_area, const WorkSurf& work_surf) {
+    // Your implementation goes here
+    printf("WorkSurfGasFlow2\n");
+  }
+
+  void DrillingSurfGasFlow(const Coal& coal, const DrillingSurf& drilling_surf, const Tunnel& tunnel) {
+    // Your implementation goes here
+    printf("DrillingSurfGasFlow\n");
   }
 
 };

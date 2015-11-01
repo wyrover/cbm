@@ -9,7 +9,7 @@
 
 #include "ctrl_types.h"
 
-namespace cbm {
+namespace ctrl {
 
 class ctrlConstants {
  public:
