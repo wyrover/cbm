@@ -1,11 +1,6 @@
 #include "stdafx.h"
 #include "PicViewerDialog.h"
-
 #include <ArxHelper/HelperClass.h>
-#include <Dao/DaoHelper.h>
-#include <Dao/Entity.h>
-using namespace orm;
-using namespace cbm;
 
 PicViewerDialog::PicViewerDialog( BOOL bModal ) : AcadSouiDialog( _T( "layout:pic_viewer" ), bModal )
 {

@@ -14,7 +14,7 @@ public:
 /*
  * 数据链接基类
  */
-class ARXHELPER_DLLIMPEXP DataMapper
+class ARXHELPER_API DataMapper
 {
 public:
     virtual ~DataMapper( void );

@@ -70,9 +70,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="log4cplusSU.lib soci_core.lib soci_mysql.lib libmysql.lib jsoncpp.lib"
+				AdditionalDependencies="log4cplusSU.lib soci_core.lib soci_mysql.lib libmysql.lib jsoncpp.lib thrift.lib"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\soci\lib\win32;&quot;..\ThirdParty\json-cpp\lib&quot;"
+				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\soci\lib\win32;&quot;..\ThirdParty\json-cpp\lib&quot;;..\ThirdParty\thrift\win32;..\ThirdParty\boost\lib\win32"
 				ModuleDefinitionFile=""
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/Dao.pdb"
@@ -153,9 +153,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="log4cplusSU-x64.lib soci_core.lib soci_mysql.lib libmysql.lib jsoncpp-x64.lib"
+				AdditionalDependencies="log4cplusSU-x64.lib soci_core.lib soci_mysql.lib libmysql.lib jsoncpp-x64.lib thrift.lib"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\soci\lib\x64;&quot;..\ThirdParty\json-cpp\lib&quot;"
+				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\soci\lib\x64;&quot;..\ThirdParty\json-cpp\lib&quot;;..\ThirdParty\thrift\x64;..\ThirdParty\boost\lib\x64"
 				ModuleDefinitionFile=""
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/Dao.pdb"
@@ -236,9 +236,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="log4cplusSU.lib soci_core.lib soci_mysql.lib libmysql.lib jsoncpp.lib"
+				AdditionalDependencies="log4cplusSU.lib soci_core.lib soci_mysql.lib libmysql.lib jsoncpp.lib thrift.lib"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\soci\lib\win32;&quot;..\ThirdParty\json-cpp\lib&quot;"
+				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\soci\lib\win32;&quot;..\ThirdParty\json-cpp\lib&quot;;..\ThirdParty\thrift\win32;..\ThirdParty\boost\lib\win32"
 				ModuleDefinitionFile=""
 				GenerateDebugInformation="true"
 				SubSystem="2"
@@ -321,9 +321,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="log4cplusSU-x64.lib soci_core.lib soci_mysql.lib libmysql.lib jsoncpp-x64.lib"
+				AdditionalDependencies="log4cplusSU-x64.lib soci_core.lib soci_mysql.lib libmysql.lib jsoncpp-x64.lib thrift.lib"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\soci\lib\x64;&quot;..\ThirdParty\json-cpp\lib&quot;"
+				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\soci\lib\x64;&quot;..\ThirdParty\json-cpp\lib&quot;;..\ThirdParty\thrift\x64;..\ThirdParty\boost\lib\x64"
 				ModuleDefinitionFile=""
 				GenerateDebugInformation="true"
 				SubSystem="2"
@@ -414,10 +414,6 @@
 					/>
 				</FileConfiguration>
 			</File>
-			<File
-				RelativePath=".\stdafx.h"
-				>
-			</File>
 			<Filter
 				Name="dao"
 				>
@@ -478,6 +474,10 @@
 			</File>
 			<File
 				RelativePath=".\Resource.h"
+				>
+			</File>
+			<File
+				RelativePath=".\stdafx.h"
 				>
 			</File>
 			<File

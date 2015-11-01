@@ -4,7 +4,7 @@
 
 #include <ArxHelper/HelperClass.h>
 #include <Util/HelperClass.h>
-#include <Dao/DaoHelper.h>
+//#include <Dao/DaoHelper.h>
 
 // 定义注册服务名称
 #ifndef ARX_SOUI_SERVICE_NAME
@@ -41,13 +41,13 @@ public:
 
         //初始化数据库连接
         CString iniFile = ArxUtilHelper::BuildPath( ArxUtilHelper::GetAppPathDir( _hdllInstance ), _T( "config.ini" ) );
-        if( !DaoHelper::ConfigureFromFile( iniFile ) )
-        {
-            AfxMessageBox( _T( "连接MySQL数据库失败，请联系技术人员!!!" ) );
-            return AcRx::kRetError;
-        }
+        //if( !DaoHelper::ConfigureFromFile( iniFile ) )
+        //{
+        //    AfxMessageBox( _T( "连接MySQL数据库失败，请联系技术人员!!!" ) );
+        //    return AcRx::kRetError;
+        //}
         //初始化示范矿区数据
-        DaoHelper::InitSampleRegion();
+        //DaoHelper::InitSampleRegion();
         //初始化soui环境
         UIHelper::InitSouiEnviroment();
 
@@ -67,7 +67,7 @@ public:
         LOG_TRACE( _T( "ArxSoUI::On_kUnloadAppMsg" ) );
 
         //退出登录状态
-        UIHelper::Logout();
+        //UIHelper::Logout();
         //退出soui环境
         UIHelper::UnInitSouiEnviroment();
         //关闭log4cplus日志系统
@@ -230,7 +230,8 @@ public:
 
 	static void JL_xxx()
 	{
-		UIHelper::testdlg();
+		//UIHelper::testdlg();
+		UIHelper::xxx();
 	}
 } ;
 

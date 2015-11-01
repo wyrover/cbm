@@ -9,7 +9,7 @@ namespace orm
 {
     //表示数据库表中的一条记录
     //整体可以看作是一个链式树状结构
-    class DAO_DLLIMPEXP Record
+    class DAO_API Record
     {
     public:
         //析构函数

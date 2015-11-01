@@ -35,7 +35,7 @@ LRESULT TechModeDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
     m_C2NoRadio = FindChildByName2<SRadioBox>( L"c2_no" );
     m_C3YesRadio = FindChildByName2<SRadioBox>( L"c3_yes" );
     m_C3NoRadio = FindChildByName2<SRadioBox>( L"c3_no" );
-    m_RegionLabel = FindChildByName2<SStatic>( L"region" );
+    m_RegionLabel = FindChildByName2<SStatic>( L"mine_region" );
     m_C1YesRadio = FindChildByName2<SRadioBox>( L"c1_yes" );
     m_C1NoRadio = FindChildByName2<SRadioBox>( L"c1_no" );
 
@@ -119,10 +119,10 @@ void TechModeDialog::OnDestroyWindow()
 
 void TechModeDialog::fillTechModeCombox()
 {
-    RegionPtr region = FIND_ONE( Region, FIELD( name ), regionName );
-    if( region == 0 ) return;
+    MineRegionPtr mine_region = FIND_ONE( MineRegion, FIELD( name ), regionName );
+    if( mine_region == 0 ) return;
 
-    RecordPtrListPtr lists = FIND_MANY( TechMode, FKEY( Region ), region->getStringID() );
+    RecordPtrListPtr lists = FIND_MANY( TechMode, FKEY( MineRegion ), mine_region->getStringID() );
     if( lists == 0 ) return;
 
     SComboBoxHelper::Clear( m_TechModeCombox );

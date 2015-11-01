@@ -57,4 +57,6 @@ public:
 
     //煤层气抽采设计
     static void GasDesign();
+
+	static void xxx();
 };

@@ -2,7 +2,7 @@
 
 #include "dlimexp.h"
 
-class ARXHELPER_DLLIMPEXP SystemHelper
+class ARXHELPER_API SystemHelper
 {
 public:
     static void Start();

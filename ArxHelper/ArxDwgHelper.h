@@ -5,7 +5,7 @@
 /**
 * dwg数据库辅助操作类.
 */
-class ARXHELPER_DLLIMPEXP ArxDwgHelper
+class ARXHELPER_API ArxDwgHelper
 {
 public:
     //插入dwg文件

@@ -18,7 +18,7 @@
 #define cot(x) 1.0/tan(x)
 
 //常用图形绘制函数
-class ARXHELPER_DLLIMPEXP ArxDrawHelper
+class ARXHELPER_API ArxDrawHelper
 {
 public:
     static AcGePoint2d Point3D_To_2D( const AcGePoint3d& pt );

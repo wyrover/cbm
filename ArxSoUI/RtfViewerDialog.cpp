@@ -1,12 +1,6 @@
 #include "stdafx.h"
 #include "RtfViewerDialog.h"
-
 #include <ArxHelper/HelperClass.h>
-#include <Dao/DaoHelper.h>
-#include <Dao/Entity.h>
-using namespace orm;
-using namespace cbm;
-
 #include <controls.extend/reole/richeditole.h>
 
 RtfViewerDialog::RtfViewerDialog( BOOL bModal ) : AcadSouiDialog( _T( "layout:rtf_viewer" ), bModal )

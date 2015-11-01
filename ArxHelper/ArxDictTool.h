@@ -12,7 +12,7 @@
 // 一个key->XRecord(记录集)
 // XRecord实质是一个resbuf list, 可以保存一串数据，
 // 这里使用XRecord保存一些简单的文本串数据(可以是1个，也可以是多个)
-class ARXHELPER_DLLIMPEXP ArxDictTool
+class ARXHELPER_API ArxDictTool
 {
 public:
     //获取扩展词典
@@ -51,7 +51,7 @@ private:
 };
 
 // 一个key->AcDbObject
-class ARXHELPER_DLLIMPEXP ArxDictTool2
+class ARXHELPER_API ArxDictTool2
 {
 public:
     static ArxDictTool2* GetDictTool( const CString& dictName );
@@ -69,7 +69,7 @@ private:
     AcDbObjectId m_dictId;
 };
 
-class ARXHELPER_DLLIMPEXP ArxDictHelper
+class ARXHELPER_API ArxDictHelper
 {
 public:
     static void GetAllKeys( const CString& dictName, AcStringArray& keys );

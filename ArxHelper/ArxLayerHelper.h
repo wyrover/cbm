@@ -3,7 +3,7 @@
 #include "dlimexp.h"
 
 // 图层管理辅助类
-class ARXHELPER_DLLIMPEXP ArxLayerHelper
+class ARXHELPER_API ArxLayerHelper
 {
 public:
     static void SetCurrentLayer( const CString& layerName ); // 设置当前图层
@@ -33,7 +33,7 @@ public:
 // 一个简单的图层切换类
 // 当对象析构之后，自动将图层切换回来
 // 如果createNewLayer参数为真，图层不存在则自动建立图层
-class ARXHELPER_DLLIMPEXP LayerSwitch
+class ARXHELPER_API LayerSwitch
 {
 public:
     LayerSwitch( const CString& layerName, bool createNewLayer = true );

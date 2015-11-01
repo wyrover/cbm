@@ -31,7 +31,7 @@ protected:
     EVENT_MAP_BEGIN()
     EVENT_NAME_COMMAND( _T( "reg" ), OnRegButtonClick )
     EVENT_NAME_HANDLER( _T( "base" ), EVT_CB_SELCHANGE, OnBaseComboxSelChanged )
-    EVENT_NAME_HANDLER( _T( "region" ), EVT_CB_SELCHANGE, OnRegionComboxSelChanged )
+    EVENT_NAME_HANDLER( _T( "mine_region" ), EVT_CB_SELCHANGE, OnRegionComboxSelChanged )
 	EVENT_NAME_HANDLER(_T("topo_geo"), EVT_CB_SELCHANGE, OnTopoGeoComboxSelChanged)
 	EVENT_NAME_HANDLER(_T("hydr_geo"), EVT_CB_SELCHANGE, OnHydrGeoComboxSelChanged)
     CHAIN_EVENT_MAP( AcadSouiDialog )

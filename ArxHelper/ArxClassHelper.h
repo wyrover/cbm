@@ -2,7 +2,7 @@
 
 #include "dlimexp.h"
 
-class ARXHELPER_DLLIMPEXP ArxClassHelper
+class ARXHELPER_API ArxClassHelper
 {
 public:
     static bool IsValidClass( const CString& type );

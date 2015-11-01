@@ -1,11 +1,6 @@
 #include "stdafx.h"
 #include "DemoDialog.h"
-
 #include <ArxHelper/HelperClass.h>
-#include <Dao/DaoHelper.h>
-
-using namespace orm;
-using namespace cbm;
 
 DemoDialog::DemoDialog( BOOL bModal ) : AcadSouiDialog( _T( "layout:demo" ), bModal )
 {

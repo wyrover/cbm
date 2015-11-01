@@ -3,7 +3,7 @@
 #include "dlimexp.h"
 
 // 属性字段管理辅助类
-class ARXHELPER_DLLIMPEXP FieldHelper
+class ARXHELPER_API FieldHelper
 {
 public:
     //字段操作
@@ -19,7 +19,7 @@ public:
     static void InitDataFieldWithMoreInfo( const CString& fileName );
 };
 
-class ARXHELPER_DLLIMPEXP FuncFieldHelper
+class ARXHELPER_API FuncFieldHelper
 {
 public:
     static bool GetFunctions( AcStringArray& funcs );                               // 获取所有功能

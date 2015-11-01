@@ -4,7 +4,7 @@
 
 class FieldInfo;
 
-class ARXHELPER_DLLIMPEXP FieldInfoHelper
+class ARXHELPER_API FieldInfoHelper
 {
 public:
     static void AddFieldInfo( const CString& type, const CString& field, const FieldInfo& info );
@@ -16,7 +16,7 @@ public:
 };
 
 // ×Ö¶ÎÐÅÏ¢
-class ARXHELPER_DLLIMPEXP FieldInfo
+class ARXHELPER_API FieldInfo
 {
 public:
     FieldInfo();

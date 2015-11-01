@@ -9,7 +9,7 @@
 #include "dlimexp.h"
 #include "Singleton.h"
 
-class UTIL_DLLIMPEXP cruise_log4cplus : public Singleton<cruise_log4cplus>
+class UTIL_API cruise_log4cplus : public Singleton<cruise_log4cplus>
 {
 public:
     static log4cplus::Logger& getLogger();
@@ -96,5 +96,5 @@ using log4cplus::tcerr;
 #define CRUISE_CALLER_LINE()            LOG4CPLUS_CALLER_LINE()
 #define CRUISE_CALLER_FUNCTION()        LOG4CPLUS_CALLER_FUNCTION()
 
-extern UTIL_DLLIMPEXP void log_init( tchar* prop_file, tchar* prefix_log_flie = NULL, tchar* sub_logger_name = NULL );
-extern UTIL_DLLIMPEXP void log_uinit();
+extern UTIL_API void log_init( tchar* prop_file, tchar* prefix_log_flie = NULL, tchar* sub_logger_name = NULL );
+extern UTIL_API void log_uinit();

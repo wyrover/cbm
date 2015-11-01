@@ -15,7 +15,7 @@
 **
 ****************************/
 
-class ARXHELPER_DLLIMPEXP ArxDbgRbList
+class ARXHELPER_API ArxDbgRbList
 {
 
 public:

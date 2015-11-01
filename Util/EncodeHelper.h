@@ -6,7 +6,7 @@
 /**
 * ×Ö·û´®±àÂë×ª»».
 */
-class UTIL_DLLIMPEXP EncodeHelper
+class UTIL_API EncodeHelper
 {
 public:
     static std::string UnicodeToANSI( const std::wstring& str );

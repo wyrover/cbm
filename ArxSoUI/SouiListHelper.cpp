@@ -1,8 +1,8 @@
 #include "StdAfx.h"
 #include "SouiListHelper.h"
-using namespace orm;
+#include <ArxHelper/HelperClass.h>
 
-void SComboBoxHelper::Append( SComboBox* combox, const StringArray& names, const IntArray& ids )
+void SComboBoxHelper::Append( SComboBox* combox, const TStringArray& names, const IntArray& ids )
 {
     SComboBoxHelper::Clear( combox );
     for( int i = 0; i < names.size(); i++ )
@@ -118,7 +118,7 @@ int SComboBoxHelper::GetCurSel( SComboBox* combox )
 }
 
 
-void SListBoxHelper::Append( SListBox* listbox, const StringArray& names, const IntArray& ids )
+void SListBoxHelper::Append( SListBox* listbox, const TStringArray& names, const IntArray& ids )
 {
     SListBoxHelper::Clear( listbox );
     for( int i = 0; i < names.size(); i++ )
@@ -337,12 +337,12 @@ bool SListCtrlHelper::GetIntItem( SListCtrl* listctrl, int i, int j, int& value 
 {
     CString str;
     if( !SListCtrlHelper::GetStringItem( listctrl, i, j, str ) ) return false;
-    return Utils::cstring_to_int( str, value );
+    return ArxUtilHelper::StringToInt( str, value );
 }
 
 bool SListCtrlHelper::GetDoubleItem( SListCtrl* listctrl, int i, int j, double& value )
 {
     CString str;
     if( !SListCtrlHelper::GetStringItem( listctrl, i, j, str ) ) return false;
-    return Utils::cstring_to_double( str, value );
+	return ArxUtilHelper::StringToDouble(str, value);
 }

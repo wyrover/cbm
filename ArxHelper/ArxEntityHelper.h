@@ -26,7 +26,7 @@
 	7	|White/Black|
 	-----------------
 */
-class ARXHELPER_DLLIMPEXP ArxEntityHelper
+class ARXHELPER_API ArxEntityHelper
 {
 public:
     // 删除/反删除对象实体(使用事务)

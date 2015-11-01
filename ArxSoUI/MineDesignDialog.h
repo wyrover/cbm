@@ -60,7 +60,7 @@ protected:
     EVENT_NAME_COMMAND( _T( "add_tws" ), OnAddTwsButtonClick )
     EVENT_NAME_COMMAND( _T( "save" ), OnSaveButtonClick )
     EVENT_NAME_HANDLER( _T( "base" ), EVT_CB_SELCHANGE, OnBaseComboxSelChanged )
-    EVENT_NAME_HANDLER( _T( "region" ), EVT_CB_SELCHANGE, OnRegionComboxSelChanged )
+    EVENT_NAME_HANDLER( _T( "mine_region" ), EVT_CB_SELCHANGE, OnRegionComboxSelChanged )
 	EVENT_NAME_COMMAND(_T("more_mine"), OnMoreMineButtonClick)
 	EVENT_NAME_COMMAND(_T("more_coal"), OnMoreCoalButtonClick)
 	EVENT_NAME_COMMAND(_T("more_work_area"), OnMoreWorkAreaButtonClick)

@@ -4,7 +4,7 @@
 
 // 系统精度设置器
 // 用于点坐标、向量的相等判断
-class ARXHELPER_DLLIMPEXP ArxTolSetter
+class ARXHELPER_API ArxTolSetter
 {
 public:
     ArxTolSetter( double eq )

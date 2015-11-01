@@ -10,7 +10,7 @@ using std::ifstream;
 #include "dlimexp.h"
 
 /* MD5 declaration. */
-class UTIL_DLLIMPEXP MD5
+class UTIL_API MD5
 {
 
     /* Type define */

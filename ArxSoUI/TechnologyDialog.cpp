@@ -34,7 +34,7 @@ LRESULT TechnologyDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
     m_IsKeyCheck = FindChildByName2<SCheckBox>( L"is_key" );
     m_DocEdit = FindChildByName2<SEdit>( L"doc" );
     m_VideoEdit = FindChildByName2<SEdit>( L"video" );
-    m_RegionLabel = FindChildByName2<SStatic>( L"region" );
+    m_RegionLabel = FindChildByName2<SStatic>( L"mine_region" );
 
     CString msg;
     msg.Format( _T( ">>%s矿区推荐抽采技术" ), regionName );
@@ -113,10 +113,10 @@ void TechnologyDialog::OnDestroyWindow()
 
 void TechnologyDialog::fillTechnologyListBox()
 {
-    RegionPtr region = FIND_ONE( Region, FIELD( name ), regionName );
-    if( region == 0 ) return;
+    MineRegionPtr mine_region = FIND_ONE( MineRegion, FIELD( name ), regionName );
+    if( mine_region == 0 ) return;
 
-    RecordPtrListPtr lists = FIND_MANY( Technology, FKEY( Region ), region->getStringID() );
+    RecordPtrListPtr lists = FIND_MANY( Technology, FKEY( MineRegion ), mine_region->getStringID() );
     if( lists == 0 ) return;
 
     SListBoxHelper::Clear( m_TechnologyListbox );

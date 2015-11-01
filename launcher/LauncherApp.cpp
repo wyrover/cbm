@@ -144,12 +144,12 @@ BOOL CLauncherApp::InitInstance()
     log_init( _T( ".\\log\\log4cplus.properties" ) );
 
     //连接mysql数据库
-    CString iniFile = BuildPath( GetAppPathDir( m_hInstance ), _T( "config.ini" ) );
-    if( !DaoHelper::ConfigureFromFile( iniFile ) )
-    {
-        AfxMessageBox( _T( "连接MySQL数据库失败，请联系技术人员!!!" ) );
-        return FALSE;
-    }
+    //CString iniFile = BuildPath( GetAppPathDir( m_hInstance ), _T( "config.ini" ) );
+    //if( !DaoHelper::ConfigureFromFile( iniFile ) )
+    //{
+    //    AfxMessageBox( _T( "连接MySQL数据库失败，请联系技术人员!!!" ) );
+    //    return FALSE;
+    //}
 
     //初始化soui环境
     InitSouiEnviroment( m_hInstance );

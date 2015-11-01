@@ -33,7 +33,7 @@ LRESULT MineDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
     //do something
     m_NameEdit = FindChildByName2<SEdit>( L"name" );
     m_CapacityEdit = FindChildByName2<SEdit>( L"capacity" );
-    m_RegionCombox = FindChildByName2<SComboBox>( L"region" );
+    m_RegionCombox = FindChildByName2<SComboBox>( L"mine_region" );
     m_BaseCombox = FindChildByName2<SComboBox>( L"base" );
     m_ProvinceEdit = FindChildByName2<SEdit>( L"province" );
     m_CityEdit = FindChildByName2<SEdit>( L"city" );
@@ -104,7 +104,7 @@ void MineDialog::OnSaveButtonClick()
     mine->hydr_geo = m_HydrGeoCombox->GetCurSel() + 1;
     mine->ground_condition = m_GroundCondCheck->IsChecked();
     //更新矿井所属矿区
-    mine->region = FIND_ONE( Region, FIELD( name ), regionName );
+    mine->mine_region = FIND_ONE( MineRegion, FIELD( name ), regionName );
 
     //增加到数据库并返回新增行的id值
     if( mine->save() )
@@ -183,7 +183,7 @@ void MineDialog::fillMineDatas()
     m_CapacityEdit->SetWindowText( Utils::double_to_cstring( mine->capacity ) );
 
     //根据矿区反查基地
-    CString regionName = mine->region->get( FIELD( name ) );
+    CString regionName = mine->mine_region->get( FIELD( name ) );
     CString baseName = DaoHelper::GetBaseByRegion( regionName );
     m_BaseCombox->SetCurSel( m_BaseCombox->FindString( baseName ) );
     m_RegionCombox->SetCurSel( m_RegionCombox->FindString( regionName ) );

@@ -54,7 +54,7 @@ namespace orm
         T v_pod;
     };
 
-    struct DAO_DLLIMPEXP DecimalCmp
+    struct DAO_API DecimalCmp
     {
         bool operator()( double f1, double f2 )
         {
@@ -68,7 +68,7 @@ namespace orm
 
     //代表一个属性(也可以叫做字段)
     //同样地，这个属性只支持3种基本类型(int、double、string)
-    class DAO_DLLIMPEXP Attribute
+    class DAO_API Attribute
     {
     public:
         Attribute() : att_type( 0 ) {}
@@ -109,7 +109,7 @@ namespace orm
         StringValue svalue;
     };
 
-    class DAO_DLLIMPEXP Row
+    class DAO_API Row
     {
     public:
         Row();

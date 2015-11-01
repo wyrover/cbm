@@ -94,7 +94,7 @@
 #include <helper/SMenu.h>
 using namespace SOUI;
 
-#include <Dao/DaoHelper.h>
+//#include <Dao/DaoHelper.h>
 
 
 #pragma pack (pop)

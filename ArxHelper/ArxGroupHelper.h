@@ -2,7 +2,7 @@
 
 #include "dlimexp.h"
 
-class ARXHELPER_DLLIMPEXP ArxGroupHelper
+class ARXHELPER_API ArxGroupHelper
 {
 public:
     static AcDbObjectId CreateGroup( const CString& groupName, const AcDbObjectIdArray& objIds );

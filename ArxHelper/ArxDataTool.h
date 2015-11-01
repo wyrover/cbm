@@ -3,7 +3,7 @@
 #include "dlimexp.h"
 
 // 数据辅助工具类
-class ARXHELPER_DLLIMPEXP ArxDataTool
+class ARXHELPER_API ArxDataTool
 {
 public:
     /* 扩展数据操作 */

@@ -36,7 +36,7 @@ LRESULT RegDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
     m_UsernameEdit = FindChildByName2<SEdit>( L"username" );
     m_PasswordEdit = FindChildByName2<SEdit>( L"password" );
     m_BaseCombox = FindChildByName2<SComboBox>( L"base" );
-    m_RegionCombox = FindChildByName2<SComboBox>( L"region" );
+    m_RegionCombox = FindChildByName2<SComboBox>( L"mine_region" );
 	m_TopoGeoCombox = FindChildByName2<SComboBox>(L"topo_geo");
 	m_GroundCondCheck = FindChildByName2<SCheckBox>(L"ground_cond");
 	m_HydrGeoCombox = FindChildByName2<SComboBox>(L"hydr_geo");
@@ -83,7 +83,7 @@ void RegDialog::OnRegButtonClick()
         mine->account = account;
 
         //矿井关联矿区
-        mine->region = FIND_ONE( Region, FIELD( name ), (LPCTSTR)m_RegionCombox->GetWindowText() );
+        mine->mine_region = FIND_ONE( MineRegion, FIELD( name ), (LPCTSTR)m_RegionCombox->GetWindowText() );
         //增加到数据库并返回新增行的id值
         if( account->save() && mine->save() )
         {

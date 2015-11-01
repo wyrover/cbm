@@ -5,7 +5,7 @@
 /*
  * 数据链接基类(基于扩展数据实现)
  */
-class ARXHELPER_DLLIMPEXP XData : public DataMapper
+class ARXHELPER_API XData : public DataMapper
 {
     // 提供了2个静态方法用于读写扩展数据
     // 它们的实现效率并不高，适用于读取少量字段的情况

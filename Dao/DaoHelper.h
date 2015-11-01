@@ -8,7 +8,7 @@ typedef std::vector<CString> StringArray;
 typedef std::vector<int> IntArray;
 typedef std::vector<double> DoubleArray;
 
-class DAO_DLLIMPEXP DaoHelper
+class DAO_API DaoHelper
 {
 public:
 	//从配置文件中读取数据库信息并连接数据库

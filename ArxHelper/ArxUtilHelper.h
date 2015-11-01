@@ -3,7 +3,7 @@
 #include "dlimexp.h"
 
 // ARX工具类
-class ARXHELPER_DLLIMPEXP ArxUtilHelper
+class ARXHELPER_API ArxUtilHelper
 {
 public:
     // 将新建的图元添加到CAD图形数据库

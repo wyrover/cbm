@@ -5,7 +5,7 @@
 class ArxDbgXdataList;
 class ArxDbgXdataListIterator;
 
-class ARXHELPER_DLLIMPEXP DrawParamReader
+class ARXHELPER_API DrawParamReader
 {
 public:
     DrawParamReader( ArxDbgXdataListIterator* pXDataList );
@@ -21,7 +21,7 @@ private:
     ArxDbgXdataListIterator* m_pXDataList;
 };
 
-class ARXHELPER_DLLIMPEXP DrawParamWriter
+class ARXHELPER_API DrawParamWriter
 {
 public:
     DrawParamWriter( ArxDbgXdataList* pXDataList );

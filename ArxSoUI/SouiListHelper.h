@@ -6,10 +6,16 @@ struct ItemData
     int nItem;
 };
 
+#include <vector>
+#include <string>
+typedef std::vector<CString> TStringArray;
+typedef std::vector<int> IntArray;
+typedef std::vector<double> DoubleArray;
+
 class SComboBoxHelper
 {
 public:
-    static void Append( SComboBox* combox, const StringArray& names, const IntArray& ids );
+    static void Append( SComboBox* combox, const TStringArray& names, const IntArray& ids );
     static int Add( SComboBox* combox, const CString& name, int id );
     static int Insert( SComboBox* combox, const CString& name, int id, int i );
     static void Clear( SComboBox* combox );
@@ -29,7 +35,7 @@ public:
 class SListBoxHelper
 {
 public:
-    static void Append( SListBox* listbox, const StringArray& names, const IntArray& ids );
+    static void Append( SListBox* listbox, const TStringArray& names, const IntArray& ids );
     static int Find( SListBox* listbox, const CString& name );
     static int Add( SListBox* listbox, const CString& name, int id );
     static int Insert( SListBox* listbox, const CString& name, int id, int i );

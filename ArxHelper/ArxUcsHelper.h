@@ -6,7 +6,7 @@
 //http://blog.csdn.net/foreverling/article/details/28393085
 //http://forums.autodesk.com/t5/objectarx/how-to-set-current-ucs/td-p/2513614
 //《ObjectARX开发实例教程-20090826.pdf》的4.6小节
-class ARXHELPER_DLLIMPEXP ArxUcsHelper
+class ARXHELPER_API ArxUcsHelper
 {
 public:
     static void             transformToWcs( AcDbEntity* ent, AcDbDatabase* db );
@@ -50,7 +50,7 @@ public:
     static void TransformEntities( const AcDbObjectIdArray& ents, const AcGeMatrix3d& mat );
 };
 
-class ARXHELPER_DLLIMPEXP ArxUcsSwitch
+class ARXHELPER_API ArxUcsSwitch
 {
 public:
     ArxUcsSwitch( const AcGePoint3d& origin, const AcGeVector3d& xAxis, const AcGeVector3d& yAxis );

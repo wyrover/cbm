@@ -16,7 +16,7 @@ class ArxDbgXdataList;        // forward declaration
 **
 ****************************/
 
-class ARXHELPER_DLLIMPEXP ArxDbgAppXdata
+class ARXHELPER_API ArxDbgAppXdata
 {
 
 public:
@@ -108,7 +108,7 @@ private:
 **
 *************************************/
 
-class  ARXHELPER_DLLIMPEXP ArxDbgXdataList
+class  ARXHELPER_API ArxDbgXdataList
 {
 
     friend class ArxDbgAppXdata;
@@ -164,7 +164,7 @@ private:
 **
 *************************************/
 
-class  ARXHELPER_DLLIMPEXP ArxDbgXdataListIterator
+class  ARXHELPER_API ArxDbgXdataListIterator
 {
 
 public:
@@ -229,7 +229,7 @@ private:
 **
 ****************************/
 
-class  ARXHELPER_DLLIMPEXP ArxDbgAppXdataList
+class  ARXHELPER_API ArxDbgAppXdataList
 {
 
     friend class ArxDbgAppXdataListIterator;
@@ -268,7 +268,7 @@ private:
 **
 *************************************/
 
-class  ARXHELPER_DLLIMPEXP ArxDbgAppXdataListIterator
+class  ARXHELPER_API ArxDbgAppXdataListIterator
 {
 
 public:

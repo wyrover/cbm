@@ -34,7 +34,7 @@ protected:
 
     //控件消息映射表
     EVENT_MAP_BEGIN()
-    EVENT_NAME_HANDLER( _T( "region" ), EVT_CB_SELCHANGE, OnRegionComboxSelChanged )
+    EVENT_NAME_HANDLER( _T( "mine_region" ), EVT_CB_SELCHANGE, OnRegionComboxSelChanged )
     EVENT_NAME_HANDLER( _T( "topo_geo" ), EVT_CB_SELCHANGE, OnTopoGeoComboxSelChanged )
     EVENT_NAME_HANDLER( _T( "hydr_geo" ), EVT_CB_SELCHANGE, OnHydrGeoComboxSelChanged )
     EVENT_NAME_HANDLER( _T( "rank" ), EVT_CB_SELCHANGE, OnRankComboxSelChanged )

@@ -18,14 +18,14 @@ bool DaoHelper::ConfigureFromFile( const CString& cfgFile )
     CString port = iniFile.GetKeyValue( section, _T( "port" ) );
     CString username = iniFile.GetKeyValue( section, _T( "username" ) );
     CString password = iniFile.GetKeyValue( section, _T( "password" ) );
-    CString database = iniFile.GetKeyValue( section, _T( "database" ) );
+    CString datamine_base = iniFile.GetKeyValue( section, _T( "datamine_base" ) );
 
-    return DaoHelper::ConfigureDao( username, password, database, host, port );
+    return DaoHelper::ConfigureDao( username, password, datamine_base, host, port );
 }
 
-bool DaoHelper::ConfigureDao( const CString& username, const CString& password, const CString& database, const CString& host/*=_T("localhost")*/, const CString& port/*=_T("3306")*/ )
+bool DaoHelper::ConfigureDao( const CString& username, const CString& password, const CString& datamine_base, const CString& host/*=_T("localhost")*/, const CString& port/*=_T("3306")*/ )
 {
-    return Db::Instance()->config( username, password, database, host, port );
+    return Db::Instance()->config( username, password, datamine_base, host, port );
 }
 
 void DaoHelper::TestDao()
@@ -34,14 +34,14 @@ void DaoHelper::TestDao()
     //mine->username = _T("dlj");
     //mine->password = _T("123");
     mine->name = _T( "晋煤集团" );
-    mine->region = Query::FindById<Region>( 1 );
+    mine->mine_region = Query::FindById<MineRegion>( 1 );
     mine->set( FIELD( name ), _T( "xxx煤集团公司" ) );
-    mine->region->set( FIELD( name ), _T( "华北地区" ) );
-    mine->region->setID( _T( "2" ), true );
+    mine->mine_region->set( FIELD( name ), _T( "华北地区" ) );
+    mine->mine_region->setID( _T( "2" ), true );
     mine->save();
 
-    RegionPtr region = DYNAMIC_POINTER_CAST( Region, mine->region );
-    //cout<<"矿区名称:"<<region->name;
+    MineRegionPtr mine_region = DYNAMIC_POINTER_CAST( MineRegion, mine->mine_region );
+    //cout<<"矿区名称:"<<mine_region->name;
 
     MinePtr mine2( new Mine );
     mine->clone( mine2 );
@@ -61,28 +61,28 @@ int DaoHelper::VerifyMineAccount( const CString& username, const CString& pwd )
         return 2; // 用户名已注册
 }
 
-void DaoHelper::GetAllMineBases( StringArray& bases )
+void DaoHelper::GetAllMineBases( StringArray& mine_bases )
 {
-    QueryPtr query( Query::From<Base>() );
-    RecordPtrListPtr lists = query->find_many<Base>();
+    QueryPtr query( Query::From<MineBase>() );
+    RecordPtrListPtr lists = query->find_many<MineBase>();
     if( lists == 0 ) return;
 
     for( int i = 0; i < lists->size(); i++ )
     {
-        bases.push_back( lists->at( i )->get( FIELD( name ) ) );
+        mine_bases.push_back( lists->at( i )->get( FIELD( name ) ) );
     }
 }
 
-void DaoHelper::GetAllMineRegions( const CString& baseName, StringArray& regions )
+void DaoHelper::GetAllMineRegions( const CString& mine_baseName, StringArray& regions )
 {
-    QueryPtr query( Query::From<Base>() );
-    RecordPtr base = query->where( FIELD( name ), baseName )
-                     ->find_one<Base>();
-    if( base == 0 ) return;
+    QueryPtr query( Query::From<MineBase>() );
+    RecordPtr mine_base = query->where( FIELD( name ), mine_baseName )
+                     ->find_one<MineBase>();
+    if( mine_base == 0 ) return;
 
-    query.reset( Query::From<Region>() );
-    RecordPtrListPtr lists = query->where( FKEY( Base ), base->getStringID() )
-                             ->find_many<Region>();
+    query.reset( Query::From<MineRegion>() );
+    RecordPtrListPtr lists = query->where( FKEY( MineBase ), mine_base->getStringID() )
+                             ->find_many<MineRegion>();
     if( lists == 0 ) return;
 
     for( int i = 0; i < lists->size(); i++ )
@@ -93,19 +93,19 @@ void DaoHelper::GetAllMineRegions( const CString& baseName, StringArray& regions
 
 CString DaoHelper::GetBaseByRegion( const CString& regionName )
 {
-    RegionPtr region = FIND_ONE( Region, FIELD( name ), regionName );
-    if( region == 0 ) return _T( "" );
+    MineRegionPtr mine_region = FIND_ONE( MineRegion, FIELD( name ), regionName );
+    if( mine_region == 0 ) return _T( "" );
 
-    return region->base->get( FIELD( name ) );
+    return mine_region->mine_base->get( FIELD( name ) );
 }
 
 MinePtr DaoHelper::GetSampleMine( const CString& regionName )
 {
-    RecordPtr region = FIND_ONE( Region, FIELD( name ), regionName );
-    if( region == 0 ) return MinePtr();
+    RecordPtr mine_region = FIND_ONE( MineRegion, FIELD( name ), regionName );
+    if( mine_region == 0 ) return MinePtr();
 
     //根据id查询对应的矿井
-    return FIND_ONE( Mine, FKEY( Region ), region->getStringID() );
+    return FIND_ONE( Mine, FKEY( MineRegion ), mine_region->getStringID() );
 }
 
 CoalPtr DaoHelper::GetSampleCoal( const CString& regionName )
@@ -229,7 +229,7 @@ RecordPtrListPtr DaoHelper::GetDrillingSurfs( int mine_id )
 //初始化示范矿区的虚拟矿井和虚拟煤层
 static void InitSampleMine( int region_id, int account_id, const CString& name )
 {
-    MinePtr mine = FIND_ONE2( Mine, FKEY( Region ), Utils::int_to_cstring( region_id ), FKEY( Account ), Utils::int_to_cstring( account_id ) );
+    MinePtr mine = FIND_ONE2( Mine, FKEY( MineRegion ), Utils::int_to_cstring( region_id ), FKEY( Account ), Utils::int_to_cstring( account_id ) );
     if( mine == 0 )
     {
         CString mineName;
@@ -237,7 +237,7 @@ static void InitSampleMine( int region_id, int account_id, const CString& name )
         //创建矿井
         mine.reset( new Mine );
         mine->name = mineName;
-        mine->region = FIND_BY_ID( Region, region_id );
+        mine->mine_region = FIND_BY_ID( MineRegion, region_id );
         mine->account = FIND_BY_ID( Account, account_id );
         mine->save();
 
@@ -265,11 +265,11 @@ void DaoHelper::InitSampleRegion()
     }
 
     //查找三个示范矿区
-    RegionPtr jincheng = FIND_ONE( Region, FIELD( name ), _T( "晋城" ) );
+    MineRegionPtr jincheng = FIND_ONE( MineRegion, FIELD( name ), _T( "晋城" ) );
     if( jincheng == 0 ) return;
-    RegionPtr lianghuai = FIND_ONE( Region, FIELD( name ), _T( "两淮" ) );
+    MineRegionPtr lianghuai = FIND_ONE( MineRegion, FIELD( name ), _T( "两淮" ) );
     if( lianghuai == 0 ) return;
-    RegionPtr songzao = FIND_ONE( Region, FIELD( name ), _T( "松藻" ) );
+    MineRegionPtr songzao = FIND_ONE( MineRegion, FIELD( name ), _T( "松藻" ) );
     if( songzao == 0 ) return;
 
     //根据id依次初始化示范矿区的数据

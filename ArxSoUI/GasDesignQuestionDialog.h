@@ -51,7 +51,7 @@ protected:
 
 public:
     int coal_id; // 煤层id
-    int region;  // 传入的参数(表示在哪个区域做抽采,工作面、掘进面、采空区???)
+    int mine_region;  // 传入的参数(表示在哪个区域做抽采,工作面、掘进面、采空区???)
     int tech_id; // 传出的参数
 
 protected:

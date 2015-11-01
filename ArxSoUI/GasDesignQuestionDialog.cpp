@@ -13,11 +13,11 @@
 using namespace orm;
 using namespace cbm;
 
-static int CreateNewTech( int region, const DesignTechnologyPtr& tech, const CString& name )
+static int CreateNewTech( int mine_region, const DesignTechnologyPtr& tech, const CString& name )
 {
     int id  = -1;
 
-    if( region == 1 )
+    if( mine_region == 1 )
     {
         DesignDrillingSurfTechnologyPtr tws_tech( new DesignDrillingSurfTechnology );
         tws_tech->design_technology = tech;
@@ -27,7 +27,7 @@ static int CreateNewTech( int region, const DesignTechnologyPtr& tech, const CSt
             id = tws_tech->getID();
         }
     }
-    else if( region == 2 )
+    else if( mine_region == 2 )
     {
         DesignWorkSurfTechnologyPtr ws_tech( new DesignWorkSurfTechnology );
         ws_tech->design_technology = tech;
@@ -50,10 +50,10 @@ static int CreateNewTech( int region, const DesignTechnologyPtr& tech, const CSt
     return id;
 }
 
-static void RunGasDesignDlg( int coal_id, int region, int whick_tech, int tech_id )
+static void RunGasDesignDlg( int coal_id, int mine_region, int whick_tech, int tech_id )
 {
-    if( region == 0 || tech_id == 0 ) return;
-    if( region == 1 )
+    if( mine_region == 0 || tech_id == 0 ) return;
+    if( mine_region == 1 )
     {
         if( whick_tech == 1 )
         {
@@ -76,7 +76,7 @@ static void RunGasDesignDlg( int coal_id, int region, int whick_tech, int tech_i
 
         }
     }
-    else if( region == 2 )
+    else if( mine_region == 2 )
     {
         if( whick_tech == 1 )
         {
@@ -111,7 +111,7 @@ static void RunGasDesignDlg( int coal_id, int region, int whick_tech, int tech_i
 
         }
     }
-    else if( region == 3 )
+    else if( mine_region == 3 )
     {
         if( whick_tech == 1 )
         {
@@ -131,16 +131,16 @@ static void RunGasDesignDlg( int coal_id, int region, int whick_tech, int tech_i
     }
 }
 
-static void GetTechnologies( int region, AcStringArray& techs )
+static void GetTechnologies( int mine_region, AcStringArray& techs )
 {
-    if( region == 1 )
+    if( mine_region == 1 )
     {
         techs.append( _T( "底板岩巷密集穿层钻孔抽采煤巷条带瓦斯" ) );
         techs.append( _T( "顺层钻孔条带掩护巷道掘进抽采法" ) );
         techs.append( _T( "单巷、双巷或多巷循环迈步式抽采技术" ) );
     }
     //回采面抽采设计
-    else if( region == 2 )
+    else if( mine_region == 2 )
     {
         techs.append( _T( "底板岩巷大面积穿层钻孔抽采工作面瓦斯" ) );
         techs.append( _T( "顺层钻孔递进式掩护抽采工作面瓦斯法" ) );
@@ -159,17 +159,17 @@ static void GetTechnologies( int region, AcStringArray& techs )
     }
 }
 
-static RecordPtrListPtr Select( int region, const CString& id )
+static RecordPtrListPtr Select( int mine_region, const CString& id )
 {
-    if( region == 1 )
+    if( mine_region == 1 )
     {
         return FIND_MANY( DesignDrillingSurfTechnology, FKEY( DesignTechnology ), id );
     }
-    else if( region == 2 )
+    else if( mine_region == 2 )
     {
         return FIND_MANY( DesignWorkSurfTechnology, FKEY( DesignTechnology ), id );
     }
-    else if( region == 3 )
+    else if( mine_region == 3 )
     {
         return FIND_MANY( DesignGoafTechnology, FKEY( DesignTechnology ), id );
     }
@@ -182,7 +182,7 @@ static RecordPtrListPtr Select( int region, const CString& id )
 GasDesignQuestionDialog::GasDesignQuestionDialog( BOOL bModal ) : AcadSouiDialog( _T( "layout:gas_design_question" ), bModal )
 {
     coal_id = 0;
-    region = 0;
+    mine_region = 0;
     tech_id = 0;
 }
 
@@ -241,7 +241,7 @@ void GasDesignQuestionDialog::OnGoButtonClick()
         AcadSouiDialog::OnOK();
 
         //调用更详细的设计对话框
-        RunGasDesignDlg( this->coal_id, this->region, tech_kind, this->tech_id );
+        RunGasDesignDlg( this->coal_id, this->mine_region, tech_kind, this->tech_id );
     }
 }
 
@@ -275,11 +275,11 @@ void GasDesignQuestionDialog::OnNewDesignButtonClick()
         CoalPtr coal = FIND_BY_ID( Coal, this->coal_id );
         if( coal == 0 ) return;
 
-        DesignTechnologyPtr tech = FIND_ONE2( DesignTechnology, FKEY( Coal ), coal->getStringID(), FIELD( region ), Utils::int_to_cstring( this->region ) );
+        DesignTechnologyPtr tech = FIND_ONE2( DesignTechnology, FKEY( Coal ), coal->getStringID(), FIELD( mine_region ), Utils::int_to_cstring( this->mine_region ) );
         if( tech == 0 )
         {
             tech.reset( new DesignTechnology );
-            tech->region = this->region;
+            tech->mine_region = this->mine_region;
             tech->coal = coal;
             //保存到数据库
             if( !tech->save() )
@@ -290,7 +290,7 @@ void GasDesignQuestionDialog::OnNewDesignButtonClick()
         }
 
         //新增设计数据并保存到数据库
-        int id = CreateNewTech( this->region, tech, name );
+        int id = CreateNewTech( this->mine_region, tech, name );
         if( id != -1 )
         {
             //插入到煤层列表列表
@@ -309,7 +309,7 @@ void GasDesignQuestionDialog::fillDatas()
 {
     m_TechnologyListbox->DeleteAll();
     AcStringArray techs;
-    GetTechnologies( this->region, techs );
+    GetTechnologies( this->mine_region, techs );
     for( int i = 0; i < techs.length(); i++ )
     {
         m_TechnologyListbox->AddString( techs[i].kACharPtr() );
@@ -322,18 +322,18 @@ void GasDesignQuestionDialog::fillDatas()
     CoalPtr coal = FIND_BY_ID( Coal, this->coal_id );
     if( coal == 0 ) return;
 
-    DesignTechnologyPtr tech = FIND_ONE2( DesignTechnology, FKEY( Coal ), coal->getStringID(), FIELD( region ), Utils::int_to_cstring( this->region ) );
+    DesignTechnologyPtr tech = FIND_ONE2( DesignTechnology, FKEY( Coal ), coal->getStringID(), FIELD( mine_region ), Utils::int_to_cstring( this->mine_region ) );
     if( tech == 0 )
     {
         tech.reset( new DesignTechnology );
-        tech->region = this->region;
+        tech->mine_region = this->mine_region;
         tech->coal = coal;
         //保存到数据库
         if( !tech->save() ) return;
     }
     else
     {
-        RecordPtrListPtr tech_list = Select( this->region, tech->getStringID() );
+        RecordPtrListPtr tech_list = Select( this->mine_region, tech->getStringID() );
         if( tech_list != 0 )
         {
             for( int i = 0; i < tech_list->size(); i++ )
@@ -352,12 +352,12 @@ void GasDesignQuestionDialog::OnDelDesignButtonClick()
 {
     int tech_id = SComboBoxHelper::GetCurSelItemID( m_DesignCombox );
     bool ret = false;
-    if( region == 1 )
+    if( mine_region == 1 )
     {
         DesignDrillingSurfTechnologyPtr tws_tech = FIND_BY_ID( DesignDrillingSurfTechnology, tech_id );
         ret = ( tws_tech != 0 && tws_tech->remove() );
     }
-    else if( region == 2 )
+    else if( mine_region == 2 )
     {
         DesignWorkSurfTechnologyPtr ws_tech = FIND_BY_ID( DesignWorkSurfTechnology, tech_id );
         ret = ( ws_tech != 0 && ws_tech->remove() );

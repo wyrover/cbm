@@ -64,7 +64,7 @@ void DecisionDialog::OnTechnologyButtonClick()
     DaoHelper::GetCoalNames( mine->getID(), coal_names );
 
     CString msg;
-    msg.Format( _T( "矿井:%s,所属矿区:%s\\n" ), mine->name, mine->region->get( FIELD( name ) ) );
+    msg.Format( _T( "矿井:%s,所属矿区:%s\\n" ), mine->name, mine->mine_region->get( FIELD( name ) ) );
     msg.AppendFormat( _T( "煤层个数:%d\\n" ), coal_names.size() );
     msg.AppendFormat( _T( "煤层编号(或名称):" ) );
     for( int i = 0; i < coal_names.size(); i++ )
