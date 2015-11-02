@@ -14,7 +14,7 @@ import ServerHelper
 if __name__ == '__main__':
     # 采用log默认的基本配置
     logging.basicConfig()
-
+    
     # 创建control服务器
     ctrlHandler, ctrlServer = ControlServiceHelper.create_server('localhost', 9090)
 

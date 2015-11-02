@@ -6919,3 +6919,107 @@ class WorkSurf:
 
   def __ne__(self, other):
     return not (self == other)
+
+class DrillingSurfGasFlowResult:
+  """
+  Attributes:
+   - q0
+   - q3
+   - q4
+   - qa
+  """
+
+  thrift_spec = (
+    None, # 0
+    (1, TType.DOUBLE, 'q0', None, None, ), # 1
+    (2, TType.DOUBLE, 'q3', None, None, ), # 2
+    (3, TType.DOUBLE, 'q4', None, None, ), # 3
+    (4, TType.DOUBLE, 'qa', None, None, ), # 4
+  )
+
+  def __init__(self, q0=None, q3=None, q4=None, qa=None,):
+    self.q0 = q0
+    self.q3 = q3
+    self.q4 = q4
+    self.qa = qa
+
+  def read(self, iprot):
+    if iprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None and fastbinary is not None:
+      fastbinary.decode_binary(self, iprot.trans, (self.__class__, self.thrift_spec))
+      return
+    iprot.readStructBegin()
+    while True:
+      (fname, ftype, fid) = iprot.readFieldBegin()
+      if ftype == TType.STOP:
+        break
+      if fid == 1:
+        if ftype == TType.DOUBLE:
+          self.q0 = iprot.readDouble()
+        else:
+          iprot.skip(ftype)
+      elif fid == 2:
+        if ftype == TType.DOUBLE:
+          self.q3 = iprot.readDouble()
+        else:
+          iprot.skip(ftype)
+      elif fid == 3:
+        if ftype == TType.DOUBLE:
+          self.q4 = iprot.readDouble()
+        else:
+          iprot.skip(ftype)
+      elif fid == 4:
+        if ftype == TType.DOUBLE:
+          self.qa = iprot.readDouble()
+        else:
+          iprot.skip(ftype)
+      else:
+        iprot.skip(ftype)
+      iprot.readFieldEnd()
+    iprot.readStructEnd()
+
+  def write(self, oprot):
+    if oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and self.thrift_spec is not None and fastbinary is not None:
+      oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
+      return
+    oprot.writeStructBegin('DrillingSurfGasFlowResult')
+    if self.q0 is not None:
+      oprot.writeFieldBegin('q0', TType.DOUBLE, 1)
+      oprot.writeDouble(self.q0)
+      oprot.writeFieldEnd()
+    if self.q3 is not None:
+      oprot.writeFieldBegin('q3', TType.DOUBLE, 2)
+      oprot.writeDouble(self.q3)
+      oprot.writeFieldEnd()
+    if self.q4 is not None:
+      oprot.writeFieldBegin('q4', TType.DOUBLE, 3)
+      oprot.writeDouble(self.q4)
+      oprot.writeFieldEnd()
+    if self.qa is not None:
+      oprot.writeFieldBegin('qa', TType.DOUBLE, 4)
+      oprot.writeDouble(self.qa)
+      oprot.writeFieldEnd()
+    oprot.writeFieldStop()
+    oprot.writeStructEnd()
+
+  def validate(self):
+    return
+
+
+  def __hash__(self):
+    value = 17
+    value = (value * 31) ^ hash(self.q0)
+    value = (value * 31) ^ hash(self.q3)
+    value = (value * 31) ^ hash(self.q4)
+    value = (value * 31) ^ hash(self.qa)
+    return value
+
+  def __repr__(self):
+    L = ['%s=%r' % (key, value)
+      for key, value in self.__dict__.iteritems()]
+    return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
+
+  def __eq__(self, other):
+    return isinstance(other, self.__class__) and self.__dict__ == other.__dict__
+
+  def __ne__(self, other):
+    return not (self == other)

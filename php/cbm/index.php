@@ -115,6 +115,7 @@ function copy_files()
 	// copy('entity.thrift', $projDir.'thrift\entity.thrift');
 	copy('cbm.thrift', $projDir.'thrift\cbm.thrift');
 	copy('ctrl.thrift', $projDir.'thrift\ctrl.thrift');
+	copy('SQLServiceHelper.py', $projDir.'thrift\SQLServiceHelper.py');
 }
 
 //生成

@@ -10185,4 +10185,150 @@ void WorkSurf::printTo(std::ostream& out) const {
   out << ")";
 }
 
+
+DrillingSurfGasFlowResult::~DrillingSurfGasFlowResult() throw() {
+}
+
+
+void DrillingSurfGasFlowResult::__set_q0(const double val) {
+  this->q0 = val;
+}
+
+void DrillingSurfGasFlowResult::__set_q3(const double val) {
+  this->q3 = val;
+}
+
+void DrillingSurfGasFlowResult::__set_q4(const double val) {
+  this->q4 = val;
+}
+
+void DrillingSurfGasFlowResult::__set_qa(const double val) {
+  this->qa = val;
+}
+
+uint32_t DrillingSurfGasFlowResult::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
+          xfer += iprot->readDouble(this->q0);
+          this->__isset.q0 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
+          xfer += iprot->readDouble(this->q3);
+          this->__isset.q3 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
+          xfer += iprot->readDouble(this->q4);
+          this->__isset.q4 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
+          xfer += iprot->readDouble(this->qa);
+          this->__isset.qa = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t DrillingSurfGasFlowResult::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("DrillingSurfGasFlowResult");
+
+  xfer += oprot->writeFieldBegin("q0", ::apache::thrift::protocol::T_DOUBLE, 1);
+  xfer += oprot->writeDouble(this->q0);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("q3", ::apache::thrift::protocol::T_DOUBLE, 2);
+  xfer += oprot->writeDouble(this->q3);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("q4", ::apache::thrift::protocol::T_DOUBLE, 3);
+  xfer += oprot->writeDouble(this->q4);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("qa", ::apache::thrift::protocol::T_DOUBLE, 4);
+  xfer += oprot->writeDouble(this->qa);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(DrillingSurfGasFlowResult &a, DrillingSurfGasFlowResult &b) {
+  using ::std::swap;
+  swap(a.q0, b.q0);
+  swap(a.q3, b.q3);
+  swap(a.q4, b.q4);
+  swap(a.qa, b.qa);
+  swap(a.__isset, b.__isset);
+}
+
+DrillingSurfGasFlowResult::DrillingSurfGasFlowResult(const DrillingSurfGasFlowResult& other64) {
+  q0 = other64.q0;
+  q3 = other64.q3;
+  q4 = other64.q4;
+  qa = other64.qa;
+  __isset = other64.__isset;
+}
+DrillingSurfGasFlowResult& DrillingSurfGasFlowResult::operator=(const DrillingSurfGasFlowResult& other65) {
+  q0 = other65.q0;
+  q3 = other65.q3;
+  q4 = other65.q4;
+  qa = other65.qa;
+  __isset = other65.__isset;
+  return *this;
+}
+void DrillingSurfGasFlowResult::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "DrillingSurfGasFlowResult(";
+  out << "q0=" << to_string(q0);
+  out << ", " << "q3=" << to_string(q3);
+  out << ", " << "q4=" << to_string(q4);
+  out << ", " << "qa=" << to_string(qa);
+  out << ")";
+}
+
 } // namespace

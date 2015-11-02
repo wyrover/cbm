@@ -15,6 +15,8 @@ from cbm import CbmService
 from cbm.ttypes import *
 from ctrl import ControlService
 
+import CbmUtil
+
 #客户端封装类
 class RpcClient:
   def __init__(self, Service, host='localhost', port=9090):
@@ -66,15 +68,15 @@ def VerifyMineAccount(client):
     print '未知错误'
 
 #测试3
-def GetAllMineBases(client):
-  mine_bases = client.GetAllMineBases()
+def GetMineBaseNames(client):
+  mine_bases = client.GetMineBaseNames()
   print '煤炭基地列表:'
   for base in mine_bases:
     print '\t',base
 
-def GetAllMineRegions(client):
+def GetMineRegionsOfBase(client):
   baseName = raw_input('请输入煤炭基地名称:')
-  mine_regions = client.GetAllMineRegions(baseName)
+  mine_regions = client.GetMineRegionsOfBase(baseName)
   print '%s的矿区:' % (baseName)
   for region in mine_regions:
     print '\t',region
@@ -84,14 +86,14 @@ def GetBaseByRegion(client):
   baseName = client.GetBaseByRegion(regionName)
   print '%s的基地:%s' % (regionName, baseName)
 
-def GetSampleMine(client):
+def GetSampleMineOfRegion(client):
   regionName = raw_input('请输入矿区的名称:')
-  mine = client.GetSampleMine(regionName)
+  mine = client.GetSampleMineOfRegion(regionName)
   print '示范矿区:%s的虚拟矿井:%s' % (regionName, mine)
 
-def GetSampleCoal(client):
+def GetSampleCoalOfRegion(client):
   regionName = raw_input('请输入矿区的名称:')
-  coal = client.GetSampleCoal(regionName)
+  coal = client.GetSampleCoalOfRegion(regionName)
   print '示范矿区:%s的虚拟煤层:%s' % (regionName, coal)
 
 def GetCoalNames(client):
@@ -116,23 +118,23 @@ def GetOnlineMine(client):
   mine = client.GetOnlineMine()
   print '当前登录用户对应的矿井:',mine
 
-def GetWorkAreas(client):
+def GetWorkAreasOfMine(client):
   mine_id = int(input('请输入矿井id:'))
-  work_areas = client.GetWorkAreas(mine_id)
+  work_areas = client.GetWorkAreasOfMine(mine_id)
   print '矿井id=%d的采区列表:' % mine_id
   for work_area in work_areas:
     print work_area.id, work_area.name
 
-def GetWorkSurfs(client):
+def GetWorkSurfsOfMine(client):
   mine_id = int(input('请输入矿井id:'))
-  work_surfs = client.GetWorkSurfs(mine_id)
+  work_surfs = client.GetWorkSurfsOfMine(mine_id)
   print '矿井id=%d的回采工作面列表:' % mine_id
   for work_surf in work_surfs:
     print work_surf.id, work_surf.name
 
-def GetDrillingSurfs(client):
+def GetDrillingSurfsOfMine(client):
   mine_id = int(input('请输入矿井id:'))
-  drilling_surfs = client.GetDrillingSurfs(mine_id)
+  drilling_surfs = client.GetDrillingSurfsOfMine(mine_id)
   print '矿井id=%d的掘进工作面列表:' % mine_id
   for drilling_surf in drilling_surfs:
     print drilling_surf.id, drilling_surf.name
@@ -141,22 +143,96 @@ def InitSampleRegion(client):
   print '创建超级管理员账户和密码'
   client.InitSampleRegion()
 
+def DifficultEval(client):
+  # CbmUtil.CopyAttribs
+  pass
+
+def DifficultEvalString(client):
+  mine_id = int(input('请输入矿井id:'))
+  coal_ids = client.GetCoalIdsOfMine(mine_id)
+  if len(coal_ids) == 0:
+    print '该矿井没有煤层'
+  else:
+    print '该矿井的煤层列表:', '  '.join([str(i) for i in coal_ids])
+    coal_id = int(input('请选择一个煤层:'))
+
+def MineGasReservesW1(client):
+  pass
+
+def MineGasReservesW2(client):
+  pass
+
+def WorkAreaGasFlow(client):
+  pass
+
+def MineGasFlow(client):
+  pass
+
+def WorkSurfGasFlow1(client):
+  pass
+
+def WorkSurfGasFlow2(client):
+  pass
+
+def DrillingSurfGasFlow(client):
+  pass
+
+def GetAccount(client):
+  account_id = int(input('请输入账户id:'))
+  # account = client.GetAccount(account_id)
+  #account = client.GetAccountByFields1('id', '1')
+  account = client.GetAccountByFields1('username', 'dlj')
+  if account.id < 0:
+    print '查询错误'
+  else:
+    print '账户id=%d 名称:%s' % (account.id, account.username)
+
+def GetMine(client):
+  mine = client.GetMineByForeignKey('account_id', 2)
+  if mine.id < 0:
+    print '查询错误'
+  else:
+    print '矿井id=%d 名称:%s' % (mine.id, mine.name)
+
+def AddAccount(client):
+  account = Account()
+  account.username = raw_input('新建用户:')
+  account.password = raw_input('密码:')
+
+  account_id = client.AddAccount(account)
+  print '新建用户的id=%d' % account_id
+
+def DeleteAccount(client):
+  pass
+
 # 注册所有的测试函数
 all_cmds = {
   '1': VerifyMineAccount,
-  '2': GetAllMineBases,
-  '3': GetAllMineRegions,
+  '2': GetMineBaseNames,
+  '3': GetMineRegionsOfBase,
   '4': GetBaseByRegion,
-  '5': GetSampleMine,
-  '6': GetSampleCoal,
+  '5': GetSampleMineOfRegion,
+  '6': GetSampleCoalOfRegion,
   '7': GetCoalNames,
   '8': GetCoalIds,
   '9': GetOnlineAccountId,
   '10': GetOnlineMine,
-  '11': GetWorkAreas,
-  '12': GetWorkSurfs,
-  '13': GetDrillingSurfs,
+  '11': GetWorkAreasOfMine,
+  '12': GetWorkSurfsOfMine,
+  '13': GetDrillingSurfsOfMine,
   '14': InitSampleRegion,
+  '15': DifficultEval,
+  '16': DifficultEvalString,
+  '17': MineGasReservesW1,
+  '18': MineGasReservesW2,
+  '19': WorkAreaGasFlow,
+  '20': MineGasFlow,
+  '21': WorkSurfGasFlow1,
+  '22': WorkSurfGasFlow2,
+  '23': DrillingSurfGasFlow,
+  '24': GetAccount,
+  '25': AddAccount,
+  '26': GetMine,
   'q': QuitServer
 }
 
@@ -166,9 +242,13 @@ def main():
     service_client = RpcClient(CbmService, port=9100)
     service_client.start()
 
+    goto_quit = False
     while True:
       cmd = raw_input('请输入命令:')
       if cmd == 'q' or cmd == 'Q':
+        goto_quit = True
+        break
+      elif cmd == 'c' or cmd == 'C':
         break
       if cmd in all_cmds:
         all_cmds[cmd](service_client.get())
@@ -177,8 +257,9 @@ def main():
         print '命令%s未实现!!!' % cmd
     service_client.close()
 
-    # 关闭rpc服务器
-    QuitServer()
+    if goto_quit:
+      # 关闭rpc服务器
+      QuitServer()
 
   except Thrift.TException, tx:
     print '%s' % (tx.message)

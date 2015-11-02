@@ -12,37 +12,30 @@ from cbm import CbmService
 from cbm.ttypes import *
 
 import sql
+import CbmUtil
 import ServerHelper
-import CbmMath
+import SQLServiceHelper
 
 #初始化sqlalchemy，连接mysql数据库
 def init_sqlalchemy():
     #连接mysql数据并创建session会话
-    # engine = create_engine("mysql+pymysql://root:@localhost/cbm?charset=utf-8")
-    engine = create_engine("mysql+pymysql://root:@localhost/cbm")
+    # engine = create_engine("mysql+pymysql:# root:@localhost/cbm?charset=utf-8")
+    #echo开关用于调试!!!
+    engine = create_engine("mysql+pymysql://root:@localhost/cbm",echo=True)
     Session = sessionmaker()
     Session.configure(bind=engine)
     return Session
 
-import types
-# 记录对象允许复制的属性类型
-obj_types_set = set([types.IntType, types.FloatType, types.StringType, types.LongType])
-def obj_copy(obj1, obj2):
-    for name in dir(obj1):
-        if not hasattr(obj2, name):continue
-        if name.startswith('__'):continue
-        a = getattr(obj1, name)
-        if type(a) in obj_types_set:
-            setattr(obj2, name, a)
-
-# 参考:处理多个service(http://blog.csdn.net/hivon/article/details/11681977)
-# sqlalchemy的两种方法详解(http://www.it165.net/database/html/201404/6034.html)
+# 参考:处理多个service(http:# blog.csdn.net/hivon/article/details/11681977)
+# sqlalchemy的两种方法详解(http:# www.it165.net/database/html/201404/6034.html)
 # service接口处理类
-class CbmServiceHandler:
+class CbmServiceHandler(SQLServiceHelper.SQLServiceHandler):
     def __init__(self, Session):
         self.session = Session()
         # 解决mysql中文乱码问题
-        self.session.execute("set names 'gbk';")
+        self.session.execute("set names 'gbk'")
+        # 调用基类的初始化方法
+        super(CbmServiceHandler, self).__init__(self.session)
 
     def InitSampleMine(self, region_id, account_id, name):
         query = self.session.query(sql.Mine).filter(sql.Mine.mine_region_id==region_id, sql.Mine.account_id==account_id).first()
@@ -73,21 +66,18 @@ class CbmServiceHandler:
             lianghuai = self.session.query(sql.MineRegion).filter(sql.MineRegion.name=='两淮').one()
             songzao = self.session.query(sql.MineRegion).filter(sql.MineRegion.name=='松藻').one()
             # 根据id依次初始化示范矿区的数据
-            self.InitSampleMine(jincheng.id, admin.id, "晋城");
-            self.InitSampleMine(lianghuai.id, admin.id, "两淮");
-            self.InitSampleMine(songzao.id, admin.id, "松藻");
+            self.InitSampleMine(jincheng.id, admin.id, "晋城")
+            self.InitSampleMine(lianghuai.id, admin.id, "两淮")
+            self.InitSampleMine(songzao.id, admin.id, "松藻")
         except Exception, e:
             print e
     
     def GetOnlineAccountId(self):
-        account_id = -1
-        try:
-            query = self.session.query(sql.Account).join(sql.SysInfo).first()
-            account_id = query.id
-        except Exception, e:
-            account_id = -1
-            print e
-        return account_id
+        query = self.session.query(sql.Account).join(sql.SysInfo).first()
+        if query is None:
+            return -1
+        else:
+            return query.id
 
     def GetOnlineMine(self):
         mine = Mine()
@@ -97,14 +87,14 @@ class CbmServiceHandler:
         if account_id > -1:
             try:
                 query = self.session.query(sql.Mine).filter(sql.Mine.account_id==account_id).one()
-                obj_copy(query, mine)
+                CbmUtil.CopyAttribs(query, mine)
             except Exception, e:
                 mine.id = -1
                 print e
         return mine
 
     def VerifyMineAccount(self, username, pwd):
-        print '-> VerifyMineAccount'
+        print '. VerifyMineAccount'
         query = self.session.query(sql.Account).filter(sql.Account.username==username)
         if query.count() == 0:
             return 0  # 用户名不存在
@@ -145,7 +135,7 @@ class CbmServiceHandler:
         try:
             query = self.session.query(sql.Mine).join(sql.MineRegion).filter(sql.MineRegion.name==regionName).one()
             # 通用复制函数
-            obj_copy(query, sample_mine)
+            CbmUtil.CopyAttribs(query, sample_mine)
         except Exception, e:
             sample_mine.id = -1
             print e
@@ -160,7 +150,7 @@ class CbmServiceHandler:
             try:
                 query = self.session.query(sql.Coal).filter(sql.Coal.mine_id==sample_mine.id).one()
                 # 通用复制函数
-                obj_copy(query, sample_coal)
+                CbmUtil.CopyAttribs(query, sample_coal)
             except Exception, e:
                 sample_coal.id = -1
                 print e
@@ -187,7 +177,7 @@ class CbmServiceHandler:
         work_areas = [WorkArea() for i in range(n)]
         for i in range(n):
             work_areas[i].id = -1
-            obj_copy(query[i], work_areas[i])
+            CbmUtil.CopyAttribs(query[i], work_areas[i])
         return work_areas
 
     def GetWorkSurfs(self, mine_id):
@@ -203,7 +193,7 @@ class CbmServiceHandler:
         work_surfs = [WorkSurf() for i in range(n)]
         for i in range(n):
             work_surfs[i].id = -1
-            obj_copy(query[i], work_surfs[i])
+            CbmUtil.CopyAttribs(query[i], work_surfs[i])
         return work_surfs
 
     def GetDrillingSurfs(self, mine_id):
@@ -219,7 +209,7 @@ class CbmServiceHandler:
         drilling_surfs = [DrillingSurf() for i in range(n)]
         for i in range(n):
             drilling_surfs[i].id = -1
-            obj_copy(query[i], drilling_surfs[i])
+            CbmUtil.CopyAttribs(query[i], drilling_surfs[i])
         return drilling_surfs
 
     def GetWorkAreaIds(self, mine_id):
@@ -245,33 +235,98 @@ class CbmServiceHandler:
 
     def DifficultEval(self, coal):
         # 根据钻孔流量衰减系数 和 煤层透气性系数进行评价
-        k1 = CbmMath.DifficultEval1(coal.decay_alpha);
-        k2 = CbmMath.DifficultEval2(coal.permeability_lambda);
-        return CbmMath.DifficultEvalHelper(k1, k2);
+        k1 = CbmUtil.DifficultEval1(coal.decay_alpha)
+        k2 = CbmUtil.DifficultEval2(coal.permeability_lambda)
+        return CbmUtil.DifficultEvalHelper(k1, k2)
 
     def DifficultEvalString(self, coal):
-        return ''
+        s1 = PermeabilityString(coal.permeability_k)
+        s2 = EvalDifficultString(coal.eval_difficult)
+        return "该煤层属于:%s\\n瓦斯抽采难易程度:%s" % (s1, s2)
 
     def MineGasReservesW1(self, mine_id):
-        return 0.0
-
+       query = self.session.query(sql.Coal).filter(sql.Coal.mine_id==mine_id, sql.Coal.minable==1).all()
+       return sum([coal.res_a1*coal.gas_x1 for coal in query])
+    
     def MineGasReservesW2(self, mine_id):
-        return 0.0
+        query = self.session.query(sql.Coal).filter(sql.Coal.mine_id==mine_id, sql.Coal.minable==0).all()
+        if len(query) == 0:
+            return 0
+        else:
+            return sum([coal.res_a1*coal.gas_x1 for coal in query])
 
     def WorkAreaGasFlow(self, work_area, K1):
-        return 0.0
+        query = self.session.query(sql.WorkSurf).filter(sql.WorkSurf.work_area_id==work_area.id).all()
+        S1 = sum([ws.qr*ws.a for ws in query])
+        query = self.session.query(sql.DrillingSurf).filter(sql.DrillingSurf.work_area_id==work_area.id).all()
+        S2 = sum([tws.qa for tws in query])
+        if work_area.a <= 0:
+            return -1
+        else:
+            return K1*(S1+S2)/work_area.a
 
     def MineGasFlow(self, mine):
-        return 0.0
+        work_areas = self.GetWorkAreas(mine.id)
+        if len(work_areas) == 0:
+            return 0.0
+
+        S1 = sum([work_area.qr*work_area.a for work_area in query])
+        S2 = sum([work_area.a for work_area in query])
+        if S2 <= 0:
+            return -1
+        else:
+            K2 = mine.gas_k2
+            return K2*S1/S2
 
     def WorkSurfGasFlow1(self, coal, work_area, work_surf):
-        return 0.0
+        K1 = work_surf.k1
+        K2 = work_surf.k2
+        K3 = work_surf.k3
+        kf = work_surf.kf
+        # 开采层厚度(????分层如何考虑???)
+        m = coal.thick
+        # 工作面采高
+        M = coal.hw
+        W0 = coal.gas_w0
+        Wc = coal.gas_wc2
+
+        # 计算开采层相对瓦斯涌出量q1
+        if work_surf.layerable == 0:
+            return K1 * K2 * K3 * ( W0 - Wc ) * m / M
+        else:
+            return K1 * K2 * K3 * ( W0 - Wc ) * kf
 
     def WorkSurfGasFlow2(self, coal, work_area, work_surf):
-        return 0.0
+        query = self.session.query(sql.AdjLayer).filter(sql.AdjLayer.work_surf_id==work_surf.id).all()
+        if len(query) == 0:
+            return 0.0
+        f = lambda adj_coal:(adj_coal.gas_w0-adj_coal.gas_wc2)*adj_coal.thick*adj_coal.gas_eta
+        S = sum([f(adj_layer.coal) for adj_layer in query])
+        M = coal.hw
+        return S / M
 
     def DrillingSurfGasFlow(self, coal, drilling_surf, tunnel):
-        return 0.0
+        # 计算q0
+        Vr = coal.vr
+        W0 = coal.gas_w0
+        D = tunnel.d
+        v = tunnel.v
+        L = tunnel.l
+        S = tunnel.s
+        r = coal.rho
+        Wc = coal.gas_wc2
+        q0 = ( 0.0004 * pow( Vr, 2 ) + 0.16 ) * 0.026 * W0
+        q3 = D * v * q0 * ( 2 * sqrt( L / v ) - 1 )
+        q4 = S * v * r * ( W0 - Wc )
+        qa = q3 + q4 #  掘进面瓦斯涌出量
+
+        # 计算结果保存到参数结构体
+        ret = DrillingSurfGasFlowResult()
+        ret.q0 = q0
+        ret.q3 = q3
+        ret.q4 = q4
+        ret.qa = qa
+        return ret
 
 # 创建服务器
 def create_server(host, port):

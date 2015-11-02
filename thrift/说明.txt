@@ -1,3 +1,7 @@
-thrift有个比较恶心的问题：
+1、thrift有个比较恶心的问题：
+不同的thrift文件要用不同的namespace，否则生成的代码有些会被覆盖!!!（使用include也无法避免这个问题）
 
-不同的thrift文件要用不同的namespace，否则生成的代码有些会被覆盖!!!
+2、cbm.thrift是通过php脚本合成得到的
+thrift.php读取数据库，生成sql_service_types.thrift和sql_service.thrift
+另外的2个thrift文件cbm_service_types.thrift和cbm_service.thrift需要手工编写（注意将service所在的行注释掉），其他的thrift文件比如ctrl.thrift也是手工编写的
+然后再进行文件合并得到cbm.thrift以及SQLServiceHelper.py（这个py文件也是自动生成的）

@@ -83,6 +83,8 @@ class WorkArea;
 
 class WorkSurf;
 
+class DrillingSurfGasFlowResult;
+
 typedef struct _Account__isset {
   _Account__isset() : id(false), username(false), password(false), comment(false) {}
   bool id :1;
@@ -3776,6 +3778,70 @@ class WorkSurf {
 void swap(WorkSurf &a, WorkSurf &b);
 
 inline std::ostream& operator<<(std::ostream& out, const WorkSurf& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _DrillingSurfGasFlowResult__isset {
+  _DrillingSurfGasFlowResult__isset() : q0(false), q3(false), q4(false), qa(false) {}
+  bool q0 :1;
+  bool q3 :1;
+  bool q4 :1;
+  bool qa :1;
+} _DrillingSurfGasFlowResult__isset;
+
+class DrillingSurfGasFlowResult {
+ public:
+
+  DrillingSurfGasFlowResult(const DrillingSurfGasFlowResult&);
+  DrillingSurfGasFlowResult& operator=(const DrillingSurfGasFlowResult&);
+  DrillingSurfGasFlowResult() : q0(0), q3(0), q4(0), qa(0) {
+  }
+
+  virtual ~DrillingSurfGasFlowResult() throw();
+  double q0;
+  double q3;
+  double q4;
+  double qa;
+
+  _DrillingSurfGasFlowResult__isset __isset;
+
+  void __set_q0(const double val);
+
+  void __set_q3(const double val);
+
+  void __set_q4(const double val);
+
+  void __set_qa(const double val);
+
+  bool operator == (const DrillingSurfGasFlowResult & rhs) const
+  {
+    if (!(q0 == rhs.q0))
+      return false;
+    if (!(q3 == rhs.q3))
+      return false;
+    if (!(q4 == rhs.q4))
+      return false;
+    if (!(qa == rhs.qa))
+      return false;
+    return true;
+  }
+  bool operator != (const DrillingSurfGasFlowResult &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const DrillingSurfGasFlowResult & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(DrillingSurfGasFlowResult &a, DrillingSurfGasFlowResult &b);
+
+inline std::ostream& operator<<(std::ostream& out, const DrillingSurfGasFlowResult& obj)
 {
   obj.printTo(out);
   return out;
