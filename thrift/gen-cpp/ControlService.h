@@ -21,7 +21,7 @@ namespace ctrl {
 class ControlServiceIf {
  public:
   virtual ~ControlServiceIf() {}
-  virtual void shutdown() = 0;
+  virtual void ShutDown() = 0;
 };
 
 class ControlServiceIfFactory {
@@ -51,31 +51,31 @@ class ControlServiceIfSingletonFactory : virtual public ControlServiceIfFactory 
 class ControlServiceNull : virtual public ControlServiceIf {
  public:
   virtual ~ControlServiceNull() {}
-  void shutdown() {
+  void ShutDown() {
     return;
   }
 };
 
 
-class ControlService_shutdown_args {
+class ControlService_ShutDown_args {
  public:
 
-  ControlService_shutdown_args(const ControlService_shutdown_args&);
-  ControlService_shutdown_args& operator=(const ControlService_shutdown_args&);
-  ControlService_shutdown_args() {
+  ControlService_ShutDown_args(const ControlService_ShutDown_args&);
+  ControlService_ShutDown_args& operator=(const ControlService_ShutDown_args&);
+  ControlService_ShutDown_args() {
   }
 
-  virtual ~ControlService_shutdown_args() throw();
+  virtual ~ControlService_ShutDown_args() throw();
 
-  bool operator == (const ControlService_shutdown_args & /* rhs */) const
+  bool operator == (const ControlService_ShutDown_args & /* rhs */) const
   {
     return true;
   }
-  bool operator != (const ControlService_shutdown_args &rhs) const {
+  bool operator != (const ControlService_ShutDown_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const ControlService_shutdown_args & ) const;
+  bool operator < (const ControlService_ShutDown_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -83,36 +83,36 @@ class ControlService_shutdown_args {
 };
 
 
-class ControlService_shutdown_pargs {
+class ControlService_ShutDown_pargs {
  public:
 
 
-  virtual ~ControlService_shutdown_pargs() throw();
+  virtual ~ControlService_ShutDown_pargs() throw();
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
 
-class ControlService_shutdown_result {
+class ControlService_ShutDown_result {
  public:
 
-  ControlService_shutdown_result(const ControlService_shutdown_result&);
-  ControlService_shutdown_result& operator=(const ControlService_shutdown_result&);
-  ControlService_shutdown_result() {
+  ControlService_ShutDown_result(const ControlService_ShutDown_result&);
+  ControlService_ShutDown_result& operator=(const ControlService_ShutDown_result&);
+  ControlService_ShutDown_result() {
   }
 
-  virtual ~ControlService_shutdown_result() throw();
+  virtual ~ControlService_ShutDown_result() throw();
 
-  bool operator == (const ControlService_shutdown_result & /* rhs */) const
+  bool operator == (const ControlService_ShutDown_result & /* rhs */) const
   {
     return true;
   }
-  bool operator != (const ControlService_shutdown_result &rhs) const {
+  bool operator != (const ControlService_ShutDown_result &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const ControlService_shutdown_result & ) const;
+  bool operator < (const ControlService_ShutDown_result & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -120,11 +120,11 @@ class ControlService_shutdown_result {
 };
 
 
-class ControlService_shutdown_presult {
+class ControlService_ShutDown_presult {
  public:
 
 
-  virtual ~ControlService_shutdown_presult() throw();
+  virtual ~ControlService_ShutDown_presult() throw();
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
@@ -155,9 +155,9 @@ class ControlServiceClient : virtual public ControlServiceIf {
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> getOutputProtocol() {
     return poprot_;
   }
-  void shutdown();
-  void send_shutdown();
-  void recv_shutdown();
+  void ShutDown();
+  void send_ShutDown();
+  void recv_ShutDown();
  protected:
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> piprot_;
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> poprot_;
@@ -173,11 +173,11 @@ class ControlServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   typedef  void (ControlServiceProcessor::*ProcessFunction)(int32_t, ::apache::thrift::protocol::TProtocol*, ::apache::thrift::protocol::TProtocol*, void*);
   typedef std::map<std::string, ProcessFunction> ProcessMap;
   ProcessMap processMap_;
-  void process_shutdown(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_ShutDown(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
  public:
   ControlServiceProcessor(boost::shared_ptr<ControlServiceIf> iface) :
     iface_(iface) {
-    processMap_["shutdown"] = &ControlServiceProcessor::process_shutdown;
+    processMap_["ShutDown"] = &ControlServiceProcessor::process_ShutDown;
   }
 
   virtual ~ControlServiceProcessor() {}
@@ -206,13 +206,13 @@ class ControlServiceMultiface : virtual public ControlServiceIf {
     ifaces_.push_back(iface);
   }
  public:
-  void shutdown() {
+  void ShutDown() {
     size_t sz = ifaces_.size();
     size_t i = 0;
     for (; i < (sz - 1); ++i) {
-      ifaces_[i]->shutdown();
+      ifaces_[i]->ShutDown();
     }
-    ifaces_[i]->shutdown();
+    ifaces_[i]->ShutDown();
   }
 
 };
@@ -245,9 +245,9 @@ class ControlServiceConcurrentClient : virtual public ControlServiceIf {
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> getOutputProtocol() {
     return poprot_;
   }
-  void shutdown();
-  int32_t send_shutdown();
-  void recv_shutdown(const int32_t seqid);
+  void ShutDown();
+  int32_t send_ShutDown();
+  void recv_ShutDown(const int32_t seqid);
  protected:
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> piprot_;
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> poprot_;

@@ -115,7 +115,10 @@ function copy_files()
 	// copy('entity.thrift', $projDir.'thrift\entity.thrift');
 	copy('cbm.thrift', $projDir.'thrift\cbm.thrift');
 	copy('ctrl.thrift', $projDir.'thrift\ctrl.thrift');
-	copy('SQLServiceHelper.py', $projDir.'thrift\SQLServiceHelper.py');
+	copy('SQLServerHelper.py', $projDir.'thrift\SQLServerHelper.py');
+	copy('SQLClientHelper.py', $projDir.'thrift\SQLClientHelper.py');
+	copy('SQLClientHelper.h', $projDir.'thrift\SQLClientHelper.h');
+	copy('SQLClientHelper.cpp', $projDir.'thrift\SQLClientHelper.cpp');
 }
 
 //生成

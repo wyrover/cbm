@@ -16,41 +16,15 @@ from cbm.ttypes import *
 from ctrl import ControlService
 
 import CbmUtil
-
-#客户端封装类
-class RpcClient:
-  def __init__(self, Service, host='localhost', port=9090):
-    self.protocol = None
-    self.transport = None
-    self.client = None
-    self.host = host
-    self.port = port
-    self.Service = Service
-  
-  def start(self):
-    # Make socket
-    self.transport = TSocket.TSocket(self.host, self.port)
-    # Buffering is critical. Raw sockets are very slow
-    self.transport = TTransport.TBufferedTransport(self.transport)
-    # Wrap in a protocol
-    self.protocol = TBinaryProtocol.TBinaryProtocol(self.transport)
-    # 构造客户端对象
-    self.client = self.Service.Client(self.protocol)
-    # Connect!
-    self.transport.open()
-
-  def get(self):
-      return self.client
-
-  def close(self):
-    if self.transport is not None:
-      self.transport.close()
+import SQLClientHelper
+import CbmClientHelper
+from RpcClient import *
 
 #测试1
 def QuitServer():
-  ctrl_client = RpcClient(ControlService, port=9090)
+  ctrl_client = RpcClient(ControlService, host=HOST, port=PORT1)
   ctrl_client.start()
-  ctrl_client.get().shutdown()
+  ctrl_client.get().ShutDown()
   ctrl_client.close()
 
 #测试2

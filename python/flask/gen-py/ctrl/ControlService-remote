@@ -24,7 +24,7 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
   print('Usage: ' + sys.argv[0] + ' [-h host[:port]] [-u url] [-f[ramed]] [-s[sl]] function [arg1 [arg2...]]')
   print('')
   print('Functions:')
-  print('  void shutdown()')
+  print('  void ShutDown()')
   print('')
   sys.exit(0)
 
@@ -81,11 +81,11 @@ protocol = TBinaryProtocol.TBinaryProtocol(transport)
 client = ControlService.Client(protocol)
 transport.open()
 
-if cmd == 'shutdown':
+if cmd == 'ShutDown':
   if len(args) != 0:
-    print('shutdown requires 0 args')
+    print('ShutDown requires 0 args')
     sys.exit(1)
-  pp.pprint(client.shutdown())
+  pp.pprint(client.ShutDown())
 
 else:
   print('Unrecognized method %s' % cmd)

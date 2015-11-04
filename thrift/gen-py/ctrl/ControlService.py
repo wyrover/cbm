@@ -19,7 +19,7 @@ except:
 
 
 class Iface:
-  def shutdown(self):
+  def ShutDown(self):
     pass
 
 
@@ -30,18 +30,18 @@ class Client(Iface):
       self._oprot = oprot
     self._seqid = 0
 
-  def shutdown(self):
-    self.send_shutdown()
-    self.recv_shutdown()
+  def ShutDown(self):
+    self.send_ShutDown()
+    self.recv_ShutDown()
 
-  def send_shutdown(self):
-    self._oprot.writeMessageBegin('shutdown', TMessageType.CALL, self._seqid)
-    args = shutdown_args()
+  def send_ShutDown(self):
+    self._oprot.writeMessageBegin('ShutDown', TMessageType.CALL, self._seqid)
+    args = ShutDown_args()
     args.write(self._oprot)
     self._oprot.writeMessageEnd()
     self._oprot.trans.flush()
 
-  def recv_shutdown(self):
+  def recv_ShutDown(self):
     iprot = self._iprot
     (fname, mtype, rseqid) = iprot.readMessageBegin()
     if mtype == TMessageType.EXCEPTION:
@@ -49,7 +49,7 @@ class Client(Iface):
       x.read(iprot)
       iprot.readMessageEnd()
       raise x
-    result = shutdown_result()
+    result = ShutDown_result()
     result.read(iprot)
     iprot.readMessageEnd()
     return
@@ -59,7 +59,7 @@ class Processor(Iface, TProcessor):
   def __init__(self, handler):
     self._handler = handler
     self._processMap = {}
-    self._processMap["shutdown"] = Processor.process_shutdown
+    self._processMap["ShutDown"] = Processor.process_ShutDown
 
   def process(self, iprot, oprot):
     (name, type, seqid) = iprot.readMessageBegin()
@@ -76,13 +76,13 @@ class Processor(Iface, TProcessor):
       self._processMap[name](self, seqid, iprot, oprot)
     return True
 
-  def process_shutdown(self, seqid, iprot, oprot):
-    args = shutdown_args()
+  def process_ShutDown(self, seqid, iprot, oprot):
+    args = ShutDown_args()
     args.read(iprot)
     iprot.readMessageEnd()
-    result = shutdown_result()
+    result = ShutDown_result()
     try:
-      self._handler.shutdown()
+      self._handler.ShutDown()
       msg_type = TMessageType.REPLY
     except (TTransport.TTransportException, KeyboardInterrupt, SystemExit):
       raise
@@ -90,7 +90,7 @@ class Processor(Iface, TProcessor):
       msg_type = TMessageType.EXCEPTION
       logging.exception(ex)
       result = TApplicationException(TApplicationException.INTERNAL_ERROR, 'Internal error')
-    oprot.writeMessageBegin("shutdown", msg_type, seqid)
+    oprot.writeMessageBegin("ShutDown", msg_type, seqid)
     result.write(oprot)
     oprot.writeMessageEnd()
     oprot.trans.flush()
@@ -98,7 +98,7 @@ class Processor(Iface, TProcessor):
 
 # HELPER FUNCTIONS AND STRUCTURES
 
-class shutdown_args:
+class ShutDown_args:
 
   thrift_spec = (
   )
@@ -121,7 +121,7 @@ class shutdown_args:
     if oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and self.thrift_spec is not None and fastbinary is not None:
       oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
       return
-    oprot.writeStructBegin('shutdown_args')
+    oprot.writeStructBegin('ShutDown_args')
     oprot.writeFieldStop()
     oprot.writeStructEnd()
 
@@ -144,7 +144,7 @@ class shutdown_args:
   def __ne__(self, other):
     return not (self == other)
 
-class shutdown_result:
+class ShutDown_result:
 
   thrift_spec = (
   )
@@ -167,7 +167,7 @@ class shutdown_result:
     if oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and self.thrift_spec is not None and fastbinary is not None:
       oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
       return
-    oprot.writeStructBegin('shutdown_result')
+    oprot.writeStructBegin('ShutDown_result')
     oprot.writeFieldStop()
     oprot.writeStructEnd()
 

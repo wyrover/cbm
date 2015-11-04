@@ -1,12 +1,11 @@
 #include "stdafx.h"
 #include "LoginDialog.h"
-#include "RegDialog.h"
+//#include "RegDialog.h"
 
 #include <ArxHelper/HelperClass.h>
-#include <Dao/DaoHelper.h>
-
-using namespace orm;
-using namespace cbm;
+#include <Util/HelperClass.h>
+#include "SQLClientHelper.h"
+#include "CbmClientHelper.h"
 
 LoginDialog::LoginDialog( BOOL bModal ) : AcadSouiDialog( _T( "layout:login" ), bModal )
 {
@@ -38,10 +37,10 @@ LRESULT LoginDialog::OnInitDialog( HWND hWnd, LPARAM lParam )
 
 void LoginDialog::OnRegButtonClick()
 {
-    RegDialog dlg( TRUE );
-	dlg.SetWindowTitle(_T("注册新矿井以及新用户"));
-    dlg.Run( this->m_hWnd );
-    //SMessageBox(m_hWnd,_T("注册矿井信息"),_T("测试"),MB_OK);
+    //RegDialog dlg( TRUE );
+	//dlg.SetWindowTitle(_T("注册新矿井以及新用户"));
+    //dlg.Run( this->m_hWnd );
+    ////SMessageBox(m_hWnd,_T("注册矿井信息"),_T("测试"),MB_OK);
 }
 
 void LoginDialog::OnLoginButtonClick()
@@ -49,7 +48,7 @@ void LoginDialog::OnLoginButtonClick()
     CString user = m_UsernameEdit->GetWindowText();
     CString pwd = m_PasswordEdit->GetWindowText();
 
-    int ret = DaoHelper::VerifyMineAccount( user, pwd );
+    int ret = CbmClientHelper::VerifyMineAccount( W2C((LPCTSTR)user), W2C((LPCTSTR)pwd) );
     if( user.IsEmpty() )
     {
         SMessageBox( m_hWnd, _T( "请输入用户名!" ), _T( "友情提示" ), MB_OK );
@@ -70,42 +69,47 @@ void LoginDialog::OnLoginButtonClick()
     }
     else
     {
-        int account_id = DaoHelper::GetOnlineAccountId();
+        int account_id = CbmClientHelper::GetOnlineAccountId();
         if( account_id == 0 )
         {
+			int account_id = SQLClientHelper::GetAccountIdByField1("username", W2C((LPCTSTR)user));
+
             //设置当前登录用户
-            SysInfoPtr sys_info( new SysInfo );
-            sys_info->account = FIND_ONE( Account, FIELD( username ), user );
-            sys_info->save();
-            SMessageBox( m_hWnd, _T( "登录成功!" ), _T( "友情提示" ), MB_OK );
+   //         SysInfoPtr sys_info( new SysInfo );
+			//sys_info->account = SQLClientHelper::GetAccountIdByField1("username", W2C(user));
+   //         sys_info->save();
+   //         SMessageBox( m_hWnd, _T( "登录成功!" ), _T( "友情提示" ), MB_OK );
             AcadSouiDialog::OnOK();
         }
         else
         {
             //根据id查找用户
-            AccountPtr account = FIND_BY_ID( Account, account_id );
-            if( account == 0 )
+			cbm::Account account;
+			SQLClientHelper::GetAccountById(account, account_id);
+
+            //AccountPtr account = FIND_BY_ID( Account, account_id );
+            if( account.id < 0 )
             {
                 SMessageBox( m_hWnd, _T( "登录失败!" ), _T( "友情提示" ), MB_OK );
             }
-            else if( account->username == user )
+            else if( account.username == W2C((LPCTSTR)user) )
             {
                 SMessageBox( m_hWnd, _T( "当前用户已登录!" ), _T( "友情提示" ), MB_OK );
             }
             else
             {
-                CString msg;
-                msg.Format( _T( "是否注销当前用户%s并切换到用户%s???" ), account->username, user );
-                if( IDYES == SMessageBox( m_hWnd, msg, _T( "友情提示" ), MB_YESNO ) )
-                {
-                    //设置当前登录用户
-                    SysInfoPtr sys_info = FIND_FIRST( SysInfo );
-                    sys_info->account = FIND_ONE( Account, FIELD( username ), user );
-                    sys_info->save();
-                    msg.Format( _T( "成功切换到用户:%s" ), user );
-                    SMessageBox( m_hWnd, msg, _T( "友情提示" ), MB_OK );
-                    AcadSouiDialog::OnOK();
-                }
+                //CString msg;
+                //msg.Format( _T( "是否注销当前用户%s并切换到用户%s???" ), account->username, user );
+                //if( IDYES == SMessageBox( m_hWnd, msg, _T( "友情提示" ), MB_YESNO ) )
+                //{
+                //    //设置当前登录用户
+                //    SysInfoPtr sys_info = FIND_FIRST( SysInfo );
+                //    sys_info->account = FIND_ONE( Account, FIELD( username ), user );
+                //    sys_info->save();
+                //    msg.Format( _T( "成功切换到用户:%s" ), user );
+                //    SMessageBox( m_hWnd, msg, _T( "友情提示" ), MB_OK );
+                //    AcadSouiDialog::OnOK();
+                //}
             }
         }
     }

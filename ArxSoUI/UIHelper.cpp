@@ -7,7 +7,7 @@
 #include "PicViewerDialog.h"
 #include "RtfViewerDialog.h"
 
-//#include "LoginDialog.h"
+#include "LoginDialog.h"
 //#include "RegDialog.h"
 //#include "SampleManageDialog.h"
 //#include "MineDesignDialog.h"
@@ -144,11 +144,11 @@ void UIHelper::ShowImgView( const CString& bstrFileName )
 
 void UIHelper::Login()
 {
- //   CAcModuleResourceOverride myResources;
+    CAcModuleResourceOverride myResources;
 
- //   LoginDialog dlg( TRUE );
-	//dlg.SetWindowTitle(_T("系统用户登录"));
- //   dlg.Run( acedGetAcadFrame()->GetSafeHwnd() );
+    LoginDialog dlg( TRUE );
+	dlg.SetWindowTitle(_T("系统用户登录"));
+    dlg.Run( acedGetAcadFrame()->GetSafeHwnd() );
 }
 
 void UIHelper::RegMine()
@@ -733,10 +733,11 @@ void UIHelper::Main()
   //  }
 }
 
-#include <RpcDao/RpcDaoHelper.h>
+#include "SQLClientHelper.h"
+#include "CbmClientHelper.h"
 
 void UIHelper::xxx()
 {
-	int ret = RpcDaoHelper::VerifyMineAccount("dlj", "123");
+	int ret = CbmClientHelper::VerifyMineAccount("dlj", "123");
 	acutPrintf(_T("\n验证结果:%d"), ret);
 }

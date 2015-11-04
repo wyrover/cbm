@@ -4,7 +4,7 @@
 #include "MainuiDialog.h"
 #include "ThreadHelper.h"
 
-#include <Dao/DaoHelper.h>
+//#include <Dao/DaoHelper.h>
 #include <Util/HelperClass.h>
 
 BEGIN_MESSAGE_MAP( CLauncherApp, CWinAppEx )

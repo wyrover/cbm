@@ -22,9 +22,9 @@ class ControlServiceHandler : virtual public ControlServiceIf {
     // Your initialization goes here
   }
 
-  void shutdown() {
+  void ShutDown() {
     // Your implementation goes here
-    printf("shutdown\n");
+    printf("ShutDown\n");
   }
 
 };

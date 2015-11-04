@@ -9,11 +9,11 @@
 namespace ctrl {
 
 
-ControlService_shutdown_args::~ControlService_shutdown_args() throw() {
+ControlService_ShutDown_args::~ControlService_ShutDown_args() throw() {
 }
 
 
-uint32_t ControlService_shutdown_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t ControlService_ShutDown_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -41,10 +41,10 @@ uint32_t ControlService_shutdown_args::read(::apache::thrift::protocol::TProtoco
   return xfer;
 }
 
-uint32_t ControlService_shutdown_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t ControlService_ShutDown_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("ControlService_shutdown_args");
+  xfer += oprot->writeStructBegin("ControlService_ShutDown_args");
 
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
@@ -52,14 +52,14 @@ uint32_t ControlService_shutdown_args::write(::apache::thrift::protocol::TProtoc
 }
 
 
-ControlService_shutdown_pargs::~ControlService_shutdown_pargs() throw() {
+ControlService_ShutDown_pargs::~ControlService_ShutDown_pargs() throw() {
 }
 
 
-uint32_t ControlService_shutdown_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t ControlService_ShutDown_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("ControlService_shutdown_pargs");
+  xfer += oprot->writeStructBegin("ControlService_ShutDown_pargs");
 
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
@@ -67,11 +67,11 @@ uint32_t ControlService_shutdown_pargs::write(::apache::thrift::protocol::TProto
 }
 
 
-ControlService_shutdown_result::~ControlService_shutdown_result() throw() {
+ControlService_ShutDown_result::~ControlService_ShutDown_result() throw() {
 }
 
 
-uint32_t ControlService_shutdown_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t ControlService_ShutDown_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -99,11 +99,11 @@ uint32_t ControlService_shutdown_result::read(::apache::thrift::protocol::TProto
   return xfer;
 }
 
-uint32_t ControlService_shutdown_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t ControlService_ShutDown_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("ControlService_shutdown_result");
+  xfer += oprot->writeStructBegin("ControlService_ShutDown_result");
 
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
@@ -111,11 +111,11 @@ uint32_t ControlService_shutdown_result::write(::apache::thrift::protocol::TProt
 }
 
 
-ControlService_shutdown_presult::~ControlService_shutdown_presult() throw() {
+ControlService_ShutDown_presult::~ControlService_ShutDown_presult() throw() {
 }
 
 
-uint32_t ControlService_shutdown_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t ControlService_ShutDown_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -143,18 +143,18 @@ uint32_t ControlService_shutdown_presult::read(::apache::thrift::protocol::TProt
   return xfer;
 }
 
-void ControlServiceClient::shutdown()
+void ControlServiceClient::ShutDown()
 {
-  send_shutdown();
-  recv_shutdown();
+  send_ShutDown();
+  recv_ShutDown();
 }
 
-void ControlServiceClient::send_shutdown()
+void ControlServiceClient::send_ShutDown()
 {
   int32_t cseqid = 0;
-  oprot_->writeMessageBegin("shutdown", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("ShutDown", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  ControlService_shutdown_pargs args;
+  ControlService_ShutDown_pargs args;
   args.write(oprot_);
 
   oprot_->writeMessageEnd();
@@ -162,7 +162,7 @@ void ControlServiceClient::send_shutdown()
   oprot_->getTransport()->flush();
 }
 
-void ControlServiceClient::recv_shutdown()
+void ControlServiceClient::recv_ShutDown()
 {
 
   int32_t rseqid = 0;
@@ -182,12 +182,12 @@ void ControlServiceClient::recv_shutdown()
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  if (fname.compare("shutdown") != 0) {
+  if (fname.compare("ShutDown") != 0) {
     iprot_->skip(::apache::thrift::protocol::T_STRUCT);
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  ControlService_shutdown_presult result;
+  ControlService_ShutDown_presult result;
   result.read(iprot_);
   iprot_->readMessageEnd();
   iprot_->getTransport()->readEnd();
@@ -214,37 +214,37 @@ bool ControlServiceProcessor::dispatchCall(::apache::thrift::protocol::TProtocol
   return true;
 }
 
-void ControlServiceProcessor::process_shutdown(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void ControlServiceProcessor::process_ShutDown(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("ControlService.shutdown", callContext);
+    ctx = this->eventHandler_->getContext("ControlService.ShutDown", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "ControlService.shutdown");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "ControlService.ShutDown");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "ControlService.shutdown");
+    this->eventHandler_->preRead(ctx, "ControlService.ShutDown");
   }
 
-  ControlService_shutdown_args args;
+  ControlService_ShutDown_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "ControlService.shutdown", bytes);
+    this->eventHandler_->postRead(ctx, "ControlService.ShutDown", bytes);
   }
 
-  ControlService_shutdown_result result;
+  ControlService_ShutDown_result result;
   try {
-    iface_->shutdown();
+    iface_->ShutDown();
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "ControlService.shutdown");
+      this->eventHandler_->handlerError(ctx, "ControlService.ShutDown");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
-    oprot->writeMessageBegin("shutdown", ::apache::thrift::protocol::T_EXCEPTION, seqid);
+    oprot->writeMessageBegin("ShutDown", ::apache::thrift::protocol::T_EXCEPTION, seqid);
     x.write(oprot);
     oprot->writeMessageEnd();
     oprot->getTransport()->writeEnd();
@@ -253,17 +253,17 @@ void ControlServiceProcessor::process_shutdown(int32_t seqid, ::apache::thrift::
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "ControlService.shutdown");
+    this->eventHandler_->preWrite(ctx, "ControlService.ShutDown");
   }
 
-  oprot->writeMessageBegin("shutdown", ::apache::thrift::protocol::T_REPLY, seqid);
+  oprot->writeMessageBegin("ShutDown", ::apache::thrift::protocol::T_REPLY, seqid);
   result.write(oprot);
   oprot->writeMessageEnd();
   bytes = oprot->getTransport()->writeEnd();
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "ControlService.shutdown", bytes);
+    this->eventHandler_->postWrite(ctx, "ControlService.ShutDown", bytes);
   }
 }
 
@@ -274,19 +274,19 @@ void ControlServiceProcessor::process_shutdown(int32_t seqid, ::apache::thrift::
   return processor;
 }
 
-void ControlServiceConcurrentClient::shutdown()
+void ControlServiceConcurrentClient::ShutDown()
 {
-  int32_t seqid = send_shutdown();
-  recv_shutdown(seqid);
+  int32_t seqid = send_ShutDown();
+  recv_ShutDown(seqid);
 }
 
-int32_t ControlServiceConcurrentClient::send_shutdown()
+int32_t ControlServiceConcurrentClient::send_ShutDown()
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
-  oprot_->writeMessageBegin("shutdown", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("ShutDown", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  ControlService_shutdown_pargs args;
+  ControlService_ShutDown_pargs args;
   args.write(oprot_);
 
   oprot_->writeMessageEnd();
@@ -297,7 +297,7 @@ int32_t ControlServiceConcurrentClient::send_shutdown()
   return cseqid;
 }
 
-void ControlServiceConcurrentClient::recv_shutdown(const int32_t seqid)
+void ControlServiceConcurrentClient::recv_ShutDown(const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -326,7 +326,7 @@ void ControlServiceConcurrentClient::recv_shutdown(const int32_t seqid)
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
       }
-      if (fname.compare("shutdown") != 0) {
+      if (fname.compare("ShutDown") != 0) {
         iprot_->skip(::apache::thrift::protocol::T_STRUCT);
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
@@ -335,7 +335,7 @@ void ControlServiceConcurrentClient::recv_shutdown(const int32_t seqid)
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      ControlService_shutdown_presult result;
+      ControlService_ShutDown_presult result;
       result.read(iprot_);
       iprot_->readMessageEnd();
       iprot_->getTransport()->readEnd();

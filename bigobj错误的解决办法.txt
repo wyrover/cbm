@@ -1,0 +1,6 @@
+http://blog.csdn.net/huangmou37/article/details/7083174
+fatal error C1128: number of sections exceeded object file format limit : compile with /bigobj 的解决办法
+分类： NB Programming 2011-12-19 10:23 2611人阅读 评论(2) 收藏 举报
+objectfilepropertiesc编译器command
+        有时候在编译一个源文件比较大的时候，会出现这样的错误，原因在于，编译器对于编译目标大小有自身默认设置，超过便认为目标有错，比如采用debug模式编译的时候，编译器会向目标二进制文件中插入很多调试信息，导致目标文件过大，或者本身这个源文件就过大，如果是自身的程序，遇到这种情况，一般说明你的代码分割得不够，一个源代码有太多内容，有时候太多内联函数，也会导致这样的错误发生。如果不想对源代码进行改动，解决办法也是有的，而且相当简单，其实就在错误信息里面，“compile with /bigobj”，这就是解决办法。右键项目，properties(属性) -> Configuration Properties(配置属性) -> C/C++ -> Command Line(命令行) -> Additional options(其他选项)，然后加上 /bigobj属性，确定，然后重新编译即可。
+版权声明：本文为博主原创文章，未经博主允许不得转载。
