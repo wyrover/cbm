@@ -32,7 +32,7 @@ def GetOnlineAccountId():
 	except Exception, e:
 		print e
 		ret = -1
-    return ret
+	return ret
 
 def GetOnlineMine():
 	ret = Mine()
@@ -44,7 +44,7 @@ def GetOnlineMine():
 	except Exception, e:
 		print e
 		ret.id = -1
-    return ret
+	return ret
 
 def VerifyMineAccount(username, pwd):
 	ret = -2
@@ -56,7 +56,7 @@ def VerifyMineAccount(username, pwd):
 	except Exception, e:
 		print e
 		ret = -2
-    return ret
+	return ret
 
 def GetAllMineBases():
 	ret = []
@@ -68,7 +68,7 @@ def GetAllMineBases():
 	except Exception, e:
 		print e
 		ret = []
-    return ret
+	return ret
 
 def GetAllMineRegions(baseName):
 	ret = []
@@ -80,7 +80,7 @@ def GetAllMineRegions(baseName):
 	except Exception, e:
 		print e
 		ret = []
-    return ret
+	return ret
 
 def GetBaseByRegion(regionName):
 	ret = ''
@@ -92,7 +92,7 @@ def GetBaseByRegion(regionName):
 	except Exception, e:
 		print e
 		ret = ''
-    return ret
+	return ret
 
 def GetSampleMine(regionName):
 	ret = Mine()
@@ -104,7 +104,7 @@ def GetSampleMine(regionName):
 	except Exception, e:
 		print e
 		ret.id = -1
-    return ret
+	return ret
 
 def GetSampleCoal(regionName):
 	ret = Coal()
@@ -116,7 +116,7 @@ def GetSampleCoal(regionName):
 	except Exception, e:
 		print e
 		ret.id = -1
-    return ret
+	return ret
 
 def GetCoalNames(mine_id):
 	ret = []
@@ -128,7 +128,7 @@ def GetCoalNames(mine_id):
 	except Exception, e:
 		print e
 		ret = []
-    return ret
+	return ret
 
 def GetCoalIds(mine_id):
 	ret = []
@@ -140,7 +140,7 @@ def GetCoalIds(mine_id):
 	except Exception, e:
 		print e
 		ret = []
-    return ret
+	return ret
 
 def GetWorkAreas(mine_id):
 	ret = []
@@ -152,7 +152,7 @@ def GetWorkAreas(mine_id):
 	except Exception, e:
 		print e
 		ret = []
-    return ret
+	return ret
 
 def GetWorkSurfs(mine_id):
 	ret = []
@@ -164,7 +164,7 @@ def GetWorkSurfs(mine_id):
 	except Exception, e:
 		print e
 		ret = []
-    return ret
+	return ret
 
 def GetDrillingSurfs(mine_id):
 	ret = []
@@ -176,7 +176,7 @@ def GetDrillingSurfs(mine_id):
 	except Exception, e:
 		print e
 		ret = []
-    return ret
+	return ret
 
 def GetWorkAreaIds(mine_id):
 	ret = []
@@ -188,7 +188,7 @@ def GetWorkAreaIds(mine_id):
 	except Exception, e:
 		print e
 		ret = []
-    return ret
+	return ret
 
 def GetWorkSurfIds(mine_id):
 	ret = []
@@ -200,7 +200,7 @@ def GetWorkSurfIds(mine_id):
 	except Exception, e:
 		print e
 		ret = []
-    return ret
+	return ret
 
 def GetDrillingSurfIds(mine_id):
 	ret = []
@@ -212,7 +212,7 @@ def GetDrillingSurfIds(mine_id):
 	except Exception, e:
 		print e
 		ret = []
-    return ret
+	return ret
 
 def DifficultEval(coal):
 	ret = 0.0
@@ -224,7 +224,7 @@ def DifficultEval(coal):
 	except Exception, e:
 		print e
 		ret = 0.0
-    return ret
+	return ret
 
 def DifficultEvalString(coal):
 	ret = ''
@@ -236,7 +236,7 @@ def DifficultEvalString(coal):
 	except Exception, e:
 		print e
 		ret = ''
-    return ret
+	return ret
 
 def MineGasReservesW1(mine_id):
 	ret = 0.0
@@ -248,7 +248,7 @@ def MineGasReservesW1(mine_id):
 	except Exception, e:
 		print e
 		ret = 0.0
-    return ret
+	return ret
 
 def MineGasReservesW2(mine_id):
 	ret = 0.0
@@ -260,7 +260,7 @@ def MineGasReservesW2(mine_id):
 	except Exception, e:
 		print e
 		ret = 0.0
-    return ret
+	return ret
 
 def WorkAreaGasFlow(work_area, K1):
 	ret = -1.0
@@ -272,7 +272,7 @@ def WorkAreaGasFlow(work_area, K1):
 	except Exception, e:
 		print e
 		ret = -1.0
-    return ret
+	return ret
 
 def MineGasFlow(mine):
 	ret = 0.0
@@ -284,7 +284,7 @@ def MineGasFlow(mine):
 	except Exception, e:
 		print e
 		ret = 0.0
-    return ret
+	return ret
 
 def WorkSurfGasFlow1(coal, work_area, work_surf):
 	ret = 0.0
@@ -296,7 +296,7 @@ def WorkSurfGasFlow1(coal, work_area, work_surf):
 	except Exception, e:
 		print e
 		ret = 0.0
-    return ret
+	return ret
 
 def WorkSurfGasFlow2(coal, work_area, work_surf):
 	ret = 0.0
@@ -308,7 +308,7 @@ def WorkSurfGasFlow2(coal, work_area, work_surf):
 	except Exception, e:
 		print e
 		ret = 0.0
-    return ret
+	return ret
 
 def DrillingSurfGasFlow(coal, drilling_surf, tunnel):
 	ret = DrillingSurfGasFlowResult()
@@ -323,4 +323,4 @@ def DrillingSurfGasFlow(coal, drilling_surf, tunnel):
 		ret.q3 = 0.0
 		ret.q4 = 0.0
 		ret.qa = 0.0
-    return ret
+	return ret
