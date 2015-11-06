@@ -1,8 +1,9 @@
 #-*- coding:utf-8 -*-
 
 from cbm.ttypes import *
-import CbmUtil
+from cbm import CbmService
 from RpcClient import *
+import CbmUtil
 
 #Account 类型的CRUD操作
 def AddAccount(account):

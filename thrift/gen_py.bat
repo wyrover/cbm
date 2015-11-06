@@ -18,7 +18,7 @@ sqlacodegen mysql+pymysql://root:@localhost/cbm --outfile sql.py
 
 rem ¸´ÖÆsql.py
 copy /y sql.py "..\python\flask\"
-copy /y SQLServiceHelper.py "..\python\flask\"
+copy /y SQLServerHelper.py "..\python\flask\"
 copy /y SQLClientHelper.py "..\python\flask\"
 
 rem ÔÝÍ£

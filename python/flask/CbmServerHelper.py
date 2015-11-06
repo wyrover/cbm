@@ -107,13 +107,7 @@ class CbmServiceHandler(SQLServerHelper.SQLServiceHandler):
             else:
                 return 1  # 用户名和密码均匹配
 
-    def GetAllMineBases(self):
-        mine_bases = []
-        query = self.session.query(sql.MineBase.name).all()
-        mine_bases = [mine_base.name for mine_base in query]
-        return mine_bases
-
-    def GetAllMineRegions(self, baseName):
+    def GetMineRegionsOfBase(self, baseName):
         mine_regions = []
         query = self.session.query(sql.MineRegion).join(sql.MineBase).filter(sql.MineBase.name==baseName).all()
         mine_regions = [region.name for region in query]
@@ -129,7 +123,7 @@ class CbmServiceHandler(SQLServerHelper.SQLServiceHandler):
             print e
         return baseName
 
-    def GetSampleMine(self, regionName):
+    def GetSampleMineOfRegion(self, regionName):
         sample_mine = Mine()
         sample_mine.id = -1
         try:
@@ -141,11 +135,11 @@ class CbmServiceHandler(SQLServerHelper.SQLServiceHandler):
             print e
         return sample_mine
 
-    def GetSampleCoal(self, regionName):
+    def GetSampleCoalOfRegion(self, regionName):
         sample_coal = Coal()
         sample_coal.id = -1
         
-        sample_mine = self.GetSampleMine(regionName)
+        sample_mine = self.GetSampleMineOfRegion(regionName)
         if sample_mine.id > -1:
             try:
                 query = self.session.query(sql.Coal).filter(sql.Coal.mine_id==sample_mine.id).one()
@@ -156,15 +150,15 @@ class CbmServiceHandler(SQLServerHelper.SQLServiceHandler):
                 print e
         return sample_coal
 
-    def GetCoalNames(self, mine_id):
+    def GetCoalNamesOfMine(self, mine_id):
         query = self.session.query(sql.Coal).filter(sql.Coal.mine_id==mine_id).all()
         return [coal.name for coal in query]
 
-    def GetCoalIds(self, mine_id):
+    def GetCoalIdsOfMine(self, mine_id):
         query = self.session.query(sql.Coal).filter(sql.Coal.mine_id==mine_id).all()
         return [coal.id for coal in query]
 
-    def GetWorkAreas(self, mine_id):
+    def GetWorkAreasOfMine(self, mine_id):
         coal_ids = self.GetCoalIds(mine_id)
         if len(coal_ids) == 0:
             return []
@@ -180,7 +174,7 @@ class CbmServiceHandler(SQLServerHelper.SQLServiceHandler):
             CbmUtil.CopyAttribs(query[i], work_areas[i])
         return work_areas
 
-    def GetWorkSurfs(self, mine_id):
+    def GetWorkSurfsOfMine(self, mine_id):
         work_area_ids = self.GetWorkAreaIds(mine_id)
         if len(work_area_ids) == 0:
             return []
@@ -196,7 +190,7 @@ class CbmServiceHandler(SQLServerHelper.SQLServiceHandler):
             CbmUtil.CopyAttribs(query[i], work_surfs[i])
         return work_surfs
 
-    def GetDrillingSurfs(self, mine_id):
+    def GetDrillingSurfsOfMine(self, mine_id):
         work_area_ids = self.GetWorkAreaIds(mine_id)
         if len(work_area_ids) == 0:
             return []
@@ -212,21 +206,21 @@ class CbmServiceHandler(SQLServerHelper.SQLServiceHandler):
             CbmUtil.CopyAttribs(query[i], drilling_surfs[i])
         return drilling_surfs
 
-    def GetWorkAreaIds(self, mine_id):
+    def GetWorkAreaIdsOfMine(self, mine_id):
         coal_ids = self.GetCoalIds(mine_id)
         if len(coal_ids) == 0:
             return []
         query = self.session.query(sql.WorkArea).filter(sql.WorkArea.coal_id.in_(coal_ids)).all()
         return [work_area.id for work_area in query]
 
-    def GetWorkSurfIds(self, mine_id):
+    def GetWorkSurfIdsOfMine(self, mine_id):
         work_area_ids = self.GetWorkAreaIds(mine_id)
         if len(work_area_ids) == 0:
             return []
         query = self.session.query(sql.WorkSurf).filter(sql.WorkSurf.work_area_id.in_(work_area_ids)).all()
         return [work_surf.id for work_surf in query]
 
-    def GetDrillingSurfIds(self, mine_id):
+    def GetDrillingSurfIdsOfMine(self, mine_id):
         work_area_ids = self.GetWorkAreaIds(mine_id)
         if len(work_area_ids) == 0:
             return []

@@ -95,8 +95,8 @@ function copy_files()
 	$projDir = file_get_contents('root.txt');
 
 	//将c++代码复制到cbm项目
-	copy('Entity.h', $projDir.'Dao\Entity.h');
-	copy('Entity.cpp', $projDir.'Dao\Entity.cpp');
+	// copy('Entity.h', $projDir.'Dao\Entity.h');
+	// copy('Entity.cpp', $projDir.'Dao\Entity.cpp');
 
 	//将sql文件复制到cbm项目
 	copy('cbm-mysql.sql', $projDir.'php\cbm\cbm-mysql.sql');

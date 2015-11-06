@@ -77,10 +77,10 @@ class SQLServiceHandler(object):
 		return [obj.id for obj in query]
 	def GetAccountNames(self):
 		query=self.session.query(sql.Account).all()
-		if hasattr(Account, 'name'):
-			return [obj.name for obj in query]
-		else:
+		if len(query) == 0 or not hasattr(query[0], 'name'):
 			return []
+		else:
+			return [obj.name for obj in query]
 	def AddMoreAccount(self, objs):
 		n = len(objs)
 		sql_objs = [sql.Account() for i in range(n)]
@@ -211,10 +211,10 @@ class SQLServiceHandler(object):
 		return [obj.id for obj in query]
 	def GetAdjLayerNames(self):
 		query=self.session.query(sql.AdjLayer).all()
-		if hasattr(AdjLayer, 'name'):
-			return [obj.name for obj in query]
-		else:
+		if len(query) == 0 or not hasattr(query[0], 'name'):
 			return []
+		else:
+			return [obj.name for obj in query]
 	def AddMoreAdjLayer(self, objs):
 		n = len(objs)
 		sql_objs = [sql.AdjLayer() for i in range(n)]
@@ -345,10 +345,10 @@ class SQLServiceHandler(object):
 		return [obj.id for obj in query]
 	def GetCoalNames(self):
 		query=self.session.query(sql.Coal).all()
-		if hasattr(Coal, 'name'):
-			return [obj.name for obj in query]
-		else:
+		if len(query) == 0 or not hasattr(query[0], 'name'):
 			return []
+		else:
+			return [obj.name for obj in query]
 	def AddMoreCoal(self, objs):
 		n = len(objs)
 		sql_objs = [sql.Coal() for i in range(n)]
@@ -479,10 +479,10 @@ class SQLServiceHandler(object):
 		return [obj.id for obj in query]
 	def GetComplexityNames(self):
 		query=self.session.query(sql.Complexity).all()
-		if hasattr(Complexity, 'name'):
-			return [obj.name for obj in query]
-		else:
+		if len(query) == 0 or not hasattr(query[0], 'name'):
 			return []
+		else:
+			return [obj.name for obj in query]
 	def AddMoreComplexity(self, objs):
 		n = len(objs)
 		sql_objs = [sql.Complexity() for i in range(n)]
@@ -613,10 +613,10 @@ class SQLServiceHandler(object):
 		return [obj.id for obj in query]
 	def GetDesignDrillingSurfTechnologyNames(self):
 		query=self.session.query(sql.DesignDrillingSurfTechnology).all()
-		if hasattr(DesignDrillingSurfTechnology, 'name'):
-			return [obj.name for obj in query]
-		else:
+		if len(query) == 0 or not hasattr(query[0], 'name'):
 			return []
+		else:
+			return [obj.name for obj in query]
 	def AddMoreDesignDrillingSurfTechnology(self, objs):
 		n = len(objs)
 		sql_objs = [sql.DesignDrillingSurfTechnology() for i in range(n)]
@@ -747,10 +747,10 @@ class SQLServiceHandler(object):
 		return [obj.id for obj in query]
 	def GetDesignGoafTechnologyNames(self):
 		query=self.session.query(sql.DesignGoafTechnology).all()
-		if hasattr(DesignGoafTechnology, 'name'):
-			return [obj.name for obj in query]
-		else:
+		if len(query) == 0 or not hasattr(query[0], 'name'):
 			return []
+		else:
+			return [obj.name for obj in query]
 	def AddMoreDesignGoafTechnology(self, objs):
 		n = len(objs)
 		sql_objs = [sql.DesignGoafTechnology() for i in range(n)]
@@ -881,10 +881,10 @@ class SQLServiceHandler(object):
 		return [obj.id for obj in query]
 	def GetDesignPoreNames(self):
 		query=self.session.query(sql.DesignPore).all()
-		if hasattr(DesignPore, 'name'):
-			return [obj.name for obj in query]
-		else:
+		if len(query) == 0 or not hasattr(query[0], 'name'):
 			return []
+		else:
+			return [obj.name for obj in query]
 	def AddMoreDesignPore(self, objs):
 		n = len(objs)
 		sql_objs = [sql.DesignPore() for i in range(n)]
@@ -1015,10 +1015,10 @@ class SQLServiceHandler(object):
 		return [obj.id for obj in query]
 	def GetDesignSiteNames(self):
 		query=self.session.query(sql.DesignSite).all()
-		if hasattr(DesignSite, 'name'):
-			return [obj.name for obj in query]
-		else:
+		if len(query) == 0 or not hasattr(query[0], 'name'):
 			return []
+		else:
+			return [obj.name for obj in query]
 	def AddMoreDesignSite(self, objs):
 		n = len(objs)
 		sql_objs = [sql.DesignSite() for i in range(n)]
@@ -1149,10 +1149,10 @@ class SQLServiceHandler(object):
 		return [obj.id for obj in query]
 	def GetDesignTechnologyNames(self):
 		query=self.session.query(sql.DesignTechnology).all()
-		if hasattr(DesignTechnology, 'name'):
-			return [obj.name for obj in query]
-		else:
+		if len(query) == 0 or not hasattr(query[0], 'name'):
 			return []
+		else:
+			return [obj.name for obj in query]
 	def AddMoreDesignTechnology(self, objs):
 		n = len(objs)
 		sql_objs = [sql.DesignTechnology() for i in range(n)]
@@ -1283,10 +1283,10 @@ class SQLServiceHandler(object):
 		return [obj.id for obj in query]
 	def GetDesignWorkSurfTechnologyNames(self):
 		query=self.session.query(sql.DesignWorkSurfTechnology).all()
-		if hasattr(DesignWorkSurfTechnology, 'name'):
-			return [obj.name for obj in query]
-		else:
+		if len(query) == 0 or not hasattr(query[0], 'name'):
 			return []
+		else:
+			return [obj.name for obj in query]
 	def AddMoreDesignWorkSurfTechnology(self, objs):
 		n = len(objs)
 		sql_objs = [sql.DesignWorkSurfTechnology() for i in range(n)]
@@ -1417,10 +1417,10 @@ class SQLServiceHandler(object):
 		return [obj.id for obj in query]
 	def GetDrillingRadiusParamNames(self):
 		query=self.session.query(sql.DrillingRadiusParam).all()
-		if hasattr(DrillingRadiusParam, 'name'):
-			return [obj.name for obj in query]
-		else:
+		if len(query) == 0 or not hasattr(query[0], 'name'):
 			return []
+		else:
+			return [obj.name for obj in query]
 	def AddMoreDrillingRadiusParam(self, objs):
 		n = len(objs)
 		sql_objs = [sql.DrillingRadiusParam() for i in range(n)]
@@ -1551,10 +1551,10 @@ class SQLServiceHandler(object):
 		return [obj.id for obj in query]
 	def GetDrillingSurfNames(self):
 		query=self.session.query(sql.DrillingSurf).all()
-		if hasattr(DrillingSurf, 'name'):
-			return [obj.name for obj in query]
-		else:
+		if len(query) == 0 or not hasattr(query[0], 'name'):
 			return []
+		else:
+			return [obj.name for obj in query]
 	def AddMoreDrillingSurf(self, objs):
 		n = len(objs)
 		sql_objs = [sql.DrillingSurf() for i in range(n)]
@@ -1685,10 +1685,10 @@ class SQLServiceHandler(object):
 		return [obj.id for obj in query]
 	def GetEvalUnitNames(self):
 		query=self.session.query(sql.EvalUnit).all()
-		if hasattr(EvalUnit, 'name'):
-			return [obj.name for obj in query]
-		else:
+		if len(query) == 0 or not hasattr(query[0], 'name'):
 			return []
+		else:
+			return [obj.name for obj in query]
 	def AddMoreEvalUnit(self, objs):
 		n = len(objs)
 		sql_objs = [sql.EvalUnit() for i in range(n)]
@@ -1819,10 +1819,10 @@ class SQLServiceHandler(object):
 		return [obj.id for obj in query]
 	def GetHighDrillingPoreNames(self):
 		query=self.session.query(sql.HighDrillingPore).all()
-		if hasattr(HighDrillingPore, 'name'):
-			return [obj.name for obj in query]
-		else:
+		if len(query) == 0 or not hasattr(query[0], 'name'):
 			return []
+		else:
+			return [obj.name for obj in query]
 	def AddMoreHighDrillingPore(self, objs):
 		n = len(objs)
 		sql_objs = [sql.HighDrillingPore() for i in range(n)]
@@ -1953,10 +1953,10 @@ class SQLServiceHandler(object):
 		return [obj.id for obj in query]
 	def GetHighDrillingPoreParamNames(self):
 		query=self.session.query(sql.HighDrillingPoreParam).all()
-		if hasattr(HighDrillingPoreParam, 'name'):
-			return [obj.name for obj in query]
-		else:
+		if len(query) == 0 or not hasattr(query[0], 'name'):
 			return []
+		else:
+			return [obj.name for obj in query]
 	def AddMoreHighDrillingPoreParam(self, objs):
 		n = len(objs)
 		sql_objs = [sql.HighDrillingPoreParam() for i in range(n)]
@@ -2087,10 +2087,10 @@ class SQLServiceHandler(object):
 		return [obj.id for obj in query]
 	def GetHighDrillingSiteParamNames(self):
 		query=self.session.query(sql.HighDrillingSiteParam).all()
-		if hasattr(HighDrillingSiteParam, 'name'):
-			return [obj.name for obj in query]
-		else:
+		if len(query) == 0 or not hasattr(query[0], 'name'):
 			return []
+		else:
+			return [obj.name for obj in query]
 	def AddMoreHighDrillingSiteParam(self, objs):
 		n = len(objs)
 		sql_objs = [sql.HighDrillingSiteParam() for i in range(n)]
@@ -2221,10 +2221,10 @@ class SQLServiceHandler(object):
 		return [obj.id for obj in query]
 	def GetHighDrillingTunnelNames(self):
 		query=self.session.query(sql.HighDrillingTunnel).all()
-		if hasattr(HighDrillingTunnel, 'name'):
-			return [obj.name for obj in query]
-		else:
+		if len(query) == 0 or not hasattr(query[0], 'name'):
 			return []
+		else:
+			return [obj.name for obj in query]
 	def AddMoreHighDrillingTunnel(self, objs):
 		n = len(objs)
 		sql_objs = [sql.HighDrillingTunnel() for i in range(n)]
@@ -2355,10 +2355,10 @@ class SQLServiceHandler(object):
 		return [obj.id for obj in query]
 	def GetHydrGeoNames(self):
 		query=self.session.query(sql.HydrGeo).all()
-		if hasattr(HydrGeo, 'name'):
-			return [obj.name for obj in query]
-		else:
+		if len(query) == 0 or not hasattr(query[0], 'name'):
 			return []
+		else:
+			return [obj.name for obj in query]
 	def AddMoreHydrGeo(self, objs):
 		n = len(objs)
 		sql_objs = [sql.HydrGeo() for i in range(n)]
@@ -2489,10 +2489,10 @@ class SQLServiceHandler(object):
 		return [obj.id for obj in query]
 	def GetMineNames(self):
 		query=self.session.query(sql.Mine).all()
-		if hasattr(Mine, 'name'):
-			return [obj.name for obj in query]
-		else:
+		if len(query) == 0 or not hasattr(query[0], 'name'):
 			return []
+		else:
+			return [obj.name for obj in query]
 	def AddMoreMine(self, objs):
 		n = len(objs)
 		sql_objs = [sql.Mine() for i in range(n)]
@@ -2623,10 +2623,10 @@ class SQLServiceHandler(object):
 		return [obj.id for obj in query]
 	def GetMineBaseNames(self):
 		query=self.session.query(sql.MineBase).all()
-		if hasattr(MineBase, 'name'):
-			return [obj.name for obj in query]
-		else:
+		if len(query) == 0 or not hasattr(query[0], 'name'):
 			return []
+		else:
+			return [obj.name for obj in query]
 	def AddMoreMineBase(self, objs):
 		n = len(objs)
 		sql_objs = [sql.MineBase() for i in range(n)]
@@ -2757,10 +2757,10 @@ class SQLServiceHandler(object):
 		return [obj.id for obj in query]
 	def GetMineRegionNames(self):
 		query=self.session.query(sql.MineRegion).all()
-		if hasattr(MineRegion, 'name'):
-			return [obj.name for obj in query]
-		else:
+		if len(query) == 0 or not hasattr(query[0], 'name'):
 			return []
+		else:
+			return [obj.name for obj in query]
 	def AddMoreMineRegion(self, objs):
 		n = len(objs)
 		sql_objs = [sql.MineRegion() for i in range(n)]
@@ -2891,10 +2891,10 @@ class SQLServiceHandler(object):
 		return [obj.id for obj in query]
 	def GetPoreFlowNames(self):
 		query=self.session.query(sql.PoreFlow).all()
-		if hasattr(PoreFlow, 'name'):
-			return [obj.name for obj in query]
-		else:
+		if len(query) == 0 or not hasattr(query[0], 'name'):
 			return []
+		else:
+			return [obj.name for obj in query]
 	def AddMorePoreFlow(self, objs):
 		n = len(objs)
 		sql_objs = [sql.PoreFlow() for i in range(n)]
@@ -3025,10 +3025,10 @@ class SQLServiceHandler(object):
 		return [obj.id for obj in query]
 	def GetPoreSizeNames(self):
 		query=self.session.query(sql.PoreSize).all()
-		if hasattr(PoreSize, 'name'):
-			return [obj.name for obj in query]
-		else:
+		if len(query) == 0 or not hasattr(query[0], 'name'):
 			return []
+		else:
+			return [obj.name for obj in query]
 	def AddMorePoreSize(self, objs):
 		n = len(objs)
 		sql_objs = [sql.PoreSize() for i in range(n)]
@@ -3159,10 +3159,10 @@ class SQLServiceHandler(object):
 		return [obj.id for obj in query]
 	def GetResAbundanceNames(self):
 		query=self.session.query(sql.ResAbundance).all()
-		if hasattr(ResAbundance, 'name'):
-			return [obj.name for obj in query]
-		else:
+		if len(query) == 0 or not hasattr(query[0], 'name'):
 			return []
+		else:
+			return [obj.name for obj in query]
 	def AddMoreResAbundance(self, objs):
 		n = len(objs)
 		sql_objs = [sql.ResAbundance() for i in range(n)]
@@ -3293,10 +3293,10 @@ class SQLServiceHandler(object):
 		return [obj.id for obj in query]
 	def GetRockNames(self):
 		query=self.session.query(sql.Rock).all()
-		if hasattr(Rock, 'name'):
-			return [obj.name for obj in query]
-		else:
+		if len(query) == 0 or not hasattr(query[0], 'name'):
 			return []
+		else:
+			return [obj.name for obj in query]
 	def AddMoreRock(self, objs):
 		n = len(objs)
 		sql_objs = [sql.Rock() for i in range(n)]
@@ -3427,10 +3427,10 @@ class SQLServiceHandler(object):
 		return [obj.id for obj in query]
 	def GetSysInfoNames(self):
 		query=self.session.query(sql.SysInfo).all()
-		if hasattr(SysInfo, 'name'):
-			return [obj.name for obj in query]
-		else:
+		if len(query) == 0 or not hasattr(query[0], 'name'):
 			return []
+		else:
+			return [obj.name for obj in query]
 	def AddMoreSysInfo(self, objs):
 		n = len(objs)
 		sql_objs = [sql.SysInfo() for i in range(n)]
@@ -3561,10 +3561,10 @@ class SQLServiceHandler(object):
 		return [obj.id for obj in query]
 	def GetTechModeNames(self):
 		query=self.session.query(sql.TechMode).all()
-		if hasattr(TechMode, 'name'):
-			return [obj.name for obj in query]
-		else:
+		if len(query) == 0 or not hasattr(query[0], 'name'):
 			return []
+		else:
+			return [obj.name for obj in query]
 	def AddMoreTechMode(self, objs):
 		n = len(objs)
 		sql_objs = [sql.TechMode() for i in range(n)]
@@ -3695,10 +3695,10 @@ class SQLServiceHandler(object):
 		return [obj.id for obj in query]
 	def GetTechnologyNames(self):
 		query=self.session.query(sql.Technology).all()
-		if hasattr(Technology, 'name'):
-			return [obj.name for obj in query]
-		else:
+		if len(query) == 0 or not hasattr(query[0], 'name'):
 			return []
+		else:
+			return [obj.name for obj in query]
 	def AddMoreTechnology(self, objs):
 		n = len(objs)
 		sql_objs = [sql.Technology() for i in range(n)]
@@ -3829,10 +3829,10 @@ class SQLServiceHandler(object):
 		return [obj.id for obj in query]
 	def GetTopoGeoNames(self):
 		query=self.session.query(sql.TopoGeo).all()
-		if hasattr(TopoGeo, 'name'):
-			return [obj.name for obj in query]
-		else:
+		if len(query) == 0 or not hasattr(query[0], 'name'):
 			return []
+		else:
+			return [obj.name for obj in query]
 	def AddMoreTopoGeo(self, objs):
 		n = len(objs)
 		sql_objs = [sql.TopoGeo() for i in range(n)]
@@ -3963,10 +3963,10 @@ class SQLServiceHandler(object):
 		return [obj.id for obj in query]
 	def GetTunnelNames(self):
 		query=self.session.query(sql.Tunnel).all()
-		if hasattr(Tunnel, 'name'):
-			return [obj.name for obj in query]
-		else:
+		if len(query) == 0 or not hasattr(query[0], 'name'):
 			return []
+		else:
+			return [obj.name for obj in query]
 	def AddMoreTunnel(self, objs):
 		n = len(objs)
 		sql_objs = [sql.Tunnel() for i in range(n)]
@@ -4097,10 +4097,10 @@ class SQLServiceHandler(object):
 		return [obj.id for obj in query]
 	def GetWorkAreaNames(self):
 		query=self.session.query(sql.WorkArea).all()
-		if hasattr(WorkArea, 'name'):
-			return [obj.name for obj in query]
-		else:
+		if len(query) == 0 or not hasattr(query[0], 'name'):
 			return []
+		else:
+			return [obj.name for obj in query]
 	def AddMoreWorkArea(self, objs):
 		n = len(objs)
 		sql_objs = [sql.WorkArea() for i in range(n)]
@@ -4231,10 +4231,10 @@ class SQLServiceHandler(object):
 		return [obj.id for obj in query]
 	def GetWorkSurfNames(self):
 		query=self.session.query(sql.WorkSurf).all()
-		if hasattr(WorkSurf, 'name'):
-			return [obj.name for obj in query]
-		else:
+		if len(query) == 0 or not hasattr(query[0], 'name'):
 			return []
+		else:
+			return [obj.name for obj in query]
 	def AddMoreWorkSurf(self, objs):
 		n = len(objs)
 		sql_objs = [sql.WorkSurf() for i in range(n)]
