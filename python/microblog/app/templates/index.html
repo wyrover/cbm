@@ -1,0 +1,25 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block styles %}
+{{super()}}
+<!-- <link rel="stylesheet" href="{{url_for('.static', filename='css/mystyle.css')}}"> -->
+{% endblock %}
+
+{% block scripts %}
+<!-- <script src="{{url_for('.static', filename='js/myscripts.js')}}"></script> -->
+{{super()}}
+{% endblock %}
+
+{% block content %}
+
+<div class="jumbotron">
+  <div class="container">
+    <h2>欢迎使用“煤层气抽采辅助决策CAD系统!”</h2>
+    <!-- <img src="{{url_for('.static', filename='img/bg.png')}}" class="img-responsive" alt="Responsive image"> -->
+    <a class="btn btn-primary btn-lg" href="#" role="button">Let's Go!</a>
+  </div>
+</div>
+
+
+{% endblock %}
