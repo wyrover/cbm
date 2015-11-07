@@ -2,8 +2,7 @@
 
 from flask import render_template, flash, redirect, session, url_for, request, \
     g, jsonify
-from flask.ext.login import login_user, logout_user, current_user, \
-    login_required
+from flask.ext.login import login_user, logout_user, current_user, login_required, UserMixin
 from flask.ext.sqlalchemy import get_debug_queries
 from flask.ext.babel import gettext
 from datetime import datetime
@@ -16,11 +15,17 @@ from config import POSTS_PER_PAGE, LANGUAGES, DATABASE_QUERY_TIMEOUT
 
 from rpc import CbmClientHelper, SQLClientHelper
 
+class User(UserMixin):
+    def __init__(self, cbm_user):
+        self.cbm_user = cbm_user
+        self.id = self.cbm_user.id
+        self.last_seen = None
+
 # flask-login扩展要求实现的回调函数
+# 必须提供一个 user_loader 回调。这个回调用于从会话中存储的用户 ID 重新加载用户对象
 @login_manager.user_loader
 def load_user(id):
-    return User.query.get(int(id))
-
+    return User(SQLClientHelper.GetAccountById(int(id)))
 
 @babel.localeselector
 def get_locale():
@@ -32,8 +37,6 @@ def before_request():
     g.user = current_user
     if g.user.is_authenticated:
         g.user.last_seen = datetime.utcnow()
-        db.session.add(g.user)
-        db.session.commit()
     g.locale = get_locale()
 
 
@@ -59,47 +62,48 @@ def internal_error(error):
     return render_template('500.html'), 500
 
 
+# 主页
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
-# @login_required
 def index():
-    # form = PostForm()
-    # if form.validate_on_submit():
-    #     language = guessLanguage(form.post.data)
-    #     if language == 'UNKNOWN' or len(language) > 5:
-    #         language = ''
-    #     post = Post(body=form.post.data, timestamp=datetime.utcnow(),
-    #                 author=g.user, language=language)
-    #     db.session.add(post)
-    #     db.session.commit()
-    #     flash(gettext('Your post is now live!'))
-    #     return redirect(url_for('index'))
-    # posts = g.user.followed_posts().paginate(page, POSTS_PER_PAGE, False)
-    return render_template('index.html',
-                           title='Home')
+    return render_template('index.html', title='Home')
 
 
+# 登录
 @app.route('/login', methods=['GET', 'POST'])
-# @oid.loginhandler
 def login():
-    if g.user is not None and g.user.is_authenticated():
+    # 用户已登录
+    if g.user is not None and g.user.is_authenticated:
         return redirect(url_for('index'))
     form = LoginForm()
+    # 表单验证通过(必须用POST发送表单数据)
     if form.validate_on_submit():
-        # session['remember_me'] = form.remember_me.data
-        pass
-        # return oid.try_login(form.openid.data, ask_for=['nickname', 'email'])
-    return render_template('login.html',
-                           title='Sign In',
-                           form=form)
+        # 验证用户名和密码是否正确
+        # 验证通过
+        if CbmClientHelper.VerifyMineAccount(form.username.data, form.password.data) == 1:
+            # 构造注册用户
+            cbm_user = SQLClientHelper.GetAccountByField1('username', form.username.data)
+            if cbm_user.id > -1:
+                # 尝试登录(针对flask-login扩展而言,login_user内部会记录当前用户,也就是current_user)
+                user = User(cbm_user)
+                login_user(user)
+                return redirect(url_for('design'))
+    return render_template('login.html', form=form)
 
-
+# 注销
 @app.route('/logout')
 def logout():
     logout_user()
     return redirect(url_for('index'))
 
 
+# 矿井设计
+@app.route('/design')
+@login_required
+def design():
+    return render_template('design.html')
+
+# 原来的代码(作为参考学习用)
 @app.route('/user/<nickname>')
 @app.route('/user/<nickname>/<int:page>')
 @login_required
@@ -113,66 +117,7 @@ def user(nickname, page=1):
                            user=user,
                            posts=posts)
 
-
-@app.route('/edit', methods=['GET', 'POST'])
-@login_required
-def edit():
-    form = EditForm(g.user.nickname)
-    if form.validate_on_submit():
-        g.user.nickname = form.nickname.data
-        g.user.about_me = form.about_me.data
-        db.session.add(g.user)
-        db.session.commit()
-        flash(gettext('Your changes have been saved.'))
-        return redirect(url_for('edit'))
-    elif request.method != "POST":
-        form.nickname.data = g.user.nickname
-        form.about_me.data = g.user.about_me
-    return render_template('edit.html', form=form)
-
-
-@app.route('/follow/<nickname>')
-@login_required
-def follow(nickname):
-    user = User.query.filter_by(nickname=nickname).first()
-    if user is None:
-        flash('User %s not found.' % nickname)
-        return redirect(url_for('index'))
-    if user == g.user:
-        flash(gettext('You can\'t follow yourself!'))
-        return redirect(url_for('user', nickname=nickname))
-    u = g.user.follow(user)
-    if u is None:
-        flash(gettext('Cannot follow %(nickname)s.', nickname=nickname))
-        return redirect(url_for('user', nickname=nickname))
-    db.session.add(u)
-    db.session.commit()
-    flash(gettext('You are now following %(nickname)s!', nickname=nickname))
-    follower_notification(user, g.user)
-    return redirect(url_for('user', nickname=nickname))
-
-
-@app.route('/unfollow/<nickname>')
-@login_required
-def unfollow(nickname):
-    user = User.query.filter_by(nickname=nickname).first()
-    if user is None:
-        flash('User %s not found.' % nickname)
-        return redirect(url_for('index'))
-    if user == g.user:
-        flash(gettext('You can\'t unfollow yourself!'))
-        return redirect(url_for('user', nickname=nickname))
-    u = g.user.unfollow(user)
-    if u is None:
-        flash(gettext('Cannot unfollow %(nickname)s.', nickname=nickname))
-        return redirect(url_for('user', nickname=nickname))
-    db.session.add(u)
-    db.session.commit()
-    flash(gettext('You have stopped following %(nickname)s.',
-                  nickname=nickname))
-    return redirect(url_for('user', nickname=nickname))
-
-
+# 原来的代码(作为参考学习用)
 @app.route('/delete/<int:id>')
 @login_required
 def delete(id):

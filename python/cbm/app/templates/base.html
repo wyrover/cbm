@@ -19,7 +19,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="{{ url_for('index') }}">矿井设计</a></li>
+        <li><a href="{{ url_for('design') }}">矿井设计</a></li>
         <li><a href="{{ url_for('index') }}">示范矿区技术库管理</a></li>
         <li><a href="{{ url_for('index') }}">抽采技术模式辅助决策</a></li>
         <li class="dropdown">
@@ -58,7 +58,7 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-       {% if current_user.is_authenticated() %} 
+       {% if current_user.is_authenticated %} 
         <li><a href="{{ url_for('logout') }}">注销</a></li> 
        {% else %} 
         <li><a href="{{ url_for('login') }}">登录</a></li> 

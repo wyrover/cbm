@@ -1,19 +1,15 @@
 #-*- coding:utf-8 -*-
 #!/usr/bin/env python
 
-from rpc import CbmUtil, SQLClientHelper, CbmClientHelper
+from rpc import CbmUtil, SQLClientHelper, CbmClientHelper, CtrlClientHelper
 from rpc.RpcClient import *
 
 from cbm.ttypes import *
 from cbm import CbmService
-from ctrl import ControlService
 
 #≤‚ ‘1
 def QuitServer():
-  ctrl_client = RpcClient(ControlService, host=HOST, port=PORT1)
-  ctrl_client.start()
-  ctrl_client.get().ShutDown()
-  ctrl_client.close()
+  CtrlClientHelper.QuitServer()
 
 #≤‚ ‘2
 def VerifyMineAccount(client):
@@ -237,8 +233,11 @@ def test_cbm():
 def test_sql():
     print SQLClientHelper.GetMineBaseNames()
 
+def main():
+  if True:
+    test_cbm()
+  else:
+    test_sql()
+
 if __name__ == '__main__':
-	if True:
-		test_cbm()
-	else:
-		test_sql()
+  main()	

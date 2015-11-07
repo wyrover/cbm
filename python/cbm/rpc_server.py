@@ -6,7 +6,7 @@ import logging
 from rpc import ControlServerHelper, CbmServerHelper, ThriftServerHelper
 from rpc.RpcClient import *
 
-if __name__ == '__main__':
+def main():
     # 采用log默认的基本配置
     logging.basicConfig()
     
@@ -27,3 +27,5 @@ if __name__ == '__main__':
     print '启动control服务器(端口:9090)...'
     ThriftServerHelper.run_rpc_server(ctrlServer, runThread=False)
     
+if __name__ == '__main__':
+    main()

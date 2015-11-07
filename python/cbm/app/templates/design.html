@@ -1,0 +1,18 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block styles %}
+{{super()}}
+<!-- <link rel="stylesheet" href="{{url_for('.static', filename='css/mystyle.css')}}"> -->
+{% endblock %}
+
+{% block scripts %}
+<!-- <script src="{{url_for('.static', filename='js/myscripts.js')}}"></script> -->
+{{super()}}
+{% endblock %}
+
+{% block content %}
+
+进行"矿井设计"页面
+
+{% endblock %}

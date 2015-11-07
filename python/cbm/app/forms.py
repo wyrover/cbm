@@ -4,8 +4,6 @@ from flask.ext.wtf import Form
 from flask.ext.babel import gettext
 from wtforms import StringField, PasswordField, BooleanField, TextAreaField, SubmitField
 from wtforms.validators import DataRequired, Length
-from .models import User
-
 
 class LoginForm(Form):
     username = StringField('Username', validators=[DataRequired(), Length(3, 20)])

@@ -13,14 +13,18 @@ def make_rpc_server(processor, host='localhost', port=9090):
     transport = TSocket.TServerSocket(host=host, port=port)
     tfactory = TTransport.TBufferedTransportFactory()
     pfactory = TBinaryProtocol.TBinaryProtocolFactory()
-    server = TServer.TSimpleServer(processor, transport, tfactory, pfactory)
+    # 只能连接一个客户端
+    # server = TServer.TSimpleServer(processor, transport, tfactory, pfactory)
     
     # You could do one of these for a multithreaded server
+    # 每个客户端启动一个线程用于连接
     # server = TServer.TThreadedServer(processor, transport, tfactory, pfactory)
     
-    # server = TServer.TThreadPoolServer(processor, transport, tfactory, pfactory)
-    # server.daemon = True #enable ctrl+c to exit the server
-    # server.setNumThreads(10);
+    # 连接线程池
+    server = TServer.TThreadPoolServer(processor, transport, tfactory, pfactory)
+    server.daemon = True #enable ctrl+c to exit the server
+    server.setNumThreads(10);
+
     return server
 
 def __run_rpc_server(server):
