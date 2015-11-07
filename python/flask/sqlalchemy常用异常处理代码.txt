@@ -1,6 +1,0 @@
-# # except NoResultFound, e:
-            print e
-            baseName = ''
-        # except MultipleResultsFound, e:
-            # print e
-            # baseName = ''

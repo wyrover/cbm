@@ -107,9 +107,9 @@ function copy_files()
 	copy('index.php', $projDir.'php\cbm\index.php');
 	copy('inflector.php', $projDir.'php\cbm\inflector.php');
 	copy('php_utils.php', $projDir.'php\cbm\php_utils.php');
-	copy('cpp.php', $projDir.'php\cbm\php_utils.php');
-	copy('thrift.php', $projDir.'php\cbm\php_utils.php');
-	copy('sql.php', $projDir.'php\cbm\php_utils.php');
+	copy('cpp.php', $projDir.'php\cbm\cpp.php');
+	copy('thrift.php', $projDir.'php\cbm\thrift.php');
+	copy('sql.php', $projDir.'php\cbm\sql.php');
 
 	//将thrift接口文件复制到cbm项目
 	// copy('entity.thrift', $projDir.'thrift\entity.thrift');
