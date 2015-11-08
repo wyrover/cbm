@@ -204,7 +204,7 @@ all_cmds = {
 '''
 def test_cbm():
   try:  
-    service_client = RpcClient(CbmService, port=9100)
+    service_client = RpcClient(CbmService, port=PORT2)
     service_client.start()
 
     goto_quit = False

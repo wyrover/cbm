@@ -2,7 +2,7 @@
 
 from cbm.ttypes import *
 from cbm import CbmService
-from RpcClient import *
+from RpcClient import RpcClient, HOST, PORT1, PORT2
 import CbmUtil
 
 def InitSampleMine(region_id, account_id, name):

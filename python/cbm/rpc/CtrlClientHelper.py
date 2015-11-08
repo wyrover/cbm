@@ -1,6 +1,6 @@
 #-*- coding:utf-8 -*-
 
-from RpcClient import *
+from RpcClient import RpcClient, HOST, PORT1, PORT2
 from ctrl import ControlService
 
 def QuitServer():

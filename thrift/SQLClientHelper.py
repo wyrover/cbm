@@ -2,7 +2,7 @@
 
 from cbm.ttypes import *
 from cbm import CbmService
-from RpcClient import *
+from RpcClient import RpcClient, HOST, PORT1, PORT2
 import CbmUtil
 
 #Account 类型的CRUD操作
