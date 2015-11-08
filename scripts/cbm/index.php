@@ -118,6 +118,7 @@ function copy_files()
 	copy('SQLClientHelper.py', $projDir.'thrift\SQLClientHelper.py');
 	copy('SQLClientHelper.h', $projDir.'thrift\SQLClientHelper.h');
 	copy('SQLClientHelper.cpp', $projDir.'thrift\SQLClientHelper.cpp');
+	copy('SQLClientHelper.php', $projDir.'thrift\SQLClientHelper.php');
 }
 
 //生成

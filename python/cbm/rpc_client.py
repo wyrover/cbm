@@ -57,16 +57,16 @@ def GetSampleCoalOfRegion(client):
   coal = client.GetSampleCoalOfRegion(regionName)
   print '示范矿区:%s的虚拟煤层:%s' % (regionName, coal)
 
-def GetCoalNames(client):
+def GetDrillingSurfIdsOfMine(client):
   mine_id = int(input('请输入矿井id:'))
-  coal_names = client.GetCoalNames(mine_id)
+  coal_names = client.GetDrillingSurfIdsOfMine(mine_id)
   print '矿井id=%d的煤层列表:' % mine_id
   for name in coal_names:
     print name
 
-def GetCoalIds(client):
+def GetCoalIdsOfMine(client):
   mine_id = int(input('请输入矿井id:'))
-  coal_ids = client.GetCoalIds(mine_id)
+  coal_ids = client.GetCoalIdsOfMine(mine_id)
   print '矿井id=%d的煤层列表:' % mine_id
   for coal_id in coal_ids:
     print coal_id
@@ -174,8 +174,8 @@ all_cmds = {
   '4': GetBaseByRegion,
   '5': GetSampleMineOfRegion,
   '6': GetSampleCoalOfRegion,
-  '7': GetCoalNames,
-  '8': GetCoalIds,
+  '7': GetDrillingSurfIdsOfMine,
+  '8': GetCoalIdsOfMine,
   '9': GetOnlineAccountId,
   '10': GetOnlineMine,
   '11': GetWorkAreasOfMine,

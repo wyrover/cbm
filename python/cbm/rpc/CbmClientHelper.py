@@ -71,12 +71,12 @@ def GetAllMineBases():
 		ret = []
 	return ret
 
-def GetAllMineRegions(baseName):
+def GetMineRegionsOfBase(baseName):
 	ret = []
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		ret = service_client.get().GetAllMineRegions(baseName)
+		ret = service_client.get().GetMineRegionsOfBase(baseName)
 		service_client.close()
 	except Exception, e:
 		print e
@@ -95,120 +95,120 @@ def GetBaseByRegion(regionName):
 		ret = ''
 	return ret
 
-def GetSampleMine(regionName):
+def GetSampleMineOfRegion(regionName):
 	ret = Mine()
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		ret = service_client.get().GetSampleMine(regionName)
+		ret = service_client.get().GetSampleMineOfRegion(regionName)
 		service_client.close()
 	except Exception, e:
 		print e
 		ret.id = -1
 	return ret
 
-def GetSampleCoal(regionName):
+def GetSampleCoalOfRegion(regionName):
 	ret = Coal()
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		ret = service_client.get().GetSampleCoal(regionName)
+		ret = service_client.get().GetSampleCoalOfRegion(regionName)
 		service_client.close()
 	except Exception, e:
 		print e
 		ret.id = -1
 	return ret
 
-def GetCoalNames(mine_id):
+def GetCoalNamesOfMine(mine_id):
 	ret = []
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		ret = service_client.get().GetCoalNames(mine_id)
+		ret = service_client.get().GetCoalNamesOfMine(mine_id)
 		service_client.close()
 	except Exception, e:
 		print e
 		ret = []
 	return ret
 
-def GetCoalIds(mine_id):
+def GetCoalIdsOfMine(mine_id):
 	ret = []
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		ret = service_client.get().GetCoalIds(mine_id)
+		ret = service_client.get().GetCoalIdsOfMine(mine_id)
 		service_client.close()
 	except Exception, e:
 		print e
 		ret = []
 	return ret
 
-def GetWorkAreas(mine_id):
+def GetWorkAreasOfMine(mine_id):
 	ret = []
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		ret = service_client.get().GetWorkAreas(mine_id)
+		ret = service_client.get().GetWorkAreasOfMine(mine_id)
 		service_client.close()
 	except Exception, e:
 		print e
 		ret = []
 	return ret
 
-def GetWorkSurfs(mine_id):
+def GetWorkSurfsOfMine(mine_id):
 	ret = []
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		ret = service_client.get().GetWorkSurfs(mine_id)
+		ret = service_client.get().GetWorkSurfsOfMine(mine_id)
 		service_client.close()
 	except Exception, e:
 		print e
 		ret = []
 	return ret
 
-def GetDrillingSurfs(mine_id):
+def GetDrillingSurfsOfMine(mine_id):
 	ret = []
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		ret = service_client.get().GetDrillingSurfs(mine_id)
+		ret = service_client.get().GetDrillingSurfsOfMine(mine_id)
 		service_client.close()
 	except Exception, e:
 		print e
 		ret = []
 	return ret
 
-def GetWorkAreaIds(mine_id):
+def GetWorkAreaIdsOfMine(mine_id):
 	ret = []
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		ret = service_client.get().GetWorkAreaIds(mine_id)
+		ret = service_client.get().GetWorkAreaIdsOfMine(mine_id)
 		service_client.close()
 	except Exception, e:
 		print e
 		ret = []
 	return ret
 
-def GetWorkSurfIds(mine_id):
+def GetWorkSurfIdsOfMine(mine_id):
 	ret = []
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		ret = service_client.get().GetWorkSurfIds(mine_id)
+		ret = service_client.get().GetWorkSurfIdsOfMine(mine_id)
 		service_client.close()
 	except Exception, e:
 		print e
 		ret = []
 	return ret
 
-def GetDrillingSurfIds(mine_id):
+def GetDrillingSurfIdsOfMine(mine_id):
 	ret = []
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		ret = service_client.get().GetDrillingSurfIds(mine_id)
+		ret = service_client.get().GetDrillingSurfIdsOfMine(mine_id)
 		service_client.close()
 	except Exception, e:
 		print e

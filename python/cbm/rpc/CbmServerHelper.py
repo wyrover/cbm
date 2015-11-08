@@ -33,7 +33,7 @@ class CbmServiceHandler(SQLServerHelper.SQLServiceHandler):
     def __init__(self, Session):
         self.session = Session()
         # 解决mysql中文乱码问题
-        self.session.execute("set names 'gbk'")
+        self.session.execute("set names 'utf8'")
         # 调用基类的初始化方法
         super(CbmServiceHandler, self).__init__(self.session)
 

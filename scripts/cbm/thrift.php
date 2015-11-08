@@ -698,7 +698,7 @@ function __gen_sql_helper_of_py_client($file, $tbl_name, $fields, $relations)
 	//得到类名
 	$clsname = camel_case($fname);
 
-	fwrite($file, "#$clsname 类型的CRUD操作".ENTER);
+	fwrite($file, ENTER."#$clsname 类型的CRUD操作".ENTER);
 
 	fwrite($file, "def Add".$clsname."($fname):".ENTER);
 	fwrite($file, TAB."ret = -1".ENTER);
@@ -1008,6 +1008,347 @@ function gen_sql_helper_of_py_client($file, $tables, $relations)
 	}
 }
 
+function __gen_sql_helper_of_php_client($file, $tbl_name, $fields, $relations)
+{
+	//去掉cbm前缀,作为文件名
+	$fname = table_no_prefix($tbl_name);
+
+	//得到类名
+	$clsname = camel_case($fname);
+	$service_class = '\'\cbm\CbmServiceClient\'';
+
+	fwrite($file, '//$clsname 类型的CRUD操作'.TWO_ENTER);
+
+	fwrite($file, 'function Add'.$clsname.'($fname) {'.ENTER);
+	fwrite($file, TAB.'$ret = -1;'.ENTER);
+	fwrite($file, TAB.'try {'.ENTER);
+	fwrite($file, TWO_TAB.'$service_client = new ThriftClient('.$service_class.', HOST, PORT2);'.ENTER);
+	fwrite($file, TWO_TAB.'$client = $service_client->getClient();'.ENTER);
+	fwrite($file, TWO_TAB.'$ret = $client->Add'.$clsname.'($fname);'.ENTER);
+	fwrite($file, TAB.'} catch (TException $tx) {'.ENTER);
+	fwrite($file, TWO_TAB.'print \'TException: \'.$tx->getMessage()."\n";'.ENTER);
+	fwrite($file, TWO_TAB.'$ret = -1;'.ENTER);
+	fwrite($file, TAB.'}'.ENTER);
+	fwrite($file, TAB.'return $ret;'.ENTER);
+	fwrite($file, '}'.TWO_ENTER);
+	
+
+	fwrite($file, 'function Delete'.$clsname.'($id) {'.ENTER);
+	fwrite($file, TAB.'$ret = false;'.ENTER);
+	fwrite($file, TAB.'try {'.ENTER);
+	fwrite($file, TWO_TAB.'$service_client = new ThriftClient('.$service_class.', HOST, PORT2);'.ENTER);
+	fwrite($file, TWO_TAB.'$client = $service_client->getClient();'.ENTER);
+	fwrite($file, TWO_TAB.'$ret = $client->Delete'.$clsname.'($id);'.ENTER);
+	fwrite($file, TAB.'} catch (TException $tx) {'.ENTER);
+	fwrite($file, TWO_TAB.'print \'TException: \'.$tx->getMessage()."\n";'.ENTER);
+	fwrite($file, TWO_TAB.'$ret = false;'.ENTER);
+	fwrite($file, TAB.'}'.ENTER);
+	fwrite($file, TAB.'return $ret;'.ENTER);
+	fwrite($file, '}'.TWO_ENTER);
+	
+
+	fwrite($file, 'function Update'.$clsname.'($fname) {'.ENTER);
+	fwrite($file, TAB.'$ret = false;'.ENTER);
+	fwrite($file, TAB.'try {'.ENTER);
+	fwrite($file, TWO_TAB.'$service_client = new ThriftClient('.$service_class.', HOST, PORT2);'.ENTER);
+	fwrite($file, TWO_TAB.'$client = $service_client->getClient();'.ENTER);
+	fwrite($file, TWO_TAB.'$ret = $client->Update'.$clsname.'($fname);'.ENTER);
+	fwrite($file, TAB.'} catch (TException $tx) {'.ENTER);
+	fwrite($file, TWO_TAB.'print \'TException: \'.$tx->getMessage()."\n";'.ENTER);
+	fwrite($file, TWO_TAB.'$ret = false;'.ENTER);
+	fwrite($file, TAB.'}'.ENTER);
+	fwrite($file, TAB.'return $ret;'.ENTER);
+	fwrite($file, '}'.TWO_ENTER);
+	
+
+	fwrite($file, 'function Get'.$clsname.'ById($id) {'.ENTER);
+	fwrite($file, TAB.'$_return = new '.$clsname.'();'.ENTER);
+	fwrite($file, TAB.'try {'.ENTER);
+	fwrite($file, TWO_TAB.'$service_client = new ThriftClient('.$service_class.', HOST, PORT2);'.ENTER);
+	fwrite($file, TWO_TAB.'$client = $service_client->getClient();'.ENTER);
+	fwrite($file, TWO_TAB.'$_return = $client->Get'.$clsname.'ById($id);'.ENTER);
+	fwrite($file, TAB.'} catch (TException $tx) {'.ENTER);
+	fwrite($file, TWO_TAB.'print \'TException: \'.$tx->getMessage()."\n";'.ENTER);
+	fwrite($file, TWO_TAB.'$_return->id = -1;'.ENTER);
+	fwrite($file, TAB.'}'.ENTER);
+	fwrite($file, TAB.'return $_return;'.ENTER);
+	fwrite($file, '}'.TWO_ENTER);
+	
+	
+	fwrite($file, 'function Get'.$clsname.'ByForeignKey($fkey, $id) {'.ENTER);
+	fwrite($file, TAB.'$_return = new '.$clsname.'();'.ENTER);
+	fwrite($file, TAB.'try {'.ENTER);
+	fwrite($file, TWO_TAB.'$service_client = new ThriftClient('.$service_class.', HOST, PORT2);'.ENTER);
+	fwrite($file, TWO_TAB.'$client = $service_client->getClient();'.ENTER);
+	fwrite($file, TWO_TAB.'$_return = $client->Get'.$clsname.'ByForeignKey($fkey, $id);'.ENTER);
+	fwrite($file, TAB.'} catch (TException $tx) {'.ENTER);
+	fwrite($file, TWO_TAB.'print \'TException: \'.$tx->getMessage()."\n";'.ENTER);
+	fwrite($file, TWO_TAB.'$_return->id = -1;'.ENTER);
+	fwrite($file, TAB.'}'.ENTER);
+	fwrite($file, TAB.'return $_return;'.ENTER);
+	fwrite($file, '}'.TWO_ENTER);
+
+
+	fwrite($file, 'function Get'.$clsname.'IdByForeignKey($fkey, $id) {'.ENTER);
+	fwrite($file, TAB.'$_return = -1;'.ENTER);
+	fwrite($file, TAB.'try {'.ENTER);
+	fwrite($file, TWO_TAB.'$service_client = new ThriftClient('.$service_class.', HOST, PORT2);'.ENTER);
+	fwrite($file, TWO_TAB.'$client = $service_client->getClient();'.ENTER);
+	fwrite($file, TWO_TAB.'$_return = $client->Get'.$clsname.'IdByForeignKey($fkey, $id);'.ENTER);
+	fwrite($file, TAB.'} catch (TException $tx) {'.ENTER);
+	fwrite($file, TWO_TAB.'print \'TException: \'.$tx->getMessage()."\n";'.ENTER);
+	fwrite($file, TWO_TAB.'$_return = -1;'.ENTER);
+	fwrite($file, TAB.'}'.ENTER);
+	fwrite($file, TAB.'return $_return;'.ENTER);
+	fwrite($file, '}'.TWO_ENTER);
+
+	fwrite($file, 'function Get'.$clsname.'List() {'.ENTER);
+	fwrite($file, TAB.'$_return = array();'.ENTER);
+	fwrite($file, TAB.'try {'.ENTER);
+	fwrite($file, TWO_TAB.'$service_client = new ThriftClient('.$service_class.', HOST, PORT2);'.ENTER);
+	fwrite($file, TWO_TAB.'$client = $service_client->getClient();'.ENTER);
+	fwrite($file, TWO_TAB.'$_return = $client->Get'.$clsname.'List();'.ENTER);
+	fwrite($file, TAB.'} catch (TException $tx) {'.ENTER);
+	fwrite($file, TWO_TAB.'print \'TException: \'.$tx->getMessage()."\n";'.ENTER);
+	fwrite($file, TWO_TAB.'$_return = array();'.ENTER);
+	fwrite($file, TAB.'}'.ENTER);
+	fwrite($file, TAB.'return $_return;'.ENTER);
+	fwrite($file, '}'.TWO_ENTER);
+	
+
+	fwrite($file, 'function Get'.$clsname.'Ids() {'.ENTER);
+	fwrite($file, TAB.'$_return = array();'.ENTER);
+	fwrite($file, TAB.'try {'.ENTER);
+	fwrite($file, TWO_TAB.'$service_client = new ThriftClient('.$service_class.', HOST, PORT2);'.ENTER);
+	fwrite($file, TWO_TAB.'$client = $service_client->getClient();'.ENTER);
+	fwrite($file, TWO_TAB.'$_return = $client->Get'.$clsname.'Ids();'.ENTER);
+	fwrite($file, TAB.'} catch (TException $tx) {'.ENTER);
+	fwrite($file, TWO_TAB.'print \'TException: \'.$tx->getMessage()."\n";'.ENTER);
+	fwrite($file, TWO_TAB.'$_return = array();'.ENTER);
+	fwrite($file, TAB.'}'.ENTER);
+	fwrite($file, TAB.'return $_return;'.ENTER);
+	fwrite($file, '}'.TWO_ENTER);
+	
+
+    fwrite($file, 'function Get'.$clsname.'Names() {'.ENTER);
+    fwrite($file, TAB.'$_return = array();'.ENTER);
+	fwrite($file, TAB.'try {'.ENTER);
+	fwrite($file, TWO_TAB.'$service_client = new ThriftClient('.$service_class.', HOST, PORT2);'.ENTER);
+	fwrite($file, TWO_TAB.'$client = $service_client->getClient();'.ENTER);
+	fwrite($file, TWO_TAB.'$_return = $client->Get'.$clsname.'Names();'.ENTER);
+	fwrite($file, TAB.'} catch (TException $tx) {'.ENTER);
+	fwrite($file, TWO_TAB.'print \'TException: \'.$tx->getMessage()."\n";'.ENTER);
+	fwrite($file, TWO_TAB.'$_return = array();'.ENTER);
+	fwrite($file, TAB.'}'.ENTER);
+	fwrite($file, TAB.'return $_return;'.ENTER);
+	fwrite($file, '}'.TWO_ENTER);
+	
+
+	fwrite($file, 'function AddMore'.$clsname.'($objs) {'.ENTER);
+	fwrite($file, TAB.'try {'.ENTER);
+	fwrite($file, TWO_TAB.'$service_client = new ThriftClient('.$service_class.', HOST, PORT2);'.ENTER);
+	fwrite($file, TWO_TAB.'$client = $service_client->getClient();'.ENTER);
+	fwrite($file, TWO_TAB.'$client->AddMore'.$clsname.'($objs);'.ENTER);
+	fwrite($file, TAB.'} catch (TException $tx) {'.ENTER);
+	fwrite($file, TWO_TAB.'print \'TException: \'.$tx->getMessage()."\n";'.ENTER);
+	fwrite($file, TAB.'}'.ENTER);
+	fwrite($file, '}'.TWO_ENTER);
+	
+
+	fwrite($file, 'function DeleteMore'.$clsname.'($obj_ids) {'.ENTER);
+	fwrite($file, TAB.'try {'.ENTER);
+	fwrite($file, TWO_TAB.'$service_client = new ThriftClient('.$service_class.', HOST, PORT2);'.ENTER);
+	fwrite($file, TWO_TAB.'$client = $service_client->getClient();'.ENTER);
+	fwrite($file, TWO_TAB.'$client->DeleteMore'.$clsname.'($obj_ids);'.ENTER);
+	fwrite($file, TAB.'} catch (TException $tx) {'.ENTER);
+	fwrite($file, TWO_TAB.'print \'TException: \'.$tx->getMessage()."\n";'.ENTER);
+	fwrite($file, TAB.'}'.ENTER);
+	fwrite($file, '}'.TWO_ENTER);
+	
+
+	fwrite($file, 'function Get'.$clsname.'ByFields($fields) {'.ENTER);
+	fwrite($file, TAB.'$_return = new '.$clsname.'();'.ENTER);
+	fwrite($file, TAB.'try {'.ENTER);
+	fwrite($file, TWO_TAB.'$service_client = new ThriftClient('.$service_class.', HOST, PORT2);'.ENTER);
+	fwrite($file, TWO_TAB.'$client = $service_client->getClient();'.ENTER);
+	fwrite($file, TWO_TAB.'$_return = $client->Get'.$clsname.'ByFields($fields);'.ENTER);
+	fwrite($file, TAB.'} catch (TException $tx) {'.ENTER);
+	fwrite($file, TWO_TAB.'print \'TException: \'.$tx->getMessage()."\n";'.ENTER);
+	fwrite($file, TWO_TAB.'$_return->id = -1;'.ENTER);
+	fwrite($file, TAB.'}'.ENTER);
+	fwrite($file, TAB.'return $_return;'.ENTER);
+	fwrite($file, '}'.TWO_ENTER);
+
+
+	fwrite($file, 'function Get'.$clsname.'ByField1($field, $value) {'.ENTER);
+	fwrite($file, TAB.'$_return = new '.$clsname.'();'.ENTER);
+	fwrite($file, TAB.'try {'.ENTER);
+	fwrite($file, TWO_TAB.'$service_client = new ThriftClient('.$service_class.', HOST, PORT2);'.ENTER);
+	fwrite($file, TWO_TAB.'$client = $service_client->getClient();'.ENTER);
+	fwrite($file, TWO_TAB.'$_return = $client->Get'.$clsname.'ByField1($field, $value);'.ENTER);
+	fwrite($file, TAB.'} catch (TException $tx) {'.ENTER);
+	fwrite($file, TWO_TAB.'print \'TException: \'.$tx->getMessage()."\n";'.ENTER);
+	fwrite($file, TWO_TAB.'$_return->id = -1;'.ENTER);
+	fwrite($file, TAB.'}'.ENTER);
+	fwrite($file, TAB.'return $_return;'.ENTER);
+	fwrite($file, '}'.TWO_ENTER);
+	
+	
+	fwrite($file, 'function Get'.$clsname.'ByField2($field1, $value1, $field2, $value2) {'.ENTER);
+	fwrite($file, TAB.'$_return = new '.$clsname.'();'.ENTER);
+	fwrite($file, TAB.'try {'.ENTER);
+	fwrite($file, TWO_TAB.'$service_client = new ThriftClient('.$service_class.', HOST, PORT2);'.ENTER);
+	fwrite($file, TWO_TAB.'$client = $service_client->getClient();'.ENTER);
+	fwrite($file, TWO_TAB.'$_return = $client->Get'.$clsname.'ByField2(field1, value2, field2, value2);'.ENTER);
+	fwrite($file, TAB.'} catch (TException $tx) {'.ENTER);
+	fwrite($file, TWO_TAB.'print \'TException: \'.$tx->getMessage()."\n";'.ENTER);
+	fwrite($file, TWO_TAB.'$_return->id = -1;'.ENTER);
+	fwrite($file, TAB.'}'.ENTER);
+	fwrite($file, TAB.'return $_return;'.ENTER);
+	fwrite($file, '}'.TWO_ENTER);
+	
+
+	fwrite($file, 'function Get'.$clsname.'ListByFields($fields) {'.ENTER);
+	fwrite($file, TAB.'$_return = array();'.ENTER);
+	fwrite($file, TAB.'try {'.ENTER);
+	fwrite($file, TWO_TAB.'$service_client = new ThriftClient('.$service_class.', HOST, PORT2);'.ENTER);
+	fwrite($file, TWO_TAB.'$client = $service_client->getClient();'.ENTER);
+	fwrite($file, TWO_TAB.'$_return = $client->Get'.$clsname.'ListByFields($fields);'.ENTER);
+	fwrite($file, TAB.'} catch (TException $tx) {'.ENTER);
+	fwrite($file, TWO_TAB.'print \'TException: \'.$tx->getMessage()."\n";'.ENTER);
+	fwrite($file, TWO_TAB.'$_return = array();'.ENTER);
+	fwrite($file, TAB.'}'.ENTER);
+	fwrite($file, TAB.'return $_return;'.ENTER);
+	fwrite($file, '}'.TWO_ENTER);
+	
+
+	fwrite($file, 'function Get'.$clsname.'ListByField1($field, $value) {'.ENTER);
+	fwrite($file, TAB.'$_return = array();'.ENTER);
+	fwrite($file, TAB.'try {'.ENTER);
+	fwrite($file, TWO_TAB.'$service_client = new ThriftClient('.$service_class.', HOST, PORT2);'.ENTER);
+	fwrite($file, TWO_TAB.'$client = $service_client->getClient();'.ENTER);
+	fwrite($file, TWO_TAB.'$_return = $client->Get'.$clsname.'ListByField1($field, $value);'.ENTER);
+	fwrite($file, TAB.'} catch (TException $tx) {'.ENTER);
+	fwrite($file, TWO_TAB.'print \'TException: \'.$tx->getMessage()."\n";'.ENTER);
+	fwrite($file, TWO_TAB.'$_return = array();'.ENTER);
+	fwrite($file, TAB.'}'.ENTER);
+	fwrite($file, TAB.'return $_return;'.ENTER);
+	fwrite($file, '}'.TWO_ENTER);
+
+
+	fwrite($file, 'function Get'.$clsname.'ListByField2($field1, $value1, $field2, $value2) {'.ENTER);
+	fwrite($file, TAB.'$_return = array();'.ENTER);
+	fwrite($file, TAB.'try {'.ENTER);
+	fwrite($file, TWO_TAB.'$service_client = new ThriftClient('.$service_class.', HOST, PORT2);'.ENTER);
+	fwrite($file, TWO_TAB.'$client = $service_client->getClient();'.ENTER);
+	fwrite($file, TWO_TAB.'$_return = $client->Get'.$clsname.'ListByField2($field1, $value1, $field2, $value2);'.ENTER);
+	fwrite($file, TAB.'} catch (TException $tx) {'.ENTER);
+	fwrite($file, TWO_TAB.'print \'TException: \'.$tx->getMessage()."\n";'.ENTER);
+	fwrite($file, TWO_TAB.'$_return = array();'.ENTER);
+	fwrite($file, TAB.'}'.ENTER);
+	fwrite($file, TAB.'return $_return;'.ENTER);
+	fwrite($file, '}'.TWO_ENTER);
+
+
+	fwrite($file, 'function Get'.$clsname.'IdByFields($fields) {'.ENTER);
+	fwrite($file, TAB.'$_return = -1;'.ENTER);
+	fwrite($file, TAB.'try {'.ENTER);
+	fwrite($file, TWO_TAB.'$service_client = new ThriftClient('.$service_class.', HOST, PORT2);'.ENTER);
+	fwrite($file, TWO_TAB.'$client = $service_client->getClient();'.ENTER);
+	fwrite($file, TWO_TAB.'$_return = $client->Get'.$clsname.'IdByFields($fields);'.ENTER);
+	fwrite($file, TAB.'} catch (TException $tx) {'.ENTER);
+	fwrite($file, TWO_TAB.'print \'TException: \'.$tx->getMessage()."\n";'.ENTER);
+	fwrite($file, TWO_TAB.'$_return = -1;'.ENTER);
+	fwrite($file, TAB.'}'.ENTER);
+	fwrite($file, TAB.'return $_return;'.ENTER);
+	fwrite($file, '}'.TWO_ENTER);
+
+
+	fwrite($file, 'function Get'.$clsname.'IdByField1($field, $value) {'.ENTER);
+	fwrite($file, TAB.'$_return = -1;'.ENTER);
+	fwrite($file, TAB.'try {'.ENTER);
+	fwrite($file, TWO_TAB.'$service_client = new ThriftClient('.$service_class.', HOST, PORT2);'.ENTER);
+	fwrite($file, TWO_TAB.'$client = $service_client->getClient();'.ENTER);
+	fwrite($file, TWO_TAB.'$_return = $client->Get'.$clsname.'IdByField1($field, $value);'.ENTER);
+	fwrite($file, TAB.'} catch (TException $tx) {'.ENTER);
+	fwrite($file, TWO_TAB.'print \'TException: \'.$tx->getMessage()."\n";'.ENTER);
+	fwrite($file, TWO_TAB.'$_return = -1;'.ENTER);
+	fwrite($file, TAB.'}'.ENTER);
+	fwrite($file, TAB.'return $_return;'.ENTER);
+	fwrite($file, '}'.TWO_ENTER);
+	
+
+	fwrite($file, 'function Get'.$clsname.'IdByField2($field1, $value1, $field2, $value2) {'.ENTER);
+	fwrite($file, TAB.'$_return = -1;'.ENTER);
+	fwrite($file, TAB.'try {'.ENTER);
+	fwrite($file, TWO_TAB.'$service_client = new ThriftClient('.$service_class.', HOST, PORT2);'.ENTER);
+	fwrite($file, TWO_TAB.'$client = $service_client->getClient();'.ENTER);
+	fwrite($file, TWO_TAB.'$_return = $client->Get'.$clsname.'IdByField2(field1, value2, field2, value2);'.ENTER);
+	fwrite($file, TAB.'} catch (TException $tx) {'.ENTER);
+	fwrite($file, TWO_TAB.'print \'TException: \'.$tx->getMessage()."\n";'.ENTER);
+	fwrite($file, TWO_TAB.'$_return = -1;'.ENTER);
+	fwrite($file, TAB.'}'.ENTER);
+	fwrite($file, TAB.'return $_return;'.ENTER);
+	fwrite($file, '}'.TWO_ENTER);
+	
+
+	fwrite($file, 'function Get'.$clsname.'IdListByFields($fields) {'.ENTER);
+	fwrite($file, TAB.'$_return = array();'.ENTER);
+	fwrite($file, TAB.'try {'.ENTER);
+	fwrite($file, TWO_TAB.'$service_client = new ThriftClient('.$service_class.', HOST, PORT2);'.ENTER);
+	fwrite($file, TWO_TAB.'$client = $service_client->getClient();'.ENTER);
+	fwrite($file, TWO_TAB.'$_return = $client->Get'.$clsname.'IdListByFields($fields);'.ENTER);
+	fwrite($file, TAB.'} catch (TException $tx) {'.ENTER);
+	fwrite($file, TWO_TAB.'print \'TException: \'.$tx->getMessage()."\n";'.ENTER);
+	fwrite($file, TWO_TAB.'$_return = array();'.ENTER);
+	fwrite($file, TAB.'}'.ENTER);
+	fwrite($file, TAB.'return $_return;'.ENTER);
+	fwrite($file, '}'.TWO_ENTER);
+	
+
+	fwrite($file, 'function Get'.$clsname.'IdListByField1($field, $value) {'.ENTER);
+	fwrite($file, TAB.'$_return = array();'.ENTER);
+	fwrite($file, TAB.'try {'.ENTER);
+	fwrite($file, TWO_TAB.'$service_client = new ThriftClient('.$service_class.', HOST, PORT2);'.ENTER);
+	fwrite($file, TWO_TAB.'$client = $service_client->getClient();'.ENTER);
+	fwrite($file, TWO_TAB.'$_return = $client->Get'.$clsname.'IdListByField1($field, $value);'.ENTER);
+	fwrite($file, TAB.'} catch (TException $tx) {'.ENTER);
+	fwrite($file, TWO_TAB.'print \'TException: \'.$tx->getMessage()."\n";'.ENTER);
+	fwrite($file, TWO_TAB.'$_return = array();'.ENTER);
+	fwrite($file, TAB.'}'.ENTER);
+	fwrite($file, TAB.'return $_return;'.ENTER);
+	fwrite($file, '}'.TWO_ENTER);
+
+
+	fwrite($file, 'function Get'.$clsname.'IdListByField2($field1, $value1, $field2, $value2) {'.ENTER);
+	fwrite($file, TAB.'$_return = array();'.ENTER);
+	fwrite($file, TAB.'try {'.ENTER);
+	fwrite($file, TWO_TAB.'$service_client = new ThriftClient('.$service_class.', HOST, PORT2);'.ENTER);
+	fwrite($file, TWO_TAB.'$client = $service_client->getClient();'.ENTER);
+	fwrite($file, TWO_TAB.'$_return = $client->Get'.$clsname.'IdListByField2($field1, $value1, $field2, $value2);'.ENTER);
+	fwrite($file, TAB.'} catch (TException $tx) {'.ENTER);
+	fwrite($file, TWO_TAB.'print \'TException: \'.$tx->getMessage()."\n";'.ENTER);
+	fwrite($file, TWO_TAB.'$_return = array();'.ENTER);
+	fwrite($file, TAB.'}'.ENTER);
+	fwrite($file, TAB.'return $_return;'.ENTER);
+	fwrite($file, '}'.TWO_ENTER);
+
+
+	fwrite($file, TWO_ENTER);
+}
+
+function gen_sql_helper_of_php_client($file, $tables, $relations)
+{
+	fwrite($file, '<?php'.TWO_ENTER);
+	fwrite($file, 'namespace SQLClientHelper;'.ENTER);
+	fwrite($file, "require_once __DIR__.'/ThriftClient.php';".ENTER);
+	fwrite($file, 'use \ThriftClient\ThriftClient;'.TWO_ENTER);
+	
+	foreach($tables as $tbl => $fields) {
+		__gen_sql_helper_of_php_client($file, $tbl, $fields, $relations);
+	}
+}
+
 function gen_thrift_file($tables, $relations)
 {
 	$entity_thrift_file = fopen('sql_service_types.thrift', 'w');
@@ -1033,6 +1374,10 @@ function gen_thrift_file($tables, $relations)
 	$py_file = fopen('SQLClientHelper.py', 'w');
 	gen_sql_helper_of_py_client($py_file, $tables, $relations);
 	fclose($py_file);
+
+	$php_file = fopen('SQLClientHelper.php', 'w');
+	gen_sql_helper_of_php_client($php_file, $tables, $relations);
+	fclose($php_file);
 }
 
 function make_thrift_files($tables, $relations)

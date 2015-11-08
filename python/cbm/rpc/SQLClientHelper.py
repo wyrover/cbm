@@ -5,6 +5,7 @@ from cbm import CbmService
 from RpcClient import RpcClient, HOST, PORT1, PORT2
 import CbmUtil
 
+
 #Account 类型的CRUD操作
 def AddAccount(account):
 	ret = -1
@@ -253,6 +254,7 @@ def GetAccountIdListByField2(field1, value1, field2, value2):
 		print e
 		_return = []
 	return _return
+
 
 
 #AdjLayer 类型的CRUD操作
@@ -505,6 +507,7 @@ def GetAdjLayerIdListByField2(field1, value1, field2, value2):
 	return _return
 
 
+
 #Coal 类型的CRUD操作
 def AddCoal(coal):
 	ret = -1
@@ -753,6 +756,7 @@ def GetCoalIdListByField2(field1, value1, field2, value2):
 		print e
 		_return = []
 	return _return
+
 
 
 #Complexity 类型的CRUD操作
@@ -1005,6 +1009,7 @@ def GetComplexityIdListByField2(field1, value1, field2, value2):
 	return _return
 
 
+
 #DesignDrillingSurfTechnology 类型的CRUD操作
 def AddDesignDrillingSurfTechnology(design_drilling_surf_technology):
 	ret = -1
@@ -1253,6 +1258,7 @@ def GetDesignDrillingSurfTechnologyIdListByField2(field1, value1, field2, value2
 		print e
 		_return = []
 	return _return
+
 
 
 #DesignGoafTechnology 类型的CRUD操作
@@ -1505,6 +1511,7 @@ def GetDesignGoafTechnologyIdListByField2(field1, value1, field2, value2):
 	return _return
 
 
+
 #DesignPore 类型的CRUD操作
 def AddDesignPore(design_pore):
 	ret = -1
@@ -1753,6 +1760,7 @@ def GetDesignPoreIdListByField2(field1, value1, field2, value2):
 		print e
 		_return = []
 	return _return
+
 
 
 #DesignSite 类型的CRUD操作
@@ -2005,6 +2013,7 @@ def GetDesignSiteIdListByField2(field1, value1, field2, value2):
 	return _return
 
 
+
 #DesignTechnology 类型的CRUD操作
 def AddDesignTechnology(design_technology):
 	ret = -1
@@ -2253,6 +2262,7 @@ def GetDesignTechnologyIdListByField2(field1, value1, field2, value2):
 		print e
 		_return = []
 	return _return
+
 
 
 #DesignWorkSurfTechnology 类型的CRUD操作
@@ -2505,6 +2515,7 @@ def GetDesignWorkSurfTechnologyIdListByField2(field1, value1, field2, value2):
 	return _return
 
 
+
 #DrillingRadiusParam 类型的CRUD操作
 def AddDrillingRadiusParam(drilling_radius_param):
 	ret = -1
@@ -2753,6 +2764,7 @@ def GetDrillingRadiusParamIdListByField2(field1, value1, field2, value2):
 		print e
 		_return = []
 	return _return
+
 
 
 #DrillingSurf 类型的CRUD操作
@@ -3005,6 +3017,7 @@ def GetDrillingSurfIdListByField2(field1, value1, field2, value2):
 	return _return
 
 
+
 #EvalUnit 类型的CRUD操作
 def AddEvalUnit(eval_unit):
 	ret = -1
@@ -3253,6 +3266,7 @@ def GetEvalUnitIdListByField2(field1, value1, field2, value2):
 		print e
 		_return = []
 	return _return
+
 
 
 #HighDrillingPore 类型的CRUD操作
@@ -3505,6 +3519,7 @@ def GetHighDrillingPoreIdListByField2(field1, value1, field2, value2):
 	return _return
 
 
+
 #HighDrillingPoreParam 类型的CRUD操作
 def AddHighDrillingPoreParam(high_drilling_pore_param):
 	ret = -1
@@ -3753,6 +3768,7 @@ def GetHighDrillingPoreParamIdListByField2(field1, value1, field2, value2):
 		print e
 		_return = []
 	return _return
+
 
 
 #HighDrillingSiteParam 类型的CRUD操作
@@ -4005,6 +4021,7 @@ def GetHighDrillingSiteParamIdListByField2(field1, value1, field2, value2):
 	return _return
 
 
+
 #HighDrillingTunnel 类型的CRUD操作
 def AddHighDrillingTunnel(high_drilling_tunnel):
 	ret = -1
@@ -4253,6 +4270,7 @@ def GetHighDrillingTunnelIdListByField2(field1, value1, field2, value2):
 		print e
 		_return = []
 	return _return
+
 
 
 #HydrGeo 类型的CRUD操作
@@ -4505,6 +4523,7 @@ def GetHydrGeoIdListByField2(field1, value1, field2, value2):
 	return _return
 
 
+
 #Mine 类型的CRUD操作
 def AddMine(mine):
 	ret = -1
@@ -4753,6 +4772,7 @@ def GetMineIdListByField2(field1, value1, field2, value2):
 		print e
 		_return = []
 	return _return
+
 
 
 #MineBase 类型的CRUD操作
@@ -5005,6 +5025,7 @@ def GetMineBaseIdListByField2(field1, value1, field2, value2):
 	return _return
 
 
+
 #MineRegion 类型的CRUD操作
 def AddMineRegion(mine_region):
 	ret = -1
@@ -5253,6 +5274,7 @@ def GetMineRegionIdListByField2(field1, value1, field2, value2):
 		print e
 		_return = []
 	return _return
+
 
 
 #PoreFlow 类型的CRUD操作
@@ -5505,6 +5527,7 @@ def GetPoreFlowIdListByField2(field1, value1, field2, value2):
 	return _return
 
 
+
 #PoreSize 类型的CRUD操作
 def AddPoreSize(pore_size):
 	ret = -1
@@ -5753,6 +5776,7 @@ def GetPoreSizeIdListByField2(field1, value1, field2, value2):
 		print e
 		_return = []
 	return _return
+
 
 
 #ResAbundance 类型的CRUD操作
@@ -6005,6 +6029,7 @@ def GetResAbundanceIdListByField2(field1, value1, field2, value2):
 	return _return
 
 
+
 #Rock 类型的CRUD操作
 def AddRock(rock):
 	ret = -1
@@ -6253,6 +6278,7 @@ def GetRockIdListByField2(field1, value1, field2, value2):
 		print e
 		_return = []
 	return _return
+
 
 
 #SysInfo 类型的CRUD操作
@@ -6505,6 +6531,7 @@ def GetSysInfoIdListByField2(field1, value1, field2, value2):
 	return _return
 
 
+
 #TechMode 类型的CRUD操作
 def AddTechMode(tech_mode):
 	ret = -1
@@ -6753,6 +6780,7 @@ def GetTechModeIdListByField2(field1, value1, field2, value2):
 		print e
 		_return = []
 	return _return
+
 
 
 #Technology 类型的CRUD操作
@@ -7005,6 +7033,7 @@ def GetTechnologyIdListByField2(field1, value1, field2, value2):
 	return _return
 
 
+
 #TopoGeo 类型的CRUD操作
 def AddTopoGeo(topo_geo):
 	ret = -1
@@ -7253,6 +7282,7 @@ def GetTopoGeoIdListByField2(field1, value1, field2, value2):
 		print e
 		_return = []
 	return _return
+
 
 
 #Tunnel 类型的CRUD操作
@@ -7505,6 +7535,7 @@ def GetTunnelIdListByField2(field1, value1, field2, value2):
 	return _return
 
 
+
 #WorkArea 类型的CRUD操作
 def AddWorkArea(work_area):
 	ret = -1
@@ -7753,6 +7784,7 @@ def GetWorkAreaIdListByField2(field1, value1, field2, value2):
 		print e
 		_return = []
 	return _return
+
 
 
 #WorkSurf 类型的CRUD操作
