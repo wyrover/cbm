@@ -8,7 +8,7 @@ from thrift.protocol import TBinaryProtocol
 from thrift.server import TServer
 
 HOST = 'localhost'
-PORT1, PORT2 = 9090, 9100
+PORT1, PORT2 = 9100, 9090
 
 #客户端封装类
 class RpcClient:

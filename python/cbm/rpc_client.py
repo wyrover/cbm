@@ -1,7 +1,8 @@
 #-*- coding:utf-8 -*-
 #!/usr/bin/env python
 
-from rpc import CbmUtil, SQLClientHelper, CbmClientHelper, CtrlClientHelper
+# from rpc import CbmUtil, SQLClientHelper, CbmClientHelper, CtrlClientHelper
+from rpc import CbmUtil, SQLClientHelper, CbmClientHelper
 from rpc.RpcClient import *
 
 from cbm.ttypes import *
@@ -9,7 +10,8 @@ from cbm import CbmService
 
 #≤‚ ‘1
 def QuitServer():
-  CtrlClientHelper.QuitServer()
+  pass
+  # CtrlClientHelper.QuitServer()
 
 #≤‚ ‘2
 def VerifyMineAccount(client):

@@ -6,7 +6,9 @@ call gen_code.bat php:server
 rem 生成php客户端代码
 rem call gen_code.bat php
 
-rem 复制php代码
+rem 复制thrift的php模块
+xcopy "..\ThirdParty\thrift\php\Thrift"  "..\php\cbm\thrift\"  /c /e /y
+rem 复制通过IDL生成的php代码
 xcopy "gen-php" "..\php\gen-php\"  /c /e /y
 
 rem 暂停

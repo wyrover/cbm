@@ -9,7 +9,7 @@ md "..\python\cbm\rpc\gen-py\"
 md "..\python\cbm\thrift\"
 
 rem 复制thrift的py模块
-xcopy "..\ThirdParty\thrift\py\thrift"  "..\python\cbm\thrift\"  /c /e /y
+xcopy "..\ThirdParty\thrift\py\thrift"  "..\python\cbm\Thrift\"  /c /e /y
 rem 复制通过IDL生成的py代码
 xcopy "gen-py" "..\python\cbm\rpc\gen-py\"  /c /e /y
 

@@ -8,7 +8,7 @@ from flask.ext.babel import gettext
 from datetime import datetime
 from guess_language import guessLanguage
 from app import app, db, login_manager, babel
-from .forms import LoginForm, EditForm, PostForm
+from .forms import LoginForm, RegForm, EditForm, PostForm
 from .models import User, Post
 from .emails import follower_notification
 from config import POSTS_PER_PAGE, LANGUAGES, DATABASE_QUERY_TIMEOUT
@@ -96,6 +96,11 @@ def logout():
     logout_user()
     return redirect(url_for('index'))
 
+# 注册
+@app.route('/reg')
+def reg():
+    form = RegForm()
+    return render_template('reg.html', form=form)
 
 # 矿井设计
 @app.route('/design')

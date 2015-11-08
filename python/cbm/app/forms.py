@@ -6,9 +6,14 @@ from wtforms import StringField, PasswordField, BooleanField, TextAreaField, Sub
 from wtforms.validators import DataRequired, Length
 
 class LoginForm(Form):
-    username = StringField('Username', validators=[DataRequired(), Length(3, 20)])
-    password = PasswordField('Password', validators=[DataRequired()])
-    login = SubmitField('login')
+    username = StringField(u'用户名', validators=[DataRequired(), Length(3, 20)])
+    password = PasswordField(u'密码', validators=[DataRequired()])
+    login = SubmitField(u'登录')
+
+class RegForm(Form):
+    username = StringField(u'用户名', validators=[DataRequired(), Length(3, 20)])
+    password = PasswordField(u'密码', validators=[DataRequired()])
+    login = SubmitField(u'登录')
 
 class EditForm(Form):
     nickname = StringField('nickname', validators=[DataRequired()])
