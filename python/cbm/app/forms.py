@@ -13,7 +13,7 @@ class LoginForm(Form):
 class RegForm(Form):
     username = StringField(u'用户名', validators=[DataRequired(), Length(3, 20)])
     password = PasswordField(u'密码', validators=[DataRequired()])
-    login = SubmitField(u'登录')
+    reg = SubmitField(u'注册')
 
 class EditForm(Form):
     nickname = StringField('nickname', validators=[DataRequired()])
