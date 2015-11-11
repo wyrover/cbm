@@ -3,5 +3,6 @@ namespace php ctrl
 namespace py ctrl
 
 service ControlService {
-	void ShutDown();
+	//实现很困难!!!
+	void QuitServer(),
 }

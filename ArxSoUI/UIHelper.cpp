@@ -32,11 +32,10 @@ using namespace SOUI;
 #include <ArxHelper/HelperClass.h>
 #include <Util/HelperClass.h>
 
-//#include <Dao/DaoHelper.h>
-//using namespace orm;
-//using namespace cbm;
-
+#include "SQLClientHelper.h"
+#include "CbmClientHelper.h"
 #include <WinHttpClient.h>
+
 void TestWinHttpClient()
 {
 	// Set URL.
@@ -733,11 +732,49 @@ void UIHelper::Main()
   //  }
 }
 
-#include "SQLClientHelper.h"
-#include "CbmClientHelper.h"
-
 void UIHelper::xxx()
 {
-	int ret = CbmClientHelper::VerifyMineAccount("dlj", "123");
-	acutPrintf(_T("\n验证结果:%d"), ret);
+	std::string json_data = CbmClientHelper::GetJsonDatasFromCAD(1);
+	//int ret = CbmClientHelper::VerifyMineAccount("dlj", "123");
+	CbmClientHelper::SendCommandToCAD("regen");
+	//acutPrintf(_T("\n验证结果:%d"), ret);
+}
+
+void UIHelper::PostJsonDatasToRpc()
+{
+	int data_type = 0;
+	if(acedGetInt(_T("\n请输入请求的数据类型(>0):"), &data_type) != RTNORM) return;
+	if(data_type < 1) return;
+	// 获取密钥
+	TCHAR str[MAX_PATH];
+	if(acedGetString(0, _T("请输入密钥:"), str) != RTNORM) return;
+
+	CString secret_key = str;
+	secret_key.Trim();
+	acutPrintf(_T("\n密钥长度:"), secret_key.GetLength());
+	//if(secret_key.GetLength() != 36) return;
+
+	// 收集数据
+	bool ret = true;
+	switch(data_type)
+	{
+	case 1:
+		//
+		break;
+	case 2:
+		//
+		break;
+	default:
+		ret = false;
+		break;
+	}
+	if(ret)
+	{
+		//向rpc发送
+		CbmClientHelper::PostJsonDatasFromCAD(data_type, W2C((LPCTSTR)secret_key), "{'name':'dlj'}");
+	}
+	else
+	{
+		CbmClientHelper::PostJsonDatasFromCAD(data_type, W2C((LPCTSTR)secret_key), "{}");
+	}
 }

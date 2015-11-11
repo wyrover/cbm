@@ -3827,6 +3827,26 @@ class CbmServiceHandler : virtual public CbmServiceIf {
     printf("DrillingSurfGasFlow\n");
   }
 
+  void SendCommandToCAD(const std::string& cmd) {
+    // Your implementation goes here
+    printf("SendCommandToCAD\n");
+  }
+
+  void RequestJsonDatasFromCAD(std::string& _return, const int32_t data_type) {
+    // Your implementation goes here
+    printf("RequestJsonDatasFromCAD\n");
+  }
+
+  void GetJsonDatasFromRpcCache(std::string& _return, const std::string& secret_key) {
+    // Your implementation goes here
+    printf("GetJsonDatasFromRpcCache\n");
+  }
+
+  void PostJsonDatasFromCAD(const int32_t data_type, const std::string& secret_key, const std::string& json_datas) {
+    // Your implementation goes here
+    printf("PostJsonDatasFromCAD\n");
+  }
+
 };
 
 int main(int argc, char **argv) {

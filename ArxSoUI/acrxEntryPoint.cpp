@@ -233,6 +233,11 @@ public:
 		//UIHelper::testdlg();
 		UIHelper::xxx();
 	}
+
+	static void JL_PostJsonDatas()
+	{
+		UIHelper::PostJsonDatasToRpc();
+	}
 } ;
 
 //-----------------------------------------------------------------------------
@@ -265,3 +270,4 @@ ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _PolicyHelp, phelp, ACRX_CMD_TRANSP
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _Main, main, ACRX_CMD_TRANSPARENT, NULL )
 
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _xxx, xxx, ACRX_CMD_TRANSPARENT, NULL )
+ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _PostJsonDatas, PostJsonDatas, ACRX_CMD_TRANSPARENT, NULL )

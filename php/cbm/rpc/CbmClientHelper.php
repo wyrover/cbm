@@ -378,3 +378,45 @@ function DrillingSurfGasFlow($coal, $drilling_surf, $tunnel) {
 	}
 	return $ret;
 }
+
+function SendCommandToCAD($cmd) {
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$client->SendCommandToCAD($cmd);
+		
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+	}
+}
+
+function GetJsonDatasFromCAD($data_type, $wait_seconds=2) {
+	$ret = "{}";
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		# 需要一些cad的数据，向rpc请求,rpc分配一个密钥
+		$secret_key = $client->RequestJsonDatasFromCAD($data_type);
+		# 等待几秒钟
+		sleep($wait_seconds);
+		# 从rpc缓存中提取数据
+		$ret = $client->GetJsonDatasFromRpcCache($secret_key);
+		
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$ret = "{}";
+	}
+	return $ret;
+}
+
+function PostJsonDatasFromCAD($data_type, $secret_key, $json_datas)
+{
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$client->PostJsonDatasFromCAD($data_type, $secret_key, $json_datas);
+		
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+	}
+}

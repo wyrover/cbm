@@ -1,5 +1,7 @@
 #-*- coding:utf-8 -*-
 
+from time import ctime,sleep
+
 from cbm.ttypes import *
 from cbm import CbmService
 from RpcClient import RpcClient, HOST, PORT1, PORT2
@@ -325,3 +327,44 @@ def DrillingSurfGasFlow(coal, drilling_surf, tunnel):
 		ret.q4 = 0.0
 		ret.qa = 0.0
 	return ret
+
+def SendCommandToCAD(cmd):
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		service_client.get().SendCommandToCAD(cmd)
+		service_client.close()
+	except Exception, e:
+		print e
+
+def GetJsonDatasFromCAD(data_type, wait_seconds=2):
+	if wait_seconds < 1:wait_seconds = 2
+	if wait_seconds > 10:wait_seconds = 10
+	ret = "{}"
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		# 需要一些cad的数据，向rpc请求,rpc分配一个密钥
+		secret_key = service_client.get().RequestJsonDatasFromCAD(data_type)
+		print u'客户端:得到密钥:%s' % secret_key
+		# 等待几秒钟
+		sleep(wait_seconds)
+		print u'客户端:等待%s秒' % wait_seconds
+		# 从rpc缓存中提取数据
+		ret = service_client.get().GetJsonDatasFromRpcCache(secret_key)
+		service_client.close()
+		print u'客户端:从rpc缓存中提取数据:%s' % ret
+		
+	except Exception, e:
+		print e
+		ret = "{}"
+	return ret
+
+def PostJsonDatasFromCAD(data_type, secret_key, json_datas):
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		service_client.get().PostJsonDatasFromCAD(data_type, secret_key, json_datas)
+		service_client.close()
+	except Exception, e:
+		print e

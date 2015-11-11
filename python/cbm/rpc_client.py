@@ -1,7 +1,6 @@
 #-*- coding:utf-8 -*-
 #!/usr/bin/env python
 
-# from rpc import CbmUtil, SQLClientHelper, CbmClientHelper, CtrlClientHelper
 from rpc import CbmUtil, SQLClientHelper, CbmClientHelper
 from rpc.RpcClient import *
 
@@ -11,7 +10,6 @@ from cbm import CbmService
 #≤‚ ‘1
 def QuitServer():
   pass
-  # CtrlClientHelper.QuitServer()
 
 #≤‚ ‘2
 def VerifyMineAccount(client):
@@ -233,10 +231,13 @@ def test_cbm():
 ≤‚ ‘SQLClientHelperƒ£øÈ
 '''
 def test_sql():
-    print SQLClientHelper.GetMineBaseNames()
+    # print SQLClientHelper.GetMineBaseNames()
+    # print CbmClientHelper.SendCommandToCAD("zoom a")
+    # print CbmClientHelper.SendCommandToCAD("regen")
+    print CbmClientHelper.GetJsonDatasFromCAD(1)
 
 def main():
-  if True:
+  if False:
     test_cbm()
   else:
     test_sql()

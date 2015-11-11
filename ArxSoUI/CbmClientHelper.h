@@ -1,6 +1,6 @@
 #pragma once
 
-#include "gen-cpp/cbm_types.h"
+#include "../thrift/gen-cpp/cbm_types.h"
 
 #include <vector>
 #include <string>
@@ -11,8 +11,6 @@ typedef std::vector<double> DoubleArray;
 class CbmClientHelper
 {
 public:
-	//关闭rpc服务器
-	static void QuitServer();
 	//初始化示范矿区(虚拟的矿井和煤层)
 	static void InitSampleRegion();
 	//查询已登录用户的id
@@ -63,4 +61,7 @@ public:
 	//掘进面瓦斯涌出量
 	static void DrillingSurfGasFlow(cbm::DrillingSurfGasFlowResult& _return, const cbm::Coal& coal, const cbm::DrillingSurf& drilling_surf, const cbm::Tunnel& tunnel);
 
+	static void SendCommandToCAD(const std::string& cmd);
+	static std::string GetJsonDatasFromCAD(const int32_t data_type, int wait_seconds=2);
+	static void PostJsonDatasFromCAD(const int32_t data_type, const std::string& secret_key, const std::string& json_datas);
 };

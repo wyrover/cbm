@@ -47,8 +47,9 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="/bigobj"
 				Optimization="0"
-				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\soui;..\ThirdParty\soui\soui\include;..\ThirdParty\soui\utilities\include;..\ThirdParty\soui\config;..\ThirdParty\soui\components;&quot;..\ThirdParty\json-cpp\include&quot;;..\ThirdParty\boost"
+				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\soui;..\ThirdParty\soui\soui\include;..\ThirdParty\soui\utilities\include;..\ThirdParty\soui\config;..\ThirdParty\soui\components;&quot;..\ThirdParty\json-cpp\include&quot;;..\ThirdParty\thrift\lib\cpp\src;..\ThirdParty\WinHttpClient\Include;..\ThirdParty\boost"
 				PreprocessorDefinitions="WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;BOOST_LIB_DIAGNOSTIC;BOOST_ALL_DYN_LINK"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="0"
@@ -71,9 +72,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="log4cplusSU.lib soui.lib utilities.lib jsoncpp.lib"
+				AdditionalDependencies="log4cplusSU.lib soui.lib utilities.lib jsoncpp.lib  thrift.lib"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\soui\bin;&quot;..\ThirdParty\json-cpp\lib&quot;"
+				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\soui\bin;&quot;..\ThirdParty\json-cpp\lib&quot;;..\ThirdParty\thrift\win32;..\ThirdParty\boost\lib\win32"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/Launcher.pdb"
 				SubSystem="2"
@@ -132,11 +133,12 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="/bigobj"
 				Optimization="0"
-				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\soui;..\ThirdParty\soui\soui\include;..\ThirdParty\soui\utilities\include;..\ThirdParty\soui\config;..\ThirdParty\soui\components;&quot;..\ThirdParty\json-cpp\include&quot;;..\ThirdParty\boost"
+				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\soui;..\ThirdParty\soui\soui\include;..\ThirdParty\soui\utilities\include;..\ThirdParty\soui\config;..\ThirdParty\soui\components;&quot;..\ThirdParty\json-cpp\include&quot;;..\ThirdParty\thrift\lib\cpp\src;..\ThirdParty\WinHttpClient\Include;..\ThirdParty\boost"
 				PreprocessorDefinitions="WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;BOOST_LIB_DIAGNOSTIC;BOOST_ALL_DYN_LINK"
 				MinimalRebuild="true"
-				BasicRuntimeChecks="3"
+				BasicRuntimeChecks="0"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="2"
 				WarningLevel="3"
@@ -156,9 +158,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="log4cplusSU-x64.lib soui.lib utilities.lib jsoncpp-x64.lib"
+				AdditionalDependencies="log4cplusSU-x64.lib soui.lib utilities.lib jsoncpp-x64.lib  thrift.lib"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\soui\bin64;&quot;..\ThirdParty\json-cpp\lib&quot;"
+				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\soui\bin64;&quot;..\ThirdParty\json-cpp\lib&quot;;..\ThirdParty\thrift\x64;..\ThirdParty\boost\lib\x64"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/Launcher.pdb"
 				SubSystem="2"
@@ -215,9 +217,10 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="/bigobj"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\soui;..\ThirdParty\soui\soui\include;..\ThirdParty\soui\utilities\include;..\ThirdParty\soui\config;..\ThirdParty\soui\components;&quot;..\ThirdParty\json-cpp\include&quot;;..\ThirdParty\boost"
+				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\soui;..\ThirdParty\soui\soui\include;..\ThirdParty\soui\utilities\include;..\ThirdParty\soui\config;..\ThirdParty\soui\components;&quot;..\ThirdParty\json-cpp\include&quot;;..\ThirdParty\thrift\lib\cpp\src;..\ThirdParty\WinHttpClient\Include;..\ThirdParty\boost"
 				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;BOOST_LIB_DIAGNOSTIC;BOOST_ALL_DYN_LINK"
 				MinimalRebuild="false"
 				RuntimeLibrary="2"
@@ -240,9 +243,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="log4cplusSU.lib soui.lib utilities.lib jsoncpp.lib"
+				AdditionalDependencies="log4cplusSU.lib soui.lib utilities.lib jsoncpp.lib  thrift.lib"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\soui\bin;&quot;..\ThirdParty\json-cpp\lib&quot;"
+				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\soui\bin;&quot;..\ThirdParty\json-cpp\lib&quot;;..\ThirdParty\thrift\win32;..\ThirdParty\boost\lib\win32"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				OptimizeReferences="2"
@@ -300,9 +303,10 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="/bigobj"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\soui;..\ThirdParty\soui\soui\include;..\ThirdParty\soui\utilities\include;..\ThirdParty\soui\config;..\ThirdParty\soui\components;&quot;..\ThirdParty\json-cpp\include&quot;;..\ThirdParty\boost"
+				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\soui;..\ThirdParty\soui\soui\include;..\ThirdParty\soui\utilities\include;..\ThirdParty\soui\config;..\ThirdParty\soui\components;&quot;..\ThirdParty\json-cpp\include&quot;;..\ThirdParty\thrift\lib\cpp\src;..\ThirdParty\WinHttpClient\Include;..\ThirdParty\boost"
 				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;BOOST_LIB_DIAGNOSTIC;BOOST_ALL_DYN_LINK"
 				MinimalRebuild="false"
 				RuntimeLibrary="2"
@@ -325,9 +329,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="log4cplusSU-x64.lib soui.lib utilities.lib jsoncpp-x64.lib"
+				AdditionalDependencies="log4cplusSU-x64.lib soui.lib utilities.lib jsoncpp-x64.lib  thrift.lib"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\soui\bin64;&quot;..\ThirdParty\json-cpp\lib&quot;"
+				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\soui\bin64;&quot;..\ThirdParty\json-cpp\lib&quot;;..\ThirdParty\thrift\x64;..\ThirdParty\boost\lib\x64"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				OptimizeReferences="2"
@@ -371,10 +375,6 @@
 			</File>
 			<File
 				RelativePath=".\MainuiDialog.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Registry.cpp"
 				>
 			</File>
 			<File
@@ -433,6 +433,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\Registry.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\SouiCADThread.cpp"
 					>
 				</File>
@@ -457,14 +461,6 @@
 			</File>
 			<File
 				RelativePath=".\MySoUiLoader.h"
-				>
-			</File>
-			<File
-				RelativePath=".\RegEntry.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Registry.h"
 				>
 			</File>
 			<File
@@ -496,6 +492,14 @@
 				</File>
 				<File
 					RelativePath=".\MonitorThread.h"
+					>
+				</File>
+				<File
+					RelativePath=".\RegEntry.h"
+					>
+				</File>
+				<File
+					RelativePath=".\Registry.h"
 					>
 				</File>
 				<File

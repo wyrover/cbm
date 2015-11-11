@@ -9,4 +9,7 @@ echo \CbmClientHelper\VerifyMineAccount('dlj', '123');
 var_dump(\SQLClientHelper\GetMineBaseNames());
 var_dump(\CbmClientHelper\GetMineRegionsOfBase('神东基地'));
 
+\CbmClientHelper\SendCommandToCAD('regen');
+echo \CbmClientHelper\GetJsonDatasFromCAD(1);
+
 ?>

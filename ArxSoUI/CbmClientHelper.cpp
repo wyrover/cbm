@@ -1,23 +1,8 @@
 #include "StdAfx.h"
 #include "CbmClientHelper.h"
 #include "RpcClient.h"
-#include <Util/HelperClass.h>
 
-void CbmClientHelper::QuitServer()
-{
-	try 
-	{
-		RpcClient<ctrl::ControlServiceClient> ctrl_client(HOST, PORT1);
-		ctrl_client.start();
-		ctrl_client.get()->ShutDown();
-		ctrl_client.close();
-	}
-	catch (TException &tx) 
-	{
-		std::string error_msg = tx.what();
-		//printf("ERROR: %s\n", tx.what());
-	}
-}
+#include <Util/HelperClass.h>
 
 void CbmClientHelper::InitSampleRegion()
 {
@@ -449,6 +434,66 @@ void CbmClientHelper::DrillingSurfGasFlow(cbm::DrillingSurfGasFlowResult& _retur
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
 		service_client.get()->DrillingSurfGasFlow(_return, coal, drilling_surf, tunnel);
+		service_client.close();
+	} 
+	catch (TException &tx) 
+	{
+		std::string error_msg = tx.what();
+		//printf("ERROR: %s\n", tx.what());
+	}
+}
+
+void CbmClientHelper::SendCommandToCAD(const std::string& cmd)
+{
+	try
+	{
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->SendCommandToCAD(cmd);
+		service_client.close();
+	} 
+	catch (TException &tx) 
+	{
+		std::string error_msg = tx.what();
+		//printf("ERROR: %s\n", tx.what());
+	}
+}
+
+std::string CbmClientHelper::GetJsonDatasFromCAD(const int32_t data_type, int wait_seconds)
+{
+	if(wait_seconds <= 0) wait_seconds = 3;
+	if(wait_seconds > 10) wait_seconds = 10;
+
+	std::string ret = "{}";
+	try
+	{
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		//需要一些cad的数据，向rpc请求,rpc分配一个密钥
+		std::string secret_key = "#";
+		service_client.get()->RequestJsonDatasFromCAD(secret_key, data_type);
+		//等待几秒钟
+		::Sleep(wait_seconds*1000);
+		//从rpc缓存中提取数据
+		service_client.get()->GetJsonDatasFromRpcCache(ret, secret_key);
+		service_client.close();
+	} 
+	catch (TException &tx) 
+	{
+		std::string error_msg = tx.what();
+		//printf("ERROR: %s\n", tx.what());
+		ret = "{}";
+	}
+	return ret;
+}
+
+void CbmClientHelper::PostJsonDatasFromCAD(const int32_t data_type, const std::string& secret_key, const std::string& json_datas)
+{
+	try
+	{
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->PostJsonDatasFromCAD(data_type, secret_key, json_datas);
 		service_client.close();
 	} 
 	catch (TException &tx) 

@@ -11,6 +11,7 @@ $GEN_DIR = realpath(dirname(__FILE__)).'/gen-php';
 $loader = new ThriftClassLoader();
 $loader->registerNamespace('Thrift', __DIR__.'/..');
 $loader->registerDefinition('cbm', $GEN_DIR);
+$loader->registerDefinition('ctrl', $GEN_DIR);
 $loader->register();
  
 use Thrift\Protocol\TBinaryProtocol;

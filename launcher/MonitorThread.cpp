@@ -59,7 +59,7 @@ static DWORD MonitorThreadProc( LPVOID lpParam )
     return 0;
 }
 
-bool MonitorThread::Run( HANDLE hThread )
+bool MonitorThread::Run( HANDLE& hThread )
 {
     //读取exe的路径
     //主:这里应该对exe路径做一些检查(比如是否exe后缀,是否有效的exe等等)

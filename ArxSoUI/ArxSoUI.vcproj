@@ -387,10 +387,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\CbmClientHelper.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\DoubleLine.cpp"
 				>
 			</File>
@@ -408,10 +404,6 @@
 			</File>
 			<File
 				RelativePath=".\SoUILoader.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\SQLClientHelper.cpp"
 				>
 			</File>
 			<File
@@ -592,13 +584,6 @@
 				<File
 					RelativePath=".\DemoDialog.cpp"
 					>
-					<FileConfiguration
-						Name="Debug|x64"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\DifficultEvalDialog.cpp"
@@ -627,13 +612,6 @@
 				<File
 					RelativePath=".\FormatMsgDlg.cpp"
 					>
-					<FileConfiguration
-						Name="Debug|x64"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\GasDesignDialog.cpp"
@@ -770,13 +748,6 @@
 				<File
 					RelativePath=".\LoginDialog.cpp"
 					>
-					<FileConfiguration
-						Name="Debug|x64"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\MainDialog.cpp"
@@ -913,13 +884,6 @@
 				<File
 					RelativePath=".\PicViewerDialog.cpp"
 					>
-					<FileConfiguration
-						Name="Debug|x64"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\PolicyDialog.cpp"
@@ -996,13 +960,6 @@
 				<File
 					RelativePath=".\RtfViewerDialog.cpp"
 					>
-					<FileConfiguration
-						Name="Debug|x64"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\SampleManageDialog.cpp"
@@ -1189,231 +1146,131 @@
 				Name="rpc"
 				>
 				<File
-					RelativePath=".\gen-cpp\cbm_constants.cpp"
+					RelativePath=".\CbmClientHelper.cpp"
 					>
-					<FileConfiguration
-						Name="Debug|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"
-						/>
-					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\gen-cpp\cbm_types.cpp"
+					RelativePath=".\SQLClientHelper.cpp"
 					>
-					<FileConfiguration
-						Name="Debug|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"
-						/>
-					</FileConfiguration>
 				</File>
-				<File
-					RelativePath=".\gen-cpp\CbmService.cpp"
+				<Filter
+					Name="gen-cpp"
 					>
-					<FileConfiguration
-						Name="Debug|Win32"
+					<File
+						RelativePath="..\thrift\gen-cpp\cbm_constants.cpp"
 						>
-						<Tool
-							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64"
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug|x64"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|x64"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+							/>
+						</FileConfiguration>
+					</File>
+					<File
+						RelativePath="..\thrift\gen-cpp\cbm_types.cpp"
 						>
-						<Tool
-							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|Win32"
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug|x64"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|x64"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+							/>
+						</FileConfiguration>
+					</File>
+					<File
+						RelativePath="..\thrift\gen-cpp\CbmService.cpp"
 						>
-						<Tool
-							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\gen-cpp\ControlService.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\gen-cpp\ctrl_constants.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\gen-cpp\ctrl_types.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug|x64"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|x64"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"
-						/>
-					</FileConfiguration>
-				</File>
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug|x64"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|x64"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+							/>
+						</FileConfiguration>
+					</File>
+				</Filter>
 			</Filter>
 		</Filter>
 		<Filter
 			Name="Include Files"
 			Filter="h;hh;hxx"
 			>
-			<File
-				RelativePath=".\CbmClientHelper.h"
-				>
-			</File>
 			<File
 				RelativePath=".\Data.h"
 				>
@@ -1431,10 +1288,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\RpcClient.h"
-				>
-			</File>
-			<File
 				RelativePath=".\SouiDialog.h"
 				>
 			</File>
@@ -1444,10 +1297,6 @@
 			</File>
 			<File
 				RelativePath=".\SoUILoader.h"
-				>
-			</File>
-			<File
-				RelativePath=".\SQLClientHelper.h"
 				>
 			</File>
 			<File
@@ -1766,29 +1615,45 @@
 				Name="rpc"
 				>
 				<File
-					RelativePath=".\gen-cpp\cbm_constants.h"
+					RelativePath=".\CbmClientHelper.h"
 					>
 				</File>
 				<File
-					RelativePath=".\gen-cpp\cbm_types.h"
+					RelativePath=".\RpcClient.h"
 					>
 				</File>
 				<File
-					RelativePath=".\gen-cpp\CbmService.h"
+					RelativePath=".\SQLClientHelper.h"
 					>
 				</File>
-				<File
-					RelativePath=".\gen-cpp\ControlService.h"
+				<Filter
+					Name="gen-cpp"
 					>
-				</File>
-				<File
-					RelativePath=".\gen-cpp\ctrl_constants.h"
-					>
-				</File>
-				<File
-					RelativePath=".\gen-cpp\ctrl_types.h"
-					>
-				</File>
+					<File
+						RelativePath="..\thrift\gen-cpp\cbm_constants.h"
+						>
+					</File>
+					<File
+						RelativePath="..\thrift\gen-cpp\cbm_types.h"
+						>
+					</File>
+					<File
+						RelativePath="..\thrift\gen-cpp\CbmService.h"
+						>
+					</File>
+					<File
+						RelativePath="..\thrift\gen-cpp\ControlService.h"
+						>
+					</File>
+					<File
+						RelativePath="..\thrift\gen-cpp\ctrl_constants.h"
+						>
+					</File>
+					<File
+						RelativePath="..\thrift\gen-cpp\ctrl_types.h"
+						>
+					</File>
+				</Filter>
 			</Filter>
 		</Filter>
 		<Filter

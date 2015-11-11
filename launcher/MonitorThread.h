@@ -74,7 +74,7 @@ public:
         m_hWnd = hWnd;
     }
     //运行
-    bool Run( HANDLE hThread );
+    bool Run( HANDLE& hThread );
 
 protected:
     //构造函数

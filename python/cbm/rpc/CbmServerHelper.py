@@ -1,6 +1,12 @@
 #-*- coding:utf-8 -*-
 #!/usr/bin/env python
 
+import os
+import uuid
+import threading
+import subprocess
+from time import ctime,sleep
+
 # 导入sqlalchemy模块
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -25,6 +31,9 @@ def init_sqlalchemy():
     Session = sessionmaker()
     Session.configure(bind=engine)
     return Session
+
+# cad发送过来的数据缓存
+POST_DATA_FROM_CAD_CACHE = {}
 
 # 参考:处理多个service(http:# blog.csdn.net/hivon/article/details/11681977)
 # sqlalchemy的两种方法详解(http:# www.it165.net/database/html/201404/6034.html)
@@ -321,6 +330,41 @@ class CbmServiceHandler(SQLServerHelper.SQLServiceHandler):
         ret.q4 = q4
         ret.qa = qa
         return ret
+
+    def SendCommandToCAD(self, cmd):
+        exe = '..\\..\\x64\\Debug\\send'
+        subprocess.Popen('%s %s' % (exe, cmd))
+
+    def RequestJsonDatasFromCAD(self, data_type):
+        global POST_DATA_FROM_CAD_CACHE
+        # 生成36位密钥
+        secret_key = str(uuid.uuid1())
+        # 给cad发送命令：JL.PostJsonDatas 请求的数据id  密钥
+        self.SendCommandToCAD("%s %d %s" % ("JL.PostJsonDatas", data_type, secret_key))
+        # 返回组合密钥值
+        key = "%d_%s" % (data_type, secret_key)
+        print "服务端:分配密钥:", key
+        # 分配空间用于存放数据
+        POST_DATA_FROM_CAD_CACHE[key] = "{}"
+        return key
+
+    def GetJsonDatasFromRpcCache(self, secret_key):
+        global POST_DATA_FROM_CAD_CACHE
+        print "服务端:从缓存中获取数据"
+        if secret_key not in POST_DATA_FROM_CAD_CACHE:
+            return "{}"
+        else:
+            json_datas = POST_DATA_FROM_CAD_CACHE[secret_key]
+            del POST_DATA_FROM_CAD_CACHE[secret_key]
+            return json_datas
+
+    def PostJsonDatasFromCAD(self, data_type, secret_key, json_datas):
+        global POST_DATA_FROM_CAD_CACHE
+        key = "%d_%s" % (data_type, secret_key)
+        if key in POST_DATA_FROM_CAD_CACHE:
+            POST_DATA_FROM_CAD_CACHE[key] = json_datas
+            print '服务端: 接受数据:%s  密钥:%s' % (json_datas, secret_key)
+        # print '服务端: 更新缓存:', POST_DATA_FROM_CAD_CACHE
 
 # 创建服务器
 def create_server(host, port):

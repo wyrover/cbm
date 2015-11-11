@@ -59,4 +59,5 @@ public:
     static void GasDesign();
 
 	static void xxx();
+	static void PostJsonDatasToRpc();
 };
