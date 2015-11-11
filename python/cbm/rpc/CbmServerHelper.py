@@ -5,6 +5,7 @@ import os
 import uuid
 import threading
 import subprocess
+import tempfile
 from time import ctime,sleep
 
 # 导入sqlalchemy模块
@@ -31,6 +32,13 @@ def init_sqlalchemy():
     Session = sessionmaker()
     Session.configure(bind=engine)
     return Session
+
+# 利用tempfile模块生成临时文件名
+def gen_temp_filename():
+    temp = tempfile.NamedTemporaryFile(mode='w+t')
+    temp_fname = temp.name;
+    temp.close() # 关闭的时候自动会删除临时文件
+    return temp_fname
 
 # cad发送过来的数据缓存
 POST_DATA_FROM_CAD_CACHE = {}
@@ -335,35 +343,44 @@ class CbmServiceHandler(SQLServerHelper.SQLServiceHandler):
         exe = '..\\..\\x64\\Debug\\send'
         subprocess.Popen('%s %s' % (exe, cmd))
 
-    def RequestJsonDatasFromCAD(self, data_type):
+    def RequestJsonDatasFromCAD(self, input_datas):
         global POST_DATA_FROM_CAD_CACHE
         # 生成36位密钥
         secret_key = str(uuid.uuid1())
-        # 给cad发送命令：JL.PostJsonDatas 请求的数据id  密钥
-        self.SendCommandToCAD("%s %d %s" % ("JL.PostJsonDatas", data_type, secret_key))
+
+        # 写入数据到临时文件
+        temp = open(gen_temp_filename(), 'w')
+        temp.writelines(map(lambda x:x.strip()+'\n',[input_datas, secret_key]))
+        temp.close()
+
+        # 给cad发送命令：JL.PostJsonDatas 数据文件
+        self.SendCommandToCAD("%s %s" % ("JL.PostJsonDatas", temp_fname))
         # 返回组合密钥值
-        key = "%d_%s" % (data_type, secret_key)
-        print "服务端:分配密钥:", key
+        print "服务端:分配密钥:", secret_key
         # 分配空间用于存放数据
-        POST_DATA_FROM_CAD_CACHE[key] = "{}"
-        return key
+        POST_DATA_FROM_CAD_CACHE[secret_key] = "{}"
+
+        return secret_key
 
     def GetJsonDatasFromRpcCache(self, secret_key):
+        if secret_key == "#":
+            return "{}"
         global POST_DATA_FROM_CAD_CACHE
         print "服务端:从缓存中获取数据"
         if secret_key not in POST_DATA_FROM_CAD_CACHE:
             return "{}"
         else:
-            json_datas = POST_DATA_FROM_CAD_CACHE[secret_key]
+            out_datas = POST_DATA_FROM_CAD_CACHE[secret_key]
             del POST_DATA_FROM_CAD_CACHE[secret_key]
-            return json_datas
+            return out_datas
 
-    def PostJsonDatasFromCAD(self, data_type, secret_key, json_datas):
+    def PostJsonDatasFromCAD(self, secret_key, input_datas, out_datas):
+        if secret_key == "#":
+            return
         global POST_DATA_FROM_CAD_CACHE
-        key = "%d_%s" % (data_type, secret_key)
-        if key in POST_DATA_FROM_CAD_CACHE:
-            POST_DATA_FROM_CAD_CACHE[key] = json_datas
-            print '服务端: 接受数据:%s  密钥:%s' % (json_datas, secret_key)
+        if secret_key in POST_DATA_FROM_CAD_CACHE:
+            POST_DATA_FROM_CAD_CACHE[secret_key] = out_datas
+            print '来自cad的数据:%s  密钥:%s' % (out_datas, secret_key)
         # print '服务端: 更新缓存:', POST_DATA_FROM_CAD_CACHE
 
 # 创建服务器

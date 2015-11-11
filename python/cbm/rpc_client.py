@@ -234,7 +234,7 @@ def test_sql():
     # print SQLClientHelper.GetMineBaseNames()
     # print CbmClientHelper.SendCommandToCAD("zoom a")
     # print CbmClientHelper.SendCommandToCAD("regen")
-    print CbmClientHelper.GetJsonDatasFromCAD(1)
+    print CbmClientHelper.GetJsonDatasFromCAD("{}", 2)
 
 def main():
   if False:

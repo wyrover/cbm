@@ -786,9 +786,9 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
   print('  double WorkSurfGasFlow2(Coal coal, WorkArea work_area, WorkSurf work_surf)')
   print('  DrillingSurfGasFlowResult DrillingSurfGasFlow(Coal coal, DrillingSurf drilling_surf, Tunnel tunnel)')
   print('  void SendCommandToCAD(string cmd)')
-  print('  string RequestJsonDatasFromCAD(i32 data_type)')
+  print('  string RequestJsonDatasFromCAD(string input_datas)')
   print('  string GetJsonDatasFromRpcCache(string secret_key)')
-  print('  void PostJsonDatasFromCAD(i32 data_type, string secret_key, string json_datas)')
+  print('  void PostJsonDatasFromCAD(string secret_key, string input_datas, string out_datas)')
   print('')
   sys.exit(0)
 
@@ -5421,7 +5421,7 @@ elif cmd == 'RequestJsonDatasFromCAD':
   if len(args) != 1:
     print('RequestJsonDatasFromCAD requires 1 args')
     sys.exit(1)
-  pp.pprint(client.RequestJsonDatasFromCAD(eval(args[0]),))
+  pp.pprint(client.RequestJsonDatasFromCAD(args[0],))
 
 elif cmd == 'GetJsonDatasFromRpcCache':
   if len(args) != 1:
@@ -5433,7 +5433,7 @@ elif cmd == 'PostJsonDatasFromCAD':
   if len(args) != 3:
     print('PostJsonDatasFromCAD requires 3 args')
     sys.exit(1)
-  pp.pprint(client.PostJsonDatasFromCAD(eval(args[0]),args[1],args[2],))
+  pp.pprint(client.PostJsonDatasFromCAD(args[0],args[1],args[2],))
 
 else:
   print('Unrecognized method %s' % cmd)

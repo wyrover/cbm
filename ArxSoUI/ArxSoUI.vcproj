@@ -387,6 +387,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\CmdHelper.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\DoubleLine.cpp"
 				>
 			</File>
@@ -1271,6 +1275,10 @@
 			Name="Include Files"
 			Filter="h;hh;hxx"
 			>
+			<File
+				RelativePath=".\CmdHelper.h"
+				>
+			</File>
 			<File
 				RelativePath=".\Data.h"
 				>

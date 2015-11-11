@@ -32,26 +32,6 @@ using namespace SOUI;
 #include <ArxHelper/HelperClass.h>
 #include <Util/HelperClass.h>
 
-#include "SQLClientHelper.h"
-#include "CbmClientHelper.h"
-#include <WinHttpClient.h>
-
-void TestWinHttpClient()
-{
-	// Set URL.
-	WinHttpClient client(_T("http://localhost/tt/test.php"));
-
-	// Send http request, a GET request by default.
-	client.SendHttpRequest();
-	string data = "title=测试1&content=看你的了";
-	client.SetAdditionalDataToSend((BYTE *)data.c_str(), data.size());
-
-	// The response header.
-	CString httpResponseHeader = client.GetResponseHeader().c_str();
-	// The response content.
-	CString httpResponseContent = client.GetResponseContent().c_str();
-}
-
 void UIHelper::InitAllData()
 {
     //初始化必须数据(建立词典、扩展数据appname等)
@@ -732,49 +712,4 @@ void UIHelper::Main()
   //  }
 }
 
-void UIHelper::xxx()
-{
-	std::string json_data = CbmClientHelper::GetJsonDatasFromCAD(1);
-	//int ret = CbmClientHelper::VerifyMineAccount("dlj", "123");
-	CbmClientHelper::SendCommandToCAD("regen");
-	//acutPrintf(_T("\n验证结果:%d"), ret);
-}
 
-void UIHelper::PostJsonDatasToRpc()
-{
-	int data_type = 0;
-	if(acedGetInt(_T("\n请输入请求的数据类型(>0):"), &data_type) != RTNORM) return;
-	if(data_type < 1) return;
-	// 获取密钥
-	TCHAR str[MAX_PATH];
-	if(acedGetString(0, _T("请输入密钥:"), str) != RTNORM) return;
-
-	CString secret_key = str;
-	secret_key.Trim();
-	acutPrintf(_T("\n密钥长度:"), secret_key.GetLength());
-	//if(secret_key.GetLength() != 36) return;
-
-	// 收集数据
-	bool ret = true;
-	switch(data_type)
-	{
-	case 1:
-		//
-		break;
-	case 2:
-		//
-		break;
-	default:
-		ret = false;
-		break;
-	}
-	if(ret)
-	{
-		//向rpc发送
-		CbmClientHelper::PostJsonDatasFromCAD(data_type, W2C((LPCTSTR)secret_key), "{'name':'dlj'}");
-	}
-	else
-	{
-		CbmClientHelper::PostJsonDatasFromCAD(data_type, W2C((LPCTSTR)secret_key), "{}");
-	}
-}

@@ -337,7 +337,7 @@ def SendCommandToCAD(cmd):
 	except Exception, e:
 		print e
 
-def GetJsonDatasFromCAD(data_type, wait_seconds=2):
+def GetJsonDatasFromCAD(input_datas='{}', wait_seconds=2):
 	if wait_seconds < 1:wait_seconds = 2
 	if wait_seconds > 10:wait_seconds = 10
 	ret = "{}"
@@ -345,7 +345,7 @@ def GetJsonDatasFromCAD(data_type, wait_seconds=2):
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
 		# 需要一些cad的数据，向rpc请求,rpc分配一个密钥
-		secret_key = service_client.get().RequestJsonDatasFromCAD(data_type)
+		secret_key = service_client.get().RequestJsonDatasFromCAD(input_datas)
 		print u'客户端:得到密钥:%s' % secret_key
 		# 等待几秒钟
 		sleep(wait_seconds)
@@ -360,11 +360,11 @@ def GetJsonDatasFromCAD(data_type, wait_seconds=2):
 		ret = "{}"
 	return ret
 
-def PostJsonDatasFromCAD(data_type, secret_key, json_datas):
+def PostJsonDatasFromCAD(secret_key, input_datas, out_datas):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		service_client.get().PostJsonDatasFromCAD(data_type, secret_key, json_datas)
+		service_client.get().PostJsonDatasFromCAD(secret_key, input_datas, out_datas)
 		service_client.close()
 	except Exception, e:
 		print e

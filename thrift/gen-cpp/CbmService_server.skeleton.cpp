@@ -3832,7 +3832,7 @@ class CbmServiceHandler : virtual public CbmServiceIf {
     printf("SendCommandToCAD\n");
   }
 
-  void RequestJsonDatasFromCAD(std::string& _return, const int32_t data_type) {
+  void RequestJsonDatasFromCAD(std::string& _return, const std::string& input_datas) {
     // Your implementation goes here
     printf("RequestJsonDatasFromCAD\n");
   }
@@ -3842,7 +3842,7 @@ class CbmServiceHandler : virtual public CbmServiceIf {
     printf("GetJsonDatasFromRpcCache\n");
   }
 
-  void PostJsonDatasFromCAD(const int32_t data_type, const std::string& secret_key, const std::string& json_datas) {
+  void PostJsonDatasFromCAD(const std::string& secret_key, const std::string& input_datas, const std::string& out_datas) {
     // Your implementation goes here
     printf("PostJsonDatasFromCAD\n");
   }

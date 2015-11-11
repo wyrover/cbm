@@ -783,9 +783,9 @@ class CbmServiceIf {
   virtual double WorkSurfGasFlow2(const Coal& coal, const WorkArea& work_area, const WorkSurf& work_surf) = 0;
   virtual void DrillingSurfGasFlow(DrillingSurfGasFlowResult& _return, const Coal& coal, const DrillingSurf& drilling_surf, const Tunnel& tunnel) = 0;
   virtual void SendCommandToCAD(const std::string& cmd) = 0;
-  virtual void RequestJsonDatasFromCAD(std::string& _return, const int32_t data_type) = 0;
+  virtual void RequestJsonDatasFromCAD(std::string& _return, const std::string& input_datas) = 0;
   virtual void GetJsonDatasFromRpcCache(std::string& _return, const std::string& secret_key) = 0;
-  virtual void PostJsonDatasFromCAD(const int32_t data_type, const std::string& secret_key, const std::string& json_datas) = 0;
+  virtual void PostJsonDatasFromCAD(const std::string& secret_key, const std::string& input_datas, const std::string& out_datas) = 0;
 };
 
 class CbmServiceIfFactory {
@@ -3334,13 +3334,13 @@ class CbmServiceNull : virtual public CbmServiceIf {
   void SendCommandToCAD(const std::string& /* cmd */) {
     return;
   }
-  void RequestJsonDatasFromCAD(std::string& /* _return */, const int32_t /* data_type */) {
+  void RequestJsonDatasFromCAD(std::string& /* _return */, const std::string& /* input_datas */) {
     return;
   }
   void GetJsonDatasFromRpcCache(std::string& /* _return */, const std::string& /* secret_key */) {
     return;
   }
-  void PostJsonDatasFromCAD(const int32_t /* data_type */, const std::string& /* secret_key */, const std::string& /* json_datas */) {
+  void PostJsonDatasFromCAD(const std::string& /* secret_key */, const std::string& /* input_datas */, const std::string& /* out_datas */) {
     return;
   }
 };
@@ -84306,8 +84306,8 @@ class CbmService_SendCommandToCAD_presult {
 };
 
 typedef struct _CbmService_RequestJsonDatasFromCAD_args__isset {
-  _CbmService_RequestJsonDatasFromCAD_args__isset() : data_type(false) {}
-  bool data_type :1;
+  _CbmService_RequestJsonDatasFromCAD_args__isset() : input_datas(false) {}
+  bool input_datas :1;
 } _CbmService_RequestJsonDatasFromCAD_args__isset;
 
 class CbmService_RequestJsonDatasFromCAD_args {
@@ -84315,19 +84315,19 @@ class CbmService_RequestJsonDatasFromCAD_args {
 
   CbmService_RequestJsonDatasFromCAD_args(const CbmService_RequestJsonDatasFromCAD_args&);
   CbmService_RequestJsonDatasFromCAD_args& operator=(const CbmService_RequestJsonDatasFromCAD_args&);
-  CbmService_RequestJsonDatasFromCAD_args() : data_type(0) {
+  CbmService_RequestJsonDatasFromCAD_args() : input_datas() {
   }
 
   virtual ~CbmService_RequestJsonDatasFromCAD_args() throw();
-  int32_t data_type;
+  std::string input_datas;
 
   _CbmService_RequestJsonDatasFromCAD_args__isset __isset;
 
-  void __set_data_type(const int32_t val);
+  void __set_input_datas(const std::string& val);
 
   bool operator == (const CbmService_RequestJsonDatasFromCAD_args & rhs) const
   {
-    if (!(data_type == rhs.data_type))
+    if (!(input_datas == rhs.input_datas))
       return false;
     return true;
   }
@@ -84348,7 +84348,7 @@ class CbmService_RequestJsonDatasFromCAD_pargs {
 
 
   virtual ~CbmService_RequestJsonDatasFromCAD_pargs() throw();
-  const int32_t* data_type;
+  const std::string* input_datas;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
@@ -84514,10 +84514,10 @@ class CbmService_GetJsonDatasFromRpcCache_presult {
 };
 
 typedef struct _CbmService_PostJsonDatasFromCAD_args__isset {
-  _CbmService_PostJsonDatasFromCAD_args__isset() : data_type(false), secret_key(false), json_datas(false) {}
-  bool data_type :1;
+  _CbmService_PostJsonDatasFromCAD_args__isset() : secret_key(false), input_datas(false), out_datas(false) {}
   bool secret_key :1;
-  bool json_datas :1;
+  bool input_datas :1;
+  bool out_datas :1;
 } _CbmService_PostJsonDatasFromCAD_args__isset;
 
 class CbmService_PostJsonDatasFromCAD_args {
@@ -84525,29 +84525,29 @@ class CbmService_PostJsonDatasFromCAD_args {
 
   CbmService_PostJsonDatasFromCAD_args(const CbmService_PostJsonDatasFromCAD_args&);
   CbmService_PostJsonDatasFromCAD_args& operator=(const CbmService_PostJsonDatasFromCAD_args&);
-  CbmService_PostJsonDatasFromCAD_args() : data_type(0), secret_key(), json_datas() {
+  CbmService_PostJsonDatasFromCAD_args() : secret_key(), input_datas(), out_datas() {
   }
 
   virtual ~CbmService_PostJsonDatasFromCAD_args() throw();
-  int32_t data_type;
   std::string secret_key;
-  std::string json_datas;
+  std::string input_datas;
+  std::string out_datas;
 
   _CbmService_PostJsonDatasFromCAD_args__isset __isset;
 
-  void __set_data_type(const int32_t val);
-
   void __set_secret_key(const std::string& val);
 
-  void __set_json_datas(const std::string& val);
+  void __set_input_datas(const std::string& val);
+
+  void __set_out_datas(const std::string& val);
 
   bool operator == (const CbmService_PostJsonDatasFromCAD_args & rhs) const
   {
-    if (!(data_type == rhs.data_type))
-      return false;
     if (!(secret_key == rhs.secret_key))
       return false;
-    if (!(json_datas == rhs.json_datas))
+    if (!(input_datas == rhs.input_datas))
+      return false;
+    if (!(out_datas == rhs.out_datas))
       return false;
     return true;
   }
@@ -84568,9 +84568,9 @@ class CbmService_PostJsonDatasFromCAD_pargs {
 
 
   virtual ~CbmService_PostJsonDatasFromCAD_pargs() throw();
-  const int32_t* data_type;
   const std::string* secret_key;
-  const std::string* json_datas;
+  const std::string* input_datas;
+  const std::string* out_datas;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
@@ -86924,14 +86924,14 @@ class CbmServiceClient : virtual public CbmServiceIf {
   void SendCommandToCAD(const std::string& cmd);
   void send_SendCommandToCAD(const std::string& cmd);
   void recv_SendCommandToCAD();
-  void RequestJsonDatasFromCAD(std::string& _return, const int32_t data_type);
-  void send_RequestJsonDatasFromCAD(const int32_t data_type);
+  void RequestJsonDatasFromCAD(std::string& _return, const std::string& input_datas);
+  void send_RequestJsonDatasFromCAD(const std::string& input_datas);
   void recv_RequestJsonDatasFromCAD(std::string& _return);
   void GetJsonDatasFromRpcCache(std::string& _return, const std::string& secret_key);
   void send_GetJsonDatasFromRpcCache(const std::string& secret_key);
   void recv_GetJsonDatasFromRpcCache(std::string& _return);
-  void PostJsonDatasFromCAD(const int32_t data_type, const std::string& secret_key, const std::string& json_datas);
-  void send_PostJsonDatasFromCAD(const int32_t data_type, const std::string& secret_key, const std::string& json_datas);
+  void PostJsonDatasFromCAD(const std::string& secret_key, const std::string& input_datas, const std::string& out_datas);
+  void send_PostJsonDatasFromCAD(const std::string& secret_key, const std::string& input_datas, const std::string& out_datas);
   void recv_PostJsonDatasFromCAD();
  protected:
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> piprot_;
@@ -95830,13 +95830,13 @@ class CbmServiceMultiface : virtual public CbmServiceIf {
     ifaces_[i]->SendCommandToCAD(cmd);
   }
 
-  void RequestJsonDatasFromCAD(std::string& _return, const int32_t data_type) {
+  void RequestJsonDatasFromCAD(std::string& _return, const std::string& input_datas) {
     size_t sz = ifaces_.size();
     size_t i = 0;
     for (; i < (sz - 1); ++i) {
-      ifaces_[i]->RequestJsonDatasFromCAD(_return, data_type);
+      ifaces_[i]->RequestJsonDatasFromCAD(_return, input_datas);
     }
-    ifaces_[i]->RequestJsonDatasFromCAD(_return, data_type);
+    ifaces_[i]->RequestJsonDatasFromCAD(_return, input_datas);
     return;
   }
 
@@ -95850,13 +95850,13 @@ class CbmServiceMultiface : virtual public CbmServiceIf {
     return;
   }
 
-  void PostJsonDatasFromCAD(const int32_t data_type, const std::string& secret_key, const std::string& json_datas) {
+  void PostJsonDatasFromCAD(const std::string& secret_key, const std::string& input_datas, const std::string& out_datas) {
     size_t sz = ifaces_.size();
     size_t i = 0;
     for (; i < (sz - 1); ++i) {
-      ifaces_[i]->PostJsonDatasFromCAD(data_type, secret_key, json_datas);
+      ifaces_[i]->PostJsonDatasFromCAD(secret_key, input_datas, out_datas);
     }
-    ifaces_[i]->PostJsonDatasFromCAD(data_type, secret_key, json_datas);
+    ifaces_[i]->PostJsonDatasFromCAD(secret_key, input_datas, out_datas);
   }
 
 };
@@ -98175,14 +98175,14 @@ class CbmServiceConcurrentClient : virtual public CbmServiceIf {
   void SendCommandToCAD(const std::string& cmd);
   int32_t send_SendCommandToCAD(const std::string& cmd);
   void recv_SendCommandToCAD(const int32_t seqid);
-  void RequestJsonDatasFromCAD(std::string& _return, const int32_t data_type);
-  int32_t send_RequestJsonDatasFromCAD(const int32_t data_type);
+  void RequestJsonDatasFromCAD(std::string& _return, const std::string& input_datas);
+  int32_t send_RequestJsonDatasFromCAD(const std::string& input_datas);
   void recv_RequestJsonDatasFromCAD(std::string& _return, const int32_t seqid);
   void GetJsonDatasFromRpcCache(std::string& _return, const std::string& secret_key);
   int32_t send_GetJsonDatasFromRpcCache(const std::string& secret_key);
   void recv_GetJsonDatasFromRpcCache(std::string& _return, const int32_t seqid);
-  void PostJsonDatasFromCAD(const int32_t data_type, const std::string& secret_key, const std::string& json_datas);
-  int32_t send_PostJsonDatasFromCAD(const int32_t data_type, const std::string& secret_key, const std::string& json_datas);
+  void PostJsonDatasFromCAD(const std::string& secret_key, const std::string& input_datas, const std::string& out_datas);
+  int32_t send_PostJsonDatasFromCAD(const std::string& secret_key, const std::string& input_datas, const std::string& out_datas);
   void recv_PostJsonDatasFromCAD(const int32_t seqid);
  protected:
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> piprot_;

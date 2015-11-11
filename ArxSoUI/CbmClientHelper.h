@@ -62,6 +62,6 @@ public:
 	static void DrillingSurfGasFlow(cbm::DrillingSurfGasFlowResult& _return, const cbm::Coal& coal, const cbm::DrillingSurf& drilling_surf, const cbm::Tunnel& tunnel);
 
 	static void SendCommandToCAD(const std::string& cmd);
-	static std::string GetJsonDatasFromCAD(const int32_t data_type, int wait_seconds=2);
-	static void PostJsonDatasFromCAD(const int32_t data_type, const std::string& secret_key, const std::string& json_datas);
+	static std::string GetJsonDatasFromCAD(const std::string& input_datas="{}", int wait_seconds=2);
+	static void PostJsonDatasFromCAD(const std::string& secret_key, const std::string& input_datas, const std::string& out_datas);
 };

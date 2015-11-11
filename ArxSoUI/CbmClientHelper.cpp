@@ -459,7 +459,7 @@ void CbmClientHelper::SendCommandToCAD(const std::string& cmd)
 	}
 }
 
-std::string CbmClientHelper::GetJsonDatasFromCAD(const int32_t data_type, int wait_seconds)
+std::string CbmClientHelper::GetJsonDatasFromCAD(const std::string& input_datas, int wait_seconds)
 {
 	if(wait_seconds <= 0) wait_seconds = 3;
 	if(wait_seconds > 10) wait_seconds = 10;
@@ -471,14 +471,14 @@ std::string CbmClientHelper::GetJsonDatasFromCAD(const int32_t data_type, int wa
 		service_client.start();
 		//需要一些cad的数据，向rpc请求,rpc分配一个密钥
 		std::string secret_key = "#";
-		service_client.get()->RequestJsonDatasFromCAD(secret_key, data_type);
+		service_client.get()->RequestJsonDatasFromCAD(secret_key, input_datas);
 		//等待几秒钟
 		::Sleep(wait_seconds*1000);
 		//从rpc缓存中提取数据
 		service_client.get()->GetJsonDatasFromRpcCache(ret, secret_key);
 		service_client.close();
-	} 
-	catch (TException &tx) 
+	}
+	catch (TException &tx)
 	{
 		std::string error_msg = tx.what();
 		//printf("ERROR: %s\n", tx.what());
@@ -487,13 +487,13 @@ std::string CbmClientHelper::GetJsonDatasFromCAD(const int32_t data_type, int wa
 	return ret;
 }
 
-void CbmClientHelper::PostJsonDatasFromCAD(const int32_t data_type, const std::string& secret_key, const std::string& json_datas)
+void CbmClientHelper::PostJsonDatasFromCAD(const std::string& secret_key, const std::string& input_datas, const std::string& out_datas)
 {
 	try
 	{
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		service_client.get()->PostJsonDatasFromCAD(data_type, secret_key, json_datas);
+		service_client.get()->PostJsonDatasFromCAD(secret_key, input_datas, out_datas);
 		service_client.close();
 	} 
 	catch (TException &tx) 

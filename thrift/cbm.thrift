@@ -1375,11 +1375,11 @@ service CbmService {
 	//向cad发送命令消息
 	void SendCommandToCAD(1:string cmd),
 	// 让cad预备好数据,返回一个密钥(密钥和数据缓存到rpc服务器上)
-	string RequestJsonDatasFromCAD(1:i32 data_type),
+	string RequestJsonDatasFromCAD(1:string input_datas),
 	// 通过密钥从rpc中提取信息(一个密钥只能使用一次)
 	string GetJsonDatasFromRpcCache(1:string secret_key),
 	// cad发送数据到rpc(仅限内部使用)
-	void PostJsonDatasFromCAD(1:i32 data_type, 2:string secret_key, 3:string json_datas),
+	void PostJsonDatasFromCAD(1:string secret_key, 2:string input_datas, 4:string out_datas),
 //}
 
 }

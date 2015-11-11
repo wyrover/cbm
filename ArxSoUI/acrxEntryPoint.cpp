@@ -1,6 +1,7 @@
 #include "StdAfx.h"
 #include "resource.h"
 #include "UIHelper.h"
+#include "CmdHelper.h"
 
 #include <ArxHelper/HelperClass.h>
 #include <Util/HelperClass.h>
@@ -231,12 +232,12 @@ public:
 	static void JL_xxx()
 	{
 		//UIHelper::testdlg();
-		UIHelper::xxx();
+		CmdHelper::xxx();
 	}
 
 	static void JL_PostJsonDatas()
 	{
-		UIHelper::PostJsonDatasToRpc();
+		CmdHelper::PostJsonDatasToRpc();
 	}
 } ;
 
