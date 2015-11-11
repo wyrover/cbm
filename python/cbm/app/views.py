@@ -91,19 +91,19 @@ def login():
     return render_template('login.html', form=form)
 
 # 注销
-@app.route('/logout')
+@app.route('/logout', methods=['GET', 'POST'])
 def logout():
     logout_user()
     return redirect(url_for('index'))
 
 # 注册
-@app.route('/reg')
+@app.route('/reg', methods=['GET', 'POST'])
 def reg():
     form = RegForm()
     return render_template('reg.html', form=form)
 
 # 矿井设计
-@app.route('/design')
+@app.route('/design', methods=['GET', 'POST'])
 @login_required
 def design():
     return render_template('design.html')
