@@ -1,7 +1,6 @@
 #include "StdAfx.h"
 #include "DoubleLine.h"
 
-#include <Util/HelperClass.h>
 #include <ArxHelper/HelperClass.h>
 
 //初始化类静态成员变量

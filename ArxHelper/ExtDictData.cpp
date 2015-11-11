@@ -1,7 +1,7 @@
 #include "StdAfx.h"
 #include "ExtDictData.h"
 #include "HelperClass.h"
-#include "XRecordManager.h"
+#include "ArxXRecordManager.h"
 
 void ExtDictData::mapString( const CString& field, CString* pValue )
 {
@@ -120,7 +120,7 @@ public:
             }
         }
 
-        XRecordManager dem( pXrec );
+        ArxXRecordManager dem( pXrec );
         CString temp_value;
         if( !dem.getEntry( 0, temp_value ) )
         {
@@ -142,7 +142,7 @@ public:
         {
             return false;
         }
-        XRecordManager dem( pXrec );
+        ArxXRecordManager dem( pXrec );
         return dem.getEntry( 0, value ); // 每个XRECORD只存放一个数据
     }
 

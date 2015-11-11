@@ -6,7 +6,6 @@
 #define GLOBAL_TOLERANCE 1e-5
 
 #include <ArxHelper/HelperClass.h>
-#include <Util/HelperClass.h>
 
 // 系统精度设置器全局变量
 ArxTolSetter* pTS = 0;

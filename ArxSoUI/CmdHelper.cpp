@@ -4,9 +4,7 @@
 #include "SQLClientHelper.h"
 #include "CbmClientHelper.h"
 #include <WinHttpClient.h>
-
 #include <ArxHelper/HelperClass.h>
-#include <Util/HelperClass.h>
 
 #include <fstream>
 

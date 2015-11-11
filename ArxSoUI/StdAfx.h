@@ -80,21 +80,4 @@
 
 #include "resource.h"
 
-#include <souistd.h>
-#include <core/Swnd.h>
-#include <core/SHostDialog.h>
-#include <control/SMessageBox.h>
-#include <control/souictrls.h>
-#include <control/realwndhandler-i.h>
-#include <res.mgr/sobjdefattr.h>
-#include <com-cfg.h>
-//#include <com-loader.hpp>
-#include <helper/MenuWndHook.h>
-#include <helper/mybuffer.h>
-#include <helper/SMenu.h>
-using namespace SOUI;
-
-//#include <Dao/DaoHelper.h>
-
-
 #pragma pack (pop)

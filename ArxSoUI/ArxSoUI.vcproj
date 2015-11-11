@@ -47,7 +47,7 @@
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/bigobj"
 				Optimization="0"
-				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\soci\include;..\ThirdParty\soui;..\ThirdParty\soui\soui\include;..\ThirdParty\soui\utilities\include;..\ThirdParty\soui\config;..\ThirdParty\soui\components;&quot;..\ThirdParty\json-cpp\include&quot;;..\ThirdParty\thrift\lib\cpp\src;..\ThirdParty\WinHttpClient\Include;..\ThirdParty\boost"
+				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;&quot;..\ThirdParty\json-cpp\include&quot;;..\ThirdParty\thrift\lib\cpp\src;..\ThirdParty\WinHttpClient\Include;..\ThirdParty\boost"
 				AdditionalUsingDirectories="C:\Program Files\AutoCAD 2010\"
 				PreprocessorDefinitions="WIN32;_WINDOWS;ARXSOUI_MODULE;_AFXEXT;_ACRXAPP;BOOST_LIB_DIAGNOSTIC;BOOST_ALL_DYN_LINK"
 				StringPooling="false"
@@ -73,10 +73,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="log4cplusSU.lib soci_core.lib soci_mysql.lib libmysql.lib soui.lib utilities.lib jsoncpp.lib thrift.lib"
+				AdditionalDependencies="log4cplusSU.lib jsoncpp.lib thrift.lib"
 				OutputFile="$(outdir)/ArxSoUI.arx"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\soci\lib\win32;..\ThirdParty\soui\bin;&quot;..\ThirdParty\json-cpp\lib&quot;;..\ThirdParty\thrift\win32;..\ThirdParty\boost\lib\win32"
+				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;&quot;..\ThirdParty\json-cpp\lib&quot;;..\ThirdParty\thrift\win32;..\ThirdParty\boost\lib\win32"
 				LinkDLL="true"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/ArxSoUI.pdb"
@@ -135,7 +135,7 @@
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/bigobj"
 				Optimization="0"
-				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\soci\include;..\ThirdParty\soui;..\ThirdParty\soui\soui\include;..\ThirdParty\soui\utilities\include;..\ThirdParty\soui\config;..\ThirdParty\soui\components;&quot;..\ThirdParty\json-cpp\include&quot;;..\ThirdParty\thrift\lib\cpp\src;..\ThirdParty\WinHttpClient\Include;..\ThirdParty\boost"
+				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;&quot;..\ThirdParty\json-cpp\include&quot;;..\ThirdParty\thrift\lib\cpp\src;..\ThirdParty\WinHttpClient\Include;..\ThirdParty\boost"
 				AdditionalUsingDirectories="C:\Program Files\AutoCAD 2010\"
 				PreprocessorDefinitions="WIN32;_WINDOWS;ARXSOUI_MODULE;_AFXEXT;_ACRXAPP;BOOST_LIB_DIAGNOSTIC;BOOST_ALL_DYN_LINK"
 				StringPooling="false"
@@ -161,10 +161,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="log4cplusSU-x64.lib soci_core.lib soci_mysql.lib libmysql.lib soui.lib utilities.lib jsoncpp-x64.lib thrift.lib"
+				AdditionalDependencies="log4cplusSU-x64.lib jsoncpp-x64.lib thrift.lib"
 				OutputFile="$(outdir)/ArxSoUI.arx"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\soci\lib\x64;..\ThirdParty\soui\bin64;&quot;..\ThirdParty\json-cpp\lib&quot;;..\ThirdParty\thrift\x64;..\ThirdParty\boost\lib\x64"
+				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;&quot;..\ThirdParty\json-cpp\lib&quot;;..\ThirdParty\thrift\x64;..\ThirdParty\boost\lib\x64"
 				LinkDLL="true"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/ArxSoUI.pdb"
@@ -223,7 +223,7 @@
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/bigobj"
 				Optimization="2"
-				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\soci\include;..\ThirdParty\soui;..\ThirdParty\soui\soui\include;..\ThirdParty\soui\utilities\include;..\ThirdParty\soui\config;..\ThirdParty\soui\components;&quot;..\ThirdParty\json-cpp\include&quot;;..\ThirdParty\thrift\lib\cpp\src;..\ThirdParty\WinHttpClient\Include;..\ThirdParty\boost"
+				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;&quot;..\ThirdParty\json-cpp\include&quot;;..\ThirdParty\thrift\lib\cpp\src;..\ThirdParty\WinHttpClient\Include;..\ThirdParty\boost"
 				AdditionalUsingDirectories="C:\Program Files\AutoCAD 2010\"
 				PreprocessorDefinitions="WIN32;_WINDOWS;ARXSOUI_MODULE;NDEBUG;_AFXEXT;_ACRXAPP;BOOST_LIB_DIAGNOSTIC;BOOST_ALL_DYN_LINK"
 				StringPooling="true"
@@ -249,10 +249,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="log4cplusSU.lib soci_core.lib soci_mysql.lib libmysql.lib soui.lib utilities.lib jsoncpp.lib thrift.lib"
+				AdditionalDependencies="log4cplusSU.lib jsoncpp.lib thrift.lib"
 				OutputFile="$(outdir)/ArxSoUI.arx"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\soci\lib\win32;..\ThirdParty\soui\bin;&quot;..\ThirdParty\json-cpp\lib&quot;;..\ThirdParty\thrift\win32;..\ThirdParty\boost\lib\win32"
+				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;&quot;..\ThirdParty\json-cpp\lib&quot;;..\ThirdParty\thrift\win32;..\ThirdParty\boost\lib\win32"
 				LinkDLL="true"
 				GenerateDebugInformation="false"
 				ProgramDatabaseFile=""
@@ -311,7 +311,7 @@
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/bigobj"
 				Optimization="2"
-				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\soci\include;..\ThirdParty\soui;..\ThirdParty\soui\soui\include;..\ThirdParty\soui\utilities\include;..\ThirdParty\soui\config;..\ThirdParty\soui\components;&quot;..\ThirdParty\json-cpp\include&quot;;..\ThirdParty\thrift\lib\cpp\src;..\ThirdParty\WinHttpClient\Include;..\ThirdParty\boost"
+				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;&quot;..\ThirdParty\json-cpp\include&quot;;..\ThirdParty\thrift\lib\cpp\src;..\ThirdParty\WinHttpClient\Include;..\ThirdParty\boost"
 				AdditionalUsingDirectories="C:\Program Files\AutoCAD 2010\"
 				PreprocessorDefinitions="WIN32;_WINDOWS;ARXSOUI_MODULE;NDEBUG;_AFXEXT;_ACRXAPP;BOOST_LIB_DIAGNOSTIC;BOOST_ALL_DYN_LINK"
 				StringPooling="true"
@@ -337,10 +337,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="log4cplusSU-x64.lib soci_core.lib soci_mysql.lib libmysql.lib soui.lib utilities.lib jsoncpp-x64.lib thrift.lib"
+				AdditionalDependencies="log4cplusSU-x64.lib jsoncpp-x64.lib thrift.lib"
 				OutputFile="$(outdir)/ArxSoUI.arx"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;..\ThirdParty\soci\lib\x64;..\ThirdParty\soui\bin64;&quot;..\ThirdParty\json-cpp\lib&quot;;..\ThirdParty\thrift\x64;..\ThirdParty\boost\lib\x64"
+				AdditionalLibraryDirectories="..\ThirdParty\log4cplus\lib;&quot;..\ThirdParty\json-cpp\lib&quot;;..\ThirdParty\thrift\x64;..\ThirdParty\boost\lib\x64"
 				LinkDLL="true"
 				GenerateDebugInformation="false"
 				ProgramDatabaseFile=""
@@ -395,22 +395,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Path.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\SouiDialog.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\SouiListHelper.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\SoUILoader.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\StdAfx.cpp"
 				>
 				<FileConfiguration
@@ -446,622 +430,6 @@
 					/>
 				</FileConfiguration>
 			</File>
-			<File
-				RelativePath=".\UIHelper.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Utils.cpp"
-				>
-			</File>
-			<Filter
-				Name="controls.extend"
-				>
-				<File
-					RelativePath="..\ThirdParty\soui\controls.extend\reole\dataobject.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\ThirdParty\soui\controls.extend\reole\RichEditOle.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\ThirdParty\soui\controls.extend\SChatEdit.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\ThirdParty\soui\controls.extend\gif\SGifPlayer.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\ThirdParty\soui\controls.extend\SIPAddressCtrl.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\ThirdParty\soui\controls.extend\SListCtrl2.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\ThirdParty\soui\controls.extend\SListCtrlEx.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\ThirdParty\soui\controls.extend\SScrollText.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\ThirdParty\soui\controls.extend\gif\SSkinGif.cpp"
-					>
-				</File>
-			</Filter>
-			<Filter
-				Name="ui"
-				>
-				<File
-					RelativePath=".\AcadSouiDialog.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\CoalDesignDialog.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\CoalDialog.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\Czh1Dialog.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\Czh2Dialog.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\Czh3Dialog.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\Czh4Dialog.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\DecisionDialog.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\DemoDialog.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\DifficultEvalDialog.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\DrillingRadiusDesignDialog.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\FormatMsgDlg.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\GasDesignDialog.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\GasDesignP11Dialog.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\GasDesignP12Dialog.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\GasDesignP21Dialog.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\GasDesignP23Dialog.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\GasDesignQuestionDialog.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\HighDrillingDesignDialog.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\HighDrillingPoreDialog.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\HighDrillingSiteDialog.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\HighDrillingTunnelDialog.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\KeyParamDialog.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\LoginDialog.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\MainDialog.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\MineDesignDialog.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\MineDialog.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\MineGasFlowPredictDesignDialog.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\MineGasFlowPredictDialog.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\MineGasReservesPredict1Dialog.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\MineGasReservesPredict2Dialog.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\MineGasReservesPredictDialog.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\MineGasReservesPredictInputDialog.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\MineIndexDialog.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\NameDialog.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\PicViewerDialog.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\PolicyDialog.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\PoreFlowDeltaPDialog.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\PoreFlowDialog.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\PoreFlowKDialog.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\PoreSizeDialog.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\RegDialog.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\RtfViewerDialog.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\SampleManageDialog.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\TechModeDialog.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\TechnologyDialog.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\TwsGasFlowPredictDialog.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\VarCoeffDialog.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\WsGasFlowPredictAdjDialog.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\WsGasFlowPredictDialog.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\WsGasFlowPredictWorkDialog.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|x64"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-				</File>
-			</Filter>
 			<Filter
 				Name="graph"
 				>
@@ -1128,22 +496,6 @@
 							Name="VCCLCompilerTool"
 						/>
 					</FileConfiguration>
-				</File>
-			</Filter>
-			<Filter
-				Name="report"
-				>
-				<File
-					RelativePath=".\CmyWord.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\CreatReport.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\msword.cpp"
-					>
 				</File>
 			</Filter>
 			<Filter
@@ -1280,14 +632,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Data.h"
-				>
-			</File>
-			<File
-				RelativePath=".\MySoUiLoader.h"
-				>
-			</File>
-			<File
 				RelativePath=".\Path.h"
 				>
 			</File>
@@ -1296,281 +640,9 @@
 				>
 			</File>
 			<File
-				RelativePath=".\SouiDialog.h"
-				>
-			</File>
-			<File
-				RelativePath=".\SouiListHelper.h"
-				>
-			</File>
-			<File
-				RelativePath=".\SoUILoader.h"
-				>
-			</File>
-			<File
 				RelativePath=".\StdAfx.h"
 				>
 			</File>
-			<File
-				RelativePath=".\UIHelper.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Utils.h"
-				>
-			</File>
-			<Filter
-				Name="controls.extend"
-				>
-				<File
-					RelativePath="..\ThirdParty\soui\controls.extend\reole\dataobject.h"
-					>
-				</File>
-				<File
-					RelativePath="..\ThirdParty\soui\controls.extend\reole\RichEditOle.h"
-					>
-				</File>
-				<File
-					RelativePath="..\ThirdParty\soui\controls.extend\SChatEdit.h"
-					>
-				</File>
-				<File
-					RelativePath="..\ThirdParty\soui\controls.extend\gif\SGifPlayer.h"
-					>
-				</File>
-				<File
-					RelativePath="..\ThirdParty\soui\controls.extend\SIPAddressCtrl.h"
-					>
-				</File>
-				<File
-					RelativePath="..\ThirdParty\soui\controls.extend\SListCtrl2.h"
-					>
-				</File>
-				<File
-					RelativePath="..\ThirdParty\soui\controls.extend\SListCtrlEx.h"
-					>
-				</File>
-				<File
-					RelativePath="..\ThirdParty\soui\controls.extend\SScrollText.h"
-					>
-				</File>
-				<File
-					RelativePath="..\ThirdParty\soui\controls.extend\gif\SSkinGif.h"
-					>
-				</File>
-				<File
-					RelativePath="..\ThirdParty\soui\controls.extend\SVscrollbar.h"
-					>
-				</File>
-			</Filter>
-			<Filter
-				Name="ui"
-				>
-				<File
-					RelativePath=".\AcadSouiDialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\CoalDesignDialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\CoalDialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\Czh1Dialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\Czh2Dialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\Czh3Dialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\Czh4Dialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\DecisionDialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\DemoDialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\DifficultEvalDialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\DrillingRadiusDesignDialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\FormatMsgDlg.h"
-					>
-				</File>
-				<File
-					RelativePath=".\GasDesignDialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\GasDesignP11Dialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\GasDesignP12Dialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\GasDesignP21Dialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\GasDesignP23Dialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\GasDesignQuestionDialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\HighDrillingDesignDialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\HighDrillingPoreDialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\HighDrillingSiteDialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\HighDrillingTunnelDialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\KeyParamDialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\LoginDialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\MainDialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\MineDesignDialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\MineDialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\MineGasFlowPredictDesignDialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\MineGasFlowPredictDialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\MineGasReservesPredict1Dialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\MineGasReservesPredict2Dialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\MineGasReservesPredictDialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\MineGasReservesPredictInputDialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\MineIndexDialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\NameDialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\PicViewerDialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\PolicyDialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\PoreFlowDeltaPDialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\PoreFlowDialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\PoreFlowKDialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\PoreSizeDialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\RegDialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\RtfViewerDialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\SampleManageDialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\TechModeDialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\TechnologyDialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\TwsGasFlowPredictDialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\VarCoeffDialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\WsGasFlowPredictAdjDialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\WsGasFlowPredictDialog.h"
-					>
-				</File>
-				<File
-					RelativePath=".\WsGasFlowPredictWorkDialog.h"
-					>
-				</File>
-			</Filter>
 			<Filter
 				Name="graph"
 				>
@@ -1600,22 +672,6 @@
 				</File>
 				<File
 					RelativePath=".\OccurrenceGraph.h"
-					>
-				</File>
-			</Filter>
-			<Filter
-				Name="report"
-				>
-				<File
-					RelativePath=".\CmyWord.h"
-					>
-				</File>
-				<File
-					RelativePath=".\CreatReport.h"
-					>
-				</File>
-				<File
-					RelativePath=".\msword.h"
 					>
 				</File>
 			</Filter>

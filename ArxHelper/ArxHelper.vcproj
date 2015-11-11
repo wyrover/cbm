@@ -381,47 +381,15 @@
 				>
 			</File>
 			<File
-				RelativePath=".\ArxClassHelper.cpp"
+				RelativePath=".\EncodeHelper.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\ArxDataTool.cpp"
+				RelativePath=".\LogHelper.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\ArxDictTool.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\ArxDrawHelper.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\ArxDwgHelper.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\ArxEntityHelper.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\ArxGroupHelper.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\ArxHelper_DllMain.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\ArxLayerHelper.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\ArxUcsHelper.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\ArxUtilHelper.cpp"
+				RelativePath=".\PathHelper.cpp"
 				>
 			</File>
 			<File
@@ -465,11 +433,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\XRecordManager.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\ZoomHelper.cpp"
+				RelativePath=".\Win32Utils.cpp"
 				>
 			</File>
 			<Filter
@@ -520,55 +484,67 @@
 					>
 				</File>
 			</Filter>
+			<Filter
+				Name="arx"
+				>
+				<File
+					RelativePath=".\ArxClassHelper.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\ArxDataTool.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\ArxDictTool.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\ArxDrawHelper.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\ArxDwgHelper.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\ArxEntityHelper.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\ArxGroupHelper.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\ArxHelper_DllMain.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\ArxLayerHelper.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\ArxUcsHelper.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\ArxUtilHelper.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\ArxXRecordManager.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\ArxZoomHelper.cpp"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Include Files"
 			Filter="h;hh;hxx"
 			>
-			<File
-				RelativePath=".\ArxClassHelper.h"
-				>
-			</File>
-			<File
-				RelativePath=".\ArxDataTool.h"
-				>
-			</File>
-			<File
-				RelativePath=".\ArxDictTool.h"
-				>
-			</File>
-			<File
-				RelativePath=".\ArxDrawHelper.h"
-				>
-			</File>
-			<File
-				RelativePath=".\ArxDwgHelper.h"
-				>
-			</File>
-			<File
-				RelativePath=".\ArxEntityHelper.h"
-				>
-			</File>
-			<File
-				RelativePath=".\ArxGroupHelper.h"
-				>
-			</File>
-			<File
-				RelativePath=".\ArxLayerHelper.h"
-				>
-			</File>
-			<File
-				RelativePath=".\ArxSwitchHelper.h"
-				>
-			</File>
-			<File
-				RelativePath=".\ArxUcsHelper.h"
-				>
-			</File>
-			<File
-				RelativePath=".\ArxUtilHelper.h"
-				>
-			</File>
 			<File
 				RelativePath=".\config.h"
 				>
@@ -578,11 +554,27 @@
 				>
 			</File>
 			<File
+				RelativePath=".\EncodeHelper.h"
+				>
+			</File>
+			<File
 				RelativePath=".\HelperClass.h"
 				>
 			</File>
 			<File
+				RelativePath=".\LogHelper.h"
+				>
+			</File>
+			<File
+				RelativePath=".\PathHelper.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Resource.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Singleton.h"
 				>
 			</File>
 			<File
@@ -594,7 +586,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\XRecordManager.h"
+				RelativePath=".\Win32Utils.h"
 				>
 			</File>
 			<Filter
@@ -642,6 +634,58 @@
 				</File>
 				<File
 					RelativePath=".\FieldInfoHelper.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="arx"
+				>
+				<File
+					RelativePath=".\ArxClassHelper.h"
+					>
+				</File>
+				<File
+					RelativePath=".\ArxDataTool.h"
+					>
+				</File>
+				<File
+					RelativePath=".\ArxDictTool.h"
+					>
+				</File>
+				<File
+					RelativePath=".\ArxDrawHelper.h"
+					>
+				</File>
+				<File
+					RelativePath=".\ArxDwgHelper.h"
+					>
+				</File>
+				<File
+					RelativePath=".\ArxEntityHelper.h"
+					>
+				</File>
+				<File
+					RelativePath=".\ArxGroupHelper.h"
+					>
+				</File>
+				<File
+					RelativePath=".\ArxLayerHelper.h"
+					>
+				</File>
+				<File
+					RelativePath=".\ArxSwitchHelper.h"
+					>
+				</File>
+				<File
+					RelativePath=".\ArxUcsHelper.h"
+					>
+				</File>
+				<File
+					RelativePath=".\ArxUtilHelper.h"
+					>
+				</File>
+				<File
+					RelativePath=".\ArxXRecordManager.h"
 					>
 				</File>
 			</Filter>

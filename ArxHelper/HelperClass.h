@@ -23,3 +23,8 @@
 #include "FieldInfoHelper.h"
 
 #include "SystemHelper.h"
+#include "EncodeHelper.h"
+#include "LogHelper.h"
+#include "PathHelper.h"
+#include "Win32Utils.h"
+#include "Singleton.h"

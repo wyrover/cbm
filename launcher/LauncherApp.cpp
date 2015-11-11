@@ -4,9 +4,6 @@
 #include "MainuiDialog.h"
 #include "ThreadHelper.h"
 
-//#include <Dao/DaoHelper.h>
-#include <Util/HelperClass.h>
-
 BEGIN_MESSAGE_MAP( CLauncherApp, CWinAppEx )
     ON_COMMAND( ID_HELP, &CWinApp::OnHelp )
 END_MESSAGE_MAP()
@@ -139,10 +136,6 @@ BOOL CLauncherApp::InitInstance()
         return FALSE;
     }
 
-    //初始化log4cplus日志系统
-    //为了保证日志功能正常使用，在加载所有模块之前初始化日志系统
-    log_init( _T( ".\\log\\log4cplus.properties" ) );
-
     //连接mysql数据库
     //CString iniFile = BuildPath( GetAppPathDir( m_hInstance ), _T( "config.ini" ) );
     //if( !DaoHelper::ConfigureFromFile( iniFile ) )
@@ -182,7 +175,5 @@ int CLauncherApp::ExitInstance()
 {
     //退出soui环境
     UnInitSouiEnviroment();
-    //关闭log4cplus日志系统
-    log_uinit();
     return CWinAppEx::ExitInstance();
 }

@@ -2,7 +2,6 @@
 #include "Graph.h"
 #include "DoubleLine.h"
 
-#include <Util/HelperClass.h>
 #include <ArxHelper/HelperClass.h>
 
 BaseGraph::BaseGraph()

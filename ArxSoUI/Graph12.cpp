@@ -1,7 +1,6 @@
 #include "StdAfx.h"
 #include "Graph12.h"
 
-#include <Util/HelperClass.h>
 #include <ArxHelper/HelperClass.h>
 
 namespace P12

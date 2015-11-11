@@ -1,6 +1,6 @@
 #include "StdAfx.h"
 #include "ArxDictTool.h"
-#include "XRecordManager.h"
+#include "ArxXRecordManager.h"
 #include "HelperClass.h"
 
 static AcDbDictionary* GetDictObject( const AcDbObjectId& dictId )
@@ -12,7 +12,7 @@ static AcDbDictionary* GetDictObject( const AcDbObjectId& dictId )
         return pDict;
 }
 
-static XRecordManager* GetXRecordManager( const AcDbObjectId& dictId, const CString& key, bool createNewKey = false )
+static ArxXRecordManager* GetXRecordManager( const AcDbObjectId& dictId, const CString& key, bool createNewKey = false )
 {
     //acutPrintf(_T("\n注册: %s"), dictName);
 
@@ -43,7 +43,7 @@ static XRecordManager* GetXRecordManager( const AcDbObjectId& dictId, const CStr
         }
     }
     pDict->close();
-    return new XRecordManager( pXrec );
+    return new ArxXRecordManager( pXrec );
 }
 
 static bool FindDictKey( const AcDbObjectId& dictId, const CString& key )
@@ -179,7 +179,7 @@ int ArxDictTool::addEntry( const CString& key, const CString& entry )
 {
     // 1、获取图元对应的AcDbXrecord
     //    并封装成DataFieldManager对象
-    XRecordManager* pDEM = GetXRecordManager( m_dictId, key, true );
+    ArxXRecordManager* pDEM = GetXRecordManager( m_dictId, key, true );
     if( pDEM == 0 ) return INVALID_ENTRY;
 
     // 2、添加字段
@@ -193,7 +193,7 @@ int ArxDictTool::removeEntry( const CString& key, const CString& entry )
 {
     // 1、获取图元对应的AcDbXrecord
     //    并封装成DataFieldManager对象
-    XRecordManager* pDEM = GetXRecordManager( m_dictId, key );
+    ArxXRecordManager* pDEM = GetXRecordManager( m_dictId, key );
     if( pDEM == 0 ) return INVALID_ENTRY;
 
     // 2、删除字段
@@ -207,7 +207,7 @@ int ArxDictTool::countEntries( const CString& key )
 {
     // 1、获取图元对应的AcDbXrecord
     //    并封装成DataFieldManager对象
-    XRecordManager* pDEM = GetXRecordManager( m_dictId, key );
+    ArxXRecordManager* pDEM = GetXRecordManager( m_dictId, key );
     if( pDEM == 0 ) return INVALID_ENTRY;
 
     int count = pDEM->countEntries();
@@ -220,7 +220,7 @@ int ArxDictTool::findEntry( const CString& key, const CString& entry )
 {
     // 1、获取图元对应的AcDbXrecord
     //    并封装成DataFieldManager对象
-    XRecordManager* pDEM = GetXRecordManager( m_dictId, key );
+    ArxXRecordManager* pDEM = GetXRecordManager( m_dictId, key );
     if( pDEM == 0 ) return INVALID_ENTRY;
 
     // 2、查找字段索引位置
@@ -234,7 +234,7 @@ void ArxDictTool::getAllEntries( const CString& key, AcStringArray& entries )
 {
     // 1、获取图元对应的AcDbXrecord
     //    并封装成DataFieldManager对象
-    XRecordManager* pDEM = GetXRecordManager( m_dictId, key );
+    ArxXRecordManager* pDEM = GetXRecordManager( m_dictId, key );
     if( pDEM == 0 ) return;
 
     pDEM->getAllEntries( entries );
@@ -245,7 +245,7 @@ bool ArxDictTool::modifyEntry( const CString& key, int index, const CString& new
 {
     if( index == INVALID_ENTRY ) return false;
 
-    XRecordManager* pDEM = GetXRecordManager( m_dictId, key );
+    ArxXRecordManager* pDEM = GetXRecordManager( m_dictId, key );
     if( pDEM == 0 ) return false;
 
     bool flag = pDEM->modifyEntry( index, newEntry );
@@ -258,7 +258,7 @@ bool ArxDictTool::getEntry( const CString& key, int index, CString& entry )
 {
     if( index == INVALID_ENTRY ) return false;
 
-    XRecordManager* pDEM = GetXRecordManager( m_dictId, key );
+    ArxXRecordManager* pDEM = GetXRecordManager( m_dictId, key );
     if( pDEM == 0 ) return false;
 
     bool flag = pDEM->getEntry( index, entry );

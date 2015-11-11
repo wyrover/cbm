@@ -2,8 +2,6 @@
 #include "CbmClientHelper.h"
 #include "RpcClient.h"
 
-#include <Util/HelperClass.h>
-
 void CbmClientHelper::InitSampleRegion()
 {
 	try 
