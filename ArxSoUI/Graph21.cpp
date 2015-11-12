@@ -2,11 +2,12 @@
 #include "Graph21.h"
 
 #include <ArxHelper/HelperClass.h>
+#include "CbmClientHelper.h"
 
 namespace P21
 {
 
-    Graph::Graph( const cbm::CoalPtr& _coal, const cbm::DesignWorkSurfTechnologyPtr& _tech )
+    Graph::Graph( cbm::Coal& _coal, cbm::DesignWorkSurfTechnology& _tech )
         : BaseGraph(), coal( _coal ), tech( _tech )
     {
         left_margin = 20;
@@ -15,30 +16,30 @@ namespace P21
         top_margin = 40;
 
         //倾向长度和走向长度
-        L1 = tech->l1, L2 = tech->l2;
+        L1 = tech.l1, L2 = tech.l2;
         //煤层厚度和倾角(弧度)
-        thick = coal->thick, angle = DegToRad( coal->dip_angle );
+        thick = coal.thick, angle = DegToRad( coal.dip_angle );
         //工作面巷道的宽度和高度
-        w = tech->w, h = tech->h;
+        w = tech.w, h = tech.h;
         //底板巷的宽度和高度
-        wd = tech->wd, hd = tech->hd;
+        wd = tech.wd, hd = tech.hd;
         //左右上下帮距
-        left = tech->left_side, right = tech->right_side;
-        top = tech->top_side, bottom = tech->bottom_side;
+        left = tech.left_side, right = tech.right_side;
+        top = tech.top_side, bottom = tech.bottom_side;
         //钻场长度、宽度和高度
-        Ls = tech->ls, Ws = tech->ws, Hs = tech->hs;
+        Ls = tech.ls, Ws = tech.ws, Hs = tech.hs;
         //岩巷和工作面的水平投影距离、垂距
-        h_offset = tech->h_offset, v_offset = tech->v_offset;
+        h_offset = tech.h_offset, v_offset = tech.v_offset;
         //钻孔半径和抽采半径(孔径的单位是mm)
-        radius = tech->dp * 0.5 * 0.001, pore_gap = tech->gp;
+        radius = tech.dp * 0.5 * 0.001, pore_gap = tech.gp;
         //钻场间距
-        site_gap = tech->gs;
+        site_gap = tech.gs;
         //只布置一条岩巷
-        single_rock_tunnel = ( tech->single_rock_tunnel != 0 );
+        single_rock_tunnel = ( tech.single_rock_tunnel != 0 );
         //两条岩巷之间的距离
-        d_offset = tech->d_offset;
+        d_offset = tech.d_offset;
         //底板巷与工作面切眼的水平投影距离
-        p_offset = tech->p_offset;
+        p_offset = tech.p_offset;
     }
 
     void Graph::subDraw()
@@ -116,7 +117,7 @@ namespace P21
         }
     }
 
-    PlanGraph::PlanGraph( const cbm::CoalPtr& coal, const cbm::DesignWorkSurfTechnologyPtr& tech ) : Graph( coal, tech )
+    PlanGraph::PlanGraph( cbm::Coal& coal, cbm::DesignWorkSurfTechnology& tech ) : Graph( coal, tech )
     {
     }
 
@@ -219,16 +220,16 @@ namespace P21
             CoalData data;
             data.setDataSource( coalId );
             data.m_name = _T( "测试" );
-            data.m_thick = coal->thick;
-            data.m_angle = coal->dip_angle;
-            data.m_width = tech->l1;
-            data.m_height = tech->l2;
+            data.m_thick = coal.thick;
+            data.m_angle = coal.dip_angle;
+            data.m_width = tech.l1;
+            data.m_height = tech.l2;
             data.m_pt = basePt;
             data.update( true );
         }
     }
 
-    HeadGraph::HeadGraph( const cbm::CoalPtr& coal, const cbm::DesignWorkSurfTechnologyPtr& tech ) : Graph( coal, tech )
+    HeadGraph::HeadGraph( cbm::Coal& coal, cbm::DesignWorkSurfTechnology& tech ) : Graph( coal, tech )
     {
 
     }
@@ -322,7 +323,7 @@ namespace P21
         AcDbObjectId coalId = this->drawRect2( basePt, 0, Lc, Hc );
     }
 
-    DipGraph::DipGraph( const cbm::CoalPtr& coal, const cbm::DesignWorkSurfTechnologyPtr& tech ) : Graph( coal, tech )
+    DipGraph::DipGraph( cbm::Coal& coal, cbm::DesignWorkSurfTechnology& tech ) : Graph( coal, tech )
     {
         //建立ucs
         AcGeVector3d xAxis( AcGeVector3d::kXAxis ), yAxis( AcGeVector3d::kYAxis );

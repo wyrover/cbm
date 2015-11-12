@@ -137,6 +137,16 @@ class CbmServiceHandler : virtual public CbmServiceIf {
     printf("GetAccountIdListByField2\n");
   }
 
+  void GetAccountListByForeignKey(std::vector<Account> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetAccountListByForeignKey\n");
+  }
+
+  void GetAccountIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetAccountIdListByForeignKey\n");
+  }
+
   int32_t AddAdjLayer(const AdjLayer& adj_layer) {
     // Your implementation goes here
     printf("AddAdjLayer\n");
@@ -250,6 +260,16 @@ class CbmServiceHandler : virtual public CbmServiceIf {
   void GetAdjLayerIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
     // Your implementation goes here
     printf("GetAdjLayerIdListByField2\n");
+  }
+
+  void GetAdjLayerListByForeignKey(std::vector<AdjLayer> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetAdjLayerListByForeignKey\n");
+  }
+
+  void GetAdjLayerIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetAdjLayerIdListByForeignKey\n");
   }
 
   int32_t AddCoal(const Coal& coal) {
@@ -367,6 +387,16 @@ class CbmServiceHandler : virtual public CbmServiceIf {
     printf("GetCoalIdListByField2\n");
   }
 
+  void GetCoalListByForeignKey(std::vector<Coal> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetCoalListByForeignKey\n");
+  }
+
+  void GetCoalIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetCoalIdListByForeignKey\n");
+  }
+
   int32_t AddComplexity(const Complexity& complexity) {
     // Your implementation goes here
     printf("AddComplexity\n");
@@ -480,6 +510,16 @@ class CbmServiceHandler : virtual public CbmServiceIf {
   void GetComplexityIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
     // Your implementation goes here
     printf("GetComplexityIdListByField2\n");
+  }
+
+  void GetComplexityListByForeignKey(std::vector<Complexity> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetComplexityListByForeignKey\n");
+  }
+
+  void GetComplexityIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetComplexityIdListByForeignKey\n");
   }
 
   int32_t AddDesignDrillingSurfTechnology(const DesignDrillingSurfTechnology& design_drilling_surf_technology) {
@@ -597,6 +637,16 @@ class CbmServiceHandler : virtual public CbmServiceIf {
     printf("GetDesignDrillingSurfTechnologyIdListByField2\n");
   }
 
+  void GetDesignDrillingSurfTechnologyListByForeignKey(std::vector<DesignDrillingSurfTechnology> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetDesignDrillingSurfTechnologyListByForeignKey\n");
+  }
+
+  void GetDesignDrillingSurfTechnologyIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetDesignDrillingSurfTechnologyIdListByForeignKey\n");
+  }
+
   int32_t AddDesignGoafTechnology(const DesignGoafTechnology& design_goaf_technology) {
     // Your implementation goes here
     printf("AddDesignGoafTechnology\n");
@@ -710,6 +760,16 @@ class CbmServiceHandler : virtual public CbmServiceIf {
   void GetDesignGoafTechnologyIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
     // Your implementation goes here
     printf("GetDesignGoafTechnologyIdListByField2\n");
+  }
+
+  void GetDesignGoafTechnologyListByForeignKey(std::vector<DesignGoafTechnology> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetDesignGoafTechnologyListByForeignKey\n");
+  }
+
+  void GetDesignGoafTechnologyIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetDesignGoafTechnologyIdListByForeignKey\n");
   }
 
   int32_t AddDesignPore(const DesignPore& design_pore) {
@@ -827,6 +887,16 @@ class CbmServiceHandler : virtual public CbmServiceIf {
     printf("GetDesignPoreIdListByField2\n");
   }
 
+  void GetDesignPoreListByForeignKey(std::vector<DesignPore> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetDesignPoreListByForeignKey\n");
+  }
+
+  void GetDesignPoreIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetDesignPoreIdListByForeignKey\n");
+  }
+
   int32_t AddDesignSite(const DesignSite& design_site) {
     // Your implementation goes here
     printf("AddDesignSite\n");
@@ -940,6 +1010,16 @@ class CbmServiceHandler : virtual public CbmServiceIf {
   void GetDesignSiteIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
     // Your implementation goes here
     printf("GetDesignSiteIdListByField2\n");
+  }
+
+  void GetDesignSiteListByForeignKey(std::vector<DesignSite> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetDesignSiteListByForeignKey\n");
+  }
+
+  void GetDesignSiteIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetDesignSiteIdListByForeignKey\n");
   }
 
   int32_t AddDesignTechnology(const DesignTechnology& design_technology) {
@@ -1057,6 +1137,16 @@ class CbmServiceHandler : virtual public CbmServiceIf {
     printf("GetDesignTechnologyIdListByField2\n");
   }
 
+  void GetDesignTechnologyListByForeignKey(std::vector<DesignTechnology> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetDesignTechnologyListByForeignKey\n");
+  }
+
+  void GetDesignTechnologyIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetDesignTechnologyIdListByForeignKey\n");
+  }
+
   int32_t AddDesignWorkSurfTechnology(const DesignWorkSurfTechnology& design_work_surf_technology) {
     // Your implementation goes here
     printf("AddDesignWorkSurfTechnology\n");
@@ -1170,6 +1260,16 @@ class CbmServiceHandler : virtual public CbmServiceIf {
   void GetDesignWorkSurfTechnologyIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
     // Your implementation goes here
     printf("GetDesignWorkSurfTechnologyIdListByField2\n");
+  }
+
+  void GetDesignWorkSurfTechnologyListByForeignKey(std::vector<DesignWorkSurfTechnology> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetDesignWorkSurfTechnologyListByForeignKey\n");
+  }
+
+  void GetDesignWorkSurfTechnologyIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetDesignWorkSurfTechnologyIdListByForeignKey\n");
   }
 
   int32_t AddDrillingRadiusParam(const DrillingRadiusParam& drilling_radius_param) {
@@ -1287,6 +1387,16 @@ class CbmServiceHandler : virtual public CbmServiceIf {
     printf("GetDrillingRadiusParamIdListByField2\n");
   }
 
+  void GetDrillingRadiusParamListByForeignKey(std::vector<DrillingRadiusParam> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetDrillingRadiusParamListByForeignKey\n");
+  }
+
+  void GetDrillingRadiusParamIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetDrillingRadiusParamIdListByForeignKey\n");
+  }
+
   int32_t AddDrillingSurf(const DrillingSurf& drilling_surf) {
     // Your implementation goes here
     printf("AddDrillingSurf\n");
@@ -1400,6 +1510,16 @@ class CbmServiceHandler : virtual public CbmServiceIf {
   void GetDrillingSurfIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
     // Your implementation goes here
     printf("GetDrillingSurfIdListByField2\n");
+  }
+
+  void GetDrillingSurfListByForeignKey(std::vector<DrillingSurf> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetDrillingSurfListByForeignKey\n");
+  }
+
+  void GetDrillingSurfIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetDrillingSurfIdListByForeignKey\n");
   }
 
   int32_t AddEvalUnit(const EvalUnit& eval_unit) {
@@ -1517,6 +1637,16 @@ class CbmServiceHandler : virtual public CbmServiceIf {
     printf("GetEvalUnitIdListByField2\n");
   }
 
+  void GetEvalUnitListByForeignKey(std::vector<EvalUnit> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetEvalUnitListByForeignKey\n");
+  }
+
+  void GetEvalUnitIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetEvalUnitIdListByForeignKey\n");
+  }
+
   int32_t AddHighDrillingPore(const HighDrillingPore& high_drilling_pore) {
     // Your implementation goes here
     printf("AddHighDrillingPore\n");
@@ -1630,6 +1760,16 @@ class CbmServiceHandler : virtual public CbmServiceIf {
   void GetHighDrillingPoreIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
     // Your implementation goes here
     printf("GetHighDrillingPoreIdListByField2\n");
+  }
+
+  void GetHighDrillingPoreListByForeignKey(std::vector<HighDrillingPore> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetHighDrillingPoreListByForeignKey\n");
+  }
+
+  void GetHighDrillingPoreIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetHighDrillingPoreIdListByForeignKey\n");
   }
 
   int32_t AddHighDrillingPoreParam(const HighDrillingPoreParam& high_drilling_pore_param) {
@@ -1747,6 +1887,16 @@ class CbmServiceHandler : virtual public CbmServiceIf {
     printf("GetHighDrillingPoreParamIdListByField2\n");
   }
 
+  void GetHighDrillingPoreParamListByForeignKey(std::vector<HighDrillingPoreParam> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetHighDrillingPoreParamListByForeignKey\n");
+  }
+
+  void GetHighDrillingPoreParamIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetHighDrillingPoreParamIdListByForeignKey\n");
+  }
+
   int32_t AddHighDrillingSiteParam(const HighDrillingSiteParam& high_drilling_site_param) {
     // Your implementation goes here
     printf("AddHighDrillingSiteParam\n");
@@ -1860,6 +2010,16 @@ class CbmServiceHandler : virtual public CbmServiceIf {
   void GetHighDrillingSiteParamIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
     // Your implementation goes here
     printf("GetHighDrillingSiteParamIdListByField2\n");
+  }
+
+  void GetHighDrillingSiteParamListByForeignKey(std::vector<HighDrillingSiteParam> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetHighDrillingSiteParamListByForeignKey\n");
+  }
+
+  void GetHighDrillingSiteParamIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetHighDrillingSiteParamIdListByForeignKey\n");
   }
 
   int32_t AddHighDrillingTunnel(const HighDrillingTunnel& high_drilling_tunnel) {
@@ -1977,6 +2137,16 @@ class CbmServiceHandler : virtual public CbmServiceIf {
     printf("GetHighDrillingTunnelIdListByField2\n");
   }
 
+  void GetHighDrillingTunnelListByForeignKey(std::vector<HighDrillingTunnel> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetHighDrillingTunnelListByForeignKey\n");
+  }
+
+  void GetHighDrillingTunnelIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetHighDrillingTunnelIdListByForeignKey\n");
+  }
+
   int32_t AddHydrGeo(const HydrGeo& hydr_geo) {
     // Your implementation goes here
     printf("AddHydrGeo\n");
@@ -2090,6 +2260,16 @@ class CbmServiceHandler : virtual public CbmServiceIf {
   void GetHydrGeoIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
     // Your implementation goes here
     printf("GetHydrGeoIdListByField2\n");
+  }
+
+  void GetHydrGeoListByForeignKey(std::vector<HydrGeo> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetHydrGeoListByForeignKey\n");
+  }
+
+  void GetHydrGeoIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetHydrGeoIdListByForeignKey\n");
   }
 
   int32_t AddMine(const Mine& mine) {
@@ -2207,6 +2387,16 @@ class CbmServiceHandler : virtual public CbmServiceIf {
     printf("GetMineIdListByField2\n");
   }
 
+  void GetMineListByForeignKey(std::vector<Mine> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetMineListByForeignKey\n");
+  }
+
+  void GetMineIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetMineIdListByForeignKey\n");
+  }
+
   int32_t AddMineBase(const MineBase& mine_base) {
     // Your implementation goes here
     printf("AddMineBase\n");
@@ -2320,6 +2510,16 @@ class CbmServiceHandler : virtual public CbmServiceIf {
   void GetMineBaseIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
     // Your implementation goes here
     printf("GetMineBaseIdListByField2\n");
+  }
+
+  void GetMineBaseListByForeignKey(std::vector<MineBase> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetMineBaseListByForeignKey\n");
+  }
+
+  void GetMineBaseIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetMineBaseIdListByForeignKey\n");
   }
 
   int32_t AddMineRegion(const MineRegion& mine_region) {
@@ -2437,6 +2637,16 @@ class CbmServiceHandler : virtual public CbmServiceIf {
     printf("GetMineRegionIdListByField2\n");
   }
 
+  void GetMineRegionListByForeignKey(std::vector<MineRegion> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetMineRegionListByForeignKey\n");
+  }
+
+  void GetMineRegionIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetMineRegionIdListByForeignKey\n");
+  }
+
   int32_t AddPoreFlow(const PoreFlow& pore_flow) {
     // Your implementation goes here
     printf("AddPoreFlow\n");
@@ -2550,6 +2760,16 @@ class CbmServiceHandler : virtual public CbmServiceIf {
   void GetPoreFlowIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
     // Your implementation goes here
     printf("GetPoreFlowIdListByField2\n");
+  }
+
+  void GetPoreFlowListByForeignKey(std::vector<PoreFlow> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetPoreFlowListByForeignKey\n");
+  }
+
+  void GetPoreFlowIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetPoreFlowIdListByForeignKey\n");
   }
 
   int32_t AddPoreSize(const PoreSize& pore_size) {
@@ -2667,6 +2887,16 @@ class CbmServiceHandler : virtual public CbmServiceIf {
     printf("GetPoreSizeIdListByField2\n");
   }
 
+  void GetPoreSizeListByForeignKey(std::vector<PoreSize> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetPoreSizeListByForeignKey\n");
+  }
+
+  void GetPoreSizeIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetPoreSizeIdListByForeignKey\n");
+  }
+
   int32_t AddResAbundance(const ResAbundance& res_abundance) {
     // Your implementation goes here
     printf("AddResAbundance\n");
@@ -2780,6 +3010,16 @@ class CbmServiceHandler : virtual public CbmServiceIf {
   void GetResAbundanceIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
     // Your implementation goes here
     printf("GetResAbundanceIdListByField2\n");
+  }
+
+  void GetResAbundanceListByForeignKey(std::vector<ResAbundance> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetResAbundanceListByForeignKey\n");
+  }
+
+  void GetResAbundanceIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetResAbundanceIdListByForeignKey\n");
   }
 
   int32_t AddRock(const Rock& rock) {
@@ -2897,6 +3137,16 @@ class CbmServiceHandler : virtual public CbmServiceIf {
     printf("GetRockIdListByField2\n");
   }
 
+  void GetRockListByForeignKey(std::vector<Rock> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetRockListByForeignKey\n");
+  }
+
+  void GetRockIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetRockIdListByForeignKey\n");
+  }
+
   int32_t AddSysInfo(const SysInfo& sys_info) {
     // Your implementation goes here
     printf("AddSysInfo\n");
@@ -3010,6 +3260,16 @@ class CbmServiceHandler : virtual public CbmServiceIf {
   void GetSysInfoIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
     // Your implementation goes here
     printf("GetSysInfoIdListByField2\n");
+  }
+
+  void GetSysInfoListByForeignKey(std::vector<SysInfo> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetSysInfoListByForeignKey\n");
+  }
+
+  void GetSysInfoIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetSysInfoIdListByForeignKey\n");
   }
 
   int32_t AddTechMode(const TechMode& tech_mode) {
@@ -3127,6 +3387,16 @@ class CbmServiceHandler : virtual public CbmServiceIf {
     printf("GetTechModeIdListByField2\n");
   }
 
+  void GetTechModeListByForeignKey(std::vector<TechMode> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetTechModeListByForeignKey\n");
+  }
+
+  void GetTechModeIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetTechModeIdListByForeignKey\n");
+  }
+
   int32_t AddTechnology(const Technology& technology) {
     // Your implementation goes here
     printf("AddTechnology\n");
@@ -3240,6 +3510,16 @@ class CbmServiceHandler : virtual public CbmServiceIf {
   void GetTechnologyIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
     // Your implementation goes here
     printf("GetTechnologyIdListByField2\n");
+  }
+
+  void GetTechnologyListByForeignKey(std::vector<Technology> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetTechnologyListByForeignKey\n");
+  }
+
+  void GetTechnologyIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetTechnologyIdListByForeignKey\n");
   }
 
   int32_t AddTopoGeo(const TopoGeo& topo_geo) {
@@ -3357,6 +3637,16 @@ class CbmServiceHandler : virtual public CbmServiceIf {
     printf("GetTopoGeoIdListByField2\n");
   }
 
+  void GetTopoGeoListByForeignKey(std::vector<TopoGeo> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetTopoGeoListByForeignKey\n");
+  }
+
+  void GetTopoGeoIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetTopoGeoIdListByForeignKey\n");
+  }
+
   int32_t AddTunnel(const Tunnel& tunnel) {
     // Your implementation goes here
     printf("AddTunnel\n");
@@ -3470,6 +3760,16 @@ class CbmServiceHandler : virtual public CbmServiceIf {
   void GetTunnelIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
     // Your implementation goes here
     printf("GetTunnelIdListByField2\n");
+  }
+
+  void GetTunnelListByForeignKey(std::vector<Tunnel> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetTunnelListByForeignKey\n");
+  }
+
+  void GetTunnelIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetTunnelIdListByForeignKey\n");
   }
 
   int32_t AddWorkArea(const WorkArea& work_area) {
@@ -3587,6 +3887,16 @@ class CbmServiceHandler : virtual public CbmServiceIf {
     printf("GetWorkAreaIdListByField2\n");
   }
 
+  void GetWorkAreaListByForeignKey(std::vector<WorkArea> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetWorkAreaListByForeignKey\n");
+  }
+
+  void GetWorkAreaIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetWorkAreaIdListByForeignKey\n");
+  }
+
   int32_t AddWorkSurf(const WorkSurf& work_surf) {
     // Your implementation goes here
     printf("AddWorkSurf\n");
@@ -3700,6 +4010,16 @@ class CbmServiceHandler : virtual public CbmServiceIf {
   void GetWorkSurfIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
     // Your implementation goes here
     printf("GetWorkSurfIdListByField2\n");
+  }
+
+  void GetWorkSurfListByForeignKey(std::vector<WorkSurf> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetWorkSurfListByForeignKey\n");
+  }
+
+  void GetWorkSurfIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetWorkSurfIdListByForeignKey\n");
   }
 
   void InitSampleRegion() {

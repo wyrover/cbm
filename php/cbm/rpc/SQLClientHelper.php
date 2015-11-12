@@ -24,7 +24,7 @@ function DeleteAccount($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$ret = $client->DeleteAccount($id);
+		$ret = $client->DeleteAccount(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$ret = false;
@@ -50,7 +50,7 @@ function GetAccountById($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetAccountById($id);
+		$_return = $client->GetAccountById(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -63,7 +63,7 @@ function GetAccountByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetAccountByForeignKey($fkey, $id);
+		$_return = $client->GetAccountByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -76,7 +76,7 @@ function GetAccountIdByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetAccountIdByForeignKey($fkey, $id);
+		$_return = $client->GetAccountIdByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -299,6 +299,32 @@ function GetAccountIdListByField2($field1, $value1, $field2, $value2) {
 	return $_return;
 }
 
+function GetAccountListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetAccountListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetAccountIdListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetAccountIdListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
 
 
 //$clsname 类型的CRUD操作
@@ -321,7 +347,7 @@ function DeleteAdjLayer($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$ret = $client->DeleteAdjLayer($id);
+		$ret = $client->DeleteAdjLayer(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$ret = false;
@@ -347,7 +373,7 @@ function GetAdjLayerById($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetAdjLayerById($id);
+		$_return = $client->GetAdjLayerById(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -360,7 +386,7 @@ function GetAdjLayerByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetAdjLayerByForeignKey($fkey, $id);
+		$_return = $client->GetAdjLayerByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -373,7 +399,7 @@ function GetAdjLayerIdByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetAdjLayerIdByForeignKey($fkey, $id);
+		$_return = $client->GetAdjLayerIdByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -596,6 +622,32 @@ function GetAdjLayerIdListByField2($field1, $value1, $field2, $value2) {
 	return $_return;
 }
 
+function GetAdjLayerListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetAdjLayerListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetAdjLayerIdListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetAdjLayerIdListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
 
 
 //$clsname 类型的CRUD操作
@@ -618,7 +670,7 @@ function DeleteCoal($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$ret = $client->DeleteCoal($id);
+		$ret = $client->DeleteCoal(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$ret = false;
@@ -644,7 +696,7 @@ function GetCoalById($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetCoalById($id);
+		$_return = $client->GetCoalById(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -657,7 +709,7 @@ function GetCoalByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetCoalByForeignKey($fkey, $id);
+		$_return = $client->GetCoalByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -670,7 +722,7 @@ function GetCoalIdByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetCoalIdByForeignKey($fkey, $id);
+		$_return = $client->GetCoalIdByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -893,6 +945,32 @@ function GetCoalIdListByField2($field1, $value1, $field2, $value2) {
 	return $_return;
 }
 
+function GetCoalListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetCoalListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetCoalIdListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetCoalIdListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
 
 
 //$clsname 类型的CRUD操作
@@ -915,7 +993,7 @@ function DeleteComplexity($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$ret = $client->DeleteComplexity($id);
+		$ret = $client->DeleteComplexity(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$ret = false;
@@ -941,7 +1019,7 @@ function GetComplexityById($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetComplexityById($id);
+		$_return = $client->GetComplexityById(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -954,7 +1032,7 @@ function GetComplexityByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetComplexityByForeignKey($fkey, $id);
+		$_return = $client->GetComplexityByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -967,7 +1045,7 @@ function GetComplexityIdByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetComplexityIdByForeignKey($fkey, $id);
+		$_return = $client->GetComplexityIdByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -1190,6 +1268,32 @@ function GetComplexityIdListByField2($field1, $value1, $field2, $value2) {
 	return $_return;
 }
 
+function GetComplexityListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetComplexityListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetComplexityIdListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetComplexityIdListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
 
 
 //$clsname 类型的CRUD操作
@@ -1212,7 +1316,7 @@ function DeleteDesignDrillingSurfTechnology($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$ret = $client->DeleteDesignDrillingSurfTechnology($id);
+		$ret = $client->DeleteDesignDrillingSurfTechnology(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$ret = false;
@@ -1238,7 +1342,7 @@ function GetDesignDrillingSurfTechnologyById($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignDrillingSurfTechnologyById($id);
+		$_return = $client->GetDesignDrillingSurfTechnologyById(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -1251,7 +1355,7 @@ function GetDesignDrillingSurfTechnologyByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignDrillingSurfTechnologyByForeignKey($fkey, $id);
+		$_return = $client->GetDesignDrillingSurfTechnologyByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -1264,7 +1368,7 @@ function GetDesignDrillingSurfTechnologyIdByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignDrillingSurfTechnologyIdByForeignKey($fkey, $id);
+		$_return = $client->GetDesignDrillingSurfTechnologyIdByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -1487,6 +1591,32 @@ function GetDesignDrillingSurfTechnologyIdListByField2($field1, $value1, $field2
 	return $_return;
 }
 
+function GetDesignDrillingSurfTechnologyListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignDrillingSurfTechnologyListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDesignDrillingSurfTechnologyIdListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignDrillingSurfTechnologyIdListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
 
 
 //$clsname 类型的CRUD操作
@@ -1509,7 +1639,7 @@ function DeleteDesignGoafTechnology($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$ret = $client->DeleteDesignGoafTechnology($id);
+		$ret = $client->DeleteDesignGoafTechnology(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$ret = false;
@@ -1535,7 +1665,7 @@ function GetDesignGoafTechnologyById($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignGoafTechnologyById($id);
+		$_return = $client->GetDesignGoafTechnologyById(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -1548,7 +1678,7 @@ function GetDesignGoafTechnologyByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignGoafTechnologyByForeignKey($fkey, $id);
+		$_return = $client->GetDesignGoafTechnologyByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -1561,7 +1691,7 @@ function GetDesignGoafTechnologyIdByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignGoafTechnologyIdByForeignKey($fkey, $id);
+		$_return = $client->GetDesignGoafTechnologyIdByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -1784,6 +1914,32 @@ function GetDesignGoafTechnologyIdListByField2($field1, $value1, $field2, $value
 	return $_return;
 }
 
+function GetDesignGoafTechnologyListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignGoafTechnologyListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDesignGoafTechnologyIdListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignGoafTechnologyIdListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
 
 
 //$clsname 类型的CRUD操作
@@ -1806,7 +1962,7 @@ function DeleteDesignPore($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$ret = $client->DeleteDesignPore($id);
+		$ret = $client->DeleteDesignPore(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$ret = false;
@@ -1832,7 +1988,7 @@ function GetDesignPoreById($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignPoreById($id);
+		$_return = $client->GetDesignPoreById(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -1845,7 +2001,7 @@ function GetDesignPoreByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignPoreByForeignKey($fkey, $id);
+		$_return = $client->GetDesignPoreByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -1858,7 +2014,7 @@ function GetDesignPoreIdByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignPoreIdByForeignKey($fkey, $id);
+		$_return = $client->GetDesignPoreIdByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -2081,6 +2237,32 @@ function GetDesignPoreIdListByField2($field1, $value1, $field2, $value2) {
 	return $_return;
 }
 
+function GetDesignPoreListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignPoreListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDesignPoreIdListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignPoreIdListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
 
 
 //$clsname 类型的CRUD操作
@@ -2103,7 +2285,7 @@ function DeleteDesignSite($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$ret = $client->DeleteDesignSite($id);
+		$ret = $client->DeleteDesignSite(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$ret = false;
@@ -2129,7 +2311,7 @@ function GetDesignSiteById($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignSiteById($id);
+		$_return = $client->GetDesignSiteById(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -2142,7 +2324,7 @@ function GetDesignSiteByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignSiteByForeignKey($fkey, $id);
+		$_return = $client->GetDesignSiteByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -2155,7 +2337,7 @@ function GetDesignSiteIdByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignSiteIdByForeignKey($fkey, $id);
+		$_return = $client->GetDesignSiteIdByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -2378,6 +2560,32 @@ function GetDesignSiteIdListByField2($field1, $value1, $field2, $value2) {
 	return $_return;
 }
 
+function GetDesignSiteListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignSiteListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDesignSiteIdListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignSiteIdListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
 
 
 //$clsname 类型的CRUD操作
@@ -2400,7 +2608,7 @@ function DeleteDesignTechnology($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$ret = $client->DeleteDesignTechnology($id);
+		$ret = $client->DeleteDesignTechnology(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$ret = false;
@@ -2426,7 +2634,7 @@ function GetDesignTechnologyById($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignTechnologyById($id);
+		$_return = $client->GetDesignTechnologyById(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -2439,7 +2647,7 @@ function GetDesignTechnologyByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignTechnologyByForeignKey($fkey, $id);
+		$_return = $client->GetDesignTechnologyByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -2452,7 +2660,7 @@ function GetDesignTechnologyIdByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignTechnologyIdByForeignKey($fkey, $id);
+		$_return = $client->GetDesignTechnologyIdByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -2675,6 +2883,32 @@ function GetDesignTechnologyIdListByField2($field1, $value1, $field2, $value2) {
 	return $_return;
 }
 
+function GetDesignTechnologyListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignTechnologyListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDesignTechnologyIdListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignTechnologyIdListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
 
 
 //$clsname 类型的CRUD操作
@@ -2697,7 +2931,7 @@ function DeleteDesignWorkSurfTechnology($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$ret = $client->DeleteDesignWorkSurfTechnology($id);
+		$ret = $client->DeleteDesignWorkSurfTechnology(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$ret = false;
@@ -2723,7 +2957,7 @@ function GetDesignWorkSurfTechnologyById($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignWorkSurfTechnologyById($id);
+		$_return = $client->GetDesignWorkSurfTechnologyById(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -2736,7 +2970,7 @@ function GetDesignWorkSurfTechnologyByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignWorkSurfTechnologyByForeignKey($fkey, $id);
+		$_return = $client->GetDesignWorkSurfTechnologyByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -2749,7 +2983,7 @@ function GetDesignWorkSurfTechnologyIdByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignWorkSurfTechnologyIdByForeignKey($fkey, $id);
+		$_return = $client->GetDesignWorkSurfTechnologyIdByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -2972,6 +3206,32 @@ function GetDesignWorkSurfTechnologyIdListByField2($field1, $value1, $field2, $v
 	return $_return;
 }
 
+function GetDesignWorkSurfTechnologyListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignWorkSurfTechnologyListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDesignWorkSurfTechnologyIdListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignWorkSurfTechnologyIdListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
 
 
 //$clsname 类型的CRUD操作
@@ -2994,7 +3254,7 @@ function DeleteDrillingRadiusParam($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$ret = $client->DeleteDrillingRadiusParam($id);
+		$ret = $client->DeleteDrillingRadiusParam(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$ret = false;
@@ -3020,7 +3280,7 @@ function GetDrillingRadiusParamById($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDrillingRadiusParamById($id);
+		$_return = $client->GetDrillingRadiusParamById(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -3033,7 +3293,7 @@ function GetDrillingRadiusParamByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDrillingRadiusParamByForeignKey($fkey, $id);
+		$_return = $client->GetDrillingRadiusParamByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -3046,7 +3306,7 @@ function GetDrillingRadiusParamIdByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDrillingRadiusParamIdByForeignKey($fkey, $id);
+		$_return = $client->GetDrillingRadiusParamIdByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -3269,6 +3529,32 @@ function GetDrillingRadiusParamIdListByField2($field1, $value1, $field2, $value2
 	return $_return;
 }
 
+function GetDrillingRadiusParamListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDrillingRadiusParamListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDrillingRadiusParamIdListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDrillingRadiusParamIdListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
 
 
 //$clsname 类型的CRUD操作
@@ -3291,7 +3577,7 @@ function DeleteDrillingSurf($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$ret = $client->DeleteDrillingSurf($id);
+		$ret = $client->DeleteDrillingSurf(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$ret = false;
@@ -3317,7 +3603,7 @@ function GetDrillingSurfById($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDrillingSurfById($id);
+		$_return = $client->GetDrillingSurfById(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -3330,7 +3616,7 @@ function GetDrillingSurfByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDrillingSurfByForeignKey($fkey, $id);
+		$_return = $client->GetDrillingSurfByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -3343,7 +3629,7 @@ function GetDrillingSurfIdByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDrillingSurfIdByForeignKey($fkey, $id);
+		$_return = $client->GetDrillingSurfIdByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -3566,6 +3852,32 @@ function GetDrillingSurfIdListByField2($field1, $value1, $field2, $value2) {
 	return $_return;
 }
 
+function GetDrillingSurfListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDrillingSurfListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDrillingSurfIdListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDrillingSurfIdListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
 
 
 //$clsname 类型的CRUD操作
@@ -3588,7 +3900,7 @@ function DeleteEvalUnit($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$ret = $client->DeleteEvalUnit($id);
+		$ret = $client->DeleteEvalUnit(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$ret = false;
@@ -3614,7 +3926,7 @@ function GetEvalUnitById($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetEvalUnitById($id);
+		$_return = $client->GetEvalUnitById(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -3627,7 +3939,7 @@ function GetEvalUnitByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetEvalUnitByForeignKey($fkey, $id);
+		$_return = $client->GetEvalUnitByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -3640,7 +3952,7 @@ function GetEvalUnitIdByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetEvalUnitIdByForeignKey($fkey, $id);
+		$_return = $client->GetEvalUnitIdByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -3863,6 +4175,32 @@ function GetEvalUnitIdListByField2($field1, $value1, $field2, $value2) {
 	return $_return;
 }
 
+function GetEvalUnitListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetEvalUnitListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetEvalUnitIdListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetEvalUnitIdListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
 
 
 //$clsname 类型的CRUD操作
@@ -3885,7 +4223,7 @@ function DeleteHighDrillingPore($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$ret = $client->DeleteHighDrillingPore($id);
+		$ret = $client->DeleteHighDrillingPore(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$ret = false;
@@ -3911,7 +4249,7 @@ function GetHighDrillingPoreById($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHighDrillingPoreById($id);
+		$_return = $client->GetHighDrillingPoreById(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -3924,7 +4262,7 @@ function GetHighDrillingPoreByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHighDrillingPoreByForeignKey($fkey, $id);
+		$_return = $client->GetHighDrillingPoreByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -3937,7 +4275,7 @@ function GetHighDrillingPoreIdByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHighDrillingPoreIdByForeignKey($fkey, $id);
+		$_return = $client->GetHighDrillingPoreIdByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -4160,6 +4498,32 @@ function GetHighDrillingPoreIdListByField2($field1, $value1, $field2, $value2) {
 	return $_return;
 }
 
+function GetHighDrillingPoreListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetHighDrillingPoreListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetHighDrillingPoreIdListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetHighDrillingPoreIdListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
 
 
 //$clsname 类型的CRUD操作
@@ -4182,7 +4546,7 @@ function DeleteHighDrillingPoreParam($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$ret = $client->DeleteHighDrillingPoreParam($id);
+		$ret = $client->DeleteHighDrillingPoreParam(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$ret = false;
@@ -4208,7 +4572,7 @@ function GetHighDrillingPoreParamById($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHighDrillingPoreParamById($id);
+		$_return = $client->GetHighDrillingPoreParamById(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -4221,7 +4585,7 @@ function GetHighDrillingPoreParamByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHighDrillingPoreParamByForeignKey($fkey, $id);
+		$_return = $client->GetHighDrillingPoreParamByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -4234,7 +4598,7 @@ function GetHighDrillingPoreParamIdByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHighDrillingPoreParamIdByForeignKey($fkey, $id);
+		$_return = $client->GetHighDrillingPoreParamIdByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -4457,6 +4821,32 @@ function GetHighDrillingPoreParamIdListByField2($field1, $value1, $field2, $valu
 	return $_return;
 }
 
+function GetHighDrillingPoreParamListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetHighDrillingPoreParamListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetHighDrillingPoreParamIdListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetHighDrillingPoreParamIdListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
 
 
 //$clsname 类型的CRUD操作
@@ -4479,7 +4869,7 @@ function DeleteHighDrillingSiteParam($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$ret = $client->DeleteHighDrillingSiteParam($id);
+		$ret = $client->DeleteHighDrillingSiteParam(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$ret = false;
@@ -4505,7 +4895,7 @@ function GetHighDrillingSiteParamById($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHighDrillingSiteParamById($id);
+		$_return = $client->GetHighDrillingSiteParamById(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -4518,7 +4908,7 @@ function GetHighDrillingSiteParamByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHighDrillingSiteParamByForeignKey($fkey, $id);
+		$_return = $client->GetHighDrillingSiteParamByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -4531,7 +4921,7 @@ function GetHighDrillingSiteParamIdByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHighDrillingSiteParamIdByForeignKey($fkey, $id);
+		$_return = $client->GetHighDrillingSiteParamIdByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -4754,6 +5144,32 @@ function GetHighDrillingSiteParamIdListByField2($field1, $value1, $field2, $valu
 	return $_return;
 }
 
+function GetHighDrillingSiteParamListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetHighDrillingSiteParamListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetHighDrillingSiteParamIdListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetHighDrillingSiteParamIdListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
 
 
 //$clsname 类型的CRUD操作
@@ -4776,7 +5192,7 @@ function DeleteHighDrillingTunnel($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$ret = $client->DeleteHighDrillingTunnel($id);
+		$ret = $client->DeleteHighDrillingTunnel(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$ret = false;
@@ -4802,7 +5218,7 @@ function GetHighDrillingTunnelById($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHighDrillingTunnelById($id);
+		$_return = $client->GetHighDrillingTunnelById(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -4815,7 +5231,7 @@ function GetHighDrillingTunnelByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHighDrillingTunnelByForeignKey($fkey, $id);
+		$_return = $client->GetHighDrillingTunnelByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -4828,7 +5244,7 @@ function GetHighDrillingTunnelIdByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHighDrillingTunnelIdByForeignKey($fkey, $id);
+		$_return = $client->GetHighDrillingTunnelIdByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -5051,6 +5467,32 @@ function GetHighDrillingTunnelIdListByField2($field1, $value1, $field2, $value2)
 	return $_return;
 }
 
+function GetHighDrillingTunnelListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetHighDrillingTunnelListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetHighDrillingTunnelIdListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetHighDrillingTunnelIdListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
 
 
 //$clsname 类型的CRUD操作
@@ -5073,7 +5515,7 @@ function DeleteHydrGeo($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$ret = $client->DeleteHydrGeo($id);
+		$ret = $client->DeleteHydrGeo(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$ret = false;
@@ -5099,7 +5541,7 @@ function GetHydrGeoById($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHydrGeoById($id);
+		$_return = $client->GetHydrGeoById(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -5112,7 +5554,7 @@ function GetHydrGeoByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHydrGeoByForeignKey($fkey, $id);
+		$_return = $client->GetHydrGeoByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -5125,7 +5567,7 @@ function GetHydrGeoIdByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHydrGeoIdByForeignKey($fkey, $id);
+		$_return = $client->GetHydrGeoIdByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -5348,6 +5790,32 @@ function GetHydrGeoIdListByField2($field1, $value1, $field2, $value2) {
 	return $_return;
 }
 
+function GetHydrGeoListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetHydrGeoListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetHydrGeoIdListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetHydrGeoIdListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
 
 
 //$clsname 类型的CRUD操作
@@ -5370,7 +5838,7 @@ function DeleteMine($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$ret = $client->DeleteMine($id);
+		$ret = $client->DeleteMine(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$ret = false;
@@ -5396,7 +5864,7 @@ function GetMineById($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetMineById($id);
+		$_return = $client->GetMineById(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -5409,7 +5877,7 @@ function GetMineByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetMineByForeignKey($fkey, $id);
+		$_return = $client->GetMineByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -5422,7 +5890,7 @@ function GetMineIdByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetMineIdByForeignKey($fkey, $id);
+		$_return = $client->GetMineIdByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -5645,6 +6113,32 @@ function GetMineIdListByField2($field1, $value1, $field2, $value2) {
 	return $_return;
 }
 
+function GetMineListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetMineListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetMineIdListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetMineIdListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
 
 
 //$clsname 类型的CRUD操作
@@ -5667,7 +6161,7 @@ function DeleteMineBase($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$ret = $client->DeleteMineBase($id);
+		$ret = $client->DeleteMineBase(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$ret = false;
@@ -5693,7 +6187,7 @@ function GetMineBaseById($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetMineBaseById($id);
+		$_return = $client->GetMineBaseById(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -5706,7 +6200,7 @@ function GetMineBaseByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetMineBaseByForeignKey($fkey, $id);
+		$_return = $client->GetMineBaseByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -5719,7 +6213,7 @@ function GetMineBaseIdByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetMineBaseIdByForeignKey($fkey, $id);
+		$_return = $client->GetMineBaseIdByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -5942,6 +6436,32 @@ function GetMineBaseIdListByField2($field1, $value1, $field2, $value2) {
 	return $_return;
 }
 
+function GetMineBaseListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetMineBaseListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetMineBaseIdListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetMineBaseIdListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
 
 
 //$clsname 类型的CRUD操作
@@ -5964,7 +6484,7 @@ function DeleteMineRegion($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$ret = $client->DeleteMineRegion($id);
+		$ret = $client->DeleteMineRegion(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$ret = false;
@@ -5990,7 +6510,7 @@ function GetMineRegionById($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetMineRegionById($id);
+		$_return = $client->GetMineRegionById(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -6003,7 +6523,7 @@ function GetMineRegionByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetMineRegionByForeignKey($fkey, $id);
+		$_return = $client->GetMineRegionByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -6016,7 +6536,7 @@ function GetMineRegionIdByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetMineRegionIdByForeignKey($fkey, $id);
+		$_return = $client->GetMineRegionIdByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -6239,6 +6759,32 @@ function GetMineRegionIdListByField2($field1, $value1, $field2, $value2) {
 	return $_return;
 }
 
+function GetMineRegionListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetMineRegionListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetMineRegionIdListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetMineRegionIdListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
 
 
 //$clsname 类型的CRUD操作
@@ -6261,7 +6807,7 @@ function DeletePoreFlow($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$ret = $client->DeletePoreFlow($id);
+		$ret = $client->DeletePoreFlow(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$ret = false;
@@ -6287,7 +6833,7 @@ function GetPoreFlowById($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetPoreFlowById($id);
+		$_return = $client->GetPoreFlowById(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -6300,7 +6846,7 @@ function GetPoreFlowByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetPoreFlowByForeignKey($fkey, $id);
+		$_return = $client->GetPoreFlowByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -6313,7 +6859,7 @@ function GetPoreFlowIdByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetPoreFlowIdByForeignKey($fkey, $id);
+		$_return = $client->GetPoreFlowIdByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -6536,6 +7082,32 @@ function GetPoreFlowIdListByField2($field1, $value1, $field2, $value2) {
 	return $_return;
 }
 
+function GetPoreFlowListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetPoreFlowListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetPoreFlowIdListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetPoreFlowIdListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
 
 
 //$clsname 类型的CRUD操作
@@ -6558,7 +7130,7 @@ function DeletePoreSize($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$ret = $client->DeletePoreSize($id);
+		$ret = $client->DeletePoreSize(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$ret = false;
@@ -6584,7 +7156,7 @@ function GetPoreSizeById($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetPoreSizeById($id);
+		$_return = $client->GetPoreSizeById(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -6597,7 +7169,7 @@ function GetPoreSizeByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetPoreSizeByForeignKey($fkey, $id);
+		$_return = $client->GetPoreSizeByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -6610,7 +7182,7 @@ function GetPoreSizeIdByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetPoreSizeIdByForeignKey($fkey, $id);
+		$_return = $client->GetPoreSizeIdByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -6833,6 +7405,32 @@ function GetPoreSizeIdListByField2($field1, $value1, $field2, $value2) {
 	return $_return;
 }
 
+function GetPoreSizeListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetPoreSizeListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetPoreSizeIdListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetPoreSizeIdListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
 
 
 //$clsname 类型的CRUD操作
@@ -6855,7 +7453,7 @@ function DeleteResAbundance($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$ret = $client->DeleteResAbundance($id);
+		$ret = $client->DeleteResAbundance(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$ret = false;
@@ -6881,7 +7479,7 @@ function GetResAbundanceById($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetResAbundanceById($id);
+		$_return = $client->GetResAbundanceById(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -6894,7 +7492,7 @@ function GetResAbundanceByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetResAbundanceByForeignKey($fkey, $id);
+		$_return = $client->GetResAbundanceByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -6907,7 +7505,7 @@ function GetResAbundanceIdByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetResAbundanceIdByForeignKey($fkey, $id);
+		$_return = $client->GetResAbundanceIdByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -7130,6 +7728,32 @@ function GetResAbundanceIdListByField2($field1, $value1, $field2, $value2) {
 	return $_return;
 }
 
+function GetResAbundanceListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetResAbundanceListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetResAbundanceIdListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetResAbundanceIdListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
 
 
 //$clsname 类型的CRUD操作
@@ -7152,7 +7776,7 @@ function DeleteRock($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$ret = $client->DeleteRock($id);
+		$ret = $client->DeleteRock(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$ret = false;
@@ -7178,7 +7802,7 @@ function GetRockById($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetRockById($id);
+		$_return = $client->GetRockById(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -7191,7 +7815,7 @@ function GetRockByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetRockByForeignKey($fkey, $id);
+		$_return = $client->GetRockByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -7204,7 +7828,7 @@ function GetRockIdByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetRockIdByForeignKey($fkey, $id);
+		$_return = $client->GetRockIdByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -7427,6 +8051,32 @@ function GetRockIdListByField2($field1, $value1, $field2, $value2) {
 	return $_return;
 }
 
+function GetRockListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetRockListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetRockIdListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetRockIdListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
 
 
 //$clsname 类型的CRUD操作
@@ -7449,7 +8099,7 @@ function DeleteSysInfo($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$ret = $client->DeleteSysInfo($id);
+		$ret = $client->DeleteSysInfo(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$ret = false;
@@ -7475,7 +8125,7 @@ function GetSysInfoById($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetSysInfoById($id);
+		$_return = $client->GetSysInfoById(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -7488,7 +8138,7 @@ function GetSysInfoByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetSysInfoByForeignKey($fkey, $id);
+		$_return = $client->GetSysInfoByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -7501,7 +8151,7 @@ function GetSysInfoIdByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetSysInfoIdByForeignKey($fkey, $id);
+		$_return = $client->GetSysInfoIdByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -7724,6 +8374,32 @@ function GetSysInfoIdListByField2($field1, $value1, $field2, $value2) {
 	return $_return;
 }
 
+function GetSysInfoListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetSysInfoListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetSysInfoIdListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetSysInfoIdListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
 
 
 //$clsname 类型的CRUD操作
@@ -7746,7 +8422,7 @@ function DeleteTechMode($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$ret = $client->DeleteTechMode($id);
+		$ret = $client->DeleteTechMode(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$ret = false;
@@ -7772,7 +8448,7 @@ function GetTechModeById($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetTechModeById($id);
+		$_return = $client->GetTechModeById(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -7785,7 +8461,7 @@ function GetTechModeByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetTechModeByForeignKey($fkey, $id);
+		$_return = $client->GetTechModeByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -7798,7 +8474,7 @@ function GetTechModeIdByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetTechModeIdByForeignKey($fkey, $id);
+		$_return = $client->GetTechModeIdByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -8021,6 +8697,32 @@ function GetTechModeIdListByField2($field1, $value1, $field2, $value2) {
 	return $_return;
 }
 
+function GetTechModeListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetTechModeListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetTechModeIdListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetTechModeIdListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
 
 
 //$clsname 类型的CRUD操作
@@ -8043,7 +8745,7 @@ function DeleteTechnology($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$ret = $client->DeleteTechnology($id);
+		$ret = $client->DeleteTechnology(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$ret = false;
@@ -8069,7 +8771,7 @@ function GetTechnologyById($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetTechnologyById($id);
+		$_return = $client->GetTechnologyById(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -8082,7 +8784,7 @@ function GetTechnologyByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetTechnologyByForeignKey($fkey, $id);
+		$_return = $client->GetTechnologyByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -8095,7 +8797,7 @@ function GetTechnologyIdByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetTechnologyIdByForeignKey($fkey, $id);
+		$_return = $client->GetTechnologyIdByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -8318,6 +9020,32 @@ function GetTechnologyIdListByField2($field1, $value1, $field2, $value2) {
 	return $_return;
 }
 
+function GetTechnologyListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetTechnologyListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetTechnologyIdListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetTechnologyIdListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
 
 
 //$clsname 类型的CRUD操作
@@ -8340,7 +9068,7 @@ function DeleteTopoGeo($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$ret = $client->DeleteTopoGeo($id);
+		$ret = $client->DeleteTopoGeo(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$ret = false;
@@ -8366,7 +9094,7 @@ function GetTopoGeoById($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetTopoGeoById($id);
+		$_return = $client->GetTopoGeoById(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -8379,7 +9107,7 @@ function GetTopoGeoByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetTopoGeoByForeignKey($fkey, $id);
+		$_return = $client->GetTopoGeoByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -8392,7 +9120,7 @@ function GetTopoGeoIdByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetTopoGeoIdByForeignKey($fkey, $id);
+		$_return = $client->GetTopoGeoIdByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -8615,6 +9343,32 @@ function GetTopoGeoIdListByField2($field1, $value1, $field2, $value2) {
 	return $_return;
 }
 
+function GetTopoGeoListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetTopoGeoListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetTopoGeoIdListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetTopoGeoIdListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
 
 
 //$clsname 类型的CRUD操作
@@ -8637,7 +9391,7 @@ function DeleteTunnel($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$ret = $client->DeleteTunnel($id);
+		$ret = $client->DeleteTunnel(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$ret = false;
@@ -8663,7 +9417,7 @@ function GetTunnelById($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetTunnelById($id);
+		$_return = $client->GetTunnelById(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -8676,7 +9430,7 @@ function GetTunnelByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetTunnelByForeignKey($fkey, $id);
+		$_return = $client->GetTunnelByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -8689,7 +9443,7 @@ function GetTunnelIdByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetTunnelIdByForeignKey($fkey, $id);
+		$_return = $client->GetTunnelIdByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -8912,6 +9666,32 @@ function GetTunnelIdListByField2($field1, $value1, $field2, $value2) {
 	return $_return;
 }
 
+function GetTunnelListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetTunnelListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetTunnelIdListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetTunnelIdListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
 
 
 //$clsname 类型的CRUD操作
@@ -8934,7 +9714,7 @@ function DeleteWorkArea($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$ret = $client->DeleteWorkArea($id);
+		$ret = $client->DeleteWorkArea(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$ret = false;
@@ -8960,7 +9740,7 @@ function GetWorkAreaById($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetWorkAreaById($id);
+		$_return = $client->GetWorkAreaById(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -8973,7 +9753,7 @@ function GetWorkAreaByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetWorkAreaByForeignKey($fkey, $id);
+		$_return = $client->GetWorkAreaByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -8986,7 +9766,7 @@ function GetWorkAreaIdByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetWorkAreaIdByForeignKey($fkey, $id);
+		$_return = $client->GetWorkAreaIdByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -9209,6 +9989,32 @@ function GetWorkAreaIdListByField2($field1, $value1, $field2, $value2) {
 	return $_return;
 }
 
+function GetWorkAreaListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetWorkAreaListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetWorkAreaIdListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetWorkAreaIdListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
 
 
 //$clsname 类型的CRUD操作
@@ -9231,7 +10037,7 @@ function DeleteWorkSurf($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$ret = $client->DeleteWorkSurf($id);
+		$ret = $client->DeleteWorkSurf(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$ret = false;
@@ -9257,7 +10063,7 @@ function GetWorkSurfById($id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetWorkSurfById($id);
+		$_return = $client->GetWorkSurfById(intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -9270,7 +10076,7 @@ function GetWorkSurfByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetWorkSurfByForeignKey($fkey, $id);
+		$_return = $client->GetWorkSurfByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -9283,7 +10089,7 @@ function GetWorkSurfIdByForeignKey($fkey, $id) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetWorkSurfIdByForeignKey($fkey, $id);
+		$_return = $client->GetWorkSurfIdByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -9499,6 +10305,32 @@ function GetWorkSurfIdListByField2($field1, $value1, $field2, $value2) {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
 		$_return = $client->GetWorkSurfIdListByField2($field1, $value1, $field2, $value2);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetWorkSurfListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetWorkSurfListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetWorkSurfIdListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetWorkSurfIdListByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();

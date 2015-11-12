@@ -6,16 +6,28 @@ import types
 
 import CbmRtti
 
-# 记录对象允许复制的属性类型
-obj_types_set = set([types.IntType, types.FloatType, types.StringType, types.LongType])
+def map_fields(cbm_type, fields):
+    if cbm_type in CbmRtti.info:
+        sql_fields = {}
+        type_funcs = CbmRtti.info[cbm_type]
+        for key, value in fields.items():
+            sql_fields[key] = value
+            if key in type_funcs:
+                a = sql_fields[key]
+                func = type_funcs[key]
+                sql_fields[key] = func(a)
+        return sql_fields
+    else:
+        return fields
 
 def CopyAttribsOfCbmType(cbm_type, obj1, obj2):
+    # print "copy %s" % cbm_type
     if cbm_type in CbmRtti.info:
         # print CbmRtti.info[cbm_type]
         for name, func in CbmRtti.info[cbm_type].items():
             if not hasattr(obj1, name) or not hasattr(obj2, name):continue
             a = getattr(obj1, name)
-            # print name, a
+            # print name, '-->', a
             if a is not None:
                 setattr(obj2, name, func(a))
 
@@ -29,7 +41,10 @@ def GetAttribsOfCbmType(cbm_type, obj1):
                 attribs[name] = func(a)
     return attribs
 
-def CopyAttribs(obj1, obj2):
+# 记录对象允许复制的属性类型
+obj_types_set = set([types.IntType, types.FloatType, types.StringType, types.LongType])
+
+def CopyAttribsOfObject(obj1, obj2):    
     for name in dir(obj1):
         if not hasattr(obj2, name):continue
         if name.startswith('__'):continue
@@ -37,7 +52,7 @@ def CopyAttribs(obj1, obj2):
         if type(a) in obj_types_set:
             setattr(obj2, name, a)
 
-def GetAttribs(obj1):
+def GetAttribsOfObject(obj1):
     attribs = {}
     for name in dir(obj1):
         # if not hasattr(obj1, name):continue

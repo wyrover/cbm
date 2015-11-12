@@ -234,10 +234,16 @@ import design
 '''
 def test_sql():
     # print SQLClientHelper.GetMineBaseNames()
-    # print CbmClientHelper.SendCommandToCAD("zoom a", False)
+    # print CbmClientHelper.SendCommandToCAD("zoom a", True)
     # print CbmClientHelper.SendCommandToCAD("regen", False)
     # print CbmClientHelper.GetJsonDatasFromCAD("{}", 2)
-    design.DrawPlaneGraph11()
+    
+    # design.test_copy_obj()
+    design.test_draw_coal_occurrence_graph()
+    # design.test_draw_graph_11()
+    # design.test_draw_graph_12()
+    # design.test_draw_graph_21()
+    # design.test_draw_graph_23()
 
 def main():
   if False:

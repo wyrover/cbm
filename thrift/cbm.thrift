@@ -539,6 +539,8 @@ service CbmService {
 	list<i32> GetAccountIdListByFields(1:map<string, string> fields),
 	list<i32> GetAccountIdListByField1(1:string field, 2:string value),
 	list<i32> GetAccountIdListByField2(1:string field1, 2:string value1, 3:string field2, 4:string value2),
+	list<Account> GetAccountListByForeignKey(1:string fkey, 2:i32 id),
+	list<i32> GetAccountIdListByForeignKey(1:string fkey, 2:i32 id),
 
 	//AdjLayer 类型的CRUD操作
 	i32 AddAdjLayer(1:AdjLayer adj_layer),
@@ -564,6 +566,8 @@ service CbmService {
 	list<i32> GetAdjLayerIdListByFields(1:map<string, string> fields),
 	list<i32> GetAdjLayerIdListByField1(1:string field, 2:string value),
 	list<i32> GetAdjLayerIdListByField2(1:string field1, 2:string value1, 3:string field2, 4:string value2),
+	list<AdjLayer> GetAdjLayerListByForeignKey(1:string fkey, 2:i32 id),
+	list<i32> GetAdjLayerIdListByForeignKey(1:string fkey, 2:i32 id),
 
 	//Coal 类型的CRUD操作
 	i32 AddCoal(1:Coal coal),
@@ -589,6 +593,8 @@ service CbmService {
 	list<i32> GetCoalIdListByFields(1:map<string, string> fields),
 	list<i32> GetCoalIdListByField1(1:string field, 2:string value),
 	list<i32> GetCoalIdListByField2(1:string field1, 2:string value1, 3:string field2, 4:string value2),
+	list<Coal> GetCoalListByForeignKey(1:string fkey, 2:i32 id),
+	list<i32> GetCoalIdListByForeignKey(1:string fkey, 2:i32 id),
 
 	//Complexity 类型的CRUD操作
 	i32 AddComplexity(1:Complexity complexity),
@@ -614,6 +620,8 @@ service CbmService {
 	list<i32> GetComplexityIdListByFields(1:map<string, string> fields),
 	list<i32> GetComplexityIdListByField1(1:string field, 2:string value),
 	list<i32> GetComplexityIdListByField2(1:string field1, 2:string value1, 3:string field2, 4:string value2),
+	list<Complexity> GetComplexityListByForeignKey(1:string fkey, 2:i32 id),
+	list<i32> GetComplexityIdListByForeignKey(1:string fkey, 2:i32 id),
 
 	//DesignDrillingSurfTechnology 类型的CRUD操作
 	i32 AddDesignDrillingSurfTechnology(1:DesignDrillingSurfTechnology design_drilling_surf_technology),
@@ -639,6 +647,8 @@ service CbmService {
 	list<i32> GetDesignDrillingSurfTechnologyIdListByFields(1:map<string, string> fields),
 	list<i32> GetDesignDrillingSurfTechnologyIdListByField1(1:string field, 2:string value),
 	list<i32> GetDesignDrillingSurfTechnologyIdListByField2(1:string field1, 2:string value1, 3:string field2, 4:string value2),
+	list<DesignDrillingSurfTechnology> GetDesignDrillingSurfTechnologyListByForeignKey(1:string fkey, 2:i32 id),
+	list<i32> GetDesignDrillingSurfTechnologyIdListByForeignKey(1:string fkey, 2:i32 id),
 
 	//DesignGoafTechnology 类型的CRUD操作
 	i32 AddDesignGoafTechnology(1:DesignGoafTechnology design_goaf_technology),
@@ -664,6 +674,8 @@ service CbmService {
 	list<i32> GetDesignGoafTechnologyIdListByFields(1:map<string, string> fields),
 	list<i32> GetDesignGoafTechnologyIdListByField1(1:string field, 2:string value),
 	list<i32> GetDesignGoafTechnologyIdListByField2(1:string field1, 2:string value1, 3:string field2, 4:string value2),
+	list<DesignGoafTechnology> GetDesignGoafTechnologyListByForeignKey(1:string fkey, 2:i32 id),
+	list<i32> GetDesignGoafTechnologyIdListByForeignKey(1:string fkey, 2:i32 id),
 
 	//DesignPore 类型的CRUD操作
 	i32 AddDesignPore(1:DesignPore design_pore),
@@ -689,6 +701,8 @@ service CbmService {
 	list<i32> GetDesignPoreIdListByFields(1:map<string, string> fields),
 	list<i32> GetDesignPoreIdListByField1(1:string field, 2:string value),
 	list<i32> GetDesignPoreIdListByField2(1:string field1, 2:string value1, 3:string field2, 4:string value2),
+	list<DesignPore> GetDesignPoreListByForeignKey(1:string fkey, 2:i32 id),
+	list<i32> GetDesignPoreIdListByForeignKey(1:string fkey, 2:i32 id),
 
 	//DesignSite 类型的CRUD操作
 	i32 AddDesignSite(1:DesignSite design_site),
@@ -714,6 +728,8 @@ service CbmService {
 	list<i32> GetDesignSiteIdListByFields(1:map<string, string> fields),
 	list<i32> GetDesignSiteIdListByField1(1:string field, 2:string value),
 	list<i32> GetDesignSiteIdListByField2(1:string field1, 2:string value1, 3:string field2, 4:string value2),
+	list<DesignSite> GetDesignSiteListByForeignKey(1:string fkey, 2:i32 id),
+	list<i32> GetDesignSiteIdListByForeignKey(1:string fkey, 2:i32 id),
 
 	//DesignTechnology 类型的CRUD操作
 	i32 AddDesignTechnology(1:DesignTechnology design_technology),
@@ -739,6 +755,8 @@ service CbmService {
 	list<i32> GetDesignTechnologyIdListByFields(1:map<string, string> fields),
 	list<i32> GetDesignTechnologyIdListByField1(1:string field, 2:string value),
 	list<i32> GetDesignTechnologyIdListByField2(1:string field1, 2:string value1, 3:string field2, 4:string value2),
+	list<DesignTechnology> GetDesignTechnologyListByForeignKey(1:string fkey, 2:i32 id),
+	list<i32> GetDesignTechnologyIdListByForeignKey(1:string fkey, 2:i32 id),
 
 	//DesignWorkSurfTechnology 类型的CRUD操作
 	i32 AddDesignWorkSurfTechnology(1:DesignWorkSurfTechnology design_work_surf_technology),
@@ -764,6 +782,8 @@ service CbmService {
 	list<i32> GetDesignWorkSurfTechnologyIdListByFields(1:map<string, string> fields),
 	list<i32> GetDesignWorkSurfTechnologyIdListByField1(1:string field, 2:string value),
 	list<i32> GetDesignWorkSurfTechnologyIdListByField2(1:string field1, 2:string value1, 3:string field2, 4:string value2),
+	list<DesignWorkSurfTechnology> GetDesignWorkSurfTechnologyListByForeignKey(1:string fkey, 2:i32 id),
+	list<i32> GetDesignWorkSurfTechnologyIdListByForeignKey(1:string fkey, 2:i32 id),
 
 	//DrillingRadiusParam 类型的CRUD操作
 	i32 AddDrillingRadiusParam(1:DrillingRadiusParam drilling_radius_param),
@@ -789,6 +809,8 @@ service CbmService {
 	list<i32> GetDrillingRadiusParamIdListByFields(1:map<string, string> fields),
 	list<i32> GetDrillingRadiusParamIdListByField1(1:string field, 2:string value),
 	list<i32> GetDrillingRadiusParamIdListByField2(1:string field1, 2:string value1, 3:string field2, 4:string value2),
+	list<DrillingRadiusParam> GetDrillingRadiusParamListByForeignKey(1:string fkey, 2:i32 id),
+	list<i32> GetDrillingRadiusParamIdListByForeignKey(1:string fkey, 2:i32 id),
 
 	//DrillingSurf 类型的CRUD操作
 	i32 AddDrillingSurf(1:DrillingSurf drilling_surf),
@@ -814,6 +836,8 @@ service CbmService {
 	list<i32> GetDrillingSurfIdListByFields(1:map<string, string> fields),
 	list<i32> GetDrillingSurfIdListByField1(1:string field, 2:string value),
 	list<i32> GetDrillingSurfIdListByField2(1:string field1, 2:string value1, 3:string field2, 4:string value2),
+	list<DrillingSurf> GetDrillingSurfListByForeignKey(1:string fkey, 2:i32 id),
+	list<i32> GetDrillingSurfIdListByForeignKey(1:string fkey, 2:i32 id),
 
 	//EvalUnit 类型的CRUD操作
 	i32 AddEvalUnit(1:EvalUnit eval_unit),
@@ -839,6 +863,8 @@ service CbmService {
 	list<i32> GetEvalUnitIdListByFields(1:map<string, string> fields),
 	list<i32> GetEvalUnitIdListByField1(1:string field, 2:string value),
 	list<i32> GetEvalUnitIdListByField2(1:string field1, 2:string value1, 3:string field2, 4:string value2),
+	list<EvalUnit> GetEvalUnitListByForeignKey(1:string fkey, 2:i32 id),
+	list<i32> GetEvalUnitIdListByForeignKey(1:string fkey, 2:i32 id),
 
 	//HighDrillingPore 类型的CRUD操作
 	i32 AddHighDrillingPore(1:HighDrillingPore high_drilling_pore),
@@ -864,6 +890,8 @@ service CbmService {
 	list<i32> GetHighDrillingPoreIdListByFields(1:map<string, string> fields),
 	list<i32> GetHighDrillingPoreIdListByField1(1:string field, 2:string value),
 	list<i32> GetHighDrillingPoreIdListByField2(1:string field1, 2:string value1, 3:string field2, 4:string value2),
+	list<HighDrillingPore> GetHighDrillingPoreListByForeignKey(1:string fkey, 2:i32 id),
+	list<i32> GetHighDrillingPoreIdListByForeignKey(1:string fkey, 2:i32 id),
 
 	//HighDrillingPoreParam 类型的CRUD操作
 	i32 AddHighDrillingPoreParam(1:HighDrillingPoreParam high_drilling_pore_param),
@@ -889,6 +917,8 @@ service CbmService {
 	list<i32> GetHighDrillingPoreParamIdListByFields(1:map<string, string> fields),
 	list<i32> GetHighDrillingPoreParamIdListByField1(1:string field, 2:string value),
 	list<i32> GetHighDrillingPoreParamIdListByField2(1:string field1, 2:string value1, 3:string field2, 4:string value2),
+	list<HighDrillingPoreParam> GetHighDrillingPoreParamListByForeignKey(1:string fkey, 2:i32 id),
+	list<i32> GetHighDrillingPoreParamIdListByForeignKey(1:string fkey, 2:i32 id),
 
 	//HighDrillingSiteParam 类型的CRUD操作
 	i32 AddHighDrillingSiteParam(1:HighDrillingSiteParam high_drilling_site_param),
@@ -914,6 +944,8 @@ service CbmService {
 	list<i32> GetHighDrillingSiteParamIdListByFields(1:map<string, string> fields),
 	list<i32> GetHighDrillingSiteParamIdListByField1(1:string field, 2:string value),
 	list<i32> GetHighDrillingSiteParamIdListByField2(1:string field1, 2:string value1, 3:string field2, 4:string value2),
+	list<HighDrillingSiteParam> GetHighDrillingSiteParamListByForeignKey(1:string fkey, 2:i32 id),
+	list<i32> GetHighDrillingSiteParamIdListByForeignKey(1:string fkey, 2:i32 id),
 
 	//HighDrillingTunnel 类型的CRUD操作
 	i32 AddHighDrillingTunnel(1:HighDrillingTunnel high_drilling_tunnel),
@@ -939,6 +971,8 @@ service CbmService {
 	list<i32> GetHighDrillingTunnelIdListByFields(1:map<string, string> fields),
 	list<i32> GetHighDrillingTunnelIdListByField1(1:string field, 2:string value),
 	list<i32> GetHighDrillingTunnelIdListByField2(1:string field1, 2:string value1, 3:string field2, 4:string value2),
+	list<HighDrillingTunnel> GetHighDrillingTunnelListByForeignKey(1:string fkey, 2:i32 id),
+	list<i32> GetHighDrillingTunnelIdListByForeignKey(1:string fkey, 2:i32 id),
 
 	//HydrGeo 类型的CRUD操作
 	i32 AddHydrGeo(1:HydrGeo hydr_geo),
@@ -964,6 +998,8 @@ service CbmService {
 	list<i32> GetHydrGeoIdListByFields(1:map<string, string> fields),
 	list<i32> GetHydrGeoIdListByField1(1:string field, 2:string value),
 	list<i32> GetHydrGeoIdListByField2(1:string field1, 2:string value1, 3:string field2, 4:string value2),
+	list<HydrGeo> GetHydrGeoListByForeignKey(1:string fkey, 2:i32 id),
+	list<i32> GetHydrGeoIdListByForeignKey(1:string fkey, 2:i32 id),
 
 	//Mine 类型的CRUD操作
 	i32 AddMine(1:Mine mine),
@@ -989,6 +1025,8 @@ service CbmService {
 	list<i32> GetMineIdListByFields(1:map<string, string> fields),
 	list<i32> GetMineIdListByField1(1:string field, 2:string value),
 	list<i32> GetMineIdListByField2(1:string field1, 2:string value1, 3:string field2, 4:string value2),
+	list<Mine> GetMineListByForeignKey(1:string fkey, 2:i32 id),
+	list<i32> GetMineIdListByForeignKey(1:string fkey, 2:i32 id),
 
 	//MineBase 类型的CRUD操作
 	i32 AddMineBase(1:MineBase mine_base),
@@ -1014,6 +1052,8 @@ service CbmService {
 	list<i32> GetMineBaseIdListByFields(1:map<string, string> fields),
 	list<i32> GetMineBaseIdListByField1(1:string field, 2:string value),
 	list<i32> GetMineBaseIdListByField2(1:string field1, 2:string value1, 3:string field2, 4:string value2),
+	list<MineBase> GetMineBaseListByForeignKey(1:string fkey, 2:i32 id),
+	list<i32> GetMineBaseIdListByForeignKey(1:string fkey, 2:i32 id),
 
 	//MineRegion 类型的CRUD操作
 	i32 AddMineRegion(1:MineRegion mine_region),
@@ -1039,6 +1079,8 @@ service CbmService {
 	list<i32> GetMineRegionIdListByFields(1:map<string, string> fields),
 	list<i32> GetMineRegionIdListByField1(1:string field, 2:string value),
 	list<i32> GetMineRegionIdListByField2(1:string field1, 2:string value1, 3:string field2, 4:string value2),
+	list<MineRegion> GetMineRegionListByForeignKey(1:string fkey, 2:i32 id),
+	list<i32> GetMineRegionIdListByForeignKey(1:string fkey, 2:i32 id),
 
 	//PoreFlow 类型的CRUD操作
 	i32 AddPoreFlow(1:PoreFlow pore_flow),
@@ -1064,6 +1106,8 @@ service CbmService {
 	list<i32> GetPoreFlowIdListByFields(1:map<string, string> fields),
 	list<i32> GetPoreFlowIdListByField1(1:string field, 2:string value),
 	list<i32> GetPoreFlowIdListByField2(1:string field1, 2:string value1, 3:string field2, 4:string value2),
+	list<PoreFlow> GetPoreFlowListByForeignKey(1:string fkey, 2:i32 id),
+	list<i32> GetPoreFlowIdListByForeignKey(1:string fkey, 2:i32 id),
 
 	//PoreSize 类型的CRUD操作
 	i32 AddPoreSize(1:PoreSize pore_size),
@@ -1089,6 +1133,8 @@ service CbmService {
 	list<i32> GetPoreSizeIdListByFields(1:map<string, string> fields),
 	list<i32> GetPoreSizeIdListByField1(1:string field, 2:string value),
 	list<i32> GetPoreSizeIdListByField2(1:string field1, 2:string value1, 3:string field2, 4:string value2),
+	list<PoreSize> GetPoreSizeListByForeignKey(1:string fkey, 2:i32 id),
+	list<i32> GetPoreSizeIdListByForeignKey(1:string fkey, 2:i32 id),
 
 	//ResAbundance 类型的CRUD操作
 	i32 AddResAbundance(1:ResAbundance res_abundance),
@@ -1114,6 +1160,8 @@ service CbmService {
 	list<i32> GetResAbundanceIdListByFields(1:map<string, string> fields),
 	list<i32> GetResAbundanceIdListByField1(1:string field, 2:string value),
 	list<i32> GetResAbundanceIdListByField2(1:string field1, 2:string value1, 3:string field2, 4:string value2),
+	list<ResAbundance> GetResAbundanceListByForeignKey(1:string fkey, 2:i32 id),
+	list<i32> GetResAbundanceIdListByForeignKey(1:string fkey, 2:i32 id),
 
 	//Rock 类型的CRUD操作
 	i32 AddRock(1:Rock rock),
@@ -1139,6 +1187,8 @@ service CbmService {
 	list<i32> GetRockIdListByFields(1:map<string, string> fields),
 	list<i32> GetRockIdListByField1(1:string field, 2:string value),
 	list<i32> GetRockIdListByField2(1:string field1, 2:string value1, 3:string field2, 4:string value2),
+	list<Rock> GetRockListByForeignKey(1:string fkey, 2:i32 id),
+	list<i32> GetRockIdListByForeignKey(1:string fkey, 2:i32 id),
 
 	//SysInfo 类型的CRUD操作
 	i32 AddSysInfo(1:SysInfo sys_info),
@@ -1164,6 +1214,8 @@ service CbmService {
 	list<i32> GetSysInfoIdListByFields(1:map<string, string> fields),
 	list<i32> GetSysInfoIdListByField1(1:string field, 2:string value),
 	list<i32> GetSysInfoIdListByField2(1:string field1, 2:string value1, 3:string field2, 4:string value2),
+	list<SysInfo> GetSysInfoListByForeignKey(1:string fkey, 2:i32 id),
+	list<i32> GetSysInfoIdListByForeignKey(1:string fkey, 2:i32 id),
 
 	//TechMode 类型的CRUD操作
 	i32 AddTechMode(1:TechMode tech_mode),
@@ -1189,6 +1241,8 @@ service CbmService {
 	list<i32> GetTechModeIdListByFields(1:map<string, string> fields),
 	list<i32> GetTechModeIdListByField1(1:string field, 2:string value),
 	list<i32> GetTechModeIdListByField2(1:string field1, 2:string value1, 3:string field2, 4:string value2),
+	list<TechMode> GetTechModeListByForeignKey(1:string fkey, 2:i32 id),
+	list<i32> GetTechModeIdListByForeignKey(1:string fkey, 2:i32 id),
 
 	//Technology 类型的CRUD操作
 	i32 AddTechnology(1:Technology technology),
@@ -1214,6 +1268,8 @@ service CbmService {
 	list<i32> GetTechnologyIdListByFields(1:map<string, string> fields),
 	list<i32> GetTechnologyIdListByField1(1:string field, 2:string value),
 	list<i32> GetTechnologyIdListByField2(1:string field1, 2:string value1, 3:string field2, 4:string value2),
+	list<Technology> GetTechnologyListByForeignKey(1:string fkey, 2:i32 id),
+	list<i32> GetTechnologyIdListByForeignKey(1:string fkey, 2:i32 id),
 
 	//TopoGeo 类型的CRUD操作
 	i32 AddTopoGeo(1:TopoGeo topo_geo),
@@ -1239,6 +1295,8 @@ service CbmService {
 	list<i32> GetTopoGeoIdListByFields(1:map<string, string> fields),
 	list<i32> GetTopoGeoIdListByField1(1:string field, 2:string value),
 	list<i32> GetTopoGeoIdListByField2(1:string field1, 2:string value1, 3:string field2, 4:string value2),
+	list<TopoGeo> GetTopoGeoListByForeignKey(1:string fkey, 2:i32 id),
+	list<i32> GetTopoGeoIdListByForeignKey(1:string fkey, 2:i32 id),
 
 	//Tunnel 类型的CRUD操作
 	i32 AddTunnel(1:Tunnel tunnel),
@@ -1264,6 +1322,8 @@ service CbmService {
 	list<i32> GetTunnelIdListByFields(1:map<string, string> fields),
 	list<i32> GetTunnelIdListByField1(1:string field, 2:string value),
 	list<i32> GetTunnelIdListByField2(1:string field1, 2:string value1, 3:string field2, 4:string value2),
+	list<Tunnel> GetTunnelListByForeignKey(1:string fkey, 2:i32 id),
+	list<i32> GetTunnelIdListByForeignKey(1:string fkey, 2:i32 id),
 
 	//WorkArea 类型的CRUD操作
 	i32 AddWorkArea(1:WorkArea work_area),
@@ -1289,6 +1349,8 @@ service CbmService {
 	list<i32> GetWorkAreaIdListByFields(1:map<string, string> fields),
 	list<i32> GetWorkAreaIdListByField1(1:string field, 2:string value),
 	list<i32> GetWorkAreaIdListByField2(1:string field1, 2:string value1, 3:string field2, 4:string value2),
+	list<WorkArea> GetWorkAreaListByForeignKey(1:string fkey, 2:i32 id),
+	list<i32> GetWorkAreaIdListByForeignKey(1:string fkey, 2:i32 id),
 
 	//WorkSurf 类型的CRUD操作
 	i32 AddWorkSurf(1:WorkSurf work_surf),
@@ -1314,6 +1376,8 @@ service CbmService {
 	list<i32> GetWorkSurfIdListByFields(1:map<string, string> fields),
 	list<i32> GetWorkSurfIdListByField1(1:string field, 2:string value),
 	list<i32> GetWorkSurfIdListByField2(1:string field1, 2:string value1, 3:string field2, 4:string value2),
+	list<WorkSurf> GetWorkSurfListByForeignKey(1:string fkey, 2:i32 id),
+	list<i32> GetWorkSurfIdListByForeignKey(1:string fkey, 2:i32 id),
 
 
 //}

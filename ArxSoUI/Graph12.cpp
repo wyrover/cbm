@@ -2,11 +2,12 @@
 #include "Graph12.h"
 
 #include <ArxHelper/HelperClass.h>
+#include "CbmClientHelper.h"
 
 namespace P12
 {
 
-    Graph::Graph( const cbm::CoalPtr& _coal, const cbm::DesignDrillingSurfTechnologyPtr& _tech )
+    Graph::Graph( cbm::Coal& _coal, cbm::DesignDrillingSurfTechnology& _tech )
         : BaseGraph(), coal( _coal ), tech( _tech )
     {
         left_margin = 20;
@@ -15,20 +16,20 @@ namespace P12
         top_margin = 20;
 
         //倾向长度和走向长度
-        L1 = tech->l1, L2 = tech->l2;
+        L1 = tech.l1, L2 = tech.l2;
         //煤层厚度和倾角(弧度)
-        thick = coal->thick, angle = DegToRad( coal->dip_angle );
+        thick = coal.thick, angle = DegToRad( coal.dip_angle );
         //工作面巷道的宽度和高度
-        w = tech->w, h = tech->h;
+        w = tech.w, h = tech.h;
         //左右上下帮距
-        left = tech->left_side, right = tech->right_side;
-        top = tech->top_side, bottom = tech->bottom_side;
+        left = tech.left_side, right = tech.right_side;
+        top = tech.top_side, bottom = tech.bottom_side;
         //钻孔半径和钻孔底间距(孔径的单位是mm)
-        radius = tech->dp * 0.5 * 0.001, pore_gap = tech->gbp;
+        radius = tech.dp * 0.5 * 0.001, pore_gap = tech.gbp;
         //钻孔超前距
-        leading = tech->leading_dist;
+        leading = tech.leading_dist;
         //钻孔控制条带长度
-        L_stripe = tech->l_stripe;
+        L_stripe = tech.l_stripe;
     }
 
     void Graph::subDraw()
@@ -49,7 +50,7 @@ namespace P12
         Hc = thick;
     }
 
-    PlanGraph::PlanGraph( const cbm::CoalPtr& coal, const cbm::DesignDrillingSurfTechnologyPtr& tech ) : Graph( coal,  tech )
+    PlanGraph::PlanGraph( cbm::Coal& coal, cbm::DesignDrillingSurfTechnology& tech ) : Graph( coal,  tech )
     {
     }
 

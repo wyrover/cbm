@@ -95,6 +95,11 @@ public:
 		CmdHelper::PostJsonDatasToRpc();
 	}
 
+	static void JL_DrawOccurrenceGraph()
+	{
+		CmdHelper::DrawOccurrenceGraph();
+	}
+
 	static void JL_DrawPlaneGraph11()
 	{
 		CmdHelper::DrawPlaneGraph11();
@@ -109,12 +114,72 @@ public:
 	{
 		CmdHelper::DrawDipGraph11();
 	}
+
+	static void JL_DrawPlaneGraph12()
+	{
+		CmdHelper::DrawPlaneGraph12();
+	}
+
+	static void JL_DrawHeadGraph12()
+	{
+		CmdHelper::DrawHeadGraph12();
+	}
+
+	static void JL_DrawDipGraph12()
+	{
+		CmdHelper::DrawDipGraph12();
+	}
+
+	static void JL_DrawPlaneGraph21()
+	{
+		CmdHelper::DrawPlaneGraph21();
+	}
+
+	static void JL_DrawHeadGraph21()
+	{
+		CmdHelper::DrawHeadGraph21();
+	}
+
+	static void JL_DrawDipGraph21()
+	{
+		CmdHelper::DrawDipGraph21();
+	}
+
+	static void JL_DrawPlaneGraph23()
+	{
+		CmdHelper::DrawPlaneGraph23();
+	}
+
+	static void JL_DrawHeadGraph23()
+	{
+		CmdHelper::DrawHeadGraph23();
+	}
+
+	static void JL_DrawDipGraph23()
+	{
+		CmdHelper::DrawDipGraph23();
+	}
 } ;
 
 //-----------------------------------------------------------------------------
 IMPLEMENT_ARX_ENTRYPOINT( CArxSoUIApp )
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _xxx, xxx, ACRX_CMD_TRANSPARENT, NULL )
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _PostJsonDatas, PostJsonDatas, ACRX_CMD_TRANSPARENT, NULL )
+
+ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _DrawOccurrenceGraph, DrawOccurrenceGraph, ACRX_CMD_TRANSPARENT, NULL )
+
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _DrawPlaneGraph11, DrawPlaneGraph11, ACRX_CMD_TRANSPARENT, NULL )
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _DrawHeadGraph11, DrawHeadGraph11, ACRX_CMD_TRANSPARENT, NULL )
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _DrawDipGraph11, DrawDipGraph11, ACRX_CMD_TRANSPARENT, NULL )
+
+ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _DrawPlaneGraph12, DrawPlaneGraph12, ACRX_CMD_TRANSPARENT, NULL )
+ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _DrawHeadGraph12, DrawHeadGraph12, ACRX_CMD_TRANSPARENT, NULL )
+ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _DrawDipGraph12, DrawDipGraph12, ACRX_CMD_TRANSPARENT, NULL )
+
+ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _DrawPlaneGraph21, DrawPlaneGraph21, ACRX_CMD_TRANSPARENT, NULL )
+ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _DrawHeadGraph21, DrawHeadGraph21, ACRX_CMD_TRANSPARENT, NULL )
+ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _DrawDipGraph21, DrawDipGraph21, ACRX_CMD_TRANSPARENT, NULL )
+
+ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _DrawPlaneGraph23, DrawPlaneGraph23, ACRX_CMD_TRANSPARENT, NULL )
+ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _DrawHeadGraph23, DrawHeadGraph23, ACRX_CMD_TRANSPARENT, NULL )
+ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _DrawDipGraph23, DrawDipGraph23, ACRX_CMD_TRANSPARENT, NULL )

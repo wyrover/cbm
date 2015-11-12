@@ -112,7 +112,7 @@ function copy_files()
 	copy('sql.php', $projDir.'scripts\cbm\sql.php');
 
 	//将thrift接口文件复制到cbm项目
-	// copy('cbm.thrift', $projDir.'thrift\cbm.thrift');
+	copy('cbm.thrift', $projDir.'thrift\cbm.thrift');
 	// copy('ctrl.thrift', $projDir.'thrift\ctrl.thrift');
 	copy('SQLServerHelper.py', $projDir.'thrift\SQLServerHelper.py');
 	copy('SQLClientHelper.py', $projDir.'thrift\SQLClientHelper.py');

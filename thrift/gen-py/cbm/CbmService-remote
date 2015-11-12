@@ -47,6 +47,8 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
   print('   GetAccountIdListByFields( fields)')
   print('   GetAccountIdListByField1(string field, string value)')
   print('   GetAccountIdListByField2(string field1, string value1, string field2, string value2)')
+  print('   GetAccountListByForeignKey(string fkey, i32 id)')
+  print('   GetAccountIdListByForeignKey(string fkey, i32 id)')
   print('  i32 AddAdjLayer(AdjLayer adj_layer)')
   print('  bool DeleteAdjLayer(i32 id)')
   print('  bool UpdateAdjLayer(AdjLayer adj_layer)')
@@ -70,6 +72,8 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
   print('   GetAdjLayerIdListByFields( fields)')
   print('   GetAdjLayerIdListByField1(string field, string value)')
   print('   GetAdjLayerIdListByField2(string field1, string value1, string field2, string value2)')
+  print('   GetAdjLayerListByForeignKey(string fkey, i32 id)')
+  print('   GetAdjLayerIdListByForeignKey(string fkey, i32 id)')
   print('  i32 AddCoal(Coal coal)')
   print('  bool DeleteCoal(i32 id)')
   print('  bool UpdateCoal(Coal coal)')
@@ -93,6 +97,8 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
   print('   GetCoalIdListByFields( fields)')
   print('   GetCoalIdListByField1(string field, string value)')
   print('   GetCoalIdListByField2(string field1, string value1, string field2, string value2)')
+  print('   GetCoalListByForeignKey(string fkey, i32 id)')
+  print('   GetCoalIdListByForeignKey(string fkey, i32 id)')
   print('  i32 AddComplexity(Complexity complexity)')
   print('  bool DeleteComplexity(i32 id)')
   print('  bool UpdateComplexity(Complexity complexity)')
@@ -116,6 +122,8 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
   print('   GetComplexityIdListByFields( fields)')
   print('   GetComplexityIdListByField1(string field, string value)')
   print('   GetComplexityIdListByField2(string field1, string value1, string field2, string value2)')
+  print('   GetComplexityListByForeignKey(string fkey, i32 id)')
+  print('   GetComplexityIdListByForeignKey(string fkey, i32 id)')
   print('  i32 AddDesignDrillingSurfTechnology(DesignDrillingSurfTechnology design_drilling_surf_technology)')
   print('  bool DeleteDesignDrillingSurfTechnology(i32 id)')
   print('  bool UpdateDesignDrillingSurfTechnology(DesignDrillingSurfTechnology design_drilling_surf_technology)')
@@ -139,6 +147,8 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
   print('   GetDesignDrillingSurfTechnologyIdListByFields( fields)')
   print('   GetDesignDrillingSurfTechnologyIdListByField1(string field, string value)')
   print('   GetDesignDrillingSurfTechnologyIdListByField2(string field1, string value1, string field2, string value2)')
+  print('   GetDesignDrillingSurfTechnologyListByForeignKey(string fkey, i32 id)')
+  print('   GetDesignDrillingSurfTechnologyIdListByForeignKey(string fkey, i32 id)')
   print('  i32 AddDesignGoafTechnology(DesignGoafTechnology design_goaf_technology)')
   print('  bool DeleteDesignGoafTechnology(i32 id)')
   print('  bool UpdateDesignGoafTechnology(DesignGoafTechnology design_goaf_technology)')
@@ -162,6 +172,8 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
   print('   GetDesignGoafTechnologyIdListByFields( fields)')
   print('   GetDesignGoafTechnologyIdListByField1(string field, string value)')
   print('   GetDesignGoafTechnologyIdListByField2(string field1, string value1, string field2, string value2)')
+  print('   GetDesignGoafTechnologyListByForeignKey(string fkey, i32 id)')
+  print('   GetDesignGoafTechnologyIdListByForeignKey(string fkey, i32 id)')
   print('  i32 AddDesignPore(DesignPore design_pore)')
   print('  bool DeleteDesignPore(i32 id)')
   print('  bool UpdateDesignPore(DesignPore design_pore)')
@@ -185,6 +197,8 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
   print('   GetDesignPoreIdListByFields( fields)')
   print('   GetDesignPoreIdListByField1(string field, string value)')
   print('   GetDesignPoreIdListByField2(string field1, string value1, string field2, string value2)')
+  print('   GetDesignPoreListByForeignKey(string fkey, i32 id)')
+  print('   GetDesignPoreIdListByForeignKey(string fkey, i32 id)')
   print('  i32 AddDesignSite(DesignSite design_site)')
   print('  bool DeleteDesignSite(i32 id)')
   print('  bool UpdateDesignSite(DesignSite design_site)')
@@ -208,6 +222,8 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
   print('   GetDesignSiteIdListByFields( fields)')
   print('   GetDesignSiteIdListByField1(string field, string value)')
   print('   GetDesignSiteIdListByField2(string field1, string value1, string field2, string value2)')
+  print('   GetDesignSiteListByForeignKey(string fkey, i32 id)')
+  print('   GetDesignSiteIdListByForeignKey(string fkey, i32 id)')
   print('  i32 AddDesignTechnology(DesignTechnology design_technology)')
   print('  bool DeleteDesignTechnology(i32 id)')
   print('  bool UpdateDesignTechnology(DesignTechnology design_technology)')
@@ -231,6 +247,8 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
   print('   GetDesignTechnologyIdListByFields( fields)')
   print('   GetDesignTechnologyIdListByField1(string field, string value)')
   print('   GetDesignTechnologyIdListByField2(string field1, string value1, string field2, string value2)')
+  print('   GetDesignTechnologyListByForeignKey(string fkey, i32 id)')
+  print('   GetDesignTechnologyIdListByForeignKey(string fkey, i32 id)')
   print('  i32 AddDesignWorkSurfTechnology(DesignWorkSurfTechnology design_work_surf_technology)')
   print('  bool DeleteDesignWorkSurfTechnology(i32 id)')
   print('  bool UpdateDesignWorkSurfTechnology(DesignWorkSurfTechnology design_work_surf_technology)')
@@ -254,6 +272,8 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
   print('   GetDesignWorkSurfTechnologyIdListByFields( fields)')
   print('   GetDesignWorkSurfTechnologyIdListByField1(string field, string value)')
   print('   GetDesignWorkSurfTechnologyIdListByField2(string field1, string value1, string field2, string value2)')
+  print('   GetDesignWorkSurfTechnologyListByForeignKey(string fkey, i32 id)')
+  print('   GetDesignWorkSurfTechnologyIdListByForeignKey(string fkey, i32 id)')
   print('  i32 AddDrillingRadiusParam(DrillingRadiusParam drilling_radius_param)')
   print('  bool DeleteDrillingRadiusParam(i32 id)')
   print('  bool UpdateDrillingRadiusParam(DrillingRadiusParam drilling_radius_param)')
@@ -277,6 +297,8 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
   print('   GetDrillingRadiusParamIdListByFields( fields)')
   print('   GetDrillingRadiusParamIdListByField1(string field, string value)')
   print('   GetDrillingRadiusParamIdListByField2(string field1, string value1, string field2, string value2)')
+  print('   GetDrillingRadiusParamListByForeignKey(string fkey, i32 id)')
+  print('   GetDrillingRadiusParamIdListByForeignKey(string fkey, i32 id)')
   print('  i32 AddDrillingSurf(DrillingSurf drilling_surf)')
   print('  bool DeleteDrillingSurf(i32 id)')
   print('  bool UpdateDrillingSurf(DrillingSurf drilling_surf)')
@@ -300,6 +322,8 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
   print('   GetDrillingSurfIdListByFields( fields)')
   print('   GetDrillingSurfIdListByField1(string field, string value)')
   print('   GetDrillingSurfIdListByField2(string field1, string value1, string field2, string value2)')
+  print('   GetDrillingSurfListByForeignKey(string fkey, i32 id)')
+  print('   GetDrillingSurfIdListByForeignKey(string fkey, i32 id)')
   print('  i32 AddEvalUnit(EvalUnit eval_unit)')
   print('  bool DeleteEvalUnit(i32 id)')
   print('  bool UpdateEvalUnit(EvalUnit eval_unit)')
@@ -323,6 +347,8 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
   print('   GetEvalUnitIdListByFields( fields)')
   print('   GetEvalUnitIdListByField1(string field, string value)')
   print('   GetEvalUnitIdListByField2(string field1, string value1, string field2, string value2)')
+  print('   GetEvalUnitListByForeignKey(string fkey, i32 id)')
+  print('   GetEvalUnitIdListByForeignKey(string fkey, i32 id)')
   print('  i32 AddHighDrillingPore(HighDrillingPore high_drilling_pore)')
   print('  bool DeleteHighDrillingPore(i32 id)')
   print('  bool UpdateHighDrillingPore(HighDrillingPore high_drilling_pore)')
@@ -346,6 +372,8 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
   print('   GetHighDrillingPoreIdListByFields( fields)')
   print('   GetHighDrillingPoreIdListByField1(string field, string value)')
   print('   GetHighDrillingPoreIdListByField2(string field1, string value1, string field2, string value2)')
+  print('   GetHighDrillingPoreListByForeignKey(string fkey, i32 id)')
+  print('   GetHighDrillingPoreIdListByForeignKey(string fkey, i32 id)')
   print('  i32 AddHighDrillingPoreParam(HighDrillingPoreParam high_drilling_pore_param)')
   print('  bool DeleteHighDrillingPoreParam(i32 id)')
   print('  bool UpdateHighDrillingPoreParam(HighDrillingPoreParam high_drilling_pore_param)')
@@ -369,6 +397,8 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
   print('   GetHighDrillingPoreParamIdListByFields( fields)')
   print('   GetHighDrillingPoreParamIdListByField1(string field, string value)')
   print('   GetHighDrillingPoreParamIdListByField2(string field1, string value1, string field2, string value2)')
+  print('   GetHighDrillingPoreParamListByForeignKey(string fkey, i32 id)')
+  print('   GetHighDrillingPoreParamIdListByForeignKey(string fkey, i32 id)')
   print('  i32 AddHighDrillingSiteParam(HighDrillingSiteParam high_drilling_site_param)')
   print('  bool DeleteHighDrillingSiteParam(i32 id)')
   print('  bool UpdateHighDrillingSiteParam(HighDrillingSiteParam high_drilling_site_param)')
@@ -392,6 +422,8 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
   print('   GetHighDrillingSiteParamIdListByFields( fields)')
   print('   GetHighDrillingSiteParamIdListByField1(string field, string value)')
   print('   GetHighDrillingSiteParamIdListByField2(string field1, string value1, string field2, string value2)')
+  print('   GetHighDrillingSiteParamListByForeignKey(string fkey, i32 id)')
+  print('   GetHighDrillingSiteParamIdListByForeignKey(string fkey, i32 id)')
   print('  i32 AddHighDrillingTunnel(HighDrillingTunnel high_drilling_tunnel)')
   print('  bool DeleteHighDrillingTunnel(i32 id)')
   print('  bool UpdateHighDrillingTunnel(HighDrillingTunnel high_drilling_tunnel)')
@@ -415,6 +447,8 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
   print('   GetHighDrillingTunnelIdListByFields( fields)')
   print('   GetHighDrillingTunnelIdListByField1(string field, string value)')
   print('   GetHighDrillingTunnelIdListByField2(string field1, string value1, string field2, string value2)')
+  print('   GetHighDrillingTunnelListByForeignKey(string fkey, i32 id)')
+  print('   GetHighDrillingTunnelIdListByForeignKey(string fkey, i32 id)')
   print('  i32 AddHydrGeo(HydrGeo hydr_geo)')
   print('  bool DeleteHydrGeo(i32 id)')
   print('  bool UpdateHydrGeo(HydrGeo hydr_geo)')
@@ -438,6 +472,8 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
   print('   GetHydrGeoIdListByFields( fields)')
   print('   GetHydrGeoIdListByField1(string field, string value)')
   print('   GetHydrGeoIdListByField2(string field1, string value1, string field2, string value2)')
+  print('   GetHydrGeoListByForeignKey(string fkey, i32 id)')
+  print('   GetHydrGeoIdListByForeignKey(string fkey, i32 id)')
   print('  i32 AddMine(Mine mine)')
   print('  bool DeleteMine(i32 id)')
   print('  bool UpdateMine(Mine mine)')
@@ -461,6 +497,8 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
   print('   GetMineIdListByFields( fields)')
   print('   GetMineIdListByField1(string field, string value)')
   print('   GetMineIdListByField2(string field1, string value1, string field2, string value2)')
+  print('   GetMineListByForeignKey(string fkey, i32 id)')
+  print('   GetMineIdListByForeignKey(string fkey, i32 id)')
   print('  i32 AddMineBase(MineBase mine_base)')
   print('  bool DeleteMineBase(i32 id)')
   print('  bool UpdateMineBase(MineBase mine_base)')
@@ -484,6 +522,8 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
   print('   GetMineBaseIdListByFields( fields)')
   print('   GetMineBaseIdListByField1(string field, string value)')
   print('   GetMineBaseIdListByField2(string field1, string value1, string field2, string value2)')
+  print('   GetMineBaseListByForeignKey(string fkey, i32 id)')
+  print('   GetMineBaseIdListByForeignKey(string fkey, i32 id)')
   print('  i32 AddMineRegion(MineRegion mine_region)')
   print('  bool DeleteMineRegion(i32 id)')
   print('  bool UpdateMineRegion(MineRegion mine_region)')
@@ -507,6 +547,8 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
   print('   GetMineRegionIdListByFields( fields)')
   print('   GetMineRegionIdListByField1(string field, string value)')
   print('   GetMineRegionIdListByField2(string field1, string value1, string field2, string value2)')
+  print('   GetMineRegionListByForeignKey(string fkey, i32 id)')
+  print('   GetMineRegionIdListByForeignKey(string fkey, i32 id)')
   print('  i32 AddPoreFlow(PoreFlow pore_flow)')
   print('  bool DeletePoreFlow(i32 id)')
   print('  bool UpdatePoreFlow(PoreFlow pore_flow)')
@@ -530,6 +572,8 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
   print('   GetPoreFlowIdListByFields( fields)')
   print('   GetPoreFlowIdListByField1(string field, string value)')
   print('   GetPoreFlowIdListByField2(string field1, string value1, string field2, string value2)')
+  print('   GetPoreFlowListByForeignKey(string fkey, i32 id)')
+  print('   GetPoreFlowIdListByForeignKey(string fkey, i32 id)')
   print('  i32 AddPoreSize(PoreSize pore_size)')
   print('  bool DeletePoreSize(i32 id)')
   print('  bool UpdatePoreSize(PoreSize pore_size)')
@@ -553,6 +597,8 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
   print('   GetPoreSizeIdListByFields( fields)')
   print('   GetPoreSizeIdListByField1(string field, string value)')
   print('   GetPoreSizeIdListByField2(string field1, string value1, string field2, string value2)')
+  print('   GetPoreSizeListByForeignKey(string fkey, i32 id)')
+  print('   GetPoreSizeIdListByForeignKey(string fkey, i32 id)')
   print('  i32 AddResAbundance(ResAbundance res_abundance)')
   print('  bool DeleteResAbundance(i32 id)')
   print('  bool UpdateResAbundance(ResAbundance res_abundance)')
@@ -576,6 +622,8 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
   print('   GetResAbundanceIdListByFields( fields)')
   print('   GetResAbundanceIdListByField1(string field, string value)')
   print('   GetResAbundanceIdListByField2(string field1, string value1, string field2, string value2)')
+  print('   GetResAbundanceListByForeignKey(string fkey, i32 id)')
+  print('   GetResAbundanceIdListByForeignKey(string fkey, i32 id)')
   print('  i32 AddRock(Rock rock)')
   print('  bool DeleteRock(i32 id)')
   print('  bool UpdateRock(Rock rock)')
@@ -599,6 +647,8 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
   print('   GetRockIdListByFields( fields)')
   print('   GetRockIdListByField1(string field, string value)')
   print('   GetRockIdListByField2(string field1, string value1, string field2, string value2)')
+  print('   GetRockListByForeignKey(string fkey, i32 id)')
+  print('   GetRockIdListByForeignKey(string fkey, i32 id)')
   print('  i32 AddSysInfo(SysInfo sys_info)')
   print('  bool DeleteSysInfo(i32 id)')
   print('  bool UpdateSysInfo(SysInfo sys_info)')
@@ -622,6 +672,8 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
   print('   GetSysInfoIdListByFields( fields)')
   print('   GetSysInfoIdListByField1(string field, string value)')
   print('   GetSysInfoIdListByField2(string field1, string value1, string field2, string value2)')
+  print('   GetSysInfoListByForeignKey(string fkey, i32 id)')
+  print('   GetSysInfoIdListByForeignKey(string fkey, i32 id)')
   print('  i32 AddTechMode(TechMode tech_mode)')
   print('  bool DeleteTechMode(i32 id)')
   print('  bool UpdateTechMode(TechMode tech_mode)')
@@ -645,6 +697,8 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
   print('   GetTechModeIdListByFields( fields)')
   print('   GetTechModeIdListByField1(string field, string value)')
   print('   GetTechModeIdListByField2(string field1, string value1, string field2, string value2)')
+  print('   GetTechModeListByForeignKey(string fkey, i32 id)')
+  print('   GetTechModeIdListByForeignKey(string fkey, i32 id)')
   print('  i32 AddTechnology(Technology technology)')
   print('  bool DeleteTechnology(i32 id)')
   print('  bool UpdateTechnology(Technology technology)')
@@ -668,6 +722,8 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
   print('   GetTechnologyIdListByFields( fields)')
   print('   GetTechnologyIdListByField1(string field, string value)')
   print('   GetTechnologyIdListByField2(string field1, string value1, string field2, string value2)')
+  print('   GetTechnologyListByForeignKey(string fkey, i32 id)')
+  print('   GetTechnologyIdListByForeignKey(string fkey, i32 id)')
   print('  i32 AddTopoGeo(TopoGeo topo_geo)')
   print('  bool DeleteTopoGeo(i32 id)')
   print('  bool UpdateTopoGeo(TopoGeo topo_geo)')
@@ -691,6 +747,8 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
   print('   GetTopoGeoIdListByFields( fields)')
   print('   GetTopoGeoIdListByField1(string field, string value)')
   print('   GetTopoGeoIdListByField2(string field1, string value1, string field2, string value2)')
+  print('   GetTopoGeoListByForeignKey(string fkey, i32 id)')
+  print('   GetTopoGeoIdListByForeignKey(string fkey, i32 id)')
   print('  i32 AddTunnel(Tunnel tunnel)')
   print('  bool DeleteTunnel(i32 id)')
   print('  bool UpdateTunnel(Tunnel tunnel)')
@@ -714,6 +772,8 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
   print('   GetTunnelIdListByFields( fields)')
   print('   GetTunnelIdListByField1(string field, string value)')
   print('   GetTunnelIdListByField2(string field1, string value1, string field2, string value2)')
+  print('   GetTunnelListByForeignKey(string fkey, i32 id)')
+  print('   GetTunnelIdListByForeignKey(string fkey, i32 id)')
   print('  i32 AddWorkArea(WorkArea work_area)')
   print('  bool DeleteWorkArea(i32 id)')
   print('  bool UpdateWorkArea(WorkArea work_area)')
@@ -737,6 +797,8 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
   print('   GetWorkAreaIdListByFields( fields)')
   print('   GetWorkAreaIdListByField1(string field, string value)')
   print('   GetWorkAreaIdListByField2(string field1, string value1, string field2, string value2)')
+  print('   GetWorkAreaListByForeignKey(string fkey, i32 id)')
+  print('   GetWorkAreaIdListByForeignKey(string fkey, i32 id)')
   print('  i32 AddWorkSurf(WorkSurf work_surf)')
   print('  bool DeleteWorkSurf(i32 id)')
   print('  bool UpdateWorkSurf(WorkSurf work_surf)')
@@ -760,6 +822,8 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
   print('   GetWorkSurfIdListByFields( fields)')
   print('   GetWorkSurfIdListByField1(string field, string value)')
   print('   GetWorkSurfIdListByField2(string field1, string value1, string field2, string value2)')
+  print('   GetWorkSurfListByForeignKey(string fkey, i32 id)')
+  print('   GetWorkSurfIdListByForeignKey(string fkey, i32 id)')
   print('  void InitSampleRegion()')
   print('  i32 GetOnlineAccountId()')
   print('  Mine GetOnlineMine()')
@@ -983,6 +1047,18 @@ elif cmd == 'GetAccountIdListByField2':
     sys.exit(1)
   pp.pprint(client.GetAccountIdListByField2(args[0],args[1],args[2],args[3],))
 
+elif cmd == 'GetAccountListByForeignKey':
+  if len(args) != 2:
+    print('GetAccountListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetAccountListByForeignKey(args[0],eval(args[1]),))
+
+elif cmd == 'GetAccountIdListByForeignKey':
+  if len(args) != 2:
+    print('GetAccountIdListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetAccountIdListByForeignKey(args[0],eval(args[1]),))
+
 elif cmd == 'AddAdjLayer':
   if len(args) != 1:
     print('AddAdjLayer requires 1 args')
@@ -1120,6 +1196,18 @@ elif cmd == 'GetAdjLayerIdListByField2':
     print('GetAdjLayerIdListByField2 requires 4 args')
     sys.exit(1)
   pp.pprint(client.GetAdjLayerIdListByField2(args[0],args[1],args[2],args[3],))
+
+elif cmd == 'GetAdjLayerListByForeignKey':
+  if len(args) != 2:
+    print('GetAdjLayerListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetAdjLayerListByForeignKey(args[0],eval(args[1]),))
+
+elif cmd == 'GetAdjLayerIdListByForeignKey':
+  if len(args) != 2:
+    print('GetAdjLayerIdListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetAdjLayerIdListByForeignKey(args[0],eval(args[1]),))
 
 elif cmd == 'AddCoal':
   if len(args) != 1:
@@ -1259,6 +1347,18 @@ elif cmd == 'GetCoalIdListByField2':
     sys.exit(1)
   pp.pprint(client.GetCoalIdListByField2(args[0],args[1],args[2],args[3],))
 
+elif cmd == 'GetCoalListByForeignKey':
+  if len(args) != 2:
+    print('GetCoalListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetCoalListByForeignKey(args[0],eval(args[1]),))
+
+elif cmd == 'GetCoalIdListByForeignKey':
+  if len(args) != 2:
+    print('GetCoalIdListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetCoalIdListByForeignKey(args[0],eval(args[1]),))
+
 elif cmd == 'AddComplexity':
   if len(args) != 1:
     print('AddComplexity requires 1 args')
@@ -1396,6 +1496,18 @@ elif cmd == 'GetComplexityIdListByField2':
     print('GetComplexityIdListByField2 requires 4 args')
     sys.exit(1)
   pp.pprint(client.GetComplexityIdListByField2(args[0],args[1],args[2],args[3],))
+
+elif cmd == 'GetComplexityListByForeignKey':
+  if len(args) != 2:
+    print('GetComplexityListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetComplexityListByForeignKey(args[0],eval(args[1]),))
+
+elif cmd == 'GetComplexityIdListByForeignKey':
+  if len(args) != 2:
+    print('GetComplexityIdListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetComplexityIdListByForeignKey(args[0],eval(args[1]),))
 
 elif cmd == 'AddDesignDrillingSurfTechnology':
   if len(args) != 1:
@@ -1535,6 +1647,18 @@ elif cmd == 'GetDesignDrillingSurfTechnologyIdListByField2':
     sys.exit(1)
   pp.pprint(client.GetDesignDrillingSurfTechnologyIdListByField2(args[0],args[1],args[2],args[3],))
 
+elif cmd == 'GetDesignDrillingSurfTechnologyListByForeignKey':
+  if len(args) != 2:
+    print('GetDesignDrillingSurfTechnologyListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignDrillingSurfTechnologyListByForeignKey(args[0],eval(args[1]),))
+
+elif cmd == 'GetDesignDrillingSurfTechnologyIdListByForeignKey':
+  if len(args) != 2:
+    print('GetDesignDrillingSurfTechnologyIdListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignDrillingSurfTechnologyIdListByForeignKey(args[0],eval(args[1]),))
+
 elif cmd == 'AddDesignGoafTechnology':
   if len(args) != 1:
     print('AddDesignGoafTechnology requires 1 args')
@@ -1672,6 +1796,18 @@ elif cmd == 'GetDesignGoafTechnologyIdListByField2':
     print('GetDesignGoafTechnologyIdListByField2 requires 4 args')
     sys.exit(1)
   pp.pprint(client.GetDesignGoafTechnologyIdListByField2(args[0],args[1],args[2],args[3],))
+
+elif cmd == 'GetDesignGoafTechnologyListByForeignKey':
+  if len(args) != 2:
+    print('GetDesignGoafTechnologyListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignGoafTechnologyListByForeignKey(args[0],eval(args[1]),))
+
+elif cmd == 'GetDesignGoafTechnologyIdListByForeignKey':
+  if len(args) != 2:
+    print('GetDesignGoafTechnologyIdListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignGoafTechnologyIdListByForeignKey(args[0],eval(args[1]),))
 
 elif cmd == 'AddDesignPore':
   if len(args) != 1:
@@ -1811,6 +1947,18 @@ elif cmd == 'GetDesignPoreIdListByField2':
     sys.exit(1)
   pp.pprint(client.GetDesignPoreIdListByField2(args[0],args[1],args[2],args[3],))
 
+elif cmd == 'GetDesignPoreListByForeignKey':
+  if len(args) != 2:
+    print('GetDesignPoreListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignPoreListByForeignKey(args[0],eval(args[1]),))
+
+elif cmd == 'GetDesignPoreIdListByForeignKey':
+  if len(args) != 2:
+    print('GetDesignPoreIdListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignPoreIdListByForeignKey(args[0],eval(args[1]),))
+
 elif cmd == 'AddDesignSite':
   if len(args) != 1:
     print('AddDesignSite requires 1 args')
@@ -1948,6 +2096,18 @@ elif cmd == 'GetDesignSiteIdListByField2':
     print('GetDesignSiteIdListByField2 requires 4 args')
     sys.exit(1)
   pp.pprint(client.GetDesignSiteIdListByField2(args[0],args[1],args[2],args[3],))
+
+elif cmd == 'GetDesignSiteListByForeignKey':
+  if len(args) != 2:
+    print('GetDesignSiteListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignSiteListByForeignKey(args[0],eval(args[1]),))
+
+elif cmd == 'GetDesignSiteIdListByForeignKey':
+  if len(args) != 2:
+    print('GetDesignSiteIdListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignSiteIdListByForeignKey(args[0],eval(args[1]),))
 
 elif cmd == 'AddDesignTechnology':
   if len(args) != 1:
@@ -2087,6 +2247,18 @@ elif cmd == 'GetDesignTechnologyIdListByField2':
     sys.exit(1)
   pp.pprint(client.GetDesignTechnologyIdListByField2(args[0],args[1],args[2],args[3],))
 
+elif cmd == 'GetDesignTechnologyListByForeignKey':
+  if len(args) != 2:
+    print('GetDesignTechnologyListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignTechnologyListByForeignKey(args[0],eval(args[1]),))
+
+elif cmd == 'GetDesignTechnologyIdListByForeignKey':
+  if len(args) != 2:
+    print('GetDesignTechnologyIdListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignTechnologyIdListByForeignKey(args[0],eval(args[1]),))
+
 elif cmd == 'AddDesignWorkSurfTechnology':
   if len(args) != 1:
     print('AddDesignWorkSurfTechnology requires 1 args')
@@ -2224,6 +2396,18 @@ elif cmd == 'GetDesignWorkSurfTechnologyIdListByField2':
     print('GetDesignWorkSurfTechnologyIdListByField2 requires 4 args')
     sys.exit(1)
   pp.pprint(client.GetDesignWorkSurfTechnologyIdListByField2(args[0],args[1],args[2],args[3],))
+
+elif cmd == 'GetDesignWorkSurfTechnologyListByForeignKey':
+  if len(args) != 2:
+    print('GetDesignWorkSurfTechnologyListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignWorkSurfTechnologyListByForeignKey(args[0],eval(args[1]),))
+
+elif cmd == 'GetDesignWorkSurfTechnologyIdListByForeignKey':
+  if len(args) != 2:
+    print('GetDesignWorkSurfTechnologyIdListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignWorkSurfTechnologyIdListByForeignKey(args[0],eval(args[1]),))
 
 elif cmd == 'AddDrillingRadiusParam':
   if len(args) != 1:
@@ -2363,6 +2547,18 @@ elif cmd == 'GetDrillingRadiusParamIdListByField2':
     sys.exit(1)
   pp.pprint(client.GetDrillingRadiusParamIdListByField2(args[0],args[1],args[2],args[3],))
 
+elif cmd == 'GetDrillingRadiusParamListByForeignKey':
+  if len(args) != 2:
+    print('GetDrillingRadiusParamListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDrillingRadiusParamListByForeignKey(args[0],eval(args[1]),))
+
+elif cmd == 'GetDrillingRadiusParamIdListByForeignKey':
+  if len(args) != 2:
+    print('GetDrillingRadiusParamIdListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDrillingRadiusParamIdListByForeignKey(args[0],eval(args[1]),))
+
 elif cmd == 'AddDrillingSurf':
   if len(args) != 1:
     print('AddDrillingSurf requires 1 args')
@@ -2500,6 +2696,18 @@ elif cmd == 'GetDrillingSurfIdListByField2':
     print('GetDrillingSurfIdListByField2 requires 4 args')
     sys.exit(1)
   pp.pprint(client.GetDrillingSurfIdListByField2(args[0],args[1],args[2],args[3],))
+
+elif cmd == 'GetDrillingSurfListByForeignKey':
+  if len(args) != 2:
+    print('GetDrillingSurfListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDrillingSurfListByForeignKey(args[0],eval(args[1]),))
+
+elif cmd == 'GetDrillingSurfIdListByForeignKey':
+  if len(args) != 2:
+    print('GetDrillingSurfIdListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDrillingSurfIdListByForeignKey(args[0],eval(args[1]),))
 
 elif cmd == 'AddEvalUnit':
   if len(args) != 1:
@@ -2639,6 +2847,18 @@ elif cmd == 'GetEvalUnitIdListByField2':
     sys.exit(1)
   pp.pprint(client.GetEvalUnitIdListByField2(args[0],args[1],args[2],args[3],))
 
+elif cmd == 'GetEvalUnitListByForeignKey':
+  if len(args) != 2:
+    print('GetEvalUnitListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetEvalUnitListByForeignKey(args[0],eval(args[1]),))
+
+elif cmd == 'GetEvalUnitIdListByForeignKey':
+  if len(args) != 2:
+    print('GetEvalUnitIdListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetEvalUnitIdListByForeignKey(args[0],eval(args[1]),))
+
 elif cmd == 'AddHighDrillingPore':
   if len(args) != 1:
     print('AddHighDrillingPore requires 1 args')
@@ -2776,6 +2996,18 @@ elif cmd == 'GetHighDrillingPoreIdListByField2':
     print('GetHighDrillingPoreIdListByField2 requires 4 args')
     sys.exit(1)
   pp.pprint(client.GetHighDrillingPoreIdListByField2(args[0],args[1],args[2],args[3],))
+
+elif cmd == 'GetHighDrillingPoreListByForeignKey':
+  if len(args) != 2:
+    print('GetHighDrillingPoreListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetHighDrillingPoreListByForeignKey(args[0],eval(args[1]),))
+
+elif cmd == 'GetHighDrillingPoreIdListByForeignKey':
+  if len(args) != 2:
+    print('GetHighDrillingPoreIdListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetHighDrillingPoreIdListByForeignKey(args[0],eval(args[1]),))
 
 elif cmd == 'AddHighDrillingPoreParam':
   if len(args) != 1:
@@ -2915,6 +3147,18 @@ elif cmd == 'GetHighDrillingPoreParamIdListByField2':
     sys.exit(1)
   pp.pprint(client.GetHighDrillingPoreParamIdListByField2(args[0],args[1],args[2],args[3],))
 
+elif cmd == 'GetHighDrillingPoreParamListByForeignKey':
+  if len(args) != 2:
+    print('GetHighDrillingPoreParamListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetHighDrillingPoreParamListByForeignKey(args[0],eval(args[1]),))
+
+elif cmd == 'GetHighDrillingPoreParamIdListByForeignKey':
+  if len(args) != 2:
+    print('GetHighDrillingPoreParamIdListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetHighDrillingPoreParamIdListByForeignKey(args[0],eval(args[1]),))
+
 elif cmd == 'AddHighDrillingSiteParam':
   if len(args) != 1:
     print('AddHighDrillingSiteParam requires 1 args')
@@ -3052,6 +3296,18 @@ elif cmd == 'GetHighDrillingSiteParamIdListByField2':
     print('GetHighDrillingSiteParamIdListByField2 requires 4 args')
     sys.exit(1)
   pp.pprint(client.GetHighDrillingSiteParamIdListByField2(args[0],args[1],args[2],args[3],))
+
+elif cmd == 'GetHighDrillingSiteParamListByForeignKey':
+  if len(args) != 2:
+    print('GetHighDrillingSiteParamListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetHighDrillingSiteParamListByForeignKey(args[0],eval(args[1]),))
+
+elif cmd == 'GetHighDrillingSiteParamIdListByForeignKey':
+  if len(args) != 2:
+    print('GetHighDrillingSiteParamIdListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetHighDrillingSiteParamIdListByForeignKey(args[0],eval(args[1]),))
 
 elif cmd == 'AddHighDrillingTunnel':
   if len(args) != 1:
@@ -3191,6 +3447,18 @@ elif cmd == 'GetHighDrillingTunnelIdListByField2':
     sys.exit(1)
   pp.pprint(client.GetHighDrillingTunnelIdListByField2(args[0],args[1],args[2],args[3],))
 
+elif cmd == 'GetHighDrillingTunnelListByForeignKey':
+  if len(args) != 2:
+    print('GetHighDrillingTunnelListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetHighDrillingTunnelListByForeignKey(args[0],eval(args[1]),))
+
+elif cmd == 'GetHighDrillingTunnelIdListByForeignKey':
+  if len(args) != 2:
+    print('GetHighDrillingTunnelIdListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetHighDrillingTunnelIdListByForeignKey(args[0],eval(args[1]),))
+
 elif cmd == 'AddHydrGeo':
   if len(args) != 1:
     print('AddHydrGeo requires 1 args')
@@ -3328,6 +3596,18 @@ elif cmd == 'GetHydrGeoIdListByField2':
     print('GetHydrGeoIdListByField2 requires 4 args')
     sys.exit(1)
   pp.pprint(client.GetHydrGeoIdListByField2(args[0],args[1],args[2],args[3],))
+
+elif cmd == 'GetHydrGeoListByForeignKey':
+  if len(args) != 2:
+    print('GetHydrGeoListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetHydrGeoListByForeignKey(args[0],eval(args[1]),))
+
+elif cmd == 'GetHydrGeoIdListByForeignKey':
+  if len(args) != 2:
+    print('GetHydrGeoIdListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetHydrGeoIdListByForeignKey(args[0],eval(args[1]),))
 
 elif cmd == 'AddMine':
   if len(args) != 1:
@@ -3467,6 +3747,18 @@ elif cmd == 'GetMineIdListByField2':
     sys.exit(1)
   pp.pprint(client.GetMineIdListByField2(args[0],args[1],args[2],args[3],))
 
+elif cmd == 'GetMineListByForeignKey':
+  if len(args) != 2:
+    print('GetMineListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetMineListByForeignKey(args[0],eval(args[1]),))
+
+elif cmd == 'GetMineIdListByForeignKey':
+  if len(args) != 2:
+    print('GetMineIdListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetMineIdListByForeignKey(args[0],eval(args[1]),))
+
 elif cmd == 'AddMineBase':
   if len(args) != 1:
     print('AddMineBase requires 1 args')
@@ -3604,6 +3896,18 @@ elif cmd == 'GetMineBaseIdListByField2':
     print('GetMineBaseIdListByField2 requires 4 args')
     sys.exit(1)
   pp.pprint(client.GetMineBaseIdListByField2(args[0],args[1],args[2],args[3],))
+
+elif cmd == 'GetMineBaseListByForeignKey':
+  if len(args) != 2:
+    print('GetMineBaseListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetMineBaseListByForeignKey(args[0],eval(args[1]),))
+
+elif cmd == 'GetMineBaseIdListByForeignKey':
+  if len(args) != 2:
+    print('GetMineBaseIdListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetMineBaseIdListByForeignKey(args[0],eval(args[1]),))
 
 elif cmd == 'AddMineRegion':
   if len(args) != 1:
@@ -3743,6 +4047,18 @@ elif cmd == 'GetMineRegionIdListByField2':
     sys.exit(1)
   pp.pprint(client.GetMineRegionIdListByField2(args[0],args[1],args[2],args[3],))
 
+elif cmd == 'GetMineRegionListByForeignKey':
+  if len(args) != 2:
+    print('GetMineRegionListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetMineRegionListByForeignKey(args[0],eval(args[1]),))
+
+elif cmd == 'GetMineRegionIdListByForeignKey':
+  if len(args) != 2:
+    print('GetMineRegionIdListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetMineRegionIdListByForeignKey(args[0],eval(args[1]),))
+
 elif cmd == 'AddPoreFlow':
   if len(args) != 1:
     print('AddPoreFlow requires 1 args')
@@ -3880,6 +4196,18 @@ elif cmd == 'GetPoreFlowIdListByField2':
     print('GetPoreFlowIdListByField2 requires 4 args')
     sys.exit(1)
   pp.pprint(client.GetPoreFlowIdListByField2(args[0],args[1],args[2],args[3],))
+
+elif cmd == 'GetPoreFlowListByForeignKey':
+  if len(args) != 2:
+    print('GetPoreFlowListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetPoreFlowListByForeignKey(args[0],eval(args[1]),))
+
+elif cmd == 'GetPoreFlowIdListByForeignKey':
+  if len(args) != 2:
+    print('GetPoreFlowIdListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetPoreFlowIdListByForeignKey(args[0],eval(args[1]),))
 
 elif cmd == 'AddPoreSize':
   if len(args) != 1:
@@ -4019,6 +4347,18 @@ elif cmd == 'GetPoreSizeIdListByField2':
     sys.exit(1)
   pp.pprint(client.GetPoreSizeIdListByField2(args[0],args[1],args[2],args[3],))
 
+elif cmd == 'GetPoreSizeListByForeignKey':
+  if len(args) != 2:
+    print('GetPoreSizeListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetPoreSizeListByForeignKey(args[0],eval(args[1]),))
+
+elif cmd == 'GetPoreSizeIdListByForeignKey':
+  if len(args) != 2:
+    print('GetPoreSizeIdListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetPoreSizeIdListByForeignKey(args[0],eval(args[1]),))
+
 elif cmd == 'AddResAbundance':
   if len(args) != 1:
     print('AddResAbundance requires 1 args')
@@ -4156,6 +4496,18 @@ elif cmd == 'GetResAbundanceIdListByField2':
     print('GetResAbundanceIdListByField2 requires 4 args')
     sys.exit(1)
   pp.pprint(client.GetResAbundanceIdListByField2(args[0],args[1],args[2],args[3],))
+
+elif cmd == 'GetResAbundanceListByForeignKey':
+  if len(args) != 2:
+    print('GetResAbundanceListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetResAbundanceListByForeignKey(args[0],eval(args[1]),))
+
+elif cmd == 'GetResAbundanceIdListByForeignKey':
+  if len(args) != 2:
+    print('GetResAbundanceIdListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetResAbundanceIdListByForeignKey(args[0],eval(args[1]),))
 
 elif cmd == 'AddRock':
   if len(args) != 1:
@@ -4295,6 +4647,18 @@ elif cmd == 'GetRockIdListByField2':
     sys.exit(1)
   pp.pprint(client.GetRockIdListByField2(args[0],args[1],args[2],args[3],))
 
+elif cmd == 'GetRockListByForeignKey':
+  if len(args) != 2:
+    print('GetRockListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetRockListByForeignKey(args[0],eval(args[1]),))
+
+elif cmd == 'GetRockIdListByForeignKey':
+  if len(args) != 2:
+    print('GetRockIdListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetRockIdListByForeignKey(args[0],eval(args[1]),))
+
 elif cmd == 'AddSysInfo':
   if len(args) != 1:
     print('AddSysInfo requires 1 args')
@@ -4432,6 +4796,18 @@ elif cmd == 'GetSysInfoIdListByField2':
     print('GetSysInfoIdListByField2 requires 4 args')
     sys.exit(1)
   pp.pprint(client.GetSysInfoIdListByField2(args[0],args[1],args[2],args[3],))
+
+elif cmd == 'GetSysInfoListByForeignKey':
+  if len(args) != 2:
+    print('GetSysInfoListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetSysInfoListByForeignKey(args[0],eval(args[1]),))
+
+elif cmd == 'GetSysInfoIdListByForeignKey':
+  if len(args) != 2:
+    print('GetSysInfoIdListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetSysInfoIdListByForeignKey(args[0],eval(args[1]),))
 
 elif cmd == 'AddTechMode':
   if len(args) != 1:
@@ -4571,6 +4947,18 @@ elif cmd == 'GetTechModeIdListByField2':
     sys.exit(1)
   pp.pprint(client.GetTechModeIdListByField2(args[0],args[1],args[2],args[3],))
 
+elif cmd == 'GetTechModeListByForeignKey':
+  if len(args) != 2:
+    print('GetTechModeListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetTechModeListByForeignKey(args[0],eval(args[1]),))
+
+elif cmd == 'GetTechModeIdListByForeignKey':
+  if len(args) != 2:
+    print('GetTechModeIdListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetTechModeIdListByForeignKey(args[0],eval(args[1]),))
+
 elif cmd == 'AddTechnology':
   if len(args) != 1:
     print('AddTechnology requires 1 args')
@@ -4708,6 +5096,18 @@ elif cmd == 'GetTechnologyIdListByField2':
     print('GetTechnologyIdListByField2 requires 4 args')
     sys.exit(1)
   pp.pprint(client.GetTechnologyIdListByField2(args[0],args[1],args[2],args[3],))
+
+elif cmd == 'GetTechnologyListByForeignKey':
+  if len(args) != 2:
+    print('GetTechnologyListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetTechnologyListByForeignKey(args[0],eval(args[1]),))
+
+elif cmd == 'GetTechnologyIdListByForeignKey':
+  if len(args) != 2:
+    print('GetTechnologyIdListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetTechnologyIdListByForeignKey(args[0],eval(args[1]),))
 
 elif cmd == 'AddTopoGeo':
   if len(args) != 1:
@@ -4847,6 +5247,18 @@ elif cmd == 'GetTopoGeoIdListByField2':
     sys.exit(1)
   pp.pprint(client.GetTopoGeoIdListByField2(args[0],args[1],args[2],args[3],))
 
+elif cmd == 'GetTopoGeoListByForeignKey':
+  if len(args) != 2:
+    print('GetTopoGeoListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetTopoGeoListByForeignKey(args[0],eval(args[1]),))
+
+elif cmd == 'GetTopoGeoIdListByForeignKey':
+  if len(args) != 2:
+    print('GetTopoGeoIdListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetTopoGeoIdListByForeignKey(args[0],eval(args[1]),))
+
 elif cmd == 'AddTunnel':
   if len(args) != 1:
     print('AddTunnel requires 1 args')
@@ -4984,6 +5396,18 @@ elif cmd == 'GetTunnelIdListByField2':
     print('GetTunnelIdListByField2 requires 4 args')
     sys.exit(1)
   pp.pprint(client.GetTunnelIdListByField2(args[0],args[1],args[2],args[3],))
+
+elif cmd == 'GetTunnelListByForeignKey':
+  if len(args) != 2:
+    print('GetTunnelListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetTunnelListByForeignKey(args[0],eval(args[1]),))
+
+elif cmd == 'GetTunnelIdListByForeignKey':
+  if len(args) != 2:
+    print('GetTunnelIdListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetTunnelIdListByForeignKey(args[0],eval(args[1]),))
 
 elif cmd == 'AddWorkArea':
   if len(args) != 1:
@@ -5123,6 +5547,18 @@ elif cmd == 'GetWorkAreaIdListByField2':
     sys.exit(1)
   pp.pprint(client.GetWorkAreaIdListByField2(args[0],args[1],args[2],args[3],))
 
+elif cmd == 'GetWorkAreaListByForeignKey':
+  if len(args) != 2:
+    print('GetWorkAreaListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetWorkAreaListByForeignKey(args[0],eval(args[1]),))
+
+elif cmd == 'GetWorkAreaIdListByForeignKey':
+  if len(args) != 2:
+    print('GetWorkAreaIdListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetWorkAreaIdListByForeignKey(args[0],eval(args[1]),))
+
 elif cmd == 'AddWorkSurf':
   if len(args) != 1:
     print('AddWorkSurf requires 1 args')
@@ -5260,6 +5696,18 @@ elif cmd == 'GetWorkSurfIdListByField2':
     print('GetWorkSurfIdListByField2 requires 4 args')
     sys.exit(1)
   pp.pprint(client.GetWorkSurfIdListByField2(args[0],args[1],args[2],args[3],))
+
+elif cmd == 'GetWorkSurfListByForeignKey':
+  if len(args) != 2:
+    print('GetWorkSurfListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetWorkSurfListByForeignKey(args[0],eval(args[1]),))
+
+elif cmd == 'GetWorkSurfIdListByForeignKey':
+  if len(args) != 2:
+    print('GetWorkSurfIdListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetWorkSurfIdListByForeignKey(args[0],eval(args[1]),))
 
 elif cmd == 'InitSampleRegion':
   if len(args) != 0:

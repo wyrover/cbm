@@ -3,7 +3,12 @@
 
 #include "SQLClientHelper.h"
 #include "CbmClientHelper.h"
+
+#include "OccurrenceGraph.h"
 #include "Graph11.h"
+#include "Graph12.h"
+#include "Graph21.h"
+#include "Graph23.h"
 
 #include <fstream>
 //#include <WinHttpClient.h>
@@ -71,6 +76,26 @@ void CmdHelper::TestWinHttpClient()
 	//CString httpResponseContent = client.GetResponseContent().c_str();
 }
 
+void CmdHelper::DrawOccurrenceGraph()
+{
+	int mine_id = -1;
+	if(RTNORM != acedGetInt(NULL, &mine_id)) return;
+	if(mine_id == -1) return;
+
+	cbm::Mine mine;
+	SQLClientHelper::GetMineById(mine, mine_id);
+	if( mine.id < 0 ) return;
+
+	//交互选择基点坐标
+	AcGePoint3d pt;
+	ArxUtilHelper::PromptPt( _T( "请选择一点:" ), pt );
+
+	//绘制煤层赋存图
+	OccurrenceGraph graph( mine );
+	graph.setPoint( pt );
+	graph.draw();
+}
+
 void CmdHelper::DrawPlaneGraph11()
 {
 	int coal_id = -1;
@@ -121,7 +146,7 @@ void CmdHelper::DrawHeadGraph11()
 	AcGePoint3d pt;
 	ArxUtilHelper::PromptPt( _T( "请选择一点:" ), pt );
 
-	//绘制平面图
+	//绘制走向剖面图
 	P11::HeadGraph graph( coal, tws_tech );
 	graph.setPoint( pt );
 	graph.draw();
@@ -149,8 +174,261 @@ void CmdHelper::DrawDipGraph11()
 	AcGePoint3d pt;
 	ArxUtilHelper::PromptPt( _T( "请选择一点:" ), pt );
 
-	//绘制平面图
+	//绘制倾向剖面图
 	P11::DipGraph graph( coal, tws_tech );
 	graph.setPoint( pt );
 	graph.draw();
+}
+
+
+void CmdHelper::DrawPlaneGraph12()
+{
+	int coal_id = -1;
+	if(RTNORM != acedGetInt(NULL, &coal_id)) return;
+	if(coal_id == -1) return;
+
+	int tech_id = -1;
+	if(RTNORM != acedGetInt(NULL, &tech_id)) return;
+	if(tech_id == -1) return;
+
+	cbm::Coal coal;
+	SQLClientHelper::GetCoalById(coal, coal_id);
+	if( coal.id < 0 ) return;
+
+	cbm::DesignDrillingSurfTechnology tws_tech;
+	SQLClientHelper::GetDesignDrillingSurfTechnologyById(tws_tech, tech_id);
+	if(tws_tech.id < 0 ) return;
+
+	//交互选择基点坐标
+	AcGePoint3d pt;
+	ArxUtilHelper::PromptPt( _T( "请选择一点:" ), pt );
+
+	//绘制平面图
+	P12::PlanGraph graph( coal, tws_tech );
+	graph.setPoint( pt );
+	graph.draw();
+}
+
+void CmdHelper::DrawHeadGraph12()
+{
+	int coal_id = -1;
+	if(RTNORM != acedGetInt(NULL, &coal_id)) return;
+	if(coal_id == -1) return;
+
+	int tech_id = -1;
+	if(RTNORM != acedGetInt(NULL, &tech_id)) return;
+	if(tech_id == -1) return;
+
+	cbm::Coal coal;
+	SQLClientHelper::GetCoalById(coal, coal_id);
+	if( coal.id < 0 ) return;
+
+	cbm::DesignDrillingSurfTechnology tws_tech;
+	SQLClientHelper::GetDesignDrillingSurfTechnologyById(tws_tech, tech_id);
+	if(tws_tech.id < 0 ) return;
+
+	//交互选择基点坐标
+	AcGePoint3d pt;
+	ArxUtilHelper::PromptPt( _T( "请选择一点:" ), pt );
+
+	//绘制走向剖面图
+	//P12::HeadGraph graph( coal, tws_tech );
+	//graph.setPoint( pt );
+	//graph.draw();
+}
+
+void CmdHelper::DrawDipGraph12()
+{
+	int coal_id = -1;
+	if(RTNORM != acedGetInt(NULL, &coal_id)) return;
+	if(coal_id == -1) return;
+
+	int tech_id = -1;
+	if(RTNORM != acedGetInt(NULL, &tech_id)) return;
+	if(tech_id == -1) return;
+
+	cbm::Coal coal;
+	SQLClientHelper::GetCoalById(coal, coal_id);
+	if( coal.id < 0 ) return;
+
+	cbm::DesignDrillingSurfTechnology tws_tech;
+	SQLClientHelper::GetDesignDrillingSurfTechnologyById(tws_tech, tech_id);
+	if(tws_tech.id < 0 ) return;
+
+	//交互选择基点坐标
+	AcGePoint3d pt;
+	ArxUtilHelper::PromptPt( _T( "请选择一点:" ), pt );
+
+	//绘制倾向剖面
+	//P12::DipGraph graph( coal, tws_tech );
+	//graph.setPoint( pt );
+	//graph.draw();
+}
+
+void CmdHelper::DrawPlaneGraph21()
+{
+	int coal_id = -1;
+	if(RTNORM != acedGetInt(NULL, &coal_id)) return;
+	if(coal_id == -1) return;
+
+	int tech_id = -1;
+	if(RTNORM != acedGetInt(NULL, &tech_id)) return;
+	if(tech_id == -1) return;
+
+	cbm::Coal coal;
+	SQLClientHelper::GetCoalById(coal, coal_id);
+	if( coal.id < 0 ) return;
+
+	cbm::DesignWorkSurfTechnology ws_tech;
+	SQLClientHelper::GetDesignWorkSurfTechnologyById(ws_tech, tech_id);
+	if(ws_tech.id < 0 ) return;
+
+	//交互选择基点坐标
+	AcGePoint3d pt;
+	ArxUtilHelper::PromptPt( _T( "请选择一点:" ), pt );
+
+	//绘制平面图
+	P21::PlanGraph graph( coal, ws_tech );
+	graph.setPoint( pt );
+	graph.draw();
+}
+
+void CmdHelper::DrawHeadGraph21()
+{
+	int coal_id = -1;
+	if(RTNORM != acedGetInt(NULL, &coal_id)) return;
+	if(coal_id == -1) return;
+
+	int tech_id = -1;
+	if(RTNORM != acedGetInt(NULL, &tech_id)) return;
+	if(tech_id == -1) return;
+
+	cbm::Coal coal;
+	SQLClientHelper::GetCoalById(coal, coal_id);
+	if( coal.id < 0 ) return;
+
+	cbm::DesignWorkSurfTechnology ws_tech;
+	SQLClientHelper::GetDesignWorkSurfTechnologyById(ws_tech, tech_id);
+	if(ws_tech.id < 0 ) return;
+
+	//交互选择基点坐标
+	AcGePoint3d pt;
+	ArxUtilHelper::PromptPt( _T( "请选择一点:" ), pt );
+
+	//绘制走向剖面图
+	P21::HeadGraph graph( coal, ws_tech );
+	graph.setPoint( pt );
+	graph.draw();
+}
+
+void CmdHelper::DrawDipGraph21()
+{
+	int coal_id = -1;
+	if(RTNORM != acedGetInt(NULL, &coal_id)) return;
+	if(coal_id == -1) return;
+
+	int tech_id = -1;
+	if(RTNORM != acedGetInt(NULL, &tech_id)) return;
+	if(tech_id == -1) return;
+
+	cbm::Coal coal;
+	SQLClientHelper::GetCoalById(coal, coal_id);
+	if( coal.id < 0 ) return;
+
+	cbm::DesignWorkSurfTechnology ws_tech;
+	SQLClientHelper::GetDesignWorkSurfTechnologyById(ws_tech, tech_id);
+	if(ws_tech.id < 0 ) return;
+
+	//交互选择基点坐标
+	AcGePoint3d pt;
+	ArxUtilHelper::PromptPt( _T( "请选择一点:" ), pt );
+
+	//绘制倾向剖面图
+	P21::DipGraph graph( coal, ws_tech );
+	graph.setPoint( pt );
+	graph.draw();
+}
+
+void CmdHelper::DrawPlaneGraph23()
+{
+	int coal_id = -1;
+	if(RTNORM != acedGetInt(NULL, &coal_id)) return;
+	if(coal_id == -1) return;
+
+	int tech_id = -1;
+	if(RTNORM != acedGetInt(NULL, &tech_id)) return;
+	if(tech_id == -1) return;
+
+	cbm::Coal coal;
+	SQLClientHelper::GetCoalById(coal, coal_id);
+	if( coal.id < 0 ) return;
+
+	cbm::DesignWorkSurfTechnology ws_tech;
+	SQLClientHelper::GetDesignWorkSurfTechnologyById(ws_tech, tech_id);
+	if(ws_tech.id < 0 ) return;
+
+	//交互选择基点坐标
+	AcGePoint3d pt;
+	ArxUtilHelper::PromptPt( _T( "请选择一点:" ), pt );
+
+	//绘制平面图
+	P23::PlanGraph graph( coal, ws_tech );
+	graph.setPoint( pt );
+	graph.draw();
+}
+
+void CmdHelper::DrawHeadGraph23()
+{
+	int coal_id = -1;
+	if(RTNORM != acedGetInt(NULL, &coal_id)) return;
+	if(coal_id == -1) return;
+
+	int tech_id = -1;
+	if(RTNORM != acedGetInt(NULL, &tech_id)) return;
+	if(tech_id == -1) return;
+
+	cbm::Coal coal;
+	SQLClientHelper::GetCoalById(coal, coal_id);
+	if( coal.id < 0 ) return;
+
+	cbm::DesignWorkSurfTechnology ws_tech;
+	SQLClientHelper::GetDesignWorkSurfTechnologyById(ws_tech, tech_id);
+	if(ws_tech.id < 0 ) return;
+
+	//交互选择基点坐标
+	AcGePoint3d pt;
+	ArxUtilHelper::PromptPt( _T( "请选择一点:" ), pt );
+
+	//绘制走向剖面图
+	//P23::HeadGraph graph( coal, ws_tech );
+	//graph.setPoint( pt );
+	//graph.draw();
+}
+
+void CmdHelper::DrawDipGraph23()
+{
+	int coal_id = -1;
+	if(RTNORM != acedGetInt(NULL, &coal_id)) return;
+	if(coal_id == -1) return;
+
+	int tech_id = -1;
+	if(RTNORM != acedGetInt(NULL, &tech_id)) return;
+	if(tech_id == -1) return;
+
+	cbm::Coal coal;
+	SQLClientHelper::GetCoalById(coal, coal_id);
+	if( coal.id < 0 ) return;
+
+	cbm::DesignWorkSurfTechnology ws_tech;
+	SQLClientHelper::GetDesignWorkSurfTechnologyById(ws_tech, tech_id);
+	if(ws_tech.id < 0 ) return;
+
+	//交互选择基点坐标
+	AcGePoint3d pt;
+	ArxUtilHelper::PromptPt( _T( "请选择一点:" ), pt );
+
+	//绘制倾向剖面图
+	//P23::DipGraph graph( coal, ws_tech );
+	//graph.setPoint( pt );
+	//graph.draw();
 }

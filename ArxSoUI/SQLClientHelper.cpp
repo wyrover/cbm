@@ -275,6 +275,28 @@ void SQLClientHelper::GetAccountIdListByField2(std::vector<int32_t> & _return, c
 		std::string error_msg = tx.what();
 	}
 }
+void SQLClientHelper::GetAccountListByForeignKey(std::vector<cbm::Account> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetAccountListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetAccountIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetAccountIdListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
 
 //AdjLayer 类型的CRUD操作
 int32_t SQLClientHelper::AddAdjLayer(const cbm::AdjLayer & adj_layer) {
@@ -545,6 +567,28 @@ void SQLClientHelper::GetAdjLayerIdListByField2(std::vector<int32_t> & _return, 
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
 		service_client.get()->GetAdjLayerIdListByField2(_return, field1, value1, field2, value2);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetAdjLayerListByForeignKey(std::vector<cbm::AdjLayer> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetAdjLayerListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetAdjLayerIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetAdjLayerIdListByForeignKey(_return, fkey, id);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -827,6 +871,28 @@ void SQLClientHelper::GetCoalIdListByField2(std::vector<int32_t> & _return, cons
 		std::string error_msg = tx.what();
 	}
 }
+void SQLClientHelper::GetCoalListByForeignKey(std::vector<cbm::Coal> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetCoalListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetCoalIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetCoalIdListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
 
 //Complexity 类型的CRUD操作
 int32_t SQLClientHelper::AddComplexity(const cbm::Complexity & complexity) {
@@ -1097,6 +1163,28 @@ void SQLClientHelper::GetComplexityIdListByField2(std::vector<int32_t> & _return
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
 		service_client.get()->GetComplexityIdListByField2(_return, field1, value1, field2, value2);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetComplexityListByForeignKey(std::vector<cbm::Complexity> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetComplexityListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetComplexityIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetComplexityIdListByForeignKey(_return, fkey, id);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -1379,6 +1467,28 @@ void SQLClientHelper::GetDesignDrillingSurfTechnologyIdListByField2(std::vector<
 		std::string error_msg = tx.what();
 	}
 }
+void SQLClientHelper::GetDesignDrillingSurfTechnologyListByForeignKey(std::vector<cbm::DesignDrillingSurfTechnology> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignDrillingSurfTechnologyListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignDrillingSurfTechnologyIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignDrillingSurfTechnologyIdListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
 
 //DesignGoafTechnology 类型的CRUD操作
 int32_t SQLClientHelper::AddDesignGoafTechnology(const cbm::DesignGoafTechnology & design_goaf_technology) {
@@ -1649,6 +1759,28 @@ void SQLClientHelper::GetDesignGoafTechnologyIdListByField2(std::vector<int32_t>
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
 		service_client.get()->GetDesignGoafTechnologyIdListByField2(_return, field1, value1, field2, value2);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignGoafTechnologyListByForeignKey(std::vector<cbm::DesignGoafTechnology> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignGoafTechnologyListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignGoafTechnologyIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignGoafTechnologyIdListByForeignKey(_return, fkey, id);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -1931,6 +2063,28 @@ void SQLClientHelper::GetDesignPoreIdListByField2(std::vector<int32_t> & _return
 		std::string error_msg = tx.what();
 	}
 }
+void SQLClientHelper::GetDesignPoreListByForeignKey(std::vector<cbm::DesignPore> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignPoreListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignPoreIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignPoreIdListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
 
 //DesignSite 类型的CRUD操作
 int32_t SQLClientHelper::AddDesignSite(const cbm::DesignSite & design_site) {
@@ -2201,6 +2355,28 @@ void SQLClientHelper::GetDesignSiteIdListByField2(std::vector<int32_t> & _return
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
 		service_client.get()->GetDesignSiteIdListByField2(_return, field1, value1, field2, value2);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignSiteListByForeignKey(std::vector<cbm::DesignSite> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignSiteListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignSiteIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignSiteIdListByForeignKey(_return, fkey, id);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -2483,6 +2659,28 @@ void SQLClientHelper::GetDesignTechnologyIdListByField2(std::vector<int32_t> & _
 		std::string error_msg = tx.what();
 	}
 }
+void SQLClientHelper::GetDesignTechnologyListByForeignKey(std::vector<cbm::DesignTechnology> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignTechnologyListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignTechnologyIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignTechnologyIdListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
 
 //DesignWorkSurfTechnology 类型的CRUD操作
 int32_t SQLClientHelper::AddDesignWorkSurfTechnology(const cbm::DesignWorkSurfTechnology & design_work_surf_technology) {
@@ -2753,6 +2951,28 @@ void SQLClientHelper::GetDesignWorkSurfTechnologyIdListByField2(std::vector<int3
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
 		service_client.get()->GetDesignWorkSurfTechnologyIdListByField2(_return, field1, value1, field2, value2);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignWorkSurfTechnologyListByForeignKey(std::vector<cbm::DesignWorkSurfTechnology> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignWorkSurfTechnologyListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignWorkSurfTechnologyIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignWorkSurfTechnologyIdListByForeignKey(_return, fkey, id);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -3035,6 +3255,28 @@ void SQLClientHelper::GetDrillingRadiusParamIdListByField2(std::vector<int32_t> 
 		std::string error_msg = tx.what();
 	}
 }
+void SQLClientHelper::GetDrillingRadiusParamListByForeignKey(std::vector<cbm::DrillingRadiusParam> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDrillingRadiusParamListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDrillingRadiusParamIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDrillingRadiusParamIdListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
 
 //DrillingSurf 类型的CRUD操作
 int32_t SQLClientHelper::AddDrillingSurf(const cbm::DrillingSurf & drilling_surf) {
@@ -3305,6 +3547,28 @@ void SQLClientHelper::GetDrillingSurfIdListByField2(std::vector<int32_t> & _retu
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
 		service_client.get()->GetDrillingSurfIdListByField2(_return, field1, value1, field2, value2);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDrillingSurfListByForeignKey(std::vector<cbm::DrillingSurf> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDrillingSurfListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDrillingSurfIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDrillingSurfIdListByForeignKey(_return, fkey, id);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -3587,6 +3851,28 @@ void SQLClientHelper::GetEvalUnitIdListByField2(std::vector<int32_t> & _return, 
 		std::string error_msg = tx.what();
 	}
 }
+void SQLClientHelper::GetEvalUnitListByForeignKey(std::vector<cbm::EvalUnit> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetEvalUnitListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetEvalUnitIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetEvalUnitIdListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
 
 //HighDrillingPore 类型的CRUD操作
 int32_t SQLClientHelper::AddHighDrillingPore(const cbm::HighDrillingPore & high_drilling_pore) {
@@ -3857,6 +4143,28 @@ void SQLClientHelper::GetHighDrillingPoreIdListByField2(std::vector<int32_t> & _
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
 		service_client.get()->GetHighDrillingPoreIdListByField2(_return, field1, value1, field2, value2);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetHighDrillingPoreListByForeignKey(std::vector<cbm::HighDrillingPore> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetHighDrillingPoreListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetHighDrillingPoreIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetHighDrillingPoreIdListByForeignKey(_return, fkey, id);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -4139,6 +4447,28 @@ void SQLClientHelper::GetHighDrillingPoreParamIdListByField2(std::vector<int32_t
 		std::string error_msg = tx.what();
 	}
 }
+void SQLClientHelper::GetHighDrillingPoreParamListByForeignKey(std::vector<cbm::HighDrillingPoreParam> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetHighDrillingPoreParamListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetHighDrillingPoreParamIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetHighDrillingPoreParamIdListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
 
 //HighDrillingSiteParam 类型的CRUD操作
 int32_t SQLClientHelper::AddHighDrillingSiteParam(const cbm::HighDrillingSiteParam & high_drilling_site_param) {
@@ -4409,6 +4739,28 @@ void SQLClientHelper::GetHighDrillingSiteParamIdListByField2(std::vector<int32_t
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
 		service_client.get()->GetHighDrillingSiteParamIdListByField2(_return, field1, value1, field2, value2);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetHighDrillingSiteParamListByForeignKey(std::vector<cbm::HighDrillingSiteParam> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetHighDrillingSiteParamListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetHighDrillingSiteParamIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetHighDrillingSiteParamIdListByForeignKey(_return, fkey, id);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -4691,6 +5043,28 @@ void SQLClientHelper::GetHighDrillingTunnelIdListByField2(std::vector<int32_t> &
 		std::string error_msg = tx.what();
 	}
 }
+void SQLClientHelper::GetHighDrillingTunnelListByForeignKey(std::vector<cbm::HighDrillingTunnel> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetHighDrillingTunnelListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetHighDrillingTunnelIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetHighDrillingTunnelIdListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
 
 //HydrGeo 类型的CRUD操作
 int32_t SQLClientHelper::AddHydrGeo(const cbm::HydrGeo & hydr_geo) {
@@ -4961,6 +5335,28 @@ void SQLClientHelper::GetHydrGeoIdListByField2(std::vector<int32_t> & _return, c
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
 		service_client.get()->GetHydrGeoIdListByField2(_return, field1, value1, field2, value2);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetHydrGeoListByForeignKey(std::vector<cbm::HydrGeo> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetHydrGeoListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetHydrGeoIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetHydrGeoIdListByForeignKey(_return, fkey, id);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -5243,6 +5639,28 @@ void SQLClientHelper::GetMineIdListByField2(std::vector<int32_t> & _return, cons
 		std::string error_msg = tx.what();
 	}
 }
+void SQLClientHelper::GetMineListByForeignKey(std::vector<cbm::Mine> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetMineListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetMineIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetMineIdListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
 
 //MineBase 类型的CRUD操作
 int32_t SQLClientHelper::AddMineBase(const cbm::MineBase & mine_base) {
@@ -5513,6 +5931,28 @@ void SQLClientHelper::GetMineBaseIdListByField2(std::vector<int32_t> & _return, 
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
 		service_client.get()->GetMineBaseIdListByField2(_return, field1, value1, field2, value2);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetMineBaseListByForeignKey(std::vector<cbm::MineBase> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetMineBaseListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetMineBaseIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetMineBaseIdListByForeignKey(_return, fkey, id);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -5795,6 +6235,28 @@ void SQLClientHelper::GetMineRegionIdListByField2(std::vector<int32_t> & _return
 		std::string error_msg = tx.what();
 	}
 }
+void SQLClientHelper::GetMineRegionListByForeignKey(std::vector<cbm::MineRegion> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetMineRegionListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetMineRegionIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetMineRegionIdListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
 
 //PoreFlow 类型的CRUD操作
 int32_t SQLClientHelper::AddPoreFlow(const cbm::PoreFlow & pore_flow) {
@@ -6065,6 +6527,28 @@ void SQLClientHelper::GetPoreFlowIdListByField2(std::vector<int32_t> & _return, 
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
 		service_client.get()->GetPoreFlowIdListByField2(_return, field1, value1, field2, value2);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetPoreFlowListByForeignKey(std::vector<cbm::PoreFlow> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetPoreFlowListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetPoreFlowIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetPoreFlowIdListByForeignKey(_return, fkey, id);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -6347,6 +6831,28 @@ void SQLClientHelper::GetPoreSizeIdListByField2(std::vector<int32_t> & _return, 
 		std::string error_msg = tx.what();
 	}
 }
+void SQLClientHelper::GetPoreSizeListByForeignKey(std::vector<cbm::PoreSize> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetPoreSizeListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetPoreSizeIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetPoreSizeIdListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
 
 //ResAbundance 类型的CRUD操作
 int32_t SQLClientHelper::AddResAbundance(const cbm::ResAbundance & res_abundance) {
@@ -6617,6 +7123,28 @@ void SQLClientHelper::GetResAbundanceIdListByField2(std::vector<int32_t> & _retu
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
 		service_client.get()->GetResAbundanceIdListByField2(_return, field1, value1, field2, value2);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetResAbundanceListByForeignKey(std::vector<cbm::ResAbundance> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetResAbundanceListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetResAbundanceIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetResAbundanceIdListByForeignKey(_return, fkey, id);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -6899,6 +7427,28 @@ void SQLClientHelper::GetRockIdListByField2(std::vector<int32_t> & _return, cons
 		std::string error_msg = tx.what();
 	}
 }
+void SQLClientHelper::GetRockListByForeignKey(std::vector<cbm::Rock> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetRockListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetRockIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetRockIdListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
 
 //SysInfo 类型的CRUD操作
 int32_t SQLClientHelper::AddSysInfo(const cbm::SysInfo & sys_info) {
@@ -7169,6 +7719,28 @@ void SQLClientHelper::GetSysInfoIdListByField2(std::vector<int32_t> & _return, c
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
 		service_client.get()->GetSysInfoIdListByField2(_return, field1, value1, field2, value2);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetSysInfoListByForeignKey(std::vector<cbm::SysInfo> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetSysInfoListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetSysInfoIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetSysInfoIdListByForeignKey(_return, fkey, id);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -7451,6 +8023,28 @@ void SQLClientHelper::GetTechModeIdListByField2(std::vector<int32_t> & _return, 
 		std::string error_msg = tx.what();
 	}
 }
+void SQLClientHelper::GetTechModeListByForeignKey(std::vector<cbm::TechMode> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetTechModeListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetTechModeIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetTechModeIdListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
 
 //Technology 类型的CRUD操作
 int32_t SQLClientHelper::AddTechnology(const cbm::Technology & technology) {
@@ -7721,6 +8315,28 @@ void SQLClientHelper::GetTechnologyIdListByField2(std::vector<int32_t> & _return
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
 		service_client.get()->GetTechnologyIdListByField2(_return, field1, value1, field2, value2);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetTechnologyListByForeignKey(std::vector<cbm::Technology> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetTechnologyListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetTechnologyIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetTechnologyIdListByForeignKey(_return, fkey, id);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -8003,6 +8619,28 @@ void SQLClientHelper::GetTopoGeoIdListByField2(std::vector<int32_t> & _return, c
 		std::string error_msg = tx.what();
 	}
 }
+void SQLClientHelper::GetTopoGeoListByForeignKey(std::vector<cbm::TopoGeo> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetTopoGeoListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetTopoGeoIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetTopoGeoIdListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
 
 //Tunnel 类型的CRUD操作
 int32_t SQLClientHelper::AddTunnel(const cbm::Tunnel & tunnel) {
@@ -8273,6 +8911,28 @@ void SQLClientHelper::GetTunnelIdListByField2(std::vector<int32_t> & _return, co
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
 		service_client.get()->GetTunnelIdListByField2(_return, field1, value1, field2, value2);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetTunnelListByForeignKey(std::vector<cbm::Tunnel> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetTunnelListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetTunnelIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetTunnelIdListByForeignKey(_return, fkey, id);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -8555,6 +9215,28 @@ void SQLClientHelper::GetWorkAreaIdListByField2(std::vector<int32_t> & _return, 
 		std::string error_msg = tx.what();
 	}
 }
+void SQLClientHelper::GetWorkAreaListByForeignKey(std::vector<cbm::WorkArea> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetWorkAreaListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetWorkAreaIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetWorkAreaIdListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
 
 //WorkSurf 类型的CRUD操作
 int32_t SQLClientHelper::AddWorkSurf(const cbm::WorkSurf & work_surf) {
@@ -8825,6 +9507,28 @@ void SQLClientHelper::GetWorkSurfIdListByField2(std::vector<int32_t> & _return, 
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
 		service_client.get()->GetWorkSurfIdListByField2(_return, field1, value1, field2, value2);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetWorkSurfListByForeignKey(std::vector<cbm::WorkSurf> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetWorkSurfListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetWorkSurfIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetWorkSurfIdListByForeignKey(_return, fkey, id);
 		service_client.close();
 	}
 	catch (TException &tx) {

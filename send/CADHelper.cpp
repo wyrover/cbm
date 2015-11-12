@@ -304,20 +304,58 @@ bool CADHelper::CleanCAD()
     return true;
 }
 
+static void SplitCString( const CString& str, const CString& tokens, CStringArray& values )
+{
+	int nTokenPos = 0;
+	CString strToken = str.Tokenize( tokens, nTokenPos );
+	while ( !strToken.IsEmpty() )
+	{
+		values.Add( strToken );
+		strToken = str.Tokenize( tokens, nTokenPos );
+	}
+}
+
 void SendCommandToCAD_Helper(HWND cadMainWnd, const CString& cmd, bool useEsc)
 {
+	CStringArray values;
+	SplitCString(cmd, _T(" "), values);
+	if(values.IsEmpty()) return;
+
 	// \003表示ESC
 	// \r表示回车
-	CString cmdText;
-	if(useEsc)
+	int n = (int)values.GetCount();
+	for(int i=0;i<n;i++)
 	{
-		cmdText.Format(_T("\003\003%s\r"),cmd);
+		if(values[i].CompareNoCase(_T("esc")) == 0)
+		{
+			values[i]= _T("\003");
+		}
+		else if(values[i].CompareNoCase(_T("enter")) == 0)
+		{
+			values[i] = _T("\r");
+		}
 	}
-	else
+	
+	CString cmdText;	
+	for(int i=0;i<n;i++)
 	{
-		cmdText.Format(_T("%s\r"),cmd);
+		values[i].MakeLower();
+		cmdText.AppendFormat(_T("%s"), values[i]);
+		if(i < n-1)
+		{
+			cmdText.AppendFormat(_T(" "));
+		}
 	}
-	//AfxMessageBox(cmdText);
+	if(values[0].CompareNoCase(_T("\003")) != 0 && useEsc)
+	{
+		CString temp_str = cmdText;
+		cmdText.Format(_T("\003\003%s"), temp_str);
+	}
+	if(values[n-1].CompareNoCase(_T("\r")) != 0)
+	{
+		cmdText.AppendFormat(_T("\r"));
+	}
+	AfxMessageBox(cmdText);
 
 	COPYDATASTRUCT cmdMsg;
 	cmdMsg.dwData=(DWORD)1;
@@ -367,10 +405,13 @@ bool CADHelper::SendCommandToAutoCAD(const CString& cmd, bool useEsc, bool switc
 			//激活并切换到CAD窗口
 			if(switch_to_cad)
 			{
+				//注释的3行函数无效(不能起到切换cad窗口的作用)
 				//::ShowWindow(hwnd, SW_SHOWNA);
 				//::SetActiveWindow(hwnd);
 				//::SetForegroundWindow(hwnd);
+				//这个API属于微软未公开的API,但好使!!!
 				::SwitchToThisWindow(hwnd, TRUE);
+				//AfxMessageBox(_T("激活并切换到CAD窗口"));
 			}
 			//打印窗口的标题
 			//TCHAR title[80];

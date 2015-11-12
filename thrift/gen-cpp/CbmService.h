@@ -44,6 +44,8 @@ class CbmServiceIf {
   virtual void GetAccountIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields) = 0;
   virtual void GetAccountIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value) = 0;
   virtual void GetAccountIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) = 0;
+  virtual void GetAccountListByForeignKey(std::vector<Account> & _return, const std::string& fkey, const int32_t id) = 0;
+  virtual void GetAccountIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) = 0;
   virtual int32_t AddAdjLayer(const AdjLayer& adj_layer) = 0;
   virtual bool DeleteAdjLayer(const int32_t id) = 0;
   virtual bool UpdateAdjLayer(const AdjLayer& adj_layer) = 0;
@@ -67,6 +69,8 @@ class CbmServiceIf {
   virtual void GetAdjLayerIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields) = 0;
   virtual void GetAdjLayerIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value) = 0;
   virtual void GetAdjLayerIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) = 0;
+  virtual void GetAdjLayerListByForeignKey(std::vector<AdjLayer> & _return, const std::string& fkey, const int32_t id) = 0;
+  virtual void GetAdjLayerIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) = 0;
   virtual int32_t AddCoal(const Coal& coal) = 0;
   virtual bool DeleteCoal(const int32_t id) = 0;
   virtual bool UpdateCoal(const Coal& coal) = 0;
@@ -90,6 +94,8 @@ class CbmServiceIf {
   virtual void GetCoalIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields) = 0;
   virtual void GetCoalIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value) = 0;
   virtual void GetCoalIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) = 0;
+  virtual void GetCoalListByForeignKey(std::vector<Coal> & _return, const std::string& fkey, const int32_t id) = 0;
+  virtual void GetCoalIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) = 0;
   virtual int32_t AddComplexity(const Complexity& complexity) = 0;
   virtual bool DeleteComplexity(const int32_t id) = 0;
   virtual bool UpdateComplexity(const Complexity& complexity) = 0;
@@ -113,6 +119,8 @@ class CbmServiceIf {
   virtual void GetComplexityIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields) = 0;
   virtual void GetComplexityIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value) = 0;
   virtual void GetComplexityIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) = 0;
+  virtual void GetComplexityListByForeignKey(std::vector<Complexity> & _return, const std::string& fkey, const int32_t id) = 0;
+  virtual void GetComplexityIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) = 0;
   virtual int32_t AddDesignDrillingSurfTechnology(const DesignDrillingSurfTechnology& design_drilling_surf_technology) = 0;
   virtual bool DeleteDesignDrillingSurfTechnology(const int32_t id) = 0;
   virtual bool UpdateDesignDrillingSurfTechnology(const DesignDrillingSurfTechnology& design_drilling_surf_technology) = 0;
@@ -136,6 +144,8 @@ class CbmServiceIf {
   virtual void GetDesignDrillingSurfTechnologyIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields) = 0;
   virtual void GetDesignDrillingSurfTechnologyIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value) = 0;
   virtual void GetDesignDrillingSurfTechnologyIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) = 0;
+  virtual void GetDesignDrillingSurfTechnologyListByForeignKey(std::vector<DesignDrillingSurfTechnology> & _return, const std::string& fkey, const int32_t id) = 0;
+  virtual void GetDesignDrillingSurfTechnologyIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) = 0;
   virtual int32_t AddDesignGoafTechnology(const DesignGoafTechnology& design_goaf_technology) = 0;
   virtual bool DeleteDesignGoafTechnology(const int32_t id) = 0;
   virtual bool UpdateDesignGoafTechnology(const DesignGoafTechnology& design_goaf_technology) = 0;
@@ -159,6 +169,8 @@ class CbmServiceIf {
   virtual void GetDesignGoafTechnologyIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields) = 0;
   virtual void GetDesignGoafTechnologyIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value) = 0;
   virtual void GetDesignGoafTechnologyIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) = 0;
+  virtual void GetDesignGoafTechnologyListByForeignKey(std::vector<DesignGoafTechnology> & _return, const std::string& fkey, const int32_t id) = 0;
+  virtual void GetDesignGoafTechnologyIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) = 0;
   virtual int32_t AddDesignPore(const DesignPore& design_pore) = 0;
   virtual bool DeleteDesignPore(const int32_t id) = 0;
   virtual bool UpdateDesignPore(const DesignPore& design_pore) = 0;
@@ -182,6 +194,8 @@ class CbmServiceIf {
   virtual void GetDesignPoreIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields) = 0;
   virtual void GetDesignPoreIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value) = 0;
   virtual void GetDesignPoreIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) = 0;
+  virtual void GetDesignPoreListByForeignKey(std::vector<DesignPore> & _return, const std::string& fkey, const int32_t id) = 0;
+  virtual void GetDesignPoreIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) = 0;
   virtual int32_t AddDesignSite(const DesignSite& design_site) = 0;
   virtual bool DeleteDesignSite(const int32_t id) = 0;
   virtual bool UpdateDesignSite(const DesignSite& design_site) = 0;
@@ -205,6 +219,8 @@ class CbmServiceIf {
   virtual void GetDesignSiteIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields) = 0;
   virtual void GetDesignSiteIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value) = 0;
   virtual void GetDesignSiteIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) = 0;
+  virtual void GetDesignSiteListByForeignKey(std::vector<DesignSite> & _return, const std::string& fkey, const int32_t id) = 0;
+  virtual void GetDesignSiteIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) = 0;
   virtual int32_t AddDesignTechnology(const DesignTechnology& design_technology) = 0;
   virtual bool DeleteDesignTechnology(const int32_t id) = 0;
   virtual bool UpdateDesignTechnology(const DesignTechnology& design_technology) = 0;
@@ -228,6 +244,8 @@ class CbmServiceIf {
   virtual void GetDesignTechnologyIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields) = 0;
   virtual void GetDesignTechnologyIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value) = 0;
   virtual void GetDesignTechnologyIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) = 0;
+  virtual void GetDesignTechnologyListByForeignKey(std::vector<DesignTechnology> & _return, const std::string& fkey, const int32_t id) = 0;
+  virtual void GetDesignTechnologyIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) = 0;
   virtual int32_t AddDesignWorkSurfTechnology(const DesignWorkSurfTechnology& design_work_surf_technology) = 0;
   virtual bool DeleteDesignWorkSurfTechnology(const int32_t id) = 0;
   virtual bool UpdateDesignWorkSurfTechnology(const DesignWorkSurfTechnology& design_work_surf_technology) = 0;
@@ -251,6 +269,8 @@ class CbmServiceIf {
   virtual void GetDesignWorkSurfTechnologyIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields) = 0;
   virtual void GetDesignWorkSurfTechnologyIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value) = 0;
   virtual void GetDesignWorkSurfTechnologyIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) = 0;
+  virtual void GetDesignWorkSurfTechnologyListByForeignKey(std::vector<DesignWorkSurfTechnology> & _return, const std::string& fkey, const int32_t id) = 0;
+  virtual void GetDesignWorkSurfTechnologyIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) = 0;
   virtual int32_t AddDrillingRadiusParam(const DrillingRadiusParam& drilling_radius_param) = 0;
   virtual bool DeleteDrillingRadiusParam(const int32_t id) = 0;
   virtual bool UpdateDrillingRadiusParam(const DrillingRadiusParam& drilling_radius_param) = 0;
@@ -274,6 +294,8 @@ class CbmServiceIf {
   virtual void GetDrillingRadiusParamIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields) = 0;
   virtual void GetDrillingRadiusParamIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value) = 0;
   virtual void GetDrillingRadiusParamIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) = 0;
+  virtual void GetDrillingRadiusParamListByForeignKey(std::vector<DrillingRadiusParam> & _return, const std::string& fkey, const int32_t id) = 0;
+  virtual void GetDrillingRadiusParamIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) = 0;
   virtual int32_t AddDrillingSurf(const DrillingSurf& drilling_surf) = 0;
   virtual bool DeleteDrillingSurf(const int32_t id) = 0;
   virtual bool UpdateDrillingSurf(const DrillingSurf& drilling_surf) = 0;
@@ -297,6 +319,8 @@ class CbmServiceIf {
   virtual void GetDrillingSurfIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields) = 0;
   virtual void GetDrillingSurfIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value) = 0;
   virtual void GetDrillingSurfIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) = 0;
+  virtual void GetDrillingSurfListByForeignKey(std::vector<DrillingSurf> & _return, const std::string& fkey, const int32_t id) = 0;
+  virtual void GetDrillingSurfIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) = 0;
   virtual int32_t AddEvalUnit(const EvalUnit& eval_unit) = 0;
   virtual bool DeleteEvalUnit(const int32_t id) = 0;
   virtual bool UpdateEvalUnit(const EvalUnit& eval_unit) = 0;
@@ -320,6 +344,8 @@ class CbmServiceIf {
   virtual void GetEvalUnitIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields) = 0;
   virtual void GetEvalUnitIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value) = 0;
   virtual void GetEvalUnitIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) = 0;
+  virtual void GetEvalUnitListByForeignKey(std::vector<EvalUnit> & _return, const std::string& fkey, const int32_t id) = 0;
+  virtual void GetEvalUnitIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) = 0;
   virtual int32_t AddHighDrillingPore(const HighDrillingPore& high_drilling_pore) = 0;
   virtual bool DeleteHighDrillingPore(const int32_t id) = 0;
   virtual bool UpdateHighDrillingPore(const HighDrillingPore& high_drilling_pore) = 0;
@@ -343,6 +369,8 @@ class CbmServiceIf {
   virtual void GetHighDrillingPoreIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields) = 0;
   virtual void GetHighDrillingPoreIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value) = 0;
   virtual void GetHighDrillingPoreIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) = 0;
+  virtual void GetHighDrillingPoreListByForeignKey(std::vector<HighDrillingPore> & _return, const std::string& fkey, const int32_t id) = 0;
+  virtual void GetHighDrillingPoreIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) = 0;
   virtual int32_t AddHighDrillingPoreParam(const HighDrillingPoreParam& high_drilling_pore_param) = 0;
   virtual bool DeleteHighDrillingPoreParam(const int32_t id) = 0;
   virtual bool UpdateHighDrillingPoreParam(const HighDrillingPoreParam& high_drilling_pore_param) = 0;
@@ -366,6 +394,8 @@ class CbmServiceIf {
   virtual void GetHighDrillingPoreParamIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields) = 0;
   virtual void GetHighDrillingPoreParamIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value) = 0;
   virtual void GetHighDrillingPoreParamIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) = 0;
+  virtual void GetHighDrillingPoreParamListByForeignKey(std::vector<HighDrillingPoreParam> & _return, const std::string& fkey, const int32_t id) = 0;
+  virtual void GetHighDrillingPoreParamIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) = 0;
   virtual int32_t AddHighDrillingSiteParam(const HighDrillingSiteParam& high_drilling_site_param) = 0;
   virtual bool DeleteHighDrillingSiteParam(const int32_t id) = 0;
   virtual bool UpdateHighDrillingSiteParam(const HighDrillingSiteParam& high_drilling_site_param) = 0;
@@ -389,6 +419,8 @@ class CbmServiceIf {
   virtual void GetHighDrillingSiteParamIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields) = 0;
   virtual void GetHighDrillingSiteParamIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value) = 0;
   virtual void GetHighDrillingSiteParamIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) = 0;
+  virtual void GetHighDrillingSiteParamListByForeignKey(std::vector<HighDrillingSiteParam> & _return, const std::string& fkey, const int32_t id) = 0;
+  virtual void GetHighDrillingSiteParamIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) = 0;
   virtual int32_t AddHighDrillingTunnel(const HighDrillingTunnel& high_drilling_tunnel) = 0;
   virtual bool DeleteHighDrillingTunnel(const int32_t id) = 0;
   virtual bool UpdateHighDrillingTunnel(const HighDrillingTunnel& high_drilling_tunnel) = 0;
@@ -412,6 +444,8 @@ class CbmServiceIf {
   virtual void GetHighDrillingTunnelIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields) = 0;
   virtual void GetHighDrillingTunnelIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value) = 0;
   virtual void GetHighDrillingTunnelIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) = 0;
+  virtual void GetHighDrillingTunnelListByForeignKey(std::vector<HighDrillingTunnel> & _return, const std::string& fkey, const int32_t id) = 0;
+  virtual void GetHighDrillingTunnelIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) = 0;
   virtual int32_t AddHydrGeo(const HydrGeo& hydr_geo) = 0;
   virtual bool DeleteHydrGeo(const int32_t id) = 0;
   virtual bool UpdateHydrGeo(const HydrGeo& hydr_geo) = 0;
@@ -435,6 +469,8 @@ class CbmServiceIf {
   virtual void GetHydrGeoIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields) = 0;
   virtual void GetHydrGeoIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value) = 0;
   virtual void GetHydrGeoIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) = 0;
+  virtual void GetHydrGeoListByForeignKey(std::vector<HydrGeo> & _return, const std::string& fkey, const int32_t id) = 0;
+  virtual void GetHydrGeoIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) = 0;
   virtual int32_t AddMine(const Mine& mine) = 0;
   virtual bool DeleteMine(const int32_t id) = 0;
   virtual bool UpdateMine(const Mine& mine) = 0;
@@ -458,6 +494,8 @@ class CbmServiceIf {
   virtual void GetMineIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields) = 0;
   virtual void GetMineIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value) = 0;
   virtual void GetMineIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) = 0;
+  virtual void GetMineListByForeignKey(std::vector<Mine> & _return, const std::string& fkey, const int32_t id) = 0;
+  virtual void GetMineIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) = 0;
   virtual int32_t AddMineBase(const MineBase& mine_base) = 0;
   virtual bool DeleteMineBase(const int32_t id) = 0;
   virtual bool UpdateMineBase(const MineBase& mine_base) = 0;
@@ -481,6 +519,8 @@ class CbmServiceIf {
   virtual void GetMineBaseIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields) = 0;
   virtual void GetMineBaseIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value) = 0;
   virtual void GetMineBaseIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) = 0;
+  virtual void GetMineBaseListByForeignKey(std::vector<MineBase> & _return, const std::string& fkey, const int32_t id) = 0;
+  virtual void GetMineBaseIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) = 0;
   virtual int32_t AddMineRegion(const MineRegion& mine_region) = 0;
   virtual bool DeleteMineRegion(const int32_t id) = 0;
   virtual bool UpdateMineRegion(const MineRegion& mine_region) = 0;
@@ -504,6 +544,8 @@ class CbmServiceIf {
   virtual void GetMineRegionIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields) = 0;
   virtual void GetMineRegionIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value) = 0;
   virtual void GetMineRegionIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) = 0;
+  virtual void GetMineRegionListByForeignKey(std::vector<MineRegion> & _return, const std::string& fkey, const int32_t id) = 0;
+  virtual void GetMineRegionIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) = 0;
   virtual int32_t AddPoreFlow(const PoreFlow& pore_flow) = 0;
   virtual bool DeletePoreFlow(const int32_t id) = 0;
   virtual bool UpdatePoreFlow(const PoreFlow& pore_flow) = 0;
@@ -527,6 +569,8 @@ class CbmServiceIf {
   virtual void GetPoreFlowIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields) = 0;
   virtual void GetPoreFlowIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value) = 0;
   virtual void GetPoreFlowIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) = 0;
+  virtual void GetPoreFlowListByForeignKey(std::vector<PoreFlow> & _return, const std::string& fkey, const int32_t id) = 0;
+  virtual void GetPoreFlowIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) = 0;
   virtual int32_t AddPoreSize(const PoreSize& pore_size) = 0;
   virtual bool DeletePoreSize(const int32_t id) = 0;
   virtual bool UpdatePoreSize(const PoreSize& pore_size) = 0;
@@ -550,6 +594,8 @@ class CbmServiceIf {
   virtual void GetPoreSizeIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields) = 0;
   virtual void GetPoreSizeIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value) = 0;
   virtual void GetPoreSizeIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) = 0;
+  virtual void GetPoreSizeListByForeignKey(std::vector<PoreSize> & _return, const std::string& fkey, const int32_t id) = 0;
+  virtual void GetPoreSizeIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) = 0;
   virtual int32_t AddResAbundance(const ResAbundance& res_abundance) = 0;
   virtual bool DeleteResAbundance(const int32_t id) = 0;
   virtual bool UpdateResAbundance(const ResAbundance& res_abundance) = 0;
@@ -573,6 +619,8 @@ class CbmServiceIf {
   virtual void GetResAbundanceIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields) = 0;
   virtual void GetResAbundanceIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value) = 0;
   virtual void GetResAbundanceIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) = 0;
+  virtual void GetResAbundanceListByForeignKey(std::vector<ResAbundance> & _return, const std::string& fkey, const int32_t id) = 0;
+  virtual void GetResAbundanceIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) = 0;
   virtual int32_t AddRock(const Rock& rock) = 0;
   virtual bool DeleteRock(const int32_t id) = 0;
   virtual bool UpdateRock(const Rock& rock) = 0;
@@ -596,6 +644,8 @@ class CbmServiceIf {
   virtual void GetRockIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields) = 0;
   virtual void GetRockIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value) = 0;
   virtual void GetRockIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) = 0;
+  virtual void GetRockListByForeignKey(std::vector<Rock> & _return, const std::string& fkey, const int32_t id) = 0;
+  virtual void GetRockIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) = 0;
   virtual int32_t AddSysInfo(const SysInfo& sys_info) = 0;
   virtual bool DeleteSysInfo(const int32_t id) = 0;
   virtual bool UpdateSysInfo(const SysInfo& sys_info) = 0;
@@ -619,6 +669,8 @@ class CbmServiceIf {
   virtual void GetSysInfoIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields) = 0;
   virtual void GetSysInfoIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value) = 0;
   virtual void GetSysInfoIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) = 0;
+  virtual void GetSysInfoListByForeignKey(std::vector<SysInfo> & _return, const std::string& fkey, const int32_t id) = 0;
+  virtual void GetSysInfoIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) = 0;
   virtual int32_t AddTechMode(const TechMode& tech_mode) = 0;
   virtual bool DeleteTechMode(const int32_t id) = 0;
   virtual bool UpdateTechMode(const TechMode& tech_mode) = 0;
@@ -642,6 +694,8 @@ class CbmServiceIf {
   virtual void GetTechModeIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields) = 0;
   virtual void GetTechModeIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value) = 0;
   virtual void GetTechModeIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) = 0;
+  virtual void GetTechModeListByForeignKey(std::vector<TechMode> & _return, const std::string& fkey, const int32_t id) = 0;
+  virtual void GetTechModeIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) = 0;
   virtual int32_t AddTechnology(const Technology& technology) = 0;
   virtual bool DeleteTechnology(const int32_t id) = 0;
   virtual bool UpdateTechnology(const Technology& technology) = 0;
@@ -665,6 +719,8 @@ class CbmServiceIf {
   virtual void GetTechnologyIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields) = 0;
   virtual void GetTechnologyIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value) = 0;
   virtual void GetTechnologyIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) = 0;
+  virtual void GetTechnologyListByForeignKey(std::vector<Technology> & _return, const std::string& fkey, const int32_t id) = 0;
+  virtual void GetTechnologyIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) = 0;
   virtual int32_t AddTopoGeo(const TopoGeo& topo_geo) = 0;
   virtual bool DeleteTopoGeo(const int32_t id) = 0;
   virtual bool UpdateTopoGeo(const TopoGeo& topo_geo) = 0;
@@ -688,6 +744,8 @@ class CbmServiceIf {
   virtual void GetTopoGeoIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields) = 0;
   virtual void GetTopoGeoIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value) = 0;
   virtual void GetTopoGeoIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) = 0;
+  virtual void GetTopoGeoListByForeignKey(std::vector<TopoGeo> & _return, const std::string& fkey, const int32_t id) = 0;
+  virtual void GetTopoGeoIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) = 0;
   virtual int32_t AddTunnel(const Tunnel& tunnel) = 0;
   virtual bool DeleteTunnel(const int32_t id) = 0;
   virtual bool UpdateTunnel(const Tunnel& tunnel) = 0;
@@ -711,6 +769,8 @@ class CbmServiceIf {
   virtual void GetTunnelIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields) = 0;
   virtual void GetTunnelIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value) = 0;
   virtual void GetTunnelIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) = 0;
+  virtual void GetTunnelListByForeignKey(std::vector<Tunnel> & _return, const std::string& fkey, const int32_t id) = 0;
+  virtual void GetTunnelIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) = 0;
   virtual int32_t AddWorkArea(const WorkArea& work_area) = 0;
   virtual bool DeleteWorkArea(const int32_t id) = 0;
   virtual bool UpdateWorkArea(const WorkArea& work_area) = 0;
@@ -734,6 +794,8 @@ class CbmServiceIf {
   virtual void GetWorkAreaIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields) = 0;
   virtual void GetWorkAreaIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value) = 0;
   virtual void GetWorkAreaIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) = 0;
+  virtual void GetWorkAreaListByForeignKey(std::vector<WorkArea> & _return, const std::string& fkey, const int32_t id) = 0;
+  virtual void GetWorkAreaIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) = 0;
   virtual int32_t AddWorkSurf(const WorkSurf& work_surf) = 0;
   virtual bool DeleteWorkSurf(const int32_t id) = 0;
   virtual bool UpdateWorkSurf(const WorkSurf& work_surf) = 0;
@@ -757,6 +819,8 @@ class CbmServiceIf {
   virtual void GetWorkSurfIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields) = 0;
   virtual void GetWorkSurfIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value) = 0;
   virtual void GetWorkSurfIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) = 0;
+  virtual void GetWorkSurfListByForeignKey(std::vector<WorkSurf> & _return, const std::string& fkey, const int32_t id) = 0;
+  virtual void GetWorkSurfIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) = 0;
   virtual void InitSampleRegion() = 0;
   virtual int32_t GetOnlineAccountId() = 0;
   virtual void GetOnlineMine(Mine& _return) = 0;
@@ -891,6 +955,12 @@ class CbmServiceNull : virtual public CbmServiceIf {
   void GetAccountIdListByField2(std::vector<int32_t> & /* _return */, const std::string& /* field1 */, const std::string& /* value1 */, const std::string& /* field2 */, const std::string& /* value2 */) {
     return;
   }
+  void GetAccountListByForeignKey(std::vector<Account> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
+    return;
+  }
+  void GetAccountIdListByForeignKey(std::vector<int32_t> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
+    return;
+  }
   int32_t AddAdjLayer(const AdjLayer& /* adj_layer */) {
     int32_t _return = 0;
     return _return;
@@ -965,6 +1035,12 @@ class CbmServiceNull : virtual public CbmServiceIf {
     return;
   }
   void GetAdjLayerIdListByField2(std::vector<int32_t> & /* _return */, const std::string& /* field1 */, const std::string& /* value1 */, const std::string& /* field2 */, const std::string& /* value2 */) {
+    return;
+  }
+  void GetAdjLayerListByForeignKey(std::vector<AdjLayer> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
+    return;
+  }
+  void GetAdjLayerIdListByForeignKey(std::vector<int32_t> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
     return;
   }
   int32_t AddCoal(const Coal& /* coal */) {
@@ -1043,6 +1119,12 @@ class CbmServiceNull : virtual public CbmServiceIf {
   void GetCoalIdListByField2(std::vector<int32_t> & /* _return */, const std::string& /* field1 */, const std::string& /* value1 */, const std::string& /* field2 */, const std::string& /* value2 */) {
     return;
   }
+  void GetCoalListByForeignKey(std::vector<Coal> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
+    return;
+  }
+  void GetCoalIdListByForeignKey(std::vector<int32_t> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
+    return;
+  }
   int32_t AddComplexity(const Complexity& /* complexity */) {
     int32_t _return = 0;
     return _return;
@@ -1117,6 +1199,12 @@ class CbmServiceNull : virtual public CbmServiceIf {
     return;
   }
   void GetComplexityIdListByField2(std::vector<int32_t> & /* _return */, const std::string& /* field1 */, const std::string& /* value1 */, const std::string& /* field2 */, const std::string& /* value2 */) {
+    return;
+  }
+  void GetComplexityListByForeignKey(std::vector<Complexity> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
+    return;
+  }
+  void GetComplexityIdListByForeignKey(std::vector<int32_t> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
     return;
   }
   int32_t AddDesignDrillingSurfTechnology(const DesignDrillingSurfTechnology& /* design_drilling_surf_technology */) {
@@ -1195,6 +1283,12 @@ class CbmServiceNull : virtual public CbmServiceIf {
   void GetDesignDrillingSurfTechnologyIdListByField2(std::vector<int32_t> & /* _return */, const std::string& /* field1 */, const std::string& /* value1 */, const std::string& /* field2 */, const std::string& /* value2 */) {
     return;
   }
+  void GetDesignDrillingSurfTechnologyListByForeignKey(std::vector<DesignDrillingSurfTechnology> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
+    return;
+  }
+  void GetDesignDrillingSurfTechnologyIdListByForeignKey(std::vector<int32_t> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
+    return;
+  }
   int32_t AddDesignGoafTechnology(const DesignGoafTechnology& /* design_goaf_technology */) {
     int32_t _return = 0;
     return _return;
@@ -1269,6 +1363,12 @@ class CbmServiceNull : virtual public CbmServiceIf {
     return;
   }
   void GetDesignGoafTechnologyIdListByField2(std::vector<int32_t> & /* _return */, const std::string& /* field1 */, const std::string& /* value1 */, const std::string& /* field2 */, const std::string& /* value2 */) {
+    return;
+  }
+  void GetDesignGoafTechnologyListByForeignKey(std::vector<DesignGoafTechnology> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
+    return;
+  }
+  void GetDesignGoafTechnologyIdListByForeignKey(std::vector<int32_t> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
     return;
   }
   int32_t AddDesignPore(const DesignPore& /* design_pore */) {
@@ -1347,6 +1447,12 @@ class CbmServiceNull : virtual public CbmServiceIf {
   void GetDesignPoreIdListByField2(std::vector<int32_t> & /* _return */, const std::string& /* field1 */, const std::string& /* value1 */, const std::string& /* field2 */, const std::string& /* value2 */) {
     return;
   }
+  void GetDesignPoreListByForeignKey(std::vector<DesignPore> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
+    return;
+  }
+  void GetDesignPoreIdListByForeignKey(std::vector<int32_t> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
+    return;
+  }
   int32_t AddDesignSite(const DesignSite& /* design_site */) {
     int32_t _return = 0;
     return _return;
@@ -1421,6 +1527,12 @@ class CbmServiceNull : virtual public CbmServiceIf {
     return;
   }
   void GetDesignSiteIdListByField2(std::vector<int32_t> & /* _return */, const std::string& /* field1 */, const std::string& /* value1 */, const std::string& /* field2 */, const std::string& /* value2 */) {
+    return;
+  }
+  void GetDesignSiteListByForeignKey(std::vector<DesignSite> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
+    return;
+  }
+  void GetDesignSiteIdListByForeignKey(std::vector<int32_t> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
     return;
   }
   int32_t AddDesignTechnology(const DesignTechnology& /* design_technology */) {
@@ -1499,6 +1611,12 @@ class CbmServiceNull : virtual public CbmServiceIf {
   void GetDesignTechnologyIdListByField2(std::vector<int32_t> & /* _return */, const std::string& /* field1 */, const std::string& /* value1 */, const std::string& /* field2 */, const std::string& /* value2 */) {
     return;
   }
+  void GetDesignTechnologyListByForeignKey(std::vector<DesignTechnology> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
+    return;
+  }
+  void GetDesignTechnologyIdListByForeignKey(std::vector<int32_t> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
+    return;
+  }
   int32_t AddDesignWorkSurfTechnology(const DesignWorkSurfTechnology& /* design_work_surf_technology */) {
     int32_t _return = 0;
     return _return;
@@ -1573,6 +1691,12 @@ class CbmServiceNull : virtual public CbmServiceIf {
     return;
   }
   void GetDesignWorkSurfTechnologyIdListByField2(std::vector<int32_t> & /* _return */, const std::string& /* field1 */, const std::string& /* value1 */, const std::string& /* field2 */, const std::string& /* value2 */) {
+    return;
+  }
+  void GetDesignWorkSurfTechnologyListByForeignKey(std::vector<DesignWorkSurfTechnology> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
+    return;
+  }
+  void GetDesignWorkSurfTechnologyIdListByForeignKey(std::vector<int32_t> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
     return;
   }
   int32_t AddDrillingRadiusParam(const DrillingRadiusParam& /* drilling_radius_param */) {
@@ -1651,6 +1775,12 @@ class CbmServiceNull : virtual public CbmServiceIf {
   void GetDrillingRadiusParamIdListByField2(std::vector<int32_t> & /* _return */, const std::string& /* field1 */, const std::string& /* value1 */, const std::string& /* field2 */, const std::string& /* value2 */) {
     return;
   }
+  void GetDrillingRadiusParamListByForeignKey(std::vector<DrillingRadiusParam> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
+    return;
+  }
+  void GetDrillingRadiusParamIdListByForeignKey(std::vector<int32_t> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
+    return;
+  }
   int32_t AddDrillingSurf(const DrillingSurf& /* drilling_surf */) {
     int32_t _return = 0;
     return _return;
@@ -1725,6 +1855,12 @@ class CbmServiceNull : virtual public CbmServiceIf {
     return;
   }
   void GetDrillingSurfIdListByField2(std::vector<int32_t> & /* _return */, const std::string& /* field1 */, const std::string& /* value1 */, const std::string& /* field2 */, const std::string& /* value2 */) {
+    return;
+  }
+  void GetDrillingSurfListByForeignKey(std::vector<DrillingSurf> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
+    return;
+  }
+  void GetDrillingSurfIdListByForeignKey(std::vector<int32_t> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
     return;
   }
   int32_t AddEvalUnit(const EvalUnit& /* eval_unit */) {
@@ -1803,6 +1939,12 @@ class CbmServiceNull : virtual public CbmServiceIf {
   void GetEvalUnitIdListByField2(std::vector<int32_t> & /* _return */, const std::string& /* field1 */, const std::string& /* value1 */, const std::string& /* field2 */, const std::string& /* value2 */) {
     return;
   }
+  void GetEvalUnitListByForeignKey(std::vector<EvalUnit> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
+    return;
+  }
+  void GetEvalUnitIdListByForeignKey(std::vector<int32_t> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
+    return;
+  }
   int32_t AddHighDrillingPore(const HighDrillingPore& /* high_drilling_pore */) {
     int32_t _return = 0;
     return _return;
@@ -1877,6 +2019,12 @@ class CbmServiceNull : virtual public CbmServiceIf {
     return;
   }
   void GetHighDrillingPoreIdListByField2(std::vector<int32_t> & /* _return */, const std::string& /* field1 */, const std::string& /* value1 */, const std::string& /* field2 */, const std::string& /* value2 */) {
+    return;
+  }
+  void GetHighDrillingPoreListByForeignKey(std::vector<HighDrillingPore> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
+    return;
+  }
+  void GetHighDrillingPoreIdListByForeignKey(std::vector<int32_t> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
     return;
   }
   int32_t AddHighDrillingPoreParam(const HighDrillingPoreParam& /* high_drilling_pore_param */) {
@@ -1955,6 +2103,12 @@ class CbmServiceNull : virtual public CbmServiceIf {
   void GetHighDrillingPoreParamIdListByField2(std::vector<int32_t> & /* _return */, const std::string& /* field1 */, const std::string& /* value1 */, const std::string& /* field2 */, const std::string& /* value2 */) {
     return;
   }
+  void GetHighDrillingPoreParamListByForeignKey(std::vector<HighDrillingPoreParam> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
+    return;
+  }
+  void GetHighDrillingPoreParamIdListByForeignKey(std::vector<int32_t> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
+    return;
+  }
   int32_t AddHighDrillingSiteParam(const HighDrillingSiteParam& /* high_drilling_site_param */) {
     int32_t _return = 0;
     return _return;
@@ -2029,6 +2183,12 @@ class CbmServiceNull : virtual public CbmServiceIf {
     return;
   }
   void GetHighDrillingSiteParamIdListByField2(std::vector<int32_t> & /* _return */, const std::string& /* field1 */, const std::string& /* value1 */, const std::string& /* field2 */, const std::string& /* value2 */) {
+    return;
+  }
+  void GetHighDrillingSiteParamListByForeignKey(std::vector<HighDrillingSiteParam> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
+    return;
+  }
+  void GetHighDrillingSiteParamIdListByForeignKey(std::vector<int32_t> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
     return;
   }
   int32_t AddHighDrillingTunnel(const HighDrillingTunnel& /* high_drilling_tunnel */) {
@@ -2107,6 +2267,12 @@ class CbmServiceNull : virtual public CbmServiceIf {
   void GetHighDrillingTunnelIdListByField2(std::vector<int32_t> & /* _return */, const std::string& /* field1 */, const std::string& /* value1 */, const std::string& /* field2 */, const std::string& /* value2 */) {
     return;
   }
+  void GetHighDrillingTunnelListByForeignKey(std::vector<HighDrillingTunnel> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
+    return;
+  }
+  void GetHighDrillingTunnelIdListByForeignKey(std::vector<int32_t> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
+    return;
+  }
   int32_t AddHydrGeo(const HydrGeo& /* hydr_geo */) {
     int32_t _return = 0;
     return _return;
@@ -2181,6 +2347,12 @@ class CbmServiceNull : virtual public CbmServiceIf {
     return;
   }
   void GetHydrGeoIdListByField2(std::vector<int32_t> & /* _return */, const std::string& /* field1 */, const std::string& /* value1 */, const std::string& /* field2 */, const std::string& /* value2 */) {
+    return;
+  }
+  void GetHydrGeoListByForeignKey(std::vector<HydrGeo> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
+    return;
+  }
+  void GetHydrGeoIdListByForeignKey(std::vector<int32_t> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
     return;
   }
   int32_t AddMine(const Mine& /* mine */) {
@@ -2259,6 +2431,12 @@ class CbmServiceNull : virtual public CbmServiceIf {
   void GetMineIdListByField2(std::vector<int32_t> & /* _return */, const std::string& /* field1 */, const std::string& /* value1 */, const std::string& /* field2 */, const std::string& /* value2 */) {
     return;
   }
+  void GetMineListByForeignKey(std::vector<Mine> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
+    return;
+  }
+  void GetMineIdListByForeignKey(std::vector<int32_t> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
+    return;
+  }
   int32_t AddMineBase(const MineBase& /* mine_base */) {
     int32_t _return = 0;
     return _return;
@@ -2333,6 +2511,12 @@ class CbmServiceNull : virtual public CbmServiceIf {
     return;
   }
   void GetMineBaseIdListByField2(std::vector<int32_t> & /* _return */, const std::string& /* field1 */, const std::string& /* value1 */, const std::string& /* field2 */, const std::string& /* value2 */) {
+    return;
+  }
+  void GetMineBaseListByForeignKey(std::vector<MineBase> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
+    return;
+  }
+  void GetMineBaseIdListByForeignKey(std::vector<int32_t> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
     return;
   }
   int32_t AddMineRegion(const MineRegion& /* mine_region */) {
@@ -2411,6 +2595,12 @@ class CbmServiceNull : virtual public CbmServiceIf {
   void GetMineRegionIdListByField2(std::vector<int32_t> & /* _return */, const std::string& /* field1 */, const std::string& /* value1 */, const std::string& /* field2 */, const std::string& /* value2 */) {
     return;
   }
+  void GetMineRegionListByForeignKey(std::vector<MineRegion> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
+    return;
+  }
+  void GetMineRegionIdListByForeignKey(std::vector<int32_t> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
+    return;
+  }
   int32_t AddPoreFlow(const PoreFlow& /* pore_flow */) {
     int32_t _return = 0;
     return _return;
@@ -2485,6 +2675,12 @@ class CbmServiceNull : virtual public CbmServiceIf {
     return;
   }
   void GetPoreFlowIdListByField2(std::vector<int32_t> & /* _return */, const std::string& /* field1 */, const std::string& /* value1 */, const std::string& /* field2 */, const std::string& /* value2 */) {
+    return;
+  }
+  void GetPoreFlowListByForeignKey(std::vector<PoreFlow> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
+    return;
+  }
+  void GetPoreFlowIdListByForeignKey(std::vector<int32_t> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
     return;
   }
   int32_t AddPoreSize(const PoreSize& /* pore_size */) {
@@ -2563,6 +2759,12 @@ class CbmServiceNull : virtual public CbmServiceIf {
   void GetPoreSizeIdListByField2(std::vector<int32_t> & /* _return */, const std::string& /* field1 */, const std::string& /* value1 */, const std::string& /* field2 */, const std::string& /* value2 */) {
     return;
   }
+  void GetPoreSizeListByForeignKey(std::vector<PoreSize> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
+    return;
+  }
+  void GetPoreSizeIdListByForeignKey(std::vector<int32_t> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
+    return;
+  }
   int32_t AddResAbundance(const ResAbundance& /* res_abundance */) {
     int32_t _return = 0;
     return _return;
@@ -2637,6 +2839,12 @@ class CbmServiceNull : virtual public CbmServiceIf {
     return;
   }
   void GetResAbundanceIdListByField2(std::vector<int32_t> & /* _return */, const std::string& /* field1 */, const std::string& /* value1 */, const std::string& /* field2 */, const std::string& /* value2 */) {
+    return;
+  }
+  void GetResAbundanceListByForeignKey(std::vector<ResAbundance> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
+    return;
+  }
+  void GetResAbundanceIdListByForeignKey(std::vector<int32_t> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
     return;
   }
   int32_t AddRock(const Rock& /* rock */) {
@@ -2715,6 +2923,12 @@ class CbmServiceNull : virtual public CbmServiceIf {
   void GetRockIdListByField2(std::vector<int32_t> & /* _return */, const std::string& /* field1 */, const std::string& /* value1 */, const std::string& /* field2 */, const std::string& /* value2 */) {
     return;
   }
+  void GetRockListByForeignKey(std::vector<Rock> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
+    return;
+  }
+  void GetRockIdListByForeignKey(std::vector<int32_t> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
+    return;
+  }
   int32_t AddSysInfo(const SysInfo& /* sys_info */) {
     int32_t _return = 0;
     return _return;
@@ -2789,6 +3003,12 @@ class CbmServiceNull : virtual public CbmServiceIf {
     return;
   }
   void GetSysInfoIdListByField2(std::vector<int32_t> & /* _return */, const std::string& /* field1 */, const std::string& /* value1 */, const std::string& /* field2 */, const std::string& /* value2 */) {
+    return;
+  }
+  void GetSysInfoListByForeignKey(std::vector<SysInfo> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
+    return;
+  }
+  void GetSysInfoIdListByForeignKey(std::vector<int32_t> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
     return;
   }
   int32_t AddTechMode(const TechMode& /* tech_mode */) {
@@ -2867,6 +3087,12 @@ class CbmServiceNull : virtual public CbmServiceIf {
   void GetTechModeIdListByField2(std::vector<int32_t> & /* _return */, const std::string& /* field1 */, const std::string& /* value1 */, const std::string& /* field2 */, const std::string& /* value2 */) {
     return;
   }
+  void GetTechModeListByForeignKey(std::vector<TechMode> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
+    return;
+  }
+  void GetTechModeIdListByForeignKey(std::vector<int32_t> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
+    return;
+  }
   int32_t AddTechnology(const Technology& /* technology */) {
     int32_t _return = 0;
     return _return;
@@ -2941,6 +3167,12 @@ class CbmServiceNull : virtual public CbmServiceIf {
     return;
   }
   void GetTechnologyIdListByField2(std::vector<int32_t> & /* _return */, const std::string& /* field1 */, const std::string& /* value1 */, const std::string& /* field2 */, const std::string& /* value2 */) {
+    return;
+  }
+  void GetTechnologyListByForeignKey(std::vector<Technology> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
+    return;
+  }
+  void GetTechnologyIdListByForeignKey(std::vector<int32_t> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
     return;
   }
   int32_t AddTopoGeo(const TopoGeo& /* topo_geo */) {
@@ -3019,6 +3251,12 @@ class CbmServiceNull : virtual public CbmServiceIf {
   void GetTopoGeoIdListByField2(std::vector<int32_t> & /* _return */, const std::string& /* field1 */, const std::string& /* value1 */, const std::string& /* field2 */, const std::string& /* value2 */) {
     return;
   }
+  void GetTopoGeoListByForeignKey(std::vector<TopoGeo> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
+    return;
+  }
+  void GetTopoGeoIdListByForeignKey(std::vector<int32_t> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
+    return;
+  }
   int32_t AddTunnel(const Tunnel& /* tunnel */) {
     int32_t _return = 0;
     return _return;
@@ -3093,6 +3331,12 @@ class CbmServiceNull : virtual public CbmServiceIf {
     return;
   }
   void GetTunnelIdListByField2(std::vector<int32_t> & /* _return */, const std::string& /* field1 */, const std::string& /* value1 */, const std::string& /* field2 */, const std::string& /* value2 */) {
+    return;
+  }
+  void GetTunnelListByForeignKey(std::vector<Tunnel> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
+    return;
+  }
+  void GetTunnelIdListByForeignKey(std::vector<int32_t> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
     return;
   }
   int32_t AddWorkArea(const WorkArea& /* work_area */) {
@@ -3171,6 +3415,12 @@ class CbmServiceNull : virtual public CbmServiceIf {
   void GetWorkAreaIdListByField2(std::vector<int32_t> & /* _return */, const std::string& /* field1 */, const std::string& /* value1 */, const std::string& /* field2 */, const std::string& /* value2 */) {
     return;
   }
+  void GetWorkAreaListByForeignKey(std::vector<WorkArea> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
+    return;
+  }
+  void GetWorkAreaIdListByForeignKey(std::vector<int32_t> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
+    return;
+  }
   int32_t AddWorkSurf(const WorkSurf& /* work_surf */) {
     int32_t _return = 0;
     return _return;
@@ -3245,6 +3495,12 @@ class CbmServiceNull : virtual public CbmServiceIf {
     return;
   }
   void GetWorkSurfIdListByField2(std::vector<int32_t> & /* _return */, const std::string& /* field1 */, const std::string& /* value1 */, const std::string& /* field2 */, const std::string& /* value2 */) {
+    return;
+  }
+  void GetWorkSurfListByForeignKey(std::vector<WorkSurf> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
+    return;
+  }
+  void GetWorkSurfIdListByForeignKey(std::vector<int32_t> & /* _return */, const std::string& /* fkey */, const int32_t /* id */) {
     return;
   }
   void InitSampleRegion() {
@@ -5791,6 +6047,228 @@ class CbmService_GetAccountIdListByField2_presult {
 
 };
 
+typedef struct _CbmService_GetAccountListByForeignKey_args__isset {
+  _CbmService_GetAccountListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetAccountListByForeignKey_args__isset;
+
+class CbmService_GetAccountListByForeignKey_args {
+ public:
+
+  CbmService_GetAccountListByForeignKey_args(const CbmService_GetAccountListByForeignKey_args&);
+  CbmService_GetAccountListByForeignKey_args& operator=(const CbmService_GetAccountListByForeignKey_args&);
+  CbmService_GetAccountListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetAccountListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetAccountListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetAccountListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetAccountListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetAccountListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetAccountListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetAccountListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetAccountListByForeignKey_result__isset {
+  _CbmService_GetAccountListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetAccountListByForeignKey_result__isset;
+
+class CbmService_GetAccountListByForeignKey_result {
+ public:
+
+  CbmService_GetAccountListByForeignKey_result(const CbmService_GetAccountListByForeignKey_result&);
+  CbmService_GetAccountListByForeignKey_result& operator=(const CbmService_GetAccountListByForeignKey_result&);
+  CbmService_GetAccountListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetAccountListByForeignKey_result() throw();
+  std::vector<Account>  success;
+
+  _CbmService_GetAccountListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<Account> & val);
+
+  bool operator == (const CbmService_GetAccountListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetAccountListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetAccountListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetAccountListByForeignKey_presult__isset {
+  _CbmService_GetAccountListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetAccountListByForeignKey_presult__isset;
+
+class CbmService_GetAccountListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetAccountListByForeignKey_presult() throw();
+  std::vector<Account> * success;
+
+  _CbmService_GetAccountListByForeignKey_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetAccountIdListByForeignKey_args__isset {
+  _CbmService_GetAccountIdListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetAccountIdListByForeignKey_args__isset;
+
+class CbmService_GetAccountIdListByForeignKey_args {
+ public:
+
+  CbmService_GetAccountIdListByForeignKey_args(const CbmService_GetAccountIdListByForeignKey_args&);
+  CbmService_GetAccountIdListByForeignKey_args& operator=(const CbmService_GetAccountIdListByForeignKey_args&);
+  CbmService_GetAccountIdListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetAccountIdListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetAccountIdListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetAccountIdListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetAccountIdListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetAccountIdListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetAccountIdListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetAccountIdListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetAccountIdListByForeignKey_result__isset {
+  _CbmService_GetAccountIdListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetAccountIdListByForeignKey_result__isset;
+
+class CbmService_GetAccountIdListByForeignKey_result {
+ public:
+
+  CbmService_GetAccountIdListByForeignKey_result(const CbmService_GetAccountIdListByForeignKey_result&);
+  CbmService_GetAccountIdListByForeignKey_result& operator=(const CbmService_GetAccountIdListByForeignKey_result&);
+  CbmService_GetAccountIdListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetAccountIdListByForeignKey_result() throw();
+  std::vector<int32_t>  success;
+
+  _CbmService_GetAccountIdListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<int32_t> & val);
+
+  bool operator == (const CbmService_GetAccountIdListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetAccountIdListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetAccountIdListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetAccountIdListByForeignKey_presult__isset {
+  _CbmService_GetAccountIdListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetAccountIdListByForeignKey_presult__isset;
+
+class CbmService_GetAccountIdListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetAccountIdListByForeignKey_presult() throw();
+  std::vector<int32_t> * success;
+
+  _CbmService_GetAccountIdListByForeignKey_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
 typedef struct _CbmService_AddAdjLayer_args__isset {
   _CbmService_AddAdjLayer_args__isset() : adj_layer(false) {}
   bool adj_layer :1;
@@ -8232,6 +8710,228 @@ class CbmService_GetAdjLayerIdListByField2_presult {
   std::vector<int32_t> * success;
 
   _CbmService_GetAdjLayerIdListByField2_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetAdjLayerListByForeignKey_args__isset {
+  _CbmService_GetAdjLayerListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetAdjLayerListByForeignKey_args__isset;
+
+class CbmService_GetAdjLayerListByForeignKey_args {
+ public:
+
+  CbmService_GetAdjLayerListByForeignKey_args(const CbmService_GetAdjLayerListByForeignKey_args&);
+  CbmService_GetAdjLayerListByForeignKey_args& operator=(const CbmService_GetAdjLayerListByForeignKey_args&);
+  CbmService_GetAdjLayerListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetAdjLayerListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetAdjLayerListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetAdjLayerListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetAdjLayerListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetAdjLayerListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetAdjLayerListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetAdjLayerListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetAdjLayerListByForeignKey_result__isset {
+  _CbmService_GetAdjLayerListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetAdjLayerListByForeignKey_result__isset;
+
+class CbmService_GetAdjLayerListByForeignKey_result {
+ public:
+
+  CbmService_GetAdjLayerListByForeignKey_result(const CbmService_GetAdjLayerListByForeignKey_result&);
+  CbmService_GetAdjLayerListByForeignKey_result& operator=(const CbmService_GetAdjLayerListByForeignKey_result&);
+  CbmService_GetAdjLayerListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetAdjLayerListByForeignKey_result() throw();
+  std::vector<AdjLayer>  success;
+
+  _CbmService_GetAdjLayerListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<AdjLayer> & val);
+
+  bool operator == (const CbmService_GetAdjLayerListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetAdjLayerListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetAdjLayerListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetAdjLayerListByForeignKey_presult__isset {
+  _CbmService_GetAdjLayerListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetAdjLayerListByForeignKey_presult__isset;
+
+class CbmService_GetAdjLayerListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetAdjLayerListByForeignKey_presult() throw();
+  std::vector<AdjLayer> * success;
+
+  _CbmService_GetAdjLayerListByForeignKey_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetAdjLayerIdListByForeignKey_args__isset {
+  _CbmService_GetAdjLayerIdListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetAdjLayerIdListByForeignKey_args__isset;
+
+class CbmService_GetAdjLayerIdListByForeignKey_args {
+ public:
+
+  CbmService_GetAdjLayerIdListByForeignKey_args(const CbmService_GetAdjLayerIdListByForeignKey_args&);
+  CbmService_GetAdjLayerIdListByForeignKey_args& operator=(const CbmService_GetAdjLayerIdListByForeignKey_args&);
+  CbmService_GetAdjLayerIdListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetAdjLayerIdListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetAdjLayerIdListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetAdjLayerIdListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetAdjLayerIdListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetAdjLayerIdListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetAdjLayerIdListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetAdjLayerIdListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetAdjLayerIdListByForeignKey_result__isset {
+  _CbmService_GetAdjLayerIdListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetAdjLayerIdListByForeignKey_result__isset;
+
+class CbmService_GetAdjLayerIdListByForeignKey_result {
+ public:
+
+  CbmService_GetAdjLayerIdListByForeignKey_result(const CbmService_GetAdjLayerIdListByForeignKey_result&);
+  CbmService_GetAdjLayerIdListByForeignKey_result& operator=(const CbmService_GetAdjLayerIdListByForeignKey_result&);
+  CbmService_GetAdjLayerIdListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetAdjLayerIdListByForeignKey_result() throw();
+  std::vector<int32_t>  success;
+
+  _CbmService_GetAdjLayerIdListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<int32_t> & val);
+
+  bool operator == (const CbmService_GetAdjLayerIdListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetAdjLayerIdListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetAdjLayerIdListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetAdjLayerIdListByForeignKey_presult__isset {
+  _CbmService_GetAdjLayerIdListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetAdjLayerIdListByForeignKey_presult__isset;
+
+class CbmService_GetAdjLayerIdListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetAdjLayerIdListByForeignKey_presult() throw();
+  std::vector<int32_t> * success;
+
+  _CbmService_GetAdjLayerIdListByForeignKey_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
@@ -10683,6 +11383,228 @@ class CbmService_GetCoalIdListByField2_presult {
 
 };
 
+typedef struct _CbmService_GetCoalListByForeignKey_args__isset {
+  _CbmService_GetCoalListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetCoalListByForeignKey_args__isset;
+
+class CbmService_GetCoalListByForeignKey_args {
+ public:
+
+  CbmService_GetCoalListByForeignKey_args(const CbmService_GetCoalListByForeignKey_args&);
+  CbmService_GetCoalListByForeignKey_args& operator=(const CbmService_GetCoalListByForeignKey_args&);
+  CbmService_GetCoalListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetCoalListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetCoalListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetCoalListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetCoalListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetCoalListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetCoalListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetCoalListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetCoalListByForeignKey_result__isset {
+  _CbmService_GetCoalListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetCoalListByForeignKey_result__isset;
+
+class CbmService_GetCoalListByForeignKey_result {
+ public:
+
+  CbmService_GetCoalListByForeignKey_result(const CbmService_GetCoalListByForeignKey_result&);
+  CbmService_GetCoalListByForeignKey_result& operator=(const CbmService_GetCoalListByForeignKey_result&);
+  CbmService_GetCoalListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetCoalListByForeignKey_result() throw();
+  std::vector<Coal>  success;
+
+  _CbmService_GetCoalListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<Coal> & val);
+
+  bool operator == (const CbmService_GetCoalListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetCoalListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetCoalListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetCoalListByForeignKey_presult__isset {
+  _CbmService_GetCoalListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetCoalListByForeignKey_presult__isset;
+
+class CbmService_GetCoalListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetCoalListByForeignKey_presult() throw();
+  std::vector<Coal> * success;
+
+  _CbmService_GetCoalListByForeignKey_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetCoalIdListByForeignKey_args__isset {
+  _CbmService_GetCoalIdListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetCoalIdListByForeignKey_args__isset;
+
+class CbmService_GetCoalIdListByForeignKey_args {
+ public:
+
+  CbmService_GetCoalIdListByForeignKey_args(const CbmService_GetCoalIdListByForeignKey_args&);
+  CbmService_GetCoalIdListByForeignKey_args& operator=(const CbmService_GetCoalIdListByForeignKey_args&);
+  CbmService_GetCoalIdListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetCoalIdListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetCoalIdListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetCoalIdListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetCoalIdListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetCoalIdListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetCoalIdListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetCoalIdListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetCoalIdListByForeignKey_result__isset {
+  _CbmService_GetCoalIdListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetCoalIdListByForeignKey_result__isset;
+
+class CbmService_GetCoalIdListByForeignKey_result {
+ public:
+
+  CbmService_GetCoalIdListByForeignKey_result(const CbmService_GetCoalIdListByForeignKey_result&);
+  CbmService_GetCoalIdListByForeignKey_result& operator=(const CbmService_GetCoalIdListByForeignKey_result&);
+  CbmService_GetCoalIdListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetCoalIdListByForeignKey_result() throw();
+  std::vector<int32_t>  success;
+
+  _CbmService_GetCoalIdListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<int32_t> & val);
+
+  bool operator == (const CbmService_GetCoalIdListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetCoalIdListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetCoalIdListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetCoalIdListByForeignKey_presult__isset {
+  _CbmService_GetCoalIdListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetCoalIdListByForeignKey_presult__isset;
+
+class CbmService_GetCoalIdListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetCoalIdListByForeignKey_presult() throw();
+  std::vector<int32_t> * success;
+
+  _CbmService_GetCoalIdListByForeignKey_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
 typedef struct _CbmService_AddComplexity_args__isset {
   _CbmService_AddComplexity_args__isset() : complexity(false) {}
   bool complexity :1;
@@ -13124,6 +14046,228 @@ class CbmService_GetComplexityIdListByField2_presult {
   std::vector<int32_t> * success;
 
   _CbmService_GetComplexityIdListByField2_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetComplexityListByForeignKey_args__isset {
+  _CbmService_GetComplexityListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetComplexityListByForeignKey_args__isset;
+
+class CbmService_GetComplexityListByForeignKey_args {
+ public:
+
+  CbmService_GetComplexityListByForeignKey_args(const CbmService_GetComplexityListByForeignKey_args&);
+  CbmService_GetComplexityListByForeignKey_args& operator=(const CbmService_GetComplexityListByForeignKey_args&);
+  CbmService_GetComplexityListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetComplexityListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetComplexityListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetComplexityListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetComplexityListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetComplexityListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetComplexityListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetComplexityListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetComplexityListByForeignKey_result__isset {
+  _CbmService_GetComplexityListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetComplexityListByForeignKey_result__isset;
+
+class CbmService_GetComplexityListByForeignKey_result {
+ public:
+
+  CbmService_GetComplexityListByForeignKey_result(const CbmService_GetComplexityListByForeignKey_result&);
+  CbmService_GetComplexityListByForeignKey_result& operator=(const CbmService_GetComplexityListByForeignKey_result&);
+  CbmService_GetComplexityListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetComplexityListByForeignKey_result() throw();
+  std::vector<Complexity>  success;
+
+  _CbmService_GetComplexityListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<Complexity> & val);
+
+  bool operator == (const CbmService_GetComplexityListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetComplexityListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetComplexityListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetComplexityListByForeignKey_presult__isset {
+  _CbmService_GetComplexityListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetComplexityListByForeignKey_presult__isset;
+
+class CbmService_GetComplexityListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetComplexityListByForeignKey_presult() throw();
+  std::vector<Complexity> * success;
+
+  _CbmService_GetComplexityListByForeignKey_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetComplexityIdListByForeignKey_args__isset {
+  _CbmService_GetComplexityIdListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetComplexityIdListByForeignKey_args__isset;
+
+class CbmService_GetComplexityIdListByForeignKey_args {
+ public:
+
+  CbmService_GetComplexityIdListByForeignKey_args(const CbmService_GetComplexityIdListByForeignKey_args&);
+  CbmService_GetComplexityIdListByForeignKey_args& operator=(const CbmService_GetComplexityIdListByForeignKey_args&);
+  CbmService_GetComplexityIdListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetComplexityIdListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetComplexityIdListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetComplexityIdListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetComplexityIdListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetComplexityIdListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetComplexityIdListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetComplexityIdListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetComplexityIdListByForeignKey_result__isset {
+  _CbmService_GetComplexityIdListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetComplexityIdListByForeignKey_result__isset;
+
+class CbmService_GetComplexityIdListByForeignKey_result {
+ public:
+
+  CbmService_GetComplexityIdListByForeignKey_result(const CbmService_GetComplexityIdListByForeignKey_result&);
+  CbmService_GetComplexityIdListByForeignKey_result& operator=(const CbmService_GetComplexityIdListByForeignKey_result&);
+  CbmService_GetComplexityIdListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetComplexityIdListByForeignKey_result() throw();
+  std::vector<int32_t>  success;
+
+  _CbmService_GetComplexityIdListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<int32_t> & val);
+
+  bool operator == (const CbmService_GetComplexityIdListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetComplexityIdListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetComplexityIdListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetComplexityIdListByForeignKey_presult__isset {
+  _CbmService_GetComplexityIdListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetComplexityIdListByForeignKey_presult__isset;
+
+class CbmService_GetComplexityIdListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetComplexityIdListByForeignKey_presult() throw();
+  std::vector<int32_t> * success;
+
+  _CbmService_GetComplexityIdListByForeignKey_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
@@ -15575,6 +16719,228 @@ class CbmService_GetDesignDrillingSurfTechnologyIdListByField2_presult {
 
 };
 
+typedef struct _CbmService_GetDesignDrillingSurfTechnologyListByForeignKey_args__isset {
+  _CbmService_GetDesignDrillingSurfTechnologyListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetDesignDrillingSurfTechnologyListByForeignKey_args__isset;
+
+class CbmService_GetDesignDrillingSurfTechnologyListByForeignKey_args {
+ public:
+
+  CbmService_GetDesignDrillingSurfTechnologyListByForeignKey_args(const CbmService_GetDesignDrillingSurfTechnologyListByForeignKey_args&);
+  CbmService_GetDesignDrillingSurfTechnologyListByForeignKey_args& operator=(const CbmService_GetDesignDrillingSurfTechnologyListByForeignKey_args&);
+  CbmService_GetDesignDrillingSurfTechnologyListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetDesignDrillingSurfTechnologyListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetDesignDrillingSurfTechnologyListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetDesignDrillingSurfTechnologyListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetDesignDrillingSurfTechnologyListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetDesignDrillingSurfTechnologyListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetDesignDrillingSurfTechnologyListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetDesignDrillingSurfTechnologyListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetDesignDrillingSurfTechnologyListByForeignKey_result__isset {
+  _CbmService_GetDesignDrillingSurfTechnologyListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetDesignDrillingSurfTechnologyListByForeignKey_result__isset;
+
+class CbmService_GetDesignDrillingSurfTechnologyListByForeignKey_result {
+ public:
+
+  CbmService_GetDesignDrillingSurfTechnologyListByForeignKey_result(const CbmService_GetDesignDrillingSurfTechnologyListByForeignKey_result&);
+  CbmService_GetDesignDrillingSurfTechnologyListByForeignKey_result& operator=(const CbmService_GetDesignDrillingSurfTechnologyListByForeignKey_result&);
+  CbmService_GetDesignDrillingSurfTechnologyListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetDesignDrillingSurfTechnologyListByForeignKey_result() throw();
+  std::vector<DesignDrillingSurfTechnology>  success;
+
+  _CbmService_GetDesignDrillingSurfTechnologyListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<DesignDrillingSurfTechnology> & val);
+
+  bool operator == (const CbmService_GetDesignDrillingSurfTechnologyListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetDesignDrillingSurfTechnologyListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetDesignDrillingSurfTechnologyListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetDesignDrillingSurfTechnologyListByForeignKey_presult__isset {
+  _CbmService_GetDesignDrillingSurfTechnologyListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetDesignDrillingSurfTechnologyListByForeignKey_presult__isset;
+
+class CbmService_GetDesignDrillingSurfTechnologyListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetDesignDrillingSurfTechnologyListByForeignKey_presult() throw();
+  std::vector<DesignDrillingSurfTechnology> * success;
+
+  _CbmService_GetDesignDrillingSurfTechnologyListByForeignKey_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetDesignDrillingSurfTechnologyIdListByForeignKey_args__isset {
+  _CbmService_GetDesignDrillingSurfTechnologyIdListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetDesignDrillingSurfTechnologyIdListByForeignKey_args__isset;
+
+class CbmService_GetDesignDrillingSurfTechnologyIdListByForeignKey_args {
+ public:
+
+  CbmService_GetDesignDrillingSurfTechnologyIdListByForeignKey_args(const CbmService_GetDesignDrillingSurfTechnologyIdListByForeignKey_args&);
+  CbmService_GetDesignDrillingSurfTechnologyIdListByForeignKey_args& operator=(const CbmService_GetDesignDrillingSurfTechnologyIdListByForeignKey_args&);
+  CbmService_GetDesignDrillingSurfTechnologyIdListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetDesignDrillingSurfTechnologyIdListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetDesignDrillingSurfTechnologyIdListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetDesignDrillingSurfTechnologyIdListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetDesignDrillingSurfTechnologyIdListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetDesignDrillingSurfTechnologyIdListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetDesignDrillingSurfTechnologyIdListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetDesignDrillingSurfTechnologyIdListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetDesignDrillingSurfTechnologyIdListByForeignKey_result__isset {
+  _CbmService_GetDesignDrillingSurfTechnologyIdListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetDesignDrillingSurfTechnologyIdListByForeignKey_result__isset;
+
+class CbmService_GetDesignDrillingSurfTechnologyIdListByForeignKey_result {
+ public:
+
+  CbmService_GetDesignDrillingSurfTechnologyIdListByForeignKey_result(const CbmService_GetDesignDrillingSurfTechnologyIdListByForeignKey_result&);
+  CbmService_GetDesignDrillingSurfTechnologyIdListByForeignKey_result& operator=(const CbmService_GetDesignDrillingSurfTechnologyIdListByForeignKey_result&);
+  CbmService_GetDesignDrillingSurfTechnologyIdListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetDesignDrillingSurfTechnologyIdListByForeignKey_result() throw();
+  std::vector<int32_t>  success;
+
+  _CbmService_GetDesignDrillingSurfTechnologyIdListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<int32_t> & val);
+
+  bool operator == (const CbmService_GetDesignDrillingSurfTechnologyIdListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetDesignDrillingSurfTechnologyIdListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetDesignDrillingSurfTechnologyIdListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetDesignDrillingSurfTechnologyIdListByForeignKey_presult__isset {
+  _CbmService_GetDesignDrillingSurfTechnologyIdListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetDesignDrillingSurfTechnologyIdListByForeignKey_presult__isset;
+
+class CbmService_GetDesignDrillingSurfTechnologyIdListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetDesignDrillingSurfTechnologyIdListByForeignKey_presult() throw();
+  std::vector<int32_t> * success;
+
+  _CbmService_GetDesignDrillingSurfTechnologyIdListByForeignKey_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
 typedef struct _CbmService_AddDesignGoafTechnology_args__isset {
   _CbmService_AddDesignGoafTechnology_args__isset() : design_goaf_technology(false) {}
   bool design_goaf_technology :1;
@@ -18016,6 +19382,228 @@ class CbmService_GetDesignGoafTechnologyIdListByField2_presult {
   std::vector<int32_t> * success;
 
   _CbmService_GetDesignGoafTechnologyIdListByField2_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetDesignGoafTechnologyListByForeignKey_args__isset {
+  _CbmService_GetDesignGoafTechnologyListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetDesignGoafTechnologyListByForeignKey_args__isset;
+
+class CbmService_GetDesignGoafTechnologyListByForeignKey_args {
+ public:
+
+  CbmService_GetDesignGoafTechnologyListByForeignKey_args(const CbmService_GetDesignGoafTechnologyListByForeignKey_args&);
+  CbmService_GetDesignGoafTechnologyListByForeignKey_args& operator=(const CbmService_GetDesignGoafTechnologyListByForeignKey_args&);
+  CbmService_GetDesignGoafTechnologyListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetDesignGoafTechnologyListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetDesignGoafTechnologyListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetDesignGoafTechnologyListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetDesignGoafTechnologyListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetDesignGoafTechnologyListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetDesignGoafTechnologyListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetDesignGoafTechnologyListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetDesignGoafTechnologyListByForeignKey_result__isset {
+  _CbmService_GetDesignGoafTechnologyListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetDesignGoafTechnologyListByForeignKey_result__isset;
+
+class CbmService_GetDesignGoafTechnologyListByForeignKey_result {
+ public:
+
+  CbmService_GetDesignGoafTechnologyListByForeignKey_result(const CbmService_GetDesignGoafTechnologyListByForeignKey_result&);
+  CbmService_GetDesignGoafTechnologyListByForeignKey_result& operator=(const CbmService_GetDesignGoafTechnologyListByForeignKey_result&);
+  CbmService_GetDesignGoafTechnologyListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetDesignGoafTechnologyListByForeignKey_result() throw();
+  std::vector<DesignGoafTechnology>  success;
+
+  _CbmService_GetDesignGoafTechnologyListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<DesignGoafTechnology> & val);
+
+  bool operator == (const CbmService_GetDesignGoafTechnologyListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetDesignGoafTechnologyListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetDesignGoafTechnologyListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetDesignGoafTechnologyListByForeignKey_presult__isset {
+  _CbmService_GetDesignGoafTechnologyListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetDesignGoafTechnologyListByForeignKey_presult__isset;
+
+class CbmService_GetDesignGoafTechnologyListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetDesignGoafTechnologyListByForeignKey_presult() throw();
+  std::vector<DesignGoafTechnology> * success;
+
+  _CbmService_GetDesignGoafTechnologyListByForeignKey_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetDesignGoafTechnologyIdListByForeignKey_args__isset {
+  _CbmService_GetDesignGoafTechnologyIdListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetDesignGoafTechnologyIdListByForeignKey_args__isset;
+
+class CbmService_GetDesignGoafTechnologyIdListByForeignKey_args {
+ public:
+
+  CbmService_GetDesignGoafTechnologyIdListByForeignKey_args(const CbmService_GetDesignGoafTechnologyIdListByForeignKey_args&);
+  CbmService_GetDesignGoafTechnologyIdListByForeignKey_args& operator=(const CbmService_GetDesignGoafTechnologyIdListByForeignKey_args&);
+  CbmService_GetDesignGoafTechnologyIdListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetDesignGoafTechnologyIdListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetDesignGoafTechnologyIdListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetDesignGoafTechnologyIdListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetDesignGoafTechnologyIdListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetDesignGoafTechnologyIdListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetDesignGoafTechnologyIdListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetDesignGoafTechnologyIdListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetDesignGoafTechnologyIdListByForeignKey_result__isset {
+  _CbmService_GetDesignGoafTechnologyIdListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetDesignGoafTechnologyIdListByForeignKey_result__isset;
+
+class CbmService_GetDesignGoafTechnologyIdListByForeignKey_result {
+ public:
+
+  CbmService_GetDesignGoafTechnologyIdListByForeignKey_result(const CbmService_GetDesignGoafTechnologyIdListByForeignKey_result&);
+  CbmService_GetDesignGoafTechnologyIdListByForeignKey_result& operator=(const CbmService_GetDesignGoafTechnologyIdListByForeignKey_result&);
+  CbmService_GetDesignGoafTechnologyIdListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetDesignGoafTechnologyIdListByForeignKey_result() throw();
+  std::vector<int32_t>  success;
+
+  _CbmService_GetDesignGoafTechnologyIdListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<int32_t> & val);
+
+  bool operator == (const CbmService_GetDesignGoafTechnologyIdListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetDesignGoafTechnologyIdListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetDesignGoafTechnologyIdListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetDesignGoafTechnologyIdListByForeignKey_presult__isset {
+  _CbmService_GetDesignGoafTechnologyIdListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetDesignGoafTechnologyIdListByForeignKey_presult__isset;
+
+class CbmService_GetDesignGoafTechnologyIdListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetDesignGoafTechnologyIdListByForeignKey_presult() throw();
+  std::vector<int32_t> * success;
+
+  _CbmService_GetDesignGoafTechnologyIdListByForeignKey_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
@@ -20467,6 +22055,228 @@ class CbmService_GetDesignPoreIdListByField2_presult {
 
 };
 
+typedef struct _CbmService_GetDesignPoreListByForeignKey_args__isset {
+  _CbmService_GetDesignPoreListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetDesignPoreListByForeignKey_args__isset;
+
+class CbmService_GetDesignPoreListByForeignKey_args {
+ public:
+
+  CbmService_GetDesignPoreListByForeignKey_args(const CbmService_GetDesignPoreListByForeignKey_args&);
+  CbmService_GetDesignPoreListByForeignKey_args& operator=(const CbmService_GetDesignPoreListByForeignKey_args&);
+  CbmService_GetDesignPoreListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetDesignPoreListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetDesignPoreListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetDesignPoreListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetDesignPoreListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetDesignPoreListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetDesignPoreListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetDesignPoreListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetDesignPoreListByForeignKey_result__isset {
+  _CbmService_GetDesignPoreListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetDesignPoreListByForeignKey_result__isset;
+
+class CbmService_GetDesignPoreListByForeignKey_result {
+ public:
+
+  CbmService_GetDesignPoreListByForeignKey_result(const CbmService_GetDesignPoreListByForeignKey_result&);
+  CbmService_GetDesignPoreListByForeignKey_result& operator=(const CbmService_GetDesignPoreListByForeignKey_result&);
+  CbmService_GetDesignPoreListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetDesignPoreListByForeignKey_result() throw();
+  std::vector<DesignPore>  success;
+
+  _CbmService_GetDesignPoreListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<DesignPore> & val);
+
+  bool operator == (const CbmService_GetDesignPoreListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetDesignPoreListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetDesignPoreListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetDesignPoreListByForeignKey_presult__isset {
+  _CbmService_GetDesignPoreListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetDesignPoreListByForeignKey_presult__isset;
+
+class CbmService_GetDesignPoreListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetDesignPoreListByForeignKey_presult() throw();
+  std::vector<DesignPore> * success;
+
+  _CbmService_GetDesignPoreListByForeignKey_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetDesignPoreIdListByForeignKey_args__isset {
+  _CbmService_GetDesignPoreIdListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetDesignPoreIdListByForeignKey_args__isset;
+
+class CbmService_GetDesignPoreIdListByForeignKey_args {
+ public:
+
+  CbmService_GetDesignPoreIdListByForeignKey_args(const CbmService_GetDesignPoreIdListByForeignKey_args&);
+  CbmService_GetDesignPoreIdListByForeignKey_args& operator=(const CbmService_GetDesignPoreIdListByForeignKey_args&);
+  CbmService_GetDesignPoreIdListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetDesignPoreIdListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetDesignPoreIdListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetDesignPoreIdListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetDesignPoreIdListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetDesignPoreIdListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetDesignPoreIdListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetDesignPoreIdListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetDesignPoreIdListByForeignKey_result__isset {
+  _CbmService_GetDesignPoreIdListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetDesignPoreIdListByForeignKey_result__isset;
+
+class CbmService_GetDesignPoreIdListByForeignKey_result {
+ public:
+
+  CbmService_GetDesignPoreIdListByForeignKey_result(const CbmService_GetDesignPoreIdListByForeignKey_result&);
+  CbmService_GetDesignPoreIdListByForeignKey_result& operator=(const CbmService_GetDesignPoreIdListByForeignKey_result&);
+  CbmService_GetDesignPoreIdListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetDesignPoreIdListByForeignKey_result() throw();
+  std::vector<int32_t>  success;
+
+  _CbmService_GetDesignPoreIdListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<int32_t> & val);
+
+  bool operator == (const CbmService_GetDesignPoreIdListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetDesignPoreIdListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetDesignPoreIdListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetDesignPoreIdListByForeignKey_presult__isset {
+  _CbmService_GetDesignPoreIdListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetDesignPoreIdListByForeignKey_presult__isset;
+
+class CbmService_GetDesignPoreIdListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetDesignPoreIdListByForeignKey_presult() throw();
+  std::vector<int32_t> * success;
+
+  _CbmService_GetDesignPoreIdListByForeignKey_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
 typedef struct _CbmService_AddDesignSite_args__isset {
   _CbmService_AddDesignSite_args__isset() : design_site(false) {}
   bool design_site :1;
@@ -22908,6 +24718,228 @@ class CbmService_GetDesignSiteIdListByField2_presult {
   std::vector<int32_t> * success;
 
   _CbmService_GetDesignSiteIdListByField2_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetDesignSiteListByForeignKey_args__isset {
+  _CbmService_GetDesignSiteListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetDesignSiteListByForeignKey_args__isset;
+
+class CbmService_GetDesignSiteListByForeignKey_args {
+ public:
+
+  CbmService_GetDesignSiteListByForeignKey_args(const CbmService_GetDesignSiteListByForeignKey_args&);
+  CbmService_GetDesignSiteListByForeignKey_args& operator=(const CbmService_GetDesignSiteListByForeignKey_args&);
+  CbmService_GetDesignSiteListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetDesignSiteListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetDesignSiteListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetDesignSiteListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetDesignSiteListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetDesignSiteListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetDesignSiteListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetDesignSiteListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetDesignSiteListByForeignKey_result__isset {
+  _CbmService_GetDesignSiteListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetDesignSiteListByForeignKey_result__isset;
+
+class CbmService_GetDesignSiteListByForeignKey_result {
+ public:
+
+  CbmService_GetDesignSiteListByForeignKey_result(const CbmService_GetDesignSiteListByForeignKey_result&);
+  CbmService_GetDesignSiteListByForeignKey_result& operator=(const CbmService_GetDesignSiteListByForeignKey_result&);
+  CbmService_GetDesignSiteListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetDesignSiteListByForeignKey_result() throw();
+  std::vector<DesignSite>  success;
+
+  _CbmService_GetDesignSiteListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<DesignSite> & val);
+
+  bool operator == (const CbmService_GetDesignSiteListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetDesignSiteListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetDesignSiteListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetDesignSiteListByForeignKey_presult__isset {
+  _CbmService_GetDesignSiteListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetDesignSiteListByForeignKey_presult__isset;
+
+class CbmService_GetDesignSiteListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetDesignSiteListByForeignKey_presult() throw();
+  std::vector<DesignSite> * success;
+
+  _CbmService_GetDesignSiteListByForeignKey_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetDesignSiteIdListByForeignKey_args__isset {
+  _CbmService_GetDesignSiteIdListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetDesignSiteIdListByForeignKey_args__isset;
+
+class CbmService_GetDesignSiteIdListByForeignKey_args {
+ public:
+
+  CbmService_GetDesignSiteIdListByForeignKey_args(const CbmService_GetDesignSiteIdListByForeignKey_args&);
+  CbmService_GetDesignSiteIdListByForeignKey_args& operator=(const CbmService_GetDesignSiteIdListByForeignKey_args&);
+  CbmService_GetDesignSiteIdListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetDesignSiteIdListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetDesignSiteIdListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetDesignSiteIdListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetDesignSiteIdListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetDesignSiteIdListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetDesignSiteIdListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetDesignSiteIdListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetDesignSiteIdListByForeignKey_result__isset {
+  _CbmService_GetDesignSiteIdListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetDesignSiteIdListByForeignKey_result__isset;
+
+class CbmService_GetDesignSiteIdListByForeignKey_result {
+ public:
+
+  CbmService_GetDesignSiteIdListByForeignKey_result(const CbmService_GetDesignSiteIdListByForeignKey_result&);
+  CbmService_GetDesignSiteIdListByForeignKey_result& operator=(const CbmService_GetDesignSiteIdListByForeignKey_result&);
+  CbmService_GetDesignSiteIdListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetDesignSiteIdListByForeignKey_result() throw();
+  std::vector<int32_t>  success;
+
+  _CbmService_GetDesignSiteIdListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<int32_t> & val);
+
+  bool operator == (const CbmService_GetDesignSiteIdListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetDesignSiteIdListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetDesignSiteIdListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetDesignSiteIdListByForeignKey_presult__isset {
+  _CbmService_GetDesignSiteIdListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetDesignSiteIdListByForeignKey_presult__isset;
+
+class CbmService_GetDesignSiteIdListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetDesignSiteIdListByForeignKey_presult() throw();
+  std::vector<int32_t> * success;
+
+  _CbmService_GetDesignSiteIdListByForeignKey_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
@@ -25359,6 +27391,228 @@ class CbmService_GetDesignTechnologyIdListByField2_presult {
 
 };
 
+typedef struct _CbmService_GetDesignTechnologyListByForeignKey_args__isset {
+  _CbmService_GetDesignTechnologyListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetDesignTechnologyListByForeignKey_args__isset;
+
+class CbmService_GetDesignTechnologyListByForeignKey_args {
+ public:
+
+  CbmService_GetDesignTechnologyListByForeignKey_args(const CbmService_GetDesignTechnologyListByForeignKey_args&);
+  CbmService_GetDesignTechnologyListByForeignKey_args& operator=(const CbmService_GetDesignTechnologyListByForeignKey_args&);
+  CbmService_GetDesignTechnologyListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetDesignTechnologyListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetDesignTechnologyListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetDesignTechnologyListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetDesignTechnologyListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetDesignTechnologyListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetDesignTechnologyListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetDesignTechnologyListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetDesignTechnologyListByForeignKey_result__isset {
+  _CbmService_GetDesignTechnologyListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetDesignTechnologyListByForeignKey_result__isset;
+
+class CbmService_GetDesignTechnologyListByForeignKey_result {
+ public:
+
+  CbmService_GetDesignTechnologyListByForeignKey_result(const CbmService_GetDesignTechnologyListByForeignKey_result&);
+  CbmService_GetDesignTechnologyListByForeignKey_result& operator=(const CbmService_GetDesignTechnologyListByForeignKey_result&);
+  CbmService_GetDesignTechnologyListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetDesignTechnologyListByForeignKey_result() throw();
+  std::vector<DesignTechnology>  success;
+
+  _CbmService_GetDesignTechnologyListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<DesignTechnology> & val);
+
+  bool operator == (const CbmService_GetDesignTechnologyListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetDesignTechnologyListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetDesignTechnologyListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetDesignTechnologyListByForeignKey_presult__isset {
+  _CbmService_GetDesignTechnologyListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetDesignTechnologyListByForeignKey_presult__isset;
+
+class CbmService_GetDesignTechnologyListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetDesignTechnologyListByForeignKey_presult() throw();
+  std::vector<DesignTechnology> * success;
+
+  _CbmService_GetDesignTechnologyListByForeignKey_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetDesignTechnologyIdListByForeignKey_args__isset {
+  _CbmService_GetDesignTechnologyIdListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetDesignTechnologyIdListByForeignKey_args__isset;
+
+class CbmService_GetDesignTechnologyIdListByForeignKey_args {
+ public:
+
+  CbmService_GetDesignTechnologyIdListByForeignKey_args(const CbmService_GetDesignTechnologyIdListByForeignKey_args&);
+  CbmService_GetDesignTechnologyIdListByForeignKey_args& operator=(const CbmService_GetDesignTechnologyIdListByForeignKey_args&);
+  CbmService_GetDesignTechnologyIdListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetDesignTechnologyIdListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetDesignTechnologyIdListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetDesignTechnologyIdListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetDesignTechnologyIdListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetDesignTechnologyIdListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetDesignTechnologyIdListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetDesignTechnologyIdListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetDesignTechnologyIdListByForeignKey_result__isset {
+  _CbmService_GetDesignTechnologyIdListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetDesignTechnologyIdListByForeignKey_result__isset;
+
+class CbmService_GetDesignTechnologyIdListByForeignKey_result {
+ public:
+
+  CbmService_GetDesignTechnologyIdListByForeignKey_result(const CbmService_GetDesignTechnologyIdListByForeignKey_result&);
+  CbmService_GetDesignTechnologyIdListByForeignKey_result& operator=(const CbmService_GetDesignTechnologyIdListByForeignKey_result&);
+  CbmService_GetDesignTechnologyIdListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetDesignTechnologyIdListByForeignKey_result() throw();
+  std::vector<int32_t>  success;
+
+  _CbmService_GetDesignTechnologyIdListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<int32_t> & val);
+
+  bool operator == (const CbmService_GetDesignTechnologyIdListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetDesignTechnologyIdListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetDesignTechnologyIdListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetDesignTechnologyIdListByForeignKey_presult__isset {
+  _CbmService_GetDesignTechnologyIdListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetDesignTechnologyIdListByForeignKey_presult__isset;
+
+class CbmService_GetDesignTechnologyIdListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetDesignTechnologyIdListByForeignKey_presult() throw();
+  std::vector<int32_t> * success;
+
+  _CbmService_GetDesignTechnologyIdListByForeignKey_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
 typedef struct _CbmService_AddDesignWorkSurfTechnology_args__isset {
   _CbmService_AddDesignWorkSurfTechnology_args__isset() : design_work_surf_technology(false) {}
   bool design_work_surf_technology :1;
@@ -27800,6 +30054,228 @@ class CbmService_GetDesignWorkSurfTechnologyIdListByField2_presult {
   std::vector<int32_t> * success;
 
   _CbmService_GetDesignWorkSurfTechnologyIdListByField2_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetDesignWorkSurfTechnologyListByForeignKey_args__isset {
+  _CbmService_GetDesignWorkSurfTechnologyListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetDesignWorkSurfTechnologyListByForeignKey_args__isset;
+
+class CbmService_GetDesignWorkSurfTechnologyListByForeignKey_args {
+ public:
+
+  CbmService_GetDesignWorkSurfTechnologyListByForeignKey_args(const CbmService_GetDesignWorkSurfTechnologyListByForeignKey_args&);
+  CbmService_GetDesignWorkSurfTechnologyListByForeignKey_args& operator=(const CbmService_GetDesignWorkSurfTechnologyListByForeignKey_args&);
+  CbmService_GetDesignWorkSurfTechnologyListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetDesignWorkSurfTechnologyListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetDesignWorkSurfTechnologyListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetDesignWorkSurfTechnologyListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetDesignWorkSurfTechnologyListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetDesignWorkSurfTechnologyListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetDesignWorkSurfTechnologyListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetDesignWorkSurfTechnologyListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetDesignWorkSurfTechnologyListByForeignKey_result__isset {
+  _CbmService_GetDesignWorkSurfTechnologyListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetDesignWorkSurfTechnologyListByForeignKey_result__isset;
+
+class CbmService_GetDesignWorkSurfTechnologyListByForeignKey_result {
+ public:
+
+  CbmService_GetDesignWorkSurfTechnologyListByForeignKey_result(const CbmService_GetDesignWorkSurfTechnologyListByForeignKey_result&);
+  CbmService_GetDesignWorkSurfTechnologyListByForeignKey_result& operator=(const CbmService_GetDesignWorkSurfTechnologyListByForeignKey_result&);
+  CbmService_GetDesignWorkSurfTechnologyListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetDesignWorkSurfTechnologyListByForeignKey_result() throw();
+  std::vector<DesignWorkSurfTechnology>  success;
+
+  _CbmService_GetDesignWorkSurfTechnologyListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<DesignWorkSurfTechnology> & val);
+
+  bool operator == (const CbmService_GetDesignWorkSurfTechnologyListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetDesignWorkSurfTechnologyListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetDesignWorkSurfTechnologyListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetDesignWorkSurfTechnologyListByForeignKey_presult__isset {
+  _CbmService_GetDesignWorkSurfTechnologyListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetDesignWorkSurfTechnologyListByForeignKey_presult__isset;
+
+class CbmService_GetDesignWorkSurfTechnologyListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetDesignWorkSurfTechnologyListByForeignKey_presult() throw();
+  std::vector<DesignWorkSurfTechnology> * success;
+
+  _CbmService_GetDesignWorkSurfTechnologyListByForeignKey_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetDesignWorkSurfTechnologyIdListByForeignKey_args__isset {
+  _CbmService_GetDesignWorkSurfTechnologyIdListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetDesignWorkSurfTechnologyIdListByForeignKey_args__isset;
+
+class CbmService_GetDesignWorkSurfTechnologyIdListByForeignKey_args {
+ public:
+
+  CbmService_GetDesignWorkSurfTechnologyIdListByForeignKey_args(const CbmService_GetDesignWorkSurfTechnologyIdListByForeignKey_args&);
+  CbmService_GetDesignWorkSurfTechnologyIdListByForeignKey_args& operator=(const CbmService_GetDesignWorkSurfTechnologyIdListByForeignKey_args&);
+  CbmService_GetDesignWorkSurfTechnologyIdListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetDesignWorkSurfTechnologyIdListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetDesignWorkSurfTechnologyIdListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetDesignWorkSurfTechnologyIdListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetDesignWorkSurfTechnologyIdListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetDesignWorkSurfTechnologyIdListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetDesignWorkSurfTechnologyIdListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetDesignWorkSurfTechnologyIdListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetDesignWorkSurfTechnologyIdListByForeignKey_result__isset {
+  _CbmService_GetDesignWorkSurfTechnologyIdListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetDesignWorkSurfTechnologyIdListByForeignKey_result__isset;
+
+class CbmService_GetDesignWorkSurfTechnologyIdListByForeignKey_result {
+ public:
+
+  CbmService_GetDesignWorkSurfTechnologyIdListByForeignKey_result(const CbmService_GetDesignWorkSurfTechnologyIdListByForeignKey_result&);
+  CbmService_GetDesignWorkSurfTechnologyIdListByForeignKey_result& operator=(const CbmService_GetDesignWorkSurfTechnologyIdListByForeignKey_result&);
+  CbmService_GetDesignWorkSurfTechnologyIdListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetDesignWorkSurfTechnologyIdListByForeignKey_result() throw();
+  std::vector<int32_t>  success;
+
+  _CbmService_GetDesignWorkSurfTechnologyIdListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<int32_t> & val);
+
+  bool operator == (const CbmService_GetDesignWorkSurfTechnologyIdListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetDesignWorkSurfTechnologyIdListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetDesignWorkSurfTechnologyIdListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetDesignWorkSurfTechnologyIdListByForeignKey_presult__isset {
+  _CbmService_GetDesignWorkSurfTechnologyIdListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetDesignWorkSurfTechnologyIdListByForeignKey_presult__isset;
+
+class CbmService_GetDesignWorkSurfTechnologyIdListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetDesignWorkSurfTechnologyIdListByForeignKey_presult() throw();
+  std::vector<int32_t> * success;
+
+  _CbmService_GetDesignWorkSurfTechnologyIdListByForeignKey_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
@@ -30251,6 +32727,228 @@ class CbmService_GetDrillingRadiusParamIdListByField2_presult {
 
 };
 
+typedef struct _CbmService_GetDrillingRadiusParamListByForeignKey_args__isset {
+  _CbmService_GetDrillingRadiusParamListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetDrillingRadiusParamListByForeignKey_args__isset;
+
+class CbmService_GetDrillingRadiusParamListByForeignKey_args {
+ public:
+
+  CbmService_GetDrillingRadiusParamListByForeignKey_args(const CbmService_GetDrillingRadiusParamListByForeignKey_args&);
+  CbmService_GetDrillingRadiusParamListByForeignKey_args& operator=(const CbmService_GetDrillingRadiusParamListByForeignKey_args&);
+  CbmService_GetDrillingRadiusParamListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetDrillingRadiusParamListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetDrillingRadiusParamListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetDrillingRadiusParamListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetDrillingRadiusParamListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetDrillingRadiusParamListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetDrillingRadiusParamListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetDrillingRadiusParamListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetDrillingRadiusParamListByForeignKey_result__isset {
+  _CbmService_GetDrillingRadiusParamListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetDrillingRadiusParamListByForeignKey_result__isset;
+
+class CbmService_GetDrillingRadiusParamListByForeignKey_result {
+ public:
+
+  CbmService_GetDrillingRadiusParamListByForeignKey_result(const CbmService_GetDrillingRadiusParamListByForeignKey_result&);
+  CbmService_GetDrillingRadiusParamListByForeignKey_result& operator=(const CbmService_GetDrillingRadiusParamListByForeignKey_result&);
+  CbmService_GetDrillingRadiusParamListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetDrillingRadiusParamListByForeignKey_result() throw();
+  std::vector<DrillingRadiusParam>  success;
+
+  _CbmService_GetDrillingRadiusParamListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<DrillingRadiusParam> & val);
+
+  bool operator == (const CbmService_GetDrillingRadiusParamListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetDrillingRadiusParamListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetDrillingRadiusParamListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetDrillingRadiusParamListByForeignKey_presult__isset {
+  _CbmService_GetDrillingRadiusParamListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetDrillingRadiusParamListByForeignKey_presult__isset;
+
+class CbmService_GetDrillingRadiusParamListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetDrillingRadiusParamListByForeignKey_presult() throw();
+  std::vector<DrillingRadiusParam> * success;
+
+  _CbmService_GetDrillingRadiusParamListByForeignKey_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetDrillingRadiusParamIdListByForeignKey_args__isset {
+  _CbmService_GetDrillingRadiusParamIdListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetDrillingRadiusParamIdListByForeignKey_args__isset;
+
+class CbmService_GetDrillingRadiusParamIdListByForeignKey_args {
+ public:
+
+  CbmService_GetDrillingRadiusParamIdListByForeignKey_args(const CbmService_GetDrillingRadiusParamIdListByForeignKey_args&);
+  CbmService_GetDrillingRadiusParamIdListByForeignKey_args& operator=(const CbmService_GetDrillingRadiusParamIdListByForeignKey_args&);
+  CbmService_GetDrillingRadiusParamIdListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetDrillingRadiusParamIdListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetDrillingRadiusParamIdListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetDrillingRadiusParamIdListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetDrillingRadiusParamIdListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetDrillingRadiusParamIdListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetDrillingRadiusParamIdListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetDrillingRadiusParamIdListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetDrillingRadiusParamIdListByForeignKey_result__isset {
+  _CbmService_GetDrillingRadiusParamIdListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetDrillingRadiusParamIdListByForeignKey_result__isset;
+
+class CbmService_GetDrillingRadiusParamIdListByForeignKey_result {
+ public:
+
+  CbmService_GetDrillingRadiusParamIdListByForeignKey_result(const CbmService_GetDrillingRadiusParamIdListByForeignKey_result&);
+  CbmService_GetDrillingRadiusParamIdListByForeignKey_result& operator=(const CbmService_GetDrillingRadiusParamIdListByForeignKey_result&);
+  CbmService_GetDrillingRadiusParamIdListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetDrillingRadiusParamIdListByForeignKey_result() throw();
+  std::vector<int32_t>  success;
+
+  _CbmService_GetDrillingRadiusParamIdListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<int32_t> & val);
+
+  bool operator == (const CbmService_GetDrillingRadiusParamIdListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetDrillingRadiusParamIdListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetDrillingRadiusParamIdListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetDrillingRadiusParamIdListByForeignKey_presult__isset {
+  _CbmService_GetDrillingRadiusParamIdListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetDrillingRadiusParamIdListByForeignKey_presult__isset;
+
+class CbmService_GetDrillingRadiusParamIdListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetDrillingRadiusParamIdListByForeignKey_presult() throw();
+  std::vector<int32_t> * success;
+
+  _CbmService_GetDrillingRadiusParamIdListByForeignKey_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
 typedef struct _CbmService_AddDrillingSurf_args__isset {
   _CbmService_AddDrillingSurf_args__isset() : drilling_surf(false) {}
   bool drilling_surf :1;
@@ -32692,6 +35390,228 @@ class CbmService_GetDrillingSurfIdListByField2_presult {
   std::vector<int32_t> * success;
 
   _CbmService_GetDrillingSurfIdListByField2_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetDrillingSurfListByForeignKey_args__isset {
+  _CbmService_GetDrillingSurfListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetDrillingSurfListByForeignKey_args__isset;
+
+class CbmService_GetDrillingSurfListByForeignKey_args {
+ public:
+
+  CbmService_GetDrillingSurfListByForeignKey_args(const CbmService_GetDrillingSurfListByForeignKey_args&);
+  CbmService_GetDrillingSurfListByForeignKey_args& operator=(const CbmService_GetDrillingSurfListByForeignKey_args&);
+  CbmService_GetDrillingSurfListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetDrillingSurfListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetDrillingSurfListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetDrillingSurfListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetDrillingSurfListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetDrillingSurfListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetDrillingSurfListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetDrillingSurfListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetDrillingSurfListByForeignKey_result__isset {
+  _CbmService_GetDrillingSurfListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetDrillingSurfListByForeignKey_result__isset;
+
+class CbmService_GetDrillingSurfListByForeignKey_result {
+ public:
+
+  CbmService_GetDrillingSurfListByForeignKey_result(const CbmService_GetDrillingSurfListByForeignKey_result&);
+  CbmService_GetDrillingSurfListByForeignKey_result& operator=(const CbmService_GetDrillingSurfListByForeignKey_result&);
+  CbmService_GetDrillingSurfListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetDrillingSurfListByForeignKey_result() throw();
+  std::vector<DrillingSurf>  success;
+
+  _CbmService_GetDrillingSurfListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<DrillingSurf> & val);
+
+  bool operator == (const CbmService_GetDrillingSurfListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetDrillingSurfListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetDrillingSurfListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetDrillingSurfListByForeignKey_presult__isset {
+  _CbmService_GetDrillingSurfListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetDrillingSurfListByForeignKey_presult__isset;
+
+class CbmService_GetDrillingSurfListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetDrillingSurfListByForeignKey_presult() throw();
+  std::vector<DrillingSurf> * success;
+
+  _CbmService_GetDrillingSurfListByForeignKey_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetDrillingSurfIdListByForeignKey_args__isset {
+  _CbmService_GetDrillingSurfIdListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetDrillingSurfIdListByForeignKey_args__isset;
+
+class CbmService_GetDrillingSurfIdListByForeignKey_args {
+ public:
+
+  CbmService_GetDrillingSurfIdListByForeignKey_args(const CbmService_GetDrillingSurfIdListByForeignKey_args&);
+  CbmService_GetDrillingSurfIdListByForeignKey_args& operator=(const CbmService_GetDrillingSurfIdListByForeignKey_args&);
+  CbmService_GetDrillingSurfIdListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetDrillingSurfIdListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetDrillingSurfIdListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetDrillingSurfIdListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetDrillingSurfIdListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetDrillingSurfIdListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetDrillingSurfIdListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetDrillingSurfIdListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetDrillingSurfIdListByForeignKey_result__isset {
+  _CbmService_GetDrillingSurfIdListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetDrillingSurfIdListByForeignKey_result__isset;
+
+class CbmService_GetDrillingSurfIdListByForeignKey_result {
+ public:
+
+  CbmService_GetDrillingSurfIdListByForeignKey_result(const CbmService_GetDrillingSurfIdListByForeignKey_result&);
+  CbmService_GetDrillingSurfIdListByForeignKey_result& operator=(const CbmService_GetDrillingSurfIdListByForeignKey_result&);
+  CbmService_GetDrillingSurfIdListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetDrillingSurfIdListByForeignKey_result() throw();
+  std::vector<int32_t>  success;
+
+  _CbmService_GetDrillingSurfIdListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<int32_t> & val);
+
+  bool operator == (const CbmService_GetDrillingSurfIdListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetDrillingSurfIdListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetDrillingSurfIdListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetDrillingSurfIdListByForeignKey_presult__isset {
+  _CbmService_GetDrillingSurfIdListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetDrillingSurfIdListByForeignKey_presult__isset;
+
+class CbmService_GetDrillingSurfIdListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetDrillingSurfIdListByForeignKey_presult() throw();
+  std::vector<int32_t> * success;
+
+  _CbmService_GetDrillingSurfIdListByForeignKey_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
@@ -35143,6 +38063,228 @@ class CbmService_GetEvalUnitIdListByField2_presult {
 
 };
 
+typedef struct _CbmService_GetEvalUnitListByForeignKey_args__isset {
+  _CbmService_GetEvalUnitListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetEvalUnitListByForeignKey_args__isset;
+
+class CbmService_GetEvalUnitListByForeignKey_args {
+ public:
+
+  CbmService_GetEvalUnitListByForeignKey_args(const CbmService_GetEvalUnitListByForeignKey_args&);
+  CbmService_GetEvalUnitListByForeignKey_args& operator=(const CbmService_GetEvalUnitListByForeignKey_args&);
+  CbmService_GetEvalUnitListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetEvalUnitListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetEvalUnitListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetEvalUnitListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetEvalUnitListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetEvalUnitListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetEvalUnitListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetEvalUnitListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetEvalUnitListByForeignKey_result__isset {
+  _CbmService_GetEvalUnitListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetEvalUnitListByForeignKey_result__isset;
+
+class CbmService_GetEvalUnitListByForeignKey_result {
+ public:
+
+  CbmService_GetEvalUnitListByForeignKey_result(const CbmService_GetEvalUnitListByForeignKey_result&);
+  CbmService_GetEvalUnitListByForeignKey_result& operator=(const CbmService_GetEvalUnitListByForeignKey_result&);
+  CbmService_GetEvalUnitListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetEvalUnitListByForeignKey_result() throw();
+  std::vector<EvalUnit>  success;
+
+  _CbmService_GetEvalUnitListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<EvalUnit> & val);
+
+  bool operator == (const CbmService_GetEvalUnitListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetEvalUnitListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetEvalUnitListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetEvalUnitListByForeignKey_presult__isset {
+  _CbmService_GetEvalUnitListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetEvalUnitListByForeignKey_presult__isset;
+
+class CbmService_GetEvalUnitListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetEvalUnitListByForeignKey_presult() throw();
+  std::vector<EvalUnit> * success;
+
+  _CbmService_GetEvalUnitListByForeignKey_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetEvalUnitIdListByForeignKey_args__isset {
+  _CbmService_GetEvalUnitIdListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetEvalUnitIdListByForeignKey_args__isset;
+
+class CbmService_GetEvalUnitIdListByForeignKey_args {
+ public:
+
+  CbmService_GetEvalUnitIdListByForeignKey_args(const CbmService_GetEvalUnitIdListByForeignKey_args&);
+  CbmService_GetEvalUnitIdListByForeignKey_args& operator=(const CbmService_GetEvalUnitIdListByForeignKey_args&);
+  CbmService_GetEvalUnitIdListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetEvalUnitIdListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetEvalUnitIdListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetEvalUnitIdListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetEvalUnitIdListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetEvalUnitIdListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetEvalUnitIdListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetEvalUnitIdListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetEvalUnitIdListByForeignKey_result__isset {
+  _CbmService_GetEvalUnitIdListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetEvalUnitIdListByForeignKey_result__isset;
+
+class CbmService_GetEvalUnitIdListByForeignKey_result {
+ public:
+
+  CbmService_GetEvalUnitIdListByForeignKey_result(const CbmService_GetEvalUnitIdListByForeignKey_result&);
+  CbmService_GetEvalUnitIdListByForeignKey_result& operator=(const CbmService_GetEvalUnitIdListByForeignKey_result&);
+  CbmService_GetEvalUnitIdListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetEvalUnitIdListByForeignKey_result() throw();
+  std::vector<int32_t>  success;
+
+  _CbmService_GetEvalUnitIdListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<int32_t> & val);
+
+  bool operator == (const CbmService_GetEvalUnitIdListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetEvalUnitIdListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetEvalUnitIdListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetEvalUnitIdListByForeignKey_presult__isset {
+  _CbmService_GetEvalUnitIdListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetEvalUnitIdListByForeignKey_presult__isset;
+
+class CbmService_GetEvalUnitIdListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetEvalUnitIdListByForeignKey_presult() throw();
+  std::vector<int32_t> * success;
+
+  _CbmService_GetEvalUnitIdListByForeignKey_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
 typedef struct _CbmService_AddHighDrillingPore_args__isset {
   _CbmService_AddHighDrillingPore_args__isset() : high_drilling_pore(false) {}
   bool high_drilling_pore :1;
@@ -37584,6 +40726,228 @@ class CbmService_GetHighDrillingPoreIdListByField2_presult {
   std::vector<int32_t> * success;
 
   _CbmService_GetHighDrillingPoreIdListByField2_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetHighDrillingPoreListByForeignKey_args__isset {
+  _CbmService_GetHighDrillingPoreListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetHighDrillingPoreListByForeignKey_args__isset;
+
+class CbmService_GetHighDrillingPoreListByForeignKey_args {
+ public:
+
+  CbmService_GetHighDrillingPoreListByForeignKey_args(const CbmService_GetHighDrillingPoreListByForeignKey_args&);
+  CbmService_GetHighDrillingPoreListByForeignKey_args& operator=(const CbmService_GetHighDrillingPoreListByForeignKey_args&);
+  CbmService_GetHighDrillingPoreListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetHighDrillingPoreListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetHighDrillingPoreListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetHighDrillingPoreListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetHighDrillingPoreListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetHighDrillingPoreListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetHighDrillingPoreListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetHighDrillingPoreListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetHighDrillingPoreListByForeignKey_result__isset {
+  _CbmService_GetHighDrillingPoreListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetHighDrillingPoreListByForeignKey_result__isset;
+
+class CbmService_GetHighDrillingPoreListByForeignKey_result {
+ public:
+
+  CbmService_GetHighDrillingPoreListByForeignKey_result(const CbmService_GetHighDrillingPoreListByForeignKey_result&);
+  CbmService_GetHighDrillingPoreListByForeignKey_result& operator=(const CbmService_GetHighDrillingPoreListByForeignKey_result&);
+  CbmService_GetHighDrillingPoreListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetHighDrillingPoreListByForeignKey_result() throw();
+  std::vector<HighDrillingPore>  success;
+
+  _CbmService_GetHighDrillingPoreListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<HighDrillingPore> & val);
+
+  bool operator == (const CbmService_GetHighDrillingPoreListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetHighDrillingPoreListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetHighDrillingPoreListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetHighDrillingPoreListByForeignKey_presult__isset {
+  _CbmService_GetHighDrillingPoreListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetHighDrillingPoreListByForeignKey_presult__isset;
+
+class CbmService_GetHighDrillingPoreListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetHighDrillingPoreListByForeignKey_presult() throw();
+  std::vector<HighDrillingPore> * success;
+
+  _CbmService_GetHighDrillingPoreListByForeignKey_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetHighDrillingPoreIdListByForeignKey_args__isset {
+  _CbmService_GetHighDrillingPoreIdListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetHighDrillingPoreIdListByForeignKey_args__isset;
+
+class CbmService_GetHighDrillingPoreIdListByForeignKey_args {
+ public:
+
+  CbmService_GetHighDrillingPoreIdListByForeignKey_args(const CbmService_GetHighDrillingPoreIdListByForeignKey_args&);
+  CbmService_GetHighDrillingPoreIdListByForeignKey_args& operator=(const CbmService_GetHighDrillingPoreIdListByForeignKey_args&);
+  CbmService_GetHighDrillingPoreIdListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetHighDrillingPoreIdListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetHighDrillingPoreIdListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetHighDrillingPoreIdListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetHighDrillingPoreIdListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetHighDrillingPoreIdListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetHighDrillingPoreIdListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetHighDrillingPoreIdListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetHighDrillingPoreIdListByForeignKey_result__isset {
+  _CbmService_GetHighDrillingPoreIdListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetHighDrillingPoreIdListByForeignKey_result__isset;
+
+class CbmService_GetHighDrillingPoreIdListByForeignKey_result {
+ public:
+
+  CbmService_GetHighDrillingPoreIdListByForeignKey_result(const CbmService_GetHighDrillingPoreIdListByForeignKey_result&);
+  CbmService_GetHighDrillingPoreIdListByForeignKey_result& operator=(const CbmService_GetHighDrillingPoreIdListByForeignKey_result&);
+  CbmService_GetHighDrillingPoreIdListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetHighDrillingPoreIdListByForeignKey_result() throw();
+  std::vector<int32_t>  success;
+
+  _CbmService_GetHighDrillingPoreIdListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<int32_t> & val);
+
+  bool operator == (const CbmService_GetHighDrillingPoreIdListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetHighDrillingPoreIdListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetHighDrillingPoreIdListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetHighDrillingPoreIdListByForeignKey_presult__isset {
+  _CbmService_GetHighDrillingPoreIdListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetHighDrillingPoreIdListByForeignKey_presult__isset;
+
+class CbmService_GetHighDrillingPoreIdListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetHighDrillingPoreIdListByForeignKey_presult() throw();
+  std::vector<int32_t> * success;
+
+  _CbmService_GetHighDrillingPoreIdListByForeignKey_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
@@ -40035,6 +43399,228 @@ class CbmService_GetHighDrillingPoreParamIdListByField2_presult {
 
 };
 
+typedef struct _CbmService_GetHighDrillingPoreParamListByForeignKey_args__isset {
+  _CbmService_GetHighDrillingPoreParamListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetHighDrillingPoreParamListByForeignKey_args__isset;
+
+class CbmService_GetHighDrillingPoreParamListByForeignKey_args {
+ public:
+
+  CbmService_GetHighDrillingPoreParamListByForeignKey_args(const CbmService_GetHighDrillingPoreParamListByForeignKey_args&);
+  CbmService_GetHighDrillingPoreParamListByForeignKey_args& operator=(const CbmService_GetHighDrillingPoreParamListByForeignKey_args&);
+  CbmService_GetHighDrillingPoreParamListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetHighDrillingPoreParamListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetHighDrillingPoreParamListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetHighDrillingPoreParamListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetHighDrillingPoreParamListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetHighDrillingPoreParamListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetHighDrillingPoreParamListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetHighDrillingPoreParamListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetHighDrillingPoreParamListByForeignKey_result__isset {
+  _CbmService_GetHighDrillingPoreParamListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetHighDrillingPoreParamListByForeignKey_result__isset;
+
+class CbmService_GetHighDrillingPoreParamListByForeignKey_result {
+ public:
+
+  CbmService_GetHighDrillingPoreParamListByForeignKey_result(const CbmService_GetHighDrillingPoreParamListByForeignKey_result&);
+  CbmService_GetHighDrillingPoreParamListByForeignKey_result& operator=(const CbmService_GetHighDrillingPoreParamListByForeignKey_result&);
+  CbmService_GetHighDrillingPoreParamListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetHighDrillingPoreParamListByForeignKey_result() throw();
+  std::vector<HighDrillingPoreParam>  success;
+
+  _CbmService_GetHighDrillingPoreParamListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<HighDrillingPoreParam> & val);
+
+  bool operator == (const CbmService_GetHighDrillingPoreParamListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetHighDrillingPoreParamListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetHighDrillingPoreParamListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetHighDrillingPoreParamListByForeignKey_presult__isset {
+  _CbmService_GetHighDrillingPoreParamListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetHighDrillingPoreParamListByForeignKey_presult__isset;
+
+class CbmService_GetHighDrillingPoreParamListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetHighDrillingPoreParamListByForeignKey_presult() throw();
+  std::vector<HighDrillingPoreParam> * success;
+
+  _CbmService_GetHighDrillingPoreParamListByForeignKey_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetHighDrillingPoreParamIdListByForeignKey_args__isset {
+  _CbmService_GetHighDrillingPoreParamIdListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetHighDrillingPoreParamIdListByForeignKey_args__isset;
+
+class CbmService_GetHighDrillingPoreParamIdListByForeignKey_args {
+ public:
+
+  CbmService_GetHighDrillingPoreParamIdListByForeignKey_args(const CbmService_GetHighDrillingPoreParamIdListByForeignKey_args&);
+  CbmService_GetHighDrillingPoreParamIdListByForeignKey_args& operator=(const CbmService_GetHighDrillingPoreParamIdListByForeignKey_args&);
+  CbmService_GetHighDrillingPoreParamIdListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetHighDrillingPoreParamIdListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetHighDrillingPoreParamIdListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetHighDrillingPoreParamIdListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetHighDrillingPoreParamIdListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetHighDrillingPoreParamIdListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetHighDrillingPoreParamIdListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetHighDrillingPoreParamIdListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetHighDrillingPoreParamIdListByForeignKey_result__isset {
+  _CbmService_GetHighDrillingPoreParamIdListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetHighDrillingPoreParamIdListByForeignKey_result__isset;
+
+class CbmService_GetHighDrillingPoreParamIdListByForeignKey_result {
+ public:
+
+  CbmService_GetHighDrillingPoreParamIdListByForeignKey_result(const CbmService_GetHighDrillingPoreParamIdListByForeignKey_result&);
+  CbmService_GetHighDrillingPoreParamIdListByForeignKey_result& operator=(const CbmService_GetHighDrillingPoreParamIdListByForeignKey_result&);
+  CbmService_GetHighDrillingPoreParamIdListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetHighDrillingPoreParamIdListByForeignKey_result() throw();
+  std::vector<int32_t>  success;
+
+  _CbmService_GetHighDrillingPoreParamIdListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<int32_t> & val);
+
+  bool operator == (const CbmService_GetHighDrillingPoreParamIdListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetHighDrillingPoreParamIdListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetHighDrillingPoreParamIdListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetHighDrillingPoreParamIdListByForeignKey_presult__isset {
+  _CbmService_GetHighDrillingPoreParamIdListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetHighDrillingPoreParamIdListByForeignKey_presult__isset;
+
+class CbmService_GetHighDrillingPoreParamIdListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetHighDrillingPoreParamIdListByForeignKey_presult() throw();
+  std::vector<int32_t> * success;
+
+  _CbmService_GetHighDrillingPoreParamIdListByForeignKey_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
 typedef struct _CbmService_AddHighDrillingSiteParam_args__isset {
   _CbmService_AddHighDrillingSiteParam_args__isset() : high_drilling_site_param(false) {}
   bool high_drilling_site_param :1;
@@ -42476,6 +46062,228 @@ class CbmService_GetHighDrillingSiteParamIdListByField2_presult {
   std::vector<int32_t> * success;
 
   _CbmService_GetHighDrillingSiteParamIdListByField2_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetHighDrillingSiteParamListByForeignKey_args__isset {
+  _CbmService_GetHighDrillingSiteParamListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetHighDrillingSiteParamListByForeignKey_args__isset;
+
+class CbmService_GetHighDrillingSiteParamListByForeignKey_args {
+ public:
+
+  CbmService_GetHighDrillingSiteParamListByForeignKey_args(const CbmService_GetHighDrillingSiteParamListByForeignKey_args&);
+  CbmService_GetHighDrillingSiteParamListByForeignKey_args& operator=(const CbmService_GetHighDrillingSiteParamListByForeignKey_args&);
+  CbmService_GetHighDrillingSiteParamListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetHighDrillingSiteParamListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetHighDrillingSiteParamListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetHighDrillingSiteParamListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetHighDrillingSiteParamListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetHighDrillingSiteParamListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetHighDrillingSiteParamListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetHighDrillingSiteParamListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetHighDrillingSiteParamListByForeignKey_result__isset {
+  _CbmService_GetHighDrillingSiteParamListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetHighDrillingSiteParamListByForeignKey_result__isset;
+
+class CbmService_GetHighDrillingSiteParamListByForeignKey_result {
+ public:
+
+  CbmService_GetHighDrillingSiteParamListByForeignKey_result(const CbmService_GetHighDrillingSiteParamListByForeignKey_result&);
+  CbmService_GetHighDrillingSiteParamListByForeignKey_result& operator=(const CbmService_GetHighDrillingSiteParamListByForeignKey_result&);
+  CbmService_GetHighDrillingSiteParamListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetHighDrillingSiteParamListByForeignKey_result() throw();
+  std::vector<HighDrillingSiteParam>  success;
+
+  _CbmService_GetHighDrillingSiteParamListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<HighDrillingSiteParam> & val);
+
+  bool operator == (const CbmService_GetHighDrillingSiteParamListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetHighDrillingSiteParamListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetHighDrillingSiteParamListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetHighDrillingSiteParamListByForeignKey_presult__isset {
+  _CbmService_GetHighDrillingSiteParamListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetHighDrillingSiteParamListByForeignKey_presult__isset;
+
+class CbmService_GetHighDrillingSiteParamListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetHighDrillingSiteParamListByForeignKey_presult() throw();
+  std::vector<HighDrillingSiteParam> * success;
+
+  _CbmService_GetHighDrillingSiteParamListByForeignKey_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetHighDrillingSiteParamIdListByForeignKey_args__isset {
+  _CbmService_GetHighDrillingSiteParamIdListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetHighDrillingSiteParamIdListByForeignKey_args__isset;
+
+class CbmService_GetHighDrillingSiteParamIdListByForeignKey_args {
+ public:
+
+  CbmService_GetHighDrillingSiteParamIdListByForeignKey_args(const CbmService_GetHighDrillingSiteParamIdListByForeignKey_args&);
+  CbmService_GetHighDrillingSiteParamIdListByForeignKey_args& operator=(const CbmService_GetHighDrillingSiteParamIdListByForeignKey_args&);
+  CbmService_GetHighDrillingSiteParamIdListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetHighDrillingSiteParamIdListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetHighDrillingSiteParamIdListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetHighDrillingSiteParamIdListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetHighDrillingSiteParamIdListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetHighDrillingSiteParamIdListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetHighDrillingSiteParamIdListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetHighDrillingSiteParamIdListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetHighDrillingSiteParamIdListByForeignKey_result__isset {
+  _CbmService_GetHighDrillingSiteParamIdListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetHighDrillingSiteParamIdListByForeignKey_result__isset;
+
+class CbmService_GetHighDrillingSiteParamIdListByForeignKey_result {
+ public:
+
+  CbmService_GetHighDrillingSiteParamIdListByForeignKey_result(const CbmService_GetHighDrillingSiteParamIdListByForeignKey_result&);
+  CbmService_GetHighDrillingSiteParamIdListByForeignKey_result& operator=(const CbmService_GetHighDrillingSiteParamIdListByForeignKey_result&);
+  CbmService_GetHighDrillingSiteParamIdListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetHighDrillingSiteParamIdListByForeignKey_result() throw();
+  std::vector<int32_t>  success;
+
+  _CbmService_GetHighDrillingSiteParamIdListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<int32_t> & val);
+
+  bool operator == (const CbmService_GetHighDrillingSiteParamIdListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetHighDrillingSiteParamIdListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetHighDrillingSiteParamIdListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetHighDrillingSiteParamIdListByForeignKey_presult__isset {
+  _CbmService_GetHighDrillingSiteParamIdListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetHighDrillingSiteParamIdListByForeignKey_presult__isset;
+
+class CbmService_GetHighDrillingSiteParamIdListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetHighDrillingSiteParamIdListByForeignKey_presult() throw();
+  std::vector<int32_t> * success;
+
+  _CbmService_GetHighDrillingSiteParamIdListByForeignKey_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
@@ -44927,6 +48735,228 @@ class CbmService_GetHighDrillingTunnelIdListByField2_presult {
 
 };
 
+typedef struct _CbmService_GetHighDrillingTunnelListByForeignKey_args__isset {
+  _CbmService_GetHighDrillingTunnelListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetHighDrillingTunnelListByForeignKey_args__isset;
+
+class CbmService_GetHighDrillingTunnelListByForeignKey_args {
+ public:
+
+  CbmService_GetHighDrillingTunnelListByForeignKey_args(const CbmService_GetHighDrillingTunnelListByForeignKey_args&);
+  CbmService_GetHighDrillingTunnelListByForeignKey_args& operator=(const CbmService_GetHighDrillingTunnelListByForeignKey_args&);
+  CbmService_GetHighDrillingTunnelListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetHighDrillingTunnelListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetHighDrillingTunnelListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetHighDrillingTunnelListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetHighDrillingTunnelListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetHighDrillingTunnelListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetHighDrillingTunnelListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetHighDrillingTunnelListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetHighDrillingTunnelListByForeignKey_result__isset {
+  _CbmService_GetHighDrillingTunnelListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetHighDrillingTunnelListByForeignKey_result__isset;
+
+class CbmService_GetHighDrillingTunnelListByForeignKey_result {
+ public:
+
+  CbmService_GetHighDrillingTunnelListByForeignKey_result(const CbmService_GetHighDrillingTunnelListByForeignKey_result&);
+  CbmService_GetHighDrillingTunnelListByForeignKey_result& operator=(const CbmService_GetHighDrillingTunnelListByForeignKey_result&);
+  CbmService_GetHighDrillingTunnelListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetHighDrillingTunnelListByForeignKey_result() throw();
+  std::vector<HighDrillingTunnel>  success;
+
+  _CbmService_GetHighDrillingTunnelListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<HighDrillingTunnel> & val);
+
+  bool operator == (const CbmService_GetHighDrillingTunnelListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetHighDrillingTunnelListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetHighDrillingTunnelListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetHighDrillingTunnelListByForeignKey_presult__isset {
+  _CbmService_GetHighDrillingTunnelListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetHighDrillingTunnelListByForeignKey_presult__isset;
+
+class CbmService_GetHighDrillingTunnelListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetHighDrillingTunnelListByForeignKey_presult() throw();
+  std::vector<HighDrillingTunnel> * success;
+
+  _CbmService_GetHighDrillingTunnelListByForeignKey_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetHighDrillingTunnelIdListByForeignKey_args__isset {
+  _CbmService_GetHighDrillingTunnelIdListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetHighDrillingTunnelIdListByForeignKey_args__isset;
+
+class CbmService_GetHighDrillingTunnelIdListByForeignKey_args {
+ public:
+
+  CbmService_GetHighDrillingTunnelIdListByForeignKey_args(const CbmService_GetHighDrillingTunnelIdListByForeignKey_args&);
+  CbmService_GetHighDrillingTunnelIdListByForeignKey_args& operator=(const CbmService_GetHighDrillingTunnelIdListByForeignKey_args&);
+  CbmService_GetHighDrillingTunnelIdListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetHighDrillingTunnelIdListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetHighDrillingTunnelIdListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetHighDrillingTunnelIdListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetHighDrillingTunnelIdListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetHighDrillingTunnelIdListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetHighDrillingTunnelIdListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetHighDrillingTunnelIdListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetHighDrillingTunnelIdListByForeignKey_result__isset {
+  _CbmService_GetHighDrillingTunnelIdListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetHighDrillingTunnelIdListByForeignKey_result__isset;
+
+class CbmService_GetHighDrillingTunnelIdListByForeignKey_result {
+ public:
+
+  CbmService_GetHighDrillingTunnelIdListByForeignKey_result(const CbmService_GetHighDrillingTunnelIdListByForeignKey_result&);
+  CbmService_GetHighDrillingTunnelIdListByForeignKey_result& operator=(const CbmService_GetHighDrillingTunnelIdListByForeignKey_result&);
+  CbmService_GetHighDrillingTunnelIdListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetHighDrillingTunnelIdListByForeignKey_result() throw();
+  std::vector<int32_t>  success;
+
+  _CbmService_GetHighDrillingTunnelIdListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<int32_t> & val);
+
+  bool operator == (const CbmService_GetHighDrillingTunnelIdListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetHighDrillingTunnelIdListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetHighDrillingTunnelIdListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetHighDrillingTunnelIdListByForeignKey_presult__isset {
+  _CbmService_GetHighDrillingTunnelIdListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetHighDrillingTunnelIdListByForeignKey_presult__isset;
+
+class CbmService_GetHighDrillingTunnelIdListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetHighDrillingTunnelIdListByForeignKey_presult() throw();
+  std::vector<int32_t> * success;
+
+  _CbmService_GetHighDrillingTunnelIdListByForeignKey_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
 typedef struct _CbmService_AddHydrGeo_args__isset {
   _CbmService_AddHydrGeo_args__isset() : hydr_geo(false) {}
   bool hydr_geo :1;
@@ -47368,6 +51398,228 @@ class CbmService_GetHydrGeoIdListByField2_presult {
   std::vector<int32_t> * success;
 
   _CbmService_GetHydrGeoIdListByField2_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetHydrGeoListByForeignKey_args__isset {
+  _CbmService_GetHydrGeoListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetHydrGeoListByForeignKey_args__isset;
+
+class CbmService_GetHydrGeoListByForeignKey_args {
+ public:
+
+  CbmService_GetHydrGeoListByForeignKey_args(const CbmService_GetHydrGeoListByForeignKey_args&);
+  CbmService_GetHydrGeoListByForeignKey_args& operator=(const CbmService_GetHydrGeoListByForeignKey_args&);
+  CbmService_GetHydrGeoListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetHydrGeoListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetHydrGeoListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetHydrGeoListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetHydrGeoListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetHydrGeoListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetHydrGeoListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetHydrGeoListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetHydrGeoListByForeignKey_result__isset {
+  _CbmService_GetHydrGeoListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetHydrGeoListByForeignKey_result__isset;
+
+class CbmService_GetHydrGeoListByForeignKey_result {
+ public:
+
+  CbmService_GetHydrGeoListByForeignKey_result(const CbmService_GetHydrGeoListByForeignKey_result&);
+  CbmService_GetHydrGeoListByForeignKey_result& operator=(const CbmService_GetHydrGeoListByForeignKey_result&);
+  CbmService_GetHydrGeoListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetHydrGeoListByForeignKey_result() throw();
+  std::vector<HydrGeo>  success;
+
+  _CbmService_GetHydrGeoListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<HydrGeo> & val);
+
+  bool operator == (const CbmService_GetHydrGeoListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetHydrGeoListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetHydrGeoListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetHydrGeoListByForeignKey_presult__isset {
+  _CbmService_GetHydrGeoListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetHydrGeoListByForeignKey_presult__isset;
+
+class CbmService_GetHydrGeoListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetHydrGeoListByForeignKey_presult() throw();
+  std::vector<HydrGeo> * success;
+
+  _CbmService_GetHydrGeoListByForeignKey_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetHydrGeoIdListByForeignKey_args__isset {
+  _CbmService_GetHydrGeoIdListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetHydrGeoIdListByForeignKey_args__isset;
+
+class CbmService_GetHydrGeoIdListByForeignKey_args {
+ public:
+
+  CbmService_GetHydrGeoIdListByForeignKey_args(const CbmService_GetHydrGeoIdListByForeignKey_args&);
+  CbmService_GetHydrGeoIdListByForeignKey_args& operator=(const CbmService_GetHydrGeoIdListByForeignKey_args&);
+  CbmService_GetHydrGeoIdListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetHydrGeoIdListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetHydrGeoIdListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetHydrGeoIdListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetHydrGeoIdListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetHydrGeoIdListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetHydrGeoIdListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetHydrGeoIdListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetHydrGeoIdListByForeignKey_result__isset {
+  _CbmService_GetHydrGeoIdListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetHydrGeoIdListByForeignKey_result__isset;
+
+class CbmService_GetHydrGeoIdListByForeignKey_result {
+ public:
+
+  CbmService_GetHydrGeoIdListByForeignKey_result(const CbmService_GetHydrGeoIdListByForeignKey_result&);
+  CbmService_GetHydrGeoIdListByForeignKey_result& operator=(const CbmService_GetHydrGeoIdListByForeignKey_result&);
+  CbmService_GetHydrGeoIdListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetHydrGeoIdListByForeignKey_result() throw();
+  std::vector<int32_t>  success;
+
+  _CbmService_GetHydrGeoIdListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<int32_t> & val);
+
+  bool operator == (const CbmService_GetHydrGeoIdListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetHydrGeoIdListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetHydrGeoIdListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetHydrGeoIdListByForeignKey_presult__isset {
+  _CbmService_GetHydrGeoIdListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetHydrGeoIdListByForeignKey_presult__isset;
+
+class CbmService_GetHydrGeoIdListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetHydrGeoIdListByForeignKey_presult() throw();
+  std::vector<int32_t> * success;
+
+  _CbmService_GetHydrGeoIdListByForeignKey_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
@@ -49819,6 +54071,228 @@ class CbmService_GetMineIdListByField2_presult {
 
 };
 
+typedef struct _CbmService_GetMineListByForeignKey_args__isset {
+  _CbmService_GetMineListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetMineListByForeignKey_args__isset;
+
+class CbmService_GetMineListByForeignKey_args {
+ public:
+
+  CbmService_GetMineListByForeignKey_args(const CbmService_GetMineListByForeignKey_args&);
+  CbmService_GetMineListByForeignKey_args& operator=(const CbmService_GetMineListByForeignKey_args&);
+  CbmService_GetMineListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetMineListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetMineListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetMineListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetMineListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetMineListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetMineListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetMineListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetMineListByForeignKey_result__isset {
+  _CbmService_GetMineListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetMineListByForeignKey_result__isset;
+
+class CbmService_GetMineListByForeignKey_result {
+ public:
+
+  CbmService_GetMineListByForeignKey_result(const CbmService_GetMineListByForeignKey_result&);
+  CbmService_GetMineListByForeignKey_result& operator=(const CbmService_GetMineListByForeignKey_result&);
+  CbmService_GetMineListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetMineListByForeignKey_result() throw();
+  std::vector<Mine>  success;
+
+  _CbmService_GetMineListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<Mine> & val);
+
+  bool operator == (const CbmService_GetMineListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetMineListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetMineListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetMineListByForeignKey_presult__isset {
+  _CbmService_GetMineListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetMineListByForeignKey_presult__isset;
+
+class CbmService_GetMineListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetMineListByForeignKey_presult() throw();
+  std::vector<Mine> * success;
+
+  _CbmService_GetMineListByForeignKey_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetMineIdListByForeignKey_args__isset {
+  _CbmService_GetMineIdListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetMineIdListByForeignKey_args__isset;
+
+class CbmService_GetMineIdListByForeignKey_args {
+ public:
+
+  CbmService_GetMineIdListByForeignKey_args(const CbmService_GetMineIdListByForeignKey_args&);
+  CbmService_GetMineIdListByForeignKey_args& operator=(const CbmService_GetMineIdListByForeignKey_args&);
+  CbmService_GetMineIdListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetMineIdListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetMineIdListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetMineIdListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetMineIdListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetMineIdListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetMineIdListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetMineIdListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetMineIdListByForeignKey_result__isset {
+  _CbmService_GetMineIdListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetMineIdListByForeignKey_result__isset;
+
+class CbmService_GetMineIdListByForeignKey_result {
+ public:
+
+  CbmService_GetMineIdListByForeignKey_result(const CbmService_GetMineIdListByForeignKey_result&);
+  CbmService_GetMineIdListByForeignKey_result& operator=(const CbmService_GetMineIdListByForeignKey_result&);
+  CbmService_GetMineIdListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetMineIdListByForeignKey_result() throw();
+  std::vector<int32_t>  success;
+
+  _CbmService_GetMineIdListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<int32_t> & val);
+
+  bool operator == (const CbmService_GetMineIdListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetMineIdListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetMineIdListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetMineIdListByForeignKey_presult__isset {
+  _CbmService_GetMineIdListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetMineIdListByForeignKey_presult__isset;
+
+class CbmService_GetMineIdListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetMineIdListByForeignKey_presult() throw();
+  std::vector<int32_t> * success;
+
+  _CbmService_GetMineIdListByForeignKey_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
 typedef struct _CbmService_AddMineBase_args__isset {
   _CbmService_AddMineBase_args__isset() : mine_base(false) {}
   bool mine_base :1;
@@ -52260,6 +56734,228 @@ class CbmService_GetMineBaseIdListByField2_presult {
   std::vector<int32_t> * success;
 
   _CbmService_GetMineBaseIdListByField2_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetMineBaseListByForeignKey_args__isset {
+  _CbmService_GetMineBaseListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetMineBaseListByForeignKey_args__isset;
+
+class CbmService_GetMineBaseListByForeignKey_args {
+ public:
+
+  CbmService_GetMineBaseListByForeignKey_args(const CbmService_GetMineBaseListByForeignKey_args&);
+  CbmService_GetMineBaseListByForeignKey_args& operator=(const CbmService_GetMineBaseListByForeignKey_args&);
+  CbmService_GetMineBaseListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetMineBaseListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetMineBaseListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetMineBaseListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetMineBaseListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetMineBaseListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetMineBaseListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetMineBaseListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetMineBaseListByForeignKey_result__isset {
+  _CbmService_GetMineBaseListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetMineBaseListByForeignKey_result__isset;
+
+class CbmService_GetMineBaseListByForeignKey_result {
+ public:
+
+  CbmService_GetMineBaseListByForeignKey_result(const CbmService_GetMineBaseListByForeignKey_result&);
+  CbmService_GetMineBaseListByForeignKey_result& operator=(const CbmService_GetMineBaseListByForeignKey_result&);
+  CbmService_GetMineBaseListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetMineBaseListByForeignKey_result() throw();
+  std::vector<MineBase>  success;
+
+  _CbmService_GetMineBaseListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<MineBase> & val);
+
+  bool operator == (const CbmService_GetMineBaseListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetMineBaseListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetMineBaseListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetMineBaseListByForeignKey_presult__isset {
+  _CbmService_GetMineBaseListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetMineBaseListByForeignKey_presult__isset;
+
+class CbmService_GetMineBaseListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetMineBaseListByForeignKey_presult() throw();
+  std::vector<MineBase> * success;
+
+  _CbmService_GetMineBaseListByForeignKey_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetMineBaseIdListByForeignKey_args__isset {
+  _CbmService_GetMineBaseIdListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetMineBaseIdListByForeignKey_args__isset;
+
+class CbmService_GetMineBaseIdListByForeignKey_args {
+ public:
+
+  CbmService_GetMineBaseIdListByForeignKey_args(const CbmService_GetMineBaseIdListByForeignKey_args&);
+  CbmService_GetMineBaseIdListByForeignKey_args& operator=(const CbmService_GetMineBaseIdListByForeignKey_args&);
+  CbmService_GetMineBaseIdListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetMineBaseIdListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetMineBaseIdListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetMineBaseIdListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetMineBaseIdListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetMineBaseIdListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetMineBaseIdListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetMineBaseIdListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetMineBaseIdListByForeignKey_result__isset {
+  _CbmService_GetMineBaseIdListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetMineBaseIdListByForeignKey_result__isset;
+
+class CbmService_GetMineBaseIdListByForeignKey_result {
+ public:
+
+  CbmService_GetMineBaseIdListByForeignKey_result(const CbmService_GetMineBaseIdListByForeignKey_result&);
+  CbmService_GetMineBaseIdListByForeignKey_result& operator=(const CbmService_GetMineBaseIdListByForeignKey_result&);
+  CbmService_GetMineBaseIdListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetMineBaseIdListByForeignKey_result() throw();
+  std::vector<int32_t>  success;
+
+  _CbmService_GetMineBaseIdListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<int32_t> & val);
+
+  bool operator == (const CbmService_GetMineBaseIdListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetMineBaseIdListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetMineBaseIdListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetMineBaseIdListByForeignKey_presult__isset {
+  _CbmService_GetMineBaseIdListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetMineBaseIdListByForeignKey_presult__isset;
+
+class CbmService_GetMineBaseIdListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetMineBaseIdListByForeignKey_presult() throw();
+  std::vector<int32_t> * success;
+
+  _CbmService_GetMineBaseIdListByForeignKey_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
@@ -54711,6 +59407,228 @@ class CbmService_GetMineRegionIdListByField2_presult {
 
 };
 
+typedef struct _CbmService_GetMineRegionListByForeignKey_args__isset {
+  _CbmService_GetMineRegionListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetMineRegionListByForeignKey_args__isset;
+
+class CbmService_GetMineRegionListByForeignKey_args {
+ public:
+
+  CbmService_GetMineRegionListByForeignKey_args(const CbmService_GetMineRegionListByForeignKey_args&);
+  CbmService_GetMineRegionListByForeignKey_args& operator=(const CbmService_GetMineRegionListByForeignKey_args&);
+  CbmService_GetMineRegionListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetMineRegionListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetMineRegionListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetMineRegionListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetMineRegionListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetMineRegionListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetMineRegionListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetMineRegionListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetMineRegionListByForeignKey_result__isset {
+  _CbmService_GetMineRegionListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetMineRegionListByForeignKey_result__isset;
+
+class CbmService_GetMineRegionListByForeignKey_result {
+ public:
+
+  CbmService_GetMineRegionListByForeignKey_result(const CbmService_GetMineRegionListByForeignKey_result&);
+  CbmService_GetMineRegionListByForeignKey_result& operator=(const CbmService_GetMineRegionListByForeignKey_result&);
+  CbmService_GetMineRegionListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetMineRegionListByForeignKey_result() throw();
+  std::vector<MineRegion>  success;
+
+  _CbmService_GetMineRegionListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<MineRegion> & val);
+
+  bool operator == (const CbmService_GetMineRegionListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetMineRegionListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetMineRegionListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetMineRegionListByForeignKey_presult__isset {
+  _CbmService_GetMineRegionListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetMineRegionListByForeignKey_presult__isset;
+
+class CbmService_GetMineRegionListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetMineRegionListByForeignKey_presult() throw();
+  std::vector<MineRegion> * success;
+
+  _CbmService_GetMineRegionListByForeignKey_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetMineRegionIdListByForeignKey_args__isset {
+  _CbmService_GetMineRegionIdListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetMineRegionIdListByForeignKey_args__isset;
+
+class CbmService_GetMineRegionIdListByForeignKey_args {
+ public:
+
+  CbmService_GetMineRegionIdListByForeignKey_args(const CbmService_GetMineRegionIdListByForeignKey_args&);
+  CbmService_GetMineRegionIdListByForeignKey_args& operator=(const CbmService_GetMineRegionIdListByForeignKey_args&);
+  CbmService_GetMineRegionIdListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetMineRegionIdListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetMineRegionIdListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetMineRegionIdListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetMineRegionIdListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetMineRegionIdListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetMineRegionIdListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetMineRegionIdListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetMineRegionIdListByForeignKey_result__isset {
+  _CbmService_GetMineRegionIdListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetMineRegionIdListByForeignKey_result__isset;
+
+class CbmService_GetMineRegionIdListByForeignKey_result {
+ public:
+
+  CbmService_GetMineRegionIdListByForeignKey_result(const CbmService_GetMineRegionIdListByForeignKey_result&);
+  CbmService_GetMineRegionIdListByForeignKey_result& operator=(const CbmService_GetMineRegionIdListByForeignKey_result&);
+  CbmService_GetMineRegionIdListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetMineRegionIdListByForeignKey_result() throw();
+  std::vector<int32_t>  success;
+
+  _CbmService_GetMineRegionIdListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<int32_t> & val);
+
+  bool operator == (const CbmService_GetMineRegionIdListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetMineRegionIdListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetMineRegionIdListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetMineRegionIdListByForeignKey_presult__isset {
+  _CbmService_GetMineRegionIdListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetMineRegionIdListByForeignKey_presult__isset;
+
+class CbmService_GetMineRegionIdListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetMineRegionIdListByForeignKey_presult() throw();
+  std::vector<int32_t> * success;
+
+  _CbmService_GetMineRegionIdListByForeignKey_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
 typedef struct _CbmService_AddPoreFlow_args__isset {
   _CbmService_AddPoreFlow_args__isset() : pore_flow(false) {}
   bool pore_flow :1;
@@ -57152,6 +62070,228 @@ class CbmService_GetPoreFlowIdListByField2_presult {
   std::vector<int32_t> * success;
 
   _CbmService_GetPoreFlowIdListByField2_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetPoreFlowListByForeignKey_args__isset {
+  _CbmService_GetPoreFlowListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetPoreFlowListByForeignKey_args__isset;
+
+class CbmService_GetPoreFlowListByForeignKey_args {
+ public:
+
+  CbmService_GetPoreFlowListByForeignKey_args(const CbmService_GetPoreFlowListByForeignKey_args&);
+  CbmService_GetPoreFlowListByForeignKey_args& operator=(const CbmService_GetPoreFlowListByForeignKey_args&);
+  CbmService_GetPoreFlowListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetPoreFlowListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetPoreFlowListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetPoreFlowListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetPoreFlowListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetPoreFlowListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetPoreFlowListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetPoreFlowListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetPoreFlowListByForeignKey_result__isset {
+  _CbmService_GetPoreFlowListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetPoreFlowListByForeignKey_result__isset;
+
+class CbmService_GetPoreFlowListByForeignKey_result {
+ public:
+
+  CbmService_GetPoreFlowListByForeignKey_result(const CbmService_GetPoreFlowListByForeignKey_result&);
+  CbmService_GetPoreFlowListByForeignKey_result& operator=(const CbmService_GetPoreFlowListByForeignKey_result&);
+  CbmService_GetPoreFlowListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetPoreFlowListByForeignKey_result() throw();
+  std::vector<PoreFlow>  success;
+
+  _CbmService_GetPoreFlowListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<PoreFlow> & val);
+
+  bool operator == (const CbmService_GetPoreFlowListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetPoreFlowListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetPoreFlowListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetPoreFlowListByForeignKey_presult__isset {
+  _CbmService_GetPoreFlowListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetPoreFlowListByForeignKey_presult__isset;
+
+class CbmService_GetPoreFlowListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetPoreFlowListByForeignKey_presult() throw();
+  std::vector<PoreFlow> * success;
+
+  _CbmService_GetPoreFlowListByForeignKey_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetPoreFlowIdListByForeignKey_args__isset {
+  _CbmService_GetPoreFlowIdListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetPoreFlowIdListByForeignKey_args__isset;
+
+class CbmService_GetPoreFlowIdListByForeignKey_args {
+ public:
+
+  CbmService_GetPoreFlowIdListByForeignKey_args(const CbmService_GetPoreFlowIdListByForeignKey_args&);
+  CbmService_GetPoreFlowIdListByForeignKey_args& operator=(const CbmService_GetPoreFlowIdListByForeignKey_args&);
+  CbmService_GetPoreFlowIdListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetPoreFlowIdListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetPoreFlowIdListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetPoreFlowIdListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetPoreFlowIdListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetPoreFlowIdListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetPoreFlowIdListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetPoreFlowIdListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetPoreFlowIdListByForeignKey_result__isset {
+  _CbmService_GetPoreFlowIdListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetPoreFlowIdListByForeignKey_result__isset;
+
+class CbmService_GetPoreFlowIdListByForeignKey_result {
+ public:
+
+  CbmService_GetPoreFlowIdListByForeignKey_result(const CbmService_GetPoreFlowIdListByForeignKey_result&);
+  CbmService_GetPoreFlowIdListByForeignKey_result& operator=(const CbmService_GetPoreFlowIdListByForeignKey_result&);
+  CbmService_GetPoreFlowIdListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetPoreFlowIdListByForeignKey_result() throw();
+  std::vector<int32_t>  success;
+
+  _CbmService_GetPoreFlowIdListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<int32_t> & val);
+
+  bool operator == (const CbmService_GetPoreFlowIdListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetPoreFlowIdListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetPoreFlowIdListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetPoreFlowIdListByForeignKey_presult__isset {
+  _CbmService_GetPoreFlowIdListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetPoreFlowIdListByForeignKey_presult__isset;
+
+class CbmService_GetPoreFlowIdListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetPoreFlowIdListByForeignKey_presult() throw();
+  std::vector<int32_t> * success;
+
+  _CbmService_GetPoreFlowIdListByForeignKey_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
@@ -59603,6 +64743,228 @@ class CbmService_GetPoreSizeIdListByField2_presult {
 
 };
 
+typedef struct _CbmService_GetPoreSizeListByForeignKey_args__isset {
+  _CbmService_GetPoreSizeListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetPoreSizeListByForeignKey_args__isset;
+
+class CbmService_GetPoreSizeListByForeignKey_args {
+ public:
+
+  CbmService_GetPoreSizeListByForeignKey_args(const CbmService_GetPoreSizeListByForeignKey_args&);
+  CbmService_GetPoreSizeListByForeignKey_args& operator=(const CbmService_GetPoreSizeListByForeignKey_args&);
+  CbmService_GetPoreSizeListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetPoreSizeListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetPoreSizeListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetPoreSizeListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetPoreSizeListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetPoreSizeListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetPoreSizeListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetPoreSizeListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetPoreSizeListByForeignKey_result__isset {
+  _CbmService_GetPoreSizeListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetPoreSizeListByForeignKey_result__isset;
+
+class CbmService_GetPoreSizeListByForeignKey_result {
+ public:
+
+  CbmService_GetPoreSizeListByForeignKey_result(const CbmService_GetPoreSizeListByForeignKey_result&);
+  CbmService_GetPoreSizeListByForeignKey_result& operator=(const CbmService_GetPoreSizeListByForeignKey_result&);
+  CbmService_GetPoreSizeListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetPoreSizeListByForeignKey_result() throw();
+  std::vector<PoreSize>  success;
+
+  _CbmService_GetPoreSizeListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<PoreSize> & val);
+
+  bool operator == (const CbmService_GetPoreSizeListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetPoreSizeListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetPoreSizeListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetPoreSizeListByForeignKey_presult__isset {
+  _CbmService_GetPoreSizeListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetPoreSizeListByForeignKey_presult__isset;
+
+class CbmService_GetPoreSizeListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetPoreSizeListByForeignKey_presult() throw();
+  std::vector<PoreSize> * success;
+
+  _CbmService_GetPoreSizeListByForeignKey_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetPoreSizeIdListByForeignKey_args__isset {
+  _CbmService_GetPoreSizeIdListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetPoreSizeIdListByForeignKey_args__isset;
+
+class CbmService_GetPoreSizeIdListByForeignKey_args {
+ public:
+
+  CbmService_GetPoreSizeIdListByForeignKey_args(const CbmService_GetPoreSizeIdListByForeignKey_args&);
+  CbmService_GetPoreSizeIdListByForeignKey_args& operator=(const CbmService_GetPoreSizeIdListByForeignKey_args&);
+  CbmService_GetPoreSizeIdListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetPoreSizeIdListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetPoreSizeIdListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetPoreSizeIdListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetPoreSizeIdListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetPoreSizeIdListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetPoreSizeIdListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetPoreSizeIdListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetPoreSizeIdListByForeignKey_result__isset {
+  _CbmService_GetPoreSizeIdListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetPoreSizeIdListByForeignKey_result__isset;
+
+class CbmService_GetPoreSizeIdListByForeignKey_result {
+ public:
+
+  CbmService_GetPoreSizeIdListByForeignKey_result(const CbmService_GetPoreSizeIdListByForeignKey_result&);
+  CbmService_GetPoreSizeIdListByForeignKey_result& operator=(const CbmService_GetPoreSizeIdListByForeignKey_result&);
+  CbmService_GetPoreSizeIdListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetPoreSizeIdListByForeignKey_result() throw();
+  std::vector<int32_t>  success;
+
+  _CbmService_GetPoreSizeIdListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<int32_t> & val);
+
+  bool operator == (const CbmService_GetPoreSizeIdListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetPoreSizeIdListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetPoreSizeIdListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetPoreSizeIdListByForeignKey_presult__isset {
+  _CbmService_GetPoreSizeIdListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetPoreSizeIdListByForeignKey_presult__isset;
+
+class CbmService_GetPoreSizeIdListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetPoreSizeIdListByForeignKey_presult() throw();
+  std::vector<int32_t> * success;
+
+  _CbmService_GetPoreSizeIdListByForeignKey_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
 typedef struct _CbmService_AddResAbundance_args__isset {
   _CbmService_AddResAbundance_args__isset() : res_abundance(false) {}
   bool res_abundance :1;
@@ -62044,6 +67406,228 @@ class CbmService_GetResAbundanceIdListByField2_presult {
   std::vector<int32_t> * success;
 
   _CbmService_GetResAbundanceIdListByField2_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetResAbundanceListByForeignKey_args__isset {
+  _CbmService_GetResAbundanceListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetResAbundanceListByForeignKey_args__isset;
+
+class CbmService_GetResAbundanceListByForeignKey_args {
+ public:
+
+  CbmService_GetResAbundanceListByForeignKey_args(const CbmService_GetResAbundanceListByForeignKey_args&);
+  CbmService_GetResAbundanceListByForeignKey_args& operator=(const CbmService_GetResAbundanceListByForeignKey_args&);
+  CbmService_GetResAbundanceListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetResAbundanceListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetResAbundanceListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetResAbundanceListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetResAbundanceListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetResAbundanceListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetResAbundanceListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetResAbundanceListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetResAbundanceListByForeignKey_result__isset {
+  _CbmService_GetResAbundanceListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetResAbundanceListByForeignKey_result__isset;
+
+class CbmService_GetResAbundanceListByForeignKey_result {
+ public:
+
+  CbmService_GetResAbundanceListByForeignKey_result(const CbmService_GetResAbundanceListByForeignKey_result&);
+  CbmService_GetResAbundanceListByForeignKey_result& operator=(const CbmService_GetResAbundanceListByForeignKey_result&);
+  CbmService_GetResAbundanceListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetResAbundanceListByForeignKey_result() throw();
+  std::vector<ResAbundance>  success;
+
+  _CbmService_GetResAbundanceListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<ResAbundance> & val);
+
+  bool operator == (const CbmService_GetResAbundanceListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetResAbundanceListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetResAbundanceListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetResAbundanceListByForeignKey_presult__isset {
+  _CbmService_GetResAbundanceListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetResAbundanceListByForeignKey_presult__isset;
+
+class CbmService_GetResAbundanceListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetResAbundanceListByForeignKey_presult() throw();
+  std::vector<ResAbundance> * success;
+
+  _CbmService_GetResAbundanceListByForeignKey_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetResAbundanceIdListByForeignKey_args__isset {
+  _CbmService_GetResAbundanceIdListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetResAbundanceIdListByForeignKey_args__isset;
+
+class CbmService_GetResAbundanceIdListByForeignKey_args {
+ public:
+
+  CbmService_GetResAbundanceIdListByForeignKey_args(const CbmService_GetResAbundanceIdListByForeignKey_args&);
+  CbmService_GetResAbundanceIdListByForeignKey_args& operator=(const CbmService_GetResAbundanceIdListByForeignKey_args&);
+  CbmService_GetResAbundanceIdListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetResAbundanceIdListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetResAbundanceIdListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetResAbundanceIdListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetResAbundanceIdListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetResAbundanceIdListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetResAbundanceIdListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetResAbundanceIdListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetResAbundanceIdListByForeignKey_result__isset {
+  _CbmService_GetResAbundanceIdListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetResAbundanceIdListByForeignKey_result__isset;
+
+class CbmService_GetResAbundanceIdListByForeignKey_result {
+ public:
+
+  CbmService_GetResAbundanceIdListByForeignKey_result(const CbmService_GetResAbundanceIdListByForeignKey_result&);
+  CbmService_GetResAbundanceIdListByForeignKey_result& operator=(const CbmService_GetResAbundanceIdListByForeignKey_result&);
+  CbmService_GetResAbundanceIdListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetResAbundanceIdListByForeignKey_result() throw();
+  std::vector<int32_t>  success;
+
+  _CbmService_GetResAbundanceIdListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<int32_t> & val);
+
+  bool operator == (const CbmService_GetResAbundanceIdListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetResAbundanceIdListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetResAbundanceIdListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetResAbundanceIdListByForeignKey_presult__isset {
+  _CbmService_GetResAbundanceIdListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetResAbundanceIdListByForeignKey_presult__isset;
+
+class CbmService_GetResAbundanceIdListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetResAbundanceIdListByForeignKey_presult() throw();
+  std::vector<int32_t> * success;
+
+  _CbmService_GetResAbundanceIdListByForeignKey_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
@@ -64495,6 +70079,228 @@ class CbmService_GetRockIdListByField2_presult {
 
 };
 
+typedef struct _CbmService_GetRockListByForeignKey_args__isset {
+  _CbmService_GetRockListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetRockListByForeignKey_args__isset;
+
+class CbmService_GetRockListByForeignKey_args {
+ public:
+
+  CbmService_GetRockListByForeignKey_args(const CbmService_GetRockListByForeignKey_args&);
+  CbmService_GetRockListByForeignKey_args& operator=(const CbmService_GetRockListByForeignKey_args&);
+  CbmService_GetRockListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetRockListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetRockListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetRockListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetRockListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetRockListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetRockListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetRockListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetRockListByForeignKey_result__isset {
+  _CbmService_GetRockListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetRockListByForeignKey_result__isset;
+
+class CbmService_GetRockListByForeignKey_result {
+ public:
+
+  CbmService_GetRockListByForeignKey_result(const CbmService_GetRockListByForeignKey_result&);
+  CbmService_GetRockListByForeignKey_result& operator=(const CbmService_GetRockListByForeignKey_result&);
+  CbmService_GetRockListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetRockListByForeignKey_result() throw();
+  std::vector<Rock>  success;
+
+  _CbmService_GetRockListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<Rock> & val);
+
+  bool operator == (const CbmService_GetRockListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetRockListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetRockListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetRockListByForeignKey_presult__isset {
+  _CbmService_GetRockListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetRockListByForeignKey_presult__isset;
+
+class CbmService_GetRockListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetRockListByForeignKey_presult() throw();
+  std::vector<Rock> * success;
+
+  _CbmService_GetRockListByForeignKey_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetRockIdListByForeignKey_args__isset {
+  _CbmService_GetRockIdListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetRockIdListByForeignKey_args__isset;
+
+class CbmService_GetRockIdListByForeignKey_args {
+ public:
+
+  CbmService_GetRockIdListByForeignKey_args(const CbmService_GetRockIdListByForeignKey_args&);
+  CbmService_GetRockIdListByForeignKey_args& operator=(const CbmService_GetRockIdListByForeignKey_args&);
+  CbmService_GetRockIdListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetRockIdListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetRockIdListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetRockIdListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetRockIdListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetRockIdListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetRockIdListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetRockIdListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetRockIdListByForeignKey_result__isset {
+  _CbmService_GetRockIdListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetRockIdListByForeignKey_result__isset;
+
+class CbmService_GetRockIdListByForeignKey_result {
+ public:
+
+  CbmService_GetRockIdListByForeignKey_result(const CbmService_GetRockIdListByForeignKey_result&);
+  CbmService_GetRockIdListByForeignKey_result& operator=(const CbmService_GetRockIdListByForeignKey_result&);
+  CbmService_GetRockIdListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetRockIdListByForeignKey_result() throw();
+  std::vector<int32_t>  success;
+
+  _CbmService_GetRockIdListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<int32_t> & val);
+
+  bool operator == (const CbmService_GetRockIdListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetRockIdListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetRockIdListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetRockIdListByForeignKey_presult__isset {
+  _CbmService_GetRockIdListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetRockIdListByForeignKey_presult__isset;
+
+class CbmService_GetRockIdListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetRockIdListByForeignKey_presult() throw();
+  std::vector<int32_t> * success;
+
+  _CbmService_GetRockIdListByForeignKey_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
 typedef struct _CbmService_AddSysInfo_args__isset {
   _CbmService_AddSysInfo_args__isset() : sys_info(false) {}
   bool sys_info :1;
@@ -66936,6 +72742,228 @@ class CbmService_GetSysInfoIdListByField2_presult {
   std::vector<int32_t> * success;
 
   _CbmService_GetSysInfoIdListByField2_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetSysInfoListByForeignKey_args__isset {
+  _CbmService_GetSysInfoListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetSysInfoListByForeignKey_args__isset;
+
+class CbmService_GetSysInfoListByForeignKey_args {
+ public:
+
+  CbmService_GetSysInfoListByForeignKey_args(const CbmService_GetSysInfoListByForeignKey_args&);
+  CbmService_GetSysInfoListByForeignKey_args& operator=(const CbmService_GetSysInfoListByForeignKey_args&);
+  CbmService_GetSysInfoListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetSysInfoListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetSysInfoListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetSysInfoListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetSysInfoListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetSysInfoListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetSysInfoListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetSysInfoListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetSysInfoListByForeignKey_result__isset {
+  _CbmService_GetSysInfoListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetSysInfoListByForeignKey_result__isset;
+
+class CbmService_GetSysInfoListByForeignKey_result {
+ public:
+
+  CbmService_GetSysInfoListByForeignKey_result(const CbmService_GetSysInfoListByForeignKey_result&);
+  CbmService_GetSysInfoListByForeignKey_result& operator=(const CbmService_GetSysInfoListByForeignKey_result&);
+  CbmService_GetSysInfoListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetSysInfoListByForeignKey_result() throw();
+  std::vector<SysInfo>  success;
+
+  _CbmService_GetSysInfoListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<SysInfo> & val);
+
+  bool operator == (const CbmService_GetSysInfoListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetSysInfoListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetSysInfoListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetSysInfoListByForeignKey_presult__isset {
+  _CbmService_GetSysInfoListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetSysInfoListByForeignKey_presult__isset;
+
+class CbmService_GetSysInfoListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetSysInfoListByForeignKey_presult() throw();
+  std::vector<SysInfo> * success;
+
+  _CbmService_GetSysInfoListByForeignKey_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetSysInfoIdListByForeignKey_args__isset {
+  _CbmService_GetSysInfoIdListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetSysInfoIdListByForeignKey_args__isset;
+
+class CbmService_GetSysInfoIdListByForeignKey_args {
+ public:
+
+  CbmService_GetSysInfoIdListByForeignKey_args(const CbmService_GetSysInfoIdListByForeignKey_args&);
+  CbmService_GetSysInfoIdListByForeignKey_args& operator=(const CbmService_GetSysInfoIdListByForeignKey_args&);
+  CbmService_GetSysInfoIdListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetSysInfoIdListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetSysInfoIdListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetSysInfoIdListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetSysInfoIdListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetSysInfoIdListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetSysInfoIdListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetSysInfoIdListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetSysInfoIdListByForeignKey_result__isset {
+  _CbmService_GetSysInfoIdListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetSysInfoIdListByForeignKey_result__isset;
+
+class CbmService_GetSysInfoIdListByForeignKey_result {
+ public:
+
+  CbmService_GetSysInfoIdListByForeignKey_result(const CbmService_GetSysInfoIdListByForeignKey_result&);
+  CbmService_GetSysInfoIdListByForeignKey_result& operator=(const CbmService_GetSysInfoIdListByForeignKey_result&);
+  CbmService_GetSysInfoIdListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetSysInfoIdListByForeignKey_result() throw();
+  std::vector<int32_t>  success;
+
+  _CbmService_GetSysInfoIdListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<int32_t> & val);
+
+  bool operator == (const CbmService_GetSysInfoIdListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetSysInfoIdListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetSysInfoIdListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetSysInfoIdListByForeignKey_presult__isset {
+  _CbmService_GetSysInfoIdListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetSysInfoIdListByForeignKey_presult__isset;
+
+class CbmService_GetSysInfoIdListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetSysInfoIdListByForeignKey_presult() throw();
+  std::vector<int32_t> * success;
+
+  _CbmService_GetSysInfoIdListByForeignKey_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
@@ -69387,6 +75415,228 @@ class CbmService_GetTechModeIdListByField2_presult {
 
 };
 
+typedef struct _CbmService_GetTechModeListByForeignKey_args__isset {
+  _CbmService_GetTechModeListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetTechModeListByForeignKey_args__isset;
+
+class CbmService_GetTechModeListByForeignKey_args {
+ public:
+
+  CbmService_GetTechModeListByForeignKey_args(const CbmService_GetTechModeListByForeignKey_args&);
+  CbmService_GetTechModeListByForeignKey_args& operator=(const CbmService_GetTechModeListByForeignKey_args&);
+  CbmService_GetTechModeListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetTechModeListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetTechModeListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetTechModeListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetTechModeListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetTechModeListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetTechModeListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetTechModeListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetTechModeListByForeignKey_result__isset {
+  _CbmService_GetTechModeListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetTechModeListByForeignKey_result__isset;
+
+class CbmService_GetTechModeListByForeignKey_result {
+ public:
+
+  CbmService_GetTechModeListByForeignKey_result(const CbmService_GetTechModeListByForeignKey_result&);
+  CbmService_GetTechModeListByForeignKey_result& operator=(const CbmService_GetTechModeListByForeignKey_result&);
+  CbmService_GetTechModeListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetTechModeListByForeignKey_result() throw();
+  std::vector<TechMode>  success;
+
+  _CbmService_GetTechModeListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<TechMode> & val);
+
+  bool operator == (const CbmService_GetTechModeListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetTechModeListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetTechModeListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetTechModeListByForeignKey_presult__isset {
+  _CbmService_GetTechModeListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetTechModeListByForeignKey_presult__isset;
+
+class CbmService_GetTechModeListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetTechModeListByForeignKey_presult() throw();
+  std::vector<TechMode> * success;
+
+  _CbmService_GetTechModeListByForeignKey_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetTechModeIdListByForeignKey_args__isset {
+  _CbmService_GetTechModeIdListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetTechModeIdListByForeignKey_args__isset;
+
+class CbmService_GetTechModeIdListByForeignKey_args {
+ public:
+
+  CbmService_GetTechModeIdListByForeignKey_args(const CbmService_GetTechModeIdListByForeignKey_args&);
+  CbmService_GetTechModeIdListByForeignKey_args& operator=(const CbmService_GetTechModeIdListByForeignKey_args&);
+  CbmService_GetTechModeIdListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetTechModeIdListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetTechModeIdListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetTechModeIdListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetTechModeIdListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetTechModeIdListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetTechModeIdListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetTechModeIdListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetTechModeIdListByForeignKey_result__isset {
+  _CbmService_GetTechModeIdListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetTechModeIdListByForeignKey_result__isset;
+
+class CbmService_GetTechModeIdListByForeignKey_result {
+ public:
+
+  CbmService_GetTechModeIdListByForeignKey_result(const CbmService_GetTechModeIdListByForeignKey_result&);
+  CbmService_GetTechModeIdListByForeignKey_result& operator=(const CbmService_GetTechModeIdListByForeignKey_result&);
+  CbmService_GetTechModeIdListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetTechModeIdListByForeignKey_result() throw();
+  std::vector<int32_t>  success;
+
+  _CbmService_GetTechModeIdListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<int32_t> & val);
+
+  bool operator == (const CbmService_GetTechModeIdListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetTechModeIdListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetTechModeIdListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetTechModeIdListByForeignKey_presult__isset {
+  _CbmService_GetTechModeIdListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetTechModeIdListByForeignKey_presult__isset;
+
+class CbmService_GetTechModeIdListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetTechModeIdListByForeignKey_presult() throw();
+  std::vector<int32_t> * success;
+
+  _CbmService_GetTechModeIdListByForeignKey_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
 typedef struct _CbmService_AddTechnology_args__isset {
   _CbmService_AddTechnology_args__isset() : technology(false) {}
   bool technology :1;
@@ -71828,6 +78078,228 @@ class CbmService_GetTechnologyIdListByField2_presult {
   std::vector<int32_t> * success;
 
   _CbmService_GetTechnologyIdListByField2_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetTechnologyListByForeignKey_args__isset {
+  _CbmService_GetTechnologyListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetTechnologyListByForeignKey_args__isset;
+
+class CbmService_GetTechnologyListByForeignKey_args {
+ public:
+
+  CbmService_GetTechnologyListByForeignKey_args(const CbmService_GetTechnologyListByForeignKey_args&);
+  CbmService_GetTechnologyListByForeignKey_args& operator=(const CbmService_GetTechnologyListByForeignKey_args&);
+  CbmService_GetTechnologyListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetTechnologyListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetTechnologyListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetTechnologyListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetTechnologyListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetTechnologyListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetTechnologyListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetTechnologyListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetTechnologyListByForeignKey_result__isset {
+  _CbmService_GetTechnologyListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetTechnologyListByForeignKey_result__isset;
+
+class CbmService_GetTechnologyListByForeignKey_result {
+ public:
+
+  CbmService_GetTechnologyListByForeignKey_result(const CbmService_GetTechnologyListByForeignKey_result&);
+  CbmService_GetTechnologyListByForeignKey_result& operator=(const CbmService_GetTechnologyListByForeignKey_result&);
+  CbmService_GetTechnologyListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetTechnologyListByForeignKey_result() throw();
+  std::vector<Technology>  success;
+
+  _CbmService_GetTechnologyListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<Technology> & val);
+
+  bool operator == (const CbmService_GetTechnologyListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetTechnologyListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetTechnologyListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetTechnologyListByForeignKey_presult__isset {
+  _CbmService_GetTechnologyListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetTechnologyListByForeignKey_presult__isset;
+
+class CbmService_GetTechnologyListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetTechnologyListByForeignKey_presult() throw();
+  std::vector<Technology> * success;
+
+  _CbmService_GetTechnologyListByForeignKey_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetTechnologyIdListByForeignKey_args__isset {
+  _CbmService_GetTechnologyIdListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetTechnologyIdListByForeignKey_args__isset;
+
+class CbmService_GetTechnologyIdListByForeignKey_args {
+ public:
+
+  CbmService_GetTechnologyIdListByForeignKey_args(const CbmService_GetTechnologyIdListByForeignKey_args&);
+  CbmService_GetTechnologyIdListByForeignKey_args& operator=(const CbmService_GetTechnologyIdListByForeignKey_args&);
+  CbmService_GetTechnologyIdListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetTechnologyIdListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetTechnologyIdListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetTechnologyIdListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetTechnologyIdListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetTechnologyIdListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetTechnologyIdListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetTechnologyIdListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetTechnologyIdListByForeignKey_result__isset {
+  _CbmService_GetTechnologyIdListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetTechnologyIdListByForeignKey_result__isset;
+
+class CbmService_GetTechnologyIdListByForeignKey_result {
+ public:
+
+  CbmService_GetTechnologyIdListByForeignKey_result(const CbmService_GetTechnologyIdListByForeignKey_result&);
+  CbmService_GetTechnologyIdListByForeignKey_result& operator=(const CbmService_GetTechnologyIdListByForeignKey_result&);
+  CbmService_GetTechnologyIdListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetTechnologyIdListByForeignKey_result() throw();
+  std::vector<int32_t>  success;
+
+  _CbmService_GetTechnologyIdListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<int32_t> & val);
+
+  bool operator == (const CbmService_GetTechnologyIdListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetTechnologyIdListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetTechnologyIdListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetTechnologyIdListByForeignKey_presult__isset {
+  _CbmService_GetTechnologyIdListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetTechnologyIdListByForeignKey_presult__isset;
+
+class CbmService_GetTechnologyIdListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetTechnologyIdListByForeignKey_presult() throw();
+  std::vector<int32_t> * success;
+
+  _CbmService_GetTechnologyIdListByForeignKey_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
@@ -74279,6 +80751,228 @@ class CbmService_GetTopoGeoIdListByField2_presult {
 
 };
 
+typedef struct _CbmService_GetTopoGeoListByForeignKey_args__isset {
+  _CbmService_GetTopoGeoListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetTopoGeoListByForeignKey_args__isset;
+
+class CbmService_GetTopoGeoListByForeignKey_args {
+ public:
+
+  CbmService_GetTopoGeoListByForeignKey_args(const CbmService_GetTopoGeoListByForeignKey_args&);
+  CbmService_GetTopoGeoListByForeignKey_args& operator=(const CbmService_GetTopoGeoListByForeignKey_args&);
+  CbmService_GetTopoGeoListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetTopoGeoListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetTopoGeoListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetTopoGeoListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetTopoGeoListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetTopoGeoListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetTopoGeoListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetTopoGeoListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetTopoGeoListByForeignKey_result__isset {
+  _CbmService_GetTopoGeoListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetTopoGeoListByForeignKey_result__isset;
+
+class CbmService_GetTopoGeoListByForeignKey_result {
+ public:
+
+  CbmService_GetTopoGeoListByForeignKey_result(const CbmService_GetTopoGeoListByForeignKey_result&);
+  CbmService_GetTopoGeoListByForeignKey_result& operator=(const CbmService_GetTopoGeoListByForeignKey_result&);
+  CbmService_GetTopoGeoListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetTopoGeoListByForeignKey_result() throw();
+  std::vector<TopoGeo>  success;
+
+  _CbmService_GetTopoGeoListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<TopoGeo> & val);
+
+  bool operator == (const CbmService_GetTopoGeoListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetTopoGeoListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetTopoGeoListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetTopoGeoListByForeignKey_presult__isset {
+  _CbmService_GetTopoGeoListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetTopoGeoListByForeignKey_presult__isset;
+
+class CbmService_GetTopoGeoListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetTopoGeoListByForeignKey_presult() throw();
+  std::vector<TopoGeo> * success;
+
+  _CbmService_GetTopoGeoListByForeignKey_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetTopoGeoIdListByForeignKey_args__isset {
+  _CbmService_GetTopoGeoIdListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetTopoGeoIdListByForeignKey_args__isset;
+
+class CbmService_GetTopoGeoIdListByForeignKey_args {
+ public:
+
+  CbmService_GetTopoGeoIdListByForeignKey_args(const CbmService_GetTopoGeoIdListByForeignKey_args&);
+  CbmService_GetTopoGeoIdListByForeignKey_args& operator=(const CbmService_GetTopoGeoIdListByForeignKey_args&);
+  CbmService_GetTopoGeoIdListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetTopoGeoIdListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetTopoGeoIdListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetTopoGeoIdListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetTopoGeoIdListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetTopoGeoIdListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetTopoGeoIdListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetTopoGeoIdListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetTopoGeoIdListByForeignKey_result__isset {
+  _CbmService_GetTopoGeoIdListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetTopoGeoIdListByForeignKey_result__isset;
+
+class CbmService_GetTopoGeoIdListByForeignKey_result {
+ public:
+
+  CbmService_GetTopoGeoIdListByForeignKey_result(const CbmService_GetTopoGeoIdListByForeignKey_result&);
+  CbmService_GetTopoGeoIdListByForeignKey_result& operator=(const CbmService_GetTopoGeoIdListByForeignKey_result&);
+  CbmService_GetTopoGeoIdListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetTopoGeoIdListByForeignKey_result() throw();
+  std::vector<int32_t>  success;
+
+  _CbmService_GetTopoGeoIdListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<int32_t> & val);
+
+  bool operator == (const CbmService_GetTopoGeoIdListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetTopoGeoIdListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetTopoGeoIdListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetTopoGeoIdListByForeignKey_presult__isset {
+  _CbmService_GetTopoGeoIdListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetTopoGeoIdListByForeignKey_presult__isset;
+
+class CbmService_GetTopoGeoIdListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetTopoGeoIdListByForeignKey_presult() throw();
+  std::vector<int32_t> * success;
+
+  _CbmService_GetTopoGeoIdListByForeignKey_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
 typedef struct _CbmService_AddTunnel_args__isset {
   _CbmService_AddTunnel_args__isset() : tunnel(false) {}
   bool tunnel :1;
@@ -76720,6 +83414,228 @@ class CbmService_GetTunnelIdListByField2_presult {
   std::vector<int32_t> * success;
 
   _CbmService_GetTunnelIdListByField2_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetTunnelListByForeignKey_args__isset {
+  _CbmService_GetTunnelListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetTunnelListByForeignKey_args__isset;
+
+class CbmService_GetTunnelListByForeignKey_args {
+ public:
+
+  CbmService_GetTunnelListByForeignKey_args(const CbmService_GetTunnelListByForeignKey_args&);
+  CbmService_GetTunnelListByForeignKey_args& operator=(const CbmService_GetTunnelListByForeignKey_args&);
+  CbmService_GetTunnelListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetTunnelListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetTunnelListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetTunnelListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetTunnelListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetTunnelListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetTunnelListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetTunnelListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetTunnelListByForeignKey_result__isset {
+  _CbmService_GetTunnelListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetTunnelListByForeignKey_result__isset;
+
+class CbmService_GetTunnelListByForeignKey_result {
+ public:
+
+  CbmService_GetTunnelListByForeignKey_result(const CbmService_GetTunnelListByForeignKey_result&);
+  CbmService_GetTunnelListByForeignKey_result& operator=(const CbmService_GetTunnelListByForeignKey_result&);
+  CbmService_GetTunnelListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetTunnelListByForeignKey_result() throw();
+  std::vector<Tunnel>  success;
+
+  _CbmService_GetTunnelListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<Tunnel> & val);
+
+  bool operator == (const CbmService_GetTunnelListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetTunnelListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetTunnelListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetTunnelListByForeignKey_presult__isset {
+  _CbmService_GetTunnelListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetTunnelListByForeignKey_presult__isset;
+
+class CbmService_GetTunnelListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetTunnelListByForeignKey_presult() throw();
+  std::vector<Tunnel> * success;
+
+  _CbmService_GetTunnelListByForeignKey_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetTunnelIdListByForeignKey_args__isset {
+  _CbmService_GetTunnelIdListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetTunnelIdListByForeignKey_args__isset;
+
+class CbmService_GetTunnelIdListByForeignKey_args {
+ public:
+
+  CbmService_GetTunnelIdListByForeignKey_args(const CbmService_GetTunnelIdListByForeignKey_args&);
+  CbmService_GetTunnelIdListByForeignKey_args& operator=(const CbmService_GetTunnelIdListByForeignKey_args&);
+  CbmService_GetTunnelIdListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetTunnelIdListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetTunnelIdListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetTunnelIdListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetTunnelIdListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetTunnelIdListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetTunnelIdListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetTunnelIdListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetTunnelIdListByForeignKey_result__isset {
+  _CbmService_GetTunnelIdListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetTunnelIdListByForeignKey_result__isset;
+
+class CbmService_GetTunnelIdListByForeignKey_result {
+ public:
+
+  CbmService_GetTunnelIdListByForeignKey_result(const CbmService_GetTunnelIdListByForeignKey_result&);
+  CbmService_GetTunnelIdListByForeignKey_result& operator=(const CbmService_GetTunnelIdListByForeignKey_result&);
+  CbmService_GetTunnelIdListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetTunnelIdListByForeignKey_result() throw();
+  std::vector<int32_t>  success;
+
+  _CbmService_GetTunnelIdListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<int32_t> & val);
+
+  bool operator == (const CbmService_GetTunnelIdListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetTunnelIdListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetTunnelIdListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetTunnelIdListByForeignKey_presult__isset {
+  _CbmService_GetTunnelIdListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetTunnelIdListByForeignKey_presult__isset;
+
+class CbmService_GetTunnelIdListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetTunnelIdListByForeignKey_presult() throw();
+  std::vector<int32_t> * success;
+
+  _CbmService_GetTunnelIdListByForeignKey_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
@@ -79171,6 +86087,228 @@ class CbmService_GetWorkAreaIdListByField2_presult {
 
 };
 
+typedef struct _CbmService_GetWorkAreaListByForeignKey_args__isset {
+  _CbmService_GetWorkAreaListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetWorkAreaListByForeignKey_args__isset;
+
+class CbmService_GetWorkAreaListByForeignKey_args {
+ public:
+
+  CbmService_GetWorkAreaListByForeignKey_args(const CbmService_GetWorkAreaListByForeignKey_args&);
+  CbmService_GetWorkAreaListByForeignKey_args& operator=(const CbmService_GetWorkAreaListByForeignKey_args&);
+  CbmService_GetWorkAreaListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetWorkAreaListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetWorkAreaListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetWorkAreaListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetWorkAreaListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetWorkAreaListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetWorkAreaListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetWorkAreaListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetWorkAreaListByForeignKey_result__isset {
+  _CbmService_GetWorkAreaListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetWorkAreaListByForeignKey_result__isset;
+
+class CbmService_GetWorkAreaListByForeignKey_result {
+ public:
+
+  CbmService_GetWorkAreaListByForeignKey_result(const CbmService_GetWorkAreaListByForeignKey_result&);
+  CbmService_GetWorkAreaListByForeignKey_result& operator=(const CbmService_GetWorkAreaListByForeignKey_result&);
+  CbmService_GetWorkAreaListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetWorkAreaListByForeignKey_result() throw();
+  std::vector<WorkArea>  success;
+
+  _CbmService_GetWorkAreaListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<WorkArea> & val);
+
+  bool operator == (const CbmService_GetWorkAreaListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetWorkAreaListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetWorkAreaListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetWorkAreaListByForeignKey_presult__isset {
+  _CbmService_GetWorkAreaListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetWorkAreaListByForeignKey_presult__isset;
+
+class CbmService_GetWorkAreaListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetWorkAreaListByForeignKey_presult() throw();
+  std::vector<WorkArea> * success;
+
+  _CbmService_GetWorkAreaListByForeignKey_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetWorkAreaIdListByForeignKey_args__isset {
+  _CbmService_GetWorkAreaIdListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetWorkAreaIdListByForeignKey_args__isset;
+
+class CbmService_GetWorkAreaIdListByForeignKey_args {
+ public:
+
+  CbmService_GetWorkAreaIdListByForeignKey_args(const CbmService_GetWorkAreaIdListByForeignKey_args&);
+  CbmService_GetWorkAreaIdListByForeignKey_args& operator=(const CbmService_GetWorkAreaIdListByForeignKey_args&);
+  CbmService_GetWorkAreaIdListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetWorkAreaIdListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetWorkAreaIdListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetWorkAreaIdListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetWorkAreaIdListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetWorkAreaIdListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetWorkAreaIdListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetWorkAreaIdListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetWorkAreaIdListByForeignKey_result__isset {
+  _CbmService_GetWorkAreaIdListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetWorkAreaIdListByForeignKey_result__isset;
+
+class CbmService_GetWorkAreaIdListByForeignKey_result {
+ public:
+
+  CbmService_GetWorkAreaIdListByForeignKey_result(const CbmService_GetWorkAreaIdListByForeignKey_result&);
+  CbmService_GetWorkAreaIdListByForeignKey_result& operator=(const CbmService_GetWorkAreaIdListByForeignKey_result&);
+  CbmService_GetWorkAreaIdListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetWorkAreaIdListByForeignKey_result() throw();
+  std::vector<int32_t>  success;
+
+  _CbmService_GetWorkAreaIdListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<int32_t> & val);
+
+  bool operator == (const CbmService_GetWorkAreaIdListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetWorkAreaIdListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetWorkAreaIdListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetWorkAreaIdListByForeignKey_presult__isset {
+  _CbmService_GetWorkAreaIdListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetWorkAreaIdListByForeignKey_presult__isset;
+
+class CbmService_GetWorkAreaIdListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetWorkAreaIdListByForeignKey_presult() throw();
+  std::vector<int32_t> * success;
+
+  _CbmService_GetWorkAreaIdListByForeignKey_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
 typedef struct _CbmService_AddWorkSurf_args__isset {
   _CbmService_AddWorkSurf_args__isset() : work_surf(false) {}
   bool work_surf :1;
@@ -81612,6 +88750,228 @@ class CbmService_GetWorkSurfIdListByField2_presult {
   std::vector<int32_t> * success;
 
   _CbmService_GetWorkSurfIdListByField2_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetWorkSurfListByForeignKey_args__isset {
+  _CbmService_GetWorkSurfListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetWorkSurfListByForeignKey_args__isset;
+
+class CbmService_GetWorkSurfListByForeignKey_args {
+ public:
+
+  CbmService_GetWorkSurfListByForeignKey_args(const CbmService_GetWorkSurfListByForeignKey_args&);
+  CbmService_GetWorkSurfListByForeignKey_args& operator=(const CbmService_GetWorkSurfListByForeignKey_args&);
+  CbmService_GetWorkSurfListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetWorkSurfListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetWorkSurfListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetWorkSurfListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetWorkSurfListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetWorkSurfListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetWorkSurfListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetWorkSurfListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetWorkSurfListByForeignKey_result__isset {
+  _CbmService_GetWorkSurfListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetWorkSurfListByForeignKey_result__isset;
+
+class CbmService_GetWorkSurfListByForeignKey_result {
+ public:
+
+  CbmService_GetWorkSurfListByForeignKey_result(const CbmService_GetWorkSurfListByForeignKey_result&);
+  CbmService_GetWorkSurfListByForeignKey_result& operator=(const CbmService_GetWorkSurfListByForeignKey_result&);
+  CbmService_GetWorkSurfListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetWorkSurfListByForeignKey_result() throw();
+  std::vector<WorkSurf>  success;
+
+  _CbmService_GetWorkSurfListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<WorkSurf> & val);
+
+  bool operator == (const CbmService_GetWorkSurfListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetWorkSurfListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetWorkSurfListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetWorkSurfListByForeignKey_presult__isset {
+  _CbmService_GetWorkSurfListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetWorkSurfListByForeignKey_presult__isset;
+
+class CbmService_GetWorkSurfListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetWorkSurfListByForeignKey_presult() throw();
+  std::vector<WorkSurf> * success;
+
+  _CbmService_GetWorkSurfListByForeignKey_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _CbmService_GetWorkSurfIdListByForeignKey_args__isset {
+  _CbmService_GetWorkSurfIdListByForeignKey_args__isset() : fkey(false), id(false) {}
+  bool fkey :1;
+  bool id :1;
+} _CbmService_GetWorkSurfIdListByForeignKey_args__isset;
+
+class CbmService_GetWorkSurfIdListByForeignKey_args {
+ public:
+
+  CbmService_GetWorkSurfIdListByForeignKey_args(const CbmService_GetWorkSurfIdListByForeignKey_args&);
+  CbmService_GetWorkSurfIdListByForeignKey_args& operator=(const CbmService_GetWorkSurfIdListByForeignKey_args&);
+  CbmService_GetWorkSurfIdListByForeignKey_args() : fkey(), id(0) {
+  }
+
+  virtual ~CbmService_GetWorkSurfIdListByForeignKey_args() throw();
+  std::string fkey;
+  int32_t id;
+
+  _CbmService_GetWorkSurfIdListByForeignKey_args__isset __isset;
+
+  void __set_fkey(const std::string& val);
+
+  void __set_id(const int32_t val);
+
+  bool operator == (const CbmService_GetWorkSurfIdListByForeignKey_args & rhs) const
+  {
+    if (!(fkey == rhs.fkey))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetWorkSurfIdListByForeignKey_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetWorkSurfIdListByForeignKey_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CbmService_GetWorkSurfIdListByForeignKey_pargs {
+ public:
+
+
+  virtual ~CbmService_GetWorkSurfIdListByForeignKey_pargs() throw();
+  const std::string* fkey;
+  const int32_t* id;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetWorkSurfIdListByForeignKey_result__isset {
+  _CbmService_GetWorkSurfIdListByForeignKey_result__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetWorkSurfIdListByForeignKey_result__isset;
+
+class CbmService_GetWorkSurfIdListByForeignKey_result {
+ public:
+
+  CbmService_GetWorkSurfIdListByForeignKey_result(const CbmService_GetWorkSurfIdListByForeignKey_result&);
+  CbmService_GetWorkSurfIdListByForeignKey_result& operator=(const CbmService_GetWorkSurfIdListByForeignKey_result&);
+  CbmService_GetWorkSurfIdListByForeignKey_result() {
+  }
+
+  virtual ~CbmService_GetWorkSurfIdListByForeignKey_result() throw();
+  std::vector<int32_t>  success;
+
+  _CbmService_GetWorkSurfIdListByForeignKey_result__isset __isset;
+
+  void __set_success(const std::vector<int32_t> & val);
+
+  bool operator == (const CbmService_GetWorkSurfIdListByForeignKey_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CbmService_GetWorkSurfIdListByForeignKey_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CbmService_GetWorkSurfIdListByForeignKey_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CbmService_GetWorkSurfIdListByForeignKey_presult__isset {
+  _CbmService_GetWorkSurfIdListByForeignKey_presult__isset() : success(false) {}
+  bool success :1;
+} _CbmService_GetWorkSurfIdListByForeignKey_presult__isset;
+
+class CbmService_GetWorkSurfIdListByForeignKey_presult {
+ public:
+
+
+  virtual ~CbmService_GetWorkSurfIdListByForeignKey_presult() throw();
+  std::vector<int32_t> * success;
+
+  _CbmService_GetWorkSurfIdListByForeignKey_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
@@ -84714,6 +92074,12 @@ class CbmServiceClient : virtual public CbmServiceIf {
   void GetAccountIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void send_GetAccountIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetAccountIdListByField2(std::vector<int32_t> & _return);
+  void GetAccountListByForeignKey(std::vector<Account> & _return, const std::string& fkey, const int32_t id);
+  void send_GetAccountListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetAccountListByForeignKey(std::vector<Account> & _return);
+  void GetAccountIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  void send_GetAccountIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetAccountIdListByForeignKey(std::vector<int32_t> & _return);
   int32_t AddAdjLayer(const AdjLayer& adj_layer);
   void send_AddAdjLayer(const AdjLayer& adj_layer);
   int32_t recv_AddAdjLayer();
@@ -84783,6 +92149,12 @@ class CbmServiceClient : virtual public CbmServiceIf {
   void GetAdjLayerIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void send_GetAdjLayerIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetAdjLayerIdListByField2(std::vector<int32_t> & _return);
+  void GetAdjLayerListByForeignKey(std::vector<AdjLayer> & _return, const std::string& fkey, const int32_t id);
+  void send_GetAdjLayerListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetAdjLayerListByForeignKey(std::vector<AdjLayer> & _return);
+  void GetAdjLayerIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  void send_GetAdjLayerIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetAdjLayerIdListByForeignKey(std::vector<int32_t> & _return);
   int32_t AddCoal(const Coal& coal);
   void send_AddCoal(const Coal& coal);
   int32_t recv_AddCoal();
@@ -84852,6 +92224,12 @@ class CbmServiceClient : virtual public CbmServiceIf {
   void GetCoalIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void send_GetCoalIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetCoalIdListByField2(std::vector<int32_t> & _return);
+  void GetCoalListByForeignKey(std::vector<Coal> & _return, const std::string& fkey, const int32_t id);
+  void send_GetCoalListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetCoalListByForeignKey(std::vector<Coal> & _return);
+  void GetCoalIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  void send_GetCoalIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetCoalIdListByForeignKey(std::vector<int32_t> & _return);
   int32_t AddComplexity(const Complexity& complexity);
   void send_AddComplexity(const Complexity& complexity);
   int32_t recv_AddComplexity();
@@ -84921,6 +92299,12 @@ class CbmServiceClient : virtual public CbmServiceIf {
   void GetComplexityIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void send_GetComplexityIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetComplexityIdListByField2(std::vector<int32_t> & _return);
+  void GetComplexityListByForeignKey(std::vector<Complexity> & _return, const std::string& fkey, const int32_t id);
+  void send_GetComplexityListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetComplexityListByForeignKey(std::vector<Complexity> & _return);
+  void GetComplexityIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  void send_GetComplexityIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetComplexityIdListByForeignKey(std::vector<int32_t> & _return);
   int32_t AddDesignDrillingSurfTechnology(const DesignDrillingSurfTechnology& design_drilling_surf_technology);
   void send_AddDesignDrillingSurfTechnology(const DesignDrillingSurfTechnology& design_drilling_surf_technology);
   int32_t recv_AddDesignDrillingSurfTechnology();
@@ -84990,6 +92374,12 @@ class CbmServiceClient : virtual public CbmServiceIf {
   void GetDesignDrillingSurfTechnologyIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void send_GetDesignDrillingSurfTechnologyIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetDesignDrillingSurfTechnologyIdListByField2(std::vector<int32_t> & _return);
+  void GetDesignDrillingSurfTechnologyListByForeignKey(std::vector<DesignDrillingSurfTechnology> & _return, const std::string& fkey, const int32_t id);
+  void send_GetDesignDrillingSurfTechnologyListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetDesignDrillingSurfTechnologyListByForeignKey(std::vector<DesignDrillingSurfTechnology> & _return);
+  void GetDesignDrillingSurfTechnologyIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  void send_GetDesignDrillingSurfTechnologyIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetDesignDrillingSurfTechnologyIdListByForeignKey(std::vector<int32_t> & _return);
   int32_t AddDesignGoafTechnology(const DesignGoafTechnology& design_goaf_technology);
   void send_AddDesignGoafTechnology(const DesignGoafTechnology& design_goaf_technology);
   int32_t recv_AddDesignGoafTechnology();
@@ -85059,6 +92449,12 @@ class CbmServiceClient : virtual public CbmServiceIf {
   void GetDesignGoafTechnologyIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void send_GetDesignGoafTechnologyIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetDesignGoafTechnologyIdListByField2(std::vector<int32_t> & _return);
+  void GetDesignGoafTechnologyListByForeignKey(std::vector<DesignGoafTechnology> & _return, const std::string& fkey, const int32_t id);
+  void send_GetDesignGoafTechnologyListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetDesignGoafTechnologyListByForeignKey(std::vector<DesignGoafTechnology> & _return);
+  void GetDesignGoafTechnologyIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  void send_GetDesignGoafTechnologyIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetDesignGoafTechnologyIdListByForeignKey(std::vector<int32_t> & _return);
   int32_t AddDesignPore(const DesignPore& design_pore);
   void send_AddDesignPore(const DesignPore& design_pore);
   int32_t recv_AddDesignPore();
@@ -85128,6 +92524,12 @@ class CbmServiceClient : virtual public CbmServiceIf {
   void GetDesignPoreIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void send_GetDesignPoreIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetDesignPoreIdListByField2(std::vector<int32_t> & _return);
+  void GetDesignPoreListByForeignKey(std::vector<DesignPore> & _return, const std::string& fkey, const int32_t id);
+  void send_GetDesignPoreListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetDesignPoreListByForeignKey(std::vector<DesignPore> & _return);
+  void GetDesignPoreIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  void send_GetDesignPoreIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetDesignPoreIdListByForeignKey(std::vector<int32_t> & _return);
   int32_t AddDesignSite(const DesignSite& design_site);
   void send_AddDesignSite(const DesignSite& design_site);
   int32_t recv_AddDesignSite();
@@ -85197,6 +92599,12 @@ class CbmServiceClient : virtual public CbmServiceIf {
   void GetDesignSiteIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void send_GetDesignSiteIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetDesignSiteIdListByField2(std::vector<int32_t> & _return);
+  void GetDesignSiteListByForeignKey(std::vector<DesignSite> & _return, const std::string& fkey, const int32_t id);
+  void send_GetDesignSiteListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetDesignSiteListByForeignKey(std::vector<DesignSite> & _return);
+  void GetDesignSiteIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  void send_GetDesignSiteIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetDesignSiteIdListByForeignKey(std::vector<int32_t> & _return);
   int32_t AddDesignTechnology(const DesignTechnology& design_technology);
   void send_AddDesignTechnology(const DesignTechnology& design_technology);
   int32_t recv_AddDesignTechnology();
@@ -85266,6 +92674,12 @@ class CbmServiceClient : virtual public CbmServiceIf {
   void GetDesignTechnologyIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void send_GetDesignTechnologyIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetDesignTechnologyIdListByField2(std::vector<int32_t> & _return);
+  void GetDesignTechnologyListByForeignKey(std::vector<DesignTechnology> & _return, const std::string& fkey, const int32_t id);
+  void send_GetDesignTechnologyListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetDesignTechnologyListByForeignKey(std::vector<DesignTechnology> & _return);
+  void GetDesignTechnologyIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  void send_GetDesignTechnologyIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetDesignTechnologyIdListByForeignKey(std::vector<int32_t> & _return);
   int32_t AddDesignWorkSurfTechnology(const DesignWorkSurfTechnology& design_work_surf_technology);
   void send_AddDesignWorkSurfTechnology(const DesignWorkSurfTechnology& design_work_surf_technology);
   int32_t recv_AddDesignWorkSurfTechnology();
@@ -85335,6 +92749,12 @@ class CbmServiceClient : virtual public CbmServiceIf {
   void GetDesignWorkSurfTechnologyIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void send_GetDesignWorkSurfTechnologyIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetDesignWorkSurfTechnologyIdListByField2(std::vector<int32_t> & _return);
+  void GetDesignWorkSurfTechnologyListByForeignKey(std::vector<DesignWorkSurfTechnology> & _return, const std::string& fkey, const int32_t id);
+  void send_GetDesignWorkSurfTechnologyListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetDesignWorkSurfTechnologyListByForeignKey(std::vector<DesignWorkSurfTechnology> & _return);
+  void GetDesignWorkSurfTechnologyIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  void send_GetDesignWorkSurfTechnologyIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetDesignWorkSurfTechnologyIdListByForeignKey(std::vector<int32_t> & _return);
   int32_t AddDrillingRadiusParam(const DrillingRadiusParam& drilling_radius_param);
   void send_AddDrillingRadiusParam(const DrillingRadiusParam& drilling_radius_param);
   int32_t recv_AddDrillingRadiusParam();
@@ -85404,6 +92824,12 @@ class CbmServiceClient : virtual public CbmServiceIf {
   void GetDrillingRadiusParamIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void send_GetDrillingRadiusParamIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetDrillingRadiusParamIdListByField2(std::vector<int32_t> & _return);
+  void GetDrillingRadiusParamListByForeignKey(std::vector<DrillingRadiusParam> & _return, const std::string& fkey, const int32_t id);
+  void send_GetDrillingRadiusParamListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetDrillingRadiusParamListByForeignKey(std::vector<DrillingRadiusParam> & _return);
+  void GetDrillingRadiusParamIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  void send_GetDrillingRadiusParamIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetDrillingRadiusParamIdListByForeignKey(std::vector<int32_t> & _return);
   int32_t AddDrillingSurf(const DrillingSurf& drilling_surf);
   void send_AddDrillingSurf(const DrillingSurf& drilling_surf);
   int32_t recv_AddDrillingSurf();
@@ -85473,6 +92899,12 @@ class CbmServiceClient : virtual public CbmServiceIf {
   void GetDrillingSurfIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void send_GetDrillingSurfIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetDrillingSurfIdListByField2(std::vector<int32_t> & _return);
+  void GetDrillingSurfListByForeignKey(std::vector<DrillingSurf> & _return, const std::string& fkey, const int32_t id);
+  void send_GetDrillingSurfListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetDrillingSurfListByForeignKey(std::vector<DrillingSurf> & _return);
+  void GetDrillingSurfIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  void send_GetDrillingSurfIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetDrillingSurfIdListByForeignKey(std::vector<int32_t> & _return);
   int32_t AddEvalUnit(const EvalUnit& eval_unit);
   void send_AddEvalUnit(const EvalUnit& eval_unit);
   int32_t recv_AddEvalUnit();
@@ -85542,6 +92974,12 @@ class CbmServiceClient : virtual public CbmServiceIf {
   void GetEvalUnitIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void send_GetEvalUnitIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetEvalUnitIdListByField2(std::vector<int32_t> & _return);
+  void GetEvalUnitListByForeignKey(std::vector<EvalUnit> & _return, const std::string& fkey, const int32_t id);
+  void send_GetEvalUnitListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetEvalUnitListByForeignKey(std::vector<EvalUnit> & _return);
+  void GetEvalUnitIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  void send_GetEvalUnitIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetEvalUnitIdListByForeignKey(std::vector<int32_t> & _return);
   int32_t AddHighDrillingPore(const HighDrillingPore& high_drilling_pore);
   void send_AddHighDrillingPore(const HighDrillingPore& high_drilling_pore);
   int32_t recv_AddHighDrillingPore();
@@ -85611,6 +93049,12 @@ class CbmServiceClient : virtual public CbmServiceIf {
   void GetHighDrillingPoreIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void send_GetHighDrillingPoreIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetHighDrillingPoreIdListByField2(std::vector<int32_t> & _return);
+  void GetHighDrillingPoreListByForeignKey(std::vector<HighDrillingPore> & _return, const std::string& fkey, const int32_t id);
+  void send_GetHighDrillingPoreListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetHighDrillingPoreListByForeignKey(std::vector<HighDrillingPore> & _return);
+  void GetHighDrillingPoreIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  void send_GetHighDrillingPoreIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetHighDrillingPoreIdListByForeignKey(std::vector<int32_t> & _return);
   int32_t AddHighDrillingPoreParam(const HighDrillingPoreParam& high_drilling_pore_param);
   void send_AddHighDrillingPoreParam(const HighDrillingPoreParam& high_drilling_pore_param);
   int32_t recv_AddHighDrillingPoreParam();
@@ -85680,6 +93124,12 @@ class CbmServiceClient : virtual public CbmServiceIf {
   void GetHighDrillingPoreParamIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void send_GetHighDrillingPoreParamIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetHighDrillingPoreParamIdListByField2(std::vector<int32_t> & _return);
+  void GetHighDrillingPoreParamListByForeignKey(std::vector<HighDrillingPoreParam> & _return, const std::string& fkey, const int32_t id);
+  void send_GetHighDrillingPoreParamListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetHighDrillingPoreParamListByForeignKey(std::vector<HighDrillingPoreParam> & _return);
+  void GetHighDrillingPoreParamIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  void send_GetHighDrillingPoreParamIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetHighDrillingPoreParamIdListByForeignKey(std::vector<int32_t> & _return);
   int32_t AddHighDrillingSiteParam(const HighDrillingSiteParam& high_drilling_site_param);
   void send_AddHighDrillingSiteParam(const HighDrillingSiteParam& high_drilling_site_param);
   int32_t recv_AddHighDrillingSiteParam();
@@ -85749,6 +93199,12 @@ class CbmServiceClient : virtual public CbmServiceIf {
   void GetHighDrillingSiteParamIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void send_GetHighDrillingSiteParamIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetHighDrillingSiteParamIdListByField2(std::vector<int32_t> & _return);
+  void GetHighDrillingSiteParamListByForeignKey(std::vector<HighDrillingSiteParam> & _return, const std::string& fkey, const int32_t id);
+  void send_GetHighDrillingSiteParamListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetHighDrillingSiteParamListByForeignKey(std::vector<HighDrillingSiteParam> & _return);
+  void GetHighDrillingSiteParamIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  void send_GetHighDrillingSiteParamIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetHighDrillingSiteParamIdListByForeignKey(std::vector<int32_t> & _return);
   int32_t AddHighDrillingTunnel(const HighDrillingTunnel& high_drilling_tunnel);
   void send_AddHighDrillingTunnel(const HighDrillingTunnel& high_drilling_tunnel);
   int32_t recv_AddHighDrillingTunnel();
@@ -85818,6 +93274,12 @@ class CbmServiceClient : virtual public CbmServiceIf {
   void GetHighDrillingTunnelIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void send_GetHighDrillingTunnelIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetHighDrillingTunnelIdListByField2(std::vector<int32_t> & _return);
+  void GetHighDrillingTunnelListByForeignKey(std::vector<HighDrillingTunnel> & _return, const std::string& fkey, const int32_t id);
+  void send_GetHighDrillingTunnelListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetHighDrillingTunnelListByForeignKey(std::vector<HighDrillingTunnel> & _return);
+  void GetHighDrillingTunnelIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  void send_GetHighDrillingTunnelIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetHighDrillingTunnelIdListByForeignKey(std::vector<int32_t> & _return);
   int32_t AddHydrGeo(const HydrGeo& hydr_geo);
   void send_AddHydrGeo(const HydrGeo& hydr_geo);
   int32_t recv_AddHydrGeo();
@@ -85887,6 +93349,12 @@ class CbmServiceClient : virtual public CbmServiceIf {
   void GetHydrGeoIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void send_GetHydrGeoIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetHydrGeoIdListByField2(std::vector<int32_t> & _return);
+  void GetHydrGeoListByForeignKey(std::vector<HydrGeo> & _return, const std::string& fkey, const int32_t id);
+  void send_GetHydrGeoListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetHydrGeoListByForeignKey(std::vector<HydrGeo> & _return);
+  void GetHydrGeoIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  void send_GetHydrGeoIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetHydrGeoIdListByForeignKey(std::vector<int32_t> & _return);
   int32_t AddMine(const Mine& mine);
   void send_AddMine(const Mine& mine);
   int32_t recv_AddMine();
@@ -85956,6 +93424,12 @@ class CbmServiceClient : virtual public CbmServiceIf {
   void GetMineIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void send_GetMineIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetMineIdListByField2(std::vector<int32_t> & _return);
+  void GetMineListByForeignKey(std::vector<Mine> & _return, const std::string& fkey, const int32_t id);
+  void send_GetMineListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetMineListByForeignKey(std::vector<Mine> & _return);
+  void GetMineIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  void send_GetMineIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetMineIdListByForeignKey(std::vector<int32_t> & _return);
   int32_t AddMineBase(const MineBase& mine_base);
   void send_AddMineBase(const MineBase& mine_base);
   int32_t recv_AddMineBase();
@@ -86025,6 +93499,12 @@ class CbmServiceClient : virtual public CbmServiceIf {
   void GetMineBaseIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void send_GetMineBaseIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetMineBaseIdListByField2(std::vector<int32_t> & _return);
+  void GetMineBaseListByForeignKey(std::vector<MineBase> & _return, const std::string& fkey, const int32_t id);
+  void send_GetMineBaseListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetMineBaseListByForeignKey(std::vector<MineBase> & _return);
+  void GetMineBaseIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  void send_GetMineBaseIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetMineBaseIdListByForeignKey(std::vector<int32_t> & _return);
   int32_t AddMineRegion(const MineRegion& mine_region);
   void send_AddMineRegion(const MineRegion& mine_region);
   int32_t recv_AddMineRegion();
@@ -86094,6 +93574,12 @@ class CbmServiceClient : virtual public CbmServiceIf {
   void GetMineRegionIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void send_GetMineRegionIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetMineRegionIdListByField2(std::vector<int32_t> & _return);
+  void GetMineRegionListByForeignKey(std::vector<MineRegion> & _return, const std::string& fkey, const int32_t id);
+  void send_GetMineRegionListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetMineRegionListByForeignKey(std::vector<MineRegion> & _return);
+  void GetMineRegionIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  void send_GetMineRegionIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetMineRegionIdListByForeignKey(std::vector<int32_t> & _return);
   int32_t AddPoreFlow(const PoreFlow& pore_flow);
   void send_AddPoreFlow(const PoreFlow& pore_flow);
   int32_t recv_AddPoreFlow();
@@ -86163,6 +93649,12 @@ class CbmServiceClient : virtual public CbmServiceIf {
   void GetPoreFlowIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void send_GetPoreFlowIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetPoreFlowIdListByField2(std::vector<int32_t> & _return);
+  void GetPoreFlowListByForeignKey(std::vector<PoreFlow> & _return, const std::string& fkey, const int32_t id);
+  void send_GetPoreFlowListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetPoreFlowListByForeignKey(std::vector<PoreFlow> & _return);
+  void GetPoreFlowIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  void send_GetPoreFlowIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetPoreFlowIdListByForeignKey(std::vector<int32_t> & _return);
   int32_t AddPoreSize(const PoreSize& pore_size);
   void send_AddPoreSize(const PoreSize& pore_size);
   int32_t recv_AddPoreSize();
@@ -86232,6 +93724,12 @@ class CbmServiceClient : virtual public CbmServiceIf {
   void GetPoreSizeIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void send_GetPoreSizeIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetPoreSizeIdListByField2(std::vector<int32_t> & _return);
+  void GetPoreSizeListByForeignKey(std::vector<PoreSize> & _return, const std::string& fkey, const int32_t id);
+  void send_GetPoreSizeListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetPoreSizeListByForeignKey(std::vector<PoreSize> & _return);
+  void GetPoreSizeIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  void send_GetPoreSizeIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetPoreSizeIdListByForeignKey(std::vector<int32_t> & _return);
   int32_t AddResAbundance(const ResAbundance& res_abundance);
   void send_AddResAbundance(const ResAbundance& res_abundance);
   int32_t recv_AddResAbundance();
@@ -86301,6 +93799,12 @@ class CbmServiceClient : virtual public CbmServiceIf {
   void GetResAbundanceIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void send_GetResAbundanceIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetResAbundanceIdListByField2(std::vector<int32_t> & _return);
+  void GetResAbundanceListByForeignKey(std::vector<ResAbundance> & _return, const std::string& fkey, const int32_t id);
+  void send_GetResAbundanceListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetResAbundanceListByForeignKey(std::vector<ResAbundance> & _return);
+  void GetResAbundanceIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  void send_GetResAbundanceIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetResAbundanceIdListByForeignKey(std::vector<int32_t> & _return);
   int32_t AddRock(const Rock& rock);
   void send_AddRock(const Rock& rock);
   int32_t recv_AddRock();
@@ -86370,6 +93874,12 @@ class CbmServiceClient : virtual public CbmServiceIf {
   void GetRockIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void send_GetRockIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetRockIdListByField2(std::vector<int32_t> & _return);
+  void GetRockListByForeignKey(std::vector<Rock> & _return, const std::string& fkey, const int32_t id);
+  void send_GetRockListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetRockListByForeignKey(std::vector<Rock> & _return);
+  void GetRockIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  void send_GetRockIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetRockIdListByForeignKey(std::vector<int32_t> & _return);
   int32_t AddSysInfo(const SysInfo& sys_info);
   void send_AddSysInfo(const SysInfo& sys_info);
   int32_t recv_AddSysInfo();
@@ -86439,6 +93949,12 @@ class CbmServiceClient : virtual public CbmServiceIf {
   void GetSysInfoIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void send_GetSysInfoIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetSysInfoIdListByField2(std::vector<int32_t> & _return);
+  void GetSysInfoListByForeignKey(std::vector<SysInfo> & _return, const std::string& fkey, const int32_t id);
+  void send_GetSysInfoListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetSysInfoListByForeignKey(std::vector<SysInfo> & _return);
+  void GetSysInfoIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  void send_GetSysInfoIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetSysInfoIdListByForeignKey(std::vector<int32_t> & _return);
   int32_t AddTechMode(const TechMode& tech_mode);
   void send_AddTechMode(const TechMode& tech_mode);
   int32_t recv_AddTechMode();
@@ -86508,6 +94024,12 @@ class CbmServiceClient : virtual public CbmServiceIf {
   void GetTechModeIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void send_GetTechModeIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetTechModeIdListByField2(std::vector<int32_t> & _return);
+  void GetTechModeListByForeignKey(std::vector<TechMode> & _return, const std::string& fkey, const int32_t id);
+  void send_GetTechModeListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetTechModeListByForeignKey(std::vector<TechMode> & _return);
+  void GetTechModeIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  void send_GetTechModeIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetTechModeIdListByForeignKey(std::vector<int32_t> & _return);
   int32_t AddTechnology(const Technology& technology);
   void send_AddTechnology(const Technology& technology);
   int32_t recv_AddTechnology();
@@ -86577,6 +94099,12 @@ class CbmServiceClient : virtual public CbmServiceIf {
   void GetTechnologyIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void send_GetTechnologyIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetTechnologyIdListByField2(std::vector<int32_t> & _return);
+  void GetTechnologyListByForeignKey(std::vector<Technology> & _return, const std::string& fkey, const int32_t id);
+  void send_GetTechnologyListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetTechnologyListByForeignKey(std::vector<Technology> & _return);
+  void GetTechnologyIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  void send_GetTechnologyIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetTechnologyIdListByForeignKey(std::vector<int32_t> & _return);
   int32_t AddTopoGeo(const TopoGeo& topo_geo);
   void send_AddTopoGeo(const TopoGeo& topo_geo);
   int32_t recv_AddTopoGeo();
@@ -86646,6 +94174,12 @@ class CbmServiceClient : virtual public CbmServiceIf {
   void GetTopoGeoIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void send_GetTopoGeoIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetTopoGeoIdListByField2(std::vector<int32_t> & _return);
+  void GetTopoGeoListByForeignKey(std::vector<TopoGeo> & _return, const std::string& fkey, const int32_t id);
+  void send_GetTopoGeoListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetTopoGeoListByForeignKey(std::vector<TopoGeo> & _return);
+  void GetTopoGeoIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  void send_GetTopoGeoIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetTopoGeoIdListByForeignKey(std::vector<int32_t> & _return);
   int32_t AddTunnel(const Tunnel& tunnel);
   void send_AddTunnel(const Tunnel& tunnel);
   int32_t recv_AddTunnel();
@@ -86715,6 +94249,12 @@ class CbmServiceClient : virtual public CbmServiceIf {
   void GetTunnelIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void send_GetTunnelIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetTunnelIdListByField2(std::vector<int32_t> & _return);
+  void GetTunnelListByForeignKey(std::vector<Tunnel> & _return, const std::string& fkey, const int32_t id);
+  void send_GetTunnelListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetTunnelListByForeignKey(std::vector<Tunnel> & _return);
+  void GetTunnelIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  void send_GetTunnelIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetTunnelIdListByForeignKey(std::vector<int32_t> & _return);
   int32_t AddWorkArea(const WorkArea& work_area);
   void send_AddWorkArea(const WorkArea& work_area);
   int32_t recv_AddWorkArea();
@@ -86784,6 +94324,12 @@ class CbmServiceClient : virtual public CbmServiceIf {
   void GetWorkAreaIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void send_GetWorkAreaIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetWorkAreaIdListByField2(std::vector<int32_t> & _return);
+  void GetWorkAreaListByForeignKey(std::vector<WorkArea> & _return, const std::string& fkey, const int32_t id);
+  void send_GetWorkAreaListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetWorkAreaListByForeignKey(std::vector<WorkArea> & _return);
+  void GetWorkAreaIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  void send_GetWorkAreaIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetWorkAreaIdListByForeignKey(std::vector<int32_t> & _return);
   int32_t AddWorkSurf(const WorkSurf& work_surf);
   void send_AddWorkSurf(const WorkSurf& work_surf);
   int32_t recv_AddWorkSurf();
@@ -86853,6 +94399,12 @@ class CbmServiceClient : virtual public CbmServiceIf {
   void GetWorkSurfIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void send_GetWorkSurfIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetWorkSurfIdListByField2(std::vector<int32_t> & _return);
+  void GetWorkSurfListByForeignKey(std::vector<WorkSurf> & _return, const std::string& fkey, const int32_t id);
+  void send_GetWorkSurfListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetWorkSurfListByForeignKey(std::vector<WorkSurf> & _return);
+  void GetWorkSurfIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  void send_GetWorkSurfIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetWorkSurfIdListByForeignKey(std::vector<int32_t> & _return);
   void InitSampleRegion();
   void send_InitSampleRegion();
   void recv_InitSampleRegion();
@@ -86978,6 +94530,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_GetAccountIdListByFields(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetAccountIdListByField1(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetAccountIdListByField2(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetAccountListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetAccountIdListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_AddAdjLayer(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_DeleteAdjLayer(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_UpdateAdjLayer(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
@@ -87001,6 +94555,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_GetAdjLayerIdListByFields(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetAdjLayerIdListByField1(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetAdjLayerIdListByField2(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetAdjLayerListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetAdjLayerIdListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_AddCoal(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_DeleteCoal(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_UpdateCoal(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
@@ -87024,6 +94580,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_GetCoalIdListByFields(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetCoalIdListByField1(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetCoalIdListByField2(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetCoalListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetCoalIdListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_AddComplexity(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_DeleteComplexity(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_UpdateComplexity(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
@@ -87047,6 +94605,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_GetComplexityIdListByFields(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetComplexityIdListByField1(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetComplexityIdListByField2(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetComplexityListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetComplexityIdListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_AddDesignDrillingSurfTechnology(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_DeleteDesignDrillingSurfTechnology(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_UpdateDesignDrillingSurfTechnology(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
@@ -87070,6 +94630,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_GetDesignDrillingSurfTechnologyIdListByFields(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetDesignDrillingSurfTechnologyIdListByField1(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetDesignDrillingSurfTechnologyIdListByField2(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetDesignDrillingSurfTechnologyListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetDesignDrillingSurfTechnologyIdListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_AddDesignGoafTechnology(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_DeleteDesignGoafTechnology(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_UpdateDesignGoafTechnology(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
@@ -87093,6 +94655,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_GetDesignGoafTechnologyIdListByFields(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetDesignGoafTechnologyIdListByField1(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetDesignGoafTechnologyIdListByField2(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetDesignGoafTechnologyListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetDesignGoafTechnologyIdListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_AddDesignPore(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_DeleteDesignPore(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_UpdateDesignPore(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
@@ -87116,6 +94680,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_GetDesignPoreIdListByFields(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetDesignPoreIdListByField1(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetDesignPoreIdListByField2(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetDesignPoreListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetDesignPoreIdListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_AddDesignSite(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_DeleteDesignSite(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_UpdateDesignSite(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
@@ -87139,6 +94705,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_GetDesignSiteIdListByFields(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetDesignSiteIdListByField1(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetDesignSiteIdListByField2(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetDesignSiteListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetDesignSiteIdListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_AddDesignTechnology(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_DeleteDesignTechnology(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_UpdateDesignTechnology(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
@@ -87162,6 +94730,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_GetDesignTechnologyIdListByFields(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetDesignTechnologyIdListByField1(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetDesignTechnologyIdListByField2(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetDesignTechnologyListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetDesignTechnologyIdListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_AddDesignWorkSurfTechnology(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_DeleteDesignWorkSurfTechnology(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_UpdateDesignWorkSurfTechnology(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
@@ -87185,6 +94755,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_GetDesignWorkSurfTechnologyIdListByFields(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetDesignWorkSurfTechnologyIdListByField1(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetDesignWorkSurfTechnologyIdListByField2(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetDesignWorkSurfTechnologyListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetDesignWorkSurfTechnologyIdListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_AddDrillingRadiusParam(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_DeleteDrillingRadiusParam(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_UpdateDrillingRadiusParam(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
@@ -87208,6 +94780,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_GetDrillingRadiusParamIdListByFields(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetDrillingRadiusParamIdListByField1(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetDrillingRadiusParamIdListByField2(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetDrillingRadiusParamListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetDrillingRadiusParamIdListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_AddDrillingSurf(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_DeleteDrillingSurf(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_UpdateDrillingSurf(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
@@ -87231,6 +94805,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_GetDrillingSurfIdListByFields(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetDrillingSurfIdListByField1(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetDrillingSurfIdListByField2(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetDrillingSurfListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetDrillingSurfIdListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_AddEvalUnit(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_DeleteEvalUnit(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_UpdateEvalUnit(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
@@ -87254,6 +94830,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_GetEvalUnitIdListByFields(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetEvalUnitIdListByField1(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetEvalUnitIdListByField2(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetEvalUnitListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetEvalUnitIdListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_AddHighDrillingPore(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_DeleteHighDrillingPore(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_UpdateHighDrillingPore(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
@@ -87277,6 +94855,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_GetHighDrillingPoreIdListByFields(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetHighDrillingPoreIdListByField1(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetHighDrillingPoreIdListByField2(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetHighDrillingPoreListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetHighDrillingPoreIdListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_AddHighDrillingPoreParam(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_DeleteHighDrillingPoreParam(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_UpdateHighDrillingPoreParam(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
@@ -87300,6 +94880,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_GetHighDrillingPoreParamIdListByFields(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetHighDrillingPoreParamIdListByField1(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetHighDrillingPoreParamIdListByField2(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetHighDrillingPoreParamListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetHighDrillingPoreParamIdListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_AddHighDrillingSiteParam(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_DeleteHighDrillingSiteParam(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_UpdateHighDrillingSiteParam(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
@@ -87323,6 +94905,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_GetHighDrillingSiteParamIdListByFields(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetHighDrillingSiteParamIdListByField1(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetHighDrillingSiteParamIdListByField2(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetHighDrillingSiteParamListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetHighDrillingSiteParamIdListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_AddHighDrillingTunnel(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_DeleteHighDrillingTunnel(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_UpdateHighDrillingTunnel(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
@@ -87346,6 +94930,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_GetHighDrillingTunnelIdListByFields(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetHighDrillingTunnelIdListByField1(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetHighDrillingTunnelIdListByField2(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetHighDrillingTunnelListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetHighDrillingTunnelIdListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_AddHydrGeo(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_DeleteHydrGeo(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_UpdateHydrGeo(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
@@ -87369,6 +94955,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_GetHydrGeoIdListByFields(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetHydrGeoIdListByField1(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetHydrGeoIdListByField2(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetHydrGeoListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetHydrGeoIdListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_AddMine(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_DeleteMine(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_UpdateMine(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
@@ -87392,6 +94980,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_GetMineIdListByFields(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetMineIdListByField1(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetMineIdListByField2(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetMineListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetMineIdListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_AddMineBase(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_DeleteMineBase(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_UpdateMineBase(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
@@ -87415,6 +95005,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_GetMineBaseIdListByFields(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetMineBaseIdListByField1(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetMineBaseIdListByField2(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetMineBaseListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetMineBaseIdListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_AddMineRegion(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_DeleteMineRegion(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_UpdateMineRegion(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
@@ -87438,6 +95030,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_GetMineRegionIdListByFields(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetMineRegionIdListByField1(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetMineRegionIdListByField2(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetMineRegionListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetMineRegionIdListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_AddPoreFlow(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_DeletePoreFlow(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_UpdatePoreFlow(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
@@ -87461,6 +95055,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_GetPoreFlowIdListByFields(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetPoreFlowIdListByField1(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetPoreFlowIdListByField2(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetPoreFlowListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetPoreFlowIdListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_AddPoreSize(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_DeletePoreSize(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_UpdatePoreSize(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
@@ -87484,6 +95080,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_GetPoreSizeIdListByFields(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetPoreSizeIdListByField1(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetPoreSizeIdListByField2(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetPoreSizeListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetPoreSizeIdListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_AddResAbundance(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_DeleteResAbundance(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_UpdateResAbundance(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
@@ -87507,6 +95105,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_GetResAbundanceIdListByFields(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetResAbundanceIdListByField1(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetResAbundanceIdListByField2(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetResAbundanceListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetResAbundanceIdListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_AddRock(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_DeleteRock(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_UpdateRock(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
@@ -87530,6 +95130,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_GetRockIdListByFields(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetRockIdListByField1(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetRockIdListByField2(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetRockListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetRockIdListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_AddSysInfo(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_DeleteSysInfo(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_UpdateSysInfo(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
@@ -87553,6 +95155,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_GetSysInfoIdListByFields(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetSysInfoIdListByField1(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetSysInfoIdListByField2(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetSysInfoListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetSysInfoIdListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_AddTechMode(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_DeleteTechMode(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_UpdateTechMode(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
@@ -87576,6 +95180,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_GetTechModeIdListByFields(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetTechModeIdListByField1(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetTechModeIdListByField2(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetTechModeListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetTechModeIdListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_AddTechnology(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_DeleteTechnology(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_UpdateTechnology(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
@@ -87599,6 +95205,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_GetTechnologyIdListByFields(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetTechnologyIdListByField1(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetTechnologyIdListByField2(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetTechnologyListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetTechnologyIdListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_AddTopoGeo(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_DeleteTopoGeo(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_UpdateTopoGeo(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
@@ -87622,6 +95230,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_GetTopoGeoIdListByFields(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetTopoGeoIdListByField1(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetTopoGeoIdListByField2(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetTopoGeoListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetTopoGeoIdListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_AddTunnel(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_DeleteTunnel(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_UpdateTunnel(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
@@ -87645,6 +95255,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_GetTunnelIdListByFields(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetTunnelIdListByField1(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetTunnelIdListByField2(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetTunnelListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetTunnelIdListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_AddWorkArea(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_DeleteWorkArea(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_UpdateWorkArea(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
@@ -87668,6 +95280,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_GetWorkAreaIdListByFields(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetWorkAreaIdListByField1(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetWorkAreaIdListByField2(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetWorkAreaListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetWorkAreaIdListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_AddWorkSurf(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_DeleteWorkSurf(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_UpdateWorkSurf(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
@@ -87691,6 +95305,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_GetWorkSurfIdListByFields(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetWorkSurfIdListByField1(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetWorkSurfIdListByField2(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetWorkSurfListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_GetWorkSurfIdListByForeignKey(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_InitSampleRegion(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetOnlineAccountId(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_GetOnlineMine(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
@@ -87746,6 +95362,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["GetAccountIdListByFields"] = &CbmServiceProcessor::process_GetAccountIdListByFields;
     processMap_["GetAccountIdListByField1"] = &CbmServiceProcessor::process_GetAccountIdListByField1;
     processMap_["GetAccountIdListByField2"] = &CbmServiceProcessor::process_GetAccountIdListByField2;
+    processMap_["GetAccountListByForeignKey"] = &CbmServiceProcessor::process_GetAccountListByForeignKey;
+    processMap_["GetAccountIdListByForeignKey"] = &CbmServiceProcessor::process_GetAccountIdListByForeignKey;
     processMap_["AddAdjLayer"] = &CbmServiceProcessor::process_AddAdjLayer;
     processMap_["DeleteAdjLayer"] = &CbmServiceProcessor::process_DeleteAdjLayer;
     processMap_["UpdateAdjLayer"] = &CbmServiceProcessor::process_UpdateAdjLayer;
@@ -87769,6 +95387,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["GetAdjLayerIdListByFields"] = &CbmServiceProcessor::process_GetAdjLayerIdListByFields;
     processMap_["GetAdjLayerIdListByField1"] = &CbmServiceProcessor::process_GetAdjLayerIdListByField1;
     processMap_["GetAdjLayerIdListByField2"] = &CbmServiceProcessor::process_GetAdjLayerIdListByField2;
+    processMap_["GetAdjLayerListByForeignKey"] = &CbmServiceProcessor::process_GetAdjLayerListByForeignKey;
+    processMap_["GetAdjLayerIdListByForeignKey"] = &CbmServiceProcessor::process_GetAdjLayerIdListByForeignKey;
     processMap_["AddCoal"] = &CbmServiceProcessor::process_AddCoal;
     processMap_["DeleteCoal"] = &CbmServiceProcessor::process_DeleteCoal;
     processMap_["UpdateCoal"] = &CbmServiceProcessor::process_UpdateCoal;
@@ -87792,6 +95412,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["GetCoalIdListByFields"] = &CbmServiceProcessor::process_GetCoalIdListByFields;
     processMap_["GetCoalIdListByField1"] = &CbmServiceProcessor::process_GetCoalIdListByField1;
     processMap_["GetCoalIdListByField2"] = &CbmServiceProcessor::process_GetCoalIdListByField2;
+    processMap_["GetCoalListByForeignKey"] = &CbmServiceProcessor::process_GetCoalListByForeignKey;
+    processMap_["GetCoalIdListByForeignKey"] = &CbmServiceProcessor::process_GetCoalIdListByForeignKey;
     processMap_["AddComplexity"] = &CbmServiceProcessor::process_AddComplexity;
     processMap_["DeleteComplexity"] = &CbmServiceProcessor::process_DeleteComplexity;
     processMap_["UpdateComplexity"] = &CbmServiceProcessor::process_UpdateComplexity;
@@ -87815,6 +95437,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["GetComplexityIdListByFields"] = &CbmServiceProcessor::process_GetComplexityIdListByFields;
     processMap_["GetComplexityIdListByField1"] = &CbmServiceProcessor::process_GetComplexityIdListByField1;
     processMap_["GetComplexityIdListByField2"] = &CbmServiceProcessor::process_GetComplexityIdListByField2;
+    processMap_["GetComplexityListByForeignKey"] = &CbmServiceProcessor::process_GetComplexityListByForeignKey;
+    processMap_["GetComplexityIdListByForeignKey"] = &CbmServiceProcessor::process_GetComplexityIdListByForeignKey;
     processMap_["AddDesignDrillingSurfTechnology"] = &CbmServiceProcessor::process_AddDesignDrillingSurfTechnology;
     processMap_["DeleteDesignDrillingSurfTechnology"] = &CbmServiceProcessor::process_DeleteDesignDrillingSurfTechnology;
     processMap_["UpdateDesignDrillingSurfTechnology"] = &CbmServiceProcessor::process_UpdateDesignDrillingSurfTechnology;
@@ -87838,6 +95462,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["GetDesignDrillingSurfTechnologyIdListByFields"] = &CbmServiceProcessor::process_GetDesignDrillingSurfTechnologyIdListByFields;
     processMap_["GetDesignDrillingSurfTechnologyIdListByField1"] = &CbmServiceProcessor::process_GetDesignDrillingSurfTechnologyIdListByField1;
     processMap_["GetDesignDrillingSurfTechnologyIdListByField2"] = &CbmServiceProcessor::process_GetDesignDrillingSurfTechnologyIdListByField2;
+    processMap_["GetDesignDrillingSurfTechnologyListByForeignKey"] = &CbmServiceProcessor::process_GetDesignDrillingSurfTechnologyListByForeignKey;
+    processMap_["GetDesignDrillingSurfTechnologyIdListByForeignKey"] = &CbmServiceProcessor::process_GetDesignDrillingSurfTechnologyIdListByForeignKey;
     processMap_["AddDesignGoafTechnology"] = &CbmServiceProcessor::process_AddDesignGoafTechnology;
     processMap_["DeleteDesignGoafTechnology"] = &CbmServiceProcessor::process_DeleteDesignGoafTechnology;
     processMap_["UpdateDesignGoafTechnology"] = &CbmServiceProcessor::process_UpdateDesignGoafTechnology;
@@ -87861,6 +95487,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["GetDesignGoafTechnologyIdListByFields"] = &CbmServiceProcessor::process_GetDesignGoafTechnologyIdListByFields;
     processMap_["GetDesignGoafTechnologyIdListByField1"] = &CbmServiceProcessor::process_GetDesignGoafTechnologyIdListByField1;
     processMap_["GetDesignGoafTechnologyIdListByField2"] = &CbmServiceProcessor::process_GetDesignGoafTechnologyIdListByField2;
+    processMap_["GetDesignGoafTechnologyListByForeignKey"] = &CbmServiceProcessor::process_GetDesignGoafTechnologyListByForeignKey;
+    processMap_["GetDesignGoafTechnologyIdListByForeignKey"] = &CbmServiceProcessor::process_GetDesignGoafTechnologyIdListByForeignKey;
     processMap_["AddDesignPore"] = &CbmServiceProcessor::process_AddDesignPore;
     processMap_["DeleteDesignPore"] = &CbmServiceProcessor::process_DeleteDesignPore;
     processMap_["UpdateDesignPore"] = &CbmServiceProcessor::process_UpdateDesignPore;
@@ -87884,6 +95512,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["GetDesignPoreIdListByFields"] = &CbmServiceProcessor::process_GetDesignPoreIdListByFields;
     processMap_["GetDesignPoreIdListByField1"] = &CbmServiceProcessor::process_GetDesignPoreIdListByField1;
     processMap_["GetDesignPoreIdListByField2"] = &CbmServiceProcessor::process_GetDesignPoreIdListByField2;
+    processMap_["GetDesignPoreListByForeignKey"] = &CbmServiceProcessor::process_GetDesignPoreListByForeignKey;
+    processMap_["GetDesignPoreIdListByForeignKey"] = &CbmServiceProcessor::process_GetDesignPoreIdListByForeignKey;
     processMap_["AddDesignSite"] = &CbmServiceProcessor::process_AddDesignSite;
     processMap_["DeleteDesignSite"] = &CbmServiceProcessor::process_DeleteDesignSite;
     processMap_["UpdateDesignSite"] = &CbmServiceProcessor::process_UpdateDesignSite;
@@ -87907,6 +95537,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["GetDesignSiteIdListByFields"] = &CbmServiceProcessor::process_GetDesignSiteIdListByFields;
     processMap_["GetDesignSiteIdListByField1"] = &CbmServiceProcessor::process_GetDesignSiteIdListByField1;
     processMap_["GetDesignSiteIdListByField2"] = &CbmServiceProcessor::process_GetDesignSiteIdListByField2;
+    processMap_["GetDesignSiteListByForeignKey"] = &CbmServiceProcessor::process_GetDesignSiteListByForeignKey;
+    processMap_["GetDesignSiteIdListByForeignKey"] = &CbmServiceProcessor::process_GetDesignSiteIdListByForeignKey;
     processMap_["AddDesignTechnology"] = &CbmServiceProcessor::process_AddDesignTechnology;
     processMap_["DeleteDesignTechnology"] = &CbmServiceProcessor::process_DeleteDesignTechnology;
     processMap_["UpdateDesignTechnology"] = &CbmServiceProcessor::process_UpdateDesignTechnology;
@@ -87930,6 +95562,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["GetDesignTechnologyIdListByFields"] = &CbmServiceProcessor::process_GetDesignTechnologyIdListByFields;
     processMap_["GetDesignTechnologyIdListByField1"] = &CbmServiceProcessor::process_GetDesignTechnologyIdListByField1;
     processMap_["GetDesignTechnologyIdListByField2"] = &CbmServiceProcessor::process_GetDesignTechnologyIdListByField2;
+    processMap_["GetDesignTechnologyListByForeignKey"] = &CbmServiceProcessor::process_GetDesignTechnologyListByForeignKey;
+    processMap_["GetDesignTechnologyIdListByForeignKey"] = &CbmServiceProcessor::process_GetDesignTechnologyIdListByForeignKey;
     processMap_["AddDesignWorkSurfTechnology"] = &CbmServiceProcessor::process_AddDesignWorkSurfTechnology;
     processMap_["DeleteDesignWorkSurfTechnology"] = &CbmServiceProcessor::process_DeleteDesignWorkSurfTechnology;
     processMap_["UpdateDesignWorkSurfTechnology"] = &CbmServiceProcessor::process_UpdateDesignWorkSurfTechnology;
@@ -87953,6 +95587,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["GetDesignWorkSurfTechnologyIdListByFields"] = &CbmServiceProcessor::process_GetDesignWorkSurfTechnologyIdListByFields;
     processMap_["GetDesignWorkSurfTechnologyIdListByField1"] = &CbmServiceProcessor::process_GetDesignWorkSurfTechnologyIdListByField1;
     processMap_["GetDesignWorkSurfTechnologyIdListByField2"] = &CbmServiceProcessor::process_GetDesignWorkSurfTechnologyIdListByField2;
+    processMap_["GetDesignWorkSurfTechnologyListByForeignKey"] = &CbmServiceProcessor::process_GetDesignWorkSurfTechnologyListByForeignKey;
+    processMap_["GetDesignWorkSurfTechnologyIdListByForeignKey"] = &CbmServiceProcessor::process_GetDesignWorkSurfTechnologyIdListByForeignKey;
     processMap_["AddDrillingRadiusParam"] = &CbmServiceProcessor::process_AddDrillingRadiusParam;
     processMap_["DeleteDrillingRadiusParam"] = &CbmServiceProcessor::process_DeleteDrillingRadiusParam;
     processMap_["UpdateDrillingRadiusParam"] = &CbmServiceProcessor::process_UpdateDrillingRadiusParam;
@@ -87976,6 +95612,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["GetDrillingRadiusParamIdListByFields"] = &CbmServiceProcessor::process_GetDrillingRadiusParamIdListByFields;
     processMap_["GetDrillingRadiusParamIdListByField1"] = &CbmServiceProcessor::process_GetDrillingRadiusParamIdListByField1;
     processMap_["GetDrillingRadiusParamIdListByField2"] = &CbmServiceProcessor::process_GetDrillingRadiusParamIdListByField2;
+    processMap_["GetDrillingRadiusParamListByForeignKey"] = &CbmServiceProcessor::process_GetDrillingRadiusParamListByForeignKey;
+    processMap_["GetDrillingRadiusParamIdListByForeignKey"] = &CbmServiceProcessor::process_GetDrillingRadiusParamIdListByForeignKey;
     processMap_["AddDrillingSurf"] = &CbmServiceProcessor::process_AddDrillingSurf;
     processMap_["DeleteDrillingSurf"] = &CbmServiceProcessor::process_DeleteDrillingSurf;
     processMap_["UpdateDrillingSurf"] = &CbmServiceProcessor::process_UpdateDrillingSurf;
@@ -87999,6 +95637,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["GetDrillingSurfIdListByFields"] = &CbmServiceProcessor::process_GetDrillingSurfIdListByFields;
     processMap_["GetDrillingSurfIdListByField1"] = &CbmServiceProcessor::process_GetDrillingSurfIdListByField1;
     processMap_["GetDrillingSurfIdListByField2"] = &CbmServiceProcessor::process_GetDrillingSurfIdListByField2;
+    processMap_["GetDrillingSurfListByForeignKey"] = &CbmServiceProcessor::process_GetDrillingSurfListByForeignKey;
+    processMap_["GetDrillingSurfIdListByForeignKey"] = &CbmServiceProcessor::process_GetDrillingSurfIdListByForeignKey;
     processMap_["AddEvalUnit"] = &CbmServiceProcessor::process_AddEvalUnit;
     processMap_["DeleteEvalUnit"] = &CbmServiceProcessor::process_DeleteEvalUnit;
     processMap_["UpdateEvalUnit"] = &CbmServiceProcessor::process_UpdateEvalUnit;
@@ -88022,6 +95662,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["GetEvalUnitIdListByFields"] = &CbmServiceProcessor::process_GetEvalUnitIdListByFields;
     processMap_["GetEvalUnitIdListByField1"] = &CbmServiceProcessor::process_GetEvalUnitIdListByField1;
     processMap_["GetEvalUnitIdListByField2"] = &CbmServiceProcessor::process_GetEvalUnitIdListByField2;
+    processMap_["GetEvalUnitListByForeignKey"] = &CbmServiceProcessor::process_GetEvalUnitListByForeignKey;
+    processMap_["GetEvalUnitIdListByForeignKey"] = &CbmServiceProcessor::process_GetEvalUnitIdListByForeignKey;
     processMap_["AddHighDrillingPore"] = &CbmServiceProcessor::process_AddHighDrillingPore;
     processMap_["DeleteHighDrillingPore"] = &CbmServiceProcessor::process_DeleteHighDrillingPore;
     processMap_["UpdateHighDrillingPore"] = &CbmServiceProcessor::process_UpdateHighDrillingPore;
@@ -88045,6 +95687,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["GetHighDrillingPoreIdListByFields"] = &CbmServiceProcessor::process_GetHighDrillingPoreIdListByFields;
     processMap_["GetHighDrillingPoreIdListByField1"] = &CbmServiceProcessor::process_GetHighDrillingPoreIdListByField1;
     processMap_["GetHighDrillingPoreIdListByField2"] = &CbmServiceProcessor::process_GetHighDrillingPoreIdListByField2;
+    processMap_["GetHighDrillingPoreListByForeignKey"] = &CbmServiceProcessor::process_GetHighDrillingPoreListByForeignKey;
+    processMap_["GetHighDrillingPoreIdListByForeignKey"] = &CbmServiceProcessor::process_GetHighDrillingPoreIdListByForeignKey;
     processMap_["AddHighDrillingPoreParam"] = &CbmServiceProcessor::process_AddHighDrillingPoreParam;
     processMap_["DeleteHighDrillingPoreParam"] = &CbmServiceProcessor::process_DeleteHighDrillingPoreParam;
     processMap_["UpdateHighDrillingPoreParam"] = &CbmServiceProcessor::process_UpdateHighDrillingPoreParam;
@@ -88068,6 +95712,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["GetHighDrillingPoreParamIdListByFields"] = &CbmServiceProcessor::process_GetHighDrillingPoreParamIdListByFields;
     processMap_["GetHighDrillingPoreParamIdListByField1"] = &CbmServiceProcessor::process_GetHighDrillingPoreParamIdListByField1;
     processMap_["GetHighDrillingPoreParamIdListByField2"] = &CbmServiceProcessor::process_GetHighDrillingPoreParamIdListByField2;
+    processMap_["GetHighDrillingPoreParamListByForeignKey"] = &CbmServiceProcessor::process_GetHighDrillingPoreParamListByForeignKey;
+    processMap_["GetHighDrillingPoreParamIdListByForeignKey"] = &CbmServiceProcessor::process_GetHighDrillingPoreParamIdListByForeignKey;
     processMap_["AddHighDrillingSiteParam"] = &CbmServiceProcessor::process_AddHighDrillingSiteParam;
     processMap_["DeleteHighDrillingSiteParam"] = &CbmServiceProcessor::process_DeleteHighDrillingSiteParam;
     processMap_["UpdateHighDrillingSiteParam"] = &CbmServiceProcessor::process_UpdateHighDrillingSiteParam;
@@ -88091,6 +95737,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["GetHighDrillingSiteParamIdListByFields"] = &CbmServiceProcessor::process_GetHighDrillingSiteParamIdListByFields;
     processMap_["GetHighDrillingSiteParamIdListByField1"] = &CbmServiceProcessor::process_GetHighDrillingSiteParamIdListByField1;
     processMap_["GetHighDrillingSiteParamIdListByField2"] = &CbmServiceProcessor::process_GetHighDrillingSiteParamIdListByField2;
+    processMap_["GetHighDrillingSiteParamListByForeignKey"] = &CbmServiceProcessor::process_GetHighDrillingSiteParamListByForeignKey;
+    processMap_["GetHighDrillingSiteParamIdListByForeignKey"] = &CbmServiceProcessor::process_GetHighDrillingSiteParamIdListByForeignKey;
     processMap_["AddHighDrillingTunnel"] = &CbmServiceProcessor::process_AddHighDrillingTunnel;
     processMap_["DeleteHighDrillingTunnel"] = &CbmServiceProcessor::process_DeleteHighDrillingTunnel;
     processMap_["UpdateHighDrillingTunnel"] = &CbmServiceProcessor::process_UpdateHighDrillingTunnel;
@@ -88114,6 +95762,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["GetHighDrillingTunnelIdListByFields"] = &CbmServiceProcessor::process_GetHighDrillingTunnelIdListByFields;
     processMap_["GetHighDrillingTunnelIdListByField1"] = &CbmServiceProcessor::process_GetHighDrillingTunnelIdListByField1;
     processMap_["GetHighDrillingTunnelIdListByField2"] = &CbmServiceProcessor::process_GetHighDrillingTunnelIdListByField2;
+    processMap_["GetHighDrillingTunnelListByForeignKey"] = &CbmServiceProcessor::process_GetHighDrillingTunnelListByForeignKey;
+    processMap_["GetHighDrillingTunnelIdListByForeignKey"] = &CbmServiceProcessor::process_GetHighDrillingTunnelIdListByForeignKey;
     processMap_["AddHydrGeo"] = &CbmServiceProcessor::process_AddHydrGeo;
     processMap_["DeleteHydrGeo"] = &CbmServiceProcessor::process_DeleteHydrGeo;
     processMap_["UpdateHydrGeo"] = &CbmServiceProcessor::process_UpdateHydrGeo;
@@ -88137,6 +95787,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["GetHydrGeoIdListByFields"] = &CbmServiceProcessor::process_GetHydrGeoIdListByFields;
     processMap_["GetHydrGeoIdListByField1"] = &CbmServiceProcessor::process_GetHydrGeoIdListByField1;
     processMap_["GetHydrGeoIdListByField2"] = &CbmServiceProcessor::process_GetHydrGeoIdListByField2;
+    processMap_["GetHydrGeoListByForeignKey"] = &CbmServiceProcessor::process_GetHydrGeoListByForeignKey;
+    processMap_["GetHydrGeoIdListByForeignKey"] = &CbmServiceProcessor::process_GetHydrGeoIdListByForeignKey;
     processMap_["AddMine"] = &CbmServiceProcessor::process_AddMine;
     processMap_["DeleteMine"] = &CbmServiceProcessor::process_DeleteMine;
     processMap_["UpdateMine"] = &CbmServiceProcessor::process_UpdateMine;
@@ -88160,6 +95812,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["GetMineIdListByFields"] = &CbmServiceProcessor::process_GetMineIdListByFields;
     processMap_["GetMineIdListByField1"] = &CbmServiceProcessor::process_GetMineIdListByField1;
     processMap_["GetMineIdListByField2"] = &CbmServiceProcessor::process_GetMineIdListByField2;
+    processMap_["GetMineListByForeignKey"] = &CbmServiceProcessor::process_GetMineListByForeignKey;
+    processMap_["GetMineIdListByForeignKey"] = &CbmServiceProcessor::process_GetMineIdListByForeignKey;
     processMap_["AddMineBase"] = &CbmServiceProcessor::process_AddMineBase;
     processMap_["DeleteMineBase"] = &CbmServiceProcessor::process_DeleteMineBase;
     processMap_["UpdateMineBase"] = &CbmServiceProcessor::process_UpdateMineBase;
@@ -88183,6 +95837,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["GetMineBaseIdListByFields"] = &CbmServiceProcessor::process_GetMineBaseIdListByFields;
     processMap_["GetMineBaseIdListByField1"] = &CbmServiceProcessor::process_GetMineBaseIdListByField1;
     processMap_["GetMineBaseIdListByField2"] = &CbmServiceProcessor::process_GetMineBaseIdListByField2;
+    processMap_["GetMineBaseListByForeignKey"] = &CbmServiceProcessor::process_GetMineBaseListByForeignKey;
+    processMap_["GetMineBaseIdListByForeignKey"] = &CbmServiceProcessor::process_GetMineBaseIdListByForeignKey;
     processMap_["AddMineRegion"] = &CbmServiceProcessor::process_AddMineRegion;
     processMap_["DeleteMineRegion"] = &CbmServiceProcessor::process_DeleteMineRegion;
     processMap_["UpdateMineRegion"] = &CbmServiceProcessor::process_UpdateMineRegion;
@@ -88206,6 +95862,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["GetMineRegionIdListByFields"] = &CbmServiceProcessor::process_GetMineRegionIdListByFields;
     processMap_["GetMineRegionIdListByField1"] = &CbmServiceProcessor::process_GetMineRegionIdListByField1;
     processMap_["GetMineRegionIdListByField2"] = &CbmServiceProcessor::process_GetMineRegionIdListByField2;
+    processMap_["GetMineRegionListByForeignKey"] = &CbmServiceProcessor::process_GetMineRegionListByForeignKey;
+    processMap_["GetMineRegionIdListByForeignKey"] = &CbmServiceProcessor::process_GetMineRegionIdListByForeignKey;
     processMap_["AddPoreFlow"] = &CbmServiceProcessor::process_AddPoreFlow;
     processMap_["DeletePoreFlow"] = &CbmServiceProcessor::process_DeletePoreFlow;
     processMap_["UpdatePoreFlow"] = &CbmServiceProcessor::process_UpdatePoreFlow;
@@ -88229,6 +95887,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["GetPoreFlowIdListByFields"] = &CbmServiceProcessor::process_GetPoreFlowIdListByFields;
     processMap_["GetPoreFlowIdListByField1"] = &CbmServiceProcessor::process_GetPoreFlowIdListByField1;
     processMap_["GetPoreFlowIdListByField2"] = &CbmServiceProcessor::process_GetPoreFlowIdListByField2;
+    processMap_["GetPoreFlowListByForeignKey"] = &CbmServiceProcessor::process_GetPoreFlowListByForeignKey;
+    processMap_["GetPoreFlowIdListByForeignKey"] = &CbmServiceProcessor::process_GetPoreFlowIdListByForeignKey;
     processMap_["AddPoreSize"] = &CbmServiceProcessor::process_AddPoreSize;
     processMap_["DeletePoreSize"] = &CbmServiceProcessor::process_DeletePoreSize;
     processMap_["UpdatePoreSize"] = &CbmServiceProcessor::process_UpdatePoreSize;
@@ -88252,6 +95912,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["GetPoreSizeIdListByFields"] = &CbmServiceProcessor::process_GetPoreSizeIdListByFields;
     processMap_["GetPoreSizeIdListByField1"] = &CbmServiceProcessor::process_GetPoreSizeIdListByField1;
     processMap_["GetPoreSizeIdListByField2"] = &CbmServiceProcessor::process_GetPoreSizeIdListByField2;
+    processMap_["GetPoreSizeListByForeignKey"] = &CbmServiceProcessor::process_GetPoreSizeListByForeignKey;
+    processMap_["GetPoreSizeIdListByForeignKey"] = &CbmServiceProcessor::process_GetPoreSizeIdListByForeignKey;
     processMap_["AddResAbundance"] = &CbmServiceProcessor::process_AddResAbundance;
     processMap_["DeleteResAbundance"] = &CbmServiceProcessor::process_DeleteResAbundance;
     processMap_["UpdateResAbundance"] = &CbmServiceProcessor::process_UpdateResAbundance;
@@ -88275,6 +95937,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["GetResAbundanceIdListByFields"] = &CbmServiceProcessor::process_GetResAbundanceIdListByFields;
     processMap_["GetResAbundanceIdListByField1"] = &CbmServiceProcessor::process_GetResAbundanceIdListByField1;
     processMap_["GetResAbundanceIdListByField2"] = &CbmServiceProcessor::process_GetResAbundanceIdListByField2;
+    processMap_["GetResAbundanceListByForeignKey"] = &CbmServiceProcessor::process_GetResAbundanceListByForeignKey;
+    processMap_["GetResAbundanceIdListByForeignKey"] = &CbmServiceProcessor::process_GetResAbundanceIdListByForeignKey;
     processMap_["AddRock"] = &CbmServiceProcessor::process_AddRock;
     processMap_["DeleteRock"] = &CbmServiceProcessor::process_DeleteRock;
     processMap_["UpdateRock"] = &CbmServiceProcessor::process_UpdateRock;
@@ -88298,6 +95962,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["GetRockIdListByFields"] = &CbmServiceProcessor::process_GetRockIdListByFields;
     processMap_["GetRockIdListByField1"] = &CbmServiceProcessor::process_GetRockIdListByField1;
     processMap_["GetRockIdListByField2"] = &CbmServiceProcessor::process_GetRockIdListByField2;
+    processMap_["GetRockListByForeignKey"] = &CbmServiceProcessor::process_GetRockListByForeignKey;
+    processMap_["GetRockIdListByForeignKey"] = &CbmServiceProcessor::process_GetRockIdListByForeignKey;
     processMap_["AddSysInfo"] = &CbmServiceProcessor::process_AddSysInfo;
     processMap_["DeleteSysInfo"] = &CbmServiceProcessor::process_DeleteSysInfo;
     processMap_["UpdateSysInfo"] = &CbmServiceProcessor::process_UpdateSysInfo;
@@ -88321,6 +95987,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["GetSysInfoIdListByFields"] = &CbmServiceProcessor::process_GetSysInfoIdListByFields;
     processMap_["GetSysInfoIdListByField1"] = &CbmServiceProcessor::process_GetSysInfoIdListByField1;
     processMap_["GetSysInfoIdListByField2"] = &CbmServiceProcessor::process_GetSysInfoIdListByField2;
+    processMap_["GetSysInfoListByForeignKey"] = &CbmServiceProcessor::process_GetSysInfoListByForeignKey;
+    processMap_["GetSysInfoIdListByForeignKey"] = &CbmServiceProcessor::process_GetSysInfoIdListByForeignKey;
     processMap_["AddTechMode"] = &CbmServiceProcessor::process_AddTechMode;
     processMap_["DeleteTechMode"] = &CbmServiceProcessor::process_DeleteTechMode;
     processMap_["UpdateTechMode"] = &CbmServiceProcessor::process_UpdateTechMode;
@@ -88344,6 +96012,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["GetTechModeIdListByFields"] = &CbmServiceProcessor::process_GetTechModeIdListByFields;
     processMap_["GetTechModeIdListByField1"] = &CbmServiceProcessor::process_GetTechModeIdListByField1;
     processMap_["GetTechModeIdListByField2"] = &CbmServiceProcessor::process_GetTechModeIdListByField2;
+    processMap_["GetTechModeListByForeignKey"] = &CbmServiceProcessor::process_GetTechModeListByForeignKey;
+    processMap_["GetTechModeIdListByForeignKey"] = &CbmServiceProcessor::process_GetTechModeIdListByForeignKey;
     processMap_["AddTechnology"] = &CbmServiceProcessor::process_AddTechnology;
     processMap_["DeleteTechnology"] = &CbmServiceProcessor::process_DeleteTechnology;
     processMap_["UpdateTechnology"] = &CbmServiceProcessor::process_UpdateTechnology;
@@ -88367,6 +96037,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["GetTechnologyIdListByFields"] = &CbmServiceProcessor::process_GetTechnologyIdListByFields;
     processMap_["GetTechnologyIdListByField1"] = &CbmServiceProcessor::process_GetTechnologyIdListByField1;
     processMap_["GetTechnologyIdListByField2"] = &CbmServiceProcessor::process_GetTechnologyIdListByField2;
+    processMap_["GetTechnologyListByForeignKey"] = &CbmServiceProcessor::process_GetTechnologyListByForeignKey;
+    processMap_["GetTechnologyIdListByForeignKey"] = &CbmServiceProcessor::process_GetTechnologyIdListByForeignKey;
     processMap_["AddTopoGeo"] = &CbmServiceProcessor::process_AddTopoGeo;
     processMap_["DeleteTopoGeo"] = &CbmServiceProcessor::process_DeleteTopoGeo;
     processMap_["UpdateTopoGeo"] = &CbmServiceProcessor::process_UpdateTopoGeo;
@@ -88390,6 +96062,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["GetTopoGeoIdListByFields"] = &CbmServiceProcessor::process_GetTopoGeoIdListByFields;
     processMap_["GetTopoGeoIdListByField1"] = &CbmServiceProcessor::process_GetTopoGeoIdListByField1;
     processMap_["GetTopoGeoIdListByField2"] = &CbmServiceProcessor::process_GetTopoGeoIdListByField2;
+    processMap_["GetTopoGeoListByForeignKey"] = &CbmServiceProcessor::process_GetTopoGeoListByForeignKey;
+    processMap_["GetTopoGeoIdListByForeignKey"] = &CbmServiceProcessor::process_GetTopoGeoIdListByForeignKey;
     processMap_["AddTunnel"] = &CbmServiceProcessor::process_AddTunnel;
     processMap_["DeleteTunnel"] = &CbmServiceProcessor::process_DeleteTunnel;
     processMap_["UpdateTunnel"] = &CbmServiceProcessor::process_UpdateTunnel;
@@ -88413,6 +96087,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["GetTunnelIdListByFields"] = &CbmServiceProcessor::process_GetTunnelIdListByFields;
     processMap_["GetTunnelIdListByField1"] = &CbmServiceProcessor::process_GetTunnelIdListByField1;
     processMap_["GetTunnelIdListByField2"] = &CbmServiceProcessor::process_GetTunnelIdListByField2;
+    processMap_["GetTunnelListByForeignKey"] = &CbmServiceProcessor::process_GetTunnelListByForeignKey;
+    processMap_["GetTunnelIdListByForeignKey"] = &CbmServiceProcessor::process_GetTunnelIdListByForeignKey;
     processMap_["AddWorkArea"] = &CbmServiceProcessor::process_AddWorkArea;
     processMap_["DeleteWorkArea"] = &CbmServiceProcessor::process_DeleteWorkArea;
     processMap_["UpdateWorkArea"] = &CbmServiceProcessor::process_UpdateWorkArea;
@@ -88436,6 +96112,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["GetWorkAreaIdListByFields"] = &CbmServiceProcessor::process_GetWorkAreaIdListByFields;
     processMap_["GetWorkAreaIdListByField1"] = &CbmServiceProcessor::process_GetWorkAreaIdListByField1;
     processMap_["GetWorkAreaIdListByField2"] = &CbmServiceProcessor::process_GetWorkAreaIdListByField2;
+    processMap_["GetWorkAreaListByForeignKey"] = &CbmServiceProcessor::process_GetWorkAreaListByForeignKey;
+    processMap_["GetWorkAreaIdListByForeignKey"] = &CbmServiceProcessor::process_GetWorkAreaIdListByForeignKey;
     processMap_["AddWorkSurf"] = &CbmServiceProcessor::process_AddWorkSurf;
     processMap_["DeleteWorkSurf"] = &CbmServiceProcessor::process_DeleteWorkSurf;
     processMap_["UpdateWorkSurf"] = &CbmServiceProcessor::process_UpdateWorkSurf;
@@ -88459,6 +96137,8 @@ class CbmServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["GetWorkSurfIdListByFields"] = &CbmServiceProcessor::process_GetWorkSurfIdListByFields;
     processMap_["GetWorkSurfIdListByField1"] = &CbmServiceProcessor::process_GetWorkSurfIdListByField1;
     processMap_["GetWorkSurfIdListByField2"] = &CbmServiceProcessor::process_GetWorkSurfIdListByField2;
+    processMap_["GetWorkSurfListByForeignKey"] = &CbmServiceProcessor::process_GetWorkSurfListByForeignKey;
+    processMap_["GetWorkSurfIdListByForeignKey"] = &CbmServiceProcessor::process_GetWorkSurfIdListByForeignKey;
     processMap_["InitSampleRegion"] = &CbmServiceProcessor::process_InitSampleRegion;
     processMap_["GetOnlineAccountId"] = &CbmServiceProcessor::process_GetOnlineAccountId;
     processMap_["GetOnlineMine"] = &CbmServiceProcessor::process_GetOnlineMine;
@@ -88737,6 +96417,26 @@ class CbmServiceMultiface : virtual public CbmServiceIf {
     return;
   }
 
+  void GetAccountListByForeignKey(std::vector<Account> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetAccountListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetAccountListByForeignKey(_return, fkey, id);
+    return;
+  }
+
+  void GetAccountIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetAccountIdListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetAccountIdListByForeignKey(_return, fkey, id);
+    return;
+  }
+
   int32_t AddAdjLayer(const AdjLayer& adj_layer) {
     size_t sz = ifaces_.size();
     size_t i = 0;
@@ -88955,6 +96655,26 @@ class CbmServiceMultiface : virtual public CbmServiceIf {
       ifaces_[i]->GetAdjLayerIdListByField2(_return, field1, value1, field2, value2);
     }
     ifaces_[i]->GetAdjLayerIdListByField2(_return, field1, value1, field2, value2);
+    return;
+  }
+
+  void GetAdjLayerListByForeignKey(std::vector<AdjLayer> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetAdjLayerListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetAdjLayerListByForeignKey(_return, fkey, id);
+    return;
+  }
+
+  void GetAdjLayerIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetAdjLayerIdListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetAdjLayerIdListByForeignKey(_return, fkey, id);
     return;
   }
 
@@ -89179,6 +96899,26 @@ class CbmServiceMultiface : virtual public CbmServiceIf {
     return;
   }
 
+  void GetCoalListByForeignKey(std::vector<Coal> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetCoalListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetCoalListByForeignKey(_return, fkey, id);
+    return;
+  }
+
+  void GetCoalIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetCoalIdListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetCoalIdListByForeignKey(_return, fkey, id);
+    return;
+  }
+
   int32_t AddComplexity(const Complexity& complexity) {
     size_t sz = ifaces_.size();
     size_t i = 0;
@@ -89397,6 +97137,26 @@ class CbmServiceMultiface : virtual public CbmServiceIf {
       ifaces_[i]->GetComplexityIdListByField2(_return, field1, value1, field2, value2);
     }
     ifaces_[i]->GetComplexityIdListByField2(_return, field1, value1, field2, value2);
+    return;
+  }
+
+  void GetComplexityListByForeignKey(std::vector<Complexity> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetComplexityListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetComplexityListByForeignKey(_return, fkey, id);
+    return;
+  }
+
+  void GetComplexityIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetComplexityIdListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetComplexityIdListByForeignKey(_return, fkey, id);
     return;
   }
 
@@ -89621,6 +97381,26 @@ class CbmServiceMultiface : virtual public CbmServiceIf {
     return;
   }
 
+  void GetDesignDrillingSurfTechnologyListByForeignKey(std::vector<DesignDrillingSurfTechnology> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetDesignDrillingSurfTechnologyListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetDesignDrillingSurfTechnologyListByForeignKey(_return, fkey, id);
+    return;
+  }
+
+  void GetDesignDrillingSurfTechnologyIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetDesignDrillingSurfTechnologyIdListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetDesignDrillingSurfTechnologyIdListByForeignKey(_return, fkey, id);
+    return;
+  }
+
   int32_t AddDesignGoafTechnology(const DesignGoafTechnology& design_goaf_technology) {
     size_t sz = ifaces_.size();
     size_t i = 0;
@@ -89839,6 +97619,26 @@ class CbmServiceMultiface : virtual public CbmServiceIf {
       ifaces_[i]->GetDesignGoafTechnologyIdListByField2(_return, field1, value1, field2, value2);
     }
     ifaces_[i]->GetDesignGoafTechnologyIdListByField2(_return, field1, value1, field2, value2);
+    return;
+  }
+
+  void GetDesignGoafTechnologyListByForeignKey(std::vector<DesignGoafTechnology> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetDesignGoafTechnologyListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetDesignGoafTechnologyListByForeignKey(_return, fkey, id);
+    return;
+  }
+
+  void GetDesignGoafTechnologyIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetDesignGoafTechnologyIdListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetDesignGoafTechnologyIdListByForeignKey(_return, fkey, id);
     return;
   }
 
@@ -90063,6 +97863,26 @@ class CbmServiceMultiface : virtual public CbmServiceIf {
     return;
   }
 
+  void GetDesignPoreListByForeignKey(std::vector<DesignPore> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetDesignPoreListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetDesignPoreListByForeignKey(_return, fkey, id);
+    return;
+  }
+
+  void GetDesignPoreIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetDesignPoreIdListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetDesignPoreIdListByForeignKey(_return, fkey, id);
+    return;
+  }
+
   int32_t AddDesignSite(const DesignSite& design_site) {
     size_t sz = ifaces_.size();
     size_t i = 0;
@@ -90281,6 +98101,26 @@ class CbmServiceMultiface : virtual public CbmServiceIf {
       ifaces_[i]->GetDesignSiteIdListByField2(_return, field1, value1, field2, value2);
     }
     ifaces_[i]->GetDesignSiteIdListByField2(_return, field1, value1, field2, value2);
+    return;
+  }
+
+  void GetDesignSiteListByForeignKey(std::vector<DesignSite> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetDesignSiteListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetDesignSiteListByForeignKey(_return, fkey, id);
+    return;
+  }
+
+  void GetDesignSiteIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetDesignSiteIdListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetDesignSiteIdListByForeignKey(_return, fkey, id);
     return;
   }
 
@@ -90505,6 +98345,26 @@ class CbmServiceMultiface : virtual public CbmServiceIf {
     return;
   }
 
+  void GetDesignTechnologyListByForeignKey(std::vector<DesignTechnology> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetDesignTechnologyListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetDesignTechnologyListByForeignKey(_return, fkey, id);
+    return;
+  }
+
+  void GetDesignTechnologyIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetDesignTechnologyIdListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetDesignTechnologyIdListByForeignKey(_return, fkey, id);
+    return;
+  }
+
   int32_t AddDesignWorkSurfTechnology(const DesignWorkSurfTechnology& design_work_surf_technology) {
     size_t sz = ifaces_.size();
     size_t i = 0;
@@ -90723,6 +98583,26 @@ class CbmServiceMultiface : virtual public CbmServiceIf {
       ifaces_[i]->GetDesignWorkSurfTechnologyIdListByField2(_return, field1, value1, field2, value2);
     }
     ifaces_[i]->GetDesignWorkSurfTechnologyIdListByField2(_return, field1, value1, field2, value2);
+    return;
+  }
+
+  void GetDesignWorkSurfTechnologyListByForeignKey(std::vector<DesignWorkSurfTechnology> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetDesignWorkSurfTechnologyListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetDesignWorkSurfTechnologyListByForeignKey(_return, fkey, id);
+    return;
+  }
+
+  void GetDesignWorkSurfTechnologyIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetDesignWorkSurfTechnologyIdListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetDesignWorkSurfTechnologyIdListByForeignKey(_return, fkey, id);
     return;
   }
 
@@ -90947,6 +98827,26 @@ class CbmServiceMultiface : virtual public CbmServiceIf {
     return;
   }
 
+  void GetDrillingRadiusParamListByForeignKey(std::vector<DrillingRadiusParam> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetDrillingRadiusParamListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetDrillingRadiusParamListByForeignKey(_return, fkey, id);
+    return;
+  }
+
+  void GetDrillingRadiusParamIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetDrillingRadiusParamIdListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetDrillingRadiusParamIdListByForeignKey(_return, fkey, id);
+    return;
+  }
+
   int32_t AddDrillingSurf(const DrillingSurf& drilling_surf) {
     size_t sz = ifaces_.size();
     size_t i = 0;
@@ -91165,6 +99065,26 @@ class CbmServiceMultiface : virtual public CbmServiceIf {
       ifaces_[i]->GetDrillingSurfIdListByField2(_return, field1, value1, field2, value2);
     }
     ifaces_[i]->GetDrillingSurfIdListByField2(_return, field1, value1, field2, value2);
+    return;
+  }
+
+  void GetDrillingSurfListByForeignKey(std::vector<DrillingSurf> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetDrillingSurfListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetDrillingSurfListByForeignKey(_return, fkey, id);
+    return;
+  }
+
+  void GetDrillingSurfIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetDrillingSurfIdListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetDrillingSurfIdListByForeignKey(_return, fkey, id);
     return;
   }
 
@@ -91389,6 +99309,26 @@ class CbmServiceMultiface : virtual public CbmServiceIf {
     return;
   }
 
+  void GetEvalUnitListByForeignKey(std::vector<EvalUnit> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetEvalUnitListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetEvalUnitListByForeignKey(_return, fkey, id);
+    return;
+  }
+
+  void GetEvalUnitIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetEvalUnitIdListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetEvalUnitIdListByForeignKey(_return, fkey, id);
+    return;
+  }
+
   int32_t AddHighDrillingPore(const HighDrillingPore& high_drilling_pore) {
     size_t sz = ifaces_.size();
     size_t i = 0;
@@ -91607,6 +99547,26 @@ class CbmServiceMultiface : virtual public CbmServiceIf {
       ifaces_[i]->GetHighDrillingPoreIdListByField2(_return, field1, value1, field2, value2);
     }
     ifaces_[i]->GetHighDrillingPoreIdListByField2(_return, field1, value1, field2, value2);
+    return;
+  }
+
+  void GetHighDrillingPoreListByForeignKey(std::vector<HighDrillingPore> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetHighDrillingPoreListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetHighDrillingPoreListByForeignKey(_return, fkey, id);
+    return;
+  }
+
+  void GetHighDrillingPoreIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetHighDrillingPoreIdListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetHighDrillingPoreIdListByForeignKey(_return, fkey, id);
     return;
   }
 
@@ -91831,6 +99791,26 @@ class CbmServiceMultiface : virtual public CbmServiceIf {
     return;
   }
 
+  void GetHighDrillingPoreParamListByForeignKey(std::vector<HighDrillingPoreParam> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetHighDrillingPoreParamListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetHighDrillingPoreParamListByForeignKey(_return, fkey, id);
+    return;
+  }
+
+  void GetHighDrillingPoreParamIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetHighDrillingPoreParamIdListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetHighDrillingPoreParamIdListByForeignKey(_return, fkey, id);
+    return;
+  }
+
   int32_t AddHighDrillingSiteParam(const HighDrillingSiteParam& high_drilling_site_param) {
     size_t sz = ifaces_.size();
     size_t i = 0;
@@ -92049,6 +100029,26 @@ class CbmServiceMultiface : virtual public CbmServiceIf {
       ifaces_[i]->GetHighDrillingSiteParamIdListByField2(_return, field1, value1, field2, value2);
     }
     ifaces_[i]->GetHighDrillingSiteParamIdListByField2(_return, field1, value1, field2, value2);
+    return;
+  }
+
+  void GetHighDrillingSiteParamListByForeignKey(std::vector<HighDrillingSiteParam> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetHighDrillingSiteParamListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetHighDrillingSiteParamListByForeignKey(_return, fkey, id);
+    return;
+  }
+
+  void GetHighDrillingSiteParamIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetHighDrillingSiteParamIdListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetHighDrillingSiteParamIdListByForeignKey(_return, fkey, id);
     return;
   }
 
@@ -92273,6 +100273,26 @@ class CbmServiceMultiface : virtual public CbmServiceIf {
     return;
   }
 
+  void GetHighDrillingTunnelListByForeignKey(std::vector<HighDrillingTunnel> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetHighDrillingTunnelListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetHighDrillingTunnelListByForeignKey(_return, fkey, id);
+    return;
+  }
+
+  void GetHighDrillingTunnelIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetHighDrillingTunnelIdListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetHighDrillingTunnelIdListByForeignKey(_return, fkey, id);
+    return;
+  }
+
   int32_t AddHydrGeo(const HydrGeo& hydr_geo) {
     size_t sz = ifaces_.size();
     size_t i = 0;
@@ -92491,6 +100511,26 @@ class CbmServiceMultiface : virtual public CbmServiceIf {
       ifaces_[i]->GetHydrGeoIdListByField2(_return, field1, value1, field2, value2);
     }
     ifaces_[i]->GetHydrGeoIdListByField2(_return, field1, value1, field2, value2);
+    return;
+  }
+
+  void GetHydrGeoListByForeignKey(std::vector<HydrGeo> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetHydrGeoListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetHydrGeoListByForeignKey(_return, fkey, id);
+    return;
+  }
+
+  void GetHydrGeoIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetHydrGeoIdListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetHydrGeoIdListByForeignKey(_return, fkey, id);
     return;
   }
 
@@ -92715,6 +100755,26 @@ class CbmServiceMultiface : virtual public CbmServiceIf {
     return;
   }
 
+  void GetMineListByForeignKey(std::vector<Mine> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetMineListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetMineListByForeignKey(_return, fkey, id);
+    return;
+  }
+
+  void GetMineIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetMineIdListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetMineIdListByForeignKey(_return, fkey, id);
+    return;
+  }
+
   int32_t AddMineBase(const MineBase& mine_base) {
     size_t sz = ifaces_.size();
     size_t i = 0;
@@ -92933,6 +100993,26 @@ class CbmServiceMultiface : virtual public CbmServiceIf {
       ifaces_[i]->GetMineBaseIdListByField2(_return, field1, value1, field2, value2);
     }
     ifaces_[i]->GetMineBaseIdListByField2(_return, field1, value1, field2, value2);
+    return;
+  }
+
+  void GetMineBaseListByForeignKey(std::vector<MineBase> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetMineBaseListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetMineBaseListByForeignKey(_return, fkey, id);
+    return;
+  }
+
+  void GetMineBaseIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetMineBaseIdListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetMineBaseIdListByForeignKey(_return, fkey, id);
     return;
   }
 
@@ -93157,6 +101237,26 @@ class CbmServiceMultiface : virtual public CbmServiceIf {
     return;
   }
 
+  void GetMineRegionListByForeignKey(std::vector<MineRegion> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetMineRegionListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetMineRegionListByForeignKey(_return, fkey, id);
+    return;
+  }
+
+  void GetMineRegionIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetMineRegionIdListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetMineRegionIdListByForeignKey(_return, fkey, id);
+    return;
+  }
+
   int32_t AddPoreFlow(const PoreFlow& pore_flow) {
     size_t sz = ifaces_.size();
     size_t i = 0;
@@ -93375,6 +101475,26 @@ class CbmServiceMultiface : virtual public CbmServiceIf {
       ifaces_[i]->GetPoreFlowIdListByField2(_return, field1, value1, field2, value2);
     }
     ifaces_[i]->GetPoreFlowIdListByField2(_return, field1, value1, field2, value2);
+    return;
+  }
+
+  void GetPoreFlowListByForeignKey(std::vector<PoreFlow> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetPoreFlowListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetPoreFlowListByForeignKey(_return, fkey, id);
+    return;
+  }
+
+  void GetPoreFlowIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetPoreFlowIdListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetPoreFlowIdListByForeignKey(_return, fkey, id);
     return;
   }
 
@@ -93599,6 +101719,26 @@ class CbmServiceMultiface : virtual public CbmServiceIf {
     return;
   }
 
+  void GetPoreSizeListByForeignKey(std::vector<PoreSize> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetPoreSizeListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetPoreSizeListByForeignKey(_return, fkey, id);
+    return;
+  }
+
+  void GetPoreSizeIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetPoreSizeIdListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetPoreSizeIdListByForeignKey(_return, fkey, id);
+    return;
+  }
+
   int32_t AddResAbundance(const ResAbundance& res_abundance) {
     size_t sz = ifaces_.size();
     size_t i = 0;
@@ -93817,6 +101957,26 @@ class CbmServiceMultiface : virtual public CbmServiceIf {
       ifaces_[i]->GetResAbundanceIdListByField2(_return, field1, value1, field2, value2);
     }
     ifaces_[i]->GetResAbundanceIdListByField2(_return, field1, value1, field2, value2);
+    return;
+  }
+
+  void GetResAbundanceListByForeignKey(std::vector<ResAbundance> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetResAbundanceListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetResAbundanceListByForeignKey(_return, fkey, id);
+    return;
+  }
+
+  void GetResAbundanceIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetResAbundanceIdListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetResAbundanceIdListByForeignKey(_return, fkey, id);
     return;
   }
 
@@ -94041,6 +102201,26 @@ class CbmServiceMultiface : virtual public CbmServiceIf {
     return;
   }
 
+  void GetRockListByForeignKey(std::vector<Rock> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetRockListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetRockListByForeignKey(_return, fkey, id);
+    return;
+  }
+
+  void GetRockIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetRockIdListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetRockIdListByForeignKey(_return, fkey, id);
+    return;
+  }
+
   int32_t AddSysInfo(const SysInfo& sys_info) {
     size_t sz = ifaces_.size();
     size_t i = 0;
@@ -94259,6 +102439,26 @@ class CbmServiceMultiface : virtual public CbmServiceIf {
       ifaces_[i]->GetSysInfoIdListByField2(_return, field1, value1, field2, value2);
     }
     ifaces_[i]->GetSysInfoIdListByField2(_return, field1, value1, field2, value2);
+    return;
+  }
+
+  void GetSysInfoListByForeignKey(std::vector<SysInfo> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetSysInfoListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetSysInfoListByForeignKey(_return, fkey, id);
+    return;
+  }
+
+  void GetSysInfoIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetSysInfoIdListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetSysInfoIdListByForeignKey(_return, fkey, id);
     return;
   }
 
@@ -94483,6 +102683,26 @@ class CbmServiceMultiface : virtual public CbmServiceIf {
     return;
   }
 
+  void GetTechModeListByForeignKey(std::vector<TechMode> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetTechModeListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetTechModeListByForeignKey(_return, fkey, id);
+    return;
+  }
+
+  void GetTechModeIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetTechModeIdListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetTechModeIdListByForeignKey(_return, fkey, id);
+    return;
+  }
+
   int32_t AddTechnology(const Technology& technology) {
     size_t sz = ifaces_.size();
     size_t i = 0;
@@ -94701,6 +102921,26 @@ class CbmServiceMultiface : virtual public CbmServiceIf {
       ifaces_[i]->GetTechnologyIdListByField2(_return, field1, value1, field2, value2);
     }
     ifaces_[i]->GetTechnologyIdListByField2(_return, field1, value1, field2, value2);
+    return;
+  }
+
+  void GetTechnologyListByForeignKey(std::vector<Technology> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetTechnologyListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetTechnologyListByForeignKey(_return, fkey, id);
+    return;
+  }
+
+  void GetTechnologyIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetTechnologyIdListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetTechnologyIdListByForeignKey(_return, fkey, id);
     return;
   }
 
@@ -94925,6 +103165,26 @@ class CbmServiceMultiface : virtual public CbmServiceIf {
     return;
   }
 
+  void GetTopoGeoListByForeignKey(std::vector<TopoGeo> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetTopoGeoListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetTopoGeoListByForeignKey(_return, fkey, id);
+    return;
+  }
+
+  void GetTopoGeoIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetTopoGeoIdListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetTopoGeoIdListByForeignKey(_return, fkey, id);
+    return;
+  }
+
   int32_t AddTunnel(const Tunnel& tunnel) {
     size_t sz = ifaces_.size();
     size_t i = 0;
@@ -95143,6 +103403,26 @@ class CbmServiceMultiface : virtual public CbmServiceIf {
       ifaces_[i]->GetTunnelIdListByField2(_return, field1, value1, field2, value2);
     }
     ifaces_[i]->GetTunnelIdListByField2(_return, field1, value1, field2, value2);
+    return;
+  }
+
+  void GetTunnelListByForeignKey(std::vector<Tunnel> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetTunnelListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetTunnelListByForeignKey(_return, fkey, id);
+    return;
+  }
+
+  void GetTunnelIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetTunnelIdListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetTunnelIdListByForeignKey(_return, fkey, id);
     return;
   }
 
@@ -95367,6 +103647,26 @@ class CbmServiceMultiface : virtual public CbmServiceIf {
     return;
   }
 
+  void GetWorkAreaListByForeignKey(std::vector<WorkArea> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetWorkAreaListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetWorkAreaListByForeignKey(_return, fkey, id);
+    return;
+  }
+
+  void GetWorkAreaIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetWorkAreaIdListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetWorkAreaIdListByForeignKey(_return, fkey, id);
+    return;
+  }
+
   int32_t AddWorkSurf(const WorkSurf& work_surf) {
     size_t sz = ifaces_.size();
     size_t i = 0;
@@ -95585,6 +103885,26 @@ class CbmServiceMultiface : virtual public CbmServiceIf {
       ifaces_[i]->GetWorkSurfIdListByField2(_return, field1, value1, field2, value2);
     }
     ifaces_[i]->GetWorkSurfIdListByField2(_return, field1, value1, field2, value2);
+    return;
+  }
+
+  void GetWorkSurfListByForeignKey(std::vector<WorkSurf> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetWorkSurfListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetWorkSurfListByForeignKey(_return, fkey, id);
+    return;
+  }
+
+  void GetWorkSurfIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->GetWorkSurfIdListByForeignKey(_return, fkey, id);
+    }
+    ifaces_[i]->GetWorkSurfIdListByForeignKey(_return, fkey, id);
     return;
   }
 
@@ -95965,6 +104285,12 @@ class CbmServiceConcurrentClient : virtual public CbmServiceIf {
   void GetAccountIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   int32_t send_GetAccountIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetAccountIdListByField2(std::vector<int32_t> & _return, const int32_t seqid);
+  void GetAccountListByForeignKey(std::vector<Account> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetAccountListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetAccountListByForeignKey(std::vector<Account> & _return, const int32_t seqid);
+  void GetAccountIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetAccountIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetAccountIdListByForeignKey(std::vector<int32_t> & _return, const int32_t seqid);
   int32_t AddAdjLayer(const AdjLayer& adj_layer);
   int32_t send_AddAdjLayer(const AdjLayer& adj_layer);
   int32_t recv_AddAdjLayer(const int32_t seqid);
@@ -96034,6 +104360,12 @@ class CbmServiceConcurrentClient : virtual public CbmServiceIf {
   void GetAdjLayerIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   int32_t send_GetAdjLayerIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetAdjLayerIdListByField2(std::vector<int32_t> & _return, const int32_t seqid);
+  void GetAdjLayerListByForeignKey(std::vector<AdjLayer> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetAdjLayerListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetAdjLayerListByForeignKey(std::vector<AdjLayer> & _return, const int32_t seqid);
+  void GetAdjLayerIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetAdjLayerIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetAdjLayerIdListByForeignKey(std::vector<int32_t> & _return, const int32_t seqid);
   int32_t AddCoal(const Coal& coal);
   int32_t send_AddCoal(const Coal& coal);
   int32_t recv_AddCoal(const int32_t seqid);
@@ -96103,6 +104435,12 @@ class CbmServiceConcurrentClient : virtual public CbmServiceIf {
   void GetCoalIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   int32_t send_GetCoalIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetCoalIdListByField2(std::vector<int32_t> & _return, const int32_t seqid);
+  void GetCoalListByForeignKey(std::vector<Coal> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetCoalListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetCoalListByForeignKey(std::vector<Coal> & _return, const int32_t seqid);
+  void GetCoalIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetCoalIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetCoalIdListByForeignKey(std::vector<int32_t> & _return, const int32_t seqid);
   int32_t AddComplexity(const Complexity& complexity);
   int32_t send_AddComplexity(const Complexity& complexity);
   int32_t recv_AddComplexity(const int32_t seqid);
@@ -96172,6 +104510,12 @@ class CbmServiceConcurrentClient : virtual public CbmServiceIf {
   void GetComplexityIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   int32_t send_GetComplexityIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetComplexityIdListByField2(std::vector<int32_t> & _return, const int32_t seqid);
+  void GetComplexityListByForeignKey(std::vector<Complexity> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetComplexityListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetComplexityListByForeignKey(std::vector<Complexity> & _return, const int32_t seqid);
+  void GetComplexityIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetComplexityIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetComplexityIdListByForeignKey(std::vector<int32_t> & _return, const int32_t seqid);
   int32_t AddDesignDrillingSurfTechnology(const DesignDrillingSurfTechnology& design_drilling_surf_technology);
   int32_t send_AddDesignDrillingSurfTechnology(const DesignDrillingSurfTechnology& design_drilling_surf_technology);
   int32_t recv_AddDesignDrillingSurfTechnology(const int32_t seqid);
@@ -96241,6 +104585,12 @@ class CbmServiceConcurrentClient : virtual public CbmServiceIf {
   void GetDesignDrillingSurfTechnologyIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   int32_t send_GetDesignDrillingSurfTechnologyIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetDesignDrillingSurfTechnologyIdListByField2(std::vector<int32_t> & _return, const int32_t seqid);
+  void GetDesignDrillingSurfTechnologyListByForeignKey(std::vector<DesignDrillingSurfTechnology> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetDesignDrillingSurfTechnologyListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetDesignDrillingSurfTechnologyListByForeignKey(std::vector<DesignDrillingSurfTechnology> & _return, const int32_t seqid);
+  void GetDesignDrillingSurfTechnologyIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetDesignDrillingSurfTechnologyIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetDesignDrillingSurfTechnologyIdListByForeignKey(std::vector<int32_t> & _return, const int32_t seqid);
   int32_t AddDesignGoafTechnology(const DesignGoafTechnology& design_goaf_technology);
   int32_t send_AddDesignGoafTechnology(const DesignGoafTechnology& design_goaf_technology);
   int32_t recv_AddDesignGoafTechnology(const int32_t seqid);
@@ -96310,6 +104660,12 @@ class CbmServiceConcurrentClient : virtual public CbmServiceIf {
   void GetDesignGoafTechnologyIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   int32_t send_GetDesignGoafTechnologyIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetDesignGoafTechnologyIdListByField2(std::vector<int32_t> & _return, const int32_t seqid);
+  void GetDesignGoafTechnologyListByForeignKey(std::vector<DesignGoafTechnology> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetDesignGoafTechnologyListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetDesignGoafTechnologyListByForeignKey(std::vector<DesignGoafTechnology> & _return, const int32_t seqid);
+  void GetDesignGoafTechnologyIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetDesignGoafTechnologyIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetDesignGoafTechnologyIdListByForeignKey(std::vector<int32_t> & _return, const int32_t seqid);
   int32_t AddDesignPore(const DesignPore& design_pore);
   int32_t send_AddDesignPore(const DesignPore& design_pore);
   int32_t recv_AddDesignPore(const int32_t seqid);
@@ -96379,6 +104735,12 @@ class CbmServiceConcurrentClient : virtual public CbmServiceIf {
   void GetDesignPoreIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   int32_t send_GetDesignPoreIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetDesignPoreIdListByField2(std::vector<int32_t> & _return, const int32_t seqid);
+  void GetDesignPoreListByForeignKey(std::vector<DesignPore> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetDesignPoreListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetDesignPoreListByForeignKey(std::vector<DesignPore> & _return, const int32_t seqid);
+  void GetDesignPoreIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetDesignPoreIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetDesignPoreIdListByForeignKey(std::vector<int32_t> & _return, const int32_t seqid);
   int32_t AddDesignSite(const DesignSite& design_site);
   int32_t send_AddDesignSite(const DesignSite& design_site);
   int32_t recv_AddDesignSite(const int32_t seqid);
@@ -96448,6 +104810,12 @@ class CbmServiceConcurrentClient : virtual public CbmServiceIf {
   void GetDesignSiteIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   int32_t send_GetDesignSiteIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetDesignSiteIdListByField2(std::vector<int32_t> & _return, const int32_t seqid);
+  void GetDesignSiteListByForeignKey(std::vector<DesignSite> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetDesignSiteListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetDesignSiteListByForeignKey(std::vector<DesignSite> & _return, const int32_t seqid);
+  void GetDesignSiteIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetDesignSiteIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetDesignSiteIdListByForeignKey(std::vector<int32_t> & _return, const int32_t seqid);
   int32_t AddDesignTechnology(const DesignTechnology& design_technology);
   int32_t send_AddDesignTechnology(const DesignTechnology& design_technology);
   int32_t recv_AddDesignTechnology(const int32_t seqid);
@@ -96517,6 +104885,12 @@ class CbmServiceConcurrentClient : virtual public CbmServiceIf {
   void GetDesignTechnologyIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   int32_t send_GetDesignTechnologyIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetDesignTechnologyIdListByField2(std::vector<int32_t> & _return, const int32_t seqid);
+  void GetDesignTechnologyListByForeignKey(std::vector<DesignTechnology> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetDesignTechnologyListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetDesignTechnologyListByForeignKey(std::vector<DesignTechnology> & _return, const int32_t seqid);
+  void GetDesignTechnologyIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetDesignTechnologyIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetDesignTechnologyIdListByForeignKey(std::vector<int32_t> & _return, const int32_t seqid);
   int32_t AddDesignWorkSurfTechnology(const DesignWorkSurfTechnology& design_work_surf_technology);
   int32_t send_AddDesignWorkSurfTechnology(const DesignWorkSurfTechnology& design_work_surf_technology);
   int32_t recv_AddDesignWorkSurfTechnology(const int32_t seqid);
@@ -96586,6 +104960,12 @@ class CbmServiceConcurrentClient : virtual public CbmServiceIf {
   void GetDesignWorkSurfTechnologyIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   int32_t send_GetDesignWorkSurfTechnologyIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetDesignWorkSurfTechnologyIdListByField2(std::vector<int32_t> & _return, const int32_t seqid);
+  void GetDesignWorkSurfTechnologyListByForeignKey(std::vector<DesignWorkSurfTechnology> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetDesignWorkSurfTechnologyListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetDesignWorkSurfTechnologyListByForeignKey(std::vector<DesignWorkSurfTechnology> & _return, const int32_t seqid);
+  void GetDesignWorkSurfTechnologyIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetDesignWorkSurfTechnologyIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetDesignWorkSurfTechnologyIdListByForeignKey(std::vector<int32_t> & _return, const int32_t seqid);
   int32_t AddDrillingRadiusParam(const DrillingRadiusParam& drilling_radius_param);
   int32_t send_AddDrillingRadiusParam(const DrillingRadiusParam& drilling_radius_param);
   int32_t recv_AddDrillingRadiusParam(const int32_t seqid);
@@ -96655,6 +105035,12 @@ class CbmServiceConcurrentClient : virtual public CbmServiceIf {
   void GetDrillingRadiusParamIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   int32_t send_GetDrillingRadiusParamIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetDrillingRadiusParamIdListByField2(std::vector<int32_t> & _return, const int32_t seqid);
+  void GetDrillingRadiusParamListByForeignKey(std::vector<DrillingRadiusParam> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetDrillingRadiusParamListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetDrillingRadiusParamListByForeignKey(std::vector<DrillingRadiusParam> & _return, const int32_t seqid);
+  void GetDrillingRadiusParamIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetDrillingRadiusParamIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetDrillingRadiusParamIdListByForeignKey(std::vector<int32_t> & _return, const int32_t seqid);
   int32_t AddDrillingSurf(const DrillingSurf& drilling_surf);
   int32_t send_AddDrillingSurf(const DrillingSurf& drilling_surf);
   int32_t recv_AddDrillingSurf(const int32_t seqid);
@@ -96724,6 +105110,12 @@ class CbmServiceConcurrentClient : virtual public CbmServiceIf {
   void GetDrillingSurfIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   int32_t send_GetDrillingSurfIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetDrillingSurfIdListByField2(std::vector<int32_t> & _return, const int32_t seqid);
+  void GetDrillingSurfListByForeignKey(std::vector<DrillingSurf> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetDrillingSurfListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetDrillingSurfListByForeignKey(std::vector<DrillingSurf> & _return, const int32_t seqid);
+  void GetDrillingSurfIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetDrillingSurfIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetDrillingSurfIdListByForeignKey(std::vector<int32_t> & _return, const int32_t seqid);
   int32_t AddEvalUnit(const EvalUnit& eval_unit);
   int32_t send_AddEvalUnit(const EvalUnit& eval_unit);
   int32_t recv_AddEvalUnit(const int32_t seqid);
@@ -96793,6 +105185,12 @@ class CbmServiceConcurrentClient : virtual public CbmServiceIf {
   void GetEvalUnitIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   int32_t send_GetEvalUnitIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetEvalUnitIdListByField2(std::vector<int32_t> & _return, const int32_t seqid);
+  void GetEvalUnitListByForeignKey(std::vector<EvalUnit> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetEvalUnitListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetEvalUnitListByForeignKey(std::vector<EvalUnit> & _return, const int32_t seqid);
+  void GetEvalUnitIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetEvalUnitIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetEvalUnitIdListByForeignKey(std::vector<int32_t> & _return, const int32_t seqid);
   int32_t AddHighDrillingPore(const HighDrillingPore& high_drilling_pore);
   int32_t send_AddHighDrillingPore(const HighDrillingPore& high_drilling_pore);
   int32_t recv_AddHighDrillingPore(const int32_t seqid);
@@ -96862,6 +105260,12 @@ class CbmServiceConcurrentClient : virtual public CbmServiceIf {
   void GetHighDrillingPoreIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   int32_t send_GetHighDrillingPoreIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetHighDrillingPoreIdListByField2(std::vector<int32_t> & _return, const int32_t seqid);
+  void GetHighDrillingPoreListByForeignKey(std::vector<HighDrillingPore> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetHighDrillingPoreListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetHighDrillingPoreListByForeignKey(std::vector<HighDrillingPore> & _return, const int32_t seqid);
+  void GetHighDrillingPoreIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetHighDrillingPoreIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetHighDrillingPoreIdListByForeignKey(std::vector<int32_t> & _return, const int32_t seqid);
   int32_t AddHighDrillingPoreParam(const HighDrillingPoreParam& high_drilling_pore_param);
   int32_t send_AddHighDrillingPoreParam(const HighDrillingPoreParam& high_drilling_pore_param);
   int32_t recv_AddHighDrillingPoreParam(const int32_t seqid);
@@ -96931,6 +105335,12 @@ class CbmServiceConcurrentClient : virtual public CbmServiceIf {
   void GetHighDrillingPoreParamIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   int32_t send_GetHighDrillingPoreParamIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetHighDrillingPoreParamIdListByField2(std::vector<int32_t> & _return, const int32_t seqid);
+  void GetHighDrillingPoreParamListByForeignKey(std::vector<HighDrillingPoreParam> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetHighDrillingPoreParamListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetHighDrillingPoreParamListByForeignKey(std::vector<HighDrillingPoreParam> & _return, const int32_t seqid);
+  void GetHighDrillingPoreParamIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetHighDrillingPoreParamIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetHighDrillingPoreParamIdListByForeignKey(std::vector<int32_t> & _return, const int32_t seqid);
   int32_t AddHighDrillingSiteParam(const HighDrillingSiteParam& high_drilling_site_param);
   int32_t send_AddHighDrillingSiteParam(const HighDrillingSiteParam& high_drilling_site_param);
   int32_t recv_AddHighDrillingSiteParam(const int32_t seqid);
@@ -97000,6 +105410,12 @@ class CbmServiceConcurrentClient : virtual public CbmServiceIf {
   void GetHighDrillingSiteParamIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   int32_t send_GetHighDrillingSiteParamIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetHighDrillingSiteParamIdListByField2(std::vector<int32_t> & _return, const int32_t seqid);
+  void GetHighDrillingSiteParamListByForeignKey(std::vector<HighDrillingSiteParam> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetHighDrillingSiteParamListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetHighDrillingSiteParamListByForeignKey(std::vector<HighDrillingSiteParam> & _return, const int32_t seqid);
+  void GetHighDrillingSiteParamIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetHighDrillingSiteParamIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetHighDrillingSiteParamIdListByForeignKey(std::vector<int32_t> & _return, const int32_t seqid);
   int32_t AddHighDrillingTunnel(const HighDrillingTunnel& high_drilling_tunnel);
   int32_t send_AddHighDrillingTunnel(const HighDrillingTunnel& high_drilling_tunnel);
   int32_t recv_AddHighDrillingTunnel(const int32_t seqid);
@@ -97069,6 +105485,12 @@ class CbmServiceConcurrentClient : virtual public CbmServiceIf {
   void GetHighDrillingTunnelIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   int32_t send_GetHighDrillingTunnelIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetHighDrillingTunnelIdListByField2(std::vector<int32_t> & _return, const int32_t seqid);
+  void GetHighDrillingTunnelListByForeignKey(std::vector<HighDrillingTunnel> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetHighDrillingTunnelListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetHighDrillingTunnelListByForeignKey(std::vector<HighDrillingTunnel> & _return, const int32_t seqid);
+  void GetHighDrillingTunnelIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetHighDrillingTunnelIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetHighDrillingTunnelIdListByForeignKey(std::vector<int32_t> & _return, const int32_t seqid);
   int32_t AddHydrGeo(const HydrGeo& hydr_geo);
   int32_t send_AddHydrGeo(const HydrGeo& hydr_geo);
   int32_t recv_AddHydrGeo(const int32_t seqid);
@@ -97138,6 +105560,12 @@ class CbmServiceConcurrentClient : virtual public CbmServiceIf {
   void GetHydrGeoIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   int32_t send_GetHydrGeoIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetHydrGeoIdListByField2(std::vector<int32_t> & _return, const int32_t seqid);
+  void GetHydrGeoListByForeignKey(std::vector<HydrGeo> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetHydrGeoListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetHydrGeoListByForeignKey(std::vector<HydrGeo> & _return, const int32_t seqid);
+  void GetHydrGeoIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetHydrGeoIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetHydrGeoIdListByForeignKey(std::vector<int32_t> & _return, const int32_t seqid);
   int32_t AddMine(const Mine& mine);
   int32_t send_AddMine(const Mine& mine);
   int32_t recv_AddMine(const int32_t seqid);
@@ -97207,6 +105635,12 @@ class CbmServiceConcurrentClient : virtual public CbmServiceIf {
   void GetMineIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   int32_t send_GetMineIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetMineIdListByField2(std::vector<int32_t> & _return, const int32_t seqid);
+  void GetMineListByForeignKey(std::vector<Mine> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetMineListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetMineListByForeignKey(std::vector<Mine> & _return, const int32_t seqid);
+  void GetMineIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetMineIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetMineIdListByForeignKey(std::vector<int32_t> & _return, const int32_t seqid);
   int32_t AddMineBase(const MineBase& mine_base);
   int32_t send_AddMineBase(const MineBase& mine_base);
   int32_t recv_AddMineBase(const int32_t seqid);
@@ -97276,6 +105710,12 @@ class CbmServiceConcurrentClient : virtual public CbmServiceIf {
   void GetMineBaseIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   int32_t send_GetMineBaseIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetMineBaseIdListByField2(std::vector<int32_t> & _return, const int32_t seqid);
+  void GetMineBaseListByForeignKey(std::vector<MineBase> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetMineBaseListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetMineBaseListByForeignKey(std::vector<MineBase> & _return, const int32_t seqid);
+  void GetMineBaseIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetMineBaseIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetMineBaseIdListByForeignKey(std::vector<int32_t> & _return, const int32_t seqid);
   int32_t AddMineRegion(const MineRegion& mine_region);
   int32_t send_AddMineRegion(const MineRegion& mine_region);
   int32_t recv_AddMineRegion(const int32_t seqid);
@@ -97345,6 +105785,12 @@ class CbmServiceConcurrentClient : virtual public CbmServiceIf {
   void GetMineRegionIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   int32_t send_GetMineRegionIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetMineRegionIdListByField2(std::vector<int32_t> & _return, const int32_t seqid);
+  void GetMineRegionListByForeignKey(std::vector<MineRegion> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetMineRegionListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetMineRegionListByForeignKey(std::vector<MineRegion> & _return, const int32_t seqid);
+  void GetMineRegionIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetMineRegionIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetMineRegionIdListByForeignKey(std::vector<int32_t> & _return, const int32_t seqid);
   int32_t AddPoreFlow(const PoreFlow& pore_flow);
   int32_t send_AddPoreFlow(const PoreFlow& pore_flow);
   int32_t recv_AddPoreFlow(const int32_t seqid);
@@ -97414,6 +105860,12 @@ class CbmServiceConcurrentClient : virtual public CbmServiceIf {
   void GetPoreFlowIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   int32_t send_GetPoreFlowIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetPoreFlowIdListByField2(std::vector<int32_t> & _return, const int32_t seqid);
+  void GetPoreFlowListByForeignKey(std::vector<PoreFlow> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetPoreFlowListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetPoreFlowListByForeignKey(std::vector<PoreFlow> & _return, const int32_t seqid);
+  void GetPoreFlowIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetPoreFlowIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetPoreFlowIdListByForeignKey(std::vector<int32_t> & _return, const int32_t seqid);
   int32_t AddPoreSize(const PoreSize& pore_size);
   int32_t send_AddPoreSize(const PoreSize& pore_size);
   int32_t recv_AddPoreSize(const int32_t seqid);
@@ -97483,6 +105935,12 @@ class CbmServiceConcurrentClient : virtual public CbmServiceIf {
   void GetPoreSizeIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   int32_t send_GetPoreSizeIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetPoreSizeIdListByField2(std::vector<int32_t> & _return, const int32_t seqid);
+  void GetPoreSizeListByForeignKey(std::vector<PoreSize> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetPoreSizeListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetPoreSizeListByForeignKey(std::vector<PoreSize> & _return, const int32_t seqid);
+  void GetPoreSizeIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetPoreSizeIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetPoreSizeIdListByForeignKey(std::vector<int32_t> & _return, const int32_t seqid);
   int32_t AddResAbundance(const ResAbundance& res_abundance);
   int32_t send_AddResAbundance(const ResAbundance& res_abundance);
   int32_t recv_AddResAbundance(const int32_t seqid);
@@ -97552,6 +106010,12 @@ class CbmServiceConcurrentClient : virtual public CbmServiceIf {
   void GetResAbundanceIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   int32_t send_GetResAbundanceIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetResAbundanceIdListByField2(std::vector<int32_t> & _return, const int32_t seqid);
+  void GetResAbundanceListByForeignKey(std::vector<ResAbundance> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetResAbundanceListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetResAbundanceListByForeignKey(std::vector<ResAbundance> & _return, const int32_t seqid);
+  void GetResAbundanceIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetResAbundanceIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetResAbundanceIdListByForeignKey(std::vector<int32_t> & _return, const int32_t seqid);
   int32_t AddRock(const Rock& rock);
   int32_t send_AddRock(const Rock& rock);
   int32_t recv_AddRock(const int32_t seqid);
@@ -97621,6 +106085,12 @@ class CbmServiceConcurrentClient : virtual public CbmServiceIf {
   void GetRockIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   int32_t send_GetRockIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetRockIdListByField2(std::vector<int32_t> & _return, const int32_t seqid);
+  void GetRockListByForeignKey(std::vector<Rock> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetRockListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetRockListByForeignKey(std::vector<Rock> & _return, const int32_t seqid);
+  void GetRockIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetRockIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetRockIdListByForeignKey(std::vector<int32_t> & _return, const int32_t seqid);
   int32_t AddSysInfo(const SysInfo& sys_info);
   int32_t send_AddSysInfo(const SysInfo& sys_info);
   int32_t recv_AddSysInfo(const int32_t seqid);
@@ -97690,6 +106160,12 @@ class CbmServiceConcurrentClient : virtual public CbmServiceIf {
   void GetSysInfoIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   int32_t send_GetSysInfoIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetSysInfoIdListByField2(std::vector<int32_t> & _return, const int32_t seqid);
+  void GetSysInfoListByForeignKey(std::vector<SysInfo> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetSysInfoListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetSysInfoListByForeignKey(std::vector<SysInfo> & _return, const int32_t seqid);
+  void GetSysInfoIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetSysInfoIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetSysInfoIdListByForeignKey(std::vector<int32_t> & _return, const int32_t seqid);
   int32_t AddTechMode(const TechMode& tech_mode);
   int32_t send_AddTechMode(const TechMode& tech_mode);
   int32_t recv_AddTechMode(const int32_t seqid);
@@ -97759,6 +106235,12 @@ class CbmServiceConcurrentClient : virtual public CbmServiceIf {
   void GetTechModeIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   int32_t send_GetTechModeIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetTechModeIdListByField2(std::vector<int32_t> & _return, const int32_t seqid);
+  void GetTechModeListByForeignKey(std::vector<TechMode> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetTechModeListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetTechModeListByForeignKey(std::vector<TechMode> & _return, const int32_t seqid);
+  void GetTechModeIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetTechModeIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetTechModeIdListByForeignKey(std::vector<int32_t> & _return, const int32_t seqid);
   int32_t AddTechnology(const Technology& technology);
   int32_t send_AddTechnology(const Technology& technology);
   int32_t recv_AddTechnology(const int32_t seqid);
@@ -97828,6 +106310,12 @@ class CbmServiceConcurrentClient : virtual public CbmServiceIf {
   void GetTechnologyIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   int32_t send_GetTechnologyIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetTechnologyIdListByField2(std::vector<int32_t> & _return, const int32_t seqid);
+  void GetTechnologyListByForeignKey(std::vector<Technology> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetTechnologyListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetTechnologyListByForeignKey(std::vector<Technology> & _return, const int32_t seqid);
+  void GetTechnologyIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetTechnologyIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetTechnologyIdListByForeignKey(std::vector<int32_t> & _return, const int32_t seqid);
   int32_t AddTopoGeo(const TopoGeo& topo_geo);
   int32_t send_AddTopoGeo(const TopoGeo& topo_geo);
   int32_t recv_AddTopoGeo(const int32_t seqid);
@@ -97897,6 +106385,12 @@ class CbmServiceConcurrentClient : virtual public CbmServiceIf {
   void GetTopoGeoIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   int32_t send_GetTopoGeoIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetTopoGeoIdListByField2(std::vector<int32_t> & _return, const int32_t seqid);
+  void GetTopoGeoListByForeignKey(std::vector<TopoGeo> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetTopoGeoListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetTopoGeoListByForeignKey(std::vector<TopoGeo> & _return, const int32_t seqid);
+  void GetTopoGeoIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetTopoGeoIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetTopoGeoIdListByForeignKey(std::vector<int32_t> & _return, const int32_t seqid);
   int32_t AddTunnel(const Tunnel& tunnel);
   int32_t send_AddTunnel(const Tunnel& tunnel);
   int32_t recv_AddTunnel(const int32_t seqid);
@@ -97966,6 +106460,12 @@ class CbmServiceConcurrentClient : virtual public CbmServiceIf {
   void GetTunnelIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   int32_t send_GetTunnelIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetTunnelIdListByField2(std::vector<int32_t> & _return, const int32_t seqid);
+  void GetTunnelListByForeignKey(std::vector<Tunnel> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetTunnelListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetTunnelListByForeignKey(std::vector<Tunnel> & _return, const int32_t seqid);
+  void GetTunnelIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetTunnelIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetTunnelIdListByForeignKey(std::vector<int32_t> & _return, const int32_t seqid);
   int32_t AddWorkArea(const WorkArea& work_area);
   int32_t send_AddWorkArea(const WorkArea& work_area);
   int32_t recv_AddWorkArea(const int32_t seqid);
@@ -98035,6 +106535,12 @@ class CbmServiceConcurrentClient : virtual public CbmServiceIf {
   void GetWorkAreaIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   int32_t send_GetWorkAreaIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetWorkAreaIdListByField2(std::vector<int32_t> & _return, const int32_t seqid);
+  void GetWorkAreaListByForeignKey(std::vector<WorkArea> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetWorkAreaListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetWorkAreaListByForeignKey(std::vector<WorkArea> & _return, const int32_t seqid);
+  void GetWorkAreaIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetWorkAreaIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetWorkAreaIdListByForeignKey(std::vector<int32_t> & _return, const int32_t seqid);
   int32_t AddWorkSurf(const WorkSurf& work_surf);
   int32_t send_AddWorkSurf(const WorkSurf& work_surf);
   int32_t recv_AddWorkSurf(const int32_t seqid);
@@ -98104,6 +106610,12 @@ class CbmServiceConcurrentClient : virtual public CbmServiceIf {
   void GetWorkSurfIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   int32_t send_GetWorkSurfIdListByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
   void recv_GetWorkSurfIdListByField2(std::vector<int32_t> & _return, const int32_t seqid);
+  void GetWorkSurfListByForeignKey(std::vector<WorkSurf> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetWorkSurfListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetWorkSurfListByForeignKey(std::vector<WorkSurf> & _return, const int32_t seqid);
+  void GetWorkSurfIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+  int32_t send_GetWorkSurfIdListByForeignKey(const std::string& fkey, const int32_t id);
+  void recv_GetWorkSurfIdListByForeignKey(std::vector<int32_t> & _return, const int32_t seqid);
   void InitSampleRegion();
   int32_t send_InitSampleRegion();
   void recv_InitSampleRegion(const int32_t seqid);

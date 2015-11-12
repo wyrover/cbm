@@ -15,7 +15,7 @@ def AddAccount(account):
 		ret = service_client.get().AddAccount(account)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = -1
 	return ret
 def DeleteAccount(id):
@@ -23,10 +23,10 @@ def DeleteAccount(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		ret = service_client.get().DeleteAccount(id)
+		ret = service_client.get().DeleteAccount(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def UpdateAccount(account):
@@ -37,7 +37,7 @@ def UpdateAccount(account):
 		ret = service_client.get().UpdateAccount(account)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def GetAccountById(id):
@@ -45,10 +45,10 @@ def GetAccountById(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetAccountById(id)
+		_return = service_client.get().GetAccountById(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetAccountByForeignKey(fkey, id):
@@ -56,10 +56,10 @@ def GetAccountByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetAccountByForeignKey(fkey, id)
+		_return = service_client.get().GetAccountByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetAccountIdByForeignKey(fkey, id):
@@ -67,10 +67,10 @@ def GetAccountIdByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetAccountIdByForeignKey(fkey, id)
+		_return = service_client.get().GetAccountIdByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetAccountList():
@@ -81,7 +81,7 @@ def GetAccountList():
 		_return = service_client.get().GetAccountList()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetAccountIds():
@@ -92,7 +92,7 @@ def GetAccountIds():
 		_return = service_client.get().GetAccountIds()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetAccountNames():
@@ -103,7 +103,7 @@ def GetAccountNames():
 		_return = service_client.get().GetAccountNames()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def AddMoreAccount(objs):
@@ -113,7 +113,7 @@ def AddMoreAccount(objs):
 		service_client.get().AddMoreAccount(objs)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def DeleteMoreAccount(obj_ids):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
@@ -121,7 +121,7 @@ def DeleteMoreAccount(obj_ids):
 		service_client.get().DeleteMoreAccount(obj_ids)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def GetAccountByFields(fields):
 	_return = Account()
 	try:
@@ -130,7 +130,7 @@ def GetAccountByFields(fields):
 		_return = service_client.get().GetAccountByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetAccountByField1(field, value):
@@ -141,7 +141,7 @@ def GetAccountByField1(field, value):
 		_return = service_client.get().GetAccountByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetAccountByField2(field1, value1, field2, value2):
@@ -152,7 +152,7 @@ def GetAccountByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetAccountByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetAccountListByFields(fields):
@@ -163,7 +163,7 @@ def GetAccountListByFields(fields):
 		_return = service_client.get().GetAccountListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetAccountListByField1(field, value):
@@ -174,7 +174,7 @@ def GetAccountListByField1(field, value):
 		_return = service_client.get().GetAccountListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetAccountListByField2(field1, value1, field2, value2):
@@ -185,7 +185,7 @@ def GetAccountListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetAccountListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetAccountIdByFields(fields):
@@ -196,7 +196,7 @@ def GetAccountIdByFields(fields):
 		_return = service_client.get().GetAccountIdByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetAccountIdByField1(field, value):
@@ -207,7 +207,7 @@ def GetAccountIdByField1(field, value):
 		_return = service_client.get().GetAccountIdByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetAccountIdByField2(field1, value1, field2, value2):
@@ -218,7 +218,7 @@ def GetAccountIdByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetAccountIdByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetAccountIdListByFields(fields):
@@ -229,7 +229,7 @@ def GetAccountIdListByFields(fields):
 		_return = service_client.get().GetAccountIdListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetAccountIdListByField1(field, value):
@@ -240,7 +240,7 @@ def GetAccountIdListByField1(field, value):
 		_return = service_client.get().GetAccountIdListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetAccountIdListByField2(field1, value1, field2, value2):
@@ -251,7 +251,29 @@ def GetAccountIdListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetAccountIdListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetAccountListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetAccountListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetAccountIdListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetAccountIdListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
 		_return = []
 	return _return
 
@@ -266,7 +288,7 @@ def AddAdjLayer(adj_layer):
 		ret = service_client.get().AddAdjLayer(adj_layer)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = -1
 	return ret
 def DeleteAdjLayer(id):
@@ -274,10 +296,10 @@ def DeleteAdjLayer(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		ret = service_client.get().DeleteAdjLayer(id)
+		ret = service_client.get().DeleteAdjLayer(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def UpdateAdjLayer(adj_layer):
@@ -288,7 +310,7 @@ def UpdateAdjLayer(adj_layer):
 		ret = service_client.get().UpdateAdjLayer(adj_layer)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def GetAdjLayerById(id):
@@ -296,10 +318,10 @@ def GetAdjLayerById(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetAdjLayerById(id)
+		_return = service_client.get().GetAdjLayerById(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetAdjLayerByForeignKey(fkey, id):
@@ -307,10 +329,10 @@ def GetAdjLayerByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetAdjLayerByForeignKey(fkey, id)
+		_return = service_client.get().GetAdjLayerByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetAdjLayerIdByForeignKey(fkey, id):
@@ -318,10 +340,10 @@ def GetAdjLayerIdByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetAdjLayerIdByForeignKey(fkey, id)
+		_return = service_client.get().GetAdjLayerIdByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetAdjLayerList():
@@ -332,7 +354,7 @@ def GetAdjLayerList():
 		_return = service_client.get().GetAdjLayerList()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetAdjLayerIds():
@@ -343,7 +365,7 @@ def GetAdjLayerIds():
 		_return = service_client.get().GetAdjLayerIds()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetAdjLayerNames():
@@ -354,7 +376,7 @@ def GetAdjLayerNames():
 		_return = service_client.get().GetAdjLayerNames()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def AddMoreAdjLayer(objs):
@@ -364,7 +386,7 @@ def AddMoreAdjLayer(objs):
 		service_client.get().AddMoreAdjLayer(objs)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def DeleteMoreAdjLayer(obj_ids):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
@@ -372,7 +394,7 @@ def DeleteMoreAdjLayer(obj_ids):
 		service_client.get().DeleteMoreAdjLayer(obj_ids)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def GetAdjLayerByFields(fields):
 	_return = AdjLayer()
 	try:
@@ -381,7 +403,7 @@ def GetAdjLayerByFields(fields):
 		_return = service_client.get().GetAdjLayerByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetAdjLayerByField1(field, value):
@@ -392,7 +414,7 @@ def GetAdjLayerByField1(field, value):
 		_return = service_client.get().GetAdjLayerByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetAdjLayerByField2(field1, value1, field2, value2):
@@ -403,7 +425,7 @@ def GetAdjLayerByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetAdjLayerByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetAdjLayerListByFields(fields):
@@ -414,7 +436,7 @@ def GetAdjLayerListByFields(fields):
 		_return = service_client.get().GetAdjLayerListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetAdjLayerListByField1(field, value):
@@ -425,7 +447,7 @@ def GetAdjLayerListByField1(field, value):
 		_return = service_client.get().GetAdjLayerListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetAdjLayerListByField2(field1, value1, field2, value2):
@@ -436,7 +458,7 @@ def GetAdjLayerListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetAdjLayerListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetAdjLayerIdByFields(fields):
@@ -447,7 +469,7 @@ def GetAdjLayerIdByFields(fields):
 		_return = service_client.get().GetAdjLayerIdByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetAdjLayerIdByField1(field, value):
@@ -458,7 +480,7 @@ def GetAdjLayerIdByField1(field, value):
 		_return = service_client.get().GetAdjLayerIdByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetAdjLayerIdByField2(field1, value1, field2, value2):
@@ -469,7 +491,7 @@ def GetAdjLayerIdByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetAdjLayerIdByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetAdjLayerIdListByFields(fields):
@@ -480,7 +502,7 @@ def GetAdjLayerIdListByFields(fields):
 		_return = service_client.get().GetAdjLayerIdListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetAdjLayerIdListByField1(field, value):
@@ -491,7 +513,7 @@ def GetAdjLayerIdListByField1(field, value):
 		_return = service_client.get().GetAdjLayerIdListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetAdjLayerIdListByField2(field1, value1, field2, value2):
@@ -502,7 +524,29 @@ def GetAdjLayerIdListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetAdjLayerIdListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetAdjLayerListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetAdjLayerListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetAdjLayerIdListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetAdjLayerIdListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
 		_return = []
 	return _return
 
@@ -517,7 +561,7 @@ def AddCoal(coal):
 		ret = service_client.get().AddCoal(coal)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = -1
 	return ret
 def DeleteCoal(id):
@@ -525,10 +569,10 @@ def DeleteCoal(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		ret = service_client.get().DeleteCoal(id)
+		ret = service_client.get().DeleteCoal(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def UpdateCoal(coal):
@@ -539,7 +583,7 @@ def UpdateCoal(coal):
 		ret = service_client.get().UpdateCoal(coal)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def GetCoalById(id):
@@ -547,10 +591,10 @@ def GetCoalById(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetCoalById(id)
+		_return = service_client.get().GetCoalById(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetCoalByForeignKey(fkey, id):
@@ -558,10 +602,10 @@ def GetCoalByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetCoalByForeignKey(fkey, id)
+		_return = service_client.get().GetCoalByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetCoalIdByForeignKey(fkey, id):
@@ -569,10 +613,10 @@ def GetCoalIdByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetCoalIdByForeignKey(fkey, id)
+		_return = service_client.get().GetCoalIdByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetCoalList():
@@ -583,7 +627,7 @@ def GetCoalList():
 		_return = service_client.get().GetCoalList()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetCoalIds():
@@ -594,7 +638,7 @@ def GetCoalIds():
 		_return = service_client.get().GetCoalIds()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetCoalNames():
@@ -605,7 +649,7 @@ def GetCoalNames():
 		_return = service_client.get().GetCoalNames()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def AddMoreCoal(objs):
@@ -615,7 +659,7 @@ def AddMoreCoal(objs):
 		service_client.get().AddMoreCoal(objs)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def DeleteMoreCoal(obj_ids):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
@@ -623,7 +667,7 @@ def DeleteMoreCoal(obj_ids):
 		service_client.get().DeleteMoreCoal(obj_ids)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def GetCoalByFields(fields):
 	_return = Coal()
 	try:
@@ -632,7 +676,7 @@ def GetCoalByFields(fields):
 		_return = service_client.get().GetCoalByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetCoalByField1(field, value):
@@ -643,7 +687,7 @@ def GetCoalByField1(field, value):
 		_return = service_client.get().GetCoalByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetCoalByField2(field1, value1, field2, value2):
@@ -654,7 +698,7 @@ def GetCoalByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetCoalByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetCoalListByFields(fields):
@@ -665,7 +709,7 @@ def GetCoalListByFields(fields):
 		_return = service_client.get().GetCoalListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetCoalListByField1(field, value):
@@ -676,7 +720,7 @@ def GetCoalListByField1(field, value):
 		_return = service_client.get().GetCoalListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetCoalListByField2(field1, value1, field2, value2):
@@ -687,7 +731,7 @@ def GetCoalListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetCoalListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetCoalIdByFields(fields):
@@ -698,7 +742,7 @@ def GetCoalIdByFields(fields):
 		_return = service_client.get().GetCoalIdByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetCoalIdByField1(field, value):
@@ -709,7 +753,7 @@ def GetCoalIdByField1(field, value):
 		_return = service_client.get().GetCoalIdByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetCoalIdByField2(field1, value1, field2, value2):
@@ -720,7 +764,7 @@ def GetCoalIdByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetCoalIdByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetCoalIdListByFields(fields):
@@ -731,7 +775,7 @@ def GetCoalIdListByFields(fields):
 		_return = service_client.get().GetCoalIdListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetCoalIdListByField1(field, value):
@@ -742,7 +786,7 @@ def GetCoalIdListByField1(field, value):
 		_return = service_client.get().GetCoalIdListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetCoalIdListByField2(field1, value1, field2, value2):
@@ -753,7 +797,29 @@ def GetCoalIdListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetCoalIdListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetCoalListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetCoalListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetCoalIdListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetCoalIdListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
 		_return = []
 	return _return
 
@@ -768,7 +834,7 @@ def AddComplexity(complexity):
 		ret = service_client.get().AddComplexity(complexity)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = -1
 	return ret
 def DeleteComplexity(id):
@@ -776,10 +842,10 @@ def DeleteComplexity(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		ret = service_client.get().DeleteComplexity(id)
+		ret = service_client.get().DeleteComplexity(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def UpdateComplexity(complexity):
@@ -790,7 +856,7 @@ def UpdateComplexity(complexity):
 		ret = service_client.get().UpdateComplexity(complexity)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def GetComplexityById(id):
@@ -798,10 +864,10 @@ def GetComplexityById(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetComplexityById(id)
+		_return = service_client.get().GetComplexityById(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetComplexityByForeignKey(fkey, id):
@@ -809,10 +875,10 @@ def GetComplexityByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetComplexityByForeignKey(fkey, id)
+		_return = service_client.get().GetComplexityByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetComplexityIdByForeignKey(fkey, id):
@@ -820,10 +886,10 @@ def GetComplexityIdByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetComplexityIdByForeignKey(fkey, id)
+		_return = service_client.get().GetComplexityIdByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetComplexityList():
@@ -834,7 +900,7 @@ def GetComplexityList():
 		_return = service_client.get().GetComplexityList()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetComplexityIds():
@@ -845,7 +911,7 @@ def GetComplexityIds():
 		_return = service_client.get().GetComplexityIds()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetComplexityNames():
@@ -856,7 +922,7 @@ def GetComplexityNames():
 		_return = service_client.get().GetComplexityNames()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def AddMoreComplexity(objs):
@@ -866,7 +932,7 @@ def AddMoreComplexity(objs):
 		service_client.get().AddMoreComplexity(objs)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def DeleteMoreComplexity(obj_ids):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
@@ -874,7 +940,7 @@ def DeleteMoreComplexity(obj_ids):
 		service_client.get().DeleteMoreComplexity(obj_ids)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def GetComplexityByFields(fields):
 	_return = Complexity()
 	try:
@@ -883,7 +949,7 @@ def GetComplexityByFields(fields):
 		_return = service_client.get().GetComplexityByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetComplexityByField1(field, value):
@@ -894,7 +960,7 @@ def GetComplexityByField1(field, value):
 		_return = service_client.get().GetComplexityByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetComplexityByField2(field1, value1, field2, value2):
@@ -905,7 +971,7 @@ def GetComplexityByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetComplexityByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetComplexityListByFields(fields):
@@ -916,7 +982,7 @@ def GetComplexityListByFields(fields):
 		_return = service_client.get().GetComplexityListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetComplexityListByField1(field, value):
@@ -927,7 +993,7 @@ def GetComplexityListByField1(field, value):
 		_return = service_client.get().GetComplexityListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetComplexityListByField2(field1, value1, field2, value2):
@@ -938,7 +1004,7 @@ def GetComplexityListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetComplexityListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetComplexityIdByFields(fields):
@@ -949,7 +1015,7 @@ def GetComplexityIdByFields(fields):
 		_return = service_client.get().GetComplexityIdByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetComplexityIdByField1(field, value):
@@ -960,7 +1026,7 @@ def GetComplexityIdByField1(field, value):
 		_return = service_client.get().GetComplexityIdByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetComplexityIdByField2(field1, value1, field2, value2):
@@ -971,7 +1037,7 @@ def GetComplexityIdByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetComplexityIdByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetComplexityIdListByFields(fields):
@@ -982,7 +1048,7 @@ def GetComplexityIdListByFields(fields):
 		_return = service_client.get().GetComplexityIdListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetComplexityIdListByField1(field, value):
@@ -993,7 +1059,7 @@ def GetComplexityIdListByField1(field, value):
 		_return = service_client.get().GetComplexityIdListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetComplexityIdListByField2(field1, value1, field2, value2):
@@ -1004,7 +1070,29 @@ def GetComplexityIdListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetComplexityIdListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetComplexityListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetComplexityListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetComplexityIdListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetComplexityIdListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
 		_return = []
 	return _return
 
@@ -1019,7 +1107,7 @@ def AddDesignDrillingSurfTechnology(design_drilling_surf_technology):
 		ret = service_client.get().AddDesignDrillingSurfTechnology(design_drilling_surf_technology)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = -1
 	return ret
 def DeleteDesignDrillingSurfTechnology(id):
@@ -1027,10 +1115,10 @@ def DeleteDesignDrillingSurfTechnology(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		ret = service_client.get().DeleteDesignDrillingSurfTechnology(id)
+		ret = service_client.get().DeleteDesignDrillingSurfTechnology(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def UpdateDesignDrillingSurfTechnology(design_drilling_surf_technology):
@@ -1041,7 +1129,7 @@ def UpdateDesignDrillingSurfTechnology(design_drilling_surf_technology):
 		ret = service_client.get().UpdateDesignDrillingSurfTechnology(design_drilling_surf_technology)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def GetDesignDrillingSurfTechnologyById(id):
@@ -1049,10 +1137,10 @@ def GetDesignDrillingSurfTechnologyById(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetDesignDrillingSurfTechnologyById(id)
+		_return = service_client.get().GetDesignDrillingSurfTechnologyById(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetDesignDrillingSurfTechnologyByForeignKey(fkey, id):
@@ -1060,10 +1148,10 @@ def GetDesignDrillingSurfTechnologyByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetDesignDrillingSurfTechnologyByForeignKey(fkey, id)
+		_return = service_client.get().GetDesignDrillingSurfTechnologyByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetDesignDrillingSurfTechnologyIdByForeignKey(fkey, id):
@@ -1071,10 +1159,10 @@ def GetDesignDrillingSurfTechnologyIdByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetDesignDrillingSurfTechnologyIdByForeignKey(fkey, id)
+		_return = service_client.get().GetDesignDrillingSurfTechnologyIdByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetDesignDrillingSurfTechnologyList():
@@ -1085,7 +1173,7 @@ def GetDesignDrillingSurfTechnologyList():
 		_return = service_client.get().GetDesignDrillingSurfTechnologyList()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDesignDrillingSurfTechnologyIds():
@@ -1096,7 +1184,7 @@ def GetDesignDrillingSurfTechnologyIds():
 		_return = service_client.get().GetDesignDrillingSurfTechnologyIds()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDesignDrillingSurfTechnologyNames():
@@ -1107,7 +1195,7 @@ def GetDesignDrillingSurfTechnologyNames():
 		_return = service_client.get().GetDesignDrillingSurfTechnologyNames()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def AddMoreDesignDrillingSurfTechnology(objs):
@@ -1117,7 +1205,7 @@ def AddMoreDesignDrillingSurfTechnology(objs):
 		service_client.get().AddMoreDesignDrillingSurfTechnology(objs)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def DeleteMoreDesignDrillingSurfTechnology(obj_ids):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
@@ -1125,7 +1213,7 @@ def DeleteMoreDesignDrillingSurfTechnology(obj_ids):
 		service_client.get().DeleteMoreDesignDrillingSurfTechnology(obj_ids)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def GetDesignDrillingSurfTechnologyByFields(fields):
 	_return = DesignDrillingSurfTechnology()
 	try:
@@ -1134,7 +1222,7 @@ def GetDesignDrillingSurfTechnologyByFields(fields):
 		_return = service_client.get().GetDesignDrillingSurfTechnologyByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetDesignDrillingSurfTechnologyByField1(field, value):
@@ -1145,7 +1233,7 @@ def GetDesignDrillingSurfTechnologyByField1(field, value):
 		_return = service_client.get().GetDesignDrillingSurfTechnologyByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetDesignDrillingSurfTechnologyByField2(field1, value1, field2, value2):
@@ -1156,7 +1244,7 @@ def GetDesignDrillingSurfTechnologyByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetDesignDrillingSurfTechnologyByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetDesignDrillingSurfTechnologyListByFields(fields):
@@ -1167,7 +1255,7 @@ def GetDesignDrillingSurfTechnologyListByFields(fields):
 		_return = service_client.get().GetDesignDrillingSurfTechnologyListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDesignDrillingSurfTechnologyListByField1(field, value):
@@ -1178,7 +1266,7 @@ def GetDesignDrillingSurfTechnologyListByField1(field, value):
 		_return = service_client.get().GetDesignDrillingSurfTechnologyListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDesignDrillingSurfTechnologyListByField2(field1, value1, field2, value2):
@@ -1189,7 +1277,7 @@ def GetDesignDrillingSurfTechnologyListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetDesignDrillingSurfTechnologyListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDesignDrillingSurfTechnologyIdByFields(fields):
@@ -1200,7 +1288,7 @@ def GetDesignDrillingSurfTechnologyIdByFields(fields):
 		_return = service_client.get().GetDesignDrillingSurfTechnologyIdByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetDesignDrillingSurfTechnologyIdByField1(field, value):
@@ -1211,7 +1299,7 @@ def GetDesignDrillingSurfTechnologyIdByField1(field, value):
 		_return = service_client.get().GetDesignDrillingSurfTechnologyIdByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetDesignDrillingSurfTechnologyIdByField2(field1, value1, field2, value2):
@@ -1222,7 +1310,7 @@ def GetDesignDrillingSurfTechnologyIdByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetDesignDrillingSurfTechnologyIdByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetDesignDrillingSurfTechnologyIdListByFields(fields):
@@ -1233,7 +1321,7 @@ def GetDesignDrillingSurfTechnologyIdListByFields(fields):
 		_return = service_client.get().GetDesignDrillingSurfTechnologyIdListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDesignDrillingSurfTechnologyIdListByField1(field, value):
@@ -1244,7 +1332,7 @@ def GetDesignDrillingSurfTechnologyIdListByField1(field, value):
 		_return = service_client.get().GetDesignDrillingSurfTechnologyIdListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDesignDrillingSurfTechnologyIdListByField2(field1, value1, field2, value2):
@@ -1255,7 +1343,29 @@ def GetDesignDrillingSurfTechnologyIdListByField2(field1, value1, field2, value2
 		_return = service_client.get().GetDesignDrillingSurfTechnologyIdListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignDrillingSurfTechnologyListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignDrillingSurfTechnologyListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignDrillingSurfTechnologyIdListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignDrillingSurfTechnologyIdListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
 		_return = []
 	return _return
 
@@ -1270,7 +1380,7 @@ def AddDesignGoafTechnology(design_goaf_technology):
 		ret = service_client.get().AddDesignGoafTechnology(design_goaf_technology)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = -1
 	return ret
 def DeleteDesignGoafTechnology(id):
@@ -1278,10 +1388,10 @@ def DeleteDesignGoafTechnology(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		ret = service_client.get().DeleteDesignGoafTechnology(id)
+		ret = service_client.get().DeleteDesignGoafTechnology(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def UpdateDesignGoafTechnology(design_goaf_technology):
@@ -1292,7 +1402,7 @@ def UpdateDesignGoafTechnology(design_goaf_technology):
 		ret = service_client.get().UpdateDesignGoafTechnology(design_goaf_technology)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def GetDesignGoafTechnologyById(id):
@@ -1300,10 +1410,10 @@ def GetDesignGoafTechnologyById(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetDesignGoafTechnologyById(id)
+		_return = service_client.get().GetDesignGoafTechnologyById(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetDesignGoafTechnologyByForeignKey(fkey, id):
@@ -1311,10 +1421,10 @@ def GetDesignGoafTechnologyByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetDesignGoafTechnologyByForeignKey(fkey, id)
+		_return = service_client.get().GetDesignGoafTechnologyByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetDesignGoafTechnologyIdByForeignKey(fkey, id):
@@ -1322,10 +1432,10 @@ def GetDesignGoafTechnologyIdByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetDesignGoafTechnologyIdByForeignKey(fkey, id)
+		_return = service_client.get().GetDesignGoafTechnologyIdByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetDesignGoafTechnologyList():
@@ -1336,7 +1446,7 @@ def GetDesignGoafTechnologyList():
 		_return = service_client.get().GetDesignGoafTechnologyList()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDesignGoafTechnologyIds():
@@ -1347,7 +1457,7 @@ def GetDesignGoafTechnologyIds():
 		_return = service_client.get().GetDesignGoafTechnologyIds()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDesignGoafTechnologyNames():
@@ -1358,7 +1468,7 @@ def GetDesignGoafTechnologyNames():
 		_return = service_client.get().GetDesignGoafTechnologyNames()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def AddMoreDesignGoafTechnology(objs):
@@ -1368,7 +1478,7 @@ def AddMoreDesignGoafTechnology(objs):
 		service_client.get().AddMoreDesignGoafTechnology(objs)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def DeleteMoreDesignGoafTechnology(obj_ids):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
@@ -1376,7 +1486,7 @@ def DeleteMoreDesignGoafTechnology(obj_ids):
 		service_client.get().DeleteMoreDesignGoafTechnology(obj_ids)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def GetDesignGoafTechnologyByFields(fields):
 	_return = DesignGoafTechnology()
 	try:
@@ -1385,7 +1495,7 @@ def GetDesignGoafTechnologyByFields(fields):
 		_return = service_client.get().GetDesignGoafTechnologyByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetDesignGoafTechnologyByField1(field, value):
@@ -1396,7 +1506,7 @@ def GetDesignGoafTechnologyByField1(field, value):
 		_return = service_client.get().GetDesignGoafTechnologyByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetDesignGoafTechnologyByField2(field1, value1, field2, value2):
@@ -1407,7 +1517,7 @@ def GetDesignGoafTechnologyByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetDesignGoafTechnologyByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetDesignGoafTechnologyListByFields(fields):
@@ -1418,7 +1528,7 @@ def GetDesignGoafTechnologyListByFields(fields):
 		_return = service_client.get().GetDesignGoafTechnologyListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDesignGoafTechnologyListByField1(field, value):
@@ -1429,7 +1539,7 @@ def GetDesignGoafTechnologyListByField1(field, value):
 		_return = service_client.get().GetDesignGoafTechnologyListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDesignGoafTechnologyListByField2(field1, value1, field2, value2):
@@ -1440,7 +1550,7 @@ def GetDesignGoafTechnologyListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetDesignGoafTechnologyListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDesignGoafTechnologyIdByFields(fields):
@@ -1451,7 +1561,7 @@ def GetDesignGoafTechnologyIdByFields(fields):
 		_return = service_client.get().GetDesignGoafTechnologyIdByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetDesignGoafTechnologyIdByField1(field, value):
@@ -1462,7 +1572,7 @@ def GetDesignGoafTechnologyIdByField1(field, value):
 		_return = service_client.get().GetDesignGoafTechnologyIdByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetDesignGoafTechnologyIdByField2(field1, value1, field2, value2):
@@ -1473,7 +1583,7 @@ def GetDesignGoafTechnologyIdByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetDesignGoafTechnologyIdByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetDesignGoafTechnologyIdListByFields(fields):
@@ -1484,7 +1594,7 @@ def GetDesignGoafTechnologyIdListByFields(fields):
 		_return = service_client.get().GetDesignGoafTechnologyIdListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDesignGoafTechnologyIdListByField1(field, value):
@@ -1495,7 +1605,7 @@ def GetDesignGoafTechnologyIdListByField1(field, value):
 		_return = service_client.get().GetDesignGoafTechnologyIdListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDesignGoafTechnologyIdListByField2(field1, value1, field2, value2):
@@ -1506,7 +1616,29 @@ def GetDesignGoafTechnologyIdListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetDesignGoafTechnologyIdListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignGoafTechnologyListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignGoafTechnologyListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignGoafTechnologyIdListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignGoafTechnologyIdListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
 		_return = []
 	return _return
 
@@ -1521,7 +1653,7 @@ def AddDesignPore(design_pore):
 		ret = service_client.get().AddDesignPore(design_pore)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = -1
 	return ret
 def DeleteDesignPore(id):
@@ -1529,10 +1661,10 @@ def DeleteDesignPore(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		ret = service_client.get().DeleteDesignPore(id)
+		ret = service_client.get().DeleteDesignPore(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def UpdateDesignPore(design_pore):
@@ -1543,7 +1675,7 @@ def UpdateDesignPore(design_pore):
 		ret = service_client.get().UpdateDesignPore(design_pore)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def GetDesignPoreById(id):
@@ -1551,10 +1683,10 @@ def GetDesignPoreById(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetDesignPoreById(id)
+		_return = service_client.get().GetDesignPoreById(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetDesignPoreByForeignKey(fkey, id):
@@ -1562,10 +1694,10 @@ def GetDesignPoreByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetDesignPoreByForeignKey(fkey, id)
+		_return = service_client.get().GetDesignPoreByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetDesignPoreIdByForeignKey(fkey, id):
@@ -1573,10 +1705,10 @@ def GetDesignPoreIdByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetDesignPoreIdByForeignKey(fkey, id)
+		_return = service_client.get().GetDesignPoreIdByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetDesignPoreList():
@@ -1587,7 +1719,7 @@ def GetDesignPoreList():
 		_return = service_client.get().GetDesignPoreList()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDesignPoreIds():
@@ -1598,7 +1730,7 @@ def GetDesignPoreIds():
 		_return = service_client.get().GetDesignPoreIds()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDesignPoreNames():
@@ -1609,7 +1741,7 @@ def GetDesignPoreNames():
 		_return = service_client.get().GetDesignPoreNames()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def AddMoreDesignPore(objs):
@@ -1619,7 +1751,7 @@ def AddMoreDesignPore(objs):
 		service_client.get().AddMoreDesignPore(objs)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def DeleteMoreDesignPore(obj_ids):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
@@ -1627,7 +1759,7 @@ def DeleteMoreDesignPore(obj_ids):
 		service_client.get().DeleteMoreDesignPore(obj_ids)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def GetDesignPoreByFields(fields):
 	_return = DesignPore()
 	try:
@@ -1636,7 +1768,7 @@ def GetDesignPoreByFields(fields):
 		_return = service_client.get().GetDesignPoreByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetDesignPoreByField1(field, value):
@@ -1647,7 +1779,7 @@ def GetDesignPoreByField1(field, value):
 		_return = service_client.get().GetDesignPoreByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetDesignPoreByField2(field1, value1, field2, value2):
@@ -1658,7 +1790,7 @@ def GetDesignPoreByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetDesignPoreByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetDesignPoreListByFields(fields):
@@ -1669,7 +1801,7 @@ def GetDesignPoreListByFields(fields):
 		_return = service_client.get().GetDesignPoreListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDesignPoreListByField1(field, value):
@@ -1680,7 +1812,7 @@ def GetDesignPoreListByField1(field, value):
 		_return = service_client.get().GetDesignPoreListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDesignPoreListByField2(field1, value1, field2, value2):
@@ -1691,7 +1823,7 @@ def GetDesignPoreListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetDesignPoreListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDesignPoreIdByFields(fields):
@@ -1702,7 +1834,7 @@ def GetDesignPoreIdByFields(fields):
 		_return = service_client.get().GetDesignPoreIdByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetDesignPoreIdByField1(field, value):
@@ -1713,7 +1845,7 @@ def GetDesignPoreIdByField1(field, value):
 		_return = service_client.get().GetDesignPoreIdByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetDesignPoreIdByField2(field1, value1, field2, value2):
@@ -1724,7 +1856,7 @@ def GetDesignPoreIdByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetDesignPoreIdByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetDesignPoreIdListByFields(fields):
@@ -1735,7 +1867,7 @@ def GetDesignPoreIdListByFields(fields):
 		_return = service_client.get().GetDesignPoreIdListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDesignPoreIdListByField1(field, value):
@@ -1746,7 +1878,7 @@ def GetDesignPoreIdListByField1(field, value):
 		_return = service_client.get().GetDesignPoreIdListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDesignPoreIdListByField2(field1, value1, field2, value2):
@@ -1757,7 +1889,29 @@ def GetDesignPoreIdListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetDesignPoreIdListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignPoreListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignPoreListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignPoreIdListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignPoreIdListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
 		_return = []
 	return _return
 
@@ -1772,7 +1926,7 @@ def AddDesignSite(design_site):
 		ret = service_client.get().AddDesignSite(design_site)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = -1
 	return ret
 def DeleteDesignSite(id):
@@ -1780,10 +1934,10 @@ def DeleteDesignSite(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		ret = service_client.get().DeleteDesignSite(id)
+		ret = service_client.get().DeleteDesignSite(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def UpdateDesignSite(design_site):
@@ -1794,7 +1948,7 @@ def UpdateDesignSite(design_site):
 		ret = service_client.get().UpdateDesignSite(design_site)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def GetDesignSiteById(id):
@@ -1802,10 +1956,10 @@ def GetDesignSiteById(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetDesignSiteById(id)
+		_return = service_client.get().GetDesignSiteById(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetDesignSiteByForeignKey(fkey, id):
@@ -1813,10 +1967,10 @@ def GetDesignSiteByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetDesignSiteByForeignKey(fkey, id)
+		_return = service_client.get().GetDesignSiteByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetDesignSiteIdByForeignKey(fkey, id):
@@ -1824,10 +1978,10 @@ def GetDesignSiteIdByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetDesignSiteIdByForeignKey(fkey, id)
+		_return = service_client.get().GetDesignSiteIdByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetDesignSiteList():
@@ -1838,7 +1992,7 @@ def GetDesignSiteList():
 		_return = service_client.get().GetDesignSiteList()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDesignSiteIds():
@@ -1849,7 +2003,7 @@ def GetDesignSiteIds():
 		_return = service_client.get().GetDesignSiteIds()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDesignSiteNames():
@@ -1860,7 +2014,7 @@ def GetDesignSiteNames():
 		_return = service_client.get().GetDesignSiteNames()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def AddMoreDesignSite(objs):
@@ -1870,7 +2024,7 @@ def AddMoreDesignSite(objs):
 		service_client.get().AddMoreDesignSite(objs)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def DeleteMoreDesignSite(obj_ids):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
@@ -1878,7 +2032,7 @@ def DeleteMoreDesignSite(obj_ids):
 		service_client.get().DeleteMoreDesignSite(obj_ids)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def GetDesignSiteByFields(fields):
 	_return = DesignSite()
 	try:
@@ -1887,7 +2041,7 @@ def GetDesignSiteByFields(fields):
 		_return = service_client.get().GetDesignSiteByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetDesignSiteByField1(field, value):
@@ -1898,7 +2052,7 @@ def GetDesignSiteByField1(field, value):
 		_return = service_client.get().GetDesignSiteByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetDesignSiteByField2(field1, value1, field2, value2):
@@ -1909,7 +2063,7 @@ def GetDesignSiteByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetDesignSiteByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetDesignSiteListByFields(fields):
@@ -1920,7 +2074,7 @@ def GetDesignSiteListByFields(fields):
 		_return = service_client.get().GetDesignSiteListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDesignSiteListByField1(field, value):
@@ -1931,7 +2085,7 @@ def GetDesignSiteListByField1(field, value):
 		_return = service_client.get().GetDesignSiteListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDesignSiteListByField2(field1, value1, field2, value2):
@@ -1942,7 +2096,7 @@ def GetDesignSiteListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetDesignSiteListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDesignSiteIdByFields(fields):
@@ -1953,7 +2107,7 @@ def GetDesignSiteIdByFields(fields):
 		_return = service_client.get().GetDesignSiteIdByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetDesignSiteIdByField1(field, value):
@@ -1964,7 +2118,7 @@ def GetDesignSiteIdByField1(field, value):
 		_return = service_client.get().GetDesignSiteIdByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetDesignSiteIdByField2(field1, value1, field2, value2):
@@ -1975,7 +2129,7 @@ def GetDesignSiteIdByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetDesignSiteIdByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetDesignSiteIdListByFields(fields):
@@ -1986,7 +2140,7 @@ def GetDesignSiteIdListByFields(fields):
 		_return = service_client.get().GetDesignSiteIdListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDesignSiteIdListByField1(field, value):
@@ -1997,7 +2151,7 @@ def GetDesignSiteIdListByField1(field, value):
 		_return = service_client.get().GetDesignSiteIdListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDesignSiteIdListByField2(field1, value1, field2, value2):
@@ -2008,7 +2162,29 @@ def GetDesignSiteIdListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetDesignSiteIdListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignSiteListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignSiteListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignSiteIdListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignSiteIdListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
 		_return = []
 	return _return
 
@@ -2023,7 +2199,7 @@ def AddDesignTechnology(design_technology):
 		ret = service_client.get().AddDesignTechnology(design_technology)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = -1
 	return ret
 def DeleteDesignTechnology(id):
@@ -2031,10 +2207,10 @@ def DeleteDesignTechnology(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		ret = service_client.get().DeleteDesignTechnology(id)
+		ret = service_client.get().DeleteDesignTechnology(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def UpdateDesignTechnology(design_technology):
@@ -2045,7 +2221,7 @@ def UpdateDesignTechnology(design_technology):
 		ret = service_client.get().UpdateDesignTechnology(design_technology)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def GetDesignTechnologyById(id):
@@ -2053,10 +2229,10 @@ def GetDesignTechnologyById(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetDesignTechnologyById(id)
+		_return = service_client.get().GetDesignTechnologyById(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetDesignTechnologyByForeignKey(fkey, id):
@@ -2064,10 +2240,10 @@ def GetDesignTechnologyByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetDesignTechnologyByForeignKey(fkey, id)
+		_return = service_client.get().GetDesignTechnologyByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetDesignTechnologyIdByForeignKey(fkey, id):
@@ -2075,10 +2251,10 @@ def GetDesignTechnologyIdByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetDesignTechnologyIdByForeignKey(fkey, id)
+		_return = service_client.get().GetDesignTechnologyIdByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetDesignTechnologyList():
@@ -2089,7 +2265,7 @@ def GetDesignTechnologyList():
 		_return = service_client.get().GetDesignTechnologyList()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDesignTechnologyIds():
@@ -2100,7 +2276,7 @@ def GetDesignTechnologyIds():
 		_return = service_client.get().GetDesignTechnologyIds()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDesignTechnologyNames():
@@ -2111,7 +2287,7 @@ def GetDesignTechnologyNames():
 		_return = service_client.get().GetDesignTechnologyNames()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def AddMoreDesignTechnology(objs):
@@ -2121,7 +2297,7 @@ def AddMoreDesignTechnology(objs):
 		service_client.get().AddMoreDesignTechnology(objs)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def DeleteMoreDesignTechnology(obj_ids):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
@@ -2129,7 +2305,7 @@ def DeleteMoreDesignTechnology(obj_ids):
 		service_client.get().DeleteMoreDesignTechnology(obj_ids)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def GetDesignTechnologyByFields(fields):
 	_return = DesignTechnology()
 	try:
@@ -2138,7 +2314,7 @@ def GetDesignTechnologyByFields(fields):
 		_return = service_client.get().GetDesignTechnologyByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetDesignTechnologyByField1(field, value):
@@ -2149,7 +2325,7 @@ def GetDesignTechnologyByField1(field, value):
 		_return = service_client.get().GetDesignTechnologyByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetDesignTechnologyByField2(field1, value1, field2, value2):
@@ -2160,7 +2336,7 @@ def GetDesignTechnologyByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetDesignTechnologyByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetDesignTechnologyListByFields(fields):
@@ -2171,7 +2347,7 @@ def GetDesignTechnologyListByFields(fields):
 		_return = service_client.get().GetDesignTechnologyListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDesignTechnologyListByField1(field, value):
@@ -2182,7 +2358,7 @@ def GetDesignTechnologyListByField1(field, value):
 		_return = service_client.get().GetDesignTechnologyListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDesignTechnologyListByField2(field1, value1, field2, value2):
@@ -2193,7 +2369,7 @@ def GetDesignTechnologyListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetDesignTechnologyListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDesignTechnologyIdByFields(fields):
@@ -2204,7 +2380,7 @@ def GetDesignTechnologyIdByFields(fields):
 		_return = service_client.get().GetDesignTechnologyIdByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetDesignTechnologyIdByField1(field, value):
@@ -2215,7 +2391,7 @@ def GetDesignTechnologyIdByField1(field, value):
 		_return = service_client.get().GetDesignTechnologyIdByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetDesignTechnologyIdByField2(field1, value1, field2, value2):
@@ -2226,7 +2402,7 @@ def GetDesignTechnologyIdByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetDesignTechnologyIdByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetDesignTechnologyIdListByFields(fields):
@@ -2237,7 +2413,7 @@ def GetDesignTechnologyIdListByFields(fields):
 		_return = service_client.get().GetDesignTechnologyIdListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDesignTechnologyIdListByField1(field, value):
@@ -2248,7 +2424,7 @@ def GetDesignTechnologyIdListByField1(field, value):
 		_return = service_client.get().GetDesignTechnologyIdListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDesignTechnologyIdListByField2(field1, value1, field2, value2):
@@ -2259,7 +2435,29 @@ def GetDesignTechnologyIdListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetDesignTechnologyIdListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignTechnologyListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignTechnologyListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignTechnologyIdListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignTechnologyIdListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
 		_return = []
 	return _return
 
@@ -2274,7 +2472,7 @@ def AddDesignWorkSurfTechnology(design_work_surf_technology):
 		ret = service_client.get().AddDesignWorkSurfTechnology(design_work_surf_technology)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = -1
 	return ret
 def DeleteDesignWorkSurfTechnology(id):
@@ -2282,10 +2480,10 @@ def DeleteDesignWorkSurfTechnology(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		ret = service_client.get().DeleteDesignWorkSurfTechnology(id)
+		ret = service_client.get().DeleteDesignWorkSurfTechnology(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def UpdateDesignWorkSurfTechnology(design_work_surf_technology):
@@ -2296,7 +2494,7 @@ def UpdateDesignWorkSurfTechnology(design_work_surf_technology):
 		ret = service_client.get().UpdateDesignWorkSurfTechnology(design_work_surf_technology)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def GetDesignWorkSurfTechnologyById(id):
@@ -2304,10 +2502,10 @@ def GetDesignWorkSurfTechnologyById(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetDesignWorkSurfTechnologyById(id)
+		_return = service_client.get().GetDesignWorkSurfTechnologyById(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetDesignWorkSurfTechnologyByForeignKey(fkey, id):
@@ -2315,10 +2513,10 @@ def GetDesignWorkSurfTechnologyByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetDesignWorkSurfTechnologyByForeignKey(fkey, id)
+		_return = service_client.get().GetDesignWorkSurfTechnologyByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetDesignWorkSurfTechnologyIdByForeignKey(fkey, id):
@@ -2326,10 +2524,10 @@ def GetDesignWorkSurfTechnologyIdByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetDesignWorkSurfTechnologyIdByForeignKey(fkey, id)
+		_return = service_client.get().GetDesignWorkSurfTechnologyIdByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetDesignWorkSurfTechnologyList():
@@ -2340,7 +2538,7 @@ def GetDesignWorkSurfTechnologyList():
 		_return = service_client.get().GetDesignWorkSurfTechnologyList()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDesignWorkSurfTechnologyIds():
@@ -2351,7 +2549,7 @@ def GetDesignWorkSurfTechnologyIds():
 		_return = service_client.get().GetDesignWorkSurfTechnologyIds()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDesignWorkSurfTechnologyNames():
@@ -2362,7 +2560,7 @@ def GetDesignWorkSurfTechnologyNames():
 		_return = service_client.get().GetDesignWorkSurfTechnologyNames()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def AddMoreDesignWorkSurfTechnology(objs):
@@ -2372,7 +2570,7 @@ def AddMoreDesignWorkSurfTechnology(objs):
 		service_client.get().AddMoreDesignWorkSurfTechnology(objs)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def DeleteMoreDesignWorkSurfTechnology(obj_ids):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
@@ -2380,7 +2578,7 @@ def DeleteMoreDesignWorkSurfTechnology(obj_ids):
 		service_client.get().DeleteMoreDesignWorkSurfTechnology(obj_ids)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def GetDesignWorkSurfTechnologyByFields(fields):
 	_return = DesignWorkSurfTechnology()
 	try:
@@ -2389,7 +2587,7 @@ def GetDesignWorkSurfTechnologyByFields(fields):
 		_return = service_client.get().GetDesignWorkSurfTechnologyByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetDesignWorkSurfTechnologyByField1(field, value):
@@ -2400,7 +2598,7 @@ def GetDesignWorkSurfTechnologyByField1(field, value):
 		_return = service_client.get().GetDesignWorkSurfTechnologyByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetDesignWorkSurfTechnologyByField2(field1, value1, field2, value2):
@@ -2411,7 +2609,7 @@ def GetDesignWorkSurfTechnologyByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetDesignWorkSurfTechnologyByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetDesignWorkSurfTechnologyListByFields(fields):
@@ -2422,7 +2620,7 @@ def GetDesignWorkSurfTechnologyListByFields(fields):
 		_return = service_client.get().GetDesignWorkSurfTechnologyListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDesignWorkSurfTechnologyListByField1(field, value):
@@ -2433,7 +2631,7 @@ def GetDesignWorkSurfTechnologyListByField1(field, value):
 		_return = service_client.get().GetDesignWorkSurfTechnologyListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDesignWorkSurfTechnologyListByField2(field1, value1, field2, value2):
@@ -2444,7 +2642,7 @@ def GetDesignWorkSurfTechnologyListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetDesignWorkSurfTechnologyListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDesignWorkSurfTechnologyIdByFields(fields):
@@ -2455,7 +2653,7 @@ def GetDesignWorkSurfTechnologyIdByFields(fields):
 		_return = service_client.get().GetDesignWorkSurfTechnologyIdByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetDesignWorkSurfTechnologyIdByField1(field, value):
@@ -2466,7 +2664,7 @@ def GetDesignWorkSurfTechnologyIdByField1(field, value):
 		_return = service_client.get().GetDesignWorkSurfTechnologyIdByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetDesignWorkSurfTechnologyIdByField2(field1, value1, field2, value2):
@@ -2477,7 +2675,7 @@ def GetDesignWorkSurfTechnologyIdByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetDesignWorkSurfTechnologyIdByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetDesignWorkSurfTechnologyIdListByFields(fields):
@@ -2488,7 +2686,7 @@ def GetDesignWorkSurfTechnologyIdListByFields(fields):
 		_return = service_client.get().GetDesignWorkSurfTechnologyIdListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDesignWorkSurfTechnologyIdListByField1(field, value):
@@ -2499,7 +2697,7 @@ def GetDesignWorkSurfTechnologyIdListByField1(field, value):
 		_return = service_client.get().GetDesignWorkSurfTechnologyIdListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDesignWorkSurfTechnologyIdListByField2(field1, value1, field2, value2):
@@ -2510,7 +2708,29 @@ def GetDesignWorkSurfTechnologyIdListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetDesignWorkSurfTechnologyIdListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignWorkSurfTechnologyListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignWorkSurfTechnologyListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignWorkSurfTechnologyIdListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignWorkSurfTechnologyIdListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
 		_return = []
 	return _return
 
@@ -2525,7 +2745,7 @@ def AddDrillingRadiusParam(drilling_radius_param):
 		ret = service_client.get().AddDrillingRadiusParam(drilling_radius_param)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = -1
 	return ret
 def DeleteDrillingRadiusParam(id):
@@ -2533,10 +2753,10 @@ def DeleteDrillingRadiusParam(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		ret = service_client.get().DeleteDrillingRadiusParam(id)
+		ret = service_client.get().DeleteDrillingRadiusParam(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def UpdateDrillingRadiusParam(drilling_radius_param):
@@ -2547,7 +2767,7 @@ def UpdateDrillingRadiusParam(drilling_radius_param):
 		ret = service_client.get().UpdateDrillingRadiusParam(drilling_radius_param)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def GetDrillingRadiusParamById(id):
@@ -2555,10 +2775,10 @@ def GetDrillingRadiusParamById(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetDrillingRadiusParamById(id)
+		_return = service_client.get().GetDrillingRadiusParamById(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetDrillingRadiusParamByForeignKey(fkey, id):
@@ -2566,10 +2786,10 @@ def GetDrillingRadiusParamByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetDrillingRadiusParamByForeignKey(fkey, id)
+		_return = service_client.get().GetDrillingRadiusParamByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetDrillingRadiusParamIdByForeignKey(fkey, id):
@@ -2577,10 +2797,10 @@ def GetDrillingRadiusParamIdByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetDrillingRadiusParamIdByForeignKey(fkey, id)
+		_return = service_client.get().GetDrillingRadiusParamIdByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetDrillingRadiusParamList():
@@ -2591,7 +2811,7 @@ def GetDrillingRadiusParamList():
 		_return = service_client.get().GetDrillingRadiusParamList()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDrillingRadiusParamIds():
@@ -2602,7 +2822,7 @@ def GetDrillingRadiusParamIds():
 		_return = service_client.get().GetDrillingRadiusParamIds()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDrillingRadiusParamNames():
@@ -2613,7 +2833,7 @@ def GetDrillingRadiusParamNames():
 		_return = service_client.get().GetDrillingRadiusParamNames()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def AddMoreDrillingRadiusParam(objs):
@@ -2623,7 +2843,7 @@ def AddMoreDrillingRadiusParam(objs):
 		service_client.get().AddMoreDrillingRadiusParam(objs)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def DeleteMoreDrillingRadiusParam(obj_ids):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
@@ -2631,7 +2851,7 @@ def DeleteMoreDrillingRadiusParam(obj_ids):
 		service_client.get().DeleteMoreDrillingRadiusParam(obj_ids)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def GetDrillingRadiusParamByFields(fields):
 	_return = DrillingRadiusParam()
 	try:
@@ -2640,7 +2860,7 @@ def GetDrillingRadiusParamByFields(fields):
 		_return = service_client.get().GetDrillingRadiusParamByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetDrillingRadiusParamByField1(field, value):
@@ -2651,7 +2871,7 @@ def GetDrillingRadiusParamByField1(field, value):
 		_return = service_client.get().GetDrillingRadiusParamByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetDrillingRadiusParamByField2(field1, value1, field2, value2):
@@ -2662,7 +2882,7 @@ def GetDrillingRadiusParamByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetDrillingRadiusParamByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetDrillingRadiusParamListByFields(fields):
@@ -2673,7 +2893,7 @@ def GetDrillingRadiusParamListByFields(fields):
 		_return = service_client.get().GetDrillingRadiusParamListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDrillingRadiusParamListByField1(field, value):
@@ -2684,7 +2904,7 @@ def GetDrillingRadiusParamListByField1(field, value):
 		_return = service_client.get().GetDrillingRadiusParamListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDrillingRadiusParamListByField2(field1, value1, field2, value2):
@@ -2695,7 +2915,7 @@ def GetDrillingRadiusParamListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetDrillingRadiusParamListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDrillingRadiusParamIdByFields(fields):
@@ -2706,7 +2926,7 @@ def GetDrillingRadiusParamIdByFields(fields):
 		_return = service_client.get().GetDrillingRadiusParamIdByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetDrillingRadiusParamIdByField1(field, value):
@@ -2717,7 +2937,7 @@ def GetDrillingRadiusParamIdByField1(field, value):
 		_return = service_client.get().GetDrillingRadiusParamIdByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetDrillingRadiusParamIdByField2(field1, value1, field2, value2):
@@ -2728,7 +2948,7 @@ def GetDrillingRadiusParamIdByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetDrillingRadiusParamIdByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetDrillingRadiusParamIdListByFields(fields):
@@ -2739,7 +2959,7 @@ def GetDrillingRadiusParamIdListByFields(fields):
 		_return = service_client.get().GetDrillingRadiusParamIdListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDrillingRadiusParamIdListByField1(field, value):
@@ -2750,7 +2970,7 @@ def GetDrillingRadiusParamIdListByField1(field, value):
 		_return = service_client.get().GetDrillingRadiusParamIdListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDrillingRadiusParamIdListByField2(field1, value1, field2, value2):
@@ -2761,7 +2981,29 @@ def GetDrillingRadiusParamIdListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetDrillingRadiusParamIdListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDrillingRadiusParamListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDrillingRadiusParamListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDrillingRadiusParamIdListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDrillingRadiusParamIdListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
 		_return = []
 	return _return
 
@@ -2776,7 +3018,7 @@ def AddDrillingSurf(drilling_surf):
 		ret = service_client.get().AddDrillingSurf(drilling_surf)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = -1
 	return ret
 def DeleteDrillingSurf(id):
@@ -2784,10 +3026,10 @@ def DeleteDrillingSurf(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		ret = service_client.get().DeleteDrillingSurf(id)
+		ret = service_client.get().DeleteDrillingSurf(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def UpdateDrillingSurf(drilling_surf):
@@ -2798,7 +3040,7 @@ def UpdateDrillingSurf(drilling_surf):
 		ret = service_client.get().UpdateDrillingSurf(drilling_surf)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def GetDrillingSurfById(id):
@@ -2806,10 +3048,10 @@ def GetDrillingSurfById(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetDrillingSurfById(id)
+		_return = service_client.get().GetDrillingSurfById(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetDrillingSurfByForeignKey(fkey, id):
@@ -2817,10 +3059,10 @@ def GetDrillingSurfByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetDrillingSurfByForeignKey(fkey, id)
+		_return = service_client.get().GetDrillingSurfByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetDrillingSurfIdByForeignKey(fkey, id):
@@ -2828,10 +3070,10 @@ def GetDrillingSurfIdByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetDrillingSurfIdByForeignKey(fkey, id)
+		_return = service_client.get().GetDrillingSurfIdByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetDrillingSurfList():
@@ -2842,7 +3084,7 @@ def GetDrillingSurfList():
 		_return = service_client.get().GetDrillingSurfList()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDrillingSurfIds():
@@ -2853,7 +3095,7 @@ def GetDrillingSurfIds():
 		_return = service_client.get().GetDrillingSurfIds()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDrillingSurfNames():
@@ -2864,7 +3106,7 @@ def GetDrillingSurfNames():
 		_return = service_client.get().GetDrillingSurfNames()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def AddMoreDrillingSurf(objs):
@@ -2874,7 +3116,7 @@ def AddMoreDrillingSurf(objs):
 		service_client.get().AddMoreDrillingSurf(objs)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def DeleteMoreDrillingSurf(obj_ids):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
@@ -2882,7 +3124,7 @@ def DeleteMoreDrillingSurf(obj_ids):
 		service_client.get().DeleteMoreDrillingSurf(obj_ids)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def GetDrillingSurfByFields(fields):
 	_return = DrillingSurf()
 	try:
@@ -2891,7 +3133,7 @@ def GetDrillingSurfByFields(fields):
 		_return = service_client.get().GetDrillingSurfByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetDrillingSurfByField1(field, value):
@@ -2902,7 +3144,7 @@ def GetDrillingSurfByField1(field, value):
 		_return = service_client.get().GetDrillingSurfByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetDrillingSurfByField2(field1, value1, field2, value2):
@@ -2913,7 +3155,7 @@ def GetDrillingSurfByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetDrillingSurfByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetDrillingSurfListByFields(fields):
@@ -2924,7 +3166,7 @@ def GetDrillingSurfListByFields(fields):
 		_return = service_client.get().GetDrillingSurfListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDrillingSurfListByField1(field, value):
@@ -2935,7 +3177,7 @@ def GetDrillingSurfListByField1(field, value):
 		_return = service_client.get().GetDrillingSurfListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDrillingSurfListByField2(field1, value1, field2, value2):
@@ -2946,7 +3188,7 @@ def GetDrillingSurfListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetDrillingSurfListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDrillingSurfIdByFields(fields):
@@ -2957,7 +3199,7 @@ def GetDrillingSurfIdByFields(fields):
 		_return = service_client.get().GetDrillingSurfIdByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetDrillingSurfIdByField1(field, value):
@@ -2968,7 +3210,7 @@ def GetDrillingSurfIdByField1(field, value):
 		_return = service_client.get().GetDrillingSurfIdByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetDrillingSurfIdByField2(field1, value1, field2, value2):
@@ -2979,7 +3221,7 @@ def GetDrillingSurfIdByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetDrillingSurfIdByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetDrillingSurfIdListByFields(fields):
@@ -2990,7 +3232,7 @@ def GetDrillingSurfIdListByFields(fields):
 		_return = service_client.get().GetDrillingSurfIdListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDrillingSurfIdListByField1(field, value):
@@ -3001,7 +3243,7 @@ def GetDrillingSurfIdListByField1(field, value):
 		_return = service_client.get().GetDrillingSurfIdListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetDrillingSurfIdListByField2(field1, value1, field2, value2):
@@ -3012,7 +3254,29 @@ def GetDrillingSurfIdListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetDrillingSurfIdListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDrillingSurfListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDrillingSurfListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDrillingSurfIdListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDrillingSurfIdListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
 		_return = []
 	return _return
 
@@ -3027,7 +3291,7 @@ def AddEvalUnit(eval_unit):
 		ret = service_client.get().AddEvalUnit(eval_unit)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = -1
 	return ret
 def DeleteEvalUnit(id):
@@ -3035,10 +3299,10 @@ def DeleteEvalUnit(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		ret = service_client.get().DeleteEvalUnit(id)
+		ret = service_client.get().DeleteEvalUnit(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def UpdateEvalUnit(eval_unit):
@@ -3049,7 +3313,7 @@ def UpdateEvalUnit(eval_unit):
 		ret = service_client.get().UpdateEvalUnit(eval_unit)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def GetEvalUnitById(id):
@@ -3057,10 +3321,10 @@ def GetEvalUnitById(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetEvalUnitById(id)
+		_return = service_client.get().GetEvalUnitById(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetEvalUnitByForeignKey(fkey, id):
@@ -3068,10 +3332,10 @@ def GetEvalUnitByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetEvalUnitByForeignKey(fkey, id)
+		_return = service_client.get().GetEvalUnitByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetEvalUnitIdByForeignKey(fkey, id):
@@ -3079,10 +3343,10 @@ def GetEvalUnitIdByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetEvalUnitIdByForeignKey(fkey, id)
+		_return = service_client.get().GetEvalUnitIdByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetEvalUnitList():
@@ -3093,7 +3357,7 @@ def GetEvalUnitList():
 		_return = service_client.get().GetEvalUnitList()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetEvalUnitIds():
@@ -3104,7 +3368,7 @@ def GetEvalUnitIds():
 		_return = service_client.get().GetEvalUnitIds()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetEvalUnitNames():
@@ -3115,7 +3379,7 @@ def GetEvalUnitNames():
 		_return = service_client.get().GetEvalUnitNames()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def AddMoreEvalUnit(objs):
@@ -3125,7 +3389,7 @@ def AddMoreEvalUnit(objs):
 		service_client.get().AddMoreEvalUnit(objs)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def DeleteMoreEvalUnit(obj_ids):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
@@ -3133,7 +3397,7 @@ def DeleteMoreEvalUnit(obj_ids):
 		service_client.get().DeleteMoreEvalUnit(obj_ids)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def GetEvalUnitByFields(fields):
 	_return = EvalUnit()
 	try:
@@ -3142,7 +3406,7 @@ def GetEvalUnitByFields(fields):
 		_return = service_client.get().GetEvalUnitByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetEvalUnitByField1(field, value):
@@ -3153,7 +3417,7 @@ def GetEvalUnitByField1(field, value):
 		_return = service_client.get().GetEvalUnitByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetEvalUnitByField2(field1, value1, field2, value2):
@@ -3164,7 +3428,7 @@ def GetEvalUnitByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetEvalUnitByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetEvalUnitListByFields(fields):
@@ -3175,7 +3439,7 @@ def GetEvalUnitListByFields(fields):
 		_return = service_client.get().GetEvalUnitListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetEvalUnitListByField1(field, value):
@@ -3186,7 +3450,7 @@ def GetEvalUnitListByField1(field, value):
 		_return = service_client.get().GetEvalUnitListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetEvalUnitListByField2(field1, value1, field2, value2):
@@ -3197,7 +3461,7 @@ def GetEvalUnitListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetEvalUnitListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetEvalUnitIdByFields(fields):
@@ -3208,7 +3472,7 @@ def GetEvalUnitIdByFields(fields):
 		_return = service_client.get().GetEvalUnitIdByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetEvalUnitIdByField1(field, value):
@@ -3219,7 +3483,7 @@ def GetEvalUnitIdByField1(field, value):
 		_return = service_client.get().GetEvalUnitIdByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetEvalUnitIdByField2(field1, value1, field2, value2):
@@ -3230,7 +3494,7 @@ def GetEvalUnitIdByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetEvalUnitIdByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetEvalUnitIdListByFields(fields):
@@ -3241,7 +3505,7 @@ def GetEvalUnitIdListByFields(fields):
 		_return = service_client.get().GetEvalUnitIdListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetEvalUnitIdListByField1(field, value):
@@ -3252,7 +3516,7 @@ def GetEvalUnitIdListByField1(field, value):
 		_return = service_client.get().GetEvalUnitIdListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetEvalUnitIdListByField2(field1, value1, field2, value2):
@@ -3263,7 +3527,29 @@ def GetEvalUnitIdListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetEvalUnitIdListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetEvalUnitListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetEvalUnitListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetEvalUnitIdListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetEvalUnitIdListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
 		_return = []
 	return _return
 
@@ -3278,7 +3564,7 @@ def AddHighDrillingPore(high_drilling_pore):
 		ret = service_client.get().AddHighDrillingPore(high_drilling_pore)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = -1
 	return ret
 def DeleteHighDrillingPore(id):
@@ -3286,10 +3572,10 @@ def DeleteHighDrillingPore(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		ret = service_client.get().DeleteHighDrillingPore(id)
+		ret = service_client.get().DeleteHighDrillingPore(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def UpdateHighDrillingPore(high_drilling_pore):
@@ -3300,7 +3586,7 @@ def UpdateHighDrillingPore(high_drilling_pore):
 		ret = service_client.get().UpdateHighDrillingPore(high_drilling_pore)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def GetHighDrillingPoreById(id):
@@ -3308,10 +3594,10 @@ def GetHighDrillingPoreById(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetHighDrillingPoreById(id)
+		_return = service_client.get().GetHighDrillingPoreById(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetHighDrillingPoreByForeignKey(fkey, id):
@@ -3319,10 +3605,10 @@ def GetHighDrillingPoreByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetHighDrillingPoreByForeignKey(fkey, id)
+		_return = service_client.get().GetHighDrillingPoreByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetHighDrillingPoreIdByForeignKey(fkey, id):
@@ -3330,10 +3616,10 @@ def GetHighDrillingPoreIdByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetHighDrillingPoreIdByForeignKey(fkey, id)
+		_return = service_client.get().GetHighDrillingPoreIdByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetHighDrillingPoreList():
@@ -3344,7 +3630,7 @@ def GetHighDrillingPoreList():
 		_return = service_client.get().GetHighDrillingPoreList()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetHighDrillingPoreIds():
@@ -3355,7 +3641,7 @@ def GetHighDrillingPoreIds():
 		_return = service_client.get().GetHighDrillingPoreIds()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetHighDrillingPoreNames():
@@ -3366,7 +3652,7 @@ def GetHighDrillingPoreNames():
 		_return = service_client.get().GetHighDrillingPoreNames()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def AddMoreHighDrillingPore(objs):
@@ -3376,7 +3662,7 @@ def AddMoreHighDrillingPore(objs):
 		service_client.get().AddMoreHighDrillingPore(objs)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def DeleteMoreHighDrillingPore(obj_ids):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
@@ -3384,7 +3670,7 @@ def DeleteMoreHighDrillingPore(obj_ids):
 		service_client.get().DeleteMoreHighDrillingPore(obj_ids)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def GetHighDrillingPoreByFields(fields):
 	_return = HighDrillingPore()
 	try:
@@ -3393,7 +3679,7 @@ def GetHighDrillingPoreByFields(fields):
 		_return = service_client.get().GetHighDrillingPoreByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetHighDrillingPoreByField1(field, value):
@@ -3404,7 +3690,7 @@ def GetHighDrillingPoreByField1(field, value):
 		_return = service_client.get().GetHighDrillingPoreByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetHighDrillingPoreByField2(field1, value1, field2, value2):
@@ -3415,7 +3701,7 @@ def GetHighDrillingPoreByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetHighDrillingPoreByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetHighDrillingPoreListByFields(fields):
@@ -3426,7 +3712,7 @@ def GetHighDrillingPoreListByFields(fields):
 		_return = service_client.get().GetHighDrillingPoreListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetHighDrillingPoreListByField1(field, value):
@@ -3437,7 +3723,7 @@ def GetHighDrillingPoreListByField1(field, value):
 		_return = service_client.get().GetHighDrillingPoreListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetHighDrillingPoreListByField2(field1, value1, field2, value2):
@@ -3448,7 +3734,7 @@ def GetHighDrillingPoreListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetHighDrillingPoreListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetHighDrillingPoreIdByFields(fields):
@@ -3459,7 +3745,7 @@ def GetHighDrillingPoreIdByFields(fields):
 		_return = service_client.get().GetHighDrillingPoreIdByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetHighDrillingPoreIdByField1(field, value):
@@ -3470,7 +3756,7 @@ def GetHighDrillingPoreIdByField1(field, value):
 		_return = service_client.get().GetHighDrillingPoreIdByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetHighDrillingPoreIdByField2(field1, value1, field2, value2):
@@ -3481,7 +3767,7 @@ def GetHighDrillingPoreIdByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetHighDrillingPoreIdByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetHighDrillingPoreIdListByFields(fields):
@@ -3492,7 +3778,7 @@ def GetHighDrillingPoreIdListByFields(fields):
 		_return = service_client.get().GetHighDrillingPoreIdListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetHighDrillingPoreIdListByField1(field, value):
@@ -3503,7 +3789,7 @@ def GetHighDrillingPoreIdListByField1(field, value):
 		_return = service_client.get().GetHighDrillingPoreIdListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetHighDrillingPoreIdListByField2(field1, value1, field2, value2):
@@ -3514,7 +3800,29 @@ def GetHighDrillingPoreIdListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetHighDrillingPoreIdListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetHighDrillingPoreListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetHighDrillingPoreListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetHighDrillingPoreIdListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetHighDrillingPoreIdListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
 		_return = []
 	return _return
 
@@ -3529,7 +3837,7 @@ def AddHighDrillingPoreParam(high_drilling_pore_param):
 		ret = service_client.get().AddHighDrillingPoreParam(high_drilling_pore_param)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = -1
 	return ret
 def DeleteHighDrillingPoreParam(id):
@@ -3537,10 +3845,10 @@ def DeleteHighDrillingPoreParam(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		ret = service_client.get().DeleteHighDrillingPoreParam(id)
+		ret = service_client.get().DeleteHighDrillingPoreParam(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def UpdateHighDrillingPoreParam(high_drilling_pore_param):
@@ -3551,7 +3859,7 @@ def UpdateHighDrillingPoreParam(high_drilling_pore_param):
 		ret = service_client.get().UpdateHighDrillingPoreParam(high_drilling_pore_param)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def GetHighDrillingPoreParamById(id):
@@ -3559,10 +3867,10 @@ def GetHighDrillingPoreParamById(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetHighDrillingPoreParamById(id)
+		_return = service_client.get().GetHighDrillingPoreParamById(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetHighDrillingPoreParamByForeignKey(fkey, id):
@@ -3570,10 +3878,10 @@ def GetHighDrillingPoreParamByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetHighDrillingPoreParamByForeignKey(fkey, id)
+		_return = service_client.get().GetHighDrillingPoreParamByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetHighDrillingPoreParamIdByForeignKey(fkey, id):
@@ -3581,10 +3889,10 @@ def GetHighDrillingPoreParamIdByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetHighDrillingPoreParamIdByForeignKey(fkey, id)
+		_return = service_client.get().GetHighDrillingPoreParamIdByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetHighDrillingPoreParamList():
@@ -3595,7 +3903,7 @@ def GetHighDrillingPoreParamList():
 		_return = service_client.get().GetHighDrillingPoreParamList()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetHighDrillingPoreParamIds():
@@ -3606,7 +3914,7 @@ def GetHighDrillingPoreParamIds():
 		_return = service_client.get().GetHighDrillingPoreParamIds()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetHighDrillingPoreParamNames():
@@ -3617,7 +3925,7 @@ def GetHighDrillingPoreParamNames():
 		_return = service_client.get().GetHighDrillingPoreParamNames()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def AddMoreHighDrillingPoreParam(objs):
@@ -3627,7 +3935,7 @@ def AddMoreHighDrillingPoreParam(objs):
 		service_client.get().AddMoreHighDrillingPoreParam(objs)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def DeleteMoreHighDrillingPoreParam(obj_ids):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
@@ -3635,7 +3943,7 @@ def DeleteMoreHighDrillingPoreParam(obj_ids):
 		service_client.get().DeleteMoreHighDrillingPoreParam(obj_ids)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def GetHighDrillingPoreParamByFields(fields):
 	_return = HighDrillingPoreParam()
 	try:
@@ -3644,7 +3952,7 @@ def GetHighDrillingPoreParamByFields(fields):
 		_return = service_client.get().GetHighDrillingPoreParamByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetHighDrillingPoreParamByField1(field, value):
@@ -3655,7 +3963,7 @@ def GetHighDrillingPoreParamByField1(field, value):
 		_return = service_client.get().GetHighDrillingPoreParamByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetHighDrillingPoreParamByField2(field1, value1, field2, value2):
@@ -3666,7 +3974,7 @@ def GetHighDrillingPoreParamByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetHighDrillingPoreParamByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetHighDrillingPoreParamListByFields(fields):
@@ -3677,7 +3985,7 @@ def GetHighDrillingPoreParamListByFields(fields):
 		_return = service_client.get().GetHighDrillingPoreParamListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetHighDrillingPoreParamListByField1(field, value):
@@ -3688,7 +3996,7 @@ def GetHighDrillingPoreParamListByField1(field, value):
 		_return = service_client.get().GetHighDrillingPoreParamListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetHighDrillingPoreParamListByField2(field1, value1, field2, value2):
@@ -3699,7 +4007,7 @@ def GetHighDrillingPoreParamListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetHighDrillingPoreParamListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetHighDrillingPoreParamIdByFields(fields):
@@ -3710,7 +4018,7 @@ def GetHighDrillingPoreParamIdByFields(fields):
 		_return = service_client.get().GetHighDrillingPoreParamIdByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetHighDrillingPoreParamIdByField1(field, value):
@@ -3721,7 +4029,7 @@ def GetHighDrillingPoreParamIdByField1(field, value):
 		_return = service_client.get().GetHighDrillingPoreParamIdByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetHighDrillingPoreParamIdByField2(field1, value1, field2, value2):
@@ -3732,7 +4040,7 @@ def GetHighDrillingPoreParamIdByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetHighDrillingPoreParamIdByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetHighDrillingPoreParamIdListByFields(fields):
@@ -3743,7 +4051,7 @@ def GetHighDrillingPoreParamIdListByFields(fields):
 		_return = service_client.get().GetHighDrillingPoreParamIdListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetHighDrillingPoreParamIdListByField1(field, value):
@@ -3754,7 +4062,7 @@ def GetHighDrillingPoreParamIdListByField1(field, value):
 		_return = service_client.get().GetHighDrillingPoreParamIdListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetHighDrillingPoreParamIdListByField2(field1, value1, field2, value2):
@@ -3765,7 +4073,29 @@ def GetHighDrillingPoreParamIdListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetHighDrillingPoreParamIdListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetHighDrillingPoreParamListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetHighDrillingPoreParamListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetHighDrillingPoreParamIdListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetHighDrillingPoreParamIdListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
 		_return = []
 	return _return
 
@@ -3780,7 +4110,7 @@ def AddHighDrillingSiteParam(high_drilling_site_param):
 		ret = service_client.get().AddHighDrillingSiteParam(high_drilling_site_param)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = -1
 	return ret
 def DeleteHighDrillingSiteParam(id):
@@ -3788,10 +4118,10 @@ def DeleteHighDrillingSiteParam(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		ret = service_client.get().DeleteHighDrillingSiteParam(id)
+		ret = service_client.get().DeleteHighDrillingSiteParam(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def UpdateHighDrillingSiteParam(high_drilling_site_param):
@@ -3802,7 +4132,7 @@ def UpdateHighDrillingSiteParam(high_drilling_site_param):
 		ret = service_client.get().UpdateHighDrillingSiteParam(high_drilling_site_param)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def GetHighDrillingSiteParamById(id):
@@ -3810,10 +4140,10 @@ def GetHighDrillingSiteParamById(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetHighDrillingSiteParamById(id)
+		_return = service_client.get().GetHighDrillingSiteParamById(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetHighDrillingSiteParamByForeignKey(fkey, id):
@@ -3821,10 +4151,10 @@ def GetHighDrillingSiteParamByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetHighDrillingSiteParamByForeignKey(fkey, id)
+		_return = service_client.get().GetHighDrillingSiteParamByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetHighDrillingSiteParamIdByForeignKey(fkey, id):
@@ -3832,10 +4162,10 @@ def GetHighDrillingSiteParamIdByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetHighDrillingSiteParamIdByForeignKey(fkey, id)
+		_return = service_client.get().GetHighDrillingSiteParamIdByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetHighDrillingSiteParamList():
@@ -3846,7 +4176,7 @@ def GetHighDrillingSiteParamList():
 		_return = service_client.get().GetHighDrillingSiteParamList()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetHighDrillingSiteParamIds():
@@ -3857,7 +4187,7 @@ def GetHighDrillingSiteParamIds():
 		_return = service_client.get().GetHighDrillingSiteParamIds()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetHighDrillingSiteParamNames():
@@ -3868,7 +4198,7 @@ def GetHighDrillingSiteParamNames():
 		_return = service_client.get().GetHighDrillingSiteParamNames()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def AddMoreHighDrillingSiteParam(objs):
@@ -3878,7 +4208,7 @@ def AddMoreHighDrillingSiteParam(objs):
 		service_client.get().AddMoreHighDrillingSiteParam(objs)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def DeleteMoreHighDrillingSiteParam(obj_ids):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
@@ -3886,7 +4216,7 @@ def DeleteMoreHighDrillingSiteParam(obj_ids):
 		service_client.get().DeleteMoreHighDrillingSiteParam(obj_ids)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def GetHighDrillingSiteParamByFields(fields):
 	_return = HighDrillingSiteParam()
 	try:
@@ -3895,7 +4225,7 @@ def GetHighDrillingSiteParamByFields(fields):
 		_return = service_client.get().GetHighDrillingSiteParamByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetHighDrillingSiteParamByField1(field, value):
@@ -3906,7 +4236,7 @@ def GetHighDrillingSiteParamByField1(field, value):
 		_return = service_client.get().GetHighDrillingSiteParamByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetHighDrillingSiteParamByField2(field1, value1, field2, value2):
@@ -3917,7 +4247,7 @@ def GetHighDrillingSiteParamByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetHighDrillingSiteParamByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetHighDrillingSiteParamListByFields(fields):
@@ -3928,7 +4258,7 @@ def GetHighDrillingSiteParamListByFields(fields):
 		_return = service_client.get().GetHighDrillingSiteParamListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetHighDrillingSiteParamListByField1(field, value):
@@ -3939,7 +4269,7 @@ def GetHighDrillingSiteParamListByField1(field, value):
 		_return = service_client.get().GetHighDrillingSiteParamListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetHighDrillingSiteParamListByField2(field1, value1, field2, value2):
@@ -3950,7 +4280,7 @@ def GetHighDrillingSiteParamListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetHighDrillingSiteParamListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetHighDrillingSiteParamIdByFields(fields):
@@ -3961,7 +4291,7 @@ def GetHighDrillingSiteParamIdByFields(fields):
 		_return = service_client.get().GetHighDrillingSiteParamIdByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetHighDrillingSiteParamIdByField1(field, value):
@@ -3972,7 +4302,7 @@ def GetHighDrillingSiteParamIdByField1(field, value):
 		_return = service_client.get().GetHighDrillingSiteParamIdByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetHighDrillingSiteParamIdByField2(field1, value1, field2, value2):
@@ -3983,7 +4313,7 @@ def GetHighDrillingSiteParamIdByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetHighDrillingSiteParamIdByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetHighDrillingSiteParamIdListByFields(fields):
@@ -3994,7 +4324,7 @@ def GetHighDrillingSiteParamIdListByFields(fields):
 		_return = service_client.get().GetHighDrillingSiteParamIdListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetHighDrillingSiteParamIdListByField1(field, value):
@@ -4005,7 +4335,7 @@ def GetHighDrillingSiteParamIdListByField1(field, value):
 		_return = service_client.get().GetHighDrillingSiteParamIdListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetHighDrillingSiteParamIdListByField2(field1, value1, field2, value2):
@@ -4016,7 +4346,29 @@ def GetHighDrillingSiteParamIdListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetHighDrillingSiteParamIdListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetHighDrillingSiteParamListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetHighDrillingSiteParamListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetHighDrillingSiteParamIdListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetHighDrillingSiteParamIdListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
 		_return = []
 	return _return
 
@@ -4031,7 +4383,7 @@ def AddHighDrillingTunnel(high_drilling_tunnel):
 		ret = service_client.get().AddHighDrillingTunnel(high_drilling_tunnel)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = -1
 	return ret
 def DeleteHighDrillingTunnel(id):
@@ -4039,10 +4391,10 @@ def DeleteHighDrillingTunnel(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		ret = service_client.get().DeleteHighDrillingTunnel(id)
+		ret = service_client.get().DeleteHighDrillingTunnel(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def UpdateHighDrillingTunnel(high_drilling_tunnel):
@@ -4053,7 +4405,7 @@ def UpdateHighDrillingTunnel(high_drilling_tunnel):
 		ret = service_client.get().UpdateHighDrillingTunnel(high_drilling_tunnel)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def GetHighDrillingTunnelById(id):
@@ -4061,10 +4413,10 @@ def GetHighDrillingTunnelById(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetHighDrillingTunnelById(id)
+		_return = service_client.get().GetHighDrillingTunnelById(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetHighDrillingTunnelByForeignKey(fkey, id):
@@ -4072,10 +4424,10 @@ def GetHighDrillingTunnelByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetHighDrillingTunnelByForeignKey(fkey, id)
+		_return = service_client.get().GetHighDrillingTunnelByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetHighDrillingTunnelIdByForeignKey(fkey, id):
@@ -4083,10 +4435,10 @@ def GetHighDrillingTunnelIdByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetHighDrillingTunnelIdByForeignKey(fkey, id)
+		_return = service_client.get().GetHighDrillingTunnelIdByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetHighDrillingTunnelList():
@@ -4097,7 +4449,7 @@ def GetHighDrillingTunnelList():
 		_return = service_client.get().GetHighDrillingTunnelList()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetHighDrillingTunnelIds():
@@ -4108,7 +4460,7 @@ def GetHighDrillingTunnelIds():
 		_return = service_client.get().GetHighDrillingTunnelIds()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetHighDrillingTunnelNames():
@@ -4119,7 +4471,7 @@ def GetHighDrillingTunnelNames():
 		_return = service_client.get().GetHighDrillingTunnelNames()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def AddMoreHighDrillingTunnel(objs):
@@ -4129,7 +4481,7 @@ def AddMoreHighDrillingTunnel(objs):
 		service_client.get().AddMoreHighDrillingTunnel(objs)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def DeleteMoreHighDrillingTunnel(obj_ids):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
@@ -4137,7 +4489,7 @@ def DeleteMoreHighDrillingTunnel(obj_ids):
 		service_client.get().DeleteMoreHighDrillingTunnel(obj_ids)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def GetHighDrillingTunnelByFields(fields):
 	_return = HighDrillingTunnel()
 	try:
@@ -4146,7 +4498,7 @@ def GetHighDrillingTunnelByFields(fields):
 		_return = service_client.get().GetHighDrillingTunnelByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetHighDrillingTunnelByField1(field, value):
@@ -4157,7 +4509,7 @@ def GetHighDrillingTunnelByField1(field, value):
 		_return = service_client.get().GetHighDrillingTunnelByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetHighDrillingTunnelByField2(field1, value1, field2, value2):
@@ -4168,7 +4520,7 @@ def GetHighDrillingTunnelByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetHighDrillingTunnelByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetHighDrillingTunnelListByFields(fields):
@@ -4179,7 +4531,7 @@ def GetHighDrillingTunnelListByFields(fields):
 		_return = service_client.get().GetHighDrillingTunnelListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetHighDrillingTunnelListByField1(field, value):
@@ -4190,7 +4542,7 @@ def GetHighDrillingTunnelListByField1(field, value):
 		_return = service_client.get().GetHighDrillingTunnelListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetHighDrillingTunnelListByField2(field1, value1, field2, value2):
@@ -4201,7 +4553,7 @@ def GetHighDrillingTunnelListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetHighDrillingTunnelListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetHighDrillingTunnelIdByFields(fields):
@@ -4212,7 +4564,7 @@ def GetHighDrillingTunnelIdByFields(fields):
 		_return = service_client.get().GetHighDrillingTunnelIdByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetHighDrillingTunnelIdByField1(field, value):
@@ -4223,7 +4575,7 @@ def GetHighDrillingTunnelIdByField1(field, value):
 		_return = service_client.get().GetHighDrillingTunnelIdByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetHighDrillingTunnelIdByField2(field1, value1, field2, value2):
@@ -4234,7 +4586,7 @@ def GetHighDrillingTunnelIdByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetHighDrillingTunnelIdByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetHighDrillingTunnelIdListByFields(fields):
@@ -4245,7 +4597,7 @@ def GetHighDrillingTunnelIdListByFields(fields):
 		_return = service_client.get().GetHighDrillingTunnelIdListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetHighDrillingTunnelIdListByField1(field, value):
@@ -4256,7 +4608,7 @@ def GetHighDrillingTunnelIdListByField1(field, value):
 		_return = service_client.get().GetHighDrillingTunnelIdListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetHighDrillingTunnelIdListByField2(field1, value1, field2, value2):
@@ -4267,7 +4619,29 @@ def GetHighDrillingTunnelIdListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetHighDrillingTunnelIdListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetHighDrillingTunnelListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetHighDrillingTunnelListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetHighDrillingTunnelIdListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetHighDrillingTunnelIdListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
 		_return = []
 	return _return
 
@@ -4282,7 +4656,7 @@ def AddHydrGeo(hydr_geo):
 		ret = service_client.get().AddHydrGeo(hydr_geo)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = -1
 	return ret
 def DeleteHydrGeo(id):
@@ -4290,10 +4664,10 @@ def DeleteHydrGeo(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		ret = service_client.get().DeleteHydrGeo(id)
+		ret = service_client.get().DeleteHydrGeo(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def UpdateHydrGeo(hydr_geo):
@@ -4304,7 +4678,7 @@ def UpdateHydrGeo(hydr_geo):
 		ret = service_client.get().UpdateHydrGeo(hydr_geo)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def GetHydrGeoById(id):
@@ -4312,10 +4686,10 @@ def GetHydrGeoById(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetHydrGeoById(id)
+		_return = service_client.get().GetHydrGeoById(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetHydrGeoByForeignKey(fkey, id):
@@ -4323,10 +4697,10 @@ def GetHydrGeoByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetHydrGeoByForeignKey(fkey, id)
+		_return = service_client.get().GetHydrGeoByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetHydrGeoIdByForeignKey(fkey, id):
@@ -4334,10 +4708,10 @@ def GetHydrGeoIdByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetHydrGeoIdByForeignKey(fkey, id)
+		_return = service_client.get().GetHydrGeoIdByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetHydrGeoList():
@@ -4348,7 +4722,7 @@ def GetHydrGeoList():
 		_return = service_client.get().GetHydrGeoList()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetHydrGeoIds():
@@ -4359,7 +4733,7 @@ def GetHydrGeoIds():
 		_return = service_client.get().GetHydrGeoIds()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetHydrGeoNames():
@@ -4370,7 +4744,7 @@ def GetHydrGeoNames():
 		_return = service_client.get().GetHydrGeoNames()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def AddMoreHydrGeo(objs):
@@ -4380,7 +4754,7 @@ def AddMoreHydrGeo(objs):
 		service_client.get().AddMoreHydrGeo(objs)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def DeleteMoreHydrGeo(obj_ids):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
@@ -4388,7 +4762,7 @@ def DeleteMoreHydrGeo(obj_ids):
 		service_client.get().DeleteMoreHydrGeo(obj_ids)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def GetHydrGeoByFields(fields):
 	_return = HydrGeo()
 	try:
@@ -4397,7 +4771,7 @@ def GetHydrGeoByFields(fields):
 		_return = service_client.get().GetHydrGeoByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetHydrGeoByField1(field, value):
@@ -4408,7 +4782,7 @@ def GetHydrGeoByField1(field, value):
 		_return = service_client.get().GetHydrGeoByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetHydrGeoByField2(field1, value1, field2, value2):
@@ -4419,7 +4793,7 @@ def GetHydrGeoByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetHydrGeoByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetHydrGeoListByFields(fields):
@@ -4430,7 +4804,7 @@ def GetHydrGeoListByFields(fields):
 		_return = service_client.get().GetHydrGeoListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetHydrGeoListByField1(field, value):
@@ -4441,7 +4815,7 @@ def GetHydrGeoListByField1(field, value):
 		_return = service_client.get().GetHydrGeoListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetHydrGeoListByField2(field1, value1, field2, value2):
@@ -4452,7 +4826,7 @@ def GetHydrGeoListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetHydrGeoListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetHydrGeoIdByFields(fields):
@@ -4463,7 +4837,7 @@ def GetHydrGeoIdByFields(fields):
 		_return = service_client.get().GetHydrGeoIdByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetHydrGeoIdByField1(field, value):
@@ -4474,7 +4848,7 @@ def GetHydrGeoIdByField1(field, value):
 		_return = service_client.get().GetHydrGeoIdByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetHydrGeoIdByField2(field1, value1, field2, value2):
@@ -4485,7 +4859,7 @@ def GetHydrGeoIdByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetHydrGeoIdByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetHydrGeoIdListByFields(fields):
@@ -4496,7 +4870,7 @@ def GetHydrGeoIdListByFields(fields):
 		_return = service_client.get().GetHydrGeoIdListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetHydrGeoIdListByField1(field, value):
@@ -4507,7 +4881,7 @@ def GetHydrGeoIdListByField1(field, value):
 		_return = service_client.get().GetHydrGeoIdListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetHydrGeoIdListByField2(field1, value1, field2, value2):
@@ -4518,7 +4892,29 @@ def GetHydrGeoIdListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetHydrGeoIdListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetHydrGeoListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetHydrGeoListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetHydrGeoIdListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetHydrGeoIdListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
 		_return = []
 	return _return
 
@@ -4533,7 +4929,7 @@ def AddMine(mine):
 		ret = service_client.get().AddMine(mine)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = -1
 	return ret
 def DeleteMine(id):
@@ -4541,10 +4937,10 @@ def DeleteMine(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		ret = service_client.get().DeleteMine(id)
+		ret = service_client.get().DeleteMine(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def UpdateMine(mine):
@@ -4555,7 +4951,7 @@ def UpdateMine(mine):
 		ret = service_client.get().UpdateMine(mine)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def GetMineById(id):
@@ -4563,10 +4959,10 @@ def GetMineById(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetMineById(id)
+		_return = service_client.get().GetMineById(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetMineByForeignKey(fkey, id):
@@ -4574,10 +4970,10 @@ def GetMineByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetMineByForeignKey(fkey, id)
+		_return = service_client.get().GetMineByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetMineIdByForeignKey(fkey, id):
@@ -4585,10 +4981,10 @@ def GetMineIdByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetMineIdByForeignKey(fkey, id)
+		_return = service_client.get().GetMineIdByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetMineList():
@@ -4599,7 +4995,7 @@ def GetMineList():
 		_return = service_client.get().GetMineList()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetMineIds():
@@ -4610,7 +5006,7 @@ def GetMineIds():
 		_return = service_client.get().GetMineIds()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetMineNames():
@@ -4621,7 +5017,7 @@ def GetMineNames():
 		_return = service_client.get().GetMineNames()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def AddMoreMine(objs):
@@ -4631,7 +5027,7 @@ def AddMoreMine(objs):
 		service_client.get().AddMoreMine(objs)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def DeleteMoreMine(obj_ids):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
@@ -4639,7 +5035,7 @@ def DeleteMoreMine(obj_ids):
 		service_client.get().DeleteMoreMine(obj_ids)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def GetMineByFields(fields):
 	_return = Mine()
 	try:
@@ -4648,7 +5044,7 @@ def GetMineByFields(fields):
 		_return = service_client.get().GetMineByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetMineByField1(field, value):
@@ -4659,7 +5055,7 @@ def GetMineByField1(field, value):
 		_return = service_client.get().GetMineByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetMineByField2(field1, value1, field2, value2):
@@ -4670,7 +5066,7 @@ def GetMineByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetMineByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetMineListByFields(fields):
@@ -4681,7 +5077,7 @@ def GetMineListByFields(fields):
 		_return = service_client.get().GetMineListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetMineListByField1(field, value):
@@ -4692,7 +5088,7 @@ def GetMineListByField1(field, value):
 		_return = service_client.get().GetMineListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetMineListByField2(field1, value1, field2, value2):
@@ -4703,7 +5099,7 @@ def GetMineListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetMineListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetMineIdByFields(fields):
@@ -4714,7 +5110,7 @@ def GetMineIdByFields(fields):
 		_return = service_client.get().GetMineIdByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetMineIdByField1(field, value):
@@ -4725,7 +5121,7 @@ def GetMineIdByField1(field, value):
 		_return = service_client.get().GetMineIdByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetMineIdByField2(field1, value1, field2, value2):
@@ -4736,7 +5132,7 @@ def GetMineIdByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetMineIdByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetMineIdListByFields(fields):
@@ -4747,7 +5143,7 @@ def GetMineIdListByFields(fields):
 		_return = service_client.get().GetMineIdListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetMineIdListByField1(field, value):
@@ -4758,7 +5154,7 @@ def GetMineIdListByField1(field, value):
 		_return = service_client.get().GetMineIdListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetMineIdListByField2(field1, value1, field2, value2):
@@ -4769,7 +5165,29 @@ def GetMineIdListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetMineIdListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetMineListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetMineListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetMineIdListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetMineIdListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
 		_return = []
 	return _return
 
@@ -4784,7 +5202,7 @@ def AddMineBase(mine_base):
 		ret = service_client.get().AddMineBase(mine_base)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = -1
 	return ret
 def DeleteMineBase(id):
@@ -4792,10 +5210,10 @@ def DeleteMineBase(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		ret = service_client.get().DeleteMineBase(id)
+		ret = service_client.get().DeleteMineBase(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def UpdateMineBase(mine_base):
@@ -4806,7 +5224,7 @@ def UpdateMineBase(mine_base):
 		ret = service_client.get().UpdateMineBase(mine_base)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def GetMineBaseById(id):
@@ -4814,10 +5232,10 @@ def GetMineBaseById(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetMineBaseById(id)
+		_return = service_client.get().GetMineBaseById(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetMineBaseByForeignKey(fkey, id):
@@ -4825,10 +5243,10 @@ def GetMineBaseByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetMineBaseByForeignKey(fkey, id)
+		_return = service_client.get().GetMineBaseByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetMineBaseIdByForeignKey(fkey, id):
@@ -4836,10 +5254,10 @@ def GetMineBaseIdByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetMineBaseIdByForeignKey(fkey, id)
+		_return = service_client.get().GetMineBaseIdByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetMineBaseList():
@@ -4850,7 +5268,7 @@ def GetMineBaseList():
 		_return = service_client.get().GetMineBaseList()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetMineBaseIds():
@@ -4861,7 +5279,7 @@ def GetMineBaseIds():
 		_return = service_client.get().GetMineBaseIds()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetMineBaseNames():
@@ -4872,7 +5290,7 @@ def GetMineBaseNames():
 		_return = service_client.get().GetMineBaseNames()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def AddMoreMineBase(objs):
@@ -4882,7 +5300,7 @@ def AddMoreMineBase(objs):
 		service_client.get().AddMoreMineBase(objs)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def DeleteMoreMineBase(obj_ids):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
@@ -4890,7 +5308,7 @@ def DeleteMoreMineBase(obj_ids):
 		service_client.get().DeleteMoreMineBase(obj_ids)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def GetMineBaseByFields(fields):
 	_return = MineBase()
 	try:
@@ -4899,7 +5317,7 @@ def GetMineBaseByFields(fields):
 		_return = service_client.get().GetMineBaseByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetMineBaseByField1(field, value):
@@ -4910,7 +5328,7 @@ def GetMineBaseByField1(field, value):
 		_return = service_client.get().GetMineBaseByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetMineBaseByField2(field1, value1, field2, value2):
@@ -4921,7 +5339,7 @@ def GetMineBaseByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetMineBaseByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetMineBaseListByFields(fields):
@@ -4932,7 +5350,7 @@ def GetMineBaseListByFields(fields):
 		_return = service_client.get().GetMineBaseListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetMineBaseListByField1(field, value):
@@ -4943,7 +5361,7 @@ def GetMineBaseListByField1(field, value):
 		_return = service_client.get().GetMineBaseListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetMineBaseListByField2(field1, value1, field2, value2):
@@ -4954,7 +5372,7 @@ def GetMineBaseListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetMineBaseListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetMineBaseIdByFields(fields):
@@ -4965,7 +5383,7 @@ def GetMineBaseIdByFields(fields):
 		_return = service_client.get().GetMineBaseIdByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetMineBaseIdByField1(field, value):
@@ -4976,7 +5394,7 @@ def GetMineBaseIdByField1(field, value):
 		_return = service_client.get().GetMineBaseIdByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetMineBaseIdByField2(field1, value1, field2, value2):
@@ -4987,7 +5405,7 @@ def GetMineBaseIdByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetMineBaseIdByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetMineBaseIdListByFields(fields):
@@ -4998,7 +5416,7 @@ def GetMineBaseIdListByFields(fields):
 		_return = service_client.get().GetMineBaseIdListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetMineBaseIdListByField1(field, value):
@@ -5009,7 +5427,7 @@ def GetMineBaseIdListByField1(field, value):
 		_return = service_client.get().GetMineBaseIdListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetMineBaseIdListByField2(field1, value1, field2, value2):
@@ -5020,7 +5438,29 @@ def GetMineBaseIdListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetMineBaseIdListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetMineBaseListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetMineBaseListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetMineBaseIdListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetMineBaseIdListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
 		_return = []
 	return _return
 
@@ -5035,7 +5475,7 @@ def AddMineRegion(mine_region):
 		ret = service_client.get().AddMineRegion(mine_region)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = -1
 	return ret
 def DeleteMineRegion(id):
@@ -5043,10 +5483,10 @@ def DeleteMineRegion(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		ret = service_client.get().DeleteMineRegion(id)
+		ret = service_client.get().DeleteMineRegion(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def UpdateMineRegion(mine_region):
@@ -5057,7 +5497,7 @@ def UpdateMineRegion(mine_region):
 		ret = service_client.get().UpdateMineRegion(mine_region)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def GetMineRegionById(id):
@@ -5065,10 +5505,10 @@ def GetMineRegionById(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetMineRegionById(id)
+		_return = service_client.get().GetMineRegionById(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetMineRegionByForeignKey(fkey, id):
@@ -5076,10 +5516,10 @@ def GetMineRegionByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetMineRegionByForeignKey(fkey, id)
+		_return = service_client.get().GetMineRegionByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetMineRegionIdByForeignKey(fkey, id):
@@ -5087,10 +5527,10 @@ def GetMineRegionIdByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetMineRegionIdByForeignKey(fkey, id)
+		_return = service_client.get().GetMineRegionIdByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetMineRegionList():
@@ -5101,7 +5541,7 @@ def GetMineRegionList():
 		_return = service_client.get().GetMineRegionList()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetMineRegionIds():
@@ -5112,7 +5552,7 @@ def GetMineRegionIds():
 		_return = service_client.get().GetMineRegionIds()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetMineRegionNames():
@@ -5123,7 +5563,7 @@ def GetMineRegionNames():
 		_return = service_client.get().GetMineRegionNames()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def AddMoreMineRegion(objs):
@@ -5133,7 +5573,7 @@ def AddMoreMineRegion(objs):
 		service_client.get().AddMoreMineRegion(objs)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def DeleteMoreMineRegion(obj_ids):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
@@ -5141,7 +5581,7 @@ def DeleteMoreMineRegion(obj_ids):
 		service_client.get().DeleteMoreMineRegion(obj_ids)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def GetMineRegionByFields(fields):
 	_return = MineRegion()
 	try:
@@ -5150,7 +5590,7 @@ def GetMineRegionByFields(fields):
 		_return = service_client.get().GetMineRegionByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetMineRegionByField1(field, value):
@@ -5161,7 +5601,7 @@ def GetMineRegionByField1(field, value):
 		_return = service_client.get().GetMineRegionByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetMineRegionByField2(field1, value1, field2, value2):
@@ -5172,7 +5612,7 @@ def GetMineRegionByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetMineRegionByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetMineRegionListByFields(fields):
@@ -5183,7 +5623,7 @@ def GetMineRegionListByFields(fields):
 		_return = service_client.get().GetMineRegionListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetMineRegionListByField1(field, value):
@@ -5194,7 +5634,7 @@ def GetMineRegionListByField1(field, value):
 		_return = service_client.get().GetMineRegionListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetMineRegionListByField2(field1, value1, field2, value2):
@@ -5205,7 +5645,7 @@ def GetMineRegionListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetMineRegionListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetMineRegionIdByFields(fields):
@@ -5216,7 +5656,7 @@ def GetMineRegionIdByFields(fields):
 		_return = service_client.get().GetMineRegionIdByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetMineRegionIdByField1(field, value):
@@ -5227,7 +5667,7 @@ def GetMineRegionIdByField1(field, value):
 		_return = service_client.get().GetMineRegionIdByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetMineRegionIdByField2(field1, value1, field2, value2):
@@ -5238,7 +5678,7 @@ def GetMineRegionIdByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetMineRegionIdByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetMineRegionIdListByFields(fields):
@@ -5249,7 +5689,7 @@ def GetMineRegionIdListByFields(fields):
 		_return = service_client.get().GetMineRegionIdListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetMineRegionIdListByField1(field, value):
@@ -5260,7 +5700,7 @@ def GetMineRegionIdListByField1(field, value):
 		_return = service_client.get().GetMineRegionIdListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetMineRegionIdListByField2(field1, value1, field2, value2):
@@ -5271,7 +5711,29 @@ def GetMineRegionIdListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetMineRegionIdListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetMineRegionListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetMineRegionListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetMineRegionIdListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetMineRegionIdListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
 		_return = []
 	return _return
 
@@ -5286,7 +5748,7 @@ def AddPoreFlow(pore_flow):
 		ret = service_client.get().AddPoreFlow(pore_flow)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = -1
 	return ret
 def DeletePoreFlow(id):
@@ -5294,10 +5756,10 @@ def DeletePoreFlow(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		ret = service_client.get().DeletePoreFlow(id)
+		ret = service_client.get().DeletePoreFlow(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def UpdatePoreFlow(pore_flow):
@@ -5308,7 +5770,7 @@ def UpdatePoreFlow(pore_flow):
 		ret = service_client.get().UpdatePoreFlow(pore_flow)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def GetPoreFlowById(id):
@@ -5316,10 +5778,10 @@ def GetPoreFlowById(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetPoreFlowById(id)
+		_return = service_client.get().GetPoreFlowById(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetPoreFlowByForeignKey(fkey, id):
@@ -5327,10 +5789,10 @@ def GetPoreFlowByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetPoreFlowByForeignKey(fkey, id)
+		_return = service_client.get().GetPoreFlowByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetPoreFlowIdByForeignKey(fkey, id):
@@ -5338,10 +5800,10 @@ def GetPoreFlowIdByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetPoreFlowIdByForeignKey(fkey, id)
+		_return = service_client.get().GetPoreFlowIdByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetPoreFlowList():
@@ -5352,7 +5814,7 @@ def GetPoreFlowList():
 		_return = service_client.get().GetPoreFlowList()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetPoreFlowIds():
@@ -5363,7 +5825,7 @@ def GetPoreFlowIds():
 		_return = service_client.get().GetPoreFlowIds()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetPoreFlowNames():
@@ -5374,7 +5836,7 @@ def GetPoreFlowNames():
 		_return = service_client.get().GetPoreFlowNames()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def AddMorePoreFlow(objs):
@@ -5384,7 +5846,7 @@ def AddMorePoreFlow(objs):
 		service_client.get().AddMorePoreFlow(objs)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def DeleteMorePoreFlow(obj_ids):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
@@ -5392,7 +5854,7 @@ def DeleteMorePoreFlow(obj_ids):
 		service_client.get().DeleteMorePoreFlow(obj_ids)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def GetPoreFlowByFields(fields):
 	_return = PoreFlow()
 	try:
@@ -5401,7 +5863,7 @@ def GetPoreFlowByFields(fields):
 		_return = service_client.get().GetPoreFlowByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetPoreFlowByField1(field, value):
@@ -5412,7 +5874,7 @@ def GetPoreFlowByField1(field, value):
 		_return = service_client.get().GetPoreFlowByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetPoreFlowByField2(field1, value1, field2, value2):
@@ -5423,7 +5885,7 @@ def GetPoreFlowByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetPoreFlowByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetPoreFlowListByFields(fields):
@@ -5434,7 +5896,7 @@ def GetPoreFlowListByFields(fields):
 		_return = service_client.get().GetPoreFlowListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetPoreFlowListByField1(field, value):
@@ -5445,7 +5907,7 @@ def GetPoreFlowListByField1(field, value):
 		_return = service_client.get().GetPoreFlowListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetPoreFlowListByField2(field1, value1, field2, value2):
@@ -5456,7 +5918,7 @@ def GetPoreFlowListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetPoreFlowListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetPoreFlowIdByFields(fields):
@@ -5467,7 +5929,7 @@ def GetPoreFlowIdByFields(fields):
 		_return = service_client.get().GetPoreFlowIdByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetPoreFlowIdByField1(field, value):
@@ -5478,7 +5940,7 @@ def GetPoreFlowIdByField1(field, value):
 		_return = service_client.get().GetPoreFlowIdByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetPoreFlowIdByField2(field1, value1, field2, value2):
@@ -5489,7 +5951,7 @@ def GetPoreFlowIdByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetPoreFlowIdByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetPoreFlowIdListByFields(fields):
@@ -5500,7 +5962,7 @@ def GetPoreFlowIdListByFields(fields):
 		_return = service_client.get().GetPoreFlowIdListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetPoreFlowIdListByField1(field, value):
@@ -5511,7 +5973,7 @@ def GetPoreFlowIdListByField1(field, value):
 		_return = service_client.get().GetPoreFlowIdListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetPoreFlowIdListByField2(field1, value1, field2, value2):
@@ -5522,7 +5984,29 @@ def GetPoreFlowIdListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetPoreFlowIdListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetPoreFlowListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetPoreFlowListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetPoreFlowIdListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetPoreFlowIdListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
 		_return = []
 	return _return
 
@@ -5537,7 +6021,7 @@ def AddPoreSize(pore_size):
 		ret = service_client.get().AddPoreSize(pore_size)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = -1
 	return ret
 def DeletePoreSize(id):
@@ -5545,10 +6029,10 @@ def DeletePoreSize(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		ret = service_client.get().DeletePoreSize(id)
+		ret = service_client.get().DeletePoreSize(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def UpdatePoreSize(pore_size):
@@ -5559,7 +6043,7 @@ def UpdatePoreSize(pore_size):
 		ret = service_client.get().UpdatePoreSize(pore_size)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def GetPoreSizeById(id):
@@ -5567,10 +6051,10 @@ def GetPoreSizeById(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetPoreSizeById(id)
+		_return = service_client.get().GetPoreSizeById(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetPoreSizeByForeignKey(fkey, id):
@@ -5578,10 +6062,10 @@ def GetPoreSizeByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetPoreSizeByForeignKey(fkey, id)
+		_return = service_client.get().GetPoreSizeByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetPoreSizeIdByForeignKey(fkey, id):
@@ -5589,10 +6073,10 @@ def GetPoreSizeIdByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetPoreSizeIdByForeignKey(fkey, id)
+		_return = service_client.get().GetPoreSizeIdByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetPoreSizeList():
@@ -5603,7 +6087,7 @@ def GetPoreSizeList():
 		_return = service_client.get().GetPoreSizeList()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetPoreSizeIds():
@@ -5614,7 +6098,7 @@ def GetPoreSizeIds():
 		_return = service_client.get().GetPoreSizeIds()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetPoreSizeNames():
@@ -5625,7 +6109,7 @@ def GetPoreSizeNames():
 		_return = service_client.get().GetPoreSizeNames()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def AddMorePoreSize(objs):
@@ -5635,7 +6119,7 @@ def AddMorePoreSize(objs):
 		service_client.get().AddMorePoreSize(objs)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def DeleteMorePoreSize(obj_ids):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
@@ -5643,7 +6127,7 @@ def DeleteMorePoreSize(obj_ids):
 		service_client.get().DeleteMorePoreSize(obj_ids)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def GetPoreSizeByFields(fields):
 	_return = PoreSize()
 	try:
@@ -5652,7 +6136,7 @@ def GetPoreSizeByFields(fields):
 		_return = service_client.get().GetPoreSizeByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetPoreSizeByField1(field, value):
@@ -5663,7 +6147,7 @@ def GetPoreSizeByField1(field, value):
 		_return = service_client.get().GetPoreSizeByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetPoreSizeByField2(field1, value1, field2, value2):
@@ -5674,7 +6158,7 @@ def GetPoreSizeByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetPoreSizeByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetPoreSizeListByFields(fields):
@@ -5685,7 +6169,7 @@ def GetPoreSizeListByFields(fields):
 		_return = service_client.get().GetPoreSizeListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetPoreSizeListByField1(field, value):
@@ -5696,7 +6180,7 @@ def GetPoreSizeListByField1(field, value):
 		_return = service_client.get().GetPoreSizeListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetPoreSizeListByField2(field1, value1, field2, value2):
@@ -5707,7 +6191,7 @@ def GetPoreSizeListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetPoreSizeListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetPoreSizeIdByFields(fields):
@@ -5718,7 +6202,7 @@ def GetPoreSizeIdByFields(fields):
 		_return = service_client.get().GetPoreSizeIdByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetPoreSizeIdByField1(field, value):
@@ -5729,7 +6213,7 @@ def GetPoreSizeIdByField1(field, value):
 		_return = service_client.get().GetPoreSizeIdByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetPoreSizeIdByField2(field1, value1, field2, value2):
@@ -5740,7 +6224,7 @@ def GetPoreSizeIdByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetPoreSizeIdByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetPoreSizeIdListByFields(fields):
@@ -5751,7 +6235,7 @@ def GetPoreSizeIdListByFields(fields):
 		_return = service_client.get().GetPoreSizeIdListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetPoreSizeIdListByField1(field, value):
@@ -5762,7 +6246,7 @@ def GetPoreSizeIdListByField1(field, value):
 		_return = service_client.get().GetPoreSizeIdListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetPoreSizeIdListByField2(field1, value1, field2, value2):
@@ -5773,7 +6257,29 @@ def GetPoreSizeIdListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetPoreSizeIdListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetPoreSizeListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetPoreSizeListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetPoreSizeIdListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetPoreSizeIdListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
 		_return = []
 	return _return
 
@@ -5788,7 +6294,7 @@ def AddResAbundance(res_abundance):
 		ret = service_client.get().AddResAbundance(res_abundance)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = -1
 	return ret
 def DeleteResAbundance(id):
@@ -5796,10 +6302,10 @@ def DeleteResAbundance(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		ret = service_client.get().DeleteResAbundance(id)
+		ret = service_client.get().DeleteResAbundance(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def UpdateResAbundance(res_abundance):
@@ -5810,7 +6316,7 @@ def UpdateResAbundance(res_abundance):
 		ret = service_client.get().UpdateResAbundance(res_abundance)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def GetResAbundanceById(id):
@@ -5818,10 +6324,10 @@ def GetResAbundanceById(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetResAbundanceById(id)
+		_return = service_client.get().GetResAbundanceById(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetResAbundanceByForeignKey(fkey, id):
@@ -5829,10 +6335,10 @@ def GetResAbundanceByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetResAbundanceByForeignKey(fkey, id)
+		_return = service_client.get().GetResAbundanceByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetResAbundanceIdByForeignKey(fkey, id):
@@ -5840,10 +6346,10 @@ def GetResAbundanceIdByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetResAbundanceIdByForeignKey(fkey, id)
+		_return = service_client.get().GetResAbundanceIdByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetResAbundanceList():
@@ -5854,7 +6360,7 @@ def GetResAbundanceList():
 		_return = service_client.get().GetResAbundanceList()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetResAbundanceIds():
@@ -5865,7 +6371,7 @@ def GetResAbundanceIds():
 		_return = service_client.get().GetResAbundanceIds()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetResAbundanceNames():
@@ -5876,7 +6382,7 @@ def GetResAbundanceNames():
 		_return = service_client.get().GetResAbundanceNames()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def AddMoreResAbundance(objs):
@@ -5886,7 +6392,7 @@ def AddMoreResAbundance(objs):
 		service_client.get().AddMoreResAbundance(objs)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def DeleteMoreResAbundance(obj_ids):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
@@ -5894,7 +6400,7 @@ def DeleteMoreResAbundance(obj_ids):
 		service_client.get().DeleteMoreResAbundance(obj_ids)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def GetResAbundanceByFields(fields):
 	_return = ResAbundance()
 	try:
@@ -5903,7 +6409,7 @@ def GetResAbundanceByFields(fields):
 		_return = service_client.get().GetResAbundanceByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetResAbundanceByField1(field, value):
@@ -5914,7 +6420,7 @@ def GetResAbundanceByField1(field, value):
 		_return = service_client.get().GetResAbundanceByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetResAbundanceByField2(field1, value1, field2, value2):
@@ -5925,7 +6431,7 @@ def GetResAbundanceByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetResAbundanceByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetResAbundanceListByFields(fields):
@@ -5936,7 +6442,7 @@ def GetResAbundanceListByFields(fields):
 		_return = service_client.get().GetResAbundanceListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetResAbundanceListByField1(field, value):
@@ -5947,7 +6453,7 @@ def GetResAbundanceListByField1(field, value):
 		_return = service_client.get().GetResAbundanceListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetResAbundanceListByField2(field1, value1, field2, value2):
@@ -5958,7 +6464,7 @@ def GetResAbundanceListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetResAbundanceListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetResAbundanceIdByFields(fields):
@@ -5969,7 +6475,7 @@ def GetResAbundanceIdByFields(fields):
 		_return = service_client.get().GetResAbundanceIdByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetResAbundanceIdByField1(field, value):
@@ -5980,7 +6486,7 @@ def GetResAbundanceIdByField1(field, value):
 		_return = service_client.get().GetResAbundanceIdByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetResAbundanceIdByField2(field1, value1, field2, value2):
@@ -5991,7 +6497,7 @@ def GetResAbundanceIdByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetResAbundanceIdByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetResAbundanceIdListByFields(fields):
@@ -6002,7 +6508,7 @@ def GetResAbundanceIdListByFields(fields):
 		_return = service_client.get().GetResAbundanceIdListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetResAbundanceIdListByField1(field, value):
@@ -6013,7 +6519,7 @@ def GetResAbundanceIdListByField1(field, value):
 		_return = service_client.get().GetResAbundanceIdListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetResAbundanceIdListByField2(field1, value1, field2, value2):
@@ -6024,7 +6530,29 @@ def GetResAbundanceIdListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetResAbundanceIdListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetResAbundanceListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetResAbundanceListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetResAbundanceIdListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetResAbundanceIdListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
 		_return = []
 	return _return
 
@@ -6039,7 +6567,7 @@ def AddRock(rock):
 		ret = service_client.get().AddRock(rock)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = -1
 	return ret
 def DeleteRock(id):
@@ -6047,10 +6575,10 @@ def DeleteRock(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		ret = service_client.get().DeleteRock(id)
+		ret = service_client.get().DeleteRock(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def UpdateRock(rock):
@@ -6061,7 +6589,7 @@ def UpdateRock(rock):
 		ret = service_client.get().UpdateRock(rock)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def GetRockById(id):
@@ -6069,10 +6597,10 @@ def GetRockById(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetRockById(id)
+		_return = service_client.get().GetRockById(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetRockByForeignKey(fkey, id):
@@ -6080,10 +6608,10 @@ def GetRockByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetRockByForeignKey(fkey, id)
+		_return = service_client.get().GetRockByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetRockIdByForeignKey(fkey, id):
@@ -6091,10 +6619,10 @@ def GetRockIdByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetRockIdByForeignKey(fkey, id)
+		_return = service_client.get().GetRockIdByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetRockList():
@@ -6105,7 +6633,7 @@ def GetRockList():
 		_return = service_client.get().GetRockList()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetRockIds():
@@ -6116,7 +6644,7 @@ def GetRockIds():
 		_return = service_client.get().GetRockIds()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetRockNames():
@@ -6127,7 +6655,7 @@ def GetRockNames():
 		_return = service_client.get().GetRockNames()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def AddMoreRock(objs):
@@ -6137,7 +6665,7 @@ def AddMoreRock(objs):
 		service_client.get().AddMoreRock(objs)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def DeleteMoreRock(obj_ids):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
@@ -6145,7 +6673,7 @@ def DeleteMoreRock(obj_ids):
 		service_client.get().DeleteMoreRock(obj_ids)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def GetRockByFields(fields):
 	_return = Rock()
 	try:
@@ -6154,7 +6682,7 @@ def GetRockByFields(fields):
 		_return = service_client.get().GetRockByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetRockByField1(field, value):
@@ -6165,7 +6693,7 @@ def GetRockByField1(field, value):
 		_return = service_client.get().GetRockByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetRockByField2(field1, value1, field2, value2):
@@ -6176,7 +6704,7 @@ def GetRockByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetRockByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetRockListByFields(fields):
@@ -6187,7 +6715,7 @@ def GetRockListByFields(fields):
 		_return = service_client.get().GetRockListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetRockListByField1(field, value):
@@ -6198,7 +6726,7 @@ def GetRockListByField1(field, value):
 		_return = service_client.get().GetRockListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetRockListByField2(field1, value1, field2, value2):
@@ -6209,7 +6737,7 @@ def GetRockListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetRockListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetRockIdByFields(fields):
@@ -6220,7 +6748,7 @@ def GetRockIdByFields(fields):
 		_return = service_client.get().GetRockIdByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetRockIdByField1(field, value):
@@ -6231,7 +6759,7 @@ def GetRockIdByField1(field, value):
 		_return = service_client.get().GetRockIdByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetRockIdByField2(field1, value1, field2, value2):
@@ -6242,7 +6770,7 @@ def GetRockIdByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetRockIdByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetRockIdListByFields(fields):
@@ -6253,7 +6781,7 @@ def GetRockIdListByFields(fields):
 		_return = service_client.get().GetRockIdListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetRockIdListByField1(field, value):
@@ -6264,7 +6792,7 @@ def GetRockIdListByField1(field, value):
 		_return = service_client.get().GetRockIdListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetRockIdListByField2(field1, value1, field2, value2):
@@ -6275,7 +6803,29 @@ def GetRockIdListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetRockIdListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetRockListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetRockListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetRockIdListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetRockIdListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
 		_return = []
 	return _return
 
@@ -6290,7 +6840,7 @@ def AddSysInfo(sys_info):
 		ret = service_client.get().AddSysInfo(sys_info)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = -1
 	return ret
 def DeleteSysInfo(id):
@@ -6298,10 +6848,10 @@ def DeleteSysInfo(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		ret = service_client.get().DeleteSysInfo(id)
+		ret = service_client.get().DeleteSysInfo(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def UpdateSysInfo(sys_info):
@@ -6312,7 +6862,7 @@ def UpdateSysInfo(sys_info):
 		ret = service_client.get().UpdateSysInfo(sys_info)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def GetSysInfoById(id):
@@ -6320,10 +6870,10 @@ def GetSysInfoById(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetSysInfoById(id)
+		_return = service_client.get().GetSysInfoById(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetSysInfoByForeignKey(fkey, id):
@@ -6331,10 +6881,10 @@ def GetSysInfoByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetSysInfoByForeignKey(fkey, id)
+		_return = service_client.get().GetSysInfoByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetSysInfoIdByForeignKey(fkey, id):
@@ -6342,10 +6892,10 @@ def GetSysInfoIdByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetSysInfoIdByForeignKey(fkey, id)
+		_return = service_client.get().GetSysInfoIdByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetSysInfoList():
@@ -6356,7 +6906,7 @@ def GetSysInfoList():
 		_return = service_client.get().GetSysInfoList()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetSysInfoIds():
@@ -6367,7 +6917,7 @@ def GetSysInfoIds():
 		_return = service_client.get().GetSysInfoIds()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetSysInfoNames():
@@ -6378,7 +6928,7 @@ def GetSysInfoNames():
 		_return = service_client.get().GetSysInfoNames()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def AddMoreSysInfo(objs):
@@ -6388,7 +6938,7 @@ def AddMoreSysInfo(objs):
 		service_client.get().AddMoreSysInfo(objs)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def DeleteMoreSysInfo(obj_ids):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
@@ -6396,7 +6946,7 @@ def DeleteMoreSysInfo(obj_ids):
 		service_client.get().DeleteMoreSysInfo(obj_ids)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def GetSysInfoByFields(fields):
 	_return = SysInfo()
 	try:
@@ -6405,7 +6955,7 @@ def GetSysInfoByFields(fields):
 		_return = service_client.get().GetSysInfoByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetSysInfoByField1(field, value):
@@ -6416,7 +6966,7 @@ def GetSysInfoByField1(field, value):
 		_return = service_client.get().GetSysInfoByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetSysInfoByField2(field1, value1, field2, value2):
@@ -6427,7 +6977,7 @@ def GetSysInfoByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetSysInfoByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetSysInfoListByFields(fields):
@@ -6438,7 +6988,7 @@ def GetSysInfoListByFields(fields):
 		_return = service_client.get().GetSysInfoListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetSysInfoListByField1(field, value):
@@ -6449,7 +6999,7 @@ def GetSysInfoListByField1(field, value):
 		_return = service_client.get().GetSysInfoListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetSysInfoListByField2(field1, value1, field2, value2):
@@ -6460,7 +7010,7 @@ def GetSysInfoListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetSysInfoListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetSysInfoIdByFields(fields):
@@ -6471,7 +7021,7 @@ def GetSysInfoIdByFields(fields):
 		_return = service_client.get().GetSysInfoIdByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetSysInfoIdByField1(field, value):
@@ -6482,7 +7032,7 @@ def GetSysInfoIdByField1(field, value):
 		_return = service_client.get().GetSysInfoIdByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetSysInfoIdByField2(field1, value1, field2, value2):
@@ -6493,7 +7043,7 @@ def GetSysInfoIdByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetSysInfoIdByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetSysInfoIdListByFields(fields):
@@ -6504,7 +7054,7 @@ def GetSysInfoIdListByFields(fields):
 		_return = service_client.get().GetSysInfoIdListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetSysInfoIdListByField1(field, value):
@@ -6515,7 +7065,7 @@ def GetSysInfoIdListByField1(field, value):
 		_return = service_client.get().GetSysInfoIdListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetSysInfoIdListByField2(field1, value1, field2, value2):
@@ -6526,7 +7076,29 @@ def GetSysInfoIdListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetSysInfoIdListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetSysInfoListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetSysInfoListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetSysInfoIdListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetSysInfoIdListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
 		_return = []
 	return _return
 
@@ -6541,7 +7113,7 @@ def AddTechMode(tech_mode):
 		ret = service_client.get().AddTechMode(tech_mode)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = -1
 	return ret
 def DeleteTechMode(id):
@@ -6549,10 +7121,10 @@ def DeleteTechMode(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		ret = service_client.get().DeleteTechMode(id)
+		ret = service_client.get().DeleteTechMode(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def UpdateTechMode(tech_mode):
@@ -6563,7 +7135,7 @@ def UpdateTechMode(tech_mode):
 		ret = service_client.get().UpdateTechMode(tech_mode)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def GetTechModeById(id):
@@ -6571,10 +7143,10 @@ def GetTechModeById(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetTechModeById(id)
+		_return = service_client.get().GetTechModeById(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetTechModeByForeignKey(fkey, id):
@@ -6582,10 +7154,10 @@ def GetTechModeByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetTechModeByForeignKey(fkey, id)
+		_return = service_client.get().GetTechModeByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetTechModeIdByForeignKey(fkey, id):
@@ -6593,10 +7165,10 @@ def GetTechModeIdByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetTechModeIdByForeignKey(fkey, id)
+		_return = service_client.get().GetTechModeIdByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetTechModeList():
@@ -6607,7 +7179,7 @@ def GetTechModeList():
 		_return = service_client.get().GetTechModeList()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetTechModeIds():
@@ -6618,7 +7190,7 @@ def GetTechModeIds():
 		_return = service_client.get().GetTechModeIds()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetTechModeNames():
@@ -6629,7 +7201,7 @@ def GetTechModeNames():
 		_return = service_client.get().GetTechModeNames()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def AddMoreTechMode(objs):
@@ -6639,7 +7211,7 @@ def AddMoreTechMode(objs):
 		service_client.get().AddMoreTechMode(objs)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def DeleteMoreTechMode(obj_ids):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
@@ -6647,7 +7219,7 @@ def DeleteMoreTechMode(obj_ids):
 		service_client.get().DeleteMoreTechMode(obj_ids)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def GetTechModeByFields(fields):
 	_return = TechMode()
 	try:
@@ -6656,7 +7228,7 @@ def GetTechModeByFields(fields):
 		_return = service_client.get().GetTechModeByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetTechModeByField1(field, value):
@@ -6667,7 +7239,7 @@ def GetTechModeByField1(field, value):
 		_return = service_client.get().GetTechModeByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetTechModeByField2(field1, value1, field2, value2):
@@ -6678,7 +7250,7 @@ def GetTechModeByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetTechModeByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetTechModeListByFields(fields):
@@ -6689,7 +7261,7 @@ def GetTechModeListByFields(fields):
 		_return = service_client.get().GetTechModeListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetTechModeListByField1(field, value):
@@ -6700,7 +7272,7 @@ def GetTechModeListByField1(field, value):
 		_return = service_client.get().GetTechModeListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetTechModeListByField2(field1, value1, field2, value2):
@@ -6711,7 +7283,7 @@ def GetTechModeListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetTechModeListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetTechModeIdByFields(fields):
@@ -6722,7 +7294,7 @@ def GetTechModeIdByFields(fields):
 		_return = service_client.get().GetTechModeIdByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetTechModeIdByField1(field, value):
@@ -6733,7 +7305,7 @@ def GetTechModeIdByField1(field, value):
 		_return = service_client.get().GetTechModeIdByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetTechModeIdByField2(field1, value1, field2, value2):
@@ -6744,7 +7316,7 @@ def GetTechModeIdByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetTechModeIdByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetTechModeIdListByFields(fields):
@@ -6755,7 +7327,7 @@ def GetTechModeIdListByFields(fields):
 		_return = service_client.get().GetTechModeIdListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetTechModeIdListByField1(field, value):
@@ -6766,7 +7338,7 @@ def GetTechModeIdListByField1(field, value):
 		_return = service_client.get().GetTechModeIdListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetTechModeIdListByField2(field1, value1, field2, value2):
@@ -6777,7 +7349,29 @@ def GetTechModeIdListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetTechModeIdListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetTechModeListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetTechModeListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetTechModeIdListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetTechModeIdListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
 		_return = []
 	return _return
 
@@ -6792,7 +7386,7 @@ def AddTechnology(technology):
 		ret = service_client.get().AddTechnology(technology)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = -1
 	return ret
 def DeleteTechnology(id):
@@ -6800,10 +7394,10 @@ def DeleteTechnology(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		ret = service_client.get().DeleteTechnology(id)
+		ret = service_client.get().DeleteTechnology(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def UpdateTechnology(technology):
@@ -6814,7 +7408,7 @@ def UpdateTechnology(technology):
 		ret = service_client.get().UpdateTechnology(technology)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def GetTechnologyById(id):
@@ -6822,10 +7416,10 @@ def GetTechnologyById(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetTechnologyById(id)
+		_return = service_client.get().GetTechnologyById(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetTechnologyByForeignKey(fkey, id):
@@ -6833,10 +7427,10 @@ def GetTechnologyByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetTechnologyByForeignKey(fkey, id)
+		_return = service_client.get().GetTechnologyByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetTechnologyIdByForeignKey(fkey, id):
@@ -6844,10 +7438,10 @@ def GetTechnologyIdByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetTechnologyIdByForeignKey(fkey, id)
+		_return = service_client.get().GetTechnologyIdByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetTechnologyList():
@@ -6858,7 +7452,7 @@ def GetTechnologyList():
 		_return = service_client.get().GetTechnologyList()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetTechnologyIds():
@@ -6869,7 +7463,7 @@ def GetTechnologyIds():
 		_return = service_client.get().GetTechnologyIds()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetTechnologyNames():
@@ -6880,7 +7474,7 @@ def GetTechnologyNames():
 		_return = service_client.get().GetTechnologyNames()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def AddMoreTechnology(objs):
@@ -6890,7 +7484,7 @@ def AddMoreTechnology(objs):
 		service_client.get().AddMoreTechnology(objs)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def DeleteMoreTechnology(obj_ids):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
@@ -6898,7 +7492,7 @@ def DeleteMoreTechnology(obj_ids):
 		service_client.get().DeleteMoreTechnology(obj_ids)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def GetTechnologyByFields(fields):
 	_return = Technology()
 	try:
@@ -6907,7 +7501,7 @@ def GetTechnologyByFields(fields):
 		_return = service_client.get().GetTechnologyByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetTechnologyByField1(field, value):
@@ -6918,7 +7512,7 @@ def GetTechnologyByField1(field, value):
 		_return = service_client.get().GetTechnologyByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetTechnologyByField2(field1, value1, field2, value2):
@@ -6929,7 +7523,7 @@ def GetTechnologyByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetTechnologyByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetTechnologyListByFields(fields):
@@ -6940,7 +7534,7 @@ def GetTechnologyListByFields(fields):
 		_return = service_client.get().GetTechnologyListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetTechnologyListByField1(field, value):
@@ -6951,7 +7545,7 @@ def GetTechnologyListByField1(field, value):
 		_return = service_client.get().GetTechnologyListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetTechnologyListByField2(field1, value1, field2, value2):
@@ -6962,7 +7556,7 @@ def GetTechnologyListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetTechnologyListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetTechnologyIdByFields(fields):
@@ -6973,7 +7567,7 @@ def GetTechnologyIdByFields(fields):
 		_return = service_client.get().GetTechnologyIdByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetTechnologyIdByField1(field, value):
@@ -6984,7 +7578,7 @@ def GetTechnologyIdByField1(field, value):
 		_return = service_client.get().GetTechnologyIdByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetTechnologyIdByField2(field1, value1, field2, value2):
@@ -6995,7 +7589,7 @@ def GetTechnologyIdByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetTechnologyIdByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetTechnologyIdListByFields(fields):
@@ -7006,7 +7600,7 @@ def GetTechnologyIdListByFields(fields):
 		_return = service_client.get().GetTechnologyIdListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetTechnologyIdListByField1(field, value):
@@ -7017,7 +7611,7 @@ def GetTechnologyIdListByField1(field, value):
 		_return = service_client.get().GetTechnologyIdListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetTechnologyIdListByField2(field1, value1, field2, value2):
@@ -7028,7 +7622,29 @@ def GetTechnologyIdListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetTechnologyIdListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetTechnologyListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetTechnologyListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetTechnologyIdListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetTechnologyIdListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
 		_return = []
 	return _return
 
@@ -7043,7 +7659,7 @@ def AddTopoGeo(topo_geo):
 		ret = service_client.get().AddTopoGeo(topo_geo)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = -1
 	return ret
 def DeleteTopoGeo(id):
@@ -7051,10 +7667,10 @@ def DeleteTopoGeo(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		ret = service_client.get().DeleteTopoGeo(id)
+		ret = service_client.get().DeleteTopoGeo(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def UpdateTopoGeo(topo_geo):
@@ -7065,7 +7681,7 @@ def UpdateTopoGeo(topo_geo):
 		ret = service_client.get().UpdateTopoGeo(topo_geo)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def GetTopoGeoById(id):
@@ -7073,10 +7689,10 @@ def GetTopoGeoById(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetTopoGeoById(id)
+		_return = service_client.get().GetTopoGeoById(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetTopoGeoByForeignKey(fkey, id):
@@ -7084,10 +7700,10 @@ def GetTopoGeoByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetTopoGeoByForeignKey(fkey, id)
+		_return = service_client.get().GetTopoGeoByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetTopoGeoIdByForeignKey(fkey, id):
@@ -7095,10 +7711,10 @@ def GetTopoGeoIdByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetTopoGeoIdByForeignKey(fkey, id)
+		_return = service_client.get().GetTopoGeoIdByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetTopoGeoList():
@@ -7109,7 +7725,7 @@ def GetTopoGeoList():
 		_return = service_client.get().GetTopoGeoList()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetTopoGeoIds():
@@ -7120,7 +7736,7 @@ def GetTopoGeoIds():
 		_return = service_client.get().GetTopoGeoIds()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetTopoGeoNames():
@@ -7131,7 +7747,7 @@ def GetTopoGeoNames():
 		_return = service_client.get().GetTopoGeoNames()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def AddMoreTopoGeo(objs):
@@ -7141,7 +7757,7 @@ def AddMoreTopoGeo(objs):
 		service_client.get().AddMoreTopoGeo(objs)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def DeleteMoreTopoGeo(obj_ids):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
@@ -7149,7 +7765,7 @@ def DeleteMoreTopoGeo(obj_ids):
 		service_client.get().DeleteMoreTopoGeo(obj_ids)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def GetTopoGeoByFields(fields):
 	_return = TopoGeo()
 	try:
@@ -7158,7 +7774,7 @@ def GetTopoGeoByFields(fields):
 		_return = service_client.get().GetTopoGeoByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetTopoGeoByField1(field, value):
@@ -7169,7 +7785,7 @@ def GetTopoGeoByField1(field, value):
 		_return = service_client.get().GetTopoGeoByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetTopoGeoByField2(field1, value1, field2, value2):
@@ -7180,7 +7796,7 @@ def GetTopoGeoByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetTopoGeoByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetTopoGeoListByFields(fields):
@@ -7191,7 +7807,7 @@ def GetTopoGeoListByFields(fields):
 		_return = service_client.get().GetTopoGeoListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetTopoGeoListByField1(field, value):
@@ -7202,7 +7818,7 @@ def GetTopoGeoListByField1(field, value):
 		_return = service_client.get().GetTopoGeoListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetTopoGeoListByField2(field1, value1, field2, value2):
@@ -7213,7 +7829,7 @@ def GetTopoGeoListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetTopoGeoListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetTopoGeoIdByFields(fields):
@@ -7224,7 +7840,7 @@ def GetTopoGeoIdByFields(fields):
 		_return = service_client.get().GetTopoGeoIdByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetTopoGeoIdByField1(field, value):
@@ -7235,7 +7851,7 @@ def GetTopoGeoIdByField1(field, value):
 		_return = service_client.get().GetTopoGeoIdByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetTopoGeoIdByField2(field1, value1, field2, value2):
@@ -7246,7 +7862,7 @@ def GetTopoGeoIdByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetTopoGeoIdByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetTopoGeoIdListByFields(fields):
@@ -7257,7 +7873,7 @@ def GetTopoGeoIdListByFields(fields):
 		_return = service_client.get().GetTopoGeoIdListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetTopoGeoIdListByField1(field, value):
@@ -7268,7 +7884,7 @@ def GetTopoGeoIdListByField1(field, value):
 		_return = service_client.get().GetTopoGeoIdListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetTopoGeoIdListByField2(field1, value1, field2, value2):
@@ -7279,7 +7895,29 @@ def GetTopoGeoIdListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetTopoGeoIdListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetTopoGeoListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetTopoGeoListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetTopoGeoIdListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetTopoGeoIdListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
 		_return = []
 	return _return
 
@@ -7294,7 +7932,7 @@ def AddTunnel(tunnel):
 		ret = service_client.get().AddTunnel(tunnel)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = -1
 	return ret
 def DeleteTunnel(id):
@@ -7302,10 +7940,10 @@ def DeleteTunnel(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		ret = service_client.get().DeleteTunnel(id)
+		ret = service_client.get().DeleteTunnel(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def UpdateTunnel(tunnel):
@@ -7316,7 +7954,7 @@ def UpdateTunnel(tunnel):
 		ret = service_client.get().UpdateTunnel(tunnel)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def GetTunnelById(id):
@@ -7324,10 +7962,10 @@ def GetTunnelById(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetTunnelById(id)
+		_return = service_client.get().GetTunnelById(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetTunnelByForeignKey(fkey, id):
@@ -7335,10 +7973,10 @@ def GetTunnelByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetTunnelByForeignKey(fkey, id)
+		_return = service_client.get().GetTunnelByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetTunnelIdByForeignKey(fkey, id):
@@ -7346,10 +7984,10 @@ def GetTunnelIdByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetTunnelIdByForeignKey(fkey, id)
+		_return = service_client.get().GetTunnelIdByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetTunnelList():
@@ -7360,7 +7998,7 @@ def GetTunnelList():
 		_return = service_client.get().GetTunnelList()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetTunnelIds():
@@ -7371,7 +8009,7 @@ def GetTunnelIds():
 		_return = service_client.get().GetTunnelIds()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetTunnelNames():
@@ -7382,7 +8020,7 @@ def GetTunnelNames():
 		_return = service_client.get().GetTunnelNames()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def AddMoreTunnel(objs):
@@ -7392,7 +8030,7 @@ def AddMoreTunnel(objs):
 		service_client.get().AddMoreTunnel(objs)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def DeleteMoreTunnel(obj_ids):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
@@ -7400,7 +8038,7 @@ def DeleteMoreTunnel(obj_ids):
 		service_client.get().DeleteMoreTunnel(obj_ids)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def GetTunnelByFields(fields):
 	_return = Tunnel()
 	try:
@@ -7409,7 +8047,7 @@ def GetTunnelByFields(fields):
 		_return = service_client.get().GetTunnelByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetTunnelByField1(field, value):
@@ -7420,7 +8058,7 @@ def GetTunnelByField1(field, value):
 		_return = service_client.get().GetTunnelByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetTunnelByField2(field1, value1, field2, value2):
@@ -7431,7 +8069,7 @@ def GetTunnelByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetTunnelByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetTunnelListByFields(fields):
@@ -7442,7 +8080,7 @@ def GetTunnelListByFields(fields):
 		_return = service_client.get().GetTunnelListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetTunnelListByField1(field, value):
@@ -7453,7 +8091,7 @@ def GetTunnelListByField1(field, value):
 		_return = service_client.get().GetTunnelListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetTunnelListByField2(field1, value1, field2, value2):
@@ -7464,7 +8102,7 @@ def GetTunnelListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetTunnelListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetTunnelIdByFields(fields):
@@ -7475,7 +8113,7 @@ def GetTunnelIdByFields(fields):
 		_return = service_client.get().GetTunnelIdByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetTunnelIdByField1(field, value):
@@ -7486,7 +8124,7 @@ def GetTunnelIdByField1(field, value):
 		_return = service_client.get().GetTunnelIdByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetTunnelIdByField2(field1, value1, field2, value2):
@@ -7497,7 +8135,7 @@ def GetTunnelIdByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetTunnelIdByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetTunnelIdListByFields(fields):
@@ -7508,7 +8146,7 @@ def GetTunnelIdListByFields(fields):
 		_return = service_client.get().GetTunnelIdListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetTunnelIdListByField1(field, value):
@@ -7519,7 +8157,7 @@ def GetTunnelIdListByField1(field, value):
 		_return = service_client.get().GetTunnelIdListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetTunnelIdListByField2(field1, value1, field2, value2):
@@ -7530,7 +8168,29 @@ def GetTunnelIdListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetTunnelIdListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetTunnelListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetTunnelListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetTunnelIdListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetTunnelIdListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
 		_return = []
 	return _return
 
@@ -7545,7 +8205,7 @@ def AddWorkArea(work_area):
 		ret = service_client.get().AddWorkArea(work_area)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = -1
 	return ret
 def DeleteWorkArea(id):
@@ -7553,10 +8213,10 @@ def DeleteWorkArea(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		ret = service_client.get().DeleteWorkArea(id)
+		ret = service_client.get().DeleteWorkArea(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def UpdateWorkArea(work_area):
@@ -7567,7 +8227,7 @@ def UpdateWorkArea(work_area):
 		ret = service_client.get().UpdateWorkArea(work_area)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def GetWorkAreaById(id):
@@ -7575,10 +8235,10 @@ def GetWorkAreaById(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetWorkAreaById(id)
+		_return = service_client.get().GetWorkAreaById(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetWorkAreaByForeignKey(fkey, id):
@@ -7586,10 +8246,10 @@ def GetWorkAreaByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetWorkAreaByForeignKey(fkey, id)
+		_return = service_client.get().GetWorkAreaByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetWorkAreaIdByForeignKey(fkey, id):
@@ -7597,10 +8257,10 @@ def GetWorkAreaIdByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetWorkAreaIdByForeignKey(fkey, id)
+		_return = service_client.get().GetWorkAreaIdByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetWorkAreaList():
@@ -7611,7 +8271,7 @@ def GetWorkAreaList():
 		_return = service_client.get().GetWorkAreaList()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetWorkAreaIds():
@@ -7622,7 +8282,7 @@ def GetWorkAreaIds():
 		_return = service_client.get().GetWorkAreaIds()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetWorkAreaNames():
@@ -7633,7 +8293,7 @@ def GetWorkAreaNames():
 		_return = service_client.get().GetWorkAreaNames()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def AddMoreWorkArea(objs):
@@ -7643,7 +8303,7 @@ def AddMoreWorkArea(objs):
 		service_client.get().AddMoreWorkArea(objs)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def DeleteMoreWorkArea(obj_ids):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
@@ -7651,7 +8311,7 @@ def DeleteMoreWorkArea(obj_ids):
 		service_client.get().DeleteMoreWorkArea(obj_ids)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def GetWorkAreaByFields(fields):
 	_return = WorkArea()
 	try:
@@ -7660,7 +8320,7 @@ def GetWorkAreaByFields(fields):
 		_return = service_client.get().GetWorkAreaByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetWorkAreaByField1(field, value):
@@ -7671,7 +8331,7 @@ def GetWorkAreaByField1(field, value):
 		_return = service_client.get().GetWorkAreaByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetWorkAreaByField2(field1, value1, field2, value2):
@@ -7682,7 +8342,7 @@ def GetWorkAreaByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetWorkAreaByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetWorkAreaListByFields(fields):
@@ -7693,7 +8353,7 @@ def GetWorkAreaListByFields(fields):
 		_return = service_client.get().GetWorkAreaListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetWorkAreaListByField1(field, value):
@@ -7704,7 +8364,7 @@ def GetWorkAreaListByField1(field, value):
 		_return = service_client.get().GetWorkAreaListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetWorkAreaListByField2(field1, value1, field2, value2):
@@ -7715,7 +8375,7 @@ def GetWorkAreaListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetWorkAreaListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetWorkAreaIdByFields(fields):
@@ -7726,7 +8386,7 @@ def GetWorkAreaIdByFields(fields):
 		_return = service_client.get().GetWorkAreaIdByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetWorkAreaIdByField1(field, value):
@@ -7737,7 +8397,7 @@ def GetWorkAreaIdByField1(field, value):
 		_return = service_client.get().GetWorkAreaIdByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetWorkAreaIdByField2(field1, value1, field2, value2):
@@ -7748,7 +8408,7 @@ def GetWorkAreaIdByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetWorkAreaIdByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetWorkAreaIdListByFields(fields):
@@ -7759,7 +8419,7 @@ def GetWorkAreaIdListByFields(fields):
 		_return = service_client.get().GetWorkAreaIdListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetWorkAreaIdListByField1(field, value):
@@ -7770,7 +8430,7 @@ def GetWorkAreaIdListByField1(field, value):
 		_return = service_client.get().GetWorkAreaIdListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetWorkAreaIdListByField2(field1, value1, field2, value2):
@@ -7781,7 +8441,29 @@ def GetWorkAreaIdListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetWorkAreaIdListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetWorkAreaListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetWorkAreaListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetWorkAreaIdListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetWorkAreaIdListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
 		_return = []
 	return _return
 
@@ -7796,7 +8478,7 @@ def AddWorkSurf(work_surf):
 		ret = service_client.get().AddWorkSurf(work_surf)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = -1
 	return ret
 def DeleteWorkSurf(id):
@@ -7804,10 +8486,10 @@ def DeleteWorkSurf(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		ret = service_client.get().DeleteWorkSurf(id)
+		ret = service_client.get().DeleteWorkSurf(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def UpdateWorkSurf(work_surf):
@@ -7818,7 +8500,7 @@ def UpdateWorkSurf(work_surf):
 		ret = service_client.get().UpdateWorkSurf(work_surf)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		ret = False
 	return ret
 def GetWorkSurfById(id):
@@ -7826,10 +8508,10 @@ def GetWorkSurfById(id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetWorkSurfById(id)
+		_return = service_client.get().GetWorkSurfById(int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetWorkSurfByForeignKey(fkey, id):
@@ -7837,10 +8519,10 @@ def GetWorkSurfByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetWorkSurfByForeignKey(fkey, id)
+		_return = service_client.get().GetWorkSurfByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetWorkSurfIdByForeignKey(fkey, id):
@@ -7848,10 +8530,10 @@ def GetWorkSurfIdByForeignKey(fkey, id):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		_return = service_client.get().GetWorkSurfIdByForeignKey(fkey, id)
+		_return = service_client.get().GetWorkSurfIdByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetWorkSurfList():
@@ -7862,7 +8544,7 @@ def GetWorkSurfList():
 		_return = service_client.get().GetWorkSurfList()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetWorkSurfIds():
@@ -7873,7 +8555,7 @@ def GetWorkSurfIds():
 		_return = service_client.get().GetWorkSurfIds()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetWorkSurfNames():
@@ -7884,7 +8566,7 @@ def GetWorkSurfNames():
 		_return = service_client.get().GetWorkSurfNames()
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def AddMoreWorkSurf(objs):
@@ -7894,7 +8576,7 @@ def AddMoreWorkSurf(objs):
 		service_client.get().AddMoreWorkSurf(objs)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def DeleteMoreWorkSurf(obj_ids):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
@@ -7902,7 +8584,7 @@ def DeleteMoreWorkSurf(obj_ids):
 		service_client.get().DeleteMoreWorkSurf(obj_ids)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 def GetWorkSurfByFields(fields):
 	_return = WorkSurf()
 	try:
@@ -7911,7 +8593,7 @@ def GetWorkSurfByFields(fields):
 		_return = service_client.get().GetWorkSurfByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetWorkSurfByField1(field, value):
@@ -7922,7 +8604,7 @@ def GetWorkSurfByField1(field, value):
 		_return = service_client.get().GetWorkSurfByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetWorkSurfByField2(field1, value1, field2, value2):
@@ -7933,7 +8615,7 @@ def GetWorkSurfByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetWorkSurfByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return.id = -1
 	return _return
 def GetWorkSurfListByFields(fields):
@@ -7944,7 +8626,7 @@ def GetWorkSurfListByFields(fields):
 		_return = service_client.get().GetWorkSurfListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetWorkSurfListByField1(field, value):
@@ -7955,7 +8637,7 @@ def GetWorkSurfListByField1(field, value):
 		_return = service_client.get().GetWorkSurfListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetWorkSurfListByField2(field1, value1, field2, value2):
@@ -7966,7 +8648,7 @@ def GetWorkSurfListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetWorkSurfListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetWorkSurfIdByFields(fields):
@@ -7977,7 +8659,7 @@ def GetWorkSurfIdByFields(fields):
 		_return = service_client.get().GetWorkSurfIdByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetWorkSurfIdByField1(field, value):
@@ -7988,7 +8670,7 @@ def GetWorkSurfIdByField1(field, value):
 		_return = service_client.get().GetWorkSurfIdByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetWorkSurfIdByField2(field1, value1, field2, value2):
@@ -7999,7 +8681,7 @@ def GetWorkSurfIdByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetWorkSurfIdByField2(field1, value2, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = -1
 	return _return
 def GetWorkSurfIdListByFields(fields):
@@ -8010,7 +8692,7 @@ def GetWorkSurfIdListByFields(fields):
 		_return = service_client.get().GetWorkSurfIdListByFields(fields)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetWorkSurfIdListByField1(field, value):
@@ -8021,7 +8703,7 @@ def GetWorkSurfIdListByField1(field, value):
 		_return = service_client.get().GetWorkSurfIdListByField1(field, value)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
 		_return = []
 	return _return
 def GetWorkSurfIdListByField2(field1, value1, field2, value2):
@@ -8032,7 +8714,29 @@ def GetWorkSurfIdListByField2(field1, value1, field2, value2):
 		_return = service_client.get().GetWorkSurfIdListByField2(field1, value1, field2, value2)
 		service_client.close()
 	except Exception, e:
-		print e
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetWorkSurfListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetWorkSurfListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetWorkSurfIdListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetWorkSurfIdListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
 		_return = []
 	return _return
 

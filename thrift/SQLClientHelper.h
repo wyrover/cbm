@@ -31,6 +31,8 @@ public:
 	static void GetAccountIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields);
 	static void GetAccountIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value);
 	static void GetAccountIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static void GetAccountListByForeignKey(std::vector<cbm::Account> & _return, const std::string& fkey, const int32_t id);
+	static void GetAccountIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
 
 	//AdjLayer 类型的CRUD操作
 	static int32_t AddAdjLayer(const cbm::AdjLayer & adj_layer);
@@ -56,6 +58,8 @@ public:
 	static void GetAdjLayerIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields);
 	static void GetAdjLayerIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value);
 	static void GetAdjLayerIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static void GetAdjLayerListByForeignKey(std::vector<cbm::AdjLayer> & _return, const std::string& fkey, const int32_t id);
+	static void GetAdjLayerIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
 
 	//Coal 类型的CRUD操作
 	static int32_t AddCoal(const cbm::Coal & coal);
@@ -81,6 +85,8 @@ public:
 	static void GetCoalIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields);
 	static void GetCoalIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value);
 	static void GetCoalIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static void GetCoalListByForeignKey(std::vector<cbm::Coal> & _return, const std::string& fkey, const int32_t id);
+	static void GetCoalIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
 
 	//Complexity 类型的CRUD操作
 	static int32_t AddComplexity(const cbm::Complexity & complexity);
@@ -106,6 +112,8 @@ public:
 	static void GetComplexityIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields);
 	static void GetComplexityIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value);
 	static void GetComplexityIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static void GetComplexityListByForeignKey(std::vector<cbm::Complexity> & _return, const std::string& fkey, const int32_t id);
+	static void GetComplexityIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
 
 	//DesignDrillingSurfTechnology 类型的CRUD操作
 	static int32_t AddDesignDrillingSurfTechnology(const cbm::DesignDrillingSurfTechnology & design_drilling_surf_technology);
@@ -131,6 +139,8 @@ public:
 	static void GetDesignDrillingSurfTechnologyIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields);
 	static void GetDesignDrillingSurfTechnologyIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value);
 	static void GetDesignDrillingSurfTechnologyIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static void GetDesignDrillingSurfTechnologyListByForeignKey(std::vector<cbm::DesignDrillingSurfTechnology> & _return, const std::string& fkey, const int32_t id);
+	static void GetDesignDrillingSurfTechnologyIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
 
 	//DesignGoafTechnology 类型的CRUD操作
 	static int32_t AddDesignGoafTechnology(const cbm::DesignGoafTechnology & design_goaf_technology);
@@ -156,6 +166,8 @@ public:
 	static void GetDesignGoafTechnologyIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields);
 	static void GetDesignGoafTechnologyIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value);
 	static void GetDesignGoafTechnologyIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static void GetDesignGoafTechnologyListByForeignKey(std::vector<cbm::DesignGoafTechnology> & _return, const std::string& fkey, const int32_t id);
+	static void GetDesignGoafTechnologyIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
 
 	//DesignPore 类型的CRUD操作
 	static int32_t AddDesignPore(const cbm::DesignPore & design_pore);
@@ -181,6 +193,8 @@ public:
 	static void GetDesignPoreIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields);
 	static void GetDesignPoreIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value);
 	static void GetDesignPoreIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static void GetDesignPoreListByForeignKey(std::vector<cbm::DesignPore> & _return, const std::string& fkey, const int32_t id);
+	static void GetDesignPoreIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
 
 	//DesignSite 类型的CRUD操作
 	static int32_t AddDesignSite(const cbm::DesignSite & design_site);
@@ -206,6 +220,8 @@ public:
 	static void GetDesignSiteIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields);
 	static void GetDesignSiteIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value);
 	static void GetDesignSiteIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static void GetDesignSiteListByForeignKey(std::vector<cbm::DesignSite> & _return, const std::string& fkey, const int32_t id);
+	static void GetDesignSiteIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
 
 	//DesignTechnology 类型的CRUD操作
 	static int32_t AddDesignTechnology(const cbm::DesignTechnology & design_technology);
@@ -231,6 +247,8 @@ public:
 	static void GetDesignTechnologyIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields);
 	static void GetDesignTechnologyIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value);
 	static void GetDesignTechnologyIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static void GetDesignTechnologyListByForeignKey(std::vector<cbm::DesignTechnology> & _return, const std::string& fkey, const int32_t id);
+	static void GetDesignTechnologyIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
 
 	//DesignWorkSurfTechnology 类型的CRUD操作
 	static int32_t AddDesignWorkSurfTechnology(const cbm::DesignWorkSurfTechnology & design_work_surf_technology);
@@ -256,6 +274,8 @@ public:
 	static void GetDesignWorkSurfTechnologyIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields);
 	static void GetDesignWorkSurfTechnologyIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value);
 	static void GetDesignWorkSurfTechnologyIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static void GetDesignWorkSurfTechnologyListByForeignKey(std::vector<cbm::DesignWorkSurfTechnology> & _return, const std::string& fkey, const int32_t id);
+	static void GetDesignWorkSurfTechnologyIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
 
 	//DrillingRadiusParam 类型的CRUD操作
 	static int32_t AddDrillingRadiusParam(const cbm::DrillingRadiusParam & drilling_radius_param);
@@ -281,6 +301,8 @@ public:
 	static void GetDrillingRadiusParamIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields);
 	static void GetDrillingRadiusParamIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value);
 	static void GetDrillingRadiusParamIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static void GetDrillingRadiusParamListByForeignKey(std::vector<cbm::DrillingRadiusParam> & _return, const std::string& fkey, const int32_t id);
+	static void GetDrillingRadiusParamIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
 
 	//DrillingSurf 类型的CRUD操作
 	static int32_t AddDrillingSurf(const cbm::DrillingSurf & drilling_surf);
@@ -306,6 +328,8 @@ public:
 	static void GetDrillingSurfIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields);
 	static void GetDrillingSurfIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value);
 	static void GetDrillingSurfIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static void GetDrillingSurfListByForeignKey(std::vector<cbm::DrillingSurf> & _return, const std::string& fkey, const int32_t id);
+	static void GetDrillingSurfIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
 
 	//EvalUnit 类型的CRUD操作
 	static int32_t AddEvalUnit(const cbm::EvalUnit & eval_unit);
@@ -331,6 +355,8 @@ public:
 	static void GetEvalUnitIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields);
 	static void GetEvalUnitIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value);
 	static void GetEvalUnitIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static void GetEvalUnitListByForeignKey(std::vector<cbm::EvalUnit> & _return, const std::string& fkey, const int32_t id);
+	static void GetEvalUnitIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
 
 	//HighDrillingPore 类型的CRUD操作
 	static int32_t AddHighDrillingPore(const cbm::HighDrillingPore & high_drilling_pore);
@@ -356,6 +382,8 @@ public:
 	static void GetHighDrillingPoreIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields);
 	static void GetHighDrillingPoreIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value);
 	static void GetHighDrillingPoreIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static void GetHighDrillingPoreListByForeignKey(std::vector<cbm::HighDrillingPore> & _return, const std::string& fkey, const int32_t id);
+	static void GetHighDrillingPoreIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
 
 	//HighDrillingPoreParam 类型的CRUD操作
 	static int32_t AddHighDrillingPoreParam(const cbm::HighDrillingPoreParam & high_drilling_pore_param);
@@ -381,6 +409,8 @@ public:
 	static void GetHighDrillingPoreParamIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields);
 	static void GetHighDrillingPoreParamIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value);
 	static void GetHighDrillingPoreParamIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static void GetHighDrillingPoreParamListByForeignKey(std::vector<cbm::HighDrillingPoreParam> & _return, const std::string& fkey, const int32_t id);
+	static void GetHighDrillingPoreParamIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
 
 	//HighDrillingSiteParam 类型的CRUD操作
 	static int32_t AddHighDrillingSiteParam(const cbm::HighDrillingSiteParam & high_drilling_site_param);
@@ -406,6 +436,8 @@ public:
 	static void GetHighDrillingSiteParamIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields);
 	static void GetHighDrillingSiteParamIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value);
 	static void GetHighDrillingSiteParamIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static void GetHighDrillingSiteParamListByForeignKey(std::vector<cbm::HighDrillingSiteParam> & _return, const std::string& fkey, const int32_t id);
+	static void GetHighDrillingSiteParamIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
 
 	//HighDrillingTunnel 类型的CRUD操作
 	static int32_t AddHighDrillingTunnel(const cbm::HighDrillingTunnel & high_drilling_tunnel);
@@ -431,6 +463,8 @@ public:
 	static void GetHighDrillingTunnelIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields);
 	static void GetHighDrillingTunnelIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value);
 	static void GetHighDrillingTunnelIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static void GetHighDrillingTunnelListByForeignKey(std::vector<cbm::HighDrillingTunnel> & _return, const std::string& fkey, const int32_t id);
+	static void GetHighDrillingTunnelIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
 
 	//HydrGeo 类型的CRUD操作
 	static int32_t AddHydrGeo(const cbm::HydrGeo & hydr_geo);
@@ -456,6 +490,8 @@ public:
 	static void GetHydrGeoIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields);
 	static void GetHydrGeoIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value);
 	static void GetHydrGeoIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static void GetHydrGeoListByForeignKey(std::vector<cbm::HydrGeo> & _return, const std::string& fkey, const int32_t id);
+	static void GetHydrGeoIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
 
 	//Mine 类型的CRUD操作
 	static int32_t AddMine(const cbm::Mine & mine);
@@ -481,6 +517,8 @@ public:
 	static void GetMineIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields);
 	static void GetMineIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value);
 	static void GetMineIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static void GetMineListByForeignKey(std::vector<cbm::Mine> & _return, const std::string& fkey, const int32_t id);
+	static void GetMineIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
 
 	//MineBase 类型的CRUD操作
 	static int32_t AddMineBase(const cbm::MineBase & mine_base);
@@ -506,6 +544,8 @@ public:
 	static void GetMineBaseIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields);
 	static void GetMineBaseIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value);
 	static void GetMineBaseIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static void GetMineBaseListByForeignKey(std::vector<cbm::MineBase> & _return, const std::string& fkey, const int32_t id);
+	static void GetMineBaseIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
 
 	//MineRegion 类型的CRUD操作
 	static int32_t AddMineRegion(const cbm::MineRegion & mine_region);
@@ -531,6 +571,8 @@ public:
 	static void GetMineRegionIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields);
 	static void GetMineRegionIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value);
 	static void GetMineRegionIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static void GetMineRegionListByForeignKey(std::vector<cbm::MineRegion> & _return, const std::string& fkey, const int32_t id);
+	static void GetMineRegionIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
 
 	//PoreFlow 类型的CRUD操作
 	static int32_t AddPoreFlow(const cbm::PoreFlow & pore_flow);
@@ -556,6 +598,8 @@ public:
 	static void GetPoreFlowIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields);
 	static void GetPoreFlowIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value);
 	static void GetPoreFlowIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static void GetPoreFlowListByForeignKey(std::vector<cbm::PoreFlow> & _return, const std::string& fkey, const int32_t id);
+	static void GetPoreFlowIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
 
 	//PoreSize 类型的CRUD操作
 	static int32_t AddPoreSize(const cbm::PoreSize & pore_size);
@@ -581,6 +625,8 @@ public:
 	static void GetPoreSizeIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields);
 	static void GetPoreSizeIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value);
 	static void GetPoreSizeIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static void GetPoreSizeListByForeignKey(std::vector<cbm::PoreSize> & _return, const std::string& fkey, const int32_t id);
+	static void GetPoreSizeIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
 
 	//ResAbundance 类型的CRUD操作
 	static int32_t AddResAbundance(const cbm::ResAbundance & res_abundance);
@@ -606,6 +652,8 @@ public:
 	static void GetResAbundanceIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields);
 	static void GetResAbundanceIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value);
 	static void GetResAbundanceIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static void GetResAbundanceListByForeignKey(std::vector<cbm::ResAbundance> & _return, const std::string& fkey, const int32_t id);
+	static void GetResAbundanceIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
 
 	//Rock 类型的CRUD操作
 	static int32_t AddRock(const cbm::Rock & rock);
@@ -631,6 +679,8 @@ public:
 	static void GetRockIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields);
 	static void GetRockIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value);
 	static void GetRockIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static void GetRockListByForeignKey(std::vector<cbm::Rock> & _return, const std::string& fkey, const int32_t id);
+	static void GetRockIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
 
 	//SysInfo 类型的CRUD操作
 	static int32_t AddSysInfo(const cbm::SysInfo & sys_info);
@@ -656,6 +706,8 @@ public:
 	static void GetSysInfoIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields);
 	static void GetSysInfoIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value);
 	static void GetSysInfoIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static void GetSysInfoListByForeignKey(std::vector<cbm::SysInfo> & _return, const std::string& fkey, const int32_t id);
+	static void GetSysInfoIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
 
 	//TechMode 类型的CRUD操作
 	static int32_t AddTechMode(const cbm::TechMode & tech_mode);
@@ -681,6 +733,8 @@ public:
 	static void GetTechModeIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields);
 	static void GetTechModeIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value);
 	static void GetTechModeIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static void GetTechModeListByForeignKey(std::vector<cbm::TechMode> & _return, const std::string& fkey, const int32_t id);
+	static void GetTechModeIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
 
 	//Technology 类型的CRUD操作
 	static int32_t AddTechnology(const cbm::Technology & technology);
@@ -706,6 +760,8 @@ public:
 	static void GetTechnologyIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields);
 	static void GetTechnologyIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value);
 	static void GetTechnologyIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static void GetTechnologyListByForeignKey(std::vector<cbm::Technology> & _return, const std::string& fkey, const int32_t id);
+	static void GetTechnologyIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
 
 	//TopoGeo 类型的CRUD操作
 	static int32_t AddTopoGeo(const cbm::TopoGeo & topo_geo);
@@ -731,6 +787,8 @@ public:
 	static void GetTopoGeoIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields);
 	static void GetTopoGeoIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value);
 	static void GetTopoGeoIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static void GetTopoGeoListByForeignKey(std::vector<cbm::TopoGeo> & _return, const std::string& fkey, const int32_t id);
+	static void GetTopoGeoIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
 
 	//Tunnel 类型的CRUD操作
 	static int32_t AddTunnel(const cbm::Tunnel & tunnel);
@@ -756,6 +814,8 @@ public:
 	static void GetTunnelIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields);
 	static void GetTunnelIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value);
 	static void GetTunnelIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static void GetTunnelListByForeignKey(std::vector<cbm::Tunnel> & _return, const std::string& fkey, const int32_t id);
+	static void GetTunnelIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
 
 	//WorkArea 类型的CRUD操作
 	static int32_t AddWorkArea(const cbm::WorkArea & work_area);
@@ -781,6 +841,8 @@ public:
 	static void GetWorkAreaIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields);
 	static void GetWorkAreaIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value);
 	static void GetWorkAreaIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static void GetWorkAreaListByForeignKey(std::vector<cbm::WorkArea> & _return, const std::string& fkey, const int32_t id);
+	static void GetWorkAreaIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
 
 	//WorkSurf 类型的CRUD操作
 	static int32_t AddWorkSurf(const cbm::WorkSurf & work_surf);
@@ -806,6 +868,8 @@ public:
 	static void GetWorkSurfIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields);
 	static void GetWorkSurfIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value);
 	static void GetWorkSurfIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static void GetWorkSurfListByForeignKey(std::vector<cbm::WorkSurf> & _return, const std::string& fkey, const int32_t id);
+	static void GetWorkSurfIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
 
 
 };

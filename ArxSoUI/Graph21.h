@@ -4,10 +4,7 @@
 #include "Graph.h"
 
 #include <ArxHelper/HelperClass.h>
-#include <Dao/DaoHelper.h>
-
-using namespace orm;
-using namespace cbm;
+#include <thrift/gen-cpp/cbm_types.h>
 
 namespace P21
 {
@@ -29,7 +26,7 @@ namespace P21
 
     protected:
         //构造函数
-        Graph( const cbm::CoalPtr& coal, const cbm::DesignWorkSurfTechnologyPtr& tech );
+        Graph( cbm::Coal& coal, cbm::DesignWorkSurfTechnology& tech );
         //执行具体的绘图工作(绘制煤层、工作面巷道、钻场、钻孔、底板岩巷)
         virtual void subDraw();
 
@@ -76,8 +73,8 @@ namespace P21
 
         /** 上述计算参数都是从这2个对象指针中提取出来的. */
     protected:
-        cbm::CoalPtr coal;                 // 煤层指针
-        cbm::DesignWorkSurfTechnologyPtr tech;  // 设计回采工作面指针
+        cbm::Coal& coal;                 // 煤层指针
+        cbm::DesignWorkSurfTechnology& tech;  // 设计回采工作面指针
 
     }; // class Graph
 
@@ -86,7 +83,7 @@ namespace P21
     class PlanGraph : public Graph
     {
     public:
-        PlanGraph( const cbm::CoalPtr& coal, const cbm::DesignWorkSurfTechnologyPtr& tech );
+        PlanGraph( cbm::Coal& coal, cbm::DesignWorkSurfTechnology& tech );
 
     protected:
         //绘制钻场
@@ -106,7 +103,7 @@ namespace P21
     class HeadGraph : public Graph
     {
     public:
-        HeadGraph( const cbm::CoalPtr& coal, const cbm::DesignWorkSurfTechnologyPtr& tech );
+        HeadGraph( cbm::Coal& coal, cbm::DesignWorkSurfTechnology& tech );
 
     protected:
         //绘制钻场
@@ -126,7 +123,7 @@ namespace P21
     class DipGraph : public Graph
     {
     public:
-        DipGraph( const cbm::CoalPtr& coal, const cbm::DesignWorkSurfTechnologyPtr& tech );
+        DipGraph( cbm::Coal& coal, cbm::DesignWorkSurfTechnology& tech );
 
     protected:
         //绘制钻场

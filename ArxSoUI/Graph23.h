@@ -4,10 +4,7 @@
 #include "Graph.h"
 
 #include <ArxHelper/HelperClass.h>
-#include <Dao/DaoHelper.h>
-
-using namespace orm;
-using namespace cbm;
+#include <thrift/gen-cpp/cbm_types.h>
 
 namespace P23
 {
@@ -25,7 +22,7 @@ namespace P23
 
     protected:
         //构造函数
-        Graph( const cbm::CoalPtr& coal, const cbm::DesignWorkSurfTechnologyPtr& tech );
+        Graph( cbm::Coal& coal, cbm::DesignWorkSurfTechnology& tech );
         //执行具体的绘图工作(绘制煤层、工作面巷道、钻场、钻孔等等)
         virtual void subDraw();
 
@@ -52,8 +49,8 @@ namespace P23
 
         /** 上述计算参数都是从这3个对象指针中提取出来的. */
     protected:
-        cbm::CoalPtr coal;                 // 煤层指针
-        cbm::DesignWorkSurfTechnologyPtr tech;     // 设计抽采技术参数指针
+        cbm::Coal& coal;                 // 煤层指针
+        cbm::DesignWorkSurfTechnology& tech;     // 设计抽采技术参数指针
 
     }; // class Graph
 
@@ -62,7 +59,7 @@ namespace P23
     class PlanGraph : public Graph
     {
     public:
-        PlanGraph( const cbm::CoalPtr& coal, const cbm::DesignWorkSurfTechnologyPtr& tech );
+        PlanGraph( cbm::Coal& coal, cbm::DesignWorkSurfTechnology& tech );
 
     protected:
         //绘制钻孔
