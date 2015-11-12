@@ -1621,6 +1621,652 @@ function GetDesignDrillingSurfTechnologyIdListByForeignKey($fkey, $id) {
 
 //$clsname 类型的CRUD操作
 
+function AddDesignEvalUnit($fname) {
+	$ret = -1;
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$ret = $client->AddDesignEvalUnit($fname);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$ret = -1;
+	}
+	return $ret;
+}
+
+function DeleteDesignEvalUnit($id) {
+	$ret = false;
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$ret = $client->DeleteDesignEvalUnit(intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$ret = false;
+	}
+	return $ret;
+}
+
+function UpdateDesignEvalUnit($fname) {
+	$ret = false;
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$ret = $client->UpdateDesignEvalUnit($fname);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$ret = false;
+	}
+	return $ret;
+}
+
+function GetDesignEvalUnitById($id) {
+	$_return = new DesignEvalUnit();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignEvalUnitById(intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return->id = -1;
+	}
+	return $_return;
+}
+
+function GetDesignEvalUnitByForeignKey($fkey, $id) {
+	$_return = new DesignEvalUnit();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignEvalUnitByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return->id = -1;
+	}
+	return $_return;
+}
+
+function GetDesignEvalUnitIdByForeignKey($fkey, $id) {
+	$_return = -1;
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignEvalUnitIdByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = -1;
+	}
+	return $_return;
+}
+
+function GetDesignEvalUnitList() {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignEvalUnitList();
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDesignEvalUnitIds() {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignEvalUnitIds();
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDesignEvalUnitNames() {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignEvalUnitNames();
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function AddMoreDesignEvalUnit($objs) {
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$client->AddMoreDesignEvalUnit($objs);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+	}
+}
+
+function DeleteMoreDesignEvalUnit($obj_ids) {
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$client->DeleteMoreDesignEvalUnit($obj_ids);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+	}
+}
+
+function GetDesignEvalUnitByFields($fields) {
+	$_return = new DesignEvalUnit();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignEvalUnitByFields($fields);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return->id = -1;
+	}
+	return $_return;
+}
+
+function GetDesignEvalUnitByField1($field, $value) {
+	$_return = new DesignEvalUnit();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignEvalUnitByField1($field, $value);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return->id = -1;
+	}
+	return $_return;
+}
+
+function GetDesignEvalUnitByField2($field1, $value1, $field2, $value2) {
+	$_return = new DesignEvalUnit();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignEvalUnitByField2(field1, value2, field2, value2);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return->id = -1;
+	}
+	return $_return;
+}
+
+function GetDesignEvalUnitListByFields($fields) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignEvalUnitListByFields($fields);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDesignEvalUnitListByField1($field, $value) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignEvalUnitListByField1($field, $value);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDesignEvalUnitListByField2($field1, $value1, $field2, $value2) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignEvalUnitListByField2($field1, $value1, $field2, $value2);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDesignEvalUnitIdByFields($fields) {
+	$_return = -1;
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignEvalUnitIdByFields($fields);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = -1;
+	}
+	return $_return;
+}
+
+function GetDesignEvalUnitIdByField1($field, $value) {
+	$_return = -1;
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignEvalUnitIdByField1($field, $value);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = -1;
+	}
+	return $_return;
+}
+
+function GetDesignEvalUnitIdByField2($field1, $value1, $field2, $value2) {
+	$_return = -1;
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignEvalUnitIdByField2(field1, value2, field2, value2);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = -1;
+	}
+	return $_return;
+}
+
+function GetDesignEvalUnitIdListByFields($fields) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignEvalUnitIdListByFields($fields);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDesignEvalUnitIdListByField1($field, $value) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignEvalUnitIdListByField1($field, $value);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDesignEvalUnitIdListByField2($field1, $value1, $field2, $value2) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignEvalUnitIdListByField2($field1, $value1, $field2, $value2);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDesignEvalUnitListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignEvalUnitListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDesignEvalUnitIdListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignEvalUnitIdListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+
+
+//$clsname 类型的CRUD操作
+
+function AddDesignEvalUnitPartition($fname) {
+	$ret = -1;
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$ret = $client->AddDesignEvalUnitPartition($fname);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$ret = -1;
+	}
+	return $ret;
+}
+
+function DeleteDesignEvalUnitPartition($id) {
+	$ret = false;
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$ret = $client->DeleteDesignEvalUnitPartition(intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$ret = false;
+	}
+	return $ret;
+}
+
+function UpdateDesignEvalUnitPartition($fname) {
+	$ret = false;
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$ret = $client->UpdateDesignEvalUnitPartition($fname);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$ret = false;
+	}
+	return $ret;
+}
+
+function GetDesignEvalUnitPartitionById($id) {
+	$_return = new DesignEvalUnitPartition();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignEvalUnitPartitionById(intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return->id = -1;
+	}
+	return $_return;
+}
+
+function GetDesignEvalUnitPartitionByForeignKey($fkey, $id) {
+	$_return = new DesignEvalUnitPartition();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignEvalUnitPartitionByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return->id = -1;
+	}
+	return $_return;
+}
+
+function GetDesignEvalUnitPartitionIdByForeignKey($fkey, $id) {
+	$_return = -1;
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignEvalUnitPartitionIdByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = -1;
+	}
+	return $_return;
+}
+
+function GetDesignEvalUnitPartitionList() {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignEvalUnitPartitionList();
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDesignEvalUnitPartitionIds() {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignEvalUnitPartitionIds();
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDesignEvalUnitPartitionNames() {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignEvalUnitPartitionNames();
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function AddMoreDesignEvalUnitPartition($objs) {
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$client->AddMoreDesignEvalUnitPartition($objs);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+	}
+}
+
+function DeleteMoreDesignEvalUnitPartition($obj_ids) {
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$client->DeleteMoreDesignEvalUnitPartition($obj_ids);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+	}
+}
+
+function GetDesignEvalUnitPartitionByFields($fields) {
+	$_return = new DesignEvalUnitPartition();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignEvalUnitPartitionByFields($fields);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return->id = -1;
+	}
+	return $_return;
+}
+
+function GetDesignEvalUnitPartitionByField1($field, $value) {
+	$_return = new DesignEvalUnitPartition();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignEvalUnitPartitionByField1($field, $value);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return->id = -1;
+	}
+	return $_return;
+}
+
+function GetDesignEvalUnitPartitionByField2($field1, $value1, $field2, $value2) {
+	$_return = new DesignEvalUnitPartition();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignEvalUnitPartitionByField2(field1, value2, field2, value2);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return->id = -1;
+	}
+	return $_return;
+}
+
+function GetDesignEvalUnitPartitionListByFields($fields) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignEvalUnitPartitionListByFields($fields);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDesignEvalUnitPartitionListByField1($field, $value) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignEvalUnitPartitionListByField1($field, $value);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDesignEvalUnitPartitionListByField2($field1, $value1, $field2, $value2) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignEvalUnitPartitionListByField2($field1, $value1, $field2, $value2);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDesignEvalUnitPartitionIdByFields($fields) {
+	$_return = -1;
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignEvalUnitPartitionIdByFields($fields);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = -1;
+	}
+	return $_return;
+}
+
+function GetDesignEvalUnitPartitionIdByField1($field, $value) {
+	$_return = -1;
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignEvalUnitPartitionIdByField1($field, $value);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = -1;
+	}
+	return $_return;
+}
+
+function GetDesignEvalUnitPartitionIdByField2($field1, $value1, $field2, $value2) {
+	$_return = -1;
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignEvalUnitPartitionIdByField2(field1, value2, field2, value2);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = -1;
+	}
+	return $_return;
+}
+
+function GetDesignEvalUnitPartitionIdListByFields($fields) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignEvalUnitPartitionIdListByFields($fields);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDesignEvalUnitPartitionIdListByField1($field, $value) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignEvalUnitPartitionIdListByField1($field, $value);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDesignEvalUnitPartitionIdListByField2($field1, $value1, $field2, $value2) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignEvalUnitPartitionIdListByField2($field1, $value1, $field2, $value2);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDesignEvalUnitPartitionListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignEvalUnitPartitionListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDesignEvalUnitPartitionIdListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignEvalUnitPartitionIdListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+
+
+//$clsname 类型的CRUD操作
+
 function AddDesignGoafTechnology($fname) {
 	$ret = -1;
 	try {
@@ -2902,6 +3548,652 @@ function GetDesignTechnologyIdListByForeignKey($fkey, $id) {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
 		$_return = $client->GetDesignTechnologyIdListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+
+
+//$clsname 类型的CRUD操作
+
+function AddDesignTunnelControlPoint($fname) {
+	$ret = -1;
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$ret = $client->AddDesignTunnelControlPoint($fname);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$ret = -1;
+	}
+	return $ret;
+}
+
+function DeleteDesignTunnelControlPoint($id) {
+	$ret = false;
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$ret = $client->DeleteDesignTunnelControlPoint(intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$ret = false;
+	}
+	return $ret;
+}
+
+function UpdateDesignTunnelControlPoint($fname) {
+	$ret = false;
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$ret = $client->UpdateDesignTunnelControlPoint($fname);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$ret = false;
+	}
+	return $ret;
+}
+
+function GetDesignTunnelControlPointById($id) {
+	$_return = new DesignTunnelControlPoint();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignTunnelControlPointById(intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return->id = -1;
+	}
+	return $_return;
+}
+
+function GetDesignTunnelControlPointByForeignKey($fkey, $id) {
+	$_return = new DesignTunnelControlPoint();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignTunnelControlPointByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return->id = -1;
+	}
+	return $_return;
+}
+
+function GetDesignTunnelControlPointIdByForeignKey($fkey, $id) {
+	$_return = -1;
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignTunnelControlPointIdByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = -1;
+	}
+	return $_return;
+}
+
+function GetDesignTunnelControlPointList() {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignTunnelControlPointList();
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDesignTunnelControlPointIds() {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignTunnelControlPointIds();
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDesignTunnelControlPointNames() {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignTunnelControlPointNames();
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function AddMoreDesignTunnelControlPoint($objs) {
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$client->AddMoreDesignTunnelControlPoint($objs);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+	}
+}
+
+function DeleteMoreDesignTunnelControlPoint($obj_ids) {
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$client->DeleteMoreDesignTunnelControlPoint($obj_ids);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+	}
+}
+
+function GetDesignTunnelControlPointByFields($fields) {
+	$_return = new DesignTunnelControlPoint();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignTunnelControlPointByFields($fields);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return->id = -1;
+	}
+	return $_return;
+}
+
+function GetDesignTunnelControlPointByField1($field, $value) {
+	$_return = new DesignTunnelControlPoint();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignTunnelControlPointByField1($field, $value);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return->id = -1;
+	}
+	return $_return;
+}
+
+function GetDesignTunnelControlPointByField2($field1, $value1, $field2, $value2) {
+	$_return = new DesignTunnelControlPoint();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignTunnelControlPointByField2(field1, value2, field2, value2);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return->id = -1;
+	}
+	return $_return;
+}
+
+function GetDesignTunnelControlPointListByFields($fields) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignTunnelControlPointListByFields($fields);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDesignTunnelControlPointListByField1($field, $value) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignTunnelControlPointListByField1($field, $value);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDesignTunnelControlPointListByField2($field1, $value1, $field2, $value2) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignTunnelControlPointListByField2($field1, $value1, $field2, $value2);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDesignTunnelControlPointIdByFields($fields) {
+	$_return = -1;
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignTunnelControlPointIdByFields($fields);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = -1;
+	}
+	return $_return;
+}
+
+function GetDesignTunnelControlPointIdByField1($field, $value) {
+	$_return = -1;
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignTunnelControlPointIdByField1($field, $value);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = -1;
+	}
+	return $_return;
+}
+
+function GetDesignTunnelControlPointIdByField2($field1, $value1, $field2, $value2) {
+	$_return = -1;
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignTunnelControlPointIdByField2(field1, value2, field2, value2);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = -1;
+	}
+	return $_return;
+}
+
+function GetDesignTunnelControlPointIdListByFields($fields) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignTunnelControlPointIdListByFields($fields);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDesignTunnelControlPointIdListByField1($field, $value) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignTunnelControlPointIdListByField1($field, $value);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDesignTunnelControlPointIdListByField2($field1, $value1, $field2, $value2) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignTunnelControlPointIdListByField2($field1, $value1, $field2, $value2);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDesignTunnelControlPointListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignTunnelControlPointListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDesignTunnelControlPointIdListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignTunnelControlPointIdListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+
+
+//$clsname 类型的CRUD操作
+
+function AddDesignWorkSurfControlPoint($fname) {
+	$ret = -1;
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$ret = $client->AddDesignWorkSurfControlPoint($fname);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$ret = -1;
+	}
+	return $ret;
+}
+
+function DeleteDesignWorkSurfControlPoint($id) {
+	$ret = false;
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$ret = $client->DeleteDesignWorkSurfControlPoint(intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$ret = false;
+	}
+	return $ret;
+}
+
+function UpdateDesignWorkSurfControlPoint($fname) {
+	$ret = false;
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$ret = $client->UpdateDesignWorkSurfControlPoint($fname);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$ret = false;
+	}
+	return $ret;
+}
+
+function GetDesignWorkSurfControlPointById($id) {
+	$_return = new DesignWorkSurfControlPoint();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignWorkSurfControlPointById(intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return->id = -1;
+	}
+	return $_return;
+}
+
+function GetDesignWorkSurfControlPointByForeignKey($fkey, $id) {
+	$_return = new DesignWorkSurfControlPoint();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignWorkSurfControlPointByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return->id = -1;
+	}
+	return $_return;
+}
+
+function GetDesignWorkSurfControlPointIdByForeignKey($fkey, $id) {
+	$_return = -1;
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignWorkSurfControlPointIdByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = -1;
+	}
+	return $_return;
+}
+
+function GetDesignWorkSurfControlPointList() {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignWorkSurfControlPointList();
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDesignWorkSurfControlPointIds() {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignWorkSurfControlPointIds();
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDesignWorkSurfControlPointNames() {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignWorkSurfControlPointNames();
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function AddMoreDesignWorkSurfControlPoint($objs) {
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$client->AddMoreDesignWorkSurfControlPoint($objs);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+	}
+}
+
+function DeleteMoreDesignWorkSurfControlPoint($obj_ids) {
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$client->DeleteMoreDesignWorkSurfControlPoint($obj_ids);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+	}
+}
+
+function GetDesignWorkSurfControlPointByFields($fields) {
+	$_return = new DesignWorkSurfControlPoint();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignWorkSurfControlPointByFields($fields);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return->id = -1;
+	}
+	return $_return;
+}
+
+function GetDesignWorkSurfControlPointByField1($field, $value) {
+	$_return = new DesignWorkSurfControlPoint();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignWorkSurfControlPointByField1($field, $value);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return->id = -1;
+	}
+	return $_return;
+}
+
+function GetDesignWorkSurfControlPointByField2($field1, $value1, $field2, $value2) {
+	$_return = new DesignWorkSurfControlPoint();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignWorkSurfControlPointByField2(field1, value2, field2, value2);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return->id = -1;
+	}
+	return $_return;
+}
+
+function GetDesignWorkSurfControlPointListByFields($fields) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignWorkSurfControlPointListByFields($fields);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDesignWorkSurfControlPointListByField1($field, $value) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignWorkSurfControlPointListByField1($field, $value);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDesignWorkSurfControlPointListByField2($field1, $value1, $field2, $value2) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignWorkSurfControlPointListByField2($field1, $value1, $field2, $value2);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDesignWorkSurfControlPointIdByFields($fields) {
+	$_return = -1;
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignWorkSurfControlPointIdByFields($fields);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = -1;
+	}
+	return $_return;
+}
+
+function GetDesignWorkSurfControlPointIdByField1($field, $value) {
+	$_return = -1;
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignWorkSurfControlPointIdByField1($field, $value);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = -1;
+	}
+	return $_return;
+}
+
+function GetDesignWorkSurfControlPointIdByField2($field1, $value1, $field2, $value2) {
+	$_return = -1;
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignWorkSurfControlPointIdByField2(field1, value2, field2, value2);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = -1;
+	}
+	return $_return;
+}
+
+function GetDesignWorkSurfControlPointIdListByFields($fields) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignWorkSurfControlPointIdListByFields($fields);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDesignWorkSurfControlPointIdListByField1($field, $value) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignWorkSurfControlPointIdListByField1($field, $value);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDesignWorkSurfControlPointIdListByField2($field1, $value1, $field2, $value2) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignWorkSurfControlPointIdListByField2($field1, $value1, $field2, $value2);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDesignWorkSurfControlPointListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignWorkSurfControlPointListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDesignWorkSurfControlPointIdListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignWorkSurfControlPointIdListByForeignKey($fkey, intval($id));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();

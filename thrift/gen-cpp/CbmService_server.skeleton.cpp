@@ -647,6 +647,256 @@ class CbmServiceHandler : virtual public CbmServiceIf {
     printf("GetDesignDrillingSurfTechnologyIdListByForeignKey\n");
   }
 
+  int32_t AddDesignEvalUnit(const DesignEvalUnit& design_eval_unit) {
+    // Your implementation goes here
+    printf("AddDesignEvalUnit\n");
+  }
+
+  bool DeleteDesignEvalUnit(const int32_t id) {
+    // Your implementation goes here
+    printf("DeleteDesignEvalUnit\n");
+  }
+
+  bool UpdateDesignEvalUnit(const DesignEvalUnit& design_eval_unit) {
+    // Your implementation goes here
+    printf("UpdateDesignEvalUnit\n");
+  }
+
+  void GetDesignEvalUnitById(DesignEvalUnit& _return, const int32_t id) {
+    // Your implementation goes here
+    printf("GetDesignEvalUnitById\n");
+  }
+
+  void GetDesignEvalUnitByForeignKey(DesignEvalUnit& _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetDesignEvalUnitByForeignKey\n");
+  }
+
+  int32_t GetDesignEvalUnitIdByForeignKey(const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetDesignEvalUnitIdByForeignKey\n");
+  }
+
+  void GetDesignEvalUnitList(std::vector<DesignEvalUnit> & _return) {
+    // Your implementation goes here
+    printf("GetDesignEvalUnitList\n");
+  }
+
+  void GetDesignEvalUnitIds(std::vector<int32_t> & _return) {
+    // Your implementation goes here
+    printf("GetDesignEvalUnitIds\n");
+  }
+
+  void GetDesignEvalUnitNames(std::vector<std::string> & _return) {
+    // Your implementation goes here
+    printf("GetDesignEvalUnitNames\n");
+  }
+
+  void AddMoreDesignEvalUnit(const std::vector<DesignEvalUnit> & objs) {
+    // Your implementation goes here
+    printf("AddMoreDesignEvalUnit\n");
+  }
+
+  void DeleteMoreDesignEvalUnit(const std::vector<int32_t> & obj_ids) {
+    // Your implementation goes here
+    printf("DeleteMoreDesignEvalUnit\n");
+  }
+
+  void GetDesignEvalUnitByFields(DesignEvalUnit& _return, const std::map<std::string, std::string> & fields) {
+    // Your implementation goes here
+    printf("GetDesignEvalUnitByFields\n");
+  }
+
+  void GetDesignEvalUnitByField1(DesignEvalUnit& _return, const std::string& field, const std::string& value) {
+    // Your implementation goes here
+    printf("GetDesignEvalUnitByField1\n");
+  }
+
+  void GetDesignEvalUnitByField2(DesignEvalUnit& _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
+    // Your implementation goes here
+    printf("GetDesignEvalUnitByField2\n");
+  }
+
+  void GetDesignEvalUnitListByFields(std::vector<DesignEvalUnit> & _return, const std::map<std::string, std::string> & fields) {
+    // Your implementation goes here
+    printf("GetDesignEvalUnitListByFields\n");
+  }
+
+  void GetDesignEvalUnitListByField1(std::vector<DesignEvalUnit> & _return, const std::string& field, const std::string& value) {
+    // Your implementation goes here
+    printf("GetDesignEvalUnitListByField1\n");
+  }
+
+  void GetDesignEvalUnitListByField2(std::vector<DesignEvalUnit> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
+    // Your implementation goes here
+    printf("GetDesignEvalUnitListByField2\n");
+  }
+
+  int32_t GetDesignEvalUnitIdByFields(const std::map<std::string, std::string> & fields) {
+    // Your implementation goes here
+    printf("GetDesignEvalUnitIdByFields\n");
+  }
+
+  int32_t GetDesignEvalUnitIdByField1(const std::string& field, const std::string& value) {
+    // Your implementation goes here
+    printf("GetDesignEvalUnitIdByField1\n");
+  }
+
+  int32_t GetDesignEvalUnitIdByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
+    // Your implementation goes here
+    printf("GetDesignEvalUnitIdByField2\n");
+  }
+
+  void GetDesignEvalUnitIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields) {
+    // Your implementation goes here
+    printf("GetDesignEvalUnitIdListByFields\n");
+  }
+
+  void GetDesignEvalUnitIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value) {
+    // Your implementation goes here
+    printf("GetDesignEvalUnitIdListByField1\n");
+  }
+
+  void GetDesignEvalUnitIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
+    // Your implementation goes here
+    printf("GetDesignEvalUnitIdListByField2\n");
+  }
+
+  void GetDesignEvalUnitListByForeignKey(std::vector<DesignEvalUnit> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetDesignEvalUnitListByForeignKey\n");
+  }
+
+  void GetDesignEvalUnitIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetDesignEvalUnitIdListByForeignKey\n");
+  }
+
+  int32_t AddDesignEvalUnitPartition(const DesignEvalUnitPartition& design_eval_unit_partition) {
+    // Your implementation goes here
+    printf("AddDesignEvalUnitPartition\n");
+  }
+
+  bool DeleteDesignEvalUnitPartition(const int32_t id) {
+    // Your implementation goes here
+    printf("DeleteDesignEvalUnitPartition\n");
+  }
+
+  bool UpdateDesignEvalUnitPartition(const DesignEvalUnitPartition& design_eval_unit_partition) {
+    // Your implementation goes here
+    printf("UpdateDesignEvalUnitPartition\n");
+  }
+
+  void GetDesignEvalUnitPartitionById(DesignEvalUnitPartition& _return, const int32_t id) {
+    // Your implementation goes here
+    printf("GetDesignEvalUnitPartitionById\n");
+  }
+
+  void GetDesignEvalUnitPartitionByForeignKey(DesignEvalUnitPartition& _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetDesignEvalUnitPartitionByForeignKey\n");
+  }
+
+  int32_t GetDesignEvalUnitPartitionIdByForeignKey(const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetDesignEvalUnitPartitionIdByForeignKey\n");
+  }
+
+  void GetDesignEvalUnitPartitionList(std::vector<DesignEvalUnitPartition> & _return) {
+    // Your implementation goes here
+    printf("GetDesignEvalUnitPartitionList\n");
+  }
+
+  void GetDesignEvalUnitPartitionIds(std::vector<int32_t> & _return) {
+    // Your implementation goes here
+    printf("GetDesignEvalUnitPartitionIds\n");
+  }
+
+  void GetDesignEvalUnitPartitionNames(std::vector<std::string> & _return) {
+    // Your implementation goes here
+    printf("GetDesignEvalUnitPartitionNames\n");
+  }
+
+  void AddMoreDesignEvalUnitPartition(const std::vector<DesignEvalUnitPartition> & objs) {
+    // Your implementation goes here
+    printf("AddMoreDesignEvalUnitPartition\n");
+  }
+
+  void DeleteMoreDesignEvalUnitPartition(const std::vector<int32_t> & obj_ids) {
+    // Your implementation goes here
+    printf("DeleteMoreDesignEvalUnitPartition\n");
+  }
+
+  void GetDesignEvalUnitPartitionByFields(DesignEvalUnitPartition& _return, const std::map<std::string, std::string> & fields) {
+    // Your implementation goes here
+    printf("GetDesignEvalUnitPartitionByFields\n");
+  }
+
+  void GetDesignEvalUnitPartitionByField1(DesignEvalUnitPartition& _return, const std::string& field, const std::string& value) {
+    // Your implementation goes here
+    printf("GetDesignEvalUnitPartitionByField1\n");
+  }
+
+  void GetDesignEvalUnitPartitionByField2(DesignEvalUnitPartition& _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
+    // Your implementation goes here
+    printf("GetDesignEvalUnitPartitionByField2\n");
+  }
+
+  void GetDesignEvalUnitPartitionListByFields(std::vector<DesignEvalUnitPartition> & _return, const std::map<std::string, std::string> & fields) {
+    // Your implementation goes here
+    printf("GetDesignEvalUnitPartitionListByFields\n");
+  }
+
+  void GetDesignEvalUnitPartitionListByField1(std::vector<DesignEvalUnitPartition> & _return, const std::string& field, const std::string& value) {
+    // Your implementation goes here
+    printf("GetDesignEvalUnitPartitionListByField1\n");
+  }
+
+  void GetDesignEvalUnitPartitionListByField2(std::vector<DesignEvalUnitPartition> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
+    // Your implementation goes here
+    printf("GetDesignEvalUnitPartitionListByField2\n");
+  }
+
+  int32_t GetDesignEvalUnitPartitionIdByFields(const std::map<std::string, std::string> & fields) {
+    // Your implementation goes here
+    printf("GetDesignEvalUnitPartitionIdByFields\n");
+  }
+
+  int32_t GetDesignEvalUnitPartitionIdByField1(const std::string& field, const std::string& value) {
+    // Your implementation goes here
+    printf("GetDesignEvalUnitPartitionIdByField1\n");
+  }
+
+  int32_t GetDesignEvalUnitPartitionIdByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
+    // Your implementation goes here
+    printf("GetDesignEvalUnitPartitionIdByField2\n");
+  }
+
+  void GetDesignEvalUnitPartitionIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields) {
+    // Your implementation goes here
+    printf("GetDesignEvalUnitPartitionIdListByFields\n");
+  }
+
+  void GetDesignEvalUnitPartitionIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value) {
+    // Your implementation goes here
+    printf("GetDesignEvalUnitPartitionIdListByField1\n");
+  }
+
+  void GetDesignEvalUnitPartitionIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
+    // Your implementation goes here
+    printf("GetDesignEvalUnitPartitionIdListByField2\n");
+  }
+
+  void GetDesignEvalUnitPartitionListByForeignKey(std::vector<DesignEvalUnitPartition> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetDesignEvalUnitPartitionListByForeignKey\n");
+  }
+
+  void GetDesignEvalUnitPartitionIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetDesignEvalUnitPartitionIdListByForeignKey\n");
+  }
+
   int32_t AddDesignGoafTechnology(const DesignGoafTechnology& design_goaf_technology) {
     // Your implementation goes here
     printf("AddDesignGoafTechnology\n");
@@ -1145,6 +1395,256 @@ class CbmServiceHandler : virtual public CbmServiceIf {
   void GetDesignTechnologyIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
     // Your implementation goes here
     printf("GetDesignTechnologyIdListByForeignKey\n");
+  }
+
+  int32_t AddDesignTunnelControlPoint(const DesignTunnelControlPoint& design_tunnel_control_point) {
+    // Your implementation goes here
+    printf("AddDesignTunnelControlPoint\n");
+  }
+
+  bool DeleteDesignTunnelControlPoint(const int32_t id) {
+    // Your implementation goes here
+    printf("DeleteDesignTunnelControlPoint\n");
+  }
+
+  bool UpdateDesignTunnelControlPoint(const DesignTunnelControlPoint& design_tunnel_control_point) {
+    // Your implementation goes here
+    printf("UpdateDesignTunnelControlPoint\n");
+  }
+
+  void GetDesignTunnelControlPointById(DesignTunnelControlPoint& _return, const int32_t id) {
+    // Your implementation goes here
+    printf("GetDesignTunnelControlPointById\n");
+  }
+
+  void GetDesignTunnelControlPointByForeignKey(DesignTunnelControlPoint& _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetDesignTunnelControlPointByForeignKey\n");
+  }
+
+  int32_t GetDesignTunnelControlPointIdByForeignKey(const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetDesignTunnelControlPointIdByForeignKey\n");
+  }
+
+  void GetDesignTunnelControlPointList(std::vector<DesignTunnelControlPoint> & _return) {
+    // Your implementation goes here
+    printf("GetDesignTunnelControlPointList\n");
+  }
+
+  void GetDesignTunnelControlPointIds(std::vector<int32_t> & _return) {
+    // Your implementation goes here
+    printf("GetDesignTunnelControlPointIds\n");
+  }
+
+  void GetDesignTunnelControlPointNames(std::vector<std::string> & _return) {
+    // Your implementation goes here
+    printf("GetDesignTunnelControlPointNames\n");
+  }
+
+  void AddMoreDesignTunnelControlPoint(const std::vector<DesignTunnelControlPoint> & objs) {
+    // Your implementation goes here
+    printf("AddMoreDesignTunnelControlPoint\n");
+  }
+
+  void DeleteMoreDesignTunnelControlPoint(const std::vector<int32_t> & obj_ids) {
+    // Your implementation goes here
+    printf("DeleteMoreDesignTunnelControlPoint\n");
+  }
+
+  void GetDesignTunnelControlPointByFields(DesignTunnelControlPoint& _return, const std::map<std::string, std::string> & fields) {
+    // Your implementation goes here
+    printf("GetDesignTunnelControlPointByFields\n");
+  }
+
+  void GetDesignTunnelControlPointByField1(DesignTunnelControlPoint& _return, const std::string& field, const std::string& value) {
+    // Your implementation goes here
+    printf("GetDesignTunnelControlPointByField1\n");
+  }
+
+  void GetDesignTunnelControlPointByField2(DesignTunnelControlPoint& _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
+    // Your implementation goes here
+    printf("GetDesignTunnelControlPointByField2\n");
+  }
+
+  void GetDesignTunnelControlPointListByFields(std::vector<DesignTunnelControlPoint> & _return, const std::map<std::string, std::string> & fields) {
+    // Your implementation goes here
+    printf("GetDesignTunnelControlPointListByFields\n");
+  }
+
+  void GetDesignTunnelControlPointListByField1(std::vector<DesignTunnelControlPoint> & _return, const std::string& field, const std::string& value) {
+    // Your implementation goes here
+    printf("GetDesignTunnelControlPointListByField1\n");
+  }
+
+  void GetDesignTunnelControlPointListByField2(std::vector<DesignTunnelControlPoint> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
+    // Your implementation goes here
+    printf("GetDesignTunnelControlPointListByField2\n");
+  }
+
+  int32_t GetDesignTunnelControlPointIdByFields(const std::map<std::string, std::string> & fields) {
+    // Your implementation goes here
+    printf("GetDesignTunnelControlPointIdByFields\n");
+  }
+
+  int32_t GetDesignTunnelControlPointIdByField1(const std::string& field, const std::string& value) {
+    // Your implementation goes here
+    printf("GetDesignTunnelControlPointIdByField1\n");
+  }
+
+  int32_t GetDesignTunnelControlPointIdByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
+    // Your implementation goes here
+    printf("GetDesignTunnelControlPointIdByField2\n");
+  }
+
+  void GetDesignTunnelControlPointIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields) {
+    // Your implementation goes here
+    printf("GetDesignTunnelControlPointIdListByFields\n");
+  }
+
+  void GetDesignTunnelControlPointIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value) {
+    // Your implementation goes here
+    printf("GetDesignTunnelControlPointIdListByField1\n");
+  }
+
+  void GetDesignTunnelControlPointIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
+    // Your implementation goes here
+    printf("GetDesignTunnelControlPointIdListByField2\n");
+  }
+
+  void GetDesignTunnelControlPointListByForeignKey(std::vector<DesignTunnelControlPoint> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetDesignTunnelControlPointListByForeignKey\n");
+  }
+
+  void GetDesignTunnelControlPointIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetDesignTunnelControlPointIdListByForeignKey\n");
+  }
+
+  int32_t AddDesignWorkSurfControlPoint(const DesignWorkSurfControlPoint& design_work_surf_control_point) {
+    // Your implementation goes here
+    printf("AddDesignWorkSurfControlPoint\n");
+  }
+
+  bool DeleteDesignWorkSurfControlPoint(const int32_t id) {
+    // Your implementation goes here
+    printf("DeleteDesignWorkSurfControlPoint\n");
+  }
+
+  bool UpdateDesignWorkSurfControlPoint(const DesignWorkSurfControlPoint& design_work_surf_control_point) {
+    // Your implementation goes here
+    printf("UpdateDesignWorkSurfControlPoint\n");
+  }
+
+  void GetDesignWorkSurfControlPointById(DesignWorkSurfControlPoint& _return, const int32_t id) {
+    // Your implementation goes here
+    printf("GetDesignWorkSurfControlPointById\n");
+  }
+
+  void GetDesignWorkSurfControlPointByForeignKey(DesignWorkSurfControlPoint& _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetDesignWorkSurfControlPointByForeignKey\n");
+  }
+
+  int32_t GetDesignWorkSurfControlPointIdByForeignKey(const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetDesignWorkSurfControlPointIdByForeignKey\n");
+  }
+
+  void GetDesignWorkSurfControlPointList(std::vector<DesignWorkSurfControlPoint> & _return) {
+    // Your implementation goes here
+    printf("GetDesignWorkSurfControlPointList\n");
+  }
+
+  void GetDesignWorkSurfControlPointIds(std::vector<int32_t> & _return) {
+    // Your implementation goes here
+    printf("GetDesignWorkSurfControlPointIds\n");
+  }
+
+  void GetDesignWorkSurfControlPointNames(std::vector<std::string> & _return) {
+    // Your implementation goes here
+    printf("GetDesignWorkSurfControlPointNames\n");
+  }
+
+  void AddMoreDesignWorkSurfControlPoint(const std::vector<DesignWorkSurfControlPoint> & objs) {
+    // Your implementation goes here
+    printf("AddMoreDesignWorkSurfControlPoint\n");
+  }
+
+  void DeleteMoreDesignWorkSurfControlPoint(const std::vector<int32_t> & obj_ids) {
+    // Your implementation goes here
+    printf("DeleteMoreDesignWorkSurfControlPoint\n");
+  }
+
+  void GetDesignWorkSurfControlPointByFields(DesignWorkSurfControlPoint& _return, const std::map<std::string, std::string> & fields) {
+    // Your implementation goes here
+    printf("GetDesignWorkSurfControlPointByFields\n");
+  }
+
+  void GetDesignWorkSurfControlPointByField1(DesignWorkSurfControlPoint& _return, const std::string& field, const std::string& value) {
+    // Your implementation goes here
+    printf("GetDesignWorkSurfControlPointByField1\n");
+  }
+
+  void GetDesignWorkSurfControlPointByField2(DesignWorkSurfControlPoint& _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
+    // Your implementation goes here
+    printf("GetDesignWorkSurfControlPointByField2\n");
+  }
+
+  void GetDesignWorkSurfControlPointListByFields(std::vector<DesignWorkSurfControlPoint> & _return, const std::map<std::string, std::string> & fields) {
+    // Your implementation goes here
+    printf("GetDesignWorkSurfControlPointListByFields\n");
+  }
+
+  void GetDesignWorkSurfControlPointListByField1(std::vector<DesignWorkSurfControlPoint> & _return, const std::string& field, const std::string& value) {
+    // Your implementation goes here
+    printf("GetDesignWorkSurfControlPointListByField1\n");
+  }
+
+  void GetDesignWorkSurfControlPointListByField2(std::vector<DesignWorkSurfControlPoint> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
+    // Your implementation goes here
+    printf("GetDesignWorkSurfControlPointListByField2\n");
+  }
+
+  int32_t GetDesignWorkSurfControlPointIdByFields(const std::map<std::string, std::string> & fields) {
+    // Your implementation goes here
+    printf("GetDesignWorkSurfControlPointIdByFields\n");
+  }
+
+  int32_t GetDesignWorkSurfControlPointIdByField1(const std::string& field, const std::string& value) {
+    // Your implementation goes here
+    printf("GetDesignWorkSurfControlPointIdByField1\n");
+  }
+
+  int32_t GetDesignWorkSurfControlPointIdByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
+    // Your implementation goes here
+    printf("GetDesignWorkSurfControlPointIdByField2\n");
+  }
+
+  void GetDesignWorkSurfControlPointIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields) {
+    // Your implementation goes here
+    printf("GetDesignWorkSurfControlPointIdListByFields\n");
+  }
+
+  void GetDesignWorkSurfControlPointIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value) {
+    // Your implementation goes here
+    printf("GetDesignWorkSurfControlPointIdListByField1\n");
+  }
+
+  void GetDesignWorkSurfControlPointIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
+    // Your implementation goes here
+    printf("GetDesignWorkSurfControlPointIdListByField2\n");
+  }
+
+  void GetDesignWorkSurfControlPointListByForeignKey(std::vector<DesignWorkSurfControlPoint> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetDesignWorkSurfControlPointListByForeignKey\n");
+  }
+
+  void GetDesignWorkSurfControlPointIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetDesignWorkSurfControlPointIdListByForeignKey\n");
   }
 
   int32_t AddDesignWorkSurfTechnology(const DesignWorkSurfTechnology& design_work_surf_technology) {

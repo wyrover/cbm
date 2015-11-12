@@ -29,6 +29,10 @@ class Complexity;
 
 class DesignDrillingSurfTechnology;
 
+class DesignEvalUnit;
+
+class DesignEvalUnitPartition;
+
 class DesignGoafTechnology;
 
 class DesignPore;
@@ -36,6 +40,10 @@ class DesignPore;
 class DesignSite;
 
 class DesignTechnology;
+
+class DesignTunnelControlPoint;
+
+class DesignWorkSurfControlPoint;
 
 class DesignWorkSurfTechnology;
 
@@ -957,6 +965,194 @@ inline std::ostream& operator<<(std::ostream& out, const DesignDrillingSurfTechn
   return out;
 }
 
+typedef struct _DesignEvalUnit__isset {
+  _DesignEvalUnit__isset() : id(false), design_eval_unit_partition_id(false), name(false), comment(false), num(false), l(false), t(false) {}
+  bool id :1;
+  bool design_eval_unit_partition_id :1;
+  bool name :1;
+  bool comment :1;
+  bool num :1;
+  bool l :1;
+  bool t :1;
+} _DesignEvalUnit__isset;
+
+class DesignEvalUnit {
+ public:
+
+  DesignEvalUnit(const DesignEvalUnit&);
+  DesignEvalUnit& operator=(const DesignEvalUnit&);
+  DesignEvalUnit() : id(0), design_eval_unit_partition_id(0), name(), comment(), num(0), l(0), t(0) {
+  }
+
+  virtual ~DesignEvalUnit() throw();
+  int32_t id;
+  int32_t design_eval_unit_partition_id;
+  std::string name;
+  std::string comment;
+  int32_t num;
+  double l;
+  int32_t t;
+
+  _DesignEvalUnit__isset __isset;
+
+  void __set_id(const int32_t val);
+
+  void __set_design_eval_unit_partition_id(const int32_t val);
+
+  void __set_name(const std::string& val);
+
+  void __set_comment(const std::string& val);
+
+  void __set_num(const int32_t val);
+
+  void __set_l(const double val);
+
+  void __set_t(const int32_t val);
+
+  bool operator == (const DesignEvalUnit & rhs) const
+  {
+    if (!(id == rhs.id))
+      return false;
+    if (!(design_eval_unit_partition_id == rhs.design_eval_unit_partition_id))
+      return false;
+    if (!(name == rhs.name))
+      return false;
+    if (!(comment == rhs.comment))
+      return false;
+    if (!(num == rhs.num))
+      return false;
+    if (!(l == rhs.l))
+      return false;
+    if (!(t == rhs.t))
+      return false;
+    return true;
+  }
+  bool operator != (const DesignEvalUnit &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const DesignEvalUnit & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(DesignEvalUnit &a, DesignEvalUnit &b);
+
+inline std::ostream& operator<<(std::ostream& out, const DesignEvalUnit& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _DesignEvalUnitPartition__isset {
+  _DesignEvalUnitPartition__isset() : id(false), name(false), comment(false), l2(false), l1(false), w(false), h(false), l(false), r(false), t(false), v(false) {}
+  bool id :1;
+  bool name :1;
+  bool comment :1;
+  bool l2 :1;
+  bool l1 :1;
+  bool w :1;
+  bool h :1;
+  bool l :1;
+  bool r :1;
+  bool t :1;
+  bool v :1;
+} _DesignEvalUnitPartition__isset;
+
+class DesignEvalUnitPartition {
+ public:
+
+  DesignEvalUnitPartition(const DesignEvalUnitPartition&);
+  DesignEvalUnitPartition& operator=(const DesignEvalUnitPartition&);
+  DesignEvalUnitPartition() : id(0), name(), comment(), l2(0), l1(0), w(0), h(0), l(0), r(0), t(0), v(0) {
+  }
+
+  virtual ~DesignEvalUnitPartition() throw();
+  int32_t id;
+  std::string name;
+  std::string comment;
+  double l2;
+  double l1;
+  double w;
+  double h;
+  double l;
+  double r;
+  double t;
+  double v;
+
+  _DesignEvalUnitPartition__isset __isset;
+
+  void __set_id(const int32_t val);
+
+  void __set_name(const std::string& val);
+
+  void __set_comment(const std::string& val);
+
+  void __set_l2(const double val);
+
+  void __set_l1(const double val);
+
+  void __set_w(const double val);
+
+  void __set_h(const double val);
+
+  void __set_l(const double val);
+
+  void __set_r(const double val);
+
+  void __set_t(const double val);
+
+  void __set_v(const double val);
+
+  bool operator == (const DesignEvalUnitPartition & rhs) const
+  {
+    if (!(id == rhs.id))
+      return false;
+    if (!(name == rhs.name))
+      return false;
+    if (!(comment == rhs.comment))
+      return false;
+    if (!(l2 == rhs.l2))
+      return false;
+    if (!(l1 == rhs.l1))
+      return false;
+    if (!(w == rhs.w))
+      return false;
+    if (!(h == rhs.h))
+      return false;
+    if (!(l == rhs.l))
+      return false;
+    if (!(r == rhs.r))
+      return false;
+    if (!(t == rhs.t))
+      return false;
+    if (!(v == rhs.v))
+      return false;
+    return true;
+  }
+  bool operator != (const DesignEvalUnitPartition &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const DesignEvalUnitPartition & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(DesignEvalUnitPartition &a, DesignEvalUnitPartition &b);
+
+inline std::ostream& operator<<(std::ostream& out, const DesignEvalUnitPartition& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
 typedef struct _DesignGoafTechnology__isset {
   _DesignGoafTechnology__isset() : id(false), design_technology_id(false), name(false), comment(false) {}
   bool id :1;
@@ -1022,8 +1218,9 @@ inline std::ostream& operator<<(std::ostream& out, const DesignGoafTechnology& o
 }
 
 typedef struct _DesignPore__isset {
-  _DesignPore__isset() : id(false), design_site_id(false), name(false), d(false), x1(false), y1(false), z1(false), x2(false), y2(false), z2(false), length(false), angle1(false), angle2(false), comment(false) {}
+  _DesignPore__isset() : id(false), design_eval_unit_id(false), design_site_id(false), name(false), d(false), x1(false), y1(false), z1(false), x2(false), y2(false), z2(false), length(false), angle1(false), angle2(false), comment(false), t(false) {}
   bool id :1;
+  bool design_eval_unit_id :1;
   bool design_site_id :1;
   bool name :1;
   bool d :1;
@@ -1037,6 +1234,7 @@ typedef struct _DesignPore__isset {
   bool angle1 :1;
   bool angle2 :1;
   bool comment :1;
+  bool t :1;
 } _DesignPore__isset;
 
 class DesignPore {
@@ -1044,11 +1242,12 @@ class DesignPore {
 
   DesignPore(const DesignPore&);
   DesignPore& operator=(const DesignPore&);
-  DesignPore() : id(0), design_site_id(0), name(), d(0), x1(0), y1(0), z1(0), x2(0), y2(0), z2(0), length(0), angle1(0), angle2(0), comment() {
+  DesignPore() : id(0), design_eval_unit_id(0), design_site_id(0), name(), d(0), x1(0), y1(0), z1(0), x2(0), y2(0), z2(0), length(0), angle1(0), angle2(0), comment(), t(0) {
   }
 
   virtual ~DesignPore() throw();
   int32_t id;
+  int32_t design_eval_unit_id;
   int32_t design_site_id;
   std::string name;
   double d;
@@ -1062,10 +1261,13 @@ class DesignPore {
   double angle1;
   double angle2;
   std::string comment;
+  int32_t t;
 
   _DesignPore__isset __isset;
 
   void __set_id(const int32_t val);
+
+  void __set_design_eval_unit_id(const int32_t val);
 
   void __set_design_site_id(const int32_t val);
 
@@ -1093,9 +1295,13 @@ class DesignPore {
 
   void __set_comment(const std::string& val);
 
+  void __set_t(const int32_t val);
+
   bool operator == (const DesignPore & rhs) const
   {
     if (!(id == rhs.id))
+      return false;
+    if (!(design_eval_unit_id == rhs.design_eval_unit_id))
       return false;
     if (!(design_site_id == rhs.design_site_id))
       return false;
@@ -1122,6 +1328,8 @@ class DesignPore {
     if (!(angle2 == rhs.angle2))
       return false;
     if (!(comment == rhs.comment))
+      return false;
+    if (!(t == rhs.t))
       return false;
     return true;
   }
@@ -1240,11 +1448,11 @@ inline std::ostream& operator<<(std::ostream& out, const DesignSite& obj)
 }
 
 typedef struct _DesignTechnology__isset {
-  _DesignTechnology__isset() : id(false), coal_id(false), name(false), mine_region(false), comment(false) {}
+  _DesignTechnology__isset() : id(false), coal_id(false), name(false), region(false), comment(false) {}
   bool id :1;
   bool coal_id :1;
   bool name :1;
-  bool mine_region :1;
+  bool region :1;
   bool comment :1;
 } _DesignTechnology__isset;
 
@@ -1253,14 +1461,14 @@ class DesignTechnology {
 
   DesignTechnology(const DesignTechnology&);
   DesignTechnology& operator=(const DesignTechnology&);
-  DesignTechnology() : id(0), coal_id(0), name(), mine_region(0), comment() {
+  DesignTechnology() : id(0), coal_id(0), name(), region(0), comment() {
   }
 
   virtual ~DesignTechnology() throw();
   int32_t id;
   int32_t coal_id;
   std::string name;
-  int32_t mine_region;
+  int32_t region;
   std::string comment;
 
   _DesignTechnology__isset __isset;
@@ -1271,7 +1479,7 @@ class DesignTechnology {
 
   void __set_name(const std::string& val);
 
-  void __set_mine_region(const int32_t val);
+  void __set_region(const int32_t val);
 
   void __set_comment(const std::string& val);
 
@@ -1283,7 +1491,7 @@ class DesignTechnology {
       return false;
     if (!(name == rhs.name))
       return false;
-    if (!(mine_region == rhs.mine_region))
+    if (!(region == rhs.region))
       return false;
     if (!(comment == rhs.comment))
       return false;
@@ -1304,6 +1512,170 @@ class DesignTechnology {
 void swap(DesignTechnology &a, DesignTechnology &b);
 
 inline std::ostream& operator<<(std::ostream& out, const DesignTechnology& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _DesignTunnelControlPoint__isset {
+  _DesignTunnelControlPoint__isset() : id(false), design_eval_unit_partition_id(false), name(false), comment(false), x(false), y(false), z(false) {}
+  bool id :1;
+  bool design_eval_unit_partition_id :1;
+  bool name :1;
+  bool comment :1;
+  bool x :1;
+  bool y :1;
+  bool z :1;
+} _DesignTunnelControlPoint__isset;
+
+class DesignTunnelControlPoint {
+ public:
+
+  DesignTunnelControlPoint(const DesignTunnelControlPoint&);
+  DesignTunnelControlPoint& operator=(const DesignTunnelControlPoint&);
+  DesignTunnelControlPoint() : id(0), design_eval_unit_partition_id(0), name(), comment(), x(0), y(0), z(0) {
+  }
+
+  virtual ~DesignTunnelControlPoint() throw();
+  int32_t id;
+  int32_t design_eval_unit_partition_id;
+  std::string name;
+  std::string comment;
+  double x;
+  double y;
+  double z;
+
+  _DesignTunnelControlPoint__isset __isset;
+
+  void __set_id(const int32_t val);
+
+  void __set_design_eval_unit_partition_id(const int32_t val);
+
+  void __set_name(const std::string& val);
+
+  void __set_comment(const std::string& val);
+
+  void __set_x(const double val);
+
+  void __set_y(const double val);
+
+  void __set_z(const double val);
+
+  bool operator == (const DesignTunnelControlPoint & rhs) const
+  {
+    if (!(id == rhs.id))
+      return false;
+    if (!(design_eval_unit_partition_id == rhs.design_eval_unit_partition_id))
+      return false;
+    if (!(name == rhs.name))
+      return false;
+    if (!(comment == rhs.comment))
+      return false;
+    if (!(x == rhs.x))
+      return false;
+    if (!(y == rhs.y))
+      return false;
+    if (!(z == rhs.z))
+      return false;
+    return true;
+  }
+  bool operator != (const DesignTunnelControlPoint &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const DesignTunnelControlPoint & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(DesignTunnelControlPoint &a, DesignTunnelControlPoint &b);
+
+inline std::ostream& operator<<(std::ostream& out, const DesignTunnelControlPoint& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _DesignWorkSurfControlPoint__isset {
+  _DesignWorkSurfControlPoint__isset() : id(false), design_eval_unit_partition_id(false), name(false), comment(false), x(false), y(false), z(false) {}
+  bool id :1;
+  bool design_eval_unit_partition_id :1;
+  bool name :1;
+  bool comment :1;
+  bool x :1;
+  bool y :1;
+  bool z :1;
+} _DesignWorkSurfControlPoint__isset;
+
+class DesignWorkSurfControlPoint {
+ public:
+
+  DesignWorkSurfControlPoint(const DesignWorkSurfControlPoint&);
+  DesignWorkSurfControlPoint& operator=(const DesignWorkSurfControlPoint&);
+  DesignWorkSurfControlPoint() : id(0), design_eval_unit_partition_id(0), name(), comment(), x(0), y(0), z(0) {
+  }
+
+  virtual ~DesignWorkSurfControlPoint() throw();
+  int32_t id;
+  int32_t design_eval_unit_partition_id;
+  std::string name;
+  std::string comment;
+  double x;
+  double y;
+  double z;
+
+  _DesignWorkSurfControlPoint__isset __isset;
+
+  void __set_id(const int32_t val);
+
+  void __set_design_eval_unit_partition_id(const int32_t val);
+
+  void __set_name(const std::string& val);
+
+  void __set_comment(const std::string& val);
+
+  void __set_x(const double val);
+
+  void __set_y(const double val);
+
+  void __set_z(const double val);
+
+  bool operator == (const DesignWorkSurfControlPoint & rhs) const
+  {
+    if (!(id == rhs.id))
+      return false;
+    if (!(design_eval_unit_partition_id == rhs.design_eval_unit_partition_id))
+      return false;
+    if (!(name == rhs.name))
+      return false;
+    if (!(comment == rhs.comment))
+      return false;
+    if (!(x == rhs.x))
+      return false;
+    if (!(y == rhs.y))
+      return false;
+    if (!(z == rhs.z))
+      return false;
+    return true;
+  }
+  bool operator != (const DesignWorkSurfControlPoint &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const DesignWorkSurfControlPoint & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(DesignWorkSurfControlPoint &a, DesignWorkSurfControlPoint &b);
+
+inline std::ostream& operator<<(std::ostream& out, const DesignWorkSurfControlPoint& obj)
 {
   obj.printTo(out);
   return out;

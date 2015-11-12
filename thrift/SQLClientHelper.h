@@ -142,6 +142,60 @@ public:
 	static void GetDesignDrillingSurfTechnologyListByForeignKey(std::vector<cbm::DesignDrillingSurfTechnology> & _return, const std::string& fkey, const int32_t id);
 	static void GetDesignDrillingSurfTechnologyIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
 
+	//DesignEvalUnit 类型的CRUD操作
+	static int32_t AddDesignEvalUnit(const cbm::DesignEvalUnit & design_eval_unit);
+	static bool DeleteDesignEvalUnit(const int32_t id);
+	static bool UpdateDesignEvalUnit(const cbm::DesignEvalUnit & design_eval_unit);
+	static void GetDesignEvalUnitById(cbm::DesignEvalUnit & _return, const int32_t id);
+	static void GetDesignEvalUnitByForeignKey(cbm::DesignEvalUnit & _return, const std::string& fkey, const int32_t id);
+	static int32_t GetDesignEvalUnitIdByForeignKey(const std::string& fkey, const int32_t id);
+	static void GetDesignEvalUnitList(std::vector<cbm::DesignEvalUnit> & _return);
+	static void GetDesignEvalUnitIds(std::vector<int32_t> & _return);
+	static void GetDesignEvalUnitNames(std::vector<std::string> & _return);
+	static void AddMoreDesignEvalUnit(const std::vector<cbm::DesignEvalUnit> & objs);
+	static void DeleteMoreDesignEvalUnit(const std::vector<int32_t> & obj_ids);
+	static void GetDesignEvalUnitByFields(cbm::DesignEvalUnit & _return, const std::map<std::string, std::string> & fields);
+	static void GetDesignEvalUnitByField1(cbm::DesignEvalUnit & _return, const std::string& field, const std::string& value);
+	static void GetDesignEvalUnitByField2(cbm::DesignEvalUnit & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static void GetDesignEvalUnitListByFields(std::vector<cbm::DesignEvalUnit> & _return, const std::map<std::string, std::string> & fields);
+	static void GetDesignEvalUnitListByField1(std::vector<cbm::DesignEvalUnit> & _return, const std::string& field, const std::string& value);
+	static void GetDesignEvalUnitListByField2(std::vector<cbm::DesignEvalUnit> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static int32_t GetDesignEvalUnitIdByFields(const std::map<std::string, std::string> & fields);
+	static int32_t GetDesignEvalUnitIdByField1(const std::string& field, const std::string& value);
+	static int32_t GetDesignEvalUnitIdByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static void GetDesignEvalUnitIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields);
+	static void GetDesignEvalUnitIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value);
+	static void GetDesignEvalUnitIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static void GetDesignEvalUnitListByForeignKey(std::vector<cbm::DesignEvalUnit> & _return, const std::string& fkey, const int32_t id);
+	static void GetDesignEvalUnitIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+
+	//DesignEvalUnitPartition 类型的CRUD操作
+	static int32_t AddDesignEvalUnitPartition(const cbm::DesignEvalUnitPartition & design_eval_unit_partition);
+	static bool DeleteDesignEvalUnitPartition(const int32_t id);
+	static bool UpdateDesignEvalUnitPartition(const cbm::DesignEvalUnitPartition & design_eval_unit_partition);
+	static void GetDesignEvalUnitPartitionById(cbm::DesignEvalUnitPartition & _return, const int32_t id);
+	static void GetDesignEvalUnitPartitionByForeignKey(cbm::DesignEvalUnitPartition & _return, const std::string& fkey, const int32_t id);
+	static int32_t GetDesignEvalUnitPartitionIdByForeignKey(const std::string& fkey, const int32_t id);
+	static void GetDesignEvalUnitPartitionList(std::vector<cbm::DesignEvalUnitPartition> & _return);
+	static void GetDesignEvalUnitPartitionIds(std::vector<int32_t> & _return);
+	static void GetDesignEvalUnitPartitionNames(std::vector<std::string> & _return);
+	static void AddMoreDesignEvalUnitPartition(const std::vector<cbm::DesignEvalUnitPartition> & objs);
+	static void DeleteMoreDesignEvalUnitPartition(const std::vector<int32_t> & obj_ids);
+	static void GetDesignEvalUnitPartitionByFields(cbm::DesignEvalUnitPartition & _return, const std::map<std::string, std::string> & fields);
+	static void GetDesignEvalUnitPartitionByField1(cbm::DesignEvalUnitPartition & _return, const std::string& field, const std::string& value);
+	static void GetDesignEvalUnitPartitionByField2(cbm::DesignEvalUnitPartition & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static void GetDesignEvalUnitPartitionListByFields(std::vector<cbm::DesignEvalUnitPartition> & _return, const std::map<std::string, std::string> & fields);
+	static void GetDesignEvalUnitPartitionListByField1(std::vector<cbm::DesignEvalUnitPartition> & _return, const std::string& field, const std::string& value);
+	static void GetDesignEvalUnitPartitionListByField2(std::vector<cbm::DesignEvalUnitPartition> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static int32_t GetDesignEvalUnitPartitionIdByFields(const std::map<std::string, std::string> & fields);
+	static int32_t GetDesignEvalUnitPartitionIdByField1(const std::string& field, const std::string& value);
+	static int32_t GetDesignEvalUnitPartitionIdByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static void GetDesignEvalUnitPartitionIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields);
+	static void GetDesignEvalUnitPartitionIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value);
+	static void GetDesignEvalUnitPartitionIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static void GetDesignEvalUnitPartitionListByForeignKey(std::vector<cbm::DesignEvalUnitPartition> & _return, const std::string& fkey, const int32_t id);
+	static void GetDesignEvalUnitPartitionIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+
 	//DesignGoafTechnology 类型的CRUD操作
 	static int32_t AddDesignGoafTechnology(const cbm::DesignGoafTechnology & design_goaf_technology);
 	static bool DeleteDesignGoafTechnology(const int32_t id);
@@ -249,6 +303,60 @@ public:
 	static void GetDesignTechnologyIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
 	static void GetDesignTechnologyListByForeignKey(std::vector<cbm::DesignTechnology> & _return, const std::string& fkey, const int32_t id);
 	static void GetDesignTechnologyIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+
+	//DesignTunnelControlPoint 类型的CRUD操作
+	static int32_t AddDesignTunnelControlPoint(const cbm::DesignTunnelControlPoint & design_tunnel_control_point);
+	static bool DeleteDesignTunnelControlPoint(const int32_t id);
+	static bool UpdateDesignTunnelControlPoint(const cbm::DesignTunnelControlPoint & design_tunnel_control_point);
+	static void GetDesignTunnelControlPointById(cbm::DesignTunnelControlPoint & _return, const int32_t id);
+	static void GetDesignTunnelControlPointByForeignKey(cbm::DesignTunnelControlPoint & _return, const std::string& fkey, const int32_t id);
+	static int32_t GetDesignTunnelControlPointIdByForeignKey(const std::string& fkey, const int32_t id);
+	static void GetDesignTunnelControlPointList(std::vector<cbm::DesignTunnelControlPoint> & _return);
+	static void GetDesignTunnelControlPointIds(std::vector<int32_t> & _return);
+	static void GetDesignTunnelControlPointNames(std::vector<std::string> & _return);
+	static void AddMoreDesignTunnelControlPoint(const std::vector<cbm::DesignTunnelControlPoint> & objs);
+	static void DeleteMoreDesignTunnelControlPoint(const std::vector<int32_t> & obj_ids);
+	static void GetDesignTunnelControlPointByFields(cbm::DesignTunnelControlPoint & _return, const std::map<std::string, std::string> & fields);
+	static void GetDesignTunnelControlPointByField1(cbm::DesignTunnelControlPoint & _return, const std::string& field, const std::string& value);
+	static void GetDesignTunnelControlPointByField2(cbm::DesignTunnelControlPoint & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static void GetDesignTunnelControlPointListByFields(std::vector<cbm::DesignTunnelControlPoint> & _return, const std::map<std::string, std::string> & fields);
+	static void GetDesignTunnelControlPointListByField1(std::vector<cbm::DesignTunnelControlPoint> & _return, const std::string& field, const std::string& value);
+	static void GetDesignTunnelControlPointListByField2(std::vector<cbm::DesignTunnelControlPoint> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static int32_t GetDesignTunnelControlPointIdByFields(const std::map<std::string, std::string> & fields);
+	static int32_t GetDesignTunnelControlPointIdByField1(const std::string& field, const std::string& value);
+	static int32_t GetDesignTunnelControlPointIdByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static void GetDesignTunnelControlPointIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields);
+	static void GetDesignTunnelControlPointIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value);
+	static void GetDesignTunnelControlPointIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static void GetDesignTunnelControlPointListByForeignKey(std::vector<cbm::DesignTunnelControlPoint> & _return, const std::string& fkey, const int32_t id);
+	static void GetDesignTunnelControlPointIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+
+	//DesignWorkSurfControlPoint 类型的CRUD操作
+	static int32_t AddDesignWorkSurfControlPoint(const cbm::DesignWorkSurfControlPoint & design_work_surf_control_point);
+	static bool DeleteDesignWorkSurfControlPoint(const int32_t id);
+	static bool UpdateDesignWorkSurfControlPoint(const cbm::DesignWorkSurfControlPoint & design_work_surf_control_point);
+	static void GetDesignWorkSurfControlPointById(cbm::DesignWorkSurfControlPoint & _return, const int32_t id);
+	static void GetDesignWorkSurfControlPointByForeignKey(cbm::DesignWorkSurfControlPoint & _return, const std::string& fkey, const int32_t id);
+	static int32_t GetDesignWorkSurfControlPointIdByForeignKey(const std::string& fkey, const int32_t id);
+	static void GetDesignWorkSurfControlPointList(std::vector<cbm::DesignWorkSurfControlPoint> & _return);
+	static void GetDesignWorkSurfControlPointIds(std::vector<int32_t> & _return);
+	static void GetDesignWorkSurfControlPointNames(std::vector<std::string> & _return);
+	static void AddMoreDesignWorkSurfControlPoint(const std::vector<cbm::DesignWorkSurfControlPoint> & objs);
+	static void DeleteMoreDesignWorkSurfControlPoint(const std::vector<int32_t> & obj_ids);
+	static void GetDesignWorkSurfControlPointByFields(cbm::DesignWorkSurfControlPoint & _return, const std::map<std::string, std::string> & fields);
+	static void GetDesignWorkSurfControlPointByField1(cbm::DesignWorkSurfControlPoint & _return, const std::string& field, const std::string& value);
+	static void GetDesignWorkSurfControlPointByField2(cbm::DesignWorkSurfControlPoint & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static void GetDesignWorkSurfControlPointListByFields(std::vector<cbm::DesignWorkSurfControlPoint> & _return, const std::map<std::string, std::string> & fields);
+	static void GetDesignWorkSurfControlPointListByField1(std::vector<cbm::DesignWorkSurfControlPoint> & _return, const std::string& field, const std::string& value);
+	static void GetDesignWorkSurfControlPointListByField2(std::vector<cbm::DesignWorkSurfControlPoint> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static int32_t GetDesignWorkSurfControlPointIdByFields(const std::map<std::string, std::string> & fields);
+	static int32_t GetDesignWorkSurfControlPointIdByField1(const std::string& field, const std::string& value);
+	static int32_t GetDesignWorkSurfControlPointIdByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static void GetDesignWorkSurfControlPointIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields);
+	static void GetDesignWorkSurfControlPointIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value);
+	static void GetDesignWorkSurfControlPointIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static void GetDesignWorkSurfControlPointListByForeignKey(std::vector<cbm::DesignWorkSurfControlPoint> & _return, const std::string& fkey, const int32_t id);
+	static void GetDesignWorkSurfControlPointIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
 
 	//DesignWorkSurfTechnology 类型的CRUD操作
 	static int32_t AddDesignWorkSurfTechnology(const cbm::DesignWorkSurfTechnology & design_work_surf_technology);

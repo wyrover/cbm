@@ -1371,6 +1371,552 @@ def GetDesignDrillingSurfTechnologyIdListByForeignKey(fkey, id):
 
 
 
+#DesignEvalUnit 类型的CRUD操作
+def AddDesignEvalUnit(design_eval_unit):
+	ret = -1
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		ret = service_client.get().AddDesignEvalUnit(design_eval_unit)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		ret = -1
+	return ret
+def DeleteDesignEvalUnit(id):
+	ret = False
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		ret = service_client.get().DeleteDesignEvalUnit(int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		ret = False
+	return ret
+def UpdateDesignEvalUnit(design_eval_unit):
+	ret = False
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		ret = service_client.get().UpdateDesignEvalUnit(design_eval_unit)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		ret = False
+	return ret
+def GetDesignEvalUnitById(id):
+	_return = DesignEvalUnit()
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignEvalUnitById(int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return.id = -1
+	return _return
+def GetDesignEvalUnitByForeignKey(fkey, id):
+	_return = DesignEvalUnit()
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignEvalUnitByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return.id = -1
+	return _return
+def GetDesignEvalUnitIdByForeignKey(fkey, id):
+	_return = -1
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignEvalUnitIdByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = -1
+	return _return
+def GetDesignEvalUnitList():
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignEvalUnitList()
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignEvalUnitIds():
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignEvalUnitIds()
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignEvalUnitNames():
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignEvalUnitNames()
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def AddMoreDesignEvalUnit(objs):
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		service_client.get().AddMoreDesignEvalUnit(objs)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+def DeleteMoreDesignEvalUnit(obj_ids):
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		service_client.get().DeleteMoreDesignEvalUnit(obj_ids)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+def GetDesignEvalUnitByFields(fields):
+	_return = DesignEvalUnit()
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignEvalUnitByFields(fields)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return.id = -1
+	return _return
+def GetDesignEvalUnitByField1(field, value):
+	_return = DesignEvalUnit()
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignEvalUnitByField1(field, value)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return.id = -1
+	return _return
+def GetDesignEvalUnitByField2(field1, value1, field2, value2):
+	_return = DesignEvalUnit()
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignEvalUnitByField2(field1, value2, field2, value2)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return.id = -1
+	return _return
+def GetDesignEvalUnitListByFields(fields):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignEvalUnitListByFields(fields)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignEvalUnitListByField1(field, value):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignEvalUnitListByField1(field, value)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignEvalUnitListByField2(field1, value1, field2, value2):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignEvalUnitListByField2(field1, value1, field2, value2)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignEvalUnitIdByFields(fields):
+	_return = -1
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignEvalUnitIdByFields(fields)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = -1
+	return _return
+def GetDesignEvalUnitIdByField1(field, value):
+	_return = -1
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignEvalUnitIdByField1(field, value)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = -1
+	return _return
+def GetDesignEvalUnitIdByField2(field1, value1, field2, value2):
+	_return = -1
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignEvalUnitIdByField2(field1, value2, field2, value2)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = -1
+	return _return
+def GetDesignEvalUnitIdListByFields(fields):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignEvalUnitIdListByFields(fields)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignEvalUnitIdListByField1(field, value):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignEvalUnitIdListByField1(field, value)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignEvalUnitIdListByField2(field1, value1, field2, value2):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignEvalUnitIdListByField2(field1, value1, field2, value2)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignEvalUnitListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignEvalUnitListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignEvalUnitIdListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignEvalUnitIdListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+
+
+
+#DesignEvalUnitPartition 类型的CRUD操作
+def AddDesignEvalUnitPartition(design_eval_unit_partition):
+	ret = -1
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		ret = service_client.get().AddDesignEvalUnitPartition(design_eval_unit_partition)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		ret = -1
+	return ret
+def DeleteDesignEvalUnitPartition(id):
+	ret = False
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		ret = service_client.get().DeleteDesignEvalUnitPartition(int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		ret = False
+	return ret
+def UpdateDesignEvalUnitPartition(design_eval_unit_partition):
+	ret = False
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		ret = service_client.get().UpdateDesignEvalUnitPartition(design_eval_unit_partition)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		ret = False
+	return ret
+def GetDesignEvalUnitPartitionById(id):
+	_return = DesignEvalUnitPartition()
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignEvalUnitPartitionById(int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return.id = -1
+	return _return
+def GetDesignEvalUnitPartitionByForeignKey(fkey, id):
+	_return = DesignEvalUnitPartition()
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignEvalUnitPartitionByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return.id = -1
+	return _return
+def GetDesignEvalUnitPartitionIdByForeignKey(fkey, id):
+	_return = -1
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignEvalUnitPartitionIdByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = -1
+	return _return
+def GetDesignEvalUnitPartitionList():
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignEvalUnitPartitionList()
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignEvalUnitPartitionIds():
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignEvalUnitPartitionIds()
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignEvalUnitPartitionNames():
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignEvalUnitPartitionNames()
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def AddMoreDesignEvalUnitPartition(objs):
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		service_client.get().AddMoreDesignEvalUnitPartition(objs)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+def DeleteMoreDesignEvalUnitPartition(obj_ids):
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		service_client.get().DeleteMoreDesignEvalUnitPartition(obj_ids)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+def GetDesignEvalUnitPartitionByFields(fields):
+	_return = DesignEvalUnitPartition()
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignEvalUnitPartitionByFields(fields)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return.id = -1
+	return _return
+def GetDesignEvalUnitPartitionByField1(field, value):
+	_return = DesignEvalUnitPartition()
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignEvalUnitPartitionByField1(field, value)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return.id = -1
+	return _return
+def GetDesignEvalUnitPartitionByField2(field1, value1, field2, value2):
+	_return = DesignEvalUnitPartition()
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignEvalUnitPartitionByField2(field1, value2, field2, value2)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return.id = -1
+	return _return
+def GetDesignEvalUnitPartitionListByFields(fields):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignEvalUnitPartitionListByFields(fields)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignEvalUnitPartitionListByField1(field, value):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignEvalUnitPartitionListByField1(field, value)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignEvalUnitPartitionListByField2(field1, value1, field2, value2):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignEvalUnitPartitionListByField2(field1, value1, field2, value2)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignEvalUnitPartitionIdByFields(fields):
+	_return = -1
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignEvalUnitPartitionIdByFields(fields)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = -1
+	return _return
+def GetDesignEvalUnitPartitionIdByField1(field, value):
+	_return = -1
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignEvalUnitPartitionIdByField1(field, value)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = -1
+	return _return
+def GetDesignEvalUnitPartitionIdByField2(field1, value1, field2, value2):
+	_return = -1
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignEvalUnitPartitionIdByField2(field1, value2, field2, value2)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = -1
+	return _return
+def GetDesignEvalUnitPartitionIdListByFields(fields):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignEvalUnitPartitionIdListByFields(fields)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignEvalUnitPartitionIdListByField1(field, value):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignEvalUnitPartitionIdListByField1(field, value)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignEvalUnitPartitionIdListByField2(field1, value1, field2, value2):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignEvalUnitPartitionIdListByField2(field1, value1, field2, value2)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignEvalUnitPartitionListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignEvalUnitPartitionListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignEvalUnitPartitionIdListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignEvalUnitPartitionIdListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+
+
+
 #DesignGoafTechnology 类型的CRUD操作
 def AddDesignGoafTechnology(design_goaf_technology):
 	ret = -1
@@ -2455,6 +3001,552 @@ def GetDesignTechnologyIdListByForeignKey(fkey, id):
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
 		_return = service_client.get().GetDesignTechnologyIdListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+
+
+
+#DesignTunnelControlPoint 类型的CRUD操作
+def AddDesignTunnelControlPoint(design_tunnel_control_point):
+	ret = -1
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		ret = service_client.get().AddDesignTunnelControlPoint(design_tunnel_control_point)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		ret = -1
+	return ret
+def DeleteDesignTunnelControlPoint(id):
+	ret = False
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		ret = service_client.get().DeleteDesignTunnelControlPoint(int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		ret = False
+	return ret
+def UpdateDesignTunnelControlPoint(design_tunnel_control_point):
+	ret = False
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		ret = service_client.get().UpdateDesignTunnelControlPoint(design_tunnel_control_point)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		ret = False
+	return ret
+def GetDesignTunnelControlPointById(id):
+	_return = DesignTunnelControlPoint()
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignTunnelControlPointById(int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return.id = -1
+	return _return
+def GetDesignTunnelControlPointByForeignKey(fkey, id):
+	_return = DesignTunnelControlPoint()
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignTunnelControlPointByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return.id = -1
+	return _return
+def GetDesignTunnelControlPointIdByForeignKey(fkey, id):
+	_return = -1
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignTunnelControlPointIdByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = -1
+	return _return
+def GetDesignTunnelControlPointList():
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignTunnelControlPointList()
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignTunnelControlPointIds():
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignTunnelControlPointIds()
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignTunnelControlPointNames():
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignTunnelControlPointNames()
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def AddMoreDesignTunnelControlPoint(objs):
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		service_client.get().AddMoreDesignTunnelControlPoint(objs)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+def DeleteMoreDesignTunnelControlPoint(obj_ids):
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		service_client.get().DeleteMoreDesignTunnelControlPoint(obj_ids)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+def GetDesignTunnelControlPointByFields(fields):
+	_return = DesignTunnelControlPoint()
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignTunnelControlPointByFields(fields)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return.id = -1
+	return _return
+def GetDesignTunnelControlPointByField1(field, value):
+	_return = DesignTunnelControlPoint()
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignTunnelControlPointByField1(field, value)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return.id = -1
+	return _return
+def GetDesignTunnelControlPointByField2(field1, value1, field2, value2):
+	_return = DesignTunnelControlPoint()
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignTunnelControlPointByField2(field1, value2, field2, value2)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return.id = -1
+	return _return
+def GetDesignTunnelControlPointListByFields(fields):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignTunnelControlPointListByFields(fields)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignTunnelControlPointListByField1(field, value):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignTunnelControlPointListByField1(field, value)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignTunnelControlPointListByField2(field1, value1, field2, value2):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignTunnelControlPointListByField2(field1, value1, field2, value2)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignTunnelControlPointIdByFields(fields):
+	_return = -1
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignTunnelControlPointIdByFields(fields)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = -1
+	return _return
+def GetDesignTunnelControlPointIdByField1(field, value):
+	_return = -1
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignTunnelControlPointIdByField1(field, value)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = -1
+	return _return
+def GetDesignTunnelControlPointIdByField2(field1, value1, field2, value2):
+	_return = -1
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignTunnelControlPointIdByField2(field1, value2, field2, value2)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = -1
+	return _return
+def GetDesignTunnelControlPointIdListByFields(fields):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignTunnelControlPointIdListByFields(fields)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignTunnelControlPointIdListByField1(field, value):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignTunnelControlPointIdListByField1(field, value)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignTunnelControlPointIdListByField2(field1, value1, field2, value2):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignTunnelControlPointIdListByField2(field1, value1, field2, value2)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignTunnelControlPointListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignTunnelControlPointListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignTunnelControlPointIdListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignTunnelControlPointIdListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+
+
+
+#DesignWorkSurfControlPoint 类型的CRUD操作
+def AddDesignWorkSurfControlPoint(design_work_surf_control_point):
+	ret = -1
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		ret = service_client.get().AddDesignWorkSurfControlPoint(design_work_surf_control_point)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		ret = -1
+	return ret
+def DeleteDesignWorkSurfControlPoint(id):
+	ret = False
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		ret = service_client.get().DeleteDesignWorkSurfControlPoint(int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		ret = False
+	return ret
+def UpdateDesignWorkSurfControlPoint(design_work_surf_control_point):
+	ret = False
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		ret = service_client.get().UpdateDesignWorkSurfControlPoint(design_work_surf_control_point)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		ret = False
+	return ret
+def GetDesignWorkSurfControlPointById(id):
+	_return = DesignWorkSurfControlPoint()
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignWorkSurfControlPointById(int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return.id = -1
+	return _return
+def GetDesignWorkSurfControlPointByForeignKey(fkey, id):
+	_return = DesignWorkSurfControlPoint()
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignWorkSurfControlPointByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return.id = -1
+	return _return
+def GetDesignWorkSurfControlPointIdByForeignKey(fkey, id):
+	_return = -1
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignWorkSurfControlPointIdByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = -1
+	return _return
+def GetDesignWorkSurfControlPointList():
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignWorkSurfControlPointList()
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignWorkSurfControlPointIds():
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignWorkSurfControlPointIds()
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignWorkSurfControlPointNames():
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignWorkSurfControlPointNames()
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def AddMoreDesignWorkSurfControlPoint(objs):
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		service_client.get().AddMoreDesignWorkSurfControlPoint(objs)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+def DeleteMoreDesignWorkSurfControlPoint(obj_ids):
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		service_client.get().DeleteMoreDesignWorkSurfControlPoint(obj_ids)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+def GetDesignWorkSurfControlPointByFields(fields):
+	_return = DesignWorkSurfControlPoint()
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignWorkSurfControlPointByFields(fields)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return.id = -1
+	return _return
+def GetDesignWorkSurfControlPointByField1(field, value):
+	_return = DesignWorkSurfControlPoint()
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignWorkSurfControlPointByField1(field, value)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return.id = -1
+	return _return
+def GetDesignWorkSurfControlPointByField2(field1, value1, field2, value2):
+	_return = DesignWorkSurfControlPoint()
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignWorkSurfControlPointByField2(field1, value2, field2, value2)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return.id = -1
+	return _return
+def GetDesignWorkSurfControlPointListByFields(fields):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignWorkSurfControlPointListByFields(fields)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignWorkSurfControlPointListByField1(field, value):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignWorkSurfControlPointListByField1(field, value)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignWorkSurfControlPointListByField2(field1, value1, field2, value2):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignWorkSurfControlPointListByField2(field1, value1, field2, value2)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignWorkSurfControlPointIdByFields(fields):
+	_return = -1
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignWorkSurfControlPointIdByFields(fields)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = -1
+	return _return
+def GetDesignWorkSurfControlPointIdByField1(field, value):
+	_return = -1
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignWorkSurfControlPointIdByField1(field, value)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = -1
+	return _return
+def GetDesignWorkSurfControlPointIdByField2(field1, value1, field2, value2):
+	_return = -1
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignWorkSurfControlPointIdByField2(field1, value2, field2, value2)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = -1
+	return _return
+def GetDesignWorkSurfControlPointIdListByFields(fields):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignWorkSurfControlPointIdListByFields(fields)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignWorkSurfControlPointIdListByField1(field, value):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignWorkSurfControlPointIdListByField1(field, value)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignWorkSurfControlPointIdListByField2(field1, value1, field2, value2):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignWorkSurfControlPointIdListByField2(field1, value1, field2, value2)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignWorkSurfControlPointListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignWorkSurfControlPointListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignWorkSurfControlPointIdListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignWorkSurfControlPointIdListByForeignKey(fkey, int(id))
 		service_client.close()
 	except Exception, e:
 		print 'client exception:',e

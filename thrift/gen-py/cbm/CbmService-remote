@@ -149,6 +149,56 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
   print('   GetDesignDrillingSurfTechnologyIdListByField2(string field1, string value1, string field2, string value2)')
   print('   GetDesignDrillingSurfTechnologyListByForeignKey(string fkey, i32 id)')
   print('   GetDesignDrillingSurfTechnologyIdListByForeignKey(string fkey, i32 id)')
+  print('  i32 AddDesignEvalUnit(DesignEvalUnit design_eval_unit)')
+  print('  bool DeleteDesignEvalUnit(i32 id)')
+  print('  bool UpdateDesignEvalUnit(DesignEvalUnit design_eval_unit)')
+  print('  DesignEvalUnit GetDesignEvalUnitById(i32 id)')
+  print('  DesignEvalUnit GetDesignEvalUnitByForeignKey(string fkey, i32 id)')
+  print('  i32 GetDesignEvalUnitIdByForeignKey(string fkey, i32 id)')
+  print('   GetDesignEvalUnitList()')
+  print('   GetDesignEvalUnitIds()')
+  print('   GetDesignEvalUnitNames()')
+  print('  void AddMoreDesignEvalUnit( objs)')
+  print('  void DeleteMoreDesignEvalUnit( obj_ids)')
+  print('  DesignEvalUnit GetDesignEvalUnitByFields( fields)')
+  print('  DesignEvalUnit GetDesignEvalUnitByField1(string field, string value)')
+  print('  DesignEvalUnit GetDesignEvalUnitByField2(string field1, string value1, string field2, string value2)')
+  print('   GetDesignEvalUnitListByFields( fields)')
+  print('   GetDesignEvalUnitListByField1(string field, string value)')
+  print('   GetDesignEvalUnitListByField2(string field1, string value1, string field2, string value2)')
+  print('  i32 GetDesignEvalUnitIdByFields( fields)')
+  print('  i32 GetDesignEvalUnitIdByField1(string field, string value)')
+  print('  i32 GetDesignEvalUnitIdByField2(string field1, string value1, string field2, string value2)')
+  print('   GetDesignEvalUnitIdListByFields( fields)')
+  print('   GetDesignEvalUnitIdListByField1(string field, string value)')
+  print('   GetDesignEvalUnitIdListByField2(string field1, string value1, string field2, string value2)')
+  print('   GetDesignEvalUnitListByForeignKey(string fkey, i32 id)')
+  print('   GetDesignEvalUnitIdListByForeignKey(string fkey, i32 id)')
+  print('  i32 AddDesignEvalUnitPartition(DesignEvalUnitPartition design_eval_unit_partition)')
+  print('  bool DeleteDesignEvalUnitPartition(i32 id)')
+  print('  bool UpdateDesignEvalUnitPartition(DesignEvalUnitPartition design_eval_unit_partition)')
+  print('  DesignEvalUnitPartition GetDesignEvalUnitPartitionById(i32 id)')
+  print('  DesignEvalUnitPartition GetDesignEvalUnitPartitionByForeignKey(string fkey, i32 id)')
+  print('  i32 GetDesignEvalUnitPartitionIdByForeignKey(string fkey, i32 id)')
+  print('   GetDesignEvalUnitPartitionList()')
+  print('   GetDesignEvalUnitPartitionIds()')
+  print('   GetDesignEvalUnitPartitionNames()')
+  print('  void AddMoreDesignEvalUnitPartition( objs)')
+  print('  void DeleteMoreDesignEvalUnitPartition( obj_ids)')
+  print('  DesignEvalUnitPartition GetDesignEvalUnitPartitionByFields( fields)')
+  print('  DesignEvalUnitPartition GetDesignEvalUnitPartitionByField1(string field, string value)')
+  print('  DesignEvalUnitPartition GetDesignEvalUnitPartitionByField2(string field1, string value1, string field2, string value2)')
+  print('   GetDesignEvalUnitPartitionListByFields( fields)')
+  print('   GetDesignEvalUnitPartitionListByField1(string field, string value)')
+  print('   GetDesignEvalUnitPartitionListByField2(string field1, string value1, string field2, string value2)')
+  print('  i32 GetDesignEvalUnitPartitionIdByFields( fields)')
+  print('  i32 GetDesignEvalUnitPartitionIdByField1(string field, string value)')
+  print('  i32 GetDesignEvalUnitPartitionIdByField2(string field1, string value1, string field2, string value2)')
+  print('   GetDesignEvalUnitPartitionIdListByFields( fields)')
+  print('   GetDesignEvalUnitPartitionIdListByField1(string field, string value)')
+  print('   GetDesignEvalUnitPartitionIdListByField2(string field1, string value1, string field2, string value2)')
+  print('   GetDesignEvalUnitPartitionListByForeignKey(string fkey, i32 id)')
+  print('   GetDesignEvalUnitPartitionIdListByForeignKey(string fkey, i32 id)')
   print('  i32 AddDesignGoafTechnology(DesignGoafTechnology design_goaf_technology)')
   print('  bool DeleteDesignGoafTechnology(i32 id)')
   print('  bool UpdateDesignGoafTechnology(DesignGoafTechnology design_goaf_technology)')
@@ -249,6 +299,56 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
   print('   GetDesignTechnologyIdListByField2(string field1, string value1, string field2, string value2)')
   print('   GetDesignTechnologyListByForeignKey(string fkey, i32 id)')
   print('   GetDesignTechnologyIdListByForeignKey(string fkey, i32 id)')
+  print('  i32 AddDesignTunnelControlPoint(DesignTunnelControlPoint design_tunnel_control_point)')
+  print('  bool DeleteDesignTunnelControlPoint(i32 id)')
+  print('  bool UpdateDesignTunnelControlPoint(DesignTunnelControlPoint design_tunnel_control_point)')
+  print('  DesignTunnelControlPoint GetDesignTunnelControlPointById(i32 id)')
+  print('  DesignTunnelControlPoint GetDesignTunnelControlPointByForeignKey(string fkey, i32 id)')
+  print('  i32 GetDesignTunnelControlPointIdByForeignKey(string fkey, i32 id)')
+  print('   GetDesignTunnelControlPointList()')
+  print('   GetDesignTunnelControlPointIds()')
+  print('   GetDesignTunnelControlPointNames()')
+  print('  void AddMoreDesignTunnelControlPoint( objs)')
+  print('  void DeleteMoreDesignTunnelControlPoint( obj_ids)')
+  print('  DesignTunnelControlPoint GetDesignTunnelControlPointByFields( fields)')
+  print('  DesignTunnelControlPoint GetDesignTunnelControlPointByField1(string field, string value)')
+  print('  DesignTunnelControlPoint GetDesignTunnelControlPointByField2(string field1, string value1, string field2, string value2)')
+  print('   GetDesignTunnelControlPointListByFields( fields)')
+  print('   GetDesignTunnelControlPointListByField1(string field, string value)')
+  print('   GetDesignTunnelControlPointListByField2(string field1, string value1, string field2, string value2)')
+  print('  i32 GetDesignTunnelControlPointIdByFields( fields)')
+  print('  i32 GetDesignTunnelControlPointIdByField1(string field, string value)')
+  print('  i32 GetDesignTunnelControlPointIdByField2(string field1, string value1, string field2, string value2)')
+  print('   GetDesignTunnelControlPointIdListByFields( fields)')
+  print('   GetDesignTunnelControlPointIdListByField1(string field, string value)')
+  print('   GetDesignTunnelControlPointIdListByField2(string field1, string value1, string field2, string value2)')
+  print('   GetDesignTunnelControlPointListByForeignKey(string fkey, i32 id)')
+  print('   GetDesignTunnelControlPointIdListByForeignKey(string fkey, i32 id)')
+  print('  i32 AddDesignWorkSurfControlPoint(DesignWorkSurfControlPoint design_work_surf_control_point)')
+  print('  bool DeleteDesignWorkSurfControlPoint(i32 id)')
+  print('  bool UpdateDesignWorkSurfControlPoint(DesignWorkSurfControlPoint design_work_surf_control_point)')
+  print('  DesignWorkSurfControlPoint GetDesignWorkSurfControlPointById(i32 id)')
+  print('  DesignWorkSurfControlPoint GetDesignWorkSurfControlPointByForeignKey(string fkey, i32 id)')
+  print('  i32 GetDesignWorkSurfControlPointIdByForeignKey(string fkey, i32 id)')
+  print('   GetDesignWorkSurfControlPointList()')
+  print('   GetDesignWorkSurfControlPointIds()')
+  print('   GetDesignWorkSurfControlPointNames()')
+  print('  void AddMoreDesignWorkSurfControlPoint( objs)')
+  print('  void DeleteMoreDesignWorkSurfControlPoint( obj_ids)')
+  print('  DesignWorkSurfControlPoint GetDesignWorkSurfControlPointByFields( fields)')
+  print('  DesignWorkSurfControlPoint GetDesignWorkSurfControlPointByField1(string field, string value)')
+  print('  DesignWorkSurfControlPoint GetDesignWorkSurfControlPointByField2(string field1, string value1, string field2, string value2)')
+  print('   GetDesignWorkSurfControlPointListByFields( fields)')
+  print('   GetDesignWorkSurfControlPointListByField1(string field, string value)')
+  print('   GetDesignWorkSurfControlPointListByField2(string field1, string value1, string field2, string value2)')
+  print('  i32 GetDesignWorkSurfControlPointIdByFields( fields)')
+  print('  i32 GetDesignWorkSurfControlPointIdByField1(string field, string value)')
+  print('  i32 GetDesignWorkSurfControlPointIdByField2(string field1, string value1, string field2, string value2)')
+  print('   GetDesignWorkSurfControlPointIdListByFields( fields)')
+  print('   GetDesignWorkSurfControlPointIdListByField1(string field, string value)')
+  print('   GetDesignWorkSurfControlPointIdListByField2(string field1, string value1, string field2, string value2)')
+  print('   GetDesignWorkSurfControlPointListByForeignKey(string fkey, i32 id)')
+  print('   GetDesignWorkSurfControlPointIdListByForeignKey(string fkey, i32 id)')
   print('  i32 AddDesignWorkSurfTechnology(DesignWorkSurfTechnology design_work_surf_technology)')
   print('  bool DeleteDesignWorkSurfTechnology(i32 id)')
   print('  bool UpdateDesignWorkSurfTechnology(DesignWorkSurfTechnology design_work_surf_technology)')
@@ -1659,6 +1759,306 @@ elif cmd == 'GetDesignDrillingSurfTechnologyIdListByForeignKey':
     sys.exit(1)
   pp.pprint(client.GetDesignDrillingSurfTechnologyIdListByForeignKey(args[0],eval(args[1]),))
 
+elif cmd == 'AddDesignEvalUnit':
+  if len(args) != 1:
+    print('AddDesignEvalUnit requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.AddDesignEvalUnit(eval(args[0]),))
+
+elif cmd == 'DeleteDesignEvalUnit':
+  if len(args) != 1:
+    print('DeleteDesignEvalUnit requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.DeleteDesignEvalUnit(eval(args[0]),))
+
+elif cmd == 'UpdateDesignEvalUnit':
+  if len(args) != 1:
+    print('UpdateDesignEvalUnit requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.UpdateDesignEvalUnit(eval(args[0]),))
+
+elif cmd == 'GetDesignEvalUnitById':
+  if len(args) != 1:
+    print('GetDesignEvalUnitById requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignEvalUnitById(eval(args[0]),))
+
+elif cmd == 'GetDesignEvalUnitByForeignKey':
+  if len(args) != 2:
+    print('GetDesignEvalUnitByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignEvalUnitByForeignKey(args[0],eval(args[1]),))
+
+elif cmd == 'GetDesignEvalUnitIdByForeignKey':
+  if len(args) != 2:
+    print('GetDesignEvalUnitIdByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignEvalUnitIdByForeignKey(args[0],eval(args[1]),))
+
+elif cmd == 'GetDesignEvalUnitList':
+  if len(args) != 0:
+    print('GetDesignEvalUnitList requires 0 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignEvalUnitList())
+
+elif cmd == 'GetDesignEvalUnitIds':
+  if len(args) != 0:
+    print('GetDesignEvalUnitIds requires 0 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignEvalUnitIds())
+
+elif cmd == 'GetDesignEvalUnitNames':
+  if len(args) != 0:
+    print('GetDesignEvalUnitNames requires 0 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignEvalUnitNames())
+
+elif cmd == 'AddMoreDesignEvalUnit':
+  if len(args) != 1:
+    print('AddMoreDesignEvalUnit requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.AddMoreDesignEvalUnit(eval(args[0]),))
+
+elif cmd == 'DeleteMoreDesignEvalUnit':
+  if len(args) != 1:
+    print('DeleteMoreDesignEvalUnit requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.DeleteMoreDesignEvalUnit(eval(args[0]),))
+
+elif cmd == 'GetDesignEvalUnitByFields':
+  if len(args) != 1:
+    print('GetDesignEvalUnitByFields requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignEvalUnitByFields(eval(args[0]),))
+
+elif cmd == 'GetDesignEvalUnitByField1':
+  if len(args) != 2:
+    print('GetDesignEvalUnitByField1 requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignEvalUnitByField1(args[0],args[1],))
+
+elif cmd == 'GetDesignEvalUnitByField2':
+  if len(args) != 4:
+    print('GetDesignEvalUnitByField2 requires 4 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignEvalUnitByField2(args[0],args[1],args[2],args[3],))
+
+elif cmd == 'GetDesignEvalUnitListByFields':
+  if len(args) != 1:
+    print('GetDesignEvalUnitListByFields requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignEvalUnitListByFields(eval(args[0]),))
+
+elif cmd == 'GetDesignEvalUnitListByField1':
+  if len(args) != 2:
+    print('GetDesignEvalUnitListByField1 requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignEvalUnitListByField1(args[0],args[1],))
+
+elif cmd == 'GetDesignEvalUnitListByField2':
+  if len(args) != 4:
+    print('GetDesignEvalUnitListByField2 requires 4 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignEvalUnitListByField2(args[0],args[1],args[2],args[3],))
+
+elif cmd == 'GetDesignEvalUnitIdByFields':
+  if len(args) != 1:
+    print('GetDesignEvalUnitIdByFields requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignEvalUnitIdByFields(eval(args[0]),))
+
+elif cmd == 'GetDesignEvalUnitIdByField1':
+  if len(args) != 2:
+    print('GetDesignEvalUnitIdByField1 requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignEvalUnitIdByField1(args[0],args[1],))
+
+elif cmd == 'GetDesignEvalUnitIdByField2':
+  if len(args) != 4:
+    print('GetDesignEvalUnitIdByField2 requires 4 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignEvalUnitIdByField2(args[0],args[1],args[2],args[3],))
+
+elif cmd == 'GetDesignEvalUnitIdListByFields':
+  if len(args) != 1:
+    print('GetDesignEvalUnitIdListByFields requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignEvalUnitIdListByFields(eval(args[0]),))
+
+elif cmd == 'GetDesignEvalUnitIdListByField1':
+  if len(args) != 2:
+    print('GetDesignEvalUnitIdListByField1 requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignEvalUnitIdListByField1(args[0],args[1],))
+
+elif cmd == 'GetDesignEvalUnitIdListByField2':
+  if len(args) != 4:
+    print('GetDesignEvalUnitIdListByField2 requires 4 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignEvalUnitIdListByField2(args[0],args[1],args[2],args[3],))
+
+elif cmd == 'GetDesignEvalUnitListByForeignKey':
+  if len(args) != 2:
+    print('GetDesignEvalUnitListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignEvalUnitListByForeignKey(args[0],eval(args[1]),))
+
+elif cmd == 'GetDesignEvalUnitIdListByForeignKey':
+  if len(args) != 2:
+    print('GetDesignEvalUnitIdListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignEvalUnitIdListByForeignKey(args[0],eval(args[1]),))
+
+elif cmd == 'AddDesignEvalUnitPartition':
+  if len(args) != 1:
+    print('AddDesignEvalUnitPartition requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.AddDesignEvalUnitPartition(eval(args[0]),))
+
+elif cmd == 'DeleteDesignEvalUnitPartition':
+  if len(args) != 1:
+    print('DeleteDesignEvalUnitPartition requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.DeleteDesignEvalUnitPartition(eval(args[0]),))
+
+elif cmd == 'UpdateDesignEvalUnitPartition':
+  if len(args) != 1:
+    print('UpdateDesignEvalUnitPartition requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.UpdateDesignEvalUnitPartition(eval(args[0]),))
+
+elif cmd == 'GetDesignEvalUnitPartitionById':
+  if len(args) != 1:
+    print('GetDesignEvalUnitPartitionById requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignEvalUnitPartitionById(eval(args[0]),))
+
+elif cmd == 'GetDesignEvalUnitPartitionByForeignKey':
+  if len(args) != 2:
+    print('GetDesignEvalUnitPartitionByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignEvalUnitPartitionByForeignKey(args[0],eval(args[1]),))
+
+elif cmd == 'GetDesignEvalUnitPartitionIdByForeignKey':
+  if len(args) != 2:
+    print('GetDesignEvalUnitPartitionIdByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignEvalUnitPartitionIdByForeignKey(args[0],eval(args[1]),))
+
+elif cmd == 'GetDesignEvalUnitPartitionList':
+  if len(args) != 0:
+    print('GetDesignEvalUnitPartitionList requires 0 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignEvalUnitPartitionList())
+
+elif cmd == 'GetDesignEvalUnitPartitionIds':
+  if len(args) != 0:
+    print('GetDesignEvalUnitPartitionIds requires 0 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignEvalUnitPartitionIds())
+
+elif cmd == 'GetDesignEvalUnitPartitionNames':
+  if len(args) != 0:
+    print('GetDesignEvalUnitPartitionNames requires 0 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignEvalUnitPartitionNames())
+
+elif cmd == 'AddMoreDesignEvalUnitPartition':
+  if len(args) != 1:
+    print('AddMoreDesignEvalUnitPartition requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.AddMoreDesignEvalUnitPartition(eval(args[0]),))
+
+elif cmd == 'DeleteMoreDesignEvalUnitPartition':
+  if len(args) != 1:
+    print('DeleteMoreDesignEvalUnitPartition requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.DeleteMoreDesignEvalUnitPartition(eval(args[0]),))
+
+elif cmd == 'GetDesignEvalUnitPartitionByFields':
+  if len(args) != 1:
+    print('GetDesignEvalUnitPartitionByFields requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignEvalUnitPartitionByFields(eval(args[0]),))
+
+elif cmd == 'GetDesignEvalUnitPartitionByField1':
+  if len(args) != 2:
+    print('GetDesignEvalUnitPartitionByField1 requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignEvalUnitPartitionByField1(args[0],args[1],))
+
+elif cmd == 'GetDesignEvalUnitPartitionByField2':
+  if len(args) != 4:
+    print('GetDesignEvalUnitPartitionByField2 requires 4 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignEvalUnitPartitionByField2(args[0],args[1],args[2],args[3],))
+
+elif cmd == 'GetDesignEvalUnitPartitionListByFields':
+  if len(args) != 1:
+    print('GetDesignEvalUnitPartitionListByFields requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignEvalUnitPartitionListByFields(eval(args[0]),))
+
+elif cmd == 'GetDesignEvalUnitPartitionListByField1':
+  if len(args) != 2:
+    print('GetDesignEvalUnitPartitionListByField1 requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignEvalUnitPartitionListByField1(args[0],args[1],))
+
+elif cmd == 'GetDesignEvalUnitPartitionListByField2':
+  if len(args) != 4:
+    print('GetDesignEvalUnitPartitionListByField2 requires 4 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignEvalUnitPartitionListByField2(args[0],args[1],args[2],args[3],))
+
+elif cmd == 'GetDesignEvalUnitPartitionIdByFields':
+  if len(args) != 1:
+    print('GetDesignEvalUnitPartitionIdByFields requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignEvalUnitPartitionIdByFields(eval(args[0]),))
+
+elif cmd == 'GetDesignEvalUnitPartitionIdByField1':
+  if len(args) != 2:
+    print('GetDesignEvalUnitPartitionIdByField1 requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignEvalUnitPartitionIdByField1(args[0],args[1],))
+
+elif cmd == 'GetDesignEvalUnitPartitionIdByField2':
+  if len(args) != 4:
+    print('GetDesignEvalUnitPartitionIdByField2 requires 4 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignEvalUnitPartitionIdByField2(args[0],args[1],args[2],args[3],))
+
+elif cmd == 'GetDesignEvalUnitPartitionIdListByFields':
+  if len(args) != 1:
+    print('GetDesignEvalUnitPartitionIdListByFields requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignEvalUnitPartitionIdListByFields(eval(args[0]),))
+
+elif cmd == 'GetDesignEvalUnitPartitionIdListByField1':
+  if len(args) != 2:
+    print('GetDesignEvalUnitPartitionIdListByField1 requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignEvalUnitPartitionIdListByField1(args[0],args[1],))
+
+elif cmd == 'GetDesignEvalUnitPartitionIdListByField2':
+  if len(args) != 4:
+    print('GetDesignEvalUnitPartitionIdListByField2 requires 4 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignEvalUnitPartitionIdListByField2(args[0],args[1],args[2],args[3],))
+
+elif cmd == 'GetDesignEvalUnitPartitionListByForeignKey':
+  if len(args) != 2:
+    print('GetDesignEvalUnitPartitionListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignEvalUnitPartitionListByForeignKey(args[0],eval(args[1]),))
+
+elif cmd == 'GetDesignEvalUnitPartitionIdListByForeignKey':
+  if len(args) != 2:
+    print('GetDesignEvalUnitPartitionIdListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignEvalUnitPartitionIdListByForeignKey(args[0],eval(args[1]),))
+
 elif cmd == 'AddDesignGoafTechnology':
   if len(args) != 1:
     print('AddDesignGoafTechnology requires 1 args')
@@ -2258,6 +2658,306 @@ elif cmd == 'GetDesignTechnologyIdListByForeignKey':
     print('GetDesignTechnologyIdListByForeignKey requires 2 args')
     sys.exit(1)
   pp.pprint(client.GetDesignTechnologyIdListByForeignKey(args[0],eval(args[1]),))
+
+elif cmd == 'AddDesignTunnelControlPoint':
+  if len(args) != 1:
+    print('AddDesignTunnelControlPoint requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.AddDesignTunnelControlPoint(eval(args[0]),))
+
+elif cmd == 'DeleteDesignTunnelControlPoint':
+  if len(args) != 1:
+    print('DeleteDesignTunnelControlPoint requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.DeleteDesignTunnelControlPoint(eval(args[0]),))
+
+elif cmd == 'UpdateDesignTunnelControlPoint':
+  if len(args) != 1:
+    print('UpdateDesignTunnelControlPoint requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.UpdateDesignTunnelControlPoint(eval(args[0]),))
+
+elif cmd == 'GetDesignTunnelControlPointById':
+  if len(args) != 1:
+    print('GetDesignTunnelControlPointById requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignTunnelControlPointById(eval(args[0]),))
+
+elif cmd == 'GetDesignTunnelControlPointByForeignKey':
+  if len(args) != 2:
+    print('GetDesignTunnelControlPointByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignTunnelControlPointByForeignKey(args[0],eval(args[1]),))
+
+elif cmd == 'GetDesignTunnelControlPointIdByForeignKey':
+  if len(args) != 2:
+    print('GetDesignTunnelControlPointIdByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignTunnelControlPointIdByForeignKey(args[0],eval(args[1]),))
+
+elif cmd == 'GetDesignTunnelControlPointList':
+  if len(args) != 0:
+    print('GetDesignTunnelControlPointList requires 0 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignTunnelControlPointList())
+
+elif cmd == 'GetDesignTunnelControlPointIds':
+  if len(args) != 0:
+    print('GetDesignTunnelControlPointIds requires 0 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignTunnelControlPointIds())
+
+elif cmd == 'GetDesignTunnelControlPointNames':
+  if len(args) != 0:
+    print('GetDesignTunnelControlPointNames requires 0 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignTunnelControlPointNames())
+
+elif cmd == 'AddMoreDesignTunnelControlPoint':
+  if len(args) != 1:
+    print('AddMoreDesignTunnelControlPoint requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.AddMoreDesignTunnelControlPoint(eval(args[0]),))
+
+elif cmd == 'DeleteMoreDesignTunnelControlPoint':
+  if len(args) != 1:
+    print('DeleteMoreDesignTunnelControlPoint requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.DeleteMoreDesignTunnelControlPoint(eval(args[0]),))
+
+elif cmd == 'GetDesignTunnelControlPointByFields':
+  if len(args) != 1:
+    print('GetDesignTunnelControlPointByFields requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignTunnelControlPointByFields(eval(args[0]),))
+
+elif cmd == 'GetDesignTunnelControlPointByField1':
+  if len(args) != 2:
+    print('GetDesignTunnelControlPointByField1 requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignTunnelControlPointByField1(args[0],args[1],))
+
+elif cmd == 'GetDesignTunnelControlPointByField2':
+  if len(args) != 4:
+    print('GetDesignTunnelControlPointByField2 requires 4 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignTunnelControlPointByField2(args[0],args[1],args[2],args[3],))
+
+elif cmd == 'GetDesignTunnelControlPointListByFields':
+  if len(args) != 1:
+    print('GetDesignTunnelControlPointListByFields requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignTunnelControlPointListByFields(eval(args[0]),))
+
+elif cmd == 'GetDesignTunnelControlPointListByField1':
+  if len(args) != 2:
+    print('GetDesignTunnelControlPointListByField1 requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignTunnelControlPointListByField1(args[0],args[1],))
+
+elif cmd == 'GetDesignTunnelControlPointListByField2':
+  if len(args) != 4:
+    print('GetDesignTunnelControlPointListByField2 requires 4 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignTunnelControlPointListByField2(args[0],args[1],args[2],args[3],))
+
+elif cmd == 'GetDesignTunnelControlPointIdByFields':
+  if len(args) != 1:
+    print('GetDesignTunnelControlPointIdByFields requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignTunnelControlPointIdByFields(eval(args[0]),))
+
+elif cmd == 'GetDesignTunnelControlPointIdByField1':
+  if len(args) != 2:
+    print('GetDesignTunnelControlPointIdByField1 requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignTunnelControlPointIdByField1(args[0],args[1],))
+
+elif cmd == 'GetDesignTunnelControlPointIdByField2':
+  if len(args) != 4:
+    print('GetDesignTunnelControlPointIdByField2 requires 4 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignTunnelControlPointIdByField2(args[0],args[1],args[2],args[3],))
+
+elif cmd == 'GetDesignTunnelControlPointIdListByFields':
+  if len(args) != 1:
+    print('GetDesignTunnelControlPointIdListByFields requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignTunnelControlPointIdListByFields(eval(args[0]),))
+
+elif cmd == 'GetDesignTunnelControlPointIdListByField1':
+  if len(args) != 2:
+    print('GetDesignTunnelControlPointIdListByField1 requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignTunnelControlPointIdListByField1(args[0],args[1],))
+
+elif cmd == 'GetDesignTunnelControlPointIdListByField2':
+  if len(args) != 4:
+    print('GetDesignTunnelControlPointIdListByField2 requires 4 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignTunnelControlPointIdListByField2(args[0],args[1],args[2],args[3],))
+
+elif cmd == 'GetDesignTunnelControlPointListByForeignKey':
+  if len(args) != 2:
+    print('GetDesignTunnelControlPointListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignTunnelControlPointListByForeignKey(args[0],eval(args[1]),))
+
+elif cmd == 'GetDesignTunnelControlPointIdListByForeignKey':
+  if len(args) != 2:
+    print('GetDesignTunnelControlPointIdListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignTunnelControlPointIdListByForeignKey(args[0],eval(args[1]),))
+
+elif cmd == 'AddDesignWorkSurfControlPoint':
+  if len(args) != 1:
+    print('AddDesignWorkSurfControlPoint requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.AddDesignWorkSurfControlPoint(eval(args[0]),))
+
+elif cmd == 'DeleteDesignWorkSurfControlPoint':
+  if len(args) != 1:
+    print('DeleteDesignWorkSurfControlPoint requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.DeleteDesignWorkSurfControlPoint(eval(args[0]),))
+
+elif cmd == 'UpdateDesignWorkSurfControlPoint':
+  if len(args) != 1:
+    print('UpdateDesignWorkSurfControlPoint requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.UpdateDesignWorkSurfControlPoint(eval(args[0]),))
+
+elif cmd == 'GetDesignWorkSurfControlPointById':
+  if len(args) != 1:
+    print('GetDesignWorkSurfControlPointById requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignWorkSurfControlPointById(eval(args[0]),))
+
+elif cmd == 'GetDesignWorkSurfControlPointByForeignKey':
+  if len(args) != 2:
+    print('GetDesignWorkSurfControlPointByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignWorkSurfControlPointByForeignKey(args[0],eval(args[1]),))
+
+elif cmd == 'GetDesignWorkSurfControlPointIdByForeignKey':
+  if len(args) != 2:
+    print('GetDesignWorkSurfControlPointIdByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignWorkSurfControlPointIdByForeignKey(args[0],eval(args[1]),))
+
+elif cmd == 'GetDesignWorkSurfControlPointList':
+  if len(args) != 0:
+    print('GetDesignWorkSurfControlPointList requires 0 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignWorkSurfControlPointList())
+
+elif cmd == 'GetDesignWorkSurfControlPointIds':
+  if len(args) != 0:
+    print('GetDesignWorkSurfControlPointIds requires 0 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignWorkSurfControlPointIds())
+
+elif cmd == 'GetDesignWorkSurfControlPointNames':
+  if len(args) != 0:
+    print('GetDesignWorkSurfControlPointNames requires 0 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignWorkSurfControlPointNames())
+
+elif cmd == 'AddMoreDesignWorkSurfControlPoint':
+  if len(args) != 1:
+    print('AddMoreDesignWorkSurfControlPoint requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.AddMoreDesignWorkSurfControlPoint(eval(args[0]),))
+
+elif cmd == 'DeleteMoreDesignWorkSurfControlPoint':
+  if len(args) != 1:
+    print('DeleteMoreDesignWorkSurfControlPoint requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.DeleteMoreDesignWorkSurfControlPoint(eval(args[0]),))
+
+elif cmd == 'GetDesignWorkSurfControlPointByFields':
+  if len(args) != 1:
+    print('GetDesignWorkSurfControlPointByFields requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignWorkSurfControlPointByFields(eval(args[0]),))
+
+elif cmd == 'GetDesignWorkSurfControlPointByField1':
+  if len(args) != 2:
+    print('GetDesignWorkSurfControlPointByField1 requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignWorkSurfControlPointByField1(args[0],args[1],))
+
+elif cmd == 'GetDesignWorkSurfControlPointByField2':
+  if len(args) != 4:
+    print('GetDesignWorkSurfControlPointByField2 requires 4 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignWorkSurfControlPointByField2(args[0],args[1],args[2],args[3],))
+
+elif cmd == 'GetDesignWorkSurfControlPointListByFields':
+  if len(args) != 1:
+    print('GetDesignWorkSurfControlPointListByFields requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignWorkSurfControlPointListByFields(eval(args[0]),))
+
+elif cmd == 'GetDesignWorkSurfControlPointListByField1':
+  if len(args) != 2:
+    print('GetDesignWorkSurfControlPointListByField1 requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignWorkSurfControlPointListByField1(args[0],args[1],))
+
+elif cmd == 'GetDesignWorkSurfControlPointListByField2':
+  if len(args) != 4:
+    print('GetDesignWorkSurfControlPointListByField2 requires 4 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignWorkSurfControlPointListByField2(args[0],args[1],args[2],args[3],))
+
+elif cmd == 'GetDesignWorkSurfControlPointIdByFields':
+  if len(args) != 1:
+    print('GetDesignWorkSurfControlPointIdByFields requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignWorkSurfControlPointIdByFields(eval(args[0]),))
+
+elif cmd == 'GetDesignWorkSurfControlPointIdByField1':
+  if len(args) != 2:
+    print('GetDesignWorkSurfControlPointIdByField1 requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignWorkSurfControlPointIdByField1(args[0],args[1],))
+
+elif cmd == 'GetDesignWorkSurfControlPointIdByField2':
+  if len(args) != 4:
+    print('GetDesignWorkSurfControlPointIdByField2 requires 4 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignWorkSurfControlPointIdByField2(args[0],args[1],args[2],args[3],))
+
+elif cmd == 'GetDesignWorkSurfControlPointIdListByFields':
+  if len(args) != 1:
+    print('GetDesignWorkSurfControlPointIdListByFields requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignWorkSurfControlPointIdListByFields(eval(args[0]),))
+
+elif cmd == 'GetDesignWorkSurfControlPointIdListByField1':
+  if len(args) != 2:
+    print('GetDesignWorkSurfControlPointIdListByField1 requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignWorkSurfControlPointIdListByField1(args[0],args[1],))
+
+elif cmd == 'GetDesignWorkSurfControlPointIdListByField2':
+  if len(args) != 4:
+    print('GetDesignWorkSurfControlPointIdListByField2 requires 4 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignWorkSurfControlPointIdListByField2(args[0],args[1],args[2],args[3],))
+
+elif cmd == 'GetDesignWorkSurfControlPointListByForeignKey':
+  if len(args) != 2:
+    print('GetDesignWorkSurfControlPointListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignWorkSurfControlPointListByForeignKey(args[0],eval(args[1]),))
+
+elif cmd == 'GetDesignWorkSurfControlPointIdListByForeignKey':
+  if len(args) != 2:
+    print('GetDesignWorkSurfControlPointIdListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignWorkSurfControlPointIdListByForeignKey(args[0],eval(args[1]),))
 
 elif cmd == 'AddDesignWorkSurfTechnology':
   if len(args) != 1:

@@ -2853,6 +2853,524 @@ class DesignDrillingSurfTechnology {
 
 }
 
+class DesignEvalUnit {
+  static $_TSPEC;
+
+  /**
+   * @var int
+   */
+  public $id = null;
+  /**
+   * @var int
+   */
+  public $design_eval_unit_partition_id = null;
+  /**
+   * @var string
+   */
+  public $name = null;
+  /**
+   * @var string
+   */
+  public $comment = null;
+  /**
+   * @var int
+   */
+  public $num = null;
+  /**
+   * @var double
+   */
+  public $l = null;
+  /**
+   * @var int
+   */
+  public $t = null;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        1 => array(
+          'var' => 'id',
+          'type' => TType::I32,
+          ),
+        2 => array(
+          'var' => 'design_eval_unit_partition_id',
+          'type' => TType::I32,
+          ),
+        3 => array(
+          'var' => 'name',
+          'type' => TType::STRING,
+          ),
+        4 => array(
+          'var' => 'comment',
+          'type' => TType::STRING,
+          ),
+        5 => array(
+          'var' => 'num',
+          'type' => TType::I32,
+          ),
+        6 => array(
+          'var' => 'l',
+          'type' => TType::DOUBLE,
+          ),
+        7 => array(
+          'var' => 't',
+          'type' => TType::I32,
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['id'])) {
+        $this->id = $vals['id'];
+      }
+      if (isset($vals['design_eval_unit_partition_id'])) {
+        $this->design_eval_unit_partition_id = $vals['design_eval_unit_partition_id'];
+      }
+      if (isset($vals['name'])) {
+        $this->name = $vals['name'];
+      }
+      if (isset($vals['comment'])) {
+        $this->comment = $vals['comment'];
+      }
+      if (isset($vals['num'])) {
+        $this->num = $vals['num'];
+      }
+      if (isset($vals['l'])) {
+        $this->l = $vals['l'];
+      }
+      if (isset($vals['t'])) {
+        $this->t = $vals['t'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'DesignEvalUnit';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 1:
+          if ($ftype == TType::I32) {
+            $xfer += $input->readI32($this->id);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 2:
+          if ($ftype == TType::I32) {
+            $xfer += $input->readI32($this->design_eval_unit_partition_id);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 3:
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->name);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 4:
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->comment);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 5:
+          if ($ftype == TType::I32) {
+            $xfer += $input->readI32($this->num);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 6:
+          if ($ftype == TType::DOUBLE) {
+            $xfer += $input->readDouble($this->l);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 7:
+          if ($ftype == TType::I32) {
+            $xfer += $input->readI32($this->t);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('DesignEvalUnit');
+    if ($this->id !== null) {
+      $xfer += $output->writeFieldBegin('id', TType::I32, 1);
+      $xfer += $output->writeI32($this->id);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->design_eval_unit_partition_id !== null) {
+      $xfer += $output->writeFieldBegin('design_eval_unit_partition_id', TType::I32, 2);
+      $xfer += $output->writeI32($this->design_eval_unit_partition_id);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->name !== null) {
+      $xfer += $output->writeFieldBegin('name', TType::STRING, 3);
+      $xfer += $output->writeString($this->name);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->comment !== null) {
+      $xfer += $output->writeFieldBegin('comment', TType::STRING, 4);
+      $xfer += $output->writeString($this->comment);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->num !== null) {
+      $xfer += $output->writeFieldBegin('num', TType::I32, 5);
+      $xfer += $output->writeI32($this->num);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->l !== null) {
+      $xfer += $output->writeFieldBegin('l', TType::DOUBLE, 6);
+      $xfer += $output->writeDouble($this->l);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->t !== null) {
+      $xfer += $output->writeFieldBegin('t', TType::I32, 7);
+      $xfer += $output->writeI32($this->t);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
+class DesignEvalUnitPartition {
+  static $_TSPEC;
+
+  /**
+   * @var int
+   */
+  public $id = null;
+  /**
+   * @var string
+   */
+  public $name = null;
+  /**
+   * @var string
+   */
+  public $comment = null;
+  /**
+   * @var double
+   */
+  public $l2 = null;
+  /**
+   * @var double
+   */
+  public $l1 = null;
+  /**
+   * @var double
+   */
+  public $w = null;
+  /**
+   * @var double
+   */
+  public $h = null;
+  /**
+   * @var double
+   */
+  public $l = null;
+  /**
+   * @var double
+   */
+  public $r = null;
+  /**
+   * @var double
+   */
+  public $t = null;
+  /**
+   * @var double
+   */
+  public $v = null;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        1 => array(
+          'var' => 'id',
+          'type' => TType::I32,
+          ),
+        2 => array(
+          'var' => 'name',
+          'type' => TType::STRING,
+          ),
+        3 => array(
+          'var' => 'comment',
+          'type' => TType::STRING,
+          ),
+        4 => array(
+          'var' => 'l2',
+          'type' => TType::DOUBLE,
+          ),
+        5 => array(
+          'var' => 'l1',
+          'type' => TType::DOUBLE,
+          ),
+        6 => array(
+          'var' => 'w',
+          'type' => TType::DOUBLE,
+          ),
+        7 => array(
+          'var' => 'h',
+          'type' => TType::DOUBLE,
+          ),
+        8 => array(
+          'var' => 'l',
+          'type' => TType::DOUBLE,
+          ),
+        9 => array(
+          'var' => 'r',
+          'type' => TType::DOUBLE,
+          ),
+        10 => array(
+          'var' => 't',
+          'type' => TType::DOUBLE,
+          ),
+        11 => array(
+          'var' => 'v',
+          'type' => TType::DOUBLE,
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['id'])) {
+        $this->id = $vals['id'];
+      }
+      if (isset($vals['name'])) {
+        $this->name = $vals['name'];
+      }
+      if (isset($vals['comment'])) {
+        $this->comment = $vals['comment'];
+      }
+      if (isset($vals['l2'])) {
+        $this->l2 = $vals['l2'];
+      }
+      if (isset($vals['l1'])) {
+        $this->l1 = $vals['l1'];
+      }
+      if (isset($vals['w'])) {
+        $this->w = $vals['w'];
+      }
+      if (isset($vals['h'])) {
+        $this->h = $vals['h'];
+      }
+      if (isset($vals['l'])) {
+        $this->l = $vals['l'];
+      }
+      if (isset($vals['r'])) {
+        $this->r = $vals['r'];
+      }
+      if (isset($vals['t'])) {
+        $this->t = $vals['t'];
+      }
+      if (isset($vals['v'])) {
+        $this->v = $vals['v'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'DesignEvalUnitPartition';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 1:
+          if ($ftype == TType::I32) {
+            $xfer += $input->readI32($this->id);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 2:
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->name);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 3:
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->comment);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 4:
+          if ($ftype == TType::DOUBLE) {
+            $xfer += $input->readDouble($this->l2);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 5:
+          if ($ftype == TType::DOUBLE) {
+            $xfer += $input->readDouble($this->l1);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 6:
+          if ($ftype == TType::DOUBLE) {
+            $xfer += $input->readDouble($this->w);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 7:
+          if ($ftype == TType::DOUBLE) {
+            $xfer += $input->readDouble($this->h);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 8:
+          if ($ftype == TType::DOUBLE) {
+            $xfer += $input->readDouble($this->l);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 9:
+          if ($ftype == TType::DOUBLE) {
+            $xfer += $input->readDouble($this->r);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 10:
+          if ($ftype == TType::DOUBLE) {
+            $xfer += $input->readDouble($this->t);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 11:
+          if ($ftype == TType::DOUBLE) {
+            $xfer += $input->readDouble($this->v);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('DesignEvalUnitPartition');
+    if ($this->id !== null) {
+      $xfer += $output->writeFieldBegin('id', TType::I32, 1);
+      $xfer += $output->writeI32($this->id);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->name !== null) {
+      $xfer += $output->writeFieldBegin('name', TType::STRING, 2);
+      $xfer += $output->writeString($this->name);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->comment !== null) {
+      $xfer += $output->writeFieldBegin('comment', TType::STRING, 3);
+      $xfer += $output->writeString($this->comment);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->l2 !== null) {
+      $xfer += $output->writeFieldBegin('l2', TType::DOUBLE, 4);
+      $xfer += $output->writeDouble($this->l2);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->l1 !== null) {
+      $xfer += $output->writeFieldBegin('l1', TType::DOUBLE, 5);
+      $xfer += $output->writeDouble($this->l1);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->w !== null) {
+      $xfer += $output->writeFieldBegin('w', TType::DOUBLE, 6);
+      $xfer += $output->writeDouble($this->w);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->h !== null) {
+      $xfer += $output->writeFieldBegin('h', TType::DOUBLE, 7);
+      $xfer += $output->writeDouble($this->h);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->l !== null) {
+      $xfer += $output->writeFieldBegin('l', TType::DOUBLE, 8);
+      $xfer += $output->writeDouble($this->l);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->r !== null) {
+      $xfer += $output->writeFieldBegin('r', TType::DOUBLE, 9);
+      $xfer += $output->writeDouble($this->r);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->t !== null) {
+      $xfer += $output->writeFieldBegin('t', TType::DOUBLE, 10);
+      $xfer += $output->writeDouble($this->t);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->v !== null) {
+      $xfer += $output->writeFieldBegin('v', TType::DOUBLE, 11);
+      $xfer += $output->writeDouble($this->v);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
 class DesignGoafTechnology {
   static $_TSPEC;
 
@@ -3007,6 +3525,10 @@ class DesignPore {
   /**
    * @var int
    */
+  public $design_eval_unit_id = null;
+  /**
+   * @var int
+   */
   public $design_site_id = null;
   /**
    * @var string
@@ -3056,6 +3578,10 @@ class DesignPore {
    * @var string
    */
   public $comment = null;
+  /**
+   * @var int
+   */
+  public $t = null;
 
   public function __construct($vals=null) {
     if (!isset(self::$_TSPEC)) {
@@ -3065,62 +3591,73 @@ class DesignPore {
           'type' => TType::I32,
           ),
         2 => array(
-          'var' => 'design_site_id',
+          'var' => 'design_eval_unit_id',
           'type' => TType::I32,
           ),
         3 => array(
+          'var' => 'design_site_id',
+          'type' => TType::I32,
+          ),
+        4 => array(
           'var' => 'name',
           'type' => TType::STRING,
           ),
-        4 => array(
+        5 => array(
           'var' => 'd',
           'type' => TType::DOUBLE,
           ),
-        5 => array(
+        6 => array(
           'var' => 'x1',
           'type' => TType::DOUBLE,
           ),
-        6 => array(
+        7 => array(
           'var' => 'y1',
           'type' => TType::DOUBLE,
           ),
-        7 => array(
+        8 => array(
           'var' => 'z1',
           'type' => TType::DOUBLE,
           ),
-        8 => array(
+        9 => array(
           'var' => 'x2',
           'type' => TType::DOUBLE,
           ),
-        9 => array(
+        10 => array(
           'var' => 'y2',
           'type' => TType::DOUBLE,
           ),
-        10 => array(
+        11 => array(
           'var' => 'z2',
           'type' => TType::DOUBLE,
           ),
-        11 => array(
+        12 => array(
           'var' => 'length',
           'type' => TType::DOUBLE,
           ),
-        12 => array(
+        13 => array(
           'var' => 'angle1',
           'type' => TType::DOUBLE,
           ),
-        13 => array(
+        14 => array(
           'var' => 'angle2',
           'type' => TType::DOUBLE,
           ),
-        14 => array(
+        15 => array(
           'var' => 'comment',
           'type' => TType::STRING,
+          ),
+        16 => array(
+          'var' => 't',
+          'type' => TType::I32,
           ),
         );
     }
     if (is_array($vals)) {
       if (isset($vals['id'])) {
         $this->id = $vals['id'];
+      }
+      if (isset($vals['design_eval_unit_id'])) {
+        $this->design_eval_unit_id = $vals['design_eval_unit_id'];
       }
       if (isset($vals['design_site_id'])) {
         $this->design_site_id = $vals['design_site_id'];
@@ -3161,6 +3698,9 @@ class DesignPore {
       if (isset($vals['comment'])) {
         $this->comment = $vals['comment'];
       }
+      if (isset($vals['t'])) {
+        $this->t = $vals['t'];
+      }
     }
   }
 
@@ -3192,91 +3732,105 @@ class DesignPore {
           break;
         case 2:
           if ($ftype == TType::I32) {
-            $xfer += $input->readI32($this->design_site_id);
+            $xfer += $input->readI32($this->design_eval_unit_id);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
         case 3:
+          if ($ftype == TType::I32) {
+            $xfer += $input->readI32($this->design_site_id);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 4:
           if ($ftype == TType::STRING) {
             $xfer += $input->readString($this->name);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 4:
+        case 5:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->d);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 5:
+        case 6:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->x1);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 6:
+        case 7:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->y1);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 7:
+        case 8:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->z1);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 8:
+        case 9:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->x2);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 9:
+        case 10:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->y2);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 10:
+        case 11:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->z2);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 11:
+        case 12:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->length);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 12:
+        case 13:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->angle1);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 13:
+        case 14:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->angle2);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 14:
+        case 15:
           if ($ftype == TType::STRING) {
             $xfer += $input->readString($this->comment);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 16:
+          if ($ftype == TType::I32) {
+            $xfer += $input->readI32($this->t);
           } else {
             $xfer += $input->skip($ftype);
           }
@@ -3299,69 +3853,79 @@ class DesignPore {
       $xfer += $output->writeI32($this->id);
       $xfer += $output->writeFieldEnd();
     }
+    if ($this->design_eval_unit_id !== null) {
+      $xfer += $output->writeFieldBegin('design_eval_unit_id', TType::I32, 2);
+      $xfer += $output->writeI32($this->design_eval_unit_id);
+      $xfer += $output->writeFieldEnd();
+    }
     if ($this->design_site_id !== null) {
-      $xfer += $output->writeFieldBegin('design_site_id', TType::I32, 2);
+      $xfer += $output->writeFieldBegin('design_site_id', TType::I32, 3);
       $xfer += $output->writeI32($this->design_site_id);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->name !== null) {
-      $xfer += $output->writeFieldBegin('name', TType::STRING, 3);
+      $xfer += $output->writeFieldBegin('name', TType::STRING, 4);
       $xfer += $output->writeString($this->name);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->d !== null) {
-      $xfer += $output->writeFieldBegin('d', TType::DOUBLE, 4);
+      $xfer += $output->writeFieldBegin('d', TType::DOUBLE, 5);
       $xfer += $output->writeDouble($this->d);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->x1 !== null) {
-      $xfer += $output->writeFieldBegin('x1', TType::DOUBLE, 5);
+      $xfer += $output->writeFieldBegin('x1', TType::DOUBLE, 6);
       $xfer += $output->writeDouble($this->x1);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->y1 !== null) {
-      $xfer += $output->writeFieldBegin('y1', TType::DOUBLE, 6);
+      $xfer += $output->writeFieldBegin('y1', TType::DOUBLE, 7);
       $xfer += $output->writeDouble($this->y1);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->z1 !== null) {
-      $xfer += $output->writeFieldBegin('z1', TType::DOUBLE, 7);
+      $xfer += $output->writeFieldBegin('z1', TType::DOUBLE, 8);
       $xfer += $output->writeDouble($this->z1);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->x2 !== null) {
-      $xfer += $output->writeFieldBegin('x2', TType::DOUBLE, 8);
+      $xfer += $output->writeFieldBegin('x2', TType::DOUBLE, 9);
       $xfer += $output->writeDouble($this->x2);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->y2 !== null) {
-      $xfer += $output->writeFieldBegin('y2', TType::DOUBLE, 9);
+      $xfer += $output->writeFieldBegin('y2', TType::DOUBLE, 10);
       $xfer += $output->writeDouble($this->y2);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->z2 !== null) {
-      $xfer += $output->writeFieldBegin('z2', TType::DOUBLE, 10);
+      $xfer += $output->writeFieldBegin('z2', TType::DOUBLE, 11);
       $xfer += $output->writeDouble($this->z2);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->length !== null) {
-      $xfer += $output->writeFieldBegin('length', TType::DOUBLE, 11);
+      $xfer += $output->writeFieldBegin('length', TType::DOUBLE, 12);
       $xfer += $output->writeDouble($this->length);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->angle1 !== null) {
-      $xfer += $output->writeFieldBegin('angle1', TType::DOUBLE, 12);
+      $xfer += $output->writeFieldBegin('angle1', TType::DOUBLE, 13);
       $xfer += $output->writeDouble($this->angle1);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->angle2 !== null) {
-      $xfer += $output->writeFieldBegin('angle2', TType::DOUBLE, 13);
+      $xfer += $output->writeFieldBegin('angle2', TType::DOUBLE, 14);
       $xfer += $output->writeDouble($this->angle2);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->comment !== null) {
-      $xfer += $output->writeFieldBegin('comment', TType::STRING, 14);
+      $xfer += $output->writeFieldBegin('comment', TType::STRING, 15);
       $xfer += $output->writeString($this->comment);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->t !== null) {
+      $xfer += $output->writeFieldBegin('t', TType::I32, 16);
+      $xfer += $output->writeI32($this->t);
       $xfer += $output->writeFieldEnd();
     }
     $xfer += $output->writeFieldStop();
@@ -3648,7 +4212,7 @@ class DesignTechnology {
   /**
    * @var int
    */
-  public $mine_region = null;
+  public $region = null;
   /**
    * @var string
    */
@@ -3670,7 +4234,7 @@ class DesignTechnology {
           'type' => TType::STRING,
           ),
         4 => array(
-          'var' => 'mine_region',
+          'var' => 'region',
           'type' => TType::I32,
           ),
         5 => array(
@@ -3689,8 +4253,8 @@ class DesignTechnology {
       if (isset($vals['name'])) {
         $this->name = $vals['name'];
       }
-      if (isset($vals['mine_region'])) {
-        $this->mine_region = $vals['mine_region'];
+      if (isset($vals['region'])) {
+        $this->region = $vals['region'];
       }
       if (isset($vals['comment'])) {
         $this->comment = $vals['comment'];
@@ -3740,7 +4304,7 @@ class DesignTechnology {
           break;
         case 4:
           if ($ftype == TType::I32) {
-            $xfer += $input->readI32($this->mine_region);
+            $xfer += $input->readI32($this->region);
           } else {
             $xfer += $input->skip($ftype);
           }
@@ -3780,14 +4344,440 @@ class DesignTechnology {
       $xfer += $output->writeString($this->name);
       $xfer += $output->writeFieldEnd();
     }
-    if ($this->mine_region !== null) {
-      $xfer += $output->writeFieldBegin('mine_region', TType::I32, 4);
-      $xfer += $output->writeI32($this->mine_region);
+    if ($this->region !== null) {
+      $xfer += $output->writeFieldBegin('region', TType::I32, 4);
+      $xfer += $output->writeI32($this->region);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->comment !== null) {
       $xfer += $output->writeFieldBegin('comment', TType::STRING, 5);
       $xfer += $output->writeString($this->comment);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
+class DesignTunnelControlPoint {
+  static $_TSPEC;
+
+  /**
+   * @var int
+   */
+  public $id = null;
+  /**
+   * @var int
+   */
+  public $design_eval_unit_partition_id = null;
+  /**
+   * @var string
+   */
+  public $name = null;
+  /**
+   * @var string
+   */
+  public $comment = null;
+  /**
+   * @var double
+   */
+  public $x = null;
+  /**
+   * @var double
+   */
+  public $y = null;
+  /**
+   * @var double
+   */
+  public $z = null;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        1 => array(
+          'var' => 'id',
+          'type' => TType::I32,
+          ),
+        2 => array(
+          'var' => 'design_eval_unit_partition_id',
+          'type' => TType::I32,
+          ),
+        3 => array(
+          'var' => 'name',
+          'type' => TType::STRING,
+          ),
+        4 => array(
+          'var' => 'comment',
+          'type' => TType::STRING,
+          ),
+        5 => array(
+          'var' => 'x',
+          'type' => TType::DOUBLE,
+          ),
+        6 => array(
+          'var' => 'y',
+          'type' => TType::DOUBLE,
+          ),
+        7 => array(
+          'var' => 'z',
+          'type' => TType::DOUBLE,
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['id'])) {
+        $this->id = $vals['id'];
+      }
+      if (isset($vals['design_eval_unit_partition_id'])) {
+        $this->design_eval_unit_partition_id = $vals['design_eval_unit_partition_id'];
+      }
+      if (isset($vals['name'])) {
+        $this->name = $vals['name'];
+      }
+      if (isset($vals['comment'])) {
+        $this->comment = $vals['comment'];
+      }
+      if (isset($vals['x'])) {
+        $this->x = $vals['x'];
+      }
+      if (isset($vals['y'])) {
+        $this->y = $vals['y'];
+      }
+      if (isset($vals['z'])) {
+        $this->z = $vals['z'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'DesignTunnelControlPoint';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 1:
+          if ($ftype == TType::I32) {
+            $xfer += $input->readI32($this->id);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 2:
+          if ($ftype == TType::I32) {
+            $xfer += $input->readI32($this->design_eval_unit_partition_id);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 3:
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->name);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 4:
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->comment);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 5:
+          if ($ftype == TType::DOUBLE) {
+            $xfer += $input->readDouble($this->x);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 6:
+          if ($ftype == TType::DOUBLE) {
+            $xfer += $input->readDouble($this->y);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 7:
+          if ($ftype == TType::DOUBLE) {
+            $xfer += $input->readDouble($this->z);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('DesignTunnelControlPoint');
+    if ($this->id !== null) {
+      $xfer += $output->writeFieldBegin('id', TType::I32, 1);
+      $xfer += $output->writeI32($this->id);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->design_eval_unit_partition_id !== null) {
+      $xfer += $output->writeFieldBegin('design_eval_unit_partition_id', TType::I32, 2);
+      $xfer += $output->writeI32($this->design_eval_unit_partition_id);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->name !== null) {
+      $xfer += $output->writeFieldBegin('name', TType::STRING, 3);
+      $xfer += $output->writeString($this->name);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->comment !== null) {
+      $xfer += $output->writeFieldBegin('comment', TType::STRING, 4);
+      $xfer += $output->writeString($this->comment);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->x !== null) {
+      $xfer += $output->writeFieldBegin('x', TType::DOUBLE, 5);
+      $xfer += $output->writeDouble($this->x);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->y !== null) {
+      $xfer += $output->writeFieldBegin('y', TType::DOUBLE, 6);
+      $xfer += $output->writeDouble($this->y);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->z !== null) {
+      $xfer += $output->writeFieldBegin('z', TType::DOUBLE, 7);
+      $xfer += $output->writeDouble($this->z);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
+class DesignWorkSurfControlPoint {
+  static $_TSPEC;
+
+  /**
+   * @var int
+   */
+  public $id = null;
+  /**
+   * @var int
+   */
+  public $design_eval_unit_partition_id = null;
+  /**
+   * @var string
+   */
+  public $name = null;
+  /**
+   * @var string
+   */
+  public $comment = null;
+  /**
+   * @var double
+   */
+  public $x = null;
+  /**
+   * @var double
+   */
+  public $y = null;
+  /**
+   * @var double
+   */
+  public $z = null;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        1 => array(
+          'var' => 'id',
+          'type' => TType::I32,
+          ),
+        2 => array(
+          'var' => 'design_eval_unit_partition_id',
+          'type' => TType::I32,
+          ),
+        3 => array(
+          'var' => 'name',
+          'type' => TType::STRING,
+          ),
+        4 => array(
+          'var' => 'comment',
+          'type' => TType::STRING,
+          ),
+        5 => array(
+          'var' => 'x',
+          'type' => TType::DOUBLE,
+          ),
+        6 => array(
+          'var' => 'y',
+          'type' => TType::DOUBLE,
+          ),
+        7 => array(
+          'var' => 'z',
+          'type' => TType::DOUBLE,
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['id'])) {
+        $this->id = $vals['id'];
+      }
+      if (isset($vals['design_eval_unit_partition_id'])) {
+        $this->design_eval_unit_partition_id = $vals['design_eval_unit_partition_id'];
+      }
+      if (isset($vals['name'])) {
+        $this->name = $vals['name'];
+      }
+      if (isset($vals['comment'])) {
+        $this->comment = $vals['comment'];
+      }
+      if (isset($vals['x'])) {
+        $this->x = $vals['x'];
+      }
+      if (isset($vals['y'])) {
+        $this->y = $vals['y'];
+      }
+      if (isset($vals['z'])) {
+        $this->z = $vals['z'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'DesignWorkSurfControlPoint';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 1:
+          if ($ftype == TType::I32) {
+            $xfer += $input->readI32($this->id);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 2:
+          if ($ftype == TType::I32) {
+            $xfer += $input->readI32($this->design_eval_unit_partition_id);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 3:
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->name);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 4:
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->comment);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 5:
+          if ($ftype == TType::DOUBLE) {
+            $xfer += $input->readDouble($this->x);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 6:
+          if ($ftype == TType::DOUBLE) {
+            $xfer += $input->readDouble($this->y);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 7:
+          if ($ftype == TType::DOUBLE) {
+            $xfer += $input->readDouble($this->z);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('DesignWorkSurfControlPoint');
+    if ($this->id !== null) {
+      $xfer += $output->writeFieldBegin('id', TType::I32, 1);
+      $xfer += $output->writeI32($this->id);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->design_eval_unit_partition_id !== null) {
+      $xfer += $output->writeFieldBegin('design_eval_unit_partition_id', TType::I32, 2);
+      $xfer += $output->writeI32($this->design_eval_unit_partition_id);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->name !== null) {
+      $xfer += $output->writeFieldBegin('name', TType::STRING, 3);
+      $xfer += $output->writeString($this->name);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->comment !== null) {
+      $xfer += $output->writeFieldBegin('comment', TType::STRING, 4);
+      $xfer += $output->writeString($this->comment);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->x !== null) {
+      $xfer += $output->writeFieldBegin('x', TType::DOUBLE, 5);
+      $xfer += $output->writeDouble($this->x);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->y !== null) {
+      $xfer += $output->writeFieldBegin('y', TType::DOUBLE, 6);
+      $xfer += $output->writeDouble($this->y);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->z !== null) {
+      $xfer += $output->writeFieldBegin('z', TType::DOUBLE, 7);
+      $xfer += $output->writeDouble($this->z);
       $xfer += $output->writeFieldEnd();
     }
     $xfer += $output->writeFieldStop();

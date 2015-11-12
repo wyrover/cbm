@@ -122,6 +122,28 @@ info = {
 	"right_side":float,
 	"lm":float
 },
+"DesignEvalUnit":{
+	"id":int,
+	"design_eval_unit_partition_id":int,
+	"name":str,
+	"comment":str,
+	"num":int,
+	"l":float,
+	"t":int
+},
+"DesignEvalUnitPartition":{
+	"id":int,
+	"name":str,
+	"comment":str,
+	"l2":float,
+	"l1":float,
+	"w":float,
+	"h":float,
+	"l":float,
+	"r":float,
+	"t":float,
+	"v":float
+},
 "DesignGoafTechnology":{
 	"id":int,
 	"design_technology_id":int,
@@ -130,6 +152,7 @@ info = {
 },
 "DesignPore":{
 	"id":int,
+	"design_eval_unit_id":int,
 	"design_site_id":int,
 	"name":str,
 	"d":float,
@@ -142,7 +165,8 @@ info = {
 	"length":float,
 	"angle1":float,
 	"angle2":float,
-	"comment":str
+	"comment":str,
+	"t":int
 },
 "DesignSite":{
 	"id":int,
@@ -159,8 +183,26 @@ info = {
 	"id":int,
 	"coal_id":int,
 	"name":str,
-	"mine_region":int,
+	"region":int,
 	"comment":str
+},
+"DesignTunnelControlPoint":{
+	"id":int,
+	"design_eval_unit_partition_id":int,
+	"name":str,
+	"comment":str,
+	"x":float,
+	"y":float,
+	"z":float
+},
+"DesignWorkSurfControlPoint":{
+	"id":int,
+	"design_eval_unit_partition_id":int,
+	"name":str,
+	"comment":str,
+	"x":float,
+	"y":float,
+	"z":float
 },
 "DesignWorkSurfTechnology":{
 	"id":int,

@@ -1490,6 +1490,602 @@ void SQLClientHelper::GetDesignDrillingSurfTechnologyIdListByForeignKey(std::vec
 	}
 }
 
+//DesignEvalUnit 类型的CRUD操作
+int32_t SQLClientHelper::AddDesignEvalUnit(const cbm::DesignEvalUnit & design_eval_unit) {
+	int32_t ret = -1;
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		ret = service_client.get()->AddDesignEvalUnit(design_eval_unit);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+		ret = -1;
+	}
+	return ret;
+}
+bool SQLClientHelper::DeleteDesignEvalUnit(const int32_t id) {
+	bool ret = false;
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		ret = service_client.get()->DeleteDesignEvalUnit(id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+		ret = false;
+	}
+	return ret;
+}
+bool SQLClientHelper::UpdateDesignEvalUnit(const cbm::DesignEvalUnit & design_eval_unit) {
+	bool ret = false;
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		ret = service_client.get()->UpdateDesignEvalUnit(design_eval_unit);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+		ret = false;
+	}
+	return ret;
+}
+void SQLClientHelper::GetDesignEvalUnitById(cbm::DesignEvalUnit & _return, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignEvalUnitById(_return, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignEvalUnitByForeignKey(cbm::DesignEvalUnit & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignEvalUnitByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+int32_t SQLClientHelper::GetDesignEvalUnitIdByForeignKey(const std::string& fkey, const int32_t id) {
+	int32_t ret = -1;
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		ret = service_client.get()->GetDesignEvalUnitIdByForeignKey(fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+		ret = -1;
+	}
+return ret;
+}
+void SQLClientHelper::GetDesignEvalUnitList(std::vector<cbm::DesignEvalUnit> & _return) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignEvalUnitList(_return);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignEvalUnitIds(std::vector<int32_t> & _return) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignEvalUnitIds(_return);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignEvalUnitNames(std::vector<std::string> & _return) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignEvalUnitNames(_return);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::AddMoreDesignEvalUnit(const std::vector<cbm::DesignEvalUnit> & objs) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->AddMoreDesignEvalUnit(objs);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::DeleteMoreDesignEvalUnit(const std::vector<int32_t> & obj_ids) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->DeleteMoreDesignEvalUnit(obj_ids);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignEvalUnitByFields(cbm::DesignEvalUnit & _return, const std::map<std::string, std::string> & fields) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignEvalUnitByFields(_return, fields);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignEvalUnitByField1(cbm::DesignEvalUnit & _return, const std::string& field, const std::string& value) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignEvalUnitByField1(_return, field, value);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignEvalUnitByField2(cbm::DesignEvalUnit & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignEvalUnitByField2(_return, field1, value2, field2, value2);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignEvalUnitListByFields(std::vector<cbm::DesignEvalUnit> & _return, const std::map<std::string, std::string> & fields) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignEvalUnitListByFields(_return, fields);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignEvalUnitListByField1(std::vector<cbm::DesignEvalUnit> & _return, const std::string& field, const std::string& value) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignEvalUnitListByField1(_return, field, value);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignEvalUnitListByField2(std::vector<cbm::DesignEvalUnit> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignEvalUnitListByField2(_return, field1, value1, field2, value2);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+int32_t SQLClientHelper::GetDesignEvalUnitIdByFields(const std::map<std::string, std::string> & fields) {
+	int32_t ret = -1;
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		ret = service_client.get()->GetDesignEvalUnitIdByFields(fields);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+		ret = -1;
+	}
+return ret;
+}
+int32_t SQLClientHelper::GetDesignEvalUnitIdByField1(const std::string& field, const std::string& value) {
+	int32_t ret = -1;
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		ret = service_client.get()->GetDesignEvalUnitIdByField1(field, value);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+		ret = -1;
+	}
+return ret;
+}
+int32_t SQLClientHelper::GetDesignEvalUnitIdByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
+	int32_t ret = -1;
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		ret = service_client.get()->GetDesignEvalUnitIdByField2(field1, value2, field2, value2);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+		ret = -1;
+	}
+return ret;
+}
+void SQLClientHelper::GetDesignEvalUnitIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignEvalUnitIdListByFields(_return, fields);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignEvalUnitIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignEvalUnitIdListByField1(_return, field, value);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignEvalUnitIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignEvalUnitIdListByField2(_return, field1, value1, field2, value2);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignEvalUnitListByForeignKey(std::vector<cbm::DesignEvalUnit> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignEvalUnitListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignEvalUnitIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignEvalUnitIdListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+
+//DesignEvalUnitPartition 类型的CRUD操作
+int32_t SQLClientHelper::AddDesignEvalUnitPartition(const cbm::DesignEvalUnitPartition & design_eval_unit_partition) {
+	int32_t ret = -1;
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		ret = service_client.get()->AddDesignEvalUnitPartition(design_eval_unit_partition);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+		ret = -1;
+	}
+	return ret;
+}
+bool SQLClientHelper::DeleteDesignEvalUnitPartition(const int32_t id) {
+	bool ret = false;
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		ret = service_client.get()->DeleteDesignEvalUnitPartition(id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+		ret = false;
+	}
+	return ret;
+}
+bool SQLClientHelper::UpdateDesignEvalUnitPartition(const cbm::DesignEvalUnitPartition & design_eval_unit_partition) {
+	bool ret = false;
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		ret = service_client.get()->UpdateDesignEvalUnitPartition(design_eval_unit_partition);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+		ret = false;
+	}
+	return ret;
+}
+void SQLClientHelper::GetDesignEvalUnitPartitionById(cbm::DesignEvalUnitPartition & _return, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignEvalUnitPartitionById(_return, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignEvalUnitPartitionByForeignKey(cbm::DesignEvalUnitPartition & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignEvalUnitPartitionByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+int32_t SQLClientHelper::GetDesignEvalUnitPartitionIdByForeignKey(const std::string& fkey, const int32_t id) {
+	int32_t ret = -1;
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		ret = service_client.get()->GetDesignEvalUnitPartitionIdByForeignKey(fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+		ret = -1;
+	}
+return ret;
+}
+void SQLClientHelper::GetDesignEvalUnitPartitionList(std::vector<cbm::DesignEvalUnitPartition> & _return) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignEvalUnitPartitionList(_return);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignEvalUnitPartitionIds(std::vector<int32_t> & _return) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignEvalUnitPartitionIds(_return);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignEvalUnitPartitionNames(std::vector<std::string> & _return) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignEvalUnitPartitionNames(_return);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::AddMoreDesignEvalUnitPartition(const std::vector<cbm::DesignEvalUnitPartition> & objs) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->AddMoreDesignEvalUnitPartition(objs);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::DeleteMoreDesignEvalUnitPartition(const std::vector<int32_t> & obj_ids) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->DeleteMoreDesignEvalUnitPartition(obj_ids);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignEvalUnitPartitionByFields(cbm::DesignEvalUnitPartition & _return, const std::map<std::string, std::string> & fields) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignEvalUnitPartitionByFields(_return, fields);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignEvalUnitPartitionByField1(cbm::DesignEvalUnitPartition & _return, const std::string& field, const std::string& value) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignEvalUnitPartitionByField1(_return, field, value);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignEvalUnitPartitionByField2(cbm::DesignEvalUnitPartition & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignEvalUnitPartitionByField2(_return, field1, value2, field2, value2);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignEvalUnitPartitionListByFields(std::vector<cbm::DesignEvalUnitPartition> & _return, const std::map<std::string, std::string> & fields) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignEvalUnitPartitionListByFields(_return, fields);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignEvalUnitPartitionListByField1(std::vector<cbm::DesignEvalUnitPartition> & _return, const std::string& field, const std::string& value) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignEvalUnitPartitionListByField1(_return, field, value);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignEvalUnitPartitionListByField2(std::vector<cbm::DesignEvalUnitPartition> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignEvalUnitPartitionListByField2(_return, field1, value1, field2, value2);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+int32_t SQLClientHelper::GetDesignEvalUnitPartitionIdByFields(const std::map<std::string, std::string> & fields) {
+	int32_t ret = -1;
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		ret = service_client.get()->GetDesignEvalUnitPartitionIdByFields(fields);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+		ret = -1;
+	}
+return ret;
+}
+int32_t SQLClientHelper::GetDesignEvalUnitPartitionIdByField1(const std::string& field, const std::string& value) {
+	int32_t ret = -1;
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		ret = service_client.get()->GetDesignEvalUnitPartitionIdByField1(field, value);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+		ret = -1;
+	}
+return ret;
+}
+int32_t SQLClientHelper::GetDesignEvalUnitPartitionIdByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
+	int32_t ret = -1;
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		ret = service_client.get()->GetDesignEvalUnitPartitionIdByField2(field1, value2, field2, value2);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+		ret = -1;
+	}
+return ret;
+}
+void SQLClientHelper::GetDesignEvalUnitPartitionIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignEvalUnitPartitionIdListByFields(_return, fields);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignEvalUnitPartitionIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignEvalUnitPartitionIdListByField1(_return, field, value);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignEvalUnitPartitionIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignEvalUnitPartitionIdListByField2(_return, field1, value1, field2, value2);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignEvalUnitPartitionListByForeignKey(std::vector<cbm::DesignEvalUnitPartition> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignEvalUnitPartitionListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignEvalUnitPartitionIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignEvalUnitPartitionIdListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+
 //DesignGoafTechnology 类型的CRUD操作
 int32_t SQLClientHelper::AddDesignGoafTechnology(const cbm::DesignGoafTechnology & design_goaf_technology) {
 	int32_t ret = -1;
@@ -2675,6 +3271,602 @@ void SQLClientHelper::GetDesignTechnologyIdListByForeignKey(std::vector<int32_t>
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
 		service_client.get()->GetDesignTechnologyIdListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+
+//DesignTunnelControlPoint 类型的CRUD操作
+int32_t SQLClientHelper::AddDesignTunnelControlPoint(const cbm::DesignTunnelControlPoint & design_tunnel_control_point) {
+	int32_t ret = -1;
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		ret = service_client.get()->AddDesignTunnelControlPoint(design_tunnel_control_point);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+		ret = -1;
+	}
+	return ret;
+}
+bool SQLClientHelper::DeleteDesignTunnelControlPoint(const int32_t id) {
+	bool ret = false;
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		ret = service_client.get()->DeleteDesignTunnelControlPoint(id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+		ret = false;
+	}
+	return ret;
+}
+bool SQLClientHelper::UpdateDesignTunnelControlPoint(const cbm::DesignTunnelControlPoint & design_tunnel_control_point) {
+	bool ret = false;
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		ret = service_client.get()->UpdateDesignTunnelControlPoint(design_tunnel_control_point);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+		ret = false;
+	}
+	return ret;
+}
+void SQLClientHelper::GetDesignTunnelControlPointById(cbm::DesignTunnelControlPoint & _return, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignTunnelControlPointById(_return, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignTunnelControlPointByForeignKey(cbm::DesignTunnelControlPoint & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignTunnelControlPointByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+int32_t SQLClientHelper::GetDesignTunnelControlPointIdByForeignKey(const std::string& fkey, const int32_t id) {
+	int32_t ret = -1;
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		ret = service_client.get()->GetDesignTunnelControlPointIdByForeignKey(fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+		ret = -1;
+	}
+return ret;
+}
+void SQLClientHelper::GetDesignTunnelControlPointList(std::vector<cbm::DesignTunnelControlPoint> & _return) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignTunnelControlPointList(_return);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignTunnelControlPointIds(std::vector<int32_t> & _return) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignTunnelControlPointIds(_return);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignTunnelControlPointNames(std::vector<std::string> & _return) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignTunnelControlPointNames(_return);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::AddMoreDesignTunnelControlPoint(const std::vector<cbm::DesignTunnelControlPoint> & objs) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->AddMoreDesignTunnelControlPoint(objs);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::DeleteMoreDesignTunnelControlPoint(const std::vector<int32_t> & obj_ids) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->DeleteMoreDesignTunnelControlPoint(obj_ids);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignTunnelControlPointByFields(cbm::DesignTunnelControlPoint & _return, const std::map<std::string, std::string> & fields) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignTunnelControlPointByFields(_return, fields);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignTunnelControlPointByField1(cbm::DesignTunnelControlPoint & _return, const std::string& field, const std::string& value) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignTunnelControlPointByField1(_return, field, value);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignTunnelControlPointByField2(cbm::DesignTunnelControlPoint & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignTunnelControlPointByField2(_return, field1, value2, field2, value2);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignTunnelControlPointListByFields(std::vector<cbm::DesignTunnelControlPoint> & _return, const std::map<std::string, std::string> & fields) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignTunnelControlPointListByFields(_return, fields);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignTunnelControlPointListByField1(std::vector<cbm::DesignTunnelControlPoint> & _return, const std::string& field, const std::string& value) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignTunnelControlPointListByField1(_return, field, value);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignTunnelControlPointListByField2(std::vector<cbm::DesignTunnelControlPoint> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignTunnelControlPointListByField2(_return, field1, value1, field2, value2);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+int32_t SQLClientHelper::GetDesignTunnelControlPointIdByFields(const std::map<std::string, std::string> & fields) {
+	int32_t ret = -1;
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		ret = service_client.get()->GetDesignTunnelControlPointIdByFields(fields);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+		ret = -1;
+	}
+return ret;
+}
+int32_t SQLClientHelper::GetDesignTunnelControlPointIdByField1(const std::string& field, const std::string& value) {
+	int32_t ret = -1;
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		ret = service_client.get()->GetDesignTunnelControlPointIdByField1(field, value);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+		ret = -1;
+	}
+return ret;
+}
+int32_t SQLClientHelper::GetDesignTunnelControlPointIdByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
+	int32_t ret = -1;
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		ret = service_client.get()->GetDesignTunnelControlPointIdByField2(field1, value2, field2, value2);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+		ret = -1;
+	}
+return ret;
+}
+void SQLClientHelper::GetDesignTunnelControlPointIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignTunnelControlPointIdListByFields(_return, fields);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignTunnelControlPointIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignTunnelControlPointIdListByField1(_return, field, value);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignTunnelControlPointIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignTunnelControlPointIdListByField2(_return, field1, value1, field2, value2);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignTunnelControlPointListByForeignKey(std::vector<cbm::DesignTunnelControlPoint> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignTunnelControlPointListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignTunnelControlPointIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignTunnelControlPointIdListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+
+//DesignWorkSurfControlPoint 类型的CRUD操作
+int32_t SQLClientHelper::AddDesignWorkSurfControlPoint(const cbm::DesignWorkSurfControlPoint & design_work_surf_control_point) {
+	int32_t ret = -1;
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		ret = service_client.get()->AddDesignWorkSurfControlPoint(design_work_surf_control_point);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+		ret = -1;
+	}
+	return ret;
+}
+bool SQLClientHelper::DeleteDesignWorkSurfControlPoint(const int32_t id) {
+	bool ret = false;
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		ret = service_client.get()->DeleteDesignWorkSurfControlPoint(id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+		ret = false;
+	}
+	return ret;
+}
+bool SQLClientHelper::UpdateDesignWorkSurfControlPoint(const cbm::DesignWorkSurfControlPoint & design_work_surf_control_point) {
+	bool ret = false;
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		ret = service_client.get()->UpdateDesignWorkSurfControlPoint(design_work_surf_control_point);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+		ret = false;
+	}
+	return ret;
+}
+void SQLClientHelper::GetDesignWorkSurfControlPointById(cbm::DesignWorkSurfControlPoint & _return, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignWorkSurfControlPointById(_return, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignWorkSurfControlPointByForeignKey(cbm::DesignWorkSurfControlPoint & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignWorkSurfControlPointByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+int32_t SQLClientHelper::GetDesignWorkSurfControlPointIdByForeignKey(const std::string& fkey, const int32_t id) {
+	int32_t ret = -1;
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		ret = service_client.get()->GetDesignWorkSurfControlPointIdByForeignKey(fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+		ret = -1;
+	}
+return ret;
+}
+void SQLClientHelper::GetDesignWorkSurfControlPointList(std::vector<cbm::DesignWorkSurfControlPoint> & _return) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignWorkSurfControlPointList(_return);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignWorkSurfControlPointIds(std::vector<int32_t> & _return) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignWorkSurfControlPointIds(_return);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignWorkSurfControlPointNames(std::vector<std::string> & _return) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignWorkSurfControlPointNames(_return);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::AddMoreDesignWorkSurfControlPoint(const std::vector<cbm::DesignWorkSurfControlPoint> & objs) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->AddMoreDesignWorkSurfControlPoint(objs);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::DeleteMoreDesignWorkSurfControlPoint(const std::vector<int32_t> & obj_ids) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->DeleteMoreDesignWorkSurfControlPoint(obj_ids);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignWorkSurfControlPointByFields(cbm::DesignWorkSurfControlPoint & _return, const std::map<std::string, std::string> & fields) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignWorkSurfControlPointByFields(_return, fields);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignWorkSurfControlPointByField1(cbm::DesignWorkSurfControlPoint & _return, const std::string& field, const std::string& value) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignWorkSurfControlPointByField1(_return, field, value);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignWorkSurfControlPointByField2(cbm::DesignWorkSurfControlPoint & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignWorkSurfControlPointByField2(_return, field1, value2, field2, value2);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignWorkSurfControlPointListByFields(std::vector<cbm::DesignWorkSurfControlPoint> & _return, const std::map<std::string, std::string> & fields) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignWorkSurfControlPointListByFields(_return, fields);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignWorkSurfControlPointListByField1(std::vector<cbm::DesignWorkSurfControlPoint> & _return, const std::string& field, const std::string& value) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignWorkSurfControlPointListByField1(_return, field, value);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignWorkSurfControlPointListByField2(std::vector<cbm::DesignWorkSurfControlPoint> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignWorkSurfControlPointListByField2(_return, field1, value1, field2, value2);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+int32_t SQLClientHelper::GetDesignWorkSurfControlPointIdByFields(const std::map<std::string, std::string> & fields) {
+	int32_t ret = -1;
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		ret = service_client.get()->GetDesignWorkSurfControlPointIdByFields(fields);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+		ret = -1;
+	}
+return ret;
+}
+int32_t SQLClientHelper::GetDesignWorkSurfControlPointIdByField1(const std::string& field, const std::string& value) {
+	int32_t ret = -1;
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		ret = service_client.get()->GetDesignWorkSurfControlPointIdByField1(field, value);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+		ret = -1;
+	}
+return ret;
+}
+int32_t SQLClientHelper::GetDesignWorkSurfControlPointIdByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
+	int32_t ret = -1;
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		ret = service_client.get()->GetDesignWorkSurfControlPointIdByField2(field1, value2, field2, value2);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+		ret = -1;
+	}
+return ret;
+}
+void SQLClientHelper::GetDesignWorkSurfControlPointIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignWorkSurfControlPointIdListByFields(_return, fields);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignWorkSurfControlPointIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignWorkSurfControlPointIdListByField1(_return, field, value);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignWorkSurfControlPointIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignWorkSurfControlPointIdListByField2(_return, field1, value1, field2, value2);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignWorkSurfControlPointListByForeignKey(std::vector<cbm::DesignWorkSurfControlPoint> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignWorkSurfControlPointListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignWorkSurfControlPointIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignWorkSurfControlPointIdListByForeignKey(_return, fkey, id);
 		service_client.close();
 	}
 	catch (TException &tx) {

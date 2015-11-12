@@ -99,8 +99,9 @@ function copy_files()
 	// copy('Entity.cpp', $projDir.'Dao\Entity.cpp');
 
 	//将sql文件复制到cbm项目
-	copy('cbm-mysql.sql', $projDir.'scripts\sql\cbm-mysql.sql');
-	copy('cbm-data.sql', $projDir.'scripts\sql\cbm-data.sql');
+	// copy('cbm-mysql.sql', $projDir.'scripts\sql\cbm-mysql.sql');
+	// copy('cbm-data.sql', $projDir.'scripts\sql\cbm-data.sql');
+	copy('cbm.sql', $projDir.'scripts\sql\cbm.sql');
 
 	//将php代码复制到cbm项目
 	// copy('root.txt', $projDir.'php\cbm\root.txt');
@@ -132,7 +133,7 @@ make_cpp_files($tables, $relations);
 make_thrift_files($tables, $relations);
 merge_thrift_files();
 //生成cbm_data.sql文件
-make_sql_files();
+// make_sql_files();
 //复制文件到cbm/php目录下
 copy_files();
 

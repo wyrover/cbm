@@ -152,6 +152,36 @@ class DesignDrillingSurfTechnology(Base):
     design_technology = relationship(u'DesignTechnology')
 
 
+class DesignEvalUnit(Base):
+    __tablename__ = 'design_eval_unit'
+
+    id = Column(Integer, primary_key=True)
+    design_eval_unit_partition_id = Column(ForeignKey(u'design_eval_unit_partition.id', ondelete=u'CASCADE'), index=True)
+    name = Column(String(255))
+    comment = Column(String(255))
+    num = Column(Integer)
+    l = Column(Numeric(8, 2))
+    t = Column(Integer)
+
+    design_eval_unit_partition = relationship(u'DesignEvalUnitPartition')
+
+
+class DesignEvalUnitPartition(Base):
+    __tablename__ = 'design_eval_unit_partition'
+
+    id = Column(Integer, primary_key=True)
+    name = Column(String(255))
+    comment = Column(String(255))
+    l2 = Column(Numeric(8, 2))
+    l1 = Column(Numeric(8, 2))
+    w = Column(Numeric(8, 2))
+    h = Column(Numeric(8, 2))
+    l = Column(Numeric(8, 2))
+    r = Column(Numeric(8, 2))
+    t = Column(Numeric(8, 2))
+    v = Column(Numeric(8, 2))
+
+
 class DesignGoafTechnology(Base):
     __tablename__ = 'design_goaf_technology'
 
@@ -167,6 +197,7 @@ class DesignPore(Base):
     __tablename__ = 'design_pore'
 
     id = Column(Integer, primary_key=True)
+    design_eval_unit_id = Column(ForeignKey(u'design_eval_unit.id', ondelete=u'CASCADE'), index=True)
     design_site_id = Column(ForeignKey(u'design_site.id', ondelete=u'CASCADE'), index=True)
     name = Column(String(255))
     d = Column(Numeric(8, 2))
@@ -180,7 +211,9 @@ class DesignPore(Base):
     angle1 = Column(Numeric(8, 2))
     angle2 = Column(Numeric(8, 2))
     comment = Column(String(255))
+    t = Column(Integer)
 
+    design_eval_unit = relationship(u'DesignEvalUnit')
     design_site = relationship(u'DesignSite')
 
 
@@ -206,10 +239,38 @@ class DesignTechnology(Base):
     id = Column(Integer, primary_key=True)
     coal_id = Column(ForeignKey(u'coal.id', ondelete=u'CASCADE'), index=True)
     name = Column(String(255))
-    mine_region = Column(Integer)
+    region = Column(Integer)
     comment = Column(String(255))
 
     coal = relationship(u'Coal')
+
+
+class DesignTunnelControlPoint(Base):
+    __tablename__ = 'design_tunnel_control_point'
+
+    id = Column(Integer, primary_key=True)
+    design_eval_unit_partition_id = Column(ForeignKey(u'design_eval_unit_partition.id', ondelete=u'CASCADE'), index=True)
+    name = Column(String(255))
+    comment = Column(String(255))
+    x = Column(Numeric(8, 2))
+    y = Column(Numeric(8, 2))
+    z = Column(Numeric(8, 2))
+
+    design_eval_unit_partition = relationship(u'DesignEvalUnitPartition')
+
+
+class DesignWorkSurfControlPoint(Base):
+    __tablename__ = 'design_work_surf_control_point'
+
+    id = Column(Integer, primary_key=True)
+    design_eval_unit_partition_id = Column(ForeignKey(u'design_eval_unit_partition.id', ondelete=u'CASCADE'), index=True)
+    name = Column(String(255))
+    comment = Column(String(255))
+    x = Column(Numeric(8, 2))
+    y = Column(Numeric(8, 2))
+    z = Column(Numeric(8, 2))
+
+    design_eval_unit_partition = relationship(u'DesignEvalUnitPartition')
 
 
 class DesignWorkSurfTechnology(Base):

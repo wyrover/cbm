@@ -1733,6 +1733,344 @@ class DesignDrillingSurfTechnology:
   def __ne__(self, other):
     return not (self == other)
 
+class DesignEvalUnit:
+  """
+  Attributes:
+   - id
+   - design_eval_unit_partition_id
+   - name
+   - comment
+   - num
+   - l
+   - t
+  """
+
+  thrift_spec = (
+    None, # 0
+    (1, TType.I32, 'id', None, None, ), # 1
+    (2, TType.I32, 'design_eval_unit_partition_id', None, None, ), # 2
+    (3, TType.STRING, 'name', None, None, ), # 3
+    (4, TType.STRING, 'comment', None, None, ), # 4
+    (5, TType.I32, 'num', None, None, ), # 5
+    (6, TType.DOUBLE, 'l', None, None, ), # 6
+    (7, TType.I32, 't', None, None, ), # 7
+  )
+
+  def __init__(self, id=None, design_eval_unit_partition_id=None, name=None, comment=None, num=None, l=None, t=None,):
+    self.id = id
+    self.design_eval_unit_partition_id = design_eval_unit_partition_id
+    self.name = name
+    self.comment = comment
+    self.num = num
+    self.l = l
+    self.t = t
+
+  def read(self, iprot):
+    if iprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None and fastbinary is not None:
+      fastbinary.decode_binary(self, iprot.trans, (self.__class__, self.thrift_spec))
+      return
+    iprot.readStructBegin()
+    while True:
+      (fname, ftype, fid) = iprot.readFieldBegin()
+      if ftype == TType.STOP:
+        break
+      if fid == 1:
+        if ftype == TType.I32:
+          self.id = iprot.readI32()
+        else:
+          iprot.skip(ftype)
+      elif fid == 2:
+        if ftype == TType.I32:
+          self.design_eval_unit_partition_id = iprot.readI32()
+        else:
+          iprot.skip(ftype)
+      elif fid == 3:
+        if ftype == TType.STRING:
+          self.name = iprot.readString()
+        else:
+          iprot.skip(ftype)
+      elif fid == 4:
+        if ftype == TType.STRING:
+          self.comment = iprot.readString()
+        else:
+          iprot.skip(ftype)
+      elif fid == 5:
+        if ftype == TType.I32:
+          self.num = iprot.readI32()
+        else:
+          iprot.skip(ftype)
+      elif fid == 6:
+        if ftype == TType.DOUBLE:
+          self.l = iprot.readDouble()
+        else:
+          iprot.skip(ftype)
+      elif fid == 7:
+        if ftype == TType.I32:
+          self.t = iprot.readI32()
+        else:
+          iprot.skip(ftype)
+      else:
+        iprot.skip(ftype)
+      iprot.readFieldEnd()
+    iprot.readStructEnd()
+
+  def write(self, oprot):
+    if oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and self.thrift_spec is not None and fastbinary is not None:
+      oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
+      return
+    oprot.writeStructBegin('DesignEvalUnit')
+    if self.id is not None:
+      oprot.writeFieldBegin('id', TType.I32, 1)
+      oprot.writeI32(self.id)
+      oprot.writeFieldEnd()
+    if self.design_eval_unit_partition_id is not None:
+      oprot.writeFieldBegin('design_eval_unit_partition_id', TType.I32, 2)
+      oprot.writeI32(self.design_eval_unit_partition_id)
+      oprot.writeFieldEnd()
+    if self.name is not None:
+      oprot.writeFieldBegin('name', TType.STRING, 3)
+      oprot.writeString(self.name)
+      oprot.writeFieldEnd()
+    if self.comment is not None:
+      oprot.writeFieldBegin('comment', TType.STRING, 4)
+      oprot.writeString(self.comment)
+      oprot.writeFieldEnd()
+    if self.num is not None:
+      oprot.writeFieldBegin('num', TType.I32, 5)
+      oprot.writeI32(self.num)
+      oprot.writeFieldEnd()
+    if self.l is not None:
+      oprot.writeFieldBegin('l', TType.DOUBLE, 6)
+      oprot.writeDouble(self.l)
+      oprot.writeFieldEnd()
+    if self.t is not None:
+      oprot.writeFieldBegin('t', TType.I32, 7)
+      oprot.writeI32(self.t)
+      oprot.writeFieldEnd()
+    oprot.writeFieldStop()
+    oprot.writeStructEnd()
+
+  def validate(self):
+    return
+
+
+  def __hash__(self):
+    value = 17
+    value = (value * 31) ^ hash(self.id)
+    value = (value * 31) ^ hash(self.design_eval_unit_partition_id)
+    value = (value * 31) ^ hash(self.name)
+    value = (value * 31) ^ hash(self.comment)
+    value = (value * 31) ^ hash(self.num)
+    value = (value * 31) ^ hash(self.l)
+    value = (value * 31) ^ hash(self.t)
+    return value
+
+  def __repr__(self):
+    L = ['%s=%r' % (key, value)
+      for key, value in self.__dict__.iteritems()]
+    return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
+
+  def __eq__(self, other):
+    return isinstance(other, self.__class__) and self.__dict__ == other.__dict__
+
+  def __ne__(self, other):
+    return not (self == other)
+
+class DesignEvalUnitPartition:
+  """
+  Attributes:
+   - id
+   - name
+   - comment
+   - l2
+   - l1
+   - w
+   - h
+   - l
+   - r
+   - t
+   - v
+  """
+
+  thrift_spec = (
+    None, # 0
+    (1, TType.I32, 'id', None, None, ), # 1
+    (2, TType.STRING, 'name', None, None, ), # 2
+    (3, TType.STRING, 'comment', None, None, ), # 3
+    (4, TType.DOUBLE, 'l2', None, None, ), # 4
+    (5, TType.DOUBLE, 'l1', None, None, ), # 5
+    (6, TType.DOUBLE, 'w', None, None, ), # 6
+    (7, TType.DOUBLE, 'h', None, None, ), # 7
+    (8, TType.DOUBLE, 'l', None, None, ), # 8
+    (9, TType.DOUBLE, 'r', None, None, ), # 9
+    (10, TType.DOUBLE, 't', None, None, ), # 10
+    (11, TType.DOUBLE, 'v', None, None, ), # 11
+  )
+
+  def __init__(self, id=None, name=None, comment=None, l2=None, l1=None, w=None, h=None, l=None, r=None, t=None, v=None,):
+    self.id = id
+    self.name = name
+    self.comment = comment
+    self.l2 = l2
+    self.l1 = l1
+    self.w = w
+    self.h = h
+    self.l = l
+    self.r = r
+    self.t = t
+    self.v = v
+
+  def read(self, iprot):
+    if iprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None and fastbinary is not None:
+      fastbinary.decode_binary(self, iprot.trans, (self.__class__, self.thrift_spec))
+      return
+    iprot.readStructBegin()
+    while True:
+      (fname, ftype, fid) = iprot.readFieldBegin()
+      if ftype == TType.STOP:
+        break
+      if fid == 1:
+        if ftype == TType.I32:
+          self.id = iprot.readI32()
+        else:
+          iprot.skip(ftype)
+      elif fid == 2:
+        if ftype == TType.STRING:
+          self.name = iprot.readString()
+        else:
+          iprot.skip(ftype)
+      elif fid == 3:
+        if ftype == TType.STRING:
+          self.comment = iprot.readString()
+        else:
+          iprot.skip(ftype)
+      elif fid == 4:
+        if ftype == TType.DOUBLE:
+          self.l2 = iprot.readDouble()
+        else:
+          iprot.skip(ftype)
+      elif fid == 5:
+        if ftype == TType.DOUBLE:
+          self.l1 = iprot.readDouble()
+        else:
+          iprot.skip(ftype)
+      elif fid == 6:
+        if ftype == TType.DOUBLE:
+          self.w = iprot.readDouble()
+        else:
+          iprot.skip(ftype)
+      elif fid == 7:
+        if ftype == TType.DOUBLE:
+          self.h = iprot.readDouble()
+        else:
+          iprot.skip(ftype)
+      elif fid == 8:
+        if ftype == TType.DOUBLE:
+          self.l = iprot.readDouble()
+        else:
+          iprot.skip(ftype)
+      elif fid == 9:
+        if ftype == TType.DOUBLE:
+          self.r = iprot.readDouble()
+        else:
+          iprot.skip(ftype)
+      elif fid == 10:
+        if ftype == TType.DOUBLE:
+          self.t = iprot.readDouble()
+        else:
+          iprot.skip(ftype)
+      elif fid == 11:
+        if ftype == TType.DOUBLE:
+          self.v = iprot.readDouble()
+        else:
+          iprot.skip(ftype)
+      else:
+        iprot.skip(ftype)
+      iprot.readFieldEnd()
+    iprot.readStructEnd()
+
+  def write(self, oprot):
+    if oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and self.thrift_spec is not None and fastbinary is not None:
+      oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
+      return
+    oprot.writeStructBegin('DesignEvalUnitPartition')
+    if self.id is not None:
+      oprot.writeFieldBegin('id', TType.I32, 1)
+      oprot.writeI32(self.id)
+      oprot.writeFieldEnd()
+    if self.name is not None:
+      oprot.writeFieldBegin('name', TType.STRING, 2)
+      oprot.writeString(self.name)
+      oprot.writeFieldEnd()
+    if self.comment is not None:
+      oprot.writeFieldBegin('comment', TType.STRING, 3)
+      oprot.writeString(self.comment)
+      oprot.writeFieldEnd()
+    if self.l2 is not None:
+      oprot.writeFieldBegin('l2', TType.DOUBLE, 4)
+      oprot.writeDouble(self.l2)
+      oprot.writeFieldEnd()
+    if self.l1 is not None:
+      oprot.writeFieldBegin('l1', TType.DOUBLE, 5)
+      oprot.writeDouble(self.l1)
+      oprot.writeFieldEnd()
+    if self.w is not None:
+      oprot.writeFieldBegin('w', TType.DOUBLE, 6)
+      oprot.writeDouble(self.w)
+      oprot.writeFieldEnd()
+    if self.h is not None:
+      oprot.writeFieldBegin('h', TType.DOUBLE, 7)
+      oprot.writeDouble(self.h)
+      oprot.writeFieldEnd()
+    if self.l is not None:
+      oprot.writeFieldBegin('l', TType.DOUBLE, 8)
+      oprot.writeDouble(self.l)
+      oprot.writeFieldEnd()
+    if self.r is not None:
+      oprot.writeFieldBegin('r', TType.DOUBLE, 9)
+      oprot.writeDouble(self.r)
+      oprot.writeFieldEnd()
+    if self.t is not None:
+      oprot.writeFieldBegin('t', TType.DOUBLE, 10)
+      oprot.writeDouble(self.t)
+      oprot.writeFieldEnd()
+    if self.v is not None:
+      oprot.writeFieldBegin('v', TType.DOUBLE, 11)
+      oprot.writeDouble(self.v)
+      oprot.writeFieldEnd()
+    oprot.writeFieldStop()
+    oprot.writeStructEnd()
+
+  def validate(self):
+    return
+
+
+  def __hash__(self):
+    value = 17
+    value = (value * 31) ^ hash(self.id)
+    value = (value * 31) ^ hash(self.name)
+    value = (value * 31) ^ hash(self.comment)
+    value = (value * 31) ^ hash(self.l2)
+    value = (value * 31) ^ hash(self.l1)
+    value = (value * 31) ^ hash(self.w)
+    value = (value * 31) ^ hash(self.h)
+    value = (value * 31) ^ hash(self.l)
+    value = (value * 31) ^ hash(self.r)
+    value = (value * 31) ^ hash(self.t)
+    value = (value * 31) ^ hash(self.v)
+    return value
+
+  def __repr__(self):
+    L = ['%s=%r' % (key, value)
+      for key, value in self.__dict__.iteritems()]
+    return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
+
+  def __eq__(self, other):
+    return isinstance(other, self.__class__) and self.__dict__ == other.__dict__
+
+  def __ne__(self, other):
+    return not (self == other)
+
 class DesignGoafTechnology:
   """
   Attributes:
@@ -1841,6 +2179,7 @@ class DesignPore:
   """
   Attributes:
    - id
+   - design_eval_unit_id
    - design_site_id
    - name
    - d
@@ -1854,28 +2193,32 @@ class DesignPore:
    - angle1
    - angle2
    - comment
+   - t
   """
 
   thrift_spec = (
     None, # 0
     (1, TType.I32, 'id', None, None, ), # 1
-    (2, TType.I32, 'design_site_id', None, None, ), # 2
-    (3, TType.STRING, 'name', None, None, ), # 3
-    (4, TType.DOUBLE, 'd', None, None, ), # 4
-    (5, TType.DOUBLE, 'x1', None, None, ), # 5
-    (6, TType.DOUBLE, 'y1', None, None, ), # 6
-    (7, TType.DOUBLE, 'z1', None, None, ), # 7
-    (8, TType.DOUBLE, 'x2', None, None, ), # 8
-    (9, TType.DOUBLE, 'y2', None, None, ), # 9
-    (10, TType.DOUBLE, 'z2', None, None, ), # 10
-    (11, TType.DOUBLE, 'length', None, None, ), # 11
-    (12, TType.DOUBLE, 'angle1', None, None, ), # 12
-    (13, TType.DOUBLE, 'angle2', None, None, ), # 13
-    (14, TType.STRING, 'comment', None, None, ), # 14
+    (2, TType.I32, 'design_eval_unit_id', None, None, ), # 2
+    (3, TType.I32, 'design_site_id', None, None, ), # 3
+    (4, TType.STRING, 'name', None, None, ), # 4
+    (5, TType.DOUBLE, 'd', None, None, ), # 5
+    (6, TType.DOUBLE, 'x1', None, None, ), # 6
+    (7, TType.DOUBLE, 'y1', None, None, ), # 7
+    (8, TType.DOUBLE, 'z1', None, None, ), # 8
+    (9, TType.DOUBLE, 'x2', None, None, ), # 9
+    (10, TType.DOUBLE, 'y2', None, None, ), # 10
+    (11, TType.DOUBLE, 'z2', None, None, ), # 11
+    (12, TType.DOUBLE, 'length', None, None, ), # 12
+    (13, TType.DOUBLE, 'angle1', None, None, ), # 13
+    (14, TType.DOUBLE, 'angle2', None, None, ), # 14
+    (15, TType.STRING, 'comment', None, None, ), # 15
+    (16, TType.I32, 't', None, None, ), # 16
   )
 
-  def __init__(self, id=None, design_site_id=None, name=None, d=None, x1=None, y1=None, z1=None, x2=None, y2=None, z2=None, length=None, angle1=None, angle2=None, comment=None,):
+  def __init__(self, id=None, design_eval_unit_id=None, design_site_id=None, name=None, d=None, x1=None, y1=None, z1=None, x2=None, y2=None, z2=None, length=None, angle1=None, angle2=None, comment=None, t=None,):
     self.id = id
+    self.design_eval_unit_id = design_eval_unit_id
     self.design_site_id = design_site_id
     self.name = name
     self.d = d
@@ -1889,6 +2232,7 @@ class DesignPore:
     self.angle1 = angle1
     self.angle2 = angle2
     self.comment = comment
+    self.t = t
 
   def read(self, iprot):
     if iprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None and fastbinary is not None:
@@ -1906,67 +2250,77 @@ class DesignPore:
           iprot.skip(ftype)
       elif fid == 2:
         if ftype == TType.I32:
-          self.design_site_id = iprot.readI32()
+          self.design_eval_unit_id = iprot.readI32()
         else:
           iprot.skip(ftype)
       elif fid == 3:
+        if ftype == TType.I32:
+          self.design_site_id = iprot.readI32()
+        else:
+          iprot.skip(ftype)
+      elif fid == 4:
         if ftype == TType.STRING:
           self.name = iprot.readString()
         else:
           iprot.skip(ftype)
-      elif fid == 4:
+      elif fid == 5:
         if ftype == TType.DOUBLE:
           self.d = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 5:
+      elif fid == 6:
         if ftype == TType.DOUBLE:
           self.x1 = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 6:
+      elif fid == 7:
         if ftype == TType.DOUBLE:
           self.y1 = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 7:
+      elif fid == 8:
         if ftype == TType.DOUBLE:
           self.z1 = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 8:
+      elif fid == 9:
         if ftype == TType.DOUBLE:
           self.x2 = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 9:
+      elif fid == 10:
         if ftype == TType.DOUBLE:
           self.y2 = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 10:
+      elif fid == 11:
         if ftype == TType.DOUBLE:
           self.z2 = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 11:
+      elif fid == 12:
         if ftype == TType.DOUBLE:
           self.length = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 12:
+      elif fid == 13:
         if ftype == TType.DOUBLE:
           self.angle1 = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 13:
+      elif fid == 14:
         if ftype == TType.DOUBLE:
           self.angle2 = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 14:
+      elif fid == 15:
         if ftype == TType.STRING:
           self.comment = iprot.readString()
+        else:
+          iprot.skip(ftype)
+      elif fid == 16:
+        if ftype == TType.I32:
+          self.t = iprot.readI32()
         else:
           iprot.skip(ftype)
       else:
@@ -1983,57 +2337,65 @@ class DesignPore:
       oprot.writeFieldBegin('id', TType.I32, 1)
       oprot.writeI32(self.id)
       oprot.writeFieldEnd()
+    if self.design_eval_unit_id is not None:
+      oprot.writeFieldBegin('design_eval_unit_id', TType.I32, 2)
+      oprot.writeI32(self.design_eval_unit_id)
+      oprot.writeFieldEnd()
     if self.design_site_id is not None:
-      oprot.writeFieldBegin('design_site_id', TType.I32, 2)
+      oprot.writeFieldBegin('design_site_id', TType.I32, 3)
       oprot.writeI32(self.design_site_id)
       oprot.writeFieldEnd()
     if self.name is not None:
-      oprot.writeFieldBegin('name', TType.STRING, 3)
+      oprot.writeFieldBegin('name', TType.STRING, 4)
       oprot.writeString(self.name)
       oprot.writeFieldEnd()
     if self.d is not None:
-      oprot.writeFieldBegin('d', TType.DOUBLE, 4)
+      oprot.writeFieldBegin('d', TType.DOUBLE, 5)
       oprot.writeDouble(self.d)
       oprot.writeFieldEnd()
     if self.x1 is not None:
-      oprot.writeFieldBegin('x1', TType.DOUBLE, 5)
+      oprot.writeFieldBegin('x1', TType.DOUBLE, 6)
       oprot.writeDouble(self.x1)
       oprot.writeFieldEnd()
     if self.y1 is not None:
-      oprot.writeFieldBegin('y1', TType.DOUBLE, 6)
+      oprot.writeFieldBegin('y1', TType.DOUBLE, 7)
       oprot.writeDouble(self.y1)
       oprot.writeFieldEnd()
     if self.z1 is not None:
-      oprot.writeFieldBegin('z1', TType.DOUBLE, 7)
+      oprot.writeFieldBegin('z1', TType.DOUBLE, 8)
       oprot.writeDouble(self.z1)
       oprot.writeFieldEnd()
     if self.x2 is not None:
-      oprot.writeFieldBegin('x2', TType.DOUBLE, 8)
+      oprot.writeFieldBegin('x2', TType.DOUBLE, 9)
       oprot.writeDouble(self.x2)
       oprot.writeFieldEnd()
     if self.y2 is not None:
-      oprot.writeFieldBegin('y2', TType.DOUBLE, 9)
+      oprot.writeFieldBegin('y2', TType.DOUBLE, 10)
       oprot.writeDouble(self.y2)
       oprot.writeFieldEnd()
     if self.z2 is not None:
-      oprot.writeFieldBegin('z2', TType.DOUBLE, 10)
+      oprot.writeFieldBegin('z2', TType.DOUBLE, 11)
       oprot.writeDouble(self.z2)
       oprot.writeFieldEnd()
     if self.length is not None:
-      oprot.writeFieldBegin('length', TType.DOUBLE, 11)
+      oprot.writeFieldBegin('length', TType.DOUBLE, 12)
       oprot.writeDouble(self.length)
       oprot.writeFieldEnd()
     if self.angle1 is not None:
-      oprot.writeFieldBegin('angle1', TType.DOUBLE, 12)
+      oprot.writeFieldBegin('angle1', TType.DOUBLE, 13)
       oprot.writeDouble(self.angle1)
       oprot.writeFieldEnd()
     if self.angle2 is not None:
-      oprot.writeFieldBegin('angle2', TType.DOUBLE, 13)
+      oprot.writeFieldBegin('angle2', TType.DOUBLE, 14)
       oprot.writeDouble(self.angle2)
       oprot.writeFieldEnd()
     if self.comment is not None:
-      oprot.writeFieldBegin('comment', TType.STRING, 14)
+      oprot.writeFieldBegin('comment', TType.STRING, 15)
       oprot.writeString(self.comment)
+      oprot.writeFieldEnd()
+    if self.t is not None:
+      oprot.writeFieldBegin('t', TType.I32, 16)
+      oprot.writeI32(self.t)
       oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()
@@ -2045,6 +2407,7 @@ class DesignPore:
   def __hash__(self):
     value = 17
     value = (value * 31) ^ hash(self.id)
+    value = (value * 31) ^ hash(self.design_eval_unit_id)
     value = (value * 31) ^ hash(self.design_site_id)
     value = (value * 31) ^ hash(self.name)
     value = (value * 31) ^ hash(self.d)
@@ -2058,6 +2421,7 @@ class DesignPore:
     value = (value * 31) ^ hash(self.angle1)
     value = (value * 31) ^ hash(self.angle2)
     value = (value * 31) ^ hash(self.comment)
+    value = (value * 31) ^ hash(self.t)
     return value
 
   def __repr__(self):
@@ -2246,7 +2610,7 @@ class DesignTechnology:
    - id
    - coal_id
    - name
-   - mine_region
+   - region
    - comment
   """
 
@@ -2255,15 +2619,15 @@ class DesignTechnology:
     (1, TType.I32, 'id', None, None, ), # 1
     (2, TType.I32, 'coal_id', None, None, ), # 2
     (3, TType.STRING, 'name', None, None, ), # 3
-    (4, TType.I32, 'mine_region', None, None, ), # 4
+    (4, TType.I32, 'region', None, None, ), # 4
     (5, TType.STRING, 'comment', None, None, ), # 5
   )
 
-  def __init__(self, id=None, coal_id=None, name=None, mine_region=None, comment=None,):
+  def __init__(self, id=None, coal_id=None, name=None, region=None, comment=None,):
     self.id = id
     self.coal_id = coal_id
     self.name = name
-    self.mine_region = mine_region
+    self.region = region
     self.comment = comment
 
   def read(self, iprot):
@@ -2292,7 +2656,7 @@ class DesignTechnology:
           iprot.skip(ftype)
       elif fid == 4:
         if ftype == TType.I32:
-          self.mine_region = iprot.readI32()
+          self.region = iprot.readI32()
         else:
           iprot.skip(ftype)
       elif fid == 5:
@@ -2322,9 +2686,9 @@ class DesignTechnology:
       oprot.writeFieldBegin('name', TType.STRING, 3)
       oprot.writeString(self.name)
       oprot.writeFieldEnd()
-    if self.mine_region is not None:
-      oprot.writeFieldBegin('mine_region', TType.I32, 4)
-      oprot.writeI32(self.mine_region)
+    if self.region is not None:
+      oprot.writeFieldBegin('region', TType.I32, 4)
+      oprot.writeI32(self.region)
       oprot.writeFieldEnd()
     if self.comment is not None:
       oprot.writeFieldBegin('comment', TType.STRING, 5)
@@ -2342,8 +2706,294 @@ class DesignTechnology:
     value = (value * 31) ^ hash(self.id)
     value = (value * 31) ^ hash(self.coal_id)
     value = (value * 31) ^ hash(self.name)
-    value = (value * 31) ^ hash(self.mine_region)
+    value = (value * 31) ^ hash(self.region)
     value = (value * 31) ^ hash(self.comment)
+    return value
+
+  def __repr__(self):
+    L = ['%s=%r' % (key, value)
+      for key, value in self.__dict__.iteritems()]
+    return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
+
+  def __eq__(self, other):
+    return isinstance(other, self.__class__) and self.__dict__ == other.__dict__
+
+  def __ne__(self, other):
+    return not (self == other)
+
+class DesignTunnelControlPoint:
+  """
+  Attributes:
+   - id
+   - design_eval_unit_partition_id
+   - name
+   - comment
+   - x
+   - y
+   - z
+  """
+
+  thrift_spec = (
+    None, # 0
+    (1, TType.I32, 'id', None, None, ), # 1
+    (2, TType.I32, 'design_eval_unit_partition_id', None, None, ), # 2
+    (3, TType.STRING, 'name', None, None, ), # 3
+    (4, TType.STRING, 'comment', None, None, ), # 4
+    (5, TType.DOUBLE, 'x', None, None, ), # 5
+    (6, TType.DOUBLE, 'y', None, None, ), # 6
+    (7, TType.DOUBLE, 'z', None, None, ), # 7
+  )
+
+  def __init__(self, id=None, design_eval_unit_partition_id=None, name=None, comment=None, x=None, y=None, z=None,):
+    self.id = id
+    self.design_eval_unit_partition_id = design_eval_unit_partition_id
+    self.name = name
+    self.comment = comment
+    self.x = x
+    self.y = y
+    self.z = z
+
+  def read(self, iprot):
+    if iprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None and fastbinary is not None:
+      fastbinary.decode_binary(self, iprot.trans, (self.__class__, self.thrift_spec))
+      return
+    iprot.readStructBegin()
+    while True:
+      (fname, ftype, fid) = iprot.readFieldBegin()
+      if ftype == TType.STOP:
+        break
+      if fid == 1:
+        if ftype == TType.I32:
+          self.id = iprot.readI32()
+        else:
+          iprot.skip(ftype)
+      elif fid == 2:
+        if ftype == TType.I32:
+          self.design_eval_unit_partition_id = iprot.readI32()
+        else:
+          iprot.skip(ftype)
+      elif fid == 3:
+        if ftype == TType.STRING:
+          self.name = iprot.readString()
+        else:
+          iprot.skip(ftype)
+      elif fid == 4:
+        if ftype == TType.STRING:
+          self.comment = iprot.readString()
+        else:
+          iprot.skip(ftype)
+      elif fid == 5:
+        if ftype == TType.DOUBLE:
+          self.x = iprot.readDouble()
+        else:
+          iprot.skip(ftype)
+      elif fid == 6:
+        if ftype == TType.DOUBLE:
+          self.y = iprot.readDouble()
+        else:
+          iprot.skip(ftype)
+      elif fid == 7:
+        if ftype == TType.DOUBLE:
+          self.z = iprot.readDouble()
+        else:
+          iprot.skip(ftype)
+      else:
+        iprot.skip(ftype)
+      iprot.readFieldEnd()
+    iprot.readStructEnd()
+
+  def write(self, oprot):
+    if oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and self.thrift_spec is not None and fastbinary is not None:
+      oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
+      return
+    oprot.writeStructBegin('DesignTunnelControlPoint')
+    if self.id is not None:
+      oprot.writeFieldBegin('id', TType.I32, 1)
+      oprot.writeI32(self.id)
+      oprot.writeFieldEnd()
+    if self.design_eval_unit_partition_id is not None:
+      oprot.writeFieldBegin('design_eval_unit_partition_id', TType.I32, 2)
+      oprot.writeI32(self.design_eval_unit_partition_id)
+      oprot.writeFieldEnd()
+    if self.name is not None:
+      oprot.writeFieldBegin('name', TType.STRING, 3)
+      oprot.writeString(self.name)
+      oprot.writeFieldEnd()
+    if self.comment is not None:
+      oprot.writeFieldBegin('comment', TType.STRING, 4)
+      oprot.writeString(self.comment)
+      oprot.writeFieldEnd()
+    if self.x is not None:
+      oprot.writeFieldBegin('x', TType.DOUBLE, 5)
+      oprot.writeDouble(self.x)
+      oprot.writeFieldEnd()
+    if self.y is not None:
+      oprot.writeFieldBegin('y', TType.DOUBLE, 6)
+      oprot.writeDouble(self.y)
+      oprot.writeFieldEnd()
+    if self.z is not None:
+      oprot.writeFieldBegin('z', TType.DOUBLE, 7)
+      oprot.writeDouble(self.z)
+      oprot.writeFieldEnd()
+    oprot.writeFieldStop()
+    oprot.writeStructEnd()
+
+  def validate(self):
+    return
+
+
+  def __hash__(self):
+    value = 17
+    value = (value * 31) ^ hash(self.id)
+    value = (value * 31) ^ hash(self.design_eval_unit_partition_id)
+    value = (value * 31) ^ hash(self.name)
+    value = (value * 31) ^ hash(self.comment)
+    value = (value * 31) ^ hash(self.x)
+    value = (value * 31) ^ hash(self.y)
+    value = (value * 31) ^ hash(self.z)
+    return value
+
+  def __repr__(self):
+    L = ['%s=%r' % (key, value)
+      for key, value in self.__dict__.iteritems()]
+    return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
+
+  def __eq__(self, other):
+    return isinstance(other, self.__class__) and self.__dict__ == other.__dict__
+
+  def __ne__(self, other):
+    return not (self == other)
+
+class DesignWorkSurfControlPoint:
+  """
+  Attributes:
+   - id
+   - design_eval_unit_partition_id
+   - name
+   - comment
+   - x
+   - y
+   - z
+  """
+
+  thrift_spec = (
+    None, # 0
+    (1, TType.I32, 'id', None, None, ), # 1
+    (2, TType.I32, 'design_eval_unit_partition_id', None, None, ), # 2
+    (3, TType.STRING, 'name', None, None, ), # 3
+    (4, TType.STRING, 'comment', None, None, ), # 4
+    (5, TType.DOUBLE, 'x', None, None, ), # 5
+    (6, TType.DOUBLE, 'y', None, None, ), # 6
+    (7, TType.DOUBLE, 'z', None, None, ), # 7
+  )
+
+  def __init__(self, id=None, design_eval_unit_partition_id=None, name=None, comment=None, x=None, y=None, z=None,):
+    self.id = id
+    self.design_eval_unit_partition_id = design_eval_unit_partition_id
+    self.name = name
+    self.comment = comment
+    self.x = x
+    self.y = y
+    self.z = z
+
+  def read(self, iprot):
+    if iprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None and fastbinary is not None:
+      fastbinary.decode_binary(self, iprot.trans, (self.__class__, self.thrift_spec))
+      return
+    iprot.readStructBegin()
+    while True:
+      (fname, ftype, fid) = iprot.readFieldBegin()
+      if ftype == TType.STOP:
+        break
+      if fid == 1:
+        if ftype == TType.I32:
+          self.id = iprot.readI32()
+        else:
+          iprot.skip(ftype)
+      elif fid == 2:
+        if ftype == TType.I32:
+          self.design_eval_unit_partition_id = iprot.readI32()
+        else:
+          iprot.skip(ftype)
+      elif fid == 3:
+        if ftype == TType.STRING:
+          self.name = iprot.readString()
+        else:
+          iprot.skip(ftype)
+      elif fid == 4:
+        if ftype == TType.STRING:
+          self.comment = iprot.readString()
+        else:
+          iprot.skip(ftype)
+      elif fid == 5:
+        if ftype == TType.DOUBLE:
+          self.x = iprot.readDouble()
+        else:
+          iprot.skip(ftype)
+      elif fid == 6:
+        if ftype == TType.DOUBLE:
+          self.y = iprot.readDouble()
+        else:
+          iprot.skip(ftype)
+      elif fid == 7:
+        if ftype == TType.DOUBLE:
+          self.z = iprot.readDouble()
+        else:
+          iprot.skip(ftype)
+      else:
+        iprot.skip(ftype)
+      iprot.readFieldEnd()
+    iprot.readStructEnd()
+
+  def write(self, oprot):
+    if oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and self.thrift_spec is not None and fastbinary is not None:
+      oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
+      return
+    oprot.writeStructBegin('DesignWorkSurfControlPoint')
+    if self.id is not None:
+      oprot.writeFieldBegin('id', TType.I32, 1)
+      oprot.writeI32(self.id)
+      oprot.writeFieldEnd()
+    if self.design_eval_unit_partition_id is not None:
+      oprot.writeFieldBegin('design_eval_unit_partition_id', TType.I32, 2)
+      oprot.writeI32(self.design_eval_unit_partition_id)
+      oprot.writeFieldEnd()
+    if self.name is not None:
+      oprot.writeFieldBegin('name', TType.STRING, 3)
+      oprot.writeString(self.name)
+      oprot.writeFieldEnd()
+    if self.comment is not None:
+      oprot.writeFieldBegin('comment', TType.STRING, 4)
+      oprot.writeString(self.comment)
+      oprot.writeFieldEnd()
+    if self.x is not None:
+      oprot.writeFieldBegin('x', TType.DOUBLE, 5)
+      oprot.writeDouble(self.x)
+      oprot.writeFieldEnd()
+    if self.y is not None:
+      oprot.writeFieldBegin('y', TType.DOUBLE, 6)
+      oprot.writeDouble(self.y)
+      oprot.writeFieldEnd()
+    if self.z is not None:
+      oprot.writeFieldBegin('z', TType.DOUBLE, 7)
+      oprot.writeDouble(self.z)
+      oprot.writeFieldEnd()
+    oprot.writeFieldStop()
+    oprot.writeStructEnd()
+
+  def validate(self):
+    return
+
+
+  def __hash__(self):
+    value = 17
+    value = (value * 31) ^ hash(self.id)
+    value = (value * 31) ^ hash(self.design_eval_unit_partition_id)
+    value = (value * 31) ^ hash(self.name)
+    value = (value * 31) ^ hash(self.comment)
+    value = (value * 31) ^ hash(self.x)
+    value = (value * 31) ^ hash(self.y)
+    value = (value * 31) ^ hash(self.z)
     return value
 
   def __repr__(self):

@@ -639,6 +639,258 @@ class SQLServiceHandler(object):
 	def GetDesignDrillingSurfTechnologyIdListByForeignKey(self, fkey, id):
 		return self.GetDesignDrillingSurfTechnologyIdListByFields({fkey:id})
 
+	#DesignEvalUnit 类型的CRUD操作
+	def AddDesignEvalUnit(self, design_eval_unit):
+		sql_obj = SQL.DesignEvalUnit()
+		CbmUtil.CopyAttribsOfCbmType("DesignEvalUnit", design_eval_unit, sql_obj)
+		self.session.add(sql_obj)
+		self.session.flush()
+		self.session.commit()
+		return sql_obj.id
+	def DeleteDesignEvalUnit(self, id):
+		ret=True
+		try:
+			self.session.query(SQL.DesignEvalUnit).filter(SQL.DesignEvalUnit.id==id).delete()
+			self.session.commit()
+		except Exception, e:
+			#print e
+			ret=False
+		return ret
+	def UpdateDesignEvalUnit(self, design_eval_unit):
+		ret=True
+		try:
+			sql_obj = SQL.DesignEvalUnit()
+			CbmUtil.CopyAttribsOfCbmType("DesignEvalUnit", design_eval_unit, sql_obj)
+			attribs = CbmUtil.GetAttribsOfCbmType("DesignEvalUnit", sql_obj)
+			del attribs['id']
+			self.session.query(SQL.DesignEvalUnit).filter(SQL.DesignEvalUnit.id==sql_obj.id).update(attribs)
+			self.session.commit()
+		except Exception, e:
+			#print e
+			ret=False
+		return ret
+	def GetDesignEvalUnitById(self, id):
+		query=self.session.query(SQL.DesignEvalUnit).filter(SQL.DesignEvalUnit.id==id).first()
+		obj = DesignEvalUnit()
+		if query is None:
+			obj.id = -1
+		else:
+			CbmUtil.CopyAttribsOfCbmType("DesignEvalUnit", query, obj)
+		return obj
+	def GetDesignEvalUnitByForeignKey(self, fkey, id):
+		return self.GetDesignEvalUnitByFields({fkey:id})
+	def GetDesignEvalUnitIdByForeignKey(self, fkey, id):
+		return self.GetDesignEvalUnitIdByFields({fkey:id})
+	def GetDesignEvalUnitList(self):
+		query = self.session.query(SQL.DesignEvalUnit).all()
+		n = len(query)
+		obj_list = [DesignEvalUnit() for i in range(n)]
+		for i in range(n):
+			CbmUtil.CopyAttribsOfCbmType("DesignEvalUnit", query[i], obj_list[i])
+		return obj_list
+	def GetDesignEvalUnitIds(self):
+		query=self.session.query(SQL.DesignEvalUnit).all()
+		return [obj.id for obj in query]
+	def GetDesignEvalUnitNames(self):
+		query=self.session.query(SQL.DesignEvalUnit).all()
+		if len(query) == 0 or not hasattr(query[0], 'name'):
+			return []
+		else:
+			return [obj.name for obj in query]
+	def AddMoreDesignEvalUnit(self, objs):
+		n = len(objs)
+		sql_objs = [SQL.DesignEvalUnit() for i in range(n)]
+		for i in range(n):
+			CbmUtil.CopyAttribsOfCbmType("DesignEvalUnit", objs[i], sql_objs[i])
+			self.session.add(sql_objs[i])
+		self.session.flush()
+		self.session.commit()
+	def DeleteMoreDesignEvalUnit(self, obj_ids):
+		self.session.query(SQL.DesignEvalUnit).filter(SQL.DesignEvalUnit.id.in_(obj_ids)).delete()
+		self.session.commit()
+	def __GetDesignEvalUnitByFields(self, fields):
+		sql_fields = CbmUtil.map_fields("DesignEvalUnit", fields)
+		query = self.session.query(SQL.DesignEvalUnit).filter_by(**sql_fields).all()
+		if len(query) == 0:
+			return []
+		else:
+			n = len(query)
+			obj_list = [DesignEvalUnit() for i in range(n)]
+			for i in range(n):
+				CbmUtil.CopyAttribsOfCbmType("DesignEvalUnit", query[i], obj_list[i])
+			return obj_list
+	def __GetDesignEvalUnitIdsByFields(self, fields):
+		sql_fields = CbmUtil.map_fields("DesignEvalUnit", fields)
+		query = self.session.query(SQL.DesignEvalUnit).filter_by(**sql_fields).all()
+		if len(query) == 0:
+			return []
+		else:
+			return [obj.id for obj in query]
+	def GetDesignEvalUnitByFields(self, fields):
+		objs = self.__GetDesignEvalUnitByFields(fields)
+		if len(objs) == 0:
+			obj = DesignEvalUnit()
+			obj.id = -1
+			return obj
+		else:
+			return objs[0]
+	def GetDesignEvalUnitByField1(self, field, value):
+		return self.GetDesignEvalUnitByFields({field:value})
+	def GetDesignEvalUnitByField2(self, field1, value1, field2, value2):
+		return self.GetDesignEvalUnitByFields({field1:value1, field2:value2})
+	def GetDesignEvalUnitListByFields(self, fields):
+		return self.__GetDesignEvalUnitByFields(fields)
+	def GetDesignEvalUnitListByField1(self, field, value):
+		return self.GetDesignEvalUnitListByFields({field:value})
+	def GetDesignEvalUnitListByField2(self, field1, value1, field2, value2):
+		return self.GetDesignEvalUnitListByFields({field1:value1, field2:value2})
+	def GetDesignEvalUnitIdByFields(self, fields):
+		obj_ids = self.__GetDesignEvalUnitIdsByFields(fields)
+		if len(obj_ids) == 0:
+			return -1
+		else:
+			return obj_ids[0]
+	def GetDesignEvalUnitIdByField1(self, field, value):
+		return self.GetDesignEvalUnitIdsByFields({field:value})
+	def GetDesignEvalUnitIdByField2(self, field1, value1, field2, value2):
+		return self.GetDesignEvalUnitIdsByFields({field1:value1, field2:value2})
+	def GetDesignEvalUnitIdListByFields(self, fields):
+		return self.__GetDesignEvalUnitIdsByFields(fields)
+	def GetDesignEvalUnitIdListByField1(self, field, value):
+		return self.GetDesignEvalUnitIdListByFields({field:value})
+	def GetDesignEvalUnitIdListByField2(self, field1, value1, field2, value2):
+		return self.GetDesignEvalUnitIdListByFields({field1:value1, field2:value2})
+	def GetDesignEvalUnitListByForeignKey(self, fkey, id):
+		return self.GetDesignEvalUnitListByFields({fkey:id})
+	def GetDesignEvalUnitIdListByForeignKey(self, fkey, id):
+		return self.GetDesignEvalUnitIdListByFields({fkey:id})
+
+	#DesignEvalUnitPartition 类型的CRUD操作
+	def AddDesignEvalUnitPartition(self, design_eval_unit_partition):
+		sql_obj = SQL.DesignEvalUnitPartition()
+		CbmUtil.CopyAttribsOfCbmType("DesignEvalUnitPartition", design_eval_unit_partition, sql_obj)
+		self.session.add(sql_obj)
+		self.session.flush()
+		self.session.commit()
+		return sql_obj.id
+	def DeleteDesignEvalUnitPartition(self, id):
+		ret=True
+		try:
+			self.session.query(SQL.DesignEvalUnitPartition).filter(SQL.DesignEvalUnitPartition.id==id).delete()
+			self.session.commit()
+		except Exception, e:
+			#print e
+			ret=False
+		return ret
+	def UpdateDesignEvalUnitPartition(self, design_eval_unit_partition):
+		ret=True
+		try:
+			sql_obj = SQL.DesignEvalUnitPartition()
+			CbmUtil.CopyAttribsOfCbmType("DesignEvalUnitPartition", design_eval_unit_partition, sql_obj)
+			attribs = CbmUtil.GetAttribsOfCbmType("DesignEvalUnitPartition", sql_obj)
+			del attribs['id']
+			self.session.query(SQL.DesignEvalUnitPartition).filter(SQL.DesignEvalUnitPartition.id==sql_obj.id).update(attribs)
+			self.session.commit()
+		except Exception, e:
+			#print e
+			ret=False
+		return ret
+	def GetDesignEvalUnitPartitionById(self, id):
+		query=self.session.query(SQL.DesignEvalUnitPartition).filter(SQL.DesignEvalUnitPartition.id==id).first()
+		obj = DesignEvalUnitPartition()
+		if query is None:
+			obj.id = -1
+		else:
+			CbmUtil.CopyAttribsOfCbmType("DesignEvalUnitPartition", query, obj)
+		return obj
+	def GetDesignEvalUnitPartitionByForeignKey(self, fkey, id):
+		return self.GetDesignEvalUnitPartitionByFields({fkey:id})
+	def GetDesignEvalUnitPartitionIdByForeignKey(self, fkey, id):
+		return self.GetDesignEvalUnitPartitionIdByFields({fkey:id})
+	def GetDesignEvalUnitPartitionList(self):
+		query = self.session.query(SQL.DesignEvalUnitPartition).all()
+		n = len(query)
+		obj_list = [DesignEvalUnitPartition() for i in range(n)]
+		for i in range(n):
+			CbmUtil.CopyAttribsOfCbmType("DesignEvalUnitPartition", query[i], obj_list[i])
+		return obj_list
+	def GetDesignEvalUnitPartitionIds(self):
+		query=self.session.query(SQL.DesignEvalUnitPartition).all()
+		return [obj.id for obj in query]
+	def GetDesignEvalUnitPartitionNames(self):
+		query=self.session.query(SQL.DesignEvalUnitPartition).all()
+		if len(query) == 0 or not hasattr(query[0], 'name'):
+			return []
+		else:
+			return [obj.name for obj in query]
+	def AddMoreDesignEvalUnitPartition(self, objs):
+		n = len(objs)
+		sql_objs = [SQL.DesignEvalUnitPartition() for i in range(n)]
+		for i in range(n):
+			CbmUtil.CopyAttribsOfCbmType("DesignEvalUnitPartition", objs[i], sql_objs[i])
+			self.session.add(sql_objs[i])
+		self.session.flush()
+		self.session.commit()
+	def DeleteMoreDesignEvalUnitPartition(self, obj_ids):
+		self.session.query(SQL.DesignEvalUnitPartition).filter(SQL.DesignEvalUnitPartition.id.in_(obj_ids)).delete()
+		self.session.commit()
+	def __GetDesignEvalUnitPartitionByFields(self, fields):
+		sql_fields = CbmUtil.map_fields("DesignEvalUnitPartition", fields)
+		query = self.session.query(SQL.DesignEvalUnitPartition).filter_by(**sql_fields).all()
+		if len(query) == 0:
+			return []
+		else:
+			n = len(query)
+			obj_list = [DesignEvalUnitPartition() for i in range(n)]
+			for i in range(n):
+				CbmUtil.CopyAttribsOfCbmType("DesignEvalUnitPartition", query[i], obj_list[i])
+			return obj_list
+	def __GetDesignEvalUnitPartitionIdsByFields(self, fields):
+		sql_fields = CbmUtil.map_fields("DesignEvalUnitPartition", fields)
+		query = self.session.query(SQL.DesignEvalUnitPartition).filter_by(**sql_fields).all()
+		if len(query) == 0:
+			return []
+		else:
+			return [obj.id for obj in query]
+	def GetDesignEvalUnitPartitionByFields(self, fields):
+		objs = self.__GetDesignEvalUnitPartitionByFields(fields)
+		if len(objs) == 0:
+			obj = DesignEvalUnitPartition()
+			obj.id = -1
+			return obj
+		else:
+			return objs[0]
+	def GetDesignEvalUnitPartitionByField1(self, field, value):
+		return self.GetDesignEvalUnitPartitionByFields({field:value})
+	def GetDesignEvalUnitPartitionByField2(self, field1, value1, field2, value2):
+		return self.GetDesignEvalUnitPartitionByFields({field1:value1, field2:value2})
+	def GetDesignEvalUnitPartitionListByFields(self, fields):
+		return self.__GetDesignEvalUnitPartitionByFields(fields)
+	def GetDesignEvalUnitPartitionListByField1(self, field, value):
+		return self.GetDesignEvalUnitPartitionListByFields({field:value})
+	def GetDesignEvalUnitPartitionListByField2(self, field1, value1, field2, value2):
+		return self.GetDesignEvalUnitPartitionListByFields({field1:value1, field2:value2})
+	def GetDesignEvalUnitPartitionIdByFields(self, fields):
+		obj_ids = self.__GetDesignEvalUnitPartitionIdsByFields(fields)
+		if len(obj_ids) == 0:
+			return -1
+		else:
+			return obj_ids[0]
+	def GetDesignEvalUnitPartitionIdByField1(self, field, value):
+		return self.GetDesignEvalUnitPartitionIdsByFields({field:value})
+	def GetDesignEvalUnitPartitionIdByField2(self, field1, value1, field2, value2):
+		return self.GetDesignEvalUnitPartitionIdsByFields({field1:value1, field2:value2})
+	def GetDesignEvalUnitPartitionIdListByFields(self, fields):
+		return self.__GetDesignEvalUnitPartitionIdsByFields(fields)
+	def GetDesignEvalUnitPartitionIdListByField1(self, field, value):
+		return self.GetDesignEvalUnitPartitionIdListByFields({field:value})
+	def GetDesignEvalUnitPartitionIdListByField2(self, field1, value1, field2, value2):
+		return self.GetDesignEvalUnitPartitionIdListByFields({field1:value1, field2:value2})
+	def GetDesignEvalUnitPartitionListByForeignKey(self, fkey, id):
+		return self.GetDesignEvalUnitPartitionListByFields({fkey:id})
+	def GetDesignEvalUnitPartitionIdListByForeignKey(self, fkey, id):
+		return self.GetDesignEvalUnitPartitionIdListByFields({fkey:id})
+
 	#DesignGoafTechnology 类型的CRUD操作
 	def AddDesignGoafTechnology(self, design_goaf_technology):
 		sql_obj = SQL.DesignGoafTechnology()
@@ -1142,6 +1394,258 @@ class SQLServiceHandler(object):
 		return self.GetDesignTechnologyListByFields({fkey:id})
 	def GetDesignTechnologyIdListByForeignKey(self, fkey, id):
 		return self.GetDesignTechnologyIdListByFields({fkey:id})
+
+	#DesignTunnelControlPoint 类型的CRUD操作
+	def AddDesignTunnelControlPoint(self, design_tunnel_control_point):
+		sql_obj = SQL.DesignTunnelControlPoint()
+		CbmUtil.CopyAttribsOfCbmType("DesignTunnelControlPoint", design_tunnel_control_point, sql_obj)
+		self.session.add(sql_obj)
+		self.session.flush()
+		self.session.commit()
+		return sql_obj.id
+	def DeleteDesignTunnelControlPoint(self, id):
+		ret=True
+		try:
+			self.session.query(SQL.DesignTunnelControlPoint).filter(SQL.DesignTunnelControlPoint.id==id).delete()
+			self.session.commit()
+		except Exception, e:
+			#print e
+			ret=False
+		return ret
+	def UpdateDesignTunnelControlPoint(self, design_tunnel_control_point):
+		ret=True
+		try:
+			sql_obj = SQL.DesignTunnelControlPoint()
+			CbmUtil.CopyAttribsOfCbmType("DesignTunnelControlPoint", design_tunnel_control_point, sql_obj)
+			attribs = CbmUtil.GetAttribsOfCbmType("DesignTunnelControlPoint", sql_obj)
+			del attribs['id']
+			self.session.query(SQL.DesignTunnelControlPoint).filter(SQL.DesignTunnelControlPoint.id==sql_obj.id).update(attribs)
+			self.session.commit()
+		except Exception, e:
+			#print e
+			ret=False
+		return ret
+	def GetDesignTunnelControlPointById(self, id):
+		query=self.session.query(SQL.DesignTunnelControlPoint).filter(SQL.DesignTunnelControlPoint.id==id).first()
+		obj = DesignTunnelControlPoint()
+		if query is None:
+			obj.id = -1
+		else:
+			CbmUtil.CopyAttribsOfCbmType("DesignTunnelControlPoint", query, obj)
+		return obj
+	def GetDesignTunnelControlPointByForeignKey(self, fkey, id):
+		return self.GetDesignTunnelControlPointByFields({fkey:id})
+	def GetDesignTunnelControlPointIdByForeignKey(self, fkey, id):
+		return self.GetDesignTunnelControlPointIdByFields({fkey:id})
+	def GetDesignTunnelControlPointList(self):
+		query = self.session.query(SQL.DesignTunnelControlPoint).all()
+		n = len(query)
+		obj_list = [DesignTunnelControlPoint() for i in range(n)]
+		for i in range(n):
+			CbmUtil.CopyAttribsOfCbmType("DesignTunnelControlPoint", query[i], obj_list[i])
+		return obj_list
+	def GetDesignTunnelControlPointIds(self):
+		query=self.session.query(SQL.DesignTunnelControlPoint).all()
+		return [obj.id for obj in query]
+	def GetDesignTunnelControlPointNames(self):
+		query=self.session.query(SQL.DesignTunnelControlPoint).all()
+		if len(query) == 0 or not hasattr(query[0], 'name'):
+			return []
+		else:
+			return [obj.name for obj in query]
+	def AddMoreDesignTunnelControlPoint(self, objs):
+		n = len(objs)
+		sql_objs = [SQL.DesignTunnelControlPoint() for i in range(n)]
+		for i in range(n):
+			CbmUtil.CopyAttribsOfCbmType("DesignTunnelControlPoint", objs[i], sql_objs[i])
+			self.session.add(sql_objs[i])
+		self.session.flush()
+		self.session.commit()
+	def DeleteMoreDesignTunnelControlPoint(self, obj_ids):
+		self.session.query(SQL.DesignTunnelControlPoint).filter(SQL.DesignTunnelControlPoint.id.in_(obj_ids)).delete()
+		self.session.commit()
+	def __GetDesignTunnelControlPointByFields(self, fields):
+		sql_fields = CbmUtil.map_fields("DesignTunnelControlPoint", fields)
+		query = self.session.query(SQL.DesignTunnelControlPoint).filter_by(**sql_fields).all()
+		if len(query) == 0:
+			return []
+		else:
+			n = len(query)
+			obj_list = [DesignTunnelControlPoint() for i in range(n)]
+			for i in range(n):
+				CbmUtil.CopyAttribsOfCbmType("DesignTunnelControlPoint", query[i], obj_list[i])
+			return obj_list
+	def __GetDesignTunnelControlPointIdsByFields(self, fields):
+		sql_fields = CbmUtil.map_fields("DesignTunnelControlPoint", fields)
+		query = self.session.query(SQL.DesignTunnelControlPoint).filter_by(**sql_fields).all()
+		if len(query) == 0:
+			return []
+		else:
+			return [obj.id for obj in query]
+	def GetDesignTunnelControlPointByFields(self, fields):
+		objs = self.__GetDesignTunnelControlPointByFields(fields)
+		if len(objs) == 0:
+			obj = DesignTunnelControlPoint()
+			obj.id = -1
+			return obj
+		else:
+			return objs[0]
+	def GetDesignTunnelControlPointByField1(self, field, value):
+		return self.GetDesignTunnelControlPointByFields({field:value})
+	def GetDesignTunnelControlPointByField2(self, field1, value1, field2, value2):
+		return self.GetDesignTunnelControlPointByFields({field1:value1, field2:value2})
+	def GetDesignTunnelControlPointListByFields(self, fields):
+		return self.__GetDesignTunnelControlPointByFields(fields)
+	def GetDesignTunnelControlPointListByField1(self, field, value):
+		return self.GetDesignTunnelControlPointListByFields({field:value})
+	def GetDesignTunnelControlPointListByField2(self, field1, value1, field2, value2):
+		return self.GetDesignTunnelControlPointListByFields({field1:value1, field2:value2})
+	def GetDesignTunnelControlPointIdByFields(self, fields):
+		obj_ids = self.__GetDesignTunnelControlPointIdsByFields(fields)
+		if len(obj_ids) == 0:
+			return -1
+		else:
+			return obj_ids[0]
+	def GetDesignTunnelControlPointIdByField1(self, field, value):
+		return self.GetDesignTunnelControlPointIdsByFields({field:value})
+	def GetDesignTunnelControlPointIdByField2(self, field1, value1, field2, value2):
+		return self.GetDesignTunnelControlPointIdsByFields({field1:value1, field2:value2})
+	def GetDesignTunnelControlPointIdListByFields(self, fields):
+		return self.__GetDesignTunnelControlPointIdsByFields(fields)
+	def GetDesignTunnelControlPointIdListByField1(self, field, value):
+		return self.GetDesignTunnelControlPointIdListByFields({field:value})
+	def GetDesignTunnelControlPointIdListByField2(self, field1, value1, field2, value2):
+		return self.GetDesignTunnelControlPointIdListByFields({field1:value1, field2:value2})
+	def GetDesignTunnelControlPointListByForeignKey(self, fkey, id):
+		return self.GetDesignTunnelControlPointListByFields({fkey:id})
+	def GetDesignTunnelControlPointIdListByForeignKey(self, fkey, id):
+		return self.GetDesignTunnelControlPointIdListByFields({fkey:id})
+
+	#DesignWorkSurfControlPoint 类型的CRUD操作
+	def AddDesignWorkSurfControlPoint(self, design_work_surf_control_point):
+		sql_obj = SQL.DesignWorkSurfControlPoint()
+		CbmUtil.CopyAttribsOfCbmType("DesignWorkSurfControlPoint", design_work_surf_control_point, sql_obj)
+		self.session.add(sql_obj)
+		self.session.flush()
+		self.session.commit()
+		return sql_obj.id
+	def DeleteDesignWorkSurfControlPoint(self, id):
+		ret=True
+		try:
+			self.session.query(SQL.DesignWorkSurfControlPoint).filter(SQL.DesignWorkSurfControlPoint.id==id).delete()
+			self.session.commit()
+		except Exception, e:
+			#print e
+			ret=False
+		return ret
+	def UpdateDesignWorkSurfControlPoint(self, design_work_surf_control_point):
+		ret=True
+		try:
+			sql_obj = SQL.DesignWorkSurfControlPoint()
+			CbmUtil.CopyAttribsOfCbmType("DesignWorkSurfControlPoint", design_work_surf_control_point, sql_obj)
+			attribs = CbmUtil.GetAttribsOfCbmType("DesignWorkSurfControlPoint", sql_obj)
+			del attribs['id']
+			self.session.query(SQL.DesignWorkSurfControlPoint).filter(SQL.DesignWorkSurfControlPoint.id==sql_obj.id).update(attribs)
+			self.session.commit()
+		except Exception, e:
+			#print e
+			ret=False
+		return ret
+	def GetDesignWorkSurfControlPointById(self, id):
+		query=self.session.query(SQL.DesignWorkSurfControlPoint).filter(SQL.DesignWorkSurfControlPoint.id==id).first()
+		obj = DesignWorkSurfControlPoint()
+		if query is None:
+			obj.id = -1
+		else:
+			CbmUtil.CopyAttribsOfCbmType("DesignWorkSurfControlPoint", query, obj)
+		return obj
+	def GetDesignWorkSurfControlPointByForeignKey(self, fkey, id):
+		return self.GetDesignWorkSurfControlPointByFields({fkey:id})
+	def GetDesignWorkSurfControlPointIdByForeignKey(self, fkey, id):
+		return self.GetDesignWorkSurfControlPointIdByFields({fkey:id})
+	def GetDesignWorkSurfControlPointList(self):
+		query = self.session.query(SQL.DesignWorkSurfControlPoint).all()
+		n = len(query)
+		obj_list = [DesignWorkSurfControlPoint() for i in range(n)]
+		for i in range(n):
+			CbmUtil.CopyAttribsOfCbmType("DesignWorkSurfControlPoint", query[i], obj_list[i])
+		return obj_list
+	def GetDesignWorkSurfControlPointIds(self):
+		query=self.session.query(SQL.DesignWorkSurfControlPoint).all()
+		return [obj.id for obj in query]
+	def GetDesignWorkSurfControlPointNames(self):
+		query=self.session.query(SQL.DesignWorkSurfControlPoint).all()
+		if len(query) == 0 or not hasattr(query[0], 'name'):
+			return []
+		else:
+			return [obj.name for obj in query]
+	def AddMoreDesignWorkSurfControlPoint(self, objs):
+		n = len(objs)
+		sql_objs = [SQL.DesignWorkSurfControlPoint() for i in range(n)]
+		for i in range(n):
+			CbmUtil.CopyAttribsOfCbmType("DesignWorkSurfControlPoint", objs[i], sql_objs[i])
+			self.session.add(sql_objs[i])
+		self.session.flush()
+		self.session.commit()
+	def DeleteMoreDesignWorkSurfControlPoint(self, obj_ids):
+		self.session.query(SQL.DesignWorkSurfControlPoint).filter(SQL.DesignWorkSurfControlPoint.id.in_(obj_ids)).delete()
+		self.session.commit()
+	def __GetDesignWorkSurfControlPointByFields(self, fields):
+		sql_fields = CbmUtil.map_fields("DesignWorkSurfControlPoint", fields)
+		query = self.session.query(SQL.DesignWorkSurfControlPoint).filter_by(**sql_fields).all()
+		if len(query) == 0:
+			return []
+		else:
+			n = len(query)
+			obj_list = [DesignWorkSurfControlPoint() for i in range(n)]
+			for i in range(n):
+				CbmUtil.CopyAttribsOfCbmType("DesignWorkSurfControlPoint", query[i], obj_list[i])
+			return obj_list
+	def __GetDesignWorkSurfControlPointIdsByFields(self, fields):
+		sql_fields = CbmUtil.map_fields("DesignWorkSurfControlPoint", fields)
+		query = self.session.query(SQL.DesignWorkSurfControlPoint).filter_by(**sql_fields).all()
+		if len(query) == 0:
+			return []
+		else:
+			return [obj.id for obj in query]
+	def GetDesignWorkSurfControlPointByFields(self, fields):
+		objs = self.__GetDesignWorkSurfControlPointByFields(fields)
+		if len(objs) == 0:
+			obj = DesignWorkSurfControlPoint()
+			obj.id = -1
+			return obj
+		else:
+			return objs[0]
+	def GetDesignWorkSurfControlPointByField1(self, field, value):
+		return self.GetDesignWorkSurfControlPointByFields({field:value})
+	def GetDesignWorkSurfControlPointByField2(self, field1, value1, field2, value2):
+		return self.GetDesignWorkSurfControlPointByFields({field1:value1, field2:value2})
+	def GetDesignWorkSurfControlPointListByFields(self, fields):
+		return self.__GetDesignWorkSurfControlPointByFields(fields)
+	def GetDesignWorkSurfControlPointListByField1(self, field, value):
+		return self.GetDesignWorkSurfControlPointListByFields({field:value})
+	def GetDesignWorkSurfControlPointListByField2(self, field1, value1, field2, value2):
+		return self.GetDesignWorkSurfControlPointListByFields({field1:value1, field2:value2})
+	def GetDesignWorkSurfControlPointIdByFields(self, fields):
+		obj_ids = self.__GetDesignWorkSurfControlPointIdsByFields(fields)
+		if len(obj_ids) == 0:
+			return -1
+		else:
+			return obj_ids[0]
+	def GetDesignWorkSurfControlPointIdByField1(self, field, value):
+		return self.GetDesignWorkSurfControlPointIdsByFields({field:value})
+	def GetDesignWorkSurfControlPointIdByField2(self, field1, value1, field2, value2):
+		return self.GetDesignWorkSurfControlPointIdsByFields({field1:value1, field2:value2})
+	def GetDesignWorkSurfControlPointIdListByFields(self, fields):
+		return self.__GetDesignWorkSurfControlPointIdsByFields(fields)
+	def GetDesignWorkSurfControlPointIdListByField1(self, field, value):
+		return self.GetDesignWorkSurfControlPointIdListByFields({field:value})
+	def GetDesignWorkSurfControlPointIdListByField2(self, field1, value1, field2, value2):
+		return self.GetDesignWorkSurfControlPointIdListByFields({field1:value1, field2:value2})
+	def GetDesignWorkSurfControlPointListByForeignKey(self, fkey, id):
+		return self.GetDesignWorkSurfControlPointListByFields({fkey:id})
+	def GetDesignWorkSurfControlPointIdListByForeignKey(self, fkey, id):
+		return self.GetDesignWorkSurfControlPointIdListByFields({fkey:id})
 
 	#DesignWorkSurfTechnology 类型的CRUD操作
 	def AddDesignWorkSurfTechnology(self, design_work_surf_technology):

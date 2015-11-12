@@ -2584,6 +2584,498 @@ void DesignDrillingSurfTechnology::printTo(std::ostream& out) const {
 }
 
 
+DesignEvalUnit::~DesignEvalUnit() throw() {
+}
+
+
+void DesignEvalUnit::__set_id(const int32_t val) {
+  this->id = val;
+}
+
+void DesignEvalUnit::__set_design_eval_unit_partition_id(const int32_t val) {
+  this->design_eval_unit_partition_id = val;
+}
+
+void DesignEvalUnit::__set_name(const std::string& val) {
+  this->name = val;
+}
+
+void DesignEvalUnit::__set_comment(const std::string& val) {
+  this->comment = val;
+}
+
+void DesignEvalUnit::__set_num(const int32_t val) {
+  this->num = val;
+}
+
+void DesignEvalUnit::__set_l(const double val) {
+  this->l = val;
+}
+
+void DesignEvalUnit::__set_t(const int32_t val) {
+  this->t = val;
+}
+
+uint32_t DesignEvalUnit::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_I32) {
+          xfer += iprot->readI32(this->id);
+          this->__isset.id = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_I32) {
+          xfer += iprot->readI32(this->design_eval_unit_partition_id);
+          this->__isset.design_eval_unit_partition_id = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->name);
+          this->__isset.name = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->comment);
+          this->__isset.comment = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 5:
+        if (ftype == ::apache::thrift::protocol::T_I32) {
+          xfer += iprot->readI32(this->num);
+          this->__isset.num = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 6:
+        if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
+          xfer += iprot->readDouble(this->l);
+          this->__isset.l = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 7:
+        if (ftype == ::apache::thrift::protocol::T_I32) {
+          xfer += iprot->readI32(this->t);
+          this->__isset.t = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t DesignEvalUnit::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("DesignEvalUnit");
+
+  xfer += oprot->writeFieldBegin("id", ::apache::thrift::protocol::T_I32, 1);
+  xfer += oprot->writeI32(this->id);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("design_eval_unit_partition_id", ::apache::thrift::protocol::T_I32, 2);
+  xfer += oprot->writeI32(this->design_eval_unit_partition_id);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("name", ::apache::thrift::protocol::T_STRING, 3);
+  xfer += oprot->writeString(this->name);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("comment", ::apache::thrift::protocol::T_STRING, 4);
+  xfer += oprot->writeString(this->comment);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("num", ::apache::thrift::protocol::T_I32, 5);
+  xfer += oprot->writeI32(this->num);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("l", ::apache::thrift::protocol::T_DOUBLE, 6);
+  xfer += oprot->writeDouble(this->l);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("t", ::apache::thrift::protocol::T_I32, 7);
+  xfer += oprot->writeI32(this->t);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(DesignEvalUnit &a, DesignEvalUnit &b) {
+  using ::std::swap;
+  swap(a.id, b.id);
+  swap(a.design_eval_unit_partition_id, b.design_eval_unit_partition_id);
+  swap(a.name, b.name);
+  swap(a.comment, b.comment);
+  swap(a.num, b.num);
+  swap(a.l, b.l);
+  swap(a.t, b.t);
+  swap(a.__isset, b.__isset);
+}
+
+DesignEvalUnit::DesignEvalUnit(const DesignEvalUnit& other10) {
+  id = other10.id;
+  design_eval_unit_partition_id = other10.design_eval_unit_partition_id;
+  name = other10.name;
+  comment = other10.comment;
+  num = other10.num;
+  l = other10.l;
+  t = other10.t;
+  __isset = other10.__isset;
+}
+DesignEvalUnit& DesignEvalUnit::operator=(const DesignEvalUnit& other11) {
+  id = other11.id;
+  design_eval_unit_partition_id = other11.design_eval_unit_partition_id;
+  name = other11.name;
+  comment = other11.comment;
+  num = other11.num;
+  l = other11.l;
+  t = other11.t;
+  __isset = other11.__isset;
+  return *this;
+}
+void DesignEvalUnit::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "DesignEvalUnit(";
+  out << "id=" << to_string(id);
+  out << ", " << "design_eval_unit_partition_id=" << to_string(design_eval_unit_partition_id);
+  out << ", " << "name=" << to_string(name);
+  out << ", " << "comment=" << to_string(comment);
+  out << ", " << "num=" << to_string(num);
+  out << ", " << "l=" << to_string(l);
+  out << ", " << "t=" << to_string(t);
+  out << ")";
+}
+
+
+DesignEvalUnitPartition::~DesignEvalUnitPartition() throw() {
+}
+
+
+void DesignEvalUnitPartition::__set_id(const int32_t val) {
+  this->id = val;
+}
+
+void DesignEvalUnitPartition::__set_name(const std::string& val) {
+  this->name = val;
+}
+
+void DesignEvalUnitPartition::__set_comment(const std::string& val) {
+  this->comment = val;
+}
+
+void DesignEvalUnitPartition::__set_l2(const double val) {
+  this->l2 = val;
+}
+
+void DesignEvalUnitPartition::__set_l1(const double val) {
+  this->l1 = val;
+}
+
+void DesignEvalUnitPartition::__set_w(const double val) {
+  this->w = val;
+}
+
+void DesignEvalUnitPartition::__set_h(const double val) {
+  this->h = val;
+}
+
+void DesignEvalUnitPartition::__set_l(const double val) {
+  this->l = val;
+}
+
+void DesignEvalUnitPartition::__set_r(const double val) {
+  this->r = val;
+}
+
+void DesignEvalUnitPartition::__set_t(const double val) {
+  this->t = val;
+}
+
+void DesignEvalUnitPartition::__set_v(const double val) {
+  this->v = val;
+}
+
+uint32_t DesignEvalUnitPartition::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_I32) {
+          xfer += iprot->readI32(this->id);
+          this->__isset.id = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->name);
+          this->__isset.name = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->comment);
+          this->__isset.comment = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
+          xfer += iprot->readDouble(this->l2);
+          this->__isset.l2 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 5:
+        if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
+          xfer += iprot->readDouble(this->l1);
+          this->__isset.l1 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 6:
+        if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
+          xfer += iprot->readDouble(this->w);
+          this->__isset.w = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 7:
+        if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
+          xfer += iprot->readDouble(this->h);
+          this->__isset.h = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 8:
+        if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
+          xfer += iprot->readDouble(this->l);
+          this->__isset.l = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 9:
+        if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
+          xfer += iprot->readDouble(this->r);
+          this->__isset.r = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 10:
+        if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
+          xfer += iprot->readDouble(this->t);
+          this->__isset.t = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 11:
+        if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
+          xfer += iprot->readDouble(this->v);
+          this->__isset.v = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t DesignEvalUnitPartition::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("DesignEvalUnitPartition");
+
+  xfer += oprot->writeFieldBegin("id", ::apache::thrift::protocol::T_I32, 1);
+  xfer += oprot->writeI32(this->id);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("name", ::apache::thrift::protocol::T_STRING, 2);
+  xfer += oprot->writeString(this->name);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("comment", ::apache::thrift::protocol::T_STRING, 3);
+  xfer += oprot->writeString(this->comment);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("l2", ::apache::thrift::protocol::T_DOUBLE, 4);
+  xfer += oprot->writeDouble(this->l2);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("l1", ::apache::thrift::protocol::T_DOUBLE, 5);
+  xfer += oprot->writeDouble(this->l1);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("w", ::apache::thrift::protocol::T_DOUBLE, 6);
+  xfer += oprot->writeDouble(this->w);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("h", ::apache::thrift::protocol::T_DOUBLE, 7);
+  xfer += oprot->writeDouble(this->h);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("l", ::apache::thrift::protocol::T_DOUBLE, 8);
+  xfer += oprot->writeDouble(this->l);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("r", ::apache::thrift::protocol::T_DOUBLE, 9);
+  xfer += oprot->writeDouble(this->r);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("t", ::apache::thrift::protocol::T_DOUBLE, 10);
+  xfer += oprot->writeDouble(this->t);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("v", ::apache::thrift::protocol::T_DOUBLE, 11);
+  xfer += oprot->writeDouble(this->v);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(DesignEvalUnitPartition &a, DesignEvalUnitPartition &b) {
+  using ::std::swap;
+  swap(a.id, b.id);
+  swap(a.name, b.name);
+  swap(a.comment, b.comment);
+  swap(a.l2, b.l2);
+  swap(a.l1, b.l1);
+  swap(a.w, b.w);
+  swap(a.h, b.h);
+  swap(a.l, b.l);
+  swap(a.r, b.r);
+  swap(a.t, b.t);
+  swap(a.v, b.v);
+  swap(a.__isset, b.__isset);
+}
+
+DesignEvalUnitPartition::DesignEvalUnitPartition(const DesignEvalUnitPartition& other12) {
+  id = other12.id;
+  name = other12.name;
+  comment = other12.comment;
+  l2 = other12.l2;
+  l1 = other12.l1;
+  w = other12.w;
+  h = other12.h;
+  l = other12.l;
+  r = other12.r;
+  t = other12.t;
+  v = other12.v;
+  __isset = other12.__isset;
+}
+DesignEvalUnitPartition& DesignEvalUnitPartition::operator=(const DesignEvalUnitPartition& other13) {
+  id = other13.id;
+  name = other13.name;
+  comment = other13.comment;
+  l2 = other13.l2;
+  l1 = other13.l1;
+  w = other13.w;
+  h = other13.h;
+  l = other13.l;
+  r = other13.r;
+  t = other13.t;
+  v = other13.v;
+  __isset = other13.__isset;
+  return *this;
+}
+void DesignEvalUnitPartition::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "DesignEvalUnitPartition(";
+  out << "id=" << to_string(id);
+  out << ", " << "name=" << to_string(name);
+  out << ", " << "comment=" << to_string(comment);
+  out << ", " << "l2=" << to_string(l2);
+  out << ", " << "l1=" << to_string(l1);
+  out << ", " << "w=" << to_string(w);
+  out << ", " << "h=" << to_string(h);
+  out << ", " << "l=" << to_string(l);
+  out << ", " << "r=" << to_string(r);
+  out << ", " << "t=" << to_string(t);
+  out << ", " << "v=" << to_string(v);
+  out << ")";
+}
+
+
 DesignGoafTechnology::~DesignGoafTechnology() throw() {
 }
 
@@ -2704,19 +3196,19 @@ void swap(DesignGoafTechnology &a, DesignGoafTechnology &b) {
   swap(a.__isset, b.__isset);
 }
 
-DesignGoafTechnology::DesignGoafTechnology(const DesignGoafTechnology& other10) {
-  id = other10.id;
-  design_technology_id = other10.design_technology_id;
-  name = other10.name;
-  comment = other10.comment;
-  __isset = other10.__isset;
+DesignGoafTechnology::DesignGoafTechnology(const DesignGoafTechnology& other14) {
+  id = other14.id;
+  design_technology_id = other14.design_technology_id;
+  name = other14.name;
+  comment = other14.comment;
+  __isset = other14.__isset;
 }
-DesignGoafTechnology& DesignGoafTechnology::operator=(const DesignGoafTechnology& other11) {
-  id = other11.id;
-  design_technology_id = other11.design_technology_id;
-  name = other11.name;
-  comment = other11.comment;
-  __isset = other11.__isset;
+DesignGoafTechnology& DesignGoafTechnology::operator=(const DesignGoafTechnology& other15) {
+  id = other15.id;
+  design_technology_id = other15.design_technology_id;
+  name = other15.name;
+  comment = other15.comment;
+  __isset = other15.__isset;
   return *this;
 }
 void DesignGoafTechnology::printTo(std::ostream& out) const {
@@ -2736,6 +3228,10 @@ DesignPore::~DesignPore() throw() {
 
 void DesignPore::__set_id(const int32_t val) {
   this->id = val;
+}
+
+void DesignPore::__set_design_eval_unit_id(const int32_t val) {
+  this->design_eval_unit_id = val;
 }
 
 void DesignPore::__set_design_site_id(const int32_t val) {
@@ -2790,6 +3286,10 @@ void DesignPore::__set_comment(const std::string& val) {
   this->comment = val;
 }
 
+void DesignPore::__set_t(const int32_t val) {
+  this->t = val;
+}
+
 uint32_t DesignPore::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -2821,13 +3321,21 @@ uint32_t DesignPore::read(::apache::thrift::protocol::TProtocol* iprot) {
         break;
       case 2:
         if (ftype == ::apache::thrift::protocol::T_I32) {
+          xfer += iprot->readI32(this->design_eval_unit_id);
+          this->__isset.design_eval_unit_id = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_I32) {
           xfer += iprot->readI32(this->design_site_id);
           this->__isset.design_site_id = true;
         } else {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 3:
+      case 4:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
           xfer += iprot->readString(this->name);
           this->__isset.name = true;
@@ -2835,7 +3343,7 @@ uint32_t DesignPore::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 4:
+      case 5:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->d);
           this->__isset.d = true;
@@ -2843,7 +3351,7 @@ uint32_t DesignPore::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 5:
+      case 6:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->x1);
           this->__isset.x1 = true;
@@ -2851,7 +3359,7 @@ uint32_t DesignPore::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 6:
+      case 7:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->y1);
           this->__isset.y1 = true;
@@ -2859,7 +3367,7 @@ uint32_t DesignPore::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 7:
+      case 8:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->z1);
           this->__isset.z1 = true;
@@ -2867,7 +3375,7 @@ uint32_t DesignPore::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 8:
+      case 9:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->x2);
           this->__isset.x2 = true;
@@ -2875,7 +3383,7 @@ uint32_t DesignPore::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 9:
+      case 10:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->y2);
           this->__isset.y2 = true;
@@ -2883,7 +3391,7 @@ uint32_t DesignPore::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 10:
+      case 11:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->z2);
           this->__isset.z2 = true;
@@ -2891,7 +3399,7 @@ uint32_t DesignPore::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 11:
+      case 12:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->length);
           this->__isset.length = true;
@@ -2899,7 +3407,7 @@ uint32_t DesignPore::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 12:
+      case 13:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->angle1);
           this->__isset.angle1 = true;
@@ -2907,7 +3415,7 @@ uint32_t DesignPore::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 13:
+      case 14:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->angle2);
           this->__isset.angle2 = true;
@@ -2915,10 +3423,18 @@ uint32_t DesignPore::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 14:
+      case 15:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
           xfer += iprot->readString(this->comment);
           this->__isset.comment = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 16:
+        if (ftype == ::apache::thrift::protocol::T_I32) {
+          xfer += iprot->readI32(this->t);
+          this->__isset.t = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -2944,56 +3460,64 @@ uint32_t DesignPore::write(::apache::thrift::protocol::TProtocol* oprot) const {
   xfer += oprot->writeI32(this->id);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("design_site_id", ::apache::thrift::protocol::T_I32, 2);
+  xfer += oprot->writeFieldBegin("design_eval_unit_id", ::apache::thrift::protocol::T_I32, 2);
+  xfer += oprot->writeI32(this->design_eval_unit_id);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("design_site_id", ::apache::thrift::protocol::T_I32, 3);
   xfer += oprot->writeI32(this->design_site_id);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("name", ::apache::thrift::protocol::T_STRING, 3);
+  xfer += oprot->writeFieldBegin("name", ::apache::thrift::protocol::T_STRING, 4);
   xfer += oprot->writeString(this->name);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("d", ::apache::thrift::protocol::T_DOUBLE, 4);
+  xfer += oprot->writeFieldBegin("d", ::apache::thrift::protocol::T_DOUBLE, 5);
   xfer += oprot->writeDouble(this->d);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("x1", ::apache::thrift::protocol::T_DOUBLE, 5);
+  xfer += oprot->writeFieldBegin("x1", ::apache::thrift::protocol::T_DOUBLE, 6);
   xfer += oprot->writeDouble(this->x1);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("y1", ::apache::thrift::protocol::T_DOUBLE, 6);
+  xfer += oprot->writeFieldBegin("y1", ::apache::thrift::protocol::T_DOUBLE, 7);
   xfer += oprot->writeDouble(this->y1);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("z1", ::apache::thrift::protocol::T_DOUBLE, 7);
+  xfer += oprot->writeFieldBegin("z1", ::apache::thrift::protocol::T_DOUBLE, 8);
   xfer += oprot->writeDouble(this->z1);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("x2", ::apache::thrift::protocol::T_DOUBLE, 8);
+  xfer += oprot->writeFieldBegin("x2", ::apache::thrift::protocol::T_DOUBLE, 9);
   xfer += oprot->writeDouble(this->x2);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("y2", ::apache::thrift::protocol::T_DOUBLE, 9);
+  xfer += oprot->writeFieldBegin("y2", ::apache::thrift::protocol::T_DOUBLE, 10);
   xfer += oprot->writeDouble(this->y2);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("z2", ::apache::thrift::protocol::T_DOUBLE, 10);
+  xfer += oprot->writeFieldBegin("z2", ::apache::thrift::protocol::T_DOUBLE, 11);
   xfer += oprot->writeDouble(this->z2);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("length", ::apache::thrift::protocol::T_DOUBLE, 11);
+  xfer += oprot->writeFieldBegin("length", ::apache::thrift::protocol::T_DOUBLE, 12);
   xfer += oprot->writeDouble(this->length);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("angle1", ::apache::thrift::protocol::T_DOUBLE, 12);
+  xfer += oprot->writeFieldBegin("angle1", ::apache::thrift::protocol::T_DOUBLE, 13);
   xfer += oprot->writeDouble(this->angle1);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("angle2", ::apache::thrift::protocol::T_DOUBLE, 13);
+  xfer += oprot->writeFieldBegin("angle2", ::apache::thrift::protocol::T_DOUBLE, 14);
   xfer += oprot->writeDouble(this->angle2);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("comment", ::apache::thrift::protocol::T_STRING, 14);
+  xfer += oprot->writeFieldBegin("comment", ::apache::thrift::protocol::T_STRING, 15);
   xfer += oprot->writeString(this->comment);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("t", ::apache::thrift::protocol::T_I32, 16);
+  xfer += oprot->writeI32(this->t);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldStop();
@@ -3004,6 +3528,7 @@ uint32_t DesignPore::write(::apache::thrift::protocol::TProtocol* oprot) const {
 void swap(DesignPore &a, DesignPore &b) {
   using ::std::swap;
   swap(a.id, b.id);
+  swap(a.design_eval_unit_id, b.design_eval_unit_id);
   swap(a.design_site_id, b.design_site_id);
   swap(a.name, b.name);
   swap(a.d, b.d);
@@ -3017,48 +3542,54 @@ void swap(DesignPore &a, DesignPore &b) {
   swap(a.angle1, b.angle1);
   swap(a.angle2, b.angle2);
   swap(a.comment, b.comment);
+  swap(a.t, b.t);
   swap(a.__isset, b.__isset);
 }
 
-DesignPore::DesignPore(const DesignPore& other12) {
-  id = other12.id;
-  design_site_id = other12.design_site_id;
-  name = other12.name;
-  d = other12.d;
-  x1 = other12.x1;
-  y1 = other12.y1;
-  z1 = other12.z1;
-  x2 = other12.x2;
-  y2 = other12.y2;
-  z2 = other12.z2;
-  length = other12.length;
-  angle1 = other12.angle1;
-  angle2 = other12.angle2;
-  comment = other12.comment;
-  __isset = other12.__isset;
+DesignPore::DesignPore(const DesignPore& other16) {
+  id = other16.id;
+  design_eval_unit_id = other16.design_eval_unit_id;
+  design_site_id = other16.design_site_id;
+  name = other16.name;
+  d = other16.d;
+  x1 = other16.x1;
+  y1 = other16.y1;
+  z1 = other16.z1;
+  x2 = other16.x2;
+  y2 = other16.y2;
+  z2 = other16.z2;
+  length = other16.length;
+  angle1 = other16.angle1;
+  angle2 = other16.angle2;
+  comment = other16.comment;
+  t = other16.t;
+  __isset = other16.__isset;
 }
-DesignPore& DesignPore::operator=(const DesignPore& other13) {
-  id = other13.id;
-  design_site_id = other13.design_site_id;
-  name = other13.name;
-  d = other13.d;
-  x1 = other13.x1;
-  y1 = other13.y1;
-  z1 = other13.z1;
-  x2 = other13.x2;
-  y2 = other13.y2;
-  z2 = other13.z2;
-  length = other13.length;
-  angle1 = other13.angle1;
-  angle2 = other13.angle2;
-  comment = other13.comment;
-  __isset = other13.__isset;
+DesignPore& DesignPore::operator=(const DesignPore& other17) {
+  id = other17.id;
+  design_eval_unit_id = other17.design_eval_unit_id;
+  design_site_id = other17.design_site_id;
+  name = other17.name;
+  d = other17.d;
+  x1 = other17.x1;
+  y1 = other17.y1;
+  z1 = other17.z1;
+  x2 = other17.x2;
+  y2 = other17.y2;
+  z2 = other17.z2;
+  length = other17.length;
+  angle1 = other17.angle1;
+  angle2 = other17.angle2;
+  comment = other17.comment;
+  t = other17.t;
+  __isset = other17.__isset;
   return *this;
 }
 void DesignPore::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "DesignPore(";
   out << "id=" << to_string(id);
+  out << ", " << "design_eval_unit_id=" << to_string(design_eval_unit_id);
   out << ", " << "design_site_id=" << to_string(design_site_id);
   out << ", " << "name=" << to_string(name);
   out << ", " << "d=" << to_string(d);
@@ -3072,6 +3603,7 @@ void DesignPore::printTo(std::ostream& out) const {
   out << ", " << "angle1=" << to_string(angle1);
   out << ", " << "angle2=" << to_string(angle2);
   out << ", " << "comment=" << to_string(comment);
+  out << ", " << "t=" << to_string(t);
   out << ")";
 }
 
@@ -3281,29 +3813,29 @@ void swap(DesignSite &a, DesignSite &b) {
   swap(a.__isset, b.__isset);
 }
 
-DesignSite::DesignSite(const DesignSite& other14) {
-  id = other14.id;
-  design_technology_id = other14.design_technology_id;
-  name = other14.name;
-  w = other14.w;
-  h = other14.h;
-  x = other14.x;
-  y = other14.y;
-  z = other14.z;
-  comment = other14.comment;
-  __isset = other14.__isset;
+DesignSite::DesignSite(const DesignSite& other18) {
+  id = other18.id;
+  design_technology_id = other18.design_technology_id;
+  name = other18.name;
+  w = other18.w;
+  h = other18.h;
+  x = other18.x;
+  y = other18.y;
+  z = other18.z;
+  comment = other18.comment;
+  __isset = other18.__isset;
 }
-DesignSite& DesignSite::operator=(const DesignSite& other15) {
-  id = other15.id;
-  design_technology_id = other15.design_technology_id;
-  name = other15.name;
-  w = other15.w;
-  h = other15.h;
-  x = other15.x;
-  y = other15.y;
-  z = other15.z;
-  comment = other15.comment;
-  __isset = other15.__isset;
+DesignSite& DesignSite::operator=(const DesignSite& other19) {
+  id = other19.id;
+  design_technology_id = other19.design_technology_id;
+  name = other19.name;
+  w = other19.w;
+  h = other19.h;
+  x = other19.x;
+  y = other19.y;
+  z = other19.z;
+  comment = other19.comment;
+  __isset = other19.__isset;
   return *this;
 }
 void DesignSite::printTo(std::ostream& out) const {
@@ -3338,8 +3870,8 @@ void DesignTechnology::__set_name(const std::string& val) {
   this->name = val;
 }
 
-void DesignTechnology::__set_mine_region(const int32_t val) {
-  this->mine_region = val;
+void DesignTechnology::__set_region(const int32_t val) {
+  this->region = val;
 }
 
 void DesignTechnology::__set_comment(const std::string& val) {
@@ -3393,8 +3925,8 @@ uint32_t DesignTechnology::read(::apache::thrift::protocol::TProtocol* iprot) {
         break;
       case 4:
         if (ftype == ::apache::thrift::protocol::T_I32) {
-          xfer += iprot->readI32(this->mine_region);
-          this->__isset.mine_region = true;
+          xfer += iprot->readI32(this->region);
+          this->__isset.region = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -3436,8 +3968,8 @@ uint32_t DesignTechnology::write(::apache::thrift::protocol::TProtocol* oprot) c
   xfer += oprot->writeString(this->name);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("mine_region", ::apache::thrift::protocol::T_I32, 4);
-  xfer += oprot->writeI32(this->mine_region);
+  xfer += oprot->writeFieldBegin("region", ::apache::thrift::protocol::T_I32, 4);
+  xfer += oprot->writeI32(this->region);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldBegin("comment", ::apache::thrift::protocol::T_STRING, 5);
@@ -3454,26 +3986,26 @@ void swap(DesignTechnology &a, DesignTechnology &b) {
   swap(a.id, b.id);
   swap(a.coal_id, b.coal_id);
   swap(a.name, b.name);
-  swap(a.mine_region, b.mine_region);
+  swap(a.region, b.region);
   swap(a.comment, b.comment);
   swap(a.__isset, b.__isset);
 }
 
-DesignTechnology::DesignTechnology(const DesignTechnology& other16) {
-  id = other16.id;
-  coal_id = other16.coal_id;
-  name = other16.name;
-  mine_region = other16.mine_region;
-  comment = other16.comment;
-  __isset = other16.__isset;
+DesignTechnology::DesignTechnology(const DesignTechnology& other20) {
+  id = other20.id;
+  coal_id = other20.coal_id;
+  name = other20.name;
+  region = other20.region;
+  comment = other20.comment;
+  __isset = other20.__isset;
 }
-DesignTechnology& DesignTechnology::operator=(const DesignTechnology& other17) {
-  id = other17.id;
-  coal_id = other17.coal_id;
-  name = other17.name;
-  mine_region = other17.mine_region;
-  comment = other17.comment;
-  __isset = other17.__isset;
+DesignTechnology& DesignTechnology::operator=(const DesignTechnology& other21) {
+  id = other21.id;
+  coal_id = other21.coal_id;
+  name = other21.name;
+  region = other21.region;
+  comment = other21.comment;
+  __isset = other21.__isset;
   return *this;
 }
 void DesignTechnology::printTo(std::ostream& out) const {
@@ -3482,8 +4014,420 @@ void DesignTechnology::printTo(std::ostream& out) const {
   out << "id=" << to_string(id);
   out << ", " << "coal_id=" << to_string(coal_id);
   out << ", " << "name=" << to_string(name);
-  out << ", " << "mine_region=" << to_string(mine_region);
+  out << ", " << "region=" << to_string(region);
   out << ", " << "comment=" << to_string(comment);
+  out << ")";
+}
+
+
+DesignTunnelControlPoint::~DesignTunnelControlPoint() throw() {
+}
+
+
+void DesignTunnelControlPoint::__set_id(const int32_t val) {
+  this->id = val;
+}
+
+void DesignTunnelControlPoint::__set_design_eval_unit_partition_id(const int32_t val) {
+  this->design_eval_unit_partition_id = val;
+}
+
+void DesignTunnelControlPoint::__set_name(const std::string& val) {
+  this->name = val;
+}
+
+void DesignTunnelControlPoint::__set_comment(const std::string& val) {
+  this->comment = val;
+}
+
+void DesignTunnelControlPoint::__set_x(const double val) {
+  this->x = val;
+}
+
+void DesignTunnelControlPoint::__set_y(const double val) {
+  this->y = val;
+}
+
+void DesignTunnelControlPoint::__set_z(const double val) {
+  this->z = val;
+}
+
+uint32_t DesignTunnelControlPoint::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_I32) {
+          xfer += iprot->readI32(this->id);
+          this->__isset.id = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_I32) {
+          xfer += iprot->readI32(this->design_eval_unit_partition_id);
+          this->__isset.design_eval_unit_partition_id = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->name);
+          this->__isset.name = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->comment);
+          this->__isset.comment = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 5:
+        if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
+          xfer += iprot->readDouble(this->x);
+          this->__isset.x = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 6:
+        if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
+          xfer += iprot->readDouble(this->y);
+          this->__isset.y = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 7:
+        if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
+          xfer += iprot->readDouble(this->z);
+          this->__isset.z = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t DesignTunnelControlPoint::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("DesignTunnelControlPoint");
+
+  xfer += oprot->writeFieldBegin("id", ::apache::thrift::protocol::T_I32, 1);
+  xfer += oprot->writeI32(this->id);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("design_eval_unit_partition_id", ::apache::thrift::protocol::T_I32, 2);
+  xfer += oprot->writeI32(this->design_eval_unit_partition_id);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("name", ::apache::thrift::protocol::T_STRING, 3);
+  xfer += oprot->writeString(this->name);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("comment", ::apache::thrift::protocol::T_STRING, 4);
+  xfer += oprot->writeString(this->comment);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("x", ::apache::thrift::protocol::T_DOUBLE, 5);
+  xfer += oprot->writeDouble(this->x);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("y", ::apache::thrift::protocol::T_DOUBLE, 6);
+  xfer += oprot->writeDouble(this->y);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("z", ::apache::thrift::protocol::T_DOUBLE, 7);
+  xfer += oprot->writeDouble(this->z);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(DesignTunnelControlPoint &a, DesignTunnelControlPoint &b) {
+  using ::std::swap;
+  swap(a.id, b.id);
+  swap(a.design_eval_unit_partition_id, b.design_eval_unit_partition_id);
+  swap(a.name, b.name);
+  swap(a.comment, b.comment);
+  swap(a.x, b.x);
+  swap(a.y, b.y);
+  swap(a.z, b.z);
+  swap(a.__isset, b.__isset);
+}
+
+DesignTunnelControlPoint::DesignTunnelControlPoint(const DesignTunnelControlPoint& other22) {
+  id = other22.id;
+  design_eval_unit_partition_id = other22.design_eval_unit_partition_id;
+  name = other22.name;
+  comment = other22.comment;
+  x = other22.x;
+  y = other22.y;
+  z = other22.z;
+  __isset = other22.__isset;
+}
+DesignTunnelControlPoint& DesignTunnelControlPoint::operator=(const DesignTunnelControlPoint& other23) {
+  id = other23.id;
+  design_eval_unit_partition_id = other23.design_eval_unit_partition_id;
+  name = other23.name;
+  comment = other23.comment;
+  x = other23.x;
+  y = other23.y;
+  z = other23.z;
+  __isset = other23.__isset;
+  return *this;
+}
+void DesignTunnelControlPoint::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "DesignTunnelControlPoint(";
+  out << "id=" << to_string(id);
+  out << ", " << "design_eval_unit_partition_id=" << to_string(design_eval_unit_partition_id);
+  out << ", " << "name=" << to_string(name);
+  out << ", " << "comment=" << to_string(comment);
+  out << ", " << "x=" << to_string(x);
+  out << ", " << "y=" << to_string(y);
+  out << ", " << "z=" << to_string(z);
+  out << ")";
+}
+
+
+DesignWorkSurfControlPoint::~DesignWorkSurfControlPoint() throw() {
+}
+
+
+void DesignWorkSurfControlPoint::__set_id(const int32_t val) {
+  this->id = val;
+}
+
+void DesignWorkSurfControlPoint::__set_design_eval_unit_partition_id(const int32_t val) {
+  this->design_eval_unit_partition_id = val;
+}
+
+void DesignWorkSurfControlPoint::__set_name(const std::string& val) {
+  this->name = val;
+}
+
+void DesignWorkSurfControlPoint::__set_comment(const std::string& val) {
+  this->comment = val;
+}
+
+void DesignWorkSurfControlPoint::__set_x(const double val) {
+  this->x = val;
+}
+
+void DesignWorkSurfControlPoint::__set_y(const double val) {
+  this->y = val;
+}
+
+void DesignWorkSurfControlPoint::__set_z(const double val) {
+  this->z = val;
+}
+
+uint32_t DesignWorkSurfControlPoint::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_I32) {
+          xfer += iprot->readI32(this->id);
+          this->__isset.id = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_I32) {
+          xfer += iprot->readI32(this->design_eval_unit_partition_id);
+          this->__isset.design_eval_unit_partition_id = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->name);
+          this->__isset.name = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->comment);
+          this->__isset.comment = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 5:
+        if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
+          xfer += iprot->readDouble(this->x);
+          this->__isset.x = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 6:
+        if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
+          xfer += iprot->readDouble(this->y);
+          this->__isset.y = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 7:
+        if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
+          xfer += iprot->readDouble(this->z);
+          this->__isset.z = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t DesignWorkSurfControlPoint::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("DesignWorkSurfControlPoint");
+
+  xfer += oprot->writeFieldBegin("id", ::apache::thrift::protocol::T_I32, 1);
+  xfer += oprot->writeI32(this->id);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("design_eval_unit_partition_id", ::apache::thrift::protocol::T_I32, 2);
+  xfer += oprot->writeI32(this->design_eval_unit_partition_id);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("name", ::apache::thrift::protocol::T_STRING, 3);
+  xfer += oprot->writeString(this->name);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("comment", ::apache::thrift::protocol::T_STRING, 4);
+  xfer += oprot->writeString(this->comment);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("x", ::apache::thrift::protocol::T_DOUBLE, 5);
+  xfer += oprot->writeDouble(this->x);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("y", ::apache::thrift::protocol::T_DOUBLE, 6);
+  xfer += oprot->writeDouble(this->y);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("z", ::apache::thrift::protocol::T_DOUBLE, 7);
+  xfer += oprot->writeDouble(this->z);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(DesignWorkSurfControlPoint &a, DesignWorkSurfControlPoint &b) {
+  using ::std::swap;
+  swap(a.id, b.id);
+  swap(a.design_eval_unit_partition_id, b.design_eval_unit_partition_id);
+  swap(a.name, b.name);
+  swap(a.comment, b.comment);
+  swap(a.x, b.x);
+  swap(a.y, b.y);
+  swap(a.z, b.z);
+  swap(a.__isset, b.__isset);
+}
+
+DesignWorkSurfControlPoint::DesignWorkSurfControlPoint(const DesignWorkSurfControlPoint& other24) {
+  id = other24.id;
+  design_eval_unit_partition_id = other24.design_eval_unit_partition_id;
+  name = other24.name;
+  comment = other24.comment;
+  x = other24.x;
+  y = other24.y;
+  z = other24.z;
+  __isset = other24.__isset;
+}
+DesignWorkSurfControlPoint& DesignWorkSurfControlPoint::operator=(const DesignWorkSurfControlPoint& other25) {
+  id = other25.id;
+  design_eval_unit_partition_id = other25.design_eval_unit_partition_id;
+  name = other25.name;
+  comment = other25.comment;
+  x = other25.x;
+  y = other25.y;
+  z = other25.z;
+  __isset = other25.__isset;
+  return *this;
+}
+void DesignWorkSurfControlPoint::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "DesignWorkSurfControlPoint(";
+  out << "id=" << to_string(id);
+  out << ", " << "design_eval_unit_partition_id=" << to_string(design_eval_unit_partition_id);
+  out << ", " << "name=" << to_string(name);
+  out << ", " << "comment=" << to_string(comment);
+  out << ", " << "x=" << to_string(x);
+  out << ", " << "y=" << to_string(y);
+  out << ", " << "z=" << to_string(z);
   out << ")";
 }
 
@@ -4033,69 +4977,69 @@ void swap(DesignWorkSurfTechnology &a, DesignWorkSurfTechnology &b) {
   swap(a.__isset, b.__isset);
 }
 
-DesignWorkSurfTechnology::DesignWorkSurfTechnology(const DesignWorkSurfTechnology& other18) {
-  id = other18.id;
-  design_technology_id = other18.design_technology_id;
-  name = other18.name;
-  comment = other18.comment;
-  top_side = other18.top_side;
-  bottom_side = other18.bottom_side;
-  right_side = other18.right_side;
-  l1 = other18.l1;
-  w = other18.w;
-  h = other18.h;
-  l2 = other18.l2;
-  left_side = other18.left_side;
-  v_offset = other18.v_offset;
-  h_offset = other18.h_offset;
-  p_offset = other18.p_offset;
-  wd = other18.wd;
-  hd = other18.hd;
-  lm = other18.lm;
-  ws = other18.ws;
-  ls = other18.ls;
-  gs = other18.gs;
-  hs = other18.hs;
-  dp = other18.dp;
-  gp = other18.gp;
-  single_rock_tunnel = other18.single_rock_tunnel;
-  d_offset = other18.d_offset;
-  pore_stubble = other18.pore_stubble;
-  pore_angle = other18.pore_angle;
-  pore_type = other18.pore_type;
-  __isset = other18.__isset;
+DesignWorkSurfTechnology::DesignWorkSurfTechnology(const DesignWorkSurfTechnology& other26) {
+  id = other26.id;
+  design_technology_id = other26.design_technology_id;
+  name = other26.name;
+  comment = other26.comment;
+  top_side = other26.top_side;
+  bottom_side = other26.bottom_side;
+  right_side = other26.right_side;
+  l1 = other26.l1;
+  w = other26.w;
+  h = other26.h;
+  l2 = other26.l2;
+  left_side = other26.left_side;
+  v_offset = other26.v_offset;
+  h_offset = other26.h_offset;
+  p_offset = other26.p_offset;
+  wd = other26.wd;
+  hd = other26.hd;
+  lm = other26.lm;
+  ws = other26.ws;
+  ls = other26.ls;
+  gs = other26.gs;
+  hs = other26.hs;
+  dp = other26.dp;
+  gp = other26.gp;
+  single_rock_tunnel = other26.single_rock_tunnel;
+  d_offset = other26.d_offset;
+  pore_stubble = other26.pore_stubble;
+  pore_angle = other26.pore_angle;
+  pore_type = other26.pore_type;
+  __isset = other26.__isset;
 }
-DesignWorkSurfTechnology& DesignWorkSurfTechnology::operator=(const DesignWorkSurfTechnology& other19) {
-  id = other19.id;
-  design_technology_id = other19.design_technology_id;
-  name = other19.name;
-  comment = other19.comment;
-  top_side = other19.top_side;
-  bottom_side = other19.bottom_side;
-  right_side = other19.right_side;
-  l1 = other19.l1;
-  w = other19.w;
-  h = other19.h;
-  l2 = other19.l2;
-  left_side = other19.left_side;
-  v_offset = other19.v_offset;
-  h_offset = other19.h_offset;
-  p_offset = other19.p_offset;
-  wd = other19.wd;
-  hd = other19.hd;
-  lm = other19.lm;
-  ws = other19.ws;
-  ls = other19.ls;
-  gs = other19.gs;
-  hs = other19.hs;
-  dp = other19.dp;
-  gp = other19.gp;
-  single_rock_tunnel = other19.single_rock_tunnel;
-  d_offset = other19.d_offset;
-  pore_stubble = other19.pore_stubble;
-  pore_angle = other19.pore_angle;
-  pore_type = other19.pore_type;
-  __isset = other19.__isset;
+DesignWorkSurfTechnology& DesignWorkSurfTechnology::operator=(const DesignWorkSurfTechnology& other27) {
+  id = other27.id;
+  design_technology_id = other27.design_technology_id;
+  name = other27.name;
+  comment = other27.comment;
+  top_side = other27.top_side;
+  bottom_side = other27.bottom_side;
+  right_side = other27.right_side;
+  l1 = other27.l1;
+  w = other27.w;
+  h = other27.h;
+  l2 = other27.l2;
+  left_side = other27.left_side;
+  v_offset = other27.v_offset;
+  h_offset = other27.h_offset;
+  p_offset = other27.p_offset;
+  wd = other27.wd;
+  hd = other27.hd;
+  lm = other27.lm;
+  ws = other27.ws;
+  ls = other27.ls;
+  gs = other27.gs;
+  hs = other27.hs;
+  dp = other27.dp;
+  gp = other27.gp;
+  single_rock_tunnel = other27.single_rock_tunnel;
+  d_offset = other27.d_offset;
+  pore_stubble = other27.pore_stubble;
+  pore_angle = other27.pore_angle;
+  pore_type = other27.pore_type;
+  __isset = other27.__isset;
   return *this;
 }
 void DesignWorkSurfTechnology::printTo(std::ostream& out) const {
@@ -4407,37 +5351,37 @@ void swap(DrillingRadiusParam &a, DrillingRadiusParam &b) {
   swap(a.__isset, b.__isset);
 }
 
-DrillingRadiusParam::DrillingRadiusParam(const DrillingRadiusParam& other20) {
-  id = other20.id;
-  coal_id = other20.coal_id;
-  name = other20.name;
-  r = other20.r;
-  l = other20.l;
-  k1 = other20.k1;
-  rho = other20.rho;
-  q0 = other20.q0;
-  a = other20.a;
-  t = other20.t;
-  qm = other20.qm;
-  qsum = other20.qsum;
-  eta = other20.eta;
-  __isset = other20.__isset;
+DrillingRadiusParam::DrillingRadiusParam(const DrillingRadiusParam& other28) {
+  id = other28.id;
+  coal_id = other28.coal_id;
+  name = other28.name;
+  r = other28.r;
+  l = other28.l;
+  k1 = other28.k1;
+  rho = other28.rho;
+  q0 = other28.q0;
+  a = other28.a;
+  t = other28.t;
+  qm = other28.qm;
+  qsum = other28.qsum;
+  eta = other28.eta;
+  __isset = other28.__isset;
 }
-DrillingRadiusParam& DrillingRadiusParam::operator=(const DrillingRadiusParam& other21) {
-  id = other21.id;
-  coal_id = other21.coal_id;
-  name = other21.name;
-  r = other21.r;
-  l = other21.l;
-  k1 = other21.k1;
-  rho = other21.rho;
-  q0 = other21.q0;
-  a = other21.a;
-  t = other21.t;
-  qm = other21.qm;
-  qsum = other21.qsum;
-  eta = other21.eta;
-  __isset = other21.__isset;
+DrillingRadiusParam& DrillingRadiusParam::operator=(const DrillingRadiusParam& other29) {
+  id = other29.id;
+  coal_id = other29.coal_id;
+  name = other29.name;
+  r = other29.r;
+  l = other29.l;
+  k1 = other29.k1;
+  rho = other29.rho;
+  q0 = other29.q0;
+  a = other29.a;
+  t = other29.t;
+  qm = other29.qm;
+  qsum = other29.qsum;
+  eta = other29.eta;
+  __isset = other29.__isset;
   return *this;
 }
 void DrillingRadiusParam::printTo(std::ostream& out) const {
@@ -4682,31 +5626,31 @@ void swap(DrillingSurf &a, DrillingSurf &b) {
   swap(a.__isset, b.__isset);
 }
 
-DrillingSurf::DrillingSurf(const DrillingSurf& other22) {
-  id = other22.id;
-  work_area_id = other22.work_area_id;
-  tunnel_id = other22.tunnel_id;
-  name = other22.name;
-  qr = other22.qr;
-  qa = other22.qa;
-  fore_qr = other22.fore_qr;
-  fore_qa = other22.fore_qa;
-  q4 = other22.q4;
-  comment = other22.comment;
-  __isset = other22.__isset;
+DrillingSurf::DrillingSurf(const DrillingSurf& other30) {
+  id = other30.id;
+  work_area_id = other30.work_area_id;
+  tunnel_id = other30.tunnel_id;
+  name = other30.name;
+  qr = other30.qr;
+  qa = other30.qa;
+  fore_qr = other30.fore_qr;
+  fore_qa = other30.fore_qa;
+  q4 = other30.q4;
+  comment = other30.comment;
+  __isset = other30.__isset;
 }
-DrillingSurf& DrillingSurf::operator=(const DrillingSurf& other23) {
-  id = other23.id;
-  work_area_id = other23.work_area_id;
-  tunnel_id = other23.tunnel_id;
-  name = other23.name;
-  qr = other23.qr;
-  qa = other23.qa;
-  fore_qr = other23.fore_qr;
-  fore_qa = other23.fore_qa;
-  q4 = other23.q4;
-  comment = other23.comment;
-  __isset = other23.__isset;
+DrillingSurf& DrillingSurf::operator=(const DrillingSurf& other31) {
+  id = other31.id;
+  work_area_id = other31.work_area_id;
+  tunnel_id = other31.tunnel_id;
+  name = other31.name;
+  qr = other31.qr;
+  qa = other31.qa;
+  fore_qr = other31.fore_qr;
+  fore_qa = other31.fore_qa;
+  q4 = other31.q4;
+  comment = other31.comment;
+  __isset = other31.__isset;
   return *this;
 }
 void DrillingSurf::printTo(std::ostream& out) const {
@@ -4880,23 +5824,23 @@ void swap(EvalUnit &a, EvalUnit &b) {
   swap(a.__isset, b.__isset);
 }
 
-EvalUnit::EvalUnit(const EvalUnit& other24) {
-  id = other24.id;
-  work_surf_id = other24.work_surf_id;
-  name = other24.name;
-  l = other24.l;
-  t = other24.t;
-  comment = other24.comment;
-  __isset = other24.__isset;
+EvalUnit::EvalUnit(const EvalUnit& other32) {
+  id = other32.id;
+  work_surf_id = other32.work_surf_id;
+  name = other32.name;
+  l = other32.l;
+  t = other32.t;
+  comment = other32.comment;
+  __isset = other32.__isset;
 }
-EvalUnit& EvalUnit::operator=(const EvalUnit& other25) {
-  id = other25.id;
-  work_surf_id = other25.work_surf_id;
-  name = other25.name;
-  l = other25.l;
-  t = other25.t;
-  comment = other25.comment;
-  __isset = other25.__isset;
+EvalUnit& EvalUnit::operator=(const EvalUnit& other33) {
+  id = other33.id;
+  work_surf_id = other33.work_surf_id;
+  name = other33.name;
+  l = other33.l;
+  t = other33.t;
+  comment = other33.comment;
+  __isset = other33.__isset;
   return *this;
 }
 void EvalUnit::printTo(std::ostream& out) const {
@@ -5083,25 +6027,25 @@ void swap(HighDrillingPore &a, HighDrillingPore &b) {
   swap(a.__isset, b.__isset);
 }
 
-HighDrillingPore::HighDrillingPore(const HighDrillingPore& other26) {
-  id = other26.id;
-  high_drilling_pore_param_id = other26.high_drilling_pore_param_id;
-  num = other26.num;
-  length = other26.length;
-  angle = other26.angle;
-  pore_type = other26.pore_type;
-  comment = other26.comment;
-  __isset = other26.__isset;
+HighDrillingPore::HighDrillingPore(const HighDrillingPore& other34) {
+  id = other34.id;
+  high_drilling_pore_param_id = other34.high_drilling_pore_param_id;
+  num = other34.num;
+  length = other34.length;
+  angle = other34.angle;
+  pore_type = other34.pore_type;
+  comment = other34.comment;
+  __isset = other34.__isset;
 }
-HighDrillingPore& HighDrillingPore::operator=(const HighDrillingPore& other27) {
-  id = other27.id;
-  high_drilling_pore_param_id = other27.high_drilling_pore_param_id;
-  num = other27.num;
-  length = other27.length;
-  angle = other27.angle;
-  pore_type = other27.pore_type;
-  comment = other27.comment;
-  __isset = other27.__isset;
+HighDrillingPore& HighDrillingPore::operator=(const HighDrillingPore& other35) {
+  id = other35.id;
+  high_drilling_pore_param_id = other35.high_drilling_pore_param_id;
+  num = other35.num;
+  length = other35.length;
+  angle = other35.angle;
+  pore_type = other35.pore_type;
+  comment = other35.comment;
+  __isset = other35.__isset;
   return *this;
 }
 void HighDrillingPore::printTo(std::ostream& out) const {
@@ -5357,33 +6301,33 @@ void swap(HighDrillingPoreParam &a, HighDrillingPoreParam &b) {
   swap(a.__isset, b.__isset);
 }
 
-HighDrillingPoreParam::HighDrillingPoreParam(const HighDrillingPoreParam& other28) {
-  id = other28.id;
-  work_surf_id = other28.work_surf_id;
-  name = other28.name;
-  lk = other28.lk;
-  lc = other28.lc;
-  lw = other28.lw;
-  n1 = other28.n1;
-  n2 = other28.n2;
-  beta = other28.beta;
-  ld = other28.ld;
-  comment = other28.comment;
-  __isset = other28.__isset;
+HighDrillingPoreParam::HighDrillingPoreParam(const HighDrillingPoreParam& other36) {
+  id = other36.id;
+  work_surf_id = other36.work_surf_id;
+  name = other36.name;
+  lk = other36.lk;
+  lc = other36.lc;
+  lw = other36.lw;
+  n1 = other36.n1;
+  n2 = other36.n2;
+  beta = other36.beta;
+  ld = other36.ld;
+  comment = other36.comment;
+  __isset = other36.__isset;
 }
-HighDrillingPoreParam& HighDrillingPoreParam::operator=(const HighDrillingPoreParam& other29) {
-  id = other29.id;
-  work_surf_id = other29.work_surf_id;
-  name = other29.name;
-  lk = other29.lk;
-  lc = other29.lc;
-  lw = other29.lw;
-  n1 = other29.n1;
-  n2 = other29.n2;
-  beta = other29.beta;
-  ld = other29.ld;
-  comment = other29.comment;
-  __isset = other29.__isset;
+HighDrillingPoreParam& HighDrillingPoreParam::operator=(const HighDrillingPoreParam& other37) {
+  id = other37.id;
+  work_surf_id = other37.work_surf_id;
+  name = other37.name;
+  lk = other37.lk;
+  lc = other37.lc;
+  lw = other37.lw;
+  n1 = other37.n1;
+  n2 = other37.n2;
+  beta = other37.beta;
+  ld = other37.ld;
+  comment = other37.comment;
+  __isset = other37.__isset;
   return *this;
 }
 void HighDrillingPoreParam::printTo(std::ostream& out) const {
@@ -5660,35 +6604,35 @@ void swap(HighDrillingSiteParam &a, HighDrillingSiteParam &b) {
   swap(a.__isset, b.__isset);
 }
 
-HighDrillingSiteParam::HighDrillingSiteParam(const HighDrillingSiteParam& other30) {
-  id = other30.id;
-  work_surf_id = other30.work_surf_id;
-  name = other30.name;
-  l1 = other30.l1;
-  l2 = other30.l2;
-  lg = other30.lg;
-  hn = other30.hn;
-  theta = other30.theta;
-  q = other30.q;
-  rtn = other30.rtn;
-  hs = other30.hs;
-  comment = other30.comment;
-  __isset = other30.__isset;
+HighDrillingSiteParam::HighDrillingSiteParam(const HighDrillingSiteParam& other38) {
+  id = other38.id;
+  work_surf_id = other38.work_surf_id;
+  name = other38.name;
+  l1 = other38.l1;
+  l2 = other38.l2;
+  lg = other38.lg;
+  hn = other38.hn;
+  theta = other38.theta;
+  q = other38.q;
+  rtn = other38.rtn;
+  hs = other38.hs;
+  comment = other38.comment;
+  __isset = other38.__isset;
 }
-HighDrillingSiteParam& HighDrillingSiteParam::operator=(const HighDrillingSiteParam& other31) {
-  id = other31.id;
-  work_surf_id = other31.work_surf_id;
-  name = other31.name;
-  l1 = other31.l1;
-  l2 = other31.l2;
-  lg = other31.lg;
-  hn = other31.hn;
-  theta = other31.theta;
-  q = other31.q;
-  rtn = other31.rtn;
-  hs = other31.hs;
-  comment = other31.comment;
-  __isset = other31.__isset;
+HighDrillingSiteParam& HighDrillingSiteParam::operator=(const HighDrillingSiteParam& other39) {
+  id = other39.id;
+  work_surf_id = other39.work_surf_id;
+  name = other39.name;
+  l1 = other39.l1;
+  l2 = other39.l2;
+  lg = other39.lg;
+  hn = other39.hn;
+  theta = other39.theta;
+  q = other39.q;
+  rtn = other39.rtn;
+  hs = other39.hs;
+  comment = other39.comment;
+  __isset = other39.__isset;
   return *this;
 }
 void HighDrillingSiteParam::printTo(std::ostream& out) const {
@@ -5898,27 +6842,27 @@ void swap(HighDrillingTunnel &a, HighDrillingTunnel &b) {
   swap(a.__isset, b.__isset);
 }
 
-HighDrillingTunnel::HighDrillingTunnel(const HighDrillingTunnel& other32) {
-  id = other32.id;
-  work_surf_id = other32.work_surf_id;
-  name = other32.name;
-  k = other32.k;
-  rock = other32.rock;
-  hz_min = other32.hz_min;
-  hz_max = other32.hz_max;
-  comment = other32.comment;
-  __isset = other32.__isset;
+HighDrillingTunnel::HighDrillingTunnel(const HighDrillingTunnel& other40) {
+  id = other40.id;
+  work_surf_id = other40.work_surf_id;
+  name = other40.name;
+  k = other40.k;
+  rock = other40.rock;
+  hz_min = other40.hz_min;
+  hz_max = other40.hz_max;
+  comment = other40.comment;
+  __isset = other40.__isset;
 }
-HighDrillingTunnel& HighDrillingTunnel::operator=(const HighDrillingTunnel& other33) {
-  id = other33.id;
-  work_surf_id = other33.work_surf_id;
-  name = other33.name;
-  k = other33.k;
-  rock = other33.rock;
-  hz_min = other33.hz_min;
-  hz_max = other33.hz_max;
-  comment = other33.comment;
-  __isset = other33.__isset;
+HighDrillingTunnel& HighDrillingTunnel::operator=(const HighDrillingTunnel& other41) {
+  id = other41.id;
+  work_surf_id = other41.work_surf_id;
+  name = other41.name;
+  k = other41.k;
+  rock = other41.rock;
+  hz_min = other41.hz_min;
+  hz_max = other41.hz_max;
+  comment = other41.comment;
+  __isset = other41.__isset;
   return *this;
 }
 void HighDrillingTunnel::printTo(std::ostream& out) const {
@@ -6158,31 +7102,31 @@ void swap(HydrGeo &a, HydrGeo &b) {
   swap(a.__isset, b.__isset);
 }
 
-HydrGeo::HydrGeo(const HydrGeo& other34) {
-  id = other34.id;
-  name = other34.name;
-  x1 = other34.x1;
-  x2 = other34.x2;
-  x3 = other34.x3;
-  x4 = other34.x4;
-  x5 = other34.x5;
-  x6 = other34.x6;
-  x7 = other34.x7;
-  x8 = other34.x8;
-  __isset = other34.__isset;
+HydrGeo::HydrGeo(const HydrGeo& other42) {
+  id = other42.id;
+  name = other42.name;
+  x1 = other42.x1;
+  x2 = other42.x2;
+  x3 = other42.x3;
+  x4 = other42.x4;
+  x5 = other42.x5;
+  x6 = other42.x6;
+  x7 = other42.x7;
+  x8 = other42.x8;
+  __isset = other42.__isset;
 }
-HydrGeo& HydrGeo::operator=(const HydrGeo& other35) {
-  id = other35.id;
-  name = other35.name;
-  x1 = other35.x1;
-  x2 = other35.x2;
-  x3 = other35.x3;
-  x4 = other35.x4;
-  x5 = other35.x5;
-  x6 = other35.x6;
-  x7 = other35.x7;
-  x8 = other35.x8;
-  __isset = other35.__isset;
+HydrGeo& HydrGeo::operator=(const HydrGeo& other43) {
+  id = other43.id;
+  name = other43.name;
+  x1 = other43.x1;
+  x2 = other43.x2;
+  x3 = other43.x3;
+  x4 = other43.x4;
+  x5 = other43.x5;
+  x6 = other43.x6;
+  x7 = other43.x7;
+  x8 = other43.x8;
+  __isset = other43.__isset;
   return *this;
 }
 void HydrGeo::printTo(std::ostream& out) const {
@@ -6798,75 +7742,75 @@ void swap(Mine &a, Mine &b) {
   swap(a.__isset, b.__isset);
 }
 
-Mine::Mine(const Mine& other36) {
-  id = other36.id;
-  tech_mode_id = other36.tech_mode_id;
-  mine_region_id = other36.mine_region_id;
-  account_id = other36.account_id;
-  name = other36.name;
-  province = other36.province;
-  city = other36.city;
-  capacity = other36.capacity;
-  topo_geo = other36.topo_geo;
-  hydr_geo = other36.hydr_geo;
-  ground_condition = other36.ground_condition;
-  qr = other36.qr;
-  qa = other36.qa;
-  fore_qr = other36.fore_qr;
-  fore_qa = other36.fore_qa;
-  gas_k1 = other36.gas_k1;
-  gas_k2 = other36.gas_k2;
-  stereo_schem_diagram = other36.stereo_schem_diagram;
-  rock_gas_k2 = other36.rock_gas_k2;
-  reserve_w1 = other36.reserve_w1;
-  reserve_w2 = other36.reserve_w2;
-  reserve_w3 = other36.reserve_w3;
-  gas_w0 = other36.gas_w0;
-  gas_wc2 = other36.gas_wc2;
-  pump_k2 = other36.pump_k2;
-  pump_k3 = other36.pump_k3;
-  pump_k4 = other36.pump_k4;
-  pump_k1 = other36.pump_k1;
-  pump_k = other36.pump_k;
-  pump_wc = other36.pump_wc;
-  reserve_gas = other36.reserve_gas;
-  comment = other36.comment;
-  __isset = other36.__isset;
+Mine::Mine(const Mine& other44) {
+  id = other44.id;
+  tech_mode_id = other44.tech_mode_id;
+  mine_region_id = other44.mine_region_id;
+  account_id = other44.account_id;
+  name = other44.name;
+  province = other44.province;
+  city = other44.city;
+  capacity = other44.capacity;
+  topo_geo = other44.topo_geo;
+  hydr_geo = other44.hydr_geo;
+  ground_condition = other44.ground_condition;
+  qr = other44.qr;
+  qa = other44.qa;
+  fore_qr = other44.fore_qr;
+  fore_qa = other44.fore_qa;
+  gas_k1 = other44.gas_k1;
+  gas_k2 = other44.gas_k2;
+  stereo_schem_diagram = other44.stereo_schem_diagram;
+  rock_gas_k2 = other44.rock_gas_k2;
+  reserve_w1 = other44.reserve_w1;
+  reserve_w2 = other44.reserve_w2;
+  reserve_w3 = other44.reserve_w3;
+  gas_w0 = other44.gas_w0;
+  gas_wc2 = other44.gas_wc2;
+  pump_k2 = other44.pump_k2;
+  pump_k3 = other44.pump_k3;
+  pump_k4 = other44.pump_k4;
+  pump_k1 = other44.pump_k1;
+  pump_k = other44.pump_k;
+  pump_wc = other44.pump_wc;
+  reserve_gas = other44.reserve_gas;
+  comment = other44.comment;
+  __isset = other44.__isset;
 }
-Mine& Mine::operator=(const Mine& other37) {
-  id = other37.id;
-  tech_mode_id = other37.tech_mode_id;
-  mine_region_id = other37.mine_region_id;
-  account_id = other37.account_id;
-  name = other37.name;
-  province = other37.province;
-  city = other37.city;
-  capacity = other37.capacity;
-  topo_geo = other37.topo_geo;
-  hydr_geo = other37.hydr_geo;
-  ground_condition = other37.ground_condition;
-  qr = other37.qr;
-  qa = other37.qa;
-  fore_qr = other37.fore_qr;
-  fore_qa = other37.fore_qa;
-  gas_k1 = other37.gas_k1;
-  gas_k2 = other37.gas_k2;
-  stereo_schem_diagram = other37.stereo_schem_diagram;
-  rock_gas_k2 = other37.rock_gas_k2;
-  reserve_w1 = other37.reserve_w1;
-  reserve_w2 = other37.reserve_w2;
-  reserve_w3 = other37.reserve_w3;
-  gas_w0 = other37.gas_w0;
-  gas_wc2 = other37.gas_wc2;
-  pump_k2 = other37.pump_k2;
-  pump_k3 = other37.pump_k3;
-  pump_k4 = other37.pump_k4;
-  pump_k1 = other37.pump_k1;
-  pump_k = other37.pump_k;
-  pump_wc = other37.pump_wc;
-  reserve_gas = other37.reserve_gas;
-  comment = other37.comment;
-  __isset = other37.__isset;
+Mine& Mine::operator=(const Mine& other45) {
+  id = other45.id;
+  tech_mode_id = other45.tech_mode_id;
+  mine_region_id = other45.mine_region_id;
+  account_id = other45.account_id;
+  name = other45.name;
+  province = other45.province;
+  city = other45.city;
+  capacity = other45.capacity;
+  topo_geo = other45.topo_geo;
+  hydr_geo = other45.hydr_geo;
+  ground_condition = other45.ground_condition;
+  qr = other45.qr;
+  qa = other45.qa;
+  fore_qr = other45.fore_qr;
+  fore_qa = other45.fore_qa;
+  gas_k1 = other45.gas_k1;
+  gas_k2 = other45.gas_k2;
+  stereo_schem_diagram = other45.stereo_schem_diagram;
+  rock_gas_k2 = other45.rock_gas_k2;
+  reserve_w1 = other45.reserve_w1;
+  reserve_w2 = other45.reserve_w2;
+  reserve_w3 = other45.reserve_w3;
+  gas_w0 = other45.gas_w0;
+  gas_wc2 = other45.gas_wc2;
+  pump_k2 = other45.pump_k2;
+  pump_k3 = other45.pump_k3;
+  pump_k4 = other45.pump_k4;
+  pump_k1 = other45.pump_k1;
+  pump_k = other45.pump_k;
+  pump_wc = other45.pump_wc;
+  reserve_gas = other45.reserve_gas;
+  comment = other45.comment;
+  __isset = other45.__isset;
   return *this;
 }
 void Mine::printTo(std::ostream& out) const {
@@ -7011,17 +7955,17 @@ void swap(MineBase &a, MineBase &b) {
   swap(a.__isset, b.__isset);
 }
 
-MineBase::MineBase(const MineBase& other38) {
-  id = other38.id;
-  name = other38.name;
-  comment = other38.comment;
-  __isset = other38.__isset;
+MineBase::MineBase(const MineBase& other46) {
+  id = other46.id;
+  name = other46.name;
+  comment = other46.comment;
+  __isset = other46.__isset;
 }
-MineBase& MineBase::operator=(const MineBase& other39) {
-  id = other39.id;
-  name = other39.name;
-  comment = other39.comment;
-  __isset = other39.__isset;
+MineBase& MineBase::operator=(const MineBase& other47) {
+  id = other47.id;
+  name = other47.name;
+  comment = other47.comment;
+  __isset = other47.__isset;
   return *this;
 }
 void MineBase::printTo(std::ostream& out) const {
@@ -7154,19 +8098,19 @@ void swap(MineRegion &a, MineRegion &b) {
   swap(a.__isset, b.__isset);
 }
 
-MineRegion::MineRegion(const MineRegion& other40) {
-  id = other40.id;
-  mine_base_id = other40.mine_base_id;
-  name = other40.name;
-  comment = other40.comment;
-  __isset = other40.__isset;
+MineRegion::MineRegion(const MineRegion& other48) {
+  id = other48.id;
+  mine_base_id = other48.mine_base_id;
+  name = other48.name;
+  comment = other48.comment;
+  __isset = other48.__isset;
 }
-MineRegion& MineRegion::operator=(const MineRegion& other41) {
-  id = other41.id;
-  mine_base_id = other41.mine_base_id;
-  name = other41.name;
-  comment = other41.comment;
-  __isset = other41.__isset;
+MineRegion& MineRegion::operator=(const MineRegion& other49) {
+  id = other49.id;
+  mine_base_id = other49.mine_base_id;
+  name = other49.name;
+  comment = other49.comment;
+  __isset = other49.__isset;
   return *this;
 }
 void MineRegion::printTo(std::ostream& out) const {
@@ -7538,47 +8482,47 @@ void swap(PoreFlow &a, PoreFlow &b) {
   swap(a.__isset, b.__isset);
 }
 
-PoreFlow::PoreFlow(const PoreFlow& other42) {
-  id = other42.id;
-  name = other42.name;
-  t = other42.t;
-  a0 = other42.a0;
-  d = other42.d;
-  d1 = other42.d1;
-  m = other42.m;
-  k = other42.k;
-  delta_t = other42.delta_t;
-  x = other42.x;
-  p_test = other42.p_test;
-  p_cur = other42.p_cur;
-  b = other42.b;
-  pt = other42.pt;
-  delta_p = other42.delta_p;
-  dh = other42.dh;
-  q_hun = other42.q_hun;
-  q_chun = other42.q_chun;
-  __isset = other42.__isset;
+PoreFlow::PoreFlow(const PoreFlow& other50) {
+  id = other50.id;
+  name = other50.name;
+  t = other50.t;
+  a0 = other50.a0;
+  d = other50.d;
+  d1 = other50.d1;
+  m = other50.m;
+  k = other50.k;
+  delta_t = other50.delta_t;
+  x = other50.x;
+  p_test = other50.p_test;
+  p_cur = other50.p_cur;
+  b = other50.b;
+  pt = other50.pt;
+  delta_p = other50.delta_p;
+  dh = other50.dh;
+  q_hun = other50.q_hun;
+  q_chun = other50.q_chun;
+  __isset = other50.__isset;
 }
-PoreFlow& PoreFlow::operator=(const PoreFlow& other43) {
-  id = other43.id;
-  name = other43.name;
-  t = other43.t;
-  a0 = other43.a0;
-  d = other43.d;
-  d1 = other43.d1;
-  m = other43.m;
-  k = other43.k;
-  delta_t = other43.delta_t;
-  x = other43.x;
-  p_test = other43.p_test;
-  p_cur = other43.p_cur;
-  b = other43.b;
-  pt = other43.pt;
-  delta_p = other43.delta_p;
-  dh = other43.dh;
-  q_hun = other43.q_hun;
-  q_chun = other43.q_chun;
-  __isset = other43.__isset;
+PoreFlow& PoreFlow::operator=(const PoreFlow& other51) {
+  id = other51.id;
+  name = other51.name;
+  t = other51.t;
+  a0 = other51.a0;
+  d = other51.d;
+  d1 = other51.d1;
+  m = other51.m;
+  k = other51.k;
+  delta_t = other51.delta_t;
+  x = other51.x;
+  p_test = other51.p_test;
+  p_cur = other51.p_cur;
+  b = other51.b;
+  pt = other51.pt;
+  delta_p = other51.delta_p;
+  dh = other51.dh;
+  q_hun = other51.q_hun;
+  q_chun = other51.q_chun;
+  __isset = other51.__isset;
   return *this;
 }
 void PoreFlow::printTo(std::ostream& out) const {
@@ -7811,29 +8755,29 @@ void swap(PoreSize &a, PoreSize &b) {
   swap(a.__isset, b.__isset);
 }
 
-PoreSize::PoreSize(const PoreSize& other44) {
-  id = other44.id;
-  name = other44.name;
-  q = other44.q;
-  v = other44.v;
-  d = other44.d;
-  p = other44.p;
-  sigma = other44.sigma;
-  delta = other44.delta;
-  comment = other44.comment;
-  __isset = other44.__isset;
+PoreSize::PoreSize(const PoreSize& other52) {
+  id = other52.id;
+  name = other52.name;
+  q = other52.q;
+  v = other52.v;
+  d = other52.d;
+  p = other52.p;
+  sigma = other52.sigma;
+  delta = other52.delta;
+  comment = other52.comment;
+  __isset = other52.__isset;
 }
-PoreSize& PoreSize::operator=(const PoreSize& other45) {
-  id = other45.id;
-  name = other45.name;
-  q = other45.q;
-  v = other45.v;
-  d = other45.d;
-  p = other45.p;
-  sigma = other45.sigma;
-  delta = other45.delta;
-  comment = other45.comment;
-  __isset = other45.__isset;
+PoreSize& PoreSize::operator=(const PoreSize& other53) {
+  id = other53.id;
+  name = other53.name;
+  q = other53.q;
+  v = other53.v;
+  d = other53.d;
+  p = other53.p;
+  sigma = other53.sigma;
+  delta = other53.delta;
+  comment = other53.comment;
+  __isset = other53.__isset;
   return *this;
 }
 void PoreSize::printTo(std::ostream& out) const {
@@ -7972,19 +8916,19 @@ void swap(ResAbundance &a, ResAbundance &b) {
   swap(a.__isset, b.__isset);
 }
 
-ResAbundance::ResAbundance(const ResAbundance& other46) {
-  id = other46.id;
-  name = other46.name;
-  min_abundance = other46.min_abundance;
-  max_abundance = other46.max_abundance;
-  __isset = other46.__isset;
+ResAbundance::ResAbundance(const ResAbundance& other54) {
+  id = other54.id;
+  name = other54.name;
+  min_abundance = other54.min_abundance;
+  max_abundance = other54.max_abundance;
+  __isset = other54.__isset;
 }
-ResAbundance& ResAbundance::operator=(const ResAbundance& other47) {
-  id = other47.id;
-  name = other47.name;
-  min_abundance = other47.min_abundance;
-  max_abundance = other47.max_abundance;
-  __isset = other47.__isset;
+ResAbundance& ResAbundance::operator=(const ResAbundance& other55) {
+  id = other55.id;
+  name = other55.name;
+  min_abundance = other55.min_abundance;
+  max_abundance = other55.max_abundance;
+  __isset = other55.__isset;
   return *this;
 }
 void ResAbundance::printTo(std::ostream& out) const {
@@ -8152,23 +9096,23 @@ void swap(Rock &a, Rock &b) {
   swap(a.__isset, b.__isset);
 }
 
-Rock::Rock(const Rock& other48) {
-  id = other48.id;
-  name = other48.name;
-  a = other48.a;
-  b = other48.b;
-  c = other48.c;
-  comment = other48.comment;
-  __isset = other48.__isset;
+Rock::Rock(const Rock& other56) {
+  id = other56.id;
+  name = other56.name;
+  a = other56.a;
+  b = other56.b;
+  c = other56.c;
+  comment = other56.comment;
+  __isset = other56.__isset;
 }
-Rock& Rock::operator=(const Rock& other49) {
-  id = other49.id;
-  name = other49.name;
-  a = other49.a;
-  b = other49.b;
-  c = other49.c;
-  comment = other49.comment;
-  __isset = other49.__isset;
+Rock& Rock::operator=(const Rock& other57) {
+  id = other57.id;
+  name = other57.name;
+  a = other57.a;
+  b = other57.b;
+  c = other57.c;
+  comment = other57.comment;
+  __isset = other57.__isset;
   return *this;
 }
 void Rock::printTo(std::ostream& out) const {
@@ -8304,19 +9248,19 @@ void swap(SysInfo &a, SysInfo &b) {
   swap(a.__isset, b.__isset);
 }
 
-SysInfo::SysInfo(const SysInfo& other50) {
-  id = other50.id;
-  account_id = other50.account_id;
-  last_login_time = other50.last_login_time;
-  comment = other50.comment;
-  __isset = other50.__isset;
+SysInfo::SysInfo(const SysInfo& other58) {
+  id = other58.id;
+  account_id = other58.account_id;
+  last_login_time = other58.last_login_time;
+  comment = other58.comment;
+  __isset = other58.__isset;
 }
-SysInfo& SysInfo::operator=(const SysInfo& other51) {
-  id = other51.id;
-  account_id = other51.account_id;
-  last_login_time = other51.last_login_time;
-  comment = other51.comment;
-  __isset = other51.__isset;
+SysInfo& SysInfo::operator=(const SysInfo& other59) {
+  id = other59.id;
+  account_id = other59.account_id;
+  last_login_time = other59.last_login_time;
+  comment = other59.comment;
+  __isset = other59.__isset;
   return *this;
 }
 void SysInfo::printTo(std::ostream& out) const {
@@ -8518,27 +9462,27 @@ void swap(TechMode &a, TechMode &b) {
   swap(a.__isset, b.__isset);
 }
 
-TechMode::TechMode(const TechMode& other52) {
-  id = other52.id;
-  mine_region_id = other52.mine_region_id;
-  name = other52.name;
-  mode_type = other52.mode_type;
-  c1 = other52.c1;
-  c2 = other52.c2;
-  c3 = other52.c3;
-  comment = other52.comment;
-  __isset = other52.__isset;
+TechMode::TechMode(const TechMode& other60) {
+  id = other60.id;
+  mine_region_id = other60.mine_region_id;
+  name = other60.name;
+  mode_type = other60.mode_type;
+  c1 = other60.c1;
+  c2 = other60.c2;
+  c3 = other60.c3;
+  comment = other60.comment;
+  __isset = other60.__isset;
 }
-TechMode& TechMode::operator=(const TechMode& other53) {
-  id = other53.id;
-  mine_region_id = other53.mine_region_id;
-  name = other53.name;
-  mode_type = other53.mode_type;
-  c1 = other53.c1;
-  c2 = other53.c2;
-  c3 = other53.c3;
-  comment = other53.comment;
-  __isset = other53.__isset;
+TechMode& TechMode::operator=(const TechMode& other61) {
+  id = other61.id;
+  mine_region_id = other61.mine_region_id;
+  name = other61.name;
+  mode_type = other61.mode_type;
+  c1 = other61.c1;
+  c2 = other61.c2;
+  c3 = other61.c3;
+  comment = other61.comment;
+  __isset = other61.__isset;
   return *this;
 }
 void TechMode::printTo(std::ostream& out) const {
@@ -8727,25 +9671,25 @@ void swap(Technology &a, Technology &b) {
   swap(a.__isset, b.__isset);
 }
 
-Technology::Technology(const Technology& other54) {
-  id = other54.id;
-  mine_region_id = other54.mine_region_id;
-  name = other54.name;
-  iskey = other54.iskey;
-  doc = other54.doc;
-  video = other54.video;
-  comment = other54.comment;
-  __isset = other54.__isset;
+Technology::Technology(const Technology& other62) {
+  id = other62.id;
+  mine_region_id = other62.mine_region_id;
+  name = other62.name;
+  iskey = other62.iskey;
+  doc = other62.doc;
+  video = other62.video;
+  comment = other62.comment;
+  __isset = other62.__isset;
 }
-Technology& Technology::operator=(const Technology& other55) {
-  id = other55.id;
-  mine_region_id = other55.mine_region_id;
-  name = other55.name;
-  iskey = other55.iskey;
-  doc = other55.doc;
-  video = other55.video;
-  comment = other55.comment;
-  __isset = other55.__isset;
+Technology& Technology::operator=(const Technology& other63) {
+  id = other63.id;
+  mine_region_id = other63.mine_region_id;
+  name = other63.name;
+  iskey = other63.iskey;
+  doc = other63.doc;
+  video = other63.video;
+  comment = other63.comment;
+  __isset = other63.__isset;
   return *this;
 }
 void Technology::printTo(std::ostream& out) const {
@@ -8882,19 +9826,19 @@ void swap(TopoGeo &a, TopoGeo &b) {
   swap(a.__isset, b.__isset);
 }
 
-TopoGeo::TopoGeo(const TopoGeo& other56) {
-  id = other56.id;
-  name = other56.name;
-  feature = other56.feature;
-  comment = other56.comment;
-  __isset = other56.__isset;
+TopoGeo::TopoGeo(const TopoGeo& other64) {
+  id = other64.id;
+  name = other64.name;
+  feature = other64.feature;
+  comment = other64.comment;
+  __isset = other64.__isset;
 }
-TopoGeo& TopoGeo::operator=(const TopoGeo& other57) {
-  id = other57.id;
-  name = other57.name;
-  feature = other57.feature;
-  comment = other57.comment;
-  __isset = other57.__isset;
+TopoGeo& TopoGeo::operator=(const TopoGeo& other65) {
+  id = other65.id;
+  name = other65.name;
+  feature = other65.feature;
+  comment = other65.comment;
+  __isset = other65.__isset;
   return *this;
 }
 void TopoGeo::printTo(std::ostream& out) const {
@@ -9351,57 +10295,57 @@ void swap(Tunnel &a, Tunnel &b) {
   swap(a.__isset, b.__isset);
 }
 
-Tunnel::Tunnel(const Tunnel& other58) {
-  id = other58.id;
-  name = other58.name;
-  b = other58.b;
-  h = other58.h;
-  l = other58.l;
-  s = other58.s;
-  d = other58.d;
-  wh = other58.wh;
-  v = other58.v;
-  q3 = other58.q3;
-  q0 = other58.q0;
-  comment = other58.comment;
-  tunnel_type = other58.tunnel_type;
-  top_side = other58.top_side;
-  bottom_side = other58.bottom_side;
-  left_side = other58.left_side;
-  right_side = other58.right_side;
-  x1 = other58.x1;
-  y1 = other58.y1;
-  z1 = other58.z1;
-  x2 = other58.x2;
-  y2 = other58.y2;
-  z2 = other58.z2;
-  __isset = other58.__isset;
+Tunnel::Tunnel(const Tunnel& other66) {
+  id = other66.id;
+  name = other66.name;
+  b = other66.b;
+  h = other66.h;
+  l = other66.l;
+  s = other66.s;
+  d = other66.d;
+  wh = other66.wh;
+  v = other66.v;
+  q3 = other66.q3;
+  q0 = other66.q0;
+  comment = other66.comment;
+  tunnel_type = other66.tunnel_type;
+  top_side = other66.top_side;
+  bottom_side = other66.bottom_side;
+  left_side = other66.left_side;
+  right_side = other66.right_side;
+  x1 = other66.x1;
+  y1 = other66.y1;
+  z1 = other66.z1;
+  x2 = other66.x2;
+  y2 = other66.y2;
+  z2 = other66.z2;
+  __isset = other66.__isset;
 }
-Tunnel& Tunnel::operator=(const Tunnel& other59) {
-  id = other59.id;
-  name = other59.name;
-  b = other59.b;
-  h = other59.h;
-  l = other59.l;
-  s = other59.s;
-  d = other59.d;
-  wh = other59.wh;
-  v = other59.v;
-  q3 = other59.q3;
-  q0 = other59.q0;
-  comment = other59.comment;
-  tunnel_type = other59.tunnel_type;
-  top_side = other59.top_side;
-  bottom_side = other59.bottom_side;
-  left_side = other59.left_side;
-  right_side = other59.right_side;
-  x1 = other59.x1;
-  y1 = other59.y1;
-  z1 = other59.z1;
-  x2 = other59.x2;
-  y2 = other59.y2;
-  z2 = other59.z2;
-  __isset = other59.__isset;
+Tunnel& Tunnel::operator=(const Tunnel& other67) {
+  id = other67.id;
+  name = other67.name;
+  b = other67.b;
+  h = other67.h;
+  l = other67.l;
+  s = other67.s;
+  d = other67.d;
+  wh = other67.wh;
+  v = other67.v;
+  q3 = other67.q3;
+  q0 = other67.q0;
+  comment = other67.comment;
+  tunnel_type = other67.tunnel_type;
+  top_side = other67.top_side;
+  bottom_side = other67.bottom_side;
+  left_side = other67.left_side;
+  right_side = other67.right_side;
+  x1 = other67.x1;
+  y1 = other67.y1;
+  z1 = other67.z1;
+  x2 = other67.x2;
+  y2 = other67.y2;
+  z2 = other67.z2;
+  __isset = other67.__isset;
   return *this;
 }
 void Tunnel::printTo(std::ostream& out) const {
@@ -9656,31 +10600,31 @@ void swap(WorkArea &a, WorkArea &b) {
   swap(a.__isset, b.__isset);
 }
 
-WorkArea::WorkArea(const WorkArea& other60) {
-  id = other60.id;
-  coal_id = other60.coal_id;
-  name = other60.name;
-  mode = other60.mode;
-  a = other60.a;
-  qr = other60.qr;
-  qa = other60.qa;
-  fore_qr = other60.fore_qr;
-  fore_qa = other60.fore_qa;
-  comment = other60.comment;
-  __isset = other60.__isset;
+WorkArea::WorkArea(const WorkArea& other68) {
+  id = other68.id;
+  coal_id = other68.coal_id;
+  name = other68.name;
+  mode = other68.mode;
+  a = other68.a;
+  qr = other68.qr;
+  qa = other68.qa;
+  fore_qr = other68.fore_qr;
+  fore_qa = other68.fore_qa;
+  comment = other68.comment;
+  __isset = other68.__isset;
 }
-WorkArea& WorkArea::operator=(const WorkArea& other61) {
-  id = other61.id;
-  coal_id = other61.coal_id;
-  name = other61.name;
-  mode = other61.mode;
-  a = other61.a;
-  qr = other61.qr;
-  qa = other61.qa;
-  fore_qr = other61.fore_qr;
-  fore_qa = other61.fore_qa;
-  comment = other61.comment;
-  __isset = other61.__isset;
+WorkArea& WorkArea::operator=(const WorkArea& other69) {
+  id = other69.id;
+  coal_id = other69.coal_id;
+  name = other69.name;
+  mode = other69.mode;
+  a = other69.a;
+  qr = other69.qr;
+  qa = other69.qa;
+  fore_qr = other69.fore_qr;
+  fore_qa = other69.fore_qa;
+  comment = other69.comment;
+  __isset = other69.__isset;
   return *this;
 }
 void WorkArea::printTo(std::ostream& out) const {
@@ -10109,53 +11053,53 @@ void swap(WorkSurf &a, WorkSurf &b) {
   swap(a.__isset, b.__isset);
 }
 
-WorkSurf::WorkSurf(const WorkSurf& other62) {
-  id = other62.id;
-  work_area_id = other62.work_area_id;
-  tunnel_id = other62.tunnel_id;
-  name = other62.name;
-  a = other62.a;
-  qr = other62.qr;
-  qa = other62.qa;
-  fore_qr = other62.fore_qr;
-  fore_qa = other62.fore_qa;
-  l1 = other62.l1;
-  l2 = other62.l2;
-  layerable = other62.layerable;
-  k1 = other62.k1;
-  k2 = other62.k2;
-  k3 = other62.k3;
-  kf = other62.kf;
-  method = other62.method;
-  last_t = other62.last_t;
-  qr1 = other62.qr1;
-  qr2 = other62.qr2;
-  comment = other62.comment;
-  __isset = other62.__isset;
+WorkSurf::WorkSurf(const WorkSurf& other70) {
+  id = other70.id;
+  work_area_id = other70.work_area_id;
+  tunnel_id = other70.tunnel_id;
+  name = other70.name;
+  a = other70.a;
+  qr = other70.qr;
+  qa = other70.qa;
+  fore_qr = other70.fore_qr;
+  fore_qa = other70.fore_qa;
+  l1 = other70.l1;
+  l2 = other70.l2;
+  layerable = other70.layerable;
+  k1 = other70.k1;
+  k2 = other70.k2;
+  k3 = other70.k3;
+  kf = other70.kf;
+  method = other70.method;
+  last_t = other70.last_t;
+  qr1 = other70.qr1;
+  qr2 = other70.qr2;
+  comment = other70.comment;
+  __isset = other70.__isset;
 }
-WorkSurf& WorkSurf::operator=(const WorkSurf& other63) {
-  id = other63.id;
-  work_area_id = other63.work_area_id;
-  tunnel_id = other63.tunnel_id;
-  name = other63.name;
-  a = other63.a;
-  qr = other63.qr;
-  qa = other63.qa;
-  fore_qr = other63.fore_qr;
-  fore_qa = other63.fore_qa;
-  l1 = other63.l1;
-  l2 = other63.l2;
-  layerable = other63.layerable;
-  k1 = other63.k1;
-  k2 = other63.k2;
-  k3 = other63.k3;
-  kf = other63.kf;
-  method = other63.method;
-  last_t = other63.last_t;
-  qr1 = other63.qr1;
-  qr2 = other63.qr2;
-  comment = other63.comment;
-  __isset = other63.__isset;
+WorkSurf& WorkSurf::operator=(const WorkSurf& other71) {
+  id = other71.id;
+  work_area_id = other71.work_area_id;
+  tunnel_id = other71.tunnel_id;
+  name = other71.name;
+  a = other71.a;
+  qr = other71.qr;
+  qa = other71.qa;
+  fore_qr = other71.fore_qr;
+  fore_qa = other71.fore_qa;
+  l1 = other71.l1;
+  l2 = other71.l2;
+  layerable = other71.layerable;
+  k1 = other71.k1;
+  k2 = other71.k2;
+  k3 = other71.k3;
+  kf = other71.kf;
+  method = other71.method;
+  last_t = other71.last_t;
+  qr1 = other71.qr1;
+  qr2 = other71.qr2;
+  comment = other71.comment;
+  __isset = other71.__isset;
   return *this;
 }
 void WorkSurf::printTo(std::ostream& out) const {
@@ -10306,19 +11250,19 @@ void swap(DrillingSurfGasFlowResult &a, DrillingSurfGasFlowResult &b) {
   swap(a.__isset, b.__isset);
 }
 
-DrillingSurfGasFlowResult::DrillingSurfGasFlowResult(const DrillingSurfGasFlowResult& other64) {
-  q0 = other64.q0;
-  q3 = other64.q3;
-  q4 = other64.q4;
-  qa = other64.qa;
-  __isset = other64.__isset;
+DrillingSurfGasFlowResult::DrillingSurfGasFlowResult(const DrillingSurfGasFlowResult& other72) {
+  q0 = other72.q0;
+  q3 = other72.q3;
+  q4 = other72.q4;
+  qa = other72.qa;
+  __isset = other72.__isset;
 }
-DrillingSurfGasFlowResult& DrillingSurfGasFlowResult::operator=(const DrillingSurfGasFlowResult& other65) {
-  q0 = other65.q0;
-  q3 = other65.q3;
-  q4 = other65.q4;
-  qa = other65.qa;
-  __isset = other65.__isset;
+DrillingSurfGasFlowResult& DrillingSurfGasFlowResult::operator=(const DrillingSurfGasFlowResult& other73) {
+  q0 = other73.q0;
+  q3 = other73.q3;
+  q4 = other73.q4;
+  qa = other73.qa;
+  __isset = other73.__isset;
   return *this;
 }
 void DrillingSurfGasFlowResult::printTo(std::ostream& out) const {

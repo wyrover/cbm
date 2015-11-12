@@ -8,6 +8,10 @@ drop table if exists complexity;
 
 drop table if exists design_drilling_surf_technology;
 
+drop table if exists design_eval_unit;
+
+drop table if exists design_eval_unit_partition;
+
 drop table if exists design_goaf_technology;
 
 drop table if exists design_pore;
@@ -15,6 +19,10 @@ drop table if exists design_pore;
 drop table if exists design_site;
 
 drop table if exists design_technology;
+
+drop table if exists design_tunnel_control_point;
+
+drop table if exists design_work_surf_control_point;
 
 drop table if exists design_work_surf_technology;
 
@@ -203,6 +211,34 @@ create table design_drilling_surf_technology
    primary key (id)
 );
 
+create table design_eval_unit
+(
+   id                   int not null,
+   design_eval_unit_partition_id int,
+   name                 varchar(255),
+   comment              varchar(255),
+   num                  int,
+   l                    decimal(8,2),
+   t                    int,
+   primary key (id)
+);
+
+create table design_eval_unit_partition
+(
+   id                   int not null,
+   name                 varchar(255),
+   comment              varchar(255),
+   l2                   decimal(8,2),
+   l1                   decimal(8,2),
+   w                    decimal(8,2),
+   h                    decimal(8,2),
+   l                    decimal(8,2),
+   r                    decimal(8,2),
+   t                    decimal(8,2),
+   v                    decimal(8,2),
+   primary key (id)
+);
+
 create table design_goaf_technology
 (
    id                   int not null auto_increment,
@@ -215,6 +251,7 @@ create table design_goaf_technology
 create table design_pore
 (
    id                   int not null auto_increment,
+   design_eval_unit_id  int,
    design_site_id       int,
    name                 varchar(255),
    d                    decimal(8,2),
@@ -228,6 +265,7 @@ create table design_pore
    angle1               decimal(8,2),
    angle2               decimal(8,2),
    comment              varchar(255),
+   t                    int,
    primary key (id)
 );
 
@@ -252,6 +290,30 @@ create table design_technology
    name                 varchar(255),
    region               int,
    comment              varchar(255),
+   primary key (id)
+);
+
+create table design_tunnel_control_point
+(
+   id                   int not null,
+   design_eval_unit_partition_id int,
+   name                 varchar(255),
+   comment              varchar(255),
+   x                    decimal(8,2),
+   y                    decimal(8,2),
+   z                    decimal(8,2),
+   primary key (id)
+);
+
+create table design_work_surf_control_point
+(
+   id                   int not null,
+   design_eval_unit_partition_id int,
+   name                 varchar(255),
+   comment              varchar(255),
+   x                    decimal(8,2),
+   y                    decimal(8,2),
+   z                    decimal(8,2),
    primary key (id)
 );
 
@@ -649,17 +711,29 @@ alter table coal add constraint fk_relationship_1 foreign key (mine_id)
 alter table design_drilling_surf_technology add constraint fk_relationship_31 foreign key (design_technology_id)
       references design_technology (id) on delete cascade on update restrict;
 
+alter table design_eval_unit add constraint fk_relationship_42 foreign key (design_eval_unit_partition_id)
+      references design_eval_unit_partition (id) on delete cascade on update restrict;
+
 alter table design_goaf_technology add constraint fk_relationship_39 foreign key (design_technology_id)
       references design_technology (id) on delete cascade on update restrict;
 
 alter table design_pore add constraint fk_relationship_38 foreign key (design_site_id)
       references design_site (id) on delete cascade on update restrict;
 
+alter table design_pore add constraint fk_relationship_43 foreign key (design_eval_unit_id)
+      references design_eval_unit (id) on delete cascade on update restrict;
+
 alter table design_site add constraint fk_relationship_36 foreign key (design_technology_id)
       references design_technology (id) on delete cascade on update restrict;
 
 alter table design_technology add constraint fk_relationship_35 foreign key (coal_id)
       references coal (id) on delete cascade on update restrict;
+
+alter table design_tunnel_control_point add constraint fk_relationship_40 foreign key (design_eval_unit_partition_id)
+      references design_eval_unit_partition (id) on delete cascade on update restrict;
+
+alter table design_work_surf_control_point add constraint fk_relationship_41 foreign key (design_eval_unit_partition_id)
+      references design_eval_unit_partition (id) on delete cascade on update restrict;
 
 alter table design_work_surf_technology add constraint fk_relationship_37 foreign key (design_technology_id)
       references design_technology (id) on delete cascade on update restrict;
