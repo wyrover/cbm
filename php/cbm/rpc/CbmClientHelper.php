@@ -379,11 +379,11 @@ function DrillingSurfGasFlow($coal, $drilling_surf, $tunnel) {
 	return $ret;
 }
 
-function SendCommandToCAD($cmd) {
+function SendCommandToCAD($cmd, $switch_to_cad=false) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$client->SendCommandToCAD($cmd);
+		$client->SendCommandToCAD($cmd, $switch_to_cad);
 		
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";

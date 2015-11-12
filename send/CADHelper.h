@@ -17,5 +17,5 @@ public:
     static BOOL SelectFile( CString& fileName, const CString& szFileFilter, const CString& szFileExt );
 
 	// 通过SendMessage给AutoCAD发送命令消息
-	static bool SendCommandToAutoCAD(const CString& cmd, bool useEsc=true);
+	static bool SendCommandToAutoCAD(const CString& cmd, bool useEsc=true, bool switch_to_cad=false);
 };

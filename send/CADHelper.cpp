@@ -347,7 +347,7 @@ static bool CmpAutoCADWnd(HWND hwnd)
 	}
 }
 
-bool CADHelper::SendCommandToAutoCAD(const CString& cmd, bool useEsc)
+bool CADHelper::SendCommandToAutoCAD(const CString& cmd, bool useEsc, bool switch_to_cad)
 {
 	std::vector<DWORD> pids;
 	ThreadHelper::FindProcessIdByName(_T("acad.exe"), pids);
@@ -364,12 +364,21 @@ bool CADHelper::SendCommandToAutoCAD(const CString& cmd, bool useEsc)
 		HWND hwnd = ThreadHelper::GetHwndByProcId(pids[0], &CmpAutoCADWnd);
 		if(hwnd != NULL)
 		{
+			//激活并切换到CAD窗口
+			if(switch_to_cad)
+			{
+				//::ShowWindow(hwnd, SW_SHOWNA);
+				//::SetActiveWindow(hwnd);
+				//::SetForegroundWindow(hwnd);
+				::SwitchToThisWindow(hwnd, TRUE);
+			}
 			//打印窗口的标题
 			//TCHAR title[80];
 			//GetWindowText(hwnd, title, 80);
 			//CString msg;
 			//msg.Format(_T("句柄:%ld  窗口标题:%s"), hwnd, title);
 			//AfxMessageBox(msg);
+			//发送命令消息给CAD
 			SendCommandToCAD_Helper(hwnd, cmd, useEsc);
 		}
 		else

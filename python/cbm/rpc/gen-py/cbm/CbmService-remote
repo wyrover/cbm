@@ -785,7 +785,7 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
   print('  double WorkSurfGasFlow1(Coal coal, WorkArea work_area, WorkSurf work_surf)')
   print('  double WorkSurfGasFlow2(Coal coal, WorkArea work_area, WorkSurf work_surf)')
   print('  DrillingSurfGasFlowResult DrillingSurfGasFlow(Coal coal, DrillingSurf drilling_surf, Tunnel tunnel)')
-  print('  void SendCommandToCAD(string cmd)')
+  print('  void SendCommandToCAD(string cmd, bool switch_to_cad)')
   print('  string RequestJsonDatasFromCAD(string input_datas)')
   print('  string GetJsonDatasFromRpcCache(string secret_key)')
   print('  void PostJsonDatasFromCAD(string secret_key, string input_datas, string out_datas)')
@@ -5412,10 +5412,10 @@ elif cmd == 'DrillingSurfGasFlow':
   pp.pprint(client.DrillingSurfGasFlow(eval(args[0]),eval(args[1]),eval(args[2]),))
 
 elif cmd == 'SendCommandToCAD':
-  if len(args) != 1:
-    print('SendCommandToCAD requires 1 args')
+  if len(args) != 2:
+    print('SendCommandToCAD requires 2 args')
     sys.exit(1)
-  pp.pprint(client.SendCommandToCAD(args[0],))
+  pp.pprint(client.SendCommandToCAD(args[0],eval(args[1]),))
 
 elif cmd == 'RequestJsonDatasFromCAD':
   if len(args) != 1:

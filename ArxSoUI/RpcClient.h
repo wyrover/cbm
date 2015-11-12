@@ -10,13 +10,11 @@ using namespace apache::thrift;
 using namespace apache::thrift::protocol;
 using namespace apache::thrift::transport;
 
-#include "../thrift/gen-cpp/CbmService.h"
-//#include "../thrift/gen-cpp/ControlService.h"
+#include <thrift/gen-cpp/CbmService.h>
 
 typedef boost::shared_ptr<TTransport> TransportPtr;
 typedef boost::shared_ptr<TProtocol> ProtocolPtr;
 typedef boost::shared_ptr<cbm::CbmServiceClient> ServiceClientPtr;
-//typedef boost::shared_ptr<ctrl::ControlServiceClient> ControlClientPtr;
 
 #define HOST "localhost"
 #define PORT1 9100

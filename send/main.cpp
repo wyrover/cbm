@@ -24,9 +24,12 @@ int _tmain(int argc, TCHAR* argv[], TCHAR* envp[])
 	{
 		if(argc > 1)
 		{
-			//发送到cad
+			//是否激活cad
+			bool switch_to_cad = (_ttoi(argv[1]) != 0);
+
+			//发送到cad的命令消息
 			CString cmd;
-			for(int i=1;i<argc;i++)
+			for(int i=2;i<argc;i++)
 			{
 				cmd.AppendFormat(_T("%s"), argv[i]);
 				if(i < argc-1)
@@ -34,7 +37,7 @@ int _tmain(int argc, TCHAR* argv[], TCHAR* envp[])
 					cmd.AppendFormat(_T(" "));
 				}
 			}
-			CADHelper::SendCommandToAutoCAD(cmd);
+			CADHelper::SendCommandToAutoCAD(cmd, true, switch_to_cad);
 		}
 	}
 

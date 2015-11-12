@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../thrift/gen-cpp/cbm_types.h"
+#include <thrift/gen-cpp/cbm_types.h>
 
 #include <vector>
 #include <string>
@@ -61,7 +61,10 @@ public:
 	//掘进面瓦斯涌出量
 	static void DrillingSurfGasFlow(cbm::DrillingSurfGasFlowResult& _return, const cbm::Coal& coal, const cbm::DrillingSurf& drilling_surf, const cbm::Tunnel& tunnel);
 
-	static void SendCommandToCAD(const std::string& cmd);
+	//发送命令到cad,第2个参数表示是否激活cad窗口到最前面
+	static void SendCommandToCAD(const std::string& cmd, bool switch_to_cad=false);
+	//从cad中提取数据
 	static std::string GetJsonDatasFromCAD(const std::string& input_datas="{}", int wait_seconds=2);
+	//cad主动向rpc发送数据,rpc会将数据进行缓存
 	static void PostJsonDatasFromCAD(const std::string& secret_key, const std::string& input_datas, const std::string& out_datas);
 };

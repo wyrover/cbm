@@ -89,6 +89,12 @@ function type_default($type)
     return $default_value_dict[$type];
 }
 
+function cpp_type_to_py_type_func_dict($type)
+{
+    static $cpp_type_to_py_type_func_dict = array("int"=>"int", "double"=>"float", "long"=>"int", "CString"=>"str", "float"=>"float", "string"=>"str");
+    return $cpp_type_to_py_type_func_dict[$type];
+}
+
 function h_type2txt($type_id)
 {
     static $types;

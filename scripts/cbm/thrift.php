@@ -129,8 +129,8 @@ function __gen_sql_service_handler_of_py_server($file, $tbl_name, $fields, $rela
 	fwrite($file, TWO_TAB."ret=True".ENTER);
 	fwrite($file, TWO_TAB."try:".ENTER);
 	fwrite($file, THREE_TAB."sql_obj = SQL.$clsname()".ENTER);
-	fwrite($file, THREE_TAB."CbmUtil.CopyAttribs($fname, sql_obj)".ENTER);
-	fwrite($file, THREE_TAB."attribs = CbmUtil.GetAttribs(sql_obj)".ENTER);
+	fwrite($file, THREE_TAB."CbmUtil.CopyAttribsOfCbmType(".DBL_QUOT.$clsname.DBL_QUOT.", $fname, sql_obj)".ENTER);
+	fwrite($file, THREE_TAB."attribs = CbmUtil.GetAttribsOfCbmType(".DBL_QUOT.$clsname.DBL_QUOT.", sql_obj)".ENTER);
 	fwrite($file, THREE_TAB."del attribs['id']".ENTER);
 	fwrite($file, THREE_TAB."self.session.query(SQL.$clsname).filter(SQL.$clsname.id==sql_obj.id).update(attribs)".ENTER);
 	fwrite($file, THREE_TAB."self.session.commit()".ENTER);
@@ -146,7 +146,7 @@ function __gen_sql_service_handler_of_py_server($file, $tbl_name, $fields, $rela
 	fwrite($file, TWO_TAB."if query is None:".ENTER);
 	fwrite($file, THREE_TAB."obj.id = -1".ENTER);
 	fwrite($file, TWO_TAB."else:".ENTER);
-	fwrite($file, THREE_TAB."CbmUtil.CopyAttribs(query, obj)".ENTER);
+	fwrite($file, THREE_TAB."CbmUtil.CopyAttribsOfCbmType(".DBL_QUOT.$clsname.DBL_QUOT.", query, obj)".ENTER);
 	fwrite($file, TWO_TAB."return obj".ENTER);
 
 	
@@ -158,7 +158,7 @@ function __gen_sql_service_handler_of_py_server($file, $tbl_name, $fields, $rela
 	fwrite($file, TWO_TAB."if query is None:".ENTER);
 	fwrite($file, THREE_TAB."obj.id = -1".ENTER);
 	fwrite($file, TWO_TAB."else:".ENTER);
-	fwrite($file, THREE_TAB."CbmUtil.CopyAttribs(query, obj)".ENTER);
+	fwrite($file, THREE_TAB."CbmUtil.CopyAttribsOfCbmType(".DBL_QUOT.$clsname.DBL_QUOT.", query, obj)".ENTER);
 	fwrite($file, TWO_TAB."return obj".ENTER);
 
 	fwrite($file, TAB."def Get".$clsname."IdByForeignKey(self, fkey, id):".ENTER);
@@ -1349,6 +1349,54 @@ function gen_sql_helper_of_php_client($file, $tables, $relations)
 	}
 }
 
+function __gen_sql_type_py_file($file, $tbl_name, $fields, $relations)
+{
+	//去掉cbm前缀,作为文件名
+	$fname = table_no_prefix($tbl_name);
+
+	//得到类名
+	$clsname = camel_case($fname);
+
+	fwrite($file, ENTER.DBL_QUOT.$clsname.DBL_QUOT.":{".ENTER);
+	//下标序号
+	$count = 1;
+	//字段变量
+	foreach ($fields as $name => $type) {
+		$py_type_func = cpp_type_to_py_type_func_dict($type);
+		$var_name = $name;
+		$field_name = table_no_prefix(table_no_id($name));
+		// if($name == 'id') continue;
+		//该字段是外键(所有的外键ID都是以_id结尾的)
+		// if($field_name != $name && $name != 'id') {
+		// 	$param_type = "orm::RecordPtr";
+		// 	$var_name = $field_name;
+		// }
+		fwrite($file, TAB.DBL_QUOT.$var_name.DBL_QUOT.":".$py_type_func);
+		if($count < count($fields)) {
+			fwrite($file, ',');
+		}
+		fwrite($file, ENTER);
+		$count++;
+	}
+	fwrite($file, "}");
+}
+
+function gen_sql_type_py_file($file, $tables, $relations)
+{
+	$count = 1;
+
+	fwrite($file, 'info = {'.ENTER);
+	foreach($tables as $tbl => $fields) {
+		__gen_sql_type_py_file($file, $tbl, $fields, $relations);
+
+		if($count < count($tables)) {
+			fwrite($file, ',');
+		}
+		$count++;
+	}
+	fwrite($file, ENTER.'}'.ENTER);
+}
+
 function gen_thrift_file($tables, $relations)
 {
 	$entity_thrift_file = fopen('sql_service_types.thrift', 'w');
@@ -1378,6 +1426,10 @@ function gen_thrift_file($tables, $relations)
 	$php_file = fopen('SQLClientHelper.php', 'w');
 	gen_sql_helper_of_php_client($php_file, $tables, $relations);
 	fclose($php_file);
+
+	$py_file = fopen('CbmRtti.py', 'w');
+	gen_sql_type_py_file($py_file, $tables, $relations);
+	fclose($py_file);
 }
 
 function make_thrift_files($tables, $relations)

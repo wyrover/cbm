@@ -30,8 +30,8 @@ class SQLServiceHandler(object):
 		ret=True
 		try:
 			sql_obj = SQL.Account()
-			CbmUtil.CopyAttribs(account, sql_obj)
-			attribs = CbmUtil.GetAttribs(sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("Account", account, sql_obj)
+			attribs = CbmUtil.GetAttribsOfCbmType("Account", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.Account).filter(SQL.Account.id==sql_obj.id).update(attribs)
 			self.session.commit()
@@ -45,7 +45,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("Account", query, obj)
 		return obj
 	def GetAccountByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -55,7 +55,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("Account", query, obj)
 		return obj
 	def GetAccountIdByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -164,8 +164,8 @@ class SQLServiceHandler(object):
 		ret=True
 		try:
 			sql_obj = SQL.AdjLayer()
-			CbmUtil.CopyAttribs(adj_layer, sql_obj)
-			attribs = CbmUtil.GetAttribs(sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("AdjLayer", adj_layer, sql_obj)
+			attribs = CbmUtil.GetAttribsOfCbmType("AdjLayer", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.AdjLayer).filter(SQL.AdjLayer.id==sql_obj.id).update(attribs)
 			self.session.commit()
@@ -179,7 +179,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("AdjLayer", query, obj)
 		return obj
 	def GetAdjLayerByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -189,7 +189,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("AdjLayer", query, obj)
 		return obj
 	def GetAdjLayerIdByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -298,8 +298,8 @@ class SQLServiceHandler(object):
 		ret=True
 		try:
 			sql_obj = SQL.Coal()
-			CbmUtil.CopyAttribs(coal, sql_obj)
-			attribs = CbmUtil.GetAttribs(sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("Coal", coal, sql_obj)
+			attribs = CbmUtil.GetAttribsOfCbmType("Coal", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.Coal).filter(SQL.Coal.id==sql_obj.id).update(attribs)
 			self.session.commit()
@@ -313,7 +313,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("Coal", query, obj)
 		return obj
 	def GetCoalByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -323,7 +323,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("Coal", query, obj)
 		return obj
 	def GetCoalIdByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -432,8 +432,8 @@ class SQLServiceHandler(object):
 		ret=True
 		try:
 			sql_obj = SQL.Complexity()
-			CbmUtil.CopyAttribs(complexity, sql_obj)
-			attribs = CbmUtil.GetAttribs(sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("Complexity", complexity, sql_obj)
+			attribs = CbmUtil.GetAttribsOfCbmType("Complexity", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.Complexity).filter(SQL.Complexity.id==sql_obj.id).update(attribs)
 			self.session.commit()
@@ -447,7 +447,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("Complexity", query, obj)
 		return obj
 	def GetComplexityByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -457,7 +457,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("Complexity", query, obj)
 		return obj
 	def GetComplexityIdByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -566,8 +566,8 @@ class SQLServiceHandler(object):
 		ret=True
 		try:
 			sql_obj = SQL.DesignDrillingSurfTechnology()
-			CbmUtil.CopyAttribs(design_drilling_surf_technology, sql_obj)
-			attribs = CbmUtil.GetAttribs(sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("DesignDrillingSurfTechnology", design_drilling_surf_technology, sql_obj)
+			attribs = CbmUtil.GetAttribsOfCbmType("DesignDrillingSurfTechnology", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.DesignDrillingSurfTechnology).filter(SQL.DesignDrillingSurfTechnology.id==sql_obj.id).update(attribs)
 			self.session.commit()
@@ -581,7 +581,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("DesignDrillingSurfTechnology", query, obj)
 		return obj
 	def GetDesignDrillingSurfTechnologyByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -591,7 +591,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("DesignDrillingSurfTechnology", query, obj)
 		return obj
 	def GetDesignDrillingSurfTechnologyIdByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -700,8 +700,8 @@ class SQLServiceHandler(object):
 		ret=True
 		try:
 			sql_obj = SQL.DesignGoafTechnology()
-			CbmUtil.CopyAttribs(design_goaf_technology, sql_obj)
-			attribs = CbmUtil.GetAttribs(sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("DesignGoafTechnology", design_goaf_technology, sql_obj)
+			attribs = CbmUtil.GetAttribsOfCbmType("DesignGoafTechnology", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.DesignGoafTechnology).filter(SQL.DesignGoafTechnology.id==sql_obj.id).update(attribs)
 			self.session.commit()
@@ -715,7 +715,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("DesignGoafTechnology", query, obj)
 		return obj
 	def GetDesignGoafTechnologyByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -725,7 +725,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("DesignGoafTechnology", query, obj)
 		return obj
 	def GetDesignGoafTechnologyIdByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -834,8 +834,8 @@ class SQLServiceHandler(object):
 		ret=True
 		try:
 			sql_obj = SQL.DesignPore()
-			CbmUtil.CopyAttribs(design_pore, sql_obj)
-			attribs = CbmUtil.GetAttribs(sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("DesignPore", design_pore, sql_obj)
+			attribs = CbmUtil.GetAttribsOfCbmType("DesignPore", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.DesignPore).filter(SQL.DesignPore.id==sql_obj.id).update(attribs)
 			self.session.commit()
@@ -849,7 +849,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("DesignPore", query, obj)
 		return obj
 	def GetDesignPoreByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -859,7 +859,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("DesignPore", query, obj)
 		return obj
 	def GetDesignPoreIdByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -968,8 +968,8 @@ class SQLServiceHandler(object):
 		ret=True
 		try:
 			sql_obj = SQL.DesignSite()
-			CbmUtil.CopyAttribs(design_site, sql_obj)
-			attribs = CbmUtil.GetAttribs(sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("DesignSite", design_site, sql_obj)
+			attribs = CbmUtil.GetAttribsOfCbmType("DesignSite", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.DesignSite).filter(SQL.DesignSite.id==sql_obj.id).update(attribs)
 			self.session.commit()
@@ -983,7 +983,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("DesignSite", query, obj)
 		return obj
 	def GetDesignSiteByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -993,7 +993,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("DesignSite", query, obj)
 		return obj
 	def GetDesignSiteIdByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -1102,8 +1102,8 @@ class SQLServiceHandler(object):
 		ret=True
 		try:
 			sql_obj = SQL.DesignTechnology()
-			CbmUtil.CopyAttribs(design_technology, sql_obj)
-			attribs = CbmUtil.GetAttribs(sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("DesignTechnology", design_technology, sql_obj)
+			attribs = CbmUtil.GetAttribsOfCbmType("DesignTechnology", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.DesignTechnology).filter(SQL.DesignTechnology.id==sql_obj.id).update(attribs)
 			self.session.commit()
@@ -1117,7 +1117,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("DesignTechnology", query, obj)
 		return obj
 	def GetDesignTechnologyByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -1127,7 +1127,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("DesignTechnology", query, obj)
 		return obj
 	def GetDesignTechnologyIdByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -1236,8 +1236,8 @@ class SQLServiceHandler(object):
 		ret=True
 		try:
 			sql_obj = SQL.DesignWorkSurfTechnology()
-			CbmUtil.CopyAttribs(design_work_surf_technology, sql_obj)
-			attribs = CbmUtil.GetAttribs(sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("DesignWorkSurfTechnology", design_work_surf_technology, sql_obj)
+			attribs = CbmUtil.GetAttribsOfCbmType("DesignWorkSurfTechnology", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.DesignWorkSurfTechnology).filter(SQL.DesignWorkSurfTechnology.id==sql_obj.id).update(attribs)
 			self.session.commit()
@@ -1251,7 +1251,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("DesignWorkSurfTechnology", query, obj)
 		return obj
 	def GetDesignWorkSurfTechnologyByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -1261,7 +1261,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("DesignWorkSurfTechnology", query, obj)
 		return obj
 	def GetDesignWorkSurfTechnologyIdByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -1370,8 +1370,8 @@ class SQLServiceHandler(object):
 		ret=True
 		try:
 			sql_obj = SQL.DrillingRadiusParam()
-			CbmUtil.CopyAttribs(drilling_radius_param, sql_obj)
-			attribs = CbmUtil.GetAttribs(sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("DrillingRadiusParam", drilling_radius_param, sql_obj)
+			attribs = CbmUtil.GetAttribsOfCbmType("DrillingRadiusParam", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.DrillingRadiusParam).filter(SQL.DrillingRadiusParam.id==sql_obj.id).update(attribs)
 			self.session.commit()
@@ -1385,7 +1385,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("DrillingRadiusParam", query, obj)
 		return obj
 	def GetDrillingRadiusParamByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -1395,7 +1395,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("DrillingRadiusParam", query, obj)
 		return obj
 	def GetDrillingRadiusParamIdByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -1504,8 +1504,8 @@ class SQLServiceHandler(object):
 		ret=True
 		try:
 			sql_obj = SQL.DrillingSurf()
-			CbmUtil.CopyAttribs(drilling_surf, sql_obj)
-			attribs = CbmUtil.GetAttribs(sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("DrillingSurf", drilling_surf, sql_obj)
+			attribs = CbmUtil.GetAttribsOfCbmType("DrillingSurf", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.DrillingSurf).filter(SQL.DrillingSurf.id==sql_obj.id).update(attribs)
 			self.session.commit()
@@ -1519,7 +1519,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("DrillingSurf", query, obj)
 		return obj
 	def GetDrillingSurfByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -1529,7 +1529,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("DrillingSurf", query, obj)
 		return obj
 	def GetDrillingSurfIdByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -1638,8 +1638,8 @@ class SQLServiceHandler(object):
 		ret=True
 		try:
 			sql_obj = SQL.EvalUnit()
-			CbmUtil.CopyAttribs(eval_unit, sql_obj)
-			attribs = CbmUtil.GetAttribs(sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("EvalUnit", eval_unit, sql_obj)
+			attribs = CbmUtil.GetAttribsOfCbmType("EvalUnit", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.EvalUnit).filter(SQL.EvalUnit.id==sql_obj.id).update(attribs)
 			self.session.commit()
@@ -1653,7 +1653,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("EvalUnit", query, obj)
 		return obj
 	def GetEvalUnitByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -1663,7 +1663,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("EvalUnit", query, obj)
 		return obj
 	def GetEvalUnitIdByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -1772,8 +1772,8 @@ class SQLServiceHandler(object):
 		ret=True
 		try:
 			sql_obj = SQL.HighDrillingPore()
-			CbmUtil.CopyAttribs(high_drilling_pore, sql_obj)
-			attribs = CbmUtil.GetAttribs(sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("HighDrillingPore", high_drilling_pore, sql_obj)
+			attribs = CbmUtil.GetAttribsOfCbmType("HighDrillingPore", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.HighDrillingPore).filter(SQL.HighDrillingPore.id==sql_obj.id).update(attribs)
 			self.session.commit()
@@ -1787,7 +1787,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("HighDrillingPore", query, obj)
 		return obj
 	def GetHighDrillingPoreByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -1797,7 +1797,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("HighDrillingPore", query, obj)
 		return obj
 	def GetHighDrillingPoreIdByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -1906,8 +1906,8 @@ class SQLServiceHandler(object):
 		ret=True
 		try:
 			sql_obj = SQL.HighDrillingPoreParam()
-			CbmUtil.CopyAttribs(high_drilling_pore_param, sql_obj)
-			attribs = CbmUtil.GetAttribs(sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("HighDrillingPoreParam", high_drilling_pore_param, sql_obj)
+			attribs = CbmUtil.GetAttribsOfCbmType("HighDrillingPoreParam", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.HighDrillingPoreParam).filter(SQL.HighDrillingPoreParam.id==sql_obj.id).update(attribs)
 			self.session.commit()
@@ -1921,7 +1921,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("HighDrillingPoreParam", query, obj)
 		return obj
 	def GetHighDrillingPoreParamByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -1931,7 +1931,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("HighDrillingPoreParam", query, obj)
 		return obj
 	def GetHighDrillingPoreParamIdByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -2040,8 +2040,8 @@ class SQLServiceHandler(object):
 		ret=True
 		try:
 			sql_obj = SQL.HighDrillingSiteParam()
-			CbmUtil.CopyAttribs(high_drilling_site_param, sql_obj)
-			attribs = CbmUtil.GetAttribs(sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("HighDrillingSiteParam", high_drilling_site_param, sql_obj)
+			attribs = CbmUtil.GetAttribsOfCbmType("HighDrillingSiteParam", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.HighDrillingSiteParam).filter(SQL.HighDrillingSiteParam.id==sql_obj.id).update(attribs)
 			self.session.commit()
@@ -2055,7 +2055,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("HighDrillingSiteParam", query, obj)
 		return obj
 	def GetHighDrillingSiteParamByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -2065,7 +2065,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("HighDrillingSiteParam", query, obj)
 		return obj
 	def GetHighDrillingSiteParamIdByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -2174,8 +2174,8 @@ class SQLServiceHandler(object):
 		ret=True
 		try:
 			sql_obj = SQL.HighDrillingTunnel()
-			CbmUtil.CopyAttribs(high_drilling_tunnel, sql_obj)
-			attribs = CbmUtil.GetAttribs(sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("HighDrillingTunnel", high_drilling_tunnel, sql_obj)
+			attribs = CbmUtil.GetAttribsOfCbmType("HighDrillingTunnel", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.HighDrillingTunnel).filter(SQL.HighDrillingTunnel.id==sql_obj.id).update(attribs)
 			self.session.commit()
@@ -2189,7 +2189,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("HighDrillingTunnel", query, obj)
 		return obj
 	def GetHighDrillingTunnelByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -2199,7 +2199,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("HighDrillingTunnel", query, obj)
 		return obj
 	def GetHighDrillingTunnelIdByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -2308,8 +2308,8 @@ class SQLServiceHandler(object):
 		ret=True
 		try:
 			sql_obj = SQL.HydrGeo()
-			CbmUtil.CopyAttribs(hydr_geo, sql_obj)
-			attribs = CbmUtil.GetAttribs(sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("HydrGeo", hydr_geo, sql_obj)
+			attribs = CbmUtil.GetAttribsOfCbmType("HydrGeo", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.HydrGeo).filter(SQL.HydrGeo.id==sql_obj.id).update(attribs)
 			self.session.commit()
@@ -2323,7 +2323,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("HydrGeo", query, obj)
 		return obj
 	def GetHydrGeoByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -2333,7 +2333,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("HydrGeo", query, obj)
 		return obj
 	def GetHydrGeoIdByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -2442,8 +2442,8 @@ class SQLServiceHandler(object):
 		ret=True
 		try:
 			sql_obj = SQL.Mine()
-			CbmUtil.CopyAttribs(mine, sql_obj)
-			attribs = CbmUtil.GetAttribs(sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("Mine", mine, sql_obj)
+			attribs = CbmUtil.GetAttribsOfCbmType("Mine", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.Mine).filter(SQL.Mine.id==sql_obj.id).update(attribs)
 			self.session.commit()
@@ -2457,7 +2457,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("Mine", query, obj)
 		return obj
 	def GetMineByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -2467,7 +2467,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("Mine", query, obj)
 		return obj
 	def GetMineIdByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -2576,8 +2576,8 @@ class SQLServiceHandler(object):
 		ret=True
 		try:
 			sql_obj = SQL.MineBase()
-			CbmUtil.CopyAttribs(mine_base, sql_obj)
-			attribs = CbmUtil.GetAttribs(sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("MineBase", mine_base, sql_obj)
+			attribs = CbmUtil.GetAttribsOfCbmType("MineBase", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.MineBase).filter(SQL.MineBase.id==sql_obj.id).update(attribs)
 			self.session.commit()
@@ -2591,7 +2591,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("MineBase", query, obj)
 		return obj
 	def GetMineBaseByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -2601,7 +2601,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("MineBase", query, obj)
 		return obj
 	def GetMineBaseIdByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -2710,8 +2710,8 @@ class SQLServiceHandler(object):
 		ret=True
 		try:
 			sql_obj = SQL.MineRegion()
-			CbmUtil.CopyAttribs(mine_region, sql_obj)
-			attribs = CbmUtil.GetAttribs(sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("MineRegion", mine_region, sql_obj)
+			attribs = CbmUtil.GetAttribsOfCbmType("MineRegion", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.MineRegion).filter(SQL.MineRegion.id==sql_obj.id).update(attribs)
 			self.session.commit()
@@ -2725,7 +2725,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("MineRegion", query, obj)
 		return obj
 	def GetMineRegionByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -2735,7 +2735,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("MineRegion", query, obj)
 		return obj
 	def GetMineRegionIdByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -2844,8 +2844,8 @@ class SQLServiceHandler(object):
 		ret=True
 		try:
 			sql_obj = SQL.PoreFlow()
-			CbmUtil.CopyAttribs(pore_flow, sql_obj)
-			attribs = CbmUtil.GetAttribs(sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("PoreFlow", pore_flow, sql_obj)
+			attribs = CbmUtil.GetAttribsOfCbmType("PoreFlow", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.PoreFlow).filter(SQL.PoreFlow.id==sql_obj.id).update(attribs)
 			self.session.commit()
@@ -2859,7 +2859,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("PoreFlow", query, obj)
 		return obj
 	def GetPoreFlowByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -2869,7 +2869,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("PoreFlow", query, obj)
 		return obj
 	def GetPoreFlowIdByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -2978,8 +2978,8 @@ class SQLServiceHandler(object):
 		ret=True
 		try:
 			sql_obj = SQL.PoreSize()
-			CbmUtil.CopyAttribs(pore_size, sql_obj)
-			attribs = CbmUtil.GetAttribs(sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("PoreSize", pore_size, sql_obj)
+			attribs = CbmUtil.GetAttribsOfCbmType("PoreSize", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.PoreSize).filter(SQL.PoreSize.id==sql_obj.id).update(attribs)
 			self.session.commit()
@@ -2993,7 +2993,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("PoreSize", query, obj)
 		return obj
 	def GetPoreSizeByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -3003,7 +3003,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("PoreSize", query, obj)
 		return obj
 	def GetPoreSizeIdByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -3112,8 +3112,8 @@ class SQLServiceHandler(object):
 		ret=True
 		try:
 			sql_obj = SQL.ResAbundance()
-			CbmUtil.CopyAttribs(res_abundance, sql_obj)
-			attribs = CbmUtil.GetAttribs(sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("ResAbundance", res_abundance, sql_obj)
+			attribs = CbmUtil.GetAttribsOfCbmType("ResAbundance", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.ResAbundance).filter(SQL.ResAbundance.id==sql_obj.id).update(attribs)
 			self.session.commit()
@@ -3127,7 +3127,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("ResAbundance", query, obj)
 		return obj
 	def GetResAbundanceByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -3137,7 +3137,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("ResAbundance", query, obj)
 		return obj
 	def GetResAbundanceIdByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -3246,8 +3246,8 @@ class SQLServiceHandler(object):
 		ret=True
 		try:
 			sql_obj = SQL.Rock()
-			CbmUtil.CopyAttribs(rock, sql_obj)
-			attribs = CbmUtil.GetAttribs(sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("Rock", rock, sql_obj)
+			attribs = CbmUtil.GetAttribsOfCbmType("Rock", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.Rock).filter(SQL.Rock.id==sql_obj.id).update(attribs)
 			self.session.commit()
@@ -3261,7 +3261,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("Rock", query, obj)
 		return obj
 	def GetRockByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -3271,7 +3271,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("Rock", query, obj)
 		return obj
 	def GetRockIdByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -3380,8 +3380,8 @@ class SQLServiceHandler(object):
 		ret=True
 		try:
 			sql_obj = SQL.SysInfo()
-			CbmUtil.CopyAttribs(sys_info, sql_obj)
-			attribs = CbmUtil.GetAttribs(sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("SysInfo", sys_info, sql_obj)
+			attribs = CbmUtil.GetAttribsOfCbmType("SysInfo", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.SysInfo).filter(SQL.SysInfo.id==sql_obj.id).update(attribs)
 			self.session.commit()
@@ -3395,7 +3395,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("SysInfo", query, obj)
 		return obj
 	def GetSysInfoByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -3405,7 +3405,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("SysInfo", query, obj)
 		return obj
 	def GetSysInfoIdByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -3514,8 +3514,8 @@ class SQLServiceHandler(object):
 		ret=True
 		try:
 			sql_obj = SQL.TechMode()
-			CbmUtil.CopyAttribs(tech_mode, sql_obj)
-			attribs = CbmUtil.GetAttribs(sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("TechMode", tech_mode, sql_obj)
+			attribs = CbmUtil.GetAttribsOfCbmType("TechMode", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.TechMode).filter(SQL.TechMode.id==sql_obj.id).update(attribs)
 			self.session.commit()
@@ -3529,7 +3529,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("TechMode", query, obj)
 		return obj
 	def GetTechModeByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -3539,7 +3539,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("TechMode", query, obj)
 		return obj
 	def GetTechModeIdByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -3648,8 +3648,8 @@ class SQLServiceHandler(object):
 		ret=True
 		try:
 			sql_obj = SQL.Technology()
-			CbmUtil.CopyAttribs(technology, sql_obj)
-			attribs = CbmUtil.GetAttribs(sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("Technology", technology, sql_obj)
+			attribs = CbmUtil.GetAttribsOfCbmType("Technology", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.Technology).filter(SQL.Technology.id==sql_obj.id).update(attribs)
 			self.session.commit()
@@ -3663,7 +3663,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("Technology", query, obj)
 		return obj
 	def GetTechnologyByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -3673,7 +3673,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("Technology", query, obj)
 		return obj
 	def GetTechnologyIdByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -3782,8 +3782,8 @@ class SQLServiceHandler(object):
 		ret=True
 		try:
 			sql_obj = SQL.TopoGeo()
-			CbmUtil.CopyAttribs(topo_geo, sql_obj)
-			attribs = CbmUtil.GetAttribs(sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("TopoGeo", topo_geo, sql_obj)
+			attribs = CbmUtil.GetAttribsOfCbmType("TopoGeo", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.TopoGeo).filter(SQL.TopoGeo.id==sql_obj.id).update(attribs)
 			self.session.commit()
@@ -3797,7 +3797,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("TopoGeo", query, obj)
 		return obj
 	def GetTopoGeoByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -3807,7 +3807,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("TopoGeo", query, obj)
 		return obj
 	def GetTopoGeoIdByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -3916,8 +3916,8 @@ class SQLServiceHandler(object):
 		ret=True
 		try:
 			sql_obj = SQL.Tunnel()
-			CbmUtil.CopyAttribs(tunnel, sql_obj)
-			attribs = CbmUtil.GetAttribs(sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("Tunnel", tunnel, sql_obj)
+			attribs = CbmUtil.GetAttribsOfCbmType("Tunnel", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.Tunnel).filter(SQL.Tunnel.id==sql_obj.id).update(attribs)
 			self.session.commit()
@@ -3931,7 +3931,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("Tunnel", query, obj)
 		return obj
 	def GetTunnelByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -3941,7 +3941,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("Tunnel", query, obj)
 		return obj
 	def GetTunnelIdByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -4050,8 +4050,8 @@ class SQLServiceHandler(object):
 		ret=True
 		try:
 			sql_obj = SQL.WorkArea()
-			CbmUtil.CopyAttribs(work_area, sql_obj)
-			attribs = CbmUtil.GetAttribs(sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("WorkArea", work_area, sql_obj)
+			attribs = CbmUtil.GetAttribsOfCbmType("WorkArea", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.WorkArea).filter(SQL.WorkArea.id==sql_obj.id).update(attribs)
 			self.session.commit()
@@ -4065,7 +4065,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("WorkArea", query, obj)
 		return obj
 	def GetWorkAreaByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -4075,7 +4075,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("WorkArea", query, obj)
 		return obj
 	def GetWorkAreaIdByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -4184,8 +4184,8 @@ class SQLServiceHandler(object):
 		ret=True
 		try:
 			sql_obj = SQL.WorkSurf()
-			CbmUtil.CopyAttribs(work_surf, sql_obj)
-			attribs = CbmUtil.GetAttribs(sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("WorkSurf", work_surf, sql_obj)
+			attribs = CbmUtil.GetAttribsOfCbmType("WorkSurf", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.WorkSurf).filter(SQL.WorkSurf.id==sql_obj.id).update(attribs)
 			self.session.commit()
@@ -4199,7 +4199,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("WorkSurf", query, obj)
 		return obj
 	def GetWorkSurfByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey
@@ -4209,7 +4209,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribs(query, obj)
+			CbmUtil.CopyAttribsOfCbmType("WorkSurf", query, obj)
 		return obj
 	def GetWorkSurfIdByForeignKey(self, fkey, id):
 		key = fkey if fkey.endswith('_id') else '%s_id' % fkey

@@ -49,7 +49,7 @@
 				Optimization="0"
 				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;&quot;..\ThirdParty\json-cpp\include&quot;;..\ThirdParty\thrift\lib\cpp\src;..\ThirdParty\WinHttpClient\Include;..\ThirdParty\boost"
 				AdditionalUsingDirectories="C:\Program Files\AutoCAD 2010\"
-				PreprocessorDefinitions="WIN32;_WINDOWS;ARXSOUI_MODULE;_AFXEXT;_ACRXAPP;BOOST_LIB_DIAGNOSTIC;BOOST_ALL_DYN_LINK"
+				PreprocessorDefinitions="WIN32;_WINDOWS;ARXSOUI_MODULE;_AFXEXT;_ACRXAPP;BOOST_ALL_DYN_LINK"
 				StringPooling="false"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="0"
@@ -137,7 +137,7 @@
 				Optimization="0"
 				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;&quot;..\ThirdParty\json-cpp\include&quot;;..\ThirdParty\thrift\lib\cpp\src;..\ThirdParty\WinHttpClient\Include;..\ThirdParty\boost"
 				AdditionalUsingDirectories="C:\Program Files\AutoCAD 2010\"
-				PreprocessorDefinitions="WIN32;_WINDOWS;ARXSOUI_MODULE;_AFXEXT;_ACRXAPP;BOOST_LIB_DIAGNOSTIC;BOOST_ALL_DYN_LINK"
+				PreprocessorDefinitions="WIN32;_WINDOWS;ARXSOUI_MODULE;_AFXEXT;_ACRXAPP;BOOST_ALL_DYN_LINK"
 				StringPooling="false"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="0"
@@ -225,7 +225,7 @@
 				Optimization="2"
 				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;&quot;..\ThirdParty\json-cpp\include&quot;;..\ThirdParty\thrift\lib\cpp\src;..\ThirdParty\WinHttpClient\Include;..\ThirdParty\boost"
 				AdditionalUsingDirectories="C:\Program Files\AutoCAD 2010\"
-				PreprocessorDefinitions="WIN32;_WINDOWS;ARXSOUI_MODULE;NDEBUG;_AFXEXT;_ACRXAPP;BOOST_LIB_DIAGNOSTIC;BOOST_ALL_DYN_LINK"
+				PreprocessorDefinitions="WIN32;_WINDOWS;ARXSOUI_MODULE;NDEBUG;_AFXEXT;_ACRXAPP;BOOST_ALL_DYN_LINK"
 				StringPooling="true"
 				MinimalRebuild="false"
 				BasicRuntimeChecks="0"
@@ -313,7 +313,7 @@
 				Optimization="2"
 				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;&quot;..\ThirdParty\json-cpp\include&quot;;..\ThirdParty\thrift\lib\cpp\src;..\ThirdParty\WinHttpClient\Include;..\ThirdParty\boost"
 				AdditionalUsingDirectories="C:\Program Files\AutoCAD 2010\"
-				PreprocessorDefinitions="WIN32;_WINDOWS;ARXSOUI_MODULE;NDEBUG;_AFXEXT;_ACRXAPP;BOOST_LIB_DIAGNOSTIC;BOOST_ALL_DYN_LINK"
+				PreprocessorDefinitions="WIN32;_WINDOWS;ARXSOUI_MODULE;NDEBUG;_AFXEXT;_ACRXAPP;BOOST_ALL_DYN_LINK"
 				StringPooling="true"
 				MinimalRebuild="false"
 				BasicRuntimeChecks="0"
@@ -442,7 +442,6 @@
 					>
 					<FileConfiguration
 						Name="Debug|x64"
-						ExcludedFromBuild="true"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -632,7 +631,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Path.h"
+				RelativePath=".\Data.h"
 				>
 			</File>
 			<File

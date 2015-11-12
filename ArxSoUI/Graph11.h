@@ -2,12 +2,7 @@
 
 #include "Data.h"
 #include "Graph.h"
-
-#include <ArxHelper/HelperClass.h>
-#include <Dao/DaoHelper.h>
-
-using namespace orm;
-using namespace cbm;
+#include <thrift/gen-cpp/cbm_types.h>
 
 namespace P11
 {
@@ -20,7 +15,7 @@ namespace P11
         virtual void drawSites() = 0;
         //绘制钻孔
         virtual void drawPores() = 0;
-        //绘制底板岩巷
+        //绘制底板岩巷d
         virtual void drawRockTunnel() = 0;
         //绘制工作面的3条巷道
         virtual void drawTunnel() = 0;
@@ -29,7 +24,7 @@ namespace P11
 
     protected:
         //构造函数
-        Graph( const cbm::CoalPtr& coal, const cbm::DesignDrillingSurfTechnologyPtr& tech );
+        Graph( cbm::Coal& coal, cbm::DesignDrillingSurfTechnology& tech );
         //执行具体的绘图工作(绘制煤层、工作面巷道、钻场、钻孔、底板岩巷)
         virtual void subDraw();
 
@@ -71,8 +66,8 @@ namespace P11
 
         /** 上述计算参数都是从这2个对象指针中提取出来的. */
     protected:
-        cbm::CoalPtr coal;                 // 煤层指针
-        cbm::DesignDrillingSurfTechnologyPtr tech;  // 设计掘进工作面指针
+        cbm::Coal& coal;                 // 煤层指针
+        cbm::DesignDrillingSurfTechnology& tech;  // 设计掘进工作面指针
 
     }; // class Graph
 
@@ -81,7 +76,7 @@ namespace P11
     class PlanGraph : public Graph
     {
     public:
-        PlanGraph( const cbm::CoalPtr& coal, const cbm::DesignDrillingSurfTechnologyPtr& tech );
+        PlanGraph( cbm::Coal& coal, cbm::DesignDrillingSurfTechnology& tech );
 
     protected:
         //绘制钻场
@@ -101,7 +96,7 @@ namespace P11
     class HeadGraph : public Graph
     {
     public:
-        HeadGraph( const cbm::CoalPtr& coal, const cbm::DesignDrillingSurfTechnologyPtr& tech );
+        HeadGraph( cbm::Coal& coal, cbm::DesignDrillingSurfTechnology& tech );
 
     protected:
         //绘制钻场
@@ -121,7 +116,7 @@ namespace P11
     class DipGraph : public Graph
     {
     public:
-        DipGraph( const cbm::CoalPtr& coal, const cbm::DesignDrillingSurfTechnologyPtr& tech );
+        DipGraph( cbm::Coal& coal, cbm::DesignDrillingSurfTechnology& tech );
 
     protected:
         //绘制钻场

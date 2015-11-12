@@ -7,6 +7,8 @@ from cbm import CbmService
 from RpcClient import RpcClient, HOST, PORT1, PORT2
 import CbmUtil
 
+import SQLClientHelper
+
 def InitSampleMine(region_id, account_id, name):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
@@ -328,11 +330,11 @@ def DrillingSurfGasFlow(coal, drilling_surf, tunnel):
 		ret.qa = 0.0
 	return ret
 
-def SendCommandToCAD(cmd):
+def SendCommandToCAD(cmd, switch_to_cad=True):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		service_client.get().SendCommandToCAD(cmd)
+		service_client.get().SendCommandToCAD(cmd, switch_to_cad)
 		service_client.close()
 	except Exception, e:
 		print e
@@ -368,3 +370,6 @@ def PostJsonDatasFromCAD(secret_key, input_datas, out_datas):
 		service_client.close()
 	except Exception, e:
 		print e
+
+def test():
+	pass

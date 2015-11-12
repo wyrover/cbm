@@ -4,8 +4,30 @@
 import math
 import types
 
+import CbmRtti
+
 # 记录对象允许复制的属性类型
 obj_types_set = set([types.IntType, types.FloatType, types.StringType, types.LongType])
+
+def CopyAttribsOfCbmType(cbm_type, obj1, obj2):
+    if cbm_type in CbmRtti.info:
+        # print CbmRtti.info[cbm_type]
+        for name, func in CbmRtti.info[cbm_type].items():
+            if not hasattr(obj1, name) or not hasattr(obj2, name):continue
+            a = getattr(obj1, name)
+            # print name, a
+            if a is not None:
+                setattr(obj2, name, func(a))
+
+def GetAttribsOfCbmType(cbm_type, obj1):
+    attribs = {}
+    if cbm_type in CbmRtti.info:
+        for name, func in CbmRtti.info[cbm_type].items():
+            if not hasattr(obj1, name):continue
+            a = getattr(obj1, name)
+            if a is not None:
+                attribs[name] = func(a)
+    return attribs
 
 def CopyAttribs(obj1, obj2):
     for name in dir(obj1):
@@ -18,7 +40,7 @@ def CopyAttribs(obj1, obj2):
 def GetAttribs(obj1):
     attribs = {}
     for name in dir(obj1):
-        if not hasattr(obj2, name):continue
+        # if not hasattr(obj1, name):continue
         if name.startswith('__'):continue
         attribs[name] = getattr(obj1, name)
     return attribs

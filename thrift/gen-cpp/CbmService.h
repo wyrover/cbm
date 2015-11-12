@@ -782,7 +782,7 @@ class CbmServiceIf {
   virtual double WorkSurfGasFlow1(const Coal& coal, const WorkArea& work_area, const WorkSurf& work_surf) = 0;
   virtual double WorkSurfGasFlow2(const Coal& coal, const WorkArea& work_area, const WorkSurf& work_surf) = 0;
   virtual void DrillingSurfGasFlow(DrillingSurfGasFlowResult& _return, const Coal& coal, const DrillingSurf& drilling_surf, const Tunnel& tunnel) = 0;
-  virtual void SendCommandToCAD(const std::string& cmd) = 0;
+  virtual void SendCommandToCAD(const std::string& cmd, const bool switch_to_cad) = 0;
   virtual void RequestJsonDatasFromCAD(std::string& _return, const std::string& input_datas) = 0;
   virtual void GetJsonDatasFromRpcCache(std::string& _return, const std::string& secret_key) = 0;
   virtual void PostJsonDatasFromCAD(const std::string& secret_key, const std::string& input_datas, const std::string& out_datas) = 0;
@@ -3331,7 +3331,7 @@ class CbmServiceNull : virtual public CbmServiceIf {
   void DrillingSurfGasFlow(DrillingSurfGasFlowResult& /* _return */, const Coal& /* coal */, const DrillingSurf& /* drilling_surf */, const Tunnel& /* tunnel */) {
     return;
   }
-  void SendCommandToCAD(const std::string& /* cmd */) {
+  void SendCommandToCAD(const std::string& /* cmd */, const bool /* switch_to_cad */) {
     return;
   }
   void RequestJsonDatasFromCAD(std::string& /* _return */, const std::string& /* input_datas */) {
@@ -84220,8 +84220,9 @@ class CbmService_DrillingSurfGasFlow_presult {
 };
 
 typedef struct _CbmService_SendCommandToCAD_args__isset {
-  _CbmService_SendCommandToCAD_args__isset() : cmd(false) {}
+  _CbmService_SendCommandToCAD_args__isset() : cmd(false), switch_to_cad(false) {}
   bool cmd :1;
+  bool switch_to_cad :1;
 } _CbmService_SendCommandToCAD_args__isset;
 
 class CbmService_SendCommandToCAD_args {
@@ -84229,19 +84230,24 @@ class CbmService_SendCommandToCAD_args {
 
   CbmService_SendCommandToCAD_args(const CbmService_SendCommandToCAD_args&);
   CbmService_SendCommandToCAD_args& operator=(const CbmService_SendCommandToCAD_args&);
-  CbmService_SendCommandToCAD_args() : cmd() {
+  CbmService_SendCommandToCAD_args() : cmd(), switch_to_cad(0) {
   }
 
   virtual ~CbmService_SendCommandToCAD_args() throw();
   std::string cmd;
+  bool switch_to_cad;
 
   _CbmService_SendCommandToCAD_args__isset __isset;
 
   void __set_cmd(const std::string& val);
 
+  void __set_switch_to_cad(const bool val);
+
   bool operator == (const CbmService_SendCommandToCAD_args & rhs) const
   {
     if (!(cmd == rhs.cmd))
+      return false;
+    if (!(switch_to_cad == rhs.switch_to_cad))
       return false;
     return true;
   }
@@ -84263,6 +84269,7 @@ class CbmService_SendCommandToCAD_pargs {
 
   virtual ~CbmService_SendCommandToCAD_pargs() throw();
   const std::string* cmd;
+  const bool* switch_to_cad;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
@@ -86921,8 +86928,8 @@ class CbmServiceClient : virtual public CbmServiceIf {
   void DrillingSurfGasFlow(DrillingSurfGasFlowResult& _return, const Coal& coal, const DrillingSurf& drilling_surf, const Tunnel& tunnel);
   void send_DrillingSurfGasFlow(const Coal& coal, const DrillingSurf& drilling_surf, const Tunnel& tunnel);
   void recv_DrillingSurfGasFlow(DrillingSurfGasFlowResult& _return);
-  void SendCommandToCAD(const std::string& cmd);
-  void send_SendCommandToCAD(const std::string& cmd);
+  void SendCommandToCAD(const std::string& cmd, const bool switch_to_cad);
+  void send_SendCommandToCAD(const std::string& cmd, const bool switch_to_cad);
   void recv_SendCommandToCAD();
   void RequestJsonDatasFromCAD(std::string& _return, const std::string& input_datas);
   void send_RequestJsonDatasFromCAD(const std::string& input_datas);
@@ -95821,13 +95828,13 @@ class CbmServiceMultiface : virtual public CbmServiceIf {
     return;
   }
 
-  void SendCommandToCAD(const std::string& cmd) {
+  void SendCommandToCAD(const std::string& cmd, const bool switch_to_cad) {
     size_t sz = ifaces_.size();
     size_t i = 0;
     for (; i < (sz - 1); ++i) {
-      ifaces_[i]->SendCommandToCAD(cmd);
+      ifaces_[i]->SendCommandToCAD(cmd, switch_to_cad);
     }
-    ifaces_[i]->SendCommandToCAD(cmd);
+    ifaces_[i]->SendCommandToCAD(cmd, switch_to_cad);
   }
 
   void RequestJsonDatasFromCAD(std::string& _return, const std::string& input_datas) {
@@ -98172,8 +98179,8 @@ class CbmServiceConcurrentClient : virtual public CbmServiceIf {
   void DrillingSurfGasFlow(DrillingSurfGasFlowResult& _return, const Coal& coal, const DrillingSurf& drilling_surf, const Tunnel& tunnel);
   int32_t send_DrillingSurfGasFlow(const Coal& coal, const DrillingSurf& drilling_surf, const Tunnel& tunnel);
   void recv_DrillingSurfGasFlow(DrillingSurfGasFlowResult& _return, const int32_t seqid);
-  void SendCommandToCAD(const std::string& cmd);
-  int32_t send_SendCommandToCAD(const std::string& cmd);
+  void SendCommandToCAD(const std::string& cmd, const bool switch_to_cad);
+  int32_t send_SendCommandToCAD(const std::string& cmd, const bool switch_to_cad);
   void recv_SendCommandToCAD(const int32_t seqid);
   void RequestJsonDatasFromCAD(std::string& _return, const std::string& input_datas);
   int32_t send_RequestJsonDatasFromCAD(const std::string& input_datas);

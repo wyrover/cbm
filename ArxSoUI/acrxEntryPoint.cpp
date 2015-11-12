@@ -13,7 +13,6 @@
 //----- ObjectARX EntryPoint
 class CArxSoUIApp : public AcRxArxApp
 {
-
 public:
     CArxSoUIApp () : AcRxArxApp () {}
 
@@ -36,6 +35,9 @@ public:
         log_init( _T( ".\\log\\log4cplus.properties" ) );
 
         LOG_TRACE( _T( "ArxSoUI::On_kInitAppMsg" ) );
+
+		//导入字段、字体、线型等数据
+		CmdHelper::InitAllData();
 
         return ( retCode ) ;
     }
@@ -92,9 +94,27 @@ public:
 	{
 		CmdHelper::PostJsonDatasToRpc();
 	}
+
+	static void JL_DrawPlaneGraph11()
+	{
+		CmdHelper::DrawPlaneGraph11();
+	}
+
+	static void JL_DrawHeadGraph11()
+	{
+		CmdHelper::DrawHeadGraph11();
+	}
+
+	static void JL_DrawDipGraph11()
+	{
+		CmdHelper::DrawDipGraph11();
+	}
 } ;
 
 //-----------------------------------------------------------------------------
 IMPLEMENT_ARX_ENTRYPOINT( CArxSoUIApp )
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _xxx, xxx, ACRX_CMD_TRANSPARENT, NULL )
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _PostJsonDatas, PostJsonDatas, ACRX_CMD_TRANSPARENT, NULL )
+ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _DrawPlaneGraph11, DrawPlaneGraph11, ACRX_CMD_TRANSPARENT, NULL )
+ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _DrawHeadGraph11, DrawHeadGraph11, ACRX_CMD_TRANSPARENT, NULL )
+ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _DrawDipGraph11, DrawDipGraph11, ACRX_CMD_TRANSPARENT, NULL )

@@ -136,7 +136,7 @@
 				Optimization="0"
 				AdditionalIncludeDirectories="..;..\ThirdParty\log4cplus\include;..\ThirdParty\soci\include;..\ThirdParty\boost;&quot;..\ThirdParty\json-cpp\include&quot;"
 				AdditionalUsingDirectories="c:\Program Files\AutoCAD"
-				PreprocessorDefinitions="WIN32;_WINDOWS;VVLOADER_MODULE;_AFXEXT;_ACRXAPP;CRUISE_LOG4CPLUS"
+				PreprocessorDefinitions="WIN32;_WINDOWS;VVLOADER_MODULE;_AFXEXT;_ACRXAPP"
 				StringPooling="false"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="0"

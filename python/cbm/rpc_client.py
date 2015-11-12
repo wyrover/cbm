@@ -227,14 +227,17 @@ def test_cbm():
   except Thrift.TException, tx:
     print '%s' % (tx.message)
 
+import design
+
 '''
 ²âÊÔSQLClientHelperÄ£¿é
 '''
 def test_sql():
     # print SQLClientHelper.GetMineBaseNames()
-    # print CbmClientHelper.SendCommandToCAD("zoom a")
-    # print CbmClientHelper.SendCommandToCAD("regen")
-    print CbmClientHelper.GetJsonDatasFromCAD("{}", 2)
+    # print CbmClientHelper.SendCommandToCAD("zoom a", False)
+    # print CbmClientHelper.SendCommandToCAD("regen", False)
+    # print CbmClientHelper.GetJsonDatasFromCAD("{}", 2)
+    design.DrawPlaneGraph11()
 
 def main():
   if False:

@@ -68,7 +68,7 @@ class CbmServiceHandler(SQLServerHelper.SQLServiceHandler):
     def InitSampleRegion(self):
         try:
             # 查找管理员帐户
-            admin = self.session.query(SQL.Account).filter(SQL.Account.username=='adminx').first()
+            admin = self.session.query(SQL.Account).filter(SQL.Account.username=='admin').first()
             if admin is None:
                 admin = SQL.Account()
                 admin.username = 'adminx'
@@ -339,9 +339,9 @@ class CbmServiceHandler(SQLServerHelper.SQLServiceHandler):
         ret.qa = qa
         return ret
 
-    def SendCommandToCAD(self, cmd):
+    def SendCommandToCAD(self, cmd, switch_to_cad):
         exe = '..\\..\\x64\\Debug\\send'
-        subprocess.Popen('%s %s' % (exe, cmd))
+        subprocess.Popen('%s %d %s' % (exe, int(switch_to_cad), cmd))
 
     def RequestJsonDatasFromCAD(self, input_datas):
         global POST_DATA_FROM_CAD_CACHE

@@ -1320,7 +1320,6 @@ service CbmService {
 
 
 //service DaoService {
-
 	//初始化示范矿区(虚拟的矿井和煤层)
 	void InitSampleRegion(),
 	//查询已登录用户的id
@@ -1370,16 +1369,16 @@ service CbmService {
 	DrillingSurfGasFlowResult DrillingSurfGasFlow(1:Coal coal, 2:DrillingSurf drilling_surf, 3:Tunnel tunnel),
 //}
 
-
 // service FetchInfoService {
-	//向cad发送命令消息
-	void SendCommandToCAD(1:string cmd),
-	// 让cad预备好数据,返回一个密钥(密钥和数据缓存到rpc服务器上)
+	// 发送命令到cad(例如zoom a),第2个参数switch_to_cad表示是否激活cad窗口到最前面
+	void SendCommandToCAD(1:string cmd, 2:bool switch_to_cad),
+	// 向rpc请求需要cad提供数据,rpc会分配一个密钥(secret_key)
 	string RequestJsonDatasFromCAD(1:string input_datas),
-	// 通过密钥从rpc中提取信息(一个密钥只能使用一次)
+	// 通过密钥向rpc的缓存请求数据(cad的数据都放在rpc服务器的缓存里)
 	string GetJsonDatasFromRpcCache(1:string secret_key),
-	// cad发送数据到rpc(仅限内部使用)
+	// cad主动发送数据到rpc,rpc将数据进行缓存,客户端凭借密钥从缓存中提取数据
 	void PostJsonDatasFromCAD(1:string secret_key, 2:string input_datas, 4:string out_datas),
 //}
+
 
 }

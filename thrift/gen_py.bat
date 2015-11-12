@@ -20,6 +20,7 @@ rem ¸´ÖÆsql.py
 copy /y SQL.py "..\python\cbm\rpc\"
 copy /y SQLServerHelper.py "..\python\cbm\rpc\"
 copy /y SQLClientHelper.py "..\python\cbm\rpc\"
+copy /y CbmRtti.py "..\python\cbm\rpc\"
 
 rem ÔÝÍ£
 pause
