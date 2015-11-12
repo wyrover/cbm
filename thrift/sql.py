@@ -162,6 +162,7 @@ class DesignEvalUnit(Base):
     num = Column(Integer)
     l = Column(Numeric(8, 2))
     t = Column(Integer)
+    gap = Column(Numeric(8, 2))
 
     design_eval_unit_partition = relationship(u'DesignEvalUnitPartition')
 

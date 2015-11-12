@@ -2884,6 +2884,10 @@ class DesignEvalUnit {
    * @var int
    */
   public $t = null;
+  /**
+   * @var double
+   */
+  public $gap = null;
 
   public function __construct($vals=null) {
     if (!isset(self::$_TSPEC)) {
@@ -2916,6 +2920,10 @@ class DesignEvalUnit {
           'var' => 't',
           'type' => TType::I32,
           ),
+        8 => array(
+          'var' => 'gap',
+          'type' => TType::DOUBLE,
+          ),
         );
     }
     if (is_array($vals)) {
@@ -2939,6 +2947,9 @@ class DesignEvalUnit {
       }
       if (isset($vals['t'])) {
         $this->t = $vals['t'];
+      }
+      if (isset($vals['gap'])) {
+        $this->gap = $vals['gap'];
       }
     }
   }
@@ -3011,6 +3022,13 @@ class DesignEvalUnit {
             $xfer += $input->skip($ftype);
           }
           break;
+        case 8:
+          if ($ftype == TType::DOUBLE) {
+            $xfer += $input->readDouble($this->gap);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
         default:
           $xfer += $input->skip($ftype);
           break;
@@ -3057,6 +3075,11 @@ class DesignEvalUnit {
     if ($this->t !== null) {
       $xfer += $output->writeFieldBegin('t', TType::I32, 7);
       $xfer += $output->writeI32($this->t);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->gap !== null) {
+      $xfer += $output->writeFieldBegin('gap', TType::DOUBLE, 8);
+      $xfer += $output->writeDouble($this->gap);
       $xfer += $output->writeFieldEnd();
     }
     $xfer += $output->writeFieldStop();

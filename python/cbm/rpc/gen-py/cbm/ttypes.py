@@ -1743,6 +1743,7 @@ class DesignEvalUnit:
    - num
    - l
    - t
+   - gap
   """
 
   thrift_spec = (
@@ -1754,9 +1755,10 @@ class DesignEvalUnit:
     (5, TType.I32, 'num', None, None, ), # 5
     (6, TType.DOUBLE, 'l', None, None, ), # 6
     (7, TType.I32, 't', None, None, ), # 7
+    (8, TType.DOUBLE, 'gap', None, None, ), # 8
   )
 
-  def __init__(self, id=None, design_eval_unit_partition_id=None, name=None, comment=None, num=None, l=None, t=None,):
+  def __init__(self, id=None, design_eval_unit_partition_id=None, name=None, comment=None, num=None, l=None, t=None, gap=None,):
     self.id = id
     self.design_eval_unit_partition_id = design_eval_unit_partition_id
     self.name = name
@@ -1764,6 +1766,7 @@ class DesignEvalUnit:
     self.num = num
     self.l = l
     self.t = t
+    self.gap = gap
 
   def read(self, iprot):
     if iprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None and fastbinary is not None:
@@ -1809,6 +1812,11 @@ class DesignEvalUnit:
           self.t = iprot.readI32()
         else:
           iprot.skip(ftype)
+      elif fid == 8:
+        if ftype == TType.DOUBLE:
+          self.gap = iprot.readDouble()
+        else:
+          iprot.skip(ftype)
       else:
         iprot.skip(ftype)
       iprot.readFieldEnd()
@@ -1847,6 +1855,10 @@ class DesignEvalUnit:
       oprot.writeFieldBegin('t', TType.I32, 7)
       oprot.writeI32(self.t)
       oprot.writeFieldEnd()
+    if self.gap is not None:
+      oprot.writeFieldBegin('gap', TType.DOUBLE, 8)
+      oprot.writeDouble(self.gap)
+      oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()
 
@@ -1863,6 +1875,7 @@ class DesignEvalUnit:
     value = (value * 31) ^ hash(self.num)
     value = (value * 31) ^ hash(self.l)
     value = (value * 31) ^ hash(self.t)
+    value = (value * 31) ^ hash(self.gap)
     return value
 
   def __repr__(self):

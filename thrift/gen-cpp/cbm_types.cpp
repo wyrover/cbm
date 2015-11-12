@@ -2616,6 +2616,10 @@ void DesignEvalUnit::__set_t(const int32_t val) {
   this->t = val;
 }
 
+void DesignEvalUnit::__set_gap(const double val) {
+  this->gap = val;
+}
+
 uint32_t DesignEvalUnit::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -2693,6 +2697,14 @@ uint32_t DesignEvalUnit::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
+      case 8:
+        if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
+          xfer += iprot->readDouble(this->gap);
+          this->__isset.gap = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -2738,6 +2750,10 @@ uint32_t DesignEvalUnit::write(::apache::thrift::protocol::TProtocol* oprot) con
   xfer += oprot->writeI32(this->t);
   xfer += oprot->writeFieldEnd();
 
+  xfer += oprot->writeFieldBegin("gap", ::apache::thrift::protocol::T_DOUBLE, 8);
+  xfer += oprot->writeDouble(this->gap);
+  xfer += oprot->writeFieldEnd();
+
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -2752,6 +2768,7 @@ void swap(DesignEvalUnit &a, DesignEvalUnit &b) {
   swap(a.num, b.num);
   swap(a.l, b.l);
   swap(a.t, b.t);
+  swap(a.gap, b.gap);
   swap(a.__isset, b.__isset);
 }
 
@@ -2763,6 +2780,7 @@ DesignEvalUnit::DesignEvalUnit(const DesignEvalUnit& other10) {
   num = other10.num;
   l = other10.l;
   t = other10.t;
+  gap = other10.gap;
   __isset = other10.__isset;
 }
 DesignEvalUnit& DesignEvalUnit::operator=(const DesignEvalUnit& other11) {
@@ -2773,6 +2791,7 @@ DesignEvalUnit& DesignEvalUnit::operator=(const DesignEvalUnit& other11) {
   num = other11.num;
   l = other11.l;
   t = other11.t;
+  gap = other11.gap;
   __isset = other11.__isset;
   return *this;
 }
@@ -2786,6 +2805,7 @@ void DesignEvalUnit::printTo(std::ostream& out) const {
   out << ", " << "num=" << to_string(num);
   out << ", " << "l=" << to_string(l);
   out << ", " << "t=" << to_string(t);
+  out << ", " << "gap=" << to_string(gap);
   out << ")";
 }
 

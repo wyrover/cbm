@@ -213,19 +213,20 @@ create table design_drilling_surf_technology
 
 create table design_eval_unit
 (
-   id                   int not null,
+   id                   int not null auto_increment,
    design_eval_unit_partition_id int,
    name                 varchar(255),
    comment              varchar(255),
    num                  int,
    l                    decimal(8,2),
    t                    int,
+   gap                  decimal(8,2),
    primary key (id)
 );
 
 create table design_eval_unit_partition
 (
-   id                   int not null,
+   id                   int not null auto_increment,
    name                 varchar(255),
    comment              varchar(255),
    l2                   decimal(8,2),
@@ -295,7 +296,7 @@ create table design_technology
 
 create table design_tunnel_control_point
 (
-   id                   int not null,
+   id                   int not null auto_increment,
    design_eval_unit_partition_id int,
    name                 varchar(255),
    comment              varchar(255),
@@ -307,7 +308,7 @@ create table design_tunnel_control_point
 
 create table design_work_surf_control_point
 (
-   id                   int not null,
+   id                   int not null auto_increment,
    design_eval_unit_partition_id int,
    name                 varchar(255),
    comment              varchar(255),

@@ -966,7 +966,7 @@ inline std::ostream& operator<<(std::ostream& out, const DesignDrillingSurfTechn
 }
 
 typedef struct _DesignEvalUnit__isset {
-  _DesignEvalUnit__isset() : id(false), design_eval_unit_partition_id(false), name(false), comment(false), num(false), l(false), t(false) {}
+  _DesignEvalUnit__isset() : id(false), design_eval_unit_partition_id(false), name(false), comment(false), num(false), l(false), t(false), gap(false) {}
   bool id :1;
   bool design_eval_unit_partition_id :1;
   bool name :1;
@@ -974,6 +974,7 @@ typedef struct _DesignEvalUnit__isset {
   bool num :1;
   bool l :1;
   bool t :1;
+  bool gap :1;
 } _DesignEvalUnit__isset;
 
 class DesignEvalUnit {
@@ -981,7 +982,7 @@ class DesignEvalUnit {
 
   DesignEvalUnit(const DesignEvalUnit&);
   DesignEvalUnit& operator=(const DesignEvalUnit&);
-  DesignEvalUnit() : id(0), design_eval_unit_partition_id(0), name(), comment(), num(0), l(0), t(0) {
+  DesignEvalUnit() : id(0), design_eval_unit_partition_id(0), name(), comment(), num(0), l(0), t(0), gap(0) {
   }
 
   virtual ~DesignEvalUnit() throw();
@@ -992,6 +993,7 @@ class DesignEvalUnit {
   int32_t num;
   double l;
   int32_t t;
+  double gap;
 
   _DesignEvalUnit__isset __isset;
 
@@ -1009,6 +1011,8 @@ class DesignEvalUnit {
 
   void __set_t(const int32_t val);
 
+  void __set_gap(const double val);
+
   bool operator == (const DesignEvalUnit & rhs) const
   {
     if (!(id == rhs.id))
@@ -1024,6 +1028,8 @@ class DesignEvalUnit {
     if (!(l == rhs.l))
       return false;
     if (!(t == rhs.t))
+      return false;
+    if (!(gap == rhs.gap))
       return false;
     return true;
   }

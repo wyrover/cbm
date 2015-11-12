@@ -101,7 +101,7 @@ function copy_files()
 	//将sql文件复制到cbm项目
 	// copy('cbm-mysql.sql', $projDir.'scripts\sql\cbm-mysql.sql');
 	// copy('cbm-data.sql', $projDir.'scripts\sql\cbm-data.sql');
-	copy('cbm.sql', $projDir.'scripts\sql\cbm.sql');
+	// copy('cbm.sql', $projDir.'scripts\sql\cbm.sql');
 
 	//将php代码复制到cbm项目
 	// copy('root.txt', $projDir.'php\cbm\root.txt');

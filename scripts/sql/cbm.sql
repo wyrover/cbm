@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2015-11-12 13:16:22
+-- Generation Time: 2015-11-12 16:47:06
 -- 服务器版本： 5.6.17
 -- PHP Version: 5.5.12
 
@@ -246,16 +246,30 @@ INSERT INTO `design_drilling_surf_technology` (`id`, `design_technology_id`, `na
 --
 
 CREATE TABLE IF NOT EXISTS `design_eval_unit` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `design_eval_unit_partition_id` int(11) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
   `comment` varchar(255) DEFAULT NULL,
   `num` int(11) DEFAULT NULL,
   `l` decimal(8,2) DEFAULT NULL,
   `t` int(11) DEFAULT NULL,
+  `gap` decimal(8,2) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_relationship_42` (`design_eval_unit_partition_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+
+--
+-- 转存表中的数据 `design_eval_unit`
+--
+
+INSERT INTO `design_eval_unit` (`id`, `design_eval_unit_partition_id`, `name`, `comment`, `num`, `l`, `t`, `gap`) VALUES
+(1, 19, NULL, NULL, 1, '208.75', 198, NULL),
+(2, 19, NULL, NULL, 2, '506.12', 139, NULL),
+(3, 19, NULL, NULL, 3, '714.29', 97, NULL),
+(4, 19, NULL, NULL, 4, '1000.00', 40, NULL),
+(5, 20, NULL, NULL, 1, '182.65', 173, NULL),
+(6, 20, NULL, NULL, 2, '442.86', 121, NULL),
+(7, 20, NULL, NULL, 3, '800.00', 50, NULL);
 
 -- --------------------------------------------------------
 
@@ -264,7 +278,7 @@ CREATE TABLE IF NOT EXISTS `design_eval_unit` (
 --
 
 CREATE TABLE IF NOT EXISTS `design_eval_unit_partition` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   `comment` varchar(255) DEFAULT NULL,
   `l2` decimal(8,2) DEFAULT NULL,
@@ -276,7 +290,15 @@ CREATE TABLE IF NOT EXISTS `design_eval_unit_partition` (
   `t` decimal(8,2) DEFAULT NULL,
   `v` decimal(8,2) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
+
+--
+-- 转存表中的数据 `design_eval_unit_partition`
+--
+
+INSERT INTO `design_eval_unit_partition` (`id`, `name`, `comment`, `l2`, `l1`, `w`, `h`, `l`, `r`, `t`, `v`) VALUES
+(19, NULL, NULL, NULL, NULL, NULL, NULL, '1000.00', '4.00', '40.00', '5.00'),
+(20, NULL, NULL, NULL, NULL, NULL, NULL, '800.00', '4.00', '50.00', '5.00');
 
 -- --------------------------------------------------------
 
@@ -372,7 +394,7 @@ INSERT INTO `design_technology` (`id`, `coal_id`, `name`, `region`, `comment`) V
 --
 
 CREATE TABLE IF NOT EXISTS `design_tunnel_control_point` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `design_eval_unit_partition_id` int(11) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
   `comment` varchar(255) DEFAULT NULL,
@@ -381,7 +403,7 @@ CREATE TABLE IF NOT EXISTS `design_tunnel_control_point` (
   `z` decimal(8,2) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_relationship_40` (`design_eval_unit_partition_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -390,7 +412,7 @@ CREATE TABLE IF NOT EXISTS `design_tunnel_control_point` (
 --
 
 CREATE TABLE IF NOT EXISTS `design_work_surf_control_point` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `design_eval_unit_partition_id` int(11) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
   `comment` varchar(255) DEFAULT NULL,
@@ -399,7 +421,7 @@ CREATE TABLE IF NOT EXISTS `design_work_surf_control_point` (
   `z` decimal(8,2) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_relationship_41` (`design_eval_unit_partition_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 

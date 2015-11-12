@@ -138,6 +138,7 @@ struct DesignEvalUnit {
 	5: i32 num,
 	6: double l,
 	7: i32 t,
+	8: double gap,
 }
 
 struct DesignEvalUnitPartition {

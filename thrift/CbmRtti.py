@@ -129,7 +129,8 @@ info = {
 	"comment":str,
 	"num":int,
 	"l":float,
-	"t":int
+	"t":int,
+	"gap":float
 },
 "DesignEvalUnitPartition":{
 	"id":int,

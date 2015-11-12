@@ -1,6 +1,7 @@
 #-*- coding:utf-8 -*-
 
 from time import ctime,sleep
+from math import pow
 
 from cbm.ttypes import *
 from cbm import CbmService
@@ -371,5 +372,18 @@ def PostJsonDatasFromCAD(secret_key, input_datas, out_datas):
 	except Exception, e:
 		print e
 
-def test():
-	pass
+def Lf(Ln, T, V):
+	c1, c2 = 3.0/7.0, 10.0/7.0
+	Ln_1 = Ln - c2*T*V
+	if Ln_1 <= 0:
+		return []
+
+	Li = [Ln, Ln_1]
+	while True:
+		Ln_1 = c2*Ln_1-c1*Ln - c1*T*V
+		if Ln_1 > 0:
+			Li.append(Ln_1)
+		else:
+			break
+	Li.reverse()
+	return Li
