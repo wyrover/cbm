@@ -246,7 +246,9 @@ def test_sql():
     # design.test_draw_graph_21()
     # design.test_draw_graph_23()
 
-    design.test_design_eval_unit()
+    # design.test_new_design_eval_unit
+    # design.test_design_eval_unit()
+    design.test_draw_desigin_eval_unit()
 
 def main():
   if False:

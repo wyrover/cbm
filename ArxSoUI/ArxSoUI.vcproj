@@ -434,6 +434,10 @@
 				Name="graph"
 				>
 				<File
+					RelativePath=".\EvalUnitGraph.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\Graph.cpp"
 					>
 				</File>
@@ -643,6 +647,10 @@
 				>
 				<File
 					RelativePath=".\DoubleLine.h"
+					>
+				</File>
+				<File
+					RelativePath=".\EvalUnitGraph.h"
 					>
 				</File>
 				<File

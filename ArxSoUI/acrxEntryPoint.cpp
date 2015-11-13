@@ -100,6 +100,11 @@ public:
 		CmdHelper::DrawOccurrenceGraph();
 	}
 
+	static void JL_DrawEvalUnitGraph()
+	{
+		CmdHelper::DrawEvalUnitGraph();
+	}
+
 	static void JL_DrawPlaneGraph11()
 	{
 		CmdHelper::DrawPlaneGraph11();
@@ -167,6 +172,7 @@ ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _xxx, xxx, ACRX_CMD_TRANSPARENT, NU
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _PostJsonDatas, PostJsonDatas, ACRX_CMD_TRANSPARENT, NULL )
 
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _DrawOccurrenceGraph, DrawOccurrenceGraph, ACRX_CMD_TRANSPARENT, NULL )
+ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _DrawEvalUnitGraph, DrawEvalUnitGraph, ACRX_CMD_TRANSPARENT, NULL )
 
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _DrawPlaneGraph11, DrawPlaneGraph11, ACRX_CMD_TRANSPARENT, NULL )
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _DrawHeadGraph11, DrawHeadGraph11, ACRX_CMD_TRANSPARENT, NULL )

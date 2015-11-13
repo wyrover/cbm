@@ -10,6 +10,8 @@ public:
 
 	//绘制煤层赋存图
 	static void DrawOccurrenceGraph();
+	//绘制评价单元划分图
+	static void DrawEvalUnitGraph();
 
 	//钻孔绘图
 	static void DrawPlaneGraph11();

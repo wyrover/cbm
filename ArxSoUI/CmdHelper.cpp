@@ -5,6 +5,7 @@
 #include "CbmClientHelper.h"
 
 #include "OccurrenceGraph.h"
+#include "EvalUnitGraph.h"
 #include "Graph11.h"
 #include "Graph12.h"
 #include "Graph21.h"
@@ -92,6 +93,36 @@ void CmdHelper::DrawOccurrenceGraph()
 
 	//绘制煤层赋存图
 	OccurrenceGraph graph( mine );
+	graph.setPoint( pt );
+	graph.draw();
+}
+
+void CmdHelper::DrawEvalUnitGraph()
+{
+	//int coal_id = -1;
+	//if(RTNORM != acedGetInt(NULL, &coal_id)) return;
+	//if(coal_id == -1) return;
+
+	int eval_unit_partition_id = -1;
+	if(RTNORM != acedGetInt(NULL, &eval_unit_partition_id)) return;
+	if(eval_unit_partition_id == -1) return;
+
+	//cbm::Coal coal;
+	//SQLClientHelper::GetCoalById(coal, coal_id);
+	//if( coal.id < 0 ) return;
+
+	cbm::DesignEvalUnitPartition deup;
+	SQLClientHelper::GetDesignEvalUnitPartitionById(deup, eval_unit_partition_id);
+	if(deup.id < 0 ) return;
+
+	acutPrintf(_T("\n巷道宽度:%.3f"), deup.w);
+
+	//交互选择基点坐标
+	AcGePoint3d pt;
+	ArxUtilHelper::PromptPt( _T( "请选择一点:" ), pt );
+
+	//绘制煤层赋存图
+	EvalUnitGraph graph( deup );
 	graph.setPoint( pt );
 	graph.draw();
 }

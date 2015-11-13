@@ -50,23 +50,46 @@ def test_draw_graph_23():
 	# CbmClientHelper.SendCommandToCAD("JL.DrawHeadGraph23 %d %d" % (coal_id, tech_id), True)
 	# CbmClientHelper.SendCommandToCAD("JL.DrawDipGraph23 %d %d" % (coal_id, tech_id), True)	
 
+# 计算评价单元的距离
+def Lf(Ln, T, V):
+	c1, c2 = 3.0/7.0, 10.0/7.0
+	Ln_1 = Ln - c2*T*V
+	if Ln_1 <= 0:
+		return []
+
+	Li = [Ln, Ln_1]
+	while True:
+		Ln_1 = c2*Ln_1-c1*Ln - c1*T*V
+		if Ln_1 > 0:
+			Li.append(Ln_1)
+		else:
+			break
+	Li.reverse()
+	return Li
+
+def test_new_design_eval_unit():
+	# 准备一组新数据
+	deup = DesignEvalUnitPartition()
+	deup.l1 = 1000.0
+	deup.l2 = 400.0
+	deup.l = 800.0
+	deup.w = 4.0
+	deup.h = 4.0
+	deup.v = 5.0
+	deup.t = 50
+	deup.r = 4.0
+	partition_id = SQLClientHelper.AddDesignEvalUnitPartition(deup)
+	# print deup
+	if(partition_id < 0):
+		print 'faild!'
+	else:
+		print 'new id:%d' % partition_id
+	return partition_id
+
 # 评价单元划分设计
 def test_design_eval_unit():
-	# 准备一组新数据
-	# deup = DesignEvalUnitPartition()
-	# deup.l = 800.0
-	# deup.v = 5.0
-	# deup.t = 50
-	# deup.r = 4.0
-	# partition_id = SQLClientHelper.AddDesignEvalUnitPartition(deup)
-	# print deup
-	# if(partition_id < 0):
-	# 	print 'faild!'
-	# 	return
-	# else:
-	# 	print 'new id:%d' % partition_id
-
-	partition_id = 20
+	# 指定一个设计id
+	partition_id = 21
 	# 查询得到评价单元划分
 	deup = SQLClientHelper.GetDesignEvalUnitPartitionById(partition_id)
 	if deup.id < 0: return
@@ -92,4 +115,6 @@ def test_design_eval_unit():
 		a_eval_unit.design_eval_unit_partition_id = partition_id
 		SQLClientHelper.AddDesignEvalUnit(a_eval_unit)
 
-	
+def test_draw_desigin_eval_unit():
+	coal_id, eval_unit_partition_id = 5, 21
+	CbmClientHelper.SendCommandToCAD("JL.DrawEvalUnitGraph %d" % eval_unit_partition_id, True)

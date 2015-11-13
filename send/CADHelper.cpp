@@ -355,7 +355,7 @@ void SendCommandToCAD_Helper(HWND cadMainWnd, const CString& cmd, bool useEsc)
 	{
 		cmdText.AppendFormat(_T("\r"));
 	}
-	AfxMessageBox(cmdText);
+	//AfxMessageBox(cmdText);
 
 	COPYDATASTRUCT cmdMsg;
 	cmdMsg.dwData=(DWORD)1;
@@ -409,7 +409,7 @@ bool CADHelper::SendCommandToAutoCAD(const CString& cmd, bool useEsc, bool switc
 				//::ShowWindow(hwnd, SW_SHOWNA);
 				//::SetActiveWindow(hwnd);
 				//::SetForegroundWindow(hwnd);
-				//这个API属于微软未公开的API,但好使!!!
+				//这个API属于微软未公开的API,但时好时坏!!!
 				::SwitchToThisWindow(hwnd, TRUE);
 				//AfxMessageBox(_T("激活并切换到CAD窗口"));
 			}

@@ -160,7 +160,7 @@ function __gen_sql_service_handler_of_py_server($file, $tbl_name, $fields, $rela
 
 
 	fwrite($file, TAB."def Get".$clsname."List(self):".ENTER);
-	fwrite($file, TWO_TAB."query = self.session.query(SQL.$clsname).all()".ENTER);
+	fwrite($file, TWO_TAB."query = self.session.query(SQL.$clsname).order_by(SQL.$clsname.id).all()".ENTER);
 	fwrite($file, TWO_TAB."n = len(query)".ENTER);
 	fwrite($file, TWO_TAB."obj_list = [$clsname() for i in range(n)]".ENTER);
     fwrite($file, TWO_TAB."for i in range(n):".ENTER);
@@ -169,7 +169,7 @@ function __gen_sql_service_handler_of_py_server($file, $tbl_name, $fields, $rela
 
 	
 	fwrite($file, TAB."def Get".$clsname."Ids(self):".ENTER);
-	fwrite($file, TWO_TAB."query=self.session.query(SQL.$clsname).all()".ENTER);
+	fwrite($file, TWO_TAB."query=self.session.query(SQL.$clsname).order_by(SQL.$clsname.id).all()".ENTER);
 	fwrite($file, TWO_TAB."return [obj.id for obj in query]".ENTER);
 	
 
@@ -197,7 +197,7 @@ function __gen_sql_service_handler_of_py_server($file, $tbl_name, $fields, $rela
 	
 	fwrite($file, TAB."def __Get".$clsname."ByFields(self, fields):".ENTER);
 	fwrite($file, TWO_TAB."sql_fields = CbmUtil.map_fields(".DBL_QUOT.$clsname.DBL_QUOT.", fields)".ENTER);
-	fwrite($file, TWO_TAB."query = self.session.query(SQL.$clsname).filter_by(**sql_fields).all()".ENTER);
+	fwrite($file, TWO_TAB."query = self.session.query(SQL.$clsname).filter_by(**sql_fields).order_by(SQL.$clsname.id).all()".ENTER);
 	fwrite($file, TWO_TAB."if len(query) == 0:".ENTER);
 	fwrite($file, THREE_TAB."return []".ENTER);
 	fwrite($file, TWO_TAB."else:".ENTER);
@@ -210,7 +210,7 @@ function __gen_sql_service_handler_of_py_server($file, $tbl_name, $fields, $rela
 
     fwrite($file, TAB."def __Get".$clsname."IdsByFields(self, fields):".ENTER);
     fwrite($file, TWO_TAB."sql_fields = CbmUtil.map_fields(".DBL_QUOT.$clsname.DBL_QUOT.", fields)".ENTER);
-	fwrite($file, TWO_TAB."query = self.session.query(SQL.$clsname).filter_by(**sql_fields).all()".ENTER);
+	fwrite($file, TWO_TAB."query = self.session.query(SQL.$clsname).filter_by(**sql_fields).order_by(SQL.$clsname.id).all()".ENTER);
 	fwrite($file, TWO_TAB."if len(query) == 0:".ENTER);
 	fwrite($file, THREE_TAB."return []".ENTER);
 	fwrite($file, TWO_TAB."else:".ENTER);
