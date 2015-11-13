@@ -16,7 +16,7 @@ from dialogs.DrillingRadiusDlg import *
 from dialogs.PoreSizeDlg import *
 from dialogs.PoreFlowDlg import *
 from dialogs.GasDesignDlg import *
-from help.doc import *
+import doc
 
 class MainWindow(QtGui.QMainWindow):  
     def __init__(self,parent=None):  
@@ -122,39 +122,39 @@ class MainWindow(QtGui.QMainWindow):
     	pass
 
     def openOfficeNet(self):
-        OpenNet('http://www.ccri.com.cn/')
+        doc.OpenNet('http://www.ccri.com.cn/')
 
     #查看《煤层气资源勘察技术规范》文档
     def investigationOfCBMResources(self):
-    	OpenPDFFile(u'help\\煤层气资源勘察技术规范.pdf')
+    	doc.OpenPDFFile(u'help\\pdf\\煤层气资源勘察技术规范.pdf')
 
     #查看《保护层开采技术规范》文档
     def protectiveLayerMining(self):
-        OpenPDFFile('help\\保护层开采技术规范.pdf')
+        doc.OpenPDFFile('help\\pdf\\保护层开采技术规范.pdf')
 
     #查看《煤矿瓦斯抽放规范》文档
     def coalMineGasDrainage(self):
-        OpenPDFFile(u'help\\煤矿瓦斯抽放规范.pdf')
+        doc.OpenPDFFile(u'help\\pdf\\煤矿瓦斯抽放规范.pdf')
 
     #查看《煤矿瓦斯抽放技术规范》文档
     def technicalSpecificationCoalMineGasDrainage(self):
-        OpenPDFFile(u'help\\煤矿瓦斯抽放技术规范.pdf')
+        doc.OpenPDFFile(u'help\\pdf\\煤矿瓦斯抽放技术规范.pdf')
 
     #查看《煤矿瓦斯抽采工程设计规范》文档
     def coalMineGasDrainageEngineeringDesign(self):
-        OpenPDFFile(u'help\\煤矿瓦斯抽采工程设计规范.pdf')
+        doc.OpenPDFFile(u'help\\pdf\\煤矿瓦斯抽采工程设计规范.pdf')
 
     #查看《煤矿瓦斯抽采达标暂行规定》文档
     def standardInterimProvisions(self):
-        OpenPDFFile(u'help\\煤矿瓦斯抽采达标暂行规定.pdf')
+        doc.OpenPDFFile(u'help\\pdf\\煤矿瓦斯抽采达标暂行规定.pdf')
 
     #查看《煤层气(煤矿瓦斯)开发利用十二五规划》文档
     def coalGasDevelopment(self):
-        OpenPDFFile(u'help\\煤层气(煤矿瓦斯)开发利用十二五规划.pdf')
+        doc.OpenPDFFile(u'help\\pdf\\煤层气(煤矿瓦斯)开发利用十二五规划.pdf')
 
     #查看《煤矿瓦斯抽采基本指标》文档
     def basicCoalMineGasIndex(self):
-        OpenPDFFile(u'help\\煤矿瓦斯抽采基本指标.pdf')
+        doc.OpenPDFFile(u'help\\pdf\\煤矿瓦斯抽采基本指标.pdf')
 
 
     def buildAction(self,name,tip,trigger):
@@ -193,7 +193,6 @@ class MainWindow(QtGui.QMainWindow):
     	self.regAction(u"帮助文档", u"煤层气(煤矿瓦斯)开发利用十二五规划", u"查看《煤层气(煤矿瓦斯)开发利用十二五规划》文档", self.coalGasDevelopment)
     	self.regAction(u"帮助文档", u"煤矿瓦斯抽采基本指标", u"查看《煤矿瓦斯抽采基本指标》文档", self.basicCoalMineGasIndex)
 
-
     def createMenusToolBars(self):
     	menus = {}
     	toolBars = {}
@@ -223,10 +222,10 @@ def loginFirst():
 	else:  
 		return False  
 
-if __name__ =='__main__':  
-	import sys  
-	app =QtGui.QApplication(sys.argv)  
-	if loginFirst():  
-		mw = MainWindow()  
-		mw.show()
-		app.exec_() 
+def run():
+    import sys
+    app =QtGui.QApplication(sys.argv)
+    if loginFirst():
+        mw = MainWindow()
+        mw.show()
+        app.exec_()
