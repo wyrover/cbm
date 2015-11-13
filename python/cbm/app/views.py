@@ -8,7 +8,7 @@ from flask.ext.babel import gettext
 from datetime import datetime
 from guess_language import guessLanguage
 from app import app, db, login_manager, babel
-from .forms import LoginForm, RegForm, EditForm, PostForm
+from .forms import *
 from .models import User, Post
 from .emails import follower_notification
 from config import POSTS_PER_PAGE, LANGUAGES, DATABASE_QUERY_TIMEOUT
@@ -100,13 +100,26 @@ def logout():
 @app.route('/reg', methods=['GET', 'POST'])
 def reg():
     form = RegForm()
+    if form.validate_on_submit():
+        # 验证用户名和密码是否正确
+        # 验证通过
+        regbool = True
+        if regbool:
+            # 构造注册用户
+            #cbm_user = SQLClientHelper.GetAccountByField1('username', form.username.data)
+            #if cbm_user.id > -1:
+                # 尝试登录(针对flask-login扩展而言,login_user内部会记录当前用户,也就是current_user)
+                #user = User(cbm_user)
+                #login_user(user)
+            return redirect(url_for('login'))
     return render_template('reg.html', form=form)
 
 # 矿井设计
 @app.route('/design', methods=['GET', 'POST'])
 @login_required
 def design():
-    return render_template('design.html')
+    form = DesignForm()
+    return render_template('design.html', form = form)
 
 # 原来的代码(作为参考学习用)
 @app.route('/user/<nickname>')
