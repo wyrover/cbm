@@ -23,6 +23,7 @@ def current_time():
     now = datetime.datetime.now()
     return now.strftime('%Y-%m-%d %H:%M:%S')
 
+# 用户登录(操作数据库)
 def sql_login_user(account_id):
     # 设置当前登录用户(记录到sys_info表)
     sys_info = SysInfo()
@@ -30,6 +31,7 @@ def sql_login_user(account_id):
     sys_info.last_login_time = current_time()
     SQLClientHelper.AddSysInfo(sys_info)
 
+# 用户切换(操作数据库)
 def sql_switch_user(account_id):
 	sys_info = SQLClientHelper.GetSysInfoByFields({})
 	sys_info.account_id = account_id
@@ -52,8 +54,8 @@ class LoginDialog(QtGui.QDialog):
 		self.loginBtn =QtGui.QPushButton(u'登录',self)  
 		self.regBtn =QtGui.QPushButton(u'注册',self)  
 			
-		self.loginBtn.clicked.connect(self.login)  
-		self.regBtn.clicked.connect(self.reg)
+		self.loginBtn.clicked.connect(self.onLogin)  
+		self.regBtn.clicked.connect(self.onReg)
 	
 		layout =QtGui.QVBoxLayout()  
 		layout.addWidget(self.nameEdit)  
@@ -102,14 +104,14 @@ class LoginDialog(QtGui.QDialog):
 		elif pre_account_id == account_id:
 			QtGui.QMessageBox.information(self, u"提示",'您已经登录过了!')
 		else:
-			reply = QtGui.QMessageBox.question(self, u"提示",'是否注销并切换到用户%s?' % uname, QtGui.QMessageBox.Yes, QtGui.QMessageBox.No)
+			reply = QtGui.QMessageBox.question(self, u"提示",'是否注销并切换到用户%s?' % uname.decode('utf-8'), QtGui.QMessageBox.Yes, QtGui.QMessageBox.No)
 			if reply == QtGui.QMessageBox.Yes:
 				# 切换用户
 				sql_switch_user(account_id)
 
-	def login(self):
-		uname = str(self.nameEdit.text())
-		pwd = str(self.passwordEdit.text())
+	def onLogin(self):
+		uname = unicode(self.nameEdit.text()).encode('utf-8')
+		pwd = unicode(self.passwordEdit.text()).encode('utf-8')
 		#验证用户名和密码
 		ret = self.verify_user(uname, pwd)
 		# 验证通过
@@ -122,7 +124,7 @@ class LoginDialog(QtGui.QDialog):
 			# 关闭对话框并返回0
 			self.reject()
 	
-	def reg(self):
-		regDlg = RegDiaolog()  
+	def onReg(self):
+		regDlg = RegDiaolog()
 		if regDlg.exec_():
-			self.nameEdit.setText(regDlg.username)
+			self.nameEdit.setText(regDlg.reg_user_name)
