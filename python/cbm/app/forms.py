@@ -15,6 +15,10 @@ class RegForm(Form):
     password = PasswordField(u'密码', validators=[DataRequired()])
     reg = SubmitField(u'注册')
 
+class DesignForm(Form):
+    username = StringField(u'用户名', validators=[DataRequired(), Length(3, 20)])
+    password = PasswordField(u'密码', validators=[DataRequired()])
+
 class EditForm(Form):
     nickname = StringField('nickname', validators=[DataRequired()])
     about_me = TextAreaField('about_me', validators=[Length(min=0, max=140)])
