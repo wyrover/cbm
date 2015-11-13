@@ -231,6 +231,9 @@ import design
 
 '''
 测试SQLClientHelper模块
+sqlalchemy的delete报错解决方法:
+   http://segmentfault.com/q/1010000000130368
+   http://www.keakon.net/2012/12/03/SQLAlchemy%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C
 '''
 def test_sql():
     # print SQLClientHelper.GetMineBaseNames()
@@ -248,7 +251,9 @@ def test_sql():
 
     # design.test_new_design_eval_unit
     # design.test_design_eval_unit()
-    design.test_draw_desigin_eval_unit()
+    # design.test_draw_desigin_eval_unit()
+
+    SQLClientHelper.DeleteMoreSysInfo(SQLClientHelper.GetSysInfoIds())
 
 def main():
   if False:

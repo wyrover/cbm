@@ -110,9 +110,9 @@ class CbmServiceHandler(SQLServerHelper.SQLServiceHandler):
                 print e
         return mine
 
-    def VerifyMineAccount(self, username, pwd):
+    def VerifyMineAccount(self, uname, pwd):
         print '. VerifyMineAccount'
-        query = self.session.query(SQL.Account).filter(SQL.Account.username==username)
+        query = self.session.query(SQL.Account).filter(SQL.Account.username==uname)
         if query.count() == 0:
             return 0  # 用户名不存在
         elif query.count() > 1:

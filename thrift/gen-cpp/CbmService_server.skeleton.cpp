@@ -4537,7 +4537,7 @@ class CbmServiceHandler : virtual public CbmServiceIf {
     printf("GetOnlineMine\n");
   }
 
-  int32_t VerifyMineAccount(const std::string& username, const std::string& pwd) {
+  int32_t VerifyMineAccount(const std::string& uname, const std::string& pwd) {
     // Your implementation goes here
     printf("VerifyMineAccount\n");
   }

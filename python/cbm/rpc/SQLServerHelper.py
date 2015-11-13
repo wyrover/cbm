@@ -20,7 +20,7 @@ class SQLServiceHandler(object):
 	def DeleteAccount(self, id):
 		ret=True
 		try:
-			self.session.query(SQL.Account).filter(SQL.Account.id==id).delete()
+			self.session.query(SQL.Account).filter(SQL.Account.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -33,7 +33,7 @@ class SQLServiceHandler(object):
 			CbmUtil.CopyAttribsOfCbmType("Account", account, sql_obj)
 			attribs = CbmUtil.GetAttribsOfCbmType("Account", sql_obj)
 			del attribs['id']
-			self.session.query(SQL.Account).filter(SQL.Account.id==sql_obj.id).update(attribs)
+			self.session.query(SQL.Account).filter(SQL.Account.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -76,7 +76,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreAccount(self, obj_ids):
-		self.session.query(SQL.Account).filter(SQL.Account.id.in_(obj_ids)).delete()
+		self.session.query(SQL.Account).filter(SQL.Account.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetAccountByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("Account", fields)
@@ -121,9 +121,9 @@ class SQLServiceHandler(object):
 		else:
 			return obj_ids[0]
 	def GetAccountIdByField1(self, field, value):
-		return self.GetAccountIdsByFields({field:value})
+		return self.GetAccountIdByFields({field:value})
 	def GetAccountIdByField2(self, field1, value1, field2, value2):
-		return self.GetAccountIdsByFields({field1:value1, field2:value2})
+		return self.GetAccountIdByFields({field1:value1, field2:value2})
 	def GetAccountIdListByFields(self, fields):
 		return self.__GetAccountIdsByFields(fields)
 	def GetAccountIdListByField1(self, field, value):
@@ -146,7 +146,7 @@ class SQLServiceHandler(object):
 	def DeleteAdjLayer(self, id):
 		ret=True
 		try:
-			self.session.query(SQL.AdjLayer).filter(SQL.AdjLayer.id==id).delete()
+			self.session.query(SQL.AdjLayer).filter(SQL.AdjLayer.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -159,7 +159,7 @@ class SQLServiceHandler(object):
 			CbmUtil.CopyAttribsOfCbmType("AdjLayer", adj_layer, sql_obj)
 			attribs = CbmUtil.GetAttribsOfCbmType("AdjLayer", sql_obj)
 			del attribs['id']
-			self.session.query(SQL.AdjLayer).filter(SQL.AdjLayer.id==sql_obj.id).update(attribs)
+			self.session.query(SQL.AdjLayer).filter(SQL.AdjLayer.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -202,7 +202,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreAdjLayer(self, obj_ids):
-		self.session.query(SQL.AdjLayer).filter(SQL.AdjLayer.id.in_(obj_ids)).delete()
+		self.session.query(SQL.AdjLayer).filter(SQL.AdjLayer.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetAdjLayerByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("AdjLayer", fields)
@@ -247,9 +247,9 @@ class SQLServiceHandler(object):
 		else:
 			return obj_ids[0]
 	def GetAdjLayerIdByField1(self, field, value):
-		return self.GetAdjLayerIdsByFields({field:value})
+		return self.GetAdjLayerIdByFields({field:value})
 	def GetAdjLayerIdByField2(self, field1, value1, field2, value2):
-		return self.GetAdjLayerIdsByFields({field1:value1, field2:value2})
+		return self.GetAdjLayerIdByFields({field1:value1, field2:value2})
 	def GetAdjLayerIdListByFields(self, fields):
 		return self.__GetAdjLayerIdsByFields(fields)
 	def GetAdjLayerIdListByField1(self, field, value):
@@ -272,7 +272,7 @@ class SQLServiceHandler(object):
 	def DeleteCoal(self, id):
 		ret=True
 		try:
-			self.session.query(SQL.Coal).filter(SQL.Coal.id==id).delete()
+			self.session.query(SQL.Coal).filter(SQL.Coal.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -285,7 +285,7 @@ class SQLServiceHandler(object):
 			CbmUtil.CopyAttribsOfCbmType("Coal", coal, sql_obj)
 			attribs = CbmUtil.GetAttribsOfCbmType("Coal", sql_obj)
 			del attribs['id']
-			self.session.query(SQL.Coal).filter(SQL.Coal.id==sql_obj.id).update(attribs)
+			self.session.query(SQL.Coal).filter(SQL.Coal.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -328,7 +328,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreCoal(self, obj_ids):
-		self.session.query(SQL.Coal).filter(SQL.Coal.id.in_(obj_ids)).delete()
+		self.session.query(SQL.Coal).filter(SQL.Coal.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetCoalByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("Coal", fields)
@@ -373,9 +373,9 @@ class SQLServiceHandler(object):
 		else:
 			return obj_ids[0]
 	def GetCoalIdByField1(self, field, value):
-		return self.GetCoalIdsByFields({field:value})
+		return self.GetCoalIdByFields({field:value})
 	def GetCoalIdByField2(self, field1, value1, field2, value2):
-		return self.GetCoalIdsByFields({field1:value1, field2:value2})
+		return self.GetCoalIdByFields({field1:value1, field2:value2})
 	def GetCoalIdListByFields(self, fields):
 		return self.__GetCoalIdsByFields(fields)
 	def GetCoalIdListByField1(self, field, value):
@@ -398,7 +398,7 @@ class SQLServiceHandler(object):
 	def DeleteComplexity(self, id):
 		ret=True
 		try:
-			self.session.query(SQL.Complexity).filter(SQL.Complexity.id==id).delete()
+			self.session.query(SQL.Complexity).filter(SQL.Complexity.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -411,7 +411,7 @@ class SQLServiceHandler(object):
 			CbmUtil.CopyAttribsOfCbmType("Complexity", complexity, sql_obj)
 			attribs = CbmUtil.GetAttribsOfCbmType("Complexity", sql_obj)
 			del attribs['id']
-			self.session.query(SQL.Complexity).filter(SQL.Complexity.id==sql_obj.id).update(attribs)
+			self.session.query(SQL.Complexity).filter(SQL.Complexity.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -454,7 +454,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreComplexity(self, obj_ids):
-		self.session.query(SQL.Complexity).filter(SQL.Complexity.id.in_(obj_ids)).delete()
+		self.session.query(SQL.Complexity).filter(SQL.Complexity.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetComplexityByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("Complexity", fields)
@@ -499,9 +499,9 @@ class SQLServiceHandler(object):
 		else:
 			return obj_ids[0]
 	def GetComplexityIdByField1(self, field, value):
-		return self.GetComplexityIdsByFields({field:value})
+		return self.GetComplexityIdByFields({field:value})
 	def GetComplexityIdByField2(self, field1, value1, field2, value2):
-		return self.GetComplexityIdsByFields({field1:value1, field2:value2})
+		return self.GetComplexityIdByFields({field1:value1, field2:value2})
 	def GetComplexityIdListByFields(self, fields):
 		return self.__GetComplexityIdsByFields(fields)
 	def GetComplexityIdListByField1(self, field, value):
@@ -524,7 +524,7 @@ class SQLServiceHandler(object):
 	def DeleteDesignDrillingSurfTechnology(self, id):
 		ret=True
 		try:
-			self.session.query(SQL.DesignDrillingSurfTechnology).filter(SQL.DesignDrillingSurfTechnology.id==id).delete()
+			self.session.query(SQL.DesignDrillingSurfTechnology).filter(SQL.DesignDrillingSurfTechnology.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -537,7 +537,7 @@ class SQLServiceHandler(object):
 			CbmUtil.CopyAttribsOfCbmType("DesignDrillingSurfTechnology", design_drilling_surf_technology, sql_obj)
 			attribs = CbmUtil.GetAttribsOfCbmType("DesignDrillingSurfTechnology", sql_obj)
 			del attribs['id']
-			self.session.query(SQL.DesignDrillingSurfTechnology).filter(SQL.DesignDrillingSurfTechnology.id==sql_obj.id).update(attribs)
+			self.session.query(SQL.DesignDrillingSurfTechnology).filter(SQL.DesignDrillingSurfTechnology.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -580,7 +580,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreDesignDrillingSurfTechnology(self, obj_ids):
-		self.session.query(SQL.DesignDrillingSurfTechnology).filter(SQL.DesignDrillingSurfTechnology.id.in_(obj_ids)).delete()
+		self.session.query(SQL.DesignDrillingSurfTechnology).filter(SQL.DesignDrillingSurfTechnology.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetDesignDrillingSurfTechnologyByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("DesignDrillingSurfTechnology", fields)
@@ -625,9 +625,9 @@ class SQLServiceHandler(object):
 		else:
 			return obj_ids[0]
 	def GetDesignDrillingSurfTechnologyIdByField1(self, field, value):
-		return self.GetDesignDrillingSurfTechnologyIdsByFields({field:value})
+		return self.GetDesignDrillingSurfTechnologyIdByFields({field:value})
 	def GetDesignDrillingSurfTechnologyIdByField2(self, field1, value1, field2, value2):
-		return self.GetDesignDrillingSurfTechnologyIdsByFields({field1:value1, field2:value2})
+		return self.GetDesignDrillingSurfTechnologyIdByFields({field1:value1, field2:value2})
 	def GetDesignDrillingSurfTechnologyIdListByFields(self, fields):
 		return self.__GetDesignDrillingSurfTechnologyIdsByFields(fields)
 	def GetDesignDrillingSurfTechnologyIdListByField1(self, field, value):
@@ -650,7 +650,7 @@ class SQLServiceHandler(object):
 	def DeleteDesignEvalUnit(self, id):
 		ret=True
 		try:
-			self.session.query(SQL.DesignEvalUnit).filter(SQL.DesignEvalUnit.id==id).delete()
+			self.session.query(SQL.DesignEvalUnit).filter(SQL.DesignEvalUnit.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -663,7 +663,7 @@ class SQLServiceHandler(object):
 			CbmUtil.CopyAttribsOfCbmType("DesignEvalUnit", design_eval_unit, sql_obj)
 			attribs = CbmUtil.GetAttribsOfCbmType("DesignEvalUnit", sql_obj)
 			del attribs['id']
-			self.session.query(SQL.DesignEvalUnit).filter(SQL.DesignEvalUnit.id==sql_obj.id).update(attribs)
+			self.session.query(SQL.DesignEvalUnit).filter(SQL.DesignEvalUnit.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -706,7 +706,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreDesignEvalUnit(self, obj_ids):
-		self.session.query(SQL.DesignEvalUnit).filter(SQL.DesignEvalUnit.id.in_(obj_ids)).delete()
+		self.session.query(SQL.DesignEvalUnit).filter(SQL.DesignEvalUnit.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetDesignEvalUnitByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("DesignEvalUnit", fields)
@@ -751,9 +751,9 @@ class SQLServiceHandler(object):
 		else:
 			return obj_ids[0]
 	def GetDesignEvalUnitIdByField1(self, field, value):
-		return self.GetDesignEvalUnitIdsByFields({field:value})
+		return self.GetDesignEvalUnitIdByFields({field:value})
 	def GetDesignEvalUnitIdByField2(self, field1, value1, field2, value2):
-		return self.GetDesignEvalUnitIdsByFields({field1:value1, field2:value2})
+		return self.GetDesignEvalUnitIdByFields({field1:value1, field2:value2})
 	def GetDesignEvalUnitIdListByFields(self, fields):
 		return self.__GetDesignEvalUnitIdsByFields(fields)
 	def GetDesignEvalUnitIdListByField1(self, field, value):
@@ -776,7 +776,7 @@ class SQLServiceHandler(object):
 	def DeleteDesignEvalUnitPartition(self, id):
 		ret=True
 		try:
-			self.session.query(SQL.DesignEvalUnitPartition).filter(SQL.DesignEvalUnitPartition.id==id).delete()
+			self.session.query(SQL.DesignEvalUnitPartition).filter(SQL.DesignEvalUnitPartition.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -789,7 +789,7 @@ class SQLServiceHandler(object):
 			CbmUtil.CopyAttribsOfCbmType("DesignEvalUnitPartition", design_eval_unit_partition, sql_obj)
 			attribs = CbmUtil.GetAttribsOfCbmType("DesignEvalUnitPartition", sql_obj)
 			del attribs['id']
-			self.session.query(SQL.DesignEvalUnitPartition).filter(SQL.DesignEvalUnitPartition.id==sql_obj.id).update(attribs)
+			self.session.query(SQL.DesignEvalUnitPartition).filter(SQL.DesignEvalUnitPartition.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -832,7 +832,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreDesignEvalUnitPartition(self, obj_ids):
-		self.session.query(SQL.DesignEvalUnitPartition).filter(SQL.DesignEvalUnitPartition.id.in_(obj_ids)).delete()
+		self.session.query(SQL.DesignEvalUnitPartition).filter(SQL.DesignEvalUnitPartition.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetDesignEvalUnitPartitionByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("DesignEvalUnitPartition", fields)
@@ -877,9 +877,9 @@ class SQLServiceHandler(object):
 		else:
 			return obj_ids[0]
 	def GetDesignEvalUnitPartitionIdByField1(self, field, value):
-		return self.GetDesignEvalUnitPartitionIdsByFields({field:value})
+		return self.GetDesignEvalUnitPartitionIdByFields({field:value})
 	def GetDesignEvalUnitPartitionIdByField2(self, field1, value1, field2, value2):
-		return self.GetDesignEvalUnitPartitionIdsByFields({field1:value1, field2:value2})
+		return self.GetDesignEvalUnitPartitionIdByFields({field1:value1, field2:value2})
 	def GetDesignEvalUnitPartitionIdListByFields(self, fields):
 		return self.__GetDesignEvalUnitPartitionIdsByFields(fields)
 	def GetDesignEvalUnitPartitionIdListByField1(self, field, value):
@@ -902,7 +902,7 @@ class SQLServiceHandler(object):
 	def DeleteDesignGoafTechnology(self, id):
 		ret=True
 		try:
-			self.session.query(SQL.DesignGoafTechnology).filter(SQL.DesignGoafTechnology.id==id).delete()
+			self.session.query(SQL.DesignGoafTechnology).filter(SQL.DesignGoafTechnology.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -915,7 +915,7 @@ class SQLServiceHandler(object):
 			CbmUtil.CopyAttribsOfCbmType("DesignGoafTechnology", design_goaf_technology, sql_obj)
 			attribs = CbmUtil.GetAttribsOfCbmType("DesignGoafTechnology", sql_obj)
 			del attribs['id']
-			self.session.query(SQL.DesignGoafTechnology).filter(SQL.DesignGoafTechnology.id==sql_obj.id).update(attribs)
+			self.session.query(SQL.DesignGoafTechnology).filter(SQL.DesignGoafTechnology.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -958,7 +958,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreDesignGoafTechnology(self, obj_ids):
-		self.session.query(SQL.DesignGoafTechnology).filter(SQL.DesignGoafTechnology.id.in_(obj_ids)).delete()
+		self.session.query(SQL.DesignGoafTechnology).filter(SQL.DesignGoafTechnology.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetDesignGoafTechnologyByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("DesignGoafTechnology", fields)
@@ -1003,9 +1003,9 @@ class SQLServiceHandler(object):
 		else:
 			return obj_ids[0]
 	def GetDesignGoafTechnologyIdByField1(self, field, value):
-		return self.GetDesignGoafTechnologyIdsByFields({field:value})
+		return self.GetDesignGoafTechnologyIdByFields({field:value})
 	def GetDesignGoafTechnologyIdByField2(self, field1, value1, field2, value2):
-		return self.GetDesignGoafTechnologyIdsByFields({field1:value1, field2:value2})
+		return self.GetDesignGoafTechnologyIdByFields({field1:value1, field2:value2})
 	def GetDesignGoafTechnologyIdListByFields(self, fields):
 		return self.__GetDesignGoafTechnologyIdsByFields(fields)
 	def GetDesignGoafTechnologyIdListByField1(self, field, value):
@@ -1028,7 +1028,7 @@ class SQLServiceHandler(object):
 	def DeleteDesignPore(self, id):
 		ret=True
 		try:
-			self.session.query(SQL.DesignPore).filter(SQL.DesignPore.id==id).delete()
+			self.session.query(SQL.DesignPore).filter(SQL.DesignPore.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -1041,7 +1041,7 @@ class SQLServiceHandler(object):
 			CbmUtil.CopyAttribsOfCbmType("DesignPore", design_pore, sql_obj)
 			attribs = CbmUtil.GetAttribsOfCbmType("DesignPore", sql_obj)
 			del attribs['id']
-			self.session.query(SQL.DesignPore).filter(SQL.DesignPore.id==sql_obj.id).update(attribs)
+			self.session.query(SQL.DesignPore).filter(SQL.DesignPore.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -1084,7 +1084,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreDesignPore(self, obj_ids):
-		self.session.query(SQL.DesignPore).filter(SQL.DesignPore.id.in_(obj_ids)).delete()
+		self.session.query(SQL.DesignPore).filter(SQL.DesignPore.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetDesignPoreByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("DesignPore", fields)
@@ -1129,9 +1129,9 @@ class SQLServiceHandler(object):
 		else:
 			return obj_ids[0]
 	def GetDesignPoreIdByField1(self, field, value):
-		return self.GetDesignPoreIdsByFields({field:value})
+		return self.GetDesignPoreIdByFields({field:value})
 	def GetDesignPoreIdByField2(self, field1, value1, field2, value2):
-		return self.GetDesignPoreIdsByFields({field1:value1, field2:value2})
+		return self.GetDesignPoreIdByFields({field1:value1, field2:value2})
 	def GetDesignPoreIdListByFields(self, fields):
 		return self.__GetDesignPoreIdsByFields(fields)
 	def GetDesignPoreIdListByField1(self, field, value):
@@ -1154,7 +1154,7 @@ class SQLServiceHandler(object):
 	def DeleteDesignSite(self, id):
 		ret=True
 		try:
-			self.session.query(SQL.DesignSite).filter(SQL.DesignSite.id==id).delete()
+			self.session.query(SQL.DesignSite).filter(SQL.DesignSite.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -1167,7 +1167,7 @@ class SQLServiceHandler(object):
 			CbmUtil.CopyAttribsOfCbmType("DesignSite", design_site, sql_obj)
 			attribs = CbmUtil.GetAttribsOfCbmType("DesignSite", sql_obj)
 			del attribs['id']
-			self.session.query(SQL.DesignSite).filter(SQL.DesignSite.id==sql_obj.id).update(attribs)
+			self.session.query(SQL.DesignSite).filter(SQL.DesignSite.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -1210,7 +1210,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreDesignSite(self, obj_ids):
-		self.session.query(SQL.DesignSite).filter(SQL.DesignSite.id.in_(obj_ids)).delete()
+		self.session.query(SQL.DesignSite).filter(SQL.DesignSite.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetDesignSiteByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("DesignSite", fields)
@@ -1255,9 +1255,9 @@ class SQLServiceHandler(object):
 		else:
 			return obj_ids[0]
 	def GetDesignSiteIdByField1(self, field, value):
-		return self.GetDesignSiteIdsByFields({field:value})
+		return self.GetDesignSiteIdByFields({field:value})
 	def GetDesignSiteIdByField2(self, field1, value1, field2, value2):
-		return self.GetDesignSiteIdsByFields({field1:value1, field2:value2})
+		return self.GetDesignSiteIdByFields({field1:value1, field2:value2})
 	def GetDesignSiteIdListByFields(self, fields):
 		return self.__GetDesignSiteIdsByFields(fields)
 	def GetDesignSiteIdListByField1(self, field, value):
@@ -1280,7 +1280,7 @@ class SQLServiceHandler(object):
 	def DeleteDesignTechnology(self, id):
 		ret=True
 		try:
-			self.session.query(SQL.DesignTechnology).filter(SQL.DesignTechnology.id==id).delete()
+			self.session.query(SQL.DesignTechnology).filter(SQL.DesignTechnology.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -1293,7 +1293,7 @@ class SQLServiceHandler(object):
 			CbmUtil.CopyAttribsOfCbmType("DesignTechnology", design_technology, sql_obj)
 			attribs = CbmUtil.GetAttribsOfCbmType("DesignTechnology", sql_obj)
 			del attribs['id']
-			self.session.query(SQL.DesignTechnology).filter(SQL.DesignTechnology.id==sql_obj.id).update(attribs)
+			self.session.query(SQL.DesignTechnology).filter(SQL.DesignTechnology.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -1336,7 +1336,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreDesignTechnology(self, obj_ids):
-		self.session.query(SQL.DesignTechnology).filter(SQL.DesignTechnology.id.in_(obj_ids)).delete()
+		self.session.query(SQL.DesignTechnology).filter(SQL.DesignTechnology.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetDesignTechnologyByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("DesignTechnology", fields)
@@ -1381,9 +1381,9 @@ class SQLServiceHandler(object):
 		else:
 			return obj_ids[0]
 	def GetDesignTechnologyIdByField1(self, field, value):
-		return self.GetDesignTechnologyIdsByFields({field:value})
+		return self.GetDesignTechnologyIdByFields({field:value})
 	def GetDesignTechnologyIdByField2(self, field1, value1, field2, value2):
-		return self.GetDesignTechnologyIdsByFields({field1:value1, field2:value2})
+		return self.GetDesignTechnologyIdByFields({field1:value1, field2:value2})
 	def GetDesignTechnologyIdListByFields(self, fields):
 		return self.__GetDesignTechnologyIdsByFields(fields)
 	def GetDesignTechnologyIdListByField1(self, field, value):
@@ -1406,7 +1406,7 @@ class SQLServiceHandler(object):
 	def DeleteDesignTunnelControlPoint(self, id):
 		ret=True
 		try:
-			self.session.query(SQL.DesignTunnelControlPoint).filter(SQL.DesignTunnelControlPoint.id==id).delete()
+			self.session.query(SQL.DesignTunnelControlPoint).filter(SQL.DesignTunnelControlPoint.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -1419,7 +1419,7 @@ class SQLServiceHandler(object):
 			CbmUtil.CopyAttribsOfCbmType("DesignTunnelControlPoint", design_tunnel_control_point, sql_obj)
 			attribs = CbmUtil.GetAttribsOfCbmType("DesignTunnelControlPoint", sql_obj)
 			del attribs['id']
-			self.session.query(SQL.DesignTunnelControlPoint).filter(SQL.DesignTunnelControlPoint.id==sql_obj.id).update(attribs)
+			self.session.query(SQL.DesignTunnelControlPoint).filter(SQL.DesignTunnelControlPoint.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -1462,7 +1462,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreDesignTunnelControlPoint(self, obj_ids):
-		self.session.query(SQL.DesignTunnelControlPoint).filter(SQL.DesignTunnelControlPoint.id.in_(obj_ids)).delete()
+		self.session.query(SQL.DesignTunnelControlPoint).filter(SQL.DesignTunnelControlPoint.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetDesignTunnelControlPointByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("DesignTunnelControlPoint", fields)
@@ -1507,9 +1507,9 @@ class SQLServiceHandler(object):
 		else:
 			return obj_ids[0]
 	def GetDesignTunnelControlPointIdByField1(self, field, value):
-		return self.GetDesignTunnelControlPointIdsByFields({field:value})
+		return self.GetDesignTunnelControlPointIdByFields({field:value})
 	def GetDesignTunnelControlPointIdByField2(self, field1, value1, field2, value2):
-		return self.GetDesignTunnelControlPointIdsByFields({field1:value1, field2:value2})
+		return self.GetDesignTunnelControlPointIdByFields({field1:value1, field2:value2})
 	def GetDesignTunnelControlPointIdListByFields(self, fields):
 		return self.__GetDesignTunnelControlPointIdsByFields(fields)
 	def GetDesignTunnelControlPointIdListByField1(self, field, value):
@@ -1532,7 +1532,7 @@ class SQLServiceHandler(object):
 	def DeleteDesignWorkSurfControlPoint(self, id):
 		ret=True
 		try:
-			self.session.query(SQL.DesignWorkSurfControlPoint).filter(SQL.DesignWorkSurfControlPoint.id==id).delete()
+			self.session.query(SQL.DesignWorkSurfControlPoint).filter(SQL.DesignWorkSurfControlPoint.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -1545,7 +1545,7 @@ class SQLServiceHandler(object):
 			CbmUtil.CopyAttribsOfCbmType("DesignWorkSurfControlPoint", design_work_surf_control_point, sql_obj)
 			attribs = CbmUtil.GetAttribsOfCbmType("DesignWorkSurfControlPoint", sql_obj)
 			del attribs['id']
-			self.session.query(SQL.DesignWorkSurfControlPoint).filter(SQL.DesignWorkSurfControlPoint.id==sql_obj.id).update(attribs)
+			self.session.query(SQL.DesignWorkSurfControlPoint).filter(SQL.DesignWorkSurfControlPoint.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -1588,7 +1588,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreDesignWorkSurfControlPoint(self, obj_ids):
-		self.session.query(SQL.DesignWorkSurfControlPoint).filter(SQL.DesignWorkSurfControlPoint.id.in_(obj_ids)).delete()
+		self.session.query(SQL.DesignWorkSurfControlPoint).filter(SQL.DesignWorkSurfControlPoint.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetDesignWorkSurfControlPointByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("DesignWorkSurfControlPoint", fields)
@@ -1633,9 +1633,9 @@ class SQLServiceHandler(object):
 		else:
 			return obj_ids[0]
 	def GetDesignWorkSurfControlPointIdByField1(self, field, value):
-		return self.GetDesignWorkSurfControlPointIdsByFields({field:value})
+		return self.GetDesignWorkSurfControlPointIdByFields({field:value})
 	def GetDesignWorkSurfControlPointIdByField2(self, field1, value1, field2, value2):
-		return self.GetDesignWorkSurfControlPointIdsByFields({field1:value1, field2:value2})
+		return self.GetDesignWorkSurfControlPointIdByFields({field1:value1, field2:value2})
 	def GetDesignWorkSurfControlPointIdListByFields(self, fields):
 		return self.__GetDesignWorkSurfControlPointIdsByFields(fields)
 	def GetDesignWorkSurfControlPointIdListByField1(self, field, value):
@@ -1658,7 +1658,7 @@ class SQLServiceHandler(object):
 	def DeleteDesignWorkSurfTechnology(self, id):
 		ret=True
 		try:
-			self.session.query(SQL.DesignWorkSurfTechnology).filter(SQL.DesignWorkSurfTechnology.id==id).delete()
+			self.session.query(SQL.DesignWorkSurfTechnology).filter(SQL.DesignWorkSurfTechnology.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -1671,7 +1671,7 @@ class SQLServiceHandler(object):
 			CbmUtil.CopyAttribsOfCbmType("DesignWorkSurfTechnology", design_work_surf_technology, sql_obj)
 			attribs = CbmUtil.GetAttribsOfCbmType("DesignWorkSurfTechnology", sql_obj)
 			del attribs['id']
-			self.session.query(SQL.DesignWorkSurfTechnology).filter(SQL.DesignWorkSurfTechnology.id==sql_obj.id).update(attribs)
+			self.session.query(SQL.DesignWorkSurfTechnology).filter(SQL.DesignWorkSurfTechnology.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -1714,7 +1714,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreDesignWorkSurfTechnology(self, obj_ids):
-		self.session.query(SQL.DesignWorkSurfTechnology).filter(SQL.DesignWorkSurfTechnology.id.in_(obj_ids)).delete()
+		self.session.query(SQL.DesignWorkSurfTechnology).filter(SQL.DesignWorkSurfTechnology.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetDesignWorkSurfTechnologyByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("DesignWorkSurfTechnology", fields)
@@ -1759,9 +1759,9 @@ class SQLServiceHandler(object):
 		else:
 			return obj_ids[0]
 	def GetDesignWorkSurfTechnologyIdByField1(self, field, value):
-		return self.GetDesignWorkSurfTechnologyIdsByFields({field:value})
+		return self.GetDesignWorkSurfTechnologyIdByFields({field:value})
 	def GetDesignWorkSurfTechnologyIdByField2(self, field1, value1, field2, value2):
-		return self.GetDesignWorkSurfTechnologyIdsByFields({field1:value1, field2:value2})
+		return self.GetDesignWorkSurfTechnologyIdByFields({field1:value1, field2:value2})
 	def GetDesignWorkSurfTechnologyIdListByFields(self, fields):
 		return self.__GetDesignWorkSurfTechnologyIdsByFields(fields)
 	def GetDesignWorkSurfTechnologyIdListByField1(self, field, value):
@@ -1784,7 +1784,7 @@ class SQLServiceHandler(object):
 	def DeleteDrillingRadiusParam(self, id):
 		ret=True
 		try:
-			self.session.query(SQL.DrillingRadiusParam).filter(SQL.DrillingRadiusParam.id==id).delete()
+			self.session.query(SQL.DrillingRadiusParam).filter(SQL.DrillingRadiusParam.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -1797,7 +1797,7 @@ class SQLServiceHandler(object):
 			CbmUtil.CopyAttribsOfCbmType("DrillingRadiusParam", drilling_radius_param, sql_obj)
 			attribs = CbmUtil.GetAttribsOfCbmType("DrillingRadiusParam", sql_obj)
 			del attribs['id']
-			self.session.query(SQL.DrillingRadiusParam).filter(SQL.DrillingRadiusParam.id==sql_obj.id).update(attribs)
+			self.session.query(SQL.DrillingRadiusParam).filter(SQL.DrillingRadiusParam.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -1840,7 +1840,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreDrillingRadiusParam(self, obj_ids):
-		self.session.query(SQL.DrillingRadiusParam).filter(SQL.DrillingRadiusParam.id.in_(obj_ids)).delete()
+		self.session.query(SQL.DrillingRadiusParam).filter(SQL.DrillingRadiusParam.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetDrillingRadiusParamByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("DrillingRadiusParam", fields)
@@ -1885,9 +1885,9 @@ class SQLServiceHandler(object):
 		else:
 			return obj_ids[0]
 	def GetDrillingRadiusParamIdByField1(self, field, value):
-		return self.GetDrillingRadiusParamIdsByFields({field:value})
+		return self.GetDrillingRadiusParamIdByFields({field:value})
 	def GetDrillingRadiusParamIdByField2(self, field1, value1, field2, value2):
-		return self.GetDrillingRadiusParamIdsByFields({field1:value1, field2:value2})
+		return self.GetDrillingRadiusParamIdByFields({field1:value1, field2:value2})
 	def GetDrillingRadiusParamIdListByFields(self, fields):
 		return self.__GetDrillingRadiusParamIdsByFields(fields)
 	def GetDrillingRadiusParamIdListByField1(self, field, value):
@@ -1910,7 +1910,7 @@ class SQLServiceHandler(object):
 	def DeleteDrillingSurf(self, id):
 		ret=True
 		try:
-			self.session.query(SQL.DrillingSurf).filter(SQL.DrillingSurf.id==id).delete()
+			self.session.query(SQL.DrillingSurf).filter(SQL.DrillingSurf.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -1923,7 +1923,7 @@ class SQLServiceHandler(object):
 			CbmUtil.CopyAttribsOfCbmType("DrillingSurf", drilling_surf, sql_obj)
 			attribs = CbmUtil.GetAttribsOfCbmType("DrillingSurf", sql_obj)
 			del attribs['id']
-			self.session.query(SQL.DrillingSurf).filter(SQL.DrillingSurf.id==sql_obj.id).update(attribs)
+			self.session.query(SQL.DrillingSurf).filter(SQL.DrillingSurf.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -1966,7 +1966,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreDrillingSurf(self, obj_ids):
-		self.session.query(SQL.DrillingSurf).filter(SQL.DrillingSurf.id.in_(obj_ids)).delete()
+		self.session.query(SQL.DrillingSurf).filter(SQL.DrillingSurf.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetDrillingSurfByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("DrillingSurf", fields)
@@ -2011,9 +2011,9 @@ class SQLServiceHandler(object):
 		else:
 			return obj_ids[0]
 	def GetDrillingSurfIdByField1(self, field, value):
-		return self.GetDrillingSurfIdsByFields({field:value})
+		return self.GetDrillingSurfIdByFields({field:value})
 	def GetDrillingSurfIdByField2(self, field1, value1, field2, value2):
-		return self.GetDrillingSurfIdsByFields({field1:value1, field2:value2})
+		return self.GetDrillingSurfIdByFields({field1:value1, field2:value2})
 	def GetDrillingSurfIdListByFields(self, fields):
 		return self.__GetDrillingSurfIdsByFields(fields)
 	def GetDrillingSurfIdListByField1(self, field, value):
@@ -2036,7 +2036,7 @@ class SQLServiceHandler(object):
 	def DeleteEvalUnit(self, id):
 		ret=True
 		try:
-			self.session.query(SQL.EvalUnit).filter(SQL.EvalUnit.id==id).delete()
+			self.session.query(SQL.EvalUnit).filter(SQL.EvalUnit.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -2049,7 +2049,7 @@ class SQLServiceHandler(object):
 			CbmUtil.CopyAttribsOfCbmType("EvalUnit", eval_unit, sql_obj)
 			attribs = CbmUtil.GetAttribsOfCbmType("EvalUnit", sql_obj)
 			del attribs['id']
-			self.session.query(SQL.EvalUnit).filter(SQL.EvalUnit.id==sql_obj.id).update(attribs)
+			self.session.query(SQL.EvalUnit).filter(SQL.EvalUnit.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -2092,7 +2092,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreEvalUnit(self, obj_ids):
-		self.session.query(SQL.EvalUnit).filter(SQL.EvalUnit.id.in_(obj_ids)).delete()
+		self.session.query(SQL.EvalUnit).filter(SQL.EvalUnit.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetEvalUnitByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("EvalUnit", fields)
@@ -2137,9 +2137,9 @@ class SQLServiceHandler(object):
 		else:
 			return obj_ids[0]
 	def GetEvalUnitIdByField1(self, field, value):
-		return self.GetEvalUnitIdsByFields({field:value})
+		return self.GetEvalUnitIdByFields({field:value})
 	def GetEvalUnitIdByField2(self, field1, value1, field2, value2):
-		return self.GetEvalUnitIdsByFields({field1:value1, field2:value2})
+		return self.GetEvalUnitIdByFields({field1:value1, field2:value2})
 	def GetEvalUnitIdListByFields(self, fields):
 		return self.__GetEvalUnitIdsByFields(fields)
 	def GetEvalUnitIdListByField1(self, field, value):
@@ -2162,7 +2162,7 @@ class SQLServiceHandler(object):
 	def DeleteHighDrillingPore(self, id):
 		ret=True
 		try:
-			self.session.query(SQL.HighDrillingPore).filter(SQL.HighDrillingPore.id==id).delete()
+			self.session.query(SQL.HighDrillingPore).filter(SQL.HighDrillingPore.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -2175,7 +2175,7 @@ class SQLServiceHandler(object):
 			CbmUtil.CopyAttribsOfCbmType("HighDrillingPore", high_drilling_pore, sql_obj)
 			attribs = CbmUtil.GetAttribsOfCbmType("HighDrillingPore", sql_obj)
 			del attribs['id']
-			self.session.query(SQL.HighDrillingPore).filter(SQL.HighDrillingPore.id==sql_obj.id).update(attribs)
+			self.session.query(SQL.HighDrillingPore).filter(SQL.HighDrillingPore.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -2218,7 +2218,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreHighDrillingPore(self, obj_ids):
-		self.session.query(SQL.HighDrillingPore).filter(SQL.HighDrillingPore.id.in_(obj_ids)).delete()
+		self.session.query(SQL.HighDrillingPore).filter(SQL.HighDrillingPore.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetHighDrillingPoreByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("HighDrillingPore", fields)
@@ -2263,9 +2263,9 @@ class SQLServiceHandler(object):
 		else:
 			return obj_ids[0]
 	def GetHighDrillingPoreIdByField1(self, field, value):
-		return self.GetHighDrillingPoreIdsByFields({field:value})
+		return self.GetHighDrillingPoreIdByFields({field:value})
 	def GetHighDrillingPoreIdByField2(self, field1, value1, field2, value2):
-		return self.GetHighDrillingPoreIdsByFields({field1:value1, field2:value2})
+		return self.GetHighDrillingPoreIdByFields({field1:value1, field2:value2})
 	def GetHighDrillingPoreIdListByFields(self, fields):
 		return self.__GetHighDrillingPoreIdsByFields(fields)
 	def GetHighDrillingPoreIdListByField1(self, field, value):
@@ -2288,7 +2288,7 @@ class SQLServiceHandler(object):
 	def DeleteHighDrillingPoreParam(self, id):
 		ret=True
 		try:
-			self.session.query(SQL.HighDrillingPoreParam).filter(SQL.HighDrillingPoreParam.id==id).delete()
+			self.session.query(SQL.HighDrillingPoreParam).filter(SQL.HighDrillingPoreParam.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -2301,7 +2301,7 @@ class SQLServiceHandler(object):
 			CbmUtil.CopyAttribsOfCbmType("HighDrillingPoreParam", high_drilling_pore_param, sql_obj)
 			attribs = CbmUtil.GetAttribsOfCbmType("HighDrillingPoreParam", sql_obj)
 			del attribs['id']
-			self.session.query(SQL.HighDrillingPoreParam).filter(SQL.HighDrillingPoreParam.id==sql_obj.id).update(attribs)
+			self.session.query(SQL.HighDrillingPoreParam).filter(SQL.HighDrillingPoreParam.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -2344,7 +2344,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreHighDrillingPoreParam(self, obj_ids):
-		self.session.query(SQL.HighDrillingPoreParam).filter(SQL.HighDrillingPoreParam.id.in_(obj_ids)).delete()
+		self.session.query(SQL.HighDrillingPoreParam).filter(SQL.HighDrillingPoreParam.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetHighDrillingPoreParamByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("HighDrillingPoreParam", fields)
@@ -2389,9 +2389,9 @@ class SQLServiceHandler(object):
 		else:
 			return obj_ids[0]
 	def GetHighDrillingPoreParamIdByField1(self, field, value):
-		return self.GetHighDrillingPoreParamIdsByFields({field:value})
+		return self.GetHighDrillingPoreParamIdByFields({field:value})
 	def GetHighDrillingPoreParamIdByField2(self, field1, value1, field2, value2):
-		return self.GetHighDrillingPoreParamIdsByFields({field1:value1, field2:value2})
+		return self.GetHighDrillingPoreParamIdByFields({field1:value1, field2:value2})
 	def GetHighDrillingPoreParamIdListByFields(self, fields):
 		return self.__GetHighDrillingPoreParamIdsByFields(fields)
 	def GetHighDrillingPoreParamIdListByField1(self, field, value):
@@ -2414,7 +2414,7 @@ class SQLServiceHandler(object):
 	def DeleteHighDrillingSiteParam(self, id):
 		ret=True
 		try:
-			self.session.query(SQL.HighDrillingSiteParam).filter(SQL.HighDrillingSiteParam.id==id).delete()
+			self.session.query(SQL.HighDrillingSiteParam).filter(SQL.HighDrillingSiteParam.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -2427,7 +2427,7 @@ class SQLServiceHandler(object):
 			CbmUtil.CopyAttribsOfCbmType("HighDrillingSiteParam", high_drilling_site_param, sql_obj)
 			attribs = CbmUtil.GetAttribsOfCbmType("HighDrillingSiteParam", sql_obj)
 			del attribs['id']
-			self.session.query(SQL.HighDrillingSiteParam).filter(SQL.HighDrillingSiteParam.id==sql_obj.id).update(attribs)
+			self.session.query(SQL.HighDrillingSiteParam).filter(SQL.HighDrillingSiteParam.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -2470,7 +2470,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreHighDrillingSiteParam(self, obj_ids):
-		self.session.query(SQL.HighDrillingSiteParam).filter(SQL.HighDrillingSiteParam.id.in_(obj_ids)).delete()
+		self.session.query(SQL.HighDrillingSiteParam).filter(SQL.HighDrillingSiteParam.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetHighDrillingSiteParamByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("HighDrillingSiteParam", fields)
@@ -2515,9 +2515,9 @@ class SQLServiceHandler(object):
 		else:
 			return obj_ids[0]
 	def GetHighDrillingSiteParamIdByField1(self, field, value):
-		return self.GetHighDrillingSiteParamIdsByFields({field:value})
+		return self.GetHighDrillingSiteParamIdByFields({field:value})
 	def GetHighDrillingSiteParamIdByField2(self, field1, value1, field2, value2):
-		return self.GetHighDrillingSiteParamIdsByFields({field1:value1, field2:value2})
+		return self.GetHighDrillingSiteParamIdByFields({field1:value1, field2:value2})
 	def GetHighDrillingSiteParamIdListByFields(self, fields):
 		return self.__GetHighDrillingSiteParamIdsByFields(fields)
 	def GetHighDrillingSiteParamIdListByField1(self, field, value):
@@ -2540,7 +2540,7 @@ class SQLServiceHandler(object):
 	def DeleteHighDrillingTunnel(self, id):
 		ret=True
 		try:
-			self.session.query(SQL.HighDrillingTunnel).filter(SQL.HighDrillingTunnel.id==id).delete()
+			self.session.query(SQL.HighDrillingTunnel).filter(SQL.HighDrillingTunnel.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -2553,7 +2553,7 @@ class SQLServiceHandler(object):
 			CbmUtil.CopyAttribsOfCbmType("HighDrillingTunnel", high_drilling_tunnel, sql_obj)
 			attribs = CbmUtil.GetAttribsOfCbmType("HighDrillingTunnel", sql_obj)
 			del attribs['id']
-			self.session.query(SQL.HighDrillingTunnel).filter(SQL.HighDrillingTunnel.id==sql_obj.id).update(attribs)
+			self.session.query(SQL.HighDrillingTunnel).filter(SQL.HighDrillingTunnel.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -2596,7 +2596,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreHighDrillingTunnel(self, obj_ids):
-		self.session.query(SQL.HighDrillingTunnel).filter(SQL.HighDrillingTunnel.id.in_(obj_ids)).delete()
+		self.session.query(SQL.HighDrillingTunnel).filter(SQL.HighDrillingTunnel.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetHighDrillingTunnelByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("HighDrillingTunnel", fields)
@@ -2641,9 +2641,9 @@ class SQLServiceHandler(object):
 		else:
 			return obj_ids[0]
 	def GetHighDrillingTunnelIdByField1(self, field, value):
-		return self.GetHighDrillingTunnelIdsByFields({field:value})
+		return self.GetHighDrillingTunnelIdByFields({field:value})
 	def GetHighDrillingTunnelIdByField2(self, field1, value1, field2, value2):
-		return self.GetHighDrillingTunnelIdsByFields({field1:value1, field2:value2})
+		return self.GetHighDrillingTunnelIdByFields({field1:value1, field2:value2})
 	def GetHighDrillingTunnelIdListByFields(self, fields):
 		return self.__GetHighDrillingTunnelIdsByFields(fields)
 	def GetHighDrillingTunnelIdListByField1(self, field, value):
@@ -2666,7 +2666,7 @@ class SQLServiceHandler(object):
 	def DeleteHydrGeo(self, id):
 		ret=True
 		try:
-			self.session.query(SQL.HydrGeo).filter(SQL.HydrGeo.id==id).delete()
+			self.session.query(SQL.HydrGeo).filter(SQL.HydrGeo.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -2679,7 +2679,7 @@ class SQLServiceHandler(object):
 			CbmUtil.CopyAttribsOfCbmType("HydrGeo", hydr_geo, sql_obj)
 			attribs = CbmUtil.GetAttribsOfCbmType("HydrGeo", sql_obj)
 			del attribs['id']
-			self.session.query(SQL.HydrGeo).filter(SQL.HydrGeo.id==sql_obj.id).update(attribs)
+			self.session.query(SQL.HydrGeo).filter(SQL.HydrGeo.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -2722,7 +2722,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreHydrGeo(self, obj_ids):
-		self.session.query(SQL.HydrGeo).filter(SQL.HydrGeo.id.in_(obj_ids)).delete()
+		self.session.query(SQL.HydrGeo).filter(SQL.HydrGeo.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetHydrGeoByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("HydrGeo", fields)
@@ -2767,9 +2767,9 @@ class SQLServiceHandler(object):
 		else:
 			return obj_ids[0]
 	def GetHydrGeoIdByField1(self, field, value):
-		return self.GetHydrGeoIdsByFields({field:value})
+		return self.GetHydrGeoIdByFields({field:value})
 	def GetHydrGeoIdByField2(self, field1, value1, field2, value2):
-		return self.GetHydrGeoIdsByFields({field1:value1, field2:value2})
+		return self.GetHydrGeoIdByFields({field1:value1, field2:value2})
 	def GetHydrGeoIdListByFields(self, fields):
 		return self.__GetHydrGeoIdsByFields(fields)
 	def GetHydrGeoIdListByField1(self, field, value):
@@ -2792,7 +2792,7 @@ class SQLServiceHandler(object):
 	def DeleteMine(self, id):
 		ret=True
 		try:
-			self.session.query(SQL.Mine).filter(SQL.Mine.id==id).delete()
+			self.session.query(SQL.Mine).filter(SQL.Mine.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -2805,7 +2805,7 @@ class SQLServiceHandler(object):
 			CbmUtil.CopyAttribsOfCbmType("Mine", mine, sql_obj)
 			attribs = CbmUtil.GetAttribsOfCbmType("Mine", sql_obj)
 			del attribs['id']
-			self.session.query(SQL.Mine).filter(SQL.Mine.id==sql_obj.id).update(attribs)
+			self.session.query(SQL.Mine).filter(SQL.Mine.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -2848,7 +2848,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreMine(self, obj_ids):
-		self.session.query(SQL.Mine).filter(SQL.Mine.id.in_(obj_ids)).delete()
+		self.session.query(SQL.Mine).filter(SQL.Mine.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetMineByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("Mine", fields)
@@ -2893,9 +2893,9 @@ class SQLServiceHandler(object):
 		else:
 			return obj_ids[0]
 	def GetMineIdByField1(self, field, value):
-		return self.GetMineIdsByFields({field:value})
+		return self.GetMineIdByFields({field:value})
 	def GetMineIdByField2(self, field1, value1, field2, value2):
-		return self.GetMineIdsByFields({field1:value1, field2:value2})
+		return self.GetMineIdByFields({field1:value1, field2:value2})
 	def GetMineIdListByFields(self, fields):
 		return self.__GetMineIdsByFields(fields)
 	def GetMineIdListByField1(self, field, value):
@@ -2918,7 +2918,7 @@ class SQLServiceHandler(object):
 	def DeleteMineBase(self, id):
 		ret=True
 		try:
-			self.session.query(SQL.MineBase).filter(SQL.MineBase.id==id).delete()
+			self.session.query(SQL.MineBase).filter(SQL.MineBase.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -2931,7 +2931,7 @@ class SQLServiceHandler(object):
 			CbmUtil.CopyAttribsOfCbmType("MineBase", mine_base, sql_obj)
 			attribs = CbmUtil.GetAttribsOfCbmType("MineBase", sql_obj)
 			del attribs['id']
-			self.session.query(SQL.MineBase).filter(SQL.MineBase.id==sql_obj.id).update(attribs)
+			self.session.query(SQL.MineBase).filter(SQL.MineBase.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -2974,7 +2974,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreMineBase(self, obj_ids):
-		self.session.query(SQL.MineBase).filter(SQL.MineBase.id.in_(obj_ids)).delete()
+		self.session.query(SQL.MineBase).filter(SQL.MineBase.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetMineBaseByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("MineBase", fields)
@@ -3019,9 +3019,9 @@ class SQLServiceHandler(object):
 		else:
 			return obj_ids[0]
 	def GetMineBaseIdByField1(self, field, value):
-		return self.GetMineBaseIdsByFields({field:value})
+		return self.GetMineBaseIdByFields({field:value})
 	def GetMineBaseIdByField2(self, field1, value1, field2, value2):
-		return self.GetMineBaseIdsByFields({field1:value1, field2:value2})
+		return self.GetMineBaseIdByFields({field1:value1, field2:value2})
 	def GetMineBaseIdListByFields(self, fields):
 		return self.__GetMineBaseIdsByFields(fields)
 	def GetMineBaseIdListByField1(self, field, value):
@@ -3044,7 +3044,7 @@ class SQLServiceHandler(object):
 	def DeleteMineRegion(self, id):
 		ret=True
 		try:
-			self.session.query(SQL.MineRegion).filter(SQL.MineRegion.id==id).delete()
+			self.session.query(SQL.MineRegion).filter(SQL.MineRegion.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -3057,7 +3057,7 @@ class SQLServiceHandler(object):
 			CbmUtil.CopyAttribsOfCbmType("MineRegion", mine_region, sql_obj)
 			attribs = CbmUtil.GetAttribsOfCbmType("MineRegion", sql_obj)
 			del attribs['id']
-			self.session.query(SQL.MineRegion).filter(SQL.MineRegion.id==sql_obj.id).update(attribs)
+			self.session.query(SQL.MineRegion).filter(SQL.MineRegion.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -3100,7 +3100,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreMineRegion(self, obj_ids):
-		self.session.query(SQL.MineRegion).filter(SQL.MineRegion.id.in_(obj_ids)).delete()
+		self.session.query(SQL.MineRegion).filter(SQL.MineRegion.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetMineRegionByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("MineRegion", fields)
@@ -3145,9 +3145,9 @@ class SQLServiceHandler(object):
 		else:
 			return obj_ids[0]
 	def GetMineRegionIdByField1(self, field, value):
-		return self.GetMineRegionIdsByFields({field:value})
+		return self.GetMineRegionIdByFields({field:value})
 	def GetMineRegionIdByField2(self, field1, value1, field2, value2):
-		return self.GetMineRegionIdsByFields({field1:value1, field2:value2})
+		return self.GetMineRegionIdByFields({field1:value1, field2:value2})
 	def GetMineRegionIdListByFields(self, fields):
 		return self.__GetMineRegionIdsByFields(fields)
 	def GetMineRegionIdListByField1(self, field, value):
@@ -3170,7 +3170,7 @@ class SQLServiceHandler(object):
 	def DeletePoreFlow(self, id):
 		ret=True
 		try:
-			self.session.query(SQL.PoreFlow).filter(SQL.PoreFlow.id==id).delete()
+			self.session.query(SQL.PoreFlow).filter(SQL.PoreFlow.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -3183,7 +3183,7 @@ class SQLServiceHandler(object):
 			CbmUtil.CopyAttribsOfCbmType("PoreFlow", pore_flow, sql_obj)
 			attribs = CbmUtil.GetAttribsOfCbmType("PoreFlow", sql_obj)
 			del attribs['id']
-			self.session.query(SQL.PoreFlow).filter(SQL.PoreFlow.id==sql_obj.id).update(attribs)
+			self.session.query(SQL.PoreFlow).filter(SQL.PoreFlow.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -3226,7 +3226,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMorePoreFlow(self, obj_ids):
-		self.session.query(SQL.PoreFlow).filter(SQL.PoreFlow.id.in_(obj_ids)).delete()
+		self.session.query(SQL.PoreFlow).filter(SQL.PoreFlow.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetPoreFlowByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("PoreFlow", fields)
@@ -3271,9 +3271,9 @@ class SQLServiceHandler(object):
 		else:
 			return obj_ids[0]
 	def GetPoreFlowIdByField1(self, field, value):
-		return self.GetPoreFlowIdsByFields({field:value})
+		return self.GetPoreFlowIdByFields({field:value})
 	def GetPoreFlowIdByField2(self, field1, value1, field2, value2):
-		return self.GetPoreFlowIdsByFields({field1:value1, field2:value2})
+		return self.GetPoreFlowIdByFields({field1:value1, field2:value2})
 	def GetPoreFlowIdListByFields(self, fields):
 		return self.__GetPoreFlowIdsByFields(fields)
 	def GetPoreFlowIdListByField1(self, field, value):
@@ -3296,7 +3296,7 @@ class SQLServiceHandler(object):
 	def DeletePoreSize(self, id):
 		ret=True
 		try:
-			self.session.query(SQL.PoreSize).filter(SQL.PoreSize.id==id).delete()
+			self.session.query(SQL.PoreSize).filter(SQL.PoreSize.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -3309,7 +3309,7 @@ class SQLServiceHandler(object):
 			CbmUtil.CopyAttribsOfCbmType("PoreSize", pore_size, sql_obj)
 			attribs = CbmUtil.GetAttribsOfCbmType("PoreSize", sql_obj)
 			del attribs['id']
-			self.session.query(SQL.PoreSize).filter(SQL.PoreSize.id==sql_obj.id).update(attribs)
+			self.session.query(SQL.PoreSize).filter(SQL.PoreSize.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -3352,7 +3352,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMorePoreSize(self, obj_ids):
-		self.session.query(SQL.PoreSize).filter(SQL.PoreSize.id.in_(obj_ids)).delete()
+		self.session.query(SQL.PoreSize).filter(SQL.PoreSize.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetPoreSizeByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("PoreSize", fields)
@@ -3397,9 +3397,9 @@ class SQLServiceHandler(object):
 		else:
 			return obj_ids[0]
 	def GetPoreSizeIdByField1(self, field, value):
-		return self.GetPoreSizeIdsByFields({field:value})
+		return self.GetPoreSizeIdByFields({field:value})
 	def GetPoreSizeIdByField2(self, field1, value1, field2, value2):
-		return self.GetPoreSizeIdsByFields({field1:value1, field2:value2})
+		return self.GetPoreSizeIdByFields({field1:value1, field2:value2})
 	def GetPoreSizeIdListByFields(self, fields):
 		return self.__GetPoreSizeIdsByFields(fields)
 	def GetPoreSizeIdListByField1(self, field, value):
@@ -3422,7 +3422,7 @@ class SQLServiceHandler(object):
 	def DeleteResAbundance(self, id):
 		ret=True
 		try:
-			self.session.query(SQL.ResAbundance).filter(SQL.ResAbundance.id==id).delete()
+			self.session.query(SQL.ResAbundance).filter(SQL.ResAbundance.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -3435,7 +3435,7 @@ class SQLServiceHandler(object):
 			CbmUtil.CopyAttribsOfCbmType("ResAbundance", res_abundance, sql_obj)
 			attribs = CbmUtil.GetAttribsOfCbmType("ResAbundance", sql_obj)
 			del attribs['id']
-			self.session.query(SQL.ResAbundance).filter(SQL.ResAbundance.id==sql_obj.id).update(attribs)
+			self.session.query(SQL.ResAbundance).filter(SQL.ResAbundance.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -3478,7 +3478,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreResAbundance(self, obj_ids):
-		self.session.query(SQL.ResAbundance).filter(SQL.ResAbundance.id.in_(obj_ids)).delete()
+		self.session.query(SQL.ResAbundance).filter(SQL.ResAbundance.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetResAbundanceByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("ResAbundance", fields)
@@ -3523,9 +3523,9 @@ class SQLServiceHandler(object):
 		else:
 			return obj_ids[0]
 	def GetResAbundanceIdByField1(self, field, value):
-		return self.GetResAbundanceIdsByFields({field:value})
+		return self.GetResAbundanceIdByFields({field:value})
 	def GetResAbundanceIdByField2(self, field1, value1, field2, value2):
-		return self.GetResAbundanceIdsByFields({field1:value1, field2:value2})
+		return self.GetResAbundanceIdByFields({field1:value1, field2:value2})
 	def GetResAbundanceIdListByFields(self, fields):
 		return self.__GetResAbundanceIdsByFields(fields)
 	def GetResAbundanceIdListByField1(self, field, value):
@@ -3548,7 +3548,7 @@ class SQLServiceHandler(object):
 	def DeleteRock(self, id):
 		ret=True
 		try:
-			self.session.query(SQL.Rock).filter(SQL.Rock.id==id).delete()
+			self.session.query(SQL.Rock).filter(SQL.Rock.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -3561,7 +3561,7 @@ class SQLServiceHandler(object):
 			CbmUtil.CopyAttribsOfCbmType("Rock", rock, sql_obj)
 			attribs = CbmUtil.GetAttribsOfCbmType("Rock", sql_obj)
 			del attribs['id']
-			self.session.query(SQL.Rock).filter(SQL.Rock.id==sql_obj.id).update(attribs)
+			self.session.query(SQL.Rock).filter(SQL.Rock.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -3604,7 +3604,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreRock(self, obj_ids):
-		self.session.query(SQL.Rock).filter(SQL.Rock.id.in_(obj_ids)).delete()
+		self.session.query(SQL.Rock).filter(SQL.Rock.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetRockByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("Rock", fields)
@@ -3649,9 +3649,9 @@ class SQLServiceHandler(object):
 		else:
 			return obj_ids[0]
 	def GetRockIdByField1(self, field, value):
-		return self.GetRockIdsByFields({field:value})
+		return self.GetRockIdByFields({field:value})
 	def GetRockIdByField2(self, field1, value1, field2, value2):
-		return self.GetRockIdsByFields({field1:value1, field2:value2})
+		return self.GetRockIdByFields({field1:value1, field2:value2})
 	def GetRockIdListByFields(self, fields):
 		return self.__GetRockIdsByFields(fields)
 	def GetRockIdListByField1(self, field, value):
@@ -3674,7 +3674,7 @@ class SQLServiceHandler(object):
 	def DeleteSysInfo(self, id):
 		ret=True
 		try:
-			self.session.query(SQL.SysInfo).filter(SQL.SysInfo.id==id).delete()
+			self.session.query(SQL.SysInfo).filter(SQL.SysInfo.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -3687,7 +3687,7 @@ class SQLServiceHandler(object):
 			CbmUtil.CopyAttribsOfCbmType("SysInfo", sys_info, sql_obj)
 			attribs = CbmUtil.GetAttribsOfCbmType("SysInfo", sql_obj)
 			del attribs['id']
-			self.session.query(SQL.SysInfo).filter(SQL.SysInfo.id==sql_obj.id).update(attribs)
+			self.session.query(SQL.SysInfo).filter(SQL.SysInfo.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -3730,7 +3730,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreSysInfo(self, obj_ids):
-		self.session.query(SQL.SysInfo).filter(SQL.SysInfo.id.in_(obj_ids)).delete()
+		self.session.query(SQL.SysInfo).filter(SQL.SysInfo.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetSysInfoByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("SysInfo", fields)
@@ -3775,9 +3775,9 @@ class SQLServiceHandler(object):
 		else:
 			return obj_ids[0]
 	def GetSysInfoIdByField1(self, field, value):
-		return self.GetSysInfoIdsByFields({field:value})
+		return self.GetSysInfoIdByFields({field:value})
 	def GetSysInfoIdByField2(self, field1, value1, field2, value2):
-		return self.GetSysInfoIdsByFields({field1:value1, field2:value2})
+		return self.GetSysInfoIdByFields({field1:value1, field2:value2})
 	def GetSysInfoIdListByFields(self, fields):
 		return self.__GetSysInfoIdsByFields(fields)
 	def GetSysInfoIdListByField1(self, field, value):
@@ -3800,7 +3800,7 @@ class SQLServiceHandler(object):
 	def DeleteTechMode(self, id):
 		ret=True
 		try:
-			self.session.query(SQL.TechMode).filter(SQL.TechMode.id==id).delete()
+			self.session.query(SQL.TechMode).filter(SQL.TechMode.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -3813,7 +3813,7 @@ class SQLServiceHandler(object):
 			CbmUtil.CopyAttribsOfCbmType("TechMode", tech_mode, sql_obj)
 			attribs = CbmUtil.GetAttribsOfCbmType("TechMode", sql_obj)
 			del attribs['id']
-			self.session.query(SQL.TechMode).filter(SQL.TechMode.id==sql_obj.id).update(attribs)
+			self.session.query(SQL.TechMode).filter(SQL.TechMode.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -3856,7 +3856,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreTechMode(self, obj_ids):
-		self.session.query(SQL.TechMode).filter(SQL.TechMode.id.in_(obj_ids)).delete()
+		self.session.query(SQL.TechMode).filter(SQL.TechMode.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetTechModeByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("TechMode", fields)
@@ -3901,9 +3901,9 @@ class SQLServiceHandler(object):
 		else:
 			return obj_ids[0]
 	def GetTechModeIdByField1(self, field, value):
-		return self.GetTechModeIdsByFields({field:value})
+		return self.GetTechModeIdByFields({field:value})
 	def GetTechModeIdByField2(self, field1, value1, field2, value2):
-		return self.GetTechModeIdsByFields({field1:value1, field2:value2})
+		return self.GetTechModeIdByFields({field1:value1, field2:value2})
 	def GetTechModeIdListByFields(self, fields):
 		return self.__GetTechModeIdsByFields(fields)
 	def GetTechModeIdListByField1(self, field, value):
@@ -3926,7 +3926,7 @@ class SQLServiceHandler(object):
 	def DeleteTechnology(self, id):
 		ret=True
 		try:
-			self.session.query(SQL.Technology).filter(SQL.Technology.id==id).delete()
+			self.session.query(SQL.Technology).filter(SQL.Technology.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -3939,7 +3939,7 @@ class SQLServiceHandler(object):
 			CbmUtil.CopyAttribsOfCbmType("Technology", technology, sql_obj)
 			attribs = CbmUtil.GetAttribsOfCbmType("Technology", sql_obj)
 			del attribs['id']
-			self.session.query(SQL.Technology).filter(SQL.Technology.id==sql_obj.id).update(attribs)
+			self.session.query(SQL.Technology).filter(SQL.Technology.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -3982,7 +3982,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreTechnology(self, obj_ids):
-		self.session.query(SQL.Technology).filter(SQL.Technology.id.in_(obj_ids)).delete()
+		self.session.query(SQL.Technology).filter(SQL.Technology.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetTechnologyByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("Technology", fields)
@@ -4027,9 +4027,9 @@ class SQLServiceHandler(object):
 		else:
 			return obj_ids[0]
 	def GetTechnologyIdByField1(self, field, value):
-		return self.GetTechnologyIdsByFields({field:value})
+		return self.GetTechnologyIdByFields({field:value})
 	def GetTechnologyIdByField2(self, field1, value1, field2, value2):
-		return self.GetTechnologyIdsByFields({field1:value1, field2:value2})
+		return self.GetTechnologyIdByFields({field1:value1, field2:value2})
 	def GetTechnologyIdListByFields(self, fields):
 		return self.__GetTechnologyIdsByFields(fields)
 	def GetTechnologyIdListByField1(self, field, value):
@@ -4052,7 +4052,7 @@ class SQLServiceHandler(object):
 	def DeleteTopoGeo(self, id):
 		ret=True
 		try:
-			self.session.query(SQL.TopoGeo).filter(SQL.TopoGeo.id==id).delete()
+			self.session.query(SQL.TopoGeo).filter(SQL.TopoGeo.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -4065,7 +4065,7 @@ class SQLServiceHandler(object):
 			CbmUtil.CopyAttribsOfCbmType("TopoGeo", topo_geo, sql_obj)
 			attribs = CbmUtil.GetAttribsOfCbmType("TopoGeo", sql_obj)
 			del attribs['id']
-			self.session.query(SQL.TopoGeo).filter(SQL.TopoGeo.id==sql_obj.id).update(attribs)
+			self.session.query(SQL.TopoGeo).filter(SQL.TopoGeo.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -4108,7 +4108,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreTopoGeo(self, obj_ids):
-		self.session.query(SQL.TopoGeo).filter(SQL.TopoGeo.id.in_(obj_ids)).delete()
+		self.session.query(SQL.TopoGeo).filter(SQL.TopoGeo.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetTopoGeoByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("TopoGeo", fields)
@@ -4153,9 +4153,9 @@ class SQLServiceHandler(object):
 		else:
 			return obj_ids[0]
 	def GetTopoGeoIdByField1(self, field, value):
-		return self.GetTopoGeoIdsByFields({field:value})
+		return self.GetTopoGeoIdByFields({field:value})
 	def GetTopoGeoIdByField2(self, field1, value1, field2, value2):
-		return self.GetTopoGeoIdsByFields({field1:value1, field2:value2})
+		return self.GetTopoGeoIdByFields({field1:value1, field2:value2})
 	def GetTopoGeoIdListByFields(self, fields):
 		return self.__GetTopoGeoIdsByFields(fields)
 	def GetTopoGeoIdListByField1(self, field, value):
@@ -4178,7 +4178,7 @@ class SQLServiceHandler(object):
 	def DeleteTunnel(self, id):
 		ret=True
 		try:
-			self.session.query(SQL.Tunnel).filter(SQL.Tunnel.id==id).delete()
+			self.session.query(SQL.Tunnel).filter(SQL.Tunnel.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -4191,7 +4191,7 @@ class SQLServiceHandler(object):
 			CbmUtil.CopyAttribsOfCbmType("Tunnel", tunnel, sql_obj)
 			attribs = CbmUtil.GetAttribsOfCbmType("Tunnel", sql_obj)
 			del attribs['id']
-			self.session.query(SQL.Tunnel).filter(SQL.Tunnel.id==sql_obj.id).update(attribs)
+			self.session.query(SQL.Tunnel).filter(SQL.Tunnel.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -4234,7 +4234,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreTunnel(self, obj_ids):
-		self.session.query(SQL.Tunnel).filter(SQL.Tunnel.id.in_(obj_ids)).delete()
+		self.session.query(SQL.Tunnel).filter(SQL.Tunnel.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetTunnelByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("Tunnel", fields)
@@ -4279,9 +4279,9 @@ class SQLServiceHandler(object):
 		else:
 			return obj_ids[0]
 	def GetTunnelIdByField1(self, field, value):
-		return self.GetTunnelIdsByFields({field:value})
+		return self.GetTunnelIdByFields({field:value})
 	def GetTunnelIdByField2(self, field1, value1, field2, value2):
-		return self.GetTunnelIdsByFields({field1:value1, field2:value2})
+		return self.GetTunnelIdByFields({field1:value1, field2:value2})
 	def GetTunnelIdListByFields(self, fields):
 		return self.__GetTunnelIdsByFields(fields)
 	def GetTunnelIdListByField1(self, field, value):
@@ -4304,7 +4304,7 @@ class SQLServiceHandler(object):
 	def DeleteWorkArea(self, id):
 		ret=True
 		try:
-			self.session.query(SQL.WorkArea).filter(SQL.WorkArea.id==id).delete()
+			self.session.query(SQL.WorkArea).filter(SQL.WorkArea.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -4317,7 +4317,7 @@ class SQLServiceHandler(object):
 			CbmUtil.CopyAttribsOfCbmType("WorkArea", work_area, sql_obj)
 			attribs = CbmUtil.GetAttribsOfCbmType("WorkArea", sql_obj)
 			del attribs['id']
-			self.session.query(SQL.WorkArea).filter(SQL.WorkArea.id==sql_obj.id).update(attribs)
+			self.session.query(SQL.WorkArea).filter(SQL.WorkArea.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -4360,7 +4360,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreWorkArea(self, obj_ids):
-		self.session.query(SQL.WorkArea).filter(SQL.WorkArea.id.in_(obj_ids)).delete()
+		self.session.query(SQL.WorkArea).filter(SQL.WorkArea.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetWorkAreaByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("WorkArea", fields)
@@ -4405,9 +4405,9 @@ class SQLServiceHandler(object):
 		else:
 			return obj_ids[0]
 	def GetWorkAreaIdByField1(self, field, value):
-		return self.GetWorkAreaIdsByFields({field:value})
+		return self.GetWorkAreaIdByFields({field:value})
 	def GetWorkAreaIdByField2(self, field1, value1, field2, value2):
-		return self.GetWorkAreaIdsByFields({field1:value1, field2:value2})
+		return self.GetWorkAreaIdByFields({field1:value1, field2:value2})
 	def GetWorkAreaIdListByFields(self, fields):
 		return self.__GetWorkAreaIdsByFields(fields)
 	def GetWorkAreaIdListByField1(self, field, value):
@@ -4430,7 +4430,7 @@ class SQLServiceHandler(object):
 	def DeleteWorkSurf(self, id):
 		ret=True
 		try:
-			self.session.query(SQL.WorkSurf).filter(SQL.WorkSurf.id==id).delete()
+			self.session.query(SQL.WorkSurf).filter(SQL.WorkSurf.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -4443,7 +4443,7 @@ class SQLServiceHandler(object):
 			CbmUtil.CopyAttribsOfCbmType("WorkSurf", work_surf, sql_obj)
 			attribs = CbmUtil.GetAttribsOfCbmType("WorkSurf", sql_obj)
 			del attribs['id']
-			self.session.query(SQL.WorkSurf).filter(SQL.WorkSurf.id==sql_obj.id).update(attribs)
+			self.session.query(SQL.WorkSurf).filter(SQL.WorkSurf.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
 			#print e
@@ -4486,7 +4486,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreWorkSurf(self, obj_ids):
-		self.session.query(SQL.WorkSurf).filter(SQL.WorkSurf.id.in_(obj_ids)).delete()
+		self.session.query(SQL.WorkSurf).filter(SQL.WorkSurf.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetWorkSurfByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("WorkSurf", fields)
@@ -4531,9 +4531,9 @@ class SQLServiceHandler(object):
 		else:
 			return obj_ids[0]
 	def GetWorkSurfIdByField1(self, field, value):
-		return self.GetWorkSurfIdsByFields({field:value})
+		return self.GetWorkSurfIdByFields({field:value})
 	def GetWorkSurfIdByField2(self, field1, value1, field2, value2):
-		return self.GetWorkSurfIdsByFields({field1:value1, field2:value2})
+		return self.GetWorkSurfIdByFields({field1:value1, field2:value2})
 	def GetWorkSurfIdListByFields(self, fields):
 		return self.__GetWorkSurfIdsByFields(fields)
 	def GetWorkSurfIdListByField1(self, field, value):

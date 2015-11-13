@@ -118,7 +118,7 @@ function __gen_sql_service_handler_of_py_server($file, $tbl_name, $fields, $rela
 	fwrite($file, TAB."def Delete".$clsname."(self, id):".ENTER);
 	fwrite($file, TWO_TAB."ret=True".ENTER);
 	fwrite($file, TWO_TAB."try:".ENTER);
-	fwrite($file, THREE_TAB."self.session.query(SQL.$clsname).filter(SQL.$clsname.id==id).delete()".ENTER);
+	fwrite($file, THREE_TAB."self.session.query(SQL.$clsname).filter(SQL.$clsname.id==id).delete(synchronize_session=False)".ENTER);
 	fwrite($file, THREE_TAB."self.session.commit()".ENTER);
 	fwrite($file, TWO_TAB."except Exception, e:".ENTER);
 	fwrite($file, THREE_TAB."#print e".ENTER);
@@ -133,7 +133,7 @@ function __gen_sql_service_handler_of_py_server($file, $tbl_name, $fields, $rela
 	fwrite($file, THREE_TAB."CbmUtil.CopyAttribsOfCbmType(".DBL_QUOT.$clsname.DBL_QUOT.", $fname, sql_obj)".ENTER);
 	fwrite($file, THREE_TAB."attribs = CbmUtil.GetAttribsOfCbmType(".DBL_QUOT.$clsname.DBL_QUOT.", sql_obj)".ENTER);
 	fwrite($file, THREE_TAB."del attribs['id']".ENTER);
-	fwrite($file, THREE_TAB."self.session.query(SQL.$clsname).filter(SQL.$clsname.id==sql_obj.id).update(attribs)".ENTER);
+	fwrite($file, THREE_TAB."self.session.query(SQL.$clsname).filter(SQL.$clsname.id==sql_obj.id).update(attribs, synchronize_session=False)".ENTER);
 	fwrite($file, THREE_TAB."self.session.commit()".ENTER);
 	fwrite($file, TWO_TAB."except Exception, e:".ENTER);
 	fwrite($file, THREE_TAB."#print e".ENTER);
@@ -191,7 +191,7 @@ function __gen_sql_service_handler_of_py_server($file, $tbl_name, $fields, $rela
 
 
 	fwrite($file, TAB."def DeleteMore".$clsname."(self, obj_ids):".ENTER);
-	fwrite($file, TWO_TAB."self.session.query(SQL.$clsname).filter(SQL.$clsname.id.in_(obj_ids)).delete()".ENTER);
+	fwrite($file, TWO_TAB."self.session.query(SQL.$clsname).filter(SQL.$clsname.id.in_(obj_ids)).delete(synchronize_session=False)".ENTER);
 	fwrite($file, TWO_TAB."self.session.commit()".ENTER);
 	
 	
@@ -252,10 +252,10 @@ function __gen_sql_service_handler_of_py_server($file, $tbl_name, $fields, $rela
 
 
 	fwrite($file, TAB."def Get".$clsname."IdByField1(self, field, value):".ENTER);
-	fwrite($file, TWO_TAB."return self.Get".$clsname."IdsByFields({field:value})".ENTER);
+	fwrite($file, TWO_TAB."return self.Get".$clsname."IdByFields({field:value})".ENTER);
 
 	fwrite($file, TAB."def Get".$clsname."IdByField2(self, field1, value1, field2, value2):".ENTER);
-	fwrite($file, TWO_TAB."return self.Get".$clsname."IdsByFields({field1:value1, field2:value2})".ENTER);
+	fwrite($file, TWO_TAB."return self.Get".$clsname."IdByFields({field1:value1, field2:value2})".ENTER);
 
 	fwrite($file, TAB."def Get".$clsname."IdListByFields(self, fields):".ENTER);
 	fwrite($file, TWO_TAB."return self.__Get".$clsname."IdsByFields(fields)".ENTER);
@@ -526,7 +526,7 @@ function __gen_sql_helper_of_cpp_client($file, $tbl_name, $fields, $relations)
 	fwrite($file, TAB."try {".ENTER);
 	fwrite($file, TWO_TAB."RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);".ENTER);
 	fwrite($file, TWO_TAB."service_client.start();".ENTER);
-	fwrite($file, TWO_TAB."service_client.get()->Get".$clsname."ByField2(_return, field1, value2, field2, value2);".ENTER);
+	fwrite($file, TWO_TAB."service_client.get()->Get".$clsname."ByField2(_return, field1, value1, field2, value2);".ENTER);
 	fwrite($file, TWO_TAB."service_client.close();".ENTER);
 	fwrite($file, TAB."}".ENTER);
 	fwrite($file, TAB."catch (TException &tx) {".ENTER);
@@ -611,7 +611,7 @@ function __gen_sql_helper_of_cpp_client($file, $tbl_name, $fields, $relations)
 	fwrite($file, TAB."try {".ENTER);
 	fwrite($file, TWO_TAB."RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);".ENTER);
 	fwrite($file, TWO_TAB."service_client.start();".ENTER);
-	fwrite($file, TWO_TAB."ret = service_client.get()->Get".$clsname."IdByField2(field1, value2, field2, value2);".ENTER);
+	fwrite($file, TWO_TAB."ret = service_client.get()->Get".$clsname."IdByField2(field1, value1, field2, value2);".ENTER);
 	fwrite($file, TWO_TAB."service_client.close();".ENTER);
 	fwrite($file, TAB."}".ENTER);
 	fwrite($file, TAB."catch (TException &tx) {".ENTER);
@@ -889,7 +889,7 @@ function __gen_sql_helper_of_py_client($file, $tbl_name, $fields, $relations)
 	fwrite($file, TAB."try:".ENTER);
 	fwrite($file, TWO_TAB."service_client = RpcClient(CbmService, host=HOST, port=PORT2)".ENTER);
 	fwrite($file, TWO_TAB."service_client.start()".ENTER);
-	fwrite($file, TWO_TAB."_return = service_client.get().Get".$clsname."ByField2(field1, value2, field2, value2)".ENTER);
+	fwrite($file, TWO_TAB."_return = service_client.get().Get".$clsname."ByField2(field1, value1, field2, value2)".ENTER);
 	fwrite($file, TWO_TAB."service_client.close()".ENTER);
 	fwrite($file, TAB."except Exception, e:".ENTER);
 	fwrite($file, TWO_TAB."print 'client exception:',e".ENTER);
@@ -967,7 +967,7 @@ function __gen_sql_helper_of_py_client($file, $tbl_name, $fields, $relations)
 	fwrite($file, TAB."try:".ENTER);
 	fwrite($file, TWO_TAB."service_client = RpcClient(CbmService, host=HOST, port=PORT2)".ENTER);
 	fwrite($file, TWO_TAB."service_client.start()".ENTER);
-	fwrite($file, TWO_TAB."_return = service_client.get().Get".$clsname."IdByField2(field1, value2, field2, value2)".ENTER);
+	fwrite($file, TWO_TAB."_return = service_client.get().Get".$clsname."IdByField2(field1, value1, field2, value2)".ENTER);
 	fwrite($file, TWO_TAB."service_client.close()".ENTER);
 	fwrite($file, TAB."except Exception, e:".ENTER);
 	fwrite($file, TWO_TAB."print 'client exception:',e".ENTER);
@@ -1246,7 +1246,7 @@ function __gen_sql_helper_of_php_client($file, $tbl_name, $fields, $relations)
 	fwrite($file, TAB.'try {'.ENTER);
 	fwrite($file, TWO_TAB.'$service_client = new ThriftClient('.$service_class.', HOST, PORT2);'.ENTER);
 	fwrite($file, TWO_TAB.'$client = $service_client->getClient();'.ENTER);
-	fwrite($file, TWO_TAB.'$_return = $client->Get'.$clsname.'ByField2(field1, value2, field2, value2);'.ENTER);
+	fwrite($file, TWO_TAB.'$_return = $client->Get'.$clsname.'ByField2(field1, value1, field2, value2);'.ENTER);
 	fwrite($file, TAB.'} catch (TException $tx) {'.ENTER);
 	fwrite($file, TWO_TAB.'print \'TException: \'.$tx->getMessage()."\n";'.ENTER);
 	fwrite($file, TWO_TAB.'$_return->id = -1;'.ENTER);
@@ -1330,7 +1330,7 @@ function __gen_sql_helper_of_php_client($file, $tbl_name, $fields, $relations)
 	fwrite($file, TAB.'try {'.ENTER);
 	fwrite($file, TWO_TAB.'$service_client = new ThriftClient('.$service_class.', HOST, PORT2);'.ENTER);
 	fwrite($file, TWO_TAB.'$client = $service_client->getClient();'.ENTER);
-	fwrite($file, TWO_TAB.'$_return = $client->Get'.$clsname.'IdByField2(field1, value2, field2, value2);'.ENTER);
+	fwrite($file, TWO_TAB.'$_return = $client->Get'.$clsname.'IdByField2(field1, value1, field2, value2);'.ENTER);
 	fwrite($file, TAB.'} catch (TException $tx) {'.ENTER);
 	fwrite($file, TWO_TAB.'print \'TException: \'.$tx->getMessage()."\n";'.ENTER);
 	fwrite($file, TWO_TAB.'$_return = -1;'.ENTER);

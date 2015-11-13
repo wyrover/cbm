@@ -1546,7 +1546,7 @@ service CbmService {
 	//获取已登录用户的矿井数据
 	Mine GetOnlineMine(),
 	//验证用户名和密码
-	i32 VerifyMineAccount(1:string username, 2:string pwd),
+	i32 VerifyMineAccount(1:string uname, 2:string pwd),
 	//查询基地所有的矿区
 	list<string> GetMineRegionsOfBase(1:string baseName),
 	//根据矿区反查基地

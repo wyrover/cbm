@@ -52,12 +52,12 @@ def GetOnlineMine():
 		ret.id = -1
 	return ret
 
-def VerifyMineAccount(username, pwd):
+def VerifyMineAccount(uname, pwd):
 	ret = -2
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		ret = service_client.get().VerifyMineAccount(username, pwd)
+		ret = service_client.get().VerifyMineAccount(uname, pwd)
 		service_client.close()
 	except Exception, e:
 		print e

@@ -927,7 +927,7 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
   print('  void InitSampleRegion()')
   print('  i32 GetOnlineAccountId()')
   print('  Mine GetOnlineMine()')
-  print('  i32 VerifyMineAccount(string username, string pwd)')
+  print('  i32 VerifyMineAccount(string uname, string pwd)')
   print('   GetMineRegionsOfBase(string baseName)')
   print('  string GetBaseByRegion(string regionName)')
   print('  Mine GetSampleMineOfRegion(string regionName)')

@@ -160,7 +160,7 @@ void SQLClientHelper::GetAccountByField2(cbm::Account & _return, const std::stri
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		service_client.get()->GetAccountByField2(_return, field1, value2, field2, value2);
+		service_client.get()->GetAccountByField2(_return, field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -233,7 +233,7 @@ int32_t SQLClientHelper::GetAccountIdByField2(const std::string& field1, const s
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		ret = service_client.get()->GetAccountIdByField2(field1, value2, field2, value2);
+		ret = service_client.get()->GetAccountIdByField2(field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -458,7 +458,7 @@ void SQLClientHelper::GetAdjLayerByField2(cbm::AdjLayer & _return, const std::st
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		service_client.get()->GetAdjLayerByField2(_return, field1, value2, field2, value2);
+		service_client.get()->GetAdjLayerByField2(_return, field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -531,7 +531,7 @@ int32_t SQLClientHelper::GetAdjLayerIdByField2(const std::string& field1, const 
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		ret = service_client.get()->GetAdjLayerIdByField2(field1, value2, field2, value2);
+		ret = service_client.get()->GetAdjLayerIdByField2(field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -756,7 +756,7 @@ void SQLClientHelper::GetCoalByField2(cbm::Coal & _return, const std::string& fi
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		service_client.get()->GetCoalByField2(_return, field1, value2, field2, value2);
+		service_client.get()->GetCoalByField2(_return, field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -829,7 +829,7 @@ int32_t SQLClientHelper::GetCoalIdByField2(const std::string& field1, const std:
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		ret = service_client.get()->GetCoalIdByField2(field1, value2, field2, value2);
+		ret = service_client.get()->GetCoalIdByField2(field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -1054,7 +1054,7 @@ void SQLClientHelper::GetComplexityByField2(cbm::Complexity & _return, const std
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		service_client.get()->GetComplexityByField2(_return, field1, value2, field2, value2);
+		service_client.get()->GetComplexityByField2(_return, field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -1127,7 +1127,7 @@ int32_t SQLClientHelper::GetComplexityIdByField2(const std::string& field1, cons
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		ret = service_client.get()->GetComplexityIdByField2(field1, value2, field2, value2);
+		ret = service_client.get()->GetComplexityIdByField2(field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -1352,7 +1352,7 @@ void SQLClientHelper::GetDesignDrillingSurfTechnologyByField2(cbm::DesignDrillin
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		service_client.get()->GetDesignDrillingSurfTechnologyByField2(_return, field1, value2, field2, value2);
+		service_client.get()->GetDesignDrillingSurfTechnologyByField2(_return, field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -1425,7 +1425,7 @@ int32_t SQLClientHelper::GetDesignDrillingSurfTechnologyIdByField2(const std::st
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		ret = service_client.get()->GetDesignDrillingSurfTechnologyIdByField2(field1, value2, field2, value2);
+		ret = service_client.get()->GetDesignDrillingSurfTechnologyIdByField2(field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -1650,7 +1650,7 @@ void SQLClientHelper::GetDesignEvalUnitByField2(cbm::DesignEvalUnit & _return, c
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		service_client.get()->GetDesignEvalUnitByField2(_return, field1, value2, field2, value2);
+		service_client.get()->GetDesignEvalUnitByField2(_return, field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -1723,7 +1723,7 @@ int32_t SQLClientHelper::GetDesignEvalUnitIdByField2(const std::string& field1, 
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		ret = service_client.get()->GetDesignEvalUnitIdByField2(field1, value2, field2, value2);
+		ret = service_client.get()->GetDesignEvalUnitIdByField2(field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -1948,7 +1948,7 @@ void SQLClientHelper::GetDesignEvalUnitPartitionByField2(cbm::DesignEvalUnitPart
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		service_client.get()->GetDesignEvalUnitPartitionByField2(_return, field1, value2, field2, value2);
+		service_client.get()->GetDesignEvalUnitPartitionByField2(_return, field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -2021,7 +2021,7 @@ int32_t SQLClientHelper::GetDesignEvalUnitPartitionIdByField2(const std::string&
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		ret = service_client.get()->GetDesignEvalUnitPartitionIdByField2(field1, value2, field2, value2);
+		ret = service_client.get()->GetDesignEvalUnitPartitionIdByField2(field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -2246,7 +2246,7 @@ void SQLClientHelper::GetDesignGoafTechnologyByField2(cbm::DesignGoafTechnology 
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		service_client.get()->GetDesignGoafTechnologyByField2(_return, field1, value2, field2, value2);
+		service_client.get()->GetDesignGoafTechnologyByField2(_return, field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -2319,7 +2319,7 @@ int32_t SQLClientHelper::GetDesignGoafTechnologyIdByField2(const std::string& fi
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		ret = service_client.get()->GetDesignGoafTechnologyIdByField2(field1, value2, field2, value2);
+		ret = service_client.get()->GetDesignGoafTechnologyIdByField2(field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -2544,7 +2544,7 @@ void SQLClientHelper::GetDesignPoreByField2(cbm::DesignPore & _return, const std
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		service_client.get()->GetDesignPoreByField2(_return, field1, value2, field2, value2);
+		service_client.get()->GetDesignPoreByField2(_return, field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -2617,7 +2617,7 @@ int32_t SQLClientHelper::GetDesignPoreIdByField2(const std::string& field1, cons
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		ret = service_client.get()->GetDesignPoreIdByField2(field1, value2, field2, value2);
+		ret = service_client.get()->GetDesignPoreIdByField2(field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -2842,7 +2842,7 @@ void SQLClientHelper::GetDesignSiteByField2(cbm::DesignSite & _return, const std
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		service_client.get()->GetDesignSiteByField2(_return, field1, value2, field2, value2);
+		service_client.get()->GetDesignSiteByField2(_return, field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -2915,7 +2915,7 @@ int32_t SQLClientHelper::GetDesignSiteIdByField2(const std::string& field1, cons
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		ret = service_client.get()->GetDesignSiteIdByField2(field1, value2, field2, value2);
+		ret = service_client.get()->GetDesignSiteIdByField2(field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -3140,7 +3140,7 @@ void SQLClientHelper::GetDesignTechnologyByField2(cbm::DesignTechnology & _retur
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		service_client.get()->GetDesignTechnologyByField2(_return, field1, value2, field2, value2);
+		service_client.get()->GetDesignTechnologyByField2(_return, field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -3213,7 +3213,7 @@ int32_t SQLClientHelper::GetDesignTechnologyIdByField2(const std::string& field1
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		ret = service_client.get()->GetDesignTechnologyIdByField2(field1, value2, field2, value2);
+		ret = service_client.get()->GetDesignTechnologyIdByField2(field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -3438,7 +3438,7 @@ void SQLClientHelper::GetDesignTunnelControlPointByField2(cbm::DesignTunnelContr
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		service_client.get()->GetDesignTunnelControlPointByField2(_return, field1, value2, field2, value2);
+		service_client.get()->GetDesignTunnelControlPointByField2(_return, field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -3511,7 +3511,7 @@ int32_t SQLClientHelper::GetDesignTunnelControlPointIdByField2(const std::string
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		ret = service_client.get()->GetDesignTunnelControlPointIdByField2(field1, value2, field2, value2);
+		ret = service_client.get()->GetDesignTunnelControlPointIdByField2(field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -3736,7 +3736,7 @@ void SQLClientHelper::GetDesignWorkSurfControlPointByField2(cbm::DesignWorkSurfC
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		service_client.get()->GetDesignWorkSurfControlPointByField2(_return, field1, value2, field2, value2);
+		service_client.get()->GetDesignWorkSurfControlPointByField2(_return, field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -3809,7 +3809,7 @@ int32_t SQLClientHelper::GetDesignWorkSurfControlPointIdByField2(const std::stri
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		ret = service_client.get()->GetDesignWorkSurfControlPointIdByField2(field1, value2, field2, value2);
+		ret = service_client.get()->GetDesignWorkSurfControlPointIdByField2(field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -4034,7 +4034,7 @@ void SQLClientHelper::GetDesignWorkSurfTechnologyByField2(cbm::DesignWorkSurfTec
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		service_client.get()->GetDesignWorkSurfTechnologyByField2(_return, field1, value2, field2, value2);
+		service_client.get()->GetDesignWorkSurfTechnologyByField2(_return, field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -4107,7 +4107,7 @@ int32_t SQLClientHelper::GetDesignWorkSurfTechnologyIdByField2(const std::string
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		ret = service_client.get()->GetDesignWorkSurfTechnologyIdByField2(field1, value2, field2, value2);
+		ret = service_client.get()->GetDesignWorkSurfTechnologyIdByField2(field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -4332,7 +4332,7 @@ void SQLClientHelper::GetDrillingRadiusParamByField2(cbm::DrillingRadiusParam & 
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		service_client.get()->GetDrillingRadiusParamByField2(_return, field1, value2, field2, value2);
+		service_client.get()->GetDrillingRadiusParamByField2(_return, field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -4405,7 +4405,7 @@ int32_t SQLClientHelper::GetDrillingRadiusParamIdByField2(const std::string& fie
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		ret = service_client.get()->GetDrillingRadiusParamIdByField2(field1, value2, field2, value2);
+		ret = service_client.get()->GetDrillingRadiusParamIdByField2(field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -4630,7 +4630,7 @@ void SQLClientHelper::GetDrillingSurfByField2(cbm::DrillingSurf & _return, const
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		service_client.get()->GetDrillingSurfByField2(_return, field1, value2, field2, value2);
+		service_client.get()->GetDrillingSurfByField2(_return, field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -4703,7 +4703,7 @@ int32_t SQLClientHelper::GetDrillingSurfIdByField2(const std::string& field1, co
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		ret = service_client.get()->GetDrillingSurfIdByField2(field1, value2, field2, value2);
+		ret = service_client.get()->GetDrillingSurfIdByField2(field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -4928,7 +4928,7 @@ void SQLClientHelper::GetEvalUnitByField2(cbm::EvalUnit & _return, const std::st
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		service_client.get()->GetEvalUnitByField2(_return, field1, value2, field2, value2);
+		service_client.get()->GetEvalUnitByField2(_return, field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -5001,7 +5001,7 @@ int32_t SQLClientHelper::GetEvalUnitIdByField2(const std::string& field1, const 
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		ret = service_client.get()->GetEvalUnitIdByField2(field1, value2, field2, value2);
+		ret = service_client.get()->GetEvalUnitIdByField2(field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -5226,7 +5226,7 @@ void SQLClientHelper::GetHighDrillingPoreByField2(cbm::HighDrillingPore & _retur
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		service_client.get()->GetHighDrillingPoreByField2(_return, field1, value2, field2, value2);
+		service_client.get()->GetHighDrillingPoreByField2(_return, field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -5299,7 +5299,7 @@ int32_t SQLClientHelper::GetHighDrillingPoreIdByField2(const std::string& field1
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		ret = service_client.get()->GetHighDrillingPoreIdByField2(field1, value2, field2, value2);
+		ret = service_client.get()->GetHighDrillingPoreIdByField2(field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -5524,7 +5524,7 @@ void SQLClientHelper::GetHighDrillingPoreParamByField2(cbm::HighDrillingPorePara
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		service_client.get()->GetHighDrillingPoreParamByField2(_return, field1, value2, field2, value2);
+		service_client.get()->GetHighDrillingPoreParamByField2(_return, field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -5597,7 +5597,7 @@ int32_t SQLClientHelper::GetHighDrillingPoreParamIdByField2(const std::string& f
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		ret = service_client.get()->GetHighDrillingPoreParamIdByField2(field1, value2, field2, value2);
+		ret = service_client.get()->GetHighDrillingPoreParamIdByField2(field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -5822,7 +5822,7 @@ void SQLClientHelper::GetHighDrillingSiteParamByField2(cbm::HighDrillingSitePara
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		service_client.get()->GetHighDrillingSiteParamByField2(_return, field1, value2, field2, value2);
+		service_client.get()->GetHighDrillingSiteParamByField2(_return, field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -5895,7 +5895,7 @@ int32_t SQLClientHelper::GetHighDrillingSiteParamIdByField2(const std::string& f
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		ret = service_client.get()->GetHighDrillingSiteParamIdByField2(field1, value2, field2, value2);
+		ret = service_client.get()->GetHighDrillingSiteParamIdByField2(field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -6120,7 +6120,7 @@ void SQLClientHelper::GetHighDrillingTunnelByField2(cbm::HighDrillingTunnel & _r
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		service_client.get()->GetHighDrillingTunnelByField2(_return, field1, value2, field2, value2);
+		service_client.get()->GetHighDrillingTunnelByField2(_return, field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -6193,7 +6193,7 @@ int32_t SQLClientHelper::GetHighDrillingTunnelIdByField2(const std::string& fiel
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		ret = service_client.get()->GetHighDrillingTunnelIdByField2(field1, value2, field2, value2);
+		ret = service_client.get()->GetHighDrillingTunnelIdByField2(field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -6418,7 +6418,7 @@ void SQLClientHelper::GetHydrGeoByField2(cbm::HydrGeo & _return, const std::stri
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		service_client.get()->GetHydrGeoByField2(_return, field1, value2, field2, value2);
+		service_client.get()->GetHydrGeoByField2(_return, field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -6491,7 +6491,7 @@ int32_t SQLClientHelper::GetHydrGeoIdByField2(const std::string& field1, const s
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		ret = service_client.get()->GetHydrGeoIdByField2(field1, value2, field2, value2);
+		ret = service_client.get()->GetHydrGeoIdByField2(field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -6716,7 +6716,7 @@ void SQLClientHelper::GetMineByField2(cbm::Mine & _return, const std::string& fi
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		service_client.get()->GetMineByField2(_return, field1, value2, field2, value2);
+		service_client.get()->GetMineByField2(_return, field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -6789,7 +6789,7 @@ int32_t SQLClientHelper::GetMineIdByField2(const std::string& field1, const std:
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		ret = service_client.get()->GetMineIdByField2(field1, value2, field2, value2);
+		ret = service_client.get()->GetMineIdByField2(field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -7014,7 +7014,7 @@ void SQLClientHelper::GetMineBaseByField2(cbm::MineBase & _return, const std::st
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		service_client.get()->GetMineBaseByField2(_return, field1, value2, field2, value2);
+		service_client.get()->GetMineBaseByField2(_return, field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -7087,7 +7087,7 @@ int32_t SQLClientHelper::GetMineBaseIdByField2(const std::string& field1, const 
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		ret = service_client.get()->GetMineBaseIdByField2(field1, value2, field2, value2);
+		ret = service_client.get()->GetMineBaseIdByField2(field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -7312,7 +7312,7 @@ void SQLClientHelper::GetMineRegionByField2(cbm::MineRegion & _return, const std
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		service_client.get()->GetMineRegionByField2(_return, field1, value2, field2, value2);
+		service_client.get()->GetMineRegionByField2(_return, field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -7385,7 +7385,7 @@ int32_t SQLClientHelper::GetMineRegionIdByField2(const std::string& field1, cons
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		ret = service_client.get()->GetMineRegionIdByField2(field1, value2, field2, value2);
+		ret = service_client.get()->GetMineRegionIdByField2(field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -7610,7 +7610,7 @@ void SQLClientHelper::GetPoreFlowByField2(cbm::PoreFlow & _return, const std::st
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		service_client.get()->GetPoreFlowByField2(_return, field1, value2, field2, value2);
+		service_client.get()->GetPoreFlowByField2(_return, field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -7683,7 +7683,7 @@ int32_t SQLClientHelper::GetPoreFlowIdByField2(const std::string& field1, const 
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		ret = service_client.get()->GetPoreFlowIdByField2(field1, value2, field2, value2);
+		ret = service_client.get()->GetPoreFlowIdByField2(field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -7908,7 +7908,7 @@ void SQLClientHelper::GetPoreSizeByField2(cbm::PoreSize & _return, const std::st
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		service_client.get()->GetPoreSizeByField2(_return, field1, value2, field2, value2);
+		service_client.get()->GetPoreSizeByField2(_return, field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -7981,7 +7981,7 @@ int32_t SQLClientHelper::GetPoreSizeIdByField2(const std::string& field1, const 
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		ret = service_client.get()->GetPoreSizeIdByField2(field1, value2, field2, value2);
+		ret = service_client.get()->GetPoreSizeIdByField2(field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -8206,7 +8206,7 @@ void SQLClientHelper::GetResAbundanceByField2(cbm::ResAbundance & _return, const
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		service_client.get()->GetResAbundanceByField2(_return, field1, value2, field2, value2);
+		service_client.get()->GetResAbundanceByField2(_return, field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -8279,7 +8279,7 @@ int32_t SQLClientHelper::GetResAbundanceIdByField2(const std::string& field1, co
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		ret = service_client.get()->GetResAbundanceIdByField2(field1, value2, field2, value2);
+		ret = service_client.get()->GetResAbundanceIdByField2(field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -8504,7 +8504,7 @@ void SQLClientHelper::GetRockByField2(cbm::Rock & _return, const std::string& fi
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		service_client.get()->GetRockByField2(_return, field1, value2, field2, value2);
+		service_client.get()->GetRockByField2(_return, field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -8577,7 +8577,7 @@ int32_t SQLClientHelper::GetRockIdByField2(const std::string& field1, const std:
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		ret = service_client.get()->GetRockIdByField2(field1, value2, field2, value2);
+		ret = service_client.get()->GetRockIdByField2(field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -8802,7 +8802,7 @@ void SQLClientHelper::GetSysInfoByField2(cbm::SysInfo & _return, const std::stri
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		service_client.get()->GetSysInfoByField2(_return, field1, value2, field2, value2);
+		service_client.get()->GetSysInfoByField2(_return, field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -8875,7 +8875,7 @@ int32_t SQLClientHelper::GetSysInfoIdByField2(const std::string& field1, const s
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		ret = service_client.get()->GetSysInfoIdByField2(field1, value2, field2, value2);
+		ret = service_client.get()->GetSysInfoIdByField2(field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -9100,7 +9100,7 @@ void SQLClientHelper::GetTechModeByField2(cbm::TechMode & _return, const std::st
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		service_client.get()->GetTechModeByField2(_return, field1, value2, field2, value2);
+		service_client.get()->GetTechModeByField2(_return, field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -9173,7 +9173,7 @@ int32_t SQLClientHelper::GetTechModeIdByField2(const std::string& field1, const 
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		ret = service_client.get()->GetTechModeIdByField2(field1, value2, field2, value2);
+		ret = service_client.get()->GetTechModeIdByField2(field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -9398,7 +9398,7 @@ void SQLClientHelper::GetTechnologyByField2(cbm::Technology & _return, const std
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		service_client.get()->GetTechnologyByField2(_return, field1, value2, field2, value2);
+		service_client.get()->GetTechnologyByField2(_return, field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -9471,7 +9471,7 @@ int32_t SQLClientHelper::GetTechnologyIdByField2(const std::string& field1, cons
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		ret = service_client.get()->GetTechnologyIdByField2(field1, value2, field2, value2);
+		ret = service_client.get()->GetTechnologyIdByField2(field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -9696,7 +9696,7 @@ void SQLClientHelper::GetTopoGeoByField2(cbm::TopoGeo & _return, const std::stri
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		service_client.get()->GetTopoGeoByField2(_return, field1, value2, field2, value2);
+		service_client.get()->GetTopoGeoByField2(_return, field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -9769,7 +9769,7 @@ int32_t SQLClientHelper::GetTopoGeoIdByField2(const std::string& field1, const s
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		ret = service_client.get()->GetTopoGeoIdByField2(field1, value2, field2, value2);
+		ret = service_client.get()->GetTopoGeoIdByField2(field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -9994,7 +9994,7 @@ void SQLClientHelper::GetTunnelByField2(cbm::Tunnel & _return, const std::string
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		service_client.get()->GetTunnelByField2(_return, field1, value2, field2, value2);
+		service_client.get()->GetTunnelByField2(_return, field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -10067,7 +10067,7 @@ int32_t SQLClientHelper::GetTunnelIdByField2(const std::string& field1, const st
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		ret = service_client.get()->GetTunnelIdByField2(field1, value2, field2, value2);
+		ret = service_client.get()->GetTunnelIdByField2(field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -10292,7 +10292,7 @@ void SQLClientHelper::GetWorkAreaByField2(cbm::WorkArea & _return, const std::st
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		service_client.get()->GetWorkAreaByField2(_return, field1, value2, field2, value2);
+		service_client.get()->GetWorkAreaByField2(_return, field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -10365,7 +10365,7 @@ int32_t SQLClientHelper::GetWorkAreaIdByField2(const std::string& field1, const 
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		ret = service_client.get()->GetWorkAreaIdByField2(field1, value2, field2, value2);
+		ret = service_client.get()->GetWorkAreaIdByField2(field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -10590,7 +10590,7 @@ void SQLClientHelper::GetWorkSurfByField2(cbm::WorkSurf & _return, const std::st
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		service_client.get()->GetWorkSurfByField2(_return, field1, value2, field2, value2);
+		service_client.get()->GetWorkSurfByField2(_return, field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
@@ -10663,7 +10663,7 @@ int32_t SQLClientHelper::GetWorkSurfIdByField2(const std::string& field1, const 
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		ret = service_client.get()->GetWorkSurfIdByField2(field1, value2, field2, value2);
+		ret = service_client.get()->GetWorkSurfIdByField2(field1, value1, field2, value2);
 		service_client.close();
 	}
 	catch (TException &tx) {
