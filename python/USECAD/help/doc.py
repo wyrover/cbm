@@ -6,7 +6,11 @@ def OpenPDFFile(fileName):
 	if type(fileName).__name__ != "unicode":
 		fileName = fileName.decode('utf-8')
 	fName = 'pdf.exe %s' % fileName
-	subprocess.Popen(fName.encode('gb2312'))
+	# 增加异常处理
+	try:
+		subprocess.Popen(fName.encode('gb2312'))
+	else Exception, e:
+		print e
 
 def OpenNet(webName):
 	webbrowser.open(webName)
