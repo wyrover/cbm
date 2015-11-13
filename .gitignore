@@ -70,3 +70,5 @@ acad.err
 *.dwl*
 *.pak
 *.dat
+
+soui*.rc2
