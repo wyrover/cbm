@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ui\gas_design_p2_3_dlg.ui'
+# Form implementation generated from reading ui file 'uifiles\gas_design_p2_3_dlg.ui'
 #
 # Created by: PyQt4 UI code generator 4.11.4
 #

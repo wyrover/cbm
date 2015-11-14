@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ui\mine_gas_reserves_predict_dlg2.ui'
+# Form implementation generated from reading ui file 'uifiles\mine_gas_reserves_predict_dlg2.ui'
 #
 # Created by: PyQt4 UI code generator 4.11.4
 #

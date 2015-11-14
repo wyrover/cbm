@@ -237,10 +237,37 @@ def loginFirst():
 	else:  
 		return False  
 
+# 设置皮肤样式
+def SetStyle(app, styleName):
+	file = QtCore.QFile(QtCore.QString(":/images/%1.css").arg(styleName))
+	file.open(QtCore.QFile.ReadOnly)
+	qss = QtCore.QString(file.readAll())
+	print unicode(qss)
+	app.setStyleSheet(qss)
+	app.setPalette(QtGui.QPalette(QtGui.QColor("#F0F0F0")))
+
+# 设置编码为UTF8
+def SetUTF8Code(app):
+	codec = QtCore.QTextCodec.codecForName("UTF-8")
+	QtCore.QTextCodec.setCodecForLocale(codec)
+	QtCore.QTextCodec.setCodecForCStrings(codec)
+	QtCore.QTextCodec.setCodecForTr(codec)
+
+# 加载中文字符
+def SetChinese(app):
+	translator = QtCore.QTranslator(app)
+	translator.load(":/images/qt_zh_CN.qm")
+	app.installTranslator(translator)
+
 def run():
 	import sys
-	app =QtGui.QApplication(sys.argv)
-	QtCore.QTextCodec.setCodecForCStrings(QtCore.QTextCodec.codecForName("UTF-8"))
+	app = QtGui.QApplication(sys.argv)
+	# 设置utf-8编码
+	SetUTF8Code(app)
+	# 设置样式
+	SetStyle(app, 'blue')
+	# 设置qt中文界面(消息框、菜单之类的默认使用中文)
+	SetChinese(app)
 	if loginFirst():
 		mw = MainWindow()
 		mw.show()

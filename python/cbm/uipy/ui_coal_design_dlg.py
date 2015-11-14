@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ui\coal_design_dlg.ui'
+# Form implementation generated from reading ui file 'uifiles\coal_design_dlg.ui'
 #
 # Created by: PyQt4 UI code generator 4.11.4
 #
