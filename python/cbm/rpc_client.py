@@ -242,7 +242,7 @@ def test_sql():
     # print CbmClientHelper.GetJsonDatasFromCAD("{}", 2)
     
     # design.test_copy_obj()
-    # design.test_draw_coal_occurrence_graph()
+    design.test_draw_coal_occurrence_graph()
 
     # design.test_draw_graph_11()
     # design.test_draw_graph_12()
@@ -251,9 +251,9 @@ def test_sql():
 
     # design.test_new_design_eval_unit
     # design.test_design_eval_unit()
-    # design.test_draw_desigin_eval_unit()
+    design.test_draw_desigin_eval_unit()
 
-    SQLClientHelper.DeleteMoreSysInfo(SQLClientHelper.GetSysInfoIds())
+    # SQLClientHelper.DeleteMoreSysInfo(SQLClientHelper.GetSysInfoIds())
 
 def main():
   if False:

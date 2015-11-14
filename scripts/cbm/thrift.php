@@ -191,6 +191,7 @@ function __gen_sql_service_handler_of_py_server($file, $tbl_name, $fields, $rela
 
 
 	fwrite($file, TAB."def DeleteMore".$clsname."(self, obj_ids):".ENTER);
+	fwrite($file, TWO_TAB."if len(obj_ids) == 0:return".ENTER);
 	fwrite($file, TWO_TAB."self.session.query(SQL.$clsname).filter(SQL.$clsname.id.in_(obj_ids)).delete(synchronize_session=False)".ENTER);
 	fwrite($file, TWO_TAB."self.session.commit()".ENTER);
 	
@@ -484,6 +485,7 @@ function __gen_sql_helper_of_cpp_client($file, $tbl_name, $fields, $relations)
 	fwrite($file, "}".ENTER);
 
 	fwrite($file, "void SQLClientHelper::DeleteMore".$clsname."(const std::vector<int32_t> & obj_ids) {".ENTER);
+	fwrite($file, TAB."if(obj_ids.empty()) return;".ENTER);
 	fwrite($file, TAB."try {".ENTER);
 	fwrite($file, TWO_TAB."RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);".ENTER);
 	fwrite($file, TWO_TAB."service_client.start();".ENTER);
@@ -849,6 +851,7 @@ function __gen_sql_helper_of_py_client($file, $tbl_name, $fields, $relations)
 	
 
 	fwrite($file, "def DeleteMore".$clsname."(obj_ids):".ENTER);
+	fwrite($file, TAB."if len(obj_ids) == 0:return".ENTER);
 	fwrite($file, TAB."try:".ENTER);
 	fwrite($file, TWO_TAB."service_client = RpcClient(CbmService, host=HOST, port=PORT2)".ENTER);
 	fwrite($file, TWO_TAB."service_client.start()".ENTER);
@@ -1203,6 +1206,7 @@ function __gen_sql_helper_of_php_client($file, $tbl_name, $fields, $relations)
 	
 
 	fwrite($file, 'function DeleteMore'.$clsname.'($obj_ids) {'.ENTER);
+	fwrite($file, TAB.'if(empty($obj_ids)) return;'.ENTER);
 	fwrite($file, TAB.'try {'.ENTER);
 	fwrite($file, TWO_TAB.'$service_client = new ThriftClient('.$service_class.', HOST, PORT2);'.ENTER);
 	fwrite($file, TWO_TAB.'$client = $service_client->getClient();'.ENTER);

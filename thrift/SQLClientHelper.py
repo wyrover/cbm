@@ -115,6 +115,7 @@ def AddMoreAccount(objs):
 	except Exception, e:
 		print 'client exception:',e
 def DeleteMoreAccount(obj_ids):
+	if len(obj_ids) == 0:return
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
@@ -388,6 +389,7 @@ def AddMoreAdjLayer(objs):
 	except Exception, e:
 		print 'client exception:',e
 def DeleteMoreAdjLayer(obj_ids):
+	if len(obj_ids) == 0:return
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
@@ -661,6 +663,7 @@ def AddMoreCoal(objs):
 	except Exception, e:
 		print 'client exception:',e
 def DeleteMoreCoal(obj_ids):
+	if len(obj_ids) == 0:return
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
@@ -934,6 +937,7 @@ def AddMoreComplexity(objs):
 	except Exception, e:
 		print 'client exception:',e
 def DeleteMoreComplexity(obj_ids):
+	if len(obj_ids) == 0:return
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
@@ -1207,6 +1211,7 @@ def AddMoreDesignDrillingSurfTechnology(objs):
 	except Exception, e:
 		print 'client exception:',e
 def DeleteMoreDesignDrillingSurfTechnology(obj_ids):
+	if len(obj_ids) == 0:return
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
@@ -1480,6 +1485,7 @@ def AddMoreDesignEvalUnit(objs):
 	except Exception, e:
 		print 'client exception:',e
 def DeleteMoreDesignEvalUnit(obj_ids):
+	if len(obj_ids) == 0:return
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
@@ -1753,6 +1759,7 @@ def AddMoreDesignEvalUnitPartition(objs):
 	except Exception, e:
 		print 'client exception:',e
 def DeleteMoreDesignEvalUnitPartition(obj_ids):
+	if len(obj_ids) == 0:return
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
@@ -2026,6 +2033,7 @@ def AddMoreDesignGoafTechnology(objs):
 	except Exception, e:
 		print 'client exception:',e
 def DeleteMoreDesignGoafTechnology(obj_ids):
+	if len(obj_ids) == 0:return
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
@@ -2299,6 +2307,7 @@ def AddMoreDesignPore(objs):
 	except Exception, e:
 		print 'client exception:',e
 def DeleteMoreDesignPore(obj_ids):
+	if len(obj_ids) == 0:return
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
@@ -2572,6 +2581,7 @@ def AddMoreDesignSite(objs):
 	except Exception, e:
 		print 'client exception:',e
 def DeleteMoreDesignSite(obj_ids):
+	if len(obj_ids) == 0:return
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
@@ -2845,6 +2855,7 @@ def AddMoreDesignTechnology(objs):
 	except Exception, e:
 		print 'client exception:',e
 def DeleteMoreDesignTechnology(obj_ids):
+	if len(obj_ids) == 0:return
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
@@ -3118,6 +3129,7 @@ def AddMoreDesignTunnelControlPoint(objs):
 	except Exception, e:
 		print 'client exception:',e
 def DeleteMoreDesignTunnelControlPoint(obj_ids):
+	if len(obj_ids) == 0:return
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
@@ -3391,6 +3403,7 @@ def AddMoreDesignWorkSurfControlPoint(objs):
 	except Exception, e:
 		print 'client exception:',e
 def DeleteMoreDesignWorkSurfControlPoint(obj_ids):
+	if len(obj_ids) == 0:return
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
@@ -3664,6 +3677,7 @@ def AddMoreDesignWorkSurfTechnology(objs):
 	except Exception, e:
 		print 'client exception:',e
 def DeleteMoreDesignWorkSurfTechnology(obj_ids):
+	if len(obj_ids) == 0:return
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
@@ -3937,6 +3951,7 @@ def AddMoreDrillingRadiusParam(objs):
 	except Exception, e:
 		print 'client exception:',e
 def DeleteMoreDrillingRadiusParam(obj_ids):
+	if len(obj_ids) == 0:return
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
@@ -4210,6 +4225,7 @@ def AddMoreDrillingSurf(objs):
 	except Exception, e:
 		print 'client exception:',e
 def DeleteMoreDrillingSurf(obj_ids):
+	if len(obj_ids) == 0:return
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
@@ -4483,6 +4499,7 @@ def AddMoreEvalUnit(objs):
 	except Exception, e:
 		print 'client exception:',e
 def DeleteMoreEvalUnit(obj_ids):
+	if len(obj_ids) == 0:return
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
@@ -4756,6 +4773,7 @@ def AddMoreHighDrillingPore(objs):
 	except Exception, e:
 		print 'client exception:',e
 def DeleteMoreHighDrillingPore(obj_ids):
+	if len(obj_ids) == 0:return
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
@@ -5029,6 +5047,7 @@ def AddMoreHighDrillingPoreParam(objs):
 	except Exception, e:
 		print 'client exception:',e
 def DeleteMoreHighDrillingPoreParam(obj_ids):
+	if len(obj_ids) == 0:return
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
@@ -5302,6 +5321,7 @@ def AddMoreHighDrillingSiteParam(objs):
 	except Exception, e:
 		print 'client exception:',e
 def DeleteMoreHighDrillingSiteParam(obj_ids):
+	if len(obj_ids) == 0:return
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
@@ -5575,6 +5595,7 @@ def AddMoreHighDrillingTunnel(objs):
 	except Exception, e:
 		print 'client exception:',e
 def DeleteMoreHighDrillingTunnel(obj_ids):
+	if len(obj_ids) == 0:return
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
@@ -5848,6 +5869,7 @@ def AddMoreHydrGeo(objs):
 	except Exception, e:
 		print 'client exception:',e
 def DeleteMoreHydrGeo(obj_ids):
+	if len(obj_ids) == 0:return
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
@@ -6121,6 +6143,7 @@ def AddMoreMine(objs):
 	except Exception, e:
 		print 'client exception:',e
 def DeleteMoreMine(obj_ids):
+	if len(obj_ids) == 0:return
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
@@ -6394,6 +6417,7 @@ def AddMoreMineBase(objs):
 	except Exception, e:
 		print 'client exception:',e
 def DeleteMoreMineBase(obj_ids):
+	if len(obj_ids) == 0:return
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
@@ -6667,6 +6691,7 @@ def AddMoreMineRegion(objs):
 	except Exception, e:
 		print 'client exception:',e
 def DeleteMoreMineRegion(obj_ids):
+	if len(obj_ids) == 0:return
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
@@ -6940,6 +6965,7 @@ def AddMorePoreFlow(objs):
 	except Exception, e:
 		print 'client exception:',e
 def DeleteMorePoreFlow(obj_ids):
+	if len(obj_ids) == 0:return
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
@@ -7213,6 +7239,7 @@ def AddMorePoreSize(objs):
 	except Exception, e:
 		print 'client exception:',e
 def DeleteMorePoreSize(obj_ids):
+	if len(obj_ids) == 0:return
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
@@ -7486,6 +7513,7 @@ def AddMoreResAbundance(objs):
 	except Exception, e:
 		print 'client exception:',e
 def DeleteMoreResAbundance(obj_ids):
+	if len(obj_ids) == 0:return
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
@@ -7759,6 +7787,7 @@ def AddMoreRock(objs):
 	except Exception, e:
 		print 'client exception:',e
 def DeleteMoreRock(obj_ids):
+	if len(obj_ids) == 0:return
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
@@ -8032,6 +8061,7 @@ def AddMoreSysInfo(objs):
 	except Exception, e:
 		print 'client exception:',e
 def DeleteMoreSysInfo(obj_ids):
+	if len(obj_ids) == 0:return
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
@@ -8305,6 +8335,7 @@ def AddMoreTechMode(objs):
 	except Exception, e:
 		print 'client exception:',e
 def DeleteMoreTechMode(obj_ids):
+	if len(obj_ids) == 0:return
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
@@ -8578,6 +8609,7 @@ def AddMoreTechnology(objs):
 	except Exception, e:
 		print 'client exception:',e
 def DeleteMoreTechnology(obj_ids):
+	if len(obj_ids) == 0:return
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
@@ -8851,6 +8883,7 @@ def AddMoreTopoGeo(objs):
 	except Exception, e:
 		print 'client exception:',e
 def DeleteMoreTopoGeo(obj_ids):
+	if len(obj_ids) == 0:return
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
@@ -9124,6 +9157,7 @@ def AddMoreTunnel(objs):
 	except Exception, e:
 		print 'client exception:',e
 def DeleteMoreTunnel(obj_ids):
+	if len(obj_ids) == 0:return
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
@@ -9397,6 +9431,7 @@ def AddMoreWorkArea(objs):
 	except Exception, e:
 		print 'client exception:',e
 def DeleteMoreWorkArea(obj_ids):
+	if len(obj_ids) == 0:return
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
@@ -9670,6 +9705,7 @@ def AddMoreWorkSurf(objs):
 	except Exception, e:
 		print 'client exception:',e
 def DeleteMoreWorkSurf(obj_ids):
+	if len(obj_ids) == 0:return
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()

@@ -134,6 +134,7 @@ function AddMoreAccount($objs) {
 }
 
 function DeleteMoreAccount($obj_ids) {
+	if(empty($obj_ids)) return;
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
@@ -457,6 +458,7 @@ function AddMoreAdjLayer($objs) {
 }
 
 function DeleteMoreAdjLayer($obj_ids) {
+	if(empty($obj_ids)) return;
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
@@ -780,6 +782,7 @@ function AddMoreCoal($objs) {
 }
 
 function DeleteMoreCoal($obj_ids) {
+	if(empty($obj_ids)) return;
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
@@ -1103,6 +1106,7 @@ function AddMoreComplexity($objs) {
 }
 
 function DeleteMoreComplexity($obj_ids) {
+	if(empty($obj_ids)) return;
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
@@ -1426,6 +1430,7 @@ function AddMoreDesignDrillingSurfTechnology($objs) {
 }
 
 function DeleteMoreDesignDrillingSurfTechnology($obj_ids) {
+	if(empty($obj_ids)) return;
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
@@ -1749,6 +1754,7 @@ function AddMoreDesignEvalUnit($objs) {
 }
 
 function DeleteMoreDesignEvalUnit($obj_ids) {
+	if(empty($obj_ids)) return;
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
@@ -2072,6 +2078,7 @@ function AddMoreDesignEvalUnitPartition($objs) {
 }
 
 function DeleteMoreDesignEvalUnitPartition($obj_ids) {
+	if(empty($obj_ids)) return;
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
@@ -2395,6 +2402,7 @@ function AddMoreDesignGoafTechnology($objs) {
 }
 
 function DeleteMoreDesignGoafTechnology($obj_ids) {
+	if(empty($obj_ids)) return;
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
@@ -2718,6 +2726,7 @@ function AddMoreDesignPore($objs) {
 }
 
 function DeleteMoreDesignPore($obj_ids) {
+	if(empty($obj_ids)) return;
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
@@ -3041,6 +3050,7 @@ function AddMoreDesignSite($objs) {
 }
 
 function DeleteMoreDesignSite($obj_ids) {
+	if(empty($obj_ids)) return;
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
@@ -3364,6 +3374,7 @@ function AddMoreDesignTechnology($objs) {
 }
 
 function DeleteMoreDesignTechnology($obj_ids) {
+	if(empty($obj_ids)) return;
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
@@ -3687,6 +3698,7 @@ function AddMoreDesignTunnelControlPoint($objs) {
 }
 
 function DeleteMoreDesignTunnelControlPoint($obj_ids) {
+	if(empty($obj_ids)) return;
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
@@ -4010,6 +4022,7 @@ function AddMoreDesignWorkSurfControlPoint($objs) {
 }
 
 function DeleteMoreDesignWorkSurfControlPoint($obj_ids) {
+	if(empty($obj_ids)) return;
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
@@ -4333,6 +4346,7 @@ function AddMoreDesignWorkSurfTechnology($objs) {
 }
 
 function DeleteMoreDesignWorkSurfTechnology($obj_ids) {
+	if(empty($obj_ids)) return;
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
@@ -4656,6 +4670,7 @@ function AddMoreDrillingRadiusParam($objs) {
 }
 
 function DeleteMoreDrillingRadiusParam($obj_ids) {
+	if(empty($obj_ids)) return;
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
@@ -4979,6 +4994,7 @@ function AddMoreDrillingSurf($objs) {
 }
 
 function DeleteMoreDrillingSurf($obj_ids) {
+	if(empty($obj_ids)) return;
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
@@ -5302,6 +5318,7 @@ function AddMoreEvalUnit($objs) {
 }
 
 function DeleteMoreEvalUnit($obj_ids) {
+	if(empty($obj_ids)) return;
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
@@ -5625,6 +5642,7 @@ function AddMoreHighDrillingPore($objs) {
 }
 
 function DeleteMoreHighDrillingPore($obj_ids) {
+	if(empty($obj_ids)) return;
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
@@ -5948,6 +5966,7 @@ function AddMoreHighDrillingPoreParam($objs) {
 }
 
 function DeleteMoreHighDrillingPoreParam($obj_ids) {
+	if(empty($obj_ids)) return;
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
@@ -6271,6 +6290,7 @@ function AddMoreHighDrillingSiteParam($objs) {
 }
 
 function DeleteMoreHighDrillingSiteParam($obj_ids) {
+	if(empty($obj_ids)) return;
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
@@ -6594,6 +6614,7 @@ function AddMoreHighDrillingTunnel($objs) {
 }
 
 function DeleteMoreHighDrillingTunnel($obj_ids) {
+	if(empty($obj_ids)) return;
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
@@ -6917,6 +6938,7 @@ function AddMoreHydrGeo($objs) {
 }
 
 function DeleteMoreHydrGeo($obj_ids) {
+	if(empty($obj_ids)) return;
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
@@ -7240,6 +7262,7 @@ function AddMoreMine($objs) {
 }
 
 function DeleteMoreMine($obj_ids) {
+	if(empty($obj_ids)) return;
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
@@ -7563,6 +7586,7 @@ function AddMoreMineBase($objs) {
 }
 
 function DeleteMoreMineBase($obj_ids) {
+	if(empty($obj_ids)) return;
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
@@ -7886,6 +7910,7 @@ function AddMoreMineRegion($objs) {
 }
 
 function DeleteMoreMineRegion($obj_ids) {
+	if(empty($obj_ids)) return;
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
@@ -8209,6 +8234,7 @@ function AddMorePoreFlow($objs) {
 }
 
 function DeleteMorePoreFlow($obj_ids) {
+	if(empty($obj_ids)) return;
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
@@ -8532,6 +8558,7 @@ function AddMorePoreSize($objs) {
 }
 
 function DeleteMorePoreSize($obj_ids) {
+	if(empty($obj_ids)) return;
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
@@ -8855,6 +8882,7 @@ function AddMoreResAbundance($objs) {
 }
 
 function DeleteMoreResAbundance($obj_ids) {
+	if(empty($obj_ids)) return;
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
@@ -9178,6 +9206,7 @@ function AddMoreRock($objs) {
 }
 
 function DeleteMoreRock($obj_ids) {
+	if(empty($obj_ids)) return;
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
@@ -9501,6 +9530,7 @@ function AddMoreSysInfo($objs) {
 }
 
 function DeleteMoreSysInfo($obj_ids) {
+	if(empty($obj_ids)) return;
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
@@ -9824,6 +9854,7 @@ function AddMoreTechMode($objs) {
 }
 
 function DeleteMoreTechMode($obj_ids) {
+	if(empty($obj_ids)) return;
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
@@ -10147,6 +10178,7 @@ function AddMoreTechnology($objs) {
 }
 
 function DeleteMoreTechnology($obj_ids) {
+	if(empty($obj_ids)) return;
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
@@ -10470,6 +10502,7 @@ function AddMoreTopoGeo($objs) {
 }
 
 function DeleteMoreTopoGeo($obj_ids) {
+	if(empty($obj_ids)) return;
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
@@ -10793,6 +10826,7 @@ function AddMoreTunnel($objs) {
 }
 
 function DeleteMoreTunnel($obj_ids) {
+	if(empty($obj_ids)) return;
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
@@ -11116,6 +11150,7 @@ function AddMoreWorkArea($objs) {
 }
 
 function DeleteMoreWorkArea($obj_ids) {
+	if(empty($obj_ids)) return;
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
@@ -11439,6 +11474,7 @@ function AddMoreWorkSurf($objs) {
 }
 
 function DeleteMoreWorkSurf($obj_ids) {
+	if(empty($obj_ids)) return;
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();

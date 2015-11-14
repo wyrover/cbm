@@ -76,6 +76,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreAccount(self, obj_ids):
+		if len(obj_ids) == 0:return
 		self.session.query(SQL.Account).filter(SQL.Account.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetAccountByFields(self, fields):
@@ -202,6 +203,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreAdjLayer(self, obj_ids):
+		if len(obj_ids) == 0:return
 		self.session.query(SQL.AdjLayer).filter(SQL.AdjLayer.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetAdjLayerByFields(self, fields):
@@ -328,6 +330,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreCoal(self, obj_ids):
+		if len(obj_ids) == 0:return
 		self.session.query(SQL.Coal).filter(SQL.Coal.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetCoalByFields(self, fields):
@@ -454,6 +457,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreComplexity(self, obj_ids):
+		if len(obj_ids) == 0:return
 		self.session.query(SQL.Complexity).filter(SQL.Complexity.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetComplexityByFields(self, fields):
@@ -580,6 +584,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreDesignDrillingSurfTechnology(self, obj_ids):
+		if len(obj_ids) == 0:return
 		self.session.query(SQL.DesignDrillingSurfTechnology).filter(SQL.DesignDrillingSurfTechnology.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetDesignDrillingSurfTechnologyByFields(self, fields):
@@ -706,6 +711,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreDesignEvalUnit(self, obj_ids):
+		if len(obj_ids) == 0:return
 		self.session.query(SQL.DesignEvalUnit).filter(SQL.DesignEvalUnit.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetDesignEvalUnitByFields(self, fields):
@@ -832,6 +838,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreDesignEvalUnitPartition(self, obj_ids):
+		if len(obj_ids) == 0:return
 		self.session.query(SQL.DesignEvalUnitPartition).filter(SQL.DesignEvalUnitPartition.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetDesignEvalUnitPartitionByFields(self, fields):
@@ -958,6 +965,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreDesignGoafTechnology(self, obj_ids):
+		if len(obj_ids) == 0:return
 		self.session.query(SQL.DesignGoafTechnology).filter(SQL.DesignGoafTechnology.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetDesignGoafTechnologyByFields(self, fields):
@@ -1084,6 +1092,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreDesignPore(self, obj_ids):
+		if len(obj_ids) == 0:return
 		self.session.query(SQL.DesignPore).filter(SQL.DesignPore.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetDesignPoreByFields(self, fields):
@@ -1210,6 +1219,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreDesignSite(self, obj_ids):
+		if len(obj_ids) == 0:return
 		self.session.query(SQL.DesignSite).filter(SQL.DesignSite.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetDesignSiteByFields(self, fields):
@@ -1336,6 +1346,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreDesignTechnology(self, obj_ids):
+		if len(obj_ids) == 0:return
 		self.session.query(SQL.DesignTechnology).filter(SQL.DesignTechnology.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetDesignTechnologyByFields(self, fields):
@@ -1462,6 +1473,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreDesignTunnelControlPoint(self, obj_ids):
+		if len(obj_ids) == 0:return
 		self.session.query(SQL.DesignTunnelControlPoint).filter(SQL.DesignTunnelControlPoint.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetDesignTunnelControlPointByFields(self, fields):
@@ -1588,6 +1600,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreDesignWorkSurfControlPoint(self, obj_ids):
+		if len(obj_ids) == 0:return
 		self.session.query(SQL.DesignWorkSurfControlPoint).filter(SQL.DesignWorkSurfControlPoint.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetDesignWorkSurfControlPointByFields(self, fields):
@@ -1714,6 +1727,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreDesignWorkSurfTechnology(self, obj_ids):
+		if len(obj_ids) == 0:return
 		self.session.query(SQL.DesignWorkSurfTechnology).filter(SQL.DesignWorkSurfTechnology.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetDesignWorkSurfTechnologyByFields(self, fields):
@@ -1840,6 +1854,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreDrillingRadiusParam(self, obj_ids):
+		if len(obj_ids) == 0:return
 		self.session.query(SQL.DrillingRadiusParam).filter(SQL.DrillingRadiusParam.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetDrillingRadiusParamByFields(self, fields):
@@ -1966,6 +1981,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreDrillingSurf(self, obj_ids):
+		if len(obj_ids) == 0:return
 		self.session.query(SQL.DrillingSurf).filter(SQL.DrillingSurf.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetDrillingSurfByFields(self, fields):
@@ -2092,6 +2108,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreEvalUnit(self, obj_ids):
+		if len(obj_ids) == 0:return
 		self.session.query(SQL.EvalUnit).filter(SQL.EvalUnit.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetEvalUnitByFields(self, fields):
@@ -2218,6 +2235,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreHighDrillingPore(self, obj_ids):
+		if len(obj_ids) == 0:return
 		self.session.query(SQL.HighDrillingPore).filter(SQL.HighDrillingPore.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetHighDrillingPoreByFields(self, fields):
@@ -2344,6 +2362,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreHighDrillingPoreParam(self, obj_ids):
+		if len(obj_ids) == 0:return
 		self.session.query(SQL.HighDrillingPoreParam).filter(SQL.HighDrillingPoreParam.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetHighDrillingPoreParamByFields(self, fields):
@@ -2470,6 +2489,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreHighDrillingSiteParam(self, obj_ids):
+		if len(obj_ids) == 0:return
 		self.session.query(SQL.HighDrillingSiteParam).filter(SQL.HighDrillingSiteParam.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetHighDrillingSiteParamByFields(self, fields):
@@ -2596,6 +2616,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreHighDrillingTunnel(self, obj_ids):
+		if len(obj_ids) == 0:return
 		self.session.query(SQL.HighDrillingTunnel).filter(SQL.HighDrillingTunnel.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetHighDrillingTunnelByFields(self, fields):
@@ -2722,6 +2743,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreHydrGeo(self, obj_ids):
+		if len(obj_ids) == 0:return
 		self.session.query(SQL.HydrGeo).filter(SQL.HydrGeo.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetHydrGeoByFields(self, fields):
@@ -2848,6 +2870,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreMine(self, obj_ids):
+		if len(obj_ids) == 0:return
 		self.session.query(SQL.Mine).filter(SQL.Mine.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetMineByFields(self, fields):
@@ -2974,6 +2997,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreMineBase(self, obj_ids):
+		if len(obj_ids) == 0:return
 		self.session.query(SQL.MineBase).filter(SQL.MineBase.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetMineBaseByFields(self, fields):
@@ -3100,6 +3124,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreMineRegion(self, obj_ids):
+		if len(obj_ids) == 0:return
 		self.session.query(SQL.MineRegion).filter(SQL.MineRegion.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetMineRegionByFields(self, fields):
@@ -3226,6 +3251,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMorePoreFlow(self, obj_ids):
+		if len(obj_ids) == 0:return
 		self.session.query(SQL.PoreFlow).filter(SQL.PoreFlow.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetPoreFlowByFields(self, fields):
@@ -3352,6 +3378,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMorePoreSize(self, obj_ids):
+		if len(obj_ids) == 0:return
 		self.session.query(SQL.PoreSize).filter(SQL.PoreSize.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetPoreSizeByFields(self, fields):
@@ -3478,6 +3505,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreResAbundance(self, obj_ids):
+		if len(obj_ids) == 0:return
 		self.session.query(SQL.ResAbundance).filter(SQL.ResAbundance.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetResAbundanceByFields(self, fields):
@@ -3604,6 +3632,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreRock(self, obj_ids):
+		if len(obj_ids) == 0:return
 		self.session.query(SQL.Rock).filter(SQL.Rock.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetRockByFields(self, fields):
@@ -3730,6 +3759,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreSysInfo(self, obj_ids):
+		if len(obj_ids) == 0:return
 		self.session.query(SQL.SysInfo).filter(SQL.SysInfo.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetSysInfoByFields(self, fields):
@@ -3856,6 +3886,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreTechMode(self, obj_ids):
+		if len(obj_ids) == 0:return
 		self.session.query(SQL.TechMode).filter(SQL.TechMode.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetTechModeByFields(self, fields):
@@ -3982,6 +4013,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreTechnology(self, obj_ids):
+		if len(obj_ids) == 0:return
 		self.session.query(SQL.Technology).filter(SQL.Technology.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetTechnologyByFields(self, fields):
@@ -4108,6 +4140,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreTopoGeo(self, obj_ids):
+		if len(obj_ids) == 0:return
 		self.session.query(SQL.TopoGeo).filter(SQL.TopoGeo.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetTopoGeoByFields(self, fields):
@@ -4234,6 +4267,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreTunnel(self, obj_ids):
+		if len(obj_ids) == 0:return
 		self.session.query(SQL.Tunnel).filter(SQL.Tunnel.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetTunnelByFields(self, fields):
@@ -4360,6 +4394,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreWorkArea(self, obj_ids):
+		if len(obj_ids) == 0:return
 		self.session.query(SQL.WorkArea).filter(SQL.WorkArea.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetWorkAreaByFields(self, fields):
@@ -4486,6 +4521,7 @@ class SQLServiceHandler(object):
 		self.session.flush()
 		self.session.commit()
 	def DeleteMoreWorkSurf(self, obj_ids):
+		if len(obj_ids) == 0:return
 		self.session.query(SQL.WorkSurf).filter(SQL.WorkSurf.id.in_(obj_ids)).delete(synchronize_session=False)
 		self.session.commit()
 	def __GetWorkSurfByFields(self, fields):

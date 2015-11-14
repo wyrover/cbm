@@ -124,6 +124,7 @@ void SQLClientHelper::AddMoreAccount(const std::vector<cbm::Account> & objs) {
 	}
 }
 void SQLClientHelper::DeleteMoreAccount(const std::vector<int32_t> & obj_ids) {
+	if(obj_ids.empty()) return;
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
@@ -422,6 +423,7 @@ void SQLClientHelper::AddMoreAdjLayer(const std::vector<cbm::AdjLayer> & objs) {
 	}
 }
 void SQLClientHelper::DeleteMoreAdjLayer(const std::vector<int32_t> & obj_ids) {
+	if(obj_ids.empty()) return;
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
@@ -720,6 +722,7 @@ void SQLClientHelper::AddMoreCoal(const std::vector<cbm::Coal> & objs) {
 	}
 }
 void SQLClientHelper::DeleteMoreCoal(const std::vector<int32_t> & obj_ids) {
+	if(obj_ids.empty()) return;
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
@@ -1018,6 +1021,7 @@ void SQLClientHelper::AddMoreComplexity(const std::vector<cbm::Complexity> & obj
 	}
 }
 void SQLClientHelper::DeleteMoreComplexity(const std::vector<int32_t> & obj_ids) {
+	if(obj_ids.empty()) return;
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
@@ -1316,6 +1320,7 @@ void SQLClientHelper::AddMoreDesignDrillingSurfTechnology(const std::vector<cbm:
 	}
 }
 void SQLClientHelper::DeleteMoreDesignDrillingSurfTechnology(const std::vector<int32_t> & obj_ids) {
+	if(obj_ids.empty()) return;
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
@@ -1614,6 +1619,7 @@ void SQLClientHelper::AddMoreDesignEvalUnit(const std::vector<cbm::DesignEvalUni
 	}
 }
 void SQLClientHelper::DeleteMoreDesignEvalUnit(const std::vector<int32_t> & obj_ids) {
+	if(obj_ids.empty()) return;
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
@@ -1912,6 +1918,7 @@ void SQLClientHelper::AddMoreDesignEvalUnitPartition(const std::vector<cbm::Desi
 	}
 }
 void SQLClientHelper::DeleteMoreDesignEvalUnitPartition(const std::vector<int32_t> & obj_ids) {
+	if(obj_ids.empty()) return;
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
@@ -2210,6 +2217,7 @@ void SQLClientHelper::AddMoreDesignGoafTechnology(const std::vector<cbm::DesignG
 	}
 }
 void SQLClientHelper::DeleteMoreDesignGoafTechnology(const std::vector<int32_t> & obj_ids) {
+	if(obj_ids.empty()) return;
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
@@ -2508,6 +2516,7 @@ void SQLClientHelper::AddMoreDesignPore(const std::vector<cbm::DesignPore> & obj
 	}
 }
 void SQLClientHelper::DeleteMoreDesignPore(const std::vector<int32_t> & obj_ids) {
+	if(obj_ids.empty()) return;
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
@@ -2806,6 +2815,7 @@ void SQLClientHelper::AddMoreDesignSite(const std::vector<cbm::DesignSite> & obj
 	}
 }
 void SQLClientHelper::DeleteMoreDesignSite(const std::vector<int32_t> & obj_ids) {
+	if(obj_ids.empty()) return;
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
@@ -3104,6 +3114,7 @@ void SQLClientHelper::AddMoreDesignTechnology(const std::vector<cbm::DesignTechn
 	}
 }
 void SQLClientHelper::DeleteMoreDesignTechnology(const std::vector<int32_t> & obj_ids) {
+	if(obj_ids.empty()) return;
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
@@ -3402,6 +3413,7 @@ void SQLClientHelper::AddMoreDesignTunnelControlPoint(const std::vector<cbm::Des
 	}
 }
 void SQLClientHelper::DeleteMoreDesignTunnelControlPoint(const std::vector<int32_t> & obj_ids) {
+	if(obj_ids.empty()) return;
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
@@ -3700,6 +3712,7 @@ void SQLClientHelper::AddMoreDesignWorkSurfControlPoint(const std::vector<cbm::D
 	}
 }
 void SQLClientHelper::DeleteMoreDesignWorkSurfControlPoint(const std::vector<int32_t> & obj_ids) {
+	if(obj_ids.empty()) return;
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
@@ -3998,6 +4011,7 @@ void SQLClientHelper::AddMoreDesignWorkSurfTechnology(const std::vector<cbm::Des
 	}
 }
 void SQLClientHelper::DeleteMoreDesignWorkSurfTechnology(const std::vector<int32_t> & obj_ids) {
+	if(obj_ids.empty()) return;
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
@@ -4296,6 +4310,7 @@ void SQLClientHelper::AddMoreDrillingRadiusParam(const std::vector<cbm::Drilling
 	}
 }
 void SQLClientHelper::DeleteMoreDrillingRadiusParam(const std::vector<int32_t> & obj_ids) {
+	if(obj_ids.empty()) return;
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
@@ -4594,6 +4609,7 @@ void SQLClientHelper::AddMoreDrillingSurf(const std::vector<cbm::DrillingSurf> &
 	}
 }
 void SQLClientHelper::DeleteMoreDrillingSurf(const std::vector<int32_t> & obj_ids) {
+	if(obj_ids.empty()) return;
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
@@ -4892,6 +4908,7 @@ void SQLClientHelper::AddMoreEvalUnit(const std::vector<cbm::EvalUnit> & objs) {
 	}
 }
 void SQLClientHelper::DeleteMoreEvalUnit(const std::vector<int32_t> & obj_ids) {
+	if(obj_ids.empty()) return;
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
@@ -5190,6 +5207,7 @@ void SQLClientHelper::AddMoreHighDrillingPore(const std::vector<cbm::HighDrillin
 	}
 }
 void SQLClientHelper::DeleteMoreHighDrillingPore(const std::vector<int32_t> & obj_ids) {
+	if(obj_ids.empty()) return;
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
@@ -5488,6 +5506,7 @@ void SQLClientHelper::AddMoreHighDrillingPoreParam(const std::vector<cbm::HighDr
 	}
 }
 void SQLClientHelper::DeleteMoreHighDrillingPoreParam(const std::vector<int32_t> & obj_ids) {
+	if(obj_ids.empty()) return;
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
@@ -5786,6 +5805,7 @@ void SQLClientHelper::AddMoreHighDrillingSiteParam(const std::vector<cbm::HighDr
 	}
 }
 void SQLClientHelper::DeleteMoreHighDrillingSiteParam(const std::vector<int32_t> & obj_ids) {
+	if(obj_ids.empty()) return;
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
@@ -6084,6 +6104,7 @@ void SQLClientHelper::AddMoreHighDrillingTunnel(const std::vector<cbm::HighDrill
 	}
 }
 void SQLClientHelper::DeleteMoreHighDrillingTunnel(const std::vector<int32_t> & obj_ids) {
+	if(obj_ids.empty()) return;
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
@@ -6382,6 +6403,7 @@ void SQLClientHelper::AddMoreHydrGeo(const std::vector<cbm::HydrGeo> & objs) {
 	}
 }
 void SQLClientHelper::DeleteMoreHydrGeo(const std::vector<int32_t> & obj_ids) {
+	if(obj_ids.empty()) return;
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
@@ -6680,6 +6702,7 @@ void SQLClientHelper::AddMoreMine(const std::vector<cbm::Mine> & objs) {
 	}
 }
 void SQLClientHelper::DeleteMoreMine(const std::vector<int32_t> & obj_ids) {
+	if(obj_ids.empty()) return;
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
@@ -6978,6 +7001,7 @@ void SQLClientHelper::AddMoreMineBase(const std::vector<cbm::MineBase> & objs) {
 	}
 }
 void SQLClientHelper::DeleteMoreMineBase(const std::vector<int32_t> & obj_ids) {
+	if(obj_ids.empty()) return;
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
@@ -7276,6 +7300,7 @@ void SQLClientHelper::AddMoreMineRegion(const std::vector<cbm::MineRegion> & obj
 	}
 }
 void SQLClientHelper::DeleteMoreMineRegion(const std::vector<int32_t> & obj_ids) {
+	if(obj_ids.empty()) return;
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
@@ -7574,6 +7599,7 @@ void SQLClientHelper::AddMorePoreFlow(const std::vector<cbm::PoreFlow> & objs) {
 	}
 }
 void SQLClientHelper::DeleteMorePoreFlow(const std::vector<int32_t> & obj_ids) {
+	if(obj_ids.empty()) return;
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
@@ -7872,6 +7898,7 @@ void SQLClientHelper::AddMorePoreSize(const std::vector<cbm::PoreSize> & objs) {
 	}
 }
 void SQLClientHelper::DeleteMorePoreSize(const std::vector<int32_t> & obj_ids) {
+	if(obj_ids.empty()) return;
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
@@ -8170,6 +8197,7 @@ void SQLClientHelper::AddMoreResAbundance(const std::vector<cbm::ResAbundance> &
 	}
 }
 void SQLClientHelper::DeleteMoreResAbundance(const std::vector<int32_t> & obj_ids) {
+	if(obj_ids.empty()) return;
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
@@ -8468,6 +8496,7 @@ void SQLClientHelper::AddMoreRock(const std::vector<cbm::Rock> & objs) {
 	}
 }
 void SQLClientHelper::DeleteMoreRock(const std::vector<int32_t> & obj_ids) {
+	if(obj_ids.empty()) return;
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
@@ -8766,6 +8795,7 @@ void SQLClientHelper::AddMoreSysInfo(const std::vector<cbm::SysInfo> & objs) {
 	}
 }
 void SQLClientHelper::DeleteMoreSysInfo(const std::vector<int32_t> & obj_ids) {
+	if(obj_ids.empty()) return;
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
@@ -9064,6 +9094,7 @@ void SQLClientHelper::AddMoreTechMode(const std::vector<cbm::TechMode> & objs) {
 	}
 }
 void SQLClientHelper::DeleteMoreTechMode(const std::vector<int32_t> & obj_ids) {
+	if(obj_ids.empty()) return;
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
@@ -9362,6 +9393,7 @@ void SQLClientHelper::AddMoreTechnology(const std::vector<cbm::Technology> & obj
 	}
 }
 void SQLClientHelper::DeleteMoreTechnology(const std::vector<int32_t> & obj_ids) {
+	if(obj_ids.empty()) return;
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
@@ -9660,6 +9692,7 @@ void SQLClientHelper::AddMoreTopoGeo(const std::vector<cbm::TopoGeo> & objs) {
 	}
 }
 void SQLClientHelper::DeleteMoreTopoGeo(const std::vector<int32_t> & obj_ids) {
+	if(obj_ids.empty()) return;
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
@@ -9958,6 +9991,7 @@ void SQLClientHelper::AddMoreTunnel(const std::vector<cbm::Tunnel> & objs) {
 	}
 }
 void SQLClientHelper::DeleteMoreTunnel(const std::vector<int32_t> & obj_ids) {
+	if(obj_ids.empty()) return;
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
@@ -10256,6 +10290,7 @@ void SQLClientHelper::AddMoreWorkArea(const std::vector<cbm::WorkArea> & objs) {
 	}
 }
 void SQLClientHelper::DeleteMoreWorkArea(const std::vector<int32_t> & obj_ids) {
+	if(obj_ids.empty()) return;
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
@@ -10554,6 +10589,7 @@ void SQLClientHelper::AddMoreWorkSurf(const std::vector<cbm::WorkSurf> & objs) {
 	}
 }
 void SQLClientHelper::DeleteMoreWorkSurf(const std::vector<int32_t> & obj_ids) {
+	if(obj_ids.empty()) return;
 	try {
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
