@@ -104,7 +104,7 @@ class CbmServiceHandler(SQLServerHelper.SQLServiceHandler):
         if account_id > -1:
             try:
                 query = self.session.query(SQL.Mine).filter(SQL.Mine.account_id==account_id).one()
-                CbmUtil.CopyAttribs(query, mine)
+                CbmUtil.CopyAttribsOfCbmType('Mine', query, mine)
             except Exception, e:
                 mine.id = -1
                 print e
@@ -146,7 +146,7 @@ class CbmServiceHandler(SQLServerHelper.SQLServiceHandler):
         try:
             query = self.session.query(SQL.Mine).join(SQL.MineRegion).filter(SQL.MineRegion.name==regionName).one()
             # 通用复制函数
-            CbmUtil.CopyAttribs(query, sample_mine)
+            CbmUtil.CopyAttribsOfCbmType('Mine', query, sample_mine)
         except Exception, e:
             sample_mine.id = -1
             print e
@@ -161,7 +161,7 @@ class CbmServiceHandler(SQLServerHelper.SQLServiceHandler):
             try:
                 query = self.session.query(SQL.Coal).filter(SQL.Coal.mine_id==sample_mine.id).one()
                 # 通用复制函数
-                CbmUtil.CopyAttribs(query, sample_coal)
+                CbmUtil.CopyAttribsOfCbmType('Coal', query, sample_coal)
             except Exception, e:
                 sample_coal.id = -1
                 print e
@@ -188,7 +188,7 @@ class CbmServiceHandler(SQLServerHelper.SQLServiceHandler):
         work_areas = [WorkArea() for i in range(n)]
         for i in range(n):
             work_areas[i].id = -1
-            CbmUtil.CopyAttribs(query[i], work_areas[i])
+            CbmUtil.CopyAttribsOfCbmType('WorkArea', query[i], work_areas[i])
         return work_areas
 
     def GetWorkSurfsOfMine(self, mine_id):
@@ -204,7 +204,7 @@ class CbmServiceHandler(SQLServerHelper.SQLServiceHandler):
         work_surfs = [WorkSurf() for i in range(n)]
         for i in range(n):
             work_surfs[i].id = -1
-            CbmUtil.CopyAttribs(query[i], work_surfs[i])
+            CbmUtil.CopyAttribsOfCbmType('WorkSurf', query[i], work_surfs[i])
         return work_surfs
 
     def GetDrillingSurfsOfMine(self, mine_id):
@@ -220,7 +220,7 @@ class CbmServiceHandler(SQLServerHelper.SQLServiceHandler):
         drilling_surfs = [DrillingSurf() for i in range(n)]
         for i in range(n):
             drilling_surfs[i].id = -1
-            CbmUtil.CopyAttribs(query[i], drilling_surfs[i])
+            CbmUtil.CopyAttribsOfCbmType('DrillingSurf', query[i], drilling_surfs[i])
         return drilling_surfs
 
     def GetWorkAreaIdsOfMine(self, mine_id):

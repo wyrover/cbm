@@ -18,13 +18,20 @@ from dialogs.PoreFlowDlg import *
 from dialogs.GasDesignDlg import *
 import doc
 
+from rpc import CbmUtil, SQLClientHelper, CbmClientHelper
+from cbm.ttypes import *
+
+import UiHelper
+from UiHelper import Authority
+
 class MainWindow(QtGui.QMainWindow):  
 	def __init__(self,parent=None):
 		super(MainWindow, self).__init__(parent)
 		self.ui = Ui_MainWindow()
 		self.ui.setupUi(self)
 		self.init()
-		ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID("myappid")
+		# ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID("myappid")
+		# 瓦斯抽采设计类型
 
 	def init(self):
 		self.myActions = []
@@ -41,100 +48,153 @@ class MainWindow(QtGui.QMainWindow):
 		palette1.setBrush(self.backgroundRole(), QtGui.QBrush(QtGui.QPixmap(':/images/bg.png')))
 		self.setPalette(palette1)
 	
+	def real_logout(self):
+		# 注销(清空sys_info表)
+		UiHelper.sql_logout()
+		# 设置菜单激活状态
+		self.loginAction.setEnabled(True)
+		self.logoutAction.setEnabled(False)
+
 	def closeEvent(self, event):
 		reply = QtGui.QMessageBox.question(
 			self, u'确认', u'确定退出本系统?', QtGui.QMessageBox.Yes, QtGui.QMessageBox.No)
 		if reply == QtGui.QMessageBox.Yes:
 			# 注销
-			self.logout()
-
+			self.real_logout()
+			# close消息处理完毕,不再需要qt继续处理close消息了
 			event.accept()
 		else:
+			# qt内部继续处理close消息
 			event.ignore()
 
 	def login(self):
-		"""返回True或False"""  
-		dialog = LoginDialog()  
-		if dialog.exec_():  
+		"""返回True或False"""
+		dialog = LoginDialog()
+		if dialog.exec_():
 			self.loginAction.setEnabled(False)
 			self.logoutAction.setEnabled(True)
-			return True  
+			return True
 		else:  
-			return False 
+			return False
 
-	def logout(self):  
-		# 注销(清空sys_info表)
-		print '--->',SQLClientHelper.GetSysInfoIds(),'\n'
-		SQLClientHelper.DeleteMoreSysInfo(SQLClientHelper.GetSysInfoIds())
-		# 设置菜单激活状态
-		self.loginAction.setEnabled(True)
-		self.logoutAction.setEnabled(False)
+	def logout(self):
+		reply = QtGui.QMessageBox.question(
+		self, u'确认', u'您确定要注销?', QtGui.QMessageBox.Yes, QtGui.QMessageBox.No)
+		if reply == QtGui.QMessageBox.Yes:
+			# 注销
+			self.real_logout()
+
+	def run_dialog(self, DialogClass):
+		# 启动对话框(传入当前登录用户的)
+		mine = CbmClientHelper.GetOnlineMine()
+		dlg = DialogClass(mine.id)
+		dlg.exec_()
+
+	# 尝试运行对话框
+	def try_run(self, DialogClass, authority):
+		can_run = True
+		while can_run:
+			# 检查用户登录状态
+			ret = UiHelper.sql_login_status()
+			# 内部错误
+			if ret == 0 or ret == -1:
+				QtGui.QMessageBox.information(self, u"提示",u"系统技术性故障(错误码:M1),请联系技术人员!")
+				can_run = False
+				break
+			# 用户未登录
+			elif ret == 2:
+				QtGui.QMessageBox.information(self, u"提示",u"您需要登录才能使用本功能!")
+				can_run = self.login() # 登录
+			# 管理员已登录		
+			elif ret == 3 and authority == Authority.USER:
+				QtGui.QMessageBox.information(self, u"提示",u"管理员禁止使用该功能,请重新登录!")
+				can_run = self.login() # 登录
+			# 普通用户已登录
+			elif ret == 1 and authority == Authority.ADMIN:
+				QtGui.QMessageBox.information(self, u"提示",u"您的权限不够,请重新登录!")
+				can_run = self.login() # 登录
+
+			if can_run and UiHelper.sql_login_authority(authority):
+				break
+
+		# 启动对话框
+		if can_run:
+			# 启动对话框(传入当前登录用户的)
+			self.run_dialog(DialogClass)
 
 	def sampleManage(self):
-		dlg = SampleManageDlg()
-		dlg.exec_() 
-		
+		# 启动示范矿区管理库对话框
+		self.try_run(SampleManageDlg, Authority.ADMIN)
+
 	def deginMine(self):
-		dlg = MineDeginDlg()
-		dlg.exec_() 
+		# 启动矿井设计对话框
+		self.try_run(MineDeginDlg, Authority.USER)
 
 	def dragTec(self):
-		dlg = MineBaseParamDlg()
-		dlg.exec_()
+		# 启动辅助决策对话框
+		self.try_run(MineBaseParamDlg, Authority.USER)
 
 	def difficultEval(self):
-		dlg = DifficultEvalDlg()
-		dlg.exec_()
+		# 启动抽采难易程度评价对话框
+		self.try_run(DifficultEvalDlg, Authority.USER)
 
 	def mineGasReservesPredict(self):
-		dlg = MineGasReservesPredictDlg()
-		dlg.exec_()
+		# 启动矿井瓦斯储量计算对话框
+		self.try_run(MineGasReservesPredictDlg, Authority.USER)
 
 	def mineGasFlowPredict(self):
-		dlg = MineGasFlowPredictDlg()
-		dlg.exec_()
+		# 启动矿井瓦斯流量计算对话框
+		self.try_run(MineGasFlowPredictDlg, Authority.USER)
 
 	def twsGasFlowPredict(self):
-		dlg = TwsGasFlowPredictDlg()
-		dlg.exec_()
+		# 启动掘进面瓦斯流量计算对话框
+		self.try_run(TwsGasFlowPredictDlg, Authority.USER)
 
 	def wsGasFlowPredict(self):
-		dlg = WsGasFlowPredictDlg()
-		dlg.exec_()
+		# 启动工作面瓦斯流量计算对话框
+		self.try_run(WsGasFlowPredictDlg, Authority.USER)
 
 	def highDrillingTunnel(self):
-		dlg = HighDrillingTunnelDlg()
-		dlg.exec_()
+		# 启动高抽巷计算对话框
+		self.try_run(HighDrillingTunnelDlg, Authority.USER)
 
 	def highDrillingPore(self):
-		dlg = HighDrillingDesignDlg()
-		dlg.exec_()
+		# 启动高抽钻孔计算对话框
+		self.try_run(HighDrillingDesignDlg, Authority.USER)
 
 	def drillingRadius(self):
-		dlg = DrillingRadiusDlg()
-		dlg.exec_()
+		# 启动瓦斯抽采半径计算对话框
+		self.try_run(DrillingRadiusDlg, Authority.USER)
 
 	def poreSize(self):
-		dlg = PoreSizeDlg()
-		dlg.exec_()
+		# 启动瓦斯抽采钻孔计算对话框
+		self.try_run(PoreSizeDlg, Authority.USER)
 
 	def poreFlow(self):
-		dlg = PoreFlowDlg()
-		dlg.exec_()
+		# 启动孔板流量计算对话框
+		self.try_run(PoreFlowDlg, Authority.USER)
 
 	def evaluationUnitDivision(self):
+		# 启动评价单元划分计算对话框
+		# self.try_run(PoreFlowDlg, Authority.USER)
 		pass
 
 	def wsGasDesign(self):
-		dlg = GasDesignDlg(2)
-		dlg.exec_()
+		# 进行工作面的瓦斯抽采设计
+		UiHelper.GAS_DESIGN_TYPE = 1
+		# 启动瓦斯抽采设计对话框
+		self.try_run(GasDesignDlg, Authority.USER)
 
 	def twsGasDesign(self):
-		dlg = GasDesignDlg(1)
-		dlg.exec_()
+		# 进行掘进面的瓦斯抽采设计
+		UiHelper.GAS_DESIGN_TYPE = 2
+		# 启动掘进面瓦斯抽采设计对话框
+		self.try_run(GasDesignDlg, Authority.USER)
 
 	def goafGasDesign(self):
-		pass
+		# 进行采空区的瓦斯抽采设计
+		UiHelper.GAS_DESIGN_TYPE = 3
+		self.try_run(GasDesignDlg, Authority.USER)
 
 	def openOfficeNet(self):
 		doc.OpenNet('http://www.ccri.com.cn/')
@@ -229,13 +289,13 @@ class MainWindow(QtGui.QMainWindow):
 		self.statusBar().showMessage(u"欢迎使用\"井下煤层气规模化抽采计算机辅助设计（CAD）系统——数据录入模块\"")
 
 
-def loginFirst():  
-	"""返回True或False"""  
-	dialog = LoginDialog()  
+def loginFirst():
+	"""返回True或False"""
+	dialog = LoginDialog()
 	if dialog.exec_():
-		return True  
-	else:  
-		return False  
+		return True
+	else:
+		return False
 
 # 设置皮肤样式
 def SetStyle(app, styleName):
@@ -268,7 +328,12 @@ def run():
 	SetStyle(app, 'blue')
 	# 设置qt中文界面(消息框、菜单之类的默认使用中文)
 	SetChinese(app)
+	# 首先启动登录窗口
 	if loginFirst():
+		# 登录成功后启动主界面
 		mw = MainWindow()
 		mw.show()
+		# 进入消息循环
 		app.exec_()
+		# 注销(清空sys_info表)
+		UiHelper.sql_logout()

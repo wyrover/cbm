@@ -4,13 +4,15 @@ import sys
 from uipy.ui_difficult_eval_dlg import *
 
 class DifficultEvalDlg(QtGui.QDialog):  
-    def __init__(self,parent=None):  
+    def __init__(self, mine_id=-1, parent=None):  
         QtGui.QDialog.__init__(self,parent)  
         self.ui = Ui_difficult_eval_dlg()  
         self.ui.setupUi(self)  
         self.setFixedSize( self.width(),self.height())
         self.ui.eval.clicked.connect(self.eval)
         self.ui.cancel.clicked.connect(self.cancel)
+        # 待设计的矿井
+        self.mine_id = mine_id
 
     def cancel(self):
         self.accept()

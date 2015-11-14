@@ -6,7 +6,7 @@ from HighDrillingSiteDlg import *
 from HighDrillingPoreDlg import *
 
 class HighDrillingDesignDlg(QtGui.QDialog):  
-    def __init__(self,parent=None):  
+    def __init__(self, mine_id=-1, parent=None):  
         QtGui.QDialog.__init__(self,parent)  
         self.ui = Ui_high_drilling_design_dlg()  
         self.ui.setupUi(self)  
@@ -14,6 +14,8 @@ class HighDrillingDesignDlg(QtGui.QDialog):
         self.ui.save.clicked.connect(self.save)
         self.ui.drill_site.clicked.connect(self.drill_site)
         self.ui.drill_pore.clicked.connect(self.drill_pore)
+        # 待设计的矿井
+        self.mine_id = mine_id
 
     def save(self):
     	#做保存操作

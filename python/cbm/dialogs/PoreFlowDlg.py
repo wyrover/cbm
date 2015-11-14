@@ -8,7 +8,7 @@ from PoreFlowDeltaPDlg import *
 from PoreFlowDeltaTDlg import *
 
 class PoreFlowDlg(QtGui.QDialog):  
-    def __init__(self,parent=None):  
+    def __init__(self, mine_id=-1, parent=None):  
         QtGui.QDialog.__init__(self,parent)  
         self.ui = Ui_pore_flow_dlg()  
         self.ui.setupUi(self)  
@@ -19,7 +19,9 @@ class PoreFlowDlg(QtGui.QDialog):
         self.ui.b_cacl.clicked.connect(self.b_cacl)
         self.ui.delta_p_cacl.clicked.connect(self.delta_p_cacl)
         self.ui.delta_T_cacl.clicked.connect(self.delta_T_cacl)
-
+        # 待设计的矿井
+        self.mine_id = mine_id
+        
     def save(self):
     	#做保存操作
         self.accept()

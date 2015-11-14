@@ -7,15 +7,20 @@ from GasDesignP12Dlg import *
 from GasDesignP21Dlg import *
 from GasDesignP23Dlg import *
 
+import UiHelper
+
 class GasDesignDlg(QtGui.QDialog):  
-    def __init__(self,mine_region = 1,parent=None):  
-        QtGui.QDialog.__init__(self,parent)  
+    def __init__(self, mine_id=-1, parent=None):
+        super(GasDesignDlg, self).__init__(parent)
         self.ui = Ui_gas_design_dlg()  
         self.ui.setupUi(self)  
         self.setFixedSize( self.width(),self.height())
         self.ui.save.clicked.connect(self.save)
-        self.ui.go.clicked.connect(self.go)        
-        self.mine_region = mine_region
+        self.ui.go.clicked.connect(self.go)
+        # 待设计的矿井
+        self.mine_id = mine_id
+        # 该变量从外部读进来(设计的不是太好,滥用了全局变量了)
+        self.mine_region = UiHelper.GAS_DESIGN_TYPE
         self.init()
 
     def init(self):

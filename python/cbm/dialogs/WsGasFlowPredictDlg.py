@@ -6,7 +6,7 @@ from WsGasFlowPredictWorkDlg import *
 from WsGasFlowPredictAdjDlg import *
 
 class WsGasFlowPredictDlg(QtGui.QDialog):  
-    def __init__(self,parent=None):  
+    def __init__(self, mine_id=-1, parent=None):  
         QtGui.QDialog.__init__(self,parent)  
         self.ui = Ui_ws_gas_flow_predict_dlg()  
         self.ui.setupUi(self)  
@@ -15,7 +15,9 @@ class WsGasFlowPredictDlg(QtGui.QDialog):
         self.ui.qr1_cacl.clicked.connect(self.qr1_cacl)
         self.ui.qr2_cacl.clicked.connect(self.qr2_cacl)
         self.ui.qr_cacl.clicked.connect(self.qr_cacl)
-
+        # 待设计的矿井
+        self.mine_id = mine_id
+        
     def save(self):
     	#做保存操作
         self.accept()

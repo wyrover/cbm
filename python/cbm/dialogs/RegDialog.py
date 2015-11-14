@@ -3,35 +3,9 @@
 from uipy.ui_regdialog import *
 
 from rpc import CbmUtil, SQLClientHelper, CbmClientHelper
-from cbm.ttypes import *
+# from cbm.ttypes import *
 
-# 检查用户名是否已注册(操作数据库)
-def sql_check_user(uname, pwd):
-	return CbmClientHelper.VerifyMineAccount(uname, pwd) == 1
-
-# 新建账户
-def sql_create_user(uname, pwd):
-    account = Account()
-    account.username = uname
-    account.password = pwd
-    return SQLClientHelper.AddAccount(account)
-
-# 新建煤层
-def sql_create_coal(name, mine_id):
-    coal = Coal()
-    coal.name = name
-    coal.mine_id = mine_id
-    return SQLClientHelper.AddCoal(coal)
-
-# 新建矿井
-def sql_create_mine(name, province, city, region, account_id):
-    mine = Mine()
-    mine.name = name
-    mine.province = province
-    mine.city = city
-    mine.mine_region_id = SQLClientHelper.GetMineRegionIdByField1('name', region)
-    mine.account_id = account_id
-    return SQLClientHelper.AddMine(mine)
+import UiHelper
 
 class RegDiaolog(QtGui.QDialog):  
     def __init__(self,parent=None):
@@ -79,11 +53,11 @@ class RegDiaolog(QtGui.QDialog):
         uname = unicode(self.ui.username.text()).encode('utf-8')
         pwd = unicode(self.ui.password.text()).encode('utf-8')
         # 检查用户名是否已注册
-        if sql_check_user(uname, pwd):
+        if UiHelper.sql_check_user(uname, pwd):
             QtGui.QMessageBox.information(self, u"提示",'用户名已经被注册了,换一个吧!')
         else:
             # 注册新用户
-            account_id = sql_create_user(uname, pwd)
+            account_id = UiHelper.sql_create_user(uname, pwd)
             if account_id < 0:
                 QtGui.QMessageBox.information(self, u"提示",'抱歉，注册失败\n请联系技术人员(错误码:A1)!')
                 return
@@ -94,7 +68,7 @@ class RegDiaolog(QtGui.QDialog):
             mine_city = unicode(self.ui.city.text()).encode('utf-8')
             mine_region = unicode(self.ui.region.currentText()).encode('utf-8')
             # 注册新矿井
-            mine_id = sql_create_mine(mine_name, mine_province, mine_city, mine_region, account_id)
+            mine_id = UiHelper.sql_create_mine(mine_name, mine_province, mine_city, mine_region, account_id)
             # 注册新矿井失败
             if mine_id < 0:
                 # 删除新注册用户
@@ -112,7 +86,7 @@ class RegDiaolog(QtGui.QDialog):
             # 新建煤层(逐个添加到数据)
             coal_ids = []
             for name in mine_coal_names:
-                coal_ids.append(sql_create_coal(name, mine_id))
+                coal_ids.append(UiHelper.sql_create_coal(name, mine_id))
             # 增加煤层失败,删除添加的所有煤层
             if -1 in coal_ids:
                 # 删除已增加的所有煤层

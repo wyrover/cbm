@@ -2,12 +2,12 @@
 
 from PyQt4 import QtGui,QtCore  
 from RegDialog import *
-import ctypes
-import time
-import datetime
+# import ctypes
 
 from rpc import CbmUtil, SQLClientHelper, CbmClientHelper
 from cbm.ttypes import *
+
+import UiHelper
 
 LOGIN_MESSAGE = {
 	-4:u"请输入有效的用户名！",
@@ -18,31 +18,11 @@ LOGIN_MESSAGE = {
 	1:u"恭喜您,登录成功!"
 }
 
-# 获取当前时间,格式: 2015-11-13 21:35:15
-def current_time():
-    now = datetime.datetime.now()
-    return now.strftime('%Y-%m-%d %H:%M:%S')
-
-# 用户登录(操作数据库)
-def sql_login_user(account_id):
-    # 设置当前登录用户(记录到sys_info表)
-    sys_info = SysInfo()
-    sys_info.account_id = account_id
-    sys_info.last_login_time = current_time()
-    SQLClientHelper.AddSysInfo(sys_info)
-
-# 用户切换(操作数据库)
-def sql_switch_user(account_id):
-	sys_info = SQLClientHelper.GetSysInfoByFields({})
-	sys_info.account_id = account_id
-	sys_info.last_login_time = current_time()
-	SQLClientHelper.UpdateSysInfo(sys_info)
-
 class LoginDialog(QtGui.QDialog):  
 	def __init__(self, parent=None):
 		super(LoginDialog, self).__init__(parent)
-		self.setWindowTitle(u'登录')  
-		self.resize(300,150)  
+		self.setWindowTitle(u'登录')
+		self.resize(300,150)
 	
 		self.nameEdit =QtGui.QLineEdit(self)  
 		self.nameEdit.setPlaceholderText(u'用户名')  
@@ -78,7 +58,7 @@ class LoginDialog(QtGui.QDialog):
 		self.setLayout(layout)  
 		self.setWindowIcon(QtGui.QIcon(':/images/cbm.ico'))
 		#任务栏图标
-		ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID("myappid")
+		# ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID("myappid")
 		self.setFixedSize(self.width(), self.height())
 
 	def verify_user(self, uname, pwd):
@@ -98,16 +78,17 @@ class LoginDialog(QtGui.QDialog):
 		# 当前没有用户登录
 		if pre_account_id < 0:
 			# 用户登陆(记录在sys_info表中)
-			sql_login_user(account_id)
+			UiHelper.sql_login_user(account_id)
 			QtGui.QMessageBox.information(self, u"提示",'恭喜您,登录成功!')
 		# 当前已有用户登录
 		elif pre_account_id == account_id:
-			QtGui.QMessageBox.information(self, u"提示",'您已经登录过了!')
+			# QtGui.QMessageBox.information(self, u"提示",'您已经登录过了!')
+			pass
 		else:
-			reply = QtGui.QMessageBox.question(self, u"提示",'是否注销并切换到用户%s?' % uname.decode('utf-8'), QtGui.QMessageBox.Yes, QtGui.QMessageBox.No)
+			reply = QtGui.QMessageBox.question(self, u"提示",'是否注销并切换到用户%s?' % uname, QtGui.QMessageBox.Yes, QtGui.QMessageBox.No)
 			if reply == QtGui.QMessageBox.Yes:
 				# 切换用户
-				sql_switch_user(account_id)
+				UiHelper.sql_switch_user(account_id)
 
 	def onLogin(self):
 		uname = unicode(self.nameEdit.text()).encode('utf-8')
@@ -120,9 +101,9 @@ class LoginDialog(QtGui.QDialog):
 			self.login_or_switch(uname, pwd)
 			# 关闭对话框并返回1
 			self.accept()
-		else:
-			# 关闭对话框并返回0
-			self.reject()
+		# else:
+		# 	# 关闭对话框并返回0
+		# 	self.reject()
 	
 	def onReg(self):
 		regDlg = RegDiaolog()

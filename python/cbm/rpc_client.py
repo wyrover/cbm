@@ -103,7 +103,7 @@ def InitSampleRegion(client):
   client.InitSampleRegion()
 
 def DifficultEval(client):
-  # CbmUtil.CopyAttribs
+  # CbmUtil.CopyAttribsOfCbmType
   pass
 
 def DifficultEvalString(client):

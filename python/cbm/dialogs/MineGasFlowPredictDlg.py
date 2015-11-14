@@ -5,7 +5,7 @@ from uipy.ui_mine_gas_flow_predict_dlg import *
 from MineGasFlowPredictDesignDlg import *
 
 class MineGasFlowPredictDlg(QtGui.QDialog):  
-    def __init__(self,parent=None):  
+    def __init__(self, mine_id=-1, parent=None):  
         QtGui.QDialog.__init__(self,parent)  
         self.ui = Ui_mine_gas_flow_predict_dlg()  
         self.ui.setupUi(self)  
@@ -17,7 +17,9 @@ class MineGasFlowPredictDlg(QtGui.QDialog):
         self.ui.assign.clicked.connect(self.assign)
         self.ui.work_area_cacl.clicked.connect(self.work_area_cacl)
         self.ui.cacl.clicked.connect(self.cacl)
-
+        # 待设计的矿井
+        self.mine_id = mine_id
+        
     def save(self):
         #做保存操作
         self.accept()
