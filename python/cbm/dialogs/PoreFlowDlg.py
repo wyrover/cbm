@@ -8,8 +8,8 @@ from PoreFlowDeltaPDlg import *
 from PoreFlowDeltaTDlg import *
 
 class PoreFlowDlg(QtGui.QDialog):  
-    def __init__(self, mine_id=-1, parent=None):  
-        QtGui.QDialog.__init__(self,parent)  
+    def __init__(self, mine_id=-1, parent=None):
+        super(PoreFlowDlg, self).__init__(parent)
         self.ui = Ui_pore_flow_dlg()  
         self.ui.setupUi(self)  
         self.setFixedSize( self.width(),self.height())

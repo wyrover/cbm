@@ -10,7 +10,7 @@ import DataHelper
 
 class CoalDeginDlg(QtGui.QDialog):  
     def __init__(self, coal_id=-1, parent=None):  
-        QtGui.QDialog.__init__(self,parent)  
+        super(CoalDeginDlg, self).__init__(parent)
         self.ui = Ui_coal_design_dlg()  
         self.ui.setupUi(self)  
         self.setFixedSize(self.width(),self.height())

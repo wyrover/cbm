@@ -4,8 +4,8 @@ import sys
 from uipy.ui_gas_design_p1_2_dlg import *
 
 class GasDesignP12Dlg(QtGui.QDialog):  
-    def __init__(self,parent=None):  
-        QtGui.QDialog.__init__(self,parent)  
+    def __init__(self,parent=None):
+        super(GasDesignP12Dlg, self).__init__(parent)
         self.ui = Ui_gas_design_p1_2_dlg()  
         self.ui.setupUi(self)  
         self.setFixedSize( self.width(),self.height())

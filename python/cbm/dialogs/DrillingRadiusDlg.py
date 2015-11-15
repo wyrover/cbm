@@ -4,10 +4,10 @@ import sys
 from uipy.ui_drilling_radius_dlg import *
 
 class DrillingRadiusDlg(QtGui.QDialog):  
-    def __init__(self, mine_id=-1, parent=None):  
-        QtGui.QDialog.__init__(self,parent)  
-        self.ui = Ui_drilling_radius_dlg()  
-        self.ui.setupUi(self)  
+    def __init__(self, mine_id=-1, parent=None):
+        super(DrillingRadiusDlg, self).__init__(parent)
+        self.ui = Ui_drilling_radius_dlg()
+        self.ui.setupUi(self)
         self.setFixedSize( self.width(),self.height())
         self.ui.save.clicked.connect(self.save)
         self.ui.cacl.clicked.connect(self.cacl)

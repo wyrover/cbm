@@ -3,9 +3,9 @@
 import sys
 from uipy.ui_mine_gas_reserves_predict_dlg1 import *
 
-class MineGasReservesPredictDlg1(QtGui.QDialog):  
-    def __init__(self,parent=None):  
-        QtGui.QDialog.__init__(self,parent)  
+class MineGasReservesPredictDlg1(QtGui.QDialog):
+    def __init__(self,parent=None):
+        super(MineGasReservesPredictDlg1, self).__init__(parent)
         self.ui = Ui_mine_gas_reserves_predict_dlg1()  
         self.ui.setupUi(self)  
         self.setFixedSize( self.width(),self.height())

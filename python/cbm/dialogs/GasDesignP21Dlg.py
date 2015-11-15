@@ -4,11 +4,11 @@ import sys
 from uipy.ui_gas_design_p2_1_dlg import *
 
 class GasDesignP21Dlg(QtGui.QDialog):  
-    def __init__(self,parent=None):  
-        QtGui.QDialog.__init__(self,parent)  
-        self.ui = Ui_gas_design_p2_1_dlg()  
-        self.ui.setupUi(self)  
-        self.setFixedSize( self.width(),self.height())
+    def __init__(self,parent=None):
+        super(GasDesignP21Dlg, self).__init__(parent)
+        self.ui = Ui_gas_design_p2_1_dlg()
+        self.ui.setupUi(self)
+        self.setFixedSize(self.width(),self.height())
         self.ui.save.clicked.connect(self.save)
         self.ui.help.clicked.connect(self.help)
         self.ui.plane_graph.clicked.connect(self.plane_graph)

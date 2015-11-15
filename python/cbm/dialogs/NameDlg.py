@@ -4,8 +4,8 @@ import sys
 from uipy.ui_name_dlg import *
 
 class NameDlg(QtGui.QDialog):  
-    def __init__(self,parent=None):  
-        QtGui.QDialog.__init__(self,parent)  
+    def __init__(self,parent=None):
+        super(NameDlg, self).__init__(parent) 
         self.ui = Ui_name_dlg()  
         self.ui.setupUi(self)  
         self.name = None

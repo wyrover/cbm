@@ -24,12 +24,7 @@
    </property>
    <item>
     <property name="text">
-     <string>复杂</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>极复杂</string>
+     <string>简单</string>
     </property>
    </item>
    <item>
@@ -39,7 +34,12 @@
    </item>
    <item>
     <property name="text">
-     <string>简单</string>
+     <string>复杂</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>极复杂</string>
     </property>
    </item>
   </widget>
@@ -250,7 +250,7 @@
    </property>
    <item>
     <property name="text">
-     <string>复杂</string>
+     <string>简单</string>
     </property>
    </item>
    <item>
@@ -260,7 +260,7 @@
    </item>
    <item>
     <property name="text">
-     <string>简单</string>
+     <string>复杂</string>
     </property>
    </item>
   </widget>

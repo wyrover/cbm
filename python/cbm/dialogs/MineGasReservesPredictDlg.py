@@ -6,9 +6,9 @@ from CoalParamDlg import *
 from MineGasReservesPredictDlg1 import *
 from MineGasReservesPredictDlg2 import *
 
-class MineGasReservesPredictDlg(QtGui.QDialog):  
-    def __init__(self, mine_id=-1, parent=None):  
-        QtGui.QDialog.__init__(self,parent)  
+class MineGasReservesPredictDlg(QtGui.QDialog):
+    def __init__(self, mine_id=-1, parent=None):
+        super(MineGasReservesPredictDlg, self).__init__(parent)
         self.ui = Ui_mine_gas_reserves_predict_dlg()  
         self.ui.setupUi(self)  
         self.setFixedSize( self.width(),self.height())

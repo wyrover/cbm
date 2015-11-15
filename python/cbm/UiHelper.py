@@ -7,6 +7,15 @@
 from dialogs import NameDlg
 from PyQt4 import QtCore, QtGui
 
+# 显示或隐藏窗口
+def ShowWidget(widget, bShow=True):
+    if widget is not None and hasattr(widget, 'setVisible'):
+        if bShow:
+            widget.show()
+        else:
+            widget.hide()
+        # widget.setVisible(bShow)
+
 # 自定义消息对话框
 def MessageBox(item_text, question=False):
     if not question:
