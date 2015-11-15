@@ -61,7 +61,9 @@ class MineDeginDlg(QtGui.QDialog):
 	def fillMineDatas(self):
 		# 数据库中查找id对应的矿井
 		mine = SQLClientHelper.GetMineById(self.mine_id)
-		if mine.id < 0:return
+		if mine.id < 0:
+			UiHelper.MessageBox(u'sorry,出了点问题,请联系技术人员(错误码:M2)!')
+			return
 
 		# 填充数据
 		name = mine.name.decode('utf-8')
@@ -308,9 +310,10 @@ class MineDeginDlg(QtGui.QDialog):
 		pass
 
 	def onSave(self):
-		if self.mine_id < 0:return
-
 		mine = SQLClientHelper.GetMineById(self.mine_id)
+		if mine.id < 0:
+			UiHelper.MessageBox(u'sorry,出了点问题,请联系技术人员(错误码:M4)!')
+			return
 
 		mine.name = unicode(self.ui.name.text()).encode('utf-8')
 		mine.capacity, ok = self.ui.capacity.text().toDouble()
@@ -321,7 +324,6 @@ class MineDeginDlg(QtGui.QDialog):
 		mine.ground_condition = int(self.ui.ground_cond.isChecked())
 		region_name = unicode(self.ui.region.currentText()).encode('utf-8')
 		mine.mine_region_id = SQLClientHelper.GetMineRegionIdByField1('name', region_name)
-		print u'xxxx:%d' % (mine.mine_region_id)
 		if SQLClientHelper.UpdateMine(mine):
 			UiHelper.MessageBox(u'恭喜您,更新矿井数据成功!!!')
 		else:

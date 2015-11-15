@@ -92,7 +92,7 @@ class Ui_technologyDlg(object):
 
     def retranslateUi(self, technologyDlg):
         technologyDlg.setWindowTitle(_translate("technologyDlg", "推荐煤层气（瓦斯）抽采技术", None))
-        self.region.setText(_translate("technologyDlg", ">>xx矿区推荐抽采技术", None))
+        self.region.setText(_translate("technologyDlg", "xx矿区推荐抽采技术", None))
         self.is_key.setText(_translate("technologyDlg", "关键技术", None))
         self.save.setText(_translate("technologyDlg", "保存", None))
         __sortingEnabled = self.technology_listWidget.isSortingEnabled()

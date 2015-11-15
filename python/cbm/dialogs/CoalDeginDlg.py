@@ -26,7 +26,9 @@ class CoalDeginDlg(QtGui.QDialog):
         self.init()
 
     def init(self):
-        if self.coal_id < 0:return
+        if self.coal_id < 0:
+            UiHelper.MessageBox(u'sorry,出了点问题,请联系技术人员(错误码:C2)!')
+            return
 
         coal = SQLClientHelper.GetCoalById(self.coal_id)
         if coal.id < 0:return
@@ -65,11 +67,12 @@ class CoalDeginDlg(QtGui.QDialog):
         UiHelper.MessageBox(u'尚未实现')
 
     def onSave(self):
-        if self.coal_id < 0:return
-
+        if self.coal_id < 0:
+            UiHelper.MessageBox(u'sorry,出了点问题,请联系技术人员(错误码:C3)!')
+            return
+        
         # 根据id查找煤层
         coal = SQLClientHelper.GetCoalById(self.coal_id)
-        if coal.id < 0:return
 
         # 读取界面上的数据保存到煤层对象
         coal.thick, ok = self.ui.thick.text().toDouble()

@@ -45,7 +45,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>&gt;&gt;xx矿区推荐抽采技术</string>
+    <string>xx矿区推荐抽采技术</string>
    </property>
   </widget>
   <widget class="QCheckBox" name="is_key">

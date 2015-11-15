@@ -79,8 +79,8 @@ class Ui_tech_mode_dlg(object):
 
     def retranslateUi(self, tech_mode_dlg):
         tech_mode_dlg.setWindowTitle(_translate("tech_mode_dlg", "煤层气（瓦斯）抽采技术模式参数", None))
-        self.region.setTitle(_translate("tech_mode_dlg", ">>xx矿区抽采技术模式", None))
-        self.groupBox.setTitle(_translate("tech_mode_dlg", ">> 适用条件", None))
+        self.region.setTitle(_translate("tech_mode_dlg", "xx矿区抽采技术模式", None))
+        self.groupBox.setTitle(_translate("tech_mode_dlg", "适用条件", None))
         self.groupBox_2.setTitle(_translate("tech_mode_dlg", "渗透率", None))
         self.c1_yes.setText(_translate("tech_mode_dlg", "中高渗>5mD", None))
         self.c1_no.setText(_translate("tech_mode_dlg", "低渗<=5mD", None))

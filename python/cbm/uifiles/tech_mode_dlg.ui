@@ -33,7 +33,7 @@
     </rect>
    </property>
    <property name="title">
-    <string>&gt;&gt;xx矿区抽采技术模式</string>
+    <string>xx矿区抽采技术模式</string>
    </property>
    <widget class="QComboBox" name="tech_mode">
     <property name="geometry">
@@ -56,7 +56,7 @@
     </rect>
    </property>
    <property name="title">
-    <string>&gt;&gt; 适用条件</string>
+    <string>适用条件</string>
    </property>
    <widget class="QGroupBox" name="groupBox_2">
     <property name="geometry">
