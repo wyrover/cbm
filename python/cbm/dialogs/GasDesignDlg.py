@@ -46,7 +46,7 @@ class GasDesignDlg(QtGui.QDialog):
     def go(self):
     	currentRow = self.ui.technology.currentRow()
     	if currentRow < 0:
-    		QtGui.QMessageBox.information(self, u"提示",u"请选择相应的抽采技术！")
+    		UiHelper.MessageBox(u"请选择相应的抽采技术！")
     		return
     	func = ''
     	if self.mine_region == 1:

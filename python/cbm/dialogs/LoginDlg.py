@@ -7,6 +7,7 @@ from RegDialog import *
 from rpc import CbmUtil, SQLClientHelper, CbmClientHelper
 from cbm.ttypes import *
 
+import DataHelper
 import UiHelper
 
 LOGIN_MESSAGE = {
@@ -68,7 +69,7 @@ class LoginDialog(QtGui.QDialog):
 		else:ret = CbmClientHelper.VerifyMineAccount(uname, pwd)
 		# 弹出提示信息
 		if ret != 1:
-			QtGui.QMessageBox.information(self, u"提示",LOGIN_MESSAGE[ret])
+			UiHelper.MessageBox(LOGIN_MESSAGE[ret])
 		return ret
 
 	def login_or_switch(self, uname, pwd):
@@ -78,17 +79,17 @@ class LoginDialog(QtGui.QDialog):
 		# 当前没有用户登录
 		if pre_account_id < 0:
 			# 用户登陆(记录在sys_info表中)
-			UiHelper.sql_login_user(account_id)
-			QtGui.QMessageBox.information(self, u"提示",'恭喜您,登录成功!')
+			DataHelper.sql_login_user(account_id)
+			UiHelper.MessageBox('恭喜您,登录成功!')
 		# 当前已有用户登录
 		elif pre_account_id == account_id:
-			# QtGui.QMessageBox.information(self, u"提示",'您已经登录过了!')
+			# UiHelper.MessageBox('您已经登录过了!')
 			pass
 		else:
-			reply = QtGui.QMessageBox.question(self, u"提示",'是否注销并切换到用户%s?' % uname, QtGui.QMessageBox.Yes, QtGui.QMessageBox.No)
-			if reply == QtGui.QMessageBox.Yes:
+			reply = UiHelper.MessageBox('是否注销并切换到用户%s?' % uname, True)
+			if reply == True:
 				# 切换用户
-				UiHelper.sql_switch_user(account_id)
+				DataHelper.sql_switch_user(account_id)
 
 	def onLogin(self):
 		uname = unicode(self.nameEdit.text()).encode('utf-8')

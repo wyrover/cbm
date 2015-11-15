@@ -21,8 +21,9 @@ import doc
 from rpc import CbmUtil, SQLClientHelper, CbmClientHelper
 from cbm.ttypes import *
 
+import DataHelper
+from DataHelper import Authority
 import UiHelper
-from UiHelper import Authority
 
 class MainWindow(QtGui.QMainWindow):  
 	def __init__(self,parent=None):
@@ -50,15 +51,14 @@ class MainWindow(QtGui.QMainWindow):
 	
 	def real_logout(self):
 		# 注销(清空sys_info表)
-		UiHelper.sql_logout()
+		DataHelper.sql_logout()
 		# 设置菜单激活状态
 		self.loginAction.setEnabled(True)
 		self.logoutAction.setEnabled(False)
 
 	def closeEvent(self, event):
-		reply = QtGui.QMessageBox.question(
-			self, u'确认', u'确定退出本系统?', QtGui.QMessageBox.Yes, QtGui.QMessageBox.No)
-		if reply == QtGui.QMessageBox.Yes:
+		reply = UiHelper.MessageBox(u'确定退出本系统?', True)
+		if reply == True:
 			# 注销
 			self.real_logout()
 			# close消息处理完毕,不再需要qt继续处理close消息了
@@ -78,9 +78,8 @@ class MainWindow(QtGui.QMainWindow):
 			return False
 
 	def logout(self):
-		reply = QtGui.QMessageBox.question(
-		self, u'确认', u'您确定要注销?', QtGui.QMessageBox.Yes, QtGui.QMessageBox.No)
-		if reply == QtGui.QMessageBox.Yes:
+		reply = UiHelper.MessageBox(u'您确定要注销?', True)
+		if reply == True:
 			# 注销
 			self.real_logout()
 
@@ -95,26 +94,26 @@ class MainWindow(QtGui.QMainWindow):
 		can_run = True
 		while can_run:
 			# 检查用户登录状态
-			ret = UiHelper.sql_login_status()
+			ret = DataHelper.sql_login_status()
 			# 内部错误
 			if ret == 0 or ret == -1:
-				QtGui.QMessageBox.information(self, u"提示",u"系统技术性故障(错误码:M1),请联系技术人员!")
+				UiHelper.MessageBox(u"系统技术性故障(错误码:M1),请联系技术人员!")
 				can_run = False
 				break
 			# 用户未登录
 			elif ret == 2:
-				QtGui.QMessageBox.information(self, u"提示",u"您需要登录才能使用本功能!")
+				UiHelper.MessageBox(u"您需要登录才能使用本功能!")
 				can_run = self.login() # 登录
 			# 管理员已登录		
 			elif ret == 3 and authority == Authority.USER:
-				QtGui.QMessageBox.information(self, u"提示",u"管理员禁止使用该功能,请重新登录!")
+				UiHelper.MessageBox(u"管理员禁止使用该功能,请重新登录!")
 				can_run = self.login() # 登录
 			# 普通用户已登录
 			elif ret == 1 and authority == Authority.ADMIN:
-				QtGui.QMessageBox.information(self, u"提示",u"您的权限不够,请重新登录!")
+				UiHelper.MessageBox(u"您的权限不够,请重新登录!")
 				can_run = self.login() # 登录
 
-			if can_run and UiHelper.sql_login_authority(authority):
+			if can_run and DataHelper.sql_login_authority(authority):
 				break
 
 		# 启动对话框
@@ -181,19 +180,19 @@ class MainWindow(QtGui.QMainWindow):
 
 	def wsGasDesign(self):
 		# 进行工作面的瓦斯抽采设计
-		UiHelper.GAS_DESIGN_TYPE = 1
+		DataHelper.GAS_DESIGN_TYPE = 1
 		# 启动瓦斯抽采设计对话框
 		self.try_run(GasDesignDlg, Authority.USER)
 
 	def twsGasDesign(self):
 		# 进行掘进面的瓦斯抽采设计
-		UiHelper.GAS_DESIGN_TYPE = 2
+		DataHelper.GAS_DESIGN_TYPE = 2
 		# 启动掘进面瓦斯抽采设计对话框
 		self.try_run(GasDesignDlg, Authority.USER)
 
 	def goafGasDesign(self):
 		# 进行采空区的瓦斯抽采设计
-		UiHelper.GAS_DESIGN_TYPE = 3
+		DataHelper.GAS_DESIGN_TYPE = 3
 		self.try_run(GasDesignDlg, Authority.USER)
 
 	def openOfficeNet(self):
@@ -336,4 +335,4 @@ def run():
 		# 进入消息循环
 		app.exec_()
 		# 注销(清空sys_info表)
-		UiHelper.sql_logout()
+		DataHelper.sql_logout()

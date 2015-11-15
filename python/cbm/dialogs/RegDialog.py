@@ -5,6 +5,7 @@ from uipy.ui_regdialog import *
 from rpc import CbmUtil, SQLClientHelper, CbmClientHelper
 # from cbm.ttypes import *
 
+import DataHelper
 import UiHelper
 
 class RegDiaolog(QtGui.QDialog):  
@@ -53,13 +54,13 @@ class RegDiaolog(QtGui.QDialog):
         uname = unicode(self.ui.username.text()).encode('utf-8')
         pwd = unicode(self.ui.password.text()).encode('utf-8')
         # 检查用户名是否已注册
-        if UiHelper.sql_check_user(uname, pwd):
-            QtGui.QMessageBox.information(self, u"提示",'用户名已经被注册了,换一个吧!')
+        if DataHelper.sql_check_user(uname, pwd):
+            UiHelper.MessageBox('用户名已经被注册了,换一个吧!')
         else:
             # 注册新用户
-            account_id = UiHelper.sql_create_user(uname, pwd)
+            account_id = DataHelper.sql_create_user(uname, pwd)
             if account_id < 0:
-                QtGui.QMessageBox.information(self, u"提示",'抱歉，注册失败\n请联系技术人员(错误码:A1)!')
+                UiHelper.MessageBox('抱歉，注册失败\n请联系技术人员(错误码:A1)!')
                 return
 
             # 从界面中读取数据
@@ -68,12 +69,12 @@ class RegDiaolog(QtGui.QDialog):
             mine_city = unicode(self.ui.city.text()).encode('utf-8')
             mine_region = unicode(self.ui.region.currentText()).encode('utf-8')
             # 注册新矿井
-            mine_id = UiHelper.sql_create_mine(mine_name, mine_province, mine_city, mine_region, account_id)
+            mine_id = DataHelper.sql_create_mine(mine_name, mine_province, mine_city, mine_region, account_id)
             # 注册新矿井失败
             if mine_id < 0:
                 # 删除新注册用户
                 SQLClientHelper.DeleteAccount(account_id)
-                QtGui.QMessageBox.information(self, u"提示",'抱歉，注册失败\n请联系技术人员(错误码:A2)!')
+                UiHelper.MessageBox('抱歉，注册失败\n请联系技术人员(错误码:A2)!')
                 return
 
             # 分解煤层编号(空格分隔)
@@ -86,7 +87,7 @@ class RegDiaolog(QtGui.QDialog):
             # 新建煤层(逐个添加到数据)
             coal_ids = []
             for name in mine_coal_names:
-                coal_ids.append(UiHelper.sql_create_coal(name, mine_id))
+                coal_ids.append(DataHelper.sql_create_coal(name, mine_id))
             # 增加煤层失败,删除添加的所有煤层
             if -1 in coal_ids:
                 # 删除已增加的所有煤层
@@ -95,9 +96,9 @@ class RegDiaolog(QtGui.QDialog):
                 SQLClientHelper.DeleteMine(mine_id)
                 # 删除已注册的用户
                 SQLClientHelper.DeleteAccount(account_id)
-                QtGui.QMessageBox.information(self, u"提示",'抱歉，注册失败\n请联系技术人员(错误码:A3)!')
+                UiHelper.MessageBox('抱歉，注册失败\n请联系技术人员(错误码:A3)!')
             else:
-                QtGui.QMessageBox.information(self, u"提示",'恭喜您，注册成功啦!')
+                UiHelper.MessageBox('恭喜您，注册成功啦!')
                 # 记录注册成功的用户(用于外部调用)
                 self.reg_user_name = uname
                 # 关闭对话框,并返回1

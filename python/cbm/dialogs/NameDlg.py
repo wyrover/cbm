@@ -18,24 +18,3 @@ class NameDlg(QtGui.QDialog):
     def ensure(self):
         self.name = self.ui.name.text()
         self.accept()
-
-def showNameDlg(title):
-    dlg = NameDlg()
-    dlg.setTitle(title)
-    name = ''
-    if dlg.exec_():
-        name = dlg.name
-    return name
-
-def AddNewName(combo,title):
-    name = showNameDlg(title)
-    if name == '':
-        QtGui.QMessageBox.information(combo, u"提示",u"请输入有效的名称！")
-    else:
-        pos = combo.findText(name)
-        if pos != -1:
-            QtGui.QMessageBox.information(combo, u"提示",u"所输入的名称已存在！")
-        else:
-            combo.addItem(name)
-            pos = combo.count()-1
-        combo.setCurrentIndex(pos)

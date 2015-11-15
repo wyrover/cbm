@@ -8,6 +8,7 @@ from rpc import CbmUtil, SQLClientHelper, CbmClientHelper
 from cbm.ttypes import *
 
 import UiHelper
+import DataHelper
 
 class MineDeginDlg(QtGui.QDialog):  
 	def __init__(self, mine_id=-1, parent=None):
@@ -20,6 +21,8 @@ class MineDeginDlg(QtGui.QDialog):
 		self.ui.add_work_surf.clicked.connect(self.onAddWorkSurf)
 		self.ui.add_drilling_surf.clicked.connect(self.onAddDrillingSurf)
 		self.ui.more_coal.clicked.connect(self.onCoalDetail)
+		# 煤炭基地切换 事件处理
+		self.connect(self.ui.base, QtCore.SIGNAL('currentIndexChanged(int)'), self.onMineBaseChanged)
 		# 待设计的矿井
 		self.mine_id = mine_id
 		# 初始化
@@ -55,41 +58,59 @@ class MineDeginDlg(QtGui.QDialog):
 		city = mine.city.decode('utf-8')
 		topo_geo = mine.topo_geo
 		hydr_geo = mine.hydr_geo
+		ground_condition = mine.ground_condition
+		# 查找矿区
+		mine_region = SQLClientHelper.GetMineRegionById(mine.mine_region_id)
+		# combobox里的text好像不需要unicode,貌似不需要"编码"(encode)
+		region_name = 'null' if mine_region.id < 0 else mine_region.name
+		# 根据矿区名称反查煤炭基地
+		base_name = CbmClientHelper.GetBaseByRegion(region_name)
 
 		# 填充矿井数据		
 		self.ui.name.setText(name)
 		self.ui.capacity.setText(u'%.2f' % capacity)
 		self.ui.province.setText(province)
 		self.ui.city.setText(city)
-		# self.ui.
+		self.ui.topo_geo.setCurrentIndex(topo_geo-1)
+		self.ui.hydr_geo.setCurrentIndex(hydr_geo-1)
+		self.ui.ground_cond.setChecked(ground_condition != 0)
+		self.ui.base.setCurrentIndex(self.ui.base.findText(base_name))
+		self.ui.region.setCurrentIndex(self.ui.region.findText(region_name))
 
 	def fillCoalCombox(self):
-		pass
+		# 清空煤层下拉列表
+		self.ui.coal.clear()
 
-	# def showNameDlg(self,title):
-	# 	dlg = NameDlg()
-	# 	dlg.setTitle(title)
-	# 	name = ''
-	# 	if dlg.exec_():
-	# 		name = dlg.name
-	# 	return name
+		# 查找矿井辖属的煤层
+		coal_lists = SQLClientHelper.GetCoalListByForeignKey('mine_id', self.mine_id)
+		for coal in coal_lists:
+			# 添加煤层名称到列表,并附加一个id数据(item data)
+			self.ui.coal.addItem(coal.name, coal.id)
+		self.ui.coal.setCurrentIndex(0)
 
-	# def addNewName(self,combo,name):
-	# 	if name == '':
-	# 		QtGui.QMessageBox.information(self, u"提示",u"请输入有效的名称！")
-	# 	else:
-	# 		pos = combo.findText(name)
-	# 		if pos != -1:
-	# 			QtGui.QMessageBox.information(self, u"提示",u"所输入的名称已存在！")
-	# 		else:
-	# 			combo.addItem(name)
-	# 			pos = combo.count()-1
-	# 		combo.setCurrentIndex(pos)
+	def onMineBaseChanged(self, index):
+		# 清空矿区列表
+		self.ui.region.clear()
+		# 查询煤炭基地对应的矿区
+		mine_base_id, ok = self.ui.base.itemData(index).toInt()
+		if not ok:return
+
+		# 查询煤炭基地辖制的矿区
+		mine_region_list = SQLClientHelper.GetMineRegionListByField1('mine_base_id', str(mine_base_id))
+		if len(mine_region_list) == 0:return
+		# 填充矿区列表
+		for mine_region in mine_region_list:
+			# 从数据库中提取的字符串是utf-8编码的
+			self.ui.region.addItem(mine_region.name.decode('utf-8'), mine_region.id)
+		# 默认选中第1个
+		self.ui.region.setCurrentIndex(0)
 
 	def onAddCoal(self):
-		AddNewName(self.ui.coal,u"新增煤层")
-		# name = self.showNameDlg(u"新增煤层")
-		# self.addNewName(self.ui.coal,name)
+		name = UiHelper.GetNameFromDlg(u"新增煤层")
+		if name == u'null':
+			UiHelper.MessageBox(u"请输入有效的名称！")
+		else:
+			UiHelper.AddItemToCombobox(self.ui.coal, name)
 
 	def onAddWorkSurf(self):
 		AddNewName(self.ui.work_surf,u"新增回采工作面")
