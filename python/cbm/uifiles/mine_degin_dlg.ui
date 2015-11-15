@@ -481,6 +481,9 @@
    </property>
   </widget>
   <widget class="QComboBox" name="drilling_surf">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>80</x>
@@ -503,7 +506,7 @@
     <string>掘进工作面</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="more_rilling_surf">
+  <widget class="QPushButton" name="more_drilling_surf">
    <property name="geometry">
     <rect>
      <x>320</x>
@@ -516,7 +519,7 @@
     <string>详细设计</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="del_rilling_surf">
+  <widget class="QPushButton" name="del_drilling_surf">
    <property name="geometry">
     <rect>
      <x>260</x>

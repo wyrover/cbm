@@ -110,3 +110,21 @@ def sql_login_status():
 				return -1
 			else:           # 普通用户已登陆
 				return 1
+
+def sql_create_work_area(name, coal_id):
+	work_area = WorkArea()
+	work_area.name = name
+	work_area.coal_id = coal_id
+	return SQLClientHelper.AddWorkArea(work_area)
+
+def sql_create_work_surf(name, work_area_id):
+	work_surf = WorkSurf()
+	work_surf.name = name
+	work_surf.work_area_id = work_area_id
+	return SQLClientHelper.AddWorkSurf(work_surf)
+
+def sql_create_drilling_surf(name, work_area_id):
+	drilling_surf = DrillingSurf()
+	drilling_surf.name = name
+	drilling_surf.work_area_id = work_area_id
+	return SQLClientHelper.AddDrillingSurf(drilling_surf)	

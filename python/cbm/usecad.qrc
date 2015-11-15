@@ -8,5 +8,18 @@
     <file>images/reg.ico</file>
     <file>images/qt_zh_CN.qm</file>
     <file>images/blue.css</file>
+    <file>images/add-line_horizontal.png</file>
+    <file>images/add-line_vertical.png</file>
+    <file>images/array_down.png</file>
+    <file>images/checkbox_checked.png</file>
+    <file>images/checkbox_unchecked.png</file>
+    <file>images/error.png</file>
+    <file>images/fontawesome-webfont.ttf</file>
+    <file>images/info.png</file>
+    <file>images/question.png</file>
+    <file>images/radio_normal.png</file>
+    <file>images/radio_selected.png</file>
+    <file>images/sub-line_horizontal.png</file>
+    <file>images/sub-line_vertical.png</file>
   </qresource>
 </RCC>

@@ -1,12 +1,15 @@
 @echo off
 
+rem ÓÃ¼ÇÊÂ±¾ĞŞ¸ÄÕâ¸öbatÎÄ¼ş¼´¿É,sublime text²»Òª±£´æÎªutf-8±àÂë!ÇĞ¼Ç
+rem ·ñÔò±àÒëui×ÊÔ´µÄÊ±ºò»áÓĞÎÊÌâ
+
 set RCC=C:\Anaconda2\Library\bin\pyrcc4
 set UIC_PY=C:\Anaconda2\Lib\site-packages\PyQt4\uic\pyuic.py
 
-rem ç¼–è¯‘qrcèµ„æº
+rem ±àÒëqrc×ÊÔ´
 %RCC% -o uipy\usecad_rc.py usecad.qrc
 
-rem ç¼–è¯‘uiæ–‡ä»¶
+rem ±àÒëuiÎÄ¼ş
 python %UIC_PY% -o uipy\ui_technology_dlg.py uifiles\technology_dlg.ui
 python %UIC_PY% -o uipy\ui_tech_mode_dlg.py uifiles\tech_mode_dlg.ui
 python %UIC_PY% -o uipy\ui_sample_manage.py uifiles\sample_manage.ui
@@ -45,8 +48,8 @@ python %UIC_PY% -o uipy\ui_gas_design_p2_3_dlg.py uifiles\gas_design_p2_3_dlg.ui
 python %UIC_PY% -o uipy\ui_mainwin.py uifiles\mainwindow.ui
 python %UIC_PY% -o uipy\ui_regdialog.py uifiles\regdialog.ui
 
-rem è¿è¡Œä¸»ç•Œé¢
+rem ÔËĞĞÖ÷½çÃæ
 rem python main.py
 
-rem æš‚åœ
+rem ÔİÍ£
 pause
