@@ -1,7 +1,7 @@
 #coding:utf-8
 
 from uipy.ui_mine_degin_dlg import *
-from NameDlg import *
+
 from CoalDeginDlg import *
 
 from rpc import CbmUtil, SQLClientHelper, CbmClientHelper
@@ -243,7 +243,14 @@ class MineDeginDlg(QtGui.QDialog):
 			UiHelper.MessageBox(u'删除掘进面成功!')
 
 	def onCoalDetail(self):
-		pass
+		# 煤层列表显示的当前煤层
+		index = self.ui.coal.currentIndex()
+		if index < 0:return
+		coal_id, ok = self.ui.coal.itemData(index).toInt()
+
+		# 显示煤层设计对话卡U给你
+		dlg = CoalDeginDlg(coal_id)
+		dlg.exec_()
 
 	def onWorkAreaDetail(self):
 		pass

@@ -20,14 +20,22 @@ def map_fields(cbm_type, fields):
     else:
         return fields
 
+# 默认类型值
+default_value_dict = {
+    int:0,
+    float:0.0,
+    str:''
+}
+
 def CopyAttribsOfCbmType(cbm_type, obj1, obj2):
     # print "copy %s" % cbm_type
     if cbm_type in CbmRtti.info:
         # print CbmRtti.info[cbm_type]
         for name, func in CbmRtti.info[cbm_type].items():
             if not hasattr(obj1, name) or not hasattr(obj2, name):continue
+            if func in default_value_dict and name != 'id':
+                setattr(obj2, name, default_value_dict[func])
             a = getattr(obj1, name)
-            # print name, '-->', a
             if a is not None:
                 setattr(obj2, name, func(a))
 

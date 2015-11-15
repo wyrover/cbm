@@ -127,7 +127,7 @@ class MainWindow(QtGui.QMainWindow):
 
 	def deginMine(self):
 		# 启动矿井设计对话框
-		self.try_run(MineDeginDlg, Authority.USER)
+		self.try_run(MineDeginDlg, Authority.BOTH)
 
 	def dragTec(self):
 		# 启动辅助决策对话框

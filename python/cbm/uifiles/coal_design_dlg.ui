@@ -305,17 +305,17 @@
    </property>
    <item>
     <property name="text">
+     <string>低(&lt;3.0)</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
      <string>中(0.5~3.0)</string>
     </property>
    </item>
    <item>
     <property name="text">
      <string>高(&gt;3.0)</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>低(&lt;3.0)</string>
     </property>
    </item>
   </widget>
@@ -345,7 +345,7 @@
     <string>煤层气储量丰度</string>
    </property>
   </widget>
-  <widget class="QComboBox" name="const_complexity">
+  <widget class="QComboBox" name="complexity">
    <property name="geometry">
     <rect>
      <x>340</x>
@@ -356,12 +356,7 @@
    </property>
    <item>
     <property name="text">
-     <string>复杂</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>极复杂</string>
+     <string>简单</string>
     </property>
    </item>
    <item>
@@ -371,7 +366,12 @@
    </item>
    <item>
     <property name="text">
-     <string>简单</string>
+     <string>复杂</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>极复杂</string>
     </property>
    </item>
   </widget>
@@ -632,25 +632,12 @@
     </rect>
    </property>
   </widget>
-  <widget class="QPushButton" name="cancel">
-   <property name="geometry">
-    <rect>
-     <x>230</x>
-     <y>280</y>
-     <width>101</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>取  消</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="save">
    <property name="geometry">
     <rect>
-     <x>70</x>
+     <x>130</x>
      <y>280</y>
-     <width>101</width>
+     <width>171</width>
      <height>41</height>
     </rect>
    </property>
