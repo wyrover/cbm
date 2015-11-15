@@ -12,7 +12,7 @@ class SQLServiceHandler(object):
 	#Account 类型的CRUD操作
 	def AddAccount(self, account):
 		sql_obj = SQL.Account()
-		CbmUtil.CopyAttribsOfCbmType("Account", account, sql_obj)
+		CbmUtil.CopyAttribsOfCbmType("Account", account, sql_obj, False)
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -23,20 +23,20 @@ class SQLServiceHandler(object):
 			self.session.query(SQL.Account).filter(SQL.Account.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def UpdateAccount(self, account):
 		ret=True
 		try:
 			sql_obj = SQL.Account()
-			CbmUtil.CopyAttribsOfCbmType("Account", account, sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("Account", account, sql_obj, False)
 			attribs = CbmUtil.GetAttribsOfCbmType("Account", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.Account).filter(SQL.Account.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def GetAccountById(self, id):
@@ -45,7 +45,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribsOfCbmType("Account", query, obj)
+			CbmUtil.CopyAttribsOfCbmType("Account", query, obj, True)
 		return obj
 	def GetAccountByForeignKey(self, fkey, id):
 		return self.GetAccountByFields({fkey:id})
@@ -56,7 +56,7 @@ class SQLServiceHandler(object):
 		n = len(query)
 		obj_list = [Account() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("Account", query[i], obj_list[i])
+			CbmUtil.CopyAttribsOfCbmType("Account", query[i], obj_list[i], True)
 		return obj_list
 	def GetAccountIds(self):
 		query=self.session.query(SQL.Account).order_by(SQL.Account.id).all()
@@ -71,7 +71,7 @@ class SQLServiceHandler(object):
 		n = len(objs)
 		sql_objs = [SQL.Account() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("Account", objs[i], sql_objs[i])
+			CbmUtil.CopyAttribsOfCbmType("Account", objs[i], sql_objs[i], False)
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -88,7 +88,7 @@ class SQLServiceHandler(object):
 			n = len(query)
 			obj_list = [Account() for i in range(n)]
 			for i in range(n):
-				CbmUtil.CopyAttribsOfCbmType("Account", query[i], obj_list[i])
+				CbmUtil.CopyAttribsOfCbmType("Account", query[i], obj_list[i], True)
 			return obj_list
 	def __GetAccountIdsByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("Account", fields)
@@ -139,7 +139,7 @@ class SQLServiceHandler(object):
 	#AdjLayer 类型的CRUD操作
 	def AddAdjLayer(self, adj_layer):
 		sql_obj = SQL.AdjLayer()
-		CbmUtil.CopyAttribsOfCbmType("AdjLayer", adj_layer, sql_obj)
+		CbmUtil.CopyAttribsOfCbmType("AdjLayer", adj_layer, sql_obj, False)
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -150,20 +150,20 @@ class SQLServiceHandler(object):
 			self.session.query(SQL.AdjLayer).filter(SQL.AdjLayer.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def UpdateAdjLayer(self, adj_layer):
 		ret=True
 		try:
 			sql_obj = SQL.AdjLayer()
-			CbmUtil.CopyAttribsOfCbmType("AdjLayer", adj_layer, sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("AdjLayer", adj_layer, sql_obj, False)
 			attribs = CbmUtil.GetAttribsOfCbmType("AdjLayer", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.AdjLayer).filter(SQL.AdjLayer.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def GetAdjLayerById(self, id):
@@ -172,7 +172,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribsOfCbmType("AdjLayer", query, obj)
+			CbmUtil.CopyAttribsOfCbmType("AdjLayer", query, obj, True)
 		return obj
 	def GetAdjLayerByForeignKey(self, fkey, id):
 		return self.GetAdjLayerByFields({fkey:id})
@@ -183,7 +183,7 @@ class SQLServiceHandler(object):
 		n = len(query)
 		obj_list = [AdjLayer() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("AdjLayer", query[i], obj_list[i])
+			CbmUtil.CopyAttribsOfCbmType("AdjLayer", query[i], obj_list[i], True)
 		return obj_list
 	def GetAdjLayerIds(self):
 		query=self.session.query(SQL.AdjLayer).order_by(SQL.AdjLayer.id).all()
@@ -198,7 +198,7 @@ class SQLServiceHandler(object):
 		n = len(objs)
 		sql_objs = [SQL.AdjLayer() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("AdjLayer", objs[i], sql_objs[i])
+			CbmUtil.CopyAttribsOfCbmType("AdjLayer", objs[i], sql_objs[i], False)
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -215,7 +215,7 @@ class SQLServiceHandler(object):
 			n = len(query)
 			obj_list = [AdjLayer() for i in range(n)]
 			for i in range(n):
-				CbmUtil.CopyAttribsOfCbmType("AdjLayer", query[i], obj_list[i])
+				CbmUtil.CopyAttribsOfCbmType("AdjLayer", query[i], obj_list[i], True)
 			return obj_list
 	def __GetAdjLayerIdsByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("AdjLayer", fields)
@@ -266,7 +266,7 @@ class SQLServiceHandler(object):
 	#Coal 类型的CRUD操作
 	def AddCoal(self, coal):
 		sql_obj = SQL.Coal()
-		CbmUtil.CopyAttribsOfCbmType("Coal", coal, sql_obj)
+		CbmUtil.CopyAttribsOfCbmType("Coal", coal, sql_obj, False)
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -277,20 +277,20 @@ class SQLServiceHandler(object):
 			self.session.query(SQL.Coal).filter(SQL.Coal.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def UpdateCoal(self, coal):
 		ret=True
 		try:
 			sql_obj = SQL.Coal()
-			CbmUtil.CopyAttribsOfCbmType("Coal", coal, sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("Coal", coal, sql_obj, False)
 			attribs = CbmUtil.GetAttribsOfCbmType("Coal", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.Coal).filter(SQL.Coal.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def GetCoalById(self, id):
@@ -299,7 +299,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribsOfCbmType("Coal", query, obj)
+			CbmUtil.CopyAttribsOfCbmType("Coal", query, obj, True)
 		return obj
 	def GetCoalByForeignKey(self, fkey, id):
 		return self.GetCoalByFields({fkey:id})
@@ -310,7 +310,7 @@ class SQLServiceHandler(object):
 		n = len(query)
 		obj_list = [Coal() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("Coal", query[i], obj_list[i])
+			CbmUtil.CopyAttribsOfCbmType("Coal", query[i], obj_list[i], True)
 		return obj_list
 	def GetCoalIds(self):
 		query=self.session.query(SQL.Coal).order_by(SQL.Coal.id).all()
@@ -325,7 +325,7 @@ class SQLServiceHandler(object):
 		n = len(objs)
 		sql_objs = [SQL.Coal() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("Coal", objs[i], sql_objs[i])
+			CbmUtil.CopyAttribsOfCbmType("Coal", objs[i], sql_objs[i], False)
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -342,7 +342,7 @@ class SQLServiceHandler(object):
 			n = len(query)
 			obj_list = [Coal() for i in range(n)]
 			for i in range(n):
-				CbmUtil.CopyAttribsOfCbmType("Coal", query[i], obj_list[i])
+				CbmUtil.CopyAttribsOfCbmType("Coal", query[i], obj_list[i], True)
 			return obj_list
 	def __GetCoalIdsByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("Coal", fields)
@@ -393,7 +393,7 @@ class SQLServiceHandler(object):
 	#Complexity 类型的CRUD操作
 	def AddComplexity(self, complexity):
 		sql_obj = SQL.Complexity()
-		CbmUtil.CopyAttribsOfCbmType("Complexity", complexity, sql_obj)
+		CbmUtil.CopyAttribsOfCbmType("Complexity", complexity, sql_obj, False)
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -404,20 +404,20 @@ class SQLServiceHandler(object):
 			self.session.query(SQL.Complexity).filter(SQL.Complexity.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def UpdateComplexity(self, complexity):
 		ret=True
 		try:
 			sql_obj = SQL.Complexity()
-			CbmUtil.CopyAttribsOfCbmType("Complexity", complexity, sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("Complexity", complexity, sql_obj, False)
 			attribs = CbmUtil.GetAttribsOfCbmType("Complexity", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.Complexity).filter(SQL.Complexity.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def GetComplexityById(self, id):
@@ -426,7 +426,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribsOfCbmType("Complexity", query, obj)
+			CbmUtil.CopyAttribsOfCbmType("Complexity", query, obj, True)
 		return obj
 	def GetComplexityByForeignKey(self, fkey, id):
 		return self.GetComplexityByFields({fkey:id})
@@ -437,7 +437,7 @@ class SQLServiceHandler(object):
 		n = len(query)
 		obj_list = [Complexity() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("Complexity", query[i], obj_list[i])
+			CbmUtil.CopyAttribsOfCbmType("Complexity", query[i], obj_list[i], True)
 		return obj_list
 	def GetComplexityIds(self):
 		query=self.session.query(SQL.Complexity).order_by(SQL.Complexity.id).all()
@@ -452,7 +452,7 @@ class SQLServiceHandler(object):
 		n = len(objs)
 		sql_objs = [SQL.Complexity() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("Complexity", objs[i], sql_objs[i])
+			CbmUtil.CopyAttribsOfCbmType("Complexity", objs[i], sql_objs[i], False)
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -469,7 +469,7 @@ class SQLServiceHandler(object):
 			n = len(query)
 			obj_list = [Complexity() for i in range(n)]
 			for i in range(n):
-				CbmUtil.CopyAttribsOfCbmType("Complexity", query[i], obj_list[i])
+				CbmUtil.CopyAttribsOfCbmType("Complexity", query[i], obj_list[i], True)
 			return obj_list
 	def __GetComplexityIdsByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("Complexity", fields)
@@ -520,7 +520,7 @@ class SQLServiceHandler(object):
 	#DesignDrillingSurfTechnology 类型的CRUD操作
 	def AddDesignDrillingSurfTechnology(self, design_drilling_surf_technology):
 		sql_obj = SQL.DesignDrillingSurfTechnology()
-		CbmUtil.CopyAttribsOfCbmType("DesignDrillingSurfTechnology", design_drilling_surf_technology, sql_obj)
+		CbmUtil.CopyAttribsOfCbmType("DesignDrillingSurfTechnology", design_drilling_surf_technology, sql_obj, False)
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -531,20 +531,20 @@ class SQLServiceHandler(object):
 			self.session.query(SQL.DesignDrillingSurfTechnology).filter(SQL.DesignDrillingSurfTechnology.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def UpdateDesignDrillingSurfTechnology(self, design_drilling_surf_technology):
 		ret=True
 		try:
 			sql_obj = SQL.DesignDrillingSurfTechnology()
-			CbmUtil.CopyAttribsOfCbmType("DesignDrillingSurfTechnology", design_drilling_surf_technology, sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("DesignDrillingSurfTechnology", design_drilling_surf_technology, sql_obj, False)
 			attribs = CbmUtil.GetAttribsOfCbmType("DesignDrillingSurfTechnology", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.DesignDrillingSurfTechnology).filter(SQL.DesignDrillingSurfTechnology.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def GetDesignDrillingSurfTechnologyById(self, id):
@@ -553,7 +553,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribsOfCbmType("DesignDrillingSurfTechnology", query, obj)
+			CbmUtil.CopyAttribsOfCbmType("DesignDrillingSurfTechnology", query, obj, True)
 		return obj
 	def GetDesignDrillingSurfTechnologyByForeignKey(self, fkey, id):
 		return self.GetDesignDrillingSurfTechnologyByFields({fkey:id})
@@ -564,7 +564,7 @@ class SQLServiceHandler(object):
 		n = len(query)
 		obj_list = [DesignDrillingSurfTechnology() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("DesignDrillingSurfTechnology", query[i], obj_list[i])
+			CbmUtil.CopyAttribsOfCbmType("DesignDrillingSurfTechnology", query[i], obj_list[i], True)
 		return obj_list
 	def GetDesignDrillingSurfTechnologyIds(self):
 		query=self.session.query(SQL.DesignDrillingSurfTechnology).order_by(SQL.DesignDrillingSurfTechnology.id).all()
@@ -579,7 +579,7 @@ class SQLServiceHandler(object):
 		n = len(objs)
 		sql_objs = [SQL.DesignDrillingSurfTechnology() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("DesignDrillingSurfTechnology", objs[i], sql_objs[i])
+			CbmUtil.CopyAttribsOfCbmType("DesignDrillingSurfTechnology", objs[i], sql_objs[i], False)
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -596,7 +596,7 @@ class SQLServiceHandler(object):
 			n = len(query)
 			obj_list = [DesignDrillingSurfTechnology() for i in range(n)]
 			for i in range(n):
-				CbmUtil.CopyAttribsOfCbmType("DesignDrillingSurfTechnology", query[i], obj_list[i])
+				CbmUtil.CopyAttribsOfCbmType("DesignDrillingSurfTechnology", query[i], obj_list[i], True)
 			return obj_list
 	def __GetDesignDrillingSurfTechnologyIdsByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("DesignDrillingSurfTechnology", fields)
@@ -647,7 +647,7 @@ class SQLServiceHandler(object):
 	#DesignEvalUnit 类型的CRUD操作
 	def AddDesignEvalUnit(self, design_eval_unit):
 		sql_obj = SQL.DesignEvalUnit()
-		CbmUtil.CopyAttribsOfCbmType("DesignEvalUnit", design_eval_unit, sql_obj)
+		CbmUtil.CopyAttribsOfCbmType("DesignEvalUnit", design_eval_unit, sql_obj, False)
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -658,20 +658,20 @@ class SQLServiceHandler(object):
 			self.session.query(SQL.DesignEvalUnit).filter(SQL.DesignEvalUnit.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def UpdateDesignEvalUnit(self, design_eval_unit):
 		ret=True
 		try:
 			sql_obj = SQL.DesignEvalUnit()
-			CbmUtil.CopyAttribsOfCbmType("DesignEvalUnit", design_eval_unit, sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("DesignEvalUnit", design_eval_unit, sql_obj, False)
 			attribs = CbmUtil.GetAttribsOfCbmType("DesignEvalUnit", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.DesignEvalUnit).filter(SQL.DesignEvalUnit.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def GetDesignEvalUnitById(self, id):
@@ -680,7 +680,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribsOfCbmType("DesignEvalUnit", query, obj)
+			CbmUtil.CopyAttribsOfCbmType("DesignEvalUnit", query, obj, True)
 		return obj
 	def GetDesignEvalUnitByForeignKey(self, fkey, id):
 		return self.GetDesignEvalUnitByFields({fkey:id})
@@ -691,7 +691,7 @@ class SQLServiceHandler(object):
 		n = len(query)
 		obj_list = [DesignEvalUnit() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("DesignEvalUnit", query[i], obj_list[i])
+			CbmUtil.CopyAttribsOfCbmType("DesignEvalUnit", query[i], obj_list[i], True)
 		return obj_list
 	def GetDesignEvalUnitIds(self):
 		query=self.session.query(SQL.DesignEvalUnit).order_by(SQL.DesignEvalUnit.id).all()
@@ -706,7 +706,7 @@ class SQLServiceHandler(object):
 		n = len(objs)
 		sql_objs = [SQL.DesignEvalUnit() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("DesignEvalUnit", objs[i], sql_objs[i])
+			CbmUtil.CopyAttribsOfCbmType("DesignEvalUnit", objs[i], sql_objs[i], False)
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -723,7 +723,7 @@ class SQLServiceHandler(object):
 			n = len(query)
 			obj_list = [DesignEvalUnit() for i in range(n)]
 			for i in range(n):
-				CbmUtil.CopyAttribsOfCbmType("DesignEvalUnit", query[i], obj_list[i])
+				CbmUtil.CopyAttribsOfCbmType("DesignEvalUnit", query[i], obj_list[i], True)
 			return obj_list
 	def __GetDesignEvalUnitIdsByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("DesignEvalUnit", fields)
@@ -774,7 +774,7 @@ class SQLServiceHandler(object):
 	#DesignEvalUnitPartition 类型的CRUD操作
 	def AddDesignEvalUnitPartition(self, design_eval_unit_partition):
 		sql_obj = SQL.DesignEvalUnitPartition()
-		CbmUtil.CopyAttribsOfCbmType("DesignEvalUnitPartition", design_eval_unit_partition, sql_obj)
+		CbmUtil.CopyAttribsOfCbmType("DesignEvalUnitPartition", design_eval_unit_partition, sql_obj, False)
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -785,20 +785,20 @@ class SQLServiceHandler(object):
 			self.session.query(SQL.DesignEvalUnitPartition).filter(SQL.DesignEvalUnitPartition.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def UpdateDesignEvalUnitPartition(self, design_eval_unit_partition):
 		ret=True
 		try:
 			sql_obj = SQL.DesignEvalUnitPartition()
-			CbmUtil.CopyAttribsOfCbmType("DesignEvalUnitPartition", design_eval_unit_partition, sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("DesignEvalUnitPartition", design_eval_unit_partition, sql_obj, False)
 			attribs = CbmUtil.GetAttribsOfCbmType("DesignEvalUnitPartition", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.DesignEvalUnitPartition).filter(SQL.DesignEvalUnitPartition.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def GetDesignEvalUnitPartitionById(self, id):
@@ -807,7 +807,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribsOfCbmType("DesignEvalUnitPartition", query, obj)
+			CbmUtil.CopyAttribsOfCbmType("DesignEvalUnitPartition", query, obj, True)
 		return obj
 	def GetDesignEvalUnitPartitionByForeignKey(self, fkey, id):
 		return self.GetDesignEvalUnitPartitionByFields({fkey:id})
@@ -818,7 +818,7 @@ class SQLServiceHandler(object):
 		n = len(query)
 		obj_list = [DesignEvalUnitPartition() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("DesignEvalUnitPartition", query[i], obj_list[i])
+			CbmUtil.CopyAttribsOfCbmType("DesignEvalUnitPartition", query[i], obj_list[i], True)
 		return obj_list
 	def GetDesignEvalUnitPartitionIds(self):
 		query=self.session.query(SQL.DesignEvalUnitPartition).order_by(SQL.DesignEvalUnitPartition.id).all()
@@ -833,7 +833,7 @@ class SQLServiceHandler(object):
 		n = len(objs)
 		sql_objs = [SQL.DesignEvalUnitPartition() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("DesignEvalUnitPartition", objs[i], sql_objs[i])
+			CbmUtil.CopyAttribsOfCbmType("DesignEvalUnitPartition", objs[i], sql_objs[i], False)
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -850,7 +850,7 @@ class SQLServiceHandler(object):
 			n = len(query)
 			obj_list = [DesignEvalUnitPartition() for i in range(n)]
 			for i in range(n):
-				CbmUtil.CopyAttribsOfCbmType("DesignEvalUnitPartition", query[i], obj_list[i])
+				CbmUtil.CopyAttribsOfCbmType("DesignEvalUnitPartition", query[i], obj_list[i], True)
 			return obj_list
 	def __GetDesignEvalUnitPartitionIdsByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("DesignEvalUnitPartition", fields)
@@ -901,7 +901,7 @@ class SQLServiceHandler(object):
 	#DesignGoafTechnology 类型的CRUD操作
 	def AddDesignGoafTechnology(self, design_goaf_technology):
 		sql_obj = SQL.DesignGoafTechnology()
-		CbmUtil.CopyAttribsOfCbmType("DesignGoafTechnology", design_goaf_technology, sql_obj)
+		CbmUtil.CopyAttribsOfCbmType("DesignGoafTechnology", design_goaf_technology, sql_obj, False)
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -912,20 +912,20 @@ class SQLServiceHandler(object):
 			self.session.query(SQL.DesignGoafTechnology).filter(SQL.DesignGoafTechnology.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def UpdateDesignGoafTechnology(self, design_goaf_technology):
 		ret=True
 		try:
 			sql_obj = SQL.DesignGoafTechnology()
-			CbmUtil.CopyAttribsOfCbmType("DesignGoafTechnology", design_goaf_technology, sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("DesignGoafTechnology", design_goaf_technology, sql_obj, False)
 			attribs = CbmUtil.GetAttribsOfCbmType("DesignGoafTechnology", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.DesignGoafTechnology).filter(SQL.DesignGoafTechnology.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def GetDesignGoafTechnologyById(self, id):
@@ -934,7 +934,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribsOfCbmType("DesignGoafTechnology", query, obj)
+			CbmUtil.CopyAttribsOfCbmType("DesignGoafTechnology", query, obj, True)
 		return obj
 	def GetDesignGoafTechnologyByForeignKey(self, fkey, id):
 		return self.GetDesignGoafTechnologyByFields({fkey:id})
@@ -945,7 +945,7 @@ class SQLServiceHandler(object):
 		n = len(query)
 		obj_list = [DesignGoafTechnology() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("DesignGoafTechnology", query[i], obj_list[i])
+			CbmUtil.CopyAttribsOfCbmType("DesignGoafTechnology", query[i], obj_list[i], True)
 		return obj_list
 	def GetDesignGoafTechnologyIds(self):
 		query=self.session.query(SQL.DesignGoafTechnology).order_by(SQL.DesignGoafTechnology.id).all()
@@ -960,7 +960,7 @@ class SQLServiceHandler(object):
 		n = len(objs)
 		sql_objs = [SQL.DesignGoafTechnology() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("DesignGoafTechnology", objs[i], sql_objs[i])
+			CbmUtil.CopyAttribsOfCbmType("DesignGoafTechnology", objs[i], sql_objs[i], False)
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -977,7 +977,7 @@ class SQLServiceHandler(object):
 			n = len(query)
 			obj_list = [DesignGoafTechnology() for i in range(n)]
 			for i in range(n):
-				CbmUtil.CopyAttribsOfCbmType("DesignGoafTechnology", query[i], obj_list[i])
+				CbmUtil.CopyAttribsOfCbmType("DesignGoafTechnology", query[i], obj_list[i], True)
 			return obj_list
 	def __GetDesignGoafTechnologyIdsByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("DesignGoafTechnology", fields)
@@ -1028,7 +1028,7 @@ class SQLServiceHandler(object):
 	#DesignPore 类型的CRUD操作
 	def AddDesignPore(self, design_pore):
 		sql_obj = SQL.DesignPore()
-		CbmUtil.CopyAttribsOfCbmType("DesignPore", design_pore, sql_obj)
+		CbmUtil.CopyAttribsOfCbmType("DesignPore", design_pore, sql_obj, False)
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -1039,20 +1039,20 @@ class SQLServiceHandler(object):
 			self.session.query(SQL.DesignPore).filter(SQL.DesignPore.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def UpdateDesignPore(self, design_pore):
 		ret=True
 		try:
 			sql_obj = SQL.DesignPore()
-			CbmUtil.CopyAttribsOfCbmType("DesignPore", design_pore, sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("DesignPore", design_pore, sql_obj, False)
 			attribs = CbmUtil.GetAttribsOfCbmType("DesignPore", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.DesignPore).filter(SQL.DesignPore.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def GetDesignPoreById(self, id):
@@ -1061,7 +1061,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribsOfCbmType("DesignPore", query, obj)
+			CbmUtil.CopyAttribsOfCbmType("DesignPore", query, obj, True)
 		return obj
 	def GetDesignPoreByForeignKey(self, fkey, id):
 		return self.GetDesignPoreByFields({fkey:id})
@@ -1072,7 +1072,7 @@ class SQLServiceHandler(object):
 		n = len(query)
 		obj_list = [DesignPore() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("DesignPore", query[i], obj_list[i])
+			CbmUtil.CopyAttribsOfCbmType("DesignPore", query[i], obj_list[i], True)
 		return obj_list
 	def GetDesignPoreIds(self):
 		query=self.session.query(SQL.DesignPore).order_by(SQL.DesignPore.id).all()
@@ -1087,7 +1087,7 @@ class SQLServiceHandler(object):
 		n = len(objs)
 		sql_objs = [SQL.DesignPore() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("DesignPore", objs[i], sql_objs[i])
+			CbmUtil.CopyAttribsOfCbmType("DesignPore", objs[i], sql_objs[i], False)
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -1104,7 +1104,7 @@ class SQLServiceHandler(object):
 			n = len(query)
 			obj_list = [DesignPore() for i in range(n)]
 			for i in range(n):
-				CbmUtil.CopyAttribsOfCbmType("DesignPore", query[i], obj_list[i])
+				CbmUtil.CopyAttribsOfCbmType("DesignPore", query[i], obj_list[i], True)
 			return obj_list
 	def __GetDesignPoreIdsByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("DesignPore", fields)
@@ -1155,7 +1155,7 @@ class SQLServiceHandler(object):
 	#DesignSite 类型的CRUD操作
 	def AddDesignSite(self, design_site):
 		sql_obj = SQL.DesignSite()
-		CbmUtil.CopyAttribsOfCbmType("DesignSite", design_site, sql_obj)
+		CbmUtil.CopyAttribsOfCbmType("DesignSite", design_site, sql_obj, False)
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -1166,20 +1166,20 @@ class SQLServiceHandler(object):
 			self.session.query(SQL.DesignSite).filter(SQL.DesignSite.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def UpdateDesignSite(self, design_site):
 		ret=True
 		try:
 			sql_obj = SQL.DesignSite()
-			CbmUtil.CopyAttribsOfCbmType("DesignSite", design_site, sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("DesignSite", design_site, sql_obj, False)
 			attribs = CbmUtil.GetAttribsOfCbmType("DesignSite", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.DesignSite).filter(SQL.DesignSite.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def GetDesignSiteById(self, id):
@@ -1188,7 +1188,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribsOfCbmType("DesignSite", query, obj)
+			CbmUtil.CopyAttribsOfCbmType("DesignSite", query, obj, True)
 		return obj
 	def GetDesignSiteByForeignKey(self, fkey, id):
 		return self.GetDesignSiteByFields({fkey:id})
@@ -1199,7 +1199,7 @@ class SQLServiceHandler(object):
 		n = len(query)
 		obj_list = [DesignSite() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("DesignSite", query[i], obj_list[i])
+			CbmUtil.CopyAttribsOfCbmType("DesignSite", query[i], obj_list[i], True)
 		return obj_list
 	def GetDesignSiteIds(self):
 		query=self.session.query(SQL.DesignSite).order_by(SQL.DesignSite.id).all()
@@ -1214,7 +1214,7 @@ class SQLServiceHandler(object):
 		n = len(objs)
 		sql_objs = [SQL.DesignSite() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("DesignSite", objs[i], sql_objs[i])
+			CbmUtil.CopyAttribsOfCbmType("DesignSite", objs[i], sql_objs[i], False)
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -1231,7 +1231,7 @@ class SQLServiceHandler(object):
 			n = len(query)
 			obj_list = [DesignSite() for i in range(n)]
 			for i in range(n):
-				CbmUtil.CopyAttribsOfCbmType("DesignSite", query[i], obj_list[i])
+				CbmUtil.CopyAttribsOfCbmType("DesignSite", query[i], obj_list[i], True)
 			return obj_list
 	def __GetDesignSiteIdsByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("DesignSite", fields)
@@ -1282,7 +1282,7 @@ class SQLServiceHandler(object):
 	#DesignTechnology 类型的CRUD操作
 	def AddDesignTechnology(self, design_technology):
 		sql_obj = SQL.DesignTechnology()
-		CbmUtil.CopyAttribsOfCbmType("DesignTechnology", design_technology, sql_obj)
+		CbmUtil.CopyAttribsOfCbmType("DesignTechnology", design_technology, sql_obj, False)
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -1293,20 +1293,20 @@ class SQLServiceHandler(object):
 			self.session.query(SQL.DesignTechnology).filter(SQL.DesignTechnology.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def UpdateDesignTechnology(self, design_technology):
 		ret=True
 		try:
 			sql_obj = SQL.DesignTechnology()
-			CbmUtil.CopyAttribsOfCbmType("DesignTechnology", design_technology, sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("DesignTechnology", design_technology, sql_obj, False)
 			attribs = CbmUtil.GetAttribsOfCbmType("DesignTechnology", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.DesignTechnology).filter(SQL.DesignTechnology.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def GetDesignTechnologyById(self, id):
@@ -1315,7 +1315,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribsOfCbmType("DesignTechnology", query, obj)
+			CbmUtil.CopyAttribsOfCbmType("DesignTechnology", query, obj, True)
 		return obj
 	def GetDesignTechnologyByForeignKey(self, fkey, id):
 		return self.GetDesignTechnologyByFields({fkey:id})
@@ -1326,7 +1326,7 @@ class SQLServiceHandler(object):
 		n = len(query)
 		obj_list = [DesignTechnology() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("DesignTechnology", query[i], obj_list[i])
+			CbmUtil.CopyAttribsOfCbmType("DesignTechnology", query[i], obj_list[i], True)
 		return obj_list
 	def GetDesignTechnologyIds(self):
 		query=self.session.query(SQL.DesignTechnology).order_by(SQL.DesignTechnology.id).all()
@@ -1341,7 +1341,7 @@ class SQLServiceHandler(object):
 		n = len(objs)
 		sql_objs = [SQL.DesignTechnology() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("DesignTechnology", objs[i], sql_objs[i])
+			CbmUtil.CopyAttribsOfCbmType("DesignTechnology", objs[i], sql_objs[i], False)
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -1358,7 +1358,7 @@ class SQLServiceHandler(object):
 			n = len(query)
 			obj_list = [DesignTechnology() for i in range(n)]
 			for i in range(n):
-				CbmUtil.CopyAttribsOfCbmType("DesignTechnology", query[i], obj_list[i])
+				CbmUtil.CopyAttribsOfCbmType("DesignTechnology", query[i], obj_list[i], True)
 			return obj_list
 	def __GetDesignTechnologyIdsByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("DesignTechnology", fields)
@@ -1409,7 +1409,7 @@ class SQLServiceHandler(object):
 	#DesignTunnelControlPoint 类型的CRUD操作
 	def AddDesignTunnelControlPoint(self, design_tunnel_control_point):
 		sql_obj = SQL.DesignTunnelControlPoint()
-		CbmUtil.CopyAttribsOfCbmType("DesignTunnelControlPoint", design_tunnel_control_point, sql_obj)
+		CbmUtil.CopyAttribsOfCbmType("DesignTunnelControlPoint", design_tunnel_control_point, sql_obj, False)
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -1420,20 +1420,20 @@ class SQLServiceHandler(object):
 			self.session.query(SQL.DesignTunnelControlPoint).filter(SQL.DesignTunnelControlPoint.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def UpdateDesignTunnelControlPoint(self, design_tunnel_control_point):
 		ret=True
 		try:
 			sql_obj = SQL.DesignTunnelControlPoint()
-			CbmUtil.CopyAttribsOfCbmType("DesignTunnelControlPoint", design_tunnel_control_point, sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("DesignTunnelControlPoint", design_tunnel_control_point, sql_obj, False)
 			attribs = CbmUtil.GetAttribsOfCbmType("DesignTunnelControlPoint", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.DesignTunnelControlPoint).filter(SQL.DesignTunnelControlPoint.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def GetDesignTunnelControlPointById(self, id):
@@ -1442,7 +1442,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribsOfCbmType("DesignTunnelControlPoint", query, obj)
+			CbmUtil.CopyAttribsOfCbmType("DesignTunnelControlPoint", query, obj, True)
 		return obj
 	def GetDesignTunnelControlPointByForeignKey(self, fkey, id):
 		return self.GetDesignTunnelControlPointByFields({fkey:id})
@@ -1453,7 +1453,7 @@ class SQLServiceHandler(object):
 		n = len(query)
 		obj_list = [DesignTunnelControlPoint() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("DesignTunnelControlPoint", query[i], obj_list[i])
+			CbmUtil.CopyAttribsOfCbmType("DesignTunnelControlPoint", query[i], obj_list[i], True)
 		return obj_list
 	def GetDesignTunnelControlPointIds(self):
 		query=self.session.query(SQL.DesignTunnelControlPoint).order_by(SQL.DesignTunnelControlPoint.id).all()
@@ -1468,7 +1468,7 @@ class SQLServiceHandler(object):
 		n = len(objs)
 		sql_objs = [SQL.DesignTunnelControlPoint() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("DesignTunnelControlPoint", objs[i], sql_objs[i])
+			CbmUtil.CopyAttribsOfCbmType("DesignTunnelControlPoint", objs[i], sql_objs[i], False)
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -1485,7 +1485,7 @@ class SQLServiceHandler(object):
 			n = len(query)
 			obj_list = [DesignTunnelControlPoint() for i in range(n)]
 			for i in range(n):
-				CbmUtil.CopyAttribsOfCbmType("DesignTunnelControlPoint", query[i], obj_list[i])
+				CbmUtil.CopyAttribsOfCbmType("DesignTunnelControlPoint", query[i], obj_list[i], True)
 			return obj_list
 	def __GetDesignTunnelControlPointIdsByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("DesignTunnelControlPoint", fields)
@@ -1536,7 +1536,7 @@ class SQLServiceHandler(object):
 	#DesignWorkSurfControlPoint 类型的CRUD操作
 	def AddDesignWorkSurfControlPoint(self, design_work_surf_control_point):
 		sql_obj = SQL.DesignWorkSurfControlPoint()
-		CbmUtil.CopyAttribsOfCbmType("DesignWorkSurfControlPoint", design_work_surf_control_point, sql_obj)
+		CbmUtil.CopyAttribsOfCbmType("DesignWorkSurfControlPoint", design_work_surf_control_point, sql_obj, False)
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -1547,20 +1547,20 @@ class SQLServiceHandler(object):
 			self.session.query(SQL.DesignWorkSurfControlPoint).filter(SQL.DesignWorkSurfControlPoint.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def UpdateDesignWorkSurfControlPoint(self, design_work_surf_control_point):
 		ret=True
 		try:
 			sql_obj = SQL.DesignWorkSurfControlPoint()
-			CbmUtil.CopyAttribsOfCbmType("DesignWorkSurfControlPoint", design_work_surf_control_point, sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("DesignWorkSurfControlPoint", design_work_surf_control_point, sql_obj, False)
 			attribs = CbmUtil.GetAttribsOfCbmType("DesignWorkSurfControlPoint", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.DesignWorkSurfControlPoint).filter(SQL.DesignWorkSurfControlPoint.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def GetDesignWorkSurfControlPointById(self, id):
@@ -1569,7 +1569,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribsOfCbmType("DesignWorkSurfControlPoint", query, obj)
+			CbmUtil.CopyAttribsOfCbmType("DesignWorkSurfControlPoint", query, obj, True)
 		return obj
 	def GetDesignWorkSurfControlPointByForeignKey(self, fkey, id):
 		return self.GetDesignWorkSurfControlPointByFields({fkey:id})
@@ -1580,7 +1580,7 @@ class SQLServiceHandler(object):
 		n = len(query)
 		obj_list = [DesignWorkSurfControlPoint() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("DesignWorkSurfControlPoint", query[i], obj_list[i])
+			CbmUtil.CopyAttribsOfCbmType("DesignWorkSurfControlPoint", query[i], obj_list[i], True)
 		return obj_list
 	def GetDesignWorkSurfControlPointIds(self):
 		query=self.session.query(SQL.DesignWorkSurfControlPoint).order_by(SQL.DesignWorkSurfControlPoint.id).all()
@@ -1595,7 +1595,7 @@ class SQLServiceHandler(object):
 		n = len(objs)
 		sql_objs = [SQL.DesignWorkSurfControlPoint() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("DesignWorkSurfControlPoint", objs[i], sql_objs[i])
+			CbmUtil.CopyAttribsOfCbmType("DesignWorkSurfControlPoint", objs[i], sql_objs[i], False)
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -1612,7 +1612,7 @@ class SQLServiceHandler(object):
 			n = len(query)
 			obj_list = [DesignWorkSurfControlPoint() for i in range(n)]
 			for i in range(n):
-				CbmUtil.CopyAttribsOfCbmType("DesignWorkSurfControlPoint", query[i], obj_list[i])
+				CbmUtil.CopyAttribsOfCbmType("DesignWorkSurfControlPoint", query[i], obj_list[i], True)
 			return obj_list
 	def __GetDesignWorkSurfControlPointIdsByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("DesignWorkSurfControlPoint", fields)
@@ -1663,7 +1663,7 @@ class SQLServiceHandler(object):
 	#DesignWorkSurfTechnology 类型的CRUD操作
 	def AddDesignWorkSurfTechnology(self, design_work_surf_technology):
 		sql_obj = SQL.DesignWorkSurfTechnology()
-		CbmUtil.CopyAttribsOfCbmType("DesignWorkSurfTechnology", design_work_surf_technology, sql_obj)
+		CbmUtil.CopyAttribsOfCbmType("DesignWorkSurfTechnology", design_work_surf_technology, sql_obj, False)
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -1674,20 +1674,20 @@ class SQLServiceHandler(object):
 			self.session.query(SQL.DesignWorkSurfTechnology).filter(SQL.DesignWorkSurfTechnology.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def UpdateDesignWorkSurfTechnology(self, design_work_surf_technology):
 		ret=True
 		try:
 			sql_obj = SQL.DesignWorkSurfTechnology()
-			CbmUtil.CopyAttribsOfCbmType("DesignWorkSurfTechnology", design_work_surf_technology, sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("DesignWorkSurfTechnology", design_work_surf_technology, sql_obj, False)
 			attribs = CbmUtil.GetAttribsOfCbmType("DesignWorkSurfTechnology", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.DesignWorkSurfTechnology).filter(SQL.DesignWorkSurfTechnology.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def GetDesignWorkSurfTechnologyById(self, id):
@@ -1696,7 +1696,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribsOfCbmType("DesignWorkSurfTechnology", query, obj)
+			CbmUtil.CopyAttribsOfCbmType("DesignWorkSurfTechnology", query, obj, True)
 		return obj
 	def GetDesignWorkSurfTechnologyByForeignKey(self, fkey, id):
 		return self.GetDesignWorkSurfTechnologyByFields({fkey:id})
@@ -1707,7 +1707,7 @@ class SQLServiceHandler(object):
 		n = len(query)
 		obj_list = [DesignWorkSurfTechnology() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("DesignWorkSurfTechnology", query[i], obj_list[i])
+			CbmUtil.CopyAttribsOfCbmType("DesignWorkSurfTechnology", query[i], obj_list[i], True)
 		return obj_list
 	def GetDesignWorkSurfTechnologyIds(self):
 		query=self.session.query(SQL.DesignWorkSurfTechnology).order_by(SQL.DesignWorkSurfTechnology.id).all()
@@ -1722,7 +1722,7 @@ class SQLServiceHandler(object):
 		n = len(objs)
 		sql_objs = [SQL.DesignWorkSurfTechnology() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("DesignWorkSurfTechnology", objs[i], sql_objs[i])
+			CbmUtil.CopyAttribsOfCbmType("DesignWorkSurfTechnology", objs[i], sql_objs[i], False)
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -1739,7 +1739,7 @@ class SQLServiceHandler(object):
 			n = len(query)
 			obj_list = [DesignWorkSurfTechnology() for i in range(n)]
 			for i in range(n):
-				CbmUtil.CopyAttribsOfCbmType("DesignWorkSurfTechnology", query[i], obj_list[i])
+				CbmUtil.CopyAttribsOfCbmType("DesignWorkSurfTechnology", query[i], obj_list[i], True)
 			return obj_list
 	def __GetDesignWorkSurfTechnologyIdsByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("DesignWorkSurfTechnology", fields)
@@ -1790,7 +1790,7 @@ class SQLServiceHandler(object):
 	#DrillingRadiusParam 类型的CRUD操作
 	def AddDrillingRadiusParam(self, drilling_radius_param):
 		sql_obj = SQL.DrillingRadiusParam()
-		CbmUtil.CopyAttribsOfCbmType("DrillingRadiusParam", drilling_radius_param, sql_obj)
+		CbmUtil.CopyAttribsOfCbmType("DrillingRadiusParam", drilling_radius_param, sql_obj, False)
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -1801,20 +1801,20 @@ class SQLServiceHandler(object):
 			self.session.query(SQL.DrillingRadiusParam).filter(SQL.DrillingRadiusParam.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def UpdateDrillingRadiusParam(self, drilling_radius_param):
 		ret=True
 		try:
 			sql_obj = SQL.DrillingRadiusParam()
-			CbmUtil.CopyAttribsOfCbmType("DrillingRadiusParam", drilling_radius_param, sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("DrillingRadiusParam", drilling_radius_param, sql_obj, False)
 			attribs = CbmUtil.GetAttribsOfCbmType("DrillingRadiusParam", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.DrillingRadiusParam).filter(SQL.DrillingRadiusParam.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def GetDrillingRadiusParamById(self, id):
@@ -1823,7 +1823,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribsOfCbmType("DrillingRadiusParam", query, obj)
+			CbmUtil.CopyAttribsOfCbmType("DrillingRadiusParam", query, obj, True)
 		return obj
 	def GetDrillingRadiusParamByForeignKey(self, fkey, id):
 		return self.GetDrillingRadiusParamByFields({fkey:id})
@@ -1834,7 +1834,7 @@ class SQLServiceHandler(object):
 		n = len(query)
 		obj_list = [DrillingRadiusParam() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("DrillingRadiusParam", query[i], obj_list[i])
+			CbmUtil.CopyAttribsOfCbmType("DrillingRadiusParam", query[i], obj_list[i], True)
 		return obj_list
 	def GetDrillingRadiusParamIds(self):
 		query=self.session.query(SQL.DrillingRadiusParam).order_by(SQL.DrillingRadiusParam.id).all()
@@ -1849,7 +1849,7 @@ class SQLServiceHandler(object):
 		n = len(objs)
 		sql_objs = [SQL.DrillingRadiusParam() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("DrillingRadiusParam", objs[i], sql_objs[i])
+			CbmUtil.CopyAttribsOfCbmType("DrillingRadiusParam", objs[i], sql_objs[i], False)
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -1866,7 +1866,7 @@ class SQLServiceHandler(object):
 			n = len(query)
 			obj_list = [DrillingRadiusParam() for i in range(n)]
 			for i in range(n):
-				CbmUtil.CopyAttribsOfCbmType("DrillingRadiusParam", query[i], obj_list[i])
+				CbmUtil.CopyAttribsOfCbmType("DrillingRadiusParam", query[i], obj_list[i], True)
 			return obj_list
 	def __GetDrillingRadiusParamIdsByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("DrillingRadiusParam", fields)
@@ -1917,7 +1917,7 @@ class SQLServiceHandler(object):
 	#DrillingSurf 类型的CRUD操作
 	def AddDrillingSurf(self, drilling_surf):
 		sql_obj = SQL.DrillingSurf()
-		CbmUtil.CopyAttribsOfCbmType("DrillingSurf", drilling_surf, sql_obj)
+		CbmUtil.CopyAttribsOfCbmType("DrillingSurf", drilling_surf, sql_obj, False)
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -1928,20 +1928,20 @@ class SQLServiceHandler(object):
 			self.session.query(SQL.DrillingSurf).filter(SQL.DrillingSurf.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def UpdateDrillingSurf(self, drilling_surf):
 		ret=True
 		try:
 			sql_obj = SQL.DrillingSurf()
-			CbmUtil.CopyAttribsOfCbmType("DrillingSurf", drilling_surf, sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("DrillingSurf", drilling_surf, sql_obj, False)
 			attribs = CbmUtil.GetAttribsOfCbmType("DrillingSurf", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.DrillingSurf).filter(SQL.DrillingSurf.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def GetDrillingSurfById(self, id):
@@ -1950,7 +1950,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribsOfCbmType("DrillingSurf", query, obj)
+			CbmUtil.CopyAttribsOfCbmType("DrillingSurf", query, obj, True)
 		return obj
 	def GetDrillingSurfByForeignKey(self, fkey, id):
 		return self.GetDrillingSurfByFields({fkey:id})
@@ -1961,7 +1961,7 @@ class SQLServiceHandler(object):
 		n = len(query)
 		obj_list = [DrillingSurf() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("DrillingSurf", query[i], obj_list[i])
+			CbmUtil.CopyAttribsOfCbmType("DrillingSurf", query[i], obj_list[i], True)
 		return obj_list
 	def GetDrillingSurfIds(self):
 		query=self.session.query(SQL.DrillingSurf).order_by(SQL.DrillingSurf.id).all()
@@ -1976,7 +1976,7 @@ class SQLServiceHandler(object):
 		n = len(objs)
 		sql_objs = [SQL.DrillingSurf() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("DrillingSurf", objs[i], sql_objs[i])
+			CbmUtil.CopyAttribsOfCbmType("DrillingSurf", objs[i], sql_objs[i], False)
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -1993,7 +1993,7 @@ class SQLServiceHandler(object):
 			n = len(query)
 			obj_list = [DrillingSurf() for i in range(n)]
 			for i in range(n):
-				CbmUtil.CopyAttribsOfCbmType("DrillingSurf", query[i], obj_list[i])
+				CbmUtil.CopyAttribsOfCbmType("DrillingSurf", query[i], obj_list[i], True)
 			return obj_list
 	def __GetDrillingSurfIdsByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("DrillingSurf", fields)
@@ -2044,7 +2044,7 @@ class SQLServiceHandler(object):
 	#EvalUnit 类型的CRUD操作
 	def AddEvalUnit(self, eval_unit):
 		sql_obj = SQL.EvalUnit()
-		CbmUtil.CopyAttribsOfCbmType("EvalUnit", eval_unit, sql_obj)
+		CbmUtil.CopyAttribsOfCbmType("EvalUnit", eval_unit, sql_obj, False)
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -2055,20 +2055,20 @@ class SQLServiceHandler(object):
 			self.session.query(SQL.EvalUnit).filter(SQL.EvalUnit.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def UpdateEvalUnit(self, eval_unit):
 		ret=True
 		try:
 			sql_obj = SQL.EvalUnit()
-			CbmUtil.CopyAttribsOfCbmType("EvalUnit", eval_unit, sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("EvalUnit", eval_unit, sql_obj, False)
 			attribs = CbmUtil.GetAttribsOfCbmType("EvalUnit", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.EvalUnit).filter(SQL.EvalUnit.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def GetEvalUnitById(self, id):
@@ -2077,7 +2077,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribsOfCbmType("EvalUnit", query, obj)
+			CbmUtil.CopyAttribsOfCbmType("EvalUnit", query, obj, True)
 		return obj
 	def GetEvalUnitByForeignKey(self, fkey, id):
 		return self.GetEvalUnitByFields({fkey:id})
@@ -2088,7 +2088,7 @@ class SQLServiceHandler(object):
 		n = len(query)
 		obj_list = [EvalUnit() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("EvalUnit", query[i], obj_list[i])
+			CbmUtil.CopyAttribsOfCbmType("EvalUnit", query[i], obj_list[i], True)
 		return obj_list
 	def GetEvalUnitIds(self):
 		query=self.session.query(SQL.EvalUnit).order_by(SQL.EvalUnit.id).all()
@@ -2103,7 +2103,7 @@ class SQLServiceHandler(object):
 		n = len(objs)
 		sql_objs = [SQL.EvalUnit() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("EvalUnit", objs[i], sql_objs[i])
+			CbmUtil.CopyAttribsOfCbmType("EvalUnit", objs[i], sql_objs[i], False)
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -2120,7 +2120,7 @@ class SQLServiceHandler(object):
 			n = len(query)
 			obj_list = [EvalUnit() for i in range(n)]
 			for i in range(n):
-				CbmUtil.CopyAttribsOfCbmType("EvalUnit", query[i], obj_list[i])
+				CbmUtil.CopyAttribsOfCbmType("EvalUnit", query[i], obj_list[i], True)
 			return obj_list
 	def __GetEvalUnitIdsByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("EvalUnit", fields)
@@ -2171,7 +2171,7 @@ class SQLServiceHandler(object):
 	#HighDrillingPore 类型的CRUD操作
 	def AddHighDrillingPore(self, high_drilling_pore):
 		sql_obj = SQL.HighDrillingPore()
-		CbmUtil.CopyAttribsOfCbmType("HighDrillingPore", high_drilling_pore, sql_obj)
+		CbmUtil.CopyAttribsOfCbmType("HighDrillingPore", high_drilling_pore, sql_obj, False)
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -2182,20 +2182,20 @@ class SQLServiceHandler(object):
 			self.session.query(SQL.HighDrillingPore).filter(SQL.HighDrillingPore.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def UpdateHighDrillingPore(self, high_drilling_pore):
 		ret=True
 		try:
 			sql_obj = SQL.HighDrillingPore()
-			CbmUtil.CopyAttribsOfCbmType("HighDrillingPore", high_drilling_pore, sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("HighDrillingPore", high_drilling_pore, sql_obj, False)
 			attribs = CbmUtil.GetAttribsOfCbmType("HighDrillingPore", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.HighDrillingPore).filter(SQL.HighDrillingPore.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def GetHighDrillingPoreById(self, id):
@@ -2204,7 +2204,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribsOfCbmType("HighDrillingPore", query, obj)
+			CbmUtil.CopyAttribsOfCbmType("HighDrillingPore", query, obj, True)
 		return obj
 	def GetHighDrillingPoreByForeignKey(self, fkey, id):
 		return self.GetHighDrillingPoreByFields({fkey:id})
@@ -2215,7 +2215,7 @@ class SQLServiceHandler(object):
 		n = len(query)
 		obj_list = [HighDrillingPore() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("HighDrillingPore", query[i], obj_list[i])
+			CbmUtil.CopyAttribsOfCbmType("HighDrillingPore", query[i], obj_list[i], True)
 		return obj_list
 	def GetHighDrillingPoreIds(self):
 		query=self.session.query(SQL.HighDrillingPore).order_by(SQL.HighDrillingPore.id).all()
@@ -2230,7 +2230,7 @@ class SQLServiceHandler(object):
 		n = len(objs)
 		sql_objs = [SQL.HighDrillingPore() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("HighDrillingPore", objs[i], sql_objs[i])
+			CbmUtil.CopyAttribsOfCbmType("HighDrillingPore", objs[i], sql_objs[i], False)
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -2247,7 +2247,7 @@ class SQLServiceHandler(object):
 			n = len(query)
 			obj_list = [HighDrillingPore() for i in range(n)]
 			for i in range(n):
-				CbmUtil.CopyAttribsOfCbmType("HighDrillingPore", query[i], obj_list[i])
+				CbmUtil.CopyAttribsOfCbmType("HighDrillingPore", query[i], obj_list[i], True)
 			return obj_list
 	def __GetHighDrillingPoreIdsByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("HighDrillingPore", fields)
@@ -2298,7 +2298,7 @@ class SQLServiceHandler(object):
 	#HighDrillingPoreParam 类型的CRUD操作
 	def AddHighDrillingPoreParam(self, high_drilling_pore_param):
 		sql_obj = SQL.HighDrillingPoreParam()
-		CbmUtil.CopyAttribsOfCbmType("HighDrillingPoreParam", high_drilling_pore_param, sql_obj)
+		CbmUtil.CopyAttribsOfCbmType("HighDrillingPoreParam", high_drilling_pore_param, sql_obj, False)
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -2309,20 +2309,20 @@ class SQLServiceHandler(object):
 			self.session.query(SQL.HighDrillingPoreParam).filter(SQL.HighDrillingPoreParam.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def UpdateHighDrillingPoreParam(self, high_drilling_pore_param):
 		ret=True
 		try:
 			sql_obj = SQL.HighDrillingPoreParam()
-			CbmUtil.CopyAttribsOfCbmType("HighDrillingPoreParam", high_drilling_pore_param, sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("HighDrillingPoreParam", high_drilling_pore_param, sql_obj, False)
 			attribs = CbmUtil.GetAttribsOfCbmType("HighDrillingPoreParam", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.HighDrillingPoreParam).filter(SQL.HighDrillingPoreParam.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def GetHighDrillingPoreParamById(self, id):
@@ -2331,7 +2331,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribsOfCbmType("HighDrillingPoreParam", query, obj)
+			CbmUtil.CopyAttribsOfCbmType("HighDrillingPoreParam", query, obj, True)
 		return obj
 	def GetHighDrillingPoreParamByForeignKey(self, fkey, id):
 		return self.GetHighDrillingPoreParamByFields({fkey:id})
@@ -2342,7 +2342,7 @@ class SQLServiceHandler(object):
 		n = len(query)
 		obj_list = [HighDrillingPoreParam() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("HighDrillingPoreParam", query[i], obj_list[i])
+			CbmUtil.CopyAttribsOfCbmType("HighDrillingPoreParam", query[i], obj_list[i], True)
 		return obj_list
 	def GetHighDrillingPoreParamIds(self):
 		query=self.session.query(SQL.HighDrillingPoreParam).order_by(SQL.HighDrillingPoreParam.id).all()
@@ -2357,7 +2357,7 @@ class SQLServiceHandler(object):
 		n = len(objs)
 		sql_objs = [SQL.HighDrillingPoreParam() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("HighDrillingPoreParam", objs[i], sql_objs[i])
+			CbmUtil.CopyAttribsOfCbmType("HighDrillingPoreParam", objs[i], sql_objs[i], False)
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -2374,7 +2374,7 @@ class SQLServiceHandler(object):
 			n = len(query)
 			obj_list = [HighDrillingPoreParam() for i in range(n)]
 			for i in range(n):
-				CbmUtil.CopyAttribsOfCbmType("HighDrillingPoreParam", query[i], obj_list[i])
+				CbmUtil.CopyAttribsOfCbmType("HighDrillingPoreParam", query[i], obj_list[i], True)
 			return obj_list
 	def __GetHighDrillingPoreParamIdsByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("HighDrillingPoreParam", fields)
@@ -2425,7 +2425,7 @@ class SQLServiceHandler(object):
 	#HighDrillingSiteParam 类型的CRUD操作
 	def AddHighDrillingSiteParam(self, high_drilling_site_param):
 		sql_obj = SQL.HighDrillingSiteParam()
-		CbmUtil.CopyAttribsOfCbmType("HighDrillingSiteParam", high_drilling_site_param, sql_obj)
+		CbmUtil.CopyAttribsOfCbmType("HighDrillingSiteParam", high_drilling_site_param, sql_obj, False)
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -2436,20 +2436,20 @@ class SQLServiceHandler(object):
 			self.session.query(SQL.HighDrillingSiteParam).filter(SQL.HighDrillingSiteParam.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def UpdateHighDrillingSiteParam(self, high_drilling_site_param):
 		ret=True
 		try:
 			sql_obj = SQL.HighDrillingSiteParam()
-			CbmUtil.CopyAttribsOfCbmType("HighDrillingSiteParam", high_drilling_site_param, sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("HighDrillingSiteParam", high_drilling_site_param, sql_obj, False)
 			attribs = CbmUtil.GetAttribsOfCbmType("HighDrillingSiteParam", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.HighDrillingSiteParam).filter(SQL.HighDrillingSiteParam.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def GetHighDrillingSiteParamById(self, id):
@@ -2458,7 +2458,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribsOfCbmType("HighDrillingSiteParam", query, obj)
+			CbmUtil.CopyAttribsOfCbmType("HighDrillingSiteParam", query, obj, True)
 		return obj
 	def GetHighDrillingSiteParamByForeignKey(self, fkey, id):
 		return self.GetHighDrillingSiteParamByFields({fkey:id})
@@ -2469,7 +2469,7 @@ class SQLServiceHandler(object):
 		n = len(query)
 		obj_list = [HighDrillingSiteParam() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("HighDrillingSiteParam", query[i], obj_list[i])
+			CbmUtil.CopyAttribsOfCbmType("HighDrillingSiteParam", query[i], obj_list[i], True)
 		return obj_list
 	def GetHighDrillingSiteParamIds(self):
 		query=self.session.query(SQL.HighDrillingSiteParam).order_by(SQL.HighDrillingSiteParam.id).all()
@@ -2484,7 +2484,7 @@ class SQLServiceHandler(object):
 		n = len(objs)
 		sql_objs = [SQL.HighDrillingSiteParam() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("HighDrillingSiteParam", objs[i], sql_objs[i])
+			CbmUtil.CopyAttribsOfCbmType("HighDrillingSiteParam", objs[i], sql_objs[i], False)
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -2501,7 +2501,7 @@ class SQLServiceHandler(object):
 			n = len(query)
 			obj_list = [HighDrillingSiteParam() for i in range(n)]
 			for i in range(n):
-				CbmUtil.CopyAttribsOfCbmType("HighDrillingSiteParam", query[i], obj_list[i])
+				CbmUtil.CopyAttribsOfCbmType("HighDrillingSiteParam", query[i], obj_list[i], True)
 			return obj_list
 	def __GetHighDrillingSiteParamIdsByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("HighDrillingSiteParam", fields)
@@ -2552,7 +2552,7 @@ class SQLServiceHandler(object):
 	#HighDrillingTunnel 类型的CRUD操作
 	def AddHighDrillingTunnel(self, high_drilling_tunnel):
 		sql_obj = SQL.HighDrillingTunnel()
-		CbmUtil.CopyAttribsOfCbmType("HighDrillingTunnel", high_drilling_tunnel, sql_obj)
+		CbmUtil.CopyAttribsOfCbmType("HighDrillingTunnel", high_drilling_tunnel, sql_obj, False)
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -2563,20 +2563,20 @@ class SQLServiceHandler(object):
 			self.session.query(SQL.HighDrillingTunnel).filter(SQL.HighDrillingTunnel.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def UpdateHighDrillingTunnel(self, high_drilling_tunnel):
 		ret=True
 		try:
 			sql_obj = SQL.HighDrillingTunnel()
-			CbmUtil.CopyAttribsOfCbmType("HighDrillingTunnel", high_drilling_tunnel, sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("HighDrillingTunnel", high_drilling_tunnel, sql_obj, False)
 			attribs = CbmUtil.GetAttribsOfCbmType("HighDrillingTunnel", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.HighDrillingTunnel).filter(SQL.HighDrillingTunnel.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def GetHighDrillingTunnelById(self, id):
@@ -2585,7 +2585,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribsOfCbmType("HighDrillingTunnel", query, obj)
+			CbmUtil.CopyAttribsOfCbmType("HighDrillingTunnel", query, obj, True)
 		return obj
 	def GetHighDrillingTunnelByForeignKey(self, fkey, id):
 		return self.GetHighDrillingTunnelByFields({fkey:id})
@@ -2596,7 +2596,7 @@ class SQLServiceHandler(object):
 		n = len(query)
 		obj_list = [HighDrillingTunnel() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("HighDrillingTunnel", query[i], obj_list[i])
+			CbmUtil.CopyAttribsOfCbmType("HighDrillingTunnel", query[i], obj_list[i], True)
 		return obj_list
 	def GetHighDrillingTunnelIds(self):
 		query=self.session.query(SQL.HighDrillingTunnel).order_by(SQL.HighDrillingTunnel.id).all()
@@ -2611,7 +2611,7 @@ class SQLServiceHandler(object):
 		n = len(objs)
 		sql_objs = [SQL.HighDrillingTunnel() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("HighDrillingTunnel", objs[i], sql_objs[i])
+			CbmUtil.CopyAttribsOfCbmType("HighDrillingTunnel", objs[i], sql_objs[i], False)
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -2628,7 +2628,7 @@ class SQLServiceHandler(object):
 			n = len(query)
 			obj_list = [HighDrillingTunnel() for i in range(n)]
 			for i in range(n):
-				CbmUtil.CopyAttribsOfCbmType("HighDrillingTunnel", query[i], obj_list[i])
+				CbmUtil.CopyAttribsOfCbmType("HighDrillingTunnel", query[i], obj_list[i], True)
 			return obj_list
 	def __GetHighDrillingTunnelIdsByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("HighDrillingTunnel", fields)
@@ -2679,7 +2679,7 @@ class SQLServiceHandler(object):
 	#HydrGeo 类型的CRUD操作
 	def AddHydrGeo(self, hydr_geo):
 		sql_obj = SQL.HydrGeo()
-		CbmUtil.CopyAttribsOfCbmType("HydrGeo", hydr_geo, sql_obj)
+		CbmUtil.CopyAttribsOfCbmType("HydrGeo", hydr_geo, sql_obj, False)
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -2690,20 +2690,20 @@ class SQLServiceHandler(object):
 			self.session.query(SQL.HydrGeo).filter(SQL.HydrGeo.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def UpdateHydrGeo(self, hydr_geo):
 		ret=True
 		try:
 			sql_obj = SQL.HydrGeo()
-			CbmUtil.CopyAttribsOfCbmType("HydrGeo", hydr_geo, sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("HydrGeo", hydr_geo, sql_obj, False)
 			attribs = CbmUtil.GetAttribsOfCbmType("HydrGeo", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.HydrGeo).filter(SQL.HydrGeo.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def GetHydrGeoById(self, id):
@@ -2712,7 +2712,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribsOfCbmType("HydrGeo", query, obj)
+			CbmUtil.CopyAttribsOfCbmType("HydrGeo", query, obj, True)
 		return obj
 	def GetHydrGeoByForeignKey(self, fkey, id):
 		return self.GetHydrGeoByFields({fkey:id})
@@ -2723,7 +2723,7 @@ class SQLServiceHandler(object):
 		n = len(query)
 		obj_list = [HydrGeo() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("HydrGeo", query[i], obj_list[i])
+			CbmUtil.CopyAttribsOfCbmType("HydrGeo", query[i], obj_list[i], True)
 		return obj_list
 	def GetHydrGeoIds(self):
 		query=self.session.query(SQL.HydrGeo).order_by(SQL.HydrGeo.id).all()
@@ -2738,7 +2738,7 @@ class SQLServiceHandler(object):
 		n = len(objs)
 		sql_objs = [SQL.HydrGeo() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("HydrGeo", objs[i], sql_objs[i])
+			CbmUtil.CopyAttribsOfCbmType("HydrGeo", objs[i], sql_objs[i], False)
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -2755,7 +2755,7 @@ class SQLServiceHandler(object):
 			n = len(query)
 			obj_list = [HydrGeo() for i in range(n)]
 			for i in range(n):
-				CbmUtil.CopyAttribsOfCbmType("HydrGeo", query[i], obj_list[i])
+				CbmUtil.CopyAttribsOfCbmType("HydrGeo", query[i], obj_list[i], True)
 			return obj_list
 	def __GetHydrGeoIdsByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("HydrGeo", fields)
@@ -2806,7 +2806,7 @@ class SQLServiceHandler(object):
 	#Mine 类型的CRUD操作
 	def AddMine(self, mine):
 		sql_obj = SQL.Mine()
-		CbmUtil.CopyAttribsOfCbmType("Mine", mine, sql_obj)
+		CbmUtil.CopyAttribsOfCbmType("Mine", mine, sql_obj, False)
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -2817,20 +2817,20 @@ class SQLServiceHandler(object):
 			self.session.query(SQL.Mine).filter(SQL.Mine.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def UpdateMine(self, mine):
 		ret=True
 		try:
 			sql_obj = SQL.Mine()
-			CbmUtil.CopyAttribsOfCbmType("Mine", mine, sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("Mine", mine, sql_obj, False)
 			attribs = CbmUtil.GetAttribsOfCbmType("Mine", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.Mine).filter(SQL.Mine.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def GetMineById(self, id):
@@ -2839,7 +2839,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribsOfCbmType("Mine", query, obj)
+			CbmUtil.CopyAttribsOfCbmType("Mine", query, obj, True)
 		return obj
 	def GetMineByForeignKey(self, fkey, id):
 		return self.GetMineByFields({fkey:id})
@@ -2850,7 +2850,7 @@ class SQLServiceHandler(object):
 		n = len(query)
 		obj_list = [Mine() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("Mine", query[i], obj_list[i])
+			CbmUtil.CopyAttribsOfCbmType("Mine", query[i], obj_list[i], True)
 		return obj_list
 	def GetMineIds(self):
 		query=self.session.query(SQL.Mine).order_by(SQL.Mine.id).all()
@@ -2865,7 +2865,7 @@ class SQLServiceHandler(object):
 		n = len(objs)
 		sql_objs = [SQL.Mine() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("Mine", objs[i], sql_objs[i])
+			CbmUtil.CopyAttribsOfCbmType("Mine", objs[i], sql_objs[i], False)
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -2882,7 +2882,7 @@ class SQLServiceHandler(object):
 			n = len(query)
 			obj_list = [Mine() for i in range(n)]
 			for i in range(n):
-				CbmUtil.CopyAttribsOfCbmType("Mine", query[i], obj_list[i])
+				CbmUtil.CopyAttribsOfCbmType("Mine", query[i], obj_list[i], True)
 			return obj_list
 	def __GetMineIdsByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("Mine", fields)
@@ -2933,7 +2933,7 @@ class SQLServiceHandler(object):
 	#MineBase 类型的CRUD操作
 	def AddMineBase(self, mine_base):
 		sql_obj = SQL.MineBase()
-		CbmUtil.CopyAttribsOfCbmType("MineBase", mine_base, sql_obj)
+		CbmUtil.CopyAttribsOfCbmType("MineBase", mine_base, sql_obj, False)
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -2944,20 +2944,20 @@ class SQLServiceHandler(object):
 			self.session.query(SQL.MineBase).filter(SQL.MineBase.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def UpdateMineBase(self, mine_base):
 		ret=True
 		try:
 			sql_obj = SQL.MineBase()
-			CbmUtil.CopyAttribsOfCbmType("MineBase", mine_base, sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("MineBase", mine_base, sql_obj, False)
 			attribs = CbmUtil.GetAttribsOfCbmType("MineBase", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.MineBase).filter(SQL.MineBase.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def GetMineBaseById(self, id):
@@ -2966,7 +2966,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribsOfCbmType("MineBase", query, obj)
+			CbmUtil.CopyAttribsOfCbmType("MineBase", query, obj, True)
 		return obj
 	def GetMineBaseByForeignKey(self, fkey, id):
 		return self.GetMineBaseByFields({fkey:id})
@@ -2977,7 +2977,7 @@ class SQLServiceHandler(object):
 		n = len(query)
 		obj_list = [MineBase() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("MineBase", query[i], obj_list[i])
+			CbmUtil.CopyAttribsOfCbmType("MineBase", query[i], obj_list[i], True)
 		return obj_list
 	def GetMineBaseIds(self):
 		query=self.session.query(SQL.MineBase).order_by(SQL.MineBase.id).all()
@@ -2992,7 +2992,7 @@ class SQLServiceHandler(object):
 		n = len(objs)
 		sql_objs = [SQL.MineBase() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("MineBase", objs[i], sql_objs[i])
+			CbmUtil.CopyAttribsOfCbmType("MineBase", objs[i], sql_objs[i], False)
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -3009,7 +3009,7 @@ class SQLServiceHandler(object):
 			n = len(query)
 			obj_list = [MineBase() for i in range(n)]
 			for i in range(n):
-				CbmUtil.CopyAttribsOfCbmType("MineBase", query[i], obj_list[i])
+				CbmUtil.CopyAttribsOfCbmType("MineBase", query[i], obj_list[i], True)
 			return obj_list
 	def __GetMineBaseIdsByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("MineBase", fields)
@@ -3060,7 +3060,7 @@ class SQLServiceHandler(object):
 	#MineRegion 类型的CRUD操作
 	def AddMineRegion(self, mine_region):
 		sql_obj = SQL.MineRegion()
-		CbmUtil.CopyAttribsOfCbmType("MineRegion", mine_region, sql_obj)
+		CbmUtil.CopyAttribsOfCbmType("MineRegion", mine_region, sql_obj, False)
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -3071,20 +3071,20 @@ class SQLServiceHandler(object):
 			self.session.query(SQL.MineRegion).filter(SQL.MineRegion.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def UpdateMineRegion(self, mine_region):
 		ret=True
 		try:
 			sql_obj = SQL.MineRegion()
-			CbmUtil.CopyAttribsOfCbmType("MineRegion", mine_region, sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("MineRegion", mine_region, sql_obj, False)
 			attribs = CbmUtil.GetAttribsOfCbmType("MineRegion", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.MineRegion).filter(SQL.MineRegion.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def GetMineRegionById(self, id):
@@ -3093,7 +3093,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribsOfCbmType("MineRegion", query, obj)
+			CbmUtil.CopyAttribsOfCbmType("MineRegion", query, obj, True)
 		return obj
 	def GetMineRegionByForeignKey(self, fkey, id):
 		return self.GetMineRegionByFields({fkey:id})
@@ -3104,7 +3104,7 @@ class SQLServiceHandler(object):
 		n = len(query)
 		obj_list = [MineRegion() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("MineRegion", query[i], obj_list[i])
+			CbmUtil.CopyAttribsOfCbmType("MineRegion", query[i], obj_list[i], True)
 		return obj_list
 	def GetMineRegionIds(self):
 		query=self.session.query(SQL.MineRegion).order_by(SQL.MineRegion.id).all()
@@ -3119,7 +3119,7 @@ class SQLServiceHandler(object):
 		n = len(objs)
 		sql_objs = [SQL.MineRegion() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("MineRegion", objs[i], sql_objs[i])
+			CbmUtil.CopyAttribsOfCbmType("MineRegion", objs[i], sql_objs[i], False)
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -3136,7 +3136,7 @@ class SQLServiceHandler(object):
 			n = len(query)
 			obj_list = [MineRegion() for i in range(n)]
 			for i in range(n):
-				CbmUtil.CopyAttribsOfCbmType("MineRegion", query[i], obj_list[i])
+				CbmUtil.CopyAttribsOfCbmType("MineRegion", query[i], obj_list[i], True)
 			return obj_list
 	def __GetMineRegionIdsByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("MineRegion", fields)
@@ -3187,7 +3187,7 @@ class SQLServiceHandler(object):
 	#PoreFlow 类型的CRUD操作
 	def AddPoreFlow(self, pore_flow):
 		sql_obj = SQL.PoreFlow()
-		CbmUtil.CopyAttribsOfCbmType("PoreFlow", pore_flow, sql_obj)
+		CbmUtil.CopyAttribsOfCbmType("PoreFlow", pore_flow, sql_obj, False)
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -3198,20 +3198,20 @@ class SQLServiceHandler(object):
 			self.session.query(SQL.PoreFlow).filter(SQL.PoreFlow.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def UpdatePoreFlow(self, pore_flow):
 		ret=True
 		try:
 			sql_obj = SQL.PoreFlow()
-			CbmUtil.CopyAttribsOfCbmType("PoreFlow", pore_flow, sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("PoreFlow", pore_flow, sql_obj, False)
 			attribs = CbmUtil.GetAttribsOfCbmType("PoreFlow", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.PoreFlow).filter(SQL.PoreFlow.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def GetPoreFlowById(self, id):
@@ -3220,7 +3220,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribsOfCbmType("PoreFlow", query, obj)
+			CbmUtil.CopyAttribsOfCbmType("PoreFlow", query, obj, True)
 		return obj
 	def GetPoreFlowByForeignKey(self, fkey, id):
 		return self.GetPoreFlowByFields({fkey:id})
@@ -3231,7 +3231,7 @@ class SQLServiceHandler(object):
 		n = len(query)
 		obj_list = [PoreFlow() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("PoreFlow", query[i], obj_list[i])
+			CbmUtil.CopyAttribsOfCbmType("PoreFlow", query[i], obj_list[i], True)
 		return obj_list
 	def GetPoreFlowIds(self):
 		query=self.session.query(SQL.PoreFlow).order_by(SQL.PoreFlow.id).all()
@@ -3246,7 +3246,7 @@ class SQLServiceHandler(object):
 		n = len(objs)
 		sql_objs = [SQL.PoreFlow() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("PoreFlow", objs[i], sql_objs[i])
+			CbmUtil.CopyAttribsOfCbmType("PoreFlow", objs[i], sql_objs[i], False)
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -3263,7 +3263,7 @@ class SQLServiceHandler(object):
 			n = len(query)
 			obj_list = [PoreFlow() for i in range(n)]
 			for i in range(n):
-				CbmUtil.CopyAttribsOfCbmType("PoreFlow", query[i], obj_list[i])
+				CbmUtil.CopyAttribsOfCbmType("PoreFlow", query[i], obj_list[i], True)
 			return obj_list
 	def __GetPoreFlowIdsByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("PoreFlow", fields)
@@ -3314,7 +3314,7 @@ class SQLServiceHandler(object):
 	#PoreSize 类型的CRUD操作
 	def AddPoreSize(self, pore_size):
 		sql_obj = SQL.PoreSize()
-		CbmUtil.CopyAttribsOfCbmType("PoreSize", pore_size, sql_obj)
+		CbmUtil.CopyAttribsOfCbmType("PoreSize", pore_size, sql_obj, False)
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -3325,20 +3325,20 @@ class SQLServiceHandler(object):
 			self.session.query(SQL.PoreSize).filter(SQL.PoreSize.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def UpdatePoreSize(self, pore_size):
 		ret=True
 		try:
 			sql_obj = SQL.PoreSize()
-			CbmUtil.CopyAttribsOfCbmType("PoreSize", pore_size, sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("PoreSize", pore_size, sql_obj, False)
 			attribs = CbmUtil.GetAttribsOfCbmType("PoreSize", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.PoreSize).filter(SQL.PoreSize.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def GetPoreSizeById(self, id):
@@ -3347,7 +3347,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribsOfCbmType("PoreSize", query, obj)
+			CbmUtil.CopyAttribsOfCbmType("PoreSize", query, obj, True)
 		return obj
 	def GetPoreSizeByForeignKey(self, fkey, id):
 		return self.GetPoreSizeByFields({fkey:id})
@@ -3358,7 +3358,7 @@ class SQLServiceHandler(object):
 		n = len(query)
 		obj_list = [PoreSize() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("PoreSize", query[i], obj_list[i])
+			CbmUtil.CopyAttribsOfCbmType("PoreSize", query[i], obj_list[i], True)
 		return obj_list
 	def GetPoreSizeIds(self):
 		query=self.session.query(SQL.PoreSize).order_by(SQL.PoreSize.id).all()
@@ -3373,7 +3373,7 @@ class SQLServiceHandler(object):
 		n = len(objs)
 		sql_objs = [SQL.PoreSize() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("PoreSize", objs[i], sql_objs[i])
+			CbmUtil.CopyAttribsOfCbmType("PoreSize", objs[i], sql_objs[i], False)
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -3390,7 +3390,7 @@ class SQLServiceHandler(object):
 			n = len(query)
 			obj_list = [PoreSize() for i in range(n)]
 			for i in range(n):
-				CbmUtil.CopyAttribsOfCbmType("PoreSize", query[i], obj_list[i])
+				CbmUtil.CopyAttribsOfCbmType("PoreSize", query[i], obj_list[i], True)
 			return obj_list
 	def __GetPoreSizeIdsByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("PoreSize", fields)
@@ -3441,7 +3441,7 @@ class SQLServiceHandler(object):
 	#ResAbundance 类型的CRUD操作
 	def AddResAbundance(self, res_abundance):
 		sql_obj = SQL.ResAbundance()
-		CbmUtil.CopyAttribsOfCbmType("ResAbundance", res_abundance, sql_obj)
+		CbmUtil.CopyAttribsOfCbmType("ResAbundance", res_abundance, sql_obj, False)
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -3452,20 +3452,20 @@ class SQLServiceHandler(object):
 			self.session.query(SQL.ResAbundance).filter(SQL.ResAbundance.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def UpdateResAbundance(self, res_abundance):
 		ret=True
 		try:
 			sql_obj = SQL.ResAbundance()
-			CbmUtil.CopyAttribsOfCbmType("ResAbundance", res_abundance, sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("ResAbundance", res_abundance, sql_obj, False)
 			attribs = CbmUtil.GetAttribsOfCbmType("ResAbundance", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.ResAbundance).filter(SQL.ResAbundance.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def GetResAbundanceById(self, id):
@@ -3474,7 +3474,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribsOfCbmType("ResAbundance", query, obj)
+			CbmUtil.CopyAttribsOfCbmType("ResAbundance", query, obj, True)
 		return obj
 	def GetResAbundanceByForeignKey(self, fkey, id):
 		return self.GetResAbundanceByFields({fkey:id})
@@ -3485,7 +3485,7 @@ class SQLServiceHandler(object):
 		n = len(query)
 		obj_list = [ResAbundance() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("ResAbundance", query[i], obj_list[i])
+			CbmUtil.CopyAttribsOfCbmType("ResAbundance", query[i], obj_list[i], True)
 		return obj_list
 	def GetResAbundanceIds(self):
 		query=self.session.query(SQL.ResAbundance).order_by(SQL.ResAbundance.id).all()
@@ -3500,7 +3500,7 @@ class SQLServiceHandler(object):
 		n = len(objs)
 		sql_objs = [SQL.ResAbundance() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("ResAbundance", objs[i], sql_objs[i])
+			CbmUtil.CopyAttribsOfCbmType("ResAbundance", objs[i], sql_objs[i], False)
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -3517,7 +3517,7 @@ class SQLServiceHandler(object):
 			n = len(query)
 			obj_list = [ResAbundance() for i in range(n)]
 			for i in range(n):
-				CbmUtil.CopyAttribsOfCbmType("ResAbundance", query[i], obj_list[i])
+				CbmUtil.CopyAttribsOfCbmType("ResAbundance", query[i], obj_list[i], True)
 			return obj_list
 	def __GetResAbundanceIdsByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("ResAbundance", fields)
@@ -3568,7 +3568,7 @@ class SQLServiceHandler(object):
 	#Rock 类型的CRUD操作
 	def AddRock(self, rock):
 		sql_obj = SQL.Rock()
-		CbmUtil.CopyAttribsOfCbmType("Rock", rock, sql_obj)
+		CbmUtil.CopyAttribsOfCbmType("Rock", rock, sql_obj, False)
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -3579,20 +3579,20 @@ class SQLServiceHandler(object):
 			self.session.query(SQL.Rock).filter(SQL.Rock.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def UpdateRock(self, rock):
 		ret=True
 		try:
 			sql_obj = SQL.Rock()
-			CbmUtil.CopyAttribsOfCbmType("Rock", rock, sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("Rock", rock, sql_obj, False)
 			attribs = CbmUtil.GetAttribsOfCbmType("Rock", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.Rock).filter(SQL.Rock.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def GetRockById(self, id):
@@ -3601,7 +3601,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribsOfCbmType("Rock", query, obj)
+			CbmUtil.CopyAttribsOfCbmType("Rock", query, obj, True)
 		return obj
 	def GetRockByForeignKey(self, fkey, id):
 		return self.GetRockByFields({fkey:id})
@@ -3612,7 +3612,7 @@ class SQLServiceHandler(object):
 		n = len(query)
 		obj_list = [Rock() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("Rock", query[i], obj_list[i])
+			CbmUtil.CopyAttribsOfCbmType("Rock", query[i], obj_list[i], True)
 		return obj_list
 	def GetRockIds(self):
 		query=self.session.query(SQL.Rock).order_by(SQL.Rock.id).all()
@@ -3627,7 +3627,7 @@ class SQLServiceHandler(object):
 		n = len(objs)
 		sql_objs = [SQL.Rock() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("Rock", objs[i], sql_objs[i])
+			CbmUtil.CopyAttribsOfCbmType("Rock", objs[i], sql_objs[i], False)
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -3644,7 +3644,7 @@ class SQLServiceHandler(object):
 			n = len(query)
 			obj_list = [Rock() for i in range(n)]
 			for i in range(n):
-				CbmUtil.CopyAttribsOfCbmType("Rock", query[i], obj_list[i])
+				CbmUtil.CopyAttribsOfCbmType("Rock", query[i], obj_list[i], True)
 			return obj_list
 	def __GetRockIdsByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("Rock", fields)
@@ -3695,7 +3695,7 @@ class SQLServiceHandler(object):
 	#SysInfo 类型的CRUD操作
 	def AddSysInfo(self, sys_info):
 		sql_obj = SQL.SysInfo()
-		CbmUtil.CopyAttribsOfCbmType("SysInfo", sys_info, sql_obj)
+		CbmUtil.CopyAttribsOfCbmType("SysInfo", sys_info, sql_obj, False)
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -3706,20 +3706,20 @@ class SQLServiceHandler(object):
 			self.session.query(SQL.SysInfo).filter(SQL.SysInfo.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def UpdateSysInfo(self, sys_info):
 		ret=True
 		try:
 			sql_obj = SQL.SysInfo()
-			CbmUtil.CopyAttribsOfCbmType("SysInfo", sys_info, sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("SysInfo", sys_info, sql_obj, False)
 			attribs = CbmUtil.GetAttribsOfCbmType("SysInfo", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.SysInfo).filter(SQL.SysInfo.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def GetSysInfoById(self, id):
@@ -3728,7 +3728,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribsOfCbmType("SysInfo", query, obj)
+			CbmUtil.CopyAttribsOfCbmType("SysInfo", query, obj, True)
 		return obj
 	def GetSysInfoByForeignKey(self, fkey, id):
 		return self.GetSysInfoByFields({fkey:id})
@@ -3739,7 +3739,7 @@ class SQLServiceHandler(object):
 		n = len(query)
 		obj_list = [SysInfo() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("SysInfo", query[i], obj_list[i])
+			CbmUtil.CopyAttribsOfCbmType("SysInfo", query[i], obj_list[i], True)
 		return obj_list
 	def GetSysInfoIds(self):
 		query=self.session.query(SQL.SysInfo).order_by(SQL.SysInfo.id).all()
@@ -3754,7 +3754,7 @@ class SQLServiceHandler(object):
 		n = len(objs)
 		sql_objs = [SQL.SysInfo() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("SysInfo", objs[i], sql_objs[i])
+			CbmUtil.CopyAttribsOfCbmType("SysInfo", objs[i], sql_objs[i], False)
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -3771,7 +3771,7 @@ class SQLServiceHandler(object):
 			n = len(query)
 			obj_list = [SysInfo() for i in range(n)]
 			for i in range(n):
-				CbmUtil.CopyAttribsOfCbmType("SysInfo", query[i], obj_list[i])
+				CbmUtil.CopyAttribsOfCbmType("SysInfo", query[i], obj_list[i], True)
 			return obj_list
 	def __GetSysInfoIdsByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("SysInfo", fields)
@@ -3822,7 +3822,7 @@ class SQLServiceHandler(object):
 	#TechMode 类型的CRUD操作
 	def AddTechMode(self, tech_mode):
 		sql_obj = SQL.TechMode()
-		CbmUtil.CopyAttribsOfCbmType("TechMode", tech_mode, sql_obj)
+		CbmUtil.CopyAttribsOfCbmType("TechMode", tech_mode, sql_obj, False)
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -3833,20 +3833,20 @@ class SQLServiceHandler(object):
 			self.session.query(SQL.TechMode).filter(SQL.TechMode.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def UpdateTechMode(self, tech_mode):
 		ret=True
 		try:
 			sql_obj = SQL.TechMode()
-			CbmUtil.CopyAttribsOfCbmType("TechMode", tech_mode, sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("TechMode", tech_mode, sql_obj, False)
 			attribs = CbmUtil.GetAttribsOfCbmType("TechMode", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.TechMode).filter(SQL.TechMode.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def GetTechModeById(self, id):
@@ -3855,7 +3855,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribsOfCbmType("TechMode", query, obj)
+			CbmUtil.CopyAttribsOfCbmType("TechMode", query, obj, True)
 		return obj
 	def GetTechModeByForeignKey(self, fkey, id):
 		return self.GetTechModeByFields({fkey:id})
@@ -3866,7 +3866,7 @@ class SQLServiceHandler(object):
 		n = len(query)
 		obj_list = [TechMode() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("TechMode", query[i], obj_list[i])
+			CbmUtil.CopyAttribsOfCbmType("TechMode", query[i], obj_list[i], True)
 		return obj_list
 	def GetTechModeIds(self):
 		query=self.session.query(SQL.TechMode).order_by(SQL.TechMode.id).all()
@@ -3881,7 +3881,7 @@ class SQLServiceHandler(object):
 		n = len(objs)
 		sql_objs = [SQL.TechMode() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("TechMode", objs[i], sql_objs[i])
+			CbmUtil.CopyAttribsOfCbmType("TechMode", objs[i], sql_objs[i], False)
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -3898,7 +3898,7 @@ class SQLServiceHandler(object):
 			n = len(query)
 			obj_list = [TechMode() for i in range(n)]
 			for i in range(n):
-				CbmUtil.CopyAttribsOfCbmType("TechMode", query[i], obj_list[i])
+				CbmUtil.CopyAttribsOfCbmType("TechMode", query[i], obj_list[i], True)
 			return obj_list
 	def __GetTechModeIdsByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("TechMode", fields)
@@ -3949,7 +3949,7 @@ class SQLServiceHandler(object):
 	#Technology 类型的CRUD操作
 	def AddTechnology(self, technology):
 		sql_obj = SQL.Technology()
-		CbmUtil.CopyAttribsOfCbmType("Technology", technology, sql_obj)
+		CbmUtil.CopyAttribsOfCbmType("Technology", technology, sql_obj, False)
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -3960,20 +3960,20 @@ class SQLServiceHandler(object):
 			self.session.query(SQL.Technology).filter(SQL.Technology.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def UpdateTechnology(self, technology):
 		ret=True
 		try:
 			sql_obj = SQL.Technology()
-			CbmUtil.CopyAttribsOfCbmType("Technology", technology, sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("Technology", technology, sql_obj, False)
 			attribs = CbmUtil.GetAttribsOfCbmType("Technology", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.Technology).filter(SQL.Technology.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def GetTechnologyById(self, id):
@@ -3982,7 +3982,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribsOfCbmType("Technology", query, obj)
+			CbmUtil.CopyAttribsOfCbmType("Technology", query, obj, True)
 		return obj
 	def GetTechnologyByForeignKey(self, fkey, id):
 		return self.GetTechnologyByFields({fkey:id})
@@ -3993,7 +3993,7 @@ class SQLServiceHandler(object):
 		n = len(query)
 		obj_list = [Technology() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("Technology", query[i], obj_list[i])
+			CbmUtil.CopyAttribsOfCbmType("Technology", query[i], obj_list[i], True)
 		return obj_list
 	def GetTechnologyIds(self):
 		query=self.session.query(SQL.Technology).order_by(SQL.Technology.id).all()
@@ -4008,7 +4008,7 @@ class SQLServiceHandler(object):
 		n = len(objs)
 		sql_objs = [SQL.Technology() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("Technology", objs[i], sql_objs[i])
+			CbmUtil.CopyAttribsOfCbmType("Technology", objs[i], sql_objs[i], False)
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -4025,7 +4025,7 @@ class SQLServiceHandler(object):
 			n = len(query)
 			obj_list = [Technology() for i in range(n)]
 			for i in range(n):
-				CbmUtil.CopyAttribsOfCbmType("Technology", query[i], obj_list[i])
+				CbmUtil.CopyAttribsOfCbmType("Technology", query[i], obj_list[i], True)
 			return obj_list
 	def __GetTechnologyIdsByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("Technology", fields)
@@ -4076,7 +4076,7 @@ class SQLServiceHandler(object):
 	#TopoGeo 类型的CRUD操作
 	def AddTopoGeo(self, topo_geo):
 		sql_obj = SQL.TopoGeo()
-		CbmUtil.CopyAttribsOfCbmType("TopoGeo", topo_geo, sql_obj)
+		CbmUtil.CopyAttribsOfCbmType("TopoGeo", topo_geo, sql_obj, False)
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -4087,20 +4087,20 @@ class SQLServiceHandler(object):
 			self.session.query(SQL.TopoGeo).filter(SQL.TopoGeo.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def UpdateTopoGeo(self, topo_geo):
 		ret=True
 		try:
 			sql_obj = SQL.TopoGeo()
-			CbmUtil.CopyAttribsOfCbmType("TopoGeo", topo_geo, sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("TopoGeo", topo_geo, sql_obj, False)
 			attribs = CbmUtil.GetAttribsOfCbmType("TopoGeo", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.TopoGeo).filter(SQL.TopoGeo.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def GetTopoGeoById(self, id):
@@ -4109,7 +4109,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribsOfCbmType("TopoGeo", query, obj)
+			CbmUtil.CopyAttribsOfCbmType("TopoGeo", query, obj, True)
 		return obj
 	def GetTopoGeoByForeignKey(self, fkey, id):
 		return self.GetTopoGeoByFields({fkey:id})
@@ -4120,7 +4120,7 @@ class SQLServiceHandler(object):
 		n = len(query)
 		obj_list = [TopoGeo() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("TopoGeo", query[i], obj_list[i])
+			CbmUtil.CopyAttribsOfCbmType("TopoGeo", query[i], obj_list[i], True)
 		return obj_list
 	def GetTopoGeoIds(self):
 		query=self.session.query(SQL.TopoGeo).order_by(SQL.TopoGeo.id).all()
@@ -4135,7 +4135,7 @@ class SQLServiceHandler(object):
 		n = len(objs)
 		sql_objs = [SQL.TopoGeo() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("TopoGeo", objs[i], sql_objs[i])
+			CbmUtil.CopyAttribsOfCbmType("TopoGeo", objs[i], sql_objs[i], False)
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -4152,7 +4152,7 @@ class SQLServiceHandler(object):
 			n = len(query)
 			obj_list = [TopoGeo() for i in range(n)]
 			for i in range(n):
-				CbmUtil.CopyAttribsOfCbmType("TopoGeo", query[i], obj_list[i])
+				CbmUtil.CopyAttribsOfCbmType("TopoGeo", query[i], obj_list[i], True)
 			return obj_list
 	def __GetTopoGeoIdsByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("TopoGeo", fields)
@@ -4203,7 +4203,7 @@ class SQLServiceHandler(object):
 	#Tunnel 类型的CRUD操作
 	def AddTunnel(self, tunnel):
 		sql_obj = SQL.Tunnel()
-		CbmUtil.CopyAttribsOfCbmType("Tunnel", tunnel, sql_obj)
+		CbmUtil.CopyAttribsOfCbmType("Tunnel", tunnel, sql_obj, False)
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -4214,20 +4214,20 @@ class SQLServiceHandler(object):
 			self.session.query(SQL.Tunnel).filter(SQL.Tunnel.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def UpdateTunnel(self, tunnel):
 		ret=True
 		try:
 			sql_obj = SQL.Tunnel()
-			CbmUtil.CopyAttribsOfCbmType("Tunnel", tunnel, sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("Tunnel", tunnel, sql_obj, False)
 			attribs = CbmUtil.GetAttribsOfCbmType("Tunnel", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.Tunnel).filter(SQL.Tunnel.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def GetTunnelById(self, id):
@@ -4236,7 +4236,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribsOfCbmType("Tunnel", query, obj)
+			CbmUtil.CopyAttribsOfCbmType("Tunnel", query, obj, True)
 		return obj
 	def GetTunnelByForeignKey(self, fkey, id):
 		return self.GetTunnelByFields({fkey:id})
@@ -4247,7 +4247,7 @@ class SQLServiceHandler(object):
 		n = len(query)
 		obj_list = [Tunnel() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("Tunnel", query[i], obj_list[i])
+			CbmUtil.CopyAttribsOfCbmType("Tunnel", query[i], obj_list[i], True)
 		return obj_list
 	def GetTunnelIds(self):
 		query=self.session.query(SQL.Tunnel).order_by(SQL.Tunnel.id).all()
@@ -4262,7 +4262,7 @@ class SQLServiceHandler(object):
 		n = len(objs)
 		sql_objs = [SQL.Tunnel() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("Tunnel", objs[i], sql_objs[i])
+			CbmUtil.CopyAttribsOfCbmType("Tunnel", objs[i], sql_objs[i], False)
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -4279,7 +4279,7 @@ class SQLServiceHandler(object):
 			n = len(query)
 			obj_list = [Tunnel() for i in range(n)]
 			for i in range(n):
-				CbmUtil.CopyAttribsOfCbmType("Tunnel", query[i], obj_list[i])
+				CbmUtil.CopyAttribsOfCbmType("Tunnel", query[i], obj_list[i], True)
 			return obj_list
 	def __GetTunnelIdsByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("Tunnel", fields)
@@ -4330,7 +4330,7 @@ class SQLServiceHandler(object):
 	#WorkArea 类型的CRUD操作
 	def AddWorkArea(self, work_area):
 		sql_obj = SQL.WorkArea()
-		CbmUtil.CopyAttribsOfCbmType("WorkArea", work_area, sql_obj)
+		CbmUtil.CopyAttribsOfCbmType("WorkArea", work_area, sql_obj, False)
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -4341,20 +4341,20 @@ class SQLServiceHandler(object):
 			self.session.query(SQL.WorkArea).filter(SQL.WorkArea.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def UpdateWorkArea(self, work_area):
 		ret=True
 		try:
 			sql_obj = SQL.WorkArea()
-			CbmUtil.CopyAttribsOfCbmType("WorkArea", work_area, sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("WorkArea", work_area, sql_obj, False)
 			attribs = CbmUtil.GetAttribsOfCbmType("WorkArea", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.WorkArea).filter(SQL.WorkArea.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def GetWorkAreaById(self, id):
@@ -4363,7 +4363,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribsOfCbmType("WorkArea", query, obj)
+			CbmUtil.CopyAttribsOfCbmType("WorkArea", query, obj, True)
 		return obj
 	def GetWorkAreaByForeignKey(self, fkey, id):
 		return self.GetWorkAreaByFields({fkey:id})
@@ -4374,7 +4374,7 @@ class SQLServiceHandler(object):
 		n = len(query)
 		obj_list = [WorkArea() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("WorkArea", query[i], obj_list[i])
+			CbmUtil.CopyAttribsOfCbmType("WorkArea", query[i], obj_list[i], True)
 		return obj_list
 	def GetWorkAreaIds(self):
 		query=self.session.query(SQL.WorkArea).order_by(SQL.WorkArea.id).all()
@@ -4389,7 +4389,7 @@ class SQLServiceHandler(object):
 		n = len(objs)
 		sql_objs = [SQL.WorkArea() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("WorkArea", objs[i], sql_objs[i])
+			CbmUtil.CopyAttribsOfCbmType("WorkArea", objs[i], sql_objs[i], False)
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -4406,7 +4406,7 @@ class SQLServiceHandler(object):
 			n = len(query)
 			obj_list = [WorkArea() for i in range(n)]
 			for i in range(n):
-				CbmUtil.CopyAttribsOfCbmType("WorkArea", query[i], obj_list[i])
+				CbmUtil.CopyAttribsOfCbmType("WorkArea", query[i], obj_list[i], True)
 			return obj_list
 	def __GetWorkAreaIdsByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("WorkArea", fields)
@@ -4457,7 +4457,7 @@ class SQLServiceHandler(object):
 	#WorkSurf 类型的CRUD操作
 	def AddWorkSurf(self, work_surf):
 		sql_obj = SQL.WorkSurf()
-		CbmUtil.CopyAttribsOfCbmType("WorkSurf", work_surf, sql_obj)
+		CbmUtil.CopyAttribsOfCbmType("WorkSurf", work_surf, sql_obj, False)
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -4468,20 +4468,20 @@ class SQLServiceHandler(object):
 			self.session.query(SQL.WorkSurf).filter(SQL.WorkSurf.id==id).delete(synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def UpdateWorkSurf(self, work_surf):
 		ret=True
 		try:
 			sql_obj = SQL.WorkSurf()
-			CbmUtil.CopyAttribsOfCbmType("WorkSurf", work_surf, sql_obj)
+			CbmUtil.CopyAttribsOfCbmType("WorkSurf", work_surf, sql_obj, False)
 			attribs = CbmUtil.GetAttribsOfCbmType("WorkSurf", sql_obj)
 			del attribs['id']
 			self.session.query(SQL.WorkSurf).filter(SQL.WorkSurf.id==sql_obj.id).update(attribs, synchronize_session=False)
 			self.session.commit()
 		except Exception, e:
-			#print e
+			print e
 			ret=False
 		return ret
 	def GetWorkSurfById(self, id):
@@ -4490,7 +4490,7 @@ class SQLServiceHandler(object):
 		if query is None:
 			obj.id = -1
 		else:
-			CbmUtil.CopyAttribsOfCbmType("WorkSurf", query, obj)
+			CbmUtil.CopyAttribsOfCbmType("WorkSurf", query, obj, True)
 		return obj
 	def GetWorkSurfByForeignKey(self, fkey, id):
 		return self.GetWorkSurfByFields({fkey:id})
@@ -4501,7 +4501,7 @@ class SQLServiceHandler(object):
 		n = len(query)
 		obj_list = [WorkSurf() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("WorkSurf", query[i], obj_list[i])
+			CbmUtil.CopyAttribsOfCbmType("WorkSurf", query[i], obj_list[i], True)
 		return obj_list
 	def GetWorkSurfIds(self):
 		query=self.session.query(SQL.WorkSurf).order_by(SQL.WorkSurf.id).all()
@@ -4516,7 +4516,7 @@ class SQLServiceHandler(object):
 		n = len(objs)
 		sql_objs = [SQL.WorkSurf() for i in range(n)]
 		for i in range(n):
-			CbmUtil.CopyAttribsOfCbmType("WorkSurf", objs[i], sql_objs[i])
+			CbmUtil.CopyAttribsOfCbmType("WorkSurf", objs[i], sql_objs[i], False)
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -4533,7 +4533,7 @@ class SQLServiceHandler(object):
 			n = len(query)
 			obj_list = [WorkSurf() for i in range(n)]
 			for i in range(n):
-				CbmUtil.CopyAttribsOfCbmType("WorkSurf", query[i], obj_list[i])
+				CbmUtil.CopyAttribsOfCbmType("WorkSurf", query[i], obj_list[i], True)
 			return obj_list
 	def __GetWorkSurfIdsByFields(self, fields):
 		sql_fields = CbmUtil.map_fields("WorkSurf", fields)

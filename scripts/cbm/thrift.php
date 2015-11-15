@@ -108,7 +108,7 @@ function __gen_sql_service_handler_of_py_server($file, $tbl_name, $fields, $rela
 
 	fwrite($file, TAB."def Add".$clsname."(self, $fname):".ENTER);
 	fwrite($file, TWO_TAB."sql_obj = SQL.$clsname()".ENTER);
-	fwrite($file, TWO_TAB."CbmUtil.CopyAttribsOfCbmType(".DBL_QUOT.$clsname.DBL_QUOT.", $fname, sql_obj)".ENTER);
+	fwrite($file, TWO_TAB."CbmUtil.CopyAttribsOfCbmType(".DBL_QUOT.$clsname.DBL_QUOT.", $fname, sql_obj, False)".ENTER);
     fwrite($file, TWO_TAB."self.session.add(sql_obj)".ENTER);
     fwrite($file, TWO_TAB."self.session.flush()".ENTER);
     fwrite($file, TWO_TAB."self.session.commit()".ENTER);
@@ -121,7 +121,7 @@ function __gen_sql_service_handler_of_py_server($file, $tbl_name, $fields, $rela
 	fwrite($file, THREE_TAB."self.session.query(SQL.$clsname).filter(SQL.$clsname.id==id).delete(synchronize_session=False)".ENTER);
 	fwrite($file, THREE_TAB."self.session.commit()".ENTER);
 	fwrite($file, TWO_TAB."except Exception, e:".ENTER);
-	fwrite($file, THREE_TAB."#print e".ENTER);
+	fwrite($file, THREE_TAB."print e".ENTER);
 	fwrite($file, THREE_TAB."ret=False".ENTER);
 	fwrite($file, TWO_TAB."return ret".ENTER);
 
@@ -130,13 +130,13 @@ function __gen_sql_service_handler_of_py_server($file, $tbl_name, $fields, $rela
 	fwrite($file, TWO_TAB."ret=True".ENTER);
 	fwrite($file, TWO_TAB."try:".ENTER);
 	fwrite($file, THREE_TAB."sql_obj = SQL.$clsname()".ENTER);
-	fwrite($file, THREE_TAB."CbmUtil.CopyAttribsOfCbmType(".DBL_QUOT.$clsname.DBL_QUOT.", $fname, sql_obj)".ENTER);
+	fwrite($file, THREE_TAB."CbmUtil.CopyAttribsOfCbmType(".DBL_QUOT.$clsname.DBL_QUOT.", $fname, sql_obj, False)".ENTER);
 	fwrite($file, THREE_TAB."attribs = CbmUtil.GetAttribsOfCbmType(".DBL_QUOT.$clsname.DBL_QUOT.", sql_obj)".ENTER);
 	fwrite($file, THREE_TAB."del attribs['id']".ENTER);
 	fwrite($file, THREE_TAB."self.session.query(SQL.$clsname).filter(SQL.$clsname.id==sql_obj.id).update(attribs, synchronize_session=False)".ENTER);
 	fwrite($file, THREE_TAB."self.session.commit()".ENTER);
 	fwrite($file, TWO_TAB."except Exception, e:".ENTER);
-	fwrite($file, THREE_TAB."#print e".ENTER);
+	fwrite($file, THREE_TAB."print e".ENTER);
 	fwrite($file, THREE_TAB."ret=False".ENTER);
 	fwrite($file, TWO_TAB."return ret".ENTER);
 
@@ -147,7 +147,7 @@ function __gen_sql_service_handler_of_py_server($file, $tbl_name, $fields, $rela
 	fwrite($file, TWO_TAB."if query is None:".ENTER);
 	fwrite($file, THREE_TAB."obj.id = -1".ENTER);
 	fwrite($file, TWO_TAB."else:".ENTER);
-	fwrite($file, THREE_TAB."CbmUtil.CopyAttribsOfCbmType(".DBL_QUOT.$clsname.DBL_QUOT.", query, obj)".ENTER);
+	fwrite($file, THREE_TAB."CbmUtil.CopyAttribsOfCbmType(".DBL_QUOT.$clsname.DBL_QUOT.", query, obj, True)".ENTER);
 	fwrite($file, TWO_TAB."return obj".ENTER);
 
 	
@@ -164,7 +164,7 @@ function __gen_sql_service_handler_of_py_server($file, $tbl_name, $fields, $rela
 	fwrite($file, TWO_TAB."n = len(query)".ENTER);
 	fwrite($file, TWO_TAB."obj_list = [$clsname() for i in range(n)]".ENTER);
     fwrite($file, TWO_TAB."for i in range(n):".ENTER);
-    fwrite($file, THREE_TAB."CbmUtil.CopyAttribsOfCbmType(".DBL_QUOT.$clsname.DBL_QUOT.", query[i], obj_list[i])".ENTER);
+    fwrite($file, THREE_TAB."CbmUtil.CopyAttribsOfCbmType(".DBL_QUOT.$clsname.DBL_QUOT.", query[i], obj_list[i], True)".ENTER);
     fwrite($file, TWO_TAB."return obj_list".ENTER);
 
 	
@@ -184,7 +184,7 @@ function __gen_sql_service_handler_of_py_server($file, $tbl_name, $fields, $rela
 	fwrite($file, TWO_TAB."n = len(objs)".ENTER);
 	fwrite($file, TWO_TAB."sql_objs = [SQL.$clsname() for i in range(n)]".ENTER);
     fwrite($file, TWO_TAB."for i in range(n):".ENTER);
-    fwrite($file, THREE_TAB."CbmUtil.CopyAttribsOfCbmType(".DBL_QUOT.$clsname.DBL_QUOT.", objs[i], sql_objs[i])".ENTER);
+    fwrite($file, THREE_TAB."CbmUtil.CopyAttribsOfCbmType(".DBL_QUOT.$clsname.DBL_QUOT.", objs[i], sql_objs[i], False)".ENTER);
     fwrite($file, THREE_TAB."self.session.add(sql_objs[i])".ENTER);
     fwrite($file, TWO_TAB."self.session.flush()".ENTER);
     fwrite($file, TWO_TAB."self.session.commit()".ENTER);
@@ -205,7 +205,7 @@ function __gen_sql_service_handler_of_py_server($file, $tbl_name, $fields, $rela
 	fwrite($file, THREE_TAB."n = len(query)".ENTER);
 	fwrite($file, THREE_TAB."obj_list = [$clsname() for i in range(n)]".ENTER);
     fwrite($file, THREE_TAB."for i in range(n):".ENTER);
-    fwrite($file, TWO_TAB.TWO_TAB."CbmUtil.CopyAttribsOfCbmType(".DBL_QUOT.$clsname.DBL_QUOT.", query[i], obj_list[i])".ENTER);
+    fwrite($file, TWO_TAB.TWO_TAB."CbmUtil.CopyAttribsOfCbmType(".DBL_QUOT.$clsname.DBL_QUOT.", query[i], obj_list[i], True)".ENTER);
     fwrite($file, THREE_TAB."return obj_list".ENTER);
 
 
@@ -1459,6 +1459,40 @@ function __gen_sql_type_py_file($file, $tbl_name, $fields, $relations)
 	fwrite($file, "}");
 }
 
+function __gen_sql_fkey_py_file($file, $tbl_name, $fields, $relations)
+{
+	//去掉cbm前缀,作为文件名
+	$fname = table_no_prefix($tbl_name);
+
+	//得到类名
+	$clsname = camel_case($fname);
+
+	fwrite($file, ENTER.DBL_QUOT.$clsname.DBL_QUOT.":{".ENTER);
+	//下标序号
+	$count = 1;
+	//字段变量
+	foreach ($fields as $name => $type) {
+		$var_name = $name;
+		$field_name = table_no_prefix(table_no_id($name));
+		$key_type = 0;
+		if($name == 'id') {
+			$key_type = 1; // 主键
+		}
+		//该字段是外键(所有的外键ID都是以_id结尾的)
+		else if($field_name != $name && $name != 'id') {
+			$var_name = $field_name;
+			$key_type = 2; // 外键
+		}
+		
+		fwrite($file, TAB.DBL_QUOT.$name.DBL_QUOT.":".$key_type);
+		if($count < count($fields)) {
+			fwrite($file, ',');
+		}
+		fwrite($file, ENTER);
+		$count++;
+	}
+	fwrite($file, "}");
+}
 function gen_sql_type_py_file($file, $tables, $relations)
 {
 	$count = 1;
@@ -1467,6 +1501,19 @@ function gen_sql_type_py_file($file, $tables, $relations)
 	foreach($tables as $tbl => $fields) {
 		__gen_sql_type_py_file($file, $tbl, $fields, $relations);
 
+		if($count < count($tables)) {
+			fwrite($file, ',');
+		}
+		$count++;
+	}
+	fwrite($file, ENTER.'}'.ENTER);
+
+	$count = 1;
+	fwrite($file, ENTER."fkey = {".ENTER);
+	// 写入外键关系
+	foreach($tables as $tbl => $fields) {
+		__gen_sql_fkey_py_file($file, $tbl, $fields, $relations);
+	
 		if($count < count($tables)) {
 			fwrite($file, ',');
 		}
