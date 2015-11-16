@@ -17,7 +17,7 @@
    <iconset resource="../usecad.qrc">
     <normaloff>:/images/cbm.ico</normaloff>:/images/cbm.ico</iconset>
   </property>
-  <widget class="QComboBox" name="tws">
+  <widget class="QComboBox" name="drilling_surf">
    <property name="geometry">
     <rect>
      <x>80</x>
@@ -50,7 +50,7 @@
     </rect>
    </property>
    <property name="title">
-    <string>&gt;&gt;煤层参数</string>
+    <string>煤层参数</string>
    </property>
    <widget class="QPushButton" name="wc_cacl">
     <property name="geometry">
@@ -65,7 +65,7 @@
      <string>计 算</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="gas_Wc2">
+   <widget class="QLineEdit" name="gas_wc2">
     <property name="geometry">
      <rect>
       <x>190</x>
@@ -75,7 +75,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="gas_W0">
+   <widget class="QLineEdit" name="gas_w0">
     <property name="geometry">
      <rect>
       <x>130</x>
@@ -85,7 +85,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="Vr">
+   <widget class="QLineEdit" name="vr">
     <property name="geometry">
      <rect>
       <x>120</x>
@@ -168,7 +168,7 @@
     </rect>
    </property>
    <property name="title">
-    <string>&gt;&gt;掘进面参数</string>
+    <string>掘进面参数</string>
    </property>
    <widget class="QLabel" name="label_13">
     <property name="geometry">
@@ -183,7 +183,7 @@
      <string>掘进巷道长度L</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="L">
+   <widget class="QLineEdit" name="l">
     <property name="geometry">
      <rect>
       <x>110</x>
@@ -193,7 +193,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="V">
+   <widget class="QLineEdit" name="v">
     <property name="geometry">
      <rect>
       <x>130</x>
@@ -203,7 +203,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="D">
+   <widget class="QLineEdit" name="d">
     <property name="geometry">
      <rect>
       <x>210</x>
@@ -226,7 +226,7 @@
      <string>巷道平均掘进速度V</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="S">
+   <widget class="QLineEdit" name="s">
     <property name="geometry">
      <rect>
       <x>260</x>
@@ -299,7 +299,7 @@
     </rect>
    </property>
    <property name="title">
-    <string>&gt;&gt;瓦斯涌出量预测结果</string>
+    <string>瓦斯涌出量预测结果</string>
    </property>
    <widget class="QLabel" name="label_19">
     <property name="geometry">
@@ -422,16 +422,16 @@
   </widget>
  </widget>
  <tabstops>
-  <tabstop>tws</tabstop>
-  <tabstop>Vr</tabstop>
+  <tabstop>drilling_surf</tabstop>
+  <tabstop>vr</tabstop>
   <tabstop>rho</tabstop>
-  <tabstop>gas_W0</tabstop>
-  <tabstop>gas_Wc2</tabstop>
+  <tabstop>gas_w0</tabstop>
+  <tabstop>gas_wc2</tabstop>
   <tabstop>wc_cacl</tabstop>
-  <tabstop>D</tabstop>
-  <tabstop>V</tabstop>
-  <tabstop>L</tabstop>
-  <tabstop>S</tabstop>
+  <tabstop>d</tabstop>
+  <tabstop>v</tabstop>
+  <tabstop>l</tabstop>
+  <tabstop>s</tabstop>
   <tabstop>q0</tabstop>
   <tabstop>q3</tabstop>
   <tabstop>q4</tabstop>

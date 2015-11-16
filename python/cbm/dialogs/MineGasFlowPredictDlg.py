@@ -1,8 +1,13 @@
 #coding:utf-8
 
-import sys
 from uipy.ui_mine_gas_flow_predict_dlg import *
 from MineGasFlowPredictDesignDlg import *
+
+from rpc import CbmUtil, SQLClientHelper, CbmClientHelper
+from cbm.ttypes import *
+
+import DataHelper
+import UiHelper
 
 class MineGasFlowPredictDlg(QtGui.QDialog):
     def __init__(self, mine_id=-1, parent=None):

@@ -7,6 +7,7 @@ import uuid
 import subprocess
 import tempfile
 from time import ctime,sleep
+from math import sqrt, pow, exp
 
 # µ¼ÈësqlalchemyÄ£¿é
 from sqlalchemy import create_engine
