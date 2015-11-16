@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>420</width>
-    <height>205</height>
+    <height>220</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -89,7 +89,7 @@
     <string>受采动影响的不可采煤层瓦斯储量W2</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="rock_gas_K2">
+  <widget class="QLineEdit" name="rock_gas_k2">
    <property name="geometry">
     <rect>
      <x>220</x>
@@ -153,8 +153,8 @@
     <rect>
      <x>170</x>
      <y>170</y>
-     <width>71</width>
-     <height>31</height>
+     <width>121</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="text">

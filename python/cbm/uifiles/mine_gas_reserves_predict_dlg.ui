@@ -79,7 +79,7 @@
     <string>矿井可抽瓦斯量</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="pump_Wc">
+  <widget class="QLineEdit" name="pump_wc">
    <property name="geometry">
     <rect>
      <x>122</x>

@@ -17,7 +17,7 @@
    <iconset resource="../usecad.qrc">
     <normaloff>:/images/cbm.ico</normaloff>:/images/cbm.ico</iconset>
   </property>
-  <widget class="QLineEdit" name="pump_K2">
+  <widget class="QLineEdit" name="pump_k2">
    <property name="geometry">
     <rect>
      <x>180</x>
@@ -53,7 +53,7 @@
     <string>矿井瓦斯抽采率K3</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="pump_K3">
+  <widget class="QLineEdit" name="pump_k3">
    <property name="geometry">
     <rect>
      <x>180</x>
@@ -76,7 +76,7 @@
     <string>煤层瓦斯排放率K4</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="pump_K4">
+  <widget class="QLineEdit" name="pump_k4">
    <property name="geometry">
     <rect>
      <x>180</x>
@@ -99,7 +99,7 @@
     <string>煤层原始瓦斯含量My</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="gas_W0">
+  <widget class="QLineEdit" name="gas_w0">
    <property name="geometry">
     <rect>
      <x>180</x>
@@ -122,7 +122,7 @@
     <string>运到地面煤的残余瓦斯含量Mc</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="gas_Wc2">
+  <widget class="QLineEdit" name="gas_wc2">
    <property name="geometry">
     <rect>
      <x>180</x>
@@ -145,7 +145,7 @@
     <string>可抽系数K</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="pump_Kd">
+  <widget class="QLineEdit" name="pump_k">
    <property name="geometry">
     <rect>
      <x>180</x>
@@ -168,7 +168,7 @@
     <string>瓦斯涌出程度系数K1</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="pump_K1">
+  <widget class="QLineEdit" name="pump_k1">
    <property name="geometry">
     <rect>
      <x>180</x>

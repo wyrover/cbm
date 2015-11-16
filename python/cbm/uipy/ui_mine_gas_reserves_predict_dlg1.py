@@ -25,7 +25,7 @@ except AttributeError:
 class Ui_mine_gas_reserves_predict_dlg1(object):
     def setupUi(self, mine_gas_reserves_predict_dlg1):
         mine_gas_reserves_predict_dlg1.setObjectName(_fromUtf8("mine_gas_reserves_predict_dlg1"))
-        mine_gas_reserves_predict_dlg1.resize(420, 205)
+        mine_gas_reserves_predict_dlg1.resize(420, 220)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(_fromUtf8(":/images/cbm.ico")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         mine_gas_reserves_predict_dlg1.setWindowIcon(icon)
@@ -47,9 +47,9 @@ class Ui_mine_gas_reserves_predict_dlg1(object):
         self.label_2 = QtGui.QLabel(mine_gas_reserves_predict_dlg1)
         self.label_2.setGeometry(QtCore.QRect(20, 50, 191, 21))
         self.label_2.setObjectName(_fromUtf8("label_2"))
-        self.rock_gas_K2 = QtGui.QLineEdit(mine_gas_reserves_predict_dlg1)
-        self.rock_gas_K2.setGeometry(QtCore.QRect(220, 90, 101, 20))
-        self.rock_gas_K2.setObjectName(_fromUtf8("rock_gas_K2"))
+        self.rock_gas_k2 = QtGui.QLineEdit(mine_gas_reserves_predict_dlg1)
+        self.rock_gas_k2.setGeometry(QtCore.QRect(220, 90, 101, 20))
+        self.rock_gas_k2.setObjectName(_fromUtf8("rock_gas_k2"))
         self.label_3 = QtGui.QLabel(mine_gas_reserves_predict_dlg1)
         self.label_3.setGeometry(QtCore.QRect(20, 90, 131, 21))
         self.label_3.setObjectName(_fromUtf8("label_3"))
@@ -63,7 +63,7 @@ class Ui_mine_gas_reserves_predict_dlg1(object):
         self.label_4.setGeometry(QtCore.QRect(20, 130, 181, 21))
         self.label_4.setObjectName(_fromUtf8("label_4"))
         self.ok = QtGui.QPushButton(mine_gas_reserves_predict_dlg1)
-        self.ok.setGeometry(QtCore.QRect(170, 170, 71, 31))
+        self.ok.setGeometry(QtCore.QRect(170, 170, 121, 41))
         self.ok.setObjectName(_fromUtf8("ok"))
 
         self.retranslateUi(mine_gas_reserves_predict_dlg1)
