@@ -30,7 +30,7 @@
     <string>工作面列表</string>
    </property>
   </widget>
-  <widget class="QComboBox" name="ws">
+  <widget class="QComboBox" name="work_surf">
    <property name="geometry">
     <rect>
      <x>80</x>
@@ -144,7 +144,7 @@
     <string>工作面采高</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="L">
+  <widget class="QLineEdit" name="l1">
    <property name="geometry">
     <rect>
      <x>90</x>

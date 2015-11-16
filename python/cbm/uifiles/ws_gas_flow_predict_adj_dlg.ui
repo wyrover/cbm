@@ -89,7 +89,7 @@
     <string>煤层厚度</string>
    </property>
   </widget>
-  <widget class="QCheckBox" name="n_cz">
+  <widget class="QCheckBox" name="in_cz">
    <property name="geometry">
     <rect>
      <x>160</x>
@@ -184,7 +184,7 @@
     <string>与开采层垂直距离h</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="gas_W0">
+  <widget class="QLineEdit" name="gas_w0">
    <property name="geometry">
     <rect>
      <x>130</x>
@@ -207,7 +207,7 @@
     <string>煤层残存瓦斯含量Wc</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="gas_Wc2">
+  <widget class="QLineEdit" name="gas_wc2">
    <property name="geometry">
     <rect>
      <x>130</x>

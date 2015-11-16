@@ -17,7 +17,7 @@
    <iconset resource="../usecad.qrc">
     <normaloff>:/images/cbm.ico</normaloff>:/images/cbm.ico</iconset>
   </property>
-  <widget class="QLineEdit" name="K1">
+  <widget class="QLineEdit" name="k1">
    <property name="geometry">
     <rect>
      <x>180</x>
@@ -53,7 +53,7 @@
     <string>参 考 取 值</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="K2">
+  <widget class="QLineEdit" name="k2">
    <property name="geometry">
     <rect>
      <x>180</x>
@@ -89,7 +89,7 @@
     <string>采区内准备巷道预排瓦斯对开采层瓦斯涌出影响系数K3</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="K3">
+  <widget class="QLineEdit" name="k3">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -99,7 +99,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="Kf">
+  <widget class="QLineEdit" name="kf">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -135,7 +135,7 @@
     <string>参 考 取 值</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="gas_Wc2">
+  <widget class="QLineEdit" name="gas_wc2">
    <property name="geometry">
     <rect>
      <x>190</x>
@@ -158,7 +158,7 @@
     <string>运出矿井后煤的残存瓦斯含量Wc</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="gas_W0">
+  <widget class="QLineEdit" name="gas_w0">
    <property name="geometry">
     <rect>
      <x>190</x>

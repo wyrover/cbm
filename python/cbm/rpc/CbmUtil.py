@@ -27,7 +27,15 @@ default_value_dict = {
     str:''
 }
 
-# initNoneAttrib参数表示一些字段是否需要在复制前初始化默认值
+def InitCbmTypeObject(cbm_type, obj):
+    if cbm_type in CbmRtti.info:
+        for name, func in CbmRtti.info[cbm_type].items():
+            if not hasattr(obj, name):continue
+            # 只给普通字段赋值(CbmRtti.fkey[cbm_type][name] == 0表示普通字段, 1和2分别表示主键和外键)
+            if func in default_value_dict and CbmRtti.fkey[cbm_type][name] == 0:
+                setattr(obj, name, default_value_dict[func])
+
+# initNoneAttrib参数表示一些字段是否需要在赋值前初始化默认值
 def CopyAttribsOfCbmType(cbm_type, obj1, obj2, initNoneAttrib=False):
     # print "copy %s" % cbm_type
     if cbm_type in CbmRtti.info:
