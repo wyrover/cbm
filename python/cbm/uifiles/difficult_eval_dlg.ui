@@ -45,18 +45,18 @@
     <rect>
      <x>10</x>
      <y>50</y>
-     <width>41</width>
+     <width>71</width>
      <height>16</height>
     </rect>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;渗透率&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;煤层渗透率&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="gas_penetration">
+  <widget class="QLineEdit" name="permeability_k">
    <property name="geometry">
     <rect>
-     <x>50</x>
+     <x>80</x>
      <y>50</y>
      <width>61</width>
      <height>20</height>
@@ -66,7 +66,7 @@
   <widget class="QLineEdit" name="permeability_lambda">
    <property name="geometry">
     <rect>
-     <x>200</x>
+     <x>230</x>
      <y>50</y>
      <width>71</width>
      <height>20</height>
@@ -76,7 +76,7 @@
   <widget class="QLabel" name="label_15">
    <property name="geometry">
     <rect>
-     <x>130</x>
+     <x>160</x>
      <y>50</y>
      <width>61</width>
      <height>20</height>
@@ -126,7 +126,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>110</y>
+     <y>120</y>
      <width>161</width>
      <height>21</height>
     </rect>
@@ -135,15 +135,35 @@
     <string>煤层气抽采难易程度评价结果</string>
    </property>
   </widget>
-  <widget class="QComboBox" name="eval_difficult_value">
+  <widget class="QComboBox" name="eval_difficult">
    <property name="geometry">
     <rect>
      <x>170</x>
-     <y>110</y>
+     <y>120</y>
      <width>131</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
+   <item>
+    <property name="text">
+     <string>容易抽采</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>可以抽采</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>较难抽采</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>容易抽采~可以抽采</string>
+    </property>
+   </item>
    <item>
     <property name="text">
      <string>容易抽采~较难抽采</string>
@@ -154,51 +174,18 @@
      <string>可以抽采~较难抽采</string>
     </property>
    </item>
-   <item>
-    <property name="text">
-     <string>容易抽采~可以抽采</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>较难抽采</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>可以抽采</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>容易抽采</string>
-    </property>
-   </item>
   </widget>
   <widget class="QPushButton" name="eval">
    <property name="geometry">
     <rect>
-     <x>30</x>
+     <x>60</x>
      <y>160</y>
-     <width>101</width>
+     <width>191</width>
      <height>41</height>
     </rect>
    </property>
    <property name="text">
     <string>评 价 &amp;&amp; 保 存</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="cancel">
-   <property name="geometry">
-    <rect>
-     <x>180</x>
-     <y>160</y>
-     <width>111</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>取 消</string>
    </property>
   </widget>
  </widget>

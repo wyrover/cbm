@@ -128,3 +128,9 @@ def sql_create_drilling_surf(name, work_area_id):
 	drilling_surf.name = name
 	drilling_surf.work_area_id = work_area_id
 	return SQLClientHelper.AddDrillingSurf(drilling_surf)	
+
+def permeability_lambda_to_k(p_lambda):
+	return 0.025*p_lambda
+
+def permeability_k_to_lambda(p_k):
+	return p_k / 0.025
