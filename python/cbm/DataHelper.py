@@ -71,7 +71,7 @@ def sql_create_mine(name, province, city, region, account_id):
 # 管理员是否登录了
 def sql_is_admin_online():
 	admin = SQLClientHelper.GetAccountByField1('username', 'admin')
-	if admin.id < 0:
+	if admin.id <= 0:
 		return False
 	else:
 		# 查找当前登录账户
@@ -95,18 +95,18 @@ def sql_login_authority(authority):
 def sql_login_status():
 	# 查找管理员账户
 	admin = SQLClientHelper.GetAccountByField1('username', 'admin')
-	if admin.id < 0:
+	if admin.id <= 0:
 		return 0  # 内部错误(无管理员账户)
 	else:
 		# 查找当前登录账户
 		account_id = CbmClientHelper.GetOnlineAccountId()
-		if account_id < 0:
+		if account_id <= 0:
 			return 2  # 没有用户登录
 		elif account_id == admin.id:
 			return 3  # 管理员已登录
 		else:
 			mine_id = SQLClientHelper.GetMineIdByForeignKey('account_id', account_id)
-			if mine_id < 0: # 内部错误(用户没有关联的矿井)
+			if mine_id <= 0: # 内部错误(用户没有关联的矿井)
 				return -1
 			else:           # 普通用户已登陆
 				return 1

@@ -45,7 +45,7 @@ class MineBaseParamDlg(QtGui.QDialog):
     def fillMineDatas(self):
         # 数据库中查找id对应的矿井
         mine = SQLClientHelper.GetMineById(self.mine_id)
-        if mine.id < 0:
+        if mine.id <= 0:
             UiHelper.MessageBox(u'sorry,出了点问题,请联系技术人员(错误码:E2)!')
             return
 
@@ -94,7 +94,7 @@ class MineBaseParamDlg(QtGui.QDialog):
 
     def onSave(self):
         mine = SQLClientHelper.GetMineById(self.mine_id)
-        if mine.id < 0:
+        if mine.id <= 0:
             UiHelper.MessageBox(u'sorry,出了点问题,请联系技术人员(错误码:E4)!')
             return
 

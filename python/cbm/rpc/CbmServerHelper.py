@@ -165,7 +165,7 @@ class CbmServiceHandler(SQLServerHelper.SQLServiceHandler):
         return [coal.id for coal in query]
 
     def GetWorkAreasOfMine(self, mine_id):
-        coal_ids = self.GetCoalIds(mine_id)
+        coal_ids = self.GetCoalIdsOfMine(mine_id)
         if len(coal_ids) == 0:
             return []
 
@@ -180,7 +180,7 @@ class CbmServiceHandler(SQLServerHelper.SQLServiceHandler):
         return work_areas
 
     def GetWorkSurfsOfMine(self, mine_id):
-        work_area_ids = self.GetWorkAreaIds(mine_id)
+        work_area_ids = self.GetWorkAreaIdsOfMine(mine_id)
         if len(work_area_ids) == 0:
             return []
 
@@ -195,7 +195,7 @@ class CbmServiceHandler(SQLServerHelper.SQLServiceHandler):
         return work_surfs
 
     def GetDrillingSurfsOfMine(self, mine_id):
-        work_area_ids = self.GetWorkAreaIds(mine_id)
+        work_area_ids = self.GetWorkAreaIdsOfMine(mine_id)
         if len(work_area_ids) == 0:
             return []
 
@@ -210,21 +210,21 @@ class CbmServiceHandler(SQLServerHelper.SQLServiceHandler):
         return drilling_surfs
 
     def GetWorkAreaIdsOfMine(self, mine_id):
-        coal_ids = self.GetCoalIds(mine_id)
+        coal_ids = self.GetCoalIdsOfMine(mine_id)
         if len(coal_ids) == 0:
             return []
         query = self.session.query(SQL.WorkArea).filter(SQL.WorkArea.coal_id.in_(coal_ids)).all()
         return [work_area.id for work_area in query]
 
     def GetWorkSurfIdsOfMine(self, mine_id):
-        work_area_ids = self.GetWorkAreaIds(mine_id)
+        work_area_ids = self.GetWorkAreaIdsOfMine(mine_id)
         if len(work_area_ids) == 0:
             return []
         query = self.session.query(SQL.WorkSurf).filter(SQL.WorkSurf.work_area_id.in_(work_area_ids)).all()
         return [work_surf.id for work_surf in query]
 
     def GetDrillingSurfIdsOfMine(self, mine_id):
-        work_area_ids = self.GetWorkAreaIds(mine_id)
+        work_area_ids = self.GetWorkAreaIdsOfMine(mine_id)
         if len(work_area_ids) == 0:
             return []
         query = self.session.query(SQL.DrillingSurf).filter(SQL.DrillingSurf.work_area_id.in_(work_area_ids)).all()
@@ -263,12 +263,12 @@ class CbmServiceHandler(SQLServerHelper.SQLServiceHandler):
             return K1*(S1+S2)/work_area.a
 
     def MineGasFlow(self, mine):
-        work_areas = self.GetWorkAreas(mine.id)
+        work_areas = self.GetWorkAreasOfMine(mine.id)
         if len(work_areas) == 0:
             return 0.0
 
-        S1 = sum([work_area.qr*work_area.a for work_area in query])
-        S2 = sum([work_area.a for work_area in query])
+        S1 = sum([work_area.qr*work_area.a for work_area in work_areas])
+        S2 = sum([work_area.a for work_area in work_areas])
         if S2 <= 0:
             return -1
         else:

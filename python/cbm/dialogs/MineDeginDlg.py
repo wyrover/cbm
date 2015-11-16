@@ -61,7 +61,7 @@ class MineDeginDlg(QtGui.QDialog):
 	def fillMineDatas(self):
 		# 数据库中查找id对应的矿井
 		mine = SQLClientHelper.GetMineById(self.mine_id)
-		if mine.id < 0:
+		if mine.id <= 0:
 			UiHelper.MessageBox(u'sorry,出了点问题,请联系技术人员(错误码:M2)!')
 			return
 
@@ -125,7 +125,7 @@ class MineDeginDlg(QtGui.QDialog):
 		else:
 			# 新建煤层,并提交到数据库
 			coal_id = DataHelper.sql_create_coal(coal_name.encode('utf-8'), self.mine_id)
-			if coal_id < 0:
+			if coal_id <= 0:
 				UiHelper.MessageBox(u"新增煤层失败")
 			else:
 				# 添加到下拉列表
@@ -146,7 +146,7 @@ class MineDeginDlg(QtGui.QDialog):
 		else:
 			# 新建煤层,并提交到数据库
 			work_area_id = DataHelper.sql_create_work_area(work_area_name.encode('utf-8'), coal_id)
-			if work_area_id < 0:
+			if work_area_id <= 0:
 				UiHelper.MessageBox(u"新增采区失败")
 			else:
 				# 添加到下拉列表
@@ -167,7 +167,7 @@ class MineDeginDlg(QtGui.QDialog):
 		else:
 			# 新建煤层,并提交到数据库
 			work_surf_id = DataHelper.sql_create_work_surf(work_surf_name.encode('utf-8'), work_area_id)
-			if work_surf_id < 0:
+			if work_surf_id <= 0:
 				UiHelper.MessageBox(u"新增回采工作面失败")
 			else:
 				# 添加到下拉列表
@@ -188,7 +188,7 @@ class MineDeginDlg(QtGui.QDialog):
 		else:
 			# 新建煤层,并提交到数据库
 			drilling_surf_id = DataHelper.sql_create_drilling_surf(drilling_surf_name.encode('utf-8'), work_area_id)
-			if drilling_surf_id < 0:
+			if drilling_surf_id <= 0:
 				UiHelper.MessageBox(u"新增掘进工作面失败")
 			else:
 				# 添加到下拉列表
@@ -275,7 +275,7 @@ class MineDeginDlg(QtGui.QDialog):
 		coal_id, ok = self.ui.coal.itemData(index).toInt()
 		# 双保险(确认煤层确实是在数据库中!!!)
 		# coal = SQLClientHelper.GetCoalById(coal_id)
-		# if coal.id < 0:return
+		# if coal.id <= 0:return
 
 		# 填充采区列表
 		work_area_lists = SQLClientHelper.GetWorkAreaListByForeignKey('coal_id', coal_id)
@@ -298,7 +298,7 @@ class MineDeginDlg(QtGui.QDialog):
 
 		# 填充掘进面列表
 		drilling_surf_lists = SQLClientHelper.GetDrillingSurfListByForeignKey('work_area_id', work_area_id)
-		# 添加到工作面下拉列表
+		# 添加到掘进面下拉列表
 		UiHelper.AddObjectListToCombobox(self.ui.drilling_surf, drilling_surf_lists)
 
 	def onWorkSurfChanged(self, index):
@@ -311,7 +311,7 @@ class MineDeginDlg(QtGui.QDialog):
 
 	def onSave(self):
 		mine = SQLClientHelper.GetMineById(self.mine_id)
-		if mine.id < 0:
+		if mine.id <= 0:
 			UiHelper.MessageBox(u'sorry,出了点问题,请联系技术人员(错误码:M4)!')
 			return
 

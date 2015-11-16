@@ -42,11 +42,11 @@ class SampleManageDlg(QtGui.QDialog):
         region_name = unicode(self.ui.region.currentText()).encode('utf-8')
         # 根据示范矿区的名称反查内部的虚拟矿井和虚拟煤层
         mine = CbmClientHelper.GetSampleMineOfRegion(region_name)
-        if mine.id < 0:
+        if mine.id <= 0:
             UiHelper.MessageBox(u'sorry,出了点问题,请联系技术人员(错误码:S1)!')
             return
         coal = CbmClientHelper.GetSampleCoalOfRegion(region_name)
-        if coal.id < 0:
+        if coal.id <= 0:
             UiHelper.MessageBox(u'sorry,出了点问题,请联系技术人员(错误码:S2)!')
             return
 
@@ -102,11 +102,11 @@ class SampleManageDlg(QtGui.QDialog):
         region_name = unicode(self.ui.region.currentText()).encode('utf-8')
         # 根据示范矿区的名称反查内部的虚拟矿井和虚拟煤层
         mine = CbmClientHelper.GetSampleMineOfRegion(region_name)
-        if mine.id < 0:
+        if mine.id <= 0:
             UiHelper.MessageBox(u'sorry,出了点问题,请联系技术人员(错误码:S3)!')
             return
         coal = CbmClientHelper.GetSampleCoalOfRegion(region_name)
-        if coal.id < 0:
+        if coal.id <= 0:
             UiHelper.MessageBox(u'sorry,出了点问题,请联系技术人员(错误码:S4)!')
             return
 

@@ -92,7 +92,7 @@ def test_design_eval_unit():
 	partition_id = 21
 	# 查询得到评价单元划分
 	deup = SQLClientHelper.GetDesignEvalUnitPartitionById(partition_id)
-	if deup.id < 0: return
+	if deup.id <= 0: return
 
 	# 工作面顺槽长度Ln、巷道掘进速度V、巷道终点钻孔的抽采时间T、抽采半径R
 	Ln, V, T, R = deup.l, deup.v, deup.t, deup.r

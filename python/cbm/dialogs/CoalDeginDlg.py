@@ -26,12 +26,12 @@ class CoalDeginDlg(QtGui.QDialog):
         self.init()
 
     def init(self):
-        if self.coal_id < 0:
+        if self.coal_id <= 0:
             UiHelper.MessageBox(u'sorry,出了点问题,请联系技术人员(错误码:C2)!')
             return
 
         coal = SQLClientHelper.GetCoalById(self.coal_id)
-        if coal.id < 0:return
+        if coal.id <= 0:return
 
         self.ui.thick.setText(u'%.1f' % coal.thick)
         self.ui.rank.setCurrentIndex(coal.rank-1)
@@ -67,7 +67,7 @@ class CoalDeginDlg(QtGui.QDialog):
         UiHelper.MessageBox(u'尚未实现')
 
     def onSave(self):
-        if self.coal_id < 0:
+        if self.coal_id <= 0:
             UiHelper.MessageBox(u'sorry,出了点问题,请联系技术人员(错误码:C3)!')
             return
         

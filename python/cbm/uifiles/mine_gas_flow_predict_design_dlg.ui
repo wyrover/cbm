@@ -27,7 +27,7 @@
     </rect>
    </property>
    <property name="title">
-    <string>&gt;&gt;工作面瓦斯参数</string>
+    <string>工作面瓦斯参数</string>
    </property>
    <widget class="QLabel" name="label_6">
     <property name="geometry">
@@ -55,7 +55,7 @@
      <string>平均日产量</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="work_area_A">
+   <widget class="QLineEdit" name="work_surf_a">
     <property name="geometry">
      <rect>
       <x>90</x>
@@ -65,7 +65,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="work_area_qr">
+   <widget class="QLineEdit" name="work_surf_qr">
     <property name="geometry">
      <rect>
       <x>110</x>
@@ -75,7 +75,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QComboBox" name="ws">
+   <widget class="QComboBox" name="work_surf">
     <property name="geometry">
      <rect>
       <x>90</x>
@@ -109,7 +109,7 @@
     </rect>
    </property>
    <property name="title">
-    <string>&gt;&gt;掘进面瓦斯参数</string>
+    <string>掘进面瓦斯参数</string>
    </property>
    <widget class="QLabel" name="label_8">
     <property name="geometry">
@@ -124,7 +124,7 @@
      <string>掘进面列表</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="tws_qa">
+   <widget class="QLineEdit" name="drilling_surf_qa">
     <property name="geometry">
      <rect>
       <x>110</x>
@@ -147,7 +147,7 @@
      <string>绝对瓦斯涌出量</string>
     </property>
    </widget>
-   <widget class="QComboBox" name="tws">
+   <widget class="QComboBox" name="drilling_surf">
     <property name="geometry">
      <rect>
       <x>90</x>

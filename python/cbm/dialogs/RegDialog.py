@@ -59,7 +59,7 @@ class RegDiaolog(QtGui.QDialog):
         else:
             # 注册新用户
             account_id = DataHelper.sql_create_user(uname, pwd)
-            if account_id < 0:
+            if account_id <= 0:
                 UiHelper.MessageBox('抱歉，注册失败\n请联系技术人员(错误码:A1)!')
                 return
 
@@ -71,7 +71,7 @@ class RegDiaolog(QtGui.QDialog):
             # 注册新矿井
             mine_id = DataHelper.sql_create_mine(mine_name, mine_province, mine_city, mine_region, account_id)
             # 注册新矿井失败
-            if mine_id < 0:
+            if mine_id <= 0:
                 # 删除新注册用户
                 SQLClientHelper.DeleteAccount(account_id)
                 UiHelper.MessageBox('抱歉，注册失败\n请联系技术人员(错误码:A2)!')

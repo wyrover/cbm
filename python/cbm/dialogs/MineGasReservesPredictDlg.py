@@ -28,7 +28,7 @@ class MineGasReservesPredictDlg(QtGui.QDialog):
 	def init(self):
 		# 数据库中查找id对应的矿井
 		mine = SQLClientHelper.GetMineById(self.mine_id)
-		if mine.id < 0:
+		if mine.id <= 0:
 			UiHelper.MessageBox(u'sorry,出了点问题,请联系技术人员(错误码:G1)!')
 			return
 		# 更新数据到界面
@@ -38,7 +38,7 @@ class MineGasReservesPredictDlg(QtGui.QDialog):
 	def onOk(self):
 		# 数据库中查找id对应的矿井
 		mine = SQLClientHelper.GetMineById(self.mine_id)
-		if mine.id < 0:
+		if mine.id <= 0:
 			UiHelper.MessageBox(u'sorry,出了点问题,请联系技术人员(错误码:G1)!')
 			return
 		# 更新数据到界面

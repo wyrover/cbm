@@ -30,7 +30,7 @@
     <string>生产采区采空区瓦斯涌出系数K'</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="K1_gas">
+  <widget class="QLineEdit" name="k1_gas">
    <property name="geometry">
     <rect>
      <x>180</x>
@@ -79,7 +79,7 @@
     <string>帮 助</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="K2_gas">
+  <widget class="QLineEdit" name="k2_gas">
    <property name="geometry">
     <rect>
      <x>180</x>
@@ -99,7 +99,7 @@
     </rect>
    </property>
    <property name="title">
-    <string>&gt;&gt;生产采区参数</string>
+    <string>生产采区参数</string>
    </property>
    <widget class="QPushButton" name="work_area_cacl">
     <property name="geometry">
@@ -196,7 +196,7 @@
      <string>设 计</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="work_area_A">
+   <widget class="QLineEdit" name="work_area_a">
     <property name="geometry">
      <rect>
       <x>100</x>
@@ -243,7 +243,7 @@
     </rect>
    </property>
    <property name="title">
-    <string>&gt;&gt;矿井相对瓦斯涌出量预测结果</string>
+    <string>矿井相对瓦斯涌出量预测结果</string>
    </property>
    <widget class="QPushButton" name="cacl">
     <property name="geometry">

@@ -49,7 +49,7 @@ class CoalParamDlg(QtGui.QDialog):
         # 查询当前煤层
         coal_id, ok = self.ui.coal.itemData(index).toInt()
         coal = SQLClientHelper.GetCoalById(coal_id)
-        if coal.id < 0:return
+        if coal.id <= 0:return
 
         # 填充界面数据
         self.ui.thick.setText(u'%.1f' % coal.thick)

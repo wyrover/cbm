@@ -71,7 +71,7 @@ class DifficultEvalDlg(QtGui.QDialog):
 		# 查询当前煤层
 		coal_id, ok = self.ui.coal.itemData(index).toInt()
 		coal = SQLClientHelper.GetCoalById(coal_id)
-		if coal.id < 0:return
+		if coal.id <= 0:return
 
 		# 填充界面数据
 		self.ui.permeability_k.setText(u'%.1f' % coal.permeability_k)
@@ -86,7 +86,7 @@ class DifficultEvalDlg(QtGui.QDialog):
 		# 查询当前煤层
 		coal_id, ok = self.ui.coal.itemData(index).toInt()
 		coal = SQLClientHelper.GetCoalById(coal_id)
-		if coal.id < 0:return
+		if coal.id <= 0:return
 
 		# 从界面读取数据
 		coal.permeability_k, ok = self.ui.permeability_k.text().toDouble()
