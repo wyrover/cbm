@@ -17,7 +17,7 @@
    <iconset resource="../usecad.qrc">
     <normaloff>:/images/cbm.ico</normaloff>:/images/cbm.ico</iconset>
   </property>
-  <widget class="QComboBox" name="ws">
+  <widget class="QComboBox" name="work_surf">
    <property name="geometry">
     <rect>
      <x>80</x>
@@ -152,7 +152,7 @@
     <string>岩性选择</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="Hz_min">
+  <widget class="QLineEdit" name="hz_min">
    <property name="geometry">
     <rect>
      <x>130</x>
@@ -175,7 +175,7 @@
     <string>高抽巷层位高度Hz范围</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="Hz_max">
+  <widget class="QLineEdit" name="hz_max">
    <property name="geometry">
     <rect>
      <x>180</x>
