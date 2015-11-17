@@ -13,8 +13,8 @@ class PoreFlowDlg(BaseDialog):
 		super(PoreFlowDlg, self).__init__(parent)
 		self.ui = Ui_pore_flow_dlg()
 		self.ui.setupUi(self)
-		self.initUi(self.ui) # ÃÀ»¯ui
-		self.setTitle(u"¿×°åÁ÷Á¿¼ÆËã")
+		self.initUi(self.ui) # ç¾åŒ–ui
+		self.setTitle(u"å­”æ¿æµé‡è®¡ç®—")
 		self.setFixedSize(self.width(), self.height())
 		self.ui.save.clicked.connect(self.onSave)
 		self.ui.cacl.clicked.connect(self.onCacl)
@@ -22,11 +22,11 @@ class PoreFlowDlg(BaseDialog):
 		self.ui.b_cacl.clicked.connect(self.onBCacl)
 		self.ui.delta_p_cacl.clicked.connect(self.onDeltaPCacl)
 		self.ui.delta_t_cacl.clicked.connect(self.onDeltaTCacl)
-		# ´ıÉè¼ÆµÄ¿ó¾®
+		# å¾…è®¾è®¡çš„çŸ¿äº•
 		self.mine_id = mine_id
 		
 	def onSave(self):
-		#×ö±£´æ²Ù×÷
+		#åšä¿å­˜æ“ä½œ
 		self.accept()
 
 	def onCacl(self):

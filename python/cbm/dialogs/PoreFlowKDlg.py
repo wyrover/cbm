@@ -8,11 +8,11 @@ class PoreFlowKDlg(BaseDialog):
 		super(PoreFlowKDlg, self).__init__(parent)
 		self.ui = Ui_pore_flow_K_dlg()
 		self.ui.setupUi(self)
-		self.initUi(self.ui) # ÃÀ»¯ui
-		self.setTitle(u"Êµ¼Ê¿×°åÁ÷Á¿ÌØĞÔÏµÊı¼ÆËã")
+		self.initUi(self.ui) # ç¾åŒ–ui
+		self.setTitle(u"å®é™…å­”æ¿æµé‡ç‰¹æ€§ç³»æ•°è®¡ç®—")
 		self.setFixedSize(self.width(), self.height())
 		self.ui.save.clicked.connect(self.onSave)
 
 	def onSave(self):
-		#×ö±£´æ²Ù×÷
+		#åšä¿å­˜æ“ä½œ
 		self.accept()

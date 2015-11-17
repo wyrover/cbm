@@ -20,11 +20,11 @@ def ShowWidget(widget, bShow=True):
 def MessageBox(msg_text, question=False):
 	msgbox = CbmMessageBox.CbmMessageBox()
 	if not question:
-		msgbox.SetMessage(msg_text, CbmMessageBox.MsgBoxType.INFO)
+		msgbox.setMessage(msg_text, CbmMessageBox.MsgBoxType.INFO)
 		msgbox.exec_()
 		return True
 	else:
-		msgbox.SetMessage(msg_text, CbmMessageBox.MsgBoxType.QUESTION)
+		msgbox.setMessage(msg_text, CbmMessageBox.MsgBoxType.QUESTION)
 		return msgbox.exec_() == 1
 
 # 弹出对话框，请求用户输入一个"名称""
