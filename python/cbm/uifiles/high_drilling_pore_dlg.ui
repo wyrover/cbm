@@ -30,7 +30,7 @@
     <string>工作面水平投影长度L</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="Lw">
+  <widget class="QLineEdit" name="lw">
    <property name="geometry">
     <rect>
      <x>140</x>
@@ -86,7 +86,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="Lc">
+  <widget class="QLineEdit" name="lc">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -109,7 +109,7 @@
     <string>重叠区长度,即钻孔沿工作面推进方向上的搭接长度Lc</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="Ld">
+  <widget class="QLineEdit" name="ld">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -132,7 +132,7 @@
     <string>钻孔沿工作面方向水平投影长度Ld</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="Lk">
+  <widget class="QLineEdit" name="lk">
    <property name="geometry">
     <rect>
      <x>210</x>

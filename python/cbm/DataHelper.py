@@ -18,16 +18,16 @@ class Authority:
 
 # 获取当前时间,格式: 2015-11-13 21:35:15
 def current_time():
-    now = datetime.datetime.now()
-    return now.strftime('%Y-%m-%d %H:%M:%S')
+	now = datetime.datetime.now()
+	return now.strftime('%Y-%m-%d %H:%M:%S')
 
 # 用户登录(操作数据库)
 def sql_login_user(account_id):
-    # 设置当前登录用户(记录到sys_info表)
-    sys_info = SysInfo()
-    sys_info.account_id = account_id
-    sys_info.last_login_time = current_time()
-    SQLClientHelper.AddSysInfo(sys_info)
+	# 设置当前登录用户(记录到sys_info表)
+	sys_info = SysInfo()
+	sys_info.account_id = account_id
+	sys_info.last_login_time = current_time()
+	SQLClientHelper.AddSysInfo(sys_info)
 
 # 用户切换(操作数据库)
 def sql_switch_user(account_id):
@@ -46,27 +46,27 @@ def sql_check_user(uname, pwd):
 
 # 新建账户
 def sql_create_user(uname, pwd):
-    account = Account()
-    account.username = uname
-    account.password = pwd
-    return SQLClientHelper.AddAccount(account)
+	account = Account()
+	account.username = uname
+	account.password = pwd
+	return SQLClientHelper.AddAccount(account)
 
 # 新建煤层
 def sql_create_coal(name, mine_id):
-    coal = Coal()
-    coal.name = name
-    coal.mine_id = mine_id
-    return SQLClientHelper.AddCoal(coal)
+	coal = Coal()
+	coal.name = name
+	coal.mine_id = mine_id
+	return SQLClientHelper.AddCoal(coal)
 
 # 新建矿井
 def sql_create_mine(name, province, city, region, account_id):
-    mine = Mine()
-    mine.name = name
-    mine.province = province
-    mine.city = city
-    mine.mine_region_id = SQLClientHelper.GetMineRegionIdByField1('name', region)
-    mine.account_id = account_id
-    return SQLClientHelper.AddMine(mine)
+	mine = Mine()
+	mine.name = name
+	mine.province = province
+	mine.city = city
+	mine.mine_region_id = SQLClientHelper.GetMineRegionIdByField1('name', region)
+	mine.account_id = account_id
+	return SQLClientHelper.AddMine(mine)
 
 # 管理员是否登录了
 def sql_is_admin_online():
@@ -108,7 +108,7 @@ def sql_login_status():
 			mine_id = SQLClientHelper.GetMineIdByForeignKey('account_id', account_id)
 			if mine_id <= 0: # 内部错误(用户没有关联的矿井)
 				return -1
-			else:           # 普通用户已登陆
+			else:		   # 普通用户已登陆
 				return 1
 
 def sql_create_work_area(name, coal_id):

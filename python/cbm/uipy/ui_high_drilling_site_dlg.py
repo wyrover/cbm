@@ -53,9 +53,9 @@ class Ui_high_drilling_site_dlg(object):
         self.label_13 = QtGui.QLabel(high_drilling_site_dlg)
         self.label_13.setGeometry(QtCore.QRect(20, 160, 261, 21))
         self.label_13.setObjectName(_fromUtf8("label_13"))
-        self.L1_5 = QtGui.QLineEdit(high_drilling_site_dlg)
-        self.L1_5.setGeometry(QtCore.QRect(180, 130, 71, 20))
-        self.L1_5.setObjectName(_fromUtf8("L1_5"))
+        self.rtn = QtGui.QLineEdit(high_drilling_site_dlg)
+        self.rtn.setGeometry(QtCore.QRect(180, 130, 71, 20))
+        self.rtn.setObjectName(_fromUtf8("rtn"))
         self.Rtn = QtGui.QLabel(high_drilling_site_dlg)
         self.Rtn.setGeometry(QtCore.QRect(180, 110, 151, 21))
         self.Rtn.setObjectName(_fromUtf8("Rtn"))
@@ -67,8 +67,8 @@ class Ui_high_drilling_site_dlg(object):
         QtCore.QMetaObject.connectSlotsByName(high_drilling_site_dlg)
         high_drilling_site_dlg.setTabOrder(self.hn, self.theta)
         high_drilling_site_dlg.setTabOrder(self.theta, self.q)
-        high_drilling_site_dlg.setTabOrder(self.q, self.L1_5)
-        high_drilling_site_dlg.setTabOrder(self.L1_5, self.hs)
+        high_drilling_site_dlg.setTabOrder(self.q, self.rtn)
+        high_drilling_site_dlg.setTabOrder(self.rtn, self.hs)
         high_drilling_site_dlg.setTabOrder(self.hs, self.save)
 
     def retranslateUi(self, high_drilling_site_dlg):
