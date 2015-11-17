@@ -101,7 +101,7 @@ class Ui_pore_size_dlg(object):
 
     def retranslateUi(self, pore_size_dlg):
         pore_size_dlg.setWindowTitle(_translate("pore_size_dlg", "抽采管径大小辅助计算", None))
-        self.groupBox.setTitle(_translate("pore_size_dlg", ">>管路参数", None))
+        self.groupBox.setTitle(_translate("pore_size_dlg", "管路参数", None))
         self.hint.setText(_translate("pore_size_dlg", "提 示", None))
         self.mineName_label_11.setText(_translate("pore_size_dlg", "管路最大工作压力P", None))
         self.mineName_label_12.setText(_translate("pore_size_dlg", "管路内混合瓦斯流量Q", None))
@@ -109,7 +109,7 @@ class Ui_pore_size_dlg(object):
         self.mineName_label_13.setText(_translate("pore_size_dlg", "经济流速V", None))
         self.mineName_label_9.setText(_translate("pore_size_dlg", "(注：可取5～12m/s)", None))
         self.hint2.setText(_translate("pore_size_dlg", "提 示", None))
-        self.groupBox_2.setTitle(_translate("pore_size_dlg", ">>计算结果", None))
+        self.groupBox_2.setTitle(_translate("pore_size_dlg", "计算结果", None))
         self.mineName_label_8.setText(_translate("pore_size_dlg", "管路内径D", None))
         self.mineName_label_7.setText(_translate("pore_size_dlg", "管路壁厚δ", None))
         self.save.setText(_translate("pore_size_dlg", "保 存", None))

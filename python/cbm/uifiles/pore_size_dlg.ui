@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>290</width>
-    <height>269</height>
+    <width>301</width>
+    <height>277</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -27,7 +27,7 @@
     </rect>
    </property>
    <property name="title">
-    <string>&gt;&gt;管路参数</string>
+    <string>管路参数</string>
    </property>
    <widget class="QPushButton" name="hint">
     <property name="geometry">
@@ -117,7 +117,7 @@
      <string>(注：可取5～12m/s)</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="P">
+   <widget class="QLineEdit" name="p">
     <property name="geometry">
      <rect>
       <x>130</x>
@@ -127,7 +127,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="Q">
+   <widget class="QLineEdit" name="q">
     <property name="geometry">
      <rect>
       <x>140</x>
@@ -137,7 +137,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="V">
+   <widget class="QLineEdit" name="v">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -171,9 +171,9 @@
     </rect>
    </property>
    <property name="title">
-    <string>&gt;&gt;计算结果</string>
+    <string>计算结果</string>
    </property>
-   <widget class="QLineEdit" name="D">
+   <widget class="QLineEdit" name="d">
     <property name="geometry">
      <rect>
       <x>70</x>
@@ -248,13 +248,13 @@
   </widget>
  </widget>
  <tabstops>
-  <tabstop>Q</tabstop>
+  <tabstop>q</tabstop>
   <tabstop>hint</tabstop>
-  <tabstop>V</tabstop>
-  <tabstop>P</tabstop>
+  <tabstop>v</tabstop>
+  <tabstop>p</tabstop>
   <tabstop>sigma</tabstop>
   <tabstop>hint2</tabstop>
-  <tabstop>D</tabstop>
+  <tabstop>d</tabstop>
   <tabstop>delta</tabstop>
   <tabstop>cacl</tabstop>
   <tabstop>save</tabstop>
