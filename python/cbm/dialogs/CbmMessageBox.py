@@ -3,6 +3,7 @@
 from BaseDialog import *
 from uipy.ui_cbm_messagebox import *
 
+# 消息对话框类型
 class MsgBoxType:
 	INFO = 0        # 提示
 	QUESTION = 1    # 询问

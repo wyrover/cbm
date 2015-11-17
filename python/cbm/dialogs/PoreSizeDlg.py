@@ -36,10 +36,10 @@ class PoreSizeDlg(BaseDialog):
 		# 读取数据到界面
 		self.ui.q.setText(u'%.1f' % pore_size.q)
 		self.ui.v.setText(u'%.1f' % pore_size.v)
-		self.ui.p.setText(u'%.1f' % pore_size.p)
-		self.ui.theta.setText(u'%.1f' % pore_size.theta)
 		self.ui.d.setText(u'%.1f' % pore_size.d)
+		self.ui.p.setText(u'%.1f' % pore_size.p)
 		self.ui.sigma.setText(u'%.1f' % pore_size.sigma)
+		self.ui.delta.setText(u'%.1f' % pore_size.delta)		
 
 	def getPoreSize(self):
 		# 查找所有的抽采管径对象
@@ -55,24 +55,49 @@ class PoreSizeDlg(BaseDialog):
 	def onSave(self):
 		# 获取抽采半径对象
 		pore_size = self.getPoreSize()
-		if pore_size.id  <= 0:return
+		if pore_size.id  <= 0:
+			UiHelper.MessageBox(u'目前尚不明确如何得到抽采管径对象!')
+			return
 
 		# 读取数据到界面
-		self.ui.q.setText(u'%.1f' % pore_size.q)
-		self.ui.v.setText(u'%.1f' % pore_size.v)
-		self.ui.p.setText(u'%.1f' % pore_size.p)
-		self.ui.theta.setText(u'%.1f' % pore_size.theta)
-		self.ui.d.setText(u'%.1f' % pore_size.d)
-		self.ui.sigma.setText(u'%.1f' % pore_size.sigma)
+		pore_size.q, ok = self.ui.q.text().toDouble()
+		pore_size.v, ok = self.ui.v.text().toDouble()
+		pore_size.d, ok = self.ui.d.text().toDouble()
+		pore_size.p, ok = self.ui.p.text().toDouble()
+		pore_size.sigma, ok = self.ui.sigma.text().toDouble()
+		pore_size.delta, ok = self.ui.delta.text().toDouble()
+
+		# 保存到数据库
+		if SQLClientHelper.UpdatePoreSize(pore_size):
+			UiHelper.MessageBox(u'恭喜您,更新数据成功!')
+		else:
+			UiHelper.MessageBox(u'sorry, 出了点问题, 请联系技术人员(错误码:W1)')
 		
 		# 关闭对话框并返回1
 		# self.accept()
 
 	def onCacl(self):
-		pass
+		# 提取界面数据
+		Q, ok = self.ui.q.text().toDouble()
+		V, ok = self.ui.v.text().toDouble()
+		D, ok = self.ui.d.text().toDouble()
+		P, ok = self.ui.p.text().toDouble()
+		sigma, ok = self.ui.sigma.text().toDouble()
+
+		if sigma == 0 or V == 0:
+			UiHelper.MessageBox(u'经济流速或容许压力取值不能为0!!!')
+			return
+
+		# 计算
+		D = 0.1457 * sqrt( Q / V)
+		delta = 0.5 * P * D / sigma
+
+		# 更新到界面
+		self.ui.d.setText(u'%.1f' % D)
+		self.ui.delta.setText(u'%.1f' % delta)
 
 	def onHint(self):
-		pass
+		UiHelper.MessageBox(u'注：各类管路的流量应按照其使用年限或服务区域内的最大值确定\n并应有1.2~1.8的富余系数!!!')
 
 	def onHint2(self):
-		pass
+		UiHelper.MessageBox(u'注:可取屈服极限强度的60%；缺少此值时:\n铸铁管可取20MPa\n焊接钢管可取60MPa\n无缝钢管可取80MPa')
