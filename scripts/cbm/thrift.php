@@ -109,6 +109,7 @@ function __gen_sql_service_handler_of_py_server($file, $tbl_name, $fields, $rela
 	fwrite($file, TAB."def Add".$clsname."(self, $fname):".ENTER);
 	fwrite($file, TWO_TAB."sql_obj = SQL.$clsname()".ENTER);
 	fwrite($file, TWO_TAB."CbmUtil.CopyAttribsOfCbmType(".DBL_QUOT.$clsname.DBL_QUOT.", $fname, sql_obj, False)".ENTER);
+	fwrite($file, TWO_TAB."sql_obj.id = None".ENTER);
     fwrite($file, TWO_TAB."self.session.add(sql_obj)".ENTER);
     fwrite($file, TWO_TAB."self.session.flush()".ENTER);
     fwrite($file, TWO_TAB."self.session.commit()".ENTER);
@@ -185,6 +186,7 @@ function __gen_sql_service_handler_of_py_server($file, $tbl_name, $fields, $rela
 	fwrite($file, TWO_TAB."sql_objs = [SQL.$clsname() for i in range(n)]".ENTER);
     fwrite($file, TWO_TAB."for i in range(n):".ENTER);
     fwrite($file, THREE_TAB."CbmUtil.CopyAttribsOfCbmType(".DBL_QUOT.$clsname.DBL_QUOT.", objs[i], sql_objs[i], False)".ENTER);
+    fwrite($file, THREE_TAB."sql_objs[i].id = None".ENTER);
     fwrite($file, THREE_TAB."self.session.add(sql_objs[i])".ENTER);
     fwrite($file, TWO_TAB."self.session.flush()".ENTER);
     fwrite($file, TWO_TAB."self.session.commit()".ENTER);

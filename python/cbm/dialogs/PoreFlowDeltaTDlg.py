@@ -4,7 +4,7 @@ from BaseDialog import *
 from uipy.ui_pore_flow_delta_T_dlg import *
 
 class PoreFlowDeltaTDlg(BaseDialog):
-	def __init__(self,parent=None):
+	def __init__(self, pore_flow, parent=None):
 		super(PoreFlowDeltaTDlg, self).__init__(parent)
 		self.ui = Ui_pore_flow_delta_T_dlg()
 		self.ui.setupUi(self)
@@ -12,6 +12,13 @@ class PoreFlowDeltaTDlg(BaseDialog):
 		self.setTitle(u"温度校正系数计算")
 		self.setFixedSize(self.width(), self.height())
 		self.ui.save.clicked.connect(self.onSave)
+		# 外部传入的对象
+		self.pore_flow = pore_flow
+		# 初始化
+		self.init()
+
+	def init(self):
+		pass
 
 	def onSave(self):
 		#做保存操作

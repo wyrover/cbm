@@ -25,12 +25,19 @@ class PoreSizeDlg(BaseDialog):
 		self.ui.hint2.clicked.connect(self.onHint2)
 		# 待设计的矿井
 		self.mine_id = mine_id
+		# 待设计的钻孔管径对象id
+		# self.pore_size.id = -1
+		self.pore_size = PoreSize()
 		# 初始化
 		self.init()
 
 	def init(self):
+		# 初始化抽采半径对象id
+		self.initPoreSize()
+		if self.pore_size.id <= 0:return
+
 		# 获取抽采半径对象
-		pore_size = self.getPoreSize()
+		pore_size = SQLClientHelper.GetPoreSizeById(self.pore_size.id)
 		if pore_size.id  <= 0:return
 
 		# 读取数据到界面
@@ -39,27 +46,28 @@ class PoreSizeDlg(BaseDialog):
 		self.ui.d.setText(u'%.1f' % pore_size.d)
 		self.ui.p.setText(u'%.1f' % pore_size.p)
 		self.ui.sigma.setText(u'%.1f' % pore_size.sigma)
-		self.ui.delta.setText(u'%.1f' % pore_size.delta)		
+		self.ui.delta.setText(u'%.1f' % pore_size.delta)
 
-	def getPoreSize(self):
+	def initPoreSize(self):
 		# 查找所有的抽采管径对象
 		pore_size_lists = SQLClientHelper.GetPoreSizeList()
 		if len(pore_size_lists) == 0:
 			pore_size = PoreSize()
-			pore_size.id = -1
-			return pore_size
+			pore_size_id = SQLClientHelper.AddPoreSize(pore_size)
+			self.pore_size = SQLClientHelper.GetPoreSizeById(pore_size_id)
 		else:
 			# 目前只使用第1个数据
-			return pore_size_lists[0]
+			self.pore_size = pore_size_lists[0]
 
 	def onSave(self):
 		# 获取抽采半径对象
-		pore_size = self.getPoreSize()
+		# pore_size = SQLClientHelper.GetPoreSizeById(self.pore_size.id)
+		pore_size = self.pore_size
 		if pore_size.id  <= 0:
-			UiHelper.MessageBox(u'目前尚不明确如何得到抽采管径对象!')
+			UiHelper.MessageBox(u'sorry, 出了点问题, 请联系技术人员(错误码:X1)')
 			return
 
-		# 读取数据到界面
+		# 从界面读取数据
 		pore_size.q, ok = self.ui.q.text().toDouble()
 		pore_size.v, ok = self.ui.v.text().toDouble()
 		pore_size.d, ok = self.ui.d.text().toDouble()
@@ -68,7 +76,12 @@ class PoreSizeDlg(BaseDialog):
 		pore_size.delta, ok = self.ui.delta.text().toDouble()
 
 		# 保存到数据库
-		if SQLClientHelper.UpdatePoreSize(pore_size):
+		ret = False
+		if pore_size.id <= 0:
+			ret = SQLClientHelper.AddPoreSize(pore_size) > 0
+		else:
+			ret = SQLClientHelper.UpdatePoreSize(pore_size)
+		if ret:
 			UiHelper.MessageBox(u'恭喜您,更新数据成功!')
 		else:
 			UiHelper.MessageBox(u'sorry, 出了点问题, 请联系技术人员(错误码:W1)')

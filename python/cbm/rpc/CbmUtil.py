@@ -27,7 +27,7 @@ default_value_dict = {
     str:''
 }
 
-def InitCbmTypeObject(cbm_type, obj):
+def InitCbmTypeObjectDefaultAttribs(cbm_type, obj):
     if cbm_type in CbmRtti.info:
         for name, func in CbmRtti.info[cbm_type].items():
             if not hasattr(obj, name):continue

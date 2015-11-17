@@ -10,6 +10,10 @@ import CbmUtil
 
 import SQLClientHelper
 
+# 初始化默认值(避免None导致的一些错误)
+def InitCbmTypeObject(cbm_type, obj):
+    CbmUtil.InitCbmTypeObjectDefaultAttribs(cbm_type, obj)
+
 def InitSampleMine(region_id, account_id, name):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)

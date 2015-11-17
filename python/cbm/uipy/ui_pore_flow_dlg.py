@@ -220,6 +220,20 @@ class Ui_pore_flow_dlg(object):
 
         self.retranslateUi(pore_flow_dlg)
         QtCore.QMetaObject.connectSlotsByName(pore_flow_dlg)
+        pore_flow_dlg.setTabOrder(self.t, self.dh)
+        pore_flow_dlg.setTabOrder(self.dh, self.x)
+        pore_flow_dlg.setTabOrder(self.x, self.k)
+        pore_flow_dlg.setTabOrder(self.k, self.k_cacl)
+        pore_flow_dlg.setTabOrder(self.k_cacl, self.b)
+        pore_flow_dlg.setTabOrder(self.b, self.b_cacl)
+        pore_flow_dlg.setTabOrder(self.b_cacl, self.delta_p)
+        pore_flow_dlg.setTabOrder(self.delta_p, self.delta_p_cacl)
+        pore_flow_dlg.setTabOrder(self.delta_p_cacl, self.delta_t)
+        pore_flow_dlg.setTabOrder(self.delta_t, self.delta_t_cacl)
+        pore_flow_dlg.setTabOrder(self.delta_t_cacl, self.q_hun)
+        pore_flow_dlg.setTabOrder(self.q_hun, self.q_chun)
+        pore_flow_dlg.setTabOrder(self.q_chun, self.cacl)
+        pore_flow_dlg.setTabOrder(self.cacl, self.save)
 
     def retranslateUi(self, pore_flow_dlg):
         pore_flow_dlg.setWindowTitle(_translate("pore_flow_dlg", "孔板流量计算", None))

@@ -106,6 +106,8 @@ class Ui_pore_flow_delta_T_dlg(object):
 
         self.retranslateUi(pore_flow_delta_T_dlg)
         QtCore.QMetaObject.connectSlotsByName(pore_flow_delta_T_dlg)
+        pore_flow_delta_T_dlg.setTabOrder(self.t, self.delta_t)
+        pore_flow_delta_T_dlg.setTabOrder(self.delta_t, self.save)
 
     def retranslateUi(self, pore_flow_delta_T_dlg):
         pore_flow_delta_T_dlg.setWindowTitle(_translate("pore_flow_delta_T_dlg", "温度校正系数计算", None))

@@ -13,6 +13,7 @@ class SQLServiceHandler(object):
 	def AddAccount(self, account):
 		sql_obj = SQL.Account()
 		CbmUtil.CopyAttribsOfCbmType("Account", account, sql_obj, False)
+		sql_obj.id = None
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -72,6 +73,7 @@ class SQLServiceHandler(object):
 		sql_objs = [SQL.Account() for i in range(n)]
 		for i in range(n):
 			CbmUtil.CopyAttribsOfCbmType("Account", objs[i], sql_objs[i], False)
+			sql_objs[i].id = None
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -140,6 +142,7 @@ class SQLServiceHandler(object):
 	def AddAdjLayer(self, adj_layer):
 		sql_obj = SQL.AdjLayer()
 		CbmUtil.CopyAttribsOfCbmType("AdjLayer", adj_layer, sql_obj, False)
+		sql_obj.id = None
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -199,6 +202,7 @@ class SQLServiceHandler(object):
 		sql_objs = [SQL.AdjLayer() for i in range(n)]
 		for i in range(n):
 			CbmUtil.CopyAttribsOfCbmType("AdjLayer", objs[i], sql_objs[i], False)
+			sql_objs[i].id = None
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -267,6 +271,7 @@ class SQLServiceHandler(object):
 	def AddCoal(self, coal):
 		sql_obj = SQL.Coal()
 		CbmUtil.CopyAttribsOfCbmType("Coal", coal, sql_obj, False)
+		sql_obj.id = None
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -326,6 +331,7 @@ class SQLServiceHandler(object):
 		sql_objs = [SQL.Coal() for i in range(n)]
 		for i in range(n):
 			CbmUtil.CopyAttribsOfCbmType("Coal", objs[i], sql_objs[i], False)
+			sql_objs[i].id = None
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -394,6 +400,7 @@ class SQLServiceHandler(object):
 	def AddComplexity(self, complexity):
 		sql_obj = SQL.Complexity()
 		CbmUtil.CopyAttribsOfCbmType("Complexity", complexity, sql_obj, False)
+		sql_obj.id = None
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -453,6 +460,7 @@ class SQLServiceHandler(object):
 		sql_objs = [SQL.Complexity() for i in range(n)]
 		for i in range(n):
 			CbmUtil.CopyAttribsOfCbmType("Complexity", objs[i], sql_objs[i], False)
+			sql_objs[i].id = None
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -521,6 +529,7 @@ class SQLServiceHandler(object):
 	def AddDesignDrillingSurfTechnology(self, design_drilling_surf_technology):
 		sql_obj = SQL.DesignDrillingSurfTechnology()
 		CbmUtil.CopyAttribsOfCbmType("DesignDrillingSurfTechnology", design_drilling_surf_technology, sql_obj, False)
+		sql_obj.id = None
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -580,6 +589,7 @@ class SQLServiceHandler(object):
 		sql_objs = [SQL.DesignDrillingSurfTechnology() for i in range(n)]
 		for i in range(n):
 			CbmUtil.CopyAttribsOfCbmType("DesignDrillingSurfTechnology", objs[i], sql_objs[i], False)
+			sql_objs[i].id = None
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -648,6 +658,7 @@ class SQLServiceHandler(object):
 	def AddDesignEvalUnit(self, design_eval_unit):
 		sql_obj = SQL.DesignEvalUnit()
 		CbmUtil.CopyAttribsOfCbmType("DesignEvalUnit", design_eval_unit, sql_obj, False)
+		sql_obj.id = None
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -707,6 +718,7 @@ class SQLServiceHandler(object):
 		sql_objs = [SQL.DesignEvalUnit() for i in range(n)]
 		for i in range(n):
 			CbmUtil.CopyAttribsOfCbmType("DesignEvalUnit", objs[i], sql_objs[i], False)
+			sql_objs[i].id = None
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -775,6 +787,7 @@ class SQLServiceHandler(object):
 	def AddDesignEvalUnitPartition(self, design_eval_unit_partition):
 		sql_obj = SQL.DesignEvalUnitPartition()
 		CbmUtil.CopyAttribsOfCbmType("DesignEvalUnitPartition", design_eval_unit_partition, sql_obj, False)
+		sql_obj.id = None
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -834,6 +847,7 @@ class SQLServiceHandler(object):
 		sql_objs = [SQL.DesignEvalUnitPartition() for i in range(n)]
 		for i in range(n):
 			CbmUtil.CopyAttribsOfCbmType("DesignEvalUnitPartition", objs[i], sql_objs[i], False)
+			sql_objs[i].id = None
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -902,6 +916,7 @@ class SQLServiceHandler(object):
 	def AddDesignGoafTechnology(self, design_goaf_technology):
 		sql_obj = SQL.DesignGoafTechnology()
 		CbmUtil.CopyAttribsOfCbmType("DesignGoafTechnology", design_goaf_technology, sql_obj, False)
+		sql_obj.id = None
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -961,6 +976,7 @@ class SQLServiceHandler(object):
 		sql_objs = [SQL.DesignGoafTechnology() for i in range(n)]
 		for i in range(n):
 			CbmUtil.CopyAttribsOfCbmType("DesignGoafTechnology", objs[i], sql_objs[i], False)
+			sql_objs[i].id = None
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -1029,6 +1045,7 @@ class SQLServiceHandler(object):
 	def AddDesignPore(self, design_pore):
 		sql_obj = SQL.DesignPore()
 		CbmUtil.CopyAttribsOfCbmType("DesignPore", design_pore, sql_obj, False)
+		sql_obj.id = None
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -1088,6 +1105,7 @@ class SQLServiceHandler(object):
 		sql_objs = [SQL.DesignPore() for i in range(n)]
 		for i in range(n):
 			CbmUtil.CopyAttribsOfCbmType("DesignPore", objs[i], sql_objs[i], False)
+			sql_objs[i].id = None
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -1156,6 +1174,7 @@ class SQLServiceHandler(object):
 	def AddDesignSite(self, design_site):
 		sql_obj = SQL.DesignSite()
 		CbmUtil.CopyAttribsOfCbmType("DesignSite", design_site, sql_obj, False)
+		sql_obj.id = None
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -1215,6 +1234,7 @@ class SQLServiceHandler(object):
 		sql_objs = [SQL.DesignSite() for i in range(n)]
 		for i in range(n):
 			CbmUtil.CopyAttribsOfCbmType("DesignSite", objs[i], sql_objs[i], False)
+			sql_objs[i].id = None
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -1283,6 +1303,7 @@ class SQLServiceHandler(object):
 	def AddDesignTechnology(self, design_technology):
 		sql_obj = SQL.DesignTechnology()
 		CbmUtil.CopyAttribsOfCbmType("DesignTechnology", design_technology, sql_obj, False)
+		sql_obj.id = None
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -1342,6 +1363,7 @@ class SQLServiceHandler(object):
 		sql_objs = [SQL.DesignTechnology() for i in range(n)]
 		for i in range(n):
 			CbmUtil.CopyAttribsOfCbmType("DesignTechnology", objs[i], sql_objs[i], False)
+			sql_objs[i].id = None
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -1410,6 +1432,7 @@ class SQLServiceHandler(object):
 	def AddDesignTunnelControlPoint(self, design_tunnel_control_point):
 		sql_obj = SQL.DesignTunnelControlPoint()
 		CbmUtil.CopyAttribsOfCbmType("DesignTunnelControlPoint", design_tunnel_control_point, sql_obj, False)
+		sql_obj.id = None
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -1469,6 +1492,7 @@ class SQLServiceHandler(object):
 		sql_objs = [SQL.DesignTunnelControlPoint() for i in range(n)]
 		for i in range(n):
 			CbmUtil.CopyAttribsOfCbmType("DesignTunnelControlPoint", objs[i], sql_objs[i], False)
+			sql_objs[i].id = None
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -1537,6 +1561,7 @@ class SQLServiceHandler(object):
 	def AddDesignWorkSurfControlPoint(self, design_work_surf_control_point):
 		sql_obj = SQL.DesignWorkSurfControlPoint()
 		CbmUtil.CopyAttribsOfCbmType("DesignWorkSurfControlPoint", design_work_surf_control_point, sql_obj, False)
+		sql_obj.id = None
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -1596,6 +1621,7 @@ class SQLServiceHandler(object):
 		sql_objs = [SQL.DesignWorkSurfControlPoint() for i in range(n)]
 		for i in range(n):
 			CbmUtil.CopyAttribsOfCbmType("DesignWorkSurfControlPoint", objs[i], sql_objs[i], False)
+			sql_objs[i].id = None
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -1664,6 +1690,7 @@ class SQLServiceHandler(object):
 	def AddDesignWorkSurfTechnology(self, design_work_surf_technology):
 		sql_obj = SQL.DesignWorkSurfTechnology()
 		CbmUtil.CopyAttribsOfCbmType("DesignWorkSurfTechnology", design_work_surf_technology, sql_obj, False)
+		sql_obj.id = None
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -1723,6 +1750,7 @@ class SQLServiceHandler(object):
 		sql_objs = [SQL.DesignWorkSurfTechnology() for i in range(n)]
 		for i in range(n):
 			CbmUtil.CopyAttribsOfCbmType("DesignWorkSurfTechnology", objs[i], sql_objs[i], False)
+			sql_objs[i].id = None
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -1791,6 +1819,7 @@ class SQLServiceHandler(object):
 	def AddDrillingRadiusParam(self, drilling_radius_param):
 		sql_obj = SQL.DrillingRadiusParam()
 		CbmUtil.CopyAttribsOfCbmType("DrillingRadiusParam", drilling_radius_param, sql_obj, False)
+		sql_obj.id = None
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -1850,6 +1879,7 @@ class SQLServiceHandler(object):
 		sql_objs = [SQL.DrillingRadiusParam() for i in range(n)]
 		for i in range(n):
 			CbmUtil.CopyAttribsOfCbmType("DrillingRadiusParam", objs[i], sql_objs[i], False)
+			sql_objs[i].id = None
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -1918,6 +1948,7 @@ class SQLServiceHandler(object):
 	def AddDrillingSurf(self, drilling_surf):
 		sql_obj = SQL.DrillingSurf()
 		CbmUtil.CopyAttribsOfCbmType("DrillingSurf", drilling_surf, sql_obj, False)
+		sql_obj.id = None
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -1977,6 +2008,7 @@ class SQLServiceHandler(object):
 		sql_objs = [SQL.DrillingSurf() for i in range(n)]
 		for i in range(n):
 			CbmUtil.CopyAttribsOfCbmType("DrillingSurf", objs[i], sql_objs[i], False)
+			sql_objs[i].id = None
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -2045,6 +2077,7 @@ class SQLServiceHandler(object):
 	def AddEvalUnit(self, eval_unit):
 		sql_obj = SQL.EvalUnit()
 		CbmUtil.CopyAttribsOfCbmType("EvalUnit", eval_unit, sql_obj, False)
+		sql_obj.id = None
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -2104,6 +2137,7 @@ class SQLServiceHandler(object):
 		sql_objs = [SQL.EvalUnit() for i in range(n)]
 		for i in range(n):
 			CbmUtil.CopyAttribsOfCbmType("EvalUnit", objs[i], sql_objs[i], False)
+			sql_objs[i].id = None
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -2172,6 +2206,7 @@ class SQLServiceHandler(object):
 	def AddHighDrillingPore(self, high_drilling_pore):
 		sql_obj = SQL.HighDrillingPore()
 		CbmUtil.CopyAttribsOfCbmType("HighDrillingPore", high_drilling_pore, sql_obj, False)
+		sql_obj.id = None
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -2231,6 +2266,7 @@ class SQLServiceHandler(object):
 		sql_objs = [SQL.HighDrillingPore() for i in range(n)]
 		for i in range(n):
 			CbmUtil.CopyAttribsOfCbmType("HighDrillingPore", objs[i], sql_objs[i], False)
+			sql_objs[i].id = None
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -2299,6 +2335,7 @@ class SQLServiceHandler(object):
 	def AddHighDrillingPoreParam(self, high_drilling_pore_param):
 		sql_obj = SQL.HighDrillingPoreParam()
 		CbmUtil.CopyAttribsOfCbmType("HighDrillingPoreParam", high_drilling_pore_param, sql_obj, False)
+		sql_obj.id = None
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -2358,6 +2395,7 @@ class SQLServiceHandler(object):
 		sql_objs = [SQL.HighDrillingPoreParam() for i in range(n)]
 		for i in range(n):
 			CbmUtil.CopyAttribsOfCbmType("HighDrillingPoreParam", objs[i], sql_objs[i], False)
+			sql_objs[i].id = None
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -2426,6 +2464,7 @@ class SQLServiceHandler(object):
 	def AddHighDrillingSiteParam(self, high_drilling_site_param):
 		sql_obj = SQL.HighDrillingSiteParam()
 		CbmUtil.CopyAttribsOfCbmType("HighDrillingSiteParam", high_drilling_site_param, sql_obj, False)
+		sql_obj.id = None
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -2485,6 +2524,7 @@ class SQLServiceHandler(object):
 		sql_objs = [SQL.HighDrillingSiteParam() for i in range(n)]
 		for i in range(n):
 			CbmUtil.CopyAttribsOfCbmType("HighDrillingSiteParam", objs[i], sql_objs[i], False)
+			sql_objs[i].id = None
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -2553,6 +2593,7 @@ class SQLServiceHandler(object):
 	def AddHighDrillingTunnel(self, high_drilling_tunnel):
 		sql_obj = SQL.HighDrillingTunnel()
 		CbmUtil.CopyAttribsOfCbmType("HighDrillingTunnel", high_drilling_tunnel, sql_obj, False)
+		sql_obj.id = None
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -2612,6 +2653,7 @@ class SQLServiceHandler(object):
 		sql_objs = [SQL.HighDrillingTunnel() for i in range(n)]
 		for i in range(n):
 			CbmUtil.CopyAttribsOfCbmType("HighDrillingTunnel", objs[i], sql_objs[i], False)
+			sql_objs[i].id = None
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -2680,6 +2722,7 @@ class SQLServiceHandler(object):
 	def AddHydrGeo(self, hydr_geo):
 		sql_obj = SQL.HydrGeo()
 		CbmUtil.CopyAttribsOfCbmType("HydrGeo", hydr_geo, sql_obj, False)
+		sql_obj.id = None
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -2739,6 +2782,7 @@ class SQLServiceHandler(object):
 		sql_objs = [SQL.HydrGeo() for i in range(n)]
 		for i in range(n):
 			CbmUtil.CopyAttribsOfCbmType("HydrGeo", objs[i], sql_objs[i], False)
+			sql_objs[i].id = None
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -2807,6 +2851,7 @@ class SQLServiceHandler(object):
 	def AddMine(self, mine):
 		sql_obj = SQL.Mine()
 		CbmUtil.CopyAttribsOfCbmType("Mine", mine, sql_obj, False)
+		sql_obj.id = None
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -2866,6 +2911,7 @@ class SQLServiceHandler(object):
 		sql_objs = [SQL.Mine() for i in range(n)]
 		for i in range(n):
 			CbmUtil.CopyAttribsOfCbmType("Mine", objs[i], sql_objs[i], False)
+			sql_objs[i].id = None
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -2934,6 +2980,7 @@ class SQLServiceHandler(object):
 	def AddMineBase(self, mine_base):
 		sql_obj = SQL.MineBase()
 		CbmUtil.CopyAttribsOfCbmType("MineBase", mine_base, sql_obj, False)
+		sql_obj.id = None
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -2993,6 +3040,7 @@ class SQLServiceHandler(object):
 		sql_objs = [SQL.MineBase() for i in range(n)]
 		for i in range(n):
 			CbmUtil.CopyAttribsOfCbmType("MineBase", objs[i], sql_objs[i], False)
+			sql_objs[i].id = None
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -3061,6 +3109,7 @@ class SQLServiceHandler(object):
 	def AddMineRegion(self, mine_region):
 		sql_obj = SQL.MineRegion()
 		CbmUtil.CopyAttribsOfCbmType("MineRegion", mine_region, sql_obj, False)
+		sql_obj.id = None
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -3120,6 +3169,7 @@ class SQLServiceHandler(object):
 		sql_objs = [SQL.MineRegion() for i in range(n)]
 		for i in range(n):
 			CbmUtil.CopyAttribsOfCbmType("MineRegion", objs[i], sql_objs[i], False)
+			sql_objs[i].id = None
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -3188,6 +3238,7 @@ class SQLServiceHandler(object):
 	def AddPoreFlow(self, pore_flow):
 		sql_obj = SQL.PoreFlow()
 		CbmUtil.CopyAttribsOfCbmType("PoreFlow", pore_flow, sql_obj, False)
+		sql_obj.id = None
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -3247,6 +3298,7 @@ class SQLServiceHandler(object):
 		sql_objs = [SQL.PoreFlow() for i in range(n)]
 		for i in range(n):
 			CbmUtil.CopyAttribsOfCbmType("PoreFlow", objs[i], sql_objs[i], False)
+			sql_objs[i].id = None
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -3315,6 +3367,7 @@ class SQLServiceHandler(object):
 	def AddPoreSize(self, pore_size):
 		sql_obj = SQL.PoreSize()
 		CbmUtil.CopyAttribsOfCbmType("PoreSize", pore_size, sql_obj, False)
+		sql_obj.id = None
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -3374,6 +3427,7 @@ class SQLServiceHandler(object):
 		sql_objs = [SQL.PoreSize() for i in range(n)]
 		for i in range(n):
 			CbmUtil.CopyAttribsOfCbmType("PoreSize", objs[i], sql_objs[i], False)
+			sql_objs[i].id = None
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -3442,6 +3496,7 @@ class SQLServiceHandler(object):
 	def AddResAbundance(self, res_abundance):
 		sql_obj = SQL.ResAbundance()
 		CbmUtil.CopyAttribsOfCbmType("ResAbundance", res_abundance, sql_obj, False)
+		sql_obj.id = None
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -3501,6 +3556,7 @@ class SQLServiceHandler(object):
 		sql_objs = [SQL.ResAbundance() for i in range(n)]
 		for i in range(n):
 			CbmUtil.CopyAttribsOfCbmType("ResAbundance", objs[i], sql_objs[i], False)
+			sql_objs[i].id = None
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -3569,6 +3625,7 @@ class SQLServiceHandler(object):
 	def AddRock(self, rock):
 		sql_obj = SQL.Rock()
 		CbmUtil.CopyAttribsOfCbmType("Rock", rock, sql_obj, False)
+		sql_obj.id = None
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -3628,6 +3685,7 @@ class SQLServiceHandler(object):
 		sql_objs = [SQL.Rock() for i in range(n)]
 		for i in range(n):
 			CbmUtil.CopyAttribsOfCbmType("Rock", objs[i], sql_objs[i], False)
+			sql_objs[i].id = None
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -3696,6 +3754,7 @@ class SQLServiceHandler(object):
 	def AddSysInfo(self, sys_info):
 		sql_obj = SQL.SysInfo()
 		CbmUtil.CopyAttribsOfCbmType("SysInfo", sys_info, sql_obj, False)
+		sql_obj.id = None
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -3755,6 +3814,7 @@ class SQLServiceHandler(object):
 		sql_objs = [SQL.SysInfo() for i in range(n)]
 		for i in range(n):
 			CbmUtil.CopyAttribsOfCbmType("SysInfo", objs[i], sql_objs[i], False)
+			sql_objs[i].id = None
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -3823,6 +3883,7 @@ class SQLServiceHandler(object):
 	def AddTechMode(self, tech_mode):
 		sql_obj = SQL.TechMode()
 		CbmUtil.CopyAttribsOfCbmType("TechMode", tech_mode, sql_obj, False)
+		sql_obj.id = None
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -3882,6 +3943,7 @@ class SQLServiceHandler(object):
 		sql_objs = [SQL.TechMode() for i in range(n)]
 		for i in range(n):
 			CbmUtil.CopyAttribsOfCbmType("TechMode", objs[i], sql_objs[i], False)
+			sql_objs[i].id = None
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -3950,6 +4012,7 @@ class SQLServiceHandler(object):
 	def AddTechnology(self, technology):
 		sql_obj = SQL.Technology()
 		CbmUtil.CopyAttribsOfCbmType("Technology", technology, sql_obj, False)
+		sql_obj.id = None
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -4009,6 +4072,7 @@ class SQLServiceHandler(object):
 		sql_objs = [SQL.Technology() for i in range(n)]
 		for i in range(n):
 			CbmUtil.CopyAttribsOfCbmType("Technology", objs[i], sql_objs[i], False)
+			sql_objs[i].id = None
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -4077,6 +4141,7 @@ class SQLServiceHandler(object):
 	def AddTopoGeo(self, topo_geo):
 		sql_obj = SQL.TopoGeo()
 		CbmUtil.CopyAttribsOfCbmType("TopoGeo", topo_geo, sql_obj, False)
+		sql_obj.id = None
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -4136,6 +4201,7 @@ class SQLServiceHandler(object):
 		sql_objs = [SQL.TopoGeo() for i in range(n)]
 		for i in range(n):
 			CbmUtil.CopyAttribsOfCbmType("TopoGeo", objs[i], sql_objs[i], False)
+			sql_objs[i].id = None
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -4204,6 +4270,7 @@ class SQLServiceHandler(object):
 	def AddTunnel(self, tunnel):
 		sql_obj = SQL.Tunnel()
 		CbmUtil.CopyAttribsOfCbmType("Tunnel", tunnel, sql_obj, False)
+		sql_obj.id = None
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -4263,6 +4330,7 @@ class SQLServiceHandler(object):
 		sql_objs = [SQL.Tunnel() for i in range(n)]
 		for i in range(n):
 			CbmUtil.CopyAttribsOfCbmType("Tunnel", objs[i], sql_objs[i], False)
+			sql_objs[i].id = None
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -4331,6 +4399,7 @@ class SQLServiceHandler(object):
 	def AddWorkArea(self, work_area):
 		sql_obj = SQL.WorkArea()
 		CbmUtil.CopyAttribsOfCbmType("WorkArea", work_area, sql_obj, False)
+		sql_obj.id = None
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -4390,6 +4459,7 @@ class SQLServiceHandler(object):
 		sql_objs = [SQL.WorkArea() for i in range(n)]
 		for i in range(n):
 			CbmUtil.CopyAttribsOfCbmType("WorkArea", objs[i], sql_objs[i], False)
+			sql_objs[i].id = None
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()
@@ -4458,6 +4528,7 @@ class SQLServiceHandler(object):
 	def AddWorkSurf(self, work_surf):
 		sql_obj = SQL.WorkSurf()
 		CbmUtil.CopyAttribsOfCbmType("WorkSurf", work_surf, sql_obj, False)
+		sql_obj.id = None
 		self.session.add(sql_obj)
 		self.session.flush()
 		self.session.commit()
@@ -4517,6 +4588,7 @@ class SQLServiceHandler(object):
 		sql_objs = [SQL.WorkSurf() for i in range(n)]
 		for i in range(n):
 			CbmUtil.CopyAttribsOfCbmType("WorkSurf", objs[i], sql_objs[i], False)
+			sql_objs[i].id = None
 			self.session.add(sql_objs[i])
 		self.session.flush()
 		self.session.commit()

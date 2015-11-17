@@ -224,6 +224,11 @@ p, li { white-space: pre-wrap; }
    </widget>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>t</tabstop>
+  <tabstop>delta_t</tabstop>
+  <tabstop>save</tabstop>
+ </tabstops>
  <resources>
   <include location="../usecad.qrc"/>
  </resources>
