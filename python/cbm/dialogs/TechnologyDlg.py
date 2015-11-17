@@ -1,13 +1,15 @@
-#coding:utf-8
+# -*- coding: utf-8 -*-
 
-import sys
+from BaseDialog import *
 from uipy.ui_technology_dlg import *
 
-class TechnologyDlg(QtGui.QDialog):  
-    def __init__(self,parent=None):  
-        QtGui.QDialog.__init__(self,parent)  
-        self.ui = Ui_technologyDlg()  
-        self.ui.setupUi(self)  
-        self.setFixedSize( self.width(),self.height())        
-    	#self.ui.reg.clicked.connect(self.reg) 
+class TechnologyDlg(BaseDialog):
+	def __init__(self,parent=None):
+		super(TechnologyDlg, self).__init__(parent)
+		self.ui = Ui_technologyDlg()
+		self.ui.setupUi(self)
+		self.initUi(self.ui) # 美化ui
+		self.setTitle(u"推荐煤层气（瓦斯）抽采技术")
+		self.setFixedSize(self.width(), self.height())		
+		#self.ui.reg.clicked.connect(self.reg) 
 

@@ -1,0 +1,171 @@
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file 'uifiles\reg_dlg.ui'
+#
+# Created by: PyQt4 UI code generator 4.11.4
+#
+# WARNING! All changes made in this file will be lost!
+
+from PyQt4 import QtCore, QtGui
+
+try:
+    _fromUtf8 = QtCore.QString.fromUtf8
+except AttributeError:
+    def _fromUtf8(s):
+        return s
+
+try:
+    _encoding = QtGui.QApplication.UnicodeUTF8
+    def _translate(context, text, disambig):
+        return QtGui.QApplication.translate(context, text, disambig, _encoding)
+except AttributeError:
+    def _translate(context, text, disambig):
+        return QtGui.QApplication.translate(context, text, disambig)
+
+class Ui_RegDialog(object):
+    def setupUi(self, RegDialog):
+        RegDialog.setObjectName(_fromUtf8("RegDialog"))
+        RegDialog.resize(421, 364)
+        self.widget_main = QtGui.QWidget(RegDialog)
+        self.widget_main.setGeometry(QtCore.QRect(0, 30, 421, 341))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.widget_main.setFont(font)
+        self.widget_main.setObjectName(_fromUtf8("widget_main"))
+        self.name = QtGui.QLineEdit(self.widget_main)
+        self.name.setGeometry(QtCore.QRect(100, 100, 291, 31))
+        self.name.setObjectName(_fromUtf8("name"))
+        self.mineName_label_4 = QtGui.QLabel(self.widget_main)
+        self.mineName_label_4.setGeometry(QtCore.QRect(30, 180, 71, 31))
+        self.mineName_label_4.setObjectName(_fromUtf8("mineName_label_4"))
+        self.city = QtGui.QLineEdit(self.widget_main)
+        self.city.setGeometry(QtCore.QRect(220, 180, 81, 31))
+        self.city.setObjectName(_fromUtf8("city"))
+        self.user_label = QtGui.QLabel(self.widget_main)
+        self.user_label.setGeometry(QtCore.QRect(31, 20, 54, 31))
+        self.user_label.setObjectName(_fromUtf8("user_label"))
+        self.mineName_label_6 = QtGui.QLabel(self.widget_main)
+        self.mineName_label_6.setGeometry(QtCore.QRect(310, 180, 81, 31))
+        self.mineName_label_6.setObjectName(_fromUtf8("mineName_label_6"))
+        self.username = QtGui.QLineEdit(self.widget_main)
+        self.username.setGeometry(QtCore.QRect(100, 20, 291, 31))
+        self.username.setObjectName(_fromUtf8("username"))
+        self.mineName_label_7 = QtGui.QLabel(self.widget_main)
+        self.mineName_label_7.setGeometry(QtCore.QRect(30, 220, 101, 31))
+        self.mineName_label_7.setObjectName(_fromUtf8("mineName_label_7"))
+        self.password = QtGui.QLineEdit(self.widget_main)
+        self.password.setGeometry(QtCore.QRect(100, 60, 291, 31))
+        self.password.setInputMethodHints(QtCore.Qt.ImhNone)
+        self.password.setObjectName(_fromUtf8("password"))
+        self.province = QtGui.QLineEdit(self.widget_main)
+        self.province.setGeometry(QtCore.QRect(100, 180, 71, 31))
+        self.province.setObjectName(_fromUtf8("province"))
+        self.mineName_label_3 = QtGui.QLabel(self.widget_main)
+        self.mineName_label_3.setGeometry(QtCore.QRect(220, 140, 71, 31))
+        self.mineName_label_3.setObjectName(_fromUtf8("mineName_label_3"))
+        self.mineName_label_8 = QtGui.QLabel(self.widget_main)
+        self.mineName_label_8.setGeometry(QtCore.QRect(290, 220, 111, 31))
+        self.mineName_label_8.setObjectName(_fromUtf8("mineName_label_8"))
+        self.base = QtGui.QComboBox(self.widget_main)
+        self.base.setGeometry(QtCore.QRect(100, 140, 101, 31))
+        self.base.setObjectName(_fromUtf8("base"))
+        self.coal_nums = QtGui.QLineEdit(self.widget_main)
+        self.coal_nums.setGeometry(QtCore.QRect(140, 220, 151, 31))
+        self.coal_nums.setObjectName(_fromUtf8("coal_nums"))
+        self.mineName_label_5 = QtGui.QLabel(self.widget_main)
+        self.mineName_label_5.setGeometry(QtCore.QRect(180, 180, 41, 31))
+        self.mineName_label_5.setObjectName(_fromUtf8("mineName_label_5"))
+        self.mineName_label = QtGui.QLabel(self.widget_main)
+        self.mineName_label.setGeometry(QtCore.QRect(31, 100, 71, 31))
+        self.mineName_label.setObjectName(_fromUtf8("mineName_label"))
+        self.mineName_label_2 = QtGui.QLabel(self.widget_main)
+        self.mineName_label_2.setGeometry(QtCore.QRect(30, 140, 71, 31))
+        self.mineName_label_2.setObjectName(_fromUtf8("mineName_label_2"))
+        self.reg = QtGui.QPushButton(self.widget_main)
+        self.reg.setGeometry(QtCore.QRect(120, 270, 181, 51))
+        self.reg.setObjectName(_fromUtf8("reg"))
+        self.password_label = QtGui.QLabel(self.widget_main)
+        self.password_label.setGeometry(QtCore.QRect(31, 60, 54, 31))
+        self.password_label.setObjectName(_fromUtf8("password_label"))
+        self.region = QtGui.QComboBox(self.widget_main)
+        self.region.setGeometry(QtCore.QRect(290, 140, 101, 31))
+        self.region.setObjectName(_fromUtf8("region"))
+        self.widget_title = QtGui.QWidget(RegDialog)
+        self.widget_title.setGeometry(QtCore.QRect(0, 0, 421, 31))
+        self.widget_title.setObjectName(_fromUtf8("widget_title"))
+        self.lab_Ico = QtGui.QLabel(self.widget_title)
+        self.lab_Ico.setGeometry(QtCore.QRect(0, 0, 31, 31))
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.lab_Ico.sizePolicy().hasHeightForWidth())
+        self.lab_Ico.setSizePolicy(sizePolicy)
+        self.lab_Ico.setMinimumSize(QtCore.QSize(30, 0))
+        self.lab_Ico.setAlignment(QtCore.Qt.AlignCenter)
+        self.lab_Ico.setObjectName(_fromUtf8("lab_Ico"))
+        self.lab_Title = QtGui.QLabel(self.widget_title)
+        self.lab_Title.setGeometry(QtCore.QRect(40, 0, 331, 31))
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.lab_Title.sizePolicy().hasHeightForWidth())
+        self.lab_Title.setSizePolicy(sizePolicy)
+        self.lab_Title.setStyleSheet(_fromUtf8("font: 10pt \"微软雅黑\";"))
+        self.lab_Title.setText(_fromUtf8(""))
+        self.lab_Title.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.lab_Title.setObjectName(_fromUtf8("lab_Title"))
+        self.btnMenu_Close = QtGui.QPushButton(self.widget_title)
+        self.btnMenu_Close.setGeometry(QtCore.QRect(380, 0, 40, 31))
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.btnMenu_Close.sizePolicy().hasHeightForWidth())
+        self.btnMenu_Close.setSizePolicy(sizePolicy)
+        self.btnMenu_Close.setMinimumSize(QtCore.QSize(40, 0))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.btnMenu_Close.setFont(font)
+        self.btnMenu_Close.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
+        self.btnMenu_Close.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.btnMenu_Close.setText(_fromUtf8(""))
+        self.btnMenu_Close.setIconSize(QtCore.QSize(32, 32))
+        self.btnMenu_Close.setFlat(True)
+        self.btnMenu_Close.setObjectName(_fromUtf8("btnMenu_Close"))
+
+        self.retranslateUi(RegDialog)
+        QtCore.QMetaObject.connectSlotsByName(RegDialog)
+        RegDialog.setTabOrder(self.username, self.password)
+        RegDialog.setTabOrder(self.password, self.name)
+        RegDialog.setTabOrder(self.name, self.base)
+        RegDialog.setTabOrder(self.base, self.region)
+        RegDialog.setTabOrder(self.region, self.province)
+        RegDialog.setTabOrder(self.province, self.city)
+        RegDialog.setTabOrder(self.city, self.coal_nums)
+        RegDialog.setTabOrder(self.coal_nums, self.reg)
+
+    def retranslateUi(self, RegDialog):
+        RegDialog.setWindowTitle(_translate("RegDialog", "注册新矿井", None))
+        self.name.setToolTip(_translate("RegDialog", "<html><head/><body><p>输入矿井名称</p></body></html>", None))
+        self.name.setWhatsThis(_translate("RegDialog", "<html><head/><body><p>用户名</p></body></html>", None))
+        self.mineName_label_4.setText(_translate("RegDialog", "所在地", None))
+        self.user_label.setText(_translate("RegDialog", "<html><head/><body><p>用户名</p></body></html>", None))
+        self.mineName_label_6.setText(_translate("RegDialog", "市（地区）", None))
+        self.username.setToolTip(_translate("RegDialog", "<html><head/><body><p>输入用户名</p></body></html>", None))
+        self.username.setWhatsThis(_translate("RegDialog", "<html><head/><body><p>用户名</p></body></html>", None))
+        self.mineName_label_7.setText(_translate("RegDialog", "开采煤层编号", None))
+        self.password.setToolTip(_translate("RegDialog", "<html><head/><body><p>输入用户密码</p></body></html>", None))
+        self.password.setWhatsThis(_translate("RegDialog", "<html><head/><body><p>用户名</p></body></html>", None))
+        self.mineName_label_3.setText(_translate("RegDialog", "所在矿区", None))
+        self.mineName_label_8.setText(_translate("RegDialog", "（用空格隔开）", None))
+        self.mineName_label_5.setText(_translate("RegDialog", "省", None))
+        self.mineName_label.setText(_translate("RegDialog", "矿井名称", None))
+        self.mineName_label_2.setText(_translate("RegDialog", "煤炭基地", None))
+        self.reg.setText(_translate("RegDialog", "注册 && 确认", None))
+        self.password_label.setText(_translate("RegDialog", "<html><head/><body><p>密 码</p></body></html>", None))
+        self.lab_Ico.setText(_translate("RegDialog", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'SimSun\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", None))
+
+import usecad_rc

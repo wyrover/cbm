@@ -1,6 +1,6 @@
-#coding:utf-8
+# -*- coding: utf-8 -*-
 
-from uipy.ui_regdialog import *
+from uipy.ui_reg_dlg import *
 
 from rpc import CbmUtil, SQLClientHelper, CbmClientHelper
 # from cbm.ttypes import *
@@ -8,10 +8,10 @@ from rpc import CbmUtil, SQLClientHelper, CbmClientHelper
 import DataHelper
 import UiHelper
 
-class RegDiaolog(QtGui.QDialog):  
+class RegDlg(QtGui.QDialog):
 	def __init__(self,parent=None):
-		super(RegDiaolog, self).__init__(parent)
-		self.ui = Ui_RegDialog()
+		super(RegDlg, self).__init__(parent)
+		self.ui = Ui_reg_dlg()
 		self.ui.setupUi(self)
 		self.ui.password.setEchoMode(QtGui.QLineEdit.Password)
 		self.ui.reg.clicked.connect(self.onReg)

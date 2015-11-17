@@ -1,6 +1,8 @@
-#coding:utf-8
+# -*- coding: utf-8 -*-
 
+from BaseDialog import *
 from uipy.ui_high_drilling_design_dlg import *
+
 from HighDrillingSiteDlg import *
 from HighDrillingPoreDlg import *
 
@@ -12,11 +14,13 @@ import UiHelper
 
 from math import sqrt, pow, sin, cos, tan, radians
 
-class HighDrillingDesignDlg(QtGui.QDialog):  
+class HighDrillingDesignDlg(BaseDialog):
 	def __init__(self, mine_id=-1, parent=None):
 		super(HighDrillingDesignDlg, self).__init__(parent)
 		self.ui = Ui_high_drilling_design_dlg()
 		self.ui.setupUi(self)
+		self.initUi(self.ui) # 美化ui
+		self.setTitle(u"高位抽采钻场钻孔设计")
 		self.setFixedSize(self.width(),self.height())
 		# self.ui.abc.setFocusPolicy(Qt.NoFocus);
 		# 初始化abc和bcd表格的样式

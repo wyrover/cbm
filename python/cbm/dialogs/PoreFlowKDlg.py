@@ -1,16 +1,18 @@
 #coding:utf-8
 
-import sys
+from BaseDialog import *
 from uipy.ui_pore_flow_K_dlg import *
 
-class PoreFlowKDlg(QtGui.QDialog):  
-    def __init__(self,parent=None):  
-        QtGui.QDialog.__init__(self,parent)  
-        self.ui = Ui_pore_flow_K_dlg()  
-        self.ui.setupUi(self)  
-        self.setFixedSize( self.width(),self.height())
-        self.ui.save.clicked.connect(self.save)
+class PoreFlowKDlg(BaseDialog):
+	def __init__(self,parent=None):
+		super(PoreFlowKDlg, self).__init__(parent)
+		self.ui = Ui_pore_flow_K_dlg()
+		self.ui.setupUi(self)
+		self.initUi(self.ui) # ÃÀ»¯ui
+		self.setTitle(u"Êµ¼Ê¿×°åÁ÷Á¿ÌØĞÔÏµÊı¼ÆËã")
+		self.setFixedSize(self.width(), self.height())
+		self.ui.save.clicked.connect(self.onSave)
 
-    def save(self):
-    	#åšä¿å­˜æ“ä½œ
-        self.accept()
+	def onSave(self):
+		#×ö±£´æ²Ù×÷
+		self.accept()

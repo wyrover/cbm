@@ -1,5 +1,6 @@
-#coding:utf-8
+# -*- coding: utf-8 -*-
 
+from BaseDialog import *
 from uipy.ui_high_drilling_pore_dlg import *
 
 from rpc import CbmUtil, SQLClientHelper, CbmClientHelper
@@ -10,12 +11,14 @@ import UiHelper
 
 from math import atan, degrees
 
-class HighDrillingPoreDlg(QtGui.QDialog):  
-	def __init__(self, work_surf_id=-1, parent=None):  
-		QtGui.QDialog.__init__(self,parent)  
+class HighDrillingPoreDlg(BaseDialog):
+	def __init__(self, work_surf_id=-1, parent=None):
+		super(HighDrillingPoreDlg, self).__init__(parent)
 		self.ui = Ui_high_drilling_pore_dlg()  
-		self.ui.setupUi(self)  
-		self.setFixedSize( self.width(),self.height())
+		self.ui.setupUi(self)
+		self.initUi(self.ui) # 美化ui
+		self.setTitle(u"高位抽采钻孔有效布设范围计算")
+		self.setFixedSize(self.width(), self.height())
 		self.ui.save.clicked.connect(self.onSave)
 		self.ui.cacl.clicked.connect(self.onCacl)
 		# 待设计的工作面

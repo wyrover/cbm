@@ -4,7 +4,7 @@
 # from rpc import CbmUtil, SQLClientHelper, CbmClientHelper
 # from cbm.ttypes import *
 
-from dialogs import NameDlg
+from dialogs import NameDlg, CbmMessageBox
 from PyQt4 import QtCore, QtGui
 
 # 显示或隐藏窗口
@@ -17,14 +17,15 @@ def ShowWidget(widget, bShow=True):
 		# widget.setVisible(bShow)
 
 # 自定义消息对话框
-def MessageBox(item_text, question=False):
+def MessageBox(msg_text, question=False):
+	msgbox = CbmMessageBox.CbmMessageBox()
 	if not question:
-		QtGui.QMessageBox.information(None, u"提示",item_text)
+		msgbox.SetMessage(msg_text, CbmMessageBox.MsgBoxType.INFO)
+		msgbox.exec_()
 		return True
 	else:
-		reply = QtGui.QMessageBox.question(
-		None, u'确认', item_text, QtGui.QMessageBox.Yes, QtGui.QMessageBox.No)
-		return reply == QtGui.QMessageBox.Yes
+		msgbox.SetMessage(msg_text, CbmMessageBox.MsgBoxType.QUESTION)
+		return msgbox.exec_() == 1
 
 # 弹出对话框，请求用户输入一个"名称""
 def GetNameFromDlg(dlg_title):

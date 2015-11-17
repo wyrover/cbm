@@ -1,6 +1,8 @@
-#coding:utf-8
+# -*- coding: utf-8 -*-
 
+from BaseDialog import *
 from uipy.ui_ws_gas_flow_predict_dlg import *
+
 from WsGasFlowPredictWorkDlg import *
 from WsGasFlowPredictAdjDlg import *
 
@@ -10,12 +12,14 @@ from cbm.ttypes import *
 import DataHelper
 import UiHelper
 
-class WsGasFlowPredictDlg(QtGui.QDialog):  
-	def __init__(self, mine_id=-1, parent=None):  
-		QtGui.QDialog.__init__(self,parent)  
-		self.ui = Ui_ws_gas_flow_predict_dlg()  
-		self.ui.setupUi(self)  
-		self.setFixedSize( self.width(),self.height())
+class WsGasFlowPredictDlg(BaseDialog):
+	def __init__(self, mine_id=-1, parent=None):
+		super(WsGasFlowPredictDlg, self).__init__(parent)
+		self.ui = Ui_ws_gas_flow_predict_dlg()
+		self.ui.setupUi(self)
+		self.initUi(self.ui) # 美化ui
+		self.setTitle(u"回采工作面瓦斯涌出量预测")
+		self.setFixedSize(self.width(), self.height())
 		self.ui.save.clicked.connect(self.onSave)
 		self.ui.qr1_cacl.clicked.connect(self.onQr1Cacl)
 		self.ui.qr2_cacl.clicked.connect(self.onQr2Cacl)

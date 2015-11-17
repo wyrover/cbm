@@ -1,5 +1,6 @@
-#coding:utf-8
+# -*- coding: utf-8 -*-
 
+from BaseDialog import *
 from uipy.ui_difficult_eval_dlg import *
 
 from rpc import CbmUtil, SQLClientHelper, CbmClientHelper
@@ -8,12 +9,14 @@ from cbm.ttypes import *
 import UiHelper
 import DataHelper
 
-class DifficultEvalDlg(QtGui.QDialog):  
+class DifficultEvalDlg(BaseDialog):
 	def __init__(self, mine_id=-1, parent=None):
 		super(DifficultEvalDlg, self).__init__(parent)
 		self.ui = Ui_difficult_eval_dlg()
 		self.ui.setupUi(self)
-		self.setFixedSize( self.width(),self.height())
+		self.initUi(self.ui) # 美化ui
+		self.setTitle(u"煤层气抽采难易程度评价")
+		self.setFixedSize(self.width(), self.height())
 		#在窗口上为"煤层渗透率"控件安装过滤器
 		self.ui.permeability_k.installEventFilter(self)
 		self.ui.permeability_lambda.installEventFilter(self) ##在窗口上为"透气性系数"控件安装过滤器

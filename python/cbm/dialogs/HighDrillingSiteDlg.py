@@ -1,5 +1,6 @@
-#coding:utf-8
+# -*- coding: utf-8 -*-
 
+from BaseDialog import *
 from uipy.ui_high_drilling_site_dlg import *
 
 from rpc import CbmUtil, SQLClientHelper, CbmClientHelper
@@ -8,12 +9,14 @@ from cbm.ttypes import *
 import DataHelper
 import UiHelper
 
-class HighDrillingSiteDlg(QtGui.QDialog):
+class HighDrillingSiteDlg(BaseDialog):
 	def __init__(self, work_surf_id=-1, parent=None):
 		super(HighDrillingSiteDlg, self).__init__(parent)
-		self.ui = Ui_high_drilling_site_dlg()  
-		self.ui.setupUi(self)  
-		self.setFixedSize( self.width(),self.height())
+		self.ui = Ui_high_drilling_site_dlg()
+		self.ui.setupUi(self)
+		self.initUi(self.ui) # 美化ui
+		self.setTitle(u"高位抽采钻场范围计算")
+		self.setFixedSize(self.width(), self.height())
 		self.ui.save.clicked.connect(self.onSave)
 		# 待设计的工作面
 		self.work_surf_id = work_surf_id

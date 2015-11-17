@@ -3,7 +3,7 @@
 from uipy.ui_mainwin import *
 from dialogs.LoginDlg import *
 from dialogs.SampleManageDlg import *
-from dialogs.MineDeginDlg import *
+from dialogs.MineDesignDlg import *
 from dialogs.MineBaseParamDlg import *
 from dialogs.DifficultEvalDlg import *
 from dialogs.MineGasReservesPredictDlg import *
@@ -42,8 +42,9 @@ class MainWindow(QtGui.QMainWindow):
 		self.createActions()
 		self.createMenusToolBars()
 		self.createStatusBar()
-		self.setWindowTitle(u"井下煤层气规模化抽采计算机辅助设计（CAD）系统——数据录入模块")
+		self.setWindowTitle(u"井下煤层气规模化抽采计算机辅助设计系统")
 		self.setWindowIcon(QtGui.QIcon(':/images/cbm.ico'))
+		self.setStyleSheet(u"font: 11pt \"微软雅黑\";") # 增加菜单栏的字体
 		palette1 = QtGui.QPalette()
 		#palette1.setColor(self.backgroundRole(), QColor(192,253,123))#设置背景颜色
 		palette1.setBrush(self.backgroundRole(), QtGui.QBrush(QtGui.QPixmap(':/images/bg.png')))
@@ -69,7 +70,7 @@ class MainWindow(QtGui.QMainWindow):
 
 	def login(self):
 		"""返回True或False"""
-		dialog = LoginDialog()
+		dialog = LoginDlg()
 		if dialog.exec_():
 			self.loginAction.setEnabled(False)
 			self.logoutAction.setEnabled(True)
@@ -127,7 +128,7 @@ class MainWindow(QtGui.QMainWindow):
 
 	def deginMine(self):
 		# 启动矿井设计对话框
-		self.try_run(MineDeginDlg, Authority.BOTH)
+		self.try_run(MineDesignDlg, Authority.BOTH)
 
 	def dragTec(self):
 		# 启动辅助决策对话框
@@ -290,7 +291,7 @@ class MainWindow(QtGui.QMainWindow):
 
 def loginFirst():
 	"""返回True或False"""
-	dialog = LoginDialog()
+	dialog = LoginDlg()
 	if dialog.exec_():
 		return True
 	else:
@@ -298,12 +299,16 @@ def loginFirst():
 
 # 设置皮肤样式
 def SetStyle(app, styleName):
+	# 从css文件读取样式
 	file = QtCore.QFile(QtCore.QString(":/images/%1.css").arg(styleName))
 	file.open(QtCore.QFile.ReadOnly)
 	qss = QtCore.QString(file.readAll())
-	print unicode(qss)
+	file.close()
+
+	# app全局设置样式
 	app.setStyleSheet(qss)
 	app.setPalette(QtGui.QPalette(QtGui.QColor("#F0F0F0")))
+
 
 # 设置编码为UTF8
 def SetUTF8Code(app):

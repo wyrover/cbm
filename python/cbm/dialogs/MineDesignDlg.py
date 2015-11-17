@@ -1,8 +1,9 @@
-#coding:utf-8
+# -*- coding: utf-8 -*-
 
-from uipy.ui_mine_degin_dlg import *
+from BaseDialog import *
+from uipy.ui_mine_design_dlg import *
 
-from CoalDeginDlg import *
+from CoalDesignDlg import *
 
 from rpc import CbmUtil, SQLClientHelper, CbmClientHelper
 from cbm.ttypes import *
@@ -10,12 +11,14 @@ from cbm.ttypes import *
 import UiHelper
 import DataHelper
 
-class MineDeginDlg(QtGui.QDialog):  
+class MineDesignDlg(BaseDialog):
 	def __init__(self, mine_id=-1, parent=None):
-		super(MineDeginDlg, self).__init__(parent)
-		self.ui = Ui_mine_degin_dlg()
+		super(MineDesignDlg, self).__init__(parent)
+		self.ui = Ui_mine_design_dlg()
 		self.ui.setupUi(self)
-		self.setFixedSize( self.width(),self.height())
+		self.initUi(self.ui) # 美化ui
+		self.setTitle(u"矿井设计")
+		self.setFixedSize(self.width(), self.height())
 		self.ui.add_coal.clicked.connect(self.onAddCoal)
 		self.ui.add_work_area.clicked.connect(self.onAddWorkArea)
 		self.ui.add_work_surf.clicked.connect(self.onAddWorkSurf)
@@ -251,7 +254,7 @@ class MineDeginDlg(QtGui.QDialog):
 		coal_id, ok = self.ui.coal.itemData(index).toInt()
 
 		# 显示煤层设计对话卡U给你
-		dlg = CoalDeginDlg(coal_id)
+		dlg = CoalDesignDlg(coal_id)
 		dlg.exec_()
 
 	def onWorkAreaDetail(self):

@@ -1,46 +1,49 @@
 #coding:utf-8
 
-import sys
+from BaseDialog import *
 from uipy.ui_pore_flow_dlg import *
+
 from PoreFlowKDlg import *
 from PoreFlowbDlg import *
 from PoreFlowDeltaPDlg import *
 from PoreFlowDeltaTDlg import *
 
-class PoreFlowDlg(QtGui.QDialog):  
-    def __init__(self, mine_id=-1, parent=None):
-        super(PoreFlowDlg, self).__init__(parent)
-        self.ui = Ui_pore_flow_dlg()  
-        self.ui.setupUi(self)  
-        self.setFixedSize( self.width(),self.height())
-        self.ui.save.clicked.connect(self.save)
-        self.ui.cacl.clicked.connect(self.cacl)
-        self.ui.K_cacl.clicked.connect(self.K_cacl)
-        self.ui.b_cacl.clicked.connect(self.b_cacl)
-        self.ui.delta_p_cacl.clicked.connect(self.delta_p_cacl)
-        self.ui.delta_T_cacl.clicked.connect(self.delta_T_cacl)
-        # å¾…è®¾è®¡çš„çŸ¿äº•
-        self.mine_id = mine_id
-        
-    def save(self):
-    	#åšä¿å­˜æ“ä½œ
-        self.accept()
+class PoreFlowDlg(BaseDialog):
+	def __init__(self, mine_id=-1, parent=None):
+		super(PoreFlowDlg, self).__init__(parent)
+		self.ui = Ui_pore_flow_dlg()
+		self.ui.setupUi(self)
+		self.initUi(self.ui) # ÃÀ»¯ui
+		self.setTitle(u"¿×°åÁ÷Á¿¼ÆËã")
+		self.setFixedSize(self.width(), self.height())
+		self.ui.save.clicked.connect(self.onSave)
+		self.ui.cacl.clicked.connect(self.onCacl)
+		self.ui.K_cacl.clicked.connect(self.onKCacl)
+		self.ui.b_cacl.clicked.connect(self.onBCacl)
+		self.ui.delta_p_cacl.clicked.connect(self.onDeltaPCacl)
+		self.ui.delta_t_cacl.clicked.connect(self.onDeltaTCacl)
+		# ´ıÉè¼ÆµÄ¿ó¾®
+		self.mine_id = mine_id
+		
+	def onSave(self):
+		#×ö±£´æ²Ù×÷
+		self.accept()
 
-    def cacl(self):
-        pass
+	def onCacl(self):
+		pass
 
-    def K_cacl(self):
-        dlg = PoreFlowKDlg()
-        dlg.exec_()
+	def onKCacl(self):
+		dlg = PoreFlowKDlg()
+		dlg.exec_()
 
-    def b_cacl(self):
-        dlg = PoreFlowbDlg()
-        dlg.exec_()
+	def onBCacl(self):
+		dlg = PoreFlowbDlg()
+		dlg.exec_()
 
-    def delta_p_cacl(self):
-        dlg = PoreFlowDeltaPDlg()
-        dlg.exec_()
+	def onDeltaPCacl(self):
+		dlg = PoreFlowDeltaPDlg()
+		dlg.exec_()
 
-    def delta_T_cacl(self):
-        dlg = PoreFlowDeltaTDlg()
-        dlg.exec_()
+	def onDeltaTCacl(self):
+		dlg = PoreFlowDeltaTDlg()
+		dlg.exec_()

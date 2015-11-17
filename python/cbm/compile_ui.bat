@@ -10,10 +10,11 @@ rem 编译qrc资源
 %RCC% -o uipy\usecad_rc.py usecad.qrc
 
 rem 编译ui文件
+python %UIC_PY% -o uipy\ui_cbm_messagebox.py uifiles\cbm_messagebox.ui
 python %UIC_PY% -o uipy\ui_technology_dlg.py uifiles\technology_dlg.ui
 python %UIC_PY% -o uipy\ui_tech_mode_dlg.py uifiles\tech_mode_dlg.ui
 python %UIC_PY% -o uipy\ui_sample_manage.py uifiles\sample_manage.ui
-python %UIC_PY% -o uipy\ui_mine_degin_dlg.py uifiles\mine_degin_dlg.ui
+python %UIC_PY% -o uipy\ui_mine_design_dlg.py uifiles\mine_design_dlg.ui
 python %UIC_PY% -o uipy\ui_name_dlg.py uifiles\name_dlg.ui
 python %UIC_PY% -o uipy\ui_coal_design_dlg.py uifiles\coal_design_dlg.ui
 python %UIC_PY% -o uipy\ui_mine_base_param_dlg.py uifiles\mine_base_param_dlg.ui
@@ -46,7 +47,8 @@ python %UIC_PY% -o uipy\ui_gas_design_p1_2_dlg.py uifiles\gas_design_p1_2_dlg.ui
 python %UIC_PY% -o uipy\ui_gas_design_p2_1_dlg.py uifiles\gas_design_p2_1_dlg.ui
 python %UIC_PY% -o uipy\ui_gas_design_p2_3_dlg.py uifiles\gas_design_p2_3_dlg.ui
 python %UIC_PY% -o uipy\ui_mainwin.py uifiles\mainwindow.ui
-python %UIC_PY% -o uipy\ui_regdialog.py uifiles\regdialog.ui
+python %UIC_PY% -o uipy\ui_reg_dlg.py uifiles\reg_dlg.ui
+python %UIC_PY% -o uipy\ui_login_dlg.py uifiles\login_dlg.ui
 
 rem 运行主界面
 rem python main.py

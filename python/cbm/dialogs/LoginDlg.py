@@ -1,8 +1,9 @@
-# -*- coding: utf-8 -*-  
+# -*- coding: utf-8 -*-
 
-from PyQt4 import QtGui,QtCore  
-from RegDialog import *
-# import ctypes
+from BaseDialog import *
+from uipy.ui_login_dlg import *
+
+from RegDlg import *
 
 from rpc import CbmUtil, SQLClientHelper, CbmClientHelper
 from cbm.ttypes import *
@@ -19,48 +20,18 @@ LOGIN_MESSAGE = {
 	1:u"恭喜您,登录成功!"
 }
 
-class LoginDialog(QtGui.QDialog):  
+class LoginDlg(BaseDialog):
 	def __init__(self, parent=None):
-		super(LoginDialog, self).__init__(parent)
-		self.setWindowTitle(u'登录')
-		self.resize(300,150)
-	
-		self.nameEdit =QtGui.QLineEdit(self)  
-		self.nameEdit.setPlaceholderText(u'用户名')  
-	
-		self.passwordEdit =QtGui.QLineEdit(self)  
-		self.passwordEdit.setEchoMode(QtGui.QLineEdit.Password)  
-		self.passwordEdit.setPlaceholderText(u'密码')  
-			
-		self.loginBtn =QtGui.QPushButton(u'登录',self)  
-		self.regBtn =QtGui.QPushButton(u'注册',self)  
-			
-		self.loginBtn.clicked.connect(self.onLogin)  
-		self.regBtn.clicked.connect(self.onReg)
-	
-		layout =QtGui.QVBoxLayout()  
-		layout.addWidget(self.nameEdit)  
-		layout.addWidget(self.passwordEdit)  
-			
-		# 放一个间隔对象美化布局  
-		spacerItem =QtGui.QSpacerItem(20,48,QtGui.QSizePolicy.Minimum,QtGui.QSizePolicy.Expanding)  
-		layout.addItem(spacerItem)  
-			
-		# 按钮布局  
-		buttonLayout =QtGui.QHBoxLayout()  
-		# 左侧放一个间隔  
-		spancerItem2 =QtGui.QSpacerItem(40,20,QtGui.QSizePolicy.Expanding,QtGui.QSizePolicy.Minimum)  
-		buttonLayout.addItem(spancerItem2)  
-		buttonLayout.addWidget(self.loginBtn)  
-		buttonLayout.addWidget(self.regBtn)  
-			
-		layout.addLayout(buttonLayout)  
-			
-		self.setLayout(layout)  
-		self.setWindowIcon(QtGui.QIcon(':/images/cbm.ico'))
+		super(LoginDlg, self).__init__(parent)
+		self.ui = Ui_login_dlg()
+		self.ui.setupUi(self)
+		self.initUi(self.ui)  # 美化ui
+		self.setTitle(u"登录")
+		self.ui.login.clicked.connect(self.onLogin)
+		self.ui.reg.clicked.connect(self.onReg)
 		#任务栏图标
 		# ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID("myappid")
-		self.setFixedSize(self.width(), self.height())
+		# self.setFixedSize(self.width(), self.height())
 
 	def verify_user(self, uname, pwd):
 		ret = -2
@@ -92,8 +63,8 @@ class LoginDialog(QtGui.QDialog):
 				DataHelper.sql_switch_user(account_id)
 
 	def onLogin(self):
-		uname = unicode(self.nameEdit.text()).encode('utf-8')
-		pwd = unicode(self.passwordEdit.text()).encode('utf-8')
+		uname = unicode(self.ui.username.text()).encode('utf-8')
+		pwd = unicode(self.ui.password.text()).encode('utf-8')
 		#验证用户名和密码
 		ret = self.verify_user(uname, pwd)
 		# 验证通过
@@ -107,6 +78,7 @@ class LoginDialog(QtGui.QDialog):
 		# 	self.reject()
 	
 	def onReg(self):
-		regDlg = RegDiaolog()
-		if regDlg.exec_():
-			self.nameEdit.setText(regDlg.reg_user_name)
+		# 启动注册对话框
+		dlg = RegDlg()
+		if dlg.exec_():
+			self.nameEdit.setText(dlg.reg_user_name)

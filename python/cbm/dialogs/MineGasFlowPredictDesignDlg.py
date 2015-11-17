@@ -1,5 +1,6 @@
-#coding:utf-8
+# -*- coding: utf-8 -*-
 
+from BaseDialog import *
 from uipy.ui_mine_gas_flow_predict_design_dlg import *
 
 from rpc import CbmUtil, SQLClientHelper, CbmClientHelper
@@ -8,12 +9,14 @@ from cbm.ttypes import *
 import UiHelper
 import DataHelper
 
-class MineGasFlowPredictDesignDlg(QtGui.QDialog):
+class MineGasFlowPredictDesignDlg(BaseDialog):
 	def __init__(self, work_area_id=-1, parent=None):
 		super(MineGasFlowPredictDesignDlg, self).__init__(parent)
-		self.ui = Ui_mine_gas_flow_predict_design_dlg()  
-		self.ui.setupUi(self)  
-		self.setFixedSize( self.width(),self.height())
+		self.ui = Ui_mine_gas_flow_predict_design_dlg()
+		self.ui.setupUi(self)
+		self.initUi(self.ui) # 美化ui
+		self.setTitle(u"工作面和掘进面瓦斯涌出量相关参数及设计")
+		self.setFixedSize(self.width(), self.height())
 		self.ui.save.clicked.connect(self.onSave)
 		self.connect(self.ui.work_surf, QtCore.SIGNAL('currentIndexChanged(int)'), self.onWorkSurfChanged)
 		self.connect(self.ui.drilling_surf, QtCore.SIGNAL('currentIndexChanged(int)'), self.onDrillingSurfChanged)

@@ -1,6 +1,8 @@
-#coding:utf-8
+# -*- coding: utf-8 -*-
 
+from BaseDialog import *
 from uipy.ui_mine_gas_reserves_predict_dlg import *
+
 from CoalParamDlg import *
 from MineGasReservesPredictDlg1 import *
 from MineGasReservesPredictDlg2 import *
@@ -11,12 +13,14 @@ from cbm.ttypes import *
 import UiHelper
 import DataHelper
 
-class MineGasReservesPredictDlg(QtGui.QDialog):
+class MineGasReservesPredictDlg(BaseDialog):
 	def __init__(self, mine_id=-1, parent=None):
 		super(MineGasReservesPredictDlg, self).__init__(parent)
-		self.ui = Ui_mine_gas_reserves_predict_dlg()  
-		self.ui.setupUi(self)  
-		self.setFixedSize( self.width(),self.height())
+		self.ui = Ui_mine_gas_reserves_predict_dlg()
+		self.ui.setupUi(self)
+		self.initUi(self.ui) # 美化ui
+		self.setTitle(u"矿井瓦斯储量及可抽量预测")
+		self.setFixedSize(self.width(), self.height())
 		self.ui.gas_cacl.clicked.connect(self.onGasCacl)
 		self.ui.pump_wc_cacl.clicked.connect(self.onPumpWcCacl)
 		self.ui.ok.clicked.connect(self.onOk)
