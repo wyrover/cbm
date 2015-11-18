@@ -44,11 +44,19 @@ class MainWindow(QtGui.QMainWindow):
 		self.createStatusBar()
 		self.setWindowTitle(u"井下煤层气规模化抽采计算机辅助设计系统")
 		self.setWindowIcon(QtGui.QIcon(':/images/cbm.ico'))
-		self.setStyleSheet(u"font: 11pt \"微软雅黑\";") # 增加菜单栏的字体
-		palette1 = QtGui.QPalette()
-		#palette1.setColor(self.backgroundRole(), QColor(192,253,123))#设置背景颜色
-		palette1.setBrush(self.backgroundRole(), QtGui.QBrush(QtGui.QPixmap(':/images/bg.png')))
-		self.setPalette(palette1)
+		# 增大菜单栏的字体
+		self.setStyleSheet(u"font: 11pt \"微软雅黑\";")
+		# 设置背景图片的几种方法(推荐用样式CSS)
+		# http://blog.chinaunix.net/uid-25749806-id-3522787.html
+		# http://blog.csdn.net/yuanzhangmei1/article/details/7698417
+		# 方法1: 用palette设置背景
+		palette = QtGui.QPalette()
+		# palette.setColor(self.backgroundRole(), QColor(192,253,123))#设置背景颜色
+		palette.setBrush(self.backgroundRole(), QtGui.QBrush(QtGui.QPixmap(':/images/bg.png')))
+		self.setPalette(palette)
+		# 方法2: 用CSS设置背景
+		# self.setStyleSheet(u"QWidget#centralwidget{ border-image : url(:/images/bg.png)};" );
+		
 	
 	def real_logout(self):
 		# 注销(清空sys_info表)
@@ -286,7 +294,7 @@ class MainWindow(QtGui.QMainWindow):
 			# toolBars[menu].addAction(action)
 
 	def createStatusBar(self):
-		self.statusBar().showMessage(u"欢迎使用\"井下煤层气规模化抽采计算机辅助设计（CAD）系统——数据录入模块\"")
+		self.statusBar().showMessage(u"欢迎使用\"井下煤层气规模化抽采计算机辅助设计系统\"")
 
 
 def loginFirst():
