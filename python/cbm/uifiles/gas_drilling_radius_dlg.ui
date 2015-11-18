@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>drilling_radius_dlg</class>
- <widget class="QWidget" name="drilling_radius_dlg">
+ <class>gas_drilling_radius_dlg</class>
+ <widget class="QWidget" name="gas_drilling_radius_dlg">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>801</width>
-    <height>432</height>
+    <height>420</height>
    </rect>
   </property>
   <property name="font">
@@ -28,15 +28,15 @@
      <x>0</x>
      <y>30</y>
      <width>801</width>
-     <height>401</height>
+     <height>391</height>
     </rect>
    </property>
    <widget class="QPushButton" name="cacl">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>350</y>
-      <width>91</width>
+      <x>510</x>
+      <y>340</y>
+      <width>101</width>
       <height>41</height>
      </rect>
     </property>
@@ -132,8 +132,8 @@
    <widget class="QPushButton" name="save">
     <property name="geometry">
      <rect>
-      <x>400</x>
-      <y>350</y>
+      <x>650</x>
+      <y>340</y>
       <width>101</width>
       <height>41</height>
      </rect>
@@ -361,13 +361,13 @@
       </rect>
      </property>
      <property name="text">
-      <string>抽采负压后，较自然瓦斯涌出量的增大值K1</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;抽采负压后，较自然瓦斯涌出量的增大值K&lt;span style=&quot; vertical-align:sub;&quot;&gt;1&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QLabel" name="mineName_label_8">
      <property name="geometry">
       <rect>
-       <x>210</x>
+       <x>230</x>
        <y>30</y>
        <width>101</width>
        <height>25</height>
@@ -380,7 +380,7 @@
     <widget class="QLineEdit" name="l">
      <property name="geometry">
       <rect>
-       <x>310</x>
+       <x>330</x>
        <y>30</y>
        <width>61</width>
        <height>25</height>
@@ -498,7 +498,7 @@
     <widget class="QLabel" name="label_4">
      <property name="geometry">
       <rect>
-       <x>380</x>
+       <x>400</x>
        <y>30</y>
        <width>31</width>
        <height>25</height>
@@ -586,6 +586,19 @@
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;(m&lt;span style=&quot; vertical-align:super;&quot;&gt;3&lt;/span&gt;)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
+   </widget>
+   <widget class="QLabel" name="mineName_label_15">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>350</y>
+      <width>471</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; color:#00ffff;&quot;&gt;根据规定要求:抽采率η应大于等于0.3；抽采后煤层残存瓦斯含量Wc应小于等于8&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
    </widget>
   </widget>
   <widget class="QWidget" name="widget_title" native="true">

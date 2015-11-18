@@ -24,8 +24,8 @@ class HighDrillingDesignDlg(BaseDialog):
 		self.setFixedSize(self.width(),self.height())
 		# self.ui.abc.setFocusPolicy(Qt.NoFocus);
 		# 初始化abc和bcd表格的样式
-		self.initTableStyle(self.ui.abc)
-		self.initTableStyle(self.ui.bcd)
+		UiHelper.InitTableStyle(self.ui.abc)
+		UiHelper.InitTableStyle(self.ui.bcd)
 		self.ui.save.clicked.connect(self.onSave)
 		self.ui.drill_site.clicked.connect(self.onDrillSite)
 		self.ui.drill_pore.clicked.connect(self.onDrillPore)
@@ -34,21 +34,6 @@ class HighDrillingDesignDlg(BaseDialog):
 		self.mine_id = mine_id
 		# 初始化
 		self.init()
-
-	def initTableStyle(self, table):
-		# 隐藏表头
-		table.verticalHeader().setHidden(True)
-		# 单行选择
-		table.setSelectionBehavior(QtGui.QAbstractItemView.SelectRows)
-		# table.setSelectionMode(QtGui.QAbstractItemView.NoSelection)
-		# 不允许调整单元格大小
-		table.horizontalHeader().setResizeMode(QtGui.QHeaderView.Fixed)
-		# 拉伸???
-		table.horizontalHeader().setStretchLastSection(True)
-		# 禁止编辑
-		table.setEditTriggers(QtGui.QAbstractItemView.NoEditTriggers)
-		# 不显示网格
-		table.setShowGrid(False)
 
 	def init(self):
 		# 填充工作面列表

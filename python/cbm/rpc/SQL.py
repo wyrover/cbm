@@ -171,6 +171,7 @@ class DesignEvalUnitPartition(Base):
     __tablename__ = 'design_eval_unit_partition'
 
     id = Column(Integer, primary_key=True)
+    work_surf_id = Column(ForeignKey(u'work_surf.id', ondelete=u'CASCADE'), index=True)
     name = Column(String(255))
     comment = Column(String(255))
     l2 = Column(Numeric(8, 2))
@@ -181,6 +182,8 @@ class DesignEvalUnitPartition(Base):
     r = Column(Numeric(8, 2))
     t = Column(Numeric(8, 2))
     v = Column(Numeric(8, 2))
+
+    work_surf = relationship(u'WorkSurf')
 
 
 class DesignGoafTechnology(Base):

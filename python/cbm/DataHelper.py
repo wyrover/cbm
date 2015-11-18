@@ -1,7 +1,7 @@
 #coding:utf-8
 
 import datetime
-from math import sqrt, pow, exp, sin, cos, tan, radians
+from math import sqrt, pow, exp, sin, cos, tan, radians, log10
 
 from rpc import CbmUtil, SQLClientHelper, CbmClientHelper
 from cbm.ttypes import *
@@ -10,6 +10,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 # from scipy import stats
+from scipy.interpolate import griddata
 # import statsmodels.api as sm
 import matplotlib.pyplot as plt
 
@@ -153,6 +154,52 @@ def permeability_lambda_to_k(p_lambda):
 def permeability_k_to_lambda(p_k):
 	return p_k / 0.025
 
+# 计算评价单元的距离
+def Lf(Ln, T, V):
+	c1, c2 = 3.0/7.0, 10.0/7.0
+	Ln_1 = Ln - c2*T*V
+	if Ln_1 <= 0:
+		return []
+
+	Li = [Ln, Ln_1]
+	while True:
+		Ln_1 = c2*Ln_1-c1*Ln - c1*T*V
+		if Ln_1 > 0:
+			Li.append(Ln_1)
+		else:
+			break
+	Li.reverse()
+	return Li
+
+def design_eval_unit(partition_id):
+	# 查询得到评价单元划分
+	deup = SQLClientHelper.GetDesignEvalUnitPartitionById(partition_id)
+	if deup.id <= 0: return
+	# 删除所有与划分id号关联的评价单元
+	eval_unit_id_lists = SQLClientHelper.GetDesignEvalUnitIdListByForeignKey('design_eval_unit_partition_id', partition_id)
+	SQLClientHelper.DeleteMoreDesignEvalUnit(eval_unit_id_lists)
+
+	# 工作面顺槽长度Ln、巷道掘进速度V、巷道终点钻孔的抽采时间T、抽采半径R
+	Ln, V, T, R = deup.l, deup.v, deup.t, deup.r
+
+	# 计算各单元边界线与巷道交点到巷道起点的距离
+	Li = Lf(Ln, T, V)
+
+	# 计算各单元的起点抽采时间
+	g = lambda x:int(round(1.0*(Ln-x)/V+T))
+	Ti = [g(x) for x in Li]
+
+	# 评价单元写入到数据库
+	print u'单元号\tLi(m)\tTi(d)'
+	for i, (x, t) in enumerate(zip(Li, Ti)):
+		print u'%d\t%.1f\t%d' % (i+1, x, t)
+		a_eval_unit = DesignEvalUnit()
+		a_eval_unit.num = i+1
+		a_eval_unit.l = x
+		a_eval_unit.t = t
+		a_eval_unit.design_eval_unit_partition_id = partition_id
+		SQLClientHelper.AddDesignEvalUnit(a_eval_unit)
+
 def draw_curve(q0, alpha):
 	T = np.arange(0, 60) # 时间
 	# 新建一个figure
@@ -181,4 +228,105 @@ def draw_curve(q0, alpha):
 	plt.legend(loc=0)
 	# 显示图形
 	plt.show()
-	
+
+
+# R0/r0
+_Y = [10,10,10,10,10,10,10,10,10,10,20,20,20,20,20,20,20,20,20,20,30,30,30,30,30,30,30,30,30,30,40,40,40,40,40,40,40,40,40,40,50,50,50,50,50,50,50,50,50,50,60,60,60,60,60,60,60,60,60,60,80,80,80,80,80,80,80,80,80,80,100,100,100,100,100,100,100,100,100,100]
+# T0
+_X = [10,20,30,90,180,270,360,720,1080,1800,10,20,30,90,180,270,360,720,1080,1800,10,20,30,90,180,270,360,720,1080,1800,10,20,30,90,180,270,360,720,1080,1800,10,20,30,90,180,270,360,720,1080,1800,10,20,30,90,180,270,360,720,1080,1800,10,20,30,90,180,270,360,720,1080,1800,10,20,30,90,180,270,360,720,1080,1800]
+# η (lgχ=0)
+_Z0 = [3.848,6.34,8.527,18.24,27.17,32.98,37.19,47.07,52.4,58.49,0.824,1.372,1.86,4.34,7.458,10.13,12.45,19.47,24.32,30.81,0.316,0.531,0.721,1.688,2.935,4.07,5.13,8.782,11.74,16.3,0.156,0.265,0.36,0.845,1.467,2.038,2.579,4.543,6.266,9.174,0.089,0.153,0.208,0.489,0.848,1.177,1.488,2.638,3.685,5.547,0.056,0.097,0.132,0.311,0.539,0.747,0.944,1.673,2.345,3.577,0.026,0.046,0.064,0.151,0.261,0.362,0.456,0.806,1.13,1.735,0.014,0.026,0.036,0.086,0.148,0.205,0.258,0.455,0.636,0.976]
+# η (lgχ=1)
+_Z1 = [19.48,28.65,34.52,50.06,58.5,62.79,65.54,71.22,73.98,76.87,4.714,8.085,10.93,22.09,30.81,35.99,39.56,47.51,51.62,56.2,1.834,3.194,4.431,10.33,16.3,20.44,23.56,31.2,35.49,40.49,0.918,1.597,2.221,5.431,9.174,12.08,14.44,20.8,24.7,29.51,0.531,0.923,1.282,3.173,5.547,7.534,9.232,14.2,17.52,21.85,0.338,0.586,0.814,2.015,3.577,4.948,6.165,9.965,12.69,16.44,0.164,0.284,0.394,0.97,1.735,2.437,3.089,5.308,7.073,9.749,0.093,0.161,0.223,0.547,0.976,1.375,1.753,3.105,4.253,6.119]
+# η (lgχ=2)
+_Z2 = [51.43,59.66,63.82,72.79,76.86,78.84,79.99,81.82,82.34,82.76,23.37,32.16,37.31,49.83,56.2,59.36,61.37,65.46,67.37,69.45,11.13,17.34,21.57,33.59,40.49,44.06,46.38,51.21,53.59,56.12,5.901,9.88,12.92,22.94,29.51,33.1,35.47,40.55,43.1,45.87,3.459,6.017,8.128,16.01,21.85,25.24,27.54,32.59,35.18,38.04,2.199,3.897,5.369,11.42,16.44,19.52,21.67,26.54,29.1,31.97,1.059,1.896,2.659,6.237,9.748,12.14,13.91,18.2,20.57,23.32,0.597,1.067,1.503,3.701,6.119,7.908,9.309,12.92,15.04,17.58]
+# η (lgχ=3)
+_Z3 = [73.65,77.81,79.82,83.45,85,85.65,85.99,86.53,86.96,87.1,50.85,57.02,60.06,66.37,69.11,70.2,70.69,71.19,71.31,71.36,34.69,41.45,44.93,52.55,56.12,57.8,58.87,60.83,61.49,61.92,23.96,30.47,33.98,41.99,45.87,47.77,48.95,51.31,52.41,53.38,16.88,22.74,26.09,34.05,38.04,40.01,41.25,43.76,44.99,46.2,12.15,17.24,20.31,27.98,31.97,33.96,35.23,37.83,39.1,40.43,6.712,10.35,12.78,19.52,23.32,25.27,26.53,29.16,30.44,31.81,4.013,6.559,8.41,14.09,17.58,19.44,20.65,23.22,24.49,25.87]
+
+def get_z_datas(k):
+	if k <= 0:
+		return []
+	# 对lgk四舍五入
+	k = int(round(log10(k)))
+	if k == 0:
+		return _Z0
+	elif k == 1:
+		return _Z1
+	elif k == 2:
+		return _Z2
+	elif k == 3:
+		return _Z3
+	else:
+		return []
+
+# 瓦斯抽采优化
+# 抽采率η=f(T0, R0/r0, χ)是关于这3个因变量的一个复杂函数
+# 为了便于描述，将函数改写成 z=f(x,y,k)
+# 其中 x=T0, y=R0/r0, k=χ 或 lgχ
+# 给定这3个变量,通过线性插值得到抽采率η
+# griddata用法: http://hyry.dip.jp/tech/slice/slice.html/25
+# 注意:k的取值是固定的!!!k={1, 10, 100, 1000}
+class GasDriilingOpt:
+	def __init__(self, npts=100):
+		# 划分网格
+		x_min, x_max = np.min(_X), np.max(_X)
+		y_min, y_max = np.min(_Y), np.max(_Y)
+		Xg = np.linspace(x_min, x_max, npts)
+		Yg = np.linspace(y_min, y_max, npts)
+
+		# 建立网格数据(后续计算可能会用到)
+		self.x_min = x_min
+		self.x_max = x_max
+		self.y_min = y_min
+		self.y_max = y_max
+		self.Xg = Xg
+		self.Yg = Yg
+
+	# 已知x=T0, y=R0/r0, k=χ计算单点(x, y)的抽采率η
+	def zValue(self, x, y, k):
+		# 根据χ的取值决定用哪个Z值数据
+		_Z = get_z_datas(k)
+		# k的取值范围不在{1, 10, 100, 1000}之间
+		if len(_Z) == 0:
+			return 0
+		else:
+			# 线性插值计算(x, y)
+			return griddata((_X, _Y), _Z, (x, y), method='linear')
+	# 已知一组(x, y)数据
+	# 其中x=T0, y=R0/r0, k=χ
+	# 计算每个点的抽采率η
+	def zValues(self, X, Y, k):
+		# 根据χ的取值决定用哪个Z值数据
+		_Z = get_z_datas(k)
+		# k的取值范围不在{1, 10, 100, 1000}之间
+		if len(_Z) == 0:
+			return [0 for x in X]
+		else:
+			# 线性插值计算(x, y)
+			return griddata((_X, _Y), _Z, (X, Y), method='linear')
+	# 已知x的值,以及一组Y数据,计算每个点的抽采率η
+	# 主要用于观察y与η的关系
+	def zValues1(self, x, Y, k):
+		X = [x for y in Y]
+		return self.zValues(X, Y, k)
+	# 已知y的值,以及一组X数据,计算每个点的抽采率η
+	# 主要用于观察x与η的关系
+	def zValues2(self, X, y, k):
+		Y = [y for x in X]
+		return self.zValues(X, Y, k)
+
+# 抽采率计算
+# η=f(T0, R0/r0, χ)是关于这3个因变量的一个复杂函数
+# 为了便于描述，将函数改写成 z=f(x,y,k)
+# 其中 x=T0, y=R0/r0, k=χ 或 lgχ
+# 给定这3个变量,通过线性插值得到抽采率η
+# griddata用法: http://hyry.dip.jp/tech/slice/slice.html/25
+# 注意:k的取值是固定的!!!k={1, 10, 100, 1000}
+def drilling_ratio(x, y, k):
+	gdo = GasDriilingOpt()
+	z = gdo.zValue(x, y, k)
+
+	print 'x=%d y=%d z=%.3f' % (x, y, z)
+	# plt.contourf(Xg, Yg, Zg)
+	# plt.show()
+	# print Zg

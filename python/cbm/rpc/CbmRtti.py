@@ -134,6 +134,7 @@ info = {
 },
 "DesignEvalUnitPartition":{
 	"id":int,
+	"work_surf_id":int,
 	"name":str,
 	"comment":str,
 	"l2":float,
@@ -648,6 +649,7 @@ fkey = {
 },
 "DesignEvalUnitPartition":{
 	"id":1,
+	"work_surf_id":2,
 	"name":0,
 	"comment":0,
 	"l2":0,

@@ -2818,6 +2818,10 @@ void DesignEvalUnitPartition::__set_id(const int32_t val) {
   this->id = val;
 }
 
+void DesignEvalUnitPartition::__set_work_surf_id(const int32_t val) {
+  this->work_surf_id = val;
+}
+
 void DesignEvalUnitPartition::__set_name(const std::string& val) {
   this->name = val;
 }
@@ -2888,6 +2892,14 @@ uint32_t DesignEvalUnitPartition::read(::apache::thrift::protocol::TProtocol* ip
         }
         break;
       case 2:
+        if (ftype == ::apache::thrift::protocol::T_I32) {
+          xfer += iprot->readI32(this->work_surf_id);
+          this->__isset.work_surf_id = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
           xfer += iprot->readString(this->name);
           this->__isset.name = true;
@@ -2895,7 +2907,7 @@ uint32_t DesignEvalUnitPartition::read(::apache::thrift::protocol::TProtocol* ip
           xfer += iprot->skip(ftype);
         }
         break;
-      case 3:
+      case 4:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
           xfer += iprot->readString(this->comment);
           this->__isset.comment = true;
@@ -2903,7 +2915,7 @@ uint32_t DesignEvalUnitPartition::read(::apache::thrift::protocol::TProtocol* ip
           xfer += iprot->skip(ftype);
         }
         break;
-      case 4:
+      case 5:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->l2);
           this->__isset.l2 = true;
@@ -2911,7 +2923,7 @@ uint32_t DesignEvalUnitPartition::read(::apache::thrift::protocol::TProtocol* ip
           xfer += iprot->skip(ftype);
         }
         break;
-      case 5:
+      case 6:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->l1);
           this->__isset.l1 = true;
@@ -2919,7 +2931,7 @@ uint32_t DesignEvalUnitPartition::read(::apache::thrift::protocol::TProtocol* ip
           xfer += iprot->skip(ftype);
         }
         break;
-      case 6:
+      case 7:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->w);
           this->__isset.w = true;
@@ -2927,7 +2939,7 @@ uint32_t DesignEvalUnitPartition::read(::apache::thrift::protocol::TProtocol* ip
           xfer += iprot->skip(ftype);
         }
         break;
-      case 7:
+      case 8:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->h);
           this->__isset.h = true;
@@ -2935,7 +2947,7 @@ uint32_t DesignEvalUnitPartition::read(::apache::thrift::protocol::TProtocol* ip
           xfer += iprot->skip(ftype);
         }
         break;
-      case 8:
+      case 9:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->l);
           this->__isset.l = true;
@@ -2943,7 +2955,7 @@ uint32_t DesignEvalUnitPartition::read(::apache::thrift::protocol::TProtocol* ip
           xfer += iprot->skip(ftype);
         }
         break;
-      case 9:
+      case 10:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->r);
           this->__isset.r = true;
@@ -2951,7 +2963,7 @@ uint32_t DesignEvalUnitPartition::read(::apache::thrift::protocol::TProtocol* ip
           xfer += iprot->skip(ftype);
         }
         break;
-      case 10:
+      case 11:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->t);
           this->__isset.t = true;
@@ -2959,7 +2971,7 @@ uint32_t DesignEvalUnitPartition::read(::apache::thrift::protocol::TProtocol* ip
           xfer += iprot->skip(ftype);
         }
         break;
-      case 11:
+      case 12:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->v);
           this->__isset.v = true;
@@ -2988,43 +3000,47 @@ uint32_t DesignEvalUnitPartition::write(::apache::thrift::protocol::TProtocol* o
   xfer += oprot->writeI32(this->id);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("name", ::apache::thrift::protocol::T_STRING, 2);
+  xfer += oprot->writeFieldBegin("work_surf_id", ::apache::thrift::protocol::T_I32, 2);
+  xfer += oprot->writeI32(this->work_surf_id);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("name", ::apache::thrift::protocol::T_STRING, 3);
   xfer += oprot->writeString(this->name);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("comment", ::apache::thrift::protocol::T_STRING, 3);
+  xfer += oprot->writeFieldBegin("comment", ::apache::thrift::protocol::T_STRING, 4);
   xfer += oprot->writeString(this->comment);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("l2", ::apache::thrift::protocol::T_DOUBLE, 4);
+  xfer += oprot->writeFieldBegin("l2", ::apache::thrift::protocol::T_DOUBLE, 5);
   xfer += oprot->writeDouble(this->l2);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("l1", ::apache::thrift::protocol::T_DOUBLE, 5);
+  xfer += oprot->writeFieldBegin("l1", ::apache::thrift::protocol::T_DOUBLE, 6);
   xfer += oprot->writeDouble(this->l1);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("w", ::apache::thrift::protocol::T_DOUBLE, 6);
+  xfer += oprot->writeFieldBegin("w", ::apache::thrift::protocol::T_DOUBLE, 7);
   xfer += oprot->writeDouble(this->w);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("h", ::apache::thrift::protocol::T_DOUBLE, 7);
+  xfer += oprot->writeFieldBegin("h", ::apache::thrift::protocol::T_DOUBLE, 8);
   xfer += oprot->writeDouble(this->h);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("l", ::apache::thrift::protocol::T_DOUBLE, 8);
+  xfer += oprot->writeFieldBegin("l", ::apache::thrift::protocol::T_DOUBLE, 9);
   xfer += oprot->writeDouble(this->l);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("r", ::apache::thrift::protocol::T_DOUBLE, 9);
+  xfer += oprot->writeFieldBegin("r", ::apache::thrift::protocol::T_DOUBLE, 10);
   xfer += oprot->writeDouble(this->r);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("t", ::apache::thrift::protocol::T_DOUBLE, 10);
+  xfer += oprot->writeFieldBegin("t", ::apache::thrift::protocol::T_DOUBLE, 11);
   xfer += oprot->writeDouble(this->t);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("v", ::apache::thrift::protocol::T_DOUBLE, 11);
+  xfer += oprot->writeFieldBegin("v", ::apache::thrift::protocol::T_DOUBLE, 12);
   xfer += oprot->writeDouble(this->v);
   xfer += oprot->writeFieldEnd();
 
@@ -3036,6 +3052,7 @@ uint32_t DesignEvalUnitPartition::write(::apache::thrift::protocol::TProtocol* o
 void swap(DesignEvalUnitPartition &a, DesignEvalUnitPartition &b) {
   using ::std::swap;
   swap(a.id, b.id);
+  swap(a.work_surf_id, b.work_surf_id);
   swap(a.name, b.name);
   swap(a.comment, b.comment);
   swap(a.l2, b.l2);
@@ -3051,6 +3068,7 @@ void swap(DesignEvalUnitPartition &a, DesignEvalUnitPartition &b) {
 
 DesignEvalUnitPartition::DesignEvalUnitPartition(const DesignEvalUnitPartition& other12) {
   id = other12.id;
+  work_surf_id = other12.work_surf_id;
   name = other12.name;
   comment = other12.comment;
   l2 = other12.l2;
@@ -3065,6 +3083,7 @@ DesignEvalUnitPartition::DesignEvalUnitPartition(const DesignEvalUnitPartition& 
 }
 DesignEvalUnitPartition& DesignEvalUnitPartition::operator=(const DesignEvalUnitPartition& other13) {
   id = other13.id;
+  work_surf_id = other13.work_surf_id;
   name = other13.name;
   comment = other13.comment;
   l2 = other13.l2;
@@ -3082,6 +3101,7 @@ void DesignEvalUnitPartition::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "DesignEvalUnitPartition(";
   out << "id=" << to_string(id);
+  out << ", " << "work_surf_id=" << to_string(work_surf_id);
   out << ", " << "name=" << to_string(name);
   out << ", " << "comment=" << to_string(comment);
   out << ", " << "l2=" << to_string(l2);

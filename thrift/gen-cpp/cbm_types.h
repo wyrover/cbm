@@ -1054,8 +1054,9 @@ inline std::ostream& operator<<(std::ostream& out, const DesignEvalUnit& obj)
 }
 
 typedef struct _DesignEvalUnitPartition__isset {
-  _DesignEvalUnitPartition__isset() : id(false), name(false), comment(false), l2(false), l1(false), w(false), h(false), l(false), r(false), t(false), v(false) {}
+  _DesignEvalUnitPartition__isset() : id(false), work_surf_id(false), name(false), comment(false), l2(false), l1(false), w(false), h(false), l(false), r(false), t(false), v(false) {}
   bool id :1;
+  bool work_surf_id :1;
   bool name :1;
   bool comment :1;
   bool l2 :1;
@@ -1073,11 +1074,12 @@ class DesignEvalUnitPartition {
 
   DesignEvalUnitPartition(const DesignEvalUnitPartition&);
   DesignEvalUnitPartition& operator=(const DesignEvalUnitPartition&);
-  DesignEvalUnitPartition() : id(0), name(), comment(), l2(0), l1(0), w(0), h(0), l(0), r(0), t(0), v(0) {
+  DesignEvalUnitPartition() : id(0), work_surf_id(0), name(), comment(), l2(0), l1(0), w(0), h(0), l(0), r(0), t(0), v(0) {
   }
 
   virtual ~DesignEvalUnitPartition() throw();
   int32_t id;
+  int32_t work_surf_id;
   std::string name;
   std::string comment;
   double l2;
@@ -1092,6 +1094,8 @@ class DesignEvalUnitPartition {
   _DesignEvalUnitPartition__isset __isset;
 
   void __set_id(const int32_t val);
+
+  void __set_work_surf_id(const int32_t val);
 
   void __set_name(const std::string& val);
 
@@ -1116,6 +1120,8 @@ class DesignEvalUnitPartition {
   bool operator == (const DesignEvalUnitPartition & rhs) const
   {
     if (!(id == rhs.id))
+      return false;
+    if (!(work_surf_id == rhs.work_surf_id))
       return false;
     if (!(name == rhs.name))
       return false;

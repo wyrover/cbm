@@ -220,13 +220,13 @@ create table design_eval_unit
    num                  int,
    l                    decimal(8,2),
    t                    int,
-   gap                  decimal(8,2),
    primary key (id)
 );
 
 create table design_eval_unit_partition
 (
    id                   int not null auto_increment,
+   work_surf_id         int,
    name                 varchar(255),
    comment              varchar(255),
    l2                   decimal(8,2),
@@ -714,6 +714,9 @@ alter table design_drilling_surf_technology add constraint fk_relationship_31 fo
 
 alter table design_eval_unit add constraint fk_relationship_42 foreign key (design_eval_unit_partition_id)
       references design_eval_unit_partition (id) on delete cascade on update restrict;
+
+alter table design_eval_unit_partition add constraint fk_relationship_44 foreign key (work_surf_id)
+      references work_surf (id) on delete cascade on update restrict;
 
 alter table design_goaf_technology add constraint fk_relationship_39 foreign key (design_technology_id)
       references design_technology (id) on delete cascade on update restrict;

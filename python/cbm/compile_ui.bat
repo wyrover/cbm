@@ -34,22 +34,28 @@ python %UIC_PY% -o uipy\ui_high_drilling_tunnel_dlg.py uifiles\high_drilling_tun
 python %UIC_PY% -o uipy\ui_high_drilling_design_dlg.py uifiles\high_drilling_design_dlg.ui
 python %UIC_PY% -o uipy\ui_high_drilling_site_dlg.py uifiles\high_drilling_site_dlg.ui
 python %UIC_PY% -o uipy\ui_high_drilling_pore_dlg.py uifiles\high_drilling_pore_dlg.ui
-python %UIC_PY% -o uipy\ui_drilling_radius_dlg.py uifiles\drilling_radius_dlg.ui
 python %UIC_PY% -o uipy\ui_pore_size_dlg.py uifiles\pore_size_dlg.ui
 python %UIC_PY% -o uipy\ui_pore_flow_dlg.py uifiles\pore_flow_dlg.ui
 python %UIC_PY% -o uipy\ui_pore_flow_K_dlg.py uifiles\pore_flow_K_dlg.ui
 python %UIC_PY% -o uipy\ui_pore_flow_b_dlg.py uifiles\pore_flow_b_dlg.ui
 python %UIC_PY% -o uipy\ui_pore_flow_delta_p_dlg.py uifiles\pore_flow_delta_p_dlg.ui
 python %UIC_PY% -o uipy\ui_pore_flow_delta_T_dlg.py uifiles\pore_flow_delta_T_dlg.ui
+python %UIC_PY% -o uipy\ui_eval_unit_dlg.py uifiles\eval_unit_dlg.ui
+
 python %UIC_PY% -o uipy\ui_gas_design_dlg.py uifiles\gas_design_dlg.ui
 python %UIC_PY% -o uipy\ui_gas_design_p1_1_dlg.py uifiles\gas_design_p1_1_dlg.ui
 python %UIC_PY% -o uipy\ui_gas_design_p1_2_dlg.py uifiles\gas_design_p1_2_dlg.ui
 python %UIC_PY% -o uipy\ui_gas_design_p2_1_dlg.py uifiles\gas_design_p2_1_dlg.ui
 python %UIC_PY% -o uipy\ui_gas_design_p2_3_dlg.py uifiles\gas_design_p2_3_dlg.ui
+
 python %UIC_PY% -o uipy\ui_mainwin.py uifiles\mainwindow.ui
 python %UIC_PY% -o uipy\ui_reg_dlg.py uifiles\reg_dlg.ui
 python %UIC_PY% -o uipy\ui_login_dlg.py uifiles\login_dlg.ui
+
 python %UIC_PY% -o uipy\ui_curve_draw_dlg.py uifiles\curve_draw_dlg.ui
+python %UIC_PY% -o uipy\ui_gas_drilling_radius_dlg.py uifiles\gas_drilling_radius_dlg.ui
+python %UIC_PY% -o uipy\ui_gas_drilling_optimize_dlg.py uifiles\gas_drilling_optimize_dlg.ui
+python %UIC_PY% -o uipy\ui_gas_drilling_analyse_dlg.py uifiles\gas_drilling_analyse_dlg.ui
 
 rem 运行主界面
 rem python main.py

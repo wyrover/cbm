@@ -12,11 +12,17 @@ from dialogs.TwsGasFlowPredictDlg import *
 from dialogs.WsGasFlowPredictDlg import *
 from dialogs.HighDrillingTunnelDlg import *
 from dialogs.HighDrillingDesignDlg import *
-from dialogs.DrillingRadiusDlg import *
 from dialogs.PoreSizeDlg import *
 from dialogs.PoreFlowDlg import *
+
 from dialogs.GasDesignDlg import *
+
+from dialogs.EvalUnitDlg import *
 from dialogs.CurveDrawDlg import *
+from dialogs.GasDrillingAnalyseDlg import *
+from dialogs.GasDrillingOptimizeDlg import *
+from dialogs.GasDrillingRadiusDlg import *
+
 import doc
 
 from rpc import CbmUtil, SQLClientHelper, CbmClientHelper
@@ -185,14 +191,21 @@ class MainWindow(QtGui.QMainWindow):
 		self.try_run(CurveDrawDlg, Authority.USER)
 
 	# 钻孔间距(抽采半径)优化
-	def drillingRadius(self):
+	def gasDrillingRadius(self):
 		# 启动瓦斯抽采半径计算对话框
-		self.try_run(DrillingRadiusDlg, Authority.USER)
+		self.try_run(GasDrillingRadiusDlg, Authority.USER)
 
-	# 评价单元划分
-	def evaluationUnitDivision(self):
+	def gasDrillingOptimize(self):
+		# 启动瓦斯抽采半径计算对话框
+		self.try_run(GasDrillingOptimizeDlg, Authority.USER)
+
+	def gasDrillingAnalyse(self):
+		# 启动瓦斯抽采半径计算对话框
+		self.try_run(GasDrillingAnalyseDlg, Authority.USER)
+	
+	def evalUnitPartition(self):
 		# 启动评价单元划分计算对话框
-		# self.try_run(PoreFlowDlg, Authority.USER)
+		self.try_run(EvalUnitDlg, Authority.USER)
 		pass
 
 	def wsGasDesign(self):
@@ -270,8 +283,10 @@ class MainWindow(QtGui.QMainWindow):
 		self.regAction(u"辅助计算", u"抽采管径大小", u"抽采管径大小辅助计算", self.poreSize)
 		self.regAction(u"辅助计算", u"孔板流量", u"孔板流量辅助计算", self.poreFlow)
 		self.regAction(u"抽采参数优化", u"曲线绘制", u"煤层瓦斯抽采半径辅助计算", self.drawCurves)
-		self.regAction(u"抽采参数优化", u"钻孔间距优化", u"煤层瓦斯抽采半径辅助计算", self.drillingRadius)
-		self.regAction(u"抽采参数优化", u"评价单元划分", u"评价单元划分辅助计算", self.evaluationUnitDivision)
+		self.regAction(u"抽采参数优化", u"钻孔间距优化1", u"煤层瓦斯抽采半径辅助计算", self.gasDrillingRadius)
+		self.regAction(u"抽采参数优化", u"钻孔间距优化2", u"煤层瓦斯抽采半径辅助计算", self.gasDrillingOptimize)
+		self.regAction(u"抽采参数优化", u"钻孔间距优化3", u"煤层瓦斯抽采半径辅助计算", self.gasDrillingAnalyse)
+		self.regAction(u"抽采参数优化", u"评价单元划分", u"评价单元划分辅助计算", self.evalUnitPartition)
 		self.regAction(u"抽采设计", u"工作面", u"工作面瓦斯抽采辅助设计", self.wsGasDesign)
 		self.regAction(u"抽采设计", u"掘进面", u"掘进面瓦斯抽采辅助设计", self.twsGasDesign)
 		self.regAction(u"抽采设计", u"采空区", u"采空区瓦斯抽采辅助设计", self.goafGasDesign)

@@ -143,16 +143,17 @@ struct DesignEvalUnit {
 
 struct DesignEvalUnitPartition {
 	1: i32 id,
-	2: string name,
-	3: string comment,
-	4: double l2,
-	5: double l1,
-	6: double w,
-	7: double h,
-	8: double l,
-	9: double r,
-	10: double t,
-	11: double v,
+	2: i32 work_surf_id,
+	3: string name,
+	4: string comment,
+	5: double l2,
+	6: double l1,
+	7: double w,
+	8: double h,
+	9: double l,
+	10: double r,
+	11: double t,
+	12: double v,
 }
 
 struct DesignGoafTechnology {
