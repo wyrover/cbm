@@ -18,6 +18,7 @@ class CoalDesignDlg(BaseDialog):
 		self.setTitle(u"煤层设计")
 		self.setFixedSize(self.width(),self.height())
 		self.ui.save.clicked.connect(self.onSave)
+		self.ui.cancel.clicked.connect(self.onCancel)
 		self.ui.mine_index_cacl.clicked.connect(self.onMineIndexCacl)
 		self.ui.var_coeff_cacl.clicked.connect(self.onVarCoeffCacl)
 		self.ui.czh_cacl.clicked.connect(self.onCzhCacl)
@@ -103,3 +104,7 @@ class CoalDesignDlg(BaseDialog):
 			# self.accept()
 		else:
 			UiHelper.MessageBox(u'sorry,出了点问题,请联系技术人员(错误码:C1)!')
+
+	def onCancel(self):
+		# 关闭对话框并返回0
+		self.reject()
