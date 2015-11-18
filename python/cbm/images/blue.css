@@ -1,4 +1,4 @@
-QWidget#frmLogin,QWidget#frmPopup,QWidget#frmHostInfo,QWidget#frmLogout,QWidget#frmConfig,QWidget#frmData,QWidget#frmDefence,QWidget#frmHost,QWidget#frmMain,QWidget#frmPwd,QWidget#frmSelect,QWidget#frmMessageBox{
+QWidget#widget_main{
 	border:1px solid #1B89CA;
 	border-radius:0px;	
 }
@@ -10,6 +10,10 @@ QWidget#frmLogin,QWidget#frmPopup,QWidget#frmHostInfo,QWidget#frmLogout,QWidget#
 
 QWidget#widget_title{
 	background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 #1B89CA, stop:1 #1077B5);
+}
+
+QLabel{
+	border-style:none;
 }
 
 QLabel#lab_Ico,QLabel#lab_Title{

@@ -49,5 +49,5 @@ class CbmMessageBox(BaseDialog):
 		elif type == 2:
 			self.ui.labIcoMain.setStyleSheet("border-image: url(:/images/error.png);");
 			self.ui.btnCancel.setVisible(False);
-			self.ui.lab_Title.setText(u"错误");
+			self.ui.lab_Title.setText(u"警告");
 		self.ui.labInfo.setText(msg);

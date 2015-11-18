@@ -42,7 +42,8 @@ class MainWindow(QtGui.QMainWindow):
 		self.setAttribute(QtCore.Qt.WA_DeleteOnClose)
 		self.createActions()
 		self.createMenusToolBars()
-		self.createStatusBar()
+		self.setStatusBar(None)
+		# self.createStatusBar()
 		self.setWindowTitle(u"井下煤层气规模化抽采计算机辅助设计系统")
 		self.setWindowIcon(QtGui.QIcon(':/images/cbm.ico'))
 		# 增大菜单栏的字体
