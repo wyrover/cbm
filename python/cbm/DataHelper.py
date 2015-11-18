@@ -154,7 +154,7 @@ def permeability_k_to_lambda(p_k):
 	return p_k / 0.025
 
 def draw_curve(q0, alpha):
-	T = np.arange(0, 90) # 时间
+	T = np.arange(0, 60) # 时间
 	# 新建一个figure
 	fig = plt.figure(figsize=(8, 6))
 	# 绘制曲线
@@ -162,7 +162,7 @@ def draw_curve(q0, alpha):
 	f = lambda t:c*(1- exp(-1*alpha*t))
 	Q = [f(t) for t in T]
 	Q0 = [c for t in T]
-	k = [q/q0 for (q, q0) in zip(Q, Q0)]
+	k = [x/x0 for (x, x0) in zip(Q, Q0)]
 	plt.subplot(211)
 	plt.title(u'百米钻孔在不同时间t内可抽采的瓦斯总量$Q_t(q_0=%.1f, α=%.1f)$' % (q0, alpha))
 	plt.xlabel(u'抽采时间$t(d)$')
