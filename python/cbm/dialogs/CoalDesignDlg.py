@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from BaseDialog import *
 from uipy.ui_coal_design_dlg import *
 
 from rpc import CbmUtil, SQLClientHelper, CbmClientHelper
@@ -8,7 +9,7 @@ from cbm.ttypes import *
 import UiHelper
 import DataHelper
 
-class CoalDesignDlg(QtGui.QDialog):
+class CoalDesignDlg(BaseDialog):
 	def __init__(self, coal_id=-1, parent=None):
 		super(CoalDesignDlg, self).__init__(parent)
 		self.ui = Ui_coal_design_dlg()

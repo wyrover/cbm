@@ -24,7 +24,7 @@ def test_copy_obj():
 
 def test_draw_coal_occurrence_graph():
 	mine_id = 4
-	CbmClientHelper.SendCommandToCAD("JL.DrawOccurrenceGraph %d" % (mine_id), True)
+	CbmClientHelper.SendCommandToCAD("JL.DrawOccurrenceGraph %d %.1f" % (mine_id, 1), True)
 
 def test_draw_graph_11():
 	coal_id, tech_id = 5, 1

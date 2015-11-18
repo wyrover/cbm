@@ -10,7 +10,7 @@
 class OccurrenceGraph : public BaseGraph
 {
 public:
-	OccurrenceGraph(cbm::Mine& mine);
+	OccurrenceGraph(cbm::Mine& mine, double factor=1.0);
 
 protected:
 	virtual void subDraw();
@@ -24,4 +24,6 @@ protected:
 	// 煤层倾向长度
 	//该数据不存在，为了绘图效果美观，内部设定一个值
 	double L1;
+	//煤层走向长度比例因子
+	double factor;
 };

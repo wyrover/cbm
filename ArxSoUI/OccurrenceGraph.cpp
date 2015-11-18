@@ -5,9 +5,9 @@
 #include "CbmClientHelper.h"
 #include "SQLClientHelper.h"
 
-OccurrenceGraph::OccurrenceGraph(cbm::Mine& _mine) : mine(_mine)
+OccurrenceGraph::OccurrenceGraph(cbm::Mine& _mine, double _factor) : mine(_mine), factor(_factor)
 {
-	L1 = 1000;
+	L1 = 100*factor;
 }
 
 void OccurrenceGraph::subDraw()
@@ -33,7 +33,7 @@ void OccurrenceGraph::drawCoal(cbm::Coal& coal, const AcGePoint3d& basePt)
 
 	this->drawMText( basePt + v1 * L1 *0.5 + v2 * thick * 0.5, angle, C2W(coal.name), 10 );
 	//±ê×¢Ãº²ãºñ¶È
-	this->drawAlignedDim(basePt+v1*L1, basePt+v1*L1+v2*thick, 30, false);
+	//this->drawAlignedDim(basePt+v1*L1, basePt+v1*L1+v2*thick, 30, false);
 }
 
 void OccurrenceGraph::drawAllCoals(cbm::Mine& mine)

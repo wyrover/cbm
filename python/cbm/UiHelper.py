@@ -28,10 +28,11 @@ def MessageBox(msg_text, question=False):
 		return msgbox.exec_() == 1
 
 # 弹出对话框，请求用户输入一个"名称""
-def GetNameFromDlg(dlg_title):
+def GetNameFromDlg(title):
 	dlg = NameDlg.NameDlg()
-	dlg.setTitle(dlg_title)
-	name = u'null'
+	# 设置标题
+	dlg.setTitle(title)
+	name = u''
 	if dlg.exec_():
 		name = dlg.name
 	return name

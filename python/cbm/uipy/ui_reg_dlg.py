@@ -22,11 +22,11 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
-class Ui_RegDialog(object):
-    def setupUi(self, RegDialog):
-        RegDialog.setObjectName(_fromUtf8("RegDialog"))
-        RegDialog.resize(421, 364)
-        self.widget_main = QtGui.QWidget(RegDialog)
+class Ui_reg_dlg(object):
+    def setupUi(self, reg_dlg):
+        reg_dlg.setObjectName(_fromUtf8("reg_dlg"))
+        reg_dlg.resize(421, 364)
+        self.widget_main = QtGui.QWidget(reg_dlg)
         self.widget_main.setGeometry(QtCore.QRect(0, 30, 421, 341))
         font = QtGui.QFont()
         font.setPointSize(12)
@@ -90,7 +90,7 @@ class Ui_RegDialog(object):
         self.region = QtGui.QComboBox(self.widget_main)
         self.region.setGeometry(QtCore.QRect(290, 140, 101, 31))
         self.region.setObjectName(_fromUtf8("region"))
-        self.widget_title = QtGui.QWidget(RegDialog)
+        self.widget_title = QtGui.QWidget(reg_dlg)
         self.widget_title.setGeometry(QtCore.QRect(0, 0, 421, 31))
         self.widget_title.setObjectName(_fromUtf8("widget_title"))
         self.lab_Ico = QtGui.QLabel(self.widget_title)
@@ -132,37 +132,37 @@ class Ui_RegDialog(object):
         self.btnMenu_Close.setFlat(True)
         self.btnMenu_Close.setObjectName(_fromUtf8("btnMenu_Close"))
 
-        self.retranslateUi(RegDialog)
-        QtCore.QMetaObject.connectSlotsByName(RegDialog)
-        RegDialog.setTabOrder(self.username, self.password)
-        RegDialog.setTabOrder(self.password, self.name)
-        RegDialog.setTabOrder(self.name, self.base)
-        RegDialog.setTabOrder(self.base, self.region)
-        RegDialog.setTabOrder(self.region, self.province)
-        RegDialog.setTabOrder(self.province, self.city)
-        RegDialog.setTabOrder(self.city, self.coal_nums)
-        RegDialog.setTabOrder(self.coal_nums, self.reg)
+        self.retranslateUi(reg_dlg)
+        QtCore.QMetaObject.connectSlotsByName(reg_dlg)
+        reg_dlg.setTabOrder(self.username, self.password)
+        reg_dlg.setTabOrder(self.password, self.name)
+        reg_dlg.setTabOrder(self.name, self.base)
+        reg_dlg.setTabOrder(self.base, self.region)
+        reg_dlg.setTabOrder(self.region, self.province)
+        reg_dlg.setTabOrder(self.province, self.city)
+        reg_dlg.setTabOrder(self.city, self.coal_nums)
+        reg_dlg.setTabOrder(self.coal_nums, self.reg)
 
-    def retranslateUi(self, RegDialog):
-        RegDialog.setWindowTitle(_translate("RegDialog", "注册新矿井", None))
-        self.name.setToolTip(_translate("RegDialog", "<html><head/><body><p>输入矿井名称</p></body></html>", None))
-        self.name.setWhatsThis(_translate("RegDialog", "<html><head/><body><p>用户名</p></body></html>", None))
-        self.mineName_label_4.setText(_translate("RegDialog", "所在地", None))
-        self.user_label.setText(_translate("RegDialog", "<html><head/><body><p>用户名</p></body></html>", None))
-        self.mineName_label_6.setText(_translate("RegDialog", "市（地区）", None))
-        self.username.setToolTip(_translate("RegDialog", "<html><head/><body><p>输入用户名</p></body></html>", None))
-        self.username.setWhatsThis(_translate("RegDialog", "<html><head/><body><p>用户名</p></body></html>", None))
-        self.mineName_label_7.setText(_translate("RegDialog", "开采煤层编号", None))
-        self.password.setToolTip(_translate("RegDialog", "<html><head/><body><p>输入用户密码</p></body></html>", None))
-        self.password.setWhatsThis(_translate("RegDialog", "<html><head/><body><p>用户名</p></body></html>", None))
-        self.mineName_label_3.setText(_translate("RegDialog", "所在矿区", None))
-        self.mineName_label_8.setText(_translate("RegDialog", "（用空格隔开）", None))
-        self.mineName_label_5.setText(_translate("RegDialog", "省", None))
-        self.mineName_label.setText(_translate("RegDialog", "矿井名称", None))
-        self.mineName_label_2.setText(_translate("RegDialog", "煤炭基地", None))
-        self.reg.setText(_translate("RegDialog", "注册 && 确认", None))
-        self.password_label.setText(_translate("RegDialog", "<html><head/><body><p>密 码</p></body></html>", None))
-        self.lab_Ico.setText(_translate("RegDialog", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+    def retranslateUi(self, reg_dlg):
+        reg_dlg.setWindowTitle(_translate("reg_dlg", "注册新矿井", None))
+        self.name.setToolTip(_translate("reg_dlg", "<html><head/><body><p>输入矿井名称</p></body></html>", None))
+        self.name.setWhatsThis(_translate("reg_dlg", "<html><head/><body><p>用户名</p></body></html>", None))
+        self.mineName_label_4.setText(_translate("reg_dlg", "所在地", None))
+        self.user_label.setText(_translate("reg_dlg", "<html><head/><body><p>用户名</p></body></html>", None))
+        self.mineName_label_6.setText(_translate("reg_dlg", "市（地区）", None))
+        self.username.setToolTip(_translate("reg_dlg", "<html><head/><body><p>输入用户名</p></body></html>", None))
+        self.username.setWhatsThis(_translate("reg_dlg", "<html><head/><body><p>用户名</p></body></html>", None))
+        self.mineName_label_7.setText(_translate("reg_dlg", "开采煤层编号", None))
+        self.password.setToolTip(_translate("reg_dlg", "<html><head/><body><p>输入用户密码</p></body></html>", None))
+        self.password.setWhatsThis(_translate("reg_dlg", "<html><head/><body><p>用户名</p></body></html>", None))
+        self.mineName_label_3.setText(_translate("reg_dlg", "所在矿区", None))
+        self.mineName_label_8.setText(_translate("reg_dlg", "（用空格隔开）", None))
+        self.mineName_label_5.setText(_translate("reg_dlg", "省", None))
+        self.mineName_label.setText(_translate("reg_dlg", "矿井名称", None))
+        self.mineName_label_2.setText(_translate("reg_dlg", "煤炭基地", None))
+        self.reg.setText(_translate("reg_dlg", "注册 && 确认", None))
+        self.password_label.setText(_translate("reg_dlg", "<html><head/><body><p>密 码</p></body></html>", None))
+        self.lab_Ico.setText(_translate("reg_dlg", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'SimSun\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"

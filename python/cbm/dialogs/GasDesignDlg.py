@@ -9,6 +9,7 @@ from GasDesignP21Dlg import *
 from GasDesignP23Dlg import *
 
 import UiHelper
+import DataHelper
 
 class GasDesignDlg(BaseDialog):
 	def __init__(self, mine_id=-1, parent=None):
@@ -23,7 +24,7 @@ class GasDesignDlg(BaseDialog):
 		# 待设计的矿井
 		self.mine_id = mine_id
 		# 该变量从外部读进来(设计的不是太好,滥用了全局变量了)
-		self.mine_region = UiHelper.GAS_DESIGN_TYPE
+		self.mine_region = DataHelper.GAS_DESIGN_TYPE
 		# 初始化
 		self.init()
 

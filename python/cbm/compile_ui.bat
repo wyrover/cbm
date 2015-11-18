@@ -49,6 +49,7 @@ python %UIC_PY% -o uipy\ui_gas_design_p2_3_dlg.py uifiles\gas_design_p2_3_dlg.ui
 python %UIC_PY% -o uipy\ui_mainwin.py uifiles\mainwindow.ui
 python %UIC_PY% -o uipy\ui_reg_dlg.py uifiles\reg_dlg.ui
 python %UIC_PY% -o uipy\ui_login_dlg.py uifiles\login_dlg.ui
+python %UIC_PY% -o uipy\ui_curve_draw_dlg.py uifiles\curve_draw_dlg.ui
 
 rem 运行主界面
 rem python main.py

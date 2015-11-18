@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from BaseDialog import *
 from uipy.ui_reg_dlg import *
 
 from rpc import CbmUtil, SQLClientHelper, CbmClientHelper
@@ -8,11 +9,13 @@ from rpc import CbmUtil, SQLClientHelper, CbmClientHelper
 import DataHelper
 import UiHelper
 
-class RegDlg(QtGui.QDialog):
+class RegDlg(BaseDialog):
 	def __init__(self,parent=None):
 		super(RegDlg, self).__init__(parent)
 		self.ui = Ui_reg_dlg()
 		self.ui.setupUi(self)
+		self.initUi(self.ui) # 美化ui
+		self.setTitle(u"注册新矿井")
 		self.ui.password.setEchoMode(QtGui.QLineEdit.Password)
 		self.ui.reg.clicked.connect(self.onReg)
 		self.setFixedSize(self.width(),self.height())
