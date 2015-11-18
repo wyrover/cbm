@@ -40,7 +40,7 @@ class LoginDlg(BaseDialog):
 		else:ret = CbmClientHelper.VerifyMineAccount(uname, pwd)
 		# 弹出提示信息
 		if ret != 1:
-			UiHelper.MessageBox(LOGIN_MESSAGE[ret])
+			UiHelper.MessageBox(LOGIN_MESSAGE[ret],error = True)
 		return ret
 
 	def login_or_switch(self, uname, pwd):

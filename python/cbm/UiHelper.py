@@ -17,15 +17,21 @@ def ShowWidget(widget, bShow=True):
 		# widget.setVisible(bShow)
 
 # 自定义消息对话框
-def MessageBox(msg_text, question=False):
+def MessageBox(msg_text, question=False, error=False):
 	msgbox = CbmMessageBox.CbmMessageBox()
-	if not question:
+	if question:
+		msgbox.setMessage(msg_text, CbmMessageBox.MsgBoxType.QUESTION)
+		return msgbox.exec_() == 1
+
+	elif error:
+		msgbox.setMessage(msg_text, CbmMessageBox.MsgBoxType.ERROR)
+		msgbox.exec_()
+		return True
+
+	else:
 		msgbox.setMessage(msg_text, CbmMessageBox.MsgBoxType.INFO)
 		msgbox.exec_()
 		return True
-	else:
-		msgbox.setMessage(msg_text, CbmMessageBox.MsgBoxType.QUESTION)
-		return msgbox.exec_() == 1
 
 # 弹出对话框，请求用户输入一个"名称""
 def GetNameFromDlg(dlg_title):
