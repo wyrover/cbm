@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>name_dlg</class>
- <widget class="QWidget" name="name_dlg">
+ <class>curve_draw_dlg</class>
+ <widget class="QWidget" name="curve_draw_dlg">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>310</width>
-    <height>108</height>
+    <width>341</width>
+    <height>184</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>新增</string>
+   <string>抽采管径大小辅助计算</string>
   </property>
   <property name="windowIcon">
    <iconset resource="../usecad.qrc">
@@ -22,17 +22,17 @@
     <rect>
      <x>0</x>
      <y>30</y>
-     <width>311</width>
-     <height>80</height>
+     <width>341</width>
+     <height>151</height>
     </rect>
    </property>
-   <widget class="QPushButton" name="ensure">
+   <widget class="QPushButton" name="draw_curve">
     <property name="geometry">
      <rect>
-      <x>210</x>
-      <y>24</y>
-      <width>75</width>
-      <height>31</height>
+      <x>100</x>
+      <y>100</y>
+      <width>131</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="font">
@@ -41,16 +41,85 @@
      </font>
     </property>
     <property name="text">
-     <string>确  定</string>
+     <string>绘制曲线</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="name">
+   <widget class="QLabel" name="mineName_label_14">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>20</y>
+      <width>71</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;(m&lt;span style=&quot; vertical-align:super;&quot;&gt;3&lt;/span&gt;/min)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="mineName_label_13">
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>24</y>
+      <y>60</y>
+      <width>151</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>衰   减    系    数   α</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="alpha">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>60</y>
+      <width>61</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+   </widget>
+   <widget class="QLabel" name="mineName_label_12">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>20</y>
       <width>171</width>
-      <height>31</height>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;钻孔初始瓦斯涌出量q&lt;span style=&quot; vertical-align:sub;&quot;&gt;0&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="q0">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>20</y>
+      <width>61</width>
+      <height>25</height>
      </rect>
     </property>
     <property name="font">
@@ -65,7 +134,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>311</width>
+     <width>341</width>
      <height>31</height>
     </rect>
    </property>
@@ -106,7 +175,7 @@ p, li { white-space: pre-wrap; }
      <rect>
       <x>40</x>
       <y>0</y>
-      <width>221</width>
+      <width>241</width>
       <height>31</height>
      </rect>
     </property>
@@ -129,7 +198,7 @@ p, li { white-space: pre-wrap; }
    <widget class="QPushButton" name="btnMenu_Close">
     <property name="geometry">
      <rect>
-      <x>270</x>
+      <x>300</x>
       <y>0</y>
       <width>41</width>
       <height>31</height>
@@ -173,6 +242,11 @@ p, li { white-space: pre-wrap; }
    </widget>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>q0</tabstop>
+  <tabstop>alpha</tabstop>
+  <tabstop>draw_curve</tabstop>
+ </tabstops>
  <resources>
   <include location="../usecad.qrc"/>
  </resources>

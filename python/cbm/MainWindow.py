@@ -16,6 +16,7 @@ from dialogs.DrillingRadiusDlg import *
 from dialogs.PoreSizeDlg import *
 from dialogs.PoreFlowDlg import *
 from dialogs.GasDesignDlg import *
+from dialogs.CurveDrawDlg import *
 import doc
 
 from rpc import CbmUtil, SQLClientHelper, CbmClientHelper
@@ -106,20 +107,20 @@ class MainWindow(QtGui.QMainWindow):
 			ret = DataHelper.sql_login_status()
 			# 内部错误
 			if ret == 0 or ret == -1:
-				UiHelper.MessageBox(u"系统技术性故障(错误码:M1),请联系技术人员!")
+				UiHelper.MessageBox(u"系统技术性故障(错误码:M1),请联系技术人员!",error = True)
 				can_run = False
 				break
 			# 用户未登录
 			elif ret == 2:
-				UiHelper.MessageBox(u"您需要登录才能使用本功能!")
+				UiHelper.MessageBox(u"您需要登录才能使用本功能!", error = True)
 				can_run = self.login() # 登录
 			# 管理员已登录		
 			elif ret == 3 and authority == Authority.USER:
-				UiHelper.MessageBox(u"管理员禁止使用该功能,请重新登录!")
+				UiHelper.MessageBox(u"管理员禁止使用该功能,请重新登录!", error = True)
 				can_run = self.login() # 登录
 			# 普通用户已登录
 			elif ret == 1 and authority == Authority.ADMIN:
-				UiHelper.MessageBox(u"您的权限不够,请重新登录!")
+				UiHelper.MessageBox(u"您的权限不够,请重新登录!", error = True)
 				can_run = self.login() # 登录
 
 			if can_run and DataHelper.sql_login_authority(authority):
@@ -170,10 +171,6 @@ class MainWindow(QtGui.QMainWindow):
 		# 启动高抽钻孔计算对话框
 		self.try_run(HighDrillingDesignDlg, Authority.USER)
 
-	def drillingRadius(self):
-		# 启动瓦斯抽采半径计算对话框
-		self.try_run(DrillingRadiusDlg, Authority.USER)
-
 	def poreSize(self):
 		# 启动瓦斯抽采钻孔计算对话框
 		self.try_run(PoreSizeDlg, Authority.USER)
@@ -182,6 +179,17 @@ class MainWindow(QtGui.QMainWindow):
 		# 启动孔板流量计算对话框
 		self.try_run(PoreFlowDlg, Authority.USER)
 
+	# 曲线绘制
+	def drawCurves(self):
+		# 绘制曲线
+		self.try_run(CurveDrawDlg, Authority.USER)
+
+	# 钻孔间距(抽采半径)优化
+	def drillingRadius(self):
+		# 启动瓦斯抽采半径计算对话框
+		self.try_run(DrillingRadiusDlg, Authority.USER)
+
+	# 评价单元划分
 	def evaluationUnitDivision(self):
 		# 启动评价单元划分计算对话框
 		# self.try_run(PoreFlowDlg, Authority.USER)
@@ -259,10 +267,11 @@ class MainWindow(QtGui.QMainWindow):
 		self.regAction(u"辅助计算", u"回采面瓦斯涌出量预测", u"回采面瓦斯涌出量预测辅助计算", self.wsGasFlowPredict)
 		self.regAction(u"辅助计算", u"高抽巷合理布设层位", u"高抽巷合理布设层位辅助计算", self.highDrillingTunnel)
 		self.regAction(u"辅助计算", u"高位抽采钻孔有效布设范围", u"高位抽采钻孔有效布设范围辅助计算", self.highDrillingPore)
-		self.regAction(u"辅助计算", u"煤层瓦斯抽采半径", u"煤层瓦斯抽采半径辅助计算", self.drillingRadius)
 		self.regAction(u"辅助计算", u"抽采管径大小", u"抽采管径大小辅助计算", self.poreSize)
 		self.regAction(u"辅助计算", u"孔板流量", u"孔板流量辅助计算", self.poreFlow)
-		self.regAction(u"辅助计算", u"评价单元划分", u"评价单元划分辅助计算", self.evaluationUnitDivision)
+		self.regAction(u"抽采参数优化", u"曲线绘制", u"煤层瓦斯抽采半径辅助计算", self.drawCurves)
+		self.regAction(u"抽采参数优化", u"钻孔间距优化", u"煤层瓦斯抽采半径辅助计算", self.drillingRadius)
+		self.regAction(u"抽采参数优化", u"评价单元划分", u"评价单元划分辅助计算", self.evaluationUnitDivision)
 		self.regAction(u"抽采设计", u"工作面", u"工作面瓦斯抽采辅助设计", self.wsGasDesign)
 		self.regAction(u"抽采设计", u"掘进面", u"掘进面瓦斯抽采辅助设计", self.twsGasDesign)
 		self.regAction(u"抽采设计", u"采空区", u"采空区瓦斯抽采辅助设计", self.goafGasDesign)

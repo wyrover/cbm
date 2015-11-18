@@ -87,12 +87,16 @@ void CmdHelper::DrawOccurrenceGraph()
 	SQLClientHelper::GetMineById(mine, mine_id);
 	if( mine.id < 0 ) return;
 
+	// 煤层走向长度比例因子,控制显示效果 
+	double factor = 1.0;
+	if(RTNORM != acedGetReal(NULL, &factor)) return;
+
 	//交互选择基点坐标
 	AcGePoint3d pt;
 	ArxUtilHelper::PromptPt( _T( "请选择一点:" ), pt );
 
 	//绘制煤层赋存图
-	OccurrenceGraph graph( mine );
+	OccurrenceGraph graph( mine, factor );
 	graph.setPoint( pt );
 	graph.draw();
 }

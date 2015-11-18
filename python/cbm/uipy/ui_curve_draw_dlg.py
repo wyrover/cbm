@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'uifiles\name_dlg.ui'
+# Form implementation generated from reading ui file 'uifiles\curve_draw_dlg.ui'
 #
 # Created by: PyQt4 UI code generator 4.11.4
 #
@@ -22,30 +22,54 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
-class Ui_name_dlg(object):
-    def setupUi(self, name_dlg):
-        name_dlg.setObjectName(_fromUtf8("name_dlg"))
-        name_dlg.resize(310, 108)
+class Ui_curve_draw_dlg(object):
+    def setupUi(self, curve_draw_dlg):
+        curve_draw_dlg.setObjectName(_fromUtf8("curve_draw_dlg"))
+        curve_draw_dlg.resize(341, 184)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(_fromUtf8(":/images/cbm.ico")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        name_dlg.setWindowIcon(icon)
-        self.widget_main = QtGui.QWidget(name_dlg)
-        self.widget_main.setGeometry(QtCore.QRect(0, 30, 311, 80))
+        curve_draw_dlg.setWindowIcon(icon)
+        self.widget_main = QtGui.QWidget(curve_draw_dlg)
+        self.widget_main.setGeometry(QtCore.QRect(0, 30, 341, 151))
         self.widget_main.setObjectName(_fromUtf8("widget_main"))
-        self.ensure = QtGui.QPushButton(self.widget_main)
-        self.ensure.setGeometry(QtCore.QRect(210, 24, 75, 31))
+        self.draw_curve = QtGui.QPushButton(self.widget_main)
+        self.draw_curve.setGeometry(QtCore.QRect(100, 100, 131, 41))
         font = QtGui.QFont()
         font.setPointSize(12)
-        self.ensure.setFont(font)
-        self.ensure.setObjectName(_fromUtf8("ensure"))
-        self.name = QtGui.QLineEdit(self.widget_main)
-        self.name.setGeometry(QtCore.QRect(20, 24, 171, 31))
+        self.draw_curve.setFont(font)
+        self.draw_curve.setObjectName(_fromUtf8("draw_curve"))
+        self.mineName_label_14 = QtGui.QLabel(self.widget_main)
+        self.mineName_label_14.setGeometry(QtCore.QRect(260, 20, 71, 25))
         font = QtGui.QFont()
         font.setPointSize(12)
-        self.name.setFont(font)
-        self.name.setObjectName(_fromUtf8("name"))
-        self.widget_title = QtGui.QWidget(name_dlg)
-        self.widget_title.setGeometry(QtCore.QRect(0, 0, 311, 31))
+        self.mineName_label_14.setFont(font)
+        self.mineName_label_14.setObjectName(_fromUtf8("mineName_label_14"))
+        self.mineName_label_13 = QtGui.QLabel(self.widget_main)
+        self.mineName_label_13.setGeometry(QtCore.QRect(20, 60, 151, 25))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.mineName_label_13.setFont(font)
+        self.mineName_label_13.setObjectName(_fromUtf8("mineName_label_13"))
+        self.alpha = QtGui.QLineEdit(self.widget_main)
+        self.alpha.setGeometry(QtCore.QRect(190, 60, 61, 25))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.alpha.setFont(font)
+        self.alpha.setObjectName(_fromUtf8("alpha"))
+        self.mineName_label_12 = QtGui.QLabel(self.widget_main)
+        self.mineName_label_12.setGeometry(QtCore.QRect(20, 20, 171, 25))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.mineName_label_12.setFont(font)
+        self.mineName_label_12.setObjectName(_fromUtf8("mineName_label_12"))
+        self.q0 = QtGui.QLineEdit(self.widget_main)
+        self.q0.setGeometry(QtCore.QRect(190, 20, 61, 25))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.q0.setFont(font)
+        self.q0.setObjectName(_fromUtf8("q0"))
+        self.widget_title = QtGui.QWidget(curve_draw_dlg)
+        self.widget_title.setGeometry(QtCore.QRect(0, 0, 341, 31))
         self.widget_title.setObjectName(_fromUtf8("widget_title"))
         self.lab_Ico = QtGui.QLabel(self.widget_title)
         self.lab_Ico.setGeometry(QtCore.QRect(0, 0, 31, 31))
@@ -58,7 +82,7 @@ class Ui_name_dlg(object):
         self.lab_Ico.setAlignment(QtCore.Qt.AlignCenter)
         self.lab_Ico.setObjectName(_fromUtf8("lab_Ico"))
         self.lab_Title = QtGui.QLabel(self.widget_title)
-        self.lab_Title.setGeometry(QtCore.QRect(40, 0, 221, 31))
+        self.lab_Title.setGeometry(QtCore.QRect(40, 0, 241, 31))
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -69,7 +93,7 @@ class Ui_name_dlg(object):
         self.lab_Title.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
         self.lab_Title.setObjectName(_fromUtf8("lab_Title"))
         self.btnMenu_Close = QtGui.QPushButton(self.widget_title)
-        self.btnMenu_Close.setGeometry(QtCore.QRect(270, 0, 41, 31))
+        self.btnMenu_Close.setGeometry(QtCore.QRect(300, 0, 41, 31))
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -86,13 +110,18 @@ class Ui_name_dlg(object):
         self.btnMenu_Close.setFlat(True)
         self.btnMenu_Close.setObjectName(_fromUtf8("btnMenu_Close"))
 
-        self.retranslateUi(name_dlg)
-        QtCore.QMetaObject.connectSlotsByName(name_dlg)
+        self.retranslateUi(curve_draw_dlg)
+        QtCore.QMetaObject.connectSlotsByName(curve_draw_dlg)
+        curve_draw_dlg.setTabOrder(self.q0, self.alpha)
+        curve_draw_dlg.setTabOrder(self.alpha, self.draw_curve)
 
-    def retranslateUi(self, name_dlg):
-        name_dlg.setWindowTitle(_translate("name_dlg", "新增", None))
-        self.ensure.setText(_translate("name_dlg", "确  定", None))
-        self.lab_Ico.setText(_translate("name_dlg", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+    def retranslateUi(self, curve_draw_dlg):
+        curve_draw_dlg.setWindowTitle(_translate("curve_draw_dlg", "抽采管径大小辅助计算", None))
+        self.draw_curve.setText(_translate("curve_draw_dlg", "绘制曲线", None))
+        self.mineName_label_14.setText(_translate("curve_draw_dlg", "<html><head/><body><p>(m<span style=\" vertical-align:super;\">3</span>/min)</p></body></html>", None))
+        self.mineName_label_13.setText(_translate("curve_draw_dlg", "衰   减    系    数   α", None))
+        self.mineName_label_12.setText(_translate("curve_draw_dlg", "<html><head/><body><p>钻孔初始瓦斯涌出量q<span style=\" vertical-align:sub;\">0</span></p></body></html>", None))
+        self.lab_Ico.setText(_translate("curve_draw_dlg", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'SimSun\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"

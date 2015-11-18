@@ -22,22 +22,21 @@ def MessageBox(msg_text, question=False, error=False):
 	if question:
 		msgbox.setMessage(msg_text, CbmMessageBox.MsgBoxType.QUESTION)
 		return msgbox.exec_() == 1
-
 	elif error:
 		msgbox.setMessage(msg_text, CbmMessageBox.MsgBoxType.ERROR)
 		msgbox.exec_()
 		return True
-
 	else:
 		msgbox.setMessage(msg_text, CbmMessageBox.MsgBoxType.INFO)
 		msgbox.exec_()
 		return True
 
 # 弹出对话框，请求用户输入一个"名称""
-def GetNameFromDlg(dlg_title):
+def GetNameFromDlg(title):
 	dlg = NameDlg.NameDlg()
-	dlg.setTitle(dlg_title)
-	name = u'null'
+	# 设置标题
+	dlg.setTitle(title)
+	name = u''
 	if dlg.exec_():
 		name = dlg.name
 	return name
