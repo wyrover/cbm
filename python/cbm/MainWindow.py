@@ -107,20 +107,20 @@ class MainWindow(QtGui.QMainWindow):
 			ret = DataHelper.sql_login_status()
 			# 内部错误
 			if ret == 0 or ret == -1:
-				UiHelper.MessageBox(u"系统技术性故障(错误码:M1),请联系技术人员!")
+				UiHelper.MessageBox(u"系统技术性故障(错误码:M1),请联系技术人员!",error = True)
 				can_run = False
 				break
 			# 用户未登录
 			elif ret == 2:
-				UiHelper.MessageBox(u"您需要登录才能使用本功能!")
+				UiHelper.MessageBox(u"您需要登录才能使用本功能!", error = True)
 				can_run = self.login() # 登录
 			# 管理员已登录		
 			elif ret == 3 and authority == Authority.USER:
-				UiHelper.MessageBox(u"管理员禁止使用该功能,请重新登录!")
+				UiHelper.MessageBox(u"管理员禁止使用该功能,请重新登录!", error = True)
 				can_run = self.login() # 登录
 			# 普通用户已登录
 			elif ret == 1 and authority == Authority.ADMIN:
-				UiHelper.MessageBox(u"您的权限不够,请重新登录!")
+				UiHelper.MessageBox(u"您的权限不够,请重新登录!", error = True)
 				can_run = self.login() # 登录
 
 			if can_run and DataHelper.sql_login_authority(authority):
