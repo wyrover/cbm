@@ -61,7 +61,7 @@
     <property name="title">
      <string>钻孔参数</string>
     </property>
-    <widget class="QLineEdit" name="pore_gap">
+    <widget class="QLineEdit" name="gp">
      <property name="geometry">
       <rect>
        <x>100</x>
@@ -679,7 +679,7 @@
     <property name="title">
      <string>钻孔类型</string>
     </property>
-    <widget class="QRadioButton" name="pore_type_4">
+    <widget class="QRadioButton" name="pore_type4">
      <property name="geometry">
       <rect>
        <x>160</x>
@@ -697,7 +697,7 @@
       <string>交叉钻孔</string>
      </property>
     </widget>
-    <widget class="QRadioButton" name="pore_type_1">
+    <widget class="QRadioButton" name="pore_type1">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -718,7 +718,7 @@
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QRadioButton" name="pore_type_3">
+    <widget class="QRadioButton" name="pore_type3">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -736,7 +736,7 @@
       <string>扇形钻孔</string>
      </property>
     </widget>
-    <widget class="QRadioButton" name="pore_type_2">
+    <widget class="QRadioButton" name="pore_type2">
      <property name="geometry">
       <rect>
        <x>160</x>
@@ -878,12 +878,12 @@ p, li { white-space: pre-wrap; }
   <tabstop>h</tabstop>
   <tabstop>dp</tabstop>
   <tabstop>pore_stubble</tabstop>
-  <tabstop>pore_gap</tabstop>
+  <tabstop>gp</tabstop>
   <tabstop>pore_angle</tabstop>
-  <tabstop>pore_type_1</tabstop>
-  <tabstop>pore_type_2</tabstop>
-  <tabstop>pore_type_3</tabstop>
-  <tabstop>pore_type_4</tabstop>
+  <tabstop>pore_type1</tabstop>
+  <tabstop>pore_type2</tabstop>
+  <tabstop>pore_type3</tabstop>
+  <tabstop>pore_type4</tabstop>
   <tabstop>plane_graph</tabstop>
   <tabstop>head_graph</tabstop>
   <tabstop>dip_graph</tabstop>

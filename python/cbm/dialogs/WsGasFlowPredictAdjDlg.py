@@ -118,7 +118,7 @@ class WsGasFlowPredictAdjDlg(BaseDialog):
 		
 		# 新建邻近层,并提交到数据库
 		adj_layer = AdjLayer()
-		adj_layer.name = name
+		adj_layer.name = name.encode('utf-8')
 		adj_layer.work_surf_id = self.work_surf_id
 		# 新建煤层(要邻近层关联),提交到数据库获得煤层id
 		coal = Coal()

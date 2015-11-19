@@ -24,10 +24,16 @@ mpl.rcParams['font.family']='sans-serif'
 mpl.rcParams['font.sans-serif'] = ['SimHei']  #指定默认字体
 mpl.rcParams['axes.unicode_minus'] = False	#解决保存图像是负号'-'显示为方块的问题
 
+# 枚举--抽采区域
+class GasDesignRegion:
+	DRILLING_SURF = 1  # 掘进工作面
+	WORK_SURF = 2      # 回采工作面
+	GOAF = 3           # 采空区
+
 # 由于设计ui的时候,做了3个子菜单(回采面、掘进面、采空区)
 # 但它们对应的都是连接一个slot函数,而现有的实现很难实现给slot函数传递参数的功能(可以做,但对本代码来说需要修改的就比较多了)
 # 参见MainWindow中的wsGasDesign、twsGasDesign、goafGasDesign 这3个槽函数
-GAS_DESIGN_TYPE = 1
+GAS_DESIGN_REGION = GasDesignRegion.WORK_SURF
 
 # 枚举--登录限制
 class Authority:
@@ -153,6 +159,16 @@ def permeability_lambda_to_k(p_lambda):
 
 def permeability_k_to_lambda(p_k):
 	return p_k / 0.025
+
+def dip_angle_type(angle):
+	if angle <= 8:
+		return 1 # 进水平
+	elif angle <= 25:
+		return 2 # 缓倾斜
+	elif angle <= 45:
+		return 3 # 倾斜
+	else:
+		return 4 # 急倾斜
 
 # 计算评价单元的距离
 def Lf(Ln, T, V):

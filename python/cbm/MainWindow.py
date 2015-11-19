@@ -210,19 +210,19 @@ class MainWindow(QtGui.QMainWindow):
 
 	def wsGasDesign(self):
 		# 进行工作面的瓦斯抽采设计
-		DataHelper.GAS_DESIGN_TYPE = 1
+		DataHelper.GAS_DESIGN_REGION = 1
 		# 启动瓦斯抽采设计对话框
 		self.try_run(GasDesignDlg, Authority.USER)
 
 	def twsGasDesign(self):
 		# 进行掘进面的瓦斯抽采设计
-		DataHelper.GAS_DESIGN_TYPE = 2
+		DataHelper.GAS_DESIGN_REGION = 2
 		# 启动掘进面瓦斯抽采设计对话框
 		self.try_run(GasDesignDlg, Authority.USER)
 
 	def goafGasDesign(self):
 		# 进行采空区的瓦斯抽采设计
-		DataHelper.GAS_DESIGN_TYPE = 3
+		DataHelper.GAS_DESIGN_REGION = 3
 		self.try_run(GasDesignDlg, Authority.USER)
 
 	def openOfficeNet(self):

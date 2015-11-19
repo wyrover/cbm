@@ -162,7 +162,7 @@ function GetAccountByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetAccountByField1($field, $value);
+		$_return = $client->GetAccountByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -175,7 +175,7 @@ function GetAccountByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetAccountByField2(field1, value1, field2, value2);
+		$_return = $client->GetAccountByField2($field1, strval($value1), $field2, str($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -201,7 +201,7 @@ function GetAccountListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetAccountListByField1($field, $value);
+		$_return = $client->GetAccountListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -214,7 +214,7 @@ function GetAccountListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetAccountListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetAccountListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -240,7 +240,7 @@ function GetAccountIdByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetAccountIdByField1($field, $value);
+		$_return = $client->GetAccountIdByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -253,7 +253,7 @@ function GetAccountIdByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetAccountIdByField2(field1, value1, field2, value2);
+		$_return = $client->GetAccountIdByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -279,7 +279,7 @@ function GetAccountIdListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetAccountIdListByField1($field, $value);
+		$_return = $client->GetAccountIdListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -292,7 +292,7 @@ function GetAccountIdListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetAccountIdListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetAccountIdListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -486,7 +486,7 @@ function GetAdjLayerByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetAdjLayerByField1($field, $value);
+		$_return = $client->GetAdjLayerByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -499,7 +499,7 @@ function GetAdjLayerByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetAdjLayerByField2(field1, value1, field2, value2);
+		$_return = $client->GetAdjLayerByField2($field1, strval($value1), $field2, str($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -525,7 +525,7 @@ function GetAdjLayerListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetAdjLayerListByField1($field, $value);
+		$_return = $client->GetAdjLayerListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -538,7 +538,7 @@ function GetAdjLayerListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetAdjLayerListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetAdjLayerListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -564,7 +564,7 @@ function GetAdjLayerIdByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetAdjLayerIdByField1($field, $value);
+		$_return = $client->GetAdjLayerIdByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -577,7 +577,7 @@ function GetAdjLayerIdByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetAdjLayerIdByField2(field1, value1, field2, value2);
+		$_return = $client->GetAdjLayerIdByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -603,7 +603,7 @@ function GetAdjLayerIdListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetAdjLayerIdListByField1($field, $value);
+		$_return = $client->GetAdjLayerIdListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -616,7 +616,7 @@ function GetAdjLayerIdListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetAdjLayerIdListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetAdjLayerIdListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -810,7 +810,7 @@ function GetCoalByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetCoalByField1($field, $value);
+		$_return = $client->GetCoalByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -823,7 +823,7 @@ function GetCoalByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetCoalByField2(field1, value1, field2, value2);
+		$_return = $client->GetCoalByField2($field1, strval($value1), $field2, str($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -849,7 +849,7 @@ function GetCoalListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetCoalListByField1($field, $value);
+		$_return = $client->GetCoalListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -862,7 +862,7 @@ function GetCoalListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetCoalListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetCoalListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -888,7 +888,7 @@ function GetCoalIdByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetCoalIdByField1($field, $value);
+		$_return = $client->GetCoalIdByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -901,7 +901,7 @@ function GetCoalIdByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetCoalIdByField2(field1, value1, field2, value2);
+		$_return = $client->GetCoalIdByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -927,7 +927,7 @@ function GetCoalIdListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetCoalIdListByField1($field, $value);
+		$_return = $client->GetCoalIdListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -940,7 +940,7 @@ function GetCoalIdListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetCoalIdListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetCoalIdListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -1134,7 +1134,7 @@ function GetComplexityByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetComplexityByField1($field, $value);
+		$_return = $client->GetComplexityByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -1147,7 +1147,7 @@ function GetComplexityByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetComplexityByField2(field1, value1, field2, value2);
+		$_return = $client->GetComplexityByField2($field1, strval($value1), $field2, str($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -1173,7 +1173,7 @@ function GetComplexityListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetComplexityListByField1($field, $value);
+		$_return = $client->GetComplexityListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -1186,7 +1186,7 @@ function GetComplexityListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetComplexityListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetComplexityListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -1212,7 +1212,7 @@ function GetComplexityIdByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetComplexityIdByField1($field, $value);
+		$_return = $client->GetComplexityIdByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -1225,7 +1225,7 @@ function GetComplexityIdByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetComplexityIdByField2(field1, value1, field2, value2);
+		$_return = $client->GetComplexityIdByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -1251,7 +1251,7 @@ function GetComplexityIdListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetComplexityIdListByField1($field, $value);
+		$_return = $client->GetComplexityIdListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -1264,7 +1264,7 @@ function GetComplexityIdListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetComplexityIdListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetComplexityIdListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -1458,7 +1458,7 @@ function GetDesignDrillingSurfTechnologyByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignDrillingSurfTechnologyByField1($field, $value);
+		$_return = $client->GetDesignDrillingSurfTechnologyByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -1471,7 +1471,7 @@ function GetDesignDrillingSurfTechnologyByField2($field1, $value1, $field2, $val
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignDrillingSurfTechnologyByField2(field1, value1, field2, value2);
+		$_return = $client->GetDesignDrillingSurfTechnologyByField2($field1, strval($value1), $field2, str($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -1497,7 +1497,7 @@ function GetDesignDrillingSurfTechnologyListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignDrillingSurfTechnologyListByField1($field, $value);
+		$_return = $client->GetDesignDrillingSurfTechnologyListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -1510,7 +1510,7 @@ function GetDesignDrillingSurfTechnologyListByField2($field1, $value1, $field2, 
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignDrillingSurfTechnologyListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetDesignDrillingSurfTechnologyListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -1536,7 +1536,7 @@ function GetDesignDrillingSurfTechnologyIdByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignDrillingSurfTechnologyIdByField1($field, $value);
+		$_return = $client->GetDesignDrillingSurfTechnologyIdByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -1549,7 +1549,7 @@ function GetDesignDrillingSurfTechnologyIdByField2($field1, $value1, $field2, $v
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignDrillingSurfTechnologyIdByField2(field1, value1, field2, value2);
+		$_return = $client->GetDesignDrillingSurfTechnologyIdByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -1575,7 +1575,7 @@ function GetDesignDrillingSurfTechnologyIdListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignDrillingSurfTechnologyIdListByField1($field, $value);
+		$_return = $client->GetDesignDrillingSurfTechnologyIdListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -1588,7 +1588,7 @@ function GetDesignDrillingSurfTechnologyIdListByField2($field1, $value1, $field2
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignDrillingSurfTechnologyIdListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetDesignDrillingSurfTechnologyIdListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -1782,7 +1782,7 @@ function GetDesignEvalUnitByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignEvalUnitByField1($field, $value);
+		$_return = $client->GetDesignEvalUnitByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -1795,7 +1795,7 @@ function GetDesignEvalUnitByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignEvalUnitByField2(field1, value1, field2, value2);
+		$_return = $client->GetDesignEvalUnitByField2($field1, strval($value1), $field2, str($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -1821,7 +1821,7 @@ function GetDesignEvalUnitListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignEvalUnitListByField1($field, $value);
+		$_return = $client->GetDesignEvalUnitListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -1834,7 +1834,7 @@ function GetDesignEvalUnitListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignEvalUnitListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetDesignEvalUnitListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -1860,7 +1860,7 @@ function GetDesignEvalUnitIdByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignEvalUnitIdByField1($field, $value);
+		$_return = $client->GetDesignEvalUnitIdByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -1873,7 +1873,7 @@ function GetDesignEvalUnitIdByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignEvalUnitIdByField2(field1, value1, field2, value2);
+		$_return = $client->GetDesignEvalUnitIdByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -1899,7 +1899,7 @@ function GetDesignEvalUnitIdListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignEvalUnitIdListByField1($field, $value);
+		$_return = $client->GetDesignEvalUnitIdListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -1912,7 +1912,7 @@ function GetDesignEvalUnitIdListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignEvalUnitIdListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetDesignEvalUnitIdListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -2106,7 +2106,7 @@ function GetDesignEvalUnitPartitionByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignEvalUnitPartitionByField1($field, $value);
+		$_return = $client->GetDesignEvalUnitPartitionByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -2119,7 +2119,7 @@ function GetDesignEvalUnitPartitionByField2($field1, $value1, $field2, $value2) 
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignEvalUnitPartitionByField2(field1, value1, field2, value2);
+		$_return = $client->GetDesignEvalUnitPartitionByField2($field1, strval($value1), $field2, str($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -2145,7 +2145,7 @@ function GetDesignEvalUnitPartitionListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignEvalUnitPartitionListByField1($field, $value);
+		$_return = $client->GetDesignEvalUnitPartitionListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -2158,7 +2158,7 @@ function GetDesignEvalUnitPartitionListByField2($field1, $value1, $field2, $valu
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignEvalUnitPartitionListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetDesignEvalUnitPartitionListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -2184,7 +2184,7 @@ function GetDesignEvalUnitPartitionIdByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignEvalUnitPartitionIdByField1($field, $value);
+		$_return = $client->GetDesignEvalUnitPartitionIdByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -2197,7 +2197,7 @@ function GetDesignEvalUnitPartitionIdByField2($field1, $value1, $field2, $value2
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignEvalUnitPartitionIdByField2(field1, value1, field2, value2);
+		$_return = $client->GetDesignEvalUnitPartitionIdByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -2223,7 +2223,7 @@ function GetDesignEvalUnitPartitionIdListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignEvalUnitPartitionIdListByField1($field, $value);
+		$_return = $client->GetDesignEvalUnitPartitionIdListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -2236,7 +2236,7 @@ function GetDesignEvalUnitPartitionIdListByField2($field1, $value1, $field2, $va
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignEvalUnitPartitionIdListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetDesignEvalUnitPartitionIdListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -2430,7 +2430,7 @@ function GetDesignGoafTechnologyByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignGoafTechnologyByField1($field, $value);
+		$_return = $client->GetDesignGoafTechnologyByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -2443,7 +2443,7 @@ function GetDesignGoafTechnologyByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignGoafTechnologyByField2(field1, value1, field2, value2);
+		$_return = $client->GetDesignGoafTechnologyByField2($field1, strval($value1), $field2, str($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -2469,7 +2469,7 @@ function GetDesignGoafTechnologyListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignGoafTechnologyListByField1($field, $value);
+		$_return = $client->GetDesignGoafTechnologyListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -2482,7 +2482,7 @@ function GetDesignGoafTechnologyListByField2($field1, $value1, $field2, $value2)
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignGoafTechnologyListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetDesignGoafTechnologyListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -2508,7 +2508,7 @@ function GetDesignGoafTechnologyIdByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignGoafTechnologyIdByField1($field, $value);
+		$_return = $client->GetDesignGoafTechnologyIdByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -2521,7 +2521,7 @@ function GetDesignGoafTechnologyIdByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignGoafTechnologyIdByField2(field1, value1, field2, value2);
+		$_return = $client->GetDesignGoafTechnologyIdByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -2547,7 +2547,7 @@ function GetDesignGoafTechnologyIdListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignGoafTechnologyIdListByField1($field, $value);
+		$_return = $client->GetDesignGoafTechnologyIdListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -2560,7 +2560,7 @@ function GetDesignGoafTechnologyIdListByField2($field1, $value1, $field2, $value
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignGoafTechnologyIdListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetDesignGoafTechnologyIdListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -2754,7 +2754,7 @@ function GetDesignPoreByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignPoreByField1($field, $value);
+		$_return = $client->GetDesignPoreByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -2767,7 +2767,7 @@ function GetDesignPoreByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignPoreByField2(field1, value1, field2, value2);
+		$_return = $client->GetDesignPoreByField2($field1, strval($value1), $field2, str($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -2793,7 +2793,7 @@ function GetDesignPoreListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignPoreListByField1($field, $value);
+		$_return = $client->GetDesignPoreListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -2806,7 +2806,7 @@ function GetDesignPoreListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignPoreListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetDesignPoreListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -2832,7 +2832,7 @@ function GetDesignPoreIdByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignPoreIdByField1($field, $value);
+		$_return = $client->GetDesignPoreIdByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -2845,7 +2845,7 @@ function GetDesignPoreIdByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignPoreIdByField2(field1, value1, field2, value2);
+		$_return = $client->GetDesignPoreIdByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -2871,7 +2871,7 @@ function GetDesignPoreIdListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignPoreIdListByField1($field, $value);
+		$_return = $client->GetDesignPoreIdListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -2884,7 +2884,7 @@ function GetDesignPoreIdListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignPoreIdListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetDesignPoreIdListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -3078,7 +3078,7 @@ function GetDesignSiteByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignSiteByField1($field, $value);
+		$_return = $client->GetDesignSiteByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -3091,7 +3091,7 @@ function GetDesignSiteByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignSiteByField2(field1, value1, field2, value2);
+		$_return = $client->GetDesignSiteByField2($field1, strval($value1), $field2, str($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -3117,7 +3117,7 @@ function GetDesignSiteListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignSiteListByField1($field, $value);
+		$_return = $client->GetDesignSiteListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -3130,7 +3130,7 @@ function GetDesignSiteListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignSiteListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetDesignSiteListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -3156,7 +3156,7 @@ function GetDesignSiteIdByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignSiteIdByField1($field, $value);
+		$_return = $client->GetDesignSiteIdByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -3169,7 +3169,7 @@ function GetDesignSiteIdByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignSiteIdByField2(field1, value1, field2, value2);
+		$_return = $client->GetDesignSiteIdByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -3195,7 +3195,7 @@ function GetDesignSiteIdListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignSiteIdListByField1($field, $value);
+		$_return = $client->GetDesignSiteIdListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -3208,7 +3208,7 @@ function GetDesignSiteIdListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignSiteIdListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetDesignSiteIdListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -3402,7 +3402,7 @@ function GetDesignTechnologyByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignTechnologyByField1($field, $value);
+		$_return = $client->GetDesignTechnologyByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -3415,7 +3415,7 @@ function GetDesignTechnologyByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignTechnologyByField2(field1, value1, field2, value2);
+		$_return = $client->GetDesignTechnologyByField2($field1, strval($value1), $field2, str($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -3441,7 +3441,7 @@ function GetDesignTechnologyListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignTechnologyListByField1($field, $value);
+		$_return = $client->GetDesignTechnologyListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -3454,7 +3454,7 @@ function GetDesignTechnologyListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignTechnologyListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetDesignTechnologyListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -3480,7 +3480,7 @@ function GetDesignTechnologyIdByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignTechnologyIdByField1($field, $value);
+		$_return = $client->GetDesignTechnologyIdByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -3493,7 +3493,7 @@ function GetDesignTechnologyIdByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignTechnologyIdByField2(field1, value1, field2, value2);
+		$_return = $client->GetDesignTechnologyIdByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -3519,7 +3519,7 @@ function GetDesignTechnologyIdListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignTechnologyIdListByField1($field, $value);
+		$_return = $client->GetDesignTechnologyIdListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -3532,7 +3532,7 @@ function GetDesignTechnologyIdListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignTechnologyIdListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetDesignTechnologyIdListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -3726,7 +3726,7 @@ function GetDesignTunnelControlPointByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignTunnelControlPointByField1($field, $value);
+		$_return = $client->GetDesignTunnelControlPointByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -3739,7 +3739,7 @@ function GetDesignTunnelControlPointByField2($field1, $value1, $field2, $value2)
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignTunnelControlPointByField2(field1, value1, field2, value2);
+		$_return = $client->GetDesignTunnelControlPointByField2($field1, strval($value1), $field2, str($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -3765,7 +3765,7 @@ function GetDesignTunnelControlPointListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignTunnelControlPointListByField1($field, $value);
+		$_return = $client->GetDesignTunnelControlPointListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -3778,7 +3778,7 @@ function GetDesignTunnelControlPointListByField2($field1, $value1, $field2, $val
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignTunnelControlPointListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetDesignTunnelControlPointListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -3804,7 +3804,7 @@ function GetDesignTunnelControlPointIdByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignTunnelControlPointIdByField1($field, $value);
+		$_return = $client->GetDesignTunnelControlPointIdByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -3817,7 +3817,7 @@ function GetDesignTunnelControlPointIdByField2($field1, $value1, $field2, $value
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignTunnelControlPointIdByField2(field1, value1, field2, value2);
+		$_return = $client->GetDesignTunnelControlPointIdByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -3843,7 +3843,7 @@ function GetDesignTunnelControlPointIdListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignTunnelControlPointIdListByField1($field, $value);
+		$_return = $client->GetDesignTunnelControlPointIdListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -3856,7 +3856,7 @@ function GetDesignTunnelControlPointIdListByField2($field1, $value1, $field2, $v
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignTunnelControlPointIdListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetDesignTunnelControlPointIdListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -4050,7 +4050,7 @@ function GetDesignWorkSurfControlPointByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignWorkSurfControlPointByField1($field, $value);
+		$_return = $client->GetDesignWorkSurfControlPointByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -4063,7 +4063,7 @@ function GetDesignWorkSurfControlPointByField2($field1, $value1, $field2, $value
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignWorkSurfControlPointByField2(field1, value1, field2, value2);
+		$_return = $client->GetDesignWorkSurfControlPointByField2($field1, strval($value1), $field2, str($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -4089,7 +4089,7 @@ function GetDesignWorkSurfControlPointListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignWorkSurfControlPointListByField1($field, $value);
+		$_return = $client->GetDesignWorkSurfControlPointListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -4102,7 +4102,7 @@ function GetDesignWorkSurfControlPointListByField2($field1, $value1, $field2, $v
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignWorkSurfControlPointListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetDesignWorkSurfControlPointListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -4128,7 +4128,7 @@ function GetDesignWorkSurfControlPointIdByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignWorkSurfControlPointIdByField1($field, $value);
+		$_return = $client->GetDesignWorkSurfControlPointIdByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -4141,7 +4141,7 @@ function GetDesignWorkSurfControlPointIdByField2($field1, $value1, $field2, $val
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignWorkSurfControlPointIdByField2(field1, value1, field2, value2);
+		$_return = $client->GetDesignWorkSurfControlPointIdByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -4167,7 +4167,7 @@ function GetDesignWorkSurfControlPointIdListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignWorkSurfControlPointIdListByField1($field, $value);
+		$_return = $client->GetDesignWorkSurfControlPointIdListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -4180,7 +4180,7 @@ function GetDesignWorkSurfControlPointIdListByField2($field1, $value1, $field2, 
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignWorkSurfControlPointIdListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetDesignWorkSurfControlPointIdListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -4374,7 +4374,7 @@ function GetDesignWorkSurfTechnologyByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignWorkSurfTechnologyByField1($field, $value);
+		$_return = $client->GetDesignWorkSurfTechnologyByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -4387,7 +4387,7 @@ function GetDesignWorkSurfTechnologyByField2($field1, $value1, $field2, $value2)
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignWorkSurfTechnologyByField2(field1, value1, field2, value2);
+		$_return = $client->GetDesignWorkSurfTechnologyByField2($field1, strval($value1), $field2, str($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -4413,7 +4413,7 @@ function GetDesignWorkSurfTechnologyListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignWorkSurfTechnologyListByField1($field, $value);
+		$_return = $client->GetDesignWorkSurfTechnologyListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -4426,7 +4426,7 @@ function GetDesignWorkSurfTechnologyListByField2($field1, $value1, $field2, $val
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignWorkSurfTechnologyListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetDesignWorkSurfTechnologyListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -4452,7 +4452,7 @@ function GetDesignWorkSurfTechnologyIdByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignWorkSurfTechnologyIdByField1($field, $value);
+		$_return = $client->GetDesignWorkSurfTechnologyIdByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -4465,7 +4465,7 @@ function GetDesignWorkSurfTechnologyIdByField2($field1, $value1, $field2, $value
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignWorkSurfTechnologyIdByField2(field1, value1, field2, value2);
+		$_return = $client->GetDesignWorkSurfTechnologyIdByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -4491,7 +4491,7 @@ function GetDesignWorkSurfTechnologyIdListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignWorkSurfTechnologyIdListByField1($field, $value);
+		$_return = $client->GetDesignWorkSurfTechnologyIdListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -4504,7 +4504,7 @@ function GetDesignWorkSurfTechnologyIdListByField2($field1, $value1, $field2, $v
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDesignWorkSurfTechnologyIdListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetDesignWorkSurfTechnologyIdListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -4698,7 +4698,7 @@ function GetDrillingRadiusParamByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDrillingRadiusParamByField1($field, $value);
+		$_return = $client->GetDrillingRadiusParamByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -4711,7 +4711,7 @@ function GetDrillingRadiusParamByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDrillingRadiusParamByField2(field1, value1, field2, value2);
+		$_return = $client->GetDrillingRadiusParamByField2($field1, strval($value1), $field2, str($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -4737,7 +4737,7 @@ function GetDrillingRadiusParamListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDrillingRadiusParamListByField1($field, $value);
+		$_return = $client->GetDrillingRadiusParamListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -4750,7 +4750,7 @@ function GetDrillingRadiusParamListByField2($field1, $value1, $field2, $value2) 
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDrillingRadiusParamListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetDrillingRadiusParamListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -4776,7 +4776,7 @@ function GetDrillingRadiusParamIdByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDrillingRadiusParamIdByField1($field, $value);
+		$_return = $client->GetDrillingRadiusParamIdByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -4789,7 +4789,7 @@ function GetDrillingRadiusParamIdByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDrillingRadiusParamIdByField2(field1, value1, field2, value2);
+		$_return = $client->GetDrillingRadiusParamIdByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -4815,7 +4815,7 @@ function GetDrillingRadiusParamIdListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDrillingRadiusParamIdListByField1($field, $value);
+		$_return = $client->GetDrillingRadiusParamIdListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -4828,7 +4828,7 @@ function GetDrillingRadiusParamIdListByField2($field1, $value1, $field2, $value2
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDrillingRadiusParamIdListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetDrillingRadiusParamIdListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -5022,7 +5022,7 @@ function GetDrillingSurfByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDrillingSurfByField1($field, $value);
+		$_return = $client->GetDrillingSurfByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -5035,7 +5035,7 @@ function GetDrillingSurfByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDrillingSurfByField2(field1, value1, field2, value2);
+		$_return = $client->GetDrillingSurfByField2($field1, strval($value1), $field2, str($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -5061,7 +5061,7 @@ function GetDrillingSurfListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDrillingSurfListByField1($field, $value);
+		$_return = $client->GetDrillingSurfListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -5074,7 +5074,7 @@ function GetDrillingSurfListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDrillingSurfListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetDrillingSurfListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -5100,7 +5100,7 @@ function GetDrillingSurfIdByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDrillingSurfIdByField1($field, $value);
+		$_return = $client->GetDrillingSurfIdByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -5113,7 +5113,7 @@ function GetDrillingSurfIdByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDrillingSurfIdByField2(field1, value1, field2, value2);
+		$_return = $client->GetDrillingSurfIdByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -5139,7 +5139,7 @@ function GetDrillingSurfIdListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDrillingSurfIdListByField1($field, $value);
+		$_return = $client->GetDrillingSurfIdListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -5152,7 +5152,7 @@ function GetDrillingSurfIdListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetDrillingSurfIdListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetDrillingSurfIdListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -5346,7 +5346,7 @@ function GetEvalUnitByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetEvalUnitByField1($field, $value);
+		$_return = $client->GetEvalUnitByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -5359,7 +5359,7 @@ function GetEvalUnitByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetEvalUnitByField2(field1, value1, field2, value2);
+		$_return = $client->GetEvalUnitByField2($field1, strval($value1), $field2, str($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -5385,7 +5385,7 @@ function GetEvalUnitListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetEvalUnitListByField1($field, $value);
+		$_return = $client->GetEvalUnitListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -5398,7 +5398,7 @@ function GetEvalUnitListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetEvalUnitListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetEvalUnitListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -5424,7 +5424,7 @@ function GetEvalUnitIdByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetEvalUnitIdByField1($field, $value);
+		$_return = $client->GetEvalUnitIdByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -5437,7 +5437,7 @@ function GetEvalUnitIdByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetEvalUnitIdByField2(field1, value1, field2, value2);
+		$_return = $client->GetEvalUnitIdByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -5463,7 +5463,7 @@ function GetEvalUnitIdListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetEvalUnitIdListByField1($field, $value);
+		$_return = $client->GetEvalUnitIdListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -5476,7 +5476,7 @@ function GetEvalUnitIdListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetEvalUnitIdListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetEvalUnitIdListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -5670,7 +5670,7 @@ function GetHighDrillingPoreByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHighDrillingPoreByField1($field, $value);
+		$_return = $client->GetHighDrillingPoreByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -5683,7 +5683,7 @@ function GetHighDrillingPoreByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHighDrillingPoreByField2(field1, value1, field2, value2);
+		$_return = $client->GetHighDrillingPoreByField2($field1, strval($value1), $field2, str($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -5709,7 +5709,7 @@ function GetHighDrillingPoreListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHighDrillingPoreListByField1($field, $value);
+		$_return = $client->GetHighDrillingPoreListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -5722,7 +5722,7 @@ function GetHighDrillingPoreListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHighDrillingPoreListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetHighDrillingPoreListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -5748,7 +5748,7 @@ function GetHighDrillingPoreIdByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHighDrillingPoreIdByField1($field, $value);
+		$_return = $client->GetHighDrillingPoreIdByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -5761,7 +5761,7 @@ function GetHighDrillingPoreIdByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHighDrillingPoreIdByField2(field1, value1, field2, value2);
+		$_return = $client->GetHighDrillingPoreIdByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -5787,7 +5787,7 @@ function GetHighDrillingPoreIdListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHighDrillingPoreIdListByField1($field, $value);
+		$_return = $client->GetHighDrillingPoreIdListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -5800,7 +5800,7 @@ function GetHighDrillingPoreIdListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHighDrillingPoreIdListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetHighDrillingPoreIdListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -5994,7 +5994,7 @@ function GetHighDrillingPoreParamByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHighDrillingPoreParamByField1($field, $value);
+		$_return = $client->GetHighDrillingPoreParamByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -6007,7 +6007,7 @@ function GetHighDrillingPoreParamByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHighDrillingPoreParamByField2(field1, value1, field2, value2);
+		$_return = $client->GetHighDrillingPoreParamByField2($field1, strval($value1), $field2, str($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -6033,7 +6033,7 @@ function GetHighDrillingPoreParamListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHighDrillingPoreParamListByField1($field, $value);
+		$_return = $client->GetHighDrillingPoreParamListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -6046,7 +6046,7 @@ function GetHighDrillingPoreParamListByField2($field1, $value1, $field2, $value2
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHighDrillingPoreParamListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetHighDrillingPoreParamListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -6072,7 +6072,7 @@ function GetHighDrillingPoreParamIdByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHighDrillingPoreParamIdByField1($field, $value);
+		$_return = $client->GetHighDrillingPoreParamIdByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -6085,7 +6085,7 @@ function GetHighDrillingPoreParamIdByField2($field1, $value1, $field2, $value2) 
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHighDrillingPoreParamIdByField2(field1, value1, field2, value2);
+		$_return = $client->GetHighDrillingPoreParamIdByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -6111,7 +6111,7 @@ function GetHighDrillingPoreParamIdListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHighDrillingPoreParamIdListByField1($field, $value);
+		$_return = $client->GetHighDrillingPoreParamIdListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -6124,7 +6124,7 @@ function GetHighDrillingPoreParamIdListByField2($field1, $value1, $field2, $valu
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHighDrillingPoreParamIdListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetHighDrillingPoreParamIdListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -6318,7 +6318,7 @@ function GetHighDrillingSiteParamByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHighDrillingSiteParamByField1($field, $value);
+		$_return = $client->GetHighDrillingSiteParamByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -6331,7 +6331,7 @@ function GetHighDrillingSiteParamByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHighDrillingSiteParamByField2(field1, value1, field2, value2);
+		$_return = $client->GetHighDrillingSiteParamByField2($field1, strval($value1), $field2, str($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -6357,7 +6357,7 @@ function GetHighDrillingSiteParamListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHighDrillingSiteParamListByField1($field, $value);
+		$_return = $client->GetHighDrillingSiteParamListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -6370,7 +6370,7 @@ function GetHighDrillingSiteParamListByField2($field1, $value1, $field2, $value2
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHighDrillingSiteParamListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetHighDrillingSiteParamListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -6396,7 +6396,7 @@ function GetHighDrillingSiteParamIdByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHighDrillingSiteParamIdByField1($field, $value);
+		$_return = $client->GetHighDrillingSiteParamIdByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -6409,7 +6409,7 @@ function GetHighDrillingSiteParamIdByField2($field1, $value1, $field2, $value2) 
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHighDrillingSiteParamIdByField2(field1, value1, field2, value2);
+		$_return = $client->GetHighDrillingSiteParamIdByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -6435,7 +6435,7 @@ function GetHighDrillingSiteParamIdListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHighDrillingSiteParamIdListByField1($field, $value);
+		$_return = $client->GetHighDrillingSiteParamIdListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -6448,7 +6448,7 @@ function GetHighDrillingSiteParamIdListByField2($field1, $value1, $field2, $valu
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHighDrillingSiteParamIdListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetHighDrillingSiteParamIdListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -6642,7 +6642,7 @@ function GetHighDrillingTunnelByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHighDrillingTunnelByField1($field, $value);
+		$_return = $client->GetHighDrillingTunnelByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -6655,7 +6655,7 @@ function GetHighDrillingTunnelByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHighDrillingTunnelByField2(field1, value1, field2, value2);
+		$_return = $client->GetHighDrillingTunnelByField2($field1, strval($value1), $field2, str($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -6681,7 +6681,7 @@ function GetHighDrillingTunnelListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHighDrillingTunnelListByField1($field, $value);
+		$_return = $client->GetHighDrillingTunnelListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -6694,7 +6694,7 @@ function GetHighDrillingTunnelListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHighDrillingTunnelListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetHighDrillingTunnelListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -6720,7 +6720,7 @@ function GetHighDrillingTunnelIdByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHighDrillingTunnelIdByField1($field, $value);
+		$_return = $client->GetHighDrillingTunnelIdByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -6733,7 +6733,7 @@ function GetHighDrillingTunnelIdByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHighDrillingTunnelIdByField2(field1, value1, field2, value2);
+		$_return = $client->GetHighDrillingTunnelIdByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -6759,7 +6759,7 @@ function GetHighDrillingTunnelIdListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHighDrillingTunnelIdListByField1($field, $value);
+		$_return = $client->GetHighDrillingTunnelIdListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -6772,7 +6772,7 @@ function GetHighDrillingTunnelIdListByField2($field1, $value1, $field2, $value2)
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHighDrillingTunnelIdListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetHighDrillingTunnelIdListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -6966,7 +6966,7 @@ function GetHydrGeoByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHydrGeoByField1($field, $value);
+		$_return = $client->GetHydrGeoByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -6979,7 +6979,7 @@ function GetHydrGeoByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHydrGeoByField2(field1, value1, field2, value2);
+		$_return = $client->GetHydrGeoByField2($field1, strval($value1), $field2, str($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -7005,7 +7005,7 @@ function GetHydrGeoListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHydrGeoListByField1($field, $value);
+		$_return = $client->GetHydrGeoListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -7018,7 +7018,7 @@ function GetHydrGeoListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHydrGeoListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetHydrGeoListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -7044,7 +7044,7 @@ function GetHydrGeoIdByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHydrGeoIdByField1($field, $value);
+		$_return = $client->GetHydrGeoIdByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -7057,7 +7057,7 @@ function GetHydrGeoIdByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHydrGeoIdByField2(field1, value1, field2, value2);
+		$_return = $client->GetHydrGeoIdByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -7083,7 +7083,7 @@ function GetHydrGeoIdListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHydrGeoIdListByField1($field, $value);
+		$_return = $client->GetHydrGeoIdListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -7096,7 +7096,7 @@ function GetHydrGeoIdListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetHydrGeoIdListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetHydrGeoIdListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -7290,7 +7290,7 @@ function GetMineByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetMineByField1($field, $value);
+		$_return = $client->GetMineByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -7303,7 +7303,7 @@ function GetMineByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetMineByField2(field1, value1, field2, value2);
+		$_return = $client->GetMineByField2($field1, strval($value1), $field2, str($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -7329,7 +7329,7 @@ function GetMineListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetMineListByField1($field, $value);
+		$_return = $client->GetMineListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -7342,7 +7342,7 @@ function GetMineListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetMineListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetMineListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -7368,7 +7368,7 @@ function GetMineIdByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetMineIdByField1($field, $value);
+		$_return = $client->GetMineIdByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -7381,7 +7381,7 @@ function GetMineIdByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetMineIdByField2(field1, value1, field2, value2);
+		$_return = $client->GetMineIdByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -7407,7 +7407,7 @@ function GetMineIdListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetMineIdListByField1($field, $value);
+		$_return = $client->GetMineIdListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -7420,7 +7420,7 @@ function GetMineIdListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetMineIdListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetMineIdListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -7614,7 +7614,7 @@ function GetMineBaseByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetMineBaseByField1($field, $value);
+		$_return = $client->GetMineBaseByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -7627,7 +7627,7 @@ function GetMineBaseByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetMineBaseByField2(field1, value1, field2, value2);
+		$_return = $client->GetMineBaseByField2($field1, strval($value1), $field2, str($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -7653,7 +7653,7 @@ function GetMineBaseListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetMineBaseListByField1($field, $value);
+		$_return = $client->GetMineBaseListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -7666,7 +7666,7 @@ function GetMineBaseListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetMineBaseListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetMineBaseListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -7692,7 +7692,7 @@ function GetMineBaseIdByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetMineBaseIdByField1($field, $value);
+		$_return = $client->GetMineBaseIdByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -7705,7 +7705,7 @@ function GetMineBaseIdByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetMineBaseIdByField2(field1, value1, field2, value2);
+		$_return = $client->GetMineBaseIdByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -7731,7 +7731,7 @@ function GetMineBaseIdListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetMineBaseIdListByField1($field, $value);
+		$_return = $client->GetMineBaseIdListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -7744,7 +7744,7 @@ function GetMineBaseIdListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetMineBaseIdListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetMineBaseIdListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -7938,7 +7938,7 @@ function GetMineRegionByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetMineRegionByField1($field, $value);
+		$_return = $client->GetMineRegionByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -7951,7 +7951,7 @@ function GetMineRegionByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetMineRegionByField2(field1, value1, field2, value2);
+		$_return = $client->GetMineRegionByField2($field1, strval($value1), $field2, str($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -7977,7 +7977,7 @@ function GetMineRegionListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetMineRegionListByField1($field, $value);
+		$_return = $client->GetMineRegionListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -7990,7 +7990,7 @@ function GetMineRegionListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetMineRegionListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetMineRegionListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -8016,7 +8016,7 @@ function GetMineRegionIdByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetMineRegionIdByField1($field, $value);
+		$_return = $client->GetMineRegionIdByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -8029,7 +8029,7 @@ function GetMineRegionIdByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetMineRegionIdByField2(field1, value1, field2, value2);
+		$_return = $client->GetMineRegionIdByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -8055,7 +8055,7 @@ function GetMineRegionIdListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetMineRegionIdListByField1($field, $value);
+		$_return = $client->GetMineRegionIdListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -8068,7 +8068,7 @@ function GetMineRegionIdListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetMineRegionIdListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetMineRegionIdListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -8262,7 +8262,7 @@ function GetPoreFlowByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetPoreFlowByField1($field, $value);
+		$_return = $client->GetPoreFlowByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -8275,7 +8275,7 @@ function GetPoreFlowByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetPoreFlowByField2(field1, value1, field2, value2);
+		$_return = $client->GetPoreFlowByField2($field1, strval($value1), $field2, str($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -8301,7 +8301,7 @@ function GetPoreFlowListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetPoreFlowListByField1($field, $value);
+		$_return = $client->GetPoreFlowListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -8314,7 +8314,7 @@ function GetPoreFlowListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetPoreFlowListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetPoreFlowListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -8340,7 +8340,7 @@ function GetPoreFlowIdByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetPoreFlowIdByField1($field, $value);
+		$_return = $client->GetPoreFlowIdByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -8353,7 +8353,7 @@ function GetPoreFlowIdByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetPoreFlowIdByField2(field1, value1, field2, value2);
+		$_return = $client->GetPoreFlowIdByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -8379,7 +8379,7 @@ function GetPoreFlowIdListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetPoreFlowIdListByField1($field, $value);
+		$_return = $client->GetPoreFlowIdListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -8392,7 +8392,7 @@ function GetPoreFlowIdListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetPoreFlowIdListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetPoreFlowIdListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -8586,7 +8586,7 @@ function GetPoreSizeByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetPoreSizeByField1($field, $value);
+		$_return = $client->GetPoreSizeByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -8599,7 +8599,7 @@ function GetPoreSizeByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetPoreSizeByField2(field1, value1, field2, value2);
+		$_return = $client->GetPoreSizeByField2($field1, strval($value1), $field2, str($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -8625,7 +8625,7 @@ function GetPoreSizeListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetPoreSizeListByField1($field, $value);
+		$_return = $client->GetPoreSizeListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -8638,7 +8638,7 @@ function GetPoreSizeListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetPoreSizeListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetPoreSizeListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -8664,7 +8664,7 @@ function GetPoreSizeIdByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetPoreSizeIdByField1($field, $value);
+		$_return = $client->GetPoreSizeIdByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -8677,7 +8677,7 @@ function GetPoreSizeIdByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetPoreSizeIdByField2(field1, value1, field2, value2);
+		$_return = $client->GetPoreSizeIdByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -8703,7 +8703,7 @@ function GetPoreSizeIdListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetPoreSizeIdListByField1($field, $value);
+		$_return = $client->GetPoreSizeIdListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -8716,7 +8716,7 @@ function GetPoreSizeIdListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetPoreSizeIdListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetPoreSizeIdListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -8910,7 +8910,7 @@ function GetResAbundanceByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetResAbundanceByField1($field, $value);
+		$_return = $client->GetResAbundanceByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -8923,7 +8923,7 @@ function GetResAbundanceByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetResAbundanceByField2(field1, value1, field2, value2);
+		$_return = $client->GetResAbundanceByField2($field1, strval($value1), $field2, str($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -8949,7 +8949,7 @@ function GetResAbundanceListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetResAbundanceListByField1($field, $value);
+		$_return = $client->GetResAbundanceListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -8962,7 +8962,7 @@ function GetResAbundanceListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetResAbundanceListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetResAbundanceListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -8988,7 +8988,7 @@ function GetResAbundanceIdByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetResAbundanceIdByField1($field, $value);
+		$_return = $client->GetResAbundanceIdByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -9001,7 +9001,7 @@ function GetResAbundanceIdByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetResAbundanceIdByField2(field1, value1, field2, value2);
+		$_return = $client->GetResAbundanceIdByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -9027,7 +9027,7 @@ function GetResAbundanceIdListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetResAbundanceIdListByField1($field, $value);
+		$_return = $client->GetResAbundanceIdListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -9040,7 +9040,7 @@ function GetResAbundanceIdListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetResAbundanceIdListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetResAbundanceIdListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -9234,7 +9234,7 @@ function GetRockByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetRockByField1($field, $value);
+		$_return = $client->GetRockByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -9247,7 +9247,7 @@ function GetRockByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetRockByField2(field1, value1, field2, value2);
+		$_return = $client->GetRockByField2($field1, strval($value1), $field2, str($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -9273,7 +9273,7 @@ function GetRockListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetRockListByField1($field, $value);
+		$_return = $client->GetRockListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -9286,7 +9286,7 @@ function GetRockListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetRockListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetRockListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -9312,7 +9312,7 @@ function GetRockIdByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetRockIdByField1($field, $value);
+		$_return = $client->GetRockIdByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -9325,7 +9325,7 @@ function GetRockIdByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetRockIdByField2(field1, value1, field2, value2);
+		$_return = $client->GetRockIdByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -9351,7 +9351,7 @@ function GetRockIdListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetRockIdListByField1($field, $value);
+		$_return = $client->GetRockIdListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -9364,7 +9364,7 @@ function GetRockIdListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetRockIdListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetRockIdListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -9558,7 +9558,7 @@ function GetSysInfoByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetSysInfoByField1($field, $value);
+		$_return = $client->GetSysInfoByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -9571,7 +9571,7 @@ function GetSysInfoByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetSysInfoByField2(field1, value1, field2, value2);
+		$_return = $client->GetSysInfoByField2($field1, strval($value1), $field2, str($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -9597,7 +9597,7 @@ function GetSysInfoListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetSysInfoListByField1($field, $value);
+		$_return = $client->GetSysInfoListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -9610,7 +9610,7 @@ function GetSysInfoListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetSysInfoListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetSysInfoListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -9636,7 +9636,7 @@ function GetSysInfoIdByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetSysInfoIdByField1($field, $value);
+		$_return = $client->GetSysInfoIdByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -9649,7 +9649,7 @@ function GetSysInfoIdByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetSysInfoIdByField2(field1, value1, field2, value2);
+		$_return = $client->GetSysInfoIdByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -9675,7 +9675,7 @@ function GetSysInfoIdListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetSysInfoIdListByField1($field, $value);
+		$_return = $client->GetSysInfoIdListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -9688,7 +9688,7 @@ function GetSysInfoIdListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetSysInfoIdListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetSysInfoIdListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -9882,7 +9882,7 @@ function GetTechModeByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetTechModeByField1($field, $value);
+		$_return = $client->GetTechModeByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -9895,7 +9895,7 @@ function GetTechModeByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetTechModeByField2(field1, value1, field2, value2);
+		$_return = $client->GetTechModeByField2($field1, strval($value1), $field2, str($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -9921,7 +9921,7 @@ function GetTechModeListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetTechModeListByField1($field, $value);
+		$_return = $client->GetTechModeListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -9934,7 +9934,7 @@ function GetTechModeListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetTechModeListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetTechModeListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -9960,7 +9960,7 @@ function GetTechModeIdByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetTechModeIdByField1($field, $value);
+		$_return = $client->GetTechModeIdByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -9973,7 +9973,7 @@ function GetTechModeIdByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetTechModeIdByField2(field1, value1, field2, value2);
+		$_return = $client->GetTechModeIdByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -9999,7 +9999,7 @@ function GetTechModeIdListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetTechModeIdListByField1($field, $value);
+		$_return = $client->GetTechModeIdListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -10012,7 +10012,7 @@ function GetTechModeIdListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetTechModeIdListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetTechModeIdListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -10206,7 +10206,7 @@ function GetTechnologyByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetTechnologyByField1($field, $value);
+		$_return = $client->GetTechnologyByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -10219,7 +10219,7 @@ function GetTechnologyByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetTechnologyByField2(field1, value1, field2, value2);
+		$_return = $client->GetTechnologyByField2($field1, strval($value1), $field2, str($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -10245,7 +10245,7 @@ function GetTechnologyListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetTechnologyListByField1($field, $value);
+		$_return = $client->GetTechnologyListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -10258,7 +10258,7 @@ function GetTechnologyListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetTechnologyListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetTechnologyListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -10284,7 +10284,7 @@ function GetTechnologyIdByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetTechnologyIdByField1($field, $value);
+		$_return = $client->GetTechnologyIdByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -10297,7 +10297,7 @@ function GetTechnologyIdByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetTechnologyIdByField2(field1, value1, field2, value2);
+		$_return = $client->GetTechnologyIdByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -10323,7 +10323,7 @@ function GetTechnologyIdListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetTechnologyIdListByField1($field, $value);
+		$_return = $client->GetTechnologyIdListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -10336,7 +10336,7 @@ function GetTechnologyIdListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetTechnologyIdListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetTechnologyIdListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -10530,7 +10530,7 @@ function GetTopoGeoByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetTopoGeoByField1($field, $value);
+		$_return = $client->GetTopoGeoByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -10543,7 +10543,7 @@ function GetTopoGeoByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetTopoGeoByField2(field1, value1, field2, value2);
+		$_return = $client->GetTopoGeoByField2($field1, strval($value1), $field2, str($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -10569,7 +10569,7 @@ function GetTopoGeoListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetTopoGeoListByField1($field, $value);
+		$_return = $client->GetTopoGeoListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -10582,7 +10582,7 @@ function GetTopoGeoListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetTopoGeoListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetTopoGeoListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -10608,7 +10608,7 @@ function GetTopoGeoIdByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetTopoGeoIdByField1($field, $value);
+		$_return = $client->GetTopoGeoIdByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -10621,7 +10621,7 @@ function GetTopoGeoIdByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetTopoGeoIdByField2(field1, value1, field2, value2);
+		$_return = $client->GetTopoGeoIdByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -10647,7 +10647,7 @@ function GetTopoGeoIdListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetTopoGeoIdListByField1($field, $value);
+		$_return = $client->GetTopoGeoIdListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -10660,7 +10660,7 @@ function GetTopoGeoIdListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetTopoGeoIdListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetTopoGeoIdListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -10854,7 +10854,7 @@ function GetTunnelByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetTunnelByField1($field, $value);
+		$_return = $client->GetTunnelByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -10867,7 +10867,7 @@ function GetTunnelByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetTunnelByField2(field1, value1, field2, value2);
+		$_return = $client->GetTunnelByField2($field1, strval($value1), $field2, str($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -10893,7 +10893,7 @@ function GetTunnelListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetTunnelListByField1($field, $value);
+		$_return = $client->GetTunnelListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -10906,7 +10906,7 @@ function GetTunnelListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetTunnelListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetTunnelListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -10932,7 +10932,7 @@ function GetTunnelIdByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetTunnelIdByField1($field, $value);
+		$_return = $client->GetTunnelIdByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -10945,7 +10945,7 @@ function GetTunnelIdByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetTunnelIdByField2(field1, value1, field2, value2);
+		$_return = $client->GetTunnelIdByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -10971,7 +10971,7 @@ function GetTunnelIdListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetTunnelIdListByField1($field, $value);
+		$_return = $client->GetTunnelIdListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -10984,7 +10984,7 @@ function GetTunnelIdListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetTunnelIdListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetTunnelIdListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -11178,7 +11178,7 @@ function GetWorkAreaByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetWorkAreaByField1($field, $value);
+		$_return = $client->GetWorkAreaByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -11191,7 +11191,7 @@ function GetWorkAreaByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetWorkAreaByField2(field1, value1, field2, value2);
+		$_return = $client->GetWorkAreaByField2($field1, strval($value1), $field2, str($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -11217,7 +11217,7 @@ function GetWorkAreaListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetWorkAreaListByField1($field, $value);
+		$_return = $client->GetWorkAreaListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -11230,7 +11230,7 @@ function GetWorkAreaListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetWorkAreaListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetWorkAreaListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -11256,7 +11256,7 @@ function GetWorkAreaIdByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetWorkAreaIdByField1($field, $value);
+		$_return = $client->GetWorkAreaIdByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -11269,7 +11269,7 @@ function GetWorkAreaIdByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetWorkAreaIdByField2(field1, value1, field2, value2);
+		$_return = $client->GetWorkAreaIdByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -11295,7 +11295,7 @@ function GetWorkAreaIdListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetWorkAreaIdListByField1($field, $value);
+		$_return = $client->GetWorkAreaIdListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -11308,7 +11308,7 @@ function GetWorkAreaIdListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetWorkAreaIdListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetWorkAreaIdListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -11502,7 +11502,7 @@ function GetWorkSurfByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetWorkSurfByField1($field, $value);
+		$_return = $client->GetWorkSurfByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -11515,7 +11515,7 @@ function GetWorkSurfByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetWorkSurfByField2(field1, value1, field2, value2);
+		$_return = $client->GetWorkSurfByField2($field1, strval($value1), $field2, str($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return->id = -1;
@@ -11541,7 +11541,7 @@ function GetWorkSurfListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetWorkSurfListByField1($field, $value);
+		$_return = $client->GetWorkSurfListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -11554,7 +11554,7 @@ function GetWorkSurfListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetWorkSurfListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetWorkSurfListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -11580,7 +11580,7 @@ function GetWorkSurfIdByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetWorkSurfIdByField1($field, $value);
+		$_return = $client->GetWorkSurfIdByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -11593,7 +11593,7 @@ function GetWorkSurfIdByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetWorkSurfIdByField2(field1, value1, field2, value2);
+		$_return = $client->GetWorkSurfIdByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = -1;
@@ -11619,7 +11619,7 @@ function GetWorkSurfIdListByField1($field, $value) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetWorkSurfIdListByField1($field, $value);
+		$_return = $client->GetWorkSurfIdListByField1($field, strval($value));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
@@ -11632,7 +11632,7 @@ function GetWorkSurfIdListByField2($field1, $value1, $field2, $value2) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$_return = $client->GetWorkSurfIdListByField2($field1, $value1, $field2, $value2);
+		$_return = $client->GetWorkSurfIdListByField2($field1, strval($value1), $field2, strval($value2));
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 		$_return = array();
