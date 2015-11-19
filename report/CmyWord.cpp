@@ -249,7 +249,7 @@ BOOL CmyWord::Open(CString fileName)
 {  
 	if(FALSE == PathFileExists(fileName) || -1 == fileName.Find(_T(".doc")))
 	{
-		AfxMessageBox(_T("请确定路径是否正确！"),MB_OK|MB_ICONSTOP);
+		AfxMessageBox(_T("请确保模版文件是否存在！"),MB_OK|MB_ICONSTOP);
 		return FALSE;
 	}
 	CComVariant Read(FALSE);

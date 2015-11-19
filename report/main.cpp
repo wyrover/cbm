@@ -57,8 +57,7 @@ int _tmain(int argc, TCHAR* argv[], TCHAR* envp[])
 		const char* str = 
 			"{\"tplPath\":\"E:\\\\test\\\\git\\\\cbm\\\\x64\\\\Debug\\\\Datas\\\\JL\\\\tpl\\\\tplBase.doc\",\"EPCMFD_Method\":\"ÊéÇ©°¡xxx\",\"cognomen\":\"Caezar\",\"born\":-100,\"died\":-44}";
 
-		//WordHelper rptHelper;
-		//rptHelper.creat(str);
+		HICON hIcon =AfxGetApp()->LoadIcon(IDI_ICON1);
 		//CString tplPath = _T("E:\\test\\git\\cbm\\x64\\Debug\\Datas\\JL\\tpl\\tplBase.doc");
 		//CString jsonPath = _T("E:\\test\\git\\cbm\\x64\\Debug\\Datas\\jsDatas.json");
 		CString jsonPath = argv[1];
