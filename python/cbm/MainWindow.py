@@ -48,7 +48,8 @@ class MainWindow(QtGui.QMainWindow):
 		self.setAttribute(QtCore.Qt.WA_DeleteOnClose)
 		self.createActions()
 		self.createMenusToolBars()
-		self.createStatusBar()
+		self.setStatusBar(None)
+		# self.createStatusBar()
 		self.setWindowTitle(u"井下煤层气规模化抽采计算机辅助设计系统")
 		self.setWindowIcon(QtGui.QIcon(':/images/cbm.ico'))
 		# 增大菜单栏的字体
@@ -113,20 +114,20 @@ class MainWindow(QtGui.QMainWindow):
 			ret = DataHelper.sql_login_status()
 			# 内部错误
 			if ret == 0 or ret == -1:
-				UiHelper.MessageBox(u"系统技术性故障(错误码:M1),请联系技术人员!")
+				UiHelper.MessageBox(u"系统技术性故障(错误码:M1),请联系技术人员!",error = True)
 				can_run = False
 				break
 			# 用户未登录
 			elif ret == 2:
-				UiHelper.MessageBox(u"您需要登录才能使用本功能!")
+				UiHelper.MessageBox(u"您需要登录才能使用本功能!", error = True)
 				can_run = self.login() # 登录
 			# 管理员已登录		
 			elif ret == 3 and authority == Authority.USER:
-				UiHelper.MessageBox(u"管理员禁止使用该功能,请重新登录!")
+				UiHelper.MessageBox(u"管理员禁止使用该功能,请重新登录!", error = True)
 				can_run = self.login() # 登录
 			# 普通用户已登录
 			elif ret == 1 and authority == Authority.ADMIN:
-				UiHelper.MessageBox(u"您的权限不够,请重新登录!")
+				UiHelper.MessageBox(u"您的权限不够,请重新登录!", error = True)
 				can_run = self.login() # 登录
 
 			if can_run and DataHelper.sql_login_authority(authority):
@@ -225,6 +226,18 @@ class MainWindow(QtGui.QMainWindow):
 		DataHelper.GAS_DESIGN_TYPE = 3
 		self.try_run(GasDesignDlg, Authority.USER)
 
+	def reportP11(self):
+		doc.CreatReport(u'help\\json\\reportP11.json')
+
+	def reportP12(self):
+		doc.CreatReport(u'help\\json\\reportP12.json')
+
+	def reportP21(self):
+		doc.CreatReport(u'help\\json\\reportP21.json')
+
+	def reportP22(self):
+		doc.CreatReport(u'help\\json\\reportP22.json')
+
 	def openOfficeNet(self):
 		doc.OpenNet('http://www.ccri.com.cn/')
 
@@ -290,6 +303,10 @@ class MainWindow(QtGui.QMainWindow):
 		self.regAction(u"抽采设计", u"工作面", u"工作面瓦斯抽采辅助设计", self.wsGasDesign)
 		self.regAction(u"抽采设计", u"掘进面", u"掘进面瓦斯抽采辅助设计", self.twsGasDesign)
 		self.regAction(u"抽采设计", u"采空区", u"采空区瓦斯抽采辅助设计", self.goafGasDesign)
+		self.regAction(u"生成报告", u"底板岩巷密集穿层钻孔抽采煤巷条带瓦斯抽采技术", u"生成底板岩巷密集穿层钻孔抽采煤巷条带瓦斯抽采技术报告", self.reportP11)
+		self.regAction(u"生成报告", u"顺层钻孔条带掩护巷道掘进抽采法", u"生成顺层钻孔条带掩护巷道掘进抽采法报告", self.reportP12)
+		self.regAction(u"生成报告", u"底板岩巷大面积穿层钻孔抽采工作面瓦斯", u"生成底板岩巷大面积穿层钻孔抽采工作面瓦斯报告", self.reportP21)
+		self.regAction(u"生成报告", u"顺层平行钻孔抽采工作面瓦斯", u"生成顺层平行钻孔抽采工作面瓦斯报告", self.reportP22)
 		self.regAction(u"帮助文档", u"官网", u"打开官网", self.openOfficeNet)
 		self.regAction(u"帮助文档", u"煤层气资源勘察技术规范", u"查看《煤层气资源勘察技术规范》文档", self.investigationOfCBMResources)
 		self.regAction(u"帮助文档", u"保护层开采技术规范", u"查看《保护层开采技术规范》文档", self.protectiveLayerMining)
