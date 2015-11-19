@@ -60,9 +60,10 @@ int _tmain(int argc, TCHAR* argv[], TCHAR* envp[])
 		//WordHelper rptHelper;
 		//rptHelper.creat(str);
 		//CString tplPath = _T("E:\\test\\git\\cbm\\x64\\Debug\\Datas\\JL\\tpl\\tplBase.doc");
-		CString jsonPath = _T("E:\\test\\git\\cbm\\x64\\Debug\\Datas\\jsDatas.json");
+		//CString jsonPath = _T("E:\\test\\git\\cbm\\x64\\Debug\\Datas\\jsDatas.json");
+		CString jsonPath = argv[1];
 		ReportHelper::CreatReport(jsonPath);
-		jsonTest();
+		//jsonTest();
 	}
 
 	return nRetCode;

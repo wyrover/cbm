@@ -185,11 +185,12 @@ void WordHelper::Uninitword()
 
 bool WordHelper::ReadAndWriteDatas(const CString& jsonPath,const CString& savePath)
 {
-	CString tplPath;
-	GetJsonValueByKey(jsonPath,_T("tplPath"),tplPath);
+	CString tplName;
+	GetJsonValueByKey(jsonPath,_T("tplPath"),tplName);
+	CString tplPath = BuildPath(GetAppPathDir(),tplName);
 	if(CheckDocIsUsing(tplPath,*m_word)) return false;
 	m_word->CreateApp();
-	m_word->ShowApp();
+	//m_word->ShowApp();
 	if(!m_word->Open(/*strPath*/tplPath))
 	{
 		m_word->CloseApp();

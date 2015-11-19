@@ -213,6 +213,9 @@ class MainWindow(QtGui.QMainWindow):
 		DataHelper.GAS_DESIGN_TYPE = 3
 		self.try_run(GasDesignDlg, Authority.USER)
 
+	def reportP11(self):
+		doc.CreatReport(u'help\\json\\reportP11.json')
+
 	def openOfficeNet(self):
 		doc.OpenNet('http://www.ccri.com.cn/')
 
@@ -276,6 +279,7 @@ class MainWindow(QtGui.QMainWindow):
 		self.regAction(u"抽采设计", u"工作面", u"工作面瓦斯抽采辅助设计", self.wsGasDesign)
 		self.regAction(u"抽采设计", u"掘进面", u"掘进面瓦斯抽采辅助设计", self.twsGasDesign)
 		self.regAction(u"抽采设计", u"采空区", u"采空区瓦斯抽采辅助设计", self.goafGasDesign)
+		self.regAction(u"生成报告", u"底板岩巷密集穿层钻孔抽采煤巷条带瓦斯抽采技术", u"生成底板岩巷密集穿层钻孔抽采煤巷条带瓦斯抽采技术报告", self.reportP11)
 		self.regAction(u"帮助文档", u"官网", u"打开官网", self.openOfficeNet)
 		self.regAction(u"帮助文档", u"煤层气资源勘察技术规范", u"查看《煤层气资源勘察技术规范》文档", self.investigationOfCBMResources)
 		self.regAction(u"帮助文档", u"保护层开采技术规范", u"查看《保护层开采技术规范》文档", self.protectiveLayerMining)
