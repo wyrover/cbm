@@ -14,6 +14,7 @@ class LowCoalDlg(BaseDialog):
 		self.ui.tecl_table.setColumnWidth(0,100)
 		self.ui.tecl_table.setSpan(1,0,2,1)
 		self.ui.tecl_table.setSpan(3,0,2,1)
-		self.ui.tecl_table.setSelectionBehavior(Qt.QAbstractItemView.SelectRows); 
+		self.ui.tecl_table.setSelectionBehavior(Qt.QAbstractItemView.SelectRows)
+		self.ui.tecl_table.setEditTriggers(Qt.QAbstractItemView.NoEditTriggers)
 		self.setTitle(u"低渗单一煤层开采条件井下规模化抽采技术模式")
 		self.setFixedSize(self.width(), self.height())

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>581</width>
-    <height>511</height>
+    <height>529</height>
    </rect>
   </property>
   <property name="font">
@@ -136,7 +136,7 @@ p, li { white-space: pre-wrap; }
      <x>0</x>
      <y>30</y>
      <width>581</width>
-     <height>481</height>
+     <height>491</height>
     </rect>
    </property>
    <widget class="QTextEdit" name="disc_text">
@@ -148,7 +148,7 @@ p, li { white-space: pre-wrap; }
       <x>10</x>
       <y>10</y>
       <width>561</width>
-      <height>61</height>
+      <height>71</height>
      </rect>
     </property>
     <property name="contextMenuPolicy">
@@ -186,7 +186,7 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>70</y>
+      <y>80</y>
       <width>371</width>
       <height>31</height>
      </rect>
@@ -199,7 +199,7 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>100</y>
+      <y>110</y>
       <width>501</width>
       <height>371</height>
      </rect>
@@ -306,6 +306,10 @@ p, li { white-space: pre-wrap; }
      <property name="textAlignment">
       <set>AlignHCenter|AlignVCenter|AlignCenter</set>
      </property>
+     <property name="icon">
+      <iconset resource="../usecad.qrc">
+       <normaloff>:/images/no.png</normaloff>:/images/no.png</iconset>
+     </property>
     </item>
     <item row="1" column="0">
      <property name="text">
@@ -323,6 +327,10 @@ p, li { white-space: pre-wrap; }
      </property>
      <property name="textAlignment">
       <set>AlignHCenter|AlignVCenter|AlignCenter</set>
+     </property>
+     <property name="icon">
+      <iconset resource="../usecad.qrc">
+       <normaloff>:/images/no.png</normaloff>:/images/no.png</iconset>
      </property>
     </item>
     <item row="2" column="0">
@@ -342,6 +350,10 @@ p, li { white-space: pre-wrap; }
      <property name="textAlignment">
       <set>AlignHCenter|AlignVCenter|AlignCenter</set>
      </property>
+     <property name="icon">
+      <iconset resource="../usecad.qrc">
+       <normaloff>:/images/no.png</normaloff>:/images/no.png</iconset>
+     </property>
     </item>
     <item row="3" column="0">
      <property name="text">
@@ -359,6 +371,10 @@ p, li { white-space: pre-wrap; }
      </property>
      <property name="textAlignment">
       <set>AlignHCenter|AlignVCenter|AlignCenter</set>
+     </property>
+     <property name="icon">
+      <iconset resource="../usecad.qrc">
+       <normaloff>:/images/no.png</normaloff>:/images/no.png</iconset>
      </property>
     </item>
     <item row="4" column="0">
@@ -378,6 +394,10 @@ p, li { white-space: pre-wrap; }
      <property name="textAlignment">
       <set>AlignHCenter|AlignVCenter|AlignCenter</set>
      </property>
+     <property name="icon">
+      <iconset resource="../usecad.qrc">
+       <normaloff>:/images/no.png</normaloff>:/images/no.png</iconset>
+     </property>
     </item>
     <item row="5" column="0">
      <property name="text">
@@ -396,6 +416,10 @@ p, li { white-space: pre-wrap; }
      <property name="textAlignment">
       <set>AlignHCenter|AlignVCenter|AlignCenter</set>
      </property>
+     <property name="icon">
+      <iconset resource="../usecad.qrc">
+       <normaloff>:/images/no.png</normaloff>:/images/no.png</iconset>
+     </property>
     </item>
     <item row="6" column="1">
      <property name="text">
@@ -408,6 +432,10 @@ p, li { white-space: pre-wrap; }
      </property>
      <property name="textAlignment">
       <set>AlignHCenter|AlignVCenter|AlignCenter</set>
+     </property>
+     <property name="icon">
+      <iconset resource="../usecad.qrc">
+       <normaloff>:/images/yes.png</normaloff>:/images/yes.png</iconset>
      </property>
     </item>
     <item row="7" column="0">
@@ -427,6 +455,10 @@ p, li { white-space: pre-wrap; }
      <property name="textAlignment">
       <set>AlignHCenter|AlignVCenter|AlignCenter</set>
      </property>
+     <property name="icon">
+      <iconset resource="../usecad.qrc">
+       <normaloff>:/images/yes.png</normaloff>:/images/yes.png</iconset>
+     </property>
     </item>
     <item row="8" column="1">
      <property name="text">
@@ -439,6 +471,10 @@ p, li { white-space: pre-wrap; }
      </property>
      <property name="textAlignment">
       <set>AlignHCenter|AlignVCenter|AlignCenter</set>
+     </property>
+     <property name="icon">
+      <iconset resource="../usecad.qrc">
+       <normaloff>:/images/yes.png</normaloff>:/images/yes.png</iconset>
      </property>
     </item>
     <item row="9" column="1">
@@ -453,6 +489,10 @@ p, li { white-space: pre-wrap; }
      <property name="textAlignment">
       <set>AlignHCenter|AlignVCenter|AlignCenter</set>
      </property>
+     <property name="icon">
+      <iconset resource="../usecad.qrc">
+       <normaloff>:/images/yes.png</normaloff>:/images/yes.png</iconset>
+     </property>
     </item>
     <item row="10" column="1">
      <property name="text">
@@ -466,10 +506,16 @@ p, li { white-space: pre-wrap; }
      <property name="textAlignment">
       <set>AlignHCenter|AlignVCenter|AlignCenter</set>
      </property>
+     <property name="icon">
+      <iconset resource="../usecad.qrc">
+       <normaloff>:/images/yes.png</normaloff>:/images/yes.png</iconset>
+     </property>
     </item>
    </widget>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="../usecad.qrc"/>
+ </resources>
  <connections/>
 </ui>

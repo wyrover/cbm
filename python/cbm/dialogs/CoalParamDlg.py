@@ -132,7 +132,7 @@ class CoalParamDlg(BaseDialog):
 		self.reject()
 
 	def onNext(self):
-		idx = 5
+		idx = 4
 		if idx == 1:
 			dlg = HighCoalDlg()
 			dlg.exec_()

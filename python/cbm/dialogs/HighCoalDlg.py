@@ -15,6 +15,7 @@ class HighCoalDlg(BaseDialog):
 		self.ui.tecl_table.setSpan(0,0,3,1)
 		self.ui.tecl_table.setSpan(3,0,2,1)
 		self.ui.tecl_table.setSpan(5,0,2,1)
-		self.ui.tecl_table.setSelectionBehavior(Qt.QAbstractItemView.SelectRows); 
+		self.ui.tecl_table.setSelectionBehavior(Qt.QAbstractItemView.SelectRows)
+		self.ui.tecl_table.setEditTriggers(Qt.QAbstractItemView.NoEditTriggers)
 		self.setTitle(u"中高渗单一煤层条件井下规模化抽采技术模式")
 		self.setFixedSize(self.width(), self.height())

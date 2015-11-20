@@ -75,6 +75,9 @@ class Ui_low_coal_dlg(object):
         self.tecl_table.setItem(0, 1, item)
         item = QtGui.QTableWidgetItem()
         item.setTextAlignment(QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter|QtCore.Qt.AlignCenter)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(_fromUtf8(":/images/no.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        item.setIcon(icon)
         self.tecl_table.setItem(0, 2, item)
         item = QtGui.QTableWidgetItem()
         self.tecl_table.setItem(1, 0, item)
@@ -82,6 +85,7 @@ class Ui_low_coal_dlg(object):
         self.tecl_table.setItem(1, 1, item)
         item = QtGui.QTableWidgetItem()
         item.setTextAlignment(QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter|QtCore.Qt.AlignCenter)
+        item.setIcon(icon)
         self.tecl_table.setItem(1, 2, item)
         item = QtGui.QTableWidgetItem()
         self.tecl_table.setItem(2, 0, item)
@@ -89,6 +93,7 @@ class Ui_low_coal_dlg(object):
         self.tecl_table.setItem(2, 1, item)
         item = QtGui.QTableWidgetItem()
         item.setTextAlignment(QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter|QtCore.Qt.AlignCenter)
+        item.setIcon(icon)
         self.tecl_table.setItem(2, 2, item)
         item = QtGui.QTableWidgetItem()
         self.tecl_table.setItem(3, 0, item)
@@ -96,6 +101,7 @@ class Ui_low_coal_dlg(object):
         self.tecl_table.setItem(3, 1, item)
         item = QtGui.QTableWidgetItem()
         item.setTextAlignment(QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter|QtCore.Qt.AlignCenter)
+        item.setIcon(icon)
         self.tecl_table.setItem(3, 2, item)
         item = QtGui.QTableWidgetItem()
         self.tecl_table.setItem(4, 0, item)
@@ -103,6 +109,7 @@ class Ui_low_coal_dlg(object):
         self.tecl_table.setItem(4, 1, item)
         item = QtGui.QTableWidgetItem()
         item.setTextAlignment(QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter|QtCore.Qt.AlignCenter)
+        item.setIcon(icon)
         self.tecl_table.setItem(4, 2, item)
         self.tecl_table.horizontalHeader().setVisible(True)
         self.tecl_table.verticalHeader().setVisible(False)
@@ -207,3 +214,4 @@ class Ui_low_coal_dlg(object):
 "</style></head><body style=\" font-family:\'SimSun\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", None))
 
+import usecad_rc

@@ -15,6 +15,7 @@ class LowFarCoalsDlg(BaseDialog):
 		self.ui.tecl_table.setSpan(0,0,2,1)
 		self.ui.tecl_table.setSpan(2,0,2,1)
 		self.ui.tecl_table.setSpan(4,0,2,1)
-		self.ui.tecl_table.setSelectionBehavior(Qt.QAbstractItemView.SelectRows); 
+		self.ui.tecl_table.setSelectionBehavior(Qt.QAbstractItemView.SelectRows)
+		self.ui.tecl_table.setEditTriggers(Qt.QAbstractItemView.NoEditTriggers)
 		self.setTitle(u"低渗中远距离煤层群下保护层开采条件井下规模化抽采技术模式")
 		self.setFixedSize(self.width(), self.height())
