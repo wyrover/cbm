@@ -23,6 +23,10 @@ QLabel#lab_Ico,QLabel#lab_Title{
 	border-style:none;
 }
 
+QTextEdit {
+	background: none;
+}
+
 QLineEdit {
 	border: 1px solid #5CACEE;
 	border-radius: 5px;

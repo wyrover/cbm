@@ -3,7 +3,11 @@
 from BaseDialog import *
 from uipy.ui_coal_param_dlg import *
 
-from DecisionDlg import *
+from HighCoalDlg import *
+from HighCoalsDlg import *
+from LowNearlyCoalsDlg import *
+from LowFarCoalsDlg import *
+from LowCoalDlg import *
 
 from rpc import CbmUtil, SQLClientHelper, CbmClientHelper
 from cbm.ttypes import *
@@ -128,5 +132,19 @@ class CoalParamDlg(BaseDialog):
 		self.reject()
 
 	def onNext(self):
-		dlg = DecisionDlg()
-		dlg.exec_()
+		idx = 5
+		if idx == 1:
+			dlg = HighCoalDlg()
+			dlg.exec_()
+		elif idx == 2:
+			dlg = HighCoalsDlg()
+			dlg.exec_()
+		elif idx == 3:
+			dlg = LowNearlyCoalsDlg()
+			dlg.exec_()
+		elif idx == 4:
+			dlg = LowFarCoalsDlg()
+			dlg.exec_()
+		elif idx == 5:
+			dlg = LowCoalDlg()
+			dlg.exec_()
