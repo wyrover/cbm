@@ -55,12 +55,12 @@
     </property>
     <item>
      <property name="text">
-      <string>烟煤</string>
+      <string>褐煤</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>褐煤</string>
+      <string>烟煤</string>
      </property>
     </item>
     <item>
@@ -484,17 +484,17 @@
     </property>
     <item>
      <property name="text">
+      <string>低(&lt;3.0)</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
       <string>中(0.5~3.0)</string>
      </property>
     </item>
     <item>
      <property name="text">
       <string>高(&gt;3.0)</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>低(&lt;3.0)</string>
      </property>
     </item>
    </widget>
@@ -594,12 +594,7 @@
     </property>
     <item>
      <property name="text">
-      <string>复杂</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>极复杂</string>
+      <string>简单</string>
      </property>
     </item>
     <item>
@@ -609,7 +604,12 @@
     </item>
     <item>
      <property name="text">
-      <string>简单</string>
+      <string>复杂</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>极复杂</string>
      </property>
     </item>
    </widget>
