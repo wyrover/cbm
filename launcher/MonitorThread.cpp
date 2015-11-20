@@ -1,6 +1,7 @@
 #include "StdAfx.h"
 #include "MonitorThread.h"
 #include "ThreadHelper.h"
+#include "CADHelper.h"
 
 // 多线程查询时间间隔
 #define THREAD_CHECK_TIME_INTERVAL 1000
@@ -54,8 +55,24 @@ static DWORD MonitorThreadProc( LPVOID lpParam )
             break;
         }
     }
+
+	if( !CADHelper::CleanCAD() )
+	{
+		return FALSE;
+	}
+	else
+	{
+		//回收监控对象的内容(MonitorThread* monitor)
+		MonitorThreadData* pData = ( MonitorThreadData* )lpParam;
+		if( pData != 0 && pData->monitor != 0 )
+		{
+			delete pData->monitor;
+			pData->monitor = 0;
+		}
+	}
+
     //执行清理收尾工作
-    SendMessage( pData->hWnd, WM_END_MONITOR, ( WPARAM )NULL, ( LPARAM )pData );
+    //SendMessage( pData->hWnd, WM_END_MONITOR, ( WPARAM )NULL, ( LPARAM )pData );
     return 0;
 }
 
@@ -73,8 +90,13 @@ bool MonitorThread::Run( HANDLE& hThread )
     //data.value = attachData();
 
     //启动进程前做一些准备工作
-    LRESULT lResult = SendMessage( this->m_hWnd, WM_BEGIN_MONITOR, ( WPARAM )NULL, ( LPARAM )&data );
-    if( lResult == 0 ) return false;
+    //LRESULT lResult = SendMessage( this->m_hWnd, WM_BEGIN_MONITOR, ( WPARAM )NULL, ( LPARAM )&data );
+    //if( lResult == 0 ) return false;
+	//初始化CAD
+	if( !CADHelper::InitCAD() )
+	{
+		return false;
+	}
 
     //启动进程
     if( !ThreadHelper::RunProecess(

@@ -1,27 +1,30 @@
 #coding:utf-8
 import subprocess
 import webbrowser
+import win32api
 
-def OpenPDFFile(fileName):
+def OpenEXEFile(exeName,fileName=''):
 	if type(fileName).__name__ != "unicode":
 		fileName = fileName.decode('utf-8')
-	fName = 'tool\\pdf.exe %s' % fileName
+	fName = '%s %s' % (exeName, fileName)
 	# 增加异常处理
 	try:
-		subprocess.Popen(fName.encode('gb2312'))
+		win32api.ShellExecute(0, 'open', exeName, fileName,'',1)
+		# subprocess.Popen(fName.encode('gb2312'))
 	except Exception, e:
 		print e
 
-def OpenNet(webName):
-	webbrowser.open(webName)
 
-def CreatReport(jsonName):
-	if type(jsonName).__name__ != "unicode":
-		jsonName = jsonName.decode('utf-8')
-	fName = 'tool\\report.exe %s' % jsonName
-	# 增加异常处理
-	try:
-		subprocess.Popen(fName.encode('gb2312'))
-	except Exception, e:
-		print e
+def OpenPDFFile(pdfFile):
+	OpenEXEFile('tool\\pdf.exe',pdfFile)
+
+def OpenNet(url):
+	webbrowser.open(url)
+
+def CreatReport(jsonFile):
+	OpenEXEFile('tool\\report.exe',jsonFile)
+
+def RunCAD():
+	OpenEXEFile('tool\\Launcher.exe')
+
 
