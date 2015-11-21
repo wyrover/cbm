@@ -109,7 +109,6 @@ create table coal
    quality              int,
    pressure             decimal(10,2),
    gas_content          decimal(8,2),
-   gas_penetration      decimal(8,2),
    f_value              decimal(8,2),
    res_abundance        int,
    complexity           int,

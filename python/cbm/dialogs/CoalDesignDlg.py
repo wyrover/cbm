@@ -45,7 +45,7 @@ class CoalDesignDlg(BaseDialog):
 		self.ui.f_value.setText(u'%.2f' % coal.f_value)
 		self.ui.pressure.setText(u'%.1f' % coal.pressure)
 		self.ui.gas_content.setText(u'%.1f' % coal.gas_content)
-		self.ui.gas_penetration.setText(u'%.1f' % coal.gas_penetration)
+		self.ui.permeability_k.setText(u'%.1f' % coal.permeability_k)
 		self.ui.res_abundance.setCurrentIndex(coal.res_abundance - 1)
 		self.ui.complexity.setCurrentIndex(coal.complexity - 1)
 		self.ui.mine_index.setText(u'%.1f' % coal.mine_index)
@@ -87,7 +87,7 @@ class CoalDesignDlg(BaseDialog):
 		coal.f_value, ok = self.ui.f_value.text().toDouble()
 		coal.pressure, ok = self.ui.pressure.text().toDouble()
 		coal.gas_content, ok = self.ui.gas_content.text().toDouble()
-		coal.gas_penetration, ok = self.ui.gas_penetration.text().toDouble()
+		coal.permeability_k, ok = self.ui.permeability_k.text().toDouble()
 		coal.res_abundance = self.ui.res_abundance.currentIndex() + 1
 		coal.complexity = self.ui.complexity.currentIndex() + 1
 		coal.mine_index, ok = self.ui.mine_index.text().toDouble()

@@ -307,7 +307,6 @@ class Coal:
    - quality
    - pressure
    - gas_content
-   - gas_penetration
    - f_value
    - res_abundance
    - complexity
@@ -380,64 +379,63 @@ class Coal:
     (12, TType.I32, 'quality', None, None, ), # 12
     (13, TType.DOUBLE, 'pressure', None, None, ), # 13
     (14, TType.DOUBLE, 'gas_content', None, None, ), # 14
-    (15, TType.DOUBLE, 'gas_penetration', None, None, ), # 15
-    (16, TType.DOUBLE, 'f_value', None, None, ), # 16
-    (17, TType.I32, 'res_abundance', None, None, ), # 17
-    (18, TType.I32, 'complexity', None, None, ), # 18
-    (19, TType.DOUBLE, 'mine_index', None, None, ), # 19
-    (20, TType.DOUBLE, 'var_coeff', None, None, ), # 20
-    (21, TType.I32, 'stability', None, None, ), # 21
-    (22, TType.DOUBLE, 'dip_angle', None, None, ), # 22
-    (23, TType.DOUBLE, 'czh', None, None, ), # 23
-    (24, TType.DOUBLE, 'czk', None, None, ), # 24
-    (25, TType.DOUBLE, 'czw', None, None, ), # 25
-    (26, TType.DOUBLE, 'hw_sum', None, None, ), # 26
-    (27, TType.I32, 'rock', None, None, ), # 27
-    (28, TType.DOUBLE, 'hhh', None, None, ), # 28
-    (29, TType.DOUBLE, 'layer_gap', None, None, ), # 29
-    (30, TType.DOUBLE, 'influence_factor', None, None, ), # 30
-    (31, TType.DOUBLE, 'res_a1', None, None, ), # 31
-    (32, TType.DOUBLE, 'gas_x1', None, None, ), # 32
-    (33, TType.DOUBLE, 'res_a2', None, None, ), # 33
-    (34, TType.DOUBLE, 'gas_x2', None, None, ), # 34
-    (35, TType.DOUBLE, 'pump_wc', None, None, ), # 35
-    (36, TType.DOUBLE, 'pump_k', None, None, ), # 36
-    (37, TType.DOUBLE, 'pump_k2', None, None, ), # 37
-    (38, TType.DOUBLE, 'pump_k3', None, None, ), # 38
-    (39, TType.DOUBLE, 'pump_k4', None, None, ), # 39
-    (40, TType.DOUBLE, 'pump_k1', None, None, ), # 40
-    (41, TType.STRING, 'pore_datas', None, None, ), # 41
-    (42, TType.DOUBLE, 'rho', None, None, ), # 42
-    (43, TType.DOUBLE, 'vr', None, None, ), # 43
-    (44, TType.DOUBLE, 'gas_w0', None, None, ), # 44
-    (45, TType.DOUBLE, 'gas_wc2', None, None, ), # 45
-    (46, TType.DOUBLE, 'gas_wc3', None, None, ), # 46
-    (47, TType.DOUBLE, 'gas_eta', None, None, ), # 47
-    (48, TType.DOUBLE, 'q0', None, None, ), # 48
-    (49, TType.I32, 'eval_method', None, None, ), # 49
-    (50, TType.DOUBLE, 'q0_alpha', None, None, ), # 50
-    (51, TType.DOUBLE, 'qt_alpha', None, None, ), # 51
-    (52, TType.DOUBLE, 't_alpha', None, None, ), # 52
-    (53, TType.DOUBLE, 'q_lambda', None, None, ), # 53
-    (54, TType.DOUBLE, 'r_lambda', None, None, ), # 54
-    (55, TType.DOUBLE, 'p0_lambda', None, None, ), # 55
-    (56, TType.DOUBLE, 'p1_lambda', None, None, ), # 56
-    (57, TType.DOUBLE, 't_lambda', None, None, ), # 57
-    (58, TType.DOUBLE, 'a_lambda', None, None, ), # 58
-    (59, TType.DOUBLE, 'p1_k', None, None, ), # 59
-    (60, TType.DOUBLE, 'p2_k', None, None, ), # 60
-    (61, TType.DOUBLE, 'gas_q', None, None, ), # 61
-    (62, TType.DOUBLE, 'core_height', None, None, ), # 62
-    (63, TType.DOUBLE, 'core_area', None, None, ), # 63
-    (64, TType.DOUBLE, 'gas_viscosity', None, None, ), # 64
-    (65, TType.DOUBLE, 'decay_alpha', None, None, ), # 65
-    (66, TType.DOUBLE, 'permeability_lambda', None, None, ), # 66
-    (67, TType.DOUBLE, 'permeability_k', None, None, ), # 67
-    (68, TType.I32, 'eval_difficult', None, None, ), # 68
-    (69, TType.STRING, 'comment', None, None, ), # 69
+    (15, TType.DOUBLE, 'f_value', None, None, ), # 15
+    (16, TType.I32, 'res_abundance', None, None, ), # 16
+    (17, TType.I32, 'complexity', None, None, ), # 17
+    (18, TType.DOUBLE, 'mine_index', None, None, ), # 18
+    (19, TType.DOUBLE, 'var_coeff', None, None, ), # 19
+    (20, TType.I32, 'stability', None, None, ), # 20
+    (21, TType.DOUBLE, 'dip_angle', None, None, ), # 21
+    (22, TType.DOUBLE, 'czh', None, None, ), # 22
+    (23, TType.DOUBLE, 'czk', None, None, ), # 23
+    (24, TType.DOUBLE, 'czw', None, None, ), # 24
+    (25, TType.DOUBLE, 'hw_sum', None, None, ), # 25
+    (26, TType.I32, 'rock', None, None, ), # 26
+    (27, TType.DOUBLE, 'hhh', None, None, ), # 27
+    (28, TType.DOUBLE, 'layer_gap', None, None, ), # 28
+    (29, TType.DOUBLE, 'influence_factor', None, None, ), # 29
+    (30, TType.DOUBLE, 'res_a1', None, None, ), # 30
+    (31, TType.DOUBLE, 'gas_x1', None, None, ), # 31
+    (32, TType.DOUBLE, 'res_a2', None, None, ), # 32
+    (33, TType.DOUBLE, 'gas_x2', None, None, ), # 33
+    (34, TType.DOUBLE, 'pump_wc', None, None, ), # 34
+    (35, TType.DOUBLE, 'pump_k', None, None, ), # 35
+    (36, TType.DOUBLE, 'pump_k2', None, None, ), # 36
+    (37, TType.DOUBLE, 'pump_k3', None, None, ), # 37
+    (38, TType.DOUBLE, 'pump_k4', None, None, ), # 38
+    (39, TType.DOUBLE, 'pump_k1', None, None, ), # 39
+    (40, TType.STRING, 'pore_datas', None, None, ), # 40
+    (41, TType.DOUBLE, 'rho', None, None, ), # 41
+    (42, TType.DOUBLE, 'vr', None, None, ), # 42
+    (43, TType.DOUBLE, 'gas_w0', None, None, ), # 43
+    (44, TType.DOUBLE, 'gas_wc2', None, None, ), # 44
+    (45, TType.DOUBLE, 'gas_wc3', None, None, ), # 45
+    (46, TType.DOUBLE, 'gas_eta', None, None, ), # 46
+    (47, TType.DOUBLE, 'q0', None, None, ), # 47
+    (48, TType.I32, 'eval_method', None, None, ), # 48
+    (49, TType.DOUBLE, 'q0_alpha', None, None, ), # 49
+    (50, TType.DOUBLE, 'qt_alpha', None, None, ), # 50
+    (51, TType.DOUBLE, 't_alpha', None, None, ), # 51
+    (52, TType.DOUBLE, 'q_lambda', None, None, ), # 52
+    (53, TType.DOUBLE, 'r_lambda', None, None, ), # 53
+    (54, TType.DOUBLE, 'p0_lambda', None, None, ), # 54
+    (55, TType.DOUBLE, 'p1_lambda', None, None, ), # 55
+    (56, TType.DOUBLE, 't_lambda', None, None, ), # 56
+    (57, TType.DOUBLE, 'a_lambda', None, None, ), # 57
+    (58, TType.DOUBLE, 'p1_k', None, None, ), # 58
+    (59, TType.DOUBLE, 'p2_k', None, None, ), # 59
+    (60, TType.DOUBLE, 'gas_q', None, None, ), # 60
+    (61, TType.DOUBLE, 'core_height', None, None, ), # 61
+    (62, TType.DOUBLE, 'core_area', None, None, ), # 62
+    (63, TType.DOUBLE, 'gas_viscosity', None, None, ), # 63
+    (64, TType.DOUBLE, 'decay_alpha', None, None, ), # 64
+    (65, TType.DOUBLE, 'permeability_lambda', None, None, ), # 65
+    (66, TType.DOUBLE, 'permeability_k', None, None, ), # 66
+    (67, TType.I32, 'eval_difficult', None, None, ), # 67
+    (68, TType.STRING, 'comment', None, None, ), # 68
   )
 
-  def __init__(self, id=None, mine_id=None, name=None, minable=None, thick=None, hw=None, qa=None, qr=None, fore_qr=None, fore_qa=None, rank=None, quality=None, pressure=None, gas_content=None, gas_penetration=None, f_value=None, res_abundance=None, complexity=None, mine_index=None, var_coeff=None, stability=None, dip_angle=None, czh=None, czk=None, czw=None, hw_sum=None, rock=None, hhh=None, layer_gap=None, influence_factor=None, res_a1=None, gas_x1=None, res_a2=None, gas_x2=None, pump_wc=None, pump_k=None, pump_k2=None, pump_k3=None, pump_k4=None, pump_k1=None, pore_datas=None, rho=None, vr=None, gas_w0=None, gas_wc2=None, gas_wc3=None, gas_eta=None, q0=None, eval_method=None, q0_alpha=None, qt_alpha=None, t_alpha=None, q_lambda=None, r_lambda=None, p0_lambda=None, p1_lambda=None, t_lambda=None, a_lambda=None, p1_k=None, p2_k=None, gas_q=None, core_height=None, core_area=None, gas_viscosity=None, decay_alpha=None, permeability_lambda=None, permeability_k=None, eval_difficult=None, comment=None,):
+  def __init__(self, id=None, mine_id=None, name=None, minable=None, thick=None, hw=None, qa=None, qr=None, fore_qr=None, fore_qa=None, rank=None, quality=None, pressure=None, gas_content=None, f_value=None, res_abundance=None, complexity=None, mine_index=None, var_coeff=None, stability=None, dip_angle=None, czh=None, czk=None, czw=None, hw_sum=None, rock=None, hhh=None, layer_gap=None, influence_factor=None, res_a1=None, gas_x1=None, res_a2=None, gas_x2=None, pump_wc=None, pump_k=None, pump_k2=None, pump_k3=None, pump_k4=None, pump_k1=None, pore_datas=None, rho=None, vr=None, gas_w0=None, gas_wc2=None, gas_wc3=None, gas_eta=None, q0=None, eval_method=None, q0_alpha=None, qt_alpha=None, t_alpha=None, q_lambda=None, r_lambda=None, p0_lambda=None, p1_lambda=None, t_lambda=None, a_lambda=None, p1_k=None, p2_k=None, gas_q=None, core_height=None, core_area=None, gas_viscosity=None, decay_alpha=None, permeability_lambda=None, permeability_k=None, eval_difficult=None, comment=None,):
     self.id = id
     self.mine_id = mine_id
     self.name = name
@@ -452,7 +450,6 @@ class Coal:
     self.quality = quality
     self.pressure = pressure
     self.gas_content = gas_content
-    self.gas_penetration = gas_penetration
     self.f_value = f_value
     self.res_abundance = res_abundance
     self.complexity = complexity
@@ -589,275 +586,270 @@ class Coal:
           iprot.skip(ftype)
       elif fid == 15:
         if ftype == TType.DOUBLE:
-          self.gas_penetration = iprot.readDouble()
-        else:
-          iprot.skip(ftype)
-      elif fid == 16:
-        if ftype == TType.DOUBLE:
           self.f_value = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 17:
+      elif fid == 16:
         if ftype == TType.I32:
           self.res_abundance = iprot.readI32()
         else:
           iprot.skip(ftype)
-      elif fid == 18:
+      elif fid == 17:
         if ftype == TType.I32:
           self.complexity = iprot.readI32()
         else:
           iprot.skip(ftype)
-      elif fid == 19:
+      elif fid == 18:
         if ftype == TType.DOUBLE:
           self.mine_index = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 20:
+      elif fid == 19:
         if ftype == TType.DOUBLE:
           self.var_coeff = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 21:
+      elif fid == 20:
         if ftype == TType.I32:
           self.stability = iprot.readI32()
         else:
           iprot.skip(ftype)
-      elif fid == 22:
+      elif fid == 21:
         if ftype == TType.DOUBLE:
           self.dip_angle = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 23:
+      elif fid == 22:
         if ftype == TType.DOUBLE:
           self.czh = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 24:
+      elif fid == 23:
         if ftype == TType.DOUBLE:
           self.czk = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 25:
+      elif fid == 24:
         if ftype == TType.DOUBLE:
           self.czw = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 26:
+      elif fid == 25:
         if ftype == TType.DOUBLE:
           self.hw_sum = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 27:
+      elif fid == 26:
         if ftype == TType.I32:
           self.rock = iprot.readI32()
         else:
           iprot.skip(ftype)
-      elif fid == 28:
+      elif fid == 27:
         if ftype == TType.DOUBLE:
           self.hhh = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 29:
+      elif fid == 28:
         if ftype == TType.DOUBLE:
           self.layer_gap = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 30:
+      elif fid == 29:
         if ftype == TType.DOUBLE:
           self.influence_factor = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 31:
+      elif fid == 30:
         if ftype == TType.DOUBLE:
           self.res_a1 = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 32:
+      elif fid == 31:
         if ftype == TType.DOUBLE:
           self.gas_x1 = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 33:
+      elif fid == 32:
         if ftype == TType.DOUBLE:
           self.res_a2 = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 34:
+      elif fid == 33:
         if ftype == TType.DOUBLE:
           self.gas_x2 = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 35:
+      elif fid == 34:
         if ftype == TType.DOUBLE:
           self.pump_wc = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 36:
+      elif fid == 35:
         if ftype == TType.DOUBLE:
           self.pump_k = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 37:
+      elif fid == 36:
         if ftype == TType.DOUBLE:
           self.pump_k2 = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 38:
+      elif fid == 37:
         if ftype == TType.DOUBLE:
           self.pump_k3 = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 39:
+      elif fid == 38:
         if ftype == TType.DOUBLE:
           self.pump_k4 = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 40:
+      elif fid == 39:
         if ftype == TType.DOUBLE:
           self.pump_k1 = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 41:
+      elif fid == 40:
         if ftype == TType.STRING:
           self.pore_datas = iprot.readString()
         else:
           iprot.skip(ftype)
-      elif fid == 42:
+      elif fid == 41:
         if ftype == TType.DOUBLE:
           self.rho = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 43:
+      elif fid == 42:
         if ftype == TType.DOUBLE:
           self.vr = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 44:
+      elif fid == 43:
         if ftype == TType.DOUBLE:
           self.gas_w0 = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 45:
+      elif fid == 44:
         if ftype == TType.DOUBLE:
           self.gas_wc2 = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 46:
+      elif fid == 45:
         if ftype == TType.DOUBLE:
           self.gas_wc3 = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 47:
+      elif fid == 46:
         if ftype == TType.DOUBLE:
           self.gas_eta = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 48:
+      elif fid == 47:
         if ftype == TType.DOUBLE:
           self.q0 = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 49:
+      elif fid == 48:
         if ftype == TType.I32:
           self.eval_method = iprot.readI32()
         else:
           iprot.skip(ftype)
-      elif fid == 50:
+      elif fid == 49:
         if ftype == TType.DOUBLE:
           self.q0_alpha = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 51:
+      elif fid == 50:
         if ftype == TType.DOUBLE:
           self.qt_alpha = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 52:
+      elif fid == 51:
         if ftype == TType.DOUBLE:
           self.t_alpha = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 53:
+      elif fid == 52:
         if ftype == TType.DOUBLE:
           self.q_lambda = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 54:
+      elif fid == 53:
         if ftype == TType.DOUBLE:
           self.r_lambda = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 55:
+      elif fid == 54:
         if ftype == TType.DOUBLE:
           self.p0_lambda = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 56:
+      elif fid == 55:
         if ftype == TType.DOUBLE:
           self.p1_lambda = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 57:
+      elif fid == 56:
         if ftype == TType.DOUBLE:
           self.t_lambda = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 58:
+      elif fid == 57:
         if ftype == TType.DOUBLE:
           self.a_lambda = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 59:
+      elif fid == 58:
         if ftype == TType.DOUBLE:
           self.p1_k = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 60:
+      elif fid == 59:
         if ftype == TType.DOUBLE:
           self.p2_k = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 61:
+      elif fid == 60:
         if ftype == TType.DOUBLE:
           self.gas_q = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 62:
+      elif fid == 61:
         if ftype == TType.DOUBLE:
           self.core_height = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 63:
+      elif fid == 62:
         if ftype == TType.DOUBLE:
           self.core_area = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 64:
+      elif fid == 63:
         if ftype == TType.DOUBLE:
           self.gas_viscosity = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 65:
+      elif fid == 64:
         if ftype == TType.DOUBLE:
           self.decay_alpha = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 66:
+      elif fid == 65:
         if ftype == TType.DOUBLE:
           self.permeability_lambda = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 67:
+      elif fid == 66:
         if ftype == TType.DOUBLE:
           self.permeability_k = iprot.readDouble()
         else:
           iprot.skip(ftype)
-      elif fid == 68:
+      elif fid == 67:
         if ftype == TType.I32:
           self.eval_difficult = iprot.readI32()
         else:
           iprot.skip(ftype)
-      elif fid == 69:
+      elif fid == 68:
         if ftype == TType.STRING:
           self.comment = iprot.readString()
         else:
@@ -928,224 +920,220 @@ class Coal:
       oprot.writeFieldBegin('gas_content', TType.DOUBLE, 14)
       oprot.writeDouble(self.gas_content)
       oprot.writeFieldEnd()
-    if self.gas_penetration is not None:
-      oprot.writeFieldBegin('gas_penetration', TType.DOUBLE, 15)
-      oprot.writeDouble(self.gas_penetration)
-      oprot.writeFieldEnd()
     if self.f_value is not None:
-      oprot.writeFieldBegin('f_value', TType.DOUBLE, 16)
+      oprot.writeFieldBegin('f_value', TType.DOUBLE, 15)
       oprot.writeDouble(self.f_value)
       oprot.writeFieldEnd()
     if self.res_abundance is not None:
-      oprot.writeFieldBegin('res_abundance', TType.I32, 17)
+      oprot.writeFieldBegin('res_abundance', TType.I32, 16)
       oprot.writeI32(self.res_abundance)
       oprot.writeFieldEnd()
     if self.complexity is not None:
-      oprot.writeFieldBegin('complexity', TType.I32, 18)
+      oprot.writeFieldBegin('complexity', TType.I32, 17)
       oprot.writeI32(self.complexity)
       oprot.writeFieldEnd()
     if self.mine_index is not None:
-      oprot.writeFieldBegin('mine_index', TType.DOUBLE, 19)
+      oprot.writeFieldBegin('mine_index', TType.DOUBLE, 18)
       oprot.writeDouble(self.mine_index)
       oprot.writeFieldEnd()
     if self.var_coeff is not None:
-      oprot.writeFieldBegin('var_coeff', TType.DOUBLE, 20)
+      oprot.writeFieldBegin('var_coeff', TType.DOUBLE, 19)
       oprot.writeDouble(self.var_coeff)
       oprot.writeFieldEnd()
     if self.stability is not None:
-      oprot.writeFieldBegin('stability', TType.I32, 21)
+      oprot.writeFieldBegin('stability', TType.I32, 20)
       oprot.writeI32(self.stability)
       oprot.writeFieldEnd()
     if self.dip_angle is not None:
-      oprot.writeFieldBegin('dip_angle', TType.DOUBLE, 22)
+      oprot.writeFieldBegin('dip_angle', TType.DOUBLE, 21)
       oprot.writeDouble(self.dip_angle)
       oprot.writeFieldEnd()
     if self.czh is not None:
-      oprot.writeFieldBegin('czh', TType.DOUBLE, 23)
+      oprot.writeFieldBegin('czh', TType.DOUBLE, 22)
       oprot.writeDouble(self.czh)
       oprot.writeFieldEnd()
     if self.czk is not None:
-      oprot.writeFieldBegin('czk', TType.DOUBLE, 24)
+      oprot.writeFieldBegin('czk', TType.DOUBLE, 23)
       oprot.writeDouble(self.czk)
       oprot.writeFieldEnd()
     if self.czw is not None:
-      oprot.writeFieldBegin('czw', TType.DOUBLE, 25)
+      oprot.writeFieldBegin('czw', TType.DOUBLE, 24)
       oprot.writeDouble(self.czw)
       oprot.writeFieldEnd()
     if self.hw_sum is not None:
-      oprot.writeFieldBegin('hw_sum', TType.DOUBLE, 26)
+      oprot.writeFieldBegin('hw_sum', TType.DOUBLE, 25)
       oprot.writeDouble(self.hw_sum)
       oprot.writeFieldEnd()
     if self.rock is not None:
-      oprot.writeFieldBegin('rock', TType.I32, 27)
+      oprot.writeFieldBegin('rock', TType.I32, 26)
       oprot.writeI32(self.rock)
       oprot.writeFieldEnd()
     if self.hhh is not None:
-      oprot.writeFieldBegin('hhh', TType.DOUBLE, 28)
+      oprot.writeFieldBegin('hhh', TType.DOUBLE, 27)
       oprot.writeDouble(self.hhh)
       oprot.writeFieldEnd()
     if self.layer_gap is not None:
-      oprot.writeFieldBegin('layer_gap', TType.DOUBLE, 29)
+      oprot.writeFieldBegin('layer_gap', TType.DOUBLE, 28)
       oprot.writeDouble(self.layer_gap)
       oprot.writeFieldEnd()
     if self.influence_factor is not None:
-      oprot.writeFieldBegin('influence_factor', TType.DOUBLE, 30)
+      oprot.writeFieldBegin('influence_factor', TType.DOUBLE, 29)
       oprot.writeDouble(self.influence_factor)
       oprot.writeFieldEnd()
     if self.res_a1 is not None:
-      oprot.writeFieldBegin('res_a1', TType.DOUBLE, 31)
+      oprot.writeFieldBegin('res_a1', TType.DOUBLE, 30)
       oprot.writeDouble(self.res_a1)
       oprot.writeFieldEnd()
     if self.gas_x1 is not None:
-      oprot.writeFieldBegin('gas_x1', TType.DOUBLE, 32)
+      oprot.writeFieldBegin('gas_x1', TType.DOUBLE, 31)
       oprot.writeDouble(self.gas_x1)
       oprot.writeFieldEnd()
     if self.res_a2 is not None:
-      oprot.writeFieldBegin('res_a2', TType.DOUBLE, 33)
+      oprot.writeFieldBegin('res_a2', TType.DOUBLE, 32)
       oprot.writeDouble(self.res_a2)
       oprot.writeFieldEnd()
     if self.gas_x2 is not None:
-      oprot.writeFieldBegin('gas_x2', TType.DOUBLE, 34)
+      oprot.writeFieldBegin('gas_x2', TType.DOUBLE, 33)
       oprot.writeDouble(self.gas_x2)
       oprot.writeFieldEnd()
     if self.pump_wc is not None:
-      oprot.writeFieldBegin('pump_wc', TType.DOUBLE, 35)
+      oprot.writeFieldBegin('pump_wc', TType.DOUBLE, 34)
       oprot.writeDouble(self.pump_wc)
       oprot.writeFieldEnd()
     if self.pump_k is not None:
-      oprot.writeFieldBegin('pump_k', TType.DOUBLE, 36)
+      oprot.writeFieldBegin('pump_k', TType.DOUBLE, 35)
       oprot.writeDouble(self.pump_k)
       oprot.writeFieldEnd()
     if self.pump_k2 is not None:
-      oprot.writeFieldBegin('pump_k2', TType.DOUBLE, 37)
+      oprot.writeFieldBegin('pump_k2', TType.DOUBLE, 36)
       oprot.writeDouble(self.pump_k2)
       oprot.writeFieldEnd()
     if self.pump_k3 is not None:
-      oprot.writeFieldBegin('pump_k3', TType.DOUBLE, 38)
+      oprot.writeFieldBegin('pump_k3', TType.DOUBLE, 37)
       oprot.writeDouble(self.pump_k3)
       oprot.writeFieldEnd()
     if self.pump_k4 is not None:
-      oprot.writeFieldBegin('pump_k4', TType.DOUBLE, 39)
+      oprot.writeFieldBegin('pump_k4', TType.DOUBLE, 38)
       oprot.writeDouble(self.pump_k4)
       oprot.writeFieldEnd()
     if self.pump_k1 is not None:
-      oprot.writeFieldBegin('pump_k1', TType.DOUBLE, 40)
+      oprot.writeFieldBegin('pump_k1', TType.DOUBLE, 39)
       oprot.writeDouble(self.pump_k1)
       oprot.writeFieldEnd()
     if self.pore_datas is not None:
-      oprot.writeFieldBegin('pore_datas', TType.STRING, 41)
+      oprot.writeFieldBegin('pore_datas', TType.STRING, 40)
       oprot.writeString(self.pore_datas)
       oprot.writeFieldEnd()
     if self.rho is not None:
-      oprot.writeFieldBegin('rho', TType.DOUBLE, 42)
+      oprot.writeFieldBegin('rho', TType.DOUBLE, 41)
       oprot.writeDouble(self.rho)
       oprot.writeFieldEnd()
     if self.vr is not None:
-      oprot.writeFieldBegin('vr', TType.DOUBLE, 43)
+      oprot.writeFieldBegin('vr', TType.DOUBLE, 42)
       oprot.writeDouble(self.vr)
       oprot.writeFieldEnd()
     if self.gas_w0 is not None:
-      oprot.writeFieldBegin('gas_w0', TType.DOUBLE, 44)
+      oprot.writeFieldBegin('gas_w0', TType.DOUBLE, 43)
       oprot.writeDouble(self.gas_w0)
       oprot.writeFieldEnd()
     if self.gas_wc2 is not None:
-      oprot.writeFieldBegin('gas_wc2', TType.DOUBLE, 45)
+      oprot.writeFieldBegin('gas_wc2', TType.DOUBLE, 44)
       oprot.writeDouble(self.gas_wc2)
       oprot.writeFieldEnd()
     if self.gas_wc3 is not None:
-      oprot.writeFieldBegin('gas_wc3', TType.DOUBLE, 46)
+      oprot.writeFieldBegin('gas_wc3', TType.DOUBLE, 45)
       oprot.writeDouble(self.gas_wc3)
       oprot.writeFieldEnd()
     if self.gas_eta is not None:
-      oprot.writeFieldBegin('gas_eta', TType.DOUBLE, 47)
+      oprot.writeFieldBegin('gas_eta', TType.DOUBLE, 46)
       oprot.writeDouble(self.gas_eta)
       oprot.writeFieldEnd()
     if self.q0 is not None:
-      oprot.writeFieldBegin('q0', TType.DOUBLE, 48)
+      oprot.writeFieldBegin('q0', TType.DOUBLE, 47)
       oprot.writeDouble(self.q0)
       oprot.writeFieldEnd()
     if self.eval_method is not None:
-      oprot.writeFieldBegin('eval_method', TType.I32, 49)
+      oprot.writeFieldBegin('eval_method', TType.I32, 48)
       oprot.writeI32(self.eval_method)
       oprot.writeFieldEnd()
     if self.q0_alpha is not None:
-      oprot.writeFieldBegin('q0_alpha', TType.DOUBLE, 50)
+      oprot.writeFieldBegin('q0_alpha', TType.DOUBLE, 49)
       oprot.writeDouble(self.q0_alpha)
       oprot.writeFieldEnd()
     if self.qt_alpha is not None:
-      oprot.writeFieldBegin('qt_alpha', TType.DOUBLE, 51)
+      oprot.writeFieldBegin('qt_alpha', TType.DOUBLE, 50)
       oprot.writeDouble(self.qt_alpha)
       oprot.writeFieldEnd()
     if self.t_alpha is not None:
-      oprot.writeFieldBegin('t_alpha', TType.DOUBLE, 52)
+      oprot.writeFieldBegin('t_alpha', TType.DOUBLE, 51)
       oprot.writeDouble(self.t_alpha)
       oprot.writeFieldEnd()
     if self.q_lambda is not None:
-      oprot.writeFieldBegin('q_lambda', TType.DOUBLE, 53)
+      oprot.writeFieldBegin('q_lambda', TType.DOUBLE, 52)
       oprot.writeDouble(self.q_lambda)
       oprot.writeFieldEnd()
     if self.r_lambda is not None:
-      oprot.writeFieldBegin('r_lambda', TType.DOUBLE, 54)
+      oprot.writeFieldBegin('r_lambda', TType.DOUBLE, 53)
       oprot.writeDouble(self.r_lambda)
       oprot.writeFieldEnd()
     if self.p0_lambda is not None:
-      oprot.writeFieldBegin('p0_lambda', TType.DOUBLE, 55)
+      oprot.writeFieldBegin('p0_lambda', TType.DOUBLE, 54)
       oprot.writeDouble(self.p0_lambda)
       oprot.writeFieldEnd()
     if self.p1_lambda is not None:
-      oprot.writeFieldBegin('p1_lambda', TType.DOUBLE, 56)
+      oprot.writeFieldBegin('p1_lambda', TType.DOUBLE, 55)
       oprot.writeDouble(self.p1_lambda)
       oprot.writeFieldEnd()
     if self.t_lambda is not None:
-      oprot.writeFieldBegin('t_lambda', TType.DOUBLE, 57)
+      oprot.writeFieldBegin('t_lambda', TType.DOUBLE, 56)
       oprot.writeDouble(self.t_lambda)
       oprot.writeFieldEnd()
     if self.a_lambda is not None:
-      oprot.writeFieldBegin('a_lambda', TType.DOUBLE, 58)
+      oprot.writeFieldBegin('a_lambda', TType.DOUBLE, 57)
       oprot.writeDouble(self.a_lambda)
       oprot.writeFieldEnd()
     if self.p1_k is not None:
-      oprot.writeFieldBegin('p1_k', TType.DOUBLE, 59)
+      oprot.writeFieldBegin('p1_k', TType.DOUBLE, 58)
       oprot.writeDouble(self.p1_k)
       oprot.writeFieldEnd()
     if self.p2_k is not None:
-      oprot.writeFieldBegin('p2_k', TType.DOUBLE, 60)
+      oprot.writeFieldBegin('p2_k', TType.DOUBLE, 59)
       oprot.writeDouble(self.p2_k)
       oprot.writeFieldEnd()
     if self.gas_q is not None:
-      oprot.writeFieldBegin('gas_q', TType.DOUBLE, 61)
+      oprot.writeFieldBegin('gas_q', TType.DOUBLE, 60)
       oprot.writeDouble(self.gas_q)
       oprot.writeFieldEnd()
     if self.core_height is not None:
-      oprot.writeFieldBegin('core_height', TType.DOUBLE, 62)
+      oprot.writeFieldBegin('core_height', TType.DOUBLE, 61)
       oprot.writeDouble(self.core_height)
       oprot.writeFieldEnd()
     if self.core_area is not None:
-      oprot.writeFieldBegin('core_area', TType.DOUBLE, 63)
+      oprot.writeFieldBegin('core_area', TType.DOUBLE, 62)
       oprot.writeDouble(self.core_area)
       oprot.writeFieldEnd()
     if self.gas_viscosity is not None:
-      oprot.writeFieldBegin('gas_viscosity', TType.DOUBLE, 64)
+      oprot.writeFieldBegin('gas_viscosity', TType.DOUBLE, 63)
       oprot.writeDouble(self.gas_viscosity)
       oprot.writeFieldEnd()
     if self.decay_alpha is not None:
-      oprot.writeFieldBegin('decay_alpha', TType.DOUBLE, 65)
+      oprot.writeFieldBegin('decay_alpha', TType.DOUBLE, 64)
       oprot.writeDouble(self.decay_alpha)
       oprot.writeFieldEnd()
     if self.permeability_lambda is not None:
-      oprot.writeFieldBegin('permeability_lambda', TType.DOUBLE, 66)
+      oprot.writeFieldBegin('permeability_lambda', TType.DOUBLE, 65)
       oprot.writeDouble(self.permeability_lambda)
       oprot.writeFieldEnd()
     if self.permeability_k is not None:
-      oprot.writeFieldBegin('permeability_k', TType.DOUBLE, 67)
+      oprot.writeFieldBegin('permeability_k', TType.DOUBLE, 66)
       oprot.writeDouble(self.permeability_k)
       oprot.writeFieldEnd()
     if self.eval_difficult is not None:
-      oprot.writeFieldBegin('eval_difficult', TType.I32, 68)
+      oprot.writeFieldBegin('eval_difficult', TType.I32, 67)
       oprot.writeI32(self.eval_difficult)
       oprot.writeFieldEnd()
     if self.comment is not None:
-      oprot.writeFieldBegin('comment', TType.STRING, 69)
+      oprot.writeFieldBegin('comment', TType.STRING, 68)
       oprot.writeString(self.comment)
       oprot.writeFieldEnd()
     oprot.writeFieldStop()
@@ -1171,7 +1159,6 @@ class Coal:
     value = (value * 31) ^ hash(self.quality)
     value = (value * 31) ^ hash(self.pressure)
     value = (value * 31) ^ hash(self.gas_content)
-    value = (value * 31) ^ hash(self.gas_penetration)
     value = (value * 31) ^ hash(self.f_value)
     value = (value * 31) ^ hash(self.res_abundance)
     value = (value * 31) ^ hash(self.complexity)

@@ -234,7 +234,7 @@ def draw_curve(q0, alpha):
 	plt.ylabel(u'可抽瓦斯总量$Q_t(m^3)$')
 	plt.grid(True)
 	plt.plot(T, Q, label=u'$Q_t=1440q_0(1-e^{-αt})/α$')
-	plt.plot(T, Q0, 'r--', label=u'$Q_0$= %.1f' % c)
+	plt.plot(T, Q0, 'r--', label=u'$Q_∞$= %.1f ($m^3$)' % c)
 	plt.legend(loc=0)
 
 	plt.subplot(212)
@@ -242,7 +242,7 @@ def draw_curve(q0, alpha):
 	plt.xlabel(u'抽采时间$t(d)$')
 	plt.ylabel(u'钻孔抽采有效系数$k(\%)$')
 	plt.grid(True)
-	plt.plot(T, k, 'g-', label=u'$k=(1-e^{-αt})*100\%$)')
+	plt.plot(T, k, 'g-', label=u'$k=(1-e^{-αt})*100\%$')
 	plt.legend(loc=0)
 	# 显示图形
 	plt.show()

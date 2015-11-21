@@ -296,7 +296,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="gas_penetration">
+   <widget class="QLineEdit" name="permeability_k">
     <property name="geometry">
      <rect>
       <x>400</x>

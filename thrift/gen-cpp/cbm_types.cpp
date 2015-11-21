@@ -466,10 +466,6 @@ void Coal::__set_gas_content(const double val) {
   this->gas_content = val;
 }
 
-void Coal::__set_gas_penetration(const double val) {
-  this->gas_penetration = val;
-}
-
 void Coal::__set_f_value(const double val) {
   this->f_value = val;
 }
@@ -821,21 +817,13 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
         break;
       case 15:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
-          xfer += iprot->readDouble(this->gas_penetration);
-          this->__isset.gas_penetration = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 16:
-        if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->f_value);
           this->__isset.f_value = true;
         } else {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 17:
+      case 16:
         if (ftype == ::apache::thrift::protocol::T_I32) {
           xfer += iprot->readI32(this->res_abundance);
           this->__isset.res_abundance = true;
@@ -843,7 +831,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 18:
+      case 17:
         if (ftype == ::apache::thrift::protocol::T_I32) {
           xfer += iprot->readI32(this->complexity);
           this->__isset.complexity = true;
@@ -851,7 +839,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 19:
+      case 18:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->mine_index);
           this->__isset.mine_index = true;
@@ -859,7 +847,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 20:
+      case 19:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->var_coeff);
           this->__isset.var_coeff = true;
@@ -867,7 +855,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 21:
+      case 20:
         if (ftype == ::apache::thrift::protocol::T_I32) {
           xfer += iprot->readI32(this->stability);
           this->__isset.stability = true;
@@ -875,7 +863,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 22:
+      case 21:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->dip_angle);
           this->__isset.dip_angle = true;
@@ -883,7 +871,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 23:
+      case 22:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->czh);
           this->__isset.czh = true;
@@ -891,7 +879,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 24:
+      case 23:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->czk);
           this->__isset.czk = true;
@@ -899,7 +887,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 25:
+      case 24:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->czw);
           this->__isset.czw = true;
@@ -907,7 +895,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 26:
+      case 25:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->hw_sum);
           this->__isset.hw_sum = true;
@@ -915,7 +903,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 27:
+      case 26:
         if (ftype == ::apache::thrift::protocol::T_I32) {
           xfer += iprot->readI32(this->rock);
           this->__isset.rock = true;
@@ -923,7 +911,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 28:
+      case 27:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->hhh);
           this->__isset.hhh = true;
@@ -931,7 +919,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 29:
+      case 28:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->layer_gap);
           this->__isset.layer_gap = true;
@@ -939,7 +927,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 30:
+      case 29:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->influence_factor);
           this->__isset.influence_factor = true;
@@ -947,7 +935,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 31:
+      case 30:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->res_a1);
           this->__isset.res_a1 = true;
@@ -955,7 +943,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 32:
+      case 31:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->gas_x1);
           this->__isset.gas_x1 = true;
@@ -963,7 +951,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 33:
+      case 32:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->res_a2);
           this->__isset.res_a2 = true;
@@ -971,7 +959,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 34:
+      case 33:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->gas_x2);
           this->__isset.gas_x2 = true;
@@ -979,7 +967,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 35:
+      case 34:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->pump_wc);
           this->__isset.pump_wc = true;
@@ -987,7 +975,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 36:
+      case 35:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->pump_k);
           this->__isset.pump_k = true;
@@ -995,7 +983,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 37:
+      case 36:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->pump_k2);
           this->__isset.pump_k2 = true;
@@ -1003,7 +991,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 38:
+      case 37:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->pump_k3);
           this->__isset.pump_k3 = true;
@@ -1011,7 +999,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 39:
+      case 38:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->pump_k4);
           this->__isset.pump_k4 = true;
@@ -1019,7 +1007,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 40:
+      case 39:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->pump_k1);
           this->__isset.pump_k1 = true;
@@ -1027,7 +1015,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 41:
+      case 40:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
           xfer += iprot->readString(this->pore_datas);
           this->__isset.pore_datas = true;
@@ -1035,7 +1023,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 42:
+      case 41:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->rho);
           this->__isset.rho = true;
@@ -1043,7 +1031,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 43:
+      case 42:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->vr);
           this->__isset.vr = true;
@@ -1051,7 +1039,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 44:
+      case 43:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->gas_w0);
           this->__isset.gas_w0 = true;
@@ -1059,7 +1047,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 45:
+      case 44:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->gas_wc2);
           this->__isset.gas_wc2 = true;
@@ -1067,7 +1055,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 46:
+      case 45:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->gas_wc3);
           this->__isset.gas_wc3 = true;
@@ -1075,7 +1063,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 47:
+      case 46:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->gas_eta);
           this->__isset.gas_eta = true;
@@ -1083,7 +1071,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 48:
+      case 47:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->q0);
           this->__isset.q0 = true;
@@ -1091,7 +1079,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 49:
+      case 48:
         if (ftype == ::apache::thrift::protocol::T_I32) {
           xfer += iprot->readI32(this->eval_method);
           this->__isset.eval_method = true;
@@ -1099,7 +1087,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 50:
+      case 49:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->q0_alpha);
           this->__isset.q0_alpha = true;
@@ -1107,7 +1095,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 51:
+      case 50:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->qt_alpha);
           this->__isset.qt_alpha = true;
@@ -1115,7 +1103,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 52:
+      case 51:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->t_alpha);
           this->__isset.t_alpha = true;
@@ -1123,7 +1111,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 53:
+      case 52:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->q_lambda);
           this->__isset.q_lambda = true;
@@ -1131,7 +1119,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 54:
+      case 53:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->r_lambda);
           this->__isset.r_lambda = true;
@@ -1139,7 +1127,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 55:
+      case 54:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->p0_lambda);
           this->__isset.p0_lambda = true;
@@ -1147,7 +1135,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 56:
+      case 55:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->p1_lambda);
           this->__isset.p1_lambda = true;
@@ -1155,7 +1143,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 57:
+      case 56:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->t_lambda);
           this->__isset.t_lambda = true;
@@ -1163,7 +1151,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 58:
+      case 57:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->a_lambda);
           this->__isset.a_lambda = true;
@@ -1171,7 +1159,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 59:
+      case 58:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->p1_k);
           this->__isset.p1_k = true;
@@ -1179,7 +1167,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 60:
+      case 59:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->p2_k);
           this->__isset.p2_k = true;
@@ -1187,7 +1175,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 61:
+      case 60:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->gas_q);
           this->__isset.gas_q = true;
@@ -1195,7 +1183,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 62:
+      case 61:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->core_height);
           this->__isset.core_height = true;
@@ -1203,7 +1191,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 63:
+      case 62:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->core_area);
           this->__isset.core_area = true;
@@ -1211,7 +1199,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 64:
+      case 63:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->gas_viscosity);
           this->__isset.gas_viscosity = true;
@@ -1219,7 +1207,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 65:
+      case 64:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->decay_alpha);
           this->__isset.decay_alpha = true;
@@ -1227,7 +1215,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 66:
+      case 65:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->permeability_lambda);
           this->__isset.permeability_lambda = true;
@@ -1235,7 +1223,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 67:
+      case 66:
         if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
           xfer += iprot->readDouble(this->permeability_k);
           this->__isset.permeability_k = true;
@@ -1243,7 +1231,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 68:
+      case 67:
         if (ftype == ::apache::thrift::protocol::T_I32) {
           xfer += iprot->readI32(this->eval_difficult);
           this->__isset.eval_difficult = true;
@@ -1251,7 +1239,7 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 69:
+      case 68:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
           xfer += iprot->readString(this->comment);
           this->__isset.comment = true;
@@ -1332,223 +1320,219 @@ uint32_t Coal::write(::apache::thrift::protocol::TProtocol* oprot) const {
   xfer += oprot->writeDouble(this->gas_content);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("gas_penetration", ::apache::thrift::protocol::T_DOUBLE, 15);
-  xfer += oprot->writeDouble(this->gas_penetration);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldBegin("f_value", ::apache::thrift::protocol::T_DOUBLE, 16);
+  xfer += oprot->writeFieldBegin("f_value", ::apache::thrift::protocol::T_DOUBLE, 15);
   xfer += oprot->writeDouble(this->f_value);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("res_abundance", ::apache::thrift::protocol::T_I32, 17);
+  xfer += oprot->writeFieldBegin("res_abundance", ::apache::thrift::protocol::T_I32, 16);
   xfer += oprot->writeI32(this->res_abundance);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("complexity", ::apache::thrift::protocol::T_I32, 18);
+  xfer += oprot->writeFieldBegin("complexity", ::apache::thrift::protocol::T_I32, 17);
   xfer += oprot->writeI32(this->complexity);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("mine_index", ::apache::thrift::protocol::T_DOUBLE, 19);
+  xfer += oprot->writeFieldBegin("mine_index", ::apache::thrift::protocol::T_DOUBLE, 18);
   xfer += oprot->writeDouble(this->mine_index);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("var_coeff", ::apache::thrift::protocol::T_DOUBLE, 20);
+  xfer += oprot->writeFieldBegin("var_coeff", ::apache::thrift::protocol::T_DOUBLE, 19);
   xfer += oprot->writeDouble(this->var_coeff);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("stability", ::apache::thrift::protocol::T_I32, 21);
+  xfer += oprot->writeFieldBegin("stability", ::apache::thrift::protocol::T_I32, 20);
   xfer += oprot->writeI32(this->stability);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("dip_angle", ::apache::thrift::protocol::T_DOUBLE, 22);
+  xfer += oprot->writeFieldBegin("dip_angle", ::apache::thrift::protocol::T_DOUBLE, 21);
   xfer += oprot->writeDouble(this->dip_angle);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("czh", ::apache::thrift::protocol::T_DOUBLE, 23);
+  xfer += oprot->writeFieldBegin("czh", ::apache::thrift::protocol::T_DOUBLE, 22);
   xfer += oprot->writeDouble(this->czh);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("czk", ::apache::thrift::protocol::T_DOUBLE, 24);
+  xfer += oprot->writeFieldBegin("czk", ::apache::thrift::protocol::T_DOUBLE, 23);
   xfer += oprot->writeDouble(this->czk);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("czw", ::apache::thrift::protocol::T_DOUBLE, 25);
+  xfer += oprot->writeFieldBegin("czw", ::apache::thrift::protocol::T_DOUBLE, 24);
   xfer += oprot->writeDouble(this->czw);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("hw_sum", ::apache::thrift::protocol::T_DOUBLE, 26);
+  xfer += oprot->writeFieldBegin("hw_sum", ::apache::thrift::protocol::T_DOUBLE, 25);
   xfer += oprot->writeDouble(this->hw_sum);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("rock", ::apache::thrift::protocol::T_I32, 27);
+  xfer += oprot->writeFieldBegin("rock", ::apache::thrift::protocol::T_I32, 26);
   xfer += oprot->writeI32(this->rock);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("hhh", ::apache::thrift::protocol::T_DOUBLE, 28);
+  xfer += oprot->writeFieldBegin("hhh", ::apache::thrift::protocol::T_DOUBLE, 27);
   xfer += oprot->writeDouble(this->hhh);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("layer_gap", ::apache::thrift::protocol::T_DOUBLE, 29);
+  xfer += oprot->writeFieldBegin("layer_gap", ::apache::thrift::protocol::T_DOUBLE, 28);
   xfer += oprot->writeDouble(this->layer_gap);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("influence_factor", ::apache::thrift::protocol::T_DOUBLE, 30);
+  xfer += oprot->writeFieldBegin("influence_factor", ::apache::thrift::protocol::T_DOUBLE, 29);
   xfer += oprot->writeDouble(this->influence_factor);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("res_a1", ::apache::thrift::protocol::T_DOUBLE, 31);
+  xfer += oprot->writeFieldBegin("res_a1", ::apache::thrift::protocol::T_DOUBLE, 30);
   xfer += oprot->writeDouble(this->res_a1);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("gas_x1", ::apache::thrift::protocol::T_DOUBLE, 32);
+  xfer += oprot->writeFieldBegin("gas_x1", ::apache::thrift::protocol::T_DOUBLE, 31);
   xfer += oprot->writeDouble(this->gas_x1);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("res_a2", ::apache::thrift::protocol::T_DOUBLE, 33);
+  xfer += oprot->writeFieldBegin("res_a2", ::apache::thrift::protocol::T_DOUBLE, 32);
   xfer += oprot->writeDouble(this->res_a2);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("gas_x2", ::apache::thrift::protocol::T_DOUBLE, 34);
+  xfer += oprot->writeFieldBegin("gas_x2", ::apache::thrift::protocol::T_DOUBLE, 33);
   xfer += oprot->writeDouble(this->gas_x2);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("pump_wc", ::apache::thrift::protocol::T_DOUBLE, 35);
+  xfer += oprot->writeFieldBegin("pump_wc", ::apache::thrift::protocol::T_DOUBLE, 34);
   xfer += oprot->writeDouble(this->pump_wc);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("pump_k", ::apache::thrift::protocol::T_DOUBLE, 36);
+  xfer += oprot->writeFieldBegin("pump_k", ::apache::thrift::protocol::T_DOUBLE, 35);
   xfer += oprot->writeDouble(this->pump_k);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("pump_k2", ::apache::thrift::protocol::T_DOUBLE, 37);
+  xfer += oprot->writeFieldBegin("pump_k2", ::apache::thrift::protocol::T_DOUBLE, 36);
   xfer += oprot->writeDouble(this->pump_k2);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("pump_k3", ::apache::thrift::protocol::T_DOUBLE, 38);
+  xfer += oprot->writeFieldBegin("pump_k3", ::apache::thrift::protocol::T_DOUBLE, 37);
   xfer += oprot->writeDouble(this->pump_k3);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("pump_k4", ::apache::thrift::protocol::T_DOUBLE, 39);
+  xfer += oprot->writeFieldBegin("pump_k4", ::apache::thrift::protocol::T_DOUBLE, 38);
   xfer += oprot->writeDouble(this->pump_k4);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("pump_k1", ::apache::thrift::protocol::T_DOUBLE, 40);
+  xfer += oprot->writeFieldBegin("pump_k1", ::apache::thrift::protocol::T_DOUBLE, 39);
   xfer += oprot->writeDouble(this->pump_k1);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("pore_datas", ::apache::thrift::protocol::T_STRING, 41);
+  xfer += oprot->writeFieldBegin("pore_datas", ::apache::thrift::protocol::T_STRING, 40);
   xfer += oprot->writeString(this->pore_datas);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("rho", ::apache::thrift::protocol::T_DOUBLE, 42);
+  xfer += oprot->writeFieldBegin("rho", ::apache::thrift::protocol::T_DOUBLE, 41);
   xfer += oprot->writeDouble(this->rho);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("vr", ::apache::thrift::protocol::T_DOUBLE, 43);
+  xfer += oprot->writeFieldBegin("vr", ::apache::thrift::protocol::T_DOUBLE, 42);
   xfer += oprot->writeDouble(this->vr);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("gas_w0", ::apache::thrift::protocol::T_DOUBLE, 44);
+  xfer += oprot->writeFieldBegin("gas_w0", ::apache::thrift::protocol::T_DOUBLE, 43);
   xfer += oprot->writeDouble(this->gas_w0);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("gas_wc2", ::apache::thrift::protocol::T_DOUBLE, 45);
+  xfer += oprot->writeFieldBegin("gas_wc2", ::apache::thrift::protocol::T_DOUBLE, 44);
   xfer += oprot->writeDouble(this->gas_wc2);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("gas_wc3", ::apache::thrift::protocol::T_DOUBLE, 46);
+  xfer += oprot->writeFieldBegin("gas_wc3", ::apache::thrift::protocol::T_DOUBLE, 45);
   xfer += oprot->writeDouble(this->gas_wc3);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("gas_eta", ::apache::thrift::protocol::T_DOUBLE, 47);
+  xfer += oprot->writeFieldBegin("gas_eta", ::apache::thrift::protocol::T_DOUBLE, 46);
   xfer += oprot->writeDouble(this->gas_eta);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("q0", ::apache::thrift::protocol::T_DOUBLE, 48);
+  xfer += oprot->writeFieldBegin("q0", ::apache::thrift::protocol::T_DOUBLE, 47);
   xfer += oprot->writeDouble(this->q0);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("eval_method", ::apache::thrift::protocol::T_I32, 49);
+  xfer += oprot->writeFieldBegin("eval_method", ::apache::thrift::protocol::T_I32, 48);
   xfer += oprot->writeI32(this->eval_method);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("q0_alpha", ::apache::thrift::protocol::T_DOUBLE, 50);
+  xfer += oprot->writeFieldBegin("q0_alpha", ::apache::thrift::protocol::T_DOUBLE, 49);
   xfer += oprot->writeDouble(this->q0_alpha);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("qt_alpha", ::apache::thrift::protocol::T_DOUBLE, 51);
+  xfer += oprot->writeFieldBegin("qt_alpha", ::apache::thrift::protocol::T_DOUBLE, 50);
   xfer += oprot->writeDouble(this->qt_alpha);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("t_alpha", ::apache::thrift::protocol::T_DOUBLE, 52);
+  xfer += oprot->writeFieldBegin("t_alpha", ::apache::thrift::protocol::T_DOUBLE, 51);
   xfer += oprot->writeDouble(this->t_alpha);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("q_lambda", ::apache::thrift::protocol::T_DOUBLE, 53);
+  xfer += oprot->writeFieldBegin("q_lambda", ::apache::thrift::protocol::T_DOUBLE, 52);
   xfer += oprot->writeDouble(this->q_lambda);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("r_lambda", ::apache::thrift::protocol::T_DOUBLE, 54);
+  xfer += oprot->writeFieldBegin("r_lambda", ::apache::thrift::protocol::T_DOUBLE, 53);
   xfer += oprot->writeDouble(this->r_lambda);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("p0_lambda", ::apache::thrift::protocol::T_DOUBLE, 55);
+  xfer += oprot->writeFieldBegin("p0_lambda", ::apache::thrift::protocol::T_DOUBLE, 54);
   xfer += oprot->writeDouble(this->p0_lambda);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("p1_lambda", ::apache::thrift::protocol::T_DOUBLE, 56);
+  xfer += oprot->writeFieldBegin("p1_lambda", ::apache::thrift::protocol::T_DOUBLE, 55);
   xfer += oprot->writeDouble(this->p1_lambda);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("t_lambda", ::apache::thrift::protocol::T_DOUBLE, 57);
+  xfer += oprot->writeFieldBegin("t_lambda", ::apache::thrift::protocol::T_DOUBLE, 56);
   xfer += oprot->writeDouble(this->t_lambda);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("a_lambda", ::apache::thrift::protocol::T_DOUBLE, 58);
+  xfer += oprot->writeFieldBegin("a_lambda", ::apache::thrift::protocol::T_DOUBLE, 57);
   xfer += oprot->writeDouble(this->a_lambda);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("p1_k", ::apache::thrift::protocol::T_DOUBLE, 59);
+  xfer += oprot->writeFieldBegin("p1_k", ::apache::thrift::protocol::T_DOUBLE, 58);
   xfer += oprot->writeDouble(this->p1_k);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("p2_k", ::apache::thrift::protocol::T_DOUBLE, 60);
+  xfer += oprot->writeFieldBegin("p2_k", ::apache::thrift::protocol::T_DOUBLE, 59);
   xfer += oprot->writeDouble(this->p2_k);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("gas_q", ::apache::thrift::protocol::T_DOUBLE, 61);
+  xfer += oprot->writeFieldBegin("gas_q", ::apache::thrift::protocol::T_DOUBLE, 60);
   xfer += oprot->writeDouble(this->gas_q);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("core_height", ::apache::thrift::protocol::T_DOUBLE, 62);
+  xfer += oprot->writeFieldBegin("core_height", ::apache::thrift::protocol::T_DOUBLE, 61);
   xfer += oprot->writeDouble(this->core_height);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("core_area", ::apache::thrift::protocol::T_DOUBLE, 63);
+  xfer += oprot->writeFieldBegin("core_area", ::apache::thrift::protocol::T_DOUBLE, 62);
   xfer += oprot->writeDouble(this->core_area);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("gas_viscosity", ::apache::thrift::protocol::T_DOUBLE, 64);
+  xfer += oprot->writeFieldBegin("gas_viscosity", ::apache::thrift::protocol::T_DOUBLE, 63);
   xfer += oprot->writeDouble(this->gas_viscosity);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("decay_alpha", ::apache::thrift::protocol::T_DOUBLE, 65);
+  xfer += oprot->writeFieldBegin("decay_alpha", ::apache::thrift::protocol::T_DOUBLE, 64);
   xfer += oprot->writeDouble(this->decay_alpha);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("permeability_lambda", ::apache::thrift::protocol::T_DOUBLE, 66);
+  xfer += oprot->writeFieldBegin("permeability_lambda", ::apache::thrift::protocol::T_DOUBLE, 65);
   xfer += oprot->writeDouble(this->permeability_lambda);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("permeability_k", ::apache::thrift::protocol::T_DOUBLE, 67);
+  xfer += oprot->writeFieldBegin("permeability_k", ::apache::thrift::protocol::T_DOUBLE, 66);
   xfer += oprot->writeDouble(this->permeability_k);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("eval_difficult", ::apache::thrift::protocol::T_I32, 68);
+  xfer += oprot->writeFieldBegin("eval_difficult", ::apache::thrift::protocol::T_I32, 67);
   xfer += oprot->writeI32(this->eval_difficult);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("comment", ::apache::thrift::protocol::T_STRING, 69);
+  xfer += oprot->writeFieldBegin("comment", ::apache::thrift::protocol::T_STRING, 68);
   xfer += oprot->writeString(this->comment);
   xfer += oprot->writeFieldEnd();
 
@@ -1573,7 +1557,6 @@ void swap(Coal &a, Coal &b) {
   swap(a.quality, b.quality);
   swap(a.pressure, b.pressure);
   swap(a.gas_content, b.gas_content);
-  swap(a.gas_penetration, b.gas_penetration);
   swap(a.f_value, b.f_value);
   swap(a.res_abundance, b.res_abundance);
   swap(a.complexity, b.complexity);
@@ -1646,7 +1629,6 @@ Coal::Coal(const Coal& other4) {
   quality = other4.quality;
   pressure = other4.pressure;
   gas_content = other4.gas_content;
-  gas_penetration = other4.gas_penetration;
   f_value = other4.f_value;
   res_abundance = other4.res_abundance;
   complexity = other4.complexity;
@@ -1718,7 +1700,6 @@ Coal& Coal::operator=(const Coal& other5) {
   quality = other5.quality;
   pressure = other5.pressure;
   gas_content = other5.gas_content;
-  gas_penetration = other5.gas_penetration;
   f_value = other5.f_value;
   res_abundance = other5.res_abundance;
   complexity = other5.complexity;
@@ -1793,7 +1774,6 @@ void Coal::printTo(std::ostream& out) const {
   out << ", " << "quality=" << to_string(quality);
   out << ", " << "pressure=" << to_string(pressure);
   out << ", " << "gas_content=" << to_string(gas_content);
-  out << ", " << "gas_penetration=" << to_string(gas_penetration);
   out << ", " << "f_value=" << to_string(f_value);
   out << ", " << "res_abundance=" << to_string(res_abundance);
   out << ", " << "complexity=" << to_string(complexity);

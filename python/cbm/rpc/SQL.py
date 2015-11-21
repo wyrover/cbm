@@ -51,7 +51,6 @@ class Coal(Base):
     quality = Column(Integer)
     pressure = Column(Numeric(10, 2))
     gas_content = Column(Numeric(8, 2))
-    gas_penetration = Column(Numeric(8, 2))
     f_value = Column(Numeric(8, 2))
     res_abundance = Column(Integer)
     complexity = Column(Integer)

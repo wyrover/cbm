@@ -482,10 +482,6 @@ class Coal {
   /**
    * @var double
    */
-  public $gas_penetration = null;
-  /**
-   * @var double
-   */
   public $f_value = null;
   /**
    * @var int
@@ -760,222 +756,218 @@ class Coal {
           'type' => TType::DOUBLE,
           ),
         15 => array(
-          'var' => 'gas_penetration',
-          'type' => TType::DOUBLE,
-          ),
-        16 => array(
           'var' => 'f_value',
           'type' => TType::DOUBLE,
           ),
-        17 => array(
+        16 => array(
           'var' => 'res_abundance',
           'type' => TType::I32,
           ),
-        18 => array(
+        17 => array(
           'var' => 'complexity',
           'type' => TType::I32,
           ),
-        19 => array(
+        18 => array(
           'var' => 'mine_index',
           'type' => TType::DOUBLE,
           ),
-        20 => array(
+        19 => array(
           'var' => 'var_coeff',
           'type' => TType::DOUBLE,
           ),
-        21 => array(
+        20 => array(
           'var' => 'stability',
           'type' => TType::I32,
           ),
-        22 => array(
+        21 => array(
           'var' => 'dip_angle',
           'type' => TType::DOUBLE,
           ),
-        23 => array(
+        22 => array(
           'var' => 'czh',
           'type' => TType::DOUBLE,
           ),
-        24 => array(
+        23 => array(
           'var' => 'czk',
           'type' => TType::DOUBLE,
           ),
-        25 => array(
+        24 => array(
           'var' => 'czw',
           'type' => TType::DOUBLE,
           ),
-        26 => array(
+        25 => array(
           'var' => 'hw_sum',
           'type' => TType::DOUBLE,
           ),
-        27 => array(
+        26 => array(
           'var' => 'rock',
           'type' => TType::I32,
           ),
-        28 => array(
+        27 => array(
           'var' => 'hhh',
           'type' => TType::DOUBLE,
           ),
-        29 => array(
+        28 => array(
           'var' => 'layer_gap',
           'type' => TType::DOUBLE,
           ),
-        30 => array(
+        29 => array(
           'var' => 'influence_factor',
           'type' => TType::DOUBLE,
           ),
-        31 => array(
+        30 => array(
           'var' => 'res_a1',
           'type' => TType::DOUBLE,
           ),
-        32 => array(
+        31 => array(
           'var' => 'gas_x1',
           'type' => TType::DOUBLE,
           ),
-        33 => array(
+        32 => array(
           'var' => 'res_a2',
           'type' => TType::DOUBLE,
           ),
-        34 => array(
+        33 => array(
           'var' => 'gas_x2',
           'type' => TType::DOUBLE,
           ),
-        35 => array(
+        34 => array(
           'var' => 'pump_wc',
           'type' => TType::DOUBLE,
           ),
-        36 => array(
+        35 => array(
           'var' => 'pump_k',
           'type' => TType::DOUBLE,
           ),
-        37 => array(
+        36 => array(
           'var' => 'pump_k2',
           'type' => TType::DOUBLE,
           ),
-        38 => array(
+        37 => array(
           'var' => 'pump_k3',
           'type' => TType::DOUBLE,
           ),
-        39 => array(
+        38 => array(
           'var' => 'pump_k4',
           'type' => TType::DOUBLE,
           ),
-        40 => array(
+        39 => array(
           'var' => 'pump_k1',
           'type' => TType::DOUBLE,
           ),
-        41 => array(
+        40 => array(
           'var' => 'pore_datas',
           'type' => TType::STRING,
           ),
-        42 => array(
+        41 => array(
           'var' => 'rho',
           'type' => TType::DOUBLE,
           ),
-        43 => array(
+        42 => array(
           'var' => 'vr',
           'type' => TType::DOUBLE,
           ),
-        44 => array(
+        43 => array(
           'var' => 'gas_w0',
           'type' => TType::DOUBLE,
           ),
-        45 => array(
+        44 => array(
           'var' => 'gas_wc2',
           'type' => TType::DOUBLE,
           ),
-        46 => array(
+        45 => array(
           'var' => 'gas_wc3',
           'type' => TType::DOUBLE,
           ),
-        47 => array(
+        46 => array(
           'var' => 'gas_eta',
           'type' => TType::DOUBLE,
           ),
-        48 => array(
+        47 => array(
           'var' => 'q0',
           'type' => TType::DOUBLE,
           ),
-        49 => array(
+        48 => array(
           'var' => 'eval_method',
           'type' => TType::I32,
           ),
-        50 => array(
+        49 => array(
           'var' => 'q0_alpha',
           'type' => TType::DOUBLE,
           ),
-        51 => array(
+        50 => array(
           'var' => 'qt_alpha',
           'type' => TType::DOUBLE,
           ),
-        52 => array(
+        51 => array(
           'var' => 't_alpha',
           'type' => TType::DOUBLE,
           ),
-        53 => array(
+        52 => array(
           'var' => 'q_lambda',
           'type' => TType::DOUBLE,
           ),
-        54 => array(
+        53 => array(
           'var' => 'r_lambda',
           'type' => TType::DOUBLE,
           ),
-        55 => array(
+        54 => array(
           'var' => 'p0_lambda',
           'type' => TType::DOUBLE,
           ),
-        56 => array(
+        55 => array(
           'var' => 'p1_lambda',
           'type' => TType::DOUBLE,
           ),
-        57 => array(
+        56 => array(
           'var' => 't_lambda',
           'type' => TType::DOUBLE,
           ),
-        58 => array(
+        57 => array(
           'var' => 'a_lambda',
           'type' => TType::DOUBLE,
           ),
-        59 => array(
+        58 => array(
           'var' => 'p1_k',
           'type' => TType::DOUBLE,
           ),
-        60 => array(
+        59 => array(
           'var' => 'p2_k',
           'type' => TType::DOUBLE,
           ),
-        61 => array(
+        60 => array(
           'var' => 'gas_q',
           'type' => TType::DOUBLE,
           ),
-        62 => array(
+        61 => array(
           'var' => 'core_height',
           'type' => TType::DOUBLE,
           ),
-        63 => array(
+        62 => array(
           'var' => 'core_area',
           'type' => TType::DOUBLE,
           ),
-        64 => array(
+        63 => array(
           'var' => 'gas_viscosity',
           'type' => TType::DOUBLE,
           ),
-        65 => array(
+        64 => array(
           'var' => 'decay_alpha',
           'type' => TType::DOUBLE,
           ),
-        66 => array(
+        65 => array(
           'var' => 'permeability_lambda',
           'type' => TType::DOUBLE,
           ),
-        67 => array(
+        66 => array(
           'var' => 'permeability_k',
           'type' => TType::DOUBLE,
           ),
-        68 => array(
+        67 => array(
           'var' => 'eval_difficult',
           'type' => TType::I32,
           ),
-        69 => array(
+        68 => array(
           'var' => 'comment',
           'type' => TType::STRING,
           ),
@@ -1023,9 +1015,6 @@ class Coal {
       }
       if (isset($vals['gas_content'])) {
         $this->gas_content = $vals['gas_content'];
-      }
-      if (isset($vals['gas_penetration'])) {
-        $this->gas_penetration = $vals['gas_penetration'];
       }
       if (isset($vals['f_value'])) {
         $this->f_value = $vals['f_value'];
@@ -1311,383 +1300,376 @@ class Coal {
           break;
         case 15:
           if ($ftype == TType::DOUBLE) {
-            $xfer += $input->readDouble($this->gas_penetration);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 16:
-          if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->f_value);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 17:
+        case 16:
           if ($ftype == TType::I32) {
             $xfer += $input->readI32($this->res_abundance);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 18:
+        case 17:
           if ($ftype == TType::I32) {
             $xfer += $input->readI32($this->complexity);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 19:
+        case 18:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->mine_index);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 20:
+        case 19:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->var_coeff);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 21:
+        case 20:
           if ($ftype == TType::I32) {
             $xfer += $input->readI32($this->stability);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 22:
+        case 21:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->dip_angle);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 23:
+        case 22:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->czh);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 24:
+        case 23:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->czk);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 25:
+        case 24:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->czw);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 26:
+        case 25:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->hw_sum);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 27:
+        case 26:
           if ($ftype == TType::I32) {
             $xfer += $input->readI32($this->rock);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 28:
+        case 27:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->hhh);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 29:
+        case 28:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->layer_gap);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 30:
+        case 29:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->influence_factor);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 31:
+        case 30:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->res_a1);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 32:
+        case 31:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->gas_x1);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 33:
+        case 32:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->res_a2);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 34:
+        case 33:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->gas_x2);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 35:
+        case 34:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->pump_wc);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 36:
+        case 35:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->pump_k);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 37:
+        case 36:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->pump_k2);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 38:
+        case 37:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->pump_k3);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 39:
+        case 38:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->pump_k4);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 40:
+        case 39:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->pump_k1);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 41:
+        case 40:
           if ($ftype == TType::STRING) {
             $xfer += $input->readString($this->pore_datas);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 42:
+        case 41:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->rho);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 43:
+        case 42:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->vr);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 44:
+        case 43:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->gas_w0);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 45:
+        case 44:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->gas_wc2);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 46:
+        case 45:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->gas_wc3);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 47:
+        case 46:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->gas_eta);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 48:
+        case 47:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->q0);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 49:
+        case 48:
           if ($ftype == TType::I32) {
             $xfer += $input->readI32($this->eval_method);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 50:
+        case 49:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->q0_alpha);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 51:
+        case 50:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->qt_alpha);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 52:
+        case 51:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->t_alpha);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 53:
+        case 52:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->q_lambda);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 54:
+        case 53:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->r_lambda);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 55:
+        case 54:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->p0_lambda);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 56:
+        case 55:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->p1_lambda);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 57:
+        case 56:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->t_lambda);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 58:
+        case 57:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->a_lambda);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 59:
+        case 58:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->p1_k);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 60:
+        case 59:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->p2_k);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 61:
+        case 60:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->gas_q);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 62:
+        case 61:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->core_height);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 63:
+        case 62:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->core_area);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 64:
+        case 63:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->gas_viscosity);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 65:
+        case 64:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->decay_alpha);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 66:
+        case 65:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->permeability_lambda);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 67:
+        case 66:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->permeability_k);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 68:
+        case 67:
           if ($ftype == TType::I32) {
             $xfer += $input->readI32($this->eval_difficult);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 69:
+        case 68:
           if ($ftype == TType::STRING) {
             $xfer += $input->readString($this->comment);
           } else {
@@ -1777,278 +1759,273 @@ class Coal {
       $xfer += $output->writeDouble($this->gas_content);
       $xfer += $output->writeFieldEnd();
     }
-    if ($this->gas_penetration !== null) {
-      $xfer += $output->writeFieldBegin('gas_penetration', TType::DOUBLE, 15);
-      $xfer += $output->writeDouble($this->gas_penetration);
-      $xfer += $output->writeFieldEnd();
-    }
     if ($this->f_value !== null) {
-      $xfer += $output->writeFieldBegin('f_value', TType::DOUBLE, 16);
+      $xfer += $output->writeFieldBegin('f_value', TType::DOUBLE, 15);
       $xfer += $output->writeDouble($this->f_value);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->res_abundance !== null) {
-      $xfer += $output->writeFieldBegin('res_abundance', TType::I32, 17);
+      $xfer += $output->writeFieldBegin('res_abundance', TType::I32, 16);
       $xfer += $output->writeI32($this->res_abundance);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->complexity !== null) {
-      $xfer += $output->writeFieldBegin('complexity', TType::I32, 18);
+      $xfer += $output->writeFieldBegin('complexity', TType::I32, 17);
       $xfer += $output->writeI32($this->complexity);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->mine_index !== null) {
-      $xfer += $output->writeFieldBegin('mine_index', TType::DOUBLE, 19);
+      $xfer += $output->writeFieldBegin('mine_index', TType::DOUBLE, 18);
       $xfer += $output->writeDouble($this->mine_index);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->var_coeff !== null) {
-      $xfer += $output->writeFieldBegin('var_coeff', TType::DOUBLE, 20);
+      $xfer += $output->writeFieldBegin('var_coeff', TType::DOUBLE, 19);
       $xfer += $output->writeDouble($this->var_coeff);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->stability !== null) {
-      $xfer += $output->writeFieldBegin('stability', TType::I32, 21);
+      $xfer += $output->writeFieldBegin('stability', TType::I32, 20);
       $xfer += $output->writeI32($this->stability);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->dip_angle !== null) {
-      $xfer += $output->writeFieldBegin('dip_angle', TType::DOUBLE, 22);
+      $xfer += $output->writeFieldBegin('dip_angle', TType::DOUBLE, 21);
       $xfer += $output->writeDouble($this->dip_angle);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->czh !== null) {
-      $xfer += $output->writeFieldBegin('czh', TType::DOUBLE, 23);
+      $xfer += $output->writeFieldBegin('czh', TType::DOUBLE, 22);
       $xfer += $output->writeDouble($this->czh);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->czk !== null) {
-      $xfer += $output->writeFieldBegin('czk', TType::DOUBLE, 24);
+      $xfer += $output->writeFieldBegin('czk', TType::DOUBLE, 23);
       $xfer += $output->writeDouble($this->czk);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->czw !== null) {
-      $xfer += $output->writeFieldBegin('czw', TType::DOUBLE, 25);
+      $xfer += $output->writeFieldBegin('czw', TType::DOUBLE, 24);
       $xfer += $output->writeDouble($this->czw);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->hw_sum !== null) {
-      $xfer += $output->writeFieldBegin('hw_sum', TType::DOUBLE, 26);
+      $xfer += $output->writeFieldBegin('hw_sum', TType::DOUBLE, 25);
       $xfer += $output->writeDouble($this->hw_sum);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->rock !== null) {
-      $xfer += $output->writeFieldBegin('rock', TType::I32, 27);
+      $xfer += $output->writeFieldBegin('rock', TType::I32, 26);
       $xfer += $output->writeI32($this->rock);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->hhh !== null) {
-      $xfer += $output->writeFieldBegin('hhh', TType::DOUBLE, 28);
+      $xfer += $output->writeFieldBegin('hhh', TType::DOUBLE, 27);
       $xfer += $output->writeDouble($this->hhh);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->layer_gap !== null) {
-      $xfer += $output->writeFieldBegin('layer_gap', TType::DOUBLE, 29);
+      $xfer += $output->writeFieldBegin('layer_gap', TType::DOUBLE, 28);
       $xfer += $output->writeDouble($this->layer_gap);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->influence_factor !== null) {
-      $xfer += $output->writeFieldBegin('influence_factor', TType::DOUBLE, 30);
+      $xfer += $output->writeFieldBegin('influence_factor', TType::DOUBLE, 29);
       $xfer += $output->writeDouble($this->influence_factor);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->res_a1 !== null) {
-      $xfer += $output->writeFieldBegin('res_a1', TType::DOUBLE, 31);
+      $xfer += $output->writeFieldBegin('res_a1', TType::DOUBLE, 30);
       $xfer += $output->writeDouble($this->res_a1);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->gas_x1 !== null) {
-      $xfer += $output->writeFieldBegin('gas_x1', TType::DOUBLE, 32);
+      $xfer += $output->writeFieldBegin('gas_x1', TType::DOUBLE, 31);
       $xfer += $output->writeDouble($this->gas_x1);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->res_a2 !== null) {
-      $xfer += $output->writeFieldBegin('res_a2', TType::DOUBLE, 33);
+      $xfer += $output->writeFieldBegin('res_a2', TType::DOUBLE, 32);
       $xfer += $output->writeDouble($this->res_a2);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->gas_x2 !== null) {
-      $xfer += $output->writeFieldBegin('gas_x2', TType::DOUBLE, 34);
+      $xfer += $output->writeFieldBegin('gas_x2', TType::DOUBLE, 33);
       $xfer += $output->writeDouble($this->gas_x2);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->pump_wc !== null) {
-      $xfer += $output->writeFieldBegin('pump_wc', TType::DOUBLE, 35);
+      $xfer += $output->writeFieldBegin('pump_wc', TType::DOUBLE, 34);
       $xfer += $output->writeDouble($this->pump_wc);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->pump_k !== null) {
-      $xfer += $output->writeFieldBegin('pump_k', TType::DOUBLE, 36);
+      $xfer += $output->writeFieldBegin('pump_k', TType::DOUBLE, 35);
       $xfer += $output->writeDouble($this->pump_k);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->pump_k2 !== null) {
-      $xfer += $output->writeFieldBegin('pump_k2', TType::DOUBLE, 37);
+      $xfer += $output->writeFieldBegin('pump_k2', TType::DOUBLE, 36);
       $xfer += $output->writeDouble($this->pump_k2);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->pump_k3 !== null) {
-      $xfer += $output->writeFieldBegin('pump_k3', TType::DOUBLE, 38);
+      $xfer += $output->writeFieldBegin('pump_k3', TType::DOUBLE, 37);
       $xfer += $output->writeDouble($this->pump_k3);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->pump_k4 !== null) {
-      $xfer += $output->writeFieldBegin('pump_k4', TType::DOUBLE, 39);
+      $xfer += $output->writeFieldBegin('pump_k4', TType::DOUBLE, 38);
       $xfer += $output->writeDouble($this->pump_k4);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->pump_k1 !== null) {
-      $xfer += $output->writeFieldBegin('pump_k1', TType::DOUBLE, 40);
+      $xfer += $output->writeFieldBegin('pump_k1', TType::DOUBLE, 39);
       $xfer += $output->writeDouble($this->pump_k1);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->pore_datas !== null) {
-      $xfer += $output->writeFieldBegin('pore_datas', TType::STRING, 41);
+      $xfer += $output->writeFieldBegin('pore_datas', TType::STRING, 40);
       $xfer += $output->writeString($this->pore_datas);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->rho !== null) {
-      $xfer += $output->writeFieldBegin('rho', TType::DOUBLE, 42);
+      $xfer += $output->writeFieldBegin('rho', TType::DOUBLE, 41);
       $xfer += $output->writeDouble($this->rho);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->vr !== null) {
-      $xfer += $output->writeFieldBegin('vr', TType::DOUBLE, 43);
+      $xfer += $output->writeFieldBegin('vr', TType::DOUBLE, 42);
       $xfer += $output->writeDouble($this->vr);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->gas_w0 !== null) {
-      $xfer += $output->writeFieldBegin('gas_w0', TType::DOUBLE, 44);
+      $xfer += $output->writeFieldBegin('gas_w0', TType::DOUBLE, 43);
       $xfer += $output->writeDouble($this->gas_w0);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->gas_wc2 !== null) {
-      $xfer += $output->writeFieldBegin('gas_wc2', TType::DOUBLE, 45);
+      $xfer += $output->writeFieldBegin('gas_wc2', TType::DOUBLE, 44);
       $xfer += $output->writeDouble($this->gas_wc2);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->gas_wc3 !== null) {
-      $xfer += $output->writeFieldBegin('gas_wc3', TType::DOUBLE, 46);
+      $xfer += $output->writeFieldBegin('gas_wc3', TType::DOUBLE, 45);
       $xfer += $output->writeDouble($this->gas_wc3);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->gas_eta !== null) {
-      $xfer += $output->writeFieldBegin('gas_eta', TType::DOUBLE, 47);
+      $xfer += $output->writeFieldBegin('gas_eta', TType::DOUBLE, 46);
       $xfer += $output->writeDouble($this->gas_eta);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->q0 !== null) {
-      $xfer += $output->writeFieldBegin('q0', TType::DOUBLE, 48);
+      $xfer += $output->writeFieldBegin('q0', TType::DOUBLE, 47);
       $xfer += $output->writeDouble($this->q0);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->eval_method !== null) {
-      $xfer += $output->writeFieldBegin('eval_method', TType::I32, 49);
+      $xfer += $output->writeFieldBegin('eval_method', TType::I32, 48);
       $xfer += $output->writeI32($this->eval_method);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->q0_alpha !== null) {
-      $xfer += $output->writeFieldBegin('q0_alpha', TType::DOUBLE, 50);
+      $xfer += $output->writeFieldBegin('q0_alpha', TType::DOUBLE, 49);
       $xfer += $output->writeDouble($this->q0_alpha);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->qt_alpha !== null) {
-      $xfer += $output->writeFieldBegin('qt_alpha', TType::DOUBLE, 51);
+      $xfer += $output->writeFieldBegin('qt_alpha', TType::DOUBLE, 50);
       $xfer += $output->writeDouble($this->qt_alpha);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->t_alpha !== null) {
-      $xfer += $output->writeFieldBegin('t_alpha', TType::DOUBLE, 52);
+      $xfer += $output->writeFieldBegin('t_alpha', TType::DOUBLE, 51);
       $xfer += $output->writeDouble($this->t_alpha);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->q_lambda !== null) {
-      $xfer += $output->writeFieldBegin('q_lambda', TType::DOUBLE, 53);
+      $xfer += $output->writeFieldBegin('q_lambda', TType::DOUBLE, 52);
       $xfer += $output->writeDouble($this->q_lambda);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->r_lambda !== null) {
-      $xfer += $output->writeFieldBegin('r_lambda', TType::DOUBLE, 54);
+      $xfer += $output->writeFieldBegin('r_lambda', TType::DOUBLE, 53);
       $xfer += $output->writeDouble($this->r_lambda);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->p0_lambda !== null) {
-      $xfer += $output->writeFieldBegin('p0_lambda', TType::DOUBLE, 55);
+      $xfer += $output->writeFieldBegin('p0_lambda', TType::DOUBLE, 54);
       $xfer += $output->writeDouble($this->p0_lambda);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->p1_lambda !== null) {
-      $xfer += $output->writeFieldBegin('p1_lambda', TType::DOUBLE, 56);
+      $xfer += $output->writeFieldBegin('p1_lambda', TType::DOUBLE, 55);
       $xfer += $output->writeDouble($this->p1_lambda);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->t_lambda !== null) {
-      $xfer += $output->writeFieldBegin('t_lambda', TType::DOUBLE, 57);
+      $xfer += $output->writeFieldBegin('t_lambda', TType::DOUBLE, 56);
       $xfer += $output->writeDouble($this->t_lambda);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->a_lambda !== null) {
-      $xfer += $output->writeFieldBegin('a_lambda', TType::DOUBLE, 58);
+      $xfer += $output->writeFieldBegin('a_lambda', TType::DOUBLE, 57);
       $xfer += $output->writeDouble($this->a_lambda);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->p1_k !== null) {
-      $xfer += $output->writeFieldBegin('p1_k', TType::DOUBLE, 59);
+      $xfer += $output->writeFieldBegin('p1_k', TType::DOUBLE, 58);
       $xfer += $output->writeDouble($this->p1_k);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->p2_k !== null) {
-      $xfer += $output->writeFieldBegin('p2_k', TType::DOUBLE, 60);
+      $xfer += $output->writeFieldBegin('p2_k', TType::DOUBLE, 59);
       $xfer += $output->writeDouble($this->p2_k);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->gas_q !== null) {
-      $xfer += $output->writeFieldBegin('gas_q', TType::DOUBLE, 61);
+      $xfer += $output->writeFieldBegin('gas_q', TType::DOUBLE, 60);
       $xfer += $output->writeDouble($this->gas_q);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->core_height !== null) {
-      $xfer += $output->writeFieldBegin('core_height', TType::DOUBLE, 62);
+      $xfer += $output->writeFieldBegin('core_height', TType::DOUBLE, 61);
       $xfer += $output->writeDouble($this->core_height);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->core_area !== null) {
-      $xfer += $output->writeFieldBegin('core_area', TType::DOUBLE, 63);
+      $xfer += $output->writeFieldBegin('core_area', TType::DOUBLE, 62);
       $xfer += $output->writeDouble($this->core_area);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->gas_viscosity !== null) {
-      $xfer += $output->writeFieldBegin('gas_viscosity', TType::DOUBLE, 64);
+      $xfer += $output->writeFieldBegin('gas_viscosity', TType::DOUBLE, 63);
       $xfer += $output->writeDouble($this->gas_viscosity);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->decay_alpha !== null) {
-      $xfer += $output->writeFieldBegin('decay_alpha', TType::DOUBLE, 65);
+      $xfer += $output->writeFieldBegin('decay_alpha', TType::DOUBLE, 64);
       $xfer += $output->writeDouble($this->decay_alpha);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->permeability_lambda !== null) {
-      $xfer += $output->writeFieldBegin('permeability_lambda', TType::DOUBLE, 66);
+      $xfer += $output->writeFieldBegin('permeability_lambda', TType::DOUBLE, 65);
       $xfer += $output->writeDouble($this->permeability_lambda);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->permeability_k !== null) {
-      $xfer += $output->writeFieldBegin('permeability_k', TType::DOUBLE, 67);
+      $xfer += $output->writeFieldBegin('permeability_k', TType::DOUBLE, 66);
       $xfer += $output->writeDouble($this->permeability_k);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->eval_difficult !== null) {
-      $xfer += $output->writeFieldBegin('eval_difficult', TType::I32, 68);
+      $xfer += $output->writeFieldBegin('eval_difficult', TType::I32, 67);
       $xfer += $output->writeI32($this->eval_difficult);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->comment !== null) {
-      $xfer += $output->writeFieldBegin('comment', TType::STRING, 69);
+      $xfer += $output->writeFieldBegin('comment', TType::STRING, 68);
       $xfer += $output->writeString($this->comment);
       $xfer += $output->writeFieldEnd();
     }
