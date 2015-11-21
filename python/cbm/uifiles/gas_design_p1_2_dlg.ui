@@ -520,7 +520,7 @@
     <property name="geometry">
      <rect>
       <x>450</x>
-      <y>320</y>
+      <y>310</y>
       <width>131</width>
       <height>51</height>
      </rect>
@@ -538,7 +538,7 @@
     <property name="geometry">
      <rect>
       <x>450</x>
-      <y>50</y>
+      <y>40</y>
       <width>131</width>
       <height>51</height>
      </rect>
@@ -556,7 +556,7 @@
     <property name="geometry">
      <rect>
       <x>450</x>
-      <y>230</y>
+      <y>220</y>
       <width>131</width>
       <height>51</height>
      </rect>
@@ -730,7 +730,7 @@
     <property name="geometry">
      <rect>
       <x>450</x>
-      <y>140</y>
+      <y>130</y>
       <width>131</width>
       <height>51</height>
      </rect>
@@ -742,6 +742,24 @@
     </property>
     <property name="text">
      <string>走 向 剖 面 图</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="creat_report">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>390</y>
+      <width>130</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>生 成 报 单</string>
     </property>
    </widget>
   </widget>
