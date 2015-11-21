@@ -378,10 +378,10 @@ class MainWindow(QtGui.QMainWindow):
 		self.regAction(u"抽采设计", u"工作面", u"工作面瓦斯抽采辅助设计", self.wsGasDesign)
 		self.regAction(u"抽采设计", u"掘进面", u"掘进面瓦斯抽采辅助设计", self.twsGasDesign)
 		self.regAction(u"抽采设计", u"采空区", u"采空区瓦斯抽采辅助设计", self.goafGasDesign)
-		self.regAction(u"生成报告", u"底板岩巷密集穿层钻孔抽采煤巷条带瓦斯抽采技术", u"生成底板岩巷密集穿层钻孔抽采煤巷条带瓦斯抽采技术报告", self.reportP11)
-		self.regAction(u"生成报告", u"顺层钻孔条带掩护巷道掘进抽采法", u"生成顺层钻孔条带掩护巷道掘进抽采法报告", self.reportP12)
-		self.regAction(u"生成报告", u"底板岩巷大面积穿层钻孔抽采工作面瓦斯", u"生成底板岩巷大面积穿层钻孔抽采工作面瓦斯报告", self.reportP21)
-		self.regAction(u"生成报告", u"顺层平行钻孔抽采工作面瓦斯", u"生成顺层平行钻孔抽采工作面瓦斯报告", self.reportP22)
+		self.regAction(u"生成报单", u"底板岩巷密集穿层钻孔抽采煤巷条带瓦斯抽采技术", u"生成底板岩巷密集穿层钻孔抽采煤巷条带瓦斯抽采技术报单", self.reportP11)
+		self.regAction(u"生成报单", u"顺层钻孔条带掩护巷道掘进抽采法", u"生成顺层钻孔条带掩护巷道掘进抽采法报单", self.reportP12)
+		self.regAction(u"生成报单", u"底板岩巷大面积穿层钻孔抽采工作面瓦斯", u"生成底板岩巷大面积穿层钻孔抽采工作面瓦斯报单", self.reportP21)
+		self.regAction(u"生成报单", u"顺层平行钻孔抽采工作面瓦斯", u"生成顺层平行钻孔抽采工作面瓦斯报单", self.reportP22)
 
 	def creatHelpMenu(self):
 		self.helpMenu = self.menuBar().addMenu(u'帮助文档')
