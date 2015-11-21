@@ -51,7 +51,7 @@ class LoginDlg(BaseDialog):
 		if pre_account_id <= 0:
 			# 用户登陆(记录在sys_info表中)
 			DataHelper.sql_login_user(account_id)
-			UiHelper.MessageBox('恭喜您,登录成功!')
+			# UiHelper.MessageBox('恭喜您,登录成功!')
 		# 当前已有用户登录
 		elif pre_account_id == account_id:
 			# UiHelper.MessageBox('您已经登录过了!')

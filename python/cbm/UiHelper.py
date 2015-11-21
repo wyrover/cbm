@@ -7,6 +7,21 @@
 from dialogs import NameDlg, CbmMessageBox
 from PyQt4 import QtCore, QtGui
 
+def InitTableStyle(table):
+	# 隐藏表头
+	table.verticalHeader().setHidden(True)
+	# 单行选择
+	table.setSelectionBehavior(QtGui.QAbstractItemView.SelectRows)
+	# table.setSelectionMode(QtGui.QAbstractItemView.NoSelection)
+	# 不允许调整单元格大小
+	table.horizontalHeader().setResizeMode(QtGui.QHeaderView.Fixed)
+	# 拉伸???
+	table.horizontalHeader().setStretchLastSection(True)
+	# 禁止编辑
+	table.setEditTriggers(QtGui.QAbstractItemView.NoEditTriggers)
+	# 不显示网格
+	table.setShowGrid(False)
+
 # 显示或隐藏窗口
 def ShowWidget(widget, bShow=True):
 	if widget is not None and hasattr(widget, 'setVisible'):

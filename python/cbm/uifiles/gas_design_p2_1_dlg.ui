@@ -30,7 +30,7 @@
     <property name="geometry">
      <rect>
       <x>450</x>
-      <y>390</y>
+      <y>400</y>
       <width>130</width>
       <height>51</height>
      </rect>
@@ -61,7 +61,7 @@
     <property name="title">
      <string>钻孔参数</string>
     </property>
-    <widget class="QLineEdit" name="pore_gap">
+    <widget class="QLineEdit" name="gp">
      <property name="geometry">
       <rect>
        <x>300</x>
@@ -482,7 +482,7 @@
       <x>20</x>
       <y>180</y>
       <width>411</width>
-      <height>191</height>
+      <height>211</height>
      </rect>
     </property>
     <property name="font">
@@ -613,7 +613,7 @@
     <widget class="QLineEdit" name="v_offset">
      <property name="geometry">
       <rect>
-       <x>180</x>
+       <x>300</x>
        <y>60</y>
        <width>61</width>
        <height>25</height>
@@ -679,7 +679,7 @@
     <widget class="QLineEdit" name="d_offset">
      <property name="geometry">
       <rect>
-       <x>200</x>
+       <x>300</x>
        <y>120</y>
        <width>61</width>
        <height>25</height>
@@ -720,7 +720,7 @@
     <widget class="QLabel" name="label_5">
      <property name="geometry">
       <rect>
-       <x>250</x>
+       <x>370</x>
        <y>60</y>
        <width>31</width>
        <height>25</height>
@@ -746,7 +746,7 @@
     <widget class="QLabel" name="label_31">
      <property name="geometry">
       <rect>
-       <x>270</x>
+       <x>370</x>
        <y>120</y>
        <width>31</width>
        <height>25</height>
@@ -767,6 +767,19 @@
      </property>
      <property name="text">
       <string>(m)</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="single_rock_tunnel">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>180</y>
+       <width>171</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>只布置1条底板岩巷</string>
      </property>
     </widget>
    </widget>
@@ -853,7 +866,7 @@
       <string>钻场长度</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="site_gap">
+    <widget class="QLineEdit" name="gs">
      <property name="geometry">
       <rect>
        <x>290</x>
@@ -976,7 +989,7 @@
     <property name="geometry">
      <rect>
       <x>610</x>
-      <y>390</y>
+      <y>400</y>
       <width>130</width>
       <height>51</height>
      </rect>
@@ -1162,7 +1175,7 @@
     <property name="geometry">
      <rect>
       <x>130</x>
-      <y>390</y>
+      <y>400</y>
       <width>130</width>
       <height>51</height>
      </rect>
@@ -1180,7 +1193,7 @@
     <property name="geometry">
      <rect>
       <x>290</x>
-      <y>390</y>
+      <y>400</y>
       <width>130</width>
       <height>51</height>
      </rect>
@@ -1312,7 +1325,7 @@ p, li { white-space: pre-wrap; }
   <tabstop>thick</tabstop>
   <tabstop>dip_angle</tabstop>
   <tabstop>dp</tabstop>
-  <tabstop>pore_gap</tabstop>
+  <tabstop>gp</tabstop>
   <tabstop>l1</tabstop>
   <tabstop>l2</tabstop>
   <tabstop>w</tabstop>
@@ -1331,7 +1344,7 @@ p, li { white-space: pre-wrap; }
   <tabstop>ls</tabstop>
   <tabstop>ws</tabstop>
   <tabstop>hs</tabstop>
-  <tabstop>site_gap</tabstop>
+  <tabstop>gs</tabstop>
   <tabstop>save</tabstop>
   <tabstop>plane_graph</tabstop>
   <tabstop>head_graph</tabstop>

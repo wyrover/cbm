@@ -134,6 +134,7 @@ info = {
 },
 "DesignEvalUnitPartition":{
 	"id":int,
+	"work_surf_id":int,
 	"name":str,
 	"comment":str,
 	"l2":float,
@@ -249,7 +250,10 @@ info = {
 	"t":float,
 	"qm":float,
 	"qsum":float,
-	"eta":float
+	"eta":float,
+	"r0":float,
+	"p0":float,
+	"r1":float
 },
 "DrillingSurf":{
 	"id":int,
@@ -261,14 +265,6 @@ info = {
 	"fore_qr":float,
 	"fore_qa":float,
 	"q4":float,
-	"comment":str
-},
-"EvalUnit":{
-	"id":int,
-	"work_surf_id":int,
-	"name":str,
-	"l":float,
-	"t":float,
 	"comment":str
 },
 "HighDrillingPore":{
@@ -648,6 +644,7 @@ fkey = {
 },
 "DesignEvalUnitPartition":{
 	"id":1,
+	"work_surf_id":2,
 	"name":0,
 	"comment":0,
 	"l2":0,
@@ -763,7 +760,10 @@ fkey = {
 	"t":0,
 	"qm":0,
 	"qsum":0,
-	"eta":0
+	"eta":0,
+	"r0":0,
+	"p0":0,
+	"r1":0
 },
 "DrillingSurf":{
 	"id":1,
@@ -775,14 +775,6 @@ fkey = {
 	"fore_qr":0,
 	"fore_qa":0,
 	"q4":0,
-	"comment":0
-},
-"EvalUnit":{
-	"id":1,
-	"work_surf_id":2,
-	"name":0,
-	"l":0,
-	"t":0,
 	"comment":0
 },
 "HighDrillingPore":{

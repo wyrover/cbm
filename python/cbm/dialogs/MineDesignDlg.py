@@ -123,7 +123,7 @@ class MineDesignDlg(BaseDialog):
 	def onAddCoal(self):
 		# 弹出名称对话框,获取名称
 		coal_name = unicode(UiHelper.GetNameFromDlg(u"新增煤层"))
-		if coal_name == u'null':
+		if coal_name == u'null' or coal_name == u'':
 			UiHelper.MessageBox(u"请输入有效的名称！")
 		else:
 			# 新建煤层,并提交到数据库
@@ -144,7 +144,7 @@ class MineDesignDlg(BaseDialog):
 
 		# 弹出名称对话框,获取名称
 		work_area_name = unicode(UiHelper.GetNameFromDlg(u"新增采区"))
-		if work_area_name == u'null':
+		if work_area_name == u'null' or work_area_name == u'':
 			UiHelper.MessageBox(u"请输入有效的名称！")
 		else:
 			# 新建煤层,并提交到数据库
@@ -165,7 +165,7 @@ class MineDesignDlg(BaseDialog):
 
 		# 弹出名称对话框,获取名称
 		work_surf_name = unicode(UiHelper.GetNameFromDlg(u"新增回采工作面"))
-		if work_surf_name == u'null':
+		if work_surf_name == u'null' or work_surf_name == u'':
 			UiHelper.MessageBox(u"请输入有效的名称！")
 		else:
 			# 新建煤层,并提交到数据库
@@ -186,7 +186,7 @@ class MineDesignDlg(BaseDialog):
 
 		# 弹出名称对话框,获取名称
 		drilling_surf_name = unicode(UiHelper.GetNameFromDlg(u"新增掘进工作面"))
-		if drilling_surf_name == u'null':
+		if drilling_surf_name == u'null' or drilling_surf_name == u'':
 			UiHelper.MessageBox(u"请输入有效的名称！")
 		else:
 			# 新建煤层,并提交到数据库
@@ -204,6 +204,9 @@ class MineDesignDlg(BaseDialog):
 		index = self.ui.coal.currentIndex()
 		if index < 0:return
 
+		if not UiHelper.MessageBox(u'您确定要删除该煤层？', question=True):
+			return
+
 		coal_id, ok = self.ui.coal.itemData(index).toInt()
 		if SQLClientHelper.DeleteCoal(coal_id):
 			# 从采区列表中删除
@@ -216,6 +219,9 @@ class MineDesignDlg(BaseDialog):
 		index = self.ui.work_area.currentIndex()
 		if index < 0:return
 
+		if not UiHelper.MessageBox(u'您确定要删除该采区？', question=True):
+			return
+
 		work_area_id, ok = self.ui.work_area.itemData(index).toInt()
 		if SQLClientHelper.DeleteWorkArea(work_area_id):
 			# 从采区列表中删除
@@ -226,6 +232,9 @@ class MineDesignDlg(BaseDialog):
 	def onDelWorkSurf(self):
 		index = self.ui.work_surf.currentIndex()
 		if index < 0:return
+
+		if not UiHelper.MessageBox(u'您确定要删除该回采工作面？', question=True):
+			return
 
 		# 从数据库中删除工作面
 		drilling_surf_id, ok = self.ui.work_surf.itemData(index).toInt()
@@ -238,6 +247,9 @@ class MineDesignDlg(BaseDialog):
 	def onDelDrillingSurf(self):
 		index = self.ui.drilling_surf.currentIndex()
 		if index < 0:return
+
+		if not UiHelper.MessageBox(u'您确定要删除该掘进工作面？', question=True):
+			return
 
 		# 从数据库中删除掘进面
 		drilling_surf_id, ok = self.ui.drilling_surf.itemData(index).toInt()

@@ -11,8 +11,6 @@ import UiHelper
 
 from math import sqrt, pow, sin, cos, tan, radians
 
-import threading
-
 class CurveDrawDlg(BaseDialog):
 	def __init__(self, mine_id=-1, parent=None):
 		super(CurveDrawDlg, self).__init__(parent)

@@ -51,8 +51,6 @@ class DrillingRadiusParam;
 
 class DrillingSurf;
 
-class EvalUnit;
-
 class HighDrillingPore;
 
 class HighDrillingPoreParam;
@@ -1054,8 +1052,9 @@ inline std::ostream& operator<<(std::ostream& out, const DesignEvalUnit& obj)
 }
 
 typedef struct _DesignEvalUnitPartition__isset {
-  _DesignEvalUnitPartition__isset() : id(false), name(false), comment(false), l2(false), l1(false), w(false), h(false), l(false), r(false), t(false), v(false) {}
+  _DesignEvalUnitPartition__isset() : id(false), work_surf_id(false), name(false), comment(false), l2(false), l1(false), w(false), h(false), l(false), r(false), t(false), v(false) {}
   bool id :1;
+  bool work_surf_id :1;
   bool name :1;
   bool comment :1;
   bool l2 :1;
@@ -1073,11 +1072,12 @@ class DesignEvalUnitPartition {
 
   DesignEvalUnitPartition(const DesignEvalUnitPartition&);
   DesignEvalUnitPartition& operator=(const DesignEvalUnitPartition&);
-  DesignEvalUnitPartition() : id(0), name(), comment(), l2(0), l1(0), w(0), h(0), l(0), r(0), t(0), v(0) {
+  DesignEvalUnitPartition() : id(0), work_surf_id(0), name(), comment(), l2(0), l1(0), w(0), h(0), l(0), r(0), t(0), v(0) {
   }
 
   virtual ~DesignEvalUnitPartition() throw();
   int32_t id;
+  int32_t work_surf_id;
   std::string name;
   std::string comment;
   double l2;
@@ -1092,6 +1092,8 @@ class DesignEvalUnitPartition {
   _DesignEvalUnitPartition__isset __isset;
 
   void __set_id(const int32_t val);
+
+  void __set_work_surf_id(const int32_t val);
 
   void __set_name(const std::string& val);
 
@@ -1116,6 +1118,8 @@ class DesignEvalUnitPartition {
   bool operator == (const DesignEvalUnitPartition & rhs) const
   {
     if (!(id == rhs.id))
+      return false;
+    if (!(work_surf_id == rhs.work_surf_id))
       return false;
     if (!(name == rhs.name))
       return false;
@@ -1902,7 +1906,7 @@ inline std::ostream& operator<<(std::ostream& out, const DesignWorkSurfTechnolog
 }
 
 typedef struct _DrillingRadiusParam__isset {
-  _DrillingRadiusParam__isset() : id(false), coal_id(false), name(false), r(false), l(false), k1(false), rho(false), q0(false), a(false), t(false), qm(false), qsum(false), eta(false) {}
+  _DrillingRadiusParam__isset() : id(false), coal_id(false), name(false), r(false), l(false), k1(false), rho(false), q0(false), a(false), t(false), qm(false), qsum(false), eta(false), r0(false), p0(false), r1(false) {}
   bool id :1;
   bool coal_id :1;
   bool name :1;
@@ -1916,6 +1920,9 @@ typedef struct _DrillingRadiusParam__isset {
   bool qm :1;
   bool qsum :1;
   bool eta :1;
+  bool r0 :1;
+  bool p0 :1;
+  bool r1 :1;
 } _DrillingRadiusParam__isset;
 
 class DrillingRadiusParam {
@@ -1923,7 +1930,7 @@ class DrillingRadiusParam {
 
   DrillingRadiusParam(const DrillingRadiusParam&);
   DrillingRadiusParam& operator=(const DrillingRadiusParam&);
-  DrillingRadiusParam() : id(0), coal_id(0), name(), r(0), l(0), k1(0), rho(0), q0(0), a(0), t(0), qm(0), qsum(0), eta(0) {
+  DrillingRadiusParam() : id(0), coal_id(0), name(), r(0), l(0), k1(0), rho(0), q0(0), a(0), t(0), qm(0), qsum(0), eta(0), r0(0), p0(0), r1(0) {
   }
 
   virtual ~DrillingRadiusParam() throw();
@@ -1940,6 +1947,9 @@ class DrillingRadiusParam {
   double qm;
   double qsum;
   double eta;
+  double r0;
+  double p0;
+  double r1;
 
   _DrillingRadiusParam__isset __isset;
 
@@ -1969,6 +1979,12 @@ class DrillingRadiusParam {
 
   void __set_eta(const double val);
 
+  void __set_r0(const double val);
+
+  void __set_p0(const double val);
+
+  void __set_r1(const double val);
+
   bool operator == (const DrillingRadiusParam & rhs) const
   {
     if (!(id == rhs.id))
@@ -1996,6 +2012,12 @@ class DrillingRadiusParam {
     if (!(qsum == rhs.qsum))
       return false;
     if (!(eta == rhs.eta))
+      return false;
+    if (!(r0 == rhs.r0))
+      return false;
+    if (!(p0 == rhs.p0))
+      return false;
+    if (!(r1 == rhs.r1))
       return false;
     return true;
   }
@@ -2114,82 +2136,6 @@ class DrillingSurf {
 void swap(DrillingSurf &a, DrillingSurf &b);
 
 inline std::ostream& operator<<(std::ostream& out, const DrillingSurf& obj)
-{
-  obj.printTo(out);
-  return out;
-}
-
-typedef struct _EvalUnit__isset {
-  _EvalUnit__isset() : id(false), work_surf_id(false), name(false), l(false), t(false), comment(false) {}
-  bool id :1;
-  bool work_surf_id :1;
-  bool name :1;
-  bool l :1;
-  bool t :1;
-  bool comment :1;
-} _EvalUnit__isset;
-
-class EvalUnit {
- public:
-
-  EvalUnit(const EvalUnit&);
-  EvalUnit& operator=(const EvalUnit&);
-  EvalUnit() : id(0), work_surf_id(0), name(), l(0), t(0), comment() {
-  }
-
-  virtual ~EvalUnit() throw();
-  int32_t id;
-  int32_t work_surf_id;
-  std::string name;
-  double l;
-  double t;
-  std::string comment;
-
-  _EvalUnit__isset __isset;
-
-  void __set_id(const int32_t val);
-
-  void __set_work_surf_id(const int32_t val);
-
-  void __set_name(const std::string& val);
-
-  void __set_l(const double val);
-
-  void __set_t(const double val);
-
-  void __set_comment(const std::string& val);
-
-  bool operator == (const EvalUnit & rhs) const
-  {
-    if (!(id == rhs.id))
-      return false;
-    if (!(work_surf_id == rhs.work_surf_id))
-      return false;
-    if (!(name == rhs.name))
-      return false;
-    if (!(l == rhs.l))
-      return false;
-    if (!(t == rhs.t))
-      return false;
-    if (!(comment == rhs.comment))
-      return false;
-    return true;
-  }
-  bool operator != (const EvalUnit &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const EvalUnit & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  virtual void printTo(std::ostream& out) const;
-};
-
-void swap(EvalUnit &a, EvalUnit &b);
-
-inline std::ostream& operator<<(std::ostream& out, const EvalUnit& obj)
 {
   obj.printTo(out);
   return out;

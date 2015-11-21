@@ -3097,6 +3097,10 @@ class DesignEvalUnitPartition {
    */
   public $id = null;
   /**
+   * @var int
+   */
+  public $work_surf_id = null;
+  /**
    * @var string
    */
   public $name = null;
@@ -3145,42 +3149,46 @@ class DesignEvalUnitPartition {
           'type' => TType::I32,
           ),
         2 => array(
+          'var' => 'work_surf_id',
+          'type' => TType::I32,
+          ),
+        3 => array(
           'var' => 'name',
           'type' => TType::STRING,
           ),
-        3 => array(
+        4 => array(
           'var' => 'comment',
           'type' => TType::STRING,
           ),
-        4 => array(
+        5 => array(
           'var' => 'l2',
           'type' => TType::DOUBLE,
           ),
-        5 => array(
+        6 => array(
           'var' => 'l1',
           'type' => TType::DOUBLE,
           ),
-        6 => array(
+        7 => array(
           'var' => 'w',
           'type' => TType::DOUBLE,
           ),
-        7 => array(
+        8 => array(
           'var' => 'h',
           'type' => TType::DOUBLE,
           ),
-        8 => array(
+        9 => array(
           'var' => 'l',
           'type' => TType::DOUBLE,
           ),
-        9 => array(
+        10 => array(
           'var' => 'r',
           'type' => TType::DOUBLE,
           ),
-        10 => array(
+        11 => array(
           'var' => 't',
           'type' => TType::DOUBLE,
           ),
-        11 => array(
+        12 => array(
           'var' => 'v',
           'type' => TType::DOUBLE,
           ),
@@ -3189,6 +3197,9 @@ class DesignEvalUnitPartition {
     if (is_array($vals)) {
       if (isset($vals['id'])) {
         $this->id = $vals['id'];
+      }
+      if (isset($vals['work_surf_id'])) {
+        $this->work_surf_id = $vals['work_surf_id'];
       }
       if (isset($vals['name'])) {
         $this->name = $vals['name'];
@@ -3250,69 +3261,76 @@ class DesignEvalUnitPartition {
           }
           break;
         case 2:
-          if ($ftype == TType::STRING) {
-            $xfer += $input->readString($this->name);
+          if ($ftype == TType::I32) {
+            $xfer += $input->readI32($this->work_surf_id);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
         case 3:
           if ($ftype == TType::STRING) {
-            $xfer += $input->readString($this->comment);
+            $xfer += $input->readString($this->name);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
         case 4:
-          if ($ftype == TType::DOUBLE) {
-            $xfer += $input->readDouble($this->l2);
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->comment);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
         case 5:
           if ($ftype == TType::DOUBLE) {
-            $xfer += $input->readDouble($this->l1);
+            $xfer += $input->readDouble($this->l2);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
         case 6:
           if ($ftype == TType::DOUBLE) {
-            $xfer += $input->readDouble($this->w);
+            $xfer += $input->readDouble($this->l1);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
         case 7:
           if ($ftype == TType::DOUBLE) {
-            $xfer += $input->readDouble($this->h);
+            $xfer += $input->readDouble($this->w);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
         case 8:
           if ($ftype == TType::DOUBLE) {
-            $xfer += $input->readDouble($this->l);
+            $xfer += $input->readDouble($this->h);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
         case 9:
           if ($ftype == TType::DOUBLE) {
-            $xfer += $input->readDouble($this->r);
+            $xfer += $input->readDouble($this->l);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
         case 10:
           if ($ftype == TType::DOUBLE) {
-            $xfer += $input->readDouble($this->t);
+            $xfer += $input->readDouble($this->r);
           } else {
             $xfer += $input->skip($ftype);
           }
           break;
         case 11:
+          if ($ftype == TType::DOUBLE) {
+            $xfer += $input->readDouble($this->t);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 12:
           if ($ftype == TType::DOUBLE) {
             $xfer += $input->readDouble($this->v);
           } else {
@@ -3337,53 +3355,58 @@ class DesignEvalUnitPartition {
       $xfer += $output->writeI32($this->id);
       $xfer += $output->writeFieldEnd();
     }
+    if ($this->work_surf_id !== null) {
+      $xfer += $output->writeFieldBegin('work_surf_id', TType::I32, 2);
+      $xfer += $output->writeI32($this->work_surf_id);
+      $xfer += $output->writeFieldEnd();
+    }
     if ($this->name !== null) {
-      $xfer += $output->writeFieldBegin('name', TType::STRING, 2);
+      $xfer += $output->writeFieldBegin('name', TType::STRING, 3);
       $xfer += $output->writeString($this->name);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->comment !== null) {
-      $xfer += $output->writeFieldBegin('comment', TType::STRING, 3);
+      $xfer += $output->writeFieldBegin('comment', TType::STRING, 4);
       $xfer += $output->writeString($this->comment);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->l2 !== null) {
-      $xfer += $output->writeFieldBegin('l2', TType::DOUBLE, 4);
+      $xfer += $output->writeFieldBegin('l2', TType::DOUBLE, 5);
       $xfer += $output->writeDouble($this->l2);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->l1 !== null) {
-      $xfer += $output->writeFieldBegin('l1', TType::DOUBLE, 5);
+      $xfer += $output->writeFieldBegin('l1', TType::DOUBLE, 6);
       $xfer += $output->writeDouble($this->l1);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->w !== null) {
-      $xfer += $output->writeFieldBegin('w', TType::DOUBLE, 6);
+      $xfer += $output->writeFieldBegin('w', TType::DOUBLE, 7);
       $xfer += $output->writeDouble($this->w);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->h !== null) {
-      $xfer += $output->writeFieldBegin('h', TType::DOUBLE, 7);
+      $xfer += $output->writeFieldBegin('h', TType::DOUBLE, 8);
       $xfer += $output->writeDouble($this->h);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->l !== null) {
-      $xfer += $output->writeFieldBegin('l', TType::DOUBLE, 8);
+      $xfer += $output->writeFieldBegin('l', TType::DOUBLE, 9);
       $xfer += $output->writeDouble($this->l);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->r !== null) {
-      $xfer += $output->writeFieldBegin('r', TType::DOUBLE, 9);
+      $xfer += $output->writeFieldBegin('r', TType::DOUBLE, 10);
       $xfer += $output->writeDouble($this->r);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->t !== null) {
-      $xfer += $output->writeFieldBegin('t', TType::DOUBLE, 10);
+      $xfer += $output->writeFieldBegin('t', TType::DOUBLE, 11);
       $xfer += $output->writeDouble($this->t);
       $xfer += $output->writeFieldEnd();
     }
     if ($this->v !== null) {
-      $xfer += $output->writeFieldBegin('v', TType::DOUBLE, 11);
+      $xfer += $output->writeFieldBegin('v', TType::DOUBLE, 12);
       $xfer += $output->writeDouble($this->v);
       $xfer += $output->writeFieldEnd();
     }
@@ -5584,6 +5607,18 @@ class DrillingRadiusParam {
    * @var double
    */
   public $eta = null;
+  /**
+   * @var double
+   */
+  public $r0 = null;
+  /**
+   * @var double
+   */
+  public $p0 = null;
+  /**
+   * @var double
+   */
+  public $r1 = null;
 
   public function __construct($vals=null) {
     if (!isset(self::$_TSPEC)) {
@@ -5640,6 +5675,18 @@ class DrillingRadiusParam {
           'var' => 'eta',
           'type' => TType::DOUBLE,
           ),
+        14 => array(
+          'var' => 'r0',
+          'type' => TType::DOUBLE,
+          ),
+        15 => array(
+          'var' => 'p0',
+          'type' => TType::DOUBLE,
+          ),
+        16 => array(
+          'var' => 'r1',
+          'type' => TType::DOUBLE,
+          ),
         );
     }
     if (is_array($vals)) {
@@ -5681,6 +5728,15 @@ class DrillingRadiusParam {
       }
       if (isset($vals['eta'])) {
         $this->eta = $vals['eta'];
+      }
+      if (isset($vals['r0'])) {
+        $this->r0 = $vals['r0'];
+      }
+      if (isset($vals['p0'])) {
+        $this->p0 = $vals['p0'];
+      }
+      if (isset($vals['r1'])) {
+        $this->r1 = $vals['r1'];
       }
     }
   }
@@ -5795,6 +5851,27 @@ class DrillingRadiusParam {
             $xfer += $input->skip($ftype);
           }
           break;
+        case 14:
+          if ($ftype == TType::DOUBLE) {
+            $xfer += $input->readDouble($this->r0);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 15:
+          if ($ftype == TType::DOUBLE) {
+            $xfer += $input->readDouble($this->p0);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 16:
+          if ($ftype == TType::DOUBLE) {
+            $xfer += $input->readDouble($this->r1);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
         default:
           $xfer += $input->skip($ftype);
           break;
@@ -5871,6 +5948,21 @@ class DrillingRadiusParam {
     if ($this->eta !== null) {
       $xfer += $output->writeFieldBegin('eta', TType::DOUBLE, 13);
       $xfer += $output->writeDouble($this->eta);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->r0 !== null) {
+      $xfer += $output->writeFieldBegin('r0', TType::DOUBLE, 14);
+      $xfer += $output->writeDouble($this->r0);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->p0 !== null) {
+      $xfer += $output->writeFieldBegin('p0', TType::DOUBLE, 15);
+      $xfer += $output->writeDouble($this->p0);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->r1 !== null) {
+      $xfer += $output->writeFieldBegin('r1', TType::DOUBLE, 16);
+      $xfer += $output->writeDouble($this->r1);
       $xfer += $output->writeFieldEnd();
     }
     $xfer += $output->writeFieldStop();
@@ -6152,196 +6244,6 @@ class DrillingSurf {
     }
     if ($this->comment !== null) {
       $xfer += $output->writeFieldBegin('comment', TType::STRING, 10);
-      $xfer += $output->writeString($this->comment);
-      $xfer += $output->writeFieldEnd();
-    }
-    $xfer += $output->writeFieldStop();
-    $xfer += $output->writeStructEnd();
-    return $xfer;
-  }
-
-}
-
-class EvalUnit {
-  static $_TSPEC;
-
-  /**
-   * @var int
-   */
-  public $id = null;
-  /**
-   * @var int
-   */
-  public $work_surf_id = null;
-  /**
-   * @var string
-   */
-  public $name = null;
-  /**
-   * @var double
-   */
-  public $l = null;
-  /**
-   * @var double
-   */
-  public $t = null;
-  /**
-   * @var string
-   */
-  public $comment = null;
-
-  public function __construct($vals=null) {
-    if (!isset(self::$_TSPEC)) {
-      self::$_TSPEC = array(
-        1 => array(
-          'var' => 'id',
-          'type' => TType::I32,
-          ),
-        2 => array(
-          'var' => 'work_surf_id',
-          'type' => TType::I32,
-          ),
-        3 => array(
-          'var' => 'name',
-          'type' => TType::STRING,
-          ),
-        4 => array(
-          'var' => 'l',
-          'type' => TType::DOUBLE,
-          ),
-        5 => array(
-          'var' => 't',
-          'type' => TType::DOUBLE,
-          ),
-        6 => array(
-          'var' => 'comment',
-          'type' => TType::STRING,
-          ),
-        );
-    }
-    if (is_array($vals)) {
-      if (isset($vals['id'])) {
-        $this->id = $vals['id'];
-      }
-      if (isset($vals['work_surf_id'])) {
-        $this->work_surf_id = $vals['work_surf_id'];
-      }
-      if (isset($vals['name'])) {
-        $this->name = $vals['name'];
-      }
-      if (isset($vals['l'])) {
-        $this->l = $vals['l'];
-      }
-      if (isset($vals['t'])) {
-        $this->t = $vals['t'];
-      }
-      if (isset($vals['comment'])) {
-        $this->comment = $vals['comment'];
-      }
-    }
-  }
-
-  public function getName() {
-    return 'EvalUnit';
-  }
-
-  public function read($input)
-  {
-    $xfer = 0;
-    $fname = null;
-    $ftype = 0;
-    $fid = 0;
-    $xfer += $input->readStructBegin($fname);
-    while (true)
-    {
-      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
-      if ($ftype == TType::STOP) {
-        break;
-      }
-      switch ($fid)
-      {
-        case 1:
-          if ($ftype == TType::I32) {
-            $xfer += $input->readI32($this->id);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 2:
-          if ($ftype == TType::I32) {
-            $xfer += $input->readI32($this->work_surf_id);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 3:
-          if ($ftype == TType::STRING) {
-            $xfer += $input->readString($this->name);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 4:
-          if ($ftype == TType::DOUBLE) {
-            $xfer += $input->readDouble($this->l);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 5:
-          if ($ftype == TType::DOUBLE) {
-            $xfer += $input->readDouble($this->t);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 6:
-          if ($ftype == TType::STRING) {
-            $xfer += $input->readString($this->comment);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        default:
-          $xfer += $input->skip($ftype);
-          break;
-      }
-      $xfer += $input->readFieldEnd();
-    }
-    $xfer += $input->readStructEnd();
-    return $xfer;
-  }
-
-  public function write($output) {
-    $xfer = 0;
-    $xfer += $output->writeStructBegin('EvalUnit');
-    if ($this->id !== null) {
-      $xfer += $output->writeFieldBegin('id', TType::I32, 1);
-      $xfer += $output->writeI32($this->id);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->work_surf_id !== null) {
-      $xfer += $output->writeFieldBegin('work_surf_id', TType::I32, 2);
-      $xfer += $output->writeI32($this->work_surf_id);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->name !== null) {
-      $xfer += $output->writeFieldBegin('name', TType::STRING, 3);
-      $xfer += $output->writeString($this->name);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->l !== null) {
-      $xfer += $output->writeFieldBegin('l', TType::DOUBLE, 4);
-      $xfer += $output->writeDouble($this->l);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->t !== null) {
-      $xfer += $output->writeFieldBegin('t', TType::DOUBLE, 5);
-      $xfer += $output->writeDouble($this->t);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->comment !== null) {
-      $xfer += $output->writeFieldBegin('comment', TType::STRING, 6);
       $xfer += $output->writeString($this->comment);
       $xfer += $output->writeFieldEnd();
     }

@@ -1,5 +1,17 @@
 #pragma once
 
+#include <math.h>
+
+#define PI 3.1415926535897932384626433832795
+//度数转弧度
+#define DegToRad(x) x*0.01745329251994329576923690768489
+//弧度转度数
+#define RadToDeg(x) x*57.295779513082320876798154814105
+//平方
+#define square(x)  x*x
+//余切
+#define cot(x) 1.0/tan(x)
+
 //剖面图绘制基类
 class BaseGraph
 {

@@ -21,6 +21,9 @@
 class ARXHELPER_API ArxDrawHelper
 {
 public:
+	static void VectorToAngle(const AcGeVector3d& v, double& ang1, double& ang2);
+	static void VectorToAngleTest();
+
     static AcGePoint2d Point3D_To_2D( const AcGePoint3d& pt );
     static AcGePoint3d Point2D_To_3D( const AcGePoint2d& pt );
     static AcGePoint3d MidPoint( const AcGePoint3d& pt1, const AcGePoint3d& pt2 );

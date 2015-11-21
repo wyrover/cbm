@@ -150,22 +150,7 @@
     </property>
     <item>
      <property name="text">
-      <string>容易抽采~较难抽采</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>可以抽采~较难抽采</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>容易抽采~可以抽采</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>较难抽采</string>
+      <string>容易抽采</string>
      </property>
     </item>
     <item>
@@ -175,7 +160,22 @@
     </item>
     <item>
      <property name="text">
-      <string>容易抽采</string>
+      <string>较难抽采</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>容易抽采~可以抽采</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>容易抽采~较难抽采</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>可以抽采~较难抽采</string>
      </property>
     </item>
    </widget>

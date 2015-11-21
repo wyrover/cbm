@@ -49,7 +49,7 @@
      <rect>
       <x>100</x>
       <y>20</y>
-      <width>111</width>
+      <width>131</width>
       <height>25</height>
      </rect>
     </property>
@@ -64,7 +64,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>请选择已有的设计数据</string>
+     <string>请选择已有的设计方案</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="thick">
@@ -139,7 +139,7 @@
      <string>煤层列表</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="new_design">
+   <widget class="QPushButton" name="add_design">
     <property name="geometry">
      <rect>
       <x>160</x>
@@ -355,7 +355,7 @@ p, li { white-space: pre-wrap; }
   <tabstop>dip_angle</tabstop>
   <tabstop>technology</tabstop>
   <tabstop>design</tabstop>
-  <tabstop>new_design</tabstop>
+  <tabstop>add_design</tabstop>
   <tabstop>del_design</tabstop>
   <tabstop>go</tabstop>
   <tabstop>save</tabstop>

@@ -12,11 +12,16 @@ from dialogs.TwsGasFlowPredictDlg import *
 from dialogs.WsGasFlowPredictDlg import *
 from dialogs.HighDrillingTunnelDlg import *
 from dialogs.HighDrillingDesignDlg import *
-from dialogs.DrillingRadiusDlg import *
 from dialogs.PoreSizeDlg import *
 from dialogs.PoreFlowDlg import *
+
 from dialogs.GasDesignDlg import *
+
+from dialogs.EvalUnitDlg import *
 from dialogs.CurveDrawDlg import *
+from dialogs.GasDrillingOptimizeDlg import *
+from dialogs.GasDrillingRadiusDlg import *
+
 import doc
 
 from rpc import CbmUtil, SQLClientHelper, CbmClientHelper
@@ -133,11 +138,16 @@ class MainWindow(QtGui.QMainWindow):
 			# 启动对话框(传入当前登录用户的)
 			self.run_dialog(DialogClass)
 
+
+	def showSampleData(self):
+		# 显示基础数据
+		pass
+
 	def sampleManage(self):
 		# 启动示范矿区管理库对话框
 		self.try_run(SampleManageDlg, Authority.ADMIN)
 
-	def deginMine(self):
+	def designMine(self):
 		# 启动矿井设计对话框
 		self.try_run(MineDesignDlg, Authority.BOTH)
 
@@ -187,31 +197,38 @@ class MainWindow(QtGui.QMainWindow):
 		self.try_run(CurveDrawDlg, Authority.USER)
 
 	# 钻孔间距(抽采半径)优化
-	def drillingRadius(self):
+	def gasDrillingRadius(self):
 		# 启动瓦斯抽采半径计算对话框
-		self.try_run(DrillingRadiusDlg, Authority.USER)
+		self.try_run(GasDrillingRadiusDlg, Authority.USER)
 
-	# 评价单元划分
-	def evaluationUnitDivision(self):
+	def gasDrillingOptimize(self):
+		# 启动瓦斯抽采半径计算对话框
+		self.try_run(GasDrillingOptimizeDlg, Authority.USER)
+
+	def gasDrillingAnalyse(self):
+		# 启动瓦斯抽采半径计算对话框
+		self.try_run(GasDrillingAnalyseDlg, Authority.USER)
+	
+	def evalUnitPartition(self):
 		# 启动评价单元划分计算对话框
-		# self.try_run(PoreFlowDlg, Authority.USER)
+		self.try_run(EvalUnitDlg, Authority.USER)
 		pass
 
 	def wsGasDesign(self):
 		# 进行工作面的瓦斯抽采设计
-		DataHelper.GAS_DESIGN_TYPE = 1
+		DataHelper.GAS_DESIGN_REGION = 2
 		# 启动瓦斯抽采设计对话框
 		self.try_run(GasDesignDlg, Authority.USER)
 
 	def twsGasDesign(self):
 		# 进行掘进面的瓦斯抽采设计
-		DataHelper.GAS_DESIGN_TYPE = 2
+		DataHelper.GAS_DESIGN_REGION = 1
 		# 启动掘进面瓦斯抽采设计对话框
 		self.try_run(GasDesignDlg, Authority.USER)
 
 	def goafGasDesign(self):
 		# 进行采空区的瓦斯抽采设计
-		DataHelper.GAS_DESIGN_TYPE = 3
+		DataHelper.GAS_DESIGN_REGION = 3
 		self.try_run(GasDesignDlg, Authority.USER)
 
 	def reportP11(self):
@@ -360,8 +377,9 @@ class MainWindow(QtGui.QMainWindow):
 	def createActions(self):
 		self.regAction(u"账户管理", u"登录", u"用户登录", self.login)
 		self.regAction(u"账户管理", u"注销", u"注销用户", self.logout)		
-		self.regAction(u"设计模块", u"示范矿区技术管理", u"对示范矿区进行技术管理", self.sampleManage)
-		self.regAction(u"设计模块", u"矿井设计", u"设计本矿井", self.deginMine)
+		self.regAction(u"基础参数库", u"示范矿区基础参数", u"示范矿区基础参数", self.showSampleData)
+		self.regAction(u"基础参数库", u"示范矿区参数录入", u"对示范矿区进行技术管理", self.sampleManage)
+		self.regAction(u"基础参数库", u"目标矿井设计", u"设计目标矿井", self.designMine)
 		self.regAction(u"辅助决策", u"抽采技术模式", u"抽采技术模式辅助决策", self.dragTec)
 		self.regAction(u"辅助计算", u"煤层气抽采难易程度评价", u"煤层气抽采难易程度评价辅助计算", self.difficultEval)
 		self.regAction(u"辅助计算", u"矿井煤层气储量及可抽量预测", u"矿井煤层气储量及可抽量预测辅助计算", self.mineGasReservesPredict)
@@ -373,10 +391,13 @@ class MainWindow(QtGui.QMainWindow):
 		self.regAction(u"辅助计算", u"抽采管径大小", u"抽采管径大小辅助计算", self.poreSize)
 		self.regAction(u"辅助计算", u"孔板流量", u"孔板流量辅助计算", self.poreFlow)
 		self.regAction(u"抽采参数优化", u"曲线绘制", u"煤层瓦斯抽采半径辅助计算", self.drawCurves)
-		self.regAction(u"抽采参数优化", u"钻孔间距优化", u"煤层瓦斯抽采半径辅助计算", self.drillingRadius)
-		self.regAction(u"抽采参数优化", u"评价单元划分", u"评价单元划分辅助计算", self.evaluationUnitDivision)
-		self.regAction(u"抽采设计", u"工作面", u"工作面瓦斯抽采辅助设计", self.wsGasDesign)
+		self.regAction(u"抽采参数优化", u"钻孔间距计算", u"煤层瓦斯抽采半径辅助计算", self.gasDrillingRadius)
+		self.regAction(u"抽采参数优化", u"钻孔间距优化", u"煤层瓦斯抽采半径辅助计算", self.gasDrillingOptimize)
+		# self.regAction(u"抽采参数优化", u"钻孔间距优化3", u"煤层瓦斯抽采半径辅助计算", self.gasDrillingAnalyse)
+		self.regAction(u"抽采参数优化", u"评价单元划分", u"评价单元划分辅助计算", self.evalUnitPartition)
+
 		self.regAction(u"抽采设计", u"掘进面", u"掘进面瓦斯抽采辅助设计", self.twsGasDesign)
+		self.regAction(u"抽采设计", u"工作面", u"工作面瓦斯抽采辅助设计", self.wsGasDesign)
 		self.regAction(u"抽采设计", u"采空区", u"采空区瓦斯抽采辅助设计", self.goafGasDesign)
 		self.regAction(u"生成报单", u"底板岩巷密集穿层钻孔抽采煤巷条带瓦斯抽采技术", u"生成底板岩巷密集穿层钻孔抽采煤巷条带瓦斯抽采技术报单", self.reportP11)
 		self.regAction(u"生成报单", u"顺层钻孔条带掩护巷道掘进抽采法", u"生成顺层钻孔条带掩护巷道掘进抽采法报单", self.reportP12)

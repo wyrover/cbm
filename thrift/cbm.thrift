@@ -143,16 +143,17 @@ struct DesignEvalUnit {
 
 struct DesignEvalUnitPartition {
 	1: i32 id,
-	2: string name,
-	3: string comment,
-	4: double l2,
-	5: double l1,
-	6: double w,
-	7: double h,
-	8: double l,
-	9: double r,
-	10: double t,
-	11: double v,
+	2: i32 work_surf_id,
+	3: string name,
+	4: string comment,
+	5: double l2,
+	6: double l1,
+	7: double w,
+	8: double h,
+	9: double l,
+	10: double r,
+	11: double t,
+	12: double v,
 }
 
 struct DesignGoafTechnology {
@@ -267,6 +268,9 @@ struct DrillingRadiusParam {
 	11: double qm,
 	12: double qsum,
 	13: double eta,
+	14: double r0,
+	15: double p0,
+	16: double r1,
 }
 
 struct DrillingSurf {
@@ -280,15 +284,6 @@ struct DrillingSurf {
 	8: double fore_qa,
 	9: double q4,
 	10: string comment,
-}
-
-struct EvalUnit {
-	1: i32 id,
-	2: i32 work_surf_id,
-	3: string name,
-	4: double l,
-	5: double t,
-	6: string comment,
 }
 
 struct HighDrillingPore {
@@ -993,33 +988,6 @@ service CbmService {
 	list<i32> GetDrillingSurfIdListByField2(1:string field1, 2:string value1, 3:string field2, 4:string value2),
 	list<DrillingSurf> GetDrillingSurfListByForeignKey(1:string fkey, 2:i32 id),
 	list<i32> GetDrillingSurfIdListByForeignKey(1:string fkey, 2:i32 id),
-
-	//EvalUnit 类型的CRUD操作
-	i32 AddEvalUnit(1:EvalUnit eval_unit),
-	bool DeleteEvalUnit(1:i32 id),
-	bool UpdateEvalUnit(1:EvalUnit eval_unit),
-	EvalUnit GetEvalUnitById(1:i32 id),
-	EvalUnit GetEvalUnitByForeignKey(1:string fkey, 2:i32 id),
-	i32 GetEvalUnitIdByForeignKey(1:string fkey, 2:i32 id),
-	list<EvalUnit> GetEvalUnitList(),
-	list<i32> GetEvalUnitIds(),
-	list<string> GetEvalUnitNames(),
-	void AddMoreEvalUnit(1:list<EvalUnit> objs),
-	void DeleteMoreEvalUnit(1:list<i32> obj_ids),
-	EvalUnit GetEvalUnitByFields(1:map<string, string> fields),
-	EvalUnit GetEvalUnitByField1(1:string field, 2:string value),
-	EvalUnit GetEvalUnitByField2(1:string field1, 2:string value1, 3:string field2, 4:string value2),
-	list<EvalUnit> GetEvalUnitListByFields(1:map<string, string> fields),
-	list<EvalUnit> GetEvalUnitListByField1(1:string field, 2:string value),
-	list<EvalUnit> GetEvalUnitListByField2(1:string field1, 2:string value1, 3:string field2, 4:string value2),
-	i32 GetEvalUnitIdByFields(1:map<string, string> fields),
-	i32 GetEvalUnitIdByField1(1:string field, 2:string value),
-	i32 GetEvalUnitIdByField2(1:string field1, 2:string value1, 3:string field2, 4:string value2),
-	list<i32> GetEvalUnitIdListByFields(1:map<string, string> fields),
-	list<i32> GetEvalUnitIdListByField1(1:string field, 2:string value),
-	list<i32> GetEvalUnitIdListByField2(1:string field1, 2:string value1, 3:string field2, 4:string value2),
-	list<EvalUnit> GetEvalUnitListByForeignKey(1:string fkey, 2:i32 id),
-	list<i32> GetEvalUnitIdListByForeignKey(1:string fkey, 2:i32 id),
 
 	//HighDrillingPore 类型的CRUD操作
 	i32 AddHighDrillingPore(1:HighDrillingPore high_drilling_pore),

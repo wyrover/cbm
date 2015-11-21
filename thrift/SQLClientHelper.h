@@ -439,33 +439,6 @@ public:
 	static void GetDrillingSurfListByForeignKey(std::vector<cbm::DrillingSurf> & _return, const std::string& fkey, const int32_t id);
 	static void GetDrillingSurfIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
 
-	//EvalUnit 类型的CRUD操作
-	static int32_t AddEvalUnit(const cbm::EvalUnit & eval_unit);
-	static bool DeleteEvalUnit(const int32_t id);
-	static bool UpdateEvalUnit(const cbm::EvalUnit & eval_unit);
-	static void GetEvalUnitById(cbm::EvalUnit & _return, const int32_t id);
-	static void GetEvalUnitByForeignKey(cbm::EvalUnit & _return, const std::string& fkey, const int32_t id);
-	static int32_t GetEvalUnitIdByForeignKey(const std::string& fkey, const int32_t id);
-	static void GetEvalUnitList(std::vector<cbm::EvalUnit> & _return);
-	static void GetEvalUnitIds(std::vector<int32_t> & _return);
-	static void GetEvalUnitNames(std::vector<std::string> & _return);
-	static void AddMoreEvalUnit(const std::vector<cbm::EvalUnit> & objs);
-	static void DeleteMoreEvalUnit(const std::vector<int32_t> & obj_ids);
-	static void GetEvalUnitByFields(cbm::EvalUnit & _return, const std::map<std::string, std::string> & fields);
-	static void GetEvalUnitByField1(cbm::EvalUnit & _return, const std::string& field, const std::string& value);
-	static void GetEvalUnitByField2(cbm::EvalUnit & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
-	static void GetEvalUnitListByFields(std::vector<cbm::EvalUnit> & _return, const std::map<std::string, std::string> & fields);
-	static void GetEvalUnitListByField1(std::vector<cbm::EvalUnit> & _return, const std::string& field, const std::string& value);
-	static void GetEvalUnitListByField2(std::vector<cbm::EvalUnit> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
-	static int32_t GetEvalUnitIdByFields(const std::map<std::string, std::string> & fields);
-	static int32_t GetEvalUnitIdByField1(const std::string& field, const std::string& value);
-	static int32_t GetEvalUnitIdByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
-	static void GetEvalUnitIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields);
-	static void GetEvalUnitIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value);
-	static void GetEvalUnitIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
-	static void GetEvalUnitListByForeignKey(std::vector<cbm::EvalUnit> & _return, const std::string& fkey, const int32_t id);
-	static void GetEvalUnitIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
-
 	//HighDrillingPore 类型的CRUD操作
 	static int32_t AddHighDrillingPore(const cbm::HighDrillingPore & high_drilling_pore);
 	static bool DeleteHighDrillingPore(const int32_t id);
