@@ -635,7 +635,7 @@
    <widget class="QPushButton" name="head_graph">
     <property name="geometry">
      <rect>
-      <x>450</x>
+      <x>370</x>
       <y>360</y>
       <width>130</width>
       <height>51</height>
@@ -653,7 +653,7 @@
    <widget class="QPushButton" name="save">
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>50</x>
       <y>360</y>
       <width>130</width>
       <height>51</height>
@@ -901,7 +901,7 @@
    <widget class="QPushButton" name="dip_graph">
     <property name="geometry">
      <rect>
-      <x>610</x>
+      <x>530</x>
       <y>360</y>
       <width>130</width>
       <height>51</height>
@@ -919,7 +919,7 @@
    <widget class="QPushButton" name="plane_graph">
     <property name="geometry">
      <rect>
-      <x>290</x>
+      <x>210</x>
       <y>360</y>
       <width>130</width>
       <height>51</height>
@@ -1101,6 +1101,24 @@
       <string>参考取值</string>
      </property>
     </widget>
+   </widget>
+   <widget class="QPushButton" name="creat_report">
+    <property name="geometry">
+     <rect>
+      <x>690</x>
+      <y>360</y>
+      <width>130</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>生 成 报 单</string>
+    </property>
    </widget>
   </widget>
   <widget class="QWidget" name="widget_title" native="true">

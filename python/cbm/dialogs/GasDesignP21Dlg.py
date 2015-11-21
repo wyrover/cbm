@@ -8,6 +8,7 @@ from cbm.ttypes import *
 
 import UiHelper
 import DataHelper
+import doc
 
 class GasDesignP21Dlg(BaseDialog):
 	def __init__(self, coal_id=-1, design_id=-1, parent=None):
@@ -22,6 +23,7 @@ class GasDesignP21Dlg(BaseDialog):
 		self.ui.plane_graph.clicked.connect(self.plane_graph)
 		self.ui.head_graph.clicked.connect(self.head_graph)
 		self.ui.dip_graph.clicked.connect(self.dip_graph)
+		self.ui.creat_report.clicked.connect(self.onCreatReport)
 		# 待设计的煤层以及关联的技术
 		self.coal_id = coal_id
 		self.design_id = design_id
@@ -173,3 +175,6 @@ class GasDesignP21Dlg(BaseDialog):
 			return
 		# 向cad发送命令请求绘图
 		CbmClientHelper.SendCommandToCAD("JL.DrawDipGraph21 %d %d" % (coal.id, ws_tech.id), True)
+
+	def onCreatReport(self):
+		doc.CreatReport(u'help\\json\\reportP21.json')
