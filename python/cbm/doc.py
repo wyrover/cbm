@@ -1,7 +1,16 @@
 #coding:utf-8
 import subprocess
 import webbrowser
-import win32api
+# import win32api
+import threading
+import win32process
+
+# 启动一个线程,运行rpc服务器
+def open_cmd(exeName,fileName=''):
+	t1 = threading.Thread(target=OpenEXEFile,args = (exeName,fileName,))
+	t1.setDaemon(True)
+	t1.start()
+	return t1
 
 def OpenEXEFile(exeName,fileName=''):
 	if type(fileName).__name__ != "unicode":
@@ -9,22 +18,23 @@ def OpenEXEFile(exeName,fileName=''):
 	fName = '%s %s' % (exeName, fileName)
 	# 增加异常处理
 	try:
-		win32api.ShellExecute(0, 'open', exeName, fileName,'',1)
+		# win32api.ShellExecute(0, 'open', exeName, fileName,'',1)
 		# subprocess.Popen(fName.encode('gb2312'))
+		handle = win32process.CreateProcess(None, fName, None , None , 0 ,win32process.CREATE_NO_WINDOW, None , None ,win32process.STARTUPINFO())
 	except Exception, e:
 		print e
 
 
 def OpenPDFFile(pdfFile):
-	OpenEXEFile('tool\\pdf.exe',pdfFile)
+	open_cmd('tool\\pdf.exe',pdfFile)
 
 def OpenNet(url):
 	webbrowser.open(url)
 
 def CreatReport(jsonFile):
-	OpenEXEFile('tool\\report.exe',jsonFile)
+	open_cmd('tool\\report.exe',jsonFile)
 
 def RunCAD():
-	OpenEXEFile('tool\\Launcher.exe')
+	open_cmd('tool\\Launcher.exe')
 
 
