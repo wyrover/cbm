@@ -1,7 +1,7 @@
 #coding:utf-8
 
 import datetime
-from math import sqrt, pow, exp, sin, cos, tan, radians, log10
+from math import sqrt, pow, exp, sin, cos, tan, radians, log10, pi
 
 from rpc import CbmUtil, SQLClientHelper, CbmClientHelper
 from cbm.ttypes import *
@@ -288,33 +288,38 @@ def get_z_datas(k):
 # 注意:k的取值是固定的!!!k={1, 10, 100, 1000}
 class GasDrillingOpt:
 	def __init__(self, npts=100):
+		pass
+		# 下面的代码目前还暂时没用上,也许绘制二维等值线图可能会用到
 		# 划分网格
-		x_min, x_max = np.min(_X), np.max(_X)
-		y_min, y_max = np.min(_Y), np.max(_Y)
-		Xg = np.linspace(x_min, x_max, npts)
-		Yg = np.linspace(y_min, y_max, npts)
+		# x_min, x_max = np.min(_X), np.max(_X)
+		# y_min, y_max = np.min(_Y), np.max(_Y)
+		# Xg = np.linspace(x_min, x_max, npts)
+		# Yg = np.linspace(y_min, y_max, npts)
 
-		# 建立网格数据(后续计算可能会用到)
-		self.x_min = x_min
-		self.x_max = x_max
-		self.y_min = y_min
-		self.y_max = y_max
-		self.Xg = Xg
-		self.Yg = Yg
+		# # 建立网格数据(后续计算可能会用到)
+		# self.x_min = x_min
+		# self.x_max = x_max
+		# self.y_min = y_min
+		# self.y_max = y_max
+		# self.Xg = Xg
+		# self.Yg = Yg
 
 	# 已知x=T0, y=R0/r0, k=χ计算单点(x, y)的抽采率η
 	def zValue(self, x, y, k):
+		print 'zValue: x:%.1f, y:%.1f, k:%.1f' % (x, y, k)
 		# 根据χ的取值决定用哪个Z值数据
 		_Z = get_z_datas(k)
 		# k的取值范围不在{1, 10, 100, 1000}之间
 		if len(_Z) == 0:
 			return 0
+		elif x < 10 or x > 1800:
+			return 0
+		elif y < 10 or y > 100:
+			return 0
 		else:
 			# 线性插值计算(x, y)
 			return griddata((_X, _Y), _Z, (x, y), method='linear')
-	# 已知一组(x, y)数据
-	# 其中x=T0, y=R0/r0, k=χ
-	# 计算每个点的抽采率η
+
 	def zValues(self, X, Y, k):
 		# 根据χ的取值决定用哪个Z值数据
 		_Z = get_z_datas(k)
@@ -324,6 +329,7 @@ class GasDrillingOpt:
 		else:
 			# 线性插值计算(x, y)
 			return griddata((_X, _Y), _Z, (X, Y), method='linear')
+
 	# 已知x的值,以及一组Y数据,计算每个点的抽采率η
 	# 主要用于观察y与η的关系
 	def zValues1(self, x, Y, k):
@@ -335,18 +341,170 @@ class GasDrillingOpt:
 		Y = [y for x in X]
 		return self.zValues(X, Y, k)
 
-# 抽采率计算
-# η=f(T0, R0/r0, χ)是关于这3个因变量的一个复杂函数
-# 为了便于描述，将函数改写成 z=f(x,y,k)
-# 其中 x=T0, y=R0/r0, k=χ 或 lgχ
-# 给定这3个变量,通过线性插值得到抽采率η
-# griddata用法: http://hyry.dip.jp/tech/slice/slice.html/25
-# 注意:k的取值是固定的!!!k={1, 10, 100, 1000}
-def drilling_ratio(x, y, k):
-	gdo = GasDriilingOpt()
-	z = gdo.zValue(x, y, k)
+	# 已知x=T0, y=R0/r0, k=χ计算单点(x, y)的抽采率η
+	def xValue(self, y, z, k):
+		print 'xValue: y:%.1f, z:%.1f, k:%.1f' % (y, z, k)
+		# 根据χ的取值决定用哪个Z值数据
+		_Z = get_z_datas(k)
+		# k的取值范围不在{1, 10, 100, 1000}之间
+		if len(_Z) == 0:
+			return 0
+		elif z < 0 or z > 100:
+			return 0
+		elif y < 10 or y > 100:
+			return 0
+		else:
+			# 线性插值计算(x, y)
+			return griddata((_Y, _Z), _X, (y, z), method='linear')
 
-	print 'x=%d y=%d z=%.3f' % (x, y, z)
-	# plt.contourf(Xg, Yg, Zg)
-	# plt.show()
-	# print Zg
+	def xValues(self, Y, Z, k):
+		# 根据χ的取值决定用哪个Z值数据
+		_Z = get_z_datas(k)
+		# k的取值范围不在{1, 10, 100, 1000}之间
+		if len(_Z) == 0:
+			return [0 for y in Y]
+		else:
+			# 线性插值计算(x, y)
+			return griddata((_Y, _Z), _X, (Y, Z), method='linear')
+
+	# 已知x的值,以及一组Y数据,计算每个点的抽采率η
+	# 主要用于观察y与η的关系
+	def xValues1(self, y, Z, k):
+		Y = [y for z in Z]
+		return self.zValues(Y, Z, k)
+	# 已知y的值,以及一组X数据,计算每个点的抽采率η
+	# 主要用于观察x与η的关系
+	def xValues2(self, Y, z, k):
+		Z = [z for y in Y]
+		return self.zValues(Y, Z, k)
+
+	# 已知x=T0, y=R0/r0, k=χ计算单点(x, y)的抽采率η
+	def yValue(self, x, z, k):
+		print 'yValue: x:%.1f, z:%.1f, k:%.1f' % (x, z, k)
+		# 根据χ的取值决定用哪个Z值数据
+		_Z = get_z_datas(k)
+		# k的取值范围不在{1, 10, 100, 1000}之间
+		if len(_Z) == 0:
+			return 0
+		elif x < 10 or x > 1800:
+			return 0
+		elif z < 0 or z > 100:
+			return 0
+		else:
+			# 线性插值计算(x, y)
+			return griddata((_X, _Z), _Y, (x, z), method='linear')
+	def yValues(self, X, Z, k):
+		_Z = get_z_datas(k)
+		# k的取值范围不在{1, 10, 100, 1000}之间
+		if len(_Z) == 0:
+			return [0 for x in X]
+		else:
+			# 线性插值计算(x, y)
+			return griddata((_X, _Z), _Y, (X, Z), method='linear')
+	def yValues1(self, x, Z, k):
+		X = [x for z in Z]
+		return self.zValues(X, Z, k)
+	def yValues2(self, X, z, k):
+		Z = [z for x in X]
+		return self.zValues(X, Z, k)
+
+def R0_func(R1, h):
+	if R1 <= 0 or h <= 0:
+		return 0.0
+	else:
+		return sqrt(2*R1*h/pi)
+
+def R1_func(R0, h):
+	if R0 <= 0 or h <= 0:
+		return 0.0
+	else:
+		return 0.5*pi*R0*R0/h
+
+def gas_psai(permeability_lambda, p0, alpha, r0):
+	return 4*permeability_lambda*pow(p0, 3.0/2)/ (alpha*r0*r0)
+
+
+def DrawYZ_X(x, k):
+	# 插值计算
+	gdo = GasDrillingOpt()
+
+	# 已知抽采时间T0, 分析R0/r0与抽采率的关系
+	# X = np.arange(10, 1810, 10)
+	Y = np.arange(10, 110, 10)
+	Z = gdo.zValues1(x, Y, k)
+
+	# 新建一个figure
+	fig = plt.figure(figsize=(8, 6))
+	# 绘制曲线
+	# plt.subplot(211)
+	plt.title(u'抽采率η与$R_0/r_0$的关系')
+	plt.xlabel(u'钻孔间距与钻孔半径比值$R_0/r_0$')
+	plt.ylabel(u'抽采率η')
+	plt.grid(True)
+	plt.plot(Y, Z, label=u'$η=f(R_0/r_0)$')
+	plt.legend(loc=0)
+
+	# 显示图形
+	plt.show()
+
+def DrawXZ_Y(y, k):
+	# 插值计算
+	gdo = GasDrillingOpt()
+
+	# 已知抽采时间T0, 分析R0/r0与抽采率的关系
+	# X = np.arange(10, 1810, 10)
+	X = np.arange(10, 1810, 10)
+	Z = gdo.zValues2(X, y, k)
+
+	# 新建一个figure
+	fig = plt.figure(figsize=(8, 6))
+	# 绘制曲线
+	# plt.subplot(211)
+	plt.title(u'抽采率η与抽采时间$T_0$的关系')
+	plt.xlabel(u'抽采时间$T_0$')
+	plt.ylabel(u'抽采率η')
+	plt.grid(True)
+	plt.plot(X, Z, label=u'$η=f(T_0)$')
+	plt.legend(loc=0)
+
+	# 显示图形
+	plt.show()
+
+def DrawXYZ(x, y, k):
+	# 插值计算
+	gdo = GasDrillingOpt()
+
+	# 已知抽采时间T0, 分析R0/r0与抽采率的关系
+	# X = np.arange(10, 1810, 10)
+	Y = np.arange(10, 110, 10)
+	Z = gdo.zValues1(x, Y, k)
+
+	# 新建一个figure
+	fig = plt.figure(figsize=(8, 6))
+	# 绘制曲线
+	plt.subplot(211)
+	# plt.subplot(211)
+	plt.title(u'抽采率η与$R_0/r_0$的关系($T_0$=%d d)' % x)
+	plt.xlabel(u'钻孔间距与钻孔半径比值$R_0/r_0$')
+	plt.ylabel(u'抽采率η(%)')
+	plt.grid(True)
+	plt.plot(Y, Z, label=u'$η=f(R_0/r_0)$')
+	plt.legend(loc=0)
+
+	# 已知抽采时间T0, 分析R0/r0与抽采率的关系
+	# X = np.arange(10, 1810, 10)
+	X = np.arange(10, 1810, 10)
+	Z = gdo.zValues2(X, y, k)
+
+	# 绘制曲线
+	plt.subplot(212)
+	# plt.subplot(211)
+	plt.title(u'抽采率η与抽采时间$T_0$的关系($R_0/r_0$=%.1f)' % y)
+	plt.xlabel(u'抽采时间$T_0$(d)')
+	plt.ylabel(u'抽采率η(%)')
+	plt.grid(True)
+	plt.plot(X, Z, label=u'$η=f(T_0)$')
+	plt.legend(loc=0)
+
+	# 显示图形
+	plt.show()

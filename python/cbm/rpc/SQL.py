@@ -329,6 +329,9 @@ class DrillingRadiusParam(Base):
     qm = Column(Numeric(8, 2))
     qsum = Column(Numeric(8, 2))
     eta = Column(Numeric(8, 2))
+    r0 = Column(Numeric(8, 2))
+    p0 = Column(Numeric(8, 2))
+    r1 = Column(Numeric(8, 2))
 
     coal = relationship(u'Coal')
 
@@ -349,19 +352,6 @@ class DrillingSurf(Base):
 
     tunnel = relationship(u'Tunnel')
     work_area = relationship(u'WorkArea')
-
-
-class EvalUnit(Base):
-    __tablename__ = 'eval_unit'
-
-    id = Column(Integer, primary_key=True)
-    work_surf_id = Column(ForeignKey(u'work_surf.id', ondelete=u'CASCADE'), index=True)
-    name = Column(String(255))
-    l = Column(Numeric(8, 2))
-    t = Column(Numeric(8, 2))
-    comment = Column(String(255))
-
-    work_surf = relationship(u'WorkSurf')
 
 
 class HighDrillingPore(Base):

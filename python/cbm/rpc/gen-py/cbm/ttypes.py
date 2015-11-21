@@ -3478,6 +3478,9 @@ class DrillingRadiusParam:
    - qm
    - qsum
    - eta
+   - r0
+   - p0
+   - r1
   """
 
   thrift_spec = (
@@ -3495,9 +3498,12 @@ class DrillingRadiusParam:
     (11, TType.DOUBLE, 'qm', None, None, ), # 11
     (12, TType.DOUBLE, 'qsum', None, None, ), # 12
     (13, TType.DOUBLE, 'eta', None, None, ), # 13
+    (14, TType.DOUBLE, 'r0', None, None, ), # 14
+    (15, TType.DOUBLE, 'p0', None, None, ), # 15
+    (16, TType.DOUBLE, 'r1', None, None, ), # 16
   )
 
-  def __init__(self, id=None, coal_id=None, name=None, r=None, l=None, k1=None, rho=None, q0=None, a=None, t=None, qm=None, qsum=None, eta=None,):
+  def __init__(self, id=None, coal_id=None, name=None, r=None, l=None, k1=None, rho=None, q0=None, a=None, t=None, qm=None, qsum=None, eta=None, r0=None, p0=None, r1=None,):
     self.id = id
     self.coal_id = coal_id
     self.name = name
@@ -3511,6 +3517,9 @@ class DrillingRadiusParam:
     self.qm = qm
     self.qsum = qsum
     self.eta = eta
+    self.r0 = r0
+    self.p0 = p0
+    self.r1 = r1
 
   def read(self, iprot):
     if iprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None and fastbinary is not None:
@@ -3586,6 +3595,21 @@ class DrillingRadiusParam:
           self.eta = iprot.readDouble()
         else:
           iprot.skip(ftype)
+      elif fid == 14:
+        if ftype == TType.DOUBLE:
+          self.r0 = iprot.readDouble()
+        else:
+          iprot.skip(ftype)
+      elif fid == 15:
+        if ftype == TType.DOUBLE:
+          self.p0 = iprot.readDouble()
+        else:
+          iprot.skip(ftype)
+      elif fid == 16:
+        if ftype == TType.DOUBLE:
+          self.r1 = iprot.readDouble()
+        else:
+          iprot.skip(ftype)
       else:
         iprot.skip(ftype)
       iprot.readFieldEnd()
@@ -3648,6 +3672,18 @@ class DrillingRadiusParam:
       oprot.writeFieldBegin('eta', TType.DOUBLE, 13)
       oprot.writeDouble(self.eta)
       oprot.writeFieldEnd()
+    if self.r0 is not None:
+      oprot.writeFieldBegin('r0', TType.DOUBLE, 14)
+      oprot.writeDouble(self.r0)
+      oprot.writeFieldEnd()
+    if self.p0 is not None:
+      oprot.writeFieldBegin('p0', TType.DOUBLE, 15)
+      oprot.writeDouble(self.p0)
+      oprot.writeFieldEnd()
+    if self.r1 is not None:
+      oprot.writeFieldBegin('r1', TType.DOUBLE, 16)
+      oprot.writeDouble(self.r1)
+      oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()
 
@@ -3670,6 +3706,9 @@ class DrillingRadiusParam:
     value = (value * 31) ^ hash(self.qm)
     value = (value * 31) ^ hash(self.qsum)
     value = (value * 31) ^ hash(self.eta)
+    value = (value * 31) ^ hash(self.r0)
+    value = (value * 31) ^ hash(self.p0)
+    value = (value * 31) ^ hash(self.r1)
     return value
 
   def __repr__(self):
@@ -3851,136 +3890,6 @@ class DrillingSurf:
     value = (value * 31) ^ hash(self.fore_qr)
     value = (value * 31) ^ hash(self.fore_qa)
     value = (value * 31) ^ hash(self.q4)
-    value = (value * 31) ^ hash(self.comment)
-    return value
-
-  def __repr__(self):
-    L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
-    return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
-
-  def __eq__(self, other):
-    return isinstance(other, self.__class__) and self.__dict__ == other.__dict__
-
-  def __ne__(self, other):
-    return not (self == other)
-
-class EvalUnit:
-  """
-  Attributes:
-   - id
-   - work_surf_id
-   - name
-   - l
-   - t
-   - comment
-  """
-
-  thrift_spec = (
-    None, # 0
-    (1, TType.I32, 'id', None, None, ), # 1
-    (2, TType.I32, 'work_surf_id', None, None, ), # 2
-    (3, TType.STRING, 'name', None, None, ), # 3
-    (4, TType.DOUBLE, 'l', None, None, ), # 4
-    (5, TType.DOUBLE, 't', None, None, ), # 5
-    (6, TType.STRING, 'comment', None, None, ), # 6
-  )
-
-  def __init__(self, id=None, work_surf_id=None, name=None, l=None, t=None, comment=None,):
-    self.id = id
-    self.work_surf_id = work_surf_id
-    self.name = name
-    self.l = l
-    self.t = t
-    self.comment = comment
-
-  def read(self, iprot):
-    if iprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None and fastbinary is not None:
-      fastbinary.decode_binary(self, iprot.trans, (self.__class__, self.thrift_spec))
-      return
-    iprot.readStructBegin()
-    while True:
-      (fname, ftype, fid) = iprot.readFieldBegin()
-      if ftype == TType.STOP:
-        break
-      if fid == 1:
-        if ftype == TType.I32:
-          self.id = iprot.readI32()
-        else:
-          iprot.skip(ftype)
-      elif fid == 2:
-        if ftype == TType.I32:
-          self.work_surf_id = iprot.readI32()
-        else:
-          iprot.skip(ftype)
-      elif fid == 3:
-        if ftype == TType.STRING:
-          self.name = iprot.readString()
-        else:
-          iprot.skip(ftype)
-      elif fid == 4:
-        if ftype == TType.DOUBLE:
-          self.l = iprot.readDouble()
-        else:
-          iprot.skip(ftype)
-      elif fid == 5:
-        if ftype == TType.DOUBLE:
-          self.t = iprot.readDouble()
-        else:
-          iprot.skip(ftype)
-      elif fid == 6:
-        if ftype == TType.STRING:
-          self.comment = iprot.readString()
-        else:
-          iprot.skip(ftype)
-      else:
-        iprot.skip(ftype)
-      iprot.readFieldEnd()
-    iprot.readStructEnd()
-
-  def write(self, oprot):
-    if oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and self.thrift_spec is not None and fastbinary is not None:
-      oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
-      return
-    oprot.writeStructBegin('EvalUnit')
-    if self.id is not None:
-      oprot.writeFieldBegin('id', TType.I32, 1)
-      oprot.writeI32(self.id)
-      oprot.writeFieldEnd()
-    if self.work_surf_id is not None:
-      oprot.writeFieldBegin('work_surf_id', TType.I32, 2)
-      oprot.writeI32(self.work_surf_id)
-      oprot.writeFieldEnd()
-    if self.name is not None:
-      oprot.writeFieldBegin('name', TType.STRING, 3)
-      oprot.writeString(self.name)
-      oprot.writeFieldEnd()
-    if self.l is not None:
-      oprot.writeFieldBegin('l', TType.DOUBLE, 4)
-      oprot.writeDouble(self.l)
-      oprot.writeFieldEnd()
-    if self.t is not None:
-      oprot.writeFieldBegin('t', TType.DOUBLE, 5)
-      oprot.writeDouble(self.t)
-      oprot.writeFieldEnd()
-    if self.comment is not None:
-      oprot.writeFieldBegin('comment', TType.STRING, 6)
-      oprot.writeString(self.comment)
-      oprot.writeFieldEnd()
-    oprot.writeFieldStop()
-    oprot.writeStructEnd()
-
-  def validate(self):
-    return
-
-
-  def __hash__(self):
-    value = 17
-    value = (value * 31) ^ hash(self.id)
-    value = (value * 31) ^ hash(self.work_surf_id)
-    value = (value * 31) ^ hash(self.name)
-    value = (value * 31) ^ hash(self.l)
-    value = (value * 31) ^ hash(self.t)
     value = (value * 31) ^ hash(self.comment)
     return value
 
