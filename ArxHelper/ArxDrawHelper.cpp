@@ -3,6 +3,44 @@
 #include "ArxUtilHelper.h"
 #include "config.h"
 
+void ArxDrawHelper::VectorToAngle(const AcGeVector3d& v, double& ang1, double& ang2)
+{
+	//向量在xoy平面上的正交投影
+	AcGeVector3d u = v.orthoProject(AcGeVector3d::kZAxis);
+	//acutPrintf(_T("\n投影值:x=%.3f, y=%.3f z=%.3f"), u.x, u.y, u.z);
+
+	//angleTo求的是夹角，范围在[0,180]
+	//计算向量u与Y轴的夹角(偏角)
+	ang1 = u.angleTo(AcGeVector3d::kYAxis);
+	if(u.x < 0) ang1 *= -1;
+
+	//计算向量u与v的夹角(仰角)，范围在[0,180]
+	ang2 = u.angleTo(v);
+	if(v.z < 0) ang2 *= -1;
+}
+
+void ArxDrawHelper::VectorToAngleTest()
+{
+	AcGeVector3d v(1,1,1);
+	double ang1, ang2;
+	ArxDrawHelper::VectorToAngle(v, ang1, ang2);
+	acutPrintf(_T("\n向量:(%.3f, %.3f, %.3f)"), v.x, v.y, v.z);
+	acutPrintf(_T("\n弧度-->方向角1:%f  仰角：%f"), ang1, ang2);
+	acutPrintf(_T("\n角度-->方向角1:%f  仰角：%f"), ang1*57.295, ang2*57.295);
+
+	AcGeVector3d v1(1,0,0);
+	ArxDrawHelper::VectorToAngle(v1, ang1, ang2);
+	acutPrintf(_T("\n向量:(%.3f, %.3f, %.3f)"), v1.x, v1.y, v1.z);
+	acutPrintf(_T("\n弧度-->方向角1:%f  仰角：%f"), ang1, ang2);
+	acutPrintf(_T("\n角度-->方向角1:%f  仰角：%f"), ang1*57.295, ang2*57.295);
+
+	AcGeVector3d v2(-1,-1,1);
+	ArxDrawHelper::VectorToAngle(v2, ang1, ang2);
+	acutPrintf(_T("\n向量:(%.3f, %.3f, %.3f)"), v2.x, v2.y, v2.z);
+	acutPrintf(_T("\n弧度-->方向角1:%f  仰角：%f"), ang1, ang2);
+	acutPrintf(_T("\n角度-->方向角1:%f  仰角：%f"), ang1*57.295, ang2*57.295);
+}
+
 AcGePoint2d ArxDrawHelper::Point3D_To_2D( const AcGePoint3d& pt )
 {
     return AcGePoint2d( pt.x, pt.y );
@@ -153,6 +191,7 @@ void ArxDrawHelper::Divide( const AcGePoint3d& spt, const AcGePoint3d& ept, doub
     if( gap_x <= 0 ) return;
     AcGeVector3d v1 = ept - spt;
     int n = ArxDrawHelper::DivideNum( v1.length(), gap_x, round );
+	//acutPrintf(_T("\n划分数据-长度:%.2f, 间距:%.2f, 个数:%d"), v1.length(), gap_x, n);
     v1.normalize();
 
     int c = ( gap_y < 0 ) ? -1 : 1;

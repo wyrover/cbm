@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>523</width>
-    <height>402</height>
+    <height>333</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -194,7 +194,7 @@ p, li { white-space: pre-wrap; }
       </font>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'宋体';&quot;&gt;初始煤层气压力p&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; vertical-align:sub;&quot;&gt;0&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;初始煤层气压力p&lt;span style=&quot; vertical-align:sub;&quot;&gt;0&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="p0">
@@ -238,13 +238,13 @@ p, li { white-space: pre-wrap; }
       </font>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'宋体';&quot;&gt;抽采孔半径r&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; vertical-align:sub;&quot;&gt;0&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;抽采孔半径r&lt;span style=&quot; vertical-align:sub;&quot;&gt;0&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QLabel" name="mineName_label_17">
      <property name="geometry">
       <rect>
-       <x>280</x>
+       <x>290</x>
        <y>30</y>
        <width>81</width>
        <height>25</height>
@@ -262,7 +262,7 @@ p, li { white-space: pre-wrap; }
     <widget class="QLineEdit" name="alpha">
      <property name="geometry">
       <rect>
-       <x>370</x>
+       <x>380</x>
        <y>30</y>
        <width>71</width>
        <height>31</height>
@@ -274,7 +274,7 @@ p, li { white-space: pre-wrap; }
       <rect>
        <x>230</x>
        <y>70</y>
-       <width>41</width>
+       <width>51</width>
        <height>25</height>
       </rect>
      </property>
@@ -292,7 +292,7 @@ p, li { white-space: pre-wrap; }
       <rect>
        <x>230</x>
        <y>110</y>
-       <width>41</width>
+       <width>51</width>
        <height>25</height>
       </rect>
      </property>
@@ -305,65 +305,10 @@ p, li { white-space: pre-wrap; }
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;(mm)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
-    <widget class="QLabel" name="mineName_label_9">
-     <property name="geometry">
-      <rect>
-       <x>450</x>
-       <y>110</y>
-       <width>41</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>12</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;(d)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
-    <widget class="QSpinBox" name="t0">
-     <property name="geometry">
-      <rect>
-       <x>370</x>
-       <y>110</y>
-       <width>71</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="minimum">
-      <number>10</number>
-     </property>
-     <property name="maximum">
-      <number>1800</number>
-     </property>
-     <property name="singleStep">
-      <number>10</number>
-     </property>
-    </widget>
-    <widget class="QLabel" name="mineName_label_12">
-     <property name="geometry">
-      <rect>
-       <x>280</x>
-       <y>110</y>
-       <width>81</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>12</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;抽采时间T&lt;span style=&quot; vertical-align:sub;&quot;&gt;0&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
     <widget class="QLabel" name="mineName_label_24">
      <property name="geometry">
       <rect>
-       <x>450</x>
+       <x>460</x>
        <y>70</y>
        <width>31</width>
        <height>25</height>
@@ -381,7 +326,7 @@ p, li { white-space: pre-wrap; }
     <widget class="QLabel" name="mineName_label_25">
      <property name="geometry">
       <rect>
-       <x>280</x>
+       <x>290</x>
        <y>70</y>
        <width>81</width>
        <height>25</height>
@@ -399,7 +344,7 @@ p, li { white-space: pre-wrap; }
     <widget class="QLineEdit" name="h">
      <property name="geometry">
       <rect>
-       <x>370</x>
+       <x>380</x>
        <y>70</y>
        <width>71</width>
        <height>31</height>
@@ -413,7 +358,7 @@ p, li { white-space: pre-wrap; }
       <x>10</x>
       <y>180</y>
       <width>501</width>
-      <height>181</height>
+      <height>121</height>
      </rect>
     </property>
     <property name="font">
@@ -427,25 +372,7 @@ p, li { white-space: pre-wrap; }
     <widget class="QLabel" name="mineName_label_22">
      <property name="geometry">
       <rect>
-       <x>420</x>
-       <y>30</y>
-       <width>41</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>12</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;(mm)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="mineName_label_21">
-     <property name="geometry">
-      <rect>
-       <x>180</x>
+       <x>440</x>
        <y>30</y>
        <width>41</width>
        <height>25</height>
@@ -463,35 +390,7 @@ p, li { white-space: pre-wrap; }
     <widget class="QLineEdit" name="R1">
      <property name="geometry">
       <rect>
-       <x>340</x>
-       <y>30</y>
-       <width>71</width>
-       <height>31</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QLabel" name="mineName_label_20">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>30</y>
-       <width>81</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>12</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;折算半径R&lt;span style=&quot; vertical-align:sub;&quot;&gt;0&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="R0">
-     <property name="geometry">
-      <rect>
-       <x>100</x>
+       <x>360</x>
        <y>30</y>
        <width>71</width>
        <height>31</height>
@@ -501,7 +400,7 @@ p, li { white-space: pre-wrap; }
     <widget class="QLabel" name="mineName_label_23">
      <property name="geometry">
       <rect>
-       <x>230</x>
+       <x>270</x>
        <y>30</y>
        <width>81</width>
        <height>25</height>
@@ -516,83 +415,12 @@ p, li { white-space: pre-wrap; }
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;孔间距R&lt;span style=&quot; vertical-align:sub;&quot;&gt;1&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
-    <widget class="QDoubleSpinBox" name="d">
-     <property name="geometry">
-      <rect>
-       <x>100</x>
-       <y>80</y>
-       <width>71</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="decimals">
-      <number>1</number>
-     </property>
-     <property name="minimum">
-      <double>10.000000000000000</double>
-     </property>
-    </widget>
-    <widget class="QLabel" name="mineName_label_13">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>80</y>
-       <width>81</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>12</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;R&lt;span style=&quot; vertical-align:sub;&quot;&gt;0&lt;/span&gt;/r&lt;span style=&quot; vertical-align:sub;&quot;&gt;0&lt;/span&gt;比值&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
-    <widget class="QSpinBox" name="psai">
-     <property name="geometry">
-      <rect>
-       <x>340</x>
-       <y>80</y>
-       <width>71</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="minimum">
-      <number>1</number>
-     </property>
-     <property name="maximum">
-      <number>1000</number>
-     </property>
-     <property name="singleStep">
-      <number>10</number>
-     </property>
-    </widget>
-    <widget class="QLabel" name="mineName_label_11">
-     <property name="geometry">
-      <rect>
-       <x>230</x>
-       <y>80</y>
-       <width>101</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>12</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;无量纲因子χ&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
     <widget class="QPushButton" name="analyse">
      <property name="geometry">
       <rect>
-       <x>360</x>
-       <y>120</y>
-       <width>121</width>
+       <x>380</x>
+       <y>70</y>
+       <width>91</width>
        <height>41</height>
       </rect>
      </property>
@@ -608,8 +436,8 @@ p, li { white-space: pre-wrap; }
     <widget class="QLabel" name="mineName_label_27">
      <property name="geometry">
       <rect>
-       <x>180</x>
-       <y>130</y>
+       <x>190</x>
+       <y>80</y>
        <width>41</width>
        <height>25</height>
       </rect>
@@ -626,8 +454,8 @@ p, li { white-space: pre-wrap; }
     <widget class="QLineEdit" name="eta">
      <property name="geometry">
       <rect>
-       <x>100</x>
-       <y>130</y>
+       <x>110</x>
+       <y>80</y>
        <width>71</width>
        <height>31</height>
       </rect>
@@ -636,9 +464,9 @@ p, li { white-space: pre-wrap; }
     <widget class="QPushButton" name="cacl">
      <property name="geometry">
       <rect>
-       <x>220</x>
-       <y>120</y>
-       <width>121</width>
+       <x>270</x>
+       <y>70</y>
+       <width>91</width>
        <height>41</height>
       </rect>
      </property>
@@ -654,8 +482,8 @@ p, li { white-space: pre-wrap; }
     <widget class="QLabel" name="mineName_label_26">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>130</y>
+       <x>20</x>
+       <y>80</y>
        <width>71</width>
        <height>25</height>
       </rect>
@@ -667,6 +495,52 @@ p, li { white-space: pre-wrap; }
      </property>
      <property name="text">
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;抽采率η&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="mineName_label_9">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>30</y>
+       <width>41</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;(d)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="mineName_label_12">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>30</y>
+       <width>81</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;抽采时间T&lt;span style=&quot; vertical-align:sub;&quot;&gt;0&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="t0">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>30</y>
+       <width>71</width>
+       <height>31</height>
+      </rect>
      </property>
     </widget>
    </widget>

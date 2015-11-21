@@ -42,11 +42,16 @@ def CopyAttribsOfCbmType(cbm_type, obj1, obj2, initNoneAttrib=False):
         for name, func in CbmRtti.info[cbm_type].items():
             if not hasattr(obj1, name) or not hasattr(obj2, name):continue
             # 只给普通字段赋值(CbmRtti.fkey[cbm_type][name] == 0表示普通字段, 1和2分别表示主键和外键)
-            if initNoneAttrib and func in default_value_dict and CbmRtti.fkey[cbm_type][name] == 0:
+            field_type = CbmRtti.fkey[cbm_type][name]
+            if initNoneAttrib and func in default_value_dict and field_type == 0:
                 setattr(obj2, name, default_value_dict[func])
             a = getattr(obj1, name)
             if a is not None:
-                setattr(obj2, name, func(a))
+                # 如果是外键,且id小于等于0
+                if field_type == 2 and int(a) <= 0:
+                    pass
+                else:
+                    setattr(obj2, name, func(a))
 
 def GetAttribsOfCbmType(cbm_type, obj1):
     attribs = {}
