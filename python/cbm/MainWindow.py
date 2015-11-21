@@ -38,6 +38,7 @@ class MainWindow(QtGui.QMainWindow):
 		self.ui = Ui_MainWindow()
 		self.ui.setupUi(self)
 		self.init()
+
 		# ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID("myappid")
 		# 瓦斯抽采设计类型
 
@@ -383,6 +384,8 @@ def run():
 	SetChinese(app)
 	# 首先启动登录窗口
 	if loginFirst():
+		#启动CAD
+		# doc.RunCAD()
 		# 登录成功后启动主界面
 		mw = MainWindow()
 		mw.show()

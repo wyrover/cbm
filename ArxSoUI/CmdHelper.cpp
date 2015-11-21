@@ -21,7 +21,7 @@ void CmdHelper::InitAllData()
 	SystemHelper::Start();
 	//读取字段
 	CString appDir = ArxUtilHelper::GetAppPathDir( _hdllInstance );
-	FieldHelper::InitDataField( ArxUtilHelper::BuildPath( appDir, _T( "Datas\\煤层气抽采-字段-图元属性.txt" ) ) );
+	//FieldHelper::InitDataField( ArxUtilHelper::BuildPath( appDir, _T( "Datas\\煤层气抽采-字段-图元属性.txt" ) ) );
 	//加载线型
 	acdbHostApplicationServices()->workingDatabase()->loadLineTypeFile( _T( "JIS_02_0.7" ), _T( "acadiso.lin" ) );
 }

@@ -3,6 +3,7 @@
 #include "MySoUiLoader.h"
 #include "MainuiDialog.h"
 #include "ThreadHelper.h"
+#include "SouiCADThread.h"
 
 BEGIN_MESSAGE_MAP( CLauncherApp, CWinAppEx )
     ON_COMMAND( ID_HELP, &CWinApp::OnHelp )
@@ -28,6 +29,8 @@ static void UnInitSouiEnviroment()
 
 static void StartFromSoui( SouiDialog* dlg, HWND hParent = NULL )
 {
+	SouiCADThread::RunCAD( dlg );
+	return;
     //dlg->SetWindowTitle(_T("改标题,随便玩玩!"));
     if( dlg->isModal() == TRUE )
     {
@@ -126,13 +129,13 @@ BOOL CLauncherApp::InitInstance()
 
     if ( ThreadHelper::ProcessNum( _T( "acad.exe" ) ) >= 1 )
     {
-        MessageBox( NULL, _T( "CAD正在运行!" ), _T( "警告" ), MB_OK | MB_ICONWARNING );
+        //MessageBox( NULL, _T( "CAD正在运行!" ), _T( "警告" ), MB_OK | MB_ICONWARNING );
         return FALSE;
     }
 
     if ( ThreadHelper::ProcessNum( _T( "Launcher.exe" ) ) > 1 )
     {
-        MessageBox( NULL, _T( "程序正在运行!" ), _T( "警告" ), MB_OK | MB_ICONWARNING );
+        //MessageBox( NULL, _T( "程序正在运行!" ), _T( "警告" ), MB_OK | MB_ICONWARNING );
         return FALSE;
     }
 

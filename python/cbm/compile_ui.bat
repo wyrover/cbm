@@ -21,6 +21,11 @@ python %UIC_PY% -o uipy\ui_mine_base_param_dlg.py uifiles\mine_base_param_dlg.ui
 python %UIC_PY% -o uipy\ui_coal_param_dlg.py uifiles\coal_param_dlg.ui
 python %UIC_PY% -o uipy\ui_decision_dlg.py uifiles\decision_dlg.ui
 python %UIC_PY% -o uipy\ui_difficult_eval_dlg.py uifiles\difficult_eval_dlg.ui
+python %UIC_PY% -o uipy\ui_high_coal_dlg.py uifiles\high_coal_dlg.ui
+python %UIC_PY% -o uipy\ui_high_coals_dlg.py uifiles\high_coals_dlg.ui
+python %UIC_PY% -o uipy\ui_low_nearly_coals_dlg.py uifiles\low_nearly_coals_dlg.ui
+python %UIC_PY% -o uipy\ui_low_far_coals_dlg.py uifiles\low_far_coals_dlg.ui
+python %UIC_PY% -o uipy\ui_low_coal_dlg.py uifiles\low_coal_dlg.ui
 python %UIC_PY% -o uipy\ui_mine_gas_reserves_predict_dlg1.py uifiles\mine_gas_reserves_predict_dlg1.ui
 python %UIC_PY% -o uipy\ui_mine_gas_reserves_predict_dlg2.py uifiles\mine_gas_reserves_predict_dlg2.ui
 python %UIC_PY% -o uipy\ui_mine_gas_reserves_predict_dlg.py uifiles\mine_gas_reserves_predict_dlg.ui
