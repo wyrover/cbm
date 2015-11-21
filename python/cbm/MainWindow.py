@@ -226,8 +226,35 @@ class MainWindow(QtGui.QMainWindow):
 	def reportP22(self):
 		doc.CreatReport(u'help\\json\\reportP22.json')
 
-	def openOfficeNet(self):
+	def openOfficeNet1(self):
+		doc.OpenNet('http://www.sxcoal.com/')
+
+	def openOfficeNet2(self):
+		doc.OpenNet('http://www.coalchina.org.cn/')
+
+	def openOfficeNet3(self):
+		doc.OpenNet('http://www.ccbmg.com/')
+
+	def openOfficeNet4(self):
+		doc.OpenNet('http://www.chinacbm.com/')
+
+	def openOfficeNet5(self):
+		doc.OpenNet('http://www.ccteg.cn/')
+
+	def openOfficeNet6(self):
 		doc.OpenNet('http://www.ccri.com.cn/')
+
+	def openOfficeNet7(self):
+		doc.OpenNet('http://www.jamg.cn/web1/index.jsp')
+
+	def openOfficeNet8(self):
+		doc.OpenNet('http://www.hnmine.com/index.html')
+
+	def openOfficeNet9(self):
+		doc.OpenNet('http://www.hbcoal.com/')
+
+	def openOfficeNet10(self):
+		doc.OpenNet('http://www.songzao.com/')
 
 	#查看《煤层气资源勘察技术规范》文档
 	def investigationOfCBMResources(self):
@@ -260,7 +287,69 @@ class MainWindow(QtGui.QMainWindow):
 	#查看《煤矿瓦斯抽采基本指标》文档
 	def basicCoalMineGasIndex(self):
 		doc.OpenPDFFile(u'help\\pdf\\煤矿瓦斯抽采基本指标.pdf')
+	
+	def pdfHelp1(self):
+		doc.OpenPDFFile(u'help\\pdf\\煤矿井下煤层瓦斯压力的直接测定方法.pdf')
 
+	def pdfHelp2(self):
+		doc.OpenPDFFile(u'help\\pdf\\煤矿用非金属瓦斯输送管材安全技术要求.pdf')
+
+	def pdfHelp3(self):
+		doc.OpenPDFFile(u'help\\pdf\\瓦斯管道输送水封阻火泄爆装置技术条件.pdf')
+
+	def pdfHelp4(self):
+		doc.OpenPDFFile(u'help\\pdf\\瓦斯管道输送自动阻爆装置技术条件.pdf')
+
+	def pdfHelp5(self):
+		doc.OpenPDFFile(u'help\\pdf\\煤矿瓦斯输送管道干式阻火器通用技术条件.pdf')
+
+	def pdfHelp6(self):
+		doc.OpenPDFFile(u'help\\pdf\\煤矿低浓度瓦斯往复式内燃机驱动的交流发电机组通用技术条件.pdf')
+
+	def pdfHelp7(self):
+		doc.OpenPDFFile(u'help\\pdf\\煤矿低浓度瓦斯管道输送安全保障系统设计规范.pdf')
+
+	def pdfHelp8(self):
+		doc.OpenPDFFile(u'help\\pdf\\煤矿低浓度瓦斯与细水雾混合安全输送装置技术规范.pdf')
+
+	def pdfHelp9(self):
+		doc.OpenPDFFile(u'help\\pdf\\瓦斯管道输送自动喷粉抑爆装置通用技术条件.pdf')
+
+	def pdfHelp10(self):
+		doc.OpenPDFFile(u'help\\pdf\\煤的工业分析方法.pdf')
+
+	def pdfHelp11(self):
+		doc.OpenPDFFile(u'help\\pdf\\煤矿瓦斯抽采工程设计规范(GB50471-2008).pdf')
+
+	def pdfHelp12(self):
+		doc.OpenPDFFile(u'help\\pdf\\煤自燃倾向性色谱吸氧鉴定法.pdf')
+
+	def pdfHelp13(self):
+		doc.OpenPDFFile(u'help\\pdf\\石门揭穿煤与瓦斯突出煤层.pdf')
+
+	def pdfHelp14(self):
+		doc.OpenPDFFile(u'help\\pdf\\钻孔瓦斯涌出初速度的测定方法.pdf')
+
+	def pdfHelp15(self):
+		doc.OpenPDFFile(u'help\\pdf\\中国煤炭分类国家标准.pdf')
+
+	def pdfHelp16(self):
+		doc.OpenPDFFile(u'help\\pdf\\保护层开采技术规范.pdf')
+
+	def pdfHelp17(self):
+		doc.OpenPDFFile(u'help\\pdf\\煤与瓦斯突出矿井鉴定规范（AQ1024-2006）.pdf')
+
+	def pdfHelp18(self):
+		doc.OpenPDFFile(u'help\\pdf\\煤矿瓦斯抽放规范AQ1027-2006.pdf')
+
+	def pdfHelp19(self):
+		doc.OpenPDFFile(u'help\\pdf\\电子等容式瓦斯解吸仪技术条件')
+
+	def pdfHelp20(self):
+		doc.OpenPDFFile(u'help\\pdf\\矿井瓦斯等级鉴定规范AQ1025-2006.pdf')
+
+	def pdfHelp21(self):
+		doc.OpenPDFFile(u'help\\pdf\\钻孔瓦斯涌出初速度的测定方法.pdf')
 
 	def buildAction(self,name,tip,trigger):
 		return QtGui.QAction(name, self, statusTip=tip, triggered=trigger)
@@ -293,15 +382,45 @@ class MainWindow(QtGui.QMainWindow):
 		self.regAction(u"生成报告", u"顺层钻孔条带掩护巷道掘进抽采法", u"生成顺层钻孔条带掩护巷道掘进抽采法报告", self.reportP12)
 		self.regAction(u"生成报告", u"底板岩巷大面积穿层钻孔抽采工作面瓦斯", u"生成底板岩巷大面积穿层钻孔抽采工作面瓦斯报告", self.reportP21)
 		self.regAction(u"生成报告", u"顺层平行钻孔抽采工作面瓦斯", u"生成顺层平行钻孔抽采工作面瓦斯报告", self.reportP22)
-		self.regAction(u"帮助文档", u"官网", u"打开官网", self.openOfficeNet)
-		self.regAction(u"帮助文档", u"煤层气资源勘察技术规范", u"查看《煤层气资源勘察技术规范》文档", self.investigationOfCBMResources)
-		self.regAction(u"帮助文档", u"保护层开采技术规范", u"查看《保护层开采技术规范》文档", self.protectiveLayerMining)
-		self.regAction(u"帮助文档", u"煤矿瓦斯抽放规范", u"查看《煤矿瓦斯抽放规范》文档", self.coalMineGasDrainage)
-		self.regAction(u"帮助文档", u"煤矿瓦斯抽放技术规范", u"查看《煤矿瓦斯抽放技术规范》文档", self.technicalSpecificationCoalMineGasDrainage)
-		self.regAction(u"帮助文档", u"煤矿瓦斯抽采工程设计规范", u"查看《煤矿瓦斯抽采工程设计规范》文档", self.coalMineGasDrainageEngineeringDesign)
-		self.regAction(u"帮助文档", u"煤矿瓦斯抽采达标暂行规定", u"查看《煤矿瓦斯抽采达标暂行规定》文档", self.standardInterimProvisions)
-		self.regAction(u"帮助文档", u"煤层气(煤矿瓦斯)开发利用十二五规划", u"查看《煤层气(煤矿瓦斯)开发利用十二五规划》文档", self.coalGasDevelopment)
-		self.regAction(u"帮助文档", u"煤矿瓦斯抽采基本指标", u"查看《煤矿瓦斯抽采基本指标》文档", self.basicCoalMineGasIndex)
+
+	def creatHelpMenu(self):
+		self.helpMenu = self.menuBar().addMenu(u'帮助文档')
+		self.helpMenu2 = QtGui.QMenu(u'相关官网')
+		self.helpMenu.addMenu(self.helpMenu2)
+		self.helpMenu2.addAction(QtGui.QAction(u"中国煤炭资源网",self,triggered=self.openOfficeNet1))
+		self.helpMenu2.addAction(QtGui.QAction(u"国家煤炭工业网",self,triggered=self.openOfficeNet2))
+		self.helpMenu2.addAction(QtGui.QAction(u"中国煤层气集团有限公司",self,triggered=self.openOfficeNet3))
+		self.helpMenu2.addAction(QtGui.QAction(u"中联煤层气有限责任公司",self,triggered=self.openOfficeNet4))
+		self.helpMenu2.addAction(QtGui.QAction(u"中国煤炭科工集团有限公司",self,triggered=self.openOfficeNet5))
+		self.helpMenu2.addAction(QtGui.QAction(u"煤层科学技术研究院有限公司",self,triggered=self.openOfficeNet6))
+		self.helpMenu2.addAction(QtGui.QAction(u"山西晋城无烟煤矿业集团有限公司",self,triggered=self.openOfficeNet7))
+		self.helpMenu2.addAction(QtGui.QAction(u"淮南矿业网",self,triggered=self.openOfficeNet8))
+		self.helpMenu2.addAction(QtGui.QAction(u"淮北矿业网",self,triggered=self.openOfficeNet9))
+		self.helpMenu2.addAction(QtGui.QAction(u"重庆松藻煤电有限责任公司",self,triggered=self.openOfficeNet10))
+
+		self.helpMenu3 = QtGui.QMenu(u'相关规范')
+		self.helpMenu.addMenu(self.helpMenu3)
+		self.helpMenu3.addAction(QtGui.QAction(u"煤矿井下煤层瓦斯压力的直接测定方法",self,triggered=self.pdfHelp1))
+		self.helpMenu3.addAction(QtGui.QAction(u"煤矿用非金属瓦斯输送管材安全技术要求",self,triggered=self.pdfHelp2))
+		self.helpMenu3.addAction(QtGui.QAction(u"瓦斯管道输送水封阻火泄爆装置技术条件",self,triggered=self.pdfHelp3))
+		self.helpMenu3.addAction(QtGui.QAction(u"瓦斯管道输送自动阻爆装置技术条件",self,triggered=self.pdfHelp4))
+		self.helpMenu3.addAction(QtGui.QAction(u"煤矿瓦斯输送管道干式阻火器通用技术条件",self,triggered=self.pdfHelp5))
+		self.helpMenu3.addAction(QtGui.QAction(u"煤矿低浓度瓦斯往复式内燃机驱动的交流发电机组通用技术条件",self,triggered=self.pdfHelp6))
+		self.helpMenu3.addAction(QtGui.QAction(u"煤矿低浓度瓦斯管道输送安全保障系统设计规范",self,triggered=self.pdfHelp7))
+		self.helpMenu3.addAction(QtGui.QAction(u"煤矿低浓度瓦斯与细水雾混合安全输送装置技术规范",self,triggered=self.pdfHelp8))
+		self.helpMenu3.addAction(QtGui.QAction(u"瓦斯管道输送自动喷粉抑爆装置通用技术条件",self,triggered=self.pdfHelp9))
+		self.helpMenu3.addAction(QtGui.QAction(u"煤的工业分析方法",self,triggered=self.pdfHelp10))
+		self.helpMenu3.addAction(QtGui.QAction(u"煤矿瓦斯抽采工程设计规范",self,triggered=self.pdfHelp11))
+		self.helpMenu3.addAction(QtGui.QAction(u"煤自燃倾向性色谱吸氧鉴定法",self,triggered=self.pdfHelp12))
+		self.helpMenu3.addAction(QtGui.QAction(u"石门揭穿煤与瓦斯突出煤层",self,triggered=self.pdfHelp13))
+		self.helpMenu3.addAction(QtGui.QAction(u"钻孔瓦斯涌出初速度的测定方法",self,triggered=self.pdfHelp14))
+		self.helpMenu3.addAction(QtGui.QAction(u"中国煤炭分类国家标准",self,triggered=self.pdfHelp15))
+		self.helpMenu3.addAction(QtGui.QAction(u"保护层开采技术规范",self,triggered=self.pdfHelp16))
+		self.helpMenu3.addAction(QtGui.QAction(u"煤与瓦斯突出矿井鉴定规范（AQ1024-2006）",self,triggered=self.pdfHelp17))
+		self.helpMenu3.addAction(QtGui.QAction(u"煤矿瓦斯抽放规范AQ1027-2006",self,triggered=self.pdfHelp18))
+		self.helpMenu3.addAction(QtGui.QAction(u"电子等容式瓦斯解吸仪技术条件",self,triggered=self.pdfHelp19))
+		self.helpMenu3.addAction(QtGui.QAction(u"矿井瓦斯等级鉴定规范AQ1025-2006",self,triggered=self.pdfHelp20))
+		self.helpMenu3.addAction(QtGui.QAction(u"钻孔瓦斯涌出初速度的测定方法",self,triggered=self.pdfHelp21))
 
 	def createMenusToolBars(self):
 		menus = {}
@@ -319,6 +438,7 @@ class MainWindow(QtGui.QMainWindow):
 			menus[menu].addAction(action)
 			# 增加工具栏
 			# toolBars[menu].addAction(action)
+		self.creatHelpMenu()
 
 	def createStatusBar(self):
 		self.statusBar().showMessage(u"欢迎使用\"井下煤层气规模化抽采计算机辅助设计系统\"")
