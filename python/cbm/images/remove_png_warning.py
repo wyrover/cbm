@@ -19,7 +19,8 @@ def doStrip(path):
       	# 路径上不能有空格,否则会错误
       	# 文件名也不能有空格
         path = os.path.join(root, file)
-        os.system('{0} {1} -strip {1}'.format(CMD, path, path));
+        os.system('{0} {1} -strip {1}'.format(CMD, path, path))
+        print '{0} {1} -strip {1}'.format(CMD, path, path)
 
 
 doStrip(SOURCE_PATH)

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>311</width>
-    <height>252</height>
+    <width>591</width>
+    <height>659</height>
    </rect>
   </property>
   <property name="font">
@@ -27,15 +27,15 @@
     <rect>
      <x>0</x>
      <y>30</y>
-     <width>311</width>
-     <height>221</height>
+     <width>591</width>
+     <height>621</height>
     </rect>
    </property>
    <widget class="QPushButton" name="graph">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>160</y>
+      <x>300</x>
+      <y>570</y>
       <width>271</width>
       <height>41</height>
      </rect>
@@ -44,47 +44,226 @@
      <string>查 看 煤 层 赋 存 立 体 示 意 图</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="technology">
+   <widget class="QPushButton" name="decision">
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>100</y>
+      <y>570</y>
       <width>271</width>
       <height>41</height>
      </rect>
     </property>
     <property name="text">
-     <string>相 关 推 荐 技 术</string>
+     <string>煤层气抽采技术模式决策</string>
     </property>
    </widget>
-   <widget class="QLabel" name="tech_mode">
+   <widget class="QTableWidget" name="protect_layer_table">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>50</y>
-      <width>261</width>
-      <height>31</height>
+      <x>10</x>
+      <y>213</y>
+      <width>571</width>
+      <height>151</height>
      </rect>
     </property>
-    <property name="text">
-     <string>xxx技术模式</string>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+     </font>
     </property>
+    <property name="selectionMode">
+     <enum>QAbstractItemView::NoSelection</enum>
+    </property>
+    <property name="gridStyle">
+     <enum>Qt::DashLine</enum>
+    </property>
+    <attribute name="horizontalHeaderVisible">
+     <bool>true</bool>
+    </attribute>
+    <attribute name="verticalHeaderVisible">
+     <bool>false</bool>
+    </attribute>
+    <attribute name="verticalHeaderHighlightSections">
+     <bool>false</bool>
+    </attribute>
+    <column>
+     <property name="text">
+      <string>序号</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>煤层编号</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>煤层倾角</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>是否具备保护层开采条件?</string>
+     </property>
+    </column>
    </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>110</x>
-      <y>10</y>
-      <width>131</width>
+      <x>10</x>
+      <y>184</y>
+      <width>211</width>
       <height>31</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="text">
-     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#020202;&quot;&gt;推 荐 采 用&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/images/arrow.png&quot;/&gt;保护层开采条件&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>-2</y>
+      <width>151</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/images/arrow.png&quot;/&gt;煤层渗透率条件&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QTableWidget" name="permeability_k_table">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>28</y>
+      <width>571</width>
+      <height>151</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+    <property name="selectionMode">
+     <enum>QAbstractItemView::NoSelection</enum>
+    </property>
+    <property name="gridStyle">
+     <enum>Qt::DashLine</enum>
+    </property>
+    <attribute name="horizontalHeaderVisible">
+     <bool>true</bool>
+    </attribute>
+    <attribute name="verticalHeaderVisible">
+     <bool>false</bool>
+    </attribute>
+    <attribute name="verticalHeaderHighlightSections">
+     <bool>false</bool>
+    </attribute>
+    <column>
+     <property name="text">
+      <string>序号</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>煤层编号</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>煤层渗透率</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>煤层渗透率&gt;5mD?</string>
+     </property>
+    </column>
+   </widget>
+   <widget class="QTableWidget" name="coal_population_table">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>397</y>
+      <width>571</width>
+      <height>151</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+    <property name="selectionMode">
+     <enum>QAbstractItemView::NoSelection</enum>
+    </property>
+    <property name="gridStyle">
+     <enum>Qt::DashLine</enum>
+    </property>
+    <attribute name="horizontalHeaderVisible">
+     <bool>true</bool>
+    </attribute>
+    <attribute name="verticalHeaderVisible">
+     <bool>false</bool>
+    </attribute>
+    <attribute name="verticalHeaderHighlightSections">
+     <bool>false</bool>
+    </attribute>
+    <column>
+     <property name="text">
+      <string>序号</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>煤层编号</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>与上覆煤层间距</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>冒落带高度</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>采动影响倍数</string>
+     </property>
+    </column>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>367</y>
+      <width>151</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/images/arrow.png&quot;/&gt;煤层群条件&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
   </widget>
@@ -93,7 +272,7 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>311</width>
+     <width>591</width>
      <height>31</height>
     </rect>
    </property>
@@ -157,7 +336,7 @@ p, li { white-space: pre-wrap; }
    <widget class="QPushButton" name="btnMenu_Close">
     <property name="geometry">
      <rect>
-      <x>270</x>
+      <x>550</x>
       <y>0</y>
       <width>41</width>
       <height>31</height>

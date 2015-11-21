@@ -5,7 +5,7 @@
 # from cbm.ttypes import *
 
 from dialogs import NameDlg, CbmMessageBox
-from PyQt4 import QtCore, QtGui
+from PyQt4 import QtCore, QtGui, Qt
 
 def InitTableStyle(table):
 	# 隐藏表头
@@ -19,6 +19,10 @@ def InitTableStyle(table):
 	table.horizontalHeader().setStretchLastSection(True)
 	# 禁止编辑
 	table.setEditTriggers(QtGui.QAbstractItemView.NoEditTriggers)
+	# 左对齐
+	table.horizontalHeader().setDefaultAlignment(Qt.Qt.AlignLeft)
+	# 不显示单元格的虚框
+	# table.setFocusPolicy(Qt.Qt.NoFocus)
 	# 不显示网格
 	table.setShowGrid(False)
 

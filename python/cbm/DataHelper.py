@@ -24,6 +24,7 @@ mpl.rcParams['font.family']='sans-serif'
 mpl.rcParams['font.sans-serif'] = ['SimHei']  #指定默认字体
 mpl.rcParams['axes.unicode_minus'] = False	#解决保存图像是负号'-'显示为方块的问题
 
+
 # 枚举--抽采区域
 class GasDesignRegion:
 	DRILLING_SURF = 1  # 掘进工作面
