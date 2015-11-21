@@ -275,7 +275,7 @@ bool CADHelper::InitCAD()
 {
     if ( ThreadHelper::IsProcessActive( _T( "acad.exe" ) ) )
     {
-        MessageBox( NULL, _T( "CAD正在运行!" ), _T( "警告" ), MB_OK | MB_ICONWARNING );
+        //MessageBox( NULL, _T( "CAD正在运行!" ), _T( "警告" ), MB_OK | MB_ICONWARNING );
         return false;
     }
     if( !CADHelper::IsAutoCADExist() )
@@ -283,11 +283,11 @@ bool CADHelper::InitCAD()
         MessageBox( NULL, _T( "未安装CAD!" ), _T( "警告!" ), MB_OK | MB_ICONWARNING );
         return false;
     }
-    if( !CADHelper::CopyCADFile() )
-    {
-        MessageBox( NULL, _T( "程序初始化失败!" ), _T( "错误提示" ), MB_OK | MB_ICONSTOP );
-        return false;
-    }
+    //if( !CADHelper::CopyCADFile() )
+    //{
+    //    MessageBox( NULL, _T( "程序初始化失败!" ), _T( "错误提示" ), MB_OK | MB_ICONSTOP );
+    //    return false;
+    //}
     if( !CADHelper::WriteLaunchInfo() )
     {
         MessageBox( NULL, _T( "注册表写入失败!" ), _T( "错误提示" ), MB_OK | MB_ICONSTOP );
@@ -300,7 +300,7 @@ bool CADHelper::CleanCAD()
 {
     //删除注册表信息并恢复CAD原始的CUIX文件
     if( !CADHelper::DeleteLaunchInfo() ) return false;
-    if( !CADHelper::RecoverCADFile() ) return false;
+    //if( !CADHelper::RecoverCADFile() ) return false;
     return true;
 }
 

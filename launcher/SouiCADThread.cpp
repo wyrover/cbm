@@ -58,8 +58,8 @@ LRESULT SouiCADThread::OnMonitorEnd( WPARAM wParam, LPARAM lParam )
 void SouiCADThread::RunCAD( SouiDialog* pWnd, const CString& dwgFile )
 {
     SouiCADThread* cad = new SouiCADThread( dwgFile );
-    cad->SetWndHandle( pWnd->GetSafeHwnd() );
-    cad->pWnd = pWnd;
+    //cad->SetWndHandle( pWnd->GetSafeHwnd() );
+    //cad->pWnd = pWnd;
 
     HANDLE hThread = NULL;
     bool ret = cad->Run( hThread );

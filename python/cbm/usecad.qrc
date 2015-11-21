@@ -1,5 +1,11 @@
 <RCC>
   <qresource>
+    <file>images/low_far_coals.png</file>
+    <file>images/low_nearly_coals.png</file>
+    <file>images/high_coals.png</file>
+    <file>images/high_coal.png</file>
+    <file>images/no.png</file>
+    <file>images/yes.png</file>
     <file>images/bg.png</file>
     <file>images/go.ico</file>
     <file>images/cbm.ico</file>
