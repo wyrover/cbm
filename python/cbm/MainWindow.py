@@ -370,7 +370,7 @@ def run():
 	# 首先启动登录窗口
 	if loginFirst():
 		#启动CAD
-		doc.RunCAD()
+		# doc.RunCAD()
 		# 登录成功后启动主界面
 		mw = MainWindow()
 		mw.show()

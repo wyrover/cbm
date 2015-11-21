@@ -305,7 +305,7 @@ QScrollArea {
 	border: 0px ; 
 }
 
-QTreeView,QListView,QTableView{
+/*QTreeView,QListView,QTableView{
 	border: 1px solid #5CACEE; 
 	selection-background-color: #1B89CA;
 	selection-color: #F0F0F0;
@@ -333,7 +333,7 @@ QHeaderView::section {
 	border: 1px solid #F0F0F0;
 	background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 #5CACEE, stop:1 #4F94CD);
 }
-
+*/
 QTabBar::tab {
 	border-bottom-left-radius:0px;
 	border-bottom-right-radius:0px;

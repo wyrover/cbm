@@ -9,12 +9,17 @@ class LowCoalDlg(BaseDialog):
 		self.ui = Ui_low_coal_dlg()
 		self.ui.setupUi(self)
 		self.initUi(self.ui) # 美化ui
-		self.ui.tecl_table.setColumnWidth(2,88)
-		self.ui.tecl_table.setColumnWidth(1,310)
-		self.ui.tecl_table.setColumnWidth(0,100)
-		self.ui.tecl_table.setSpan(1,0,2,1)
-		self.ui.tecl_table.setSpan(3,0,2,1)
-		self.ui.tecl_table.setSelectionBehavior(Qt.QAbstractItemView.SelectRows)
-		self.ui.tecl_table.setEditTriggers(Qt.QAbstractItemView.NoEditTriggers)
+		self.ui.tecl_table.setColumnWidth(2,138)
+		self.ui.tecl_table.setColumnWidth(1,330)
+		self.ui.tecl_table.setColumnWidth(0,50)
+		self.initTable(self.ui.tecl_table);
 		self.setTitle(u"低渗单一煤层开采条件井下规模化抽采技术模式")
 		self.setFixedSize(self.width(), self.height())
+
+	def initTable(self,table):
+		table.setSelectionMode(Qt.QAbstractItemView.NoSelection)
+		table.setEditTriggers(Qt.QAbstractItemView.NoEditTriggers)
+		table.setFocusPolicy(Qt.Qt.NoFocus)
+		table.horizontalHeader().setDefaultAlignment(Qt.Qt.AlignLeft)
+		table.horizontalHeader().setResizeMode(QtGui.QHeaderView.Fixed)
+		table.setStyleSheet(u"font: 9pt \"微软雅黑\";")
