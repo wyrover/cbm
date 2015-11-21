@@ -1,5 +1,6 @@
 <RCC>
   <qresource>
+    <file>images/udpate.png</file>
     <file>images/low_far_coals.png</file>
     <file>images/low_nearly_coals.png</file>
     <file>images/high_coals.png</file>

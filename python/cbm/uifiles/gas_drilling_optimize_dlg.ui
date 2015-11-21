@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>528</width>
+    <width>522</width>
     <height>378</height>
    </rect>
   </property>
@@ -525,30 +525,12 @@ p, li { white-space: pre-wrap; }
       </rect>
      </property>
     </widget>
-    <widget class="QPushButton" name="cacl_y">
-     <property name="geometry">
-      <rect>
-       <x>470</x>
-       <y>33</y>
-       <width>31</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>12</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
     <widget class="QPushButton" name="cacl_x">
      <property name="geometry">
       <rect>
        <x>219</x>
-       <y>33</y>
-       <width>31</width>
+       <y>31</y>
+       <width>21</width>
        <height>21</height>
       </rect>
      </property>
@@ -559,14 +541,21 @@ p, li { white-space: pre-wrap; }
      </property>
      <property name="text">
       <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="../usecad.qrc">
+       <normaloff>:/images/udpate.png</normaloff>:/images/udpate.png</iconset>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
      </property>
     </widget>
     <widget class="QPushButton" name="cacl_z">
      <property name="geometry">
       <rect>
-       <x>220</x>
-       <y>80</y>
-       <width>31</width>
+       <x>219</x>
+       <y>81</y>
+       <width>21</width>
        <height>21</height>
       </rect>
      </property>
@@ -577,6 +566,38 @@ p, li { white-space: pre-wrap; }
      </property>
      <property name="text">
       <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="../usecad.qrc">
+       <normaloff>:/images/udpate.png</normaloff>:/images/udpate.png</iconset>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="cacl_y">
+     <property name="geometry">
+      <rect>
+       <x>475</x>
+       <y>29</y>
+       <width>21</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="../usecad.qrc">
+       <normaloff>:/images/udpate.png</normaloff>:/images/udpate.png</iconset>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
      </property>
     </widget>
    </widget>
@@ -635,6 +656,8 @@ p, li { white-space: pre-wrap; }
   <zorder>widget_main</zorder>
   <zorder>widget_title</zorder>
  </widget>
- <resources/>
+ <resources>
+  <include location="../usecad.qrc"/>
+ </resources>
  <connections/>
 </ui>
