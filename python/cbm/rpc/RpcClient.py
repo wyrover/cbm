@@ -7,7 +7,7 @@ from thrift.transport import TTransport
 from thrift.protocol import TBinaryProtocol
 from thrift.server import TServer
 
-HOST = 'localhost'
+HOST = '127.0.0.1'
 PORT1, PORT2 = 9100, 9090
 
 #客户端封装类
