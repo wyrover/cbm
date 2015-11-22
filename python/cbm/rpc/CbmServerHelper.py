@@ -327,7 +327,7 @@ class CbmServiceHandler(SQLServerHelper.SQLServiceHandler):
         return ret
 
     def SendCommandToCAD(self, cmd, switch_to_cad):
-        exe = '..\\..\\x64\\Debug\\send.exe'
+        exe = 'tool\\send.exe'
         subprocess.Popen('%s %d %s' % (exe, int(switch_to_cad), cmd))
 
     def RequestJsonDatasFromCAD(self, input_datas):
