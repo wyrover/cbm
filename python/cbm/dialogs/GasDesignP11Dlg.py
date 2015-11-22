@@ -181,13 +181,16 @@ class GasDesignP11Dlg(BaseDialog):
 			UiHelper.MessageBox(u'sorry,出了点问题,请联系技术人员(错误码:115)')
 			return
 
-		DataHelper.test_json()
 		# 向cad发送命令请求生成钻孔数据
 		# CbmClientHelper.SendCommandToCAD("JL.GeneratePore11 %d %d" % (coal.id, tws_tech.id), True)
 		# 读取数据库生成json文件
+
 		# json_file = u'help\\json\\reportP11.json'
 		# EncodeHelper.UTF8_2_GBK(json_file, u'help\\json\\test.json')
 
-		json_file = u'help\\json\\test.json'
+		# json_file = u'help\\json\\test.json'
+		# DataHelper.test_json(json_file)
+		# DataHelper.generateJsonFileOfPoreReport(coal.id, tws_tech.id, json_file)
+
 		# 生成word报单
-		doc.CreatReport(json_file)
+		# doc.CreatReport(json_file)

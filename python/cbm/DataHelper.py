@@ -514,7 +514,8 @@ def DrawXYZ(x, y, k):
 	# 显示图形
 	plt.show()
 
-def test_json():
+import codecs
+def test_json(json_file):
 	# 生成json数据测试
 	info={}
 	info["code"]=1
@@ -529,12 +530,20 @@ def test_json():
 	data["sex"]='男'
 	data["info"]=info
 	data["data"]=list
-	
-	jsonStr = json.dumps(data)
-	print "jsonStr:",jsonStr
+	# jsonStr = json.dumps(data)
+	# print "jsonStr:",jsonStr
+
+	# encodedjson = json.dumps(jsonStr)
+	# 新建文件(使用utf-8编码)
+
+	with codecs.open(json_file, 'w', 'utf-8') as f:
+	# f = open(json_file, 'w', 'utf-8')
+		# f.write(encodedjson)
+		json.dump(data, f, ensure_ascii=False, indent=4)
+	# f.close()
 
 # 读取数据库生成json数据,数据,用于生成钻孔报表
-def generateJsonFileOfPoreReport(coal_id, tws_tech_id, json_file):
+def generateJsonFileOfPoreReport(coal_id, design_id, json_file):
 	# 查找煤层
 	coal = SQLClientHelper.GetCoalById(coal_id)
 	if coal.id <= 0:return False
@@ -542,7 +551,7 @@ def generateJsonFileOfPoreReport(coal_id, tws_tech_id, json_file):
 	mine = SQLClientHelper.GetMineById(coal.mine_id)
 	if mine.id  <= 0:return False
 	# 查找掘进面的抽采技术
-	tws_tech = SQLClientHelper.GetDesignDrillingSurfTechnologyById(self.design_id)
+	tws_tech = SQLClientHelper.GetDesignDrillingSurfTechnologyById(design_id)
 	if tws_tech.id <= 0:return False
 
 	# json模块可以直接将词典转换成json编码串
@@ -565,9 +574,11 @@ def generateJsonFileOfPoreReport(coal_id, tws_tech_id, json_file):
 	# 写入word模板路径
 	data['tplPath']="help\\doc\\tpl\\底板岩巷密集穿层钻孔抽采煤巷条带瓦斯抽采技术.doc"
 	# 写入钻孔信息
+	# 待完善
 
 	# 生成json文件
 	encodedjson = json.dumps(data)
-	file_object = open(json_file, 'w')
-	file_object.write(result)
+	# 新建文件(使用utf-8编码)
+	file_object = open(json_file, 'w', 'utf-8')
+	file_object.write(encodedjson)
 	file_object.close()

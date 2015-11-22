@@ -49,14 +49,15 @@ public:
     static AcGePoint3d CacLineClosePt( const AcGePoint3d& spt, const AcGePoint3d& ept, const AcGePoint3d& pt );
     static AcGePoint3d CaclPt( const AcGePoint3d& pt, const AcGeVector3d& v1, double width, const AcGeVector3d& v2, double height );
 	static AcGePoint3d CaclPt2(const AcGePoint3d& pt, double angle, double width, double height);
-    static void BuildRect( const AcGePoint3d& pt, double angle, double width, double height, AcGePoint3dArray& pts );
+    static void BuildRect( const AcGePoint3d& cnt, double angle, double width, double height, AcGePoint3dArray& pts );
+	static void BuildRect2( const AcGePoint3d& pt, double angle, double width, double height, AcGePoint3dArray& pts );
     static int ClockWise( const AcGePoint3dArray& polygon );
     static bool OffSetPolygon( const AcGePoint3dArray& polygon, double offset, bool is_inner, AcGePoint3dArray& offset_polygon );
 
     static AcDbObjectId GetTextStyle( const CString& style );
     static AcDbObjectId CreateTextStyle( const CString& style, const CString& winFont, Adesk::Boolean bold, Adesk::Boolean italic, int charset, int pitchAndFamily );
     static AcDbObjectId DrawText( const AcGePoint3d& pt, const CString& text, double height, AcDb::TextHorzMode hm = AcDb::kTextLeft, AcDb::TextVertMode vm = AcDb::kTextBase );
-    static AcDbObjectId DrawMText( const AcGePoint3d& pt, double angle, const CString& text, double height );
+    static AcDbObjectId DrawMText( const AcGePoint3d& pt, double angle, const CString& text, double height, AcDbMText::AttachmentPoint ap =  AcDbMText::kMiddleLeft );
 
     static AcDbObjectId DrawArc( const AcGePoint3d& spt, const AcGePoint3d& pt, const AcGePoint3d& ept );
     static AcDbObjectId DrawCircle( const AcGePoint3d& pt, double radius );
@@ -88,7 +89,7 @@ public:
     static AcDbObjectId Make3PointAngularDim( const AcGePoint3d& centerPt, const AcGePoint3d& pt1,
             const AcGePoint3d& pt2, const AcGePoint3d& textPt );
     //对齐标注
-    static AcDbObjectId MakeAlignedDim( const AcGePoint3d& pt1, const AcGePoint3d& pt2, double offset = 30, bool clockwise = true );
+    static AcDbObjectId MakeAlignedDim( const AcGePoint3d& pt1, const AcGePoint3d& pt2, const CString& text=_T(""), double offset = 30, bool clockwise = true );
     //直径标注
     static AcDbObjectId MakeDiametricDim( const AcGePoint3d& centerPt, double radius, const AcGePoint3d& textPt );
     //坐标/基线/连续标注
@@ -102,7 +103,7 @@ public:
     //获取文字样式id
     static AcDbObjectId GetTextStyleId( const CString& textStyleName );
     //创建标注样式
-    static AcDbObjectId CreateDimStyle( const CString& dimStyleName, bool modifyExistStyle = false );
+    static AcDbObjectId CreateDimStyle( const CString& dimStyleName, bool modifyExistStyle = false, double bili = 1.0 );
     //获取标注样式id
     static AcDbObjectId GetDimStyle( const CString& dimStyleName );
     //设置线型

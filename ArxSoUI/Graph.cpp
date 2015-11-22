@@ -82,9 +82,9 @@ AcDbObjectId BaseGraph::drawDoubleLine( const AcGePoint3d& spt, const AcGePoint3
     return objId;
 }
 
-AcDbObjectId BaseGraph::drawMText( const AcGePoint3d& pt, double angle, const CString& text, double height )
+AcDbObjectId BaseGraph::drawMText( const AcGePoint3d& pt, double angle, const CString& text, double height, AcDbMText::AttachmentPoint ap )
 {
-    AcDbObjectId objId = ArxDrawHelper::DrawMText( pt, angle, text, height );
+    AcDbObjectId objId = ArxDrawHelper::DrawMText( pt, angle, text, height, ap );
     this->addEnt( objId );
     return objId;
 }
@@ -103,9 +103,16 @@ AcDbObjectId BaseGraph::drawLine( const AcGePoint3d& spt, const AcGePoint3d& ept
     return objId;
 }
 
-AcDbObjectId BaseGraph::drawAlignedDim( const AcGePoint3d& pt1, const AcGePoint3d& pt2, double offset /*= 30*/, bool clockwise/*=true*/ )
+AcDbObjectId BaseGraph::drawAlignedDim( const AcGePoint3d& pt1, const AcGePoint3d& pt2, const CString& text, double offset /*= 30*/, bool clockwise/*=true*/ )
 {
-    AcDbObjectId objId = ArxDrawHelper::MakeAlignedDim( pt1, pt2, offset, clockwise );
+    AcDbObjectId objId = ArxDrawHelper::MakeAlignedDim( pt1, pt2, text, offset, clockwise );
     this->addEnt( objId );
     return objId;
+}
+
+AcDbObjectId BaseGraph::drawPolygonHatch(const AcGePoint3dArray& pts, const CString& patName, double scale)
+{
+	AcDbObjectId objId = ArxDrawHelper::DrawPolygonHatch( pts, patName, scale );
+	this->addEnt( objId );
+	return objId;
 }
