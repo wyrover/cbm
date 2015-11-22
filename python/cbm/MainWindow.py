@@ -388,6 +388,17 @@ class MainWindow(QtGui.QMainWindow):
 		self.regAction(u"抽采设计", u"工作面", u"工作面瓦斯抽采辅助设计", self.wsGasDesign)
 		self.regAction(u"抽采设计", u"采空区", u"采空区瓦斯抽采辅助设计", self.goafGasDesign)
 
+
+		# 只需要将菜单用符号: / 分隔即可,程序自动解析成相应的子菜单
+		self.regAction(u"帮助文档/相关官网/门户网站", u"中国煤炭资源网", u"采空区瓦斯抽采辅助设计", self.goafGasDesign)
+		self.regAction(u"帮助文档/相关官网", u"国家煤炭工业网", u"采空区瓦斯抽采辅助设计", self.goafGasDesign)
+		self.regAction(u"帮助文档/相关官网/集团公司", u"中国煤层气集团有限公司", u"采空区瓦斯抽采辅助设计", self.goafGasDesign)
+		self.regAction(u"帮助文档/相关官网/集团公司", u"中国煤炭科工集团有限公司", u"采空区瓦斯抽采辅助设计", self.goafGasDesign)
+		
+		# self.regAction(u"测试2/test/help", u"采空区", u"采空区瓦斯抽采辅助设计", self.goafGasDesign)
+		# self.regAction(u"测试2/test", u"采空区", u"采空区瓦斯抽采辅助设计", self.goafGasDesign)
+		# self.regAction(u"测试2/test", u"采空区", u"采空区瓦斯抽采辅助设计", self.goafGasDesign)
+
 	def creatHelpMenu(self):
 		self.helpMenu = self.menuBar().addMenu(u'帮助文档')
 		self.helpMenu2 = QtGui.QMenu(u'相关官网')
@@ -435,12 +446,38 @@ class MainWindow(QtGui.QMainWindow):
 			if name == u"登录":
 				self.loginAction = action
 				self.loginAction.setEnabled(False)
-			if name == u"注销":
+			elif name == u"注销":
 				self.logoutAction = action
-			if menu not in menus:
-				menus[menu] = self.menuBar().addMenu(menu)
+			elif name == u'/' or name[0] == u'/':
+				continue
+			else:
+				# 将菜单名称按符号 / 进行分解
+				menu_list = menu.split('/')
+				# 菜单的级别(1级菜单、2级菜单、3级菜单等等)
+				n = len(menu_list)
+				# 构造菜单名
+				# 比如: menu = 'help/test/xx'
+				#   则: menu_list = ['help', 'test', 'xx']
+				#       child_menus = ['help', 'help/test', 'help/test/xx']
+				child_menus = ['/'.join(menu_list[:i+1]) for i in range(n)]
+				# print menu_list
+				# print child_menus
+				# 遍历每个子菜单
+				for i, child_menu in enumerate(child_menus):
+					# 确定当前菜单的上级菜单(或者叫 父菜单)
+					# 如果是1级菜单,则上级菜单就是menuBar()
+					# 用上面的例子: 'help' 是 'help/test'的父菜单, 'help/test' 是 'help/test/xx'的上级菜单(父菜单)
+					parent_menu = self.menuBar()
+					if i > 0:
+						parent_menu = menus[child_menus[i-1]]
+					# 如果菜单缓存中menus没有记录,则新建一个QMenu
+					if child_menu not in menus:
+						# addMenu函数的C++原型定义: QMenu* QMenu::addMenu(title)
+						menus[child_menu] = parent_menu.addMenu(menu_list[i])
+				# 菜单关联到具体的Action上
+				menus[child_menus[-1]].addAction(action)
+				# 工具栏按钮关联到具体的Action上
 				# toolBars[menu] = self.addToolBar(menu)
-			menus[menu].addAction(action)
 			# 增加工具栏
 			# toolBars[menu].addAction(action)
 		self.creatHelpMenu()
