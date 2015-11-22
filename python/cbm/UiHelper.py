@@ -7,7 +7,7 @@
 from dialogs import NameDlg, CbmMessageBox
 from PyQt4 import QtCore, QtGui, Qt
 
-def InitTableStyle(table):
+def InitTableStyle(table, no_focus=False):
 	# 隐藏表头
 	table.verticalHeader().setHidden(True)
 	# 单行选择
@@ -22,7 +22,8 @@ def InitTableStyle(table):
 	# 左对齐
 	table.horizontalHeader().setDefaultAlignment(Qt.Qt.AlignLeft)
 	# 不显示单元格的虚框
-	# table.setFocusPolicy(Qt.Qt.NoFocus)
+	if no_focus:
+		table.setFocusPolicy(Qt.Qt.NoFocus)
 	# 不显示网格
 	table.setShowGrid(False)
 

@@ -381,6 +381,7 @@ struct Mine {
 	30: double pump_wc,
 	31: double reserve_gas,
 	32: string comment,
+	33: i32 protect_layer_condition,
 }
 
 struct MineBase {

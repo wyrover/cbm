@@ -39,7 +39,7 @@ QLineEdit[echoMode="2"] {
 	lineedit-password-character: 9679; 
 }
 
-QPushButton#cacl_x,#cacl_y,#cacl_z { 
+QPushButton#cacl_x,#cacl_y,#cacl_z,#help1,#help2,#help3 { 
 	background: none;
 }
 

@@ -2624,7 +2624,7 @@ inline std::ostream& operator<<(std::ostream& out, const HydrGeo& obj)
 }
 
 typedef struct _Mine__isset {
-  _Mine__isset() : id(false), tech_mode_id(false), mine_region_id(false), account_id(false), name(false), province(false), city(false), capacity(false), topo_geo(false), hydr_geo(false), ground_condition(false), qr(false), qa(false), fore_qr(false), fore_qa(false), gas_k1(false), gas_k2(false), stereo_schem_diagram(false), rock_gas_k2(false), reserve_w1(false), reserve_w2(false), reserve_w3(false), gas_w0(false), gas_wc2(false), pump_k2(false), pump_k3(false), pump_k4(false), pump_k1(false), pump_k(false), pump_wc(false), reserve_gas(false), comment(false) {}
+  _Mine__isset() : id(false), tech_mode_id(false), mine_region_id(false), account_id(false), name(false), province(false), city(false), capacity(false), topo_geo(false), hydr_geo(false), ground_condition(false), qr(false), qa(false), fore_qr(false), fore_qa(false), gas_k1(false), gas_k2(false), stereo_schem_diagram(false), rock_gas_k2(false), reserve_w1(false), reserve_w2(false), reserve_w3(false), gas_w0(false), gas_wc2(false), pump_k2(false), pump_k3(false), pump_k4(false), pump_k1(false), pump_k(false), pump_wc(false), reserve_gas(false), comment(false), protect_layer_condition(false) {}
   bool id :1;
   bool tech_mode_id :1;
   bool mine_region_id :1;
@@ -2657,6 +2657,7 @@ typedef struct _Mine__isset {
   bool pump_wc :1;
   bool reserve_gas :1;
   bool comment :1;
+  bool protect_layer_condition :1;
 } _Mine__isset;
 
 class Mine {
@@ -2664,7 +2665,7 @@ class Mine {
 
   Mine(const Mine&);
   Mine& operator=(const Mine&);
-  Mine() : id(0), tech_mode_id(0), mine_region_id(0), account_id(0), name(), province(), city(), capacity(0), topo_geo(0), hydr_geo(0), ground_condition(0), qr(0), qa(0), fore_qr(0), fore_qa(0), gas_k1(0), gas_k2(0), stereo_schem_diagram(), rock_gas_k2(0), reserve_w1(0), reserve_w2(0), reserve_w3(0), gas_w0(0), gas_wc2(0), pump_k2(0), pump_k3(0), pump_k4(0), pump_k1(0), pump_k(0), pump_wc(0), reserve_gas(0), comment() {
+  Mine() : id(0), tech_mode_id(0), mine_region_id(0), account_id(0), name(), province(), city(), capacity(0), topo_geo(0), hydr_geo(0), ground_condition(0), qr(0), qa(0), fore_qr(0), fore_qa(0), gas_k1(0), gas_k2(0), stereo_schem_diagram(), rock_gas_k2(0), reserve_w1(0), reserve_w2(0), reserve_w3(0), gas_w0(0), gas_wc2(0), pump_k2(0), pump_k3(0), pump_k4(0), pump_k1(0), pump_k(0), pump_wc(0), reserve_gas(0), comment(), protect_layer_condition(0) {
   }
 
   virtual ~Mine() throw();
@@ -2700,6 +2701,7 @@ class Mine {
   double pump_wc;
   double reserve_gas;
   std::string comment;
+  int32_t protect_layer_condition;
 
   _Mine__isset __isset;
 
@@ -2767,6 +2769,8 @@ class Mine {
 
   void __set_comment(const std::string& val);
 
+  void __set_protect_layer_condition(const int32_t val);
+
   bool operator == (const Mine & rhs) const
   {
     if (!(id == rhs.id))
@@ -2832,6 +2836,8 @@ class Mine {
     if (!(reserve_gas == rhs.reserve_gas))
       return false;
     if (!(comment == rhs.comment))
+      return false;
+    if (!(protect_layer_condition == rhs.protect_layer_condition))
       return false;
     return true;
   }

@@ -7726,6 +7726,10 @@ class Mine {
    * @var string
    */
   public $comment = null;
+  /**
+   * @var int
+   */
+  public $protect_layer_condition = null;
 
   public function __construct($vals=null) {
     if (!isset(self::$_TSPEC)) {
@@ -7858,6 +7862,10 @@ class Mine {
           'var' => 'comment',
           'type' => TType::STRING,
           ),
+        33 => array(
+          'var' => 'protect_layer_condition',
+          'type' => TType::I32,
+          ),
         );
     }
     if (is_array($vals)) {
@@ -7956,6 +7964,9 @@ class Mine {
       }
       if (isset($vals['comment'])) {
         $this->comment = $vals['comment'];
+      }
+      if (isset($vals['protect_layer_condition'])) {
+        $this->protect_layer_condition = $vals['protect_layer_condition'];
       }
     }
   }
@@ -8203,6 +8214,13 @@ class Mine {
             $xfer += $input->skip($ftype);
           }
           break;
+        case 33:
+          if ($ftype == TType::I32) {
+            $xfer += $input->readI32($this->protect_layer_condition);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
         default:
           $xfer += $input->skip($ftype);
           break;
@@ -8374,6 +8392,11 @@ class Mine {
     if ($this->comment !== null) {
       $xfer += $output->writeFieldBegin('comment', TType::STRING, 32);
       $xfer += $output->writeString($this->comment);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->protect_layer_condition !== null) {
+      $xfer += $output->writeFieldBegin('protect_layer_condition', TType::I32, 33);
+      $xfer += $output->writeI32($this->protect_layer_condition);
       $xfer += $output->writeFieldEnd();
     }
     $xfer += $output->writeFieldStop();

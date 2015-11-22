@@ -4810,6 +4810,7 @@ class Mine:
    - pump_wc
    - reserve_gas
    - comment
+   - protect_layer_condition
   """
 
   thrift_spec = (
@@ -4846,9 +4847,10 @@ class Mine:
     (30, TType.DOUBLE, 'pump_wc', None, None, ), # 30
     (31, TType.DOUBLE, 'reserve_gas', None, None, ), # 31
     (32, TType.STRING, 'comment', None, None, ), # 32
+    (33, TType.I32, 'protect_layer_condition', None, None, ), # 33
   )
 
-  def __init__(self, id=None, tech_mode_id=None, mine_region_id=None, account_id=None, name=None, province=None, city=None, capacity=None, topo_geo=None, hydr_geo=None, ground_condition=None, qr=None, qa=None, fore_qr=None, fore_qa=None, gas_k1=None, gas_k2=None, stereo_schem_diagram=None, rock_gas_k2=None, reserve_w1=None, reserve_w2=None, reserve_w3=None, gas_w0=None, gas_wc2=None, pump_k2=None, pump_k3=None, pump_k4=None, pump_k1=None, pump_k=None, pump_wc=None, reserve_gas=None, comment=None,):
+  def __init__(self, id=None, tech_mode_id=None, mine_region_id=None, account_id=None, name=None, province=None, city=None, capacity=None, topo_geo=None, hydr_geo=None, ground_condition=None, qr=None, qa=None, fore_qr=None, fore_qa=None, gas_k1=None, gas_k2=None, stereo_schem_diagram=None, rock_gas_k2=None, reserve_w1=None, reserve_w2=None, reserve_w3=None, gas_w0=None, gas_wc2=None, pump_k2=None, pump_k3=None, pump_k4=None, pump_k1=None, pump_k=None, pump_wc=None, reserve_gas=None, comment=None, protect_layer_condition=None,):
     self.id = id
     self.tech_mode_id = tech_mode_id
     self.mine_region_id = mine_region_id
@@ -4881,6 +4883,7 @@ class Mine:
     self.pump_wc = pump_wc
     self.reserve_gas = reserve_gas
     self.comment = comment
+    self.protect_layer_condition = protect_layer_condition
 
   def read(self, iprot):
     if iprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None and fastbinary is not None:
@@ -5051,6 +5054,11 @@ class Mine:
           self.comment = iprot.readString()
         else:
           iprot.skip(ftype)
+      elif fid == 33:
+        if ftype == TType.I32:
+          self.protect_layer_condition = iprot.readI32()
+        else:
+          iprot.skip(ftype)
       else:
         iprot.skip(ftype)
       iprot.readFieldEnd()
@@ -5189,6 +5197,10 @@ class Mine:
       oprot.writeFieldBegin('comment', TType.STRING, 32)
       oprot.writeString(self.comment)
       oprot.writeFieldEnd()
+    if self.protect_layer_condition is not None:
+      oprot.writeFieldBegin('protect_layer_condition', TType.I32, 33)
+      oprot.writeI32(self.protect_layer_condition)
+      oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()
 
@@ -5230,6 +5242,7 @@ class Mine:
     value = (value * 31) ^ hash(self.pump_wc)
     value = (value * 31) ^ hash(self.reserve_gas)
     value = (value * 31) ^ hash(self.comment)
+    value = (value * 31) ^ hash(self.protect_layer_condition)
     return value
 
   def __repr__(self):

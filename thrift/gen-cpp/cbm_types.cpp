@@ -7172,6 +7172,10 @@ void Mine::__set_comment(const std::string& val) {
   this->comment = val;
 }
 
+void Mine::__set_protect_layer_condition(const int32_t val) {
+  this->protect_layer_condition = val;
+}
+
 uint32_t Mine::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -7449,6 +7453,14 @@ uint32_t Mine::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
+      case 33:
+        if (ftype == ::apache::thrift::protocol::T_I32) {
+          xfer += iprot->readI32(this->protect_layer_condition);
+          this->__isset.protect_layer_condition = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -7594,6 +7606,10 @@ uint32_t Mine::write(::apache::thrift::protocol::TProtocol* oprot) const {
   xfer += oprot->writeString(this->comment);
   xfer += oprot->writeFieldEnd();
 
+  xfer += oprot->writeFieldBegin("protect_layer_condition", ::apache::thrift::protocol::T_I32, 33);
+  xfer += oprot->writeI32(this->protect_layer_condition);
+  xfer += oprot->writeFieldEnd();
+
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -7633,6 +7649,7 @@ void swap(Mine &a, Mine &b) {
   swap(a.pump_wc, b.pump_wc);
   swap(a.reserve_gas, b.reserve_gas);
   swap(a.comment, b.comment);
+  swap(a.protect_layer_condition, b.protect_layer_condition);
   swap(a.__isset, b.__isset);
 }
 
@@ -7669,6 +7686,7 @@ Mine::Mine(const Mine& other42) {
   pump_wc = other42.pump_wc;
   reserve_gas = other42.reserve_gas;
   comment = other42.comment;
+  protect_layer_condition = other42.protect_layer_condition;
   __isset = other42.__isset;
 }
 Mine& Mine::operator=(const Mine& other43) {
@@ -7704,6 +7722,7 @@ Mine& Mine::operator=(const Mine& other43) {
   pump_wc = other43.pump_wc;
   reserve_gas = other43.reserve_gas;
   comment = other43.comment;
+  protect_layer_condition = other43.protect_layer_condition;
   __isset = other43.__isset;
   return *this;
 }
@@ -7742,6 +7761,7 @@ void Mine::printTo(std::ostream& out) const {
   out << ", " << "pump_wc=" << to_string(pump_wc);
   out << ", " << "reserve_gas=" << to_string(reserve_gas);
   out << ", " << "comment=" << to_string(comment);
+  out << ", " << "protect_layer_condition=" << to_string(protect_layer_condition);
   out << ")";
 }
 

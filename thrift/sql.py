@@ -469,6 +469,7 @@ class Mine(Base):
     pump_wc = Column(Numeric(8, 2))
     reserve_gas = Column(Numeric(8, 2))
     comment = Column(String(255))
+    protect_layer_condition = Column(Integer)
 
     account = relationship(u'Account')
     mine_region = relationship(u'MineRegion')
