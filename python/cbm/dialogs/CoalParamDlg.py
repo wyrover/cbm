@@ -73,6 +73,16 @@ class CoalParamDlg(BaseDialog):
 		self.ui.layer_gap.setText(u'%.1f' % coal.layer_gap)
 		self.ui.influence_factor.setText(u'%.1f' % coal.influence_factor)
 
+		mine = SQLClientHelper.GetMineById(self.mine_id)
+		if mine.id <= 0 or mine.protect_layer_condition == 0:
+			self.ui.relative_layer_gap.setEnabled(False)
+			self.ui.is_protectable.setEnabled(False)
+		else:
+			self.ui.relative_layer_gap.setEnabled(True)
+			self.ui.is_protectable.setEnabled(True)
+			self.ui.relative_layer_gap.setText(u'%.1f' % coal.relative_layer_gap)
+			self.ui.is_protectable.setCurrentIndex(int(coal.is_protectable != 0))
+
 	def onMineIndexCacl(self):
 		UiHelper.MessageBox(u'尚未实现')
 
@@ -114,6 +124,8 @@ class CoalParamDlg(BaseDialog):
 		coal.stability = self.ui.stability.currentIndex() + 1
 		coal.layer_gap, ok = self.ui.layer_gap.text().toDouble()
 		coal.influence_factor, ok = self.ui.influence_factor.text().toDouble()
+		coal.relative_layer_gap, ok = self.ui.relative_layer_gap.text().toDouble()
+		coal.is_protectable = self.ui.is_protectable.currentIndex()
 
 		# 提交到数据库
 		if SQLClientHelper.UpdateCoal(coal):

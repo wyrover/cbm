@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>541</width>
-    <height>270</height>
+    <height>304</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,7 +19,7 @@
      <x>0</x>
      <y>30</y>
      <width>541</width>
-     <height>241</height>
+     <height>271</height>
     </rect>
    </property>
    <widget class="QComboBox" name="hydr_geo">
@@ -108,8 +108,8 @@
    <widget class="QLabel" name="mineName_label_8">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>60</y>
+      <x>430</x>
+      <y>20</y>
       <width>61</width>
       <height>25</height>
      </rect>
@@ -126,7 +126,7 @@
    <widget class="QLabel" name="mineName_label_5">
     <property name="geometry">
      <rect>
-      <x>360</x>
+      <x>160</x>
       <y>60</y>
       <width>21</width>
       <height>25</height>
@@ -183,8 +183,8 @@
    <widget class="QLabel" name="mineName_label_7">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>60</y>
+      <x>280</x>
+      <y>20</y>
       <width>81</width>
       <height>25</height>
      </rect>
@@ -220,7 +220,7 @@
     <property name="geometry">
      <rect>
       <x>90</x>
-      <y>180</y>
+      <y>220</y>
       <width>101</width>
       <height>41</height>
      </rect>
@@ -270,7 +270,7 @@
    <widget class="QLineEdit" name="province">
     <property name="geometry">
      <rect>
-      <x>290</x>
+      <x>80</x>
       <y>60</y>
       <width>61</width>
       <height>25</height>
@@ -286,7 +286,7 @@
     <property name="geometry">
      <rect>
       <x>350</x>
-      <y>180</y>
+      <y>220</y>
       <width>101</width>
       <height>41</height>
      </rect>
@@ -319,7 +319,7 @@
     <property name="geometry">
      <rect>
       <x>220</x>
-      <y>180</y>
+      <y>220</y>
       <width>101</width>
       <height>41</height>
      </rect>
@@ -336,7 +336,7 @@
    <widget class="QLabel" name="mineName_label_4">
     <property name="geometry">
      <rect>
-      <x>230</x>
+      <x>20</x>
       <y>60</y>
       <width>54</width>
       <height>25</height>
@@ -354,7 +354,7 @@
    <widget class="QLineEdit" name="city">
     <property name="geometry">
      <rect>
-      <x>380</x>
+      <x>187</x>
       <y>60</y>
       <width>61</width>
       <height>25</height>
@@ -387,8 +387,8 @@
    <widget class="QLineEdit" name="capacity">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>60</y>
+      <x>360</x>
+      <y>20</y>
       <width>61</width>
       <height>25</height>
      </rect>
@@ -402,8 +402,8 @@
    <widget class="QCheckBox" name="ground_cond">
     <property name="geometry">
      <rect>
-      <x>280</x>
-      <y>20</y>
+      <x>20</x>
+      <y>183</y>
       <width>211</width>
       <height>25</height>
      </rect>
@@ -420,7 +420,7 @@
    <widget class="QLabel" name="mineName_label_6">
     <property name="geometry">
      <rect>
-      <x>450</x>
+      <x>257</x>
       <y>60</y>
       <width>101</width>
       <height>25</height>
@@ -433,6 +433,24 @@
     </property>
     <property name="text">
      <string>市（地区）</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="protect_layer_condition">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>183</y>
+      <width>211</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>是否具备保护层开采条件</string>
     </property>
    </widget>
   </widget>

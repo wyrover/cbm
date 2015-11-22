@@ -41,7 +41,7 @@
      </font>
     </property>
     <property name="text">
-     <string>绘制曲线</string>
+     <string>开始预测</string>
     </property>
    </widget>
    <widget class="QLabel" name="mineName_label_14">

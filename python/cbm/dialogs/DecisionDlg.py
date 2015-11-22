@@ -91,6 +91,13 @@ class DecisionDlg(BaseDialog):
 			self.ui.protect_layer_table.setItem(i, 1, QtGui.QTableWidgetItem(u'%s' % coal.name.decode('utf-8')))
 			self.ui.protect_layer_table.setItem(i, 2, QtGui.QTableWidgetItem(u'%.1f' % coal.dip_angle))
 			self.ui.protect_layer_table.setItem(i, 3, QtGui.QTableWidgetItem(u'%.1f' % coal.thick))
+			
+			mine = SQLClientHelper.GetMineById(self.mine_id)
+			if mine.id <= 0 or mine.protect_layer_condition == 0:
+				self.ui.protect_layer_table.setItem(i, 4, QtGui.QTableWidgetItem(u'—'))
+			else:
+				protect_item = u'保护层' if coal.is_protectable != 0 else u'被保护层'
+				self.ui.protect_layer_table.setItem(i, 4, QtGui.QTableWidgetItem(protect_item))
 			# item = QtGui.QTableWidgetItem()
 			# item.setFlags(QtCore.Qt.ItemIsEnabled)  # 不这么设置，用户点击时，图片被选的状态不美观
 			# if True:

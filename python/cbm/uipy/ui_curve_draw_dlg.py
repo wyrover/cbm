@@ -117,7 +117,7 @@ class Ui_curve_draw_dlg(object):
 
     def retranslateUi(self, curve_draw_dlg):
         curve_draw_dlg.setWindowTitle(_translate("curve_draw_dlg", "抽采管径大小辅助计算", None))
-        self.draw_curve.setText(_translate("curve_draw_dlg", "绘制曲线", None))
+        self.draw_curve.setText(_translate("curve_draw_dlg", "开始预测", None))
         self.mineName_label_14.setText(_translate("curve_draw_dlg", "<html><head/><body><p>(m<span style=\" vertical-align:super;\">3</span>/min)</p></body></html>", None))
         self.mineName_label_13.setText(_translate("curve_draw_dlg", "衰   减    系    数   α", None))
         self.mineName_label_12.setText(_translate("curve_draw_dlg", "<html><head/><body><p>钻孔初始瓦斯涌出量q<span style=\" vertical-align:sub;\">0</span></p></body></html>", None))

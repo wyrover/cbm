@@ -14,6 +14,11 @@ public:
 	static void DrawEvalUnitGraph();
 
 	//×ê¿×»æÍ¼
+	static void GeneratePore11();
+	static void GeneratePore12();
+	static void GeneratePore21();
+	static void GeneratePore23();
+
 	static void DrawPlaneGraph11();
 	static void DrawHeadGraph11();
 	static void DrawDipGraph11();

@@ -91,6 +91,8 @@ struct Coal {
 	66: double permeability_k,
 	67: i32 eval_difficult,
 	68: string comment,
+	69: double relative_layer_gap,
+	70: i32 is_protectable,
 }
 
 struct Complexity {

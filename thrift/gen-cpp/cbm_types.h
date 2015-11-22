@@ -250,7 +250,7 @@ inline std::ostream& operator<<(std::ostream& out, const AdjLayer& obj)
 }
 
 typedef struct _Coal__isset {
-  _Coal__isset() : id(false), mine_id(false), name(false), minable(false), thick(false), hw(false), qa(false), qr(false), fore_qr(false), fore_qa(false), rank(false), quality(false), pressure(false), gas_content(false), f_value(false), res_abundance(false), complexity(false), mine_index(false), var_coeff(false), stability(false), dip_angle(false), czh(false), czk(false), czw(false), hw_sum(false), rock(false), hhh(false), layer_gap(false), influence_factor(false), res_a1(false), gas_x1(false), res_a2(false), gas_x2(false), pump_wc(false), pump_k(false), pump_k2(false), pump_k3(false), pump_k4(false), pump_k1(false), pore_datas(false), rho(false), vr(false), gas_w0(false), gas_wc2(false), gas_wc3(false), gas_eta(false), q0(false), eval_method(false), q0_alpha(false), qt_alpha(false), t_alpha(false), q_lambda(false), r_lambda(false), p0_lambda(false), p1_lambda(false), t_lambda(false), a_lambda(false), p1_k(false), p2_k(false), gas_q(false), core_height(false), core_area(false), gas_viscosity(false), decay_alpha(false), permeability_lambda(false), permeability_k(false), eval_difficult(false), comment(false) {}
+  _Coal__isset() : id(false), mine_id(false), name(false), minable(false), thick(false), hw(false), qa(false), qr(false), fore_qr(false), fore_qa(false), rank(false), quality(false), pressure(false), gas_content(false), f_value(false), res_abundance(false), complexity(false), mine_index(false), var_coeff(false), stability(false), dip_angle(false), czh(false), czk(false), czw(false), hw_sum(false), rock(false), hhh(false), layer_gap(false), influence_factor(false), res_a1(false), gas_x1(false), res_a2(false), gas_x2(false), pump_wc(false), pump_k(false), pump_k2(false), pump_k3(false), pump_k4(false), pump_k1(false), pore_datas(false), rho(false), vr(false), gas_w0(false), gas_wc2(false), gas_wc3(false), gas_eta(false), q0(false), eval_method(false), q0_alpha(false), qt_alpha(false), t_alpha(false), q_lambda(false), r_lambda(false), p0_lambda(false), p1_lambda(false), t_lambda(false), a_lambda(false), p1_k(false), p2_k(false), gas_q(false), core_height(false), core_area(false), gas_viscosity(false), decay_alpha(false), permeability_lambda(false), permeability_k(false), eval_difficult(false), comment(false), relative_layer_gap(false), is_protectable(false) {}
   bool id :1;
   bool mine_id :1;
   bool name :1;
@@ -319,6 +319,8 @@ typedef struct _Coal__isset {
   bool permeability_k :1;
   bool eval_difficult :1;
   bool comment :1;
+  bool relative_layer_gap :1;
+  bool is_protectable :1;
 } _Coal__isset;
 
 class Coal {
@@ -326,7 +328,7 @@ class Coal {
 
   Coal(const Coal&);
   Coal& operator=(const Coal&);
-  Coal() : id(0), mine_id(0), name(), minable(0), thick(0), hw(0), qa(0), qr(0), fore_qr(0), fore_qa(0), rank(0), quality(0), pressure(0), gas_content(0), f_value(0), res_abundance(0), complexity(0), mine_index(0), var_coeff(0), stability(0), dip_angle(0), czh(0), czk(0), czw(0), hw_sum(0), rock(0), hhh(0), layer_gap(0), influence_factor(0), res_a1(0), gas_x1(0), res_a2(0), gas_x2(0), pump_wc(0), pump_k(0), pump_k2(0), pump_k3(0), pump_k4(0), pump_k1(0), pore_datas(), rho(0), vr(0), gas_w0(0), gas_wc2(0), gas_wc3(0), gas_eta(0), q0(0), eval_method(0), q0_alpha(0), qt_alpha(0), t_alpha(0), q_lambda(0), r_lambda(0), p0_lambda(0), p1_lambda(0), t_lambda(0), a_lambda(0), p1_k(0), p2_k(0), gas_q(0), core_height(0), core_area(0), gas_viscosity(0), decay_alpha(0), permeability_lambda(0), permeability_k(0), eval_difficult(0), comment() {
+  Coal() : id(0), mine_id(0), name(), minable(0), thick(0), hw(0), qa(0), qr(0), fore_qr(0), fore_qa(0), rank(0), quality(0), pressure(0), gas_content(0), f_value(0), res_abundance(0), complexity(0), mine_index(0), var_coeff(0), stability(0), dip_angle(0), czh(0), czk(0), czw(0), hw_sum(0), rock(0), hhh(0), layer_gap(0), influence_factor(0), res_a1(0), gas_x1(0), res_a2(0), gas_x2(0), pump_wc(0), pump_k(0), pump_k2(0), pump_k3(0), pump_k4(0), pump_k1(0), pore_datas(), rho(0), vr(0), gas_w0(0), gas_wc2(0), gas_wc3(0), gas_eta(0), q0(0), eval_method(0), q0_alpha(0), qt_alpha(0), t_alpha(0), q_lambda(0), r_lambda(0), p0_lambda(0), p1_lambda(0), t_lambda(0), a_lambda(0), p1_k(0), p2_k(0), gas_q(0), core_height(0), core_area(0), gas_viscosity(0), decay_alpha(0), permeability_lambda(0), permeability_k(0), eval_difficult(0), comment(), relative_layer_gap(0), is_protectable(0) {
   }
 
   virtual ~Coal() throw();
@@ -398,6 +400,8 @@ class Coal {
   double permeability_k;
   int32_t eval_difficult;
   std::string comment;
+  double relative_layer_gap;
+  int32_t is_protectable;
 
   _Coal__isset __isset;
 
@@ -537,6 +541,10 @@ class Coal {
 
   void __set_comment(const std::string& val);
 
+  void __set_relative_layer_gap(const double val);
+
+  void __set_is_protectable(const int32_t val);
+
   bool operator == (const Coal & rhs) const
   {
     if (!(id == rhs.id))
@@ -674,6 +682,10 @@ class Coal {
     if (!(eval_difficult == rhs.eval_difficult))
       return false;
     if (!(comment == rhs.comment))
+      return false;
+    if (!(relative_layer_gap == rhs.relative_layer_gap))
+      return false;
+    if (!(is_protectable == rhs.is_protectable))
       return false;
     return true;
   }

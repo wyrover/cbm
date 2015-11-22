@@ -361,6 +361,8 @@ class Coal:
    - permeability_k
    - eval_difficult
    - comment
+   - relative_layer_gap
+   - is_protectable
   """
 
   thrift_spec = (
@@ -433,9 +435,11 @@ class Coal:
     (66, TType.DOUBLE, 'permeability_k', None, None, ), # 66
     (67, TType.I32, 'eval_difficult', None, None, ), # 67
     (68, TType.STRING, 'comment', None, None, ), # 68
+    (69, TType.DOUBLE, 'relative_layer_gap', None, None, ), # 69
+    (70, TType.I32, 'is_protectable', None, None, ), # 70
   )
 
-  def __init__(self, id=None, mine_id=None, name=None, minable=None, thick=None, hw=None, qa=None, qr=None, fore_qr=None, fore_qa=None, rank=None, quality=None, pressure=None, gas_content=None, f_value=None, res_abundance=None, complexity=None, mine_index=None, var_coeff=None, stability=None, dip_angle=None, czh=None, czk=None, czw=None, hw_sum=None, rock=None, hhh=None, layer_gap=None, influence_factor=None, res_a1=None, gas_x1=None, res_a2=None, gas_x2=None, pump_wc=None, pump_k=None, pump_k2=None, pump_k3=None, pump_k4=None, pump_k1=None, pore_datas=None, rho=None, vr=None, gas_w0=None, gas_wc2=None, gas_wc3=None, gas_eta=None, q0=None, eval_method=None, q0_alpha=None, qt_alpha=None, t_alpha=None, q_lambda=None, r_lambda=None, p0_lambda=None, p1_lambda=None, t_lambda=None, a_lambda=None, p1_k=None, p2_k=None, gas_q=None, core_height=None, core_area=None, gas_viscosity=None, decay_alpha=None, permeability_lambda=None, permeability_k=None, eval_difficult=None, comment=None,):
+  def __init__(self, id=None, mine_id=None, name=None, minable=None, thick=None, hw=None, qa=None, qr=None, fore_qr=None, fore_qa=None, rank=None, quality=None, pressure=None, gas_content=None, f_value=None, res_abundance=None, complexity=None, mine_index=None, var_coeff=None, stability=None, dip_angle=None, czh=None, czk=None, czw=None, hw_sum=None, rock=None, hhh=None, layer_gap=None, influence_factor=None, res_a1=None, gas_x1=None, res_a2=None, gas_x2=None, pump_wc=None, pump_k=None, pump_k2=None, pump_k3=None, pump_k4=None, pump_k1=None, pore_datas=None, rho=None, vr=None, gas_w0=None, gas_wc2=None, gas_wc3=None, gas_eta=None, q0=None, eval_method=None, q0_alpha=None, qt_alpha=None, t_alpha=None, q_lambda=None, r_lambda=None, p0_lambda=None, p1_lambda=None, t_lambda=None, a_lambda=None, p1_k=None, p2_k=None, gas_q=None, core_height=None, core_area=None, gas_viscosity=None, decay_alpha=None, permeability_lambda=None, permeability_k=None, eval_difficult=None, comment=None, relative_layer_gap=None, is_protectable=None,):
     self.id = id
     self.mine_id = mine_id
     self.name = name
@@ -504,6 +508,8 @@ class Coal:
     self.permeability_k = permeability_k
     self.eval_difficult = eval_difficult
     self.comment = comment
+    self.relative_layer_gap = relative_layer_gap
+    self.is_protectable = is_protectable
 
   def read(self, iprot):
     if iprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None and fastbinary is not None:
@@ -854,6 +860,16 @@ class Coal:
           self.comment = iprot.readString()
         else:
           iprot.skip(ftype)
+      elif fid == 69:
+        if ftype == TType.DOUBLE:
+          self.relative_layer_gap = iprot.readDouble()
+        else:
+          iprot.skip(ftype)
+      elif fid == 70:
+        if ftype == TType.I32:
+          self.is_protectable = iprot.readI32()
+        else:
+          iprot.skip(ftype)
       else:
         iprot.skip(ftype)
       iprot.readFieldEnd()
@@ -1136,6 +1152,14 @@ class Coal:
       oprot.writeFieldBegin('comment', TType.STRING, 68)
       oprot.writeString(self.comment)
       oprot.writeFieldEnd()
+    if self.relative_layer_gap is not None:
+      oprot.writeFieldBegin('relative_layer_gap', TType.DOUBLE, 69)
+      oprot.writeDouble(self.relative_layer_gap)
+      oprot.writeFieldEnd()
+    if self.is_protectable is not None:
+      oprot.writeFieldBegin('is_protectable', TType.I32, 70)
+      oprot.writeI32(self.is_protectable)
+      oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()
 
@@ -1213,6 +1237,8 @@ class Coal:
     value = (value * 31) ^ hash(self.permeability_k)
     value = (value * 31) ^ hash(self.eval_difficult)
     value = (value * 31) ^ hash(self.comment)
+    value = (value * 31) ^ hash(self.relative_layer_gap)
+    value = (value * 31) ^ hash(self.is_protectable)
     return value
 
   def __repr__(self):

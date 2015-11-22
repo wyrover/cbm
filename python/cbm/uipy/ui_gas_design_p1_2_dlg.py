@@ -376,7 +376,7 @@ class Ui_gas_design_p1_2_dlg(object):
         self.label_2.setText(_translate("gas_design_p1_2_dlg", "(m)", None))
         self.label_3.setText(_translate("gas_design_p1_2_dlg", "(m)", None))
         self.head_graph.setText(_translate("gas_design_p1_2_dlg", "走 向 剖 面 图", None))
-        self.creat_report.setText(_translate("gas_design_p1_2_dlg", "生 成 报 单", None))
+        self.creat_report.setText(_translate("gas_design_p1_2_dlg", "生成钻孔及报单", None))
         self.lab_Ico.setText(_translate("gas_design_p1_2_dlg", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"

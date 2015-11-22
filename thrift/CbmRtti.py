@@ -85,7 +85,9 @@ info = {
 	"permeability_lambda":float,
 	"permeability_k":float,
 	"eval_difficult":int,
-	"comment":str
+	"comment":str,
+	"relative_layer_gap":float,
+	"is_protectable":int
 },
 "Complexity":{
 	"id":int,
@@ -595,7 +597,9 @@ fkey = {
 	"permeability_lambda":0,
 	"permeability_k":0,
 	"eval_difficult":0,
-	"comment":0
+	"comment":0,
+	"relative_layer_gap":0,
+	"is_protectable":0
 },
 "Complexity":{
 	"id":1,
