@@ -103,9 +103,9 @@ AcDbObjectId BaseGraph::drawLine( const AcGePoint3d& spt, const AcGePoint3d& ept
     return objId;
 }
 
-AcDbObjectId BaseGraph::drawAlignedDim( const AcGePoint3d& pt1, const AcGePoint3d& pt2, const CString& text, double offset /*= 30*/, bool clockwise/*=true*/ )
+AcDbObjectId BaseGraph::drawAlignedDim( const AcGePoint3d& pt1, const AcGePoint3d& pt2, const CString& text, double offset /*= 30*/, bool clockwise/*=true*/, const CString& dimStyle )
 {
-    AcDbObjectId objId = ArxDrawHelper::MakeAlignedDim( pt1, pt2, text, offset, clockwise );
+    AcDbObjectId objId = ArxDrawHelper::MakeAlignedDim( pt1, pt2, text, offset, clockwise, dimStyle );
     this->addEnt( objId );
     return objId;
 }

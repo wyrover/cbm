@@ -14,6 +14,7 @@ void SystemHelper::Start()
 
     //创建标注样式
     ArxDrawHelper::CreateDimStyle( DIM_STYLE_NAME, false, 1 );
+	ArxDrawHelper::CreateDimStyle( DIM_STYLE_NAME2, false, 0.5 );
 }
 
 void SystemHelper::ShutDown()

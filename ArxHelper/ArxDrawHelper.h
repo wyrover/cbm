@@ -1,6 +1,7 @@
 #pragma once
 
 #include "dlimexp.h"
+#include "config.h"
 #include <math.h>
 #include <vector>
 
@@ -89,7 +90,7 @@ public:
     static AcDbObjectId Make3PointAngularDim( const AcGePoint3d& centerPt, const AcGePoint3d& pt1,
             const AcGePoint3d& pt2, const AcGePoint3d& textPt );
     //对齐标注
-    static AcDbObjectId MakeAlignedDim( const AcGePoint3d& pt1, const AcGePoint3d& pt2, const CString& text=_T(""), double offset = 30, bool clockwise = true );
+    static AcDbObjectId MakeAlignedDim( const AcGePoint3d& pt1, const AcGePoint3d& pt2, const CString& text=_T(""), double offset = 30, bool clockwise = true, const CString& dimStyle=DIM_STYLE_NAME );
     //直径标注
     static AcDbObjectId MakeDiametricDim( const AcGePoint3d& centerPt, double radius, const AcGePoint3d& textPt );
     //坐标/基线/连续标注

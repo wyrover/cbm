@@ -44,7 +44,9 @@ void OccurrenceGraph::drawCoal(cbm::Coal& coal, const AcGePoint3d& basePt)
 	v2.rotateBy(angle, AcGeVector3d::kZAxis);
 
 	//this->drawMText( basePt + v1 * L1 *0.5 + v2 * thick * 0.5, angle, C2W(coal.name), 10 );
-	this->drawMText( basePt + v1*-5 + v2 * thick * 0.5, angle, C2W(coal.name), 8, AcDbMText::kMiddleRight );
+	CString text;
+	text.Format(_T("%s煤"), C2W(coal.name));
+	this->drawMText( basePt + v1*-5 + v2 * thick * 0.5, angle, text, 4, AcDbMText::kMiddleRight );
 	//标注煤层厚度
 	//this->drawAlignedDim(basePt+v1*L1, basePt+v1*L1+v2*thick, 30, false);
 }
@@ -64,7 +66,7 @@ void OccurrenceGraph::drawAllCoals(cbm::Mine& mine)
 		cbm::Coal& coal = coal_lists[i];
 		if(coal.id < 0) continue;
 		
-		AcGeVector3d dv = v1 * L1 *0.5;
+		AcGeVector3d dv = v1 * L1;
 		//与上覆煤层的间距
 		double layer_gap = coal.layer_gap;
 		// 煤厚
@@ -76,7 +78,7 @@ void OccurrenceGraph::drawAllCoals(cbm::Mine& mine)
 		{
 			CString layer_gap_str;
 			layer_gap_str.Format(_T("%.1f米"), layer_gap);
-			this->drawAlignedDim(basePt + dv, pt + dv, layer_gap_str, 10, false);
+			this->drawAlignedDim(basePt + dv, pt + dv, layer_gap_str, 2, false, DIM_STYLE_NAME2);
 		}
 		//更新当前煤层的基点
 		basePt  = pt - v2 * thick;

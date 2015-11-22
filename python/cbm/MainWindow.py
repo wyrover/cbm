@@ -192,7 +192,7 @@ class MainWindow(QtGui.QMainWindow):
 		self.try_run(PoreFlowDlg, Authority.USER)
 
 	# 曲线绘制
-	def drawCurves(self):
+	def gasDrillingPredict(self):
 		# 绘制曲线
 		self.try_run(CurveDrawDlg, Authority.USER)
 
@@ -378,7 +378,7 @@ class MainWindow(QtGui.QMainWindow):
 		self.regAction(u"辅助计算", u"高位抽采钻孔有效布设范围", u"高位抽采钻孔有效布设范围辅助计算", self.highDrillingPore)
 		self.regAction(u"辅助计算", u"抽采管径大小", u"抽采管径大小辅助计算", self.poreSize)
 		self.regAction(u"辅助计算", u"孔板流量", u"孔板流量辅助计算", self.poreFlow)
-		self.regAction(u"抽采参数优化", u"钻孔抽采量预测", u"钻孔抽采量预测", self.drawCurves)
+		self.regAction(u"抽采参数优化", u"钻孔抽采量预测", u"钻孔抽采量预测", self.gasDrillingPredict)
 		self.regAction(u"抽采参数优化", u"钻孔间距计算", u"煤层瓦斯抽采半径辅助计算", self.gasDrillingRadius)
 		self.regAction(u"抽采参数优化", u"钻孔间距优化", u"煤层瓦斯抽采半径辅助计算", self.gasDrillingOptimize)
 		# self.regAction(u"抽采参数优化", u"钻孔间距优化3", u"煤层瓦斯抽采半径辅助计算", self.gasDrillingAnalyse)

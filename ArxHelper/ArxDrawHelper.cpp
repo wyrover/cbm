@@ -921,7 +921,7 @@ AcDbObjectId ArxDrawHelper::Make3PointAngularDim( const AcGePoint3d& centerPt, c
     }
 }
 
-AcDbObjectId ArxDrawHelper::MakeAlignedDim( const AcGePoint3d& pt1, const AcGePoint3d& pt2, const CString& text, double offset, bool clockwise )
+AcDbObjectId ArxDrawHelper::MakeAlignedDim( const AcGePoint3d& pt1, const AcGePoint3d& pt2, const CString& text, double offset, bool clockwise, const CString& dimStyle )
 {
     AcGeVector3d v = pt2 - pt1;
     double angle = v.angleTo( AcGeVector3d::kXAxis, -AcGeVector3d::kZAxis );
@@ -944,7 +944,9 @@ AcDbObjectId ArxDrawHelper::MakeAlignedDim( const AcGePoint3d& pt1, const AcGePo
     dim->useSetTextPosition();    // make text go where user picked
     dim->setDatabaseDefaults();
 
-    AcDbObjectId dimStyleId = ArxDrawHelper::GetDimStyle( DIM_STYLE_NAME );
+	CString style = dimStyle;
+	if(dimStyle == _T("")) style = DIM_STYLE_NAME;
+    AcDbObjectId dimStyleId = ArxDrawHelper::GetDimStyle( style );
     if( !dimStyleId.isNull() )
     {
         dim->setDimensionStyle( dimStyleId );
