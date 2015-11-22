@@ -72,3 +72,5 @@ acad.err
 *.dat
 
 soui*.rc2
+ui_*.py
+*_rc.py

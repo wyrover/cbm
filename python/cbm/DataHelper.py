@@ -15,6 +15,8 @@ import json
 import datetime
 from math import sqrt, pow, exp, sin, cos, tan, radians, log10, pi
 
+import UiHelper
+import DataHelper
 import EncodeHelper
 
 #pandas给matplotlib提供了一种ggplot绘图的扩展主题(可以认为类似于windows的主题),效果更好看
@@ -530,3 +532,42 @@ def test_json():
 	
 	jsonStr = json.dumps(data)
 	print "jsonStr:",jsonStr
+
+# 读取数据库生成json数据,数据,用于生成钻孔报表
+def generateJsonFileOfPoreReport(coal_id, tws_tech_id, json_file):
+	# 查找煤层
+	coal = SQLClientHelper.GetCoalById(coal_id)
+	if coal.id <= 0:return False
+	# 查找矿井
+	mine = SQLClientHelper.GetMineById(coal.mine_id)
+	if mine.id  <= 0:return False
+	# 查找掘进面的抽采技术
+	tws_tech = SQLClientHelper.GetDesignDrillingSurfTechnologyById(self.design_id)
+	if tws_tech.id <= 0:return False
+
+	# json模块可以直接将词典转换成json编码串
+	# 因此主要的
+	data = {"pore_header":["钻孔编号","钻孔长度","钻孔倾角","钻孔方位角"]}
+	# 写入矿井名称(utf-8编码)
+	data['$*mine_name*$'] = mine.name
+	# 写入工作面名称
+	data['$*work_face_name*$'] = 'F292'
+	# 写入底板岩巷距离煤层的垂距
+	data['w_dist'] = tws_tech.v_offset
+	# 写入水平投影距离
+	data['h_offset'] = tws_tech.h_offset
+	# 写入钻场间距
+	data['site_gap'] = tws_tech.gs
+	# 写入钻孔孔径
+	data['pore_diameter'] = tws_tech.gp
+	# 写入封孔长度
+	data['$*pore_lenth*$'] = 98
+	# 写入word模板路径
+	data['tplPath']="help\\doc\\tpl\\底板岩巷密集穿层钻孔抽采煤巷条带瓦斯抽采技术.doc"
+	# 写入钻孔信息
+
+	# 生成json文件
+	encodedjson = json.dumps(data)
+	file_object = open(json_file, 'w')
+	file_object.write(result)
+	file_object.close()
