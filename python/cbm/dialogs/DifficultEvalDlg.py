@@ -104,4 +104,5 @@ class DifficultEvalDlg(BaseDialog):
 			UiHelper.MessageBox(u'sorry,出了点问题,请联系技术人员(错误代:F1)!')
 
 	def onEvalProof(self):
-		UiHelper.MessageBox(u'尚未实现该功能')
+		pass
+		# UiHelper.MessageBox(u'尚未实现')

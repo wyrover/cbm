@@ -89,10 +89,12 @@ class MineGasFlowPredictDlg(BaseDialog):
 			self.ui.coal.setCurrentIndex(index)
 		
 	def onK1Help(self):
-		UiHelper.MessageBox(u'该功能尚未实现!')
+		pass
+		# UiHelper.MessageBox(u'该功能尚未实现!')
 
 	def onK2Help(self):
-		UiHelper.MessageBox(u'该功能尚未实现!')
+		pass
+		# UiHelper.MessageBox(u'该功能尚未实现!')
 
 	def onDesignWorkArea(self):
 		index = self.ui.work_area.currentIndex()
