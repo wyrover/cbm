@@ -695,6 +695,14 @@ class Coal {
    * @var string
    */
   public $comment = null;
+  /**
+   * @var double
+   */
+  public $relative_layer_gap = null;
+  /**
+   * @var int
+   */
+  public $is_protectable = null;
 
   public function __construct($vals=null) {
     if (!isset(self::$_TSPEC)) {
@@ -971,6 +979,14 @@ class Coal {
           'var' => 'comment',
           'type' => TType::STRING,
           ),
+        69 => array(
+          'var' => 'relative_layer_gap',
+          'type' => TType::DOUBLE,
+          ),
+        70 => array(
+          'var' => 'is_protectable',
+          'type' => TType::I32,
+          ),
         );
     }
     if (is_array($vals)) {
@@ -1177,6 +1193,12 @@ class Coal {
       }
       if (isset($vals['comment'])) {
         $this->comment = $vals['comment'];
+      }
+      if (isset($vals['relative_layer_gap'])) {
+        $this->relative_layer_gap = $vals['relative_layer_gap'];
+      }
+      if (isset($vals['is_protectable'])) {
+        $this->is_protectable = $vals['is_protectable'];
       }
     }
   }
@@ -1676,6 +1698,20 @@ class Coal {
             $xfer += $input->skip($ftype);
           }
           break;
+        case 69:
+          if ($ftype == TType::DOUBLE) {
+            $xfer += $input->readDouble($this->relative_layer_gap);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 70:
+          if ($ftype == TType::I32) {
+            $xfer += $input->readI32($this->is_protectable);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
         default:
           $xfer += $input->skip($ftype);
           break;
@@ -2027,6 +2063,16 @@ class Coal {
     if ($this->comment !== null) {
       $xfer += $output->writeFieldBegin('comment', TType::STRING, 68);
       $xfer += $output->writeString($this->comment);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->relative_layer_gap !== null) {
+      $xfer += $output->writeFieldBegin('relative_layer_gap', TType::DOUBLE, 69);
+      $xfer += $output->writeDouble($this->relative_layer_gap);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->is_protectable !== null) {
+      $xfer += $output->writeFieldBegin('is_protectable', TType::I32, 70);
+      $xfer += $output->writeI32($this->is_protectable);
       $xfer += $output->writeFieldEnd();
     }
     $xfer += $output->writeFieldStop();
@@ -7726,6 +7772,10 @@ class Mine {
    * @var string
    */
   public $comment = null;
+  /**
+   * @var int
+   */
+  public $protect_layer_condition = null;
 
   public function __construct($vals=null) {
     if (!isset(self::$_TSPEC)) {
@@ -7858,6 +7908,10 @@ class Mine {
           'var' => 'comment',
           'type' => TType::STRING,
           ),
+        33 => array(
+          'var' => 'protect_layer_condition',
+          'type' => TType::I32,
+          ),
         );
     }
     if (is_array($vals)) {
@@ -7956,6 +8010,9 @@ class Mine {
       }
       if (isset($vals['comment'])) {
         $this->comment = $vals['comment'];
+      }
+      if (isset($vals['protect_layer_condition'])) {
+        $this->protect_layer_condition = $vals['protect_layer_condition'];
       }
     }
   }
@@ -8203,6 +8260,13 @@ class Mine {
             $xfer += $input->skip($ftype);
           }
           break;
+        case 33:
+          if ($ftype == TType::I32) {
+            $xfer += $input->readI32($this->protect_layer_condition);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
         default:
           $xfer += $input->skip($ftype);
           break;
@@ -8374,6 +8438,11 @@ class Mine {
     if ($this->comment !== null) {
       $xfer += $output->writeFieldBegin('comment', TType::STRING, 32);
       $xfer += $output->writeString($this->comment);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->protect_layer_condition !== null) {
+      $xfer += $output->writeFieldBegin('protect_layer_condition', TType::I32, 33);
+      $xfer += $output->writeI32($this->protect_layer_condition);
       $xfer += $output->writeFieldEnd();
     }
     $xfer += $output->writeFieldStop();

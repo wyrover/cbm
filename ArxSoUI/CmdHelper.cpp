@@ -131,6 +131,98 @@ void CmdHelper::DrawEvalUnitGraph()
 	graph.draw();
 }
 
+void CmdHelper::GeneratePore11()
+{
+	int coal_id = -1;
+	if(RTNORM != acedGetInt(NULL, &coal_id)) return;
+	if(coal_id == -1) return;
+
+	int tech_id = -1;
+	if(RTNORM != acedGetInt(NULL, &tech_id)) return;
+	if(tech_id == -1) return;
+
+	cbm::Coal coal;
+	SQLClientHelper::GetCoalById(coal, coal_id);
+	if( coal.id < 0 ) return;
+
+	cbm::DesignDrillingSurfTechnology tws_tech;
+	SQLClientHelper::GetDesignDrillingSurfTechnologyById(tws_tech, tech_id);
+	if(tws_tech.id < 0 ) return;
+
+	// 生成钻孔坐标数据文件(测试用)
+	P11::PoreHelper ph(coal, tws_tech);
+	ph.cacl();
+}
+
+void CmdHelper::GeneratePore12()
+{
+	int coal_id = -1;
+	if(RTNORM != acedGetInt(NULL, &coal_id)) return;
+	if(coal_id == -1) return;
+
+	int tech_id = -1;
+	if(RTNORM != acedGetInt(NULL, &tech_id)) return;
+	if(tech_id == -1) return;
+
+	cbm::Coal coal;
+	SQLClientHelper::GetCoalById(coal, coal_id);
+	if( coal.id < 0 ) return;
+
+	cbm::DesignDrillingSurfTechnology tws_tech;
+	SQLClientHelper::GetDesignDrillingSurfTechnologyById(tws_tech, tech_id);
+	if(tws_tech.id < 0 ) return;
+
+	// 生成钻孔坐标数据文件(测试用)
+	//P11::PoreHelper ph(coal, tws_tech);
+	//ph.cacl();
+}
+
+void CmdHelper::GeneratePore21()
+{
+	int coal_id = -1;
+	if(RTNORM != acedGetInt(NULL, &coal_id)) return;
+	if(coal_id == -1) return;
+
+	int tech_id = -1;
+	if(RTNORM != acedGetInt(NULL, &tech_id)) return;
+	if(tech_id == -1) return;
+
+	cbm::Coal coal;
+	SQLClientHelper::GetCoalById(coal, coal_id);
+	if( coal.id < 0 ) return;
+
+	cbm::DesignWorkSurfTechnology ws_tech;
+	SQLClientHelper::GetDesignWorkSurfTechnologyById(ws_tech, tech_id);
+	if(ws_tech.id < 0 ) return;
+
+	// 生成钻孔坐标数据文件(测试用)
+	//P11::PoreHelper ph(coal, tws_tech);
+	//ph.cacl();
+}
+
+void CmdHelper::GeneratePore23()
+{
+	int coal_id = -1;
+	if(RTNORM != acedGetInt(NULL, &coal_id)) return;
+	if(coal_id == -1) return;
+
+	int tech_id = -1;
+	if(RTNORM != acedGetInt(NULL, &tech_id)) return;
+	if(tech_id == -1) return;
+
+	cbm::Coal coal;
+	SQLClientHelper::GetCoalById(coal, coal_id);
+	if( coal.id < 0 ) return;
+
+	cbm::DesignWorkSurfTechnology ws_tech;
+	SQLClientHelper::GetDesignWorkSurfTechnologyById(ws_tech, tech_id);
+	if(ws_tech.id < 0 ) return;
+
+	// 生成钻孔坐标数据文件(测试用)
+	//P11::PoreHelper ph(coal, tws_tech);
+	//ph.cacl();
+}
+
 void CmdHelper::DrawPlaneGraph11()
 {
 	int coal_id = -1;
@@ -157,10 +249,6 @@ void CmdHelper::DrawPlaneGraph11()
 	P11::PlanGraph graph( coal, tws_tech );
 	graph.setPoint( pt );
 	graph.draw();
-
-	// 生成钻孔坐标数据文件(测试用)
-	P11::PoreHelper ph(coal, tws_tech);
-	ph.cacl();
 }
 
 void CmdHelper::DrawHeadGraph11()

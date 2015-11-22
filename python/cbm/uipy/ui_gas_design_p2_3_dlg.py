@@ -387,7 +387,7 @@ class Ui_gas_design_p2_3_dlg(object):
         self.pore_type1.setText(_translate("gas_design_p2_3_dlg", "平行钻孔", None))
         self.pore_type3.setText(_translate("gas_design_p2_3_dlg", "扇形钻孔", None))
         self.pore_type2.setText(_translate("gas_design_p2_3_dlg", "斜交钻孔", None))
-        self.creat_report.setText(_translate("gas_design_p2_3_dlg", "生 成 报 单", None))
+        self.creat_report.setText(_translate("gas_design_p2_3_dlg", "生成钻孔及报单", None))
         self.lab_Ico.setText(_translate("gas_design_p2_3_dlg", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"

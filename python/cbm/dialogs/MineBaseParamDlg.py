@@ -60,6 +60,7 @@ class MineBaseParamDlg(BaseDialog):
 		topo_geo = mine.topo_geo
 		hydr_geo = mine.hydr_geo
 		ground_condition = mine.ground_condition
+		protect_layer_condition = mine.protect_layer_condition
 		# 查找矿区
 		mine_region = SQLClientHelper.GetMineRegionById(mine.mine_region_id)
 		# combobox里的text好像不需要unicode,貌似不需要"编码"(encode)
@@ -77,6 +78,7 @@ class MineBaseParamDlg(BaseDialog):
 		self.ui.ground_cond.setChecked(ground_condition != 0)
 		self.ui.base.setCurrentIndex(self.ui.base.findText(base_name))
 		self.ui.region.setCurrentIndex(self.ui.region.findText(region_name))
+		self.ui.protect_layer_condition.setChecked(protect_layer_condition != 0)
 
 	def onMineBaseChanged(self, index):
 		# 清空矿区列表
@@ -108,6 +110,7 @@ class MineBaseParamDlg(BaseDialog):
 		mine.topo_geo = self.ui.topo_geo.currentIndex() + 1
 		mine.hydr_geo = self.ui.hydr_geo.currentIndex() + 1
 		mine.ground_condition = int(self.ui.ground_cond.isChecked())
+		mine.protect_layer_condition = int(self.ui.protect_layer_condition.isChecked())
 		region_name = unicode(self.ui.region.currentText()).encode('utf-8')
 		mine.mine_region_id = SQLClientHelper.GetMineRegionIdByField1('name', region_name)
 		if SQLClientHelper.UpdateMine(mine):

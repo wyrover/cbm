@@ -164,6 +164,26 @@ public:
 	{
 		CmdHelper::DrawDipGraph23();
 	}
+
+	static void JL_GeneratePore11()
+	{
+		CmdHelper::GeneratePore11();
+	}
+
+	static void JL_GeneratePore12()
+	{
+		CmdHelper::GeneratePore12();
+	}
+
+	static void JL_GeneratePore21()
+	{
+		CmdHelper::GeneratePore21();
+	}
+
+	static void JL_GeneratePore23()
+	{
+		CmdHelper::GeneratePore23();
+	}
 } ;
 
 //-----------------------------------------------------------------------------
@@ -189,3 +209,8 @@ ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _DrawDipGraph21, DrawDipGraph21, AC
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _DrawPlaneGraph23, DrawPlaneGraph23, ACRX_CMD_TRANSPARENT, NULL )
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _DrawHeadGraph23, DrawHeadGraph23, ACRX_CMD_TRANSPARENT, NULL )
 ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _DrawDipGraph23, DrawDipGraph23, ACRX_CMD_TRANSPARENT, NULL )
+
+ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _GeneratePore11, GeneratePore11, ACRX_CMD_TRANSPARENT, NULL )
+ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _GeneratePore12, GeneratePore12, ACRX_CMD_TRANSPARENT, NULL )
+ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _GeneratePore21, GeneratePore21, ACRX_CMD_TRANSPARENT, NULL )
+ACED_ARXCOMMAND_ENTRY_AUTO( CArxSoUIApp, JL, _GeneratePore23, GeneratePore23, ACRX_CMD_TRANSPARENT, NULL )

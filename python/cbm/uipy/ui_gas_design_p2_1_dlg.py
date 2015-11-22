@@ -556,7 +556,7 @@ class Ui_gas_design_p2_1_dlg(object):
         self.help.setText(_translate("gas_design_p2_1_dlg", "参考取值", None))
         self.save.setText(_translate("gas_design_p2_1_dlg", "保 存", None))
         self.plane_graph.setText(_translate("gas_design_p2_1_dlg", "平 面 图", None))
-        self.creat_report.setText(_translate("gas_design_p2_1_dlg", "生 成 报 单", None))
+        self.creat_report.setText(_translate("gas_design_p2_1_dlg", "生成钻孔及报单", None))
         self.lab_Ico.setText(_translate("gas_design_p2_1_dlg", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"

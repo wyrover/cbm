@@ -19,7 +19,7 @@ class GasDrillingOptimizeDlg(BaseDialog):
 		self.ui = Ui_gas_drilling_optimize_dlg()
 		self.ui.setupUi(self)
 		self.initUi(self.ui) # 美化ui
-		self.setTitle(u"瓦斯钻孔优化计算")
+		self.setTitle(u"钻孔间距优化")
 		self.setFixedSize(self.width(), self.height())
 		#在窗口上为"煤层渗透率"控件安装过滤器
 		# self.ui.t0.installEventFilter(self)

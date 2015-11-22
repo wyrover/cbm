@@ -105,6 +105,8 @@ class Coal(Base):
     permeability_k = Column(Numeric(8, 2))
     eval_difficult = Column(Integer)
     comment = Column(String(255))
+    relative_layer_gap = Column(Numeric(8, 2))
+    is_protectable = Column(Integer)
 
     mine = relationship(u'Mine')
 
@@ -469,6 +471,7 @@ class Mine(Base):
     pump_wc = Column(Numeric(8, 2))
     reserve_gas = Column(Numeric(8, 2))
     comment = Column(String(255))
+    protect_layer_condition = Column(Integer)
 
     account = relationship(u'Account')
     mine_region = relationship(u'MineRegion')

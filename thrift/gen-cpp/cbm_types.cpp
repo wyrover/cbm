@@ -682,6 +682,14 @@ void Coal::__set_comment(const std::string& val) {
   this->comment = val;
 }
 
+void Coal::__set_relative_layer_gap(const double val) {
+  this->relative_layer_gap = val;
+}
+
+void Coal::__set_is_protectable(const int32_t val) {
+  this->is_protectable = val;
+}
+
 uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -1247,6 +1255,22 @@ uint32_t Coal::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
+      case 69:
+        if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
+          xfer += iprot->readDouble(this->relative_layer_gap);
+          this->__isset.relative_layer_gap = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 70:
+        if (ftype == ::apache::thrift::protocol::T_I32) {
+          xfer += iprot->readI32(this->is_protectable);
+          this->__isset.is_protectable = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -1536,6 +1560,14 @@ uint32_t Coal::write(::apache::thrift::protocol::TProtocol* oprot) const {
   xfer += oprot->writeString(this->comment);
   xfer += oprot->writeFieldEnd();
 
+  xfer += oprot->writeFieldBegin("relative_layer_gap", ::apache::thrift::protocol::T_DOUBLE, 69);
+  xfer += oprot->writeDouble(this->relative_layer_gap);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("is_protectable", ::apache::thrift::protocol::T_I32, 70);
+  xfer += oprot->writeI32(this->is_protectable);
+  xfer += oprot->writeFieldEnd();
+
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -1611,6 +1643,8 @@ void swap(Coal &a, Coal &b) {
   swap(a.permeability_k, b.permeability_k);
   swap(a.eval_difficult, b.eval_difficult);
   swap(a.comment, b.comment);
+  swap(a.relative_layer_gap, b.relative_layer_gap);
+  swap(a.is_protectable, b.is_protectable);
   swap(a.__isset, b.__isset);
 }
 
@@ -1683,6 +1717,8 @@ Coal::Coal(const Coal& other4) {
   permeability_k = other4.permeability_k;
   eval_difficult = other4.eval_difficult;
   comment = other4.comment;
+  relative_layer_gap = other4.relative_layer_gap;
+  is_protectable = other4.is_protectable;
   __isset = other4.__isset;
 }
 Coal& Coal::operator=(const Coal& other5) {
@@ -1754,6 +1790,8 @@ Coal& Coal::operator=(const Coal& other5) {
   permeability_k = other5.permeability_k;
   eval_difficult = other5.eval_difficult;
   comment = other5.comment;
+  relative_layer_gap = other5.relative_layer_gap;
+  is_protectable = other5.is_protectable;
   __isset = other5.__isset;
   return *this;
 }
@@ -1828,6 +1866,8 @@ void Coal::printTo(std::ostream& out) const {
   out << ", " << "permeability_k=" << to_string(permeability_k);
   out << ", " << "eval_difficult=" << to_string(eval_difficult);
   out << ", " << "comment=" << to_string(comment);
+  out << ", " << "relative_layer_gap=" << to_string(relative_layer_gap);
+  out << ", " << "is_protectable=" << to_string(is_protectable);
   out << ")";
 }
 
@@ -7172,6 +7212,10 @@ void Mine::__set_comment(const std::string& val) {
   this->comment = val;
 }
 
+void Mine::__set_protect_layer_condition(const int32_t val) {
+  this->protect_layer_condition = val;
+}
+
 uint32_t Mine::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -7449,6 +7493,14 @@ uint32_t Mine::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
+      case 33:
+        if (ftype == ::apache::thrift::protocol::T_I32) {
+          xfer += iprot->readI32(this->protect_layer_condition);
+          this->__isset.protect_layer_condition = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -7594,6 +7646,10 @@ uint32_t Mine::write(::apache::thrift::protocol::TProtocol* oprot) const {
   xfer += oprot->writeString(this->comment);
   xfer += oprot->writeFieldEnd();
 
+  xfer += oprot->writeFieldBegin("protect_layer_condition", ::apache::thrift::protocol::T_I32, 33);
+  xfer += oprot->writeI32(this->protect_layer_condition);
+  xfer += oprot->writeFieldEnd();
+
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -7633,6 +7689,7 @@ void swap(Mine &a, Mine &b) {
   swap(a.pump_wc, b.pump_wc);
   swap(a.reserve_gas, b.reserve_gas);
   swap(a.comment, b.comment);
+  swap(a.protect_layer_condition, b.protect_layer_condition);
   swap(a.__isset, b.__isset);
 }
 
@@ -7669,6 +7726,7 @@ Mine::Mine(const Mine& other42) {
   pump_wc = other42.pump_wc;
   reserve_gas = other42.reserve_gas;
   comment = other42.comment;
+  protect_layer_condition = other42.protect_layer_condition;
   __isset = other42.__isset;
 }
 Mine& Mine::operator=(const Mine& other43) {
@@ -7704,6 +7762,7 @@ Mine& Mine::operator=(const Mine& other43) {
   pump_wc = other43.pump_wc;
   reserve_gas = other43.reserve_gas;
   comment = other43.comment;
+  protect_layer_condition = other43.protect_layer_condition;
   __isset = other43.__isset;
   return *this;
 }
@@ -7742,6 +7801,7 @@ void Mine::printTo(std::ostream& out) const {
   out << ", " << "pump_wc=" << to_string(pump_wc);
   out << ", " << "reserve_gas=" << to_string(reserve_gas);
   out << ", " << "comment=" << to_string(comment);
+  out << ", " << "protect_layer_condition=" << to_string(protect_layer_condition);
   out << ")";
 }
 

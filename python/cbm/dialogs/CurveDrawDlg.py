@@ -17,7 +17,7 @@ class CurveDrawDlg(BaseDialog):
 		self.ui = Ui_curve_draw_dlg()
 		self.ui.setupUi(self)
 		self.initUi(self.ui) # 美化ui
-		self.setTitle(u"曲线绘制")
+		self.setTitle(u"钻孔抽采量预测")
 		self.setFixedSize(self.width(),self.height())
 		self.ui.draw_curve.clicked.connect(self.onDrawCurve)
 		# 待设计的矿井

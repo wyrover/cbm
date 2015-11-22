@@ -103,7 +103,12 @@
     </column>
     <column>
      <property name="text">
-      <string>是否具备保护层开采条件?</string>
+      <string>煤层厚度</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>保护类型</string>
      </property>
     </column>
    </widget>
@@ -264,6 +269,78 @@
     </property>
     <property name="text">
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/images/arrow.png&quot;/&gt;煤层群条件&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="help1">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>141</x>
+      <y>1</y>
+      <width>21</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;1、中高渗条件&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;所有的煤层渗透率均大于等于&lt;/span&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#aa55ff;&quot;&gt;5mD&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;2、低渗条件&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;煤层渗透率均大于等于&lt;/span&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#aa55ff;&quot;&gt;5mD&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="../usecad.qrc">
+      <normaloff>:/images/question.png</normaloff>:/images/question.png</iconset>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="help2">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>186</y>
+      <width>21</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'宋体'; font-size:14pt; color:#000000;&quot;&gt;相对层间距离和煤层倾角是决定保护层保护效果的关键因素，但保护层回采工作面参数对保护也有不可忽视的影响。因此，在反映保护层厚度与层间垂距的相对层间距基础上，综合考虑煤层赋存条件、层间硬岩以及保护层工作面回采参数的影响，构建保护层的工程分类指标——当量相对层间距&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="../usecad.qrc">
+      <normaloff>:/images/question.png</normaloff>:/images/question.png</iconset>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="help3">
+    <property name="geometry">
+     <rect>
+      <x>108</x>
+      <y>370</y>
+      <width>21</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'宋体'; font-size:14pt; color:#000000;&quot;&gt;1、单一煤层条件&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt; color:#000000;&quot;&gt;（1）煤层数量为&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:12pt; color:#000000;&quot;&gt;1&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt; color:#000000;&quot;&gt;层&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt; color:#000000;&quot;&gt;（2）煤层数量大于1层，且任何两层间的层间距与下层面的比值均大于&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:12pt; color:#000000;&quot;&gt;40&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt; color:#000000;&quot;&gt;时，判定为&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;2、&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:14pt; color:#000000;&quot;&gt;煤层群条件&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:12pt; color:#000000;&quot;&gt;（1）&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt; color:#000000;&quot;&gt;近距离煤层群条件&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:12pt; color:#000000;&quot;&gt;任何一个煤层的&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt; color:#000000;&quot;&gt;“&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:12pt; font-weight:600; color:#aa55ff;&quot;&gt;与上覆煤层间距&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt; color:#000000;&quot;&gt;”&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:12pt; color:#000000;&quot;&gt;均&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;≤&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt; color:#000000;&quot;&gt;“&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt; font-weight:600; color:#aa55ff;&quot;&gt;煤层开采冒落带高度&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt; color:#000000;&quot;&gt;”&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:12pt; color:#000000;&quot;&gt;且&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:12pt; font-weight:600; color:#aa55ff;&quot;&gt;采动影响倍数均≤7.5&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt; color:#000000;&quot;&gt;时，判定为；&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt; color:#000000;&quot;&gt;（2）&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:12pt; color:#000000;&quot;&gt;中远距离煤层群条件&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:12pt; color:#000000;&quot;&gt;不满足（1）条件的煤层&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="../usecad.qrc">
+      <normaloff>:/images/question.png</normaloff>:/images/question.png</iconset>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
     </property>
    </widget>
   </widget>
