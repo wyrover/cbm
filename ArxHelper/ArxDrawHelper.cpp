@@ -1230,7 +1230,7 @@ AcDbObjectId ArxDrawHelper::CreateDimStyle( const CString& dimStyleName, bool mo
     pDimStyleTblRcd->setDimclrd( clr ); //为尺寸线、箭头和标注引线指定颜色，0为byblock、256为bylayer
     pDimStyleTblRcd->setDimclre( clr ); //为尺寸界线指定颜色。此颜色可以是任意有效的颜色编号
     pDimStyleTblRcd->setDimclrt( clr ); //为标注文字指定颜色，0为byblock、256为bylayer
-    pDimStyleTblRcd->setDimexo( 10 * bili ); //指定尺寸界线偏移原点的距离
+    pDimStyleTblRcd->setDimexo( 1 * bili ); //指定尺寸界线偏移原点的距离
     pDimStyleTblRcd->setDimgap( 2 * bili ); //文字从尺寸线偏移 '当尺寸线分成段以在两段之间放置标注文字时，设置标注文字周围的距离
     pDimStyleTblRcd->setDimjust( 0 ); //控制标注文字的水平位置
     pDimStyleTblRcd->setDimtix( 1 ); //设置标注文字始终绘制在尺寸界线之间

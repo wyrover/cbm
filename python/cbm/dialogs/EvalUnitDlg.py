@@ -61,6 +61,7 @@ class EvalUnitDlg(BaseDialog):
 		self.ui.h.setText(u'%.1f' % deup.h)
 		self.ui.r.setText(u'%.1f' % deup.r)
 		self.ui.t.setText(u'%.1f' % deup.t)
+		self.ui.v.setText(u'%d' % int(deup.v))
 
 		# 填充煤层数据
 		self.ui.thick.setText(u'%.1f' % coal.thick)
@@ -81,7 +82,8 @@ class EvalUnitDlg(BaseDialog):
 		deup = SQLClientHelper.GetDesignEvalUnitPartitionByForeignKey('work_surf_id', work_surf_id)
 		if deup.id <= 0:
 			UiHelper.MessageBox(u'sorry,出了点问题,请联系技术人员(错误码:Z12)')
-			return		
+			return
+
 		# 设计评价单元
 		DataHelper.design_eval_unit(deup.id)
 		# 给cad发送命令请求绘制评价单元示意图
@@ -122,6 +124,7 @@ class EvalUnitDlg(BaseDialog):
 		deup.h, ok = self.ui.h.text().toDouble()
 		deup.r, ok = self.ui.r.text().toDouble()
 		deup.t, ok = self.ui.t.text().toDouble()
+		deup.v, ok = self.ui.v.text().toDouble()
 
 		# 提交到数据库
 		if not SQLClientHelper.UpdateDesignEvalUnitPartition(deup):

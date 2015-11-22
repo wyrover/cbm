@@ -163,7 +163,8 @@ class DecisionDlg(BaseDialog):
 		if len(coal_lists) == 0:
 			return 0 # 单一煤层条件
 		else:
-			f = lambda coal:int(coal.layer_gap <= coal.czh and coal.influence_factor <= 7.5)
+			# f = lambda coal:int(coal.layer_gap <= coal.czh and coal.influence_factor <= 7.5)
+			f = lambda coal:int(coal.influence_factor <= 7.5)
 			n = sum([f(coal) for coal in coal_lists])
 			if n == len(coal_lists):
 				return 1 # 近距离煤层群条件

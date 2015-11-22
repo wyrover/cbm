@@ -178,13 +178,13 @@ def dip_angle_type(angle):
 # 计算评价单元的距离
 def Lf(Ln, T, V):
 	c1, c2 = 3.0/7.0, 10.0/7.0
-	Ln_1 = Ln - c2*T*V
+	Ln_1 = Ln - c1*T*V
 	if Ln_1 <= 0:
 		return []
 
 	Li = [Ln, Ln_1]
 	while True:
-		Ln_1 = c2*Ln_1-c1*Ln - c1*T*V
+		Ln_1 = c2*Ln_1 - c1*Ln - c1*T*V
 		if Ln_1 > 0:
 			Li.append(Ln_1)
 		else:
@@ -206,6 +206,7 @@ def design_eval_unit(partition_id):
 
 	# 计算各单元边界线与巷道交点到巷道起点的距离
 	Li = Lf(Ln, T, V)
+	print Li
 
 	# 计算各单元的起点抽采时间
 	g = lambda x:int(round(1.0*(Ln-x)/V+T))
@@ -236,10 +237,10 @@ def draw_curve(q0, alpha):
 	plt.subplot(211)
 	plt.title(u'百米钻孔在不同时间t内可抽采的瓦斯总量$Q_t(q_0=%.1f, α=%.1f)$' % (q0, alpha))
 	plt.xlabel(u'抽采时间$t(d)$')
-	plt.ylabel(u'可抽瓦斯总量$Q_t(m^3)$')
+	plt.ylabel(u'可抽瓦斯总量$Q_t(L)$')
 	plt.grid(True)
 	plt.plot(T, Q, label=u'$Q_t=1440q_0(1-e^{-αt})/α$')
-	plt.plot(T, Q0, 'r--', label=u'$Q_∞$= %.1f ($m^3$)' % c)
+	plt.plot(T, Q0, 'r--', label=u'$Q_∞$= %.1f ($L$)' % c)
 	plt.legend(loc=0)
 
 	plt.subplot(212)
@@ -273,16 +274,14 @@ def get_z_datas(k):
 		return []
 	# 对lgk四舍五入
 	k = int(round(log10(k)))
-	if k == 0:
+	if k <= 0:
 		return _Z0
 	elif k == 1:
 		return _Z1
 	elif k == 2:
 		return _Z2
-	elif k == 3:
+	elif k >= 3:
 		return _Z3
-	else:
-		return []
 
 # 瓦斯抽采优化
 # 抽采率η=f(T0, R0/r0, χ)是关于这3个因变量的一个复杂函数

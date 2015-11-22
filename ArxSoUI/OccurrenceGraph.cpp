@@ -44,7 +44,7 @@ void OccurrenceGraph::drawCoal(cbm::Coal& coal, const AcGePoint3d& basePt)
 	v2.rotateBy(angle, AcGeVector3d::kZAxis);
 
 	//this->drawMText( basePt + v1 * L1 *0.5 + v2 * thick * 0.5, angle, C2W(coal.name), 10 );
-	this->drawMText( basePt + v1*-5 + v2 * thick * 0.5, angle, C2W(coal.name), 10, AcDbMText::kMiddleRight );
+	this->drawMText( basePt + v1*-5 + v2 * thick * 0.5, angle, C2W(coal.name), 8, AcDbMText::kMiddleRight );
 	//±ê×¢Ãº²ãºñ¶È
 	//this->drawAlignedDim(basePt+v1*L1, basePt+v1*L1+v2*thick, 30, false);
 }

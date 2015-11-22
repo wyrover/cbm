@@ -93,7 +93,7 @@ class GasDrillingOptimizeDlg(BaseDialog):
 		if r0 <= 0 or thick <= 0:return
 
 		# 孔径单位换算
-		r0, r1 = r0*0.001, r1*0.001
+		r0, r1 = r0*0.001, r1*1
 
 		# psai计算
 		k = DataHelper.gas_psai(permeability_lambda, p0, alpha, r0)
@@ -125,7 +125,7 @@ class GasDrillingOptimizeDlg(BaseDialog):
 		if r0 <= 0 or thick <= 0:return
 
 		# 孔径单位换算
-		r0, r1 = r0*0.001, r1*0.001
+		r0, r1 = r0*0.001, r1*1
 
 		# psai计算
 		k = DataHelper.gas_psai(permeability_lambda, p0, alpha, r0)
@@ -139,7 +139,7 @@ class GasDrillingOptimizeDlg(BaseDialog):
 		# 插值计算
 		gdo = DataHelper.GasDrillingOpt()
 		y = gdo.yValue(x, z, k)
-		R1 = int(DataHelper.R1_func(y*r0, thick)*1000)
+		R1 = int(DataHelper.R1_func(y*r0, thick))
 		# 更新计算结果
 		if abs(R1-r1) > 1:
 			self.ui.r1.setText(u'%d' % R1)
@@ -157,7 +157,7 @@ class GasDrillingOptimizeDlg(BaseDialog):
 		if r0 <= 0 or thick <= 0:return
 
 		# 孔径单位换算
-		r0, r1 = r0*0.001, r1*0.001
+		r0, r1 = r0*0.001, r1*1
 
 		# psai计算
 		k = DataHelper.gas_psai(permeability_lambda, p0, alpha, r0)
@@ -255,7 +255,7 @@ class GasDrillingOptimizeDlg(BaseDialog):
 		if r0 <= 0 or thick <= 0:return
 
 		# 孔径单位换算
-		r0, r1 = r0*0.001, r1*0.001
+		r0, r1 = r0*0.001, r1*1
 
 		# psai计算
 		k = DataHelper.gas_psai(permeability_lambda, p0, alpha, r0)
