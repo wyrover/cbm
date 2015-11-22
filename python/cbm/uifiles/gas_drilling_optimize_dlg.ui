@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>522</width>
+    <width>520</width>
     <height>378</height>
    </rect>
   </property>
@@ -525,13 +525,13 @@ p, li { white-space: pre-wrap; }
       </rect>
      </property>
     </widget>
-    <widget class="QPushButton" name="cacl_x">
+    <widget class="QPushButton" name="x_cacl">
      <property name="geometry">
       <rect>
        <x>219</x>
        <y>31</y>
-       <width>21</width>
-       <height>21</height>
+       <width>25</width>
+       <height>25</height>
       </rect>
      </property>
      <property name="font">
@@ -550,13 +550,13 @@ p, li { white-space: pre-wrap; }
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QPushButton" name="cacl_z">
+    <widget class="QPushButton" name="z_cacl">
      <property name="geometry">
       <rect>
        <x>219</x>
        <y>81</y>
-       <width>21</width>
-       <height>21</height>
+       <width>25</width>
+       <height>25</height>
       </rect>
      </property>
      <property name="font">
@@ -575,13 +575,13 @@ p, li { white-space: pre-wrap; }
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QPushButton" name="cacl_y">
+    <widget class="QPushButton" name="y_cacl">
      <property name="geometry">
       <rect>
        <x>475</x>
        <y>29</y>
-       <width>21</width>
-       <height>21</height>
+       <width>25</width>
+       <height>25</height>
       </rect>
      </property>
      <property name="font">

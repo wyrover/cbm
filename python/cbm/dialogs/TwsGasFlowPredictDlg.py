@@ -171,7 +171,8 @@ class TwsGasFlowPredictDlg(BaseDialog):
 
 		# 查看煤质
 		if coal.quality < 3 or caol.gas_w0 > 10:
-			UiHelper.MessageBox(u'弹出对话框让用户选择(尚未实现)')
+			pass
+			# UiHelper.MessageBox(u'弹出对话框让用户选择(尚未实现)')
 		else:
 			# 通过经验公式计算
 			W0 = coal.gas_w0

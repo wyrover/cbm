@@ -56,19 +56,24 @@ class CoalDesignDlg(BaseDialog):
 		self.ui.influence_factor.setText(u'%.1f' % coal.influence_factor)
 
 	def onMineIndexCacl(self):
-		UiHelper.MessageBox(u'尚未实现')
+		pass
+		# UiHelper.MessageBox(u'尚未实现')
 
 	def onVarCoeffCacl(self):
-		UiHelper.MessageBox(u'尚未实现')
+		pass
+		# UiHelper.MessageBox(u'尚未实现')
 
 	def onCzhCacl(self):
-		UiHelper.MessageBox(u'尚未实现')
+		pass
+		# UiHelper.MessageBox(u'尚未实现')
 	
 	def onStabilityCacl(self):
-		UiHelper.MessageBox(u'尚未实现')
+		pass
+		# UiHelper.MessageBox(u'尚未实现')
 	
 	def onInfluenceFactorCacl(self):
-		UiHelper.MessageBox(u'尚未实现')
+		pass
+		# UiHelper.MessageBox(u'尚未实现')
 
 	def onSave(self):
 		if self.coal_id <= 0:

@@ -19,7 +19,7 @@ class MineGasReservesPredictDlg1(BaseDialog):
 		self.setFixedSize(self.width(), self.height())
 		self.ui.w1_cacl.clicked.connect(self.onW1Cacl)
 		self.ui.w2_cacl.clicked.connect(self.onW2Cacl)
-		self.ui.cacl.clicked.connect(self.onCacl)		
+		self.ui.w3_cacl.clicked.connect(self.onCacl)		
 		self.ui.ok.clicked.connect(self.onOk)
 		# 待设计的矿井
 		self.mine_id = mine_id
@@ -69,10 +69,13 @@ class MineGasReservesPredictDlg1(BaseDialog):
 			UiHelper.MessageBox(u'sorry,出了点问题,请联系技术人员(错误代:H2)!')
 
 	def onW1Cacl(self):
-		UiHelper.MessageBox(u'该功能尚未实现!')
+		pass
+		# UiHelper.MessageBox(u'该功能尚未实现!')
 
 	def onW2Cacl(self):
-		UiHelper.MessageBox(u'该功能尚未实现!')
+		pass
+		# UiHelper.MessageBox(u'该功能尚未实现!')
 
 	def onCacl(self):
-		UiHelper.MessageBox(u'该功能尚未实现!')
+		pass
+		# UiHelper.MessageBox(u'该功能尚未实现!')

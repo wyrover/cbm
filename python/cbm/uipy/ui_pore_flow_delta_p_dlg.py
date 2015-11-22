@@ -25,7 +25,7 @@ except AttributeError:
 class Ui_pore_flow_delta_p_dlg(object):
     def setupUi(self, pore_flow_delta_p_dlg):
         pore_flow_delta_p_dlg.setObjectName(_fromUtf8("pore_flow_delta_p_dlg"))
-        pore_flow_delta_p_dlg.resize(320, 220)
+        pore_flow_delta_p_dlg.resize(321, 221)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(_fromUtf8(":/images/cbm.ico")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         pore_flow_delta_p_dlg.setWindowIcon(icon)

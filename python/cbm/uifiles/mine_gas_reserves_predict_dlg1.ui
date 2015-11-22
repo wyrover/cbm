@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>490</width>
-    <height>260</height>
+    <width>440</width>
+    <height>261</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -22,7 +22,7 @@
     <rect>
      <x>0</x>
      <y>30</y>
-     <width>491</width>
+     <width>441</width>
      <height>231</height>
     </rect>
    </property>
@@ -71,24 +71,6 @@
      </font>
     </property>
    </widget>
-   <widget class="QPushButton" name="w2_cacl">
-    <property name="geometry">
-     <rect>
-      <x>400</x>
-      <y>60</y>
-      <width>75</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>计 算</string>
-    </property>
-   </widget>
    <widget class="QLineEdit" name="reserve_w3">
     <property name="geometry">
      <rect>
@@ -102,24 +84,6 @@
      <font>
       <pointsize>12</pointsize>
      </font>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="cacl">
-    <property name="geometry">
-     <rect>
-      <x>400</x>
-      <y>140</y>
-      <width>75</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>计 算</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_2">
@@ -138,24 +102,6 @@
     </property>
     <property name="text">
      <string>受采动影响的不可采煤层瓦斯储量W2</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="w1_cacl">
-    <property name="geometry">
-     <rect>
-      <x>400</x>
-      <y>20</y>
-      <width>75</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>计 算</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_4">
@@ -215,8 +161,8 @@
    <widget class="QPushButton" name="ok">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>180</y>
+      <x>170</x>
+      <y>190</y>
       <width>81</width>
       <height>31</height>
      </rect>
@@ -230,13 +176,73 @@
      <string>确 定</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="w1_cacl">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>20</y>
+      <width>25</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="../usecad.qrc">
+      <normaloff>:/images/udpate.png</normaloff>:/images/udpate.png</iconset>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="w2_cacl">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>60</y>
+      <width>25</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="../usecad.qrc">
+      <normaloff>:/images/udpate.png</normaloff>:/images/udpate.png</iconset>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="w3_cacl">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>140</y>
+      <width>25</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="../usecad.qrc">
+      <normaloff>:/images/udpate.png</normaloff>:/images/udpate.png</iconset>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+   </widget>
   </widget>
   <widget class="QWidget" name="widget_title" native="true">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>491</width>
+     <width>441</width>
      <height>31</height>
     </rect>
    </property>
@@ -277,7 +283,7 @@ p, li { white-space: pre-wrap; }
      <rect>
       <x>40</x>
       <y>0</y>
-      <width>401</width>
+      <width>351</width>
       <height>31</height>
      </rect>
     </property>
@@ -300,7 +306,7 @@ p, li { white-space: pre-wrap; }
    <widget class="QPushButton" name="btnMenu_Close">
     <property name="geometry">
      <rect>
-      <x>450</x>
+      <x>400</x>
       <y>0</y>
       <width>41</width>
       <height>31</height>

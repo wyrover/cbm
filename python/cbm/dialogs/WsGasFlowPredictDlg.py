@@ -21,8 +21,8 @@ class WsGasFlowPredictDlg(BaseDialog):
 		self.setTitle(u"回采工作面瓦斯涌出量预测")
 		self.setFixedSize(self.width(), self.height())
 		self.ui.save.clicked.connect(self.onSave)
-		self.ui.qr1_cacl.clicked.connect(self.onQr1Cacl)
-		self.ui.qr2_cacl.clicked.connect(self.onQr2Cacl)
+		self.ui.q1_cacl.clicked.connect(self.onQr1Cacl)
+		self.ui.q2_cacl.clicked.connect(self.onQr2Cacl)
 		self.ui.qr_cacl.clicked.connect(self.onQrCacl)
 		self.connect(self.ui.work_surf, QtCore.SIGNAL('currentIndexChanged(int)'), self.onWorkSurfChanged)
 		# 待设计的矿井

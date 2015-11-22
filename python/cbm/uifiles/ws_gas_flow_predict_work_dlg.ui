@@ -95,24 +95,6 @@
      <string>运出矿井后煤的残存瓦斯含量Wc</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="k3_cacl">
-    <property name="geometry">
-     <rect>
-      <x>110</x>
-      <y>110</y>
-      <width>101</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>参 考 取 值</string>
-    </property>
-   </widget>
    <widget class="QLineEdit" name="kf">
     <property name="geometry">
      <rect>
@@ -209,24 +191,6 @@
      </font>
     </property>
    </widget>
-   <widget class="QPushButton" name="kf_cacl">
-    <property name="geometry">
-     <rect>
-      <x>110</x>
-      <y>170</y>
-      <width>101</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>参 考 取 值</string>
-    </property>
-   </widget>
    <widget class="QLineEdit" name="k2">
     <property name="geometry">
      <rect>
@@ -276,6 +240,46 @@
     </property>
     <property name="text">
      <string>保 存</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="k3_cacl">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>110</y>
+      <width>25</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="../usecad.qrc">
+      <normaloff>:/images/udpate.png</normaloff>:/images/udpate.png</iconset>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="kf_cacl">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>170</y>
+      <width>25</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="../usecad.qrc">
+      <normaloff>:/images/udpate.png</normaloff>:/images/udpate.png</iconset>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
     </property>
    </widget>
   </widget>

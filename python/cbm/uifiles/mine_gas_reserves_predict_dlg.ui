@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>360</width>
+    <width>291</width>
     <height>170</height>
    </rect>
   </property>
@@ -22,7 +22,7 @@
     <rect>
      <x>0</x>
      <y>30</y>
-     <width>361</width>
+     <width>291</width>
      <height>141</height>
     </rect>
    </property>
@@ -42,24 +42,6 @@
     </property>
     <property name="text">
      <string>矿井可抽瓦斯量</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="gas_cacl">
-    <property name="geometry">
-     <rect>
-      <x>260</x>
-      <y>20</y>
-      <width>75</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>计 算</string>
     </property>
    </widget>
    <widget class="QLabel" name="label">
@@ -98,7 +80,7 @@
    <widget class="QPushButton" name="ok">
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>100</x>
       <y>100</y>
       <width>71</width>
       <height>25</height>
@@ -128,22 +110,44 @@
      </font>
     </property>
    </widget>
+   <widget class="QPushButton" name="gas_cacl">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>20</y>
+      <width>25</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="../usecad.qrc">
+      <normaloff>:/images/udpate.png</normaloff>:/images/udpate.png</iconset>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+   </widget>
    <widget class="QPushButton" name="pump_wc_cacl">
     <property name="geometry">
      <rect>
-      <x>260</x>
+      <x>250</x>
       <y>60</y>
-      <width>75</width>
-      <height>22</height>
+      <width>25</width>
+      <height>25</height>
      </rect>
     </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
     <property name="text">
-     <string>计 算</string>
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="../usecad.qrc">
+      <normaloff>:/images/udpate.png</normaloff>:/images/udpate.png</iconset>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
     </property>
    </widget>
   </widget>
@@ -152,7 +156,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>361</width>
+     <width>291</width>
      <height>31</height>
     </rect>
    </property>
@@ -193,7 +197,7 @@ p, li { white-space: pre-wrap; }
      <rect>
       <x>40</x>
       <y>0</y>
-      <width>271</width>
+      <width>201</width>
       <height>31</height>
      </rect>
     </property>
@@ -216,7 +220,7 @@ p, li { white-space: pre-wrap; }
    <widget class="QPushButton" name="btnMenu_Close">
     <property name="geometry">
      <rect>
-      <x>320</x>
+      <x>250</x>
       <y>0</y>
       <width>41</width>
       <height>31</height>

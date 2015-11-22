@@ -2,6 +2,8 @@
 
 from BaseDialog import *
 from uipy.ui_high_coal_dlg import *
+import UiHelper
+import doc
 
 class HighCoalDlg(BaseDialog):
 	def __init__(self, parent=None):
@@ -21,6 +23,11 @@ class HighCoalDlg(BaseDialog):
 		# self.ui.tecl_table.setSpan(5,0,2,1)
 		self.setTitle(u"中高渗单一煤层条件井下规模化抽采技术模式")
 		self.setFixedSize(self.width(), self.height())
+		UiHelper.SetBtnStytle(self.ui.tBtn)
+		self.ui.tBtn.clicked.connect(self.onShowPng)
+
+	def onShowPng(self):
+		doc.OpenPNG('images\\high_coal.png')
 
 	def initTable(self,table):
 		table.setSelectionMode(Qt.QAbstractItemView.NoSelection)

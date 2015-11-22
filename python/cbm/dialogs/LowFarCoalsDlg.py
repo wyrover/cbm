@@ -2,6 +2,8 @@
 
 from BaseDialog import *
 from uipy.ui_low_far_coals_dlg import *
+import UiHelper
+import doc
 
 class LowFarCoalsDlg(BaseDialog):
 	def __init__(self, parent=None):
@@ -18,6 +20,11 @@ class LowFarCoalsDlg(BaseDialog):
 		self.initTable(self.ui.tecl_table_2)
 		self.setTitle(u"低渗中远距离煤层群下保护层开采条件井下规模化抽采技术模式")
 		self.setFixedSize(self.width(), self.height())
+		UiHelper.SetBtnStytle(self.ui.tBtn)
+		self.ui.tBtn.clicked.connect(self.onShowPng)
+
+	def onShowPng(self):
+		doc.OpenPNG('images\\low_far_coals.png')
 
 	def initTable(self,table):
 		table.setSelectionMode(Qt.QAbstractItemView.NoSelection)

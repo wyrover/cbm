@@ -3,6 +3,8 @@
 # from IconHelper import *
 from PyQt4 import QtGui,QtCore,Qt
 
+CACL = '_cacl'
+
 class BaseDialog(QtGui.QDialog):
 	def __init__(self, parent=None):
 		super(BaseDialog, self).__init__(parent)
@@ -24,6 +26,7 @@ class BaseDialog(QtGui.QDialog):
 		# instance().setIcon(ui.btnMenu_Close, u'\uf00d', 12)
 		ui.btnMenu_Close.clicked.connect(self.close)
 		self.FormInCenter(self)
+		self.dealCaclBtn(ui)
 
 	# 设置标题
 	def setTitle(self, title):
@@ -53,3 +56,12 @@ class BaseDialog(QtGui.QDialog):
 		if self.mousePressed and e.buttons() and QtCore.Qt.LeftButton:
 			self.move(e.globalPos()-self.mousePoint)
 			e.accept()
+
+	def dealCaclBtn(self,ui):
+		for name,value in vars(ui).items():
+			if name[-1*len(CACL):] == CACL and isinstance(value,Qt.QPushButton):
+				value.setStyleSheet("QPushButton{background: none;}\
+									QPushButton:hover{\
+									border-color: #C8C8FF;\
+									border-width: 1px;\
+                                    border-style: solid;}")

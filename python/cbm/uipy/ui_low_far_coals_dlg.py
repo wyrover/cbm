@@ -87,6 +87,7 @@ class Ui_low_far_coals_dlg(object):
         self.label_3.setObjectName(_fromUtf8("label_3"))
         self.label_5 = QtGui.QLabel(self.widget_main)
         self.label_5.setGeometry(QtCore.QRect(10, 20, 711, 71))
+        self.label_5.setToolTip(_fromUtf8(""))
         self.label_5.setObjectName(_fromUtf8("label_5"))
         self.label_6 = QtGui.QLabel(self.widget_main)
         self.label_6.setGeometry(QtCore.QRect(10, 90, 181, 31))
@@ -212,6 +213,10 @@ class Ui_low_far_coals_dlg(object):
         self.tecl_table.horizontalHeader().setVisible(True)
         self.tecl_table.verticalHeader().setVisible(False)
         self.tecl_table.verticalHeader().setHighlightSections(False)
+        self.tBtn = QtGui.QPushButton(self.widget_main)
+        self.tBtn.setGeometry(QtCore.QRect(530, 110, 171, 41))
+        self.tBtn.setToolTip(_fromUtf8(""))
+        self.tBtn.setObjectName(_fromUtf8("tBtn"))
 
         self.retranslateUi(low_far_coals_dlg)
         QtCore.QMetaObject.connectSlotsByName(low_far_coals_dlg)
@@ -226,7 +231,6 @@ class Ui_low_far_coals_dlg(object):
         self.label_2.setText(_translate("low_far_coals_dlg", "该矿井井下煤层气抽采属于：", None))
         self.label_4.setText(_translate("low_far_coals_dlg", "<html><head/><body><p><span style=\" font-size:18pt; font-weight:600; color:#ff557f;\">两 淮 矿 区</span></p></body></html>", None))
         self.label_3.setText(_translate("low_far_coals_dlg", "采掘作业各阶段推荐采用的煤层气抽采技术分别为：", None))
-        self.label_5.setToolTip(_translate("low_far_coals_dlg", "<html><head/><body><p><img src=\":/images/low_far_coals.png\"/></p></body></html>", None))
         self.label_5.setWhatsThis(_translate("low_far_coals_dlg", "<html><head/><body><p><br/></p></body></html>", None))
         self.label_5.setText(_translate("low_far_coals_dlg", "<html><head/><body><p><span style=\" font-size:18pt; font-weight:600; color:#ff557f;\">低渗中远距离煤层群下保护层开采条件井下规模化抽采技术模式</span></p></body></html>", None))
         self.label_6.setText(_translate("low_far_coals_dlg", "这种模式的典型代表为：", None))
@@ -325,5 +329,6 @@ class Ui_low_far_coals_dlg(object):
         item = self.tecl_table.item(5, 2)
         item.setText(_translate("low_far_coals_dlg", "采空区", None))
         self.tecl_table.setSortingEnabled(__sortingEnabled)
+        self.tBtn.setText(_translate("low_far_coals_dlg", "时空衔接关系示意图", None))
 
 import usecad_rc

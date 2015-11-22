@@ -5,7 +5,7 @@ import webbrowser
 import threading
 import win32process
 
-# 启动一个线程,运行rpc服务器
+# 启动一个线程,运行命令
 def open_cmd(exeName,fileName=''):
 	t1 = threading.Thread(target=OpenEXEFile,args = (exeName,fileName,))
 	t1.setDaemon(True)
@@ -36,5 +36,8 @@ def CreatReport(jsonFile):
 
 def RunCAD():
 	open_cmd('tool\\Launcher.exe')
+
+def OpenPNG(pngFile):
+	open_cmd('tool\\ImageView.exe',pngFile)
 
 

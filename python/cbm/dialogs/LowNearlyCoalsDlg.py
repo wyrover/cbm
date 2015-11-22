@@ -2,6 +2,8 @@
 
 from BaseDialog import *
 from uipy.ui_low_nearly_coals_dlg import *
+import UiHelper
+import doc
 
 class LowNearlyCoalsDlg(BaseDialog):
 	def __init__(self, parent=None):
@@ -19,6 +21,11 @@ class LowNearlyCoalsDlg(BaseDialog):
 		# self.ui.tecl_table.setRowHeight(3,60)
 		self.setTitle(u"低渗近距离煤层群上保护层开采条件井下规模化抽采技术模式")
 		self.setFixedSize(self.width(), self.height())
+		UiHelper.SetBtnStytle(self.ui.tBtn)
+		self.ui.tBtn.clicked.connect(self.onShowPng)
+
+	def onShowPng(self):
+		doc.OpenPNG('images\\low_nearly_coals.png')
 
 	def initTable(self,table):
 		table.setSelectionMode(Qt.QAbstractItemView.NoSelection)
