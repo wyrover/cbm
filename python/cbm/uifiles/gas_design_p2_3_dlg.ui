@@ -30,7 +30,7 @@
     <property name="geometry">
      <rect>
       <x>460</x>
-      <y>40</y>
+      <y>120</y>
       <width>130</width>
       <height>51</height>
      </rect>
@@ -386,29 +386,11 @@
      </property>
     </widget>
    </widget>
-   <widget class="QPushButton" name="save">
-    <property name="geometry">
-     <rect>
-      <x>460</x>
-      <y>280</y>
-      <width>130</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>保 存</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="dip_graph">
     <property name="geometry">
      <rect>
       <x>460</x>
-      <y>200</y>
+      <y>280</y>
       <width>130</width>
       <height>51</height>
      </rect>
@@ -648,7 +630,7 @@
     <property name="geometry">
      <rect>
       <x>460</x>
-      <y>120</y>
+      <y>200</y>
       <width>130</width>
       <height>51</height>
      </rect>
@@ -771,6 +753,27 @@
     </property>
     <property name="text">
      <string>生成钻孔及报单</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="save">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>40</y>
+      <width>130</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string>保 存</string>
     </property>
    </widget>
   </widget>

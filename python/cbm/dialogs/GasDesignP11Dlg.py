@@ -8,6 +8,7 @@ from cbm.ttypes import *
 
 import UiHelper
 import DataHelper
+import EncodeHelper
 import doc
 
 class GasDesignP11Dlg(BaseDialog):
@@ -170,4 +171,23 @@ class GasDesignP11Dlg(BaseDialog):
 		CbmClientHelper.SendCommandToCAD("JL.DrawDipGraph11 %d %d" % (coal.id, tws_tech.id), True)
 
 	def onCreatReport(self):
-		doc.CreatReport(u'help\\json\\reportP11.json')
+		coal = SQLClientHelper.GetCoalById(self.coal_id)
+		if coal.id <= 0:
+			UiHelper.MessageBox(u'sorry,出了点问题,请联系技术人员(错误码:114)')
+			return
+		# 查找掘进面的抽采技术
+		tws_tech = SQLClientHelper.GetDesignDrillingSurfTechnologyById(self.design_id)
+		if tws_tech.id <= 0:
+			UiHelper.MessageBox(u'sorry,出了点问题,请联系技术人员(错误码:115)')
+			return
+
+		DataHelper.test_json()
+		# 向cad发送命令请求生成钻孔数据
+		# CbmClientHelper.SendCommandToCAD("JL.GeneratePore11 %d %d" % (coal.id, tws_tech.id), True)
+		# 读取数据库生成json文件
+		# json_file = u'help\\json\\reportP11.json'
+		# EncodeHelper.UTF8_2_GBK(json_file, u'help\\json\\test.json')
+
+		json_file = u'help\\json\\test.json'
+		# 生成word报单
+		doc.CreatReport(json_file)

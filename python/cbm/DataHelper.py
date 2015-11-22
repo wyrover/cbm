@@ -1,8 +1,5 @@
 #coding:utf-8
 
-import datetime
-from math import sqrt, pow, exp, sin, cos, tan, radians, log10, pi
-
 from rpc import CbmUtil, SQLClientHelper, CbmClientHelper
 from cbm.ttypes import *
 
@@ -14,6 +11,12 @@ from scipy.interpolate import griddata
 # import statsmodels.api as sm
 import matplotlib.pyplot as plt
 
+import json
+import datetime
+from math import sqrt, pow, exp, sin, cos, tan, radians, log10, pi
+
+import EncodeHelper
+
 #pandas给matplotlib提供了一种ggplot绘图的扩展主题(可以认为类似于windows的主题),效果更好看
 pd.set_option('display.mpl_style', 'default') # Make the graphs a bit prettier
 
@@ -23,7 +26,6 @@ import matplotlib as mpl
 mpl.rcParams['font.family']='sans-serif'
 mpl.rcParams['font.sans-serif'] = ['SimHei']  #指定默认字体
 mpl.rcParams['axes.unicode_minus'] = False	#解决保存图像是负号'-'显示为方块的问题
-
 
 # 枚举--抽采区域
 class GasDesignRegion:
@@ -509,3 +511,22 @@ def DrawXYZ(x, y, k):
 
 	# 显示图形
 	plt.show()
+
+def test_json():
+	# 生成json数据测试
+	info={}
+	info["code"]=1
+	info["id"]=1900
+	info["name"]='张三'
+	info["sex"]='男'
+	list=[info,info,info]
+	data={}
+	data["code"]=1
+	data["id"]=1900
+	data["name"]='张三'
+	data["sex"]='男'
+	data["info"]=info
+	data["data"]=list
+	
+	jsonStr = json.dumps(data)
+	print "jsonStr:",jsonStr
