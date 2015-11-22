@@ -229,24 +229,6 @@
     <property name="title">
      <string>煤层参数</string>
     </property>
-    <widget class="QPushButton" name="wc_cacl">
-     <property name="geometry">
-      <rect>
-       <x>360</x>
-       <y>90</y>
-       <width>51</width>
-       <height>22</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>12</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>计 算</string>
-     </property>
-    </widget>
     <widget class="QLineEdit" name="gas_wc2">
      <property name="geometry">
       <rect>
@@ -377,6 +359,26 @@
      </property>
      <property name="text">
       <string>运出矿井后煤的残存瓦斯含量Wc</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="wc_cacl">
+     <property name="geometry">
+      <rect>
+       <x>330</x>
+       <y>90</y>
+       <width>25</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="../usecad.qrc">
+       <normaloff>:/images/udpate.png</normaloff>:/images/udpate.png</iconset>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
      </property>
     </widget>
    </widget>
@@ -719,7 +721,6 @@ p, li { white-space: pre-wrap; }
   <tabstop>rho</tabstop>
   <tabstop>gas_w0</tabstop>
   <tabstop>gas_wc2</tabstop>
-  <tabstop>wc_cacl</tabstop>
   <tabstop>d</tabstop>
   <tabstop>v</tabstop>
   <tabstop>l</tabstop>

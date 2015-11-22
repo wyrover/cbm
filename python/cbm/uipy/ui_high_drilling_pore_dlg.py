@@ -25,7 +25,7 @@ except AttributeError:
 class Ui_high_drilling_pore_dlg(object):
     def setupUi(self, high_drilling_pore_dlg):
         high_drilling_pore_dlg.setObjectName(_fromUtf8("high_drilling_pore_dlg"))
-        high_drilling_pore_dlg.resize(410, 440)
+        high_drilling_pore_dlg.resize(411, 441)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(_fromUtf8(":/images/cbm.ico")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         high_drilling_pore_dlg.setWindowIcon(icon)

@@ -31,19 +31,6 @@
      <height>421</height>
     </rect>
    </property>
-   <widget class="QPushButton" name="var_coeff_cacl">
-    <property name="geometry">
-     <rect>
-      <x>470</x>
-      <y>220</y>
-      <width>61</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>计算</string>
-    </property>
-   </widget>
    <widget class="QComboBox" name="rank">
     <property name="geometry">
      <rect>
@@ -77,19 +64,6 @@
       <width>61</width>
       <height>31</height>
      </rect>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="influence_factor_cacl">
-    <property name="geometry">
-     <rect>
-      <x>470</x>
-      <y>320</y>
-      <width>61</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>计算</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="layer_gap">
@@ -180,19 +154,6 @@
      <string>取  消</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="stability_cacl">
-    <property name="geometry">
-     <rect>
-      <x>470</x>
-      <y>270</y>
-      <width>61</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>计算</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_7">
     <property name="geometry">
      <rect>
@@ -256,19 +217,6 @@
     </property>
     <property name="text">
      <string>冒落带高度</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="mine_index_cacl">
-    <property name="geometry">
-     <rect>
-      <x>190</x>
-      <y>270</y>
-      <width>61</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>计算</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_14">
@@ -537,19 +485,6 @@
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;°&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="czh_cacl">
-    <property name="geometry">
-     <rect>
-      <x>220</x>
-      <y>220</y>
-      <width>61</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>计算</string>
-    </property>
-   </widget>
    <widget class="QLineEdit" name="var_coeff">
     <property name="geometry">
      <rect>
@@ -706,6 +641,106 @@
     </property>
     <property name="text">
      <string>煤层倾角</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="mine_index_cacl">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>270</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="../usecad.qrc">
+      <normaloff>:/images/udpate.png</normaloff>:/images/udpate.png</iconset>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="czh_cacl">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>220</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="../usecad.qrc">
+      <normaloff>:/images/udpate.png</normaloff>:/images/udpate.png</iconset>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="var_coeff_cacl">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>220</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="../usecad.qrc">
+      <normaloff>:/images/udpate.png</normaloff>:/images/udpate.png</iconset>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="stability_cacl">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>270</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="../usecad.qrc">
+      <normaloff>:/images/udpate.png</normaloff>:/images/udpate.png</iconset>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="influence_factor_cacl">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>320</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="../usecad.qrc">
+      <normaloff>:/images/udpate.png</normaloff>:/images/udpate.png</iconset>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
     </property>
    </widget>
   </widget>

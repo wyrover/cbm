@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
+    <width>371</width>
     <height>420</height>
    </rect>
   </property>
@@ -22,7 +22,7 @@
     <rect>
      <x>0</x>
      <y>30</y>
-     <width>401</width>
+     <width>371</width>
      <height>391</height>
     </rect>
    </property>
@@ -42,42 +42,6 @@
     </property>
     <property name="text">
      <string>已采采区采空区瓦斯涌出系数K''</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="k2_help">
-    <property name="geometry">
-     <rect>
-      <x>330</x>
-      <y>60</y>
-      <width>51</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>帮 助</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="k1_help">
-    <property name="geometry">
-     <rect>
-      <x>330</x>
-      <y>20</y>
-      <width>51</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>帮 助</string>
     </property>
    </widget>
    <widget class="QLabel" name="label">
@@ -103,7 +67,7 @@
      <rect>
       <x>20</x>
       <y>300</y>
-      <width>251</width>
+      <width>231</width>
       <height>71</height>
      </rect>
     </property>
@@ -115,24 +79,6 @@
     <property name="title">
      <string>矿井相对瓦斯涌出量预测结果</string>
     </property>
-    <widget class="QPushButton" name="cacl">
-     <property name="geometry">
-      <rect>
-       <x>160</x>
-       <y>30</y>
-       <width>51</width>
-       <height>22</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>12</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>预 测</string>
-     </property>
-    </widget>
     <widget class="QLineEdit" name="qr">
      <property name="geometry">
       <rect>
@@ -146,6 +92,26 @@
       <font>
        <pointsize>12</pointsize>
       </font>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="predic_cacl">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>30</y>
+       <width>25</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="../usecad.qrc">
+       <normaloff>:/images/udpate.png</normaloff>:/images/udpate.png</iconset>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
      </property>
     </widget>
    </widget>
@@ -169,7 +135,7 @@
      <rect>
       <x>20</x>
       <y>100</y>
-      <width>361</width>
+      <width>331</width>
       <height>191</height>
      </rect>
     </property>
@@ -181,31 +147,13 @@
     <property name="title">
      <string>生产采区参数</string>
     </property>
-    <widget class="QPushButton" name="work_area_cacl">
-     <property name="geometry">
-      <rect>
-       <x>240</x>
-       <y>150</y>
-       <width>51</width>
-       <height>22</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>12</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>计 算</string>
-     </property>
-    </widget>
     <widget class="QPushButton" name="assign">
      <property name="geometry">
       <rect>
        <x>240</x>
        <y>70</y>
        <width>51</width>
-       <height>22</height>
+       <height>25</height>
       </rect>
      </property>
      <property name="font">
@@ -241,7 +189,7 @@
        <x>110</x>
        <y>70</y>
        <width>111</width>
-       <height>22</height>
+       <height>25</height>
       </rect>
      </property>
      <property name="font">
@@ -274,7 +222,7 @@
        <x>110</x>
        <y>30</y>
        <width>111</width>
-       <height>22</height>
+       <height>25</height>
       </rect>
      </property>
      <property name="font">
@@ -304,7 +252,7 @@
        <x>240</x>
        <y>30</y>
        <width>51</width>
-       <height>22</height>
+       <height>25</height>
       </rect>
      </property>
      <property name="font">
@@ -367,6 +315,26 @@
       <string>相对瓦斯涌出量</string>
      </property>
     </widget>
+    <widget class="QPushButton" name="work_area_cacl">
+     <property name="geometry">
+      <rect>
+       <x>230</x>
+       <y>150</y>
+       <width>25</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="../usecad.qrc">
+       <normaloff>:/images/udpate.png</normaloff>:/images/udpate.png</iconset>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+    </widget>
    </widget>
    <widget class="QLineEdit" name="k1_gas">
     <property name="geometry">
@@ -386,7 +354,7 @@
    <widget class="QPushButton" name="save">
     <property name="geometry">
      <rect>
-      <x>290</x>
+      <x>260</x>
       <y>320</y>
       <width>91</width>
       <height>41</height>
@@ -401,13 +369,53 @@
      <string>保 存</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="k1_cacl">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>20</y>
+      <width>20</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="../usecad.qrc">
+      <normaloff>:/images/udpate.png</normaloff>:/images/udpate.png</iconset>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="k2_cacl">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>60</y>
+      <width>20</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="../usecad.qrc">
+      <normaloff>:/images/udpate.png</normaloff>:/images/udpate.png</iconset>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+   </widget>
   </widget>
   <widget class="QWidget" name="widget_title" native="true">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>401</width>
+     <width>371</width>
      <height>31</height>
     </rect>
    </property>
@@ -448,7 +456,7 @@ p, li { white-space: pre-wrap; }
      <rect>
       <x>40</x>
       <y>0</y>
-      <width>311</width>
+      <width>281</width>
       <height>31</height>
      </rect>
     </property>
@@ -471,10 +479,10 @@ p, li { white-space: pre-wrap; }
    <widget class="QPushButton" name="btnMenu_Close">
     <property name="geometry">
      <rect>
-      <x>360</x>
+      <x>330</x>
       <y>0</y>
       <width>41</width>
-      <height>25</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="sizePolicy">

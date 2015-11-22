@@ -25,7 +25,7 @@ except AttributeError:
 class Ui_high_drilling_site_dlg(object):
     def setupUi(self, high_drilling_site_dlg):
         high_drilling_site_dlg.setObjectName(_fromUtf8("high_drilling_site_dlg"))
-        high_drilling_site_dlg.resize(491, 300)
+        high_drilling_site_dlg.resize(491, 301)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(_fromUtf8(":/images/cbm.ico")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         high_drilling_site_dlg.setWindowIcon(icon)
@@ -39,7 +39,7 @@ class Ui_high_drilling_site_dlg(object):
         self.label_10.setFont(font)
         self.label_10.setObjectName(_fromUtf8("label_10"))
         self.save = QtGui.QPushButton(self.widget_main)
-        self.save.setGeometry(QtCore.QRect(190, 220, 91, 35))
+        self.save.setGeometry(QtCore.QRect(190, 230, 91, 35))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.save.setFont(font)

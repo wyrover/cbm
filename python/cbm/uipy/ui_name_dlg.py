@@ -39,11 +39,15 @@ class Ui_name_dlg(object):
         self.ensure.setFont(font)
         self.ensure.setObjectName(_fromUtf8("ensure"))
         self.name = QtGui.QLineEdit(self.widget_main)
-        self.name.setGeometry(QtCore.QRect(20, 24, 171, 31))
+        self.name.setGeometry(QtCore.QRect(70, 24, 121, 31))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.name.setFont(font)
         self.name.setObjectName(_fromUtf8("name"))
+        self.label = QtGui.QLabel(self.widget_main)
+        self.label.setGeometry(QtCore.QRect(10, 10, 51, 51))
+        self.label.setStyleSheet(_fromUtf8("image: url(:/images/add.png);"))
+        self.label.setObjectName(_fromUtf8("label"))
         self.widget_title = QtGui.QWidget(name_dlg)
         self.widget_title.setGeometry(QtCore.QRect(0, 0, 311, 31))
         self.widget_title.setObjectName(_fromUtf8("widget_title"))
@@ -88,10 +92,12 @@ class Ui_name_dlg(object):
 
         self.retranslateUi(name_dlg)
         QtCore.QMetaObject.connectSlotsByName(name_dlg)
+        name_dlg.setTabOrder(self.name, self.ensure)
 
     def retranslateUi(self, name_dlg):
         name_dlg.setWindowTitle(_translate("name_dlg", "新增", None))
         self.ensure.setText(_translate("name_dlg", "确  定", None))
+        self.label.setText(_translate("name_dlg", "<html><head/><body><p><br/></p></body></html>", None))
         self.lab_Ico.setText(_translate("name_dlg", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
