@@ -141,7 +141,7 @@ class DecisionDlg(BaseDialog):
 
 	def onDecision(self):
 		# 根据决策结果弹出相应的对话框
-		idx = 5
+		idx = 3
 		self.runResultDlg(idx)
 
 	def onGraph(self):

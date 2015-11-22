@@ -81,6 +81,7 @@ class Ui_low_nearly_coals_dlg(object):
         self.tecl_table_2.verticalHeader().setHighlightSections(False)
         self.label_3 = QtGui.QLabel(self.widget_main)
         self.label_3.setGeometry(QtCore.QRect(10, 20, 681, 61))
+        self.label_3.setToolTip(_fromUtf8(""))
         self.label_3.setObjectName(_fromUtf8("label_3"))
         self.tecl_table = QtGui.QTableWidget(self.widget_main)
         self.tecl_table.setGeometry(QtCore.QRect(10, 200, 371, 151))
@@ -137,6 +138,10 @@ class Ui_low_nearly_coals_dlg(object):
         self.label_5 = QtGui.QLabel(self.widget_main)
         self.label_5.setGeometry(QtCore.QRect(10, 80, 181, 31))
         self.label_5.setObjectName(_fromUtf8("label_5"))
+        self.tBtn = QtGui.QPushButton(self.widget_main)
+        self.tBtn.setGeometry(QtCore.QRect(500, 100, 171, 41))
+        self.tBtn.setToolTip(_fromUtf8(""))
+        self.tBtn.setObjectName(_fromUtf8("tBtn"))
         self.widget_title = QtGui.QWidget(low_nearly_coals_dlg)
         self.widget_title.setGeometry(QtCore.QRect(0, 0, 701, 31))
         self.widget_title.setObjectName(_fromUtf8("widget_title"))
@@ -207,7 +212,6 @@ class Ui_low_nearly_coals_dlg(object):
         item = self.tecl_table_2.item(1, 1)
         item.setText(_translate("low_nearly_coals_dlg", "高压水力压裂增透技术", None))
         self.tecl_table_2.setSortingEnabled(__sortingEnabled)
-        self.label_3.setToolTip(_translate("low_nearly_coals_dlg", "<html><head/><body><p><img src=\":/images/low_nearly_coals.png\"/></p></body></html>", None))
         self.label_3.setWhatsThis(_translate("low_nearly_coals_dlg", "<html><head/><body><p><br/></p></body></html>", None))
         self.label_3.setText(_translate("low_nearly_coals_dlg", "<html><head/><body><p><span style=\" font-size:18pt; font-weight:600; color:#ff557f;\">低渗近距离煤层群上保护层开采条件井下规模化抽采技术模式</span></p></body></html>", None))
         item = self.tecl_table.verticalHeaderItem(0)
@@ -252,6 +256,7 @@ class Ui_low_nearly_coals_dlg(object):
         item.setText(_translate("low_nearly_coals_dlg", "采空区", None))
         self.tecl_table.setSortingEnabled(__sortingEnabled)
         self.label_5.setText(_translate("low_nearly_coals_dlg", "这种模式的典型代表为：", None))
+        self.tBtn.setText(_translate("low_nearly_coals_dlg", "时空衔接关系示意图", None))
         self.lab_Ico.setText(_translate("low_nearly_coals_dlg", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"

@@ -193,7 +193,7 @@ p, li { white-space: pre-wrap; }
      </rect>
     </property>
     <property name="toolTip">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/images/low_far_coals.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string/>
     </property>
     <property name="whatsThis">
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -515,6 +515,22 @@ p, li { white-space: pre-wrap; }
       <string>采空区</string>
      </property>
     </item>
+   </widget>
+   <widget class="QPushButton" name="tBtn">
+    <property name="geometry">
+     <rect>
+      <x>530</x>
+      <y>110</y>
+      <width>171</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string/>
+    </property>
+    <property name="text">
+     <string>时空衔接关系示意图</string>
+    </property>
    </widget>
   </widget>
  </widget>

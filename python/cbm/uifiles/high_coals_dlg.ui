@@ -296,7 +296,7 @@ p, li { white-space: pre-wrap; }
      </rect>
     </property>
     <property name="toolTip">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/images/high_coals.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string/>
     </property>
     <property name="whatsThis">
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -444,6 +444,22 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="text">
      <string>这种模式的典型代表为：</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="tBtn">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>100</y>
+      <width>171</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string/>
+    </property>
+    <property name="text">
+     <string>时空衔接关系示意图</string>
     </property>
    </widget>
   </widget>

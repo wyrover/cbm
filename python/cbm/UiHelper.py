@@ -77,3 +77,12 @@ def AddObjectListToCombobox(combobox, obj_lists):
 			continue
 		combobox.addItem(obj.name, obj.id)
 	combobox.setCurrentIndex(0)
+
+def SetBtnStytle(btn):
+	btn.setStyleSheet("QPushButton{background: none;\
+						border-color: #C8C8FF;\
+						color:rgb(85, 170, 255);\
+						border-width: 1px;\
+						border-style: solid;}\
+						QPushButton:hover{\
+						border-color: #A2A2FF;}")
