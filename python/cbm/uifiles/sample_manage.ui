@@ -863,24 +863,6 @@
       <string>可采性指数</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="mine_index_cacl">
-     <property name="geometry">
-      <rect>
-       <x>190</x>
-       <y>190</y>
-       <width>61</width>
-       <height>22</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>12</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>计算</string>
-     </property>
-    </widget>
     <widget class="QLabel" name="label_36">
      <property name="geometry">
       <rect>
@@ -897,24 +879,6 @@
      </property>
      <property name="text">
       <string>煤厚变异系数</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="var_coeff_cacl">
-     <property name="geometry">
-      <rect>
-       <x>460</x>
-       <y>190</y>
-       <width>61</width>
-       <height>22</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>12</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>计算</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="var_coeff">
@@ -948,42 +912,6 @@
      </property>
      <property name="text">
       <string>冒落带高度</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="czh_cacl">
-     <property name="geometry">
-      <rect>
-       <x>230</x>
-       <y>230</y>
-       <width>61</width>
-       <height>22</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>12</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>计算</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="stability_cacl">
-     <property name="geometry">
-      <rect>
-       <x>520</x>
-       <y>230</y>
-       <width>61</width>
-       <height>22</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>12</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>计算</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="caving_zone_height">
@@ -1108,24 +1036,6 @@
       </font>
      </property>
     </widget>
-    <widget class="QPushButton" name="influence_factor_cacl">
-     <property name="geometry">
-      <rect>
-       <x>460</x>
-       <y>270</y>
-       <width>61</width>
-       <height>22</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>12</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>计算</string>
-     </property>
-    </widget>
     <widget class="QLineEdit" name="layer_gap">
      <property name="geometry">
       <rect>
@@ -1177,6 +1087,154 @@
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;(m)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
+    <widget class="QPushButton" name="mine_index_cacl_2">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>190</y>
+       <width>25</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="../usecad.qrc">
+       <normaloff>:/images/udpate.png</normaloff>:/images/udpate.png</iconset>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="var_coeff_cacl">
+     <property name="geometry">
+      <rect>
+       <x>460</x>
+       <y>190</y>
+       <width>25</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="../usecad.qrc">
+       <normaloff>:/images/udpate.png</normaloff>:/images/udpate.png</iconset>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="stability_cacl">
+     <property name="geometry">
+      <rect>
+       <x>510</x>
+       <y>230</y>
+       <width>25</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="../usecad.qrc">
+       <normaloff>:/images/udpate.png</normaloff>:/images/udpate.png</iconset>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="czh_cacl">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>230</y>
+       <width>25</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="../usecad.qrc">
+       <normaloff>:/images/udpate.png</normaloff>:/images/udpate.png</iconset>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="influence_factor_cacl">
+     <property name="geometry">
+      <rect>
+       <x>440</x>
+       <y>270</y>
+       <width>25</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="../usecad.qrc">
+       <normaloff>:/images/udpate.png</normaloff>:/images/udpate.png</iconset>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <zorder>label_5</zorder>
+    <zorder>coal</zorder>
+    <zorder>minable</zorder>
+    <zorder>label_6</zorder>
+    <zorder>thick</zorder>
+    <zorder>label_7</zorder>
+    <zorder>label_8</zorder>
+    <zorder>f_value</zorder>
+    <zorder>dip_angle</zorder>
+    <zorder>label_9</zorder>
+    <zorder>label_10</zorder>
+    <zorder>hw</zorder>
+    <zorder>label_11</zorder>
+    <zorder>label_12</zorder>
+    <zorder>rank</zorder>
+    <zorder>label_13</zorder>
+    <zorder>permeability_k</zorder>
+    <zorder>label_14</zorder>
+    <zorder>pressure</zorder>
+    <zorder>gas_content</zorder>
+    <zorder>label_16</zorder>
+    <zorder>label_17</zorder>
+    <zorder>label_18</zorder>
+    <zorder>label_15</zorder>
+    <zorder>res_abundance</zorder>
+    <zorder>label_33</zorder>
+    <zorder>complexity</zorder>
+    <zorder>label_34</zorder>
+    <zorder>mine_index</zorder>
+    <zorder>label_35</zorder>
+    <zorder>label_36</zorder>
+    <zorder>var_coeff</zorder>
+    <zorder>label_37</zorder>
+    <zorder>caving_zone_height</zorder>
+    <zorder>label_38</zorder>
+    <zorder>stability</zorder>
+    <zorder>label_39</zorder>
+    <zorder>label_40</zorder>
+    <zorder>influence_factor</zorder>
+    <zorder>layer_gap</zorder>
+    <zorder>label_41</zorder>
+    <zorder>label_42</zorder>
+    <zorder>mine_index_cacl_2</zorder>
+    <zorder>groupBox_3</zorder>
+    <zorder>var_coeff_cacl</zorder>
+    <zorder>stability_cacl</zorder>
+    <zorder>czh_cacl</zorder>
+    <zorder>influence_factor_cacl</zorder>
    </widget>
   </widget>
   <widget class="QWidget" name="widget_title" native="true">

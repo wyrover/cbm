@@ -84,19 +84,24 @@ class CoalParamDlg(BaseDialog):
 			self.ui.is_protectable.setCurrentIndex(int(coal.is_protectable != 0))
 
 	def onMineIndexCacl(self):
-		UiHelper.MessageBox(u'尚未实现')
+		pass
+		# UiHelper.MessageBox(u'尚未实现')
 
 	def onVarCoeffCacl(self):
-		UiHelper.MessageBox(u'尚未实现')
+		pass
+		# UiHelper.MessageBox(u'尚未实现')
 
 	def onCzhCacl(self):
-		UiHelper.MessageBox(u'尚未实现')
+		pass
+		# UiHelper.MessageBox(u'尚未实现')
 	
 	def onStabilityCacl(self):
-		UiHelper.MessageBox(u'尚未实现')
+		pass
+		# UiHelper.MessageBox(u'尚未实现')
 	
 	def onInfluenceFactorCacl(self):
-		UiHelper.MessageBox(u'尚未实现')
+		pass
+		# UiHelper.MessageBox(u'尚未实现')
 
 	def onSave(self):
 		index = self.ui.coal.currentIndex()

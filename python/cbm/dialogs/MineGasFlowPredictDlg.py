@@ -20,8 +20,8 @@ class MineGasFlowPredictDlg(BaseDialog):
 		self.setTitle(u"矿井相对瓦斯涌出量预测")
 		self.setFixedSize(self.width(), self.height())
 		self.ui.save.clicked.connect(self.onSave)
-		self.ui.k1_help.clicked.connect(self.onK1Help)
-		self.ui.k2_help.clicked.connect(self.onK2Help)
+		self.ui.k1_cacl.clicked.connect(self.onK1Help)
+		self.ui.k2_cacl.clicked.connect(self.onK2Help)
 		self.ui.design_work_area.clicked.connect(self.onDesignWorkArea)
 		self.ui.assign.clicked.connect(self.onAssign)
 		self.ui.work_area_cacl.clicked.connect(self.onWorkAreaCacl)
@@ -89,10 +89,12 @@ class MineGasFlowPredictDlg(BaseDialog):
 			self.ui.coal.setCurrentIndex(index)
 		
 	def onK1Help(self):
-		UiHelper.MessageBox(u'该功能尚未实现!')
+		pass
+		# UiHelper.MessageBox(u'该功能尚未实现!')
 
 	def onK2Help(self):
-		UiHelper.MessageBox(u'该功能尚未实现!')
+		pass
+		# UiHelper.MessageBox(u'该功能尚未实现!')
 
 	def onDesignWorkArea(self):
 		index = self.ui.work_area.currentIndex()

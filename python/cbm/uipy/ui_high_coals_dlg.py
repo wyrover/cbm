@@ -128,6 +128,7 @@ class Ui_high_coals_dlg(object):
         self.tecl_table_2.verticalHeader().setHighlightSections(False)
         self.label_5 = QtGui.QLabel(self.widget_main)
         self.label_5.setGeometry(QtCore.QRect(20, 20, 481, 61))
+        self.label_5.setToolTip(_fromUtf8(""))
         self.label_5.setObjectName(_fromUtf8("label_5"))
         self.tecl_table = QtGui.QTableWidget(self.widget_main)
         self.tecl_table.setGeometry(QtCore.QRect(20, 180, 481, 151))
@@ -184,6 +185,10 @@ class Ui_high_coals_dlg(object):
         self.label_7 = QtGui.QLabel(self.widget_main)
         self.label_7.setGeometry(QtCore.QRect(20, 80, 181, 31))
         self.label_7.setObjectName(_fromUtf8("label_7"))
+        self.tBtn = QtGui.QPushButton(self.widget_main)
+        self.tBtn.setGeometry(QtCore.QRect(310, 100, 171, 41))
+        self.tBtn.setToolTip(_fromUtf8(""))
+        self.tBtn.setObjectName(_fromUtf8("tBtn"))
 
         self.retranslateUi(high_coals_dlg)
         QtCore.QMetaObject.connectSlotsByName(high_coals_dlg)
@@ -224,7 +229,6 @@ class Ui_high_coals_dlg(object):
         item = self.tecl_table_2.item(2, 1)
         item.setText(_translate("high_coals_dlg", "CO2预裂爆破增透技术工艺", None))
         self.tecl_table_2.setSortingEnabled(__sortingEnabled)
-        self.label_5.setToolTip(_translate("high_coals_dlg", "<html><head/><body><p><img src=\":/images/high_coals.png\"/></p></body></html>", None))
         self.label_5.setWhatsThis(_translate("high_coals_dlg", "<html><head/><body><p><br/></p></body></html>", None))
         self.label_5.setText(_translate("high_coals_dlg", "<html><head/><body><p><span style=\" font-size:18pt; font-weight:600; color:#ff557f;\">中高渗煤层群条件井下规模化抽采技术模式</span></p></body></html>", None))
         item = self.tecl_table.verticalHeaderItem(0)
@@ -269,5 +273,6 @@ class Ui_high_coals_dlg(object):
         item.setText(_translate("high_coals_dlg", "采空区", None))
         self.tecl_table.setSortingEnabled(__sortingEnabled)
         self.label_7.setText(_translate("high_coals_dlg", "这种模式的典型代表为：", None))
+        self.tBtn.setText(_translate("high_coals_dlg", "时空衔接关系示意图", None))
 
 import usecad_rc

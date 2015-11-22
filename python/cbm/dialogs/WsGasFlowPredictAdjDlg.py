@@ -168,4 +168,5 @@ class WsGasFlowPredictAdjDlg(BaseDialog):
 			UiHelper.MessageBox(u'删除邻近层失败!')
 
 	def onEtaCacl(self):
-		UiHelper.MessageBox(u'自动弹出计算框(尚未实现该功能)')
+		pass
+		# UiHelper.MessageBox(u'自动弹出计算框(尚未实现该功能)')

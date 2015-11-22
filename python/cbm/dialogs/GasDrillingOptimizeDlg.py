@@ -26,9 +26,9 @@ class GasDrillingOptimizeDlg(BaseDialog):
 		# self.ui.r1.installEventFilter(self) ##在窗口上为"透气性系数"控件安装过滤器
 		# self.ui.eta.installEventFilter(self) ##在窗口上为"透气性系数"控件安装过滤器
 		self.ui.save.clicked.connect(self.onSave)
-		self.ui.cacl_x.clicked.connect(self.onCaclX)
-		self.ui.cacl_y.clicked.connect(self.onCaclY)
-		self.ui.cacl_z.clicked.connect(self.onCaclZ)
+		self.ui.x_cacl.clicked.connect(self.onCaclX)
+		self.ui.y_cacl.clicked.connect(self.onCaclY)
+		self.ui.z_cacl.clicked.connect(self.onCaclZ)
 		self.ui.analyse.clicked.connect(self.onAnalyse)
 		self.connect(self.ui.coal, QtCore.SIGNAL('currentIndexChanged(int)'), self.onCoalChanged)
 		# 待设计的矿井
