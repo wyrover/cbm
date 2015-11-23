@@ -54,17 +54,17 @@ int _tmain(int argc, TCHAR* argv[], TCHAR* envp[])
 	{
 		//wcout << argv[1] <<endl;
 		//×Ö·û´®
-		const char* str = 
+		//const char* str = 
 			"{\"tplPath\":\"E:\\\\test\\\\git\\\\cbm\\\\x64\\\\Debug\\\\Datas\\\\JL\\\\tpl\\\\tplBase.doc\",\"EPCMFD_Method\":\"ÊéÇ©°¡xxx\",\"cognomen\":\"Caezar\",\"born\":-100,\"died\":-44}";
 
 		HICON hIcon =AfxGetApp()->LoadIcon(IDI_ICON1);
 		//CString tplPath = _T("E:\\test\\git\\cbm\\x64\\Debug\\Datas\\JL\\tpl\\tplBase.doc");
 		//CString jsonPath = _T("E:\\test\\git\\cbm\\x64\\Debug\\Datas\\jsDatas.json");
 		CString jsonPath = argv[1];
+		AfxMessageBox(jsonPath);
 		ReportHelper::CreatReport(jsonPath);
 		//jsonTest();
 	}
-
 	return nRetCode;
 }
 

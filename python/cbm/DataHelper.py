@@ -11,9 +11,12 @@ from scipy.interpolate import griddata
 # import statsmodels.api as sm
 import matplotlib.pyplot as plt
 
+import os
+import os.path
 import json
 import datetime
 from math import sqrt, pow, exp, sin, cos, tan, radians, log10, pi
+import codecs
 
 import UiHelper
 import DataHelper
@@ -513,35 +516,43 @@ def DrawXYZ(x, y, k):
 	# 显示图形
 	plt.show()
 
-import codecs
+# 生成json数据测试
 def test_json(json_file):
-	# 生成json数据测试
+	# 准备一个词典数据
 	info={}
-	info["code"]=1
-	info["id"]=1900
-	info["name"]='张三'
-	info["sex"]='男'
+	info[u"code"]=1
+	info[u"id"]=1900
+	info[u"name"]=u'张三'
+	info[u"sex"]=u'男'
 	list=[info,info,info]
-	data={}
-	data["code"]=1
-	data["id"]=1900
-	data["name"]='张三'
-	data["sex"]='男'
-	data["info"]=info
-	data["data"]=list
-	# jsonStr = json.dumps(data)
-	# print "jsonStr:",jsonStr
+	json_data={}
+	json_data[u"code"]=1
+	json_data[u"id"]=1900
+	json_data[u"name"]=u'张三'
+	json_data[u"sex"]=u'男'
+	json_data[u"info"]=info
+	json_data[u"data"]=list
+	jsonStr = json.dumps(data)
+	print "jsonStr:",jsonStr
 
-	# encodedjson = json.dumps(jsonStr)
-	# 新建文件(使用utf-8编码)
-
-	with codecs.open(json_file, 'w', 'utf-8') as f:
-	# f = open(json_file, 'w', 'utf-8')
-		# f.write(encodedjson)
-		json.dump(data, f, ensure_ascii=False, indent=4)
+# 将json数据写入到文件
+# 输出json文件的2种方法:
+	# (1) 新建文件(使用何种编码和当前源代码py文件的编码有关)
+	# f = open(json_file, 'w')
+	# f.write(json.dumps(data))
 	# f.close()
+	# (2) http://www.2cto.com/kf/201411/351186.html
+	#     http://www.tuicool.com/articles/YBbAzi
+	#     http://blog.csdn.net/ys_073/article/details/9403039
+	#     中文汉字总是被转换为unicode码, 在dumps函数中添加参数ensure_ascii=False即可解决
+def write_json_file(json_data, json_file):
+	with codecs.open(json_file, 'w', 'utf-8') as f:
+		json.dump(json_data, f, ensure_ascii=False)
 
 # 读取数据库生成json数据,数据,用于生成钻孔报表
+# 注意: 为了减少错误,生成json数据的时候,所有的字符串建议都使用unicode!!!
+#       本代码中字符串, 包括:[代码中定义的字符串]、[从数据库中读取的数据]都是utf-8编码的字节数组(str)
+#       需要使用xxx.decode('utf-8')方法进行解码转换成unicode字符串!!!
 def generateJsonFileOfPoreReport(coal_id, design_id, json_file):
 	# 查找煤层
 	coal = SQLClientHelper.GetCoalById(coal_id)
@@ -555,29 +566,30 @@ def generateJsonFileOfPoreReport(coal_id, design_id, json_file):
 
 	# json模块可以直接将词典转换成json编码串
 	# 因此主要的
-	data = {"pore_header":["钻孔编号","钻孔长度","钻孔倾角","钻孔方位角"]}
-	# 写入矿井名称(utf-8编码)
-	data['$*mine_name*$'] = mine.name
+	json_data = {u"pore_header":[u"钻孔编号",u"钻孔长度",u"钻孔倾角",u"钻孔方位角"]}
+	# 写入矿井名称(中文汉字必须要用unicode表示,所以需要进行解码decode)
+	json_data[u'$*mine_name*$'] = mine.name.decode('utf-8')
 	# 写入工作面名称
-	data['$*work_face_name*$'] = 'F292'
+	json_data[u'$*work_face_name*$'] = 'F292'.decode('utf-8')
 	# 写入底板岩巷距离煤层的垂距
-	data['w_dist'] = tws_tech.v_offset
+	json_data[u'w_dist'] = tws_tech.v_offset
 	# 写入水平投影距离
-	data['h_offset'] = tws_tech.h_offset
+	json_data[u'h_offset'] = tws_tech.h_offset
 	# 写入钻场间距
-	data['site_gap'] = tws_tech.gs
+	json_data[u'site_gap'] = tws_tech.gs
 	# 写入钻孔孔径
-	data['pore_diameter'] = tws_tech.gp
+	json_data[u'pore_diameter'] = tws_tech.gp
 	# 写入封孔长度
-	data['$*pore_lenth*$'] = 98
-	# 写入word模板路径
-	data['tplPath']="help\\doc\\tpl\\底板岩巷密集穿层钻孔抽采煤巷条带瓦斯抽采技术.doc"
+	json_data[u'$*pore_lenth*$'] = 98
+	# 写入word模板路径(使用绝对路径,避免出错!!!)
+	# 中文汉字必须要用unicode表示,所以需要进行解码decode)
+	json_data[u'tplPath'] = os.path.abspath(u".\\help\\doc\\tpl\\底板岩巷密集穿层钻孔抽采煤巷条带瓦斯抽采技术.doc")
+	# 写入报告默认名称
+	json_data[u"reportName"] = u'底板岩巷密集穿层钻孔抽采煤巷条带瓦斯抽采技术报告'
+	# print json_data[u'tplPath'].encode('gbk')
+	
 	# 写入钻孔信息
-	# 待完善
+	# ***待完善***
 
-	# 生成json文件
-	encodedjson = json.dumps(data)
-	# 新建文件(使用utf-8编码)
-	file_object = open(json_file, 'w', 'utf-8')
-	file_object.write(encodedjson)
-	file_object.close()
+	# 生成json文件(utf-8编码)
+	write_json_file(json_data, json_file)
