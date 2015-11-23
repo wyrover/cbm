@@ -388,55 +388,44 @@ class MainWindow(QtGui.QMainWindow):
 		self.regAction(u"抽采设计", u"工作面", u"工作面瓦斯抽采辅助设计", self.wsGasDesign)
 		self.regAction(u"抽采设计", u"采空区", u"采空区瓦斯抽采辅助设计", self.goafGasDesign)
 
-
 		# 只需要将菜单用符号: / 分隔即可,程序自动解析成相应的子菜单
-		self.regAction(u"帮助文档/相关官网/门户网站", u"中国煤炭资源网", u"采空区瓦斯抽采辅助设计", self.goafGasDesign)
-		self.regAction(u"帮助文档/相关官网", u"国家煤炭工业网", u"采空区瓦斯抽采辅助设计", self.goafGasDesign)
-		self.regAction(u"帮助文档/相关官网/集团公司", u"中国煤层气集团有限公司", u"采空区瓦斯抽采辅助设计", self.goafGasDesign)
-		self.regAction(u"帮助文档/相关官网/集团公司", u"中国煤炭科工集团有限公司", u"采空区瓦斯抽采辅助设计", self.goafGasDesign)
-		
+		self.regAction(u"帮助文档/相关官网",u"中国煤炭资源网",u"中国煤炭资源网", self.openOfficeNet1)
+		self.regAction(u"帮助文档/相关官网",u"国家煤炭工业网",u"国家煤炭工业网", self.openOfficeNet2)
+		self.regAction(u"帮助文档/相关官网",u"中国煤层气集团有限公司",u"中国煤层气集团有限公司", self.openOfficeNet3)
+		self.regAction(u"帮助文档/相关官网",u"中联煤层气有限责任公司",u"中联煤层气有限责任公司", self.openOfficeNet4)
+		self.regAction(u"帮助文档/相关官网",u"中国煤炭科工集团有限公司",u"中国煤炭科工集团有限公司", self.openOfficeNet5)
+		self.regAction(u"帮助文档/相关官网",u"煤层科学技术研究院有限公司",u"煤层科学技术研究院有限公司", self.openOfficeNet6)
+		self.regAction(u"帮助文档/相关官网",u"山西晋城无烟煤矿业集团有限公司",u"山西晋城无烟煤矿业集团有限公司", self.openOfficeNet7)
+		self.regAction(u"帮助文档/相关官网",u"淮南矿业网",u"淮南矿业网", self.openOfficeNet8)
+		self.regAction(u"帮助文档/相关官网",u"淮北矿业网",u"淮北矿业网", self.openOfficeNet9)
+		self.regAction(u"帮助文档/相关官网",u"重庆松藻煤电有限责任公司",u"重庆松藻煤电有限责任公司", self.openOfficeNet10)
+
+		self.regAction(u"帮助文档/相关规范",u"煤矿井下煤层瓦斯压力的直接测定方法",u"煤矿井下煤层瓦斯压力的直接测定方法",self.pdfHelp1)
+		self.regAction(u"帮助文档/相关规范",u"煤矿用非金属瓦斯输送管材安全技术要求",u"煤矿用非金属瓦斯输送管材安全技术要求",self.pdfHelp2)
+		self.regAction(u"帮助文档/相关规范",u"瓦斯管道输送水封阻火泄爆装置技术条件",u"瓦斯管道输送水封阻火泄爆装置技术条件",self.pdfHelp3)
+		self.regAction(u"帮助文档/相关规范",u"瓦斯管道输送自动阻爆装置技术条件",u"瓦斯管道输送自动阻爆装置技术条件",self.pdfHelp4)
+		self.regAction(u"帮助文档/相关规范",u"煤矿瓦斯输送管道干式阻火器通用技术条件",u"煤矿瓦斯输送管道干式阻火器通用技术条件",self.pdfHelp5)
+		self.regAction(u"帮助文档/相关规范",u"煤矿低浓度瓦斯往复式内燃机驱动的交流发电机组通用技术条件",u"煤矿低浓度瓦斯往复式内燃机驱动的交流发电机组通用技术条件",self.pdfHelp6)
+		self.regAction(u"帮助文档/相关规范",u"煤矿低浓度瓦斯管道输送安全保障系统设计规范",u"煤矿低浓度瓦斯管道输送安全保障系统设计规范",self.pdfHelp7)
+		self.regAction(u"帮助文档/相关规范",u"煤矿低浓度瓦斯与细水雾混合安全输送装置技术规范",u"煤矿低浓度瓦斯与细水雾混合安全输送装置技术规范",self.pdfHelp8)
+		self.regAction(u"帮助文档/相关规范",u"瓦斯管道输送自动喷粉抑爆装置通用技术条件",u"瓦斯管道输送自动喷粉抑爆装置通用技术条件",self.pdfHelp9)
+		self.regAction(u"帮助文档/相关规范",u"煤的工业分析方法",u"煤的工业分析方法",self.pdfHelp10)
+		self.regAction(u"帮助文档/相关规范",u"煤矿瓦斯抽采工程设计规范",u"煤矿瓦斯抽采工程设计规范",self.pdfHelp11)
+		self.regAction(u"帮助文档/相关规范",u"煤自燃倾向性色谱吸氧鉴定法",u"煤自燃倾向性色谱吸氧鉴定法",self.pdfHelp12)
+		self.regAction(u"帮助文档/相关规范",u"石门揭穿煤与瓦斯突出煤层",u"石门揭穿煤与瓦斯突出煤层",self.pdfHelp13)
+		self.regAction(u"帮助文档/相关规范",u"钻孔瓦斯涌出初速度的测定方法",u"钻孔瓦斯涌出初速度的测定方法",self.pdfHelp14)
+		self.regAction(u"帮助文档/相关规范",u"中国煤炭分类国家标准",u"中国煤炭分类国家标准",self.pdfHelp15)
+		self.regAction(u"帮助文档/相关规范",u"保护层开采技术规范",u"保护层开采技术规范",self.pdfHelp16)
+		self.regAction(u"帮助文档/相关规范",u"煤与瓦斯突出矿井鉴定规范（AQ1024-2006）",u"煤与瓦斯突出矿井鉴定规范（AQ1024-2006）",self.pdfHelp17)
+		self.regAction(u"帮助文档/相关规范",u"煤矿瓦斯抽放规范AQ1027-2006",u"煤矿瓦斯抽放规范AQ1027-2006",self.pdfHelp18)
+		self.regAction(u"帮助文档/相关规范",u"电子等容式瓦斯解吸仪技术条件",u"电子等容式瓦斯解吸仪技术条件",self.pdfHelp19)
+		self.regAction(u"帮助文档/相关规范",u"矿井瓦斯等级鉴定规范AQ1025-2006",u"矿井瓦斯等级鉴定规范AQ1025-2006",self.pdfHelp20)
+		self.regAction(u"帮助文档/相关规范",u"钻孔瓦斯涌出初速度的测定方法",u"钻孔瓦斯涌出初速度的测定方法",self.pdfHelp21)
+
+		# 多级菜单测试
 		# self.regAction(u"测试2/test/help", u"采空区", u"采空区瓦斯抽采辅助设计", self.goafGasDesign)
 		# self.regAction(u"测试2/test", u"采空区", u"采空区瓦斯抽采辅助设计", self.goafGasDesign)
 		# self.regAction(u"测试2/test", u"采空区", u"采空区瓦斯抽采辅助设计", self.goafGasDesign)
-
-	def creatHelpMenu(self):
-		self.helpMenu = self.menuBar().addMenu(u'帮助文档')
-		self.helpMenu2 = QtGui.QMenu(u'相关官网')
-		self.helpMenu.addMenu(self.helpMenu2)
-		self.helpMenu2.addAction(QtGui.QAction(u"中国煤炭资源网",self,triggered=self.openOfficeNet1))
-		self.helpMenu2.addAction(QtGui.QAction(u"国家煤炭工业网",self,triggered=self.openOfficeNet2))
-		self.helpMenu2.addAction(QtGui.QAction(u"中国煤层气集团有限公司",self,triggered=self.openOfficeNet3))
-		self.helpMenu2.addAction(QtGui.QAction(u"中联煤层气有限责任公司",self,triggered=self.openOfficeNet4))
-		self.helpMenu2.addAction(QtGui.QAction(u"中国煤炭科工集团有限公司",self,triggered=self.openOfficeNet5))
-		self.helpMenu2.addAction(QtGui.QAction(u"煤层科学技术研究院有限公司",self,triggered=self.openOfficeNet6))
-		self.helpMenu2.addAction(QtGui.QAction(u"山西晋城无烟煤矿业集团有限公司",self,triggered=self.openOfficeNet7))
-		self.helpMenu2.addAction(QtGui.QAction(u"淮南矿业网",self,triggered=self.openOfficeNet8))
-		self.helpMenu2.addAction(QtGui.QAction(u"淮北矿业网",self,triggered=self.openOfficeNet9))
-		self.helpMenu2.addAction(QtGui.QAction(u"重庆松藻煤电有限责任公司",self,triggered=self.openOfficeNet10))
-
-		self.helpMenu3 = QtGui.QMenu(u'相关规范')
-		self.helpMenu.addMenu(self.helpMenu3)
-		self.helpMenu3.addAction(QtGui.QAction(u"煤矿井下煤层瓦斯压力的直接测定方法",self,triggered=self.pdfHelp1))
-		self.helpMenu3.addAction(QtGui.QAction(u"煤矿用非金属瓦斯输送管材安全技术要求",self,triggered=self.pdfHelp2))
-		self.helpMenu3.addAction(QtGui.QAction(u"瓦斯管道输送水封阻火泄爆装置技术条件",self,triggered=self.pdfHelp3))
-		self.helpMenu3.addAction(QtGui.QAction(u"瓦斯管道输送自动阻爆装置技术条件",self,triggered=self.pdfHelp4))
-		self.helpMenu3.addAction(QtGui.QAction(u"煤矿瓦斯输送管道干式阻火器通用技术条件",self,triggered=self.pdfHelp5))
-		self.helpMenu3.addAction(QtGui.QAction(u"煤矿低浓度瓦斯往复式内燃机驱动的交流发电机组通用技术条件",self,triggered=self.pdfHelp6))
-		self.helpMenu3.addAction(QtGui.QAction(u"煤矿低浓度瓦斯管道输送安全保障系统设计规范",self,triggered=self.pdfHelp7))
-		self.helpMenu3.addAction(QtGui.QAction(u"煤矿低浓度瓦斯与细水雾混合安全输送装置技术规范",self,triggered=self.pdfHelp8))
-		self.helpMenu3.addAction(QtGui.QAction(u"瓦斯管道输送自动喷粉抑爆装置通用技术条件",self,triggered=self.pdfHelp9))
-		self.helpMenu3.addAction(QtGui.QAction(u"煤的工业分析方法",self,triggered=self.pdfHelp10))
-		self.helpMenu3.addAction(QtGui.QAction(u"煤矿瓦斯抽采工程设计规范",self,triggered=self.pdfHelp11))
-		self.helpMenu3.addAction(QtGui.QAction(u"煤自燃倾向性色谱吸氧鉴定法",self,triggered=self.pdfHelp12))
-		self.helpMenu3.addAction(QtGui.QAction(u"石门揭穿煤与瓦斯突出煤层",self,triggered=self.pdfHelp13))
-		self.helpMenu3.addAction(QtGui.QAction(u"钻孔瓦斯涌出初速度的测定方法",self,triggered=self.pdfHelp14))
-		self.helpMenu3.addAction(QtGui.QAction(u"中国煤炭分类国家标准",self,triggered=self.pdfHelp15))
-		self.helpMenu3.addAction(QtGui.QAction(u"保护层开采技术规范",self,triggered=self.pdfHelp16))
-		self.helpMenu3.addAction(QtGui.QAction(u"煤与瓦斯突出矿井鉴定规范（AQ1024-2006）",self,triggered=self.pdfHelp17))
-		self.helpMenu3.addAction(QtGui.QAction(u"煤矿瓦斯抽放规范AQ1027-2006",self,triggered=self.pdfHelp18))
-		self.helpMenu3.addAction(QtGui.QAction(u"电子等容式瓦斯解吸仪技术条件",self,triggered=self.pdfHelp19))
-		self.helpMenu3.addAction(QtGui.QAction(u"矿井瓦斯等级鉴定规范AQ1025-2006",self,triggered=self.pdfHelp20))
-		self.helpMenu3.addAction(QtGui.QAction(u"钻孔瓦斯涌出初速度的测定方法",self,triggered=self.pdfHelp21))
 
 	def createMenusToolBars(self):
 		menus = {}
@@ -448,39 +437,40 @@ class MainWindow(QtGui.QMainWindow):
 				self.loginAction.setEnabled(False)
 			elif name == u"注销":
 				self.logoutAction = action
-			elif name == u'/' or name[0] == u'/':
+			elif menu[0] == u'/' or name[0] == u'/':
 				continue
-			else:
-				# 将菜单名称按符号 / 进行分解
-				menu_list = menu.split('/')
-				# 菜单的级别(1级菜单、2级菜单、3级菜单等等)
-				n = len(menu_list)
-				# 构造菜单名
-				# 比如: menu = 'help/test/xx'
-				#   则: menu_list = ['help', 'test', 'xx']
-				#       child_menus = ['help', 'help/test', 'help/test/xx']
-				child_menus = ['/'.join(menu_list[:i+1]) for i in range(n)]
-				# print menu_list
-				# print child_menus
-				# 遍历每个子菜单
-				for i, child_menu in enumerate(child_menus):
-					# 确定当前菜单的上级菜单(或者叫 父菜单)
-					# 如果是1级菜单,则上级菜单就是menuBar()
-					# 用上面的例子: 'help' 是 'help/test'的父菜单, 'help/test' 是 'help/test/xx'的上级菜单(父菜单)
-					parent_menu = self.menuBar()
-					if i > 0:
-						parent_menu = menus[child_menus[i-1]]
-					# 如果菜单缓存中menus没有记录,则新建一个QMenu
-					if child_menu not in menus:
-						# addMenu函数的C++原型定义: QMenu* QMenu::addMenu(title)
-						menus[child_menu] = parent_menu.addMenu(menu_list[i])
-				# 菜单关联到具体的Action上
-				menus[child_menus[-1]].addAction(action)
-				# 工具栏按钮关联到具体的Action上
-				# toolBars[menu] = self.addToolBar(menu)
+
+			# 确定当前菜单的上级菜单(或者叫 父菜单)
+			# 如果是1级菜单,则上级菜单就是menuBar()
+			# 用上面的例子: 'help' 是 'help/test'的父菜单, 'help/test' 是 'help/test/xx'的上级菜单(父菜单)
+			parent_menu = self.menuBar()
+			# 将菜单名称按符号 / 进行分解
+			menu_list = menu.split(u'/')
+			# 菜单的级别(1级菜单、2级菜单、3级菜单等等)
+			n = len(menu_list)
+			# 构造菜单名
+			# 比如: menu = 'help/test/xx'
+			#   则: menu_list = ['help', 'test', 'xx']
+			#       child_menus = ['help', 'help/test', 'help/test/xx']
+			child_menus = [u'/'.join(menu_list[:i+1]) for i in range(n)]
+			# print menu_list
+			# print child_menus
+			# 遍历每个子菜单
+			for i, child_menu in enumerate(child_menus):
+				if i > 0:
+					parent_menu = menus[child_menus[i-1]]
+				# 如果菜单缓存中menus没有记录,则新建一个QMenu
+				if child_menu not in menus:
+					# addMenu函数的C++原型定义: QMenu* QMenu::addMenu(title)
+					menus[child_menu] = parent_menu.addMenu(menu_list[i])
+			# 级联菜单的名字
+			parent_menu = menus[child_menus[-1]]
+			# 菜单关联到具体的Action上
+			parent_menu.addAction(action)
+			# 工具栏按钮关联到具体的Action上
+			# toolBars[menu] = self.addToolBar(menu)
 			# 增加工具栏
 			# toolBars[menu].addAction(action)
-		self.creatHelpMenu()
 
 	def createStatusBar(self):
 		self.statusBar().showMessage(u"欢迎使用\"井下煤层气规模化抽采计算机辅助设计系统\"")
