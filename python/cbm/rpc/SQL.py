@@ -333,6 +333,7 @@ class DrillingRadiusParam(Base):
     r0 = Column(Numeric(8, 2))
     p0 = Column(Numeric(8, 2))
     r1 = Column(Numeric(8, 2))
+    p1 = Column(Numeric(8, 2), nullable=False)
 
     coal = relationship(u'Coal')
 

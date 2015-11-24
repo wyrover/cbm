@@ -195,6 +195,7 @@ class GasDrillingOptimizeDlg(BaseDialog):
 		# 填充瓦斯抽采半径数据
 		self.ui.alpha.setText(u'%.1f' % drp.a)
 		self.ui.p0.setText(u'%.1f' % drp.p0)
+		self.ui.p1.setText(u'%.1f' % drp.p1)
 		self.ui.r0.setText(u'%d' % int(drp.r0))
 		self.ui.t0.setText(u'%d' % int(drp.t))
 		self.ui.r1.setText(u'%d' % int(drp.r1))
@@ -229,6 +230,7 @@ class GasDrillingOptimizeDlg(BaseDialog):
 		# 保存瓦斯抽采半径数据
 		drp.a, ok = self.ui.alpha.text().toDouble()
 		drp.p0, ok = self.ui.p0.text().toDouble()
+		drp.p1, ok = self.ui.p1.text().toDouble()
 		drp.r0, ok = self.ui.r0.text().toDouble()
 		drp.t, ok = self.ui.t0.text().toDouble()
 		drp.r1, ok = self.ui.r1.text().toDouble()

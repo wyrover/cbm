@@ -5206,6 +5206,10 @@ void DrillingRadiusParam::__set_r1(const double val) {
   this->r1 = val;
 }
 
+void DrillingRadiusParam::__set_p1(const double val) {
+  this->p1 = val;
+}
+
 uint32_t DrillingRadiusParam::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -5355,6 +5359,14 @@ uint32_t DrillingRadiusParam::read(::apache::thrift::protocol::TProtocol* iprot)
           xfer += iprot->skip(ftype);
         }
         break;
+      case 17:
+        if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
+          xfer += iprot->readDouble(this->p1);
+          this->__isset.p1 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -5436,6 +5448,10 @@ uint32_t DrillingRadiusParam::write(::apache::thrift::protocol::TProtocol* oprot
   xfer += oprot->writeDouble(this->r1);
   xfer += oprot->writeFieldEnd();
 
+  xfer += oprot->writeFieldBegin("p1", ::apache::thrift::protocol::T_DOUBLE, 17);
+  xfer += oprot->writeDouble(this->p1);
+  xfer += oprot->writeFieldEnd();
+
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -5459,6 +5475,7 @@ void swap(DrillingRadiusParam &a, DrillingRadiusParam &b) {
   swap(a.r0, b.r0);
   swap(a.p0, b.p0);
   swap(a.r1, b.r1);
+  swap(a.p1, b.p1);
   swap(a.__isset, b.__isset);
 }
 
@@ -5479,6 +5496,7 @@ DrillingRadiusParam::DrillingRadiusParam(const DrillingRadiusParam& other28) {
   r0 = other28.r0;
   p0 = other28.p0;
   r1 = other28.r1;
+  p1 = other28.p1;
   __isset = other28.__isset;
 }
 DrillingRadiusParam& DrillingRadiusParam::operator=(const DrillingRadiusParam& other29) {
@@ -5498,6 +5516,7 @@ DrillingRadiusParam& DrillingRadiusParam::operator=(const DrillingRadiusParam& o
   r0 = other29.r0;
   p0 = other29.p0;
   r1 = other29.r1;
+  p1 = other29.p1;
   __isset = other29.__isset;
   return *this;
 }
@@ -5520,6 +5539,7 @@ void DrillingRadiusParam::printTo(std::ostream& out) const {
   out << ", " << "r0=" << to_string(r0);
   out << ", " << "p0=" << to_string(p0);
   out << ", " << "r1=" << to_string(r1);
+  out << ", " << "p1=" << to_string(p1);
   out << ")";
 }
 

@@ -5642,6 +5642,10 @@ class DrillingRadiusParam {
    * @var double
    */
   public $r1 = null;
+  /**
+   * @var double
+   */
+  public $p1 = null;
 
   public function __construct($vals=null) {
     if (!isset(self::$_TSPEC)) {
@@ -5710,6 +5714,10 @@ class DrillingRadiusParam {
           'var' => 'r1',
           'type' => TType::DOUBLE,
           ),
+        17 => array(
+          'var' => 'p1',
+          'type' => TType::DOUBLE,
+          ),
         );
     }
     if (is_array($vals)) {
@@ -5760,6 +5768,9 @@ class DrillingRadiusParam {
       }
       if (isset($vals['r1'])) {
         $this->r1 = $vals['r1'];
+      }
+      if (isset($vals['p1'])) {
+        $this->p1 = $vals['p1'];
       }
     }
   }
@@ -5895,6 +5906,13 @@ class DrillingRadiusParam {
             $xfer += $input->skip($ftype);
           }
           break;
+        case 17:
+          if ($ftype == TType::DOUBLE) {
+            $xfer += $input->readDouble($this->p1);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
         default:
           $xfer += $input->skip($ftype);
           break;
@@ -5986,6 +6004,11 @@ class DrillingRadiusParam {
     if ($this->r1 !== null) {
       $xfer += $output->writeFieldBegin('r1', TType::DOUBLE, 16);
       $xfer += $output->writeDouble($this->r1);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->p1 !== null) {
+      $xfer += $output->writeFieldBegin('p1', TType::DOUBLE, 17);
+      $xfer += $output->writeDouble($this->p1);
       $xfer += $output->writeFieldEnd();
     }
     $xfer += $output->writeFieldStop();

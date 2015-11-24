@@ -272,6 +272,7 @@ struct DrillingRadiusParam {
 	14: double r0,
 	15: double p0,
 	16: double r1,
+	17: double p1,
 }
 
 struct DrillingSurf {

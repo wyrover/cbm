@@ -254,7 +254,8 @@ info = {
 	"eta":float,
 	"r0":float,
 	"p0":float,
-	"r1":float
+	"r1":float,
+	"p1":float
 },
 "DrillingSurf":{
 	"id":int,
@@ -766,7 +767,8 @@ fkey = {
 	"eta":0,
 	"r0":0,
 	"p0":0,
-	"r1":0
+	"r1":0,
+	"p1":0
 },
 "DrillingSurf":{
 	"id":1,

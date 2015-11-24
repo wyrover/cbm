@@ -1912,7 +1912,7 @@ inline std::ostream& operator<<(std::ostream& out, const DesignWorkSurfTechnolog
 }
 
 typedef struct _DrillingRadiusParam__isset {
-  _DrillingRadiusParam__isset() : id(false), coal_id(false), name(false), r(false), l(false), k1(false), rho(false), q0(false), a(false), t(false), qm(false), qsum(false), eta(false), r0(false), p0(false), r1(false) {}
+  _DrillingRadiusParam__isset() : id(false), coal_id(false), name(false), r(false), l(false), k1(false), rho(false), q0(false), a(false), t(false), qm(false), qsum(false), eta(false), r0(false), p0(false), r1(false), p1(false) {}
   bool id :1;
   bool coal_id :1;
   bool name :1;
@@ -1929,6 +1929,7 @@ typedef struct _DrillingRadiusParam__isset {
   bool r0 :1;
   bool p0 :1;
   bool r1 :1;
+  bool p1 :1;
 } _DrillingRadiusParam__isset;
 
 class DrillingRadiusParam {
@@ -1936,7 +1937,7 @@ class DrillingRadiusParam {
 
   DrillingRadiusParam(const DrillingRadiusParam&);
   DrillingRadiusParam& operator=(const DrillingRadiusParam&);
-  DrillingRadiusParam() : id(0), coal_id(0), name(), r(0), l(0), k1(0), rho(0), q0(0), a(0), t(0), qm(0), qsum(0), eta(0), r0(0), p0(0), r1(0) {
+  DrillingRadiusParam() : id(0), coal_id(0), name(), r(0), l(0), k1(0), rho(0), q0(0), a(0), t(0), qm(0), qsum(0), eta(0), r0(0), p0(0), r1(0), p1(0) {
   }
 
   virtual ~DrillingRadiusParam() throw();
@@ -1956,6 +1957,7 @@ class DrillingRadiusParam {
   double r0;
   double p0;
   double r1;
+  double p1;
 
   _DrillingRadiusParam__isset __isset;
 
@@ -1991,6 +1993,8 @@ class DrillingRadiusParam {
 
   void __set_r1(const double val);
 
+  void __set_p1(const double val);
+
   bool operator == (const DrillingRadiusParam & rhs) const
   {
     if (!(id == rhs.id))
@@ -2024,6 +2028,8 @@ class DrillingRadiusParam {
     if (!(p0 == rhs.p0))
       return false;
     if (!(r1 == rhs.r1))
+      return false;
+    if (!(p1 == rhs.p1))
       return false;
     return true;
   }

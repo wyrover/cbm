@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>520</width>
+    <width>590</width>
     <height>378</height>
    </rect>
   </property>
@@ -18,7 +18,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>521</width>
+     <width>591</width>
      <height>31</height>
     </rect>
    </property>
@@ -59,7 +59,7 @@ p, li { white-space: pre-wrap; }
      <rect>
       <x>40</x>
       <y>0</y>
-      <width>301</width>
+      <width>451</width>
       <height>31</height>
      </rect>
     </property>
@@ -82,7 +82,7 @@ p, li { white-space: pre-wrap; }
    <widget class="QPushButton" name="btnMenu_Close">
     <property name="geometry">
      <rect>
-      <x>480</x>
+      <x>550</x>
       <y>0</y>
       <width>41</width>
       <height>31</height>
@@ -130,7 +130,7 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>0</x>
      <y>30</y>
-     <width>521</width>
+     <width>581</width>
      <height>351</height>
     </rect>
    </property>
@@ -139,7 +139,7 @@ p, li { white-space: pre-wrap; }
      <rect>
       <x>10</x>
       <y>50</y>
-      <width>511</width>
+      <width>561</width>
       <height>151</height>
      </rect>
     </property>
@@ -262,7 +262,7 @@ p, li { white-space: pre-wrap; }
     <widget class="QLineEdit" name="alpha">
      <property name="geometry">
       <rect>
-       <x>380</x>
+       <x>430</x>
        <y>30</y>
        <width>71</width>
        <height>31</height>
@@ -308,8 +308,8 @@ p, li { white-space: pre-wrap; }
     <widget class="QLabel" name="mineName_label_24">
      <property name="geometry">
       <rect>
-       <x>460</x>
-       <y>70</y>
+       <x>510</x>
+       <y>110</y>
        <width>31</width>
        <height>25</height>
       </rect>
@@ -327,7 +327,7 @@ p, li { white-space: pre-wrap; }
      <property name="geometry">
       <rect>
        <x>290</x>
-       <y>70</y>
+       <y>110</y>
        <width>81</width>
        <height>25</height>
       </rect>
@@ -344,11 +344,60 @@ p, li { white-space: pre-wrap; }
     <widget class="QLineEdit" name="thick">
      <property name="geometry">
       <rect>
-       <x>380</x>
+       <x>430</x>
+       <y>110</y>
+       <width>71</width>
+       <height>31</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="mineName_label_20">
+     <property name="geometry">
+      <rect>
+       <x>510</x>
+       <y>70</y>
+       <width>51</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;(KPa)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="mineName_label_21">
+     <property name="geometry">
+      <rect>
+       <x>290</x>
+       <y>70</y>
+       <width>131</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;钻孔内绝对压力p&lt;span style=&quot; vertical-align:sub;&quot;&gt;1&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="p1">
+     <property name="geometry">
+      <rect>
+       <x>430</x>
        <y>70</y>
        <width>71</width>
        <height>31</height>
       </rect>
+     </property>
+     <property name="text">
+      <string>1</string>
      </property>
     </widget>
    </widget>
@@ -357,7 +406,7 @@ p, li { white-space: pre-wrap; }
      <rect>
       <x>10</x>
       <y>220</y>
-      <width>511</width>
+      <width>561</width>
       <height>121</height>
      </rect>
     </property>
@@ -372,7 +421,7 @@ p, li { white-space: pre-wrap; }
     <widget class="QLabel" name="mineName_label_22">
      <property name="geometry">
       <rect>
-       <x>430</x>
+       <x>456</x>
        <y>30</y>
        <width>31</width>
        <height>25</height>
@@ -390,7 +439,7 @@ p, li { white-space: pre-wrap; }
     <widget class="QLineEdit" name="r1">
      <property name="geometry">
       <rect>
-       <x>350</x>
+       <x>376</x>
        <y>30</y>
        <width>71</width>
        <height>31</height>
@@ -400,7 +449,7 @@ p, li { white-space: pre-wrap; }
     <widget class="QLabel" name="mineName_label_23">
      <property name="geometry">
       <rect>
-       <x>270</x>
+       <x>296</x>
        <y>30</y>
        <width>71</width>
        <height>25</height>
@@ -418,7 +467,7 @@ p, li { white-space: pre-wrap; }
     <widget class="QPushButton" name="analyse">
      <property name="geometry">
       <rect>
-       <x>300</x>
+       <x>330</x>
        <y>70</y>
        <width>171</width>
        <height>41</height>
@@ -578,7 +627,7 @@ p, li { white-space: pre-wrap; }
     <widget class="QPushButton" name="y_cacl">
      <property name="geometry">
       <rect>
-       <x>464</x>
+       <x>490</x>
        <y>29</y>
        <width>25</width>
        <height>25</height>
@@ -655,6 +704,7 @@ p, li { white-space: pre-wrap; }
   </widget>
   <zorder>widget_main</zorder>
   <zorder>widget_title</zorder>
+  <zorder>groupBox</zorder>
  </widget>
  <resources>
   <include location="../usecad.qrc"/>

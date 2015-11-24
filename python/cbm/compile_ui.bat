@@ -60,7 +60,6 @@ python %UIC_PY% -o uipy\ui_login_dlg.py uifiles\login_dlg.ui
 python %UIC_PY% -o uipy\ui_curve_draw_dlg.py uifiles\curve_draw_dlg.ui
 python %UIC_PY% -o uipy\ui_gas_drilling_radius_dlg.py uifiles\gas_drilling_radius_dlg.ui
 python %UIC_PY% -o uipy\ui_gas_drilling_optimize_dlg.py uifiles\gas_drilling_optimize_dlg.ui
-python %UIC_PY% -o uipy\ui_gas_drilling_analyse_dlg.py uifiles\gas_drilling_analyse_dlg.ui
 
 rem 运行主界面
 rem python main.py

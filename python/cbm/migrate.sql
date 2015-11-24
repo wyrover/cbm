@@ -1,0 +1,1 @@
+ALTER TABLE `drilling_radius_param` ADD `p1` DECIMAL(8,2) NOT NULL ;

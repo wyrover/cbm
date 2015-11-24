@@ -3494,6 +3494,7 @@ class DrillingRadiusParam:
    - r0
    - p0
    - r1
+   - p1
   """
 
   thrift_spec = (
@@ -3514,9 +3515,10 @@ class DrillingRadiusParam:
     (14, TType.DOUBLE, 'r0', None, None, ), # 14
     (15, TType.DOUBLE, 'p0', None, None, ), # 15
     (16, TType.DOUBLE, 'r1', None, None, ), # 16
+    (17, TType.DOUBLE, 'p1', None, None, ), # 17
   )
 
-  def __init__(self, id=None, coal_id=None, name=None, r=None, l=None, k1=None, rho=None, q0=None, a=None, t=None, qm=None, qsum=None, eta=None, r0=None, p0=None, r1=None,):
+  def __init__(self, id=None, coal_id=None, name=None, r=None, l=None, k1=None, rho=None, q0=None, a=None, t=None, qm=None, qsum=None, eta=None, r0=None, p0=None, r1=None, p1=None,):
     self.id = id
     self.coal_id = coal_id
     self.name = name
@@ -3533,6 +3535,7 @@ class DrillingRadiusParam:
     self.r0 = r0
     self.p0 = p0
     self.r1 = r1
+    self.p1 = p1
 
   def read(self, iprot):
     if iprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None and fastbinary is not None:
@@ -3623,6 +3626,11 @@ class DrillingRadiusParam:
           self.r1 = iprot.readDouble()
         else:
           iprot.skip(ftype)
+      elif fid == 17:
+        if ftype == TType.DOUBLE:
+          self.p1 = iprot.readDouble()
+        else:
+          iprot.skip(ftype)
       else:
         iprot.skip(ftype)
       iprot.readFieldEnd()
@@ -3697,6 +3705,10 @@ class DrillingRadiusParam:
       oprot.writeFieldBegin('r1', TType.DOUBLE, 16)
       oprot.writeDouble(self.r1)
       oprot.writeFieldEnd()
+    if self.p1 is not None:
+      oprot.writeFieldBegin('p1', TType.DOUBLE, 17)
+      oprot.writeDouble(self.p1)
+      oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()
 
@@ -3722,6 +3734,7 @@ class DrillingRadiusParam:
     value = (value * 31) ^ hash(self.r0)
     value = (value * 31) ^ hash(self.p0)
     value = (value * 31) ^ hash(self.r1)
+    value = (value * 31) ^ hash(self.p1)
     return value
 
   def __repr__(self):
