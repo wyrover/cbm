@@ -261,6 +261,9 @@ class MainWindow(QtGui.QMainWindow):
 	def openOfficeNet10(self):
 		doc.OpenNet('http://www.songzao.com/')
 
+	def showReport(self):
+		doc.OpenNet(u'http://localhost:8081/WebReport/ReportServer?reportlet=WorkBook.cpt')
+
 	#查看《煤层气资源勘察技术规范》文档
 	def investigationOfCBMResources(self):
 		doc.OpenPDFFile(u'help\\pdf\\煤层气资源勘察技术规范.pdf')
@@ -367,6 +370,7 @@ class MainWindow(QtGui.QMainWindow):
 		self.regAction(u"账户管理", u"注销", u"注销用户", self.logout)		
 		self.regAction(u"基础参数库", u"示范矿区基础参数", u"示范矿区基础参数", self.showSampleData)
 		self.regAction(u"基础参数库", u"示范矿区参数录入", u"对示范矿区进行技术管理", self.sampleManage)
+		self.regAction(u"基础参数库", u"淮河南矿区钻孔瓦斯含量统计表", u"", self.showReport)
 		self.regAction(u"基础参数库", u"目标矿井设计", u"设计目标矿井", self.designMine)
 		self.regAction(u"辅助决策", u"抽采技术模式", u"抽采技术模式辅助决策", self.dragTec)
 		self.regAction(u"辅助计算", u"煤层气抽采难易程度评价", u"煤层气抽采难易程度评价辅助计算", self.difficultEval)

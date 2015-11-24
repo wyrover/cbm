@@ -188,6 +188,6 @@ class GasDesignP11Dlg(BaseDialog):
 		# json_file = u'help\\json\\reportP11.json'
 		# EncodeHelper.UTF8_2_GBK(json_file, u'help\\json\\test.json')
 
-		json_file = u'help\\json\\test.json'
+		json_file = u'help\\json\\reportP11.json'
 		# 生成word报单
 		doc.CreatReport(json_file)
