@@ -119,16 +119,25 @@ class MainWindow(QtGui.QMainWindow):
 				break
 			# 用户未登录
 			elif ret == 2:
-				UiHelper.MessageBox(u"您需要登录才能使用本功能!", error = True)
-				can_run = self.login() # 登录
+				if UiHelper.MessageBox(u"您需要登录才能使用本功能!", error = True):
+					can_run = self.login() # 登录
+				else:
+					can_run = False
+					break
 			# 管理员已登录		
 			elif ret == 3 and authority == Authority.USER:
-				UiHelper.MessageBox(u"管理员禁止使用该功能,请重新登录!", error = True)
-				can_run = self.login() # 登录
+				if UiHelper.MessageBox(u"管理员禁止使用该功能,请重新登录!", error = True):
+					can_run = self.login() # 登录
+				else:
+					can_run = False
+					break
 			# 普通用户已登录
 			elif ret == 1 and authority == Authority.ADMIN:
-				UiHelper.MessageBox(u"您的权限不够,请重新登录!", error = True)
-				can_run = self.login() # 登录
+				if UiHelper.MessageBox(u"您的权限不够,请重新登录!", error = True):
+					can_run = self.login() # 登录
+				else:
+					can_run = False
+					break
 
 			if can_run and DataHelper.sql_login_authority(authority):
 				break
@@ -369,8 +378,8 @@ class MainWindow(QtGui.QMainWindow):
 		self.regAction(u"账户管理", u"登录", u"用户登录", self.login)
 		self.regAction(u"账户管理", u"注销", u"注销用户", self.logout)		
 		self.regAction(u"基础参数库", u"示范矿区基础参数", u"示范矿区基础参数", self.showSampleData)
-		self.regAction(u"基础参数库", u"示范矿区参数录入", u"对示范矿区进行技术管理", self.sampleManage)
-		self.regAction(u"基础参数库", u"淮河南矿区钻孔瓦斯含量统计表", u"", self.showReport)
+		self.regAction(u"基础参数库/示范矿区参数录入", u"示范矿区参数录入", u"对示范矿区进行技术管理", self.sampleManage)
+		self.regAction(u"基础参数库/示范矿区参数录入", u"淮河南矿区钻孔瓦斯含量统计表", u"", self.showReport)
 		self.regAction(u"基础参数库", u"目标矿井设计", u"设计目标矿井", self.designMine)
 		self.regAction(u"辅助决策", u"抽采技术模式", u"抽采技术模式辅助决策", self.dragTec)
 		self.regAction(u"辅助计算", u"煤层气抽采难易程度评价", u"煤层气抽采难易程度评价辅助计算", self.difficultEval)
