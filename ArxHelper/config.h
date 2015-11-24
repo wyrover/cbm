@@ -12,3 +12,4 @@
 #define PROPERTY_DATA_FIELD_INFO_DICT _T("词典-属性数据字段信息")
 
 #define DIM_STYLE_NAME _T("瓦斯抽采")
+#define DIM_STYLE_NAME2 _T("煤层赋存")

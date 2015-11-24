@@ -13,6 +13,8 @@ EvalUnitGraph::EvalUnitGraph(cbm::DesignEvalUnitPartition& _deup)
 	L2 = deup.l2;
 	w = deup.w;
 	h = deup.h;
+
+	L = (std::min)(L, L1);
 	thick = 4; // 煤层厚度(暂时人为给定,目前还不需要)
 	angle = 0; // 煤层倾角(暂时人为给定,目前还不需要)
 }
@@ -37,7 +39,15 @@ void EvalUnitGraph::drawTunnel()
 	AcGeVector3d v1(AcGeVector3d::kXAxis), v2(AcGeVector3d::kYAxis);
 	acutPrintf(_T("\n巷道宽度:%.3f"), w);
 	AcGePoint3d pt = getPoint() + v2*0.5*w;
+	// 绘制巷道
 	this->drawDoubleLine(pt, pt+v1*L, w);
+	// 绘制巷道始末点文字
+	this->drawMText(pt+v1*(0-3), 0, _T("巷道\n起点"), 8, AcDbMText::kMiddleRight);
+	this->drawMText(pt+v1*(L+3), 0, _T("巷道\n末点"), 8, AcDbMText::kMiddleLeft);
+	// 标注巷道
+	CString dimText;
+	dimText.Format(_T("%d 米"), (int)L);
+	this->drawAlignedDim(pt, pt+v1*L, dimText, 20, false);
 }
 
 void EvalUnitGraph::drawEvalUnits()
@@ -64,11 +74,18 @@ void EvalUnitGraph::drawEvalUnits()
 			AcGePoint3d spt = pt + v1*Ln;
 			AcGePoint3d ept = spt + v2*L2;
 			this->drawLine(spt, ept);
+
+			// 绘制评价单元长度标注
+			CString dimText;
+			dimText.Format(_T("%d 米"), (int)eval_unit.l);
+			this->drawAlignedDim(pt + v1*Ln_1 + v2*L2, ept, dimText, 20, false);
+
 			//绘制单元编号
 			AcGePoint3d textPt = spt - v1*(Ln-Ln_1)*0.5 + v2*L2*0.5;
 			CString text;
-			text.Format(_T("%d单元"), eval_unit.num);
-			this->drawMText(textPt, 0, text, 10);
+			text.Format(_T("%d单元\n抽采时间:%d 天"), eval_unit.num, (int)eval_unit.t);
+			this->drawMText(textPt, 0, text, 8, AcDbMText::kMiddleCenter);
+
 			//更新
 			Ln_1 = Ln;
 		}

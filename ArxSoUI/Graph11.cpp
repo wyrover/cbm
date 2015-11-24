@@ -577,8 +577,8 @@ namespace P11
 
         //绘制煤层面
         AcDbObjectId coalId = this->drawRect2( basePt, 0, Lc, Wc );
-        this->drawAlignedDim( basePt, basePt + AcGeVector3d::kXAxis * Lc, 50, false );
-        this->drawAlignedDim( basePt, basePt + AcGeVector3d::kYAxis * Wc, 30, true );
+        this->drawAlignedDim( basePt, basePt + AcGeVector3d::kXAxis * Lc, _T(""), 50, false );
+        this->drawAlignedDim( basePt, basePt + AcGeVector3d::kYAxis * Wc, _T(""), 30, true );
         //附加数据
         if( !coalId.isNull() )
         {

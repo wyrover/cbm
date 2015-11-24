@@ -41,10 +41,11 @@ protected:
     AcDbObjectId drawRect2( const AcGePoint3d& pt, double angle, double width, double height );
     AcDbObjectId drawCircle( const AcGePoint3d& pt, double radius );
     AcDbObjectId drawDoubleLine( const AcGePoint3d& spt, const AcGePoint3d& ept, double width );
-    AcDbObjectId drawMText( const AcGePoint3d& pt, double angle, const CString& text, double height );
+	AcDbObjectId drawMText( const AcGePoint3d& pt, double angle, const CString& text, double height, AcDbMText::AttachmentPoint ap = AcDbMText::kMiddleLeft  );
     AcDbObjectId drawLine( const AcGePoint3d& pt, double angle, double length );
     AcDbObjectId drawLine( const AcGePoint3d& spt, const AcGePoint3d& ept );
-    AcDbObjectId drawAlignedDim( const AcGePoint3d& pt1, const AcGePoint3d& pt2, double offset = 30, bool clockwise = true );
+    AcDbObjectId drawAlignedDim( const AcGePoint3d& pt1, const AcGePoint3d& pt2, const CString& text=_T(""), double offset = 30, bool clockwise = true, const CString& dimStyle=_T("") );
+	AcDbObjectId drawPolygonHatch(const AcGePoint3dArray& pts, const CString& patName, double scale);
     //记录所绘制的图元(仅BaseGraph类内部使用)
     void addEnt( const AcDbObjectId& objId );
 

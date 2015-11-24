@@ -374,7 +374,7 @@ p, li { white-space: pre-wrap; }
       <rect>
        <x>430</x>
        <y>30</y>
-       <width>41</width>
+       <width>31</width>
        <height>25</height>
       </rect>
      </property>
@@ -384,7 +384,7 @@ p, li { white-space: pre-wrap; }
       </font>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;(mm)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;(m)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="r1">
@@ -578,7 +578,7 @@ p, li { white-space: pre-wrap; }
     <widget class="QPushButton" name="y_cacl">
      <property name="geometry">
       <rect>
-       <x>475</x>
+       <x>464</x>
        <y>29</y>
        <width>25</width>
        <height>25</height>

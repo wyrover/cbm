@@ -79,8 +79,8 @@ namespace P12
         ArxDrawHelper::Solve2( Ls, W0, D, v_dists );
 
         //标注
-        this->drawAlignedDim( basePt, basePt + v1 * Ls, 50, false );      //条带范围
-        this->drawAlignedDim( basePt + v1 * ( Ls - L0 ), basePt + v1 * Ls, 30, false ); //钻孔超前距
+        this->drawAlignedDim( basePt, basePt + v1 * Ls, _T(""), 50, false );      //条带范围
+        this->drawAlignedDim( basePt + v1 * ( Ls - L0 ), basePt + v1 * Ls, _T(""), 30, false ); //钻孔超前距
 
         //计算每个条带的起始位置
         AcGePoint3dArray pts;
@@ -172,7 +172,7 @@ namespace P12
 
         //绘制煤层面
         AcDbObjectId coalId = this->drawRect2( basePt, 0, Lc, Wc );
-        this->drawAlignedDim( basePt, basePt + v1 * Lc, 50, false );
-        this->drawAlignedDim( basePt, basePt + v2 * Wc, 30, true );
+        this->drawAlignedDim( basePt, basePt + v1 * Lc, _T(""), 50, false );
+        this->drawAlignedDim( basePt, basePt + v2 * Wc, _T(""), 30, true );
     }
 } // namespace P12

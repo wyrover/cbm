@@ -11,9 +11,12 @@ from scipy.interpolate import griddata
 # import statsmodels.api as sm
 import matplotlib.pyplot as plt
 
+import os
+import os.path
 import json
 import datetime
 from math import sqrt, pow, exp, sin, cos, tan, radians, log10, pi
+import codecs
 
 import UiHelper
 import DataHelper
@@ -178,13 +181,13 @@ def dip_angle_type(angle):
 # 计算评价单元的距离
 def Lf(Ln, T, V):
 	c1, c2 = 3.0/7.0, 10.0/7.0
-	Ln_1 = Ln - c2*T*V
+	Ln_1 = Ln - c1*T*V
 	if Ln_1 <= 0:
 		return []
 
 	Li = [Ln, Ln_1]
 	while True:
-		Ln_1 = c2*Ln_1-c1*Ln - c1*T*V
+		Ln_1 = c2*Ln_1 - c1*Ln - c1*T*V
 		if Ln_1 > 0:
 			Li.append(Ln_1)
 		else:
@@ -206,6 +209,7 @@ def design_eval_unit(partition_id):
 
 	# 计算各单元边界线与巷道交点到巷道起点的距离
 	Li = Lf(Ln, T, V)
+	print Li
 
 	# 计算各单元的起点抽采时间
 	g = lambda x:int(round(1.0*(Ln-x)/V+T))
@@ -236,10 +240,10 @@ def draw_curve(q0, alpha):
 	plt.subplot(211)
 	plt.title(u'百米钻孔在不同时间t内可抽采的瓦斯总量$Q_t(q_0=%.1f, α=%.1f)$' % (q0, alpha))
 	plt.xlabel(u'抽采时间$t(d)$')
-	plt.ylabel(u'可抽瓦斯总量$Q_t(m^3)$')
+	plt.ylabel(u'可抽瓦斯总量$Q_t(L)$')
 	plt.grid(True)
 	plt.plot(T, Q, label=u'$Q_t=1440q_0(1-e^{-αt})/α$')
-	plt.plot(T, Q0, 'r--', label=u'$Q_∞$= %.1f ($m^3$)' % c)
+	plt.plot(T, Q0, 'r--', label=u'$Q_∞$= %.1f ($L$)' % c)
 	plt.legend(loc=0)
 
 	plt.subplot(212)
@@ -273,16 +277,14 @@ def get_z_datas(k):
 		return []
 	# 对lgk四舍五入
 	k = int(round(log10(k)))
-	if k == 0:
+	if k <= 0:
 		return _Z0
 	elif k == 1:
 		return _Z1
 	elif k == 2:
 		return _Z2
-	elif k == 3:
+	elif k >= 3:
 		return _Z3
-	else:
-		return []
 
 # 瓦斯抽采优化
 # 抽采率η=f(T0, R0/r0, χ)是关于这3个因变量的一个复杂函数
@@ -514,27 +516,44 @@ def DrawXYZ(x, y, k):
 	# 显示图形
 	plt.show()
 
-def test_json():
-	# 生成json数据测试
+# 生成json数据测试
+def test_json(json_file):
+	# 准备一个词典数据
 	info={}
-	info["code"]=1
-	info["id"]=1900
-	info["name"]='张三'
-	info["sex"]='男'
+	info[u"code"]=1
+	info[u"id"]=1900
+	info[u"name"]=u'张三'
+	info[u"sex"]=u'男'
 	list=[info,info,info]
-	data={}
-	data["code"]=1
-	data["id"]=1900
-	data["name"]='张三'
-	data["sex"]='男'
-	data["info"]=info
-	data["data"]=list
-	
+	json_data={}
+	json_data[u"code"]=1
+	json_data[u"id"]=1900
+	json_data[u"name"]=u'张三'
+	json_data[u"sex"]=u'男'
+	json_data[u"info"]=info
+	json_data[u"data"]=list
 	jsonStr = json.dumps(data)
 	print "jsonStr:",jsonStr
 
+# 将json数据写入到文件
+# 输出json文件的2种方法:
+	# (1) 新建文件(使用何种编码和当前源代码py文件的编码有关)
+	# f = open(json_file, 'w')
+	# f.write(json.dumps(data))
+	# f.close()
+	# (2) http://www.2cto.com/kf/201411/351186.html
+	#     http://www.tuicool.com/articles/YBbAzi
+	#     http://blog.csdn.net/ys_073/article/details/9403039
+	#     中文汉字总是被转换为unicode码, 在dumps函数中添加参数ensure_ascii=False即可解决
+def write_json_file(json_data, json_file):
+	with codecs.open(json_file, 'w', 'utf-8') as f:
+		json.dump(json_data, f, ensure_ascii=False)
+
 # 读取数据库生成json数据,数据,用于生成钻孔报表
-def generateJsonFileOfPoreReport(coal_id, tws_tech_id, json_file):
+# 注意: 为了减少错误,生成json数据的时候,所有的字符串建议都使用unicode!!!
+#       本代码中字符串, 包括:[代码中定义的字符串]、[从数据库中读取的数据]都是utf-8编码的字节数组(str)
+#       需要使用xxx.decode('utf-8')方法进行解码转换成unicode字符串!!!
+def generateJsonFileOfPoreReport(coal_id, design_id, json_file):
 	# 查找煤层
 	coal = SQLClientHelper.GetCoalById(coal_id)
 	if coal.id <= 0:return False
@@ -542,32 +561,35 @@ def generateJsonFileOfPoreReport(coal_id, tws_tech_id, json_file):
 	mine = SQLClientHelper.GetMineById(coal.mine_id)
 	if mine.id  <= 0:return False
 	# 查找掘进面的抽采技术
-	tws_tech = SQLClientHelper.GetDesignDrillingSurfTechnologyById(self.design_id)
+	tws_tech = SQLClientHelper.GetDesignDrillingSurfTechnologyById(design_id)
 	if tws_tech.id <= 0:return False
 
 	# json模块可以直接将词典转换成json编码串
 	# 因此主要的
-	data = {"pore_header":["钻孔编号","钻孔长度","钻孔倾角","钻孔方位角"]}
-	# 写入矿井名称(utf-8编码)
-	data['$*mine_name*$'] = mine.name
+	json_data = {u"pore_header":[u"钻孔编号",u"钻孔长度",u"钻孔倾角",u"钻孔方位角"]}
+	# 写入矿井名称(中文汉字必须要用unicode表示,所以需要进行解码decode)
+	json_data[u'$*mine_name*$'] = mine.name.decode('utf-8')
 	# 写入工作面名称
-	data['$*work_face_name*$'] = 'F292'
+	json_data[u'$*work_face_name*$'] = 'F292'.decode('utf-8')
 	# 写入底板岩巷距离煤层的垂距
-	data['w_dist'] = tws_tech.v_offset
+	json_data[u'w_dist'] = tws_tech.v_offset
 	# 写入水平投影距离
-	data['h_offset'] = tws_tech.h_offset
+	json_data[u'h_offset'] = tws_tech.h_offset
 	# 写入钻场间距
-	data['site_gap'] = tws_tech.gs
+	json_data[u'site_gap'] = tws_tech.gs
 	# 写入钻孔孔径
-	data['pore_diameter'] = tws_tech.gp
+	json_data[u'pore_diameter'] = tws_tech.gp
 	# 写入封孔长度
-	data['$*pore_lenth*$'] = 98
-	# 写入word模板路径
-	data['tplPath']="help\\doc\\tpl\\底板岩巷密集穿层钻孔抽采煤巷条带瓦斯抽采技术.doc"
+	json_data[u'$*pore_lenth*$'] = 98
+	# 写入word模板路径(使用绝对路径,避免出错!!!)
+	# 中文汉字必须要用unicode表示,所以需要进行解码decode)
+	json_data[u'tplPath'] = os.path.abspath(u".\\help\\doc\\tpl\\底板岩巷密集穿层钻孔抽采煤巷条带瓦斯抽采技术.doc")
+	# 写入报告默认名称
+	json_data[u"reportName"] = u'底板岩巷密集穿层钻孔抽采煤巷条带瓦斯抽采技术报告'
+	# print json_data[u'tplPath'].encode('gbk')
+	
 	# 写入钻孔信息
+	# ***待完善***
 
-	# 生成json文件
-	encodedjson = json.dumps(data)
-	file_object = open(json_file, 'w')
-	file_object.write(result)
-	file_object.close()
+	# 生成json文件(utf-8编码)
+	write_json_file(json_data, json_file)

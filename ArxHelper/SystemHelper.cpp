@@ -13,7 +13,8 @@ void SystemHelper::Start()
     //ArxDataTool::RegAppName( acdbHostApplicationServices()->workingDatabase(), DRAW_PARAMS_XDATA_GROUP );
 
     //创建标注样式
-    ArxDrawHelper::CreateDimStyle( DIM_STYLE_NAME, false );
+    ArxDrawHelper::CreateDimStyle( DIM_STYLE_NAME, false, 1 );
+	ArxDrawHelper::CreateDimStyle( DIM_STYLE_NAME2, false, 0.5 );
 }
 
 void SystemHelper::ShutDown()

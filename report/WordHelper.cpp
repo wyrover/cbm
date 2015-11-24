@@ -118,9 +118,9 @@ static bool GetTableHeader(Json::Value& root,const CString& headerKey,CStringArr
 static bool GetJsonValueByKey(const CString& jsonPath, const CString& jsonKey, CString& jsonValue)
 {
 	if(jsonPath.IsEmpty()) return false;
+
 	std::string jsonFile = W2C((LPCTSTR)jsonPath);
-	std::ifstream inFile(jsonFile.c_str()); 
-	//std::ifstream inFile((LPCTSTR)path); 
+	std::ifstream inFile(jsonFile.c_str());
 	if(!inFile) return false; 
 
 	Json::Reader reader; 
@@ -185,10 +185,17 @@ void WordHelper::Uninitword()
 
 bool WordHelper::ReadAndWriteDatas(const CString& jsonPath,const CString& savePath)
 {
+	// 读取json文件[tplPath]的值
 	CString tplName;
 	GetJsonValueByKey(jsonPath,_T("tplPath"),tplName);
-	CString tplPath = BuildPath(GetAppPathDir(),tplName);
+	AfxMessageBox(tplName);
+
+	// doc模板文件路径
+	// 注意:在json文件里要使用绝对路径!!!
+	CString tplPath = tplName;
 	if(CheckDocIsUsing(tplPath,*m_word)) return false;
+
+	// 后台启动word
 	m_word->CreateApp();
 	//m_word->ShowApp();
 	if(!m_word->Open(/*strPath*/tplPath))
