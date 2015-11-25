@@ -8,10 +8,8 @@
 #include <numeric>
 #include <algorithm>
 #include <iterator>
-#include <fstream>
-#include "AcFstream.h"
-
 #include <sstream>
+
 static std::string Int2Str(int i)
 {
 	std::stringstream ss;
@@ -24,7 +22,7 @@ namespace P11
 	// 删除抽采技术下的所有钻场和钻孔
 	static void DeleteAllSiteAndPore(int design_id)
 	{
-		// 查找与该技术关联的所有
+		// 查找与该技术关联的所有钻场
 		std::vector<int32_t> site_ids;
 		SQLClientHelper::GetDesignSiteIdListByForeignKey(site_ids, "design_technology_id", design_id);
 

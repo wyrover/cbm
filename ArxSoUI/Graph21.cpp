@@ -3,9 +3,26 @@
 
 #include <ArxHelper/HelperClass.h>
 #include "CbmClientHelper.h"
+#include "SQLClientHelper.h"
+
+#include <numeric>
+#include <algorithm>
+#include <iterator>
+#include <sstream>
 
 namespace P21
 {
+
+	// 删除抽采技术下的所有钻场和钻孔
+	static void DeleteAllSiteAndPore(int design_id)
+	{
+		// 查找与该技术关联的所有钻场
+		std::vector<int32_t> site_ids;
+		SQLClientHelper::GetDesignSiteIdListByForeignKey(site_ids, "design_technology_id", design_id);
+
+		// 删除所有的钻场(数据库会自动删除包含的钻孔)
+		SQLClientHelper::DeleteMoreDesignSite(site_ids);
+	}
 
 	PoreHelper::PoreHelper(cbm::Coal& _coal, cbm::DesignWorkSurfTechnology& _tech)
 		: coal( _coal ), tech( _tech )
@@ -39,7 +56,11 @@ namespace P21
 
 	void PoreHelper::cacl()
 	{
+		// 删除所有的钻场和钻孔
+		DeleteAllSiteAndPore(tech.design_technology_id);
 
+		// 工作面巷道的中点作为原点
+		AcGePoint3d orig(AcGePoint3d::kOrigin);
 	}
 
     Graph::Graph( cbm::Coal& _coal, cbm::DesignWorkSurfTechnology& _tech )
