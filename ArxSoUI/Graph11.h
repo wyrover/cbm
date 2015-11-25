@@ -7,6 +7,7 @@
 namespace P11
 {
 
+	// ×ê¿××ø±ê¼ÆËãÀà
 	class PoreHelper
 	{
 	public:

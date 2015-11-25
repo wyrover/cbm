@@ -9,6 +9,32 @@
 namespace P12
 {
 
+	// 钻孔坐标计算类
+	class PoreHelper
+	{
+	public:
+		PoreHelper(cbm::Coal& coal, cbm::DesignDrillingSurfTechnology& tech);
+		void cacl();
+
+		/** 计算和绘图用到的参数. */
+	protected:
+		//倾向长度和走向长度
+		double L1, L2;
+		//煤层厚度和倾角(弧度)
+		double thick, angle;
+		//工作面巷道的宽度和高度
+		double w, h;
+		//左右上下帮距
+		double left, right, top, bottom;
+		//钻孔半径、钻孔底间距、钻孔超前距离、钻孔条带长度
+		double radius, pore_gap, L_stripe, leading;
+
+		/** 上述计算参数都是从这2个对象指针中提取出来的. */
+	protected:
+		cbm::Coal& coal;                 // 煤层指针
+		cbm::DesignDrillingSurfTechnology& tech;     // 设计抽采技术参数指针
+	};
+
     //剖面图绘制基类
     class Graph : public BaseGraph
     {

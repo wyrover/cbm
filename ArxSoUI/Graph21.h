@@ -9,7 +9,45 @@
 namespace P21
 {
 
-//剖面图绘制基类
+	// 钻孔坐标计算类
+	class PoreHelper
+	{
+	public:
+		PoreHelper( cbm::Coal& coal, cbm::DesignWorkSurfTechnology& tech );
+		void cacl();
+
+		/** 计算和绘图用到的参数. */
+	protected:
+		//倾向长度和走向长度
+		double L1, L2;
+		//煤层厚度和倾角(弧度)
+		double thick, angle;
+		//工作面巷道的宽度和高度
+		double w, h;
+		//钻场长宽高以及钻场间距
+		double Ls, Ws, Hs, site_gap;
+		//底板巷的宽度和高度
+		double wd, hd;
+		//左右上下帮距
+		double left, right, top, bottom;
+		//岩巷和工作面的水平投影距离、垂距
+		double h_offset, v_offset;
+		//钻孔半径和抽采半径
+		double radius, pore_gap;
+		//只布置一条底板岩巷
+		bool single_rock_tunnel;
+		//2条岩巷之间的水平距离
+		double d_offset;
+		//底板巷与工作面切眼的水平投影距离
+		double p_offset;
+
+		/** 上述计算参数都是从这2个对象指针中提取出来的. */
+	protected:
+		cbm::Coal& coal;                 // 煤层指针
+		cbm::DesignWorkSurfTechnology& tech;  // 设计回采工作面指针
+	};
+
+	//剖面图绘制基类
     class Graph : public BaseGraph
     {
     protected:

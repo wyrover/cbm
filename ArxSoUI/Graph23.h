@@ -9,6 +9,32 @@
 namespace P23
 {
 
+	// 钻孔坐标计算类
+	class PoreHelper
+	{
+	public:
+		PoreHelper( cbm::Coal& coal, cbm::DesignWorkSurfTechnology& tech );
+		void cacl();
+
+		/** 计算和绘图用到的参数. */
+	protected:
+		//倾向长度和走向长度
+		double L1, L2;
+		//煤层厚度和倾角(弧度)
+		double thick, angle;
+		//工作面巷道的宽度和高度
+		double w, h;
+		//钻孔半径、钻孔底间距、钻孔压茬长度、顺层斜交钻孔倾角
+		double radius, pore_gap, pore_stubble, pore_angle;
+		//顺层钻孔类型
+		int pore_type;
+
+		/** 上述计算参数都是从这2个对象指针中提取出来的. */
+	protected:
+		cbm::Coal& coal;                 // 煤层指针
+		cbm::DesignWorkSurfTechnology& tech;     // 设计抽采技术参数指针
+	};
+
     //剖面图绘制基类
     class Graph : public BaseGraph
     {

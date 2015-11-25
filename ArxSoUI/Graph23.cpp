@@ -6,6 +6,30 @@
 namespace P23
 {
 
+	PoreHelper::PoreHelper(cbm::Coal& _coal, cbm::DesignWorkSurfTechnology& _tech)
+		: coal( _coal ), tech( _tech )
+	{
+		//倾向长度和走向长度
+		L1 = tech.l1, L2 = tech.l2;
+		//煤层厚度和倾角(弧度)
+		thick = coal.thick, angle = DegToRad( coal.dip_angle );
+		//工作面巷道的宽度和高度
+		w = tech.w, h = tech.h;
+		//钻孔半径和钻孔底间距(孔径的单位是mm)
+		radius = tech.dp * 0.5 * 0.001, pore_gap = tech.gp;
+		//钻孔压茬长度
+		pore_stubble = tech.pore_stubble;
+		//顺层斜交钻孔倾角
+		pore_angle = DegToRad( tech.pore_angle );
+		//顺层钻孔类型
+		pore_type = tech.pore_type;
+	}
+
+	void PoreHelper::cacl()
+	{
+
+	}
+
     Graph::Graph( cbm::Coal& _coal, cbm::DesignWorkSurfTechnology& _tech )
         : BaseGraph(), coal( _coal ), tech( _tech )
     {
@@ -154,4 +178,5 @@ namespace P23
         this->drawAlignedDim( basePt, basePt + v1 * Lc, _T(""), 50, false );
         this->drawAlignedDim( basePt, basePt + v2 * Wc, _T(""), 30, true );
     }
+
 } // namespace P23
