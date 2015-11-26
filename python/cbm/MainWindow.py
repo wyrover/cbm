@@ -64,7 +64,9 @@ class MainWindow(QtGui.QMainWindow):
 		self.setPalette(palette)
 		# 方法2: 用CSS设置背景
 		# self.setStyleSheet(u"QWidget#centralwidget{ border-image : url(:/images/bg.png)};" );
-		
+		# 报表是否显示一页，false代表所有数据都显示在一页上
+		self.bypagesize = 'true'
+
 	
 	def real_logout(self):
 		# 注销(清空sys_info表)
@@ -270,8 +272,73 @@ class MainWindow(QtGui.QMainWindow):
 	def openOfficeNet10(self):
 		doc.OpenNet('http://www.songzao.com/')
 
-	def showReport(self):
-		doc.OpenNet(u'http://localhost:8081/WebReport/ReportServer?reportlet=WorkBook.cpt')
+	def showReport1_1(self):
+		url = u'http://localhost:8081/WebReport/ReportServer?reportlet=1_1.cpt&__bypagesize__=%s' %(self.bypagesize)
+		doc.OpenNet(url)
+
+	def showReport1_2(self):
+		url = u'http://localhost:8081/WebReport/ReportServer?reportlet=1_2.cpt&__bypagesize__=%s' %(self.bypagesize)
+		doc.OpenNet(url)
+
+	def showReport1_3(self):
+		url = u'http://localhost:8081/WebReport/ReportServer?reportlet=1_3.cpt&__bypagesize__=%s' %(self.bypagesize)
+		doc.OpenNet(url)
+
+	def showReport2_1(self):
+		url = u'http://localhost:8081/WebReport/ReportServer?reportlet=2_1.cpt&__bypagesize__=%s' %(self.bypagesize)
+		doc.OpenNet(url)
+
+	def showReport2_2(self):
+		url = u'http://localhost:8081/WebReport/ReportServer?reportlet=2_2.cpt&__bypagesize__=%s' %(self.bypagesize)
+		doc.OpenNet(url)
+
+	def showReport3_1(self):
+		url = u'http://localhost:8081/WebReport/ReportServer?reportlet=3_1.cpt&__bypagesize__=%s' %(self.bypagesize)
+		doc.OpenNet(url)
+
+	def showReport3_2(self):
+		url = u'http://localhost:8081/WebReport/ReportServer?reportlet=3_2.cpt&__bypagesize__=%s' %(self.bypagesize)
+		doc.OpenNet(url)
+
+	def showReport4_1(self):
+		url = u'http://localhost:8081/WebReport/ReportServer?reportlet=4_1.cpt&__bypagesize__=%s' %(self.bypagesize)
+		doc.OpenNet(url)
+
+	def showReport4_2(self):
+		url = u'http://localhost:8081/WebReport/ReportServer?reportlet=4_2.cpt&__bypagesize__=%s' %(self.bypagesize)
+		doc.OpenNet(url)
+
+	def showReport5_1(self):
+		url = u'http://localhost:8081/WebReport/ReportServer?reportlet=5_1.cpt&__bypagesize__=%s' %(self.bypagesize)
+		doc.OpenNet(url)
+
+	def showReport5_2(self):
+		url = u'http://localhost:8081/WebReport/ReportServer?reportlet=5_2.cpt&__bypagesize__=%s' %(self.bypagesize)
+		doc.OpenNet(url)
+
+	def showReport6_1(self):
+		url = u'http://localhost:8081/WebReport/ReportServer?reportlet=6_1.cpt&__bypagesize__=%s' %(self.bypagesize)
+		doc.OpenNet(url)
+
+	def showReport6_2(self):
+		url = u'http://localhost:8081/WebReport/ReportServer?reportlet=6_2.cpt&__bypagesize__=%s' %(self.bypagesize)
+		doc.OpenNet(url)
+
+	def showReport7_1(self):
+		url = u'http://localhost:8081/WebReport/ReportServer?reportlet=7_1.cpt&__bypagesize__=%s' %(self.bypagesize)
+		doc.OpenNet(url)
+
+	def showReport7_2(self):
+		url = u'http://localhost:8081/WebReport/ReportServer?reportlet=7_2.cpt&__bypagesize__=%s' %(self.bypagesize)
+		doc.OpenNet(url)
+
+	def showReport8_1(self):
+		url = u'http://localhost:8081/WebReport/ReportServer?reportlet=8_1.cpt&__bypagesize__=%s' %(self.bypagesize)
+		doc.OpenNet(url)
+
+	def showReport8_2(self):
+		url = u'http://localhost:8081/WebReport/ReportServer?reportlet=8_2.cpt&__bypagesize__=%s' %(self.bypagesize)
+		doc.OpenNet(url)
 
 	#查看《煤层气资源勘察技术规范》文档
 	def investigationOfCBMResources(self):
@@ -379,7 +446,23 @@ class MainWindow(QtGui.QMainWindow):
 		self.regAction(u"账户管理", u"注销", u"注销用户", self.logout)		
 		self.regAction(u"基础参数库", u"示范矿区基础参数", u"示范矿区基础参数", self.showSampleData)
 		self.regAction(u"基础参数库/示范矿区参数录入", u"示范矿区参数录入", u"对示范矿区进行技术管理", self.sampleManage)
-		self.regAction(u"基础参数库/示范矿区参数录入", u"淮河南矿区钻孔瓦斯含量统计表", u"", self.showReport)
+		self.regAction(u"基础参数库/示范矿区参数录入",u"淮河南矿区钻孔瓦斯含量统计表", u"", self.showReport1_1)
+		self.regAction(u"基础参数库/示范矿区参数录入",u"潘谢矿区钻钻孔瓦斯含量统计表", u"", self.showReport1_2)
+		self.regAction(u"基础参数库/示范矿区参数录入",u"潘谢矿区采掘工作面瓦斯含量", u"", self.showReport1_3)
+		self.regAction(u"基础参数库/示范矿区参数录入",u"淮河南矿区瓦斯压力统计表", u"", self.showReport2_1)
+		self.regAction(u"基础参数库/示范矿区参数录入",u"潘谢矿区瓦斯压力表", u"", self.showReport2_2)
+		self.regAction(u"基础参数库/示范矿区参数录入",u"淮河南矿区回采工作面瓦斯涌出量", u"", self.showReport3_1)
+		self.regAction(u"基础参数库/示范矿区参数录入",u"潘谢矿区回采工作面瓦斯涌出量", u"", self.showReport3_2)
+		self.regAction(u"基础参数库/示范矿区参数录入",u"淮河南矿区掘进工作面瓦斯涌出量统计表", u"", self.showReport4_1)
+		self.regAction(u"基础参数库/示范矿区参数录入",u"潘谢矿区掘进工作面瓦斯涌出量统计表", u"", self.showReport4_2)
+		self.regAction(u"基础参数库/示范矿区参数录入",u"淮河南矿区煤与瓦斯突出点情况", u"", self.showReport5_1)
+		self.regAction(u"基础参数库/示范矿区参数录入",u"潘谢矿区煤与瓦斯突出点情况", u"", self.showReport5_2)
+		self.regAction(u"基础参数库/示范矿区参数录入",u"淮河南矿区煤与瓦斯区域突出危险性预测参数统计表", u"", self.showReport6_1)
+		self.regAction(u"基础参数库/示范矿区参数录入",u"潘谢矿区煤与瓦斯区域突出危险性预测参数统计表", u"", self.showReport6_2)
+		self.regAction(u"基础参数库/示范矿区参数录入",u"淮河南矿区采（掘）工作面瓦斯突出预测参数统计表", u"", self.showReport7_1)
+		self.regAction(u"基础参数库/示范矿区参数录入",u"潘谢矿区采（掘）工作面瓦斯突出预测参数统计表", u"", self.showReport7_2)
+		self.regAction(u"基础参数库/示范矿区参数录入",u"淮河南矿区采（掘）工作面瓦斯抽放量", u"", self.showReport8_1)
+		self.regAction(u"基础参数库/示范矿区参数录入",u"潘谢矿区采（掘）工作面瓦斯抽放量", u"", self.showReport8_2)
 		self.regAction(u"基础参数库", u"目标矿井设计", u"设计目标矿井", self.designMine)
 		self.regAction(u"辅助决策", u"抽采技术模式", u"抽采技术模式辅助决策", self.dragTec)
 		self.regAction(u"辅助计算", u"煤层气抽采难易程度评价", u"煤层气抽采难易程度评价辅助计算", self.difficultEval)
