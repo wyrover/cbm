@@ -10,19 +10,10 @@
 #include <iterator>
 #include <sstream>
 
+#include "GraphHelper.h"
+
 namespace P21
 {
-
-	// 删除抽采技术下的所有钻场和钻孔
-	static void DeleteAllSiteAndPore(int design_id)
-	{
-		// 查找与该技术关联的所有钻场
-		std::vector<int32_t> site_ids;
-		SQLClientHelper::GetDesignSiteIdListByForeignKey(site_ids, "design_technology_id", design_id);
-
-		// 删除所有的钻场(数据库会自动删除包含的钻孔)
-		SQLClientHelper::DeleteMoreDesignSite(site_ids);
-	}
 
 	PoreHelper::PoreHelper(cbm::Coal& _coal, cbm::DesignWorkSurfTechnology& _tech)
 		: coal( _coal ), tech( _tech )
@@ -54,13 +45,122 @@ namespace P21
 		p_offset = tech.p_offset;
 	}
 
+	void PoreHelper::drawPores1(int region_num, const AcGePoint3dArray& site_pts, const IntArray& col_nums, const AcGePoint3dArray& pore_pts, int nx, int r1, int r2, int c1, int c2, std::vector<cbm::DesignPore>& pores, int& num)
+	{
+		// (1)输出机巷的数据
+		int n = site_pts.length();
+		for(int i=n-1;i>=0;i--)
+		{
+			// 钻场坐标x,y,z
+			AcGePoint3d site_pt = site_pts[i];
+
+			//新建钻场
+			cbm::DesignSite site;
+			GraphHelper::CreateSite(site, n-i, site_pt, tech.design_technology_id);
+			// 提交到数据库
+			int32_t site_id = SQLClientHelper::AddDesignSite(site);
+			if(site_id <= 0) 
+			{
+				acutPrintf(_T("\n添加钻场到数据库失败!!!"));
+				pores.clear();
+				break;
+			}
+
+			// 钻场的行列起始位置
+			c2 -= col_nums[i];
+			acutPrintf(_T("\n机巷---钻场%d的行:%d~%d, 列:%d~%d"), n-i, r1, r2, c1, c2);
+			// 钻孔坐标
+			for(int j=r1-1;j>=r2;j--)
+			{
+				for(int k=c1-1;k>=c2;k--)
+				{
+					// 编号规则: 巷道编号-钻场编号-钻孔编号
+					CString name;
+					name.Format(_T("%d-%d-%d"), region_num, n-i, num++);
+					// 钻孔坐标
+					AcGePoint3d pore_pt = pore_pts[j*nx+k];
+
+					// 新建钻孔
+					cbm::DesignPore pore;
+					GraphHelper::CreatePore(pore, name, site_pt, pore_pt, site_id);
+
+					// 记录新建的钻孔对象
+					pores.push_back(pore);
+				}
+			}
+			c1 = c2;
+		}
+	}
+
 	void PoreHelper::cacl()
 	{
+		if(!single_rock_tunnel) 
+		{
+			acutPrintf(_T("\n目前只实现了单个岩巷的钻孔布置,so退出计算过程..."));
+			return;
+		}
+
 		// 删除所有的钻场和钻孔
-		DeleteAllSiteAndPore(tech.design_technology_id);
+		GraphHelper::DeleteAllSiteAndPore(tech.design_technology_id);
 
 		// 工作面巷道的中点作为原点
 		AcGePoint3d orig(AcGePoint3d::kOrigin);
+
+		// 钻孔控制范围
+		double Lc = left + L1, Wc = L2 + top + bottom;
+		// 控制范围左下角的坐标(钻孔的原点)
+		AcGeVector3d v1(AcGeVector3d::kXAxis), v2(AcGeVector3d::kYAxis), v3(AcGeVector3d::kZAxis);
+		AcGePoint3d pore_orig = orig + v1*left*-1 + v2*(0.5*L2+left)*-1 + v3*top;
+
+		//扣除右帮
+		double Ld = L1 - p_offset;
+
+		// 划分网格计算所有的钻孔坐标
+		// 假设所有的终孔都在同一个水平面上
+		AcGePoint3dArray pore_pts;
+		ArxDrawHelper::MakeGridWithHole( pore_orig, Lc, Wc, pore_gap, pore_gap, 0, Lc, 0, Wc, pore_pts, true );
+
+		//计算钻孔在走向(长)和倾向(宽)的个数(行或列)
+		int nx = ArxDrawHelper::DivideNum( Lc, pore_gap, true );
+		int ny = ArxDrawHelper::DivideNum( Wc, pore_gap, true );
+		//计算走向(长)方向的钻场数(行或列)
+		int mx = ArxDrawHelper::DivideNum( Ld, site_gap, true ) - 1;
+		//左右两帮范围内的钻孔数(行或列)
+		int d1 = ArxDrawHelper::DivideNum( left + p_offset, pore_gap, true );
+		//每个钻场之间的钻孔个数
+		int d2 = ArxDrawHelper::DivideNum( site_gap, pore_gap, true );
+
+		acutPrintf(_T("\n钻孔走向个数:%d  倾向个数:%d  钻孔点总个数:%d"), nx, ny, pore_pts.length());
+		// 计算钻场的坐标(CaclSitesOnTunnel函数的后3个参数目前没有用到!!!)
+		// (0)工作面底板岩巷的中点坐标
+		AcGePoint3d site_orig = orig + v1*p_offset + v2*h_offset + v3*v_offset*-1;
+		// (1)计算机巷的钻场坐标
+		AcGePoint3dArray site_pts1;
+		GraphHelper::CaclSitesOnTunnel( site_pts1, site_orig, site_orig + v1 * Ld, site_gap, -0.5 * ( Ws + wd ), Ls, Ws, 0, false );
+
+		// 机巷控制的钻孔行数和列数
+		int row1 = ny; int col1 = nx;
+
+		// 分配机巷控制的钻孔(每个钻场分配xx列)
+		IntArray nums1(site_pts1.length(), 0);
+		nums1[0] += d1 - d2/2;
+		for(int i=0;i<nums1.size();i++)
+		{
+			nums1[i] += d2;
+		}
+		// 微调最右边的钻场控制的钻孔列数
+		int S1 = std::accumulate(nums1.begin(), nums1.end(), 0);
+		nums1.back() += col1 - S1;
+
+		// 记录所有的钻孔
+		std::vector<cbm::DesignPore> pores;
+
+		// (1)输出机巷的数据
+		// 钻孔编号
+		int m = 1;
+		drawPores1(1, site_pts1, nums1, pore_pts, nx, row1, 0, nx, nx, pores, m);
+		// 添加到数据库
+		SQLClientHelper::AddMoreDesignPore(pores);
 	}
 
     Graph::Graph( cbm::Coal& _coal, cbm::DesignWorkSurfTechnology& _tech )
@@ -161,7 +261,7 @@ namespace P21
         return ArxDrawHelper::CaclPt( getPoint(), v1, -1 * left, v2, 0.5 * thick + Hp );
     }
 
-//绘制一条巷道上的钻场
+	//绘制一条巷道上的钻场
     void Graph::drawSitesOnTunnel( const AcGePoint3d& spt, const AcGePoint3d& ept, double gap_x, double gap_y, double w, double h, double angle, bool excludeFirst )
     {
         AcGePoint3dArray pts;

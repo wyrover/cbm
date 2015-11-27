@@ -6,6 +6,9 @@
 #include <ArxHelper/HelperClass.h>
 #include <thrift/gen-cpp/cbm_types.h>
 
+#include <vector>
+typedef std::vector<int> IntArray;
+
 namespace P21
 {
 
@@ -15,6 +18,9 @@ namespace P21
 	public:
 		PoreHelper( cbm::Coal& coal, cbm::DesignWorkSurfTechnology& tech );
 		void cacl();
+
+	private:
+		void drawPores1(int region_num, const AcGePoint3dArray& site_pts, const IntArray& nums, const AcGePoint3dArray& pore_pts, int nx, int r1, int r2, int c1, int c2, std::vector<cbm::DesignPore>& pores, int& num);
 
 		/** 计算和绘图用到的参数. */
 	protected:

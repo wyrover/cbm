@@ -10,37 +10,10 @@
 #include <iterator>
 #include <sstream>
 
-static std::string Int2Str(int i)
-{
-	std::stringstream ss;
-	ss << i;
-	return ss.str();
-}
+#include "GraphHelper.h"
 
 namespace P11
 {
-	// 删除抽采技术下的所有钻场和钻孔
-	static void DeleteAllSiteAndPore(int design_id)
-	{
-		// 查找与该技术关联的所有钻场
-		std::vector<int32_t> site_ids;
-		SQLClientHelper::GetDesignSiteIdListByForeignKey(site_ids, "design_technology_id", design_id);
-
-		// 删除所有的钻场(数据库会自动删除包含的钻孔)
-		SQLClientHelper::DeleteMoreDesignSite(site_ids);
-	}
-
-	static void CaclSitesOnTunnel( AcGePoint3dArray& pts, const AcGePoint3d& spt, const AcGePoint3d& ept, double gap_x, double gap_y, double w=0, double h=0, double angle=0, bool excludeFirst=true )
-	{
-		AcGePoint3dArray temp_pts;
-		ArxDrawHelper::Divide( spt, ept, gap_x, gap_y, temp_pts, true );
-		//acutPrintf(_T("\n划分钻场的临时点个数:%d"), temp_pts.length());
-		int start = excludeFirst ? 1 : 0; // 是否绘制第一个钻场
-		for(int i=start;i<temp_pts.length();i++)
-		{
-			pts.append(temp_pts[i]);
-		}
-	}
 
 	PoreHelper::PoreHelper(cbm::Coal& _coal, cbm::DesignDrillingSurfTechnology& _tech)
 		: coal( _coal ), tech( _tech )
@@ -66,10 +39,58 @@ namespace P11
 		site_gap = tech.gs;
 	}
 
+	void PoreHelper::drawPores1(int region_num, const AcGePoint3dArray& site_pts, const IntArray& nums, const AcGePoint3dArray& pore_pts, int nx, int r1, int r2, int c1, int c2, std::vector<cbm::DesignPore>& pores)
+	{
+		// (1)输出机巷的数据
+		int n = site_pts.length();
+		// 钻孔编号
+		int m = 1;
+		for(int i=n-1;i>=0;i--)
+		{
+			// 钻场坐标x,y,z
+			AcGePoint3d site_pt = site_pts[i];
+
+			//新建钻场
+			cbm::DesignSite site;
+			GraphHelper::CreateSite(site, n-i, site_pt, tech.design_technology_id);
+			// 提交到数据库
+			int32_t site_id = SQLClientHelper::AddDesignSite(site);
+			if(site_id <= 0) 
+			{
+				acutPrintf(_T("\n添加钻场到数据库失败!!!"));
+				break;
+			}
+
+			// 钻场的行列起始位置
+			c2 -= nums[i];
+			acutPrintf(_T("\n机巷---钻场%d的行:%d~%d, 列:%d~%d"), n-i, r1, r2, c1, c2);
+			// 钻孔坐标
+			for(int j=r1-1;j>=r2;j--)
+			{
+				for(int k=c1-1;k>=c2;k--)
+				{
+					// 编号规则: 巷道编号-钻场编号-钻孔编号
+					CString num;
+					num.Format(_T("%d-%d-%d"), region_num, n-i, m++);
+					// 钻孔坐标
+					AcGePoint3d pore_pt = pore_pts[j*nx+k];
+
+					// 新建钻孔
+					cbm::DesignPore pore;
+					GraphHelper::CreatePore(pore, num, site_pt, pore_pt, site_id);
+
+					// 记录新建的钻孔对象
+					pores.push_back(pore);
+				}
+			}
+			c1 = c2;
+		}
+	}
+
 	void PoreHelper::cacl()
 	{
 		// 删除所有的钻场和钻孔
-		DeleteAllSiteAndPore(tech.design_technology_id);
+		GraphHelper::DeleteAllSiteAndPore(tech.design_technology_id);
 
 		// 工作面巷道的中点作为原点
 		AcGePoint3d orig(AcGePoint3d::kOrigin);
@@ -92,35 +113,35 @@ namespace P11
 		int nx = ArxDrawHelper::DivideNum( Lc, pore_gap, true );
 		int ny = ArxDrawHelper::DivideNum( Wc, pore_gap, true );
 		//计算走向(长)方向的钻场数(行或列)
-		int nd = ArxDrawHelper::DivideNum( Ld, site_gap, true ) - 1;
+		int mx = ArxDrawHelper::DivideNum( Ld, site_gap, true ) - 1;
 		//计算倾向(宽)方向的钻场数(行或列)
-		int nk = ArxDrawHelper::DivideNum( L2, site_gap, true ) - 1;
+		int my = ArxDrawHelper::DivideNum( L2, site_gap, true ) - 1;
 		//左右两帮范围内的钻孔数(行或列)
-		int n1 = ArxDrawHelper::DivideNum( left + right, pore_gap, true );
+		int d1 = ArxDrawHelper::DivideNum( left + right, pore_gap, true );
 		//每个钻场之间的钻孔个数
-		int dn = ArxDrawHelper::DivideNum( site_gap, pore_gap, true );
+		int d2 = ArxDrawHelper::DivideNum( site_gap, pore_gap, true );
 
 		acutPrintf(_T("\n钻孔走向个数:%d  倾向个数:%d  钻孔点总个数:%d"), nx, ny, pore_pts.length());
-		acutPrintf(_T("\n钻场走向个数:%d  倾向个数:%d, 两帮范围钻孔个数:%d  钻场之间的个数:%d"), nd, nk, n1, dn);
+		acutPrintf(_T("\n钻场走向个数:%d  倾向个数:%d, 两帮范围钻孔个数:%d  钻场之间的个数:%d"), mx, my, d1, d2);
 		// 计算钻场的坐标(CaclSitesOnTunnel函数的后3个参数目前没有用到!!!)
 		// (0)工作面底板岩巷的中点坐标
 		AcGePoint3d site_orig = orig + v1*right + v2*h_offset + v3*v_offset*-1;
 		// (1)计算机巷的钻场坐标
 		AcGePoint3dArray site_pts1;
-		CaclSitesOnTunnel( site_pts1, site_orig - v2 * L2 * 0.5, site_orig + v1 * Ld - v2 * 0.5 * L2, site_gap, -0.5 * ( Ws + wd ), Ls, Ws, 0 );
+		GraphHelper::CaclSitesOnTunnel( site_pts1, site_orig - v2 * L2 * 0.5, site_orig + v1 * Ld - v2 * 0.5 * L2, site_gap, -0.5 * ( Ws + wd ), Ls, Ws, 0 );
 		// (2)计算风巷的钻场坐标
 		AcGePoint3dArray site_pts2;
-		CaclSitesOnTunnel( site_pts2, site_orig + v2 * L2 * 0.5, site_orig + v1 * Ld + v2 * L2 * 0.5, site_gap, -0.5 * ( Ws + wd ), Ls, Ws, 0 );
+		GraphHelper::CaclSitesOnTunnel( site_pts2, site_orig + v2 * L2 * 0.5, site_orig + v1 * Ld + v2 * L2 * 0.5, site_gap, -0.5 * ( Ws + wd ), Ls, Ws, 0 );
 		// (3)计算工作面底板岩巷的钻场坐标
 		AcGePoint3dArray site_pts3;
-		CaclSitesOnTunnel( site_pts3, site_orig - v2 * L2 * 0.5, site_orig + v2 * L2 * 0.5, site_gap, 0.5 * ( Ws + wd ), Ls, Ws, -PI * 0.5 );
+		GraphHelper::CaclSitesOnTunnel( site_pts3, site_orig - v2 * L2 * 0.5, site_orig + v2 * L2 * 0.5, site_gap, 0.5 * ( Ws + wd ), Ls, Ws, -PI * 0.5 );
 
 		// 机巷控制的钻孔行数和列数
-		int row1 = n1; int col1 = nx - n1;
+		int row1 = d1; int col1 = nx - d1;
 		// 风巷控制的钻孔行数和列数
-		int row2 = n1; int col2 = nx - n1;
+		int row2 = d1; int col2 = nx - d1;
 		// 工作面底板岩巷控制的钻孔行数和列数
-		int row3 = ny; int col3 = n1;
+		int row3 = ny; int col3 = d1;
 
 		acutPrintf(_T("\n机巷的钻孔行数和列数:%d和%d"), row1, col1);
 		acutPrintf(_T("\n风巷的钻孔行数和列数:%d和%d"), row2, col2);
@@ -129,10 +150,10 @@ namespace P11
 		// 分配工作面底板岩巷控制的钻孔(每个钻场分配xx行)
 		IntArray nums3(site_pts3.length(), 0);
 		nums3[0] += col3; // 垂直长度也等于left+right,所以直接用col3的数据
-		nums3[0] += dn/2;  // 该条巷道从下至上的第一个钻场还需要负责一部分钻孔(任务较重啊)
+		nums3[0] += d2/2;  // 该条巷道从下至上的第一个钻场还需要负责一部分钻孔(任务较重啊)
 		for(int i=1;i<site_pts3.length();i++)
 		{
-			nums3[i] += dn;
+			nums3[i] += d2;
 		}
 		// 微调最后一个钻场的钻孔个数
 		int S3 = std::accumulate(nums3.begin(), nums3.end(), 0);
@@ -148,10 +169,10 @@ namespace P11
 
 		// 分配机巷控制的钻孔(每个钻场分配xx列)
 		IntArray nums1(site_pts1.length(), 0);
-		nums1[0] += dn/2;
+		nums1[0] += d2/2;
 		for(int i=0;i<nums1.size();i++)
 		{
-			nums1[i] += dn;
+			nums1[i] += d2;
 		}
 		int S1 = std::accumulate(nums1.begin(), nums1.end(), 0);
 		nums1.back() += col1 - S1;
@@ -180,183 +201,11 @@ namespace P11
 		std::vector<cbm::DesignSite> sites;
 
 		// (1)输出机巷的数据
-		int n = site_pts1.length();
-		// 钻孔编号
-		int m = 1;
-		// 倒过来输出(从右至左)
-		int r1 = row1; int r2 = 0;
-		int c1 = nx;   int c2 = nx;
-		for(int i=n-1;i>=0;i--)
-		{
-			// 钻场坐标x,y,z
-			AcGePoint3d site_pt = site_pts1[i];
-
-			//新建钻场
-			cbm::DesignSite site;
-			site.name = Int2Str(n-i);
-			site.x = site_pt.x; site.y = site_pt.y; site.z = site_pt.z;
-			site.design_technology_id = tech.design_technology_id; // 关联技术id
-			// 提交到数据库
-			int32_t site_id = SQLClientHelper::AddDesignSite(site);
-			if(site_id <= 0) 
-			{
-				acutPrintf(_T("\n添加钻场到数据库失败!!!"));
-				break;
-			}
-
-			// 钻场的行列起始位置
-			c2 -= nums1[i];
-			acutPrintf(_T("\n机巷---钻场%d的行:%d~%d, 列:%d~%d"), n-i, r1, r2, c1, c2);
-			// 钻孔坐标
-			for(int j=r1-1;j>=r2;j--)
-			{
-				for(int k=c1-1;k>=c2;k--)
-				{
-					// 编号规则: 巷道编号-钻场编号-钻孔编号
-					CString num;
-					num.Format(_T("%d-%d-%d"), 1, n-i, m);
-					// 钻孔坐标
-					AcGePoint3d pore_pt = pore_pts[j*nx+k];
-
-					// 新建钻孔
-					cbm::DesignPore pore;
-					pore.name = W2C((LPCTSTR)num);
-					pore.x1 = site_pt.x; pore.y1 = site_pt.y; pore.z1 = site_pt.z;
-					pore.x2 = pore_pt.x; pore.y2 = pore_pt.y; pore.z2 = pore_pt.z;
-					AcGeVector3d v = pore_pt - site_pt;
-					pore.length = v.length();  // 钻孔长度
-					ArxDrawHelper::VectorToAngle(v, pore.angle1, pore.angle2);  // 钻孔角度
-					pore.design_site_id = site_id;
-					// 记录新建的钻孔对象
-					pores.push_back(pore);
-					// 钻孔编号加1
-					m++;
-				}
-			}
-			c1 = c2;
-		}
-
+		drawPores1(1, site_pts1, nums1, pore_pts, nx, row1, 0, nx, nx, pores);
 		// (2)输出风巷的数据
-		n = site_pts2.length();
-		// 钻孔编号
-		m = 1;
-		// 倒过来输出(从右至左)
-		r1 = ny; r2 = ny - row2;;
-		c1 = nx; c2 = nx;
-		for(int i=n-1;i>=0;i--)
-		{
-			// 钻场坐标x,y,z
-			AcGePoint3d site_pt = site_pts2[i];
-
-			//新建钻场
-			cbm::DesignSite site;
-			site.name = Int2Str(n-i);
-			site.x = site_pt.x;	site.y = site_pt.y;	site.z = site_pt.z;
-			site.design_technology_id = tech.design_technology_id; // 关联技术id
-			// 提交到数据库
-			int32_t site_id = SQLClientHelper::AddDesignSite(site);
-			if(site_id <= 0) 
-			{
-				acutPrintf(_T("\n添加钻场到数据库失败!!!"));
-				break;
-			}
-
-			// 钻场的行列起始位置
-			c2 -= nums2[i];
-			acutPrintf(_T("\n风巷---钻场%d的行:%d~%d, 列:%d~%d"), n-i, r1, r2, c1, c2);
-			// 钻孔坐标
-			for(int j=r1-1;j>=r2;j--)
-			{
-				for(int k=c1-1;k>=c2;k--)
-				{
-					// 编号规则: 巷道编号-钻场编号-钻孔编号
-					CString num;
-					num.Format(_T("%d-%d-%d"), 2, n-i, m);
-					//钻孔坐标
-					AcGePoint3d pore_pt = pore_pts[j*nx+k];
-
-					// 新建钻孔
-					cbm::DesignPore pore;
-					pore.name = W2C((LPCTSTR)num);
-					pore.x1 = site_pt.x; pore.y1 = site_pt.y; pore.z1 = site_pt.z;
-					pore.x2 = pore_pt.x; pore.y2 = pore_pt.y; pore.z2 = pore_pt.z;
-					AcGeVector3d v = pore_pt - site_pt;
-					pore.length = v.length();  // 钻孔长度
-					ArxDrawHelper::VectorToAngle(v, pore.angle1, pore.angle2);  // 钻孔角度
-					pore.design_site_id = site_id;
-					// 记录新建的钻孔对象
-					pores.push_back(pore);
-					// 钻孔编号加1
-					m++;
-				}
-			}
-			c1 = c2;
-		}
-
+		drawPores1(2, site_pts2, nums2, pore_pts, nx, ny, ny-row2, nx, nx, pores);
 		// (3)输出工作面底板岩巷的数据
-		/*int*/ n = site_pts3.length();
-		// 钻孔编号
-		/*int*/ m = 1;
-		// 倒过来输出(从右至左)
-		/*int*/ r1 = 0;
-		/*int*/ r2 = 0;
-		/*int*/ c1 = col1;
-		/*int*/ c2 = 0;
-		for(int i=0;i<n;i++)
-		{
-			// 钻场坐标(x,y,z
-			AcGePoint3d site_pt = site_pts3[i];
-			//新建钻场
-			cbm::DesignSite site;
-			site.name = Int2Str(n-i);
-			site.x = site_pt.x;
-			site.y = site_pt.y;
-			site.z = site_pt.z;
-			site.design_technology_id = tech.design_technology_id; // 关联技术id
-			// 提交到数据库
-			int32_t site_id = SQLClientHelper::AddDesignSite(site);
-			if(site_id <= 0) 
-			{
-				acutPrintf(_T("\n添加钻场到数据库失败!!!"));
-				break;
-			}
-
-			// 钻场的行列起始位置
-			r2 += nums3[i];
-			//acutPrintf(_T("\n工作面岩巷---钻场%d的行:%d~%d, 列:%d~%d"), n-i, r1, r2, c1, c2);
-			// 钻孔坐标
-			for(int j=r1;j<r2;j++)
-			{
-				for(int k=c1-1;k>=c2;k--)
-				{
-					// 编号规则: 巷道编号-钻场编号-钻孔编号
-					CString num;
-					num.Format(_T("%d-%d-%d"), 3, i+1, m);
-					// 钻孔坐标
-					AcGePoint3d pore_pt = pore_pts[j*nx+k];
-
-					// 新建钻孔提交到数据库
-					cbm::DesignPore pore;
-					pore.name = W2C((LPCTSTR)num);
-					pore.x1 = site_pt.x;
-					pore.y1 = site_pt.y;
-					pore.z1 = site_pt.z;
-					pore.x2 = pore_pt.x;
-					pore.y2 = pore_pt.y;
-					pore.z2 = pore_pt.z;
-					AcGeVector3d v = pore_pt - site_pt;
-					pore.length = v.length();  // 钻孔长度
-					ArxDrawHelper::VectorToAngle(v, pore.angle1, pore.angle2);  // 钻孔角度
-					pore.design_site_id = site_id;
-					// 记录新建的钻孔对象
-					pores.push_back(pore);
-					// 钻孔编号加1
-					m++;
-				}
-			}
-			r1 = r2;
-		}
-
+		drawPores1(3, site_pts3, nums3, pore_pts, nx, 0, ny, col1, 0, pores);
 		// 添加到数据库
 		SQLClientHelper::AddMoreDesignPore(pores);
 	}

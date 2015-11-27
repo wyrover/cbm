@@ -9,21 +9,12 @@
 #include <algorithm>
 #include <iterator>
 #include <sstream>
+#include <cmath>
+
+#include "GraphHelper.h"
 
 namespace P12
 {
-
-	// 删除抽采技术下的所有钻场和钻孔
-	static void DeleteAllSiteAndPore(int design_id)
-	{
-		// 查找与该技术关联的所有钻场
-		std::vector<int32_t> site_ids;
-		SQLClientHelper::GetDesignSiteIdListByForeignKey(site_ids, "design_technology_id", design_id);
-
-		// 删除所有的钻场(数据库会自动删除包含的钻孔)
-		SQLClientHelper::DeleteMoreDesignSite(site_ids);
-	}
-
 	PoreHelper::PoreHelper(cbm::Coal& _coal, cbm::DesignDrillingSurfTechnology& _tech)
 		: coal( _coal ), tech( _tech )
 	{
@@ -44,13 +35,164 @@ namespace P12
 		L_stripe = tech.l_stripe;
 	}
 
+	void PoreHelper::drawVerticalSectionPores(const AcGePoint3d& basePt, const AcGePoint3d& center_pt, const AcGePoint3d& site_pt, int32_t site_id, int site_num, std::vector<cbm::DesignPore>& pores, int& num)
+	{
+		AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis, v3 = AcGeVector3d::kZAxis;
+
+		// 计算扇形钻孔在抽采轮廓线的水平间距
+		double D = pore_gap, Ls = L_stripe;
+
+		// 计算掘进面巷道的中心点到水平轮廓线的钻孔的长度
+		AcGeVector3d v = center_pt - basePt;
+		// 计算斜切面上半部分的钻孔垂距
+		DoubleArray vv_dists;
+		ArxDrawHelper::Solve2( v.length(), top, D, vv_dists );
+		// 斜切面上半部分的钻孔
+		double v_pore_dist = 0;
+		for( int j = 0; j < vv_dists.size(); j++ )
+		{
+			// 新建钻孔
+			cbm::DesignPore pore;
+			CString name;
+			name.Format(_T("%d-%d"), site_num, num++);
+			// 从上至下计算钻孔
+			GraphHelper::CreatePore(pore, name, site_pt, center_pt + v3*( top + v_pore_dist ), site_id);
+			// 记录新建的钻孔对象
+			pores.push_back(pore);
+			// 依次计算钻孔
+			v_pore_dist -= vv_dists[j];
+		}
+
+		vv_dists.clear();
+		// 计算斜切面上半部分的钻孔垂距
+		ArxDrawHelper::Solve2( v.length(), bottom, D, vv_dists );
+
+		// 斜切面下半部分的钻孔
+		v_pore_dist = 0;
+		for( int j = 0; j < vv_dists.size(); j++ )
+		{
+			// 新建钻孔
+			cbm::DesignPore pore;
+			CString name;
+			name.Format(_T("%d-%d"), site_num, num++);
+			// 从下至上计算钻孔
+			GraphHelper::CreatePore(pore, name, site_pt, center_pt - v3*( bottom + v_pore_dist ), site_id);
+			// 记录新建的钻孔对象
+			pores.push_back(pore);
+			// 依次计算钻孔
+			v_pore_dist -= vv_dists[j];
+		}
+	}
+
+	void PoreHelper::drawSidePores(bool bLeftSide, const AcGePoint3d& basePt, const AcGePoint3d& site_pt, int32_t site_id, int site_num, std::vector<cbm::DesignPore>& pores, int& num)
+	{
+		AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis, v3 = AcGeVector3d::kZAxis;
+
+		// 计算扇形钻孔在抽采轮廓线的水平间距
+		int c = bLeftSide?-1:1;
+		double L0 = leading, W0 = bLeftSide?left:right, D = pore_gap, Ls = L_stripe;
+
+		DoubleArray h_dists;
+		ArxDrawHelper::Solve1( L0, W0, D, L_stripe - leading, h_dists );
+
+		// 超前距的断面中心点坐标
+		AcGePoint3d poreBeginPt = basePt + v1 * L0;
+
+		// 绘制左侧轮廓线的扇形钻孔
+		double h_pore_dist = 0;
+		for( int j = 0; j < h_dists.size(); j++ )
+		{
+			// 斜切面中心线的钻孔坐标(考虑在左侧或右侧???)
+			AcGePoint3d pt = poreBeginPt + v1 * h_pore_dist + v2 * W0 * c;
+			// 以掘进面巷道的中心点作为钻场坐标: site_pt
+			// 计算斜切面的钻孔
+			drawVerticalSectionPores(basePt, pt, site_pt, site_id, site_num, pores, num);
+			// 新建斜切面中心的钻孔
+			cbm::DesignPore pore;
+			CString name;
+			name.Format(_T("%d-%d"), site_num, num++);
+			// 从下至上计算钻孔
+			GraphHelper::CreatePore(pore, name, site_pt, pt, site_id);
+			// 记录新建的钻孔对象
+			pores.push_back(pore);
+
+			// 钻孔沿轮廓线水平方向延伸
+			h_pore_dist += h_dists[j];
+		}
+	}
+
+	void PoreHelper::drawSectionPores(bool bLeftSide, const AcGePoint3d& basePt, const AcGePoint3d& site_pt, int32_t site_id, int site_num, std::vector<cbm::DesignPore>& pores, int& num)
+	{
+		AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis, v3 = AcGeVector3d::kZAxis;
+
+		// 计算扇形钻孔在抽采轮廓线的水平间距
+		double L0 = leading, W0 = bLeftSide?left:right, D = pore_gap, Ls = L_stripe;
+
+		// 计算扇形钻孔在条带边界上的垂直间距
+		DoubleArray v_dists;
+		ArxDrawHelper::Solve2( Ls, W0, D, v_dists );
+
+		// 超前距的断面中心点坐标
+		int c = bLeftSide?-1:1;
+		AcGePoint3d poreBeginPt = basePt + v1 * Ls;
+
+		// 绘制左侧条带断面的扇形钻孔
+		double v_pore_dist = 0;
+		for( int j = 0; j < v_dists.size(); j++ )
+		{
+			// 斜切面中心线的钻孔坐标(考虑在左侧或右侧???)
+			AcGePoint3d pt = poreBeginPt + v2 * (W0 - v_pore_dist) * c;
+			// 计算斜切面的钻孔
+			drawVerticalSectionPores(basePt, pt, site_pt, site_id, site_num, pores, num);
+			// 新建斜切面中心的钻孔
+			cbm::DesignPore pore;
+			CString name;
+			name.Format(_T("%d-%d"), site_num, num++);
+			// 从下至上计算钻孔
+			GraphHelper::CreatePore(pore, name, site_pt, pt, site_id);
+			// 记录新建的钻孔对象
+			pores.push_back(pore);
+			// 从左至右计算
+			v_pore_dist -= v_dists[j];
+		}
+	}
+
 	void PoreHelper::cacl()
 	{
 		// 删除所有的钻场和钻孔
-		DeleteAllSiteAndPore(tech.design_technology_id);
+		GraphHelper::DeleteAllSiteAndPore(tech.design_technology_id);
+		if( pore_gap <= 0 ) return;
 
-		// 工作面巷道的中点作为原点
-		AcGePoint3d orig(AcGePoint3d::kOrigin);
+		// 基点
+		AcGePoint3d basePt = AcGePoint3d::kOrigin;
+
+		// 只计算1个循环的钻孔参数
+
+		// 钻场坐标x,y,z
+		AcGePoint3d site_pt = basePt;
+		//新建钻场
+		cbm::DesignSite site;
+		GraphHelper::CreateSite(site, 1, site_pt, tech.design_technology_id);
+		// 提交到数据库
+		int32_t site_id = SQLClientHelper::AddDesignSite(site);
+		if(site_id <= 0) 
+		{
+			acutPrintf(_T("\n添加钻场到数据库失败!!!"));
+			return;
+		}
+
+		// 记录所有的钻孔
+		std::vector<cbm::DesignPore> pores;
+		// 钻孔编号
+		int num = 1;
+		// 绘制左侧的钻孔
+		drawSidePores(true, basePt, site_pt, site_id, 1, pores, num);
+		drawSidePores(false, basePt, site_pt, site_id, 1, pores, num);
+		drawSectionPores(true, basePt, site_pt, site_id, 1, pores, num);
+		drawSectionPores(false, basePt, site_pt, site_id, 1, pores, num);
+
+		// 添加到数据库
+		SQLClientHelper::AddMoreDesignPore(pores);
 	}
 
     Graph::Graph( cbm::Coal& _coal, cbm::DesignDrillingSurfTechnology& _tech )
@@ -144,7 +286,7 @@ namespace P12
 
             //超前距的断面中心点坐标
             AcGePoint3d poreBeginPt = pt + v1 * L0;
-            //绘制上部轮廓线的扇形钻孔
+            //绘制左侧轮廓线的扇形钻孔
             double pore_dist = 0;
             for( int j = 0; j < h_dists.size(); j++ )
             {
@@ -152,7 +294,7 @@ namespace P12
                 pore_dist += h_dists[j];
                 objIds.append( poreId );
             }
-            //绘制下部轮廓线的扇形钻孔
+            //绘制右侧轮廓线的扇形钻孔
             pore_dist = 0;
             for( int j = 0; j < h_dists.size(); j++ )
             {
@@ -161,7 +303,7 @@ namespace P12
                 objIds.append( poreId );
             }
 
-            //绘制上部条带断面的扇形钻孔
+            //绘制左侧条带断面的扇形钻孔
             pore_dist = 0;
             for( int j = 0; j < v_dists.size(); j++ )
             {
@@ -169,7 +311,7 @@ namespace P12
                 pore_dist -= v_dists[j];
                 objIds.append( poreId );
             }
-            //绘制下部条带断面的扇形钻孔
+            //绘制右侧条带断面的扇形钻孔
             pore_dist = 0;
             for( int j = 0; j < v_dists.size(); j++ )
             {
