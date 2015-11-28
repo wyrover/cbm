@@ -7,8 +7,7 @@
 
 #include <numeric>
 #include <algorithm>
-#include <iterator>
-#include <sstream>
+#include <cmath>
 
 #include "GraphHelper.h"
 

@@ -7,22 +7,12 @@
 
 #include <numeric>
 #include <algorithm>
-#include <iterator>
-#include <sstream>
+#include <cmath>
+
+#include "GraphHelper.h"
 
 namespace P23
 {
-
-	// 删除抽采技术下的所有钻场和钻孔
-	static void DeleteAllSiteAndPore(int design_id)
-	{
-		// 查找与该技术关联的所有钻场
-		std::vector<int32_t> site_ids;
-		SQLClientHelper::GetDesignSiteIdListByForeignKey(site_ids, "design_technology_id", design_id);
-
-		// 删除所有的钻场(数据库会自动删除包含的钻孔)
-		SQLClientHelper::DeleteMoreDesignSite(site_ids);
-	}
 
 	PoreHelper::PoreHelper(cbm::Coal& _coal, cbm::DesignWorkSurfTechnology& _tech)
 		: coal( _coal ), tech( _tech )
@@ -43,13 +33,109 @@ namespace P23
 		pore_type = tech.pore_type;
 	}
 
+	void PoreHelper::drawParallelPores(std::vector<cbm::DesignPore>& pores)
+	{
+		//巷道的中点位置作为基点
+		AcGePoint3d basePt = AcGePoint3d::kOrigin;
+		AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis, v3 = AcGeVector3d::kZAxis;
+
+		//新建1#钻场(负责下方机巷的钻孔,从右向左打钻)
+		cbm::DesignSite site1;
+		GraphHelper::CreateSite(site1, 1, basePt + v1 * L1 + v2 * L2 * 0.5, tech.design_technology_id);
+		// 提交到数据库
+		int32_t site_id1 = SQLClientHelper::AddDesignSite(site1);
+		if(site_id1 <= 0) 
+		{
+			acutPrintf(_T("\n添加钻场1#到数据库失败!!!"));
+			return;
+		}
+
+		//新建2#钻场(负责上方风巷的钻孔,从左向右打钻)
+		cbm::DesignSite site2;
+		GraphHelper::CreateSite(site2, 2, basePt + v2 * L2 * 0.5, tech.design_technology_id);
+		// 提交到数据库
+		int32_t site_id2 = SQLClientHelper::AddDesignSite(site1);
+		if(site_id2 <= 0) 
+		{
+			acutPrintf(_T("\n添加钻场2#到数据库失败!!!"));
+			return;
+		}
+
+		// 水平划分钻孔
+		double PL = pore_stubble + L2 * 0.5; // 加上压茬长度
+		AcGePoint3dArray pts;
+		ArxDrawHelper::Divide( basePt + v1 * w * 0.5 - v2 * L2 * 0.5, basePt + v1 * L1 - v2 * L2 * 0.5, pore_gap, 0, pts );
+
+		// 计算1#钻场(机巷)控制的钻孔
+		int num = 1;
+		for( int i = 0; i < pts.length(); i++ )
+		{
+			AcGePoint3d pt = pts[i];
+
+			// 编号规则: 巷道编号-钻场编号-钻孔编号
+			CString name;
+			name.Format(_T("%d-%d"), 1, num++);
+			// 新建钻孔
+			cbm::DesignPore pore;
+			GraphHelper::CreatePore(pore, name, pt, pt + v2 * PL, site_id1);
+
+			// 记录新建的钻孔对象
+			pores.push_back(pore);
+		}
+
+		// 计算2#钻场(机巷)控制的钻孔
+		num = 1;
+		v2.rotateBy( PI, AcGeVector3d::kZAxis );
+		for( int i = 0; i < pts.length(); i++ )
+		{
+			AcGePoint3d pt = pts[i] - v2 * L2 + v1 * pore_gap * 0.5;
+
+			// 编号规则: 巷道编号-钻场编号-钻孔编号
+			CString name;
+			name.Format(_T("%d-%d"), 2, num++);
+			// 新建钻孔
+			cbm::DesignPore pore;
+			GraphHelper::CreatePore(pore, name, pt, pt + v2 * PL, site_id2);
+
+			// 记录新建的钻孔对象
+			pores.push_back(pore);
+		}
+
+		// 添加到数据库
+		SQLClientHelper::AddMoreDesignPore(pores);
+	}
+
 	void PoreHelper::cacl()
 	{
-		// 删除所有的钻场和钻孔
-		DeleteAllSiteAndPore(tech.design_technology_id);
+		if( pore_gap <= 0 ) return;
 
-		// 工作面巷道的中点作为原点
-		AcGePoint3d orig(AcGePoint3d::kOrigin);
+		// 删除所有的钻场和钻孔
+		GraphHelper::DeleteAllSiteAndPore(tech.design_technology_id);
+
+		// 记录所有的钻孔
+		std::vector<cbm::DesignPore> pores;
+
+		//顺层平行钻孔
+		if( pore_type == 1 )
+		{
+			drawParallelPores(pores);
+		}
+		//顺层倾斜平行钻孔
+		else if( pore_type == 2 )
+		{
+			acutPrintf(_T("\n目前只实现了顺层平行钻孔的计算...."));
+			//drawCrossPores();
+		}
+		else if( pore_type == 3 )
+		{
+			acutPrintf(_T("\n目前只实现了顺层平行钻孔的计算...."));
+		}
+		else if( pore_type == 4 )
+		{
+			acutPrintf(_T("\n目前只实现了顺层平行钻孔的计算...."));
+			//drawParallelPores();
+			//drawCrossPores();
+		}
 	}
 
     Graph::Graph( cbm::Coal& _coal, cbm::DesignWorkSurfTechnology& _tech )

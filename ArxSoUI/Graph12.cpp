@@ -7,8 +7,6 @@
 
 #include <numeric>
 #include <algorithm>
-#include <iterator>
-#include <sstream>
 #include <cmath>
 
 #include "GraphHelper.h"
@@ -89,7 +87,7 @@ namespace P12
 		AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis, v3 = AcGeVector3d::kZAxis;
 
 		// 计算扇形钻孔在抽采轮廓线的水平间距
-		int c = bLeftSide?-1:1;
+		int c = bLeftSide?1:-1;
 		double L0 = leading, W0 = bLeftSide?left:right, D = pore_gap, Ls = L_stripe;
 
 		DoubleArray h_dists;
@@ -133,7 +131,7 @@ namespace P12
 		ArxDrawHelper::Solve2( Ls, W0, D, v_dists );
 
 		// 超前距的断面中心点坐标
-		int c = bLeftSide?-1:1;
+		int c = bLeftSide?1:-1;
 		AcGePoint3d poreBeginPt = basePt + v1 * Ls;
 
 		// 绘制左侧条带断面的扇形钻孔

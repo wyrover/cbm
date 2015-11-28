@@ -6,6 +6,9 @@
 #include <ArxHelper/HelperClass.h>
 #include <thrift/gen-cpp/cbm_types.h>
 
+#include <vector>
+typedef std::vector<int> IntArray;
+
 namespace P23
 {
 
@@ -15,6 +18,9 @@ namespace P23
 	public:
 		PoreHelper( cbm::Coal& coal, cbm::DesignWorkSurfTechnology& tech );
 		void cacl();
+
+	private:
+		void drawParallelPores(std::vector<cbm::DesignPore>& pores);
 
 		/** 计算和绘图用到的参数. */
 	protected:
