@@ -172,6 +172,14 @@ class GasDesignP11Dlg(BaseDialog):
 		# 向cad发送命令请求绘图
 		CbmClientHelper.SendCommandToCAD("JL.DrawDipGraph11 %d %d" % (coal.id, tws_tech.id), True)
 
+	def make_json(self, coal_id, tech_id, json_file):
+		# 读取数据库生成json文件(该文件是utf-8编码!!!)
+		# 注意: 生成json的时候,所有字符串(包括key和value)都必须使用unicode,减少出错的概率!!!!
+		DataHelper.generateJsonFileOfPoreReport(coal_id, tech_id, json_file)
+		# json文件由utf-8转成gbk编码
+		# report.exe目前只能读取gbk编码的json文件才能正确的解析字符串里面的中文!!!
+		EncodeHelper.UTF8_2_GBK(json_file, json_file)
+
 	def onCreatReport(self):
 		coal = SQLClientHelper.GetCoalById(self.coal_id)
 		if coal.id <= 0:
@@ -184,20 +192,11 @@ class GasDesignP11Dlg(BaseDialog):
 			return
 
 		# 向cad发送命令请求生成钻孔数据
-		# CbmClientHelper.SendCommandToCAD("JL.GeneratePore11 %d %d" % (coal.id, tws_tech.id), True)
+		CbmClientHelper.SendCommandToCAD("JL.GeneratePore11 %d %d" % (coal.id, tws_tech.id), True)
 
 		# json文件路径(使用绝对路径,避免出错!!!)
-		# json_file = os.path.abspath('.\\help\\json\\reportP11.json')
-		json_file = os.path.abspath('.\\help\\json\\test.json')
-		
-		# 读取数据库生成json文件(该文件是utf-8编码!!!)
-		# 注意: 生成json的时候,所有字符串(包括key和value)都必须使用unicode,减少出错的概率!!!!
-		DataHelper.generateJsonFileOfPoreReport(coal.id, tws_tech.id, json_file)
-		# DataHelper.test_json(json_file)
-		
-		# json文件由utf-8转成gbk编码
-		# report.exe目前只能读取gbk编码的json文件才能正确的解析字符串里面的中文!!!
-		EncodeHelper.UTF8_2_GBK(json_file, json_file)
-
+		# json_file = os.path.abspath('.\\help\\json\\test.json')
+		# 生成json文件
+		# self.make_json(coal.id, tws_tech.id, json_file)
 		# 生成word报单
-		doc.CreatReport(json_file)
+		# doc.CreatReport(json_file)

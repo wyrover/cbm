@@ -30,14 +30,14 @@ void GraphHelper::DeleteAllSiteAndPore(int design_id)
 
 void GraphHelper::CaclSitesOnTunnel( AcGePoint3dArray& pts, const AcGePoint3d& spt, const AcGePoint3d& ept, double gap_x, double gap_y, double w, double h, double angle, bool excludeFirst )
 {
-	AcGePoint3dArray temp_pts;
-	ArxDrawHelper::Divide( spt, ept, gap_x, gap_y, temp_pts, true );
+	//AcGePoint3dArray temp_pts;
+	ArxDrawHelper::Divide( spt, ept, gap_x, gap_y, pts, false, excludeFirst );
 	//acutPrintf(_T("\n划分钻场的临时点个数:%d"), temp_pts.length());
-	int start = excludeFirst ? 1 : 0; // 是否绘制第一个钻场
-	for(int i=start;i<temp_pts.length();i++)
-	{
-		pts.append(temp_pts[i]);
-	}
+	//int start = excludeFirst ? 1 : 0; // 是否绘制第一个钻场
+	//for(int i=start;i<temp_pts.length();i++)
+	//{
+	//	pts.append(temp_pts[i]);
+	//}
 }
 
 void GraphHelper::CreateSite(cbm::DesignSite& site, int num, const AcGePoint3d& pt, int32_t tech_id)

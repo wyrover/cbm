@@ -169,4 +169,22 @@ class GasDesignP23Dlg(BaseDialog):
 		CbmClientHelper.SendCommandToCAD("JL.DrawDipGraph23 %d %d" % (coal.id, ws_tech.id), True)
 
 	def onCreatReport(self):
-		doc.CreatReport(u'help\\json\\reportP22.json')
+		coal = SQLClientHelper.GetCoalById(self.coal_id)
+		if coal.id <= 0:
+			UiHelper.MessageBox(u'sorry,出了点问题,请联系技术人员(错误码:144)')
+			return
+		# 查找掘进面的抽采技术
+		ws_tech = SQLClientHelper.GetDesignWorkSurfTechnologyById(self.design_id)
+		if tws_tech.id <= 0:
+			UiHelper.MessageBox(u'sorry,出了点问题,请联系技术人员(错误码:145)')
+			return
+
+		# 向cad发送命令请求生成钻孔数据
+		CbmClientHelper.SendCommandToCAD("JL.GeneratePore23 %d %d" % (coal.id, ws_tech.id), True)
+
+		# json文件路径(使用绝对路径,避免出错!!!)
+		# json_file = os.path.abspath('.\\help\\json\\reportP21.json')
+		# 生成json文件
+		# self.make_json(coal.id, tws_tech.id, json_file)
+		# 生成word报单
+		# doc.CreatReport(json_file)

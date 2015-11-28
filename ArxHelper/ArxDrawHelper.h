@@ -46,7 +46,7 @@ public:
     static void MakeGridWithHole( const AcGePoint3d& basePt, double w, double h, int nx, int ny, double left, double right, double top, double bottom, AcGePoint3dArray& pts, bool round = true );
     static void MakeGrid( const AcGePoint3d& basePt, double w, double h, double gap_x, double gap_y, AcGePoint3dArray& pts, bool round = true );
     static void MakeGrid( const AcGePoint3d& basePt, double w, double h, int nx, int ny, AcGePoint3dArray& pts, bool round = true );
-    static void Divide( const AcGePoint3d& spt, const AcGePoint3d& ept, double gap_x, double gap_y, AcGePoint3dArray& pts, bool round = true );
+    static void Divide( const AcGePoint3d& spt, const AcGePoint3d& ept, double gap_x, double gap_y, AcGePoint3dArray& pts, bool round = true, bool excludeFirst = false, bool tunning = true );
     static AcGePoint3d CacLineClosePt( const AcGePoint3d& spt, const AcGePoint3d& ept, const AcGePoint3d& pt );
     static AcGePoint3d CaclPt( const AcGePoint3d& pt, const AcGeVector3d& v1, double width, const AcGeVector3d& v2, double height );
 	static AcGePoint3d CaclPt2(const AcGePoint3d& pt, double angle, double width, double height);

@@ -86,7 +86,7 @@ namespace P21
         AcGePoint3d caclPoreBasePoint1() const;
         AcGePoint3d caclPoreBasePoint2() const;
         //绘制一条巷道巷道上的钻场(gap_y有正负之分,决定钻场在巷道的哪一侧)
-        void drawSitesOnTunnel( const AcGePoint3d& spt, const AcGePoint3d& ept, double gap_x, double gap_y, double w, double h, double angle = 0, bool excludeFirst = true );
+        void drawSitesOnTunnel( const AcGePoint3d& spt, const AcGePoint3d& ept, double gap_x, double gap_y, double w, double h, double angle = 0, bool excludeFirst = true, bool tunning = true );
 
         /** 计算和绘图用到的参数. */
     protected:

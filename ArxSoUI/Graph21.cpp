@@ -261,12 +261,11 @@ namespace P21
     }
 
 	//绘制一条巷道上的钻场
-    void Graph::drawSitesOnTunnel( const AcGePoint3d& spt, const AcGePoint3d& ept, double gap_x, double gap_y, double w, double h, double angle, bool excludeFirst )
+    void Graph::drawSitesOnTunnel( const AcGePoint3d& spt, const AcGePoint3d& ept, double gap_x, double gap_y, double w, double h, double angle, bool excludeFirst, bool tunning )
     {
         AcGePoint3dArray pts;
-        ArxDrawHelper::Divide( spt, ept, gap_x, gap_y, pts, false );
-        int start = excludeFirst ? 1 : 0; // 是否绘制第一个钻场
-        for( int i = start; i < pts.length(); i++ )
+        ArxDrawHelper::Divide( spt, ept, gap_x, gap_y, pts, false, excludeFirst, tunning );
+        for( int i = 0; i < pts.length(); i++ )
         {
             AcDbObjectId siteId = this->drawRect( pts[i], angle, w, h );
         }

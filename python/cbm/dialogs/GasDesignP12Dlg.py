@@ -121,24 +121,24 @@ class GasDesignP12Dlg(BaseDialog):
 	def plane_graph(self):
 		coal = SQLClientHelper.GetCoalById(self.coal_id)
 		if coal.id <= 0:
-			UiHelper.MessageBox(u'sorry,出了点问题,请联系技术人员(错误码:114)')
+			UiHelper.MessageBox(u'sorry,出了点问题,请联系技术人员(错误码:124)')
 			return
 		# 查找掘进面的抽采技术
 		tws_tech = SQLClientHelper.GetDesignDrillingSurfTechnologyById(self.design_id)
 		if tws_tech.id <= 0:
-			UiHelper.MessageBox(u'sorry,出了点问题,请联系技术人员(错误码:115)')
+			UiHelper.MessageBox(u'sorry,出了点问题,请联系技术人员(错误码:125)')
 			return
 		# 向cad发送命令请求绘图
 		CbmClientHelper.SendCommandToCAD("JL.DrawPlaneGraph12 %d %d" % (coal.id, tws_tech.id), True)
 	def head_graph(self):
 		coal = SQLClientHelper.GetCoalById(self.coal_id)
 		if coal.id <= 0:
-			UiHelper.MessageBox(u'sorry,出了点问题,请联系技术人员(错误码:114)')
+			UiHelper.MessageBox(u'sorry,出了点问题,请联系技术人员(错误码:124)')
 			return
 		# 查找掘进面的抽采技术
 		tws_tech = SQLClientHelper.GetDesignDrillingSurfTechnologyById(self.design_id)
 		if tws_tech.id <= 0:
-			UiHelper.MessageBox(u'sorry,出了点问题,请联系技术人员(错误码:115)')
+			UiHelper.MessageBox(u'sorry,出了点问题,请联系技术人员(错误码:125)')
 			return
 		# 向cad发送命令请求绘图
 		CbmClientHelper.SendCommandToCAD("JL.DrawHeadGraph12 %d %d" % (coal.id, tws_tech.id), True)
@@ -146,15 +146,33 @@ class GasDesignP12Dlg(BaseDialog):
 	def dip_graph(self):
 		coal = SQLClientHelper.GetCoalById(self.coal_id)
 		if coal.id <= 0:
-			UiHelper.MessageBox(u'sorry,出了点问题,请联系技术人员(错误码:114)')
+			UiHelper.MessageBox(u'sorry,出了点问题,请联系技术人员(错误码:124)')
 			return
 		# 查找掘进面的抽采技术
 		tws_tech = SQLClientHelper.GetDesignDrillingSurfTechnologyById(self.design_id)
 		if tws_tech.id <= 0:
-			UiHelper.MessageBox(u'sorry,出了点问题,请联系技术人员(错误码:115)')
+			UiHelper.MessageBox(u'sorry,出了点问题,请联系技术人员(错误码:125)')
 			return
 		# 向cad发送命令请求绘图
 		CbmClientHelper.SendCommandToCAD("JL.DrawDipGraph12 %d %d" % (coal.id, tws_tech.id), True)
 
 	def onCreatReport(self):
-		doc.CreatReport(u'help\\json\\reportP12.json')
+		coal = SQLClientHelper.GetCoalById(self.coal_id)
+		if coal.id <= 0:
+			UiHelper.MessageBox(u'sorry,出了点问题,请联系技术人员(错误码:124)')
+			return
+		# 查找掘进面的抽采技术
+		tws_tech = SQLClientHelper.GetDesignDrillingSurfTechnologyById(self.design_id)
+		if tws_tech.id <= 0:
+			UiHelper.MessageBox(u'sorry,出了点问题,请联系技术人员(错误码:125)')
+			return
+
+		# 向cad发送命令请求生成钻孔数据
+		CbmClientHelper.SendCommandToCAD("JL.GeneratePore12 %d %d" % (coal.id, tws_tech.id), True)
+
+		# json文件路径(使用绝对路径,避免出错!!!)
+		# json_file = os.path.abspath('.\\help\\json\\reportP12.json')
+		# 生成json文件
+		# self.make_json(coal.id, tws_tech.id, json_file)
+		# 生成word报单
+		# doc.CreatReport(json_file)

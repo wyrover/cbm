@@ -7,7 +7,7 @@ copy /y %CBM_ROOT%\x64\debug\*.exe %DEST_DIR%
 copy /y %CBM_ROOT%\x64\debug\*.arx %DEST_DIR%
 copy /y %CBM_ROOT%\x64\debug\*.dll %DEST_DIR%
 
-# 复制必须的exe
+rem 复制必须的exe
 copy /y %CBM_ROOT%\tool\pdf.exe %DEST_DIR%
 copy /y %CBM_ROOT%\tool\ImageView.exe %DEST_DIR%
 

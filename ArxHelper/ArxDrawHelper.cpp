@@ -186,11 +186,17 @@ void ArxDrawHelper::MakeGrid( const AcGePoint3d& basePt, double w, double h, int
     ArxDrawHelper::MakeGridWithHole( basePt, w, h, nx, ny, 0, 0, 0, 0, pts, round );
 }
 
-void ArxDrawHelper::Divide( const AcGePoint3d& spt, const AcGePoint3d& ept, double gap_x, double gap_y,  AcGePoint3dArray& pts, bool round )
+void ArxDrawHelper::Divide( const AcGePoint3d& spt, const AcGePoint3d& ept, double gap_x, double gap_y,  AcGePoint3dArray& pts, bool round, bool excludeFirst, bool tunning )
 {
     if( gap_x <= 0 ) return;
+
     AcGeVector3d v1 = ept - spt;
     int n = ArxDrawHelper::DivideNum( v1.length(), gap_x, round );
+	//去掉第一个
+	if(excludeFirst) n--;
+
+	// 剩下的一点点距离,第一个点和最后一个点对半平分
+	double d = (v1.length() - n*gap_x)*0.5;
 	//acutPrintf(_T("\n划分数据-长度:%.2f, 间距:%.2f, 个数:%d"), v1.length(), gap_x, n);
     v1.normalize();
 
@@ -198,11 +204,14 @@ void ArxDrawHelper::Divide( const AcGePoint3d& spt, const AcGePoint3d& ept, doub
     AcGeVector3d v2 = v1;
     v2.rotateBy( c * PI * 0.5, AcGeVector3d::kZAxis );
 
-    gap_x = abs( gap_x );
-    gap_y = abs( gap_y );
-    for( int i = 0; i < n; i++ )
+	gap_y = abs( gap_y );
+	d = tunning?d:0; // 是否需要微调
+	AcGePoint3d pt = spt + v1 * d + v2 * gap_y;
+    for( int i = 0; i < n+1; i++ )
     {
-        pts.append( spt + v1 * i * gap_x + v2 * gap_y );
+        //pts.append( spt + v1 * i * gap_x + v2 * gap_y );
+		pts.append(pt);
+		pt = pt + v1*gap_x;
     }
 }
 

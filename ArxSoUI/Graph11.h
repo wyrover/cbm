@@ -17,7 +17,10 @@ namespace P11
 		void cacl();
 
 	private:
-		void drawPores1(int region_num, const AcGePoint3dArray& site_pts, const IntArray& nums, const AcGePoint3dArray& pore_pts, int nx, int r1, int r2, int c1, int c2, std::vector<cbm::DesignPore>& pores);
+		void assingPores(IntArray& nums, int S, int n, int step);
+		void drawPores1(const AcGePoint3dArray& site_pts, const IntArray& nums, const AcGePoint3dArray& pore_pts, int nx, int r1, int r2, int c1, int c2, std::vector<cbm::DesignPore>& pores);
+		void drawPores2(const AcGePoint3dArray& site_pts, const IntArray& nums, const AcGePoint3dArray& pore_pts, int nx, int r1, int r2, int c1, int c2, std::vector<cbm::DesignPore>& pores);
+		void drawPores3(const AcGePoint3dArray& site_pts, const IntArray& nums, const AcGePoint3dArray& pore_pts, int nx, int r1, int r2, int c1, int c2, std::vector<cbm::DesignPore>& pores);
 
 		/** 计算和绘图用到的参数. */
 	protected:
@@ -78,7 +81,7 @@ namespace P11
         AcGePoint3d caclPoreBasePoint2() const;
         //计算钻场的基点位置
         //绘制一条巷道巷道上的钻场(gap_y有正负之分,决定钻场在巷道的哪一侧)
-        void drawSitesOnTunnel( const AcGePoint3d& spt, const AcGePoint3d& ept, double gap_x, double gap_y, double w, double h, double angle = 0, bool excludeFirst = true );
+        void drawSitesOnTunnel( const AcGePoint3d& spt, const AcGePoint3d& ept, double gap_x, double gap_y, double w, double h, double angle = 0, bool excludeFirst = true, bool tunning = true );
 
         /** 计算和绘图用到的参数. */
     protected:

@@ -196,8 +196,8 @@ void CmdHelper::GeneratePore21()
 	if(ws_tech.id < 0 ) return;
 
 	// 生成钻孔坐标数据文件(测试用)
-	//P11::PoreHelper ph(coal, tws_tech);
-	//ph.cacl();
+	P21::PoreHelper ph(coal, ws_tech);
+	ph.cacl();
 }
 
 void CmdHelper::GeneratePore23()
@@ -219,8 +219,8 @@ void CmdHelper::GeneratePore23()
 	if(ws_tech.id < 0 ) return;
 
 	// 生成钻孔坐标数据文件(测试用)
-	//P11::PoreHelper ph(coal, tws_tech);
-	//ph.cacl();
+	P23::PoreHelper ph(coal, ws_tech);
+	ph.cacl();
 }
 
 void CmdHelper::DrawPlaneGraph11()

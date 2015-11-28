@@ -132,12 +132,12 @@
       <rect>
        <x>170</x>
        <y>30</y>
-       <width>54</width>
+       <width>41</width>
        <height>25</height>
       </rect>
      </property>
      <property name="text">
-      <string>(m)</string>
+      <string>(mm)</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_2">

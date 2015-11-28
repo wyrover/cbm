@@ -808,7 +808,7 @@
     <widget class="QLineEdit" name="gp">
      <property name="geometry">
       <rect>
-       <x>290</x>
+       <x>292</x>
        <y>30</y>
        <width>61</width>
        <height>25</height>
@@ -823,7 +823,7 @@
     <widget class="QLabel" name="label_15">
      <property name="geometry">
       <rect>
-       <x>210</x>
+       <x>220</x>
        <y>30</y>
        <width>71</width>
        <height>25</height>
@@ -876,12 +876,12 @@
       <rect>
        <x>170</x>
        <y>30</y>
-       <width>31</width>
+       <width>41</width>
        <height>25</height>
       </rect>
      </property>
      <property name="text">
-      <string>(m)</string>
+      <string>(mm)</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_2">
