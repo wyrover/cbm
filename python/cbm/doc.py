@@ -29,7 +29,10 @@ def OpenPDFFile(pdfFile):
 	open_cmd('tool\\pdf.exe',pdfFile)
 
 def OpenNet(url):
-	webbrowser.open(url)
+	fileName = url
+	if type(fileName).__name__ != "unicode":
+		fileName = fileName.decode('utf-8')
+	webbrowser.open(fileName)
 
 def CreatReport(jsonFile):
 	open_cmd('tool\\report.exe',jsonFile)

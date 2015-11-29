@@ -44,12 +44,10 @@ def MessageBox(msg_text, question=False, error=False):
 		return msgbox.exec_() == 1
 	elif error:
 		msgbox.setMessage(msg_text, CbmMessageBox.MsgBoxType.ERROR)
-		msgbox.exec_()
-		return True
+		return msgbox.exec_() == 1
 	else:
 		msgbox.setMessage(msg_text, CbmMessageBox.MsgBoxType.INFO)
-		msgbox.exec_()
-		return True
+		return msgbox.exec_() == 1
 
 # 弹出对话框，请求用户输入一个"名称""
 def GetNameFromDlg(title):
