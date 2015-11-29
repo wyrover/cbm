@@ -74,3 +74,5 @@ acad.err
 soui*.rc2
 ui_*.py
 *_rc.py
+
+*logs/

@@ -24,7 +24,7 @@
 <RowHeight defaultValue="723900">
 <![CDATA[1828800,723900,723900,723900,723900,723900,723900,723900,723900,723900,723900]]></RowHeight>
 <ColumnWidth defaultValue="2743200">
-<![CDATA[1905000,1866900,4191000,2743200,2743200,2743200,2743200,2743200,3619500,2743200,2743200]]></ColumnWidth>
+<![CDATA[1905000,1866900,6743700,2743200,2743200,2743200,2743200,2743200,3619500,2743200,2743200]]></ColumnWidth>
 <CellElementList>
 <C c="0" r="0" cs="14" s="0">
 <O>
@@ -192,7 +192,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="2" r="3" s="1">
+<C c="2" r="3" s="2">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="位置"/>
 <Complex/>
@@ -327,8 +327,7 @@
 </CellElementList>
 <ReportAttrSet>
 <ReportSettings headerHeight="0" footerHeight="0">
-<PaperSetting>
-<PaperSize width="46080000" height="42768000"/>
+<PaperSetting orientation="1">
 <Margin top="986400" left="2743200" bottom="986400" right="2743200"/>
 </PaperSetting>
 </ReportSettings>
@@ -361,6 +360,16 @@
 </Border>
 </Style>
 <Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1"/>
+<Bottom style="1"/>
+<Left style="1"/>
+<Right style="1"/>
+</Border>
+</Style>
+<Style horizontal_alignment="2" imageLayout="1">
 <FRFont name="SimSun" style="0" size="72"/>
 <Background name="NullBackground"/>
 <Border>

@@ -313,8 +313,7 @@
 </CellElementList>
 <ReportAttrSet>
 <ReportSettings headerHeight="0" footerHeight="0">
-<PaperSetting>
-<PaperSize width="40320000" height="42768000"/>
+<PaperSetting orientation="1">
 <Margin top="986400" left="2743200" bottom="986400" right="2743200"/>
 </PaperSetting>
 </ReportSettings>
