@@ -44,8 +44,11 @@ namespace P21
 		p_offset = tech.p_offset;
 	}
 
-	void PoreHelper::drawPores1(int region_num, const AcGePoint3dArray& site_pts, const IntArray& col_nums, const AcGePoint3dArray& pore_pts, int nx, int r1, int r2, int c1, int c2, std::vector<cbm::DesignPore>& pores, int& num)
+	void PoreHelper::drawPores1(const AcGePoint3dArray& site_pts, const IntArray& col_nums, const AcGePoint3dArray& pore_pts, int nx, int r1, int r2, int c1, int c2, std::vector<cbm::DesignPore>& pores)
 	{
+		// 钻孔编号
+		int num = 1;
+
 		// (1)输出机巷的数据
 		int n = site_pts.length();
 		for(int i=n-1;i>=0;i--)
@@ -66,7 +69,7 @@ namespace P21
 			}
 
 			// 钻场的行列起始位置
-			c2 -= col_nums[i];
+			r2 -= col_nums[i];
 			acutPrintf(_T("\n机巷---钻场%d的行:%d~%d, 列:%d~%d"), n-i, r1, r2, c1, c2);
 			// 钻孔坐标
 			for(int j=r1-1;j>=r2;j--)
@@ -75,7 +78,7 @@ namespace P21
 				{
 					// 编号规则: 巷道编号-钻场编号-钻孔编号
 					CString name;
-					name.Format(_T("%d-%d-%d"), region_num, n-i, num++);
+					name.Format(_T("%d-%d-%d"), 1, n-i, num++);
 					// 钻孔坐标
 					AcGePoint3d pore_pt = pore_pts[j*nx+k];
 
@@ -87,15 +90,27 @@ namespace P21
 					pores.push_back(pore);
 				}
 			}
-			c1 = c2;
+			r1 = r2;
 		}
+	}
+
+	void PoreHelper::assingPores(IntArray& nums, int S, int n, int step)
+	{
+		nums.resize(n, 0);
+		int d = S - n*step;
+		nums[0] = d/2;
+		for(int i=0;i<n;i++)
+		{
+			nums[i] += step;
+		}
+		nums[n-1] += d - d/2;
 	}
 
 	void PoreHelper::cacl()
 	{
 		if(!single_rock_tunnel) 
 		{
-			acutPrintf(_T("\n目前只实现了单个岩巷的钻孔布置,so退出计算过程..."));
+			acutPrintf(_T("\n目前只实现了单个岩巷的钻孔布置,退出计算过程..."));
 			return;
 		}
 
@@ -120,44 +135,37 @@ namespace P21
 		ArxDrawHelper::MakeGridWithHole( pore_orig, Lc, Wc, pore_gap, pore_gap, 0, Lc, 0, Wc, pore_pts, true );
 
 		//计算钻孔在走向(长)和倾向(宽)的个数(行或列)
-		int nx = ArxDrawHelper::DivideNum( Lc, pore_gap, true );
-		int ny = ArxDrawHelper::DivideNum( Wc, pore_gap, true );
+		int nx = ArxDrawHelper::DivideNum( Lc, pore_gap, false ) + 1;
+		int ny = ArxDrawHelper::DivideNum( Wc, pore_gap, false ) + 1;
 		//计算走向(长)方向的钻场数(行或列)
-		int mx = ArxDrawHelper::DivideNum( Ld, site_gap, true ) - 1;
+		int mx = ArxDrawHelper::DivideNum( Ld, site_gap, false ) + 1;
 		//左右两帮范围内的钻孔数(行或列)
-		int d1 = ArxDrawHelper::DivideNum( left + p_offset, pore_gap, true );
+		int d1 = ArxDrawHelper::DivideNum( left + p_offset, pore_gap, false ) + 1;
 		//每个钻场之间的钻孔个数
-		int d2 = ArxDrawHelper::DivideNum( site_gap, pore_gap, true );
+		int d2 = ArxDrawHelper::DivideNum( site_gap, pore_gap, false ) + 1;
 
 		acutPrintf(_T("\n钻孔走向个数:%d  倾向个数:%d  钻孔点总个数:%d"), nx, ny, pore_pts.length());
 		// 计算钻场的坐标(CaclSitesOnTunnel函数的后3个参数目前没有用到!!!)
 		// (0)工作面底板岩巷的中点坐标
-		AcGePoint3d site_orig = orig + v1*p_offset + v2*h_offset + v3*v_offset*-1;
+		double rock_L2 = h_offset;
+		if(single_rock_tunnel) rock_L2 = 0;
+
+		AcGePoint3d site_orig = orig + v1*p_offset + v2*rock_L2 - v3*v_offset;
 		// (1)计算机巷的钻场坐标
 		AcGePoint3dArray site_pts1;
 		GraphHelper::CaclSitesOnTunnel( site_pts1, site_orig, site_orig + v1 * Ld, site_gap, -0.5 * ( Ws + wd ), Ls, Ws, 0, false );
 
-		// 机巷控制的钻孔行数和列数
-		int row1 = ny; int col1 = nx;
-
 		// 分配机巷控制的钻孔(每个钻场分配xx列)
-		IntArray nums1(site_pts1.length(), 0);
-		nums1[0] += d1 - d2/2;
-		for(int i=0;i<nums1.size();i++)
-		{
-			nums1[i] += d2;
-		}
-		// 微调最右边的钻场控制的钻孔列数
-		int S1 = std::accumulate(nums1.begin(), nums1.end(), 0);
-		nums1.back() += col1 - S1;
+		IntArray pore_nums1;
+		assingPores(pore_nums1, nx-d1, site_pts1.length(), d2);
+		pore_nums1[0] += d1;
 
 		// 记录所有的钻孔
 		std::vector<cbm::DesignPore> pores;
 
 		// (1)输出机巷的数据
-		// 钻孔编号
-		int m = 1;
-		drawPores1(1, site_pts1, nums1, pore_pts, nx, row1, 0, nx, nx, pores, m);
+		drawPores1(site_pts1, pore_nums1, pore_pts, ny, nx, nx, 0, ny, pores);
+
 		// 添加到数据库
 		SQLClientHelper::AddMoreDesignPore(pores);
 	}
@@ -279,21 +287,25 @@ namespace P21
     {
         double right_offset = p_offset;
         double rock_L2 = d_offset;
+		if(single_rock_tunnel) rock_L2 = 0;
 
         //扣除右帮
         double Ld = L1 - right_offset;
 
         AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis;
-        AcGePoint3d basePt = ArxDrawHelper::CaclPt( getPoint(), v1, right_offset, v2, h_offset );
+        AcGePoint3d basePt = ArxDrawHelper::CaclPt( getPoint(), v1, right_offset, v2, 0 );
         //绘制钻场
         if( single_rock_tunnel )
         {
-            drawSitesOnTunnel( basePt - v2 * rock_L2 * 0.5, basePt + v1 * Ld - v2 * 0.5 * rock_L2, site_gap, -0.5 * ( Ws + wd ), Ls, Ws, 0, false );
+            drawSitesOnTunnel( basePt + v2 * rock_L2 * 0.5, basePt + v1 * Ld + v2 * 0.5 * rock_L2, site_gap, -0.5 * ( Ws + wd ), Ls, Ws, 0, false, false );
         }
         else
         {
+			//绘制风巷钻场
             drawSitesOnTunnel( basePt - v2 * rock_L2 * 0.5, basePt + v1 * Ld - v2 * 0.5 * rock_L2, site_gap, -0.5 * ( Ws + wd ), Ls, Ws, 0 );
-            drawSitesOnTunnel( basePt - v2 * rock_L2 * 0.5, basePt + v2 * rock_L2 * 0.5, site_gap, 0.5 * ( Ws + wd ), Ls, Ws, -PI * 0.5 );
+			//绘制工作面岩巷钻场
+            drawSitesOnTunnel( basePt - v2 * rock_L2 * 0.5, basePt + v2 * rock_L2 * 0.5, site_gap, 0.5 * ( Ws + wd ), Ls, Ws, -PI * 0.5, false );
+			//绘制机巷钻场
             drawSitesOnTunnel( basePt + v2 * rock_L2 * 0.5, basePt + v1 * Ld + v2 * rock_L2 * 0.5, site_gap, -0.5 * ( Ws + wd ), Ls, Ws, 0 );
         }
     }
@@ -322,23 +334,31 @@ namespace P21
         //double right_offset = right;
         double right_offset = p_offset;
         double rock_L2 = d_offset;
+		if(single_rock_tunnel) rock_L2 = 0;
 
         //扣除偏移的部分
         double Ld = L1 - right_offset;
+		AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis;
 
-        //绘制底板岩巷
-        AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis;
-        AcGePoint3d basePt = ArxDrawHelper::CaclPt( getPoint(), v1, right_offset, v2, h_offset );
-        AcDbObjectId t1 = this->drawDoubleLine( basePt - v2 * rock_L2 * 0.5, basePt + v1 * Ld - v2 * rock_L2 * 0.5, wd );
-        this->drawMText( basePt + v1 * Ld - v2 * rock_L2 * 0.5, 0, _T( "底板岩巷" ), 10 );
         if( !single_rock_tunnel )
         {
+			//绘制底板岩巷
+			AcGePoint3d basePt = ArxDrawHelper::CaclPt( getPoint(), v1, right_offset, v2, h_offset );
+			AcDbObjectId t1 = this->drawDoubleLine( basePt-v2*rock_L2*0.5, basePt+v1*Ld-v2*rock_L2*0.5, wd );
+			this->drawMText( basePt + v1 * Ld - v2 * rock_L2 * 0.5, 0, _T( "底板岩巷" ), 6 );
             //绘制上区段岩巷
-            AcDbObjectId t2 = this->drawDoubleLine( basePt + 0.5 * v2 * rock_L2, basePt + v1 * Ld + 0.5 * v2 * rock_L2, wd );
+            AcDbObjectId t2 = this->drawDoubleLine(basePt+0.5*v2*rock_L2, basePt+v1*Ld+0.5*v2*rock_L2, wd);
             //绘制切眼
             AcDbObjectId t3 = this->drawDoubleLine( basePt - v2 * rock_L2 * 0.5, basePt + v2 * rock_L2 * 0.5, wd );
-            this->drawMText( basePt + v1 * Ld + v2 * rock_L2 * 0.5, 0, _T( "上区段岩巷" ), 10 );
+            this->drawMText( basePt + v1 * Ld + v2 * rock_L2 * 0.5, 0, _T( "上区段岩巷" ), 6 );
         }
+		else
+		{
+			//绘制底板岩巷(在中间位置绘制)
+			AcGePoint3d basePt = ArxDrawHelper::CaclPt( getPoint(), v1, right_offset, v2, 0 );
+			AcDbObjectId t1 = this->drawDoubleLine( basePt+v2*rock_L2*0.5, basePt+v1*Ld+v2*rock_L2*0.5, wd );
+			this->drawMText( basePt + v1 * Ld - v2 * rock_L2 * 0.5, 0, _T( "底板岩巷" ), 6 );
+		}
     }
 
     void PlanGraph::drawTunnel()
@@ -352,8 +372,8 @@ namespace P21
         AcDbObjectId t2 = this->drawDoubleLine( basePt + v2 * L2 * 0.5, basePt + v1 * L1 + v2 * L2 * 0.5, w );
         //绘制工作面切眼
         AcDbObjectId t3 = this->drawDoubleLine( basePt - v2 * L2 * 0.5, basePt + v2 * L2 * 0.5, w );
-        this->drawMText( basePt + v1 * L1 - v2 * L2 * 0.5, 0, _T( "待掘机巷" ), 10 );
-        this->drawMText( basePt + v1 * L1 + v2 * L2 * 0.5, 0, _T( "待掘风巷" ), 10 );
+        this->drawMText( basePt + v1 * L1 - v2 * L2 * 0.5, 0, _T( "待掘机巷" ), 6 );
+        this->drawMText( basePt + v1 * L1 + v2 * L2 * 0.5, 0, _T( "待掘风巷" ), 6 );
     }
 
     void PlanGraph::drawCoal()
@@ -366,8 +386,8 @@ namespace P21
 
         //绘制煤层面
         AcDbObjectId coalId = this->drawRect2( basePt, 0, Lc, Wc );
-        this->drawAlignedDim( basePt, basePt + AcGeVector3d::kXAxis * Lc, _T(""), 50, false );
-        this->drawAlignedDim( basePt, basePt + AcGeVector3d::kYAxis * Wc, _T(""), 30, true );
+        this->drawAlignedDim( basePt, basePt + AcGeVector3d::kXAxis * Lc, _T(""), 15, false );
+        this->drawAlignedDim( basePt, basePt + AcGeVector3d::kYAxis * Wc, _T(""), 15, true );
         //附加数据
         if( !coalId.isNull() )
         {
@@ -395,9 +415,9 @@ namespace P21
         double Ld = L1 - right_offset;
 
         AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis;
-        AcGePoint3d basePt = ArxDrawHelper::CaclPt( getPoint(), v1, right_offset, v2, -1 * ( v_offset + 0.5 * thick ) );
+        AcGePoint3d basePt = ArxDrawHelper::CaclPt( getPoint(), v1, right_offset, v2, -1*(v_offset + 0.5 * thick) );
         //绘制钻场
-        drawSitesOnTunnel( basePt, basePt + v1 * Ld, site_gap, 0, Ls, Ws, 0, false );
+        drawSitesOnTunnel( basePt, basePt + v1 * Ld, site_gap, 0, Ls, Ws, 0, false, false );
     }
 
     void HeadGraph::drawPores()
@@ -412,9 +432,9 @@ namespace P21
         caclPoreExtent( Lp, Wp, Hp );
 
         //计算钻孔在倾向方向的个数
-        int nx = ArxDrawHelper::DivideNum( Lp, pore_gap, true );
+        int nx = ArxDrawHelper::DivideNum( Lp, pore_gap, false ) + 1;
         //计算钻场的个数
-        int nd = ArxDrawHelper::DivideNum( Ld, site_gap, false );
+        int nd = ArxDrawHelper::DivideNum( Ld, site_gap, false ) + 1;
 
         //第1列钻场(工作面巷道上的布置的钻场)
         int n1 = ArxDrawHelper::DivideNum( left + right, pore_gap, true );
@@ -494,6 +514,7 @@ namespace P21
     void DipGraph::drawPores()
     {
         double rock_L2 = d_offset;
+		if(single_rock_tunnel) rock_L2 = 0;
 
         //计算钻孔范围
         double Lp = 0, Wp = 0, Hp = 0;
@@ -530,16 +551,22 @@ namespace P21
     void DipGraph::drawRockTunnel()
     {
         double rock_L2 = d_offset;
+		if(single_rock_tunnel) rock_L2 = 0;
 
         AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis;
         AcGePoint3d basePt = ArxDrawHelper::CaclPt( getPoint(), v1, -1 * h_offset, v2, -1 * v_offset );
-        AcDbObjectId t3 = this->drawDoubleLine( basePt - v1 * L2 * 0.5, basePt + v1 * L2 * 0.5, hd ); // 底板切眼
-        //为了画出来的巷道(矩形)是水平的,特殊处理下(旋转)
-        AcDbObjectId t1 = this->drawRect( basePt + v1 * rock_L2 * 0.5, angle, wd, hd ); // 底板岩巷
         if( !single_rock_tunnel )
         {
+			AcDbObjectId t3 = this->drawDoubleLine( basePt - v1 * L2 * 0.5, basePt + v1 * L2 * 0.5, hd ); // 底板切眼
+			//为了画出来的巷道(矩形)是水平的,特殊处理下(旋转)
+			AcDbObjectId t1 = this->drawRect( basePt + v1 * rock_L2 * 0.5, angle, wd, hd ); // 底板岩巷
             AcDbObjectId t2 = this->drawRect( basePt - v1 * rock_L2 * 0.5, angle, wd, hd ); // 上区段岩巷
         }
+		else
+		{
+			AcDbObjectId t3 = this->drawDoubleLine( basePt, basePt - v1 * L2 * 0.5, hd ); // 底板切眼
+			AcDbObjectId t1 = this->drawRect( basePt + v1 * rock_L2 * 0.5, angle, wd, hd ); // 底板岩巷
+		}
     }
 
     void DipGraph::drawTunnel()

@@ -17,6 +17,9 @@ void ArxDrawHelper::VectorToAngle(const AcGeVector3d& v, double& ang1, double& a
 	//计算向量u与v的夹角(仰角)，范围在[0,180]
 	ang2 = u.angleTo(v);
 	if(v.z < 0) ang2 *= -1;
+
+	ang1 = RadToDeg(ang1);
+	ang2 = RadToDeg(ang2);
 }
 
 void ArxDrawHelper::VectorToAngleTest()

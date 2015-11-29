@@ -20,7 +20,8 @@ namespace P21
 		void cacl();
 
 	private:
-		void drawPores1(int region_num, const AcGePoint3dArray& site_pts, const IntArray& nums, const AcGePoint3dArray& pore_pts, int nx, int r1, int r2, int c1, int c2, std::vector<cbm::DesignPore>& pores, int& num);
+		void assingPores(IntArray& nums, int S, int n, int step);
+		void drawPores1(const AcGePoint3dArray& site_pts, const IntArray& nums, const AcGePoint3dArray& pore_pts, int nx, int r1, int r2, int c1, int c2, std::vector<cbm::DesignPore>& pores);
 
 		/** 计算和绘图用到的参数. */
 	protected:
@@ -102,7 +103,7 @@ namespace P21
         double wd, hd;
         //左右上下帮距
         double left, right, top, bottom;
-        //岩巷和工作面的水平投影距离、垂距
+        //岩巷和煤层的水平投影距离、垂距
         double h_offset, v_offset;
         //钻孔半径和抽采半径
         double radius, pore_gap;

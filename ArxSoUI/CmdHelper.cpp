@@ -152,6 +152,8 @@ void CmdHelper::GeneratePore11()
 	// 生成钻孔坐标数据文件(测试用)
 	P11::PoreHelper ph(coal, tws_tech);
 	ph.cacl();
+
+	AfxMessageBox(_T("\n生成钻孔数据成功!"));
 }
 
 void CmdHelper::GeneratePore12()
@@ -175,6 +177,8 @@ void CmdHelper::GeneratePore12()
 	// 生成钻孔坐标数据文件(测试用)
 	P12::PoreHelper ph(coal, tws_tech);
 	ph.cacl();
+
+	AfxMessageBox(_T("\n生成钻孔数据成功!"));
 }
 
 void CmdHelper::GeneratePore21()
@@ -198,6 +202,8 @@ void CmdHelper::GeneratePore21()
 	// 生成钻孔坐标数据文件(测试用)
 	P21::PoreHelper ph(coal, ws_tech);
 	ph.cacl();
+
+	AfxMessageBox(_T("\n生成钻孔数据成功!"));
 }
 
 void CmdHelper::GeneratePore23()
@@ -221,6 +227,8 @@ void CmdHelper::GeneratePore23()
 	// 生成钻孔坐标数据文件(测试用)
 	P23::PoreHelper ph(coal, ws_tech);
 	ph.cacl();
+
+	AfxMessageBox(_T("\n生成钻孔数据成功!"));
 }
 
 void CmdHelper::DrawPlaneGraph11()

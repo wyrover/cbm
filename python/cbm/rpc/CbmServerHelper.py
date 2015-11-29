@@ -328,7 +328,13 @@ class CbmServiceHandler(SQLServerHelper.SQLServiceHandler):
 
     def SendCommandToCAD(self, cmd, switch_to_cad):
         exe = 'tool\\send.exe'
-        subprocess.Popen('%s %d %s' % (exe, int(switch_to_cad), cmd))
+        cmd_text = '%s %d %s' % (exe, int(switch_to_cad), cmd)
+        # commands.getstatusoutput(cmd_text)
+        p = subprocess.Popen(cmd_text, shell=False,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+        # 与子进程进行交互,communicate()方法接受一个input参数
+        # p.communicate(input=None)
+        # 等待进程执行完毕
+        p.wait()
 
     def RequestJsonDatasFromCAD(self, input_datas):
         global POST_DATA_FROM_CAD_CACHE

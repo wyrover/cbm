@@ -17,7 +17,8 @@ namespace P12
 		: coal( _coal ), tech( _tech )
 	{
 		//倾向长度和走向长度
-		L1 = tech.l1, L2 = tech.l2;
+		//掘进巷道长度Lm 代替 煤层走向长度L1
+		L1 = tech.lm, L2 = tech.l2;
 		//煤层厚度和倾角(弧度)
 		thick = coal.thick, angle = DegToRad( coal.dip_angle );
 		//工作面巷道的宽度和高度
@@ -96,7 +97,7 @@ namespace P12
 		// 超前距的断面中心点坐标
 		AcGePoint3d poreBeginPt = basePt + v1 * L0;
 
-		// 绘制左侧轮廓线的扇形钻孔
+		// 绘制轮廓线的扇形钻孔
 		double h_pore_dist = 0;
 		for( int j = 0; j < h_dists.size(); j++ )
 		{
@@ -183,10 +184,13 @@ namespace P12
 		std::vector<cbm::DesignPore> pores;
 		// 钻孔编号
 		int num = 1;
-		// 绘制左侧的钻孔
+		// 绘制水平轮廓线的左侧钻孔
 		drawSidePores(true, basePt, site_pt, site_id, 1, pores, num);
+		// 绘制水平轮廓线的右侧钻孔
 		drawSidePores(false, basePt, site_pt, site_id, 1, pores, num);
+		// 绘制超前距断面的左侧钻孔
 		drawSectionPores(true, basePt, site_pt, site_id, 1, pores, num);
+		// 绘制超前距断面的右侧钻孔
 		drawSectionPores(false, basePt, site_pt, site_id, 1, pores, num);
 
 		// 添加到数据库
@@ -202,7 +206,7 @@ namespace P12
         top_margin = 20;
 
         //倾向长度和走向长度
-        L1 = tech.l1, L2 = tech.l2;
+        L1 = tech.lm, L2 = tech.l2;
         //煤层厚度和倾角(弧度)
         thick = coal.thick, angle = DegToRad( coal.dip_angle );
         //工作面巷道的宽度和高度
@@ -248,12 +252,7 @@ namespace P12
         AcGePoint3d basePt = getPoint();
         AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis;
 
-        //绘制钻孔抽采控制范围
-        double Lp = 0, Wp = 0, Hp = 0;
-        Lp = L1;
-        Wp = left + right + w;
-        drawLine( basePt + v1 * 0 + v2 * Wp * 0.5, 0, Lp );
-        drawLine( basePt + v1 * 0 - v2 * Wp * 0.5, 0, Lp );
+        double Lp = L1, Wp = left + right, Hp = 0;
 
         //计算扇形钻孔在抽采轮廓线的水平间距
         double L0 = leading, W0 = left, D = pore_gap, Ls = L_stripe;
@@ -265,12 +264,18 @@ namespace P12
         ArxDrawHelper::Solve2( Ls, W0, D, v_dists );
 
         //标注
-        this->drawAlignedDim( basePt, basePt + v1 * Ls, _T(""), 50, false );      //条带范围
-        this->drawAlignedDim( basePt + v1 * ( Ls - L0 ), basePt + v1 * Ls, _T(""), 30, false ); //钻孔超前距
+		CString text;
+		text.Format(_T("%dm"), (int)Ls);
+		//条带范围
+        this->drawAlignedDim(basePt-v2*right, basePt+v1*Ls-v2*right, text, 15, false);
+		text.Format(_T("%dm"), (int)L0);
+        //钻孔超前距
+		this->drawAlignedDim(basePt+v1*(Ls-L0)+v2*left, basePt+v1*Ls+v2*left, text, -15, false);
 
         //计算每个条带的起始位置
         AcGePoint3dArray pts;
-        ArxDrawHelper::Divide( basePt, basePt + v1 * L1, L_stripe - leading, 0, pts, true );
+        ArxDrawHelper::Divide( basePt, basePt + v1 * L1, L_stripe - leading, 0, pts, false, true, false );
+		acutPrintf(_T("\n条带个数:%d"), pts.length());
         for( int i = 0; i < pts.length(); i++ )
         {
             //绘制掘进面
@@ -335,6 +340,14 @@ namespace P12
             }
             objIds.removeAll();
         }
+
+		//绘制钻孔抽采控制范围
+		//drawLine( basePt + v1 * 0 + v2 * Wp * 0.5, 0, Lp );
+		//drawLine( basePt + v1 * 0 - v2 * Wp * 0.5, 0, Lp );
+		// 微调
+		double L11 =  pts.length()*(L_stripe - leading) + leading;
+		drawLine( basePt + v1 * 0 + v2 * Wp * 0.5, 0, L11 );
+		drawLine( basePt + v1 * 0 - v2 * Wp * 0.5, 0, L11 );
     }
 
     void PlanGraph::drawTunnel()
@@ -343,7 +356,19 @@ namespace P12
         AcGePoint3d basePt = getPoint();
         //绘制掘进巷
         AcGeVector3d v1 = AcGeVector3d::kXAxis, v2 = AcGeVector3d::kYAxis;
-        AcDbObjectId t1 = this->drawDoubleLine( basePt, basePt + v1 * L1, w );
+		AcGePoint3dArray pts;
+		ArxDrawHelper::Divide( basePt, basePt + v1 * L1, L_stripe - leading, 0, pts, false, true, false );
+        //AcDbObjectId t1 = this->drawDoubleLine( basePt, basePt + v1 * L1, w );
+		// 微调
+		double L11 =  pts.length()*(L_stripe - leading) + leading;
+		AcDbObjectId t1 = this->drawDoubleLine( basePt, basePt + v1*L11, w );
+
+		//标注左帮和右帮
+		CString text;
+		text.Format(_T("%dm"), (int)left);
+		this->drawAlignedDim( basePt + v2 * left, basePt + v2*w*0.5, text, 15, false );
+		text.Format(_T("%dm"), (int)right);
+		this->drawAlignedDim( basePt - v2*w*0.5, basePt - v2 * right, text, 15, false );
     }
 
     void PlanGraph::drawCoal()
@@ -358,8 +383,8 @@ namespace P12
 
         //绘制煤层面
         AcDbObjectId coalId = this->drawRect2( basePt, 0, Lc, Wc );
-        this->drawAlignedDim( basePt, basePt + v1 * Lc, _T(""), 50, false );
-        this->drawAlignedDim( basePt, basePt + v2 * Wc, _T(""), 30, true );
+        //this->drawAlignedDim( basePt, basePt + v1 * Lc, _T(""), 30, false );
+        //this->drawAlignedDim( basePt, basePt + v2 * Wc, _T(""), 30, true );
     }
 
 } // namespace P12

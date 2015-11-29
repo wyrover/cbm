@@ -283,7 +283,7 @@ namespace P23
 
         //»æÖÆÃº²ãÃæ
         AcDbObjectId coalId = this->drawRect2( basePt, 0, Lc, Wc );
-        this->drawAlignedDim( basePt, basePt + v1 * Lc, _T(""), 50, false );
+        this->drawAlignedDim( basePt, basePt + v1 * Lc, _T(""), 30, false );
         this->drawAlignedDim( basePt, basePt + v2 * Wc, _T(""), 30, true );
     }
 

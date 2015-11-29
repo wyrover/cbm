@@ -607,7 +607,7 @@
       </font>
      </property>
      <property name="text">
-      <string>底板巷与工作面风巷水平投影距离</string>
+      <string>底板巷与工作面机巷水平投影距离</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="v_offset">
