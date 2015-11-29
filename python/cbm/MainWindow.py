@@ -444,6 +444,9 @@ class MainWindow(QtGui.QMainWindow):
 	def do_nothing(self):
 		pass
 
+	def help(self):
+		doc.OpenPDFFile(u'help\\使用说明.pdf')
+
 	def createActions(self):
 		self.regAction(u"账户管理", u"登录", u"用户登录", self.login)
 		self.regAction(u"账户管理", u"注销", u"注销用户", self.logout)		
@@ -528,6 +531,7 @@ class MainWindow(QtGui.QMainWindow):
 		self.regAction(u"抽采设计", u"采空区", u"采空区瓦斯抽采辅助设计", self.goafGasDesign)
 
 		# 只需要将菜单用符号: / 分隔即可,程序自动解析成相应的子菜单
+		self.regAction(u"帮助文档",u"使用说明",u"使用说明", self.help)
 		self.regAction(u"帮助文档/相关官网",u"中国煤炭资源网",u"中国煤炭资源网", self.openOfficeNet1)
 		self.regAction(u"帮助文档/相关官网",u"国家煤炭工业网",u"国家煤炭工业网", self.openOfficeNet2)
 		self.regAction(u"帮助文档/相关官网",u"中国煤层气集团有限公司",u"中国煤层气集团有限公司", self.openOfficeNet3)
