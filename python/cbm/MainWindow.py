@@ -52,6 +52,12 @@ class WebPage(QtWebKit.QWebPage):
 				return False
 		return QtWebKit.QWebPage.acceptNavigationRequest(self, frame, request, type)
 
+	# 伪造浏览器的user agent
+	# 有些网站会屏蔽一些非浏览器客户端(主要是为了防止被爬虫)
+	def userAgentForUrl(self, url):
+		print u'修改浏览器的user agent'
+		return 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36'
+
 # 自定义简单浏览器
 class WebBrowser(QtGui.QDialog):
 	def __init__(self, parent, url='about:blank'):
@@ -68,6 +74,9 @@ class WebBrowser(QtGui.QDialog):
 		default_settings.setAttribute(QtWebKit.QWebSettings.JavascriptCanOpenWindows,True)
 		# 启动开发者工具支持
 		default_settings.setAttribute(QtWebKit.QWebSettings.DeveloperExtrasEnabled,True)
+		default_settings.setAttribute(QtWebKit.QWebSettings.LocalContentCanAccessRemoteUrls,True)
+		default_settings.setAttribute(QtWebKit.QWebSettings.LocalStorageEnabled,True)
+		default_settings.setAttribute(QtWebKit.QWebSettings.PluginsEnabled,True)
 
 		# 创建浏览器子窗口
 		self.view = QtWebKit.QWebView()
@@ -87,8 +96,8 @@ class WebBrowser(QtGui.QDialog):
 		self.view.load(QtCore.QUrl(url))
 
 		# 处理点击一些链接没有反应的问题
-		# self.view.page().setLinkDelegationPolicy(QtWebKit.QWebPage.DelegateAllLinks)
-		# self.view.page().linkClicked.connect(self.onLinkClicked)
+		self.view.page().setLinkDelegationPolicy(QtWebKit.QWebPage.DelegateAllLinks)
+		self.view.page().linkClicked.connect(self.onLinkClicked)
 
 		layout = QtGui.QVBoxLayout()
 		layout.setMargin(0)
@@ -99,7 +108,7 @@ class WebBrowser(QtGui.QDialog):
 		self.resize(800, 600)
 
 	def onLinkClicked(self, url):
-		self.view.load(url)
+		self.view.load(QtCore.QUrl(url))
 
 class MainWindow(QtGui.QMainWindow):  
 	def __init__(self,parent=None):
@@ -344,12 +353,11 @@ class MainWindow(QtGui.QMainWindow):
 
 	def showReport1_1(self):
 		url = u'http://localhost:8081/WebReport/ReportServer?reportlet=1_1.cpt&__bypagesize__=%s' %(self.bypagesize)
-		# url = 'http://localhost:8081/WebReport/ReportServer'
-		# url = u'http://localhost:8081/WebReport/ReportServer?op=fs_load&cmd=fs_signin&_=1448853321491'
-		# url = 'http://www.baidu.com'
-		# 调用qtwebkit打开url
-		web = WebBrowser(self, url)
-		web.exec_()
+		# 调用qtwebkit打开url(执行jquery的代码时出错,怀疑是qtwebkit版本太低!!!)
+		# web = WebBrowser(self, url)
+		# web.exec_()
+		# 调用外部浏览器打开url
+		doc.OpenNet(url)
 
 	def showReport1_2(self):
 		url = u'http://localhost:8081/WebReport/ReportServer?reportlet=1_2.cpt&__bypagesize__=%s' %(self.bypagesize)
