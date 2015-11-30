@@ -623,7 +623,7 @@ def show_report11(coal, tws_tech):
 		'pore_diameter':200,
 		'pore_lenth':1256,
 		'reportlet':'cbm.cpt',  # 模板文件路径
-		'__bypagesize__':'false' # 是否按页面大小显示
+		'__bypagesize__':'true' # 是否按页面大小显示
 	}
 
 	# 显示报表
@@ -644,7 +644,7 @@ def show_report12(coal, tws_tech):
 		'pore_diameter':200,
 		'pore_lenth':1256,
 		'reportlet':'cbm.cpt',  # 模板文件路径
-		'__bypagesize__':'false' # 是否按页面大小显示
+		'__bypagesize__':'true' # 是否按页面大小显示
 	}
 
 	# 显示报表
@@ -665,7 +665,7 @@ def show_report21(coal, ws_tech):
 		'pore_diameter':200,
 		'pore_lenth':1256,
 		'reportlet':'cbm.cpt',  # 模板文件路径
-		'__bypagesize__':'false' # 是否按页面大小显示
+		'__bypagesize__':'true' # 是否按页面大小显示
 	}
 
 	# 显示报表
@@ -686,7 +686,7 @@ def show_report23(coal, ws_tech):
 		'pore_diameter':200,
 		'pore_lenth':1256,
 		'reportlet':'cbm.cpt',  # 模板文件路径
-		'__bypagesize__':'false' # 是否按页面大小显示
+		'__bypagesize__':'true' # 是否按页面大小显示
 	}
 
 	# 显示报表
