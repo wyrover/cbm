@@ -1,0 +1,13 @@
+-->finereport使用的时候必须要正确定义数据连接（connection），否则会出现连接错误
+
+所有的数据连接都定义在report\webapps\WebReport\WEB-INF\resources\datasource.xml
+
+注1：在设计器中定义的数据连接（“服务器”-->定义数据连接）会保存在设计器的安装路径下，而不是我们自己的报表路径下，切记
+注2：设计器安装路径下也有一个datasource.xml文件（WebReport\WEB-INF\resources\datasource.xml）
+注3：为了保证同步，建议从git更新后将report路径下的datasource.xml覆盖到设计器路径下的datasource.xml中，同样地，如果设计器中对数据连接有修改，也应该将设计器路径下的datasource.xml覆盖到report路径下的datasource.xml中
+
+
+-->目前有3个数据连接
+cbm                --  用于显示钻孔报表
+cbm_asset       --  用于显示示范矿区基础参数
+FRDemo          --  finereport自带的sqlite数据库

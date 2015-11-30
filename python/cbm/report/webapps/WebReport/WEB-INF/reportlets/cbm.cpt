@@ -6,7 +6,7 @@
 <Attributes maxMemRowCount="-1"/>
 <Connection class="com.fr.data.impl.NameDatabaseConnection">
 <DatabaseName>
-<![CDATA[JDBC2]]></DatabaseName>
+<![CDATA[cbm]]></DatabaseName>
 </Connection>
 <Query>
 <![CDATA[select * from design_pore]]></Query>

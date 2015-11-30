@@ -6,7 +6,7 @@
 <Attributes maxMemRowCount="-1"/>
 <Connection class="com.fr.data.impl.NameDatabaseConnection">
 <DatabaseName>
-<![CDATA[FRDemo]]></DatabaseName>
+<![CDATA[cbm_asset]]></DatabaseName>
 </Connection>
 <Query>
 <![CDATA[select * from gas_forecast_7_1]]></Query>
