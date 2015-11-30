@@ -76,3 +76,6 @@ ui_*.py
 *_rc.py
 
 *logs/
+finedb/
+logdb/
+performance/
