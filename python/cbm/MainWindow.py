@@ -1,5 +1,7 @@
 #coding:utf-8
 
+from PyQt4 import QtWebKit
+
 from uipy.ui_mainwin import *
 from dialogs.LoginDlg import *
 from dialogs.SampleManageDlg import *
@@ -30,6 +32,74 @@ from cbm.ttypes import *
 import DataHelper
 from DataHelper import Authority
 import UiHelper
+
+# qtwebkit使用参考资料:
+# http://www.clanfei.com/2013/12/1733.html
+# http://www.cnblogs.com/liulun/p/3433003.html
+
+# 处理链接是在本地打开还是调用外部浏览器打开
+import webbrowser
+class WebPage(QtWebKit.QWebPage):
+	def __init__(self):
+		super(WebPage, self).__init__()
+ 
+	def acceptNavigationRequest(self, frame, request, type):
+		if(type == QtWebKit.QWebPage.NavigationTypeLinkClicked):
+			if(frame == self.mainFrame()):
+				self.view().load(request.url())
+			else:
+				webbrowser.open(request.url().toString())
+				return False
+		return QtWebKit.QWebPage.acceptNavigationRequest(self, frame, request, type)
+
+# 自定义简单浏览器
+class WebBrowser(QtGui.QDialog):
+	def __init__(self, parent, url='about:blank'):
+		super(WebBrowser, self).__init__(parent)
+		# 关闭窗口时自动销毁
+		# self.setAttribute(Qt.Qt.WA_DeleteOnClose, True)
+		# 显示最小和最大按钮
+		self.setWindowFlags(self.windowFlags() | Qt.Qt.WindowCloseButtonHint | Qt.Qt.WindowMinimizeButtonHint | Qt.Qt.WindowMaximizeButtonHint)
+
+		# 修改webkit全局设置
+		default_settings = QtWebKit.QWebSettings.globalSettings()
+		# 启用javascript支持
+		default_settings.setAttribute(QtWebKit.QWebSettings.JavascriptEnabled,True)
+		default_settings.setAttribute(QtWebKit.QWebSettings.JavascriptCanOpenWindows,True)
+		# 启动开发者工具支持
+		default_settings.setAttribute(QtWebKit.QWebSettings.DeveloperExtrasEnabled,True)
+
+		# 创建浏览器子窗口
+		self.view = QtWebKit.QWebView()
+		
+		# 禁用浏览器的右键菜单(利用qwidget自带的方法)
+		# self.view.setContextMenuPolicy(Qt.Qt.NoContextMenu)
+
+		# 部分链接会调用外部浏览器打开
+		self.page = WebPage()
+		self.view.setPage(self.page)
+
+		# 创建开发者工具子窗口
+		self.wi = QtWebKit.QWebInspector()
+		self.wi.setPage(self.view.page())
+
+		# 加载url
+		self.view.load(QtCore.QUrl(url))
+
+		# 处理点击一些链接没有反应的问题
+		# self.view.page().setLinkDelegationPolicy(QtWebKit.QWebPage.DelegateAllLinks)
+		# self.view.page().linkClicked.connect(self.onLinkClicked)
+
+		layout = QtGui.QVBoxLayout()
+		layout.setMargin(0)
+		layout.addWidget(self.view)
+		layout.addWidget(self.wi)
+		self.setLayout(layout)
+		
+		self.resize(800, 600)
+
+	def onLinkClicked(self, url):
+		self.view.load(url)
 
 class MainWindow(QtGui.QMainWindow):  
 	def __init__(self,parent=None):
@@ -274,7 +344,12 @@ class MainWindow(QtGui.QMainWindow):
 
 	def showReport1_1(self):
 		url = u'http://localhost:8081/WebReport/ReportServer?reportlet=1_1.cpt&__bypagesize__=%s' %(self.bypagesize)
-		doc.OpenNet(url)
+		# url = 'http://localhost:8081/WebReport/ReportServer'
+		# url = u'http://localhost:8081/WebReport/ReportServer?op=fs_load&cmd=fs_signin&_=1448853321491'
+		# url = 'http://www.baidu.com'
+		# 调用qtwebkit打开url
+		web = WebBrowser(self, url)
+		web.exec_()
 
 	def showReport1_2(self):
 		url = u'http://localhost:8081/WebReport/ReportServer?reportlet=1_2.cpt&__bypagesize__=%s' %(self.bypagesize)

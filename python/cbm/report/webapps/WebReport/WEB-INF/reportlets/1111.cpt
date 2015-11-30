@@ -6,7 +6,7 @@
 <Attributes maxMemRowCount="-1"/>
 <Connection class="com.fr.data.impl.NameDatabaseConnection">
 <DatabaseName>
-<![CDATA[cbm_asset]]></DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
 </Connection>
 <Query>
 <![CDATA[select * from pore_gas_content]]></Query>
@@ -22,7 +22,7 @@
 <ColumnPrivilegeControl/>
 <RowPrivilegeControl/>
 <RowHeight defaultValue="723900">
-<![CDATA[1752600,1143000,1371600,723900,723900,723900,723900,723900,723900,723900,723900]]></RowHeight>
+<![CDATA[1752600,1143000,1371600,723900,723900,723900,723900,723900,723900,723900]]></RowHeight>
 <ColumnWidth defaultValue="2743200">
 <![CDATA[1562100,2400300,2514600,2819400,2552700,2362200,3048000,2628900,2476500,1981200,2286000,2362200,2552700,2743200]]></ColumnWidth>
 <CellElementList>
@@ -379,14 +379,6 @@
 <CenterList/>
 <RightList/>
 </Footer>
-</ReportAttrSet>
-<PrivilegeControl/>
-</Report>
-<Report class="com.fr.report.poly.PolyWorkSheet" name="sheet2">
-<ReportAttrSet>
-<ReportSettings headerHeight="0" footerHeight="0">
-<PaperSetting/>
-</ReportSettings>
 </ReportAttrSet>
 <PrivilegeControl/>
 </Report>

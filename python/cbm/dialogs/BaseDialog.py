@@ -12,7 +12,8 @@ class BaseDialog(QtGui.QDialog):
 	# 自定义ui风格(标题栏、窗体字体、背景透明、图标等)
 	def initUi(self, ui):
 		self.setStyleSheet(u"font: 12pt \"微软雅黑\";")
-		self.setWindowFlags(Qt.Qt.WindowCloseButtonHint | Qt.Qt.WindowCloseButtonHint | Qt.Qt.FramelessWindowHint) 
+		self.setWindowFlags(Qt.Qt.WindowCloseButtonHint | Qt.Qt.FramelessWindowHint)
+		# Qt.Qt.WindowCloseButtonHint | 
 		self.setWindowOpacity(1)
 		self.mousePressed = False
 		closePix = self.style().standardPixmap(Qt.QStyle.SP_TitleBarCloseButton)

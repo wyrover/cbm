@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <DatasourceManager xmlVersion="20141222" releaseVersion="8.0.0">
 <ConnectionMap>
-<Connection name="FRDemo" class="com.fr.data.impl.JDBCDatabaseConnection">
+<Connection name="cbm_asset" class="com.fr.data.impl.JDBCDatabaseConnection">
 <DatabaseAttr/>
-<JDBCDatabaseAttr url="jdbc:mysql://localhost/cbm_asset?useUnicode=true&amp;characterEncoding=GBK" driver="com.mysql.jdbc.Driver" user="root" password="___" encryptPassword="true">
+<JDBCDatabaseAttr url="jdbc:mysql://localhost/cbm_asset?useUnicode=true&amp;characterEncoding=UTF-8" driver="com.mysql.jdbc.Driver" user="root" password="___" encryptPassword="true">
 <DBCPAttr/>
 </JDBCDatabaseAttr>
 </Connection>
