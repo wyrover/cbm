@@ -530,6 +530,21 @@ class MainWindow(QtGui.QMainWindow):
 	def help(self):
 		doc.OpenPDFFile(u'help\\使用说明.pdf')
 
+	def reportTest(self):
+		mine_name = u"谢一矿"
+		face_name = u"W292"
+		w_dis = 100
+		tunnel_name = u"机巷"
+		h_offset = 125
+		site_gap = 123
+		pore_diameter = 200
+		pore_lenth = 1256
+		param = "&mine_name=%s&face_name=%s&w_dis=%.2f&tunnel_name=%s&h_offset=%.2f&site_gap=%.2f&pore_diameter=%.2f\
+		&pore_lenth=%.2f"% (mine_name,face_name,w_dis,tunnel_name,h_offset,site_gap,pore_diameter,pore_lenth)
+
+		url = u'http://localhost:8081/WebReport/ReportServer?reportlet=cbm.cpt%s&__bypagesize__=%s' %(param,self.bypagesize)
+		doc.OpenNet(url)
+
 	def createActions(self):
 		self.regAction(u"账户管理", u"登录", u"用户登录", self.login)
 		self.regAction(u"账户管理", u"注销", u"注销用户", self.logout)		
@@ -647,6 +662,8 @@ class MainWindow(QtGui.QMainWindow):
 		self.regAction(u"帮助文档/相关规范",u"电子等容式瓦斯解吸仪技术条件",u"电子等容式瓦斯解吸仪技术条件",self.pdfHelp19)
 		self.regAction(u"帮助文档/相关规范",u"矿井瓦斯等级鉴定规范AQ1025-2006",u"矿井瓦斯等级鉴定规范AQ1025-2006",self.pdfHelp20)
 		self.regAction(u"帮助文档/相关规范",u"钻孔瓦斯涌出初速度的测定方法",u"钻孔瓦斯涌出初速度的测定方法",self.pdfHelp21)
+
+		self.regAction(u"测试",u"报表测试",u"",self.reportTest)
 
 		# 多级菜单测试
 		# self.regAction(u"测试2/test/help", u"采空区", u"采空区瓦斯抽采辅助设计", self.goafGasDesign)
