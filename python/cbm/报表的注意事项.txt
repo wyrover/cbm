@@ -11,3 +11,16 @@
 cbm                --  用于显示钻孔报表
 cbm_asset       --  用于显示示范矿区基础参数
 FRDemo          --  finereport自带的sqlite数据库
+
+-->编码修改
+报表的服务端、客户端、数据库都统一成utf-8编码
+1、设计器-->"服务器"-->平台管理-->系统管理，设置服务器端编码为utf-8
+注1：这样设置后，打开报表网页默认都是utf-8编码，否则默认就是gbk编码的
+注2：修改对应的配置文件WebReport\WEB-INF\resources\config.xml
+
+2、数据库的url统一成utf8
+设计器-->服务器-->数据连接，修改url的参数的问号部分
+?useUnicode=true&characterEncoding=GBK
+-->
+?useUnicode=true&characterEncoding=UTF-8
+

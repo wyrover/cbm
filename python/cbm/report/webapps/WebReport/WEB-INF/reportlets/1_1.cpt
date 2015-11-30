@@ -18,9 +18,13 @@
 <![CDATA[select * from pore_gas_content where id>${abc}]]></Query>
 </TableData>
 </TableDataMap>
+<ReportWebAttr>
+<ServerPrinter/>
+</ReportWebAttr>
+<ReportFitAttr fitHorizontalInApp="0" fitVerticalInApp="0"/>
 <Report class="com.fr.report.worksheet.WorkSheet" name="sheet1">
 <ReportPageAttr>
-<HR F="1" T="3"/>
+<HR F="0" T="2"/>
 <FR/>
 <HC/>
 <FC/>
@@ -28,19 +32,11 @@
 <ColumnPrivilegeControl/>
 <RowPrivilegeControl/>
 <RowHeight defaultValue="723900">
-<![CDATA[723900,1752600,1143000,1371600,723900,723900,723900,723900,723900,723900,723900,723900]]></RowHeight>
+<![CDATA[1752600,1143000,1371600,723900,723900,723900,723900,723900,723900,723900]]></RowHeight>
 <ColumnWidth defaultValue="2743200">
-<![CDATA[1562100,2400300,2514600,2819400,2552700,2362200,3048000,2628900,2476500,1981200,2286000,2362200,2552700,2743200]]></ColumnWidth>
+<![CDATA[647700,1562100,2400300,2514600,2819400,2552700,2362200,3048000,2628900,2476500,1981200,2286000,2362200,2552700,2743200]]></ColumnWidth>
 <CellElementList>
-<C c="0" r="0" cs="13">
-<O t="Formula" class="Formula">
-<Attributes>
-<![CDATA[=$a + " 销 售额"]]></Attributes>
-</O>
-<PrivilegeControl/>
-<Expand/>
-</C>
-<C c="0" r="1" cs="13" s="0">
+<C c="1" r="0" cs="13" s="0">
 <O>
 <![CDATA[淮河南矿区钻孔瓦斯含量统计表]]></O>
 <PrivilegeControl/>
@@ -48,7 +44,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="0" r="2" rs="2" s="1">
+<C c="1" r="1" rs="2" s="1">
 <O>
 <![CDATA[序号]]></O>
 <PrivilegeControl/>
@@ -56,7 +52,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="1" r="2" rs="2" s="1">
+<C c="2" r="1" rs="2" s="1">
 <O>
 <![CDATA[煤矿]]></O>
 <PrivilegeControl/>
@@ -64,7 +60,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="2" r="2" rs="2" s="1">
+<C c="3" r="1" rs="2" s="1">
 <O>
 <![CDATA[孔号]]></O>
 <PrivilegeControl/>
@@ -72,7 +68,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="3" r="2" rs="2" s="1">
+<C c="4" r="1" rs="2" s="1">
 <O>
 <![CDATA[样品深度/m]]></O>
 <PrivilegeControl/>
@@ -80,7 +76,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="4" r="2" rs="2" s="1">
+<C c="5" r="1" rs="2" s="1">
 <O>
 <![CDATA[煤层]]></O>
 <PrivilegeControl/>
@@ -88,7 +84,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="5" r="2" rs="2" s="1">
+<C c="6" r="1" rs="2" s="1">
 <O>
 <![CDATA[煤厚/m]]></O>
 <PrivilegeControl/>
@@ -96,7 +92,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="6" r="2" rs="2" s="1">
+<C c="7" r="1" rs="2" s="1">
 <O>
 <![CDATA[直接顶板岩性]]></O>
 <PrivilegeControl/>
@@ -104,7 +100,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="7" r="2" rs="2" s="1">
+<C c="8" r="1" rs="2" s="1">
 <O>
 <![CDATA[煤类]]></O>
 <PrivilegeControl/>
@@ -112,7 +108,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="8" r="2" cs="3" s="1">
+<C c="9" r="1" cs="3" s="1">
 <O>
 <![CDATA[瓦斯成分/%]]></O>
 <PrivilegeControl/>
@@ -120,7 +116,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="11" r="2" cs="2" s="1">
+<C c="12" r="1" cs="2" s="1">
 <O>
 <![CDATA[含量(可燃质)/(ml/g)]]></O>
 <PrivilegeControl/>
@@ -128,7 +124,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="8" r="3" s="1">
+<C c="9" r="2" s="1">
 <O t="RichText">
 <RichText>
 <RichChar styleIndex="2">
@@ -146,7 +142,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="9" r="3" s="1">
+<C c="10" r="2" s="1">
 <O t="RichText">
 <RichText>
 <RichChar styleIndex="2">
@@ -164,7 +160,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="10" r="3" s="1">
+<C c="11" r="2" s="1">
 <O t="RichText">
 <RichText>
 <RichChar styleIndex="4">
@@ -182,7 +178,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="11" r="3" s="1">
+<C c="12" r="2" s="1">
 <O t="RichText">
 <RichText>
 <RichChar styleIndex="2">
@@ -200,7 +196,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="12" r="3" s="1">
+<C c="13" r="2" s="1">
 <O t="RichText">
 <RichText>
 <RichChar styleIndex="4">
@@ -218,7 +214,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="0" r="4" s="6">
+<C c="1" r="3" s="6">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="id"/>
 <Complex/>
@@ -230,7 +226,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="1" r="4" s="7">
+<C c="2" r="3" s="7">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="煤矿"/>
 <Condition class="com.fr.data.condition.ListCondition"/>
@@ -245,7 +241,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="2" r="4" s="7">
+<C c="3" r="3" s="7">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="孔号"/>
 <Complex/>
@@ -257,7 +253,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="3" r="4" s="7">
+<C c="4" r="3" s="7">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="样品深度"/>
 <Complex/>
@@ -269,7 +265,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="4" r="4" s="7">
+<C c="5" r="3" s="7">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="煤层"/>
 <Complex/>
@@ -281,7 +277,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="5" r="4" s="7">
+<C c="6" r="3" s="7">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="煤厚"/>
 <Complex/>
@@ -293,7 +289,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="6" r="4" s="7">
+<C c="7" r="3" s="7">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="直接顶板岩性"/>
 <Complex/>
@@ -305,7 +301,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="7" r="4" s="7">
+<C c="8" r="3" s="7">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="煤类"/>
 <Complex/>
@@ -317,7 +313,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="8" r="4" s="7">
+<C c="9" r="3" s="7">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="gas_n2"/>
 <Complex/>
@@ -329,7 +325,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="9" r="4" s="7">
+<C c="10" r="3" s="7">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="gas_co2"/>
 <Complex/>
@@ -341,7 +337,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="10" r="4" s="7">
+<C c="11" r="3" s="7">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="gas_ch4"/>
 <Complex/>
@@ -353,7 +349,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="11" r="4" s="7">
+<C c="12" r="3" s="7">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="content_co2"/>
 <Complex/>
@@ -365,7 +361,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="12" r="4" s="7">
+<C c="13" r="3" s="7">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="content_ch4"/>
 <Complex/>
@@ -383,6 +379,7 @@
 <PaperSetting orientation="1">
 <Margin top="986400" left="2743200" bottom="986400" right="2743200"/>
 </PaperSetting>
+<Background name="ColorBackground"/>
 </ReportSettings>
 <Header reportPageType="0">
 <Background name="NullBackground"/>

@@ -4,7 +4,7 @@
 <![CDATA[WARNING]]></ServerLogLevel>
 <LOGCNG/>
 <FARRAY/>
-<Write serverCharacterEncoding="GBK"/>
+<Write serverCharacterEncoding="UTF-8"/>
 <GZip run="true"/>
 <Lic useLock="false"/>
 <ServletMapping pattern="ReportServer"/>
@@ -27,7 +27,7 @@
 <Text>
 <![CDATA[${i18n("ReportServerP-First")}]]></Text>
 <IconName>
-<![CDATA[first]]> </IconName>
+<![CDATA[first]]></IconName>
 </Widget>
 <Widget class="com.fr.report.web.button.page.Previous">
 <WidgetAttr>
@@ -94,6 +94,9 @@
 <![CDATA[${i18n("Export")}]]></Text>
 <IconName>
 <![CDATA[export]]></IconName>
+<Buttons ExcelO2003="true"/>
+<Buttons ExcelP2003="true"/>
+<Buttons ExcelS2003="true"/>
 <Buttons pdf="true" excelP="true" excelO="true" excelS="true" word="true" image="true" html="true"/>
 </Widget>
 <Widget class="com.fr.report.web.button.Email">
@@ -168,6 +171,9 @@
 <![CDATA[${i18n('Export')}]]></Text>
 <IconName>
 <![CDATA[export]]></IconName>
+<Buttons ExcelO2003="true"/>
+<Buttons ExcelP2003="true"/>
+<Buttons ExcelS2003="true"/>
 <Buttons pdf="true" excelP="true" excelO="true" excelS="true" word="true" image="true" html="true"/>
 </Widget>
 <Widget class="com.fr.report.web.button.Email">
@@ -242,6 +248,9 @@
 <![CDATA[${i18n('Export')}]]></Text>
 <IconName>
 <![CDATA[export]]></IconName>
+<Buttons ExcelO2003="true"/>
+<Buttons ExcelP2003="true"/>
+<Buttons ExcelS2003="true"/>
 <Buttons pdf="true" excelP="true" excelO="true" excelS="true" word="true" image="true" html="true"/>
 </Widget>
 <Widget class="com.fr.report.web.button.Email">
@@ -613,10 +622,7 @@ BY!QNJ~
 </SAttr>
 </Styles>
 <SessionInfo checkTime="40000" heartBeat="true"/>
-<FlashPrint popupFlashPrintSetting="true" fitPaper="false"/>
-<PdfPrint popupPdfPrintSetting="true"/>
-<AppletPrint popupAppletPrintSetting="true"/>
-<writeShortCuts writeShortCuts="true"/>
+<PrintAttrProvider popupFlashPrint="true" popupPdfPrint="true" popupAppletPrint="true" popupNativePrint="true" flashFitPaper="false"/>
 <CustomLocale>
 <Parameters/>
 <DSName>
@@ -626,4 +632,8 @@ BY!QNJ~
 <ColumnTypes>
 <![CDATA[]]></ColumnTypes>
 </CustomLocale>
+<ReportFitAttr>
+<ReportFitAttr fitHorizontalInApp="1" fitVerticalInApp="0"/>
+</ReportFitAttr>
+<writeShortCuts writeShortCuts="true"/>
 </ReportServerParameter>

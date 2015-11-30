@@ -194,6 +194,9 @@ class GasDesignP11Dlg(BaseDialog):
 		# 向cad发送命令请求生成钻孔数据
 		CbmClientHelper.SendCommandToCAD("JL.GeneratePore11 %d %d" % (coal.id, tws_tech.id), True)
 
+		# 显示报表
+		DataHelper.show_report1(coal, tws_tech)
+
 		# json文件路径(使用绝对路径,避免出错!!!)
 		# json_file = os.path.abspath('.\\help\\json\\test.json')
 		# 生成json文件
