@@ -737,7 +737,7 @@
      </property>
     </widget>
    </widget>
-   <widget class="QPushButton" name="creat_report">
+   <widget class="QPushButton" name="create_report">
     <property name="geometry">
      <rect>
       <x>460</x>

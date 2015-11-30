@@ -15,12 +15,14 @@ import os
 import os.path
 import json
 import datetime
-from math import sqrt, pow, exp, sin, cos, tan, radians, log10, pi
 import codecs
+import urllib
+from math import sqrt, pow, exp, sin, cos, tan, radians, log10, pi
 
 import UiHelper
 import DataHelper
 import EncodeHelper
+import doc
 
 #pandas给matplotlib提供了一种ggplot绘图的扩展主题(可以认为类似于windows的主题),效果更好看
 pd.set_option('display.mpl_style', 'default') # Make the graphs a bit prettier
@@ -593,3 +595,101 @@ def generateJsonFileOfPoreReport(coal_id, design_id, json_file):
 
 	# 生成json文件(utf-8编码)
 	write_json_file(json_data, json_file)
+
+# 报表显示辅助方法
+def show_report(params):
+	# 确保所有字符串数据(包括key)都是utf-8编码
+	# 将unicode字符串进行编码转换,因为urllib.urlencode方法只能处理str类型的字符串
+	f = lambda s:s.encode('utf-8') if type(s).__name__ == "unicode" else s
+	new_params = dict([(f(k), f(v)) for k, v in params.items()])
+	if 'reportlet' not in new_params:
+		print '参数中没有指定模板!(reportlet=???)'
+	else:
+		# 拼接url路径
+		url = 'http://localhost:8081/WebReport/ReportServer?%s' %  urllib.urlencode(new_params)
+		# 调用浏览器显示报表
+		doc.OpenNet(url)
+
+# 显示钻孔报表11
+def show_report11(coal, tws_tech):
+	# 测试参数
+	params = {
+		'mine_name':u"谢一矿",
+		'face_name':u"W292",
+		'w_dis': 100,
+		'tunnel_name':"机巷",
+		'h_offset':125,
+		'site_gap':123,
+		'pore_diameter':200,
+		'pore_lenth':1256,
+		'reportlet':'cbm.cpt',  # 模板文件路径
+		'__bypagesize__':'false' # 是否按页面大小显示
+	}
+
+	# 显示报表
+	# params参数中的字符串数据包括key即可以是utf8编码的str字节数组,也可以是unicode字符串
+	# show_report方法内部会自动处理
+	show_report(params)
+
+# 显示钻孔报表12
+def show_report12(coal, tws_tech):
+	# 测试参数
+	params = {
+		'mine_name':u"谢一矿",
+		'face_name':u"W292",
+		'w_dis': 100,
+		'tunnel_name':"机巷",
+		'h_offset':125,
+		'site_gap':123,
+		'pore_diameter':200,
+		'pore_lenth':1256,
+		'reportlet':'cbm.cpt',  # 模板文件路径
+		'__bypagesize__':'false' # 是否按页面大小显示
+	}
+
+	# 显示报表
+	# params参数中的字符串数据包括key即可以是utf8编码的str字节数组,也可以是unicode字符串
+	# show_report方法内部会自动处理
+	show_report(params)
+
+# 显示钻孔报表21
+def show_report21(coal, ws_tech):
+	# 测试参数
+	params = {
+		'mine_name':u"谢一矿",
+		'face_name':u"W292",
+		'w_dis': 100,
+		'tunnel_name':"机巷",
+		'h_offset':125,
+		'site_gap':123,
+		'pore_diameter':200,
+		'pore_lenth':1256,
+		'reportlet':'cbm.cpt',  # 模板文件路径
+		'__bypagesize__':'false' # 是否按页面大小显示
+	}
+
+	# 显示报表
+	# params参数中的字符串数据包括key即可以是utf8编码的str字节数组,也可以是unicode字符串
+	# show_report方法内部会自动处理
+	show_report(params)
+
+# 显示钻孔报表23
+def show_report23(coal, ws_tech):
+	# 测试参数
+	params = {
+		'mine_name':u"谢一矿",
+		'face_name':u"W292",
+		'w_dis': 100,
+		'tunnel_name':"机巷",
+		'h_offset':125,
+		'site_gap':123,
+		'pore_diameter':200,
+		'pore_lenth':1256,
+		'reportlet':'cbm.cpt',  # 模板文件路径
+		'__bypagesize__':'false' # 是否按页面大小显示
+	}
+
+	# 显示报表
+	# params参数中的字符串数据包括key即可以是utf8编码的str字节数组,也可以是unicode字符串
+	# show_report方法内部会自动处理
+	show_report(params)

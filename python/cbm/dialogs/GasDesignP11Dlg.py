@@ -26,7 +26,7 @@ class GasDesignP11Dlg(BaseDialog):
 		self.ui.plane_graph.clicked.connect(self.plane_graph)
 		self.ui.head_graph.clicked.connect(self.head_graph)
 		self.ui.dip_graph.clicked.connect(self.dip_graph)
-		self.ui.creat_report.clicked.connect(self.onCreatReport)
+		self.ui.create_report.clicked.connect(self.onCreatReport)
 		# 待设计的煤层以及关联的技术
 		self.coal_id = coal_id
 		self.design_id = design_id
@@ -194,8 +194,8 @@ class GasDesignP11Dlg(BaseDialog):
 		# 向cad发送命令请求生成钻孔数据
 		CbmClientHelper.SendCommandToCAD("JL.GeneratePore11 %d %d" % (coal.id, tws_tech.id), True)
 
-		# 显示报表
-		DataHelper.show_report1(coal, tws_tech)
+		# 显示钻孔报表
+		DataHelper.show_report11(coal, tws_tech)
 
 		# json文件路径(使用绝对路径,避免出错!!!)
 		# json_file = os.path.abspath('.\\help\\json\\test.json')

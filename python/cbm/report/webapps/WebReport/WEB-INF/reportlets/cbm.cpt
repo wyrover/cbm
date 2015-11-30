@@ -22,11 +22,15 @@
 <ColumnPrivilegeControl/>
 <RowPrivilegeControl/>
 <RowHeight defaultValue="723900">
-<![CDATA[2171700,3162300,152400,1104900,1028700,723900,723900,723900,723900,723900]]></RowHeight>
+<![CDATA[2171700,3162300,152400,1104900,1028700,723900,723900,723900,723900,723900,723900]]></RowHeight>
 <ColumnWidth defaultValue="2743200">
-<![CDATA[5257800,0,5562600,5981700,6096000,0,2743200,2743200,2743200,2743200,2743200]]></ColumnWidth>
+<![CDATA[6210300,5257800,0,4648200,6134100,12115800,0,2743200,2743200,2743200,2743200,2743200]]></ColumnWidth>
 <CellElementList>
-<C c="0" r="0" cs="6" s="0">
+<C c="0" r="0">
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="1" r="0" cs="6" s="0">
 <O>
 <![CDATA[底板岩巷密集穿层钻孔抽采煤巷条带瓦斯抽采技术]]></O>
 <PrivilegeControl/>
@@ -34,20 +38,20 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="0" r="1" cs="6" s="1">
+<C c="1" r="1" cs="6" s="1">
 <O t="Formula" class="Formula">
 <Attributes>
-<![CDATA[=$mine_name + "煤矿" + $face_name + "工作面“底板岩巷密集穿层钻孔抽采煤巷条带瓦斯抽采技术”钻孔参数表，" + "底板岩巷距离煤层"+$w_dis+"m，与" +$tunnel_name + "巷内错"+$h_offset+"m（水平投影距离）,钻场间距"+$site_gap+"m，钻孔孔径"+$pore_diameter+"mm，封孔长度"+$pore_lenth+"m"]]></Attributes>
+<![CDATA[=$mine_name + "煤矿" + $face_name + "工作面“底板岩巷密集穿层钻孔抽采煤巷条带瓦斯抽采技术”钻孔参数表，" + "底板岩巷距离煤层" + $w_dis + "m，与" + $tunnel_name + "巷内错" + $h_offset + "m（水平投影距离）,钻场间距" + $site_gap + "m，钻孔孔径" + $pore_diameter + "mm，封孔长度" + $pore_lenth + "m"]]></Attributes>
 </O>
 <PrivilegeControl/>
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="0" r="2" cs="6">
+<C c="1" r="2" cs="6">
 <PrivilegeControl/>
 <Expand/>
 </C>
-<C c="0" r="3" cs="2" s="2">
+<C c="1" r="3" cs="2" s="2">
 <O>
 <![CDATA[钻孔编号]]></O>
 <PrivilegeControl/>
@@ -55,7 +59,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="2" r="3" s="2">
+<C c="3" r="3" s="2">
 <O>
 <![CDATA[钻孔长度]]></O>
 <PrivilegeControl/>
@@ -63,7 +67,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="3" r="3" s="2">
+<C c="4" r="3" s="2">
 <O>
 <![CDATA[钻孔倾角]]></O>
 <PrivilegeControl/>
@@ -71,7 +75,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="4" r="3" cs="2" s="2">
+<C c="5" r="3" cs="2" s="2">
 <O>
 <![CDATA[钻孔方位角]]></O>
 <PrivilegeControl/>
@@ -79,7 +83,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="0" r="4" cs="2" s="3">
+<C c="1" r="4" cs="2" s="3">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="name"/>
 <Complex/>
@@ -91,7 +95,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="2" r="4" s="3">
+<C c="3" r="4" s="3">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="length"/>
 <Complex/>
@@ -103,7 +107,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="3" r="4" s="3">
+<C c="4" r="4" s="3">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="angle1"/>
 <Complex/>
@@ -115,7 +119,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="4" r="4" cs="2" s="3">
+<C c="5" r="4" cs="2" s="3">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="angle2"/>
 <Complex/>
@@ -130,7 +134,9 @@
 </CellElementList>
 <ReportAttrSet>
 <ReportSettings headerHeight="0" footerHeight="0">
-<PaperSetting/>
+<PaperSetting orientation="1">
+<Margin top="986400" left="2743200" bottom="986400" right="2743200"/>
+</PaperSetting>
 </ReportSettings>
 <Header reportPageType="0">
 <Background name="NullBackground"/>

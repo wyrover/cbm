@@ -744,7 +744,7 @@
      <string>走 向 剖 面 图</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="creat_report">
+   <widget class="QPushButton" name="create_report">
     <property name="geometry">
      <rect>
       <x>450</x>
