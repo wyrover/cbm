@@ -596,6 +596,21 @@ def generateJsonFileOfPoreReport(coal_id, design_id, json_file):
 	# 生成json文件(utf-8编码)
 	write_json_file(json_data, json_file)
 
+'''
+# 测试参数
+params = {
+	'mine_name':u"谢一矿",
+	'face_name':u"W292",
+	'w_dis': 100,
+	'tunnel_name':"机巷",
+	'h_offset':125,
+	'site_gap':123,
+	'pore_diameter':200,
+	'pore_lenth':1256,
+	'reportlet':'cbm.cpt',  # 模板文件路径
+	'__bypagesize__':'true' # 是否按页面大小显示
+}
+'''
 # 报表显示辅助方法
 def show_report(params):
 	# 确保所有字符串数据(包括key)都是utf-8编码
@@ -610,21 +625,47 @@ def show_report(params):
 		# 调用浏览器显示报表
 		doc.OpenNet(url)
 
+def GetAllPores(design_id):
+	# 查询所有的钻场
+	site_lists = SQLClientHelper.GetDesignSiteByForeignKey(design_id)
+	# 查询所有的钻孔
 # 显示钻孔报表11
 def show_report11(coal, tws_tech):
-	# 测试参数
-	params = {
-		'mine_name':u"谢一矿",
-		'face_name':u"W292",
-		'w_dis': 100,
-		'tunnel_name':"机巷",
-		'h_offset':125,
-		'site_gap':123,
-		'pore_diameter':200,
-		'pore_lenth':1256,
-		'reportlet':'cbm.cpt',  # 模板文件路径
-		'__bypagesize__':'true' # 是否按页面大小显示
-	}
+	# 生成参数
+	params = {}
+	# 矿井名称
+	mine = SQLClientHelper.GetMineById(coal.mine_id)
+	params['mine_name'] = mine.name
+	# 工作面名称
+	# 搜索矿井的所有工作面中的第一个(按道理应该是从界面中提供工作面名称!!!)
+	work_surf_list = CbmClientHelper.GetWorkSurfsOfMine(mine.id)
+	if len(work_surf_list) == 0:
+		params['face_name'] = 'W292'
+	else:
+		params['face_name'] = work_surf_list[0].name
+	# 底板岩巷距离煤层
+	params['w_dis'] = tws_tech.v_offset
+	# 水平投影距离
+	params['h_offset'] = tws_tech.h_offset
+	# 钻场间距
+	params['site_gap'] = tws_tech.gs
+	# 钻孔直径
+	params['pore_diameter'] = tws_tech.dp
+	# 封孔长度(界面中没有输入,网上搜的一个参照值)
+	# http://wenku.baidu.com/link?url=4QOLWZsUfFu5zLewMQCeF_WRzYTWmBYE3SRyk1Cj_JTc1UzbZR54NNkrXUsKc1PDj1Kg4492gfSNaKweJTSWxVqz7VbM-b7G3IAbtcdifBy
+	params['pore_lenth'] = 8
+	# 模板文件路径(必须参数)
+	params['reportlet'] = 'cbm11.cpt'
+	# 设计方案id(必须参数)
+	params['design_id'] = tws_tech.design_technology_id
+	# 是否按页面大小显示
+	params['__bypagesize__'] = 'true'
+	# 查询所有钻孔
+	pore_lists = CbmClientHelper.GetAllPores(tws_tech.design_technology_id)
+	# 计算钻孔个数
+	params['pore_num'] = len(pore_lists)
+	# 计算钻孔总长度
+	params['pore_sum'] = sum([pore.length for pore in pore_lists])
 
 	# 显示报表
 	# params参数中的字符串数据包括key即可以是utf8编码的str字节数组,也可以是unicode字符串
@@ -633,19 +674,48 @@ def show_report11(coal, tws_tech):
 
 # 显示钻孔报表12
 def show_report12(coal, tws_tech):
-	# 测试参数
-	params = {
-		'mine_name':u"谢一矿",
-		'face_name':u"W292",
-		'w_dis': 100,
-		'tunnel_name':"机巷",
-		'h_offset':125,
-		'site_gap':123,
-		'pore_diameter':200,
-		'pore_lenth':1256,
-		'reportlet':'cbm.cpt',  # 模板文件路径
-		'__bypagesize__':'true' # 是否按页面大小显示
-	}
+	# 生成参数
+	params = {}
+	# 矿井名称
+	mine = SQLClientHelper.GetMineById(coal.mine_id)
+	params['mine_name'] = mine.name
+	# 工作面名称
+	# 搜索矿井的所有工作面中的第一个(按道理应该是从界面中提供工作面名称!!!)
+	work_surf_list = CbmClientHelper.GetWorkSurfsOfMine(mine.id)
+	if len(work_surf_list) == 0:
+		params['face_name'] = 'W292'
+	else:
+		params['face_name'] = work_surf_list[0].name
+	# 条带长度
+	params['strip_length'] = tws_tech.l_stripe
+	# 上下左右帮距
+	params['contrl_range_up'] = tws_tech.top_side
+	params['contrl_range_down'] = tws_tech.bottom_side
+	params['contrl_range_left'] = tws_tech.left_side
+	params['contrl_range_right'] = tws_tech.right_side
+	# 孔底间距
+	params['gbp'] = tws_tech.gbp
+	# 钻孔直径
+	params['pore_diameter'] = tws_tech.dp
+	# 封孔长度(界面中没有输入,网上搜的一个参照值)
+	# http://wenku.baidu.com/link?url=4QOLWZsUfFu5zLewMQCeF_WRzYTWmBYE3SRyk1Cj_JTc1UzbZR54NNkrXUsKc1PDj1Kg4492gfSNaKweJTSWxVqz7VbM-b7G3IAbtcdifBy
+	params['pore_lenth'] = 8
+	# 巷道长度
+	params['tunnel_length'] = tws_tech.lm
+	# 循环个数
+	params['cycle_num'] = int(tws_tech.lm / (tws_tech.l_stripe - tws_tech.leading_dist))
+	# 模板文件路径(必须参数)
+	params['reportlet'] = 'cbm12.cpt'
+	# 设计方案id(必须参数)
+	params['design_id'] = tws_tech.design_technology_id
+	# 是否按页面大小显示
+	params['__bypagesize__'] = 'true'
+	# 查询所有钻孔
+	pore_lists = CbmClientHelper.GetAllPores(tws_tech.design_technology_id)
+	# 计算钻孔个数
+	params['pore_num'] = len(pore_lists)
+	# 计算钻孔总长度
+	params['pore_sum'] = sum([pore.length for pore in pore_lists])
 
 	# 显示报表
 	# params参数中的字符串数据包括key即可以是utf8编码的str字节数组,也可以是unicode字符串
@@ -654,19 +724,43 @@ def show_report12(coal, tws_tech):
 
 # 显示钻孔报表21
 def show_report21(coal, ws_tech):
-	# 测试参数
-	params = {
-		'mine_name':u"谢一矿",
-		'face_name':u"W292",
-		'w_dis': 100,
-		'tunnel_name':"机巷",
-		'h_offset':125,
-		'site_gap':123,
-		'pore_diameter':200,
-		'pore_lenth':1256,
-		'reportlet':'cbm.cpt',  # 模板文件路径
-		'__bypagesize__':'true' # 是否按页面大小显示
-	}
+	# 生成参数
+	params = {}
+	# 矿井名称
+	mine = SQLClientHelper.GetMineById(coal.mine_id)
+	params['mine_name'] = mine.name
+	# 工作面名称
+	# 搜索矿井的所有工作面中的第一个(按道理应该是从界面中提供工作面名称!!!)
+	work_surf_list = CbmClientHelper.GetWorkSurfsOfMine(mine.id)
+	if len(work_surf_list) == 0:
+		params['face_name'] = 'W292'
+	else:
+		params['face_name'] = work_surf_list[0].name
+	# 底板岩巷距离煤层
+	params['w_dis'] = ws_tech.v_offset
+	# 该参数有待商定????
+	params['tunnel_name'] = '机巷'
+	# 水平投影距离
+	params['h_offset'] = ws_tech.h_offset
+	# 钻场间距
+	params['site_gap'] = ws_tech.gs
+	# 钻孔直径
+	params['pore_diameter'] = ws_tech.dp
+	# 封孔长度(界面中没有输入,网上搜的一个参照值)
+	# http://wenku.baidu.com/link?url=4QOLWZsUfFu5zLewMQCeF_WRzYTWmBYE3SRyk1Cj_JTc1UzbZR54NNkrXUsKc1PDj1Kg4492gfSNaKweJTSWxVqz7VbM-b7G3IAbtcdifBy
+	params['pore_lenth'] = 8
+	# 模板文件路径(必须参数)
+	params['reportlet'] = 'cbm21.cpt'
+	# 设计方案id(必须参数)
+	params['design_id'] = ws_tech.design_technology_id
+	# 是否按页面大小显示
+	params['__bypagesize__'] = 'true'
+	# 查询所有钻孔
+	pore_lists = CbmClientHelper.GetAllPores(ws_tech.design_technology_id)
+	# 计算钻孔个数
+	params['pore_num'] = len(pore_lists)
+	# 计算钻孔总长度
+	params['pore_sum'] = sum([pore.length for pore in pore_lists])
 
 	# 显示报表
 	# params参数中的字符串数据包括key即可以是utf8编码的str字节数组,也可以是unicode字符串
@@ -675,19 +769,43 @@ def show_report21(coal, ws_tech):
 
 # 显示钻孔报表23
 def show_report23(coal, ws_tech):
-	# 测试参数
-	params = {
-		'mine_name':u"谢一矿",
-		'face_name':u"W292",
-		'w_dis': 100,
-		'tunnel_name':"机巷",
-		'h_offset':125,
-		'site_gap':123,
-		'pore_diameter':200,
-		'pore_lenth':1256,
-		'reportlet':'cbm.cpt',  # 模板文件路径
-		'__bypagesize__':'true' # 是否按页面大小显示
-	}
+	# 生成参数
+	params = {}
+	# 矿井名称
+	mine = SQLClientHelper.GetMineById(coal.mine_id)
+	params['mine_name'] = mine.name
+	# 工作面名称
+	# 搜索矿井的所有工作面中的第一个(按道理应该是从界面中提供工作面名称!!!)
+	work_surf_list = CbmClientHelper.GetWorkSurfsOfMine(mine.id)
+	if len(work_surf_list) == 0:
+		params['face_name'] = 'W292'
+	else:
+		params['face_name'] = work_surf_list[0].name
+	# 工作面走向长度
+	params['strike_length'] = ws_tech.l1
+	# 工作面倾向长度
+	params['tendency_length'] = ws_tech.l2
+	# 钻孔压茬长度
+	params['pore_stubble'] = ws_tech.pore_stubble
+	# 钻孔间距
+	params['pore_gap'] = ws_tech.gp
+	# 钻孔直径
+	params['pore_diameter'] = ws_tech.dp
+	# 封孔长度(界面中没有输入,网上搜的一个参照值)
+	# http://wenku.baidu.com/link?url=4QOLWZsUfFu5zLewMQCeF_WRzYTWmBYE3SRyk1Cj_JTc1UzbZR54NNkrXUsKc1PDj1Kg4492gfSNaKweJTSWxVqz7VbM-b7G3IAbtcdifBy
+	params['pore_lenth'] = 8
+	# 模板文件路径(必须参数)
+	params['reportlet'] = 'cbm23.cpt'
+	# 设计方案id(必须参数)
+	params['design_id'] = ws_tech.design_technology_id
+	# 是否按页面大小显示
+	params['__bypagesize__'] = 'true'
+	# 查询所有钻孔
+	pore_lists = CbmClientHelper.GetAllPores(ws_tech.design_technology_id)
+	# 计算钻孔个数
+	params['pore_num'] = len(pore_lists)
+	# 计算钻孔总长度
+	params['pore_sum'] = sum([pore.length for pore in pore_lists])
 
 	# 显示报表
 	# params参数中的字符串数据包括key即可以是utf8编码的str字节数组,也可以是unicode字符串

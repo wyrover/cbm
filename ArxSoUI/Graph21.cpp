@@ -68,6 +68,8 @@ namespace P21
 				break;
 			}
 
+			acutPrintf(_T("\n钻场:%d  id:%d"), n-i, site_id);
+
 			// 钻场的行列起始位置
 			r2 -= col_nums[i];
 			acutPrintf(_T("\n机巷---钻场%d的行:%d~%d, 列:%d~%d"), n-i, r1, r2, c1, c2);
@@ -117,6 +119,8 @@ namespace P21
 		// 删除所有的钻场和钻孔
 		GraphHelper::DeleteAllSiteAndPore(tech.design_technology_id);
 
+		acutPrintf(_T("\nid1:%d  id2:%d"), tech.id, tech.design_technology_id);
+
 		// 工作面巷道的中点作为原点
 		AcGePoint3d orig(AcGePoint3d::kOrigin);
 
@@ -164,8 +168,9 @@ namespace P21
 		std::vector<cbm::DesignPore> pores;
 
 		// (1)输出机巷的数据
-		drawPores1(site_pts1, pore_nums1, pore_pts, ny, nx, nx, 0, ny, pores);
+		drawPores1(site_pts1, pore_nums1, pore_pts, ny, nx, nx, ny, 0, pores);
 
+		acutPrintf(_T("\n钻孔个数:%d"), pores.size());
 		// 添加到数据库
 		SQLClientHelper::AddMoreDesignPore(pores);
 	}

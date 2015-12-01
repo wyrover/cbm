@@ -48,9 +48,7 @@
 <C c="1" r="1" cs="6" s="1">
 <O t="Formula" class="Formula">
 <Attributes>
-<![CDATA[=$mine_name + "煤矿" + $face_name + "工作面“顺层钻孔条带掩护巷道掘进抽采法”钻孔参数表," +  "底板岩巷距离煤层" + $w_dis + "m，顺层钻孔预抽煤巷条带瓦斯区域防突措施的钻孔控制的条带长度" + $strip_length + "m，巷道两侧的控制范围为上帮轮廓线外" + $contrl_range_up + "m,下帮" + $contrl_range_down + "m，孔板间距" + $pore_gap + "m，钻孔孔径" + $pore_diameter + "mm，封孔长度" + $pore_lenth +  "m。巷道长度" + $tunnel_length + "m，共需" + $cycle_num + "个循环。
-备注：钻场编号：在各自的底板巷区域内独立编号，从1开始
-钻孔编号规则：循环数 -钻场编号-钻孔编号"]]></Attributes>
+<![CDATA[=$mine_name + "煤矿" + $face_name + "工作面“顺层钻孔条带掩护巷道掘进抽采法”钻孔参数表," + "m，顺层钻孔预抽煤巷条带瓦斯区域防突措施的钻孔控制的条带长度" + $strip_length + "m，巷道两侧的控制范围为上帮轮廓线外" + $contrl_range_up + "m,下帮" + $contrl_range_down + "m，孔板间距" + $pore_gap + "m，钻孔孔径" + $pore_diameter + "mm，封孔长度" + $pore_lenth +  "m。巷道长度" + $tunnel_length + "m，共需" + $cycle_num + "个循环。"]]></Attributes>
 </O>
 <PrivilegeControl/>
 <CellPageAttr/>

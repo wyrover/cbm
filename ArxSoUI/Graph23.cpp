@@ -136,6 +136,7 @@ namespace P23
 			//drawParallelPores();
 			//drawCrossPores();
 		}
+		acutPrintf(_T("type:%d  ×ê¿×¸öÊý:%d"), pore_type, pores.size());
 	}
 
     Graph::Graph( cbm::Coal& _coal, cbm::DesignWorkSurfTechnology& _tech )
