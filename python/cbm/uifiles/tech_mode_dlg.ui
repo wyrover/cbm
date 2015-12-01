@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>350</width>
-    <height>460</height>
+    <width>351</width>
+    <height>451</height>
    </rect>
   </property>
   <property name="sizeIncrement">
@@ -29,7 +29,7 @@
      <x>0</x>
      <y>30</y>
      <width>351</width>
-     <height>431</height>
+     <height>421</height>
     </rect>
    </property>
    <widget class="QGroupBox" name="groupBox">
@@ -257,7 +257,7 @@
      </font>
     </property>
     <property name="title">
-     <string>xx矿区抽采技术模式</string>
+     <string>矿区抽采技术模式</string>
     </property>
     <widget class="QComboBox" name="tech_mode">
      <property name="geometry">

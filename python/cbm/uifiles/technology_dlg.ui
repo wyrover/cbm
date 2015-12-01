@@ -69,9 +69,9 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>20</y>
-      <width>181</width>
-      <height>25</height>
+      <y>10</y>
+      <width>161</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="font">
@@ -80,7 +80,7 @@
      </font>
     </property>
     <property name="text">
-     <string>xx矿区推荐抽采技术</string>
+     <string>矿区推荐抽采技术</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="doc">
@@ -120,9 +120,9 @@
     <property name="geometry">
      <rect>
       <x>200</x>
-      <y>20</y>
+      <y>10</y>
       <width>101</width>
-      <height>25</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="font">
@@ -155,10 +155,10 @@
    <widget class="QPushButton" name="save">
     <property name="geometry">
      <rect>
-      <x>310</x>
-      <y>20</y>
+      <x>320</x>
+      <y>10</y>
       <width>75</width>
-      <height>22</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="font">

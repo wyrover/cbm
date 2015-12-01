@@ -23,7 +23,7 @@
 <ColumnPrivilegeControl/>
 <RowPrivilegeControl/>
 <RowHeight defaultValue="723900">
-<![CDATA[2171700,5715000,152400,1104900,1028700,2552700,723900,723900,723900,723900,723900]]></RowHeight>
+<![CDATA[2171700,3162300,152400,1104900,1028700,2552700,723900,723900,723900,723900,723900]]></RowHeight>
 <ColumnWidth defaultValue="2743200">
 <![CDATA[6210300,5562600,0,6858000,6705600,7810500,0,2743200,2743200,2743200,2743200]]></ColumnWidth>
 <CellElementList>
@@ -33,7 +33,7 @@
 </C>
 <C c="1" r="0" cs="6" s="0">
 <O>
-<![CDATA[底板岩巷密集穿层钻孔抽采煤巷条带瓦斯抽采技术]]></O>
+<![CDATA[顺层钻孔条带掩护巷道掘进抽采法]]></O>
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
@@ -42,10 +42,9 @@
 <C c="1" r="1" cs="6" s="1">
 <O t="Formula" class="Formula">
 <Attributes>
-<![CDATA[=$mine_name + "煤矿" + $face_name + "工作面“底板岩巷密集穿层钻孔抽采煤巷条带瓦斯抽采技术”钻孔参数表," + "底板岩巷距离煤层" + $w_dis + "m，与" + $tunnel_name + "巷内错" + $h_offset + "m（水平投影距离）,钻场间距" + $site_gap + "m，钻孔孔径" + $pore_diameter + "mm，封孔长度" + $pore_lenth + "m。
-备注：上面的底板巷编号1#，下面的底板巷编号2#，最左侧的编号3#
-钻场编号：在各自的底板巷区域内独立编号，从1开始
-钻孔编号规则：底板巷区域编号-钻场编号-钻孔编号。"]]></Attributes>
+<![CDATA[=$mine_name + "煤矿" + $face_name + "工作面“顺层钻孔条带掩护巷道掘进抽采法”钻孔参数表," +  "底板岩巷距离煤层" + $w_dis + "m，顺层钻孔预抽煤巷条带瓦斯区域防突措施的钻孔控制的条带长度" + $strip_length + "m，巷道两侧的控制范围为上帮轮廓线外" + $contrl_range_up + "m,下帮" + $contrl_range_down + "m，孔板间距" + $pore_gap + "m，钻孔孔径" + $pore_diameter + "mm，封孔长度" + $pore_lenth +  "m。巷道长度" + $tunnel_length + "m，共需" + $cycle_num + "个循环。
+备注：钻场编号：在各自的底板巷区域内独立编号，从1开始
+钻孔编号规则：循环数 -钻场编号-钻孔编号"]]></Attributes>
 </O>
 <PrivilegeControl/>
 <CellPageAttr/>
@@ -138,7 +137,7 @@
 <C c="1" r="5" cs="5" s="4">
 <O t="Formula" class="Formula">
 <Attributes>
-<![CDATA[=$mine_name + "煤矿" + $face_name + "工作面“底板岩巷密集穿层钻孔抽采煤巷条带瓦斯抽采技术”共需施工穿层钻孔" + $pore_num + "个，钻孔总工程量" + $pore_sum + "m，封孔长度" + $pore_lenth + "m。"]]></Attributes>
+<![CDATA[=$mine_name + "煤矿" + $face_name + "工作面“顺层钻孔条带掩护巷道掘进抽采法”共需施工穿层钻孔" + $pore_num + "个，钻孔总工程量" + $pore_sum + "m，封孔长度" + $pore_lenth + "m。"]]></Attributes>
 </O>
 <PrivilegeControl/>
 <Expand/>
