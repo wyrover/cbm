@@ -223,7 +223,6 @@ class MainWindow(QtGui.QMainWindow):
 	def evalUnitPartition(self):
 		# 启动评价单元划分计算对话框
 		self.try_run(EvalUnitDlg, Authority.USER)
-		pass
 
 	def wsGasDesign(self):
 		# 进行工作面的瓦斯抽采设计
