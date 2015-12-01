@@ -379,6 +379,20 @@ function DrillingSurfGasFlow($coal, $drilling_surf, $tunnel) {
 	return $ret;
 }
 
+function GetAllPores($design_id) {
+	$ret = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$ret = $client->GetAllPores($design_id);
+		
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$ret = array();
+	}
+	return $ret;
+}
+
 function SendCommandToCAD($cmd, $switch_to_cad=false) {
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);

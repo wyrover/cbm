@@ -4522,6 +4522,11 @@ class CbmServiceHandler : virtual public CbmServiceIf {
     printf("DrillingSurfGasFlow\n");
   }
 
+  void GetAllPores(std::vector<DesignPore> & _return, const int32_t design_id) {
+    // Your implementation goes here
+    printf("GetAllPores\n");
+  }
+
   void SendCommandToCAD(const std::string& cmd, const bool switch_to_cad) {
     // Your implementation goes here
     printf("SendCommandToCAD\n");

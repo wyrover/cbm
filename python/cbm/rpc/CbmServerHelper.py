@@ -326,6 +326,18 @@ class CbmServiceHandler(SQLServerHelper.SQLServiceHandler):
         ret.qa = qa
         return ret
 
+    def GetAllPores(self, design_id):
+        # ²Î¿¼: http://mysrc.sinaapp.com/view_note/?id=455
+        query = self.session.query(SQL.DesignPore).join(SQL.DesignSite, SQL.DesignPore.design_site_id==SQL.DesignSite.id).join(SQL.DesignTechnology, SQL.DesignTechnology.id==SQL.DesignSite.design_technology_id).all()
+        if len(query) == 0:
+            return []
+
+        n = len(query)
+        pores = [DesignPore() for i in range(n)]
+        for i in range(n):
+            CbmUtil.CopyAttribsOfCbmType('DesignPore', query[i], pores[i], True)
+        return pores
+
     def SendCommandToCAD(self, cmd, switch_to_cad):
         exe = 'tool\\send.exe'
         cmd_text = '%s %d %s' % (exe, int(switch_to_cad), cmd)

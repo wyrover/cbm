@@ -60,6 +60,8 @@ public:
 	static double WorkSurfGasFlow2(const cbm::Coal& coal, const cbm::WorkArea& work_area, const cbm::WorkSurf& work_surf);
 	//掘进面瓦斯涌出量
 	static void DrillingSurfGasFlow(cbm::DrillingSurfGasFlowResult& _return, const cbm::Coal& coal, const cbm::DrillingSurf& drilling_surf, const cbm::Tunnel& tunnel);
+	//查询设计方案下的所有钻孔
+	static void GetAllPores(std::vector<cbm::DesignPore> & _return, const int32_t design_id);
 
 	//发送命令到cad,第2个参数表示是否激活cad窗口到最前面
 	static void SendCommandToCAD(const std::string& cmd, bool switch_to_cad=false);

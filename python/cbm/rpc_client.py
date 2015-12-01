@@ -236,8 +236,9 @@ sqlalchemy的delete报错解决方法:
    http://www.keakon.net/2012/12/03/SQLAlchemy%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C
 '''
 def test_sql():
+    print len(CbmClientHelper.GetAllPores(45))
     # print SQLClientHelper.GetMineBaseNames()
-    print CbmClientHelper.SendCommandToCAD("zoom a", True)
+    # print CbmClientHelper.SendCommandToCAD("zoom a", True)
     # print CbmClientHelper.SendCommandToCAD("regen", False)
     # print CbmClientHelper.GetJsonDatasFromCAD("{}", 2)
     

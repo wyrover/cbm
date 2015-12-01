@@ -335,6 +335,18 @@ def DrillingSurfGasFlow(coal, drilling_surf, tunnel):
 		ret.qa = 0.0
 	return ret
 
+def GetAllPores(design_id):
+	ret = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		ret = service_client.get().GetAllPores(design_id)
+		service_client.close()
+	except Exception, e:
+		print e
+		ret = []
+	return ret
+
 def SendCommandToCAD(cmd, switch_to_cad=True):
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)

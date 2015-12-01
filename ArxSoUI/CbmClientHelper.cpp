@@ -441,6 +441,22 @@ void CbmClientHelper::DrillingSurfGasFlow(cbm::DrillingSurfGasFlowResult& _retur
 	}
 }
 
+void CbmClientHelper::GetAllPores(std::vector<cbm::DesignPore> & _return, const int32_t design_id)
+{
+	try 
+	{
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetAllPores(_return, design_id);
+		service_client.close();
+	} 
+	catch (TException &tx) 
+	{
+		std::string error_msg = tx.what();
+		//printf("ERROR: %s\n", tx.what());
+	}
+}
+
 void CbmClientHelper::SendCommandToCAD(const std::string& cmd, bool switch_to_cad)
 {
 	try

@@ -1557,6 +1557,8 @@ service CbmService {
 	double WorkSurfGasFlow2(1:Coal coal, 2:WorkArea work_area, 3:WorkSurf work_surf),
 	//掘进面瓦斯涌出量
 	DrillingSurfGasFlowResult DrillingSurfGasFlow(1:Coal coal, 2:DrillingSurf drilling_surf, 3:Tunnel tunnel),
+	//查询设计方案下的所有钻孔
+	list<DesignPore> GetAllPores(1:i32 design_id),
 //}
 
 // service FetchInfoService {

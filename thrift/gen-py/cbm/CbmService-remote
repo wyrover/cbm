@@ -924,6 +924,7 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
   print('  double WorkSurfGasFlow1(Coal coal, WorkArea work_area, WorkSurf work_surf)')
   print('  double WorkSurfGasFlow2(Coal coal, WorkArea work_area, WorkSurf work_surf)')
   print('  DrillingSurfGasFlowResult DrillingSurfGasFlow(Coal coal, DrillingSurf drilling_surf, Tunnel tunnel)')
+  print('   GetAllPores(i32 design_id)')
   print('  void SendCommandToCAD(string cmd, bool switch_to_cad)')
   print('  string RequestJsonDatasFromCAD(string input_datas)')
   print('  string GetJsonDatasFromRpcCache(string secret_key)')
@@ -6383,6 +6384,12 @@ elif cmd == 'DrillingSurfGasFlow':
     print('DrillingSurfGasFlow requires 3 args')
     sys.exit(1)
   pp.pprint(client.DrillingSurfGasFlow(eval(args[0]),eval(args[1]),eval(args[2]),))
+
+elif cmd == 'GetAllPores':
+  if len(args) != 1:
+    print('GetAllPores requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.GetAllPores(eval(args[0]),))
 
 elif cmd == 'SendCommandToCAD':
   if len(args) != 2:

@@ -2,14 +2,20 @@
 <WorkBook xmlVersion="20141222" releaseVersion="8.0.0">
 <TableDataMap>
 <TableData name="ds1" class="com.fr.data.impl.DBTableData">
-<Parameters/>
+<Parameters>
+<Parameter>
+<Attributes name="design_id"/>
+<O t="I">
+<![CDATA[0]]></O>
+</Parameter>
+</Parameters>
 <Attributes maxMemRowCount="-1"/>
 <Connection class="com.fr.data.impl.NameDatabaseConnection">
 <DatabaseName>
 <![CDATA[cbm]]></DatabaseName>
 </Connection>
 <Query>
-<![CDATA[select * from design_pore]]></Query>
+<![CDATA[select * from design_pore join design_site on design_site.id=design_pore.design_site_id join design_technology on design_technology.id=design_site.design_technology_id where design_technology.id=${design_id}]]></Query>
 </TableData>
 </TableDataMap>
 <ReportFitAttr fitHorizontalInApp="1" fitVerticalInApp="0"/>
