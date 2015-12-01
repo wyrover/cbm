@@ -16,4 +16,7 @@ copy /y %CBM_ROOT%\ThirdParty\boost\lib\x64\boost_chrono-vc90-mt-1_58.dll %DEST_
 copy /y %CBM_ROOT%\ThirdParty\boost\lib\x64\boost_system-vc90-mt-1_58.dll %DEST_DIR%
 copy /y %CBM_ROOT%\ThirdParty\boost\lib\x64\boost_thread-vc90-mt-1_58.dll %DEST_DIR%
 
+rem souiµÄ×ÊÔ´dll
+copy /y %CBM_ROOT%\ThirdParty\soui\bin64\soui-sys-resource.dll %DEST_DIR%
+
 pause
