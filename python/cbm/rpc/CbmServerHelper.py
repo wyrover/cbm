@@ -328,7 +328,7 @@ class CbmServiceHandler(SQLServerHelper.SQLServiceHandler):
 
     def GetAllPores(self, design_id):
         # ²Î¿¼: http://mysrc.sinaapp.com/view_note/?id=455
-        query = self.session.query(SQL.DesignPore).join(SQL.DesignSite, SQL.DesignPore.design_site_id==SQL.DesignSite.id).join(SQL.DesignTechnology, SQL.DesignTechnology.id==SQL.DesignSite.design_technology_id).all()
+        query = self.session.query(SQL.DesignPore).join(SQL.DesignSite, SQL.DesignPore.design_site_id==SQL.DesignSite.id).join(SQL.DesignTechnology, SQL.DesignTechnology.id==SQL.DesignSite.design_technology_id).filter(SQL.DesignTechnology.id==design_id).all()
         if len(query) == 0:
             return []
 

@@ -1237,21 +1237,21 @@ p, li { white-space: pre-wrap; }
  <tabstops>
   <tabstop>thick</tabstop>
   <tabstop>dip_angle</tabstop>
-  <tabstop>dp</tabstop>
-  <tabstop>gp</tabstop>
   <tabstop>l1</tabstop>
   <tabstop>l2</tabstop>
-  <tabstop>top</tabstop>
-  <tabstop>bottom</tabstop>
   <tabstop>w</tabstop>
   <tabstop>h</tabstop>
-  <tabstop>left</tabstop>
-  <tabstop>right</tabstop>
-  <tabstop>help</tabstop>
   <tabstop>wd</tabstop>
   <tabstop>hd</tabstop>
   <tabstop>v_offset</tabstop>
   <tabstop>h_offset</tabstop>
+  <tabstop>dp</tabstop>
+  <tabstop>gp</tabstop>
+  <tabstop>top</tabstop>
+  <tabstop>bottom</tabstop>
+  <tabstop>left</tabstop>
+  <tabstop>right</tabstop>
+  <tabstop>help</tabstop>
   <tabstop>ls</tabstop>
   <tabstop>ws</tabstop>
   <tabstop>hs</tabstop>
@@ -1260,6 +1260,7 @@ p, li { white-space: pre-wrap; }
   <tabstop>plane_graph</tabstop>
   <tabstop>head_graph</tabstop>
   <tabstop>dip_graph</tabstop>
+  <tabstop>create_report</tabstop>
  </tabstops>
  <resources>
   <include location="../usecad.qrc"/>

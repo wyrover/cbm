@@ -248,7 +248,7 @@
 <C c="2" r="11" s="5">
 <O t="Formula" class="Formula">
 <Attributes>
-<![CDATA[=$pore_sum + " 个"]]></Attributes>
+<![CDATA[=$pore_num + " 个"]]></Attributes>
 </O>
 <PrivilegeControl/>
 <Expand/>
@@ -262,7 +262,7 @@
 <C c="4" r="11" cs="2" s="5">
 <O t="Formula" class="Formula">
 <Attributes>
-<![CDATA[=$pore_length + " m"]]></Attributes>
+<![CDATA[=$pore_sum + " m"]]></Attributes>
 </O>
 <PrivilegeControl/>
 <Expand/>

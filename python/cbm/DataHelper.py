@@ -625,10 +625,6 @@ def show_report(params):
 		# 调用浏览器显示报表
 		doc.OpenNet(url)
 
-def GetAllPores(design_id):
-	# 查询所有的钻场
-	site_lists = SQLClientHelper.GetDesignSiteByForeignKey(design_id)
-	# 查询所有的钻孔
 # 显示钻孔报表11
 def show_report11(coal, tws_tech):
 	# 生成参数
@@ -663,6 +659,7 @@ def show_report11(coal, tws_tech):
 	# 是否按页面大小显示
 	params['__bypagesize__'] = 'true'
 	# 查询所有钻孔
+	print 'xxxxxxxxxxxxxxxxxxxxx:%d' % tws_tech.design_technology_id
 	pore_lists = CbmClientHelper.GetAllPores(tws_tech.design_technology_id)
 	# 计算钻孔个数
 	params['pore_num'] = len(pore_lists)

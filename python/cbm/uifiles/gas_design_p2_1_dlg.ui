@@ -1344,16 +1344,17 @@ p, li { white-space: pre-wrap; }
   <tabstop>dip_angle</tabstop>
   <tabstop>dp</tabstop>
   <tabstop>gp</tabstop>
-  <tabstop>l1</tabstop>
-  <tabstop>l2</tabstop>
-  <tabstop>w</tabstop>
-  <tabstop>h</tabstop>
   <tabstop>wd</tabstop>
   <tabstop>hd</tabstop>
   <tabstop>v_offset</tabstop>
   <tabstop>h_offset</tabstop>
   <tabstop>d_offset</tabstop>
   <tabstop>p_offset</tabstop>
+  <tabstop>single_rock_tunnel</tabstop>
+  <tabstop>l1</tabstop>
+  <tabstop>l2</tabstop>
+  <tabstop>w</tabstop>
+  <tabstop>h</tabstop>
   <tabstop>top</tabstop>
   <tabstop>bottom</tabstop>
   <tabstop>left</tabstop>
@@ -1367,6 +1368,7 @@ p, li { white-space: pre-wrap; }
   <tabstop>plane_graph</tabstop>
   <tabstop>head_graph</tabstop>
   <tabstop>dip_graph</tabstop>
+  <tabstop>create_report</tabstop>
  </tabstops>
  <resources>
   <include location="../usecad.qrc"/>

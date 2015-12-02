@@ -267,7 +267,7 @@
 </C>
 <C c="2" r="13" s="13">
 <O>
-<![CDATA[钻孔倾角(°)]]></O>
+<![CDATA[钻孔长度(m)]]></O>
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
@@ -275,14 +275,19 @@
 </C>
 <C c="3" r="13" s="13">
 <O>
-<![CDATA[钻孔方位角(°)]]></O>
+<![CDATA[钻孔倾角(°)]]></O>
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="4" r="13">
+<C c="4" r="13" s="13">
+<O>
+<![CDATA[钻孔方位角(°)]]></O>
 <PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
+<Expand/>
 </C>
 <C c="0" r="14" s="14">
 <O t="DSColumn">
@@ -310,7 +315,7 @@
 </C>
 <C c="2" r="14" s="14">
 <O t="DSColumn">
-<Attributes dsName="ds1" columnName="angle1"/>
+<Attributes dsName="ds1" columnName="length"/>
 <Complex/>
 <RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
 <Parameters/>
@@ -322,7 +327,7 @@
 </C>
 <C c="3" r="14" s="14">
 <O t="DSColumn">
-<Attributes dsName="ds1" columnName="angle2"/>
+<Attributes dsName="ds1" columnName="angle1"/>
 <Complex/>
 <RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
 <Parameters/>
@@ -332,8 +337,17 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="4" r="14">
+<C c="4" r="14" s="14">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="angle2"/>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
+<Parameters/>
+</O>
 <PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
+<Expand dir="0"/>
 </C>
 </CellElementList>
 <ReportAttrSet>

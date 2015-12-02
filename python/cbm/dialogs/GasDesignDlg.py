@@ -131,24 +131,30 @@ class GasDesignDlg(BaseDialog):
 		self.ui.design.clear()
 
 		# 查找设计技术
-		tech = SQLClientHelper.GetDesignTechnologyByField2('coal_id', str(coal_id), 'region', self.region)
-		tech_id = tech.id
-		# 如果不存在则新建一个技术
-		if tech_id <= 0:
-			tech = DesignTechnology()
-			tech.region = self.region
-			tech.coal_id = coal_id
-			tech_id = SQLClientHelper.AddDesignTechnology(tech)
-			if tech_id <= 0:return
+		tech_lists = SQLClientHelper.GetDesignTechnologyListByField2('coal_id', str(coal_id), 'region', self.region)
+		if len(tech_lists) == 0:return
 
 		# 查询与设计技术关联的详细设计技术方案
 		design_tech_list = []
-		if self.region == 1:
-			design_tech_list = SQLClientHelper.GetDesignDrillingSurfTechnologyListByForeignKey('design_technology_id', tech_id)
-		elif self.region == 2:
-			design_tech_list = SQLClientHelper.GetDesignWorkSurfTechnologyListByForeignKey('design_technology_id', tech_id)
-		elif self.region == 3:
-			design_tech_list = SQLClientHelper.GetDesignGoafTechnologyListByForeignKey('design_technology_id', tech_id)
+		for tech in tech_lists:
+			tech_id = tech.id
+			if tech_id <= 0:continue
+			
+			design_tech = None
+			# 查询
+			if self.region == 1:
+				design_tech = SQLClientHelper.GetDesignDrillingSurfTechnologyByForeignKey('design_technology_id', tech_id)
+			elif self.region == 2:
+				design_tech = SQLClientHelper.GetDesignWorkSurfTechnologyByForeignKey('design_technology_id', tech_id)
+			elif self.region == 3:
+				design_tech = SQLClientHelper.GetDesignGoafTechnologyByForeignKey('design_technology_id', tech_id)
+			
+			# 添加到数组
+			if design_tech is None or design_tech.id <= 0:
+				continue
+			else:
+				design_tech_list.append(design_tech)
+
 		# 添加到列表中
 		UiHelper.AddObjectListToCombobox(self.ui.design, design_tech_list)
 
@@ -174,18 +180,14 @@ class GasDesignDlg(BaseDialog):
 			UiHelper.MessageBox(u'设计方案名称:%s已存在，换一个吧' % name)
 			return
 
-		# 查找设计技术
-		tech = SQLClientHelper.GetDesignTechnologyByField2('coal_id', coal_id, 'region', self.region)
-		tech_id = tech.id
-		# 如果不存在则新建一个技术
+		# 新建设计技术
+		tech = DesignTechnology()
+		tech.region = self.region
+		tech.coal_id = coal_id
+		tech_id = SQLClientHelper.AddDesignTechnology(tech)
 		if tech_id <= 0:
-			tech = DesignTechnology()
-			tech.region = self.region
-			tech.coal_id = coal_id
-			tech_id = SQLClientHelper.AddDesignTechnology(tech)
-			if tech_id <= 0:
-				UiHelper.MessageBox(u'sorry,出了点问题,请联系技术人员(错误码:103)')
-				return
+			UiHelper.MessageBox(u'sorry,出了点问题,请联系技术人员(错误码:103)')
+			return
 
 		# 新增与设计技术关联的详细设计技术方案
 		design_tech_id = -1
@@ -204,6 +206,7 @@ class GasDesignDlg(BaseDialog):
 			design_tech.name = name.encode('utf-8')
 			design_tech.design_technology_id = tech_id
 			design_tech_id = SQLClientHelper.AddDesignGoafTechnology(design_tech)
+		
 		# 添加到列表中
 		if design_tech_id > 0:
 			index = UiHelper.AddItemToCombobox(self.ui.design, name, design_tech_id)
@@ -219,14 +222,21 @@ class GasDesignDlg(BaseDialog):
 
 		# 从数据库中删除
 		design_tech_id, ok = self.ui.design.itemData(index).toInt()
-		ret = False
+		design_tech = None
 		if self.region == 1:
-			ret = SQLClientHelper.DeleteDesignDrillingSurfTechnology(design_tech_id)
+			design_tech = SQLClientHelper.GetDesignDrillingSurfTechnologyById(design_tech_id)
 		elif self.region == 2:
-			ret = SQLClientHelper.DeleteDesignWorkSurfTechnology(design_tech_id)
+			design_tech = SQLClientHelper.GetDesignWorkSurfTechnologyById(design_tech_id)
 		elif self.region == 3:
-			ret = SQLClientHelper.DeleteDesignGoafTechnology(design_tech_id)
+			design_tech = SQLClientHelper.GetDesignGoafTechnologyById(design_tech_id)
 
+		ret = False
+		if design_tech is None or design_tech.id <= 0:
+			pass
+		else:
+			# 外键的级联规则可以保证关联的详细设计方案以及钻场和钻孔都被删除掉!!!
+			ret = SQLClientHelper.DeleteDesignTechnology(design_tech.design_technology_id)
+		
 		# 从列表中删除
 		if ret:
 			self.ui.design.removeItem(index)
