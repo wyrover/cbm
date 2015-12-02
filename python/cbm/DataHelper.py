@@ -582,7 +582,7 @@ def generateJsonFileOfPoreReport(coal_id, design_id, json_file):
 	# 写入钻孔孔径
 	json_data[u'pore_diameter'] = tws_tech.gp
 	# 写入封孔长度
-	json_data[u'$*pore_lenth*$'] = 98
+	json_data[u'$*pore_length*$'] = 98
 	# 写入word模板路径(使用绝对路径,避免出错!!!)
 	# 中文汉字必须要用unicode表示,所以需要进行解码decode)
 	json_data[u'tplPath'] = os.path.abspath(u".\\help\\doc\\tpl\\底板岩巷密集穿层钻孔抽采煤巷条带瓦斯抽采技术.doc")
@@ -606,7 +606,7 @@ params = {
 	'h_offset':125,
 	'site_gap':123,
 	'pore_diameter':200,
-	'pore_lenth':1256,
+	'pore_length':1256,
 	'reportlet':'cbm.cpt',  # 模板文件路径
 	'__bypagesize__':'true' # 是否按页面大小显示
 }
@@ -651,9 +651,11 @@ def show_report11(coal, tws_tech):
 	params['site_gap'] = tws_tech.gs
 	# 钻孔直径
 	params['pore_diameter'] = tws_tech.dp
+	# 钻孔间距
+	params['pore_gap'] = tws_tech.gp
 	# 封孔长度(界面中没有输入,网上搜的一个参照值)
 	# http://wenku.baidu.com/link?url=4QOLWZsUfFu5zLewMQCeF_WRzYTWmBYE3SRyk1Cj_JTc1UzbZR54NNkrXUsKc1PDj1Kg4492gfSNaKweJTSWxVqz7VbM-b7G3IAbtcdifBy
-	params['pore_lenth'] = 8
+	params['pore_length'] = 8
 	# 模板文件路径(必须参数)
 	params['reportlet'] = 'cbm11.cpt'
 	# 设计方案id(必须参数)
@@ -697,9 +699,11 @@ def show_report12(coal, tws_tech):
 	params['gbp'] = tws_tech.gbp
 	# 钻孔直径
 	params['pore_diameter'] = tws_tech.dp
+	# 钻孔间距
+	params['pore_gap'] = tws_tech.gp
 	# 封孔长度(界面中没有输入,网上搜的一个参照值)
 	# http://wenku.baidu.com/link?url=4QOLWZsUfFu5zLewMQCeF_WRzYTWmBYE3SRyk1Cj_JTc1UzbZR54NNkrXUsKc1PDj1Kg4492gfSNaKweJTSWxVqz7VbM-b7G3IAbtcdifBy
-	params['pore_lenth'] = 8
+	params['pore_length'] = 8
 	# 巷道长度
 	params['tunnel_length'] = tws_tech.lm
 	# 循环个数
@@ -746,9 +750,11 @@ def show_report21(coal, ws_tech):
 	params['site_gap'] = ws_tech.gs
 	# 钻孔直径
 	params['pore_diameter'] = ws_tech.dp
+	# 钻孔间距
+	params['pore_gap'] = ws_tech.gp
 	# 封孔长度(界面中没有输入,网上搜的一个参照值)
 	# http://wenku.baidu.com/link?url=4QOLWZsUfFu5zLewMQCeF_WRzYTWmBYE3SRyk1Cj_JTc1UzbZR54NNkrXUsKc1PDj1Kg4492gfSNaKweJTSWxVqz7VbM-b7G3IAbtcdifBy
-	params['pore_lenth'] = 8
+	params['pore_length'] = 8
 	# 模板文件路径(必须参数)
 	params['reportlet'] = 'cbm21.cpt'
 	# 设计方案id(必须参数)
@@ -791,9 +797,11 @@ def show_report23(coal, ws_tech):
 	params['pore_gap'] = ws_tech.gp
 	# 钻孔直径
 	params['pore_diameter'] = ws_tech.dp
+	# 钻孔间距
+	params['pore_gap'] = ws_tech.gp
 	# 封孔长度(界面中没有输入,网上搜的一个参照值)
 	# http://wenku.baidu.com/link?url=4QOLWZsUfFu5zLewMQCeF_WRzYTWmBYE3SRyk1Cj_JTc1UzbZR54NNkrXUsKc1PDj1Kg4492gfSNaKweJTSWxVqz7VbM-b7G3IAbtcdifBy
-	params['pore_lenth'] = 8
+	params['pore_length'] = 8
 	# 模板文件路径(必须参数)
 	params['reportlet'] = 'cbm23.cpt'
 	# 设计方案id(必须参数)
