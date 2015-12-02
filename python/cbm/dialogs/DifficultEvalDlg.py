@@ -21,6 +21,7 @@ class DifficultEvalDlg(BaseDialog):
 		self.ui.permeability_k.installEventFilter(self)
 		self.ui.permeability_lambda.installEventFilter(self) ##在窗口上为"透气性系数"控件安装过滤器
 		self.ui.eval.clicked.connect(self.onEval)
+		self.ui.cancel.clicked.connect(self.onCancel)
 		self.ui.eval_proof_cacl.clicked.connect(self.onEvalProof)
 		self.connect(self.ui.coal, QtCore.SIGNAL('currentIndexChanged(int)'), self.onCoalChanged)
 		# 待设计的矿井
@@ -106,3 +107,6 @@ class DifficultEvalDlg(BaseDialog):
 	def onEvalProof(self):
 		pass
 		# UiHelper.MessageBox(u'尚未实现')
+	
+	def onCancel(self):
+		self.reject()

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>320</width>
-    <height>311</height>
+    <width>380</width>
+    <height>319</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -22,7 +22,7 @@
     <rect>
      <x>0</x>
      <y>30</y>
-     <width>321</width>
+     <width>371</width>
      <height>281</height>
     </rect>
    </property>
@@ -46,8 +46,8 @@
      <rect>
       <x>80</x>
       <y>240</y>
-      <width>71</width>
-      <height>25</height>
+      <width>81</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="font">
@@ -122,7 +122,7 @@
      </font>
     </property>
     <property name="text">
-     <string>煤层瓦斯排放率K4</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;煤层瓦斯排放率K&lt;span style=&quot; vertical-align:sub;&quot;&gt;4&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QLabel" name="label">
@@ -140,7 +140,7 @@
      </font>
     </property>
     <property name="text">
-     <string>负压抽采作用系数K2</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;负压抽采作用系数K&lt;span style=&quot; vertical-align:sub;&quot;&gt;2&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="pump_k">
@@ -173,7 +173,7 @@
      </font>
     </property>
     <property name="text">
-     <string>瓦斯涌出程度系数K1</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;瓦斯涌出程度系数K&lt;span style=&quot; vertical-align:sub;&quot;&gt;1&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="pump_k4">
@@ -206,7 +206,7 @@
      </font>
     </property>
     <property name="text">
-     <string>煤层原始瓦斯含量My</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;煤层原始瓦斯含量M&lt;span style=&quot; vertical-align:sub;&quot;&gt;y&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="pump_k1">
@@ -227,10 +227,10 @@
    <widget class="QPushButton" name="ok">
     <property name="geometry">
      <rect>
-      <x>160</x>
+      <x>210</x>
       <y>240</y>
-      <width>71</width>
-      <height>25</height>
+      <width>81</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="font">
@@ -272,7 +272,7 @@
      </font>
     </property>
     <property name="text">
-     <string>运到地面煤的残余瓦斯含量Mc</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;运到地面煤的残余瓦斯含量M&lt;span style=&quot; vertical-align:sub;&quot;&gt;c&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_2">
@@ -290,7 +290,79 @@
      </font>
     </property>
     <property name="text">
-     <string>矿井瓦斯抽采率K3</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;矿井瓦斯抽采率K&lt;span style=&quot; vertical-align:sub;&quot;&gt;3&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_8">
+    <property name="geometry">
+     <rect>
+      <x>305</x>
+      <y>110</y>
+      <width>51</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;(m&lt;span style=&quot; vertical-align:super;&quot;&gt;3&lt;/span&gt;/t)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_9">
+    <property name="geometry">
+     <rect>
+      <x>306</x>
+      <y>140</y>
+      <width>51</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;(m&lt;span style=&quot; vertical-align:super;&quot;&gt;3&lt;/span&gt;/t)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_11">
+    <property name="geometry">
+     <rect>
+      <x>306</x>
+      <y>49</y>
+      <width>51</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;(%)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_12">
+    <property name="geometry">
+     <rect>
+      <x>307</x>
+      <y>80</y>
+      <width>51</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;(%)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
   </widget>
@@ -299,7 +371,7 @@
     <rect>
      <x>-10</x>
      <y>0</y>
-     <width>331</width>
+     <width>381</width>
      <height>31</height>
     </rect>
    </property>
@@ -363,7 +435,7 @@ p, li { white-space: pre-wrap; }
    <widget class="QPushButton" name="btnMenu_Close">
     <property name="geometry">
      <rect>
-      <x>290</x>
+      <x>340</x>
       <y>0</y>
       <width>41</width>
       <height>31</height>
