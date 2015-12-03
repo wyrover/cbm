@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>279</width>
+    <width>314</width>
     <height>220</height>
    </rect>
   </property>
@@ -22,7 +22,7 @@
     <rect>
      <x>0</x>
      <y>30</y>
-     <width>281</width>
+     <width>311</width>
      <height>191</height>
     </rect>
    </property>
@@ -56,7 +56,7 @@
      </font>
     </property>
     <property name="text">
-     <string>标准孔板流量系数a0</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;标准孔板流量系数a&lt;span style=&quot; vertical-align:sub;&quot;&gt;0&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="k">
@@ -104,7 +104,7 @@
      </font>
     </property>
     <property name="text">
-     <string>孔板直径d1</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;孔板直径d&lt;span style=&quot; vertical-align:sub;&quot;&gt;1&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QLabel" name="mineName_label_16">
@@ -161,10 +161,10 @@
    <widget class="QPushButton" name="save">
     <property name="geometry">
      <rect>
-      <x>100</x>
+      <x>110</x>
       <y>150</y>
-      <width>81</width>
-      <height>25</height>
+      <width>91</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="font">
@@ -176,13 +176,49 @@
      <string>保 存</string>
     </property>
    </widget>
+   <widget class="QLabel" name="mineName_label_17">
+    <property name="geometry">
+     <rect>
+      <x>264</x>
+      <y>20</y>
+      <width>41</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;(m)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="mineName_label_18">
+    <property name="geometry">
+     <rect>
+      <x>264</x>
+      <y>50</y>
+      <width>41</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;(m)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QWidget" name="widget_title" native="true">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>281</width>
+     <width>311</width>
      <height>31</height>
     </rect>
    </property>
@@ -246,7 +282,7 @@ p, li { white-space: pre-wrap; }
    <widget class="QPushButton" name="btnMenu_Close">
     <property name="geometry">
      <rect>
-      <x>240</x>
+      <x>270</x>
       <y>0</y>
       <width>41</width>
       <height>31</height>

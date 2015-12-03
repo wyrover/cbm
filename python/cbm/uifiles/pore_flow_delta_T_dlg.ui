@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>251</width>
+    <width>281</width>
     <height>161</height>
    </rect>
   </property>
@@ -22,7 +22,7 @@
     <rect>
      <x>0</x>
      <y>30</y>
-     <width>251</width>
+     <width>281</width>
      <height>131</height>
     </rect>
    </property>
@@ -44,10 +44,10 @@
    <widget class="QPushButton" name="save">
     <property name="geometry">
      <rect>
-      <x>80</x>
+      <x>50</x>
       <y>90</y>
       <width>81</width>
-      <height>25</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="font">
@@ -77,9 +77,9 @@
    <widget class="QLabel" name="mineName_label_10">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>10</x>
       <y>20</y>
-      <width>161</width>
+      <width>151</width>
       <height>25</height>
      </rect>
     </property>
@@ -95,9 +95,9 @@
    <widget class="QLabel" name="mineName_label_16">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>10</x>
       <y>50</y>
-      <width>131</width>
+      <width>151</width>
       <height>25</height>
      </rect>
     </property>
@@ -110,13 +110,49 @@
      <string>温度校正系数δT</string>
     </property>
    </widget>
+   <widget class="QLabel" name="mineName_label_11">
+    <property name="geometry">
+     <rect>
+      <x>234</x>
+      <y>20</y>
+      <width>41</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;(℃)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="cancel">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>90</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>取  消</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QWidget" name="widget_title" native="true">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>251</width>
+     <width>281</width>
      <height>31</height>
     </rect>
    </property>
@@ -180,7 +216,7 @@ p, li { white-space: pre-wrap; }
    <widget class="QPushButton" name="btnMenu_Close">
     <property name="geometry">
      <rect>
-      <x>210</x>
+      <x>240</x>
       <y>0</y>
       <width>41</width>
       <height>31</height>

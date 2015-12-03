@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>590</width>
-    <height>378</height>
+    <width>581</width>
+    <height>380</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,7 +18,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>591</width>
+     <width>581</width>
      <height>31</height>
     </rect>
    </property>
@@ -82,7 +82,7 @@ p, li { white-space: pre-wrap; }
    <widget class="QPushButton" name="btnMenu_Close">
     <property name="geometry">
      <rect>
-      <x>550</x>
+      <x>540</x>
       <y>0</y>
       <width>41</width>
       <height>31</height>
@@ -704,7 +704,6 @@ p, li { white-space: pre-wrap; }
   </widget>
   <zorder>widget_main</zorder>
   <zorder>widget_title</zorder>
-  <zorder>groupBox</zorder>
  </widget>
  <resources>
   <include location="../usecad.qrc"/>

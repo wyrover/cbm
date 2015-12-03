@@ -18,6 +18,7 @@ class WsGasFlowPredictAdjDlg(BaseDialog):
 		self.setTitle(u"邻近层相对瓦斯涌出量q2计算")
 		self.setFixedSize(self.width(), self.height())
 		self.ui.save.clicked.connect(self.onSave)
+		self.ui.cancel.clicked.connect(self.onCancel)
 		self.ui.add_adj_layer.clicked.connect(self.onAddAdjLayer)
 		self.ui.del_adj_layer.clicked.connect(self.onDelAdjLayer)
 		self.ui.eta_cacl.clicked.connect(self.onEtaCacl)
@@ -170,3 +171,7 @@ class WsGasFlowPredictAdjDlg(BaseDialog):
 	def onEtaCacl(self):
 		pass
 		# UiHelper.MessageBox(u'自动弹出计算框(尚未实现该功能)')
+	
+	def onCancel(self):
+		# 关闭对话框并返回0
+		self.reject()

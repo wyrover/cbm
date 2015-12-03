@@ -21,8 +21,6 @@ class PoreSizeDlg(BaseDialog):
 		self.setFixedSize(self.width(),self.height())
 		self.ui.save.clicked.connect(self.onSave)
 		self.ui.cacl.clicked.connect(self.onCacl)
-		self.ui.hint.clicked.connect(self.onHint)
-		self.ui.hint2.clicked.connect(self.onHint2)
 		# 待设计的矿井
 		self.mine_id = mine_id
 		# 待设计的钻孔管径对象id
@@ -108,9 +106,3 @@ class PoreSizeDlg(BaseDialog):
 		# 更新到界面
 		self.ui.d.setText(u'%.1f' % D)
 		self.ui.delta.setText(u'%.1f' % delta)
-
-	def onHint(self):
-		UiHelper.MessageBox(u'注：各类管路的流量应按照其使用年限或服务区域内的最大值确定\n并应有1.2~1.8的富余系数!!!')
-
-	def onHint2(self):
-		UiHelper.MessageBox(u'注:可取屈服极限强度的60%；缺少此值时:\n铸铁管可取20MPa\n焊接钢管可取60MPa\n无缝钢管可取80MPa')

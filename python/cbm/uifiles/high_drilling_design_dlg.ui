@@ -108,9 +108,9 @@
     <property name="geometry">
      <rect>
       <x>530</x>
-      <y>20</y>
-      <width>130</width>
-      <height>25</height>
+      <y>17</y>
+      <width>101</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="font">
@@ -125,10 +125,10 @@
    <widget class="QPushButton" name="drill_pore">
     <property name="geometry">
      <rect>
-      <x>400</x>
-      <y>20</y>
-      <width>120</width>
-      <height>25</height>
+      <x>405</x>
+      <y>17</y>
+      <width>101</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="font">
@@ -137,7 +137,7 @@
      </font>
     </property>
     <property name="text">
-     <string>钻 孔 设 计</string>
+     <string>钻孔设计</string>
     </property>
    </widget>
    <widget class="QLabel" name="label">
@@ -208,7 +208,7 @@
       </font>
      </property>
      <property name="text">
-      <string>各钻场的间距Lg</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;各钻场的间距L&lt;span style=&quot; vertical-align:sub;&quot;&gt;g&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_10">
@@ -226,7 +226,7 @@
       </font>
      </property>
      <property name="text">
-      <string>初次垮落循环步距L1</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;初次垮落循环步距L&lt;span style=&quot; vertical-align:sub;&quot;&gt;1&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="l2">
@@ -289,7 +289,7 @@
       </font>
      </property>
      <property name="text">
-      <string>周期垮落循环步距L2</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;周期垮落循环步距L&lt;span style=&quot; vertical-align:sub;&quot;&gt;2&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_2">
@@ -353,10 +353,10 @@
    <widget class="QPushButton" name="drill_site">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>20</y>
-      <width>120</width>
-      <height>25</height>
+      <x>280</x>
+      <y>16</y>
+      <width>101</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="font">
@@ -365,7 +365,7 @@
      </font>
     </property>
     <property name="text">
-     <string>钻 场 设 计</string>
+     <string>钻场设计</string>
     </property>
    </widget>
    <widget class="QComboBox" name="work_surf">

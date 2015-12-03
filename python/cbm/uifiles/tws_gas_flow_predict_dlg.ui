@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>527</width>
-    <height>585</height>
+    <width>521</width>
+    <height>581</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -283,21 +283,6 @@
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;(m&lt;span style=&quot; vertical-align:super;&quot;&gt;2&lt;/span&gt;)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
-    <zorder>label_13</zorder>
-    <zorder>l</zorder>
-    <zorder>v</zorder>
-    <zorder>d</zorder>
-    <zorder>label_10</zorder>
-    <zorder>s</zorder>
-    <zorder>label_11</zorder>
-    <zorder>label_12</zorder>
-    <zorder>label_14</zorder>
-    <zorder>label_15</zorder>
-    <zorder>label_24</zorder>
-    <zorder>label_25</zorder>
-    <zorder>label_26</zorder>
-    <zorder>label_27</zorder>
-    <zorder>label_19</zorder>
    </widget>
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">

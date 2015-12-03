@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>270</width>
+    <width>301</width>
     <height>160</height>
    </rect>
   </property>
@@ -22,7 +22,7 @@
     <rect>
      <x>0</x>
      <y>30</y>
-     <width>271</width>
+     <width>301</width>
      <height>131</height>
     </rect>
    </property>
@@ -31,7 +31,7 @@
      <rect>
       <x>20</x>
       <y>20</y>
-      <width>181</width>
+      <width>171</width>
       <height>25</height>
      </rect>
     </property>
@@ -95,10 +95,10 @@
    <widget class="QPushButton" name="save">
     <property name="geometry">
      <rect>
-      <x>90</x>
+      <x>50</x>
       <y>90</y>
-      <width>81</width>
-      <height>25</height>
+      <width>91</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="font">
@@ -110,13 +110,49 @@
      <string>保 存</string>
     </property>
    </widget>
+   <widget class="QLabel" name="mineName_label_13">
+    <property name="geometry">
+     <rect>
+      <x>255</x>
+      <y>20</y>
+      <width>31</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;(%)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="cancel">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>90</y>
+      <width>91</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>取  消</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QWidget" name="widget_title" native="true">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>271</width>
+     <width>301</width>
      <height>31</height>
     </rect>
    </property>
@@ -180,7 +216,7 @@ p, li { white-space: pre-wrap; }
    <widget class="QPushButton" name="btnMenu_Close">
     <property name="geometry">
      <rect>
-      <x>230</x>
+      <x>260</x>
       <y>0</y>
       <width>41</width>
       <height>31</height>

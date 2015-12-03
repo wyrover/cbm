@@ -21,6 +21,7 @@ class MineGasReservesPredictDlg1(BaseDialog):
 		self.ui.w2_cacl.clicked.connect(self.onW2Cacl)
 		self.ui.w3_cacl.clicked.connect(self.onCacl)		
 		self.ui.ok.clicked.connect(self.onOk)
+		self.ui.cancel.clicked.connect(self.onCancel)
 		# 待设计的矿井
 		self.mine_id = mine_id
 		# 初始化
@@ -79,3 +80,7 @@ class MineGasReservesPredictDlg1(BaseDialog):
 	def onCacl(self):
 		pass
 		# UiHelper.MessageBox(u'该功能尚未实现!')
+
+	def onCancel(self):
+		# 关闭对话框并返回0
+		self.reject()

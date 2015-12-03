@@ -18,6 +18,7 @@ class HighDrillingSiteDlg(BaseDialog):
 		self.setTitle(u"高位抽采钻场范围计算")
 		self.setFixedSize(self.width(), self.height())
 		self.ui.save.clicked.connect(self.onSave)
+		self.ui.cancel.clicked.connect(self.onCancel)
 		# 待设计的工作面
 		self.work_surf_id = work_surf_id
 		# 初始化
@@ -78,3 +79,7 @@ class HighDrillingSiteDlg(BaseDialog):
 			UiHelper.MessageBox(u'更新数据成功!')
 		else:
 			UiHelper.MessageBox(u'sorry,出了点问题,请联系技术人员(错误码:P4)!')
+	
+	def onCancel(self):
+		# 关闭对话框并返回0
+		self.reject()

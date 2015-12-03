@@ -18,6 +18,7 @@ class MineGasFlowPredictDesignDlg(BaseDialog):
 		self.setTitle(u"工作面和掘进面瓦斯涌出量相关参数及设计")
 		self.setFixedSize(self.width(), self.height())
 		self.ui.save.clicked.connect(self.onSave)
+		self.ui.cancel.clicked.connect(self.onCancel)
 		self.connect(self.ui.work_surf, QtCore.SIGNAL('currentIndexChanged(int)'), self.onWorkSurfChanged)
 		self.connect(self.ui.drilling_surf, QtCore.SIGNAL('currentIndexChanged(int)'), self.onDrillingSurfChanged)
 		# 待设计的采区
@@ -101,3 +102,7 @@ class MineGasFlowPredictDesignDlg(BaseDialog):
 		#关闭对话框并返回1
 		# self.accept()
 		UiHelper.MessageBox(u'恭喜您,更新数据成功啦!')
+	
+	def onCancel(self):
+		# 关闭对话框并返回0
+		self.reject()

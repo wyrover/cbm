@@ -31,7 +31,7 @@
      <rect>
       <x>20</x>
       <y>60</y>
-      <width>31</width>
+      <width>51</width>
       <height>25</height>
      </rect>
     </property>
@@ -85,7 +85,7 @@
      <rect>
       <x>270</x>
       <y>180</y>
-      <width>16</width>
+      <width>21</width>
       <height>25</height>
      </rect>
     </property>
@@ -113,16 +113,16 @@
      </font>
     </property>
     <property name="text">
-     <string>冒落岩石的平均碎胀系数k</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;冒落岩石的平均碎胀系数K&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QPushButton" name="save">
     <property name="geometry">
      <rect>
-      <x>190</x>
+      <x>210</x>
       <y>220</y>
-      <width>81</width>
-      <height>31</height>
+      <width>91</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="font">
@@ -182,10 +182,10 @@
    <widget class="QPushButton" name="cacl">
     <property name="geometry">
      <rect>
-      <x>100</x>
+      <x>70</x>
       <y>220</y>
-      <width>81</width>
-      <height>31</height>
+      <width>91</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="font">
@@ -250,9 +250,14 @@
      <rect>
       <x>140</x>
       <y>60</y>
-      <width>54</width>
+      <width>41</width>
       <height>25</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>(m)</string>
@@ -278,7 +283,7 @@
      <rect>
       <x>110</x>
       <y>140</y>
-      <width>171</width>
+      <width>141</width>
       <height>22</height>
      </rect>
     </property>
@@ -317,6 +322,11 @@
       <height>25</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="text">
      <string>(°)</string>
     </property>
@@ -336,7 +346,7 @@
      </font>
     </property>
     <property name="text">
-     <string>高抽巷层位高度Hz范围</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;高抽巷层位高度H&lt;span style=&quot; vertical-align:sub;&quot;&gt;z&lt;/span&gt;范围&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
   </widget>

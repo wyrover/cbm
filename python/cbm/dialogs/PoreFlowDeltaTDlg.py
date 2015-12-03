@@ -12,6 +12,7 @@ class PoreFlowDeltaTDlg(BaseDialog):
 		self.setTitle(u"温度校正系数计算")
 		self.setFixedSize(self.width(), self.height())
 		self.ui.save.clicked.connect(self.onSave)
+		self.ui.cancel.clicked.connect(self.onCancel)
 		# 外部传入的对象
 		self.pore_flow = pore_flow
 		# 初始化
@@ -23,3 +24,7 @@ class PoreFlowDeltaTDlg(BaseDialog):
 	def onSave(self):
 		#做保存操作
 		self.accept()
+	
+	def onCancel(self):
+		# 关闭对话框并返回0
+		self.reject()
