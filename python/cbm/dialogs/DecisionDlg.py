@@ -207,7 +207,9 @@ class DecisionDlg(BaseDialog):
 
 	def onGraph(self):
 		# 给cad发送命令绘制煤层赋存图
-		CbmClientHelper.SendCommandToCAD("JL.DrawOccurrenceGraph %d %.1f" % (self.mine_id, 0.5), True)
+		ret = CbmClientHelper.SendCommandToCAD("JL.DrawOccurrenceGraph %d %.1f" % (self.mine_id, 0.5), True)
+		if not ret:
+			UiHelper.MessageBox(u'启动AutoCAD失败')
 
 	def onHelp1(self):
 		pass

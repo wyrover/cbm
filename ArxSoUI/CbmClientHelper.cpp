@@ -457,13 +457,14 @@ void CbmClientHelper::GetAllPores(std::vector<cbm::DesignPore> & _return, const 
 	}
 }
 
-void CbmClientHelper::SendCommandToCAD(const std::string& cmd, bool switch_to_cad)
+bool CbmClientHelper::SendCommandToCAD(const std::string& cmd, bool switch_to_cad)
 {
+	bool ret = false;
 	try
 	{
 		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
 		service_client.start();
-		service_client.get()->SendCommandToCAD(cmd, switch_to_cad);
+		ret = service_client.get()->SendCommandToCAD(cmd, switch_to_cad);
 		service_client.close();
 	} 
 	catch (TException &tx) 
@@ -471,6 +472,7 @@ void CbmClientHelper::SendCommandToCAD(const std::string& cmd, bool switch_to_ca
 		std::string error_msg = tx.what();
 		//printf("ERROR: %s\n", tx.what());
 	}
+	return ret;
 }
 
 std::string CbmClientHelper::GetJsonDatasFromCAD(const std::string& input_datas, int wait_seconds)

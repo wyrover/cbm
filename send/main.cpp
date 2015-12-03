@@ -37,7 +37,14 @@ int _tmain(int argc, TCHAR* argv[], TCHAR* envp[])
 					cmd.AppendFormat(_T(" "));
 				}
 			}
-			CADHelper::SendCommandToAutoCAD(cmd, true, switch_to_cad);
+			if(!CADHelper::SendCommandToAutoCAD(cmd, true, switch_to_cad))
+			{
+				nRetCode = 2; // 执行cad命令失败
+			}
+		}
+		else
+		{
+			nRetCode = 3; // 参数不足
 		}
 	}
 

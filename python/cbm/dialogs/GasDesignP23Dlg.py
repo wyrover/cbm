@@ -140,7 +140,9 @@ class GasDesignP23Dlg(BaseDialog):
 			UiHelper.MessageBox(u'sorry,出了点问题,请联系技术人员(错误码:145)')
 			return
 		# 向cad发送命令请求绘图
-		CbmClientHelper.SendCommandToCAD("JL.DrawPlaneGraph23 %d %d" % (coal.id, ws_tech.id), True)
+		ret = CbmClientHelper.SendCommandToCAD("JL.DrawPlaneGraph23 %d %d" % (coal.id, ws_tech.id), True)
+		if not ret:
+			UiHelper.MessageBox(u'启动AutoCAD失败')
 
 	def head_graph(self):
 		coal = SQLClientHelper.GetCoalById(self.coal_id)
@@ -153,7 +155,9 @@ class GasDesignP23Dlg(BaseDialog):
 			UiHelper.MessageBox(u'sorry,出了点问题,请联系技术人员(错误码:145)')
 			return
 		# 向cad发送命令请求绘图
-		CbmClientHelper.SendCommandToCAD("JL.DrawHeadGraph23 %d %d" % (coal.id, ws_tech.id), True)
+		ret = CbmClientHelper.SendCommandToCAD("JL.DrawHeadGraph23 %d %d" % (coal.id, ws_tech.id), True)
+		if not ret:
+			UiHelper.MessageBox(u'启动AutoCAD失败')
 
 	def dip_graph(self):
 		coal = SQLClientHelper.GetCoalById(self.coal_id)
@@ -166,7 +170,9 @@ class GasDesignP23Dlg(BaseDialog):
 			UiHelper.MessageBox(u'sorry,出了点问题,请联系技术人员(错误码:145)')
 			return
 		# 向cad发送命令请求绘图
-		CbmClientHelper.SendCommandToCAD("JL.DrawDipGraph23 %d %d" % (coal.id, ws_tech.id), True)
+		ret = CbmClientHelper.SendCommandToCAD("JL.DrawDipGraph23 %d %d" % (coal.id, ws_tech.id), True)
+		if not ret:
+			UiHelper.MessageBox(u'启动AutoCAD失败')
 
 	def onCreatReport(self):
 		coal = SQLClientHelper.GetCoalById(self.coal_id)
@@ -180,10 +186,12 @@ class GasDesignP23Dlg(BaseDialog):
 			return
 
 		# 向cad发送命令请求生成钻孔数据
-		CbmClientHelper.SendCommandToCAD("JL.GeneratePore23 %d %d" % (coal.id, ws_tech.id), True)
-
-		# 显示钻孔报表
-		DataHelper.show_report23(coal, ws_tech)
+		ret = CbmClientHelper.SendCommandToCAD("JL.GeneratePore23 %d %d" % (coal.id, ws_tech.id), True)
+		if ret:
+			# 显示钻孔报表
+			DataHelper.show_report23(coal, ws_tech)
+		else:
+			UiHelper.MessageBox(u'启动AutoCAD失败!!!')
 
 		# json文件路径(使用绝对路径,避免出错!!!)
 		# json_file = os.path.abspath('.\\help\\json\\reportP21.json')

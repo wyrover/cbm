@@ -4527,7 +4527,7 @@ class CbmServiceHandler : virtual public CbmServiceIf {
     printf("GetAllPores\n");
   }
 
-  void SendCommandToCAD(const std::string& cmd, const bool switch_to_cad) {
+  bool SendCommandToCAD(const std::string& cmd, const bool switch_to_cad) {
     // Your implementation goes here
     printf("SendCommandToCAD\n");
   }

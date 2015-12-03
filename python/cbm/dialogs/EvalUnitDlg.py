@@ -87,7 +87,9 @@ class EvalUnitDlg(BaseDialog):
 		# 设计评价单元
 		DataHelper.design_eval_unit(deup.id)
 		# 给cad发送命令请求绘制评价单元示意图
-		CbmClientHelper.SendCommandToCAD("JL.DrawEvalUnitGraph %d" % deup.id, True)
+		ret = CbmClientHelper.SendCommandToCAD("JL.DrawEvalUnitGraph %d" % deup.id, True)
+		if not ret:
+			UiHelper.MessageBox(u'启动AutoCAD失败')
 		
 	def onSave(self):
 		index = self.ui.work_surf.currentIndex()

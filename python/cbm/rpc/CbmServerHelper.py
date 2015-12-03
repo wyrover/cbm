@@ -347,6 +347,9 @@ class CbmServiceHandler(SQLServerHelper.SQLServiceHandler):
         # p.communicate(input=None)
         # 等待进程执行完毕
         p.wait()
+        # 获取进程的返回值并判断
+        # main函数执行的时候默认返回0表示执行成功,其它值则表示执行失败!
+        return p.returncode == 0
 
     def RequestJsonDatasFromCAD(self, input_datas):
         global POST_DATA_FROM_CAD_CACHE

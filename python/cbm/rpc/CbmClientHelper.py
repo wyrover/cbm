@@ -348,13 +348,15 @@ def GetAllPores(design_id):
 	return ret
 
 def SendCommandToCAD(cmd, switch_to_cad=True):
+	ret = False
 	try:
 		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
 		service_client.start()
-		service_client.get().SendCommandToCAD(cmd, switch_to_cad)
+		ret = service_client.get().SendCommandToCAD(cmd, switch_to_cad)
 		service_client.close()
 	except Exception, e:
 		print e
+	return ret
 
 def GetJsonDatasFromCAD(input_datas='{}', wait_seconds=2):
 	if wait_seconds < 1:wait_seconds = 2

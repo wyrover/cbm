@@ -391,7 +391,7 @@ bool CADHelper::SendCommandToAutoCAD(const CString& cmd, bool useEsc, bool switc
 	ThreadHelper::FindProcessIdByName(_T("acad.exe"), pids);
 	if(pids.empty())
 	{
-		AfxMessageBox(_T("AutoCAD未启动!!"));
+		//AfxMessageBox(_T("AutoCAD未启动!!"));
 		return false;
 	}
 	else
@@ -424,7 +424,7 @@ bool CADHelper::SendCommandToAutoCAD(const CString& cmd, bool useEsc, bool switc
 		}
 		else
 		{
-			AfxMessageBox(_T("没有找到CAD主窗口!!!"));
+			//AfxMessageBox(_T("没有找到CAD主窗口!!!"));
 		}
 		return (hwnd != NULL);
 	}

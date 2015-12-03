@@ -394,14 +394,16 @@ function GetAllPores($design_id) {
 }
 
 function SendCommandToCAD($cmd, $switch_to_cad=false) {
+	$ret = false
 	try {
 		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
 		$client = $service_client->getClient();
-		$client->SendCommandToCAD($cmd, $switch_to_cad);
+		$ret = $client->SendCommandToCAD($cmd, $switch_to_cad);
 		
 	} catch (TException $tx) {
 		print 'TException: '.$tx->getMessage()."\n";
 	}
+	return $ret
 }
 
 function GetJsonDatasFromCAD($input_datas="{}", $wait_seconds=2) {
