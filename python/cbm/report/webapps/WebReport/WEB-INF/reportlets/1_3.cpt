@@ -12,6 +12,7 @@
 <![CDATA[select * from tunnel_gas_1_3]]></Query>
 </TableData>
 </TableDataMap>
+<ReportFitAttr fitInBrowser="true" fitHorizontalInApp="1" fitVerticalInApp="0"/>
 <Report class="com.fr.report.worksheet.WorkSheet" name="sheet1">
 <ReportPageAttr>
 <HR F="0" T="2"/>
@@ -22,9 +23,9 @@
 <ColumnPrivilegeControl/>
 <RowPrivilegeControl/>
 <RowHeight defaultValue="723900">
-<![CDATA[1828800,723900,723900,723900,723900,723900,723900,723900,723900,723900,723900]]></RowHeight>
+<![CDATA[1828800,914400,723900,723900,723900,723900,723900,723900,723900,723900,723900]]></RowHeight>
 <ColumnWidth defaultValue="2743200">
-<![CDATA[1905000,1866900,6743700,2743200,2743200,2743200,2743200,2743200,3619500,2743200,2743200]]></ColumnWidth>
+<![CDATA[1905000,1866900,6743700,2743200,2743200,2743200,2743200,2743200,3771900,2743200,2743200]]></ColumnWidth>
 <CellElementList>
 <C c="0" r="0" cs="14" s="0">
 <O>
@@ -75,10 +76,24 @@
 <Expand/>
 </C>
 <C c="8" r="1" rs="2" s="1">
-<O>
-<![CDATA[瓦斯含量/m3/t]]></O>
+<O t="RichText">
+<RichText>
+<RichChar styleIndex="2">
+<text>
+<![CDATA[瓦斯含量/m]]></text>
+</RichChar>
+<RichChar styleIndex="3">
+<text>
+<![CDATA[3]]></text>
+</RichChar>
+<RichChar styleIndex="2">
+<text>
+<![CDATA[/t]]></text>
+</RichChar>
+</RichText>
+</O>
 <PrivilegeControl/>
-<CellGUIAttr adjustmode="2"/>
+<CellGUIAttr adjustmode="2" showAsHTML="true"/>
 <CellPageAttr/>
 <Expand/>
 </C>
@@ -147,18 +162,38 @@
 <Expand/>
 </C>
 <C c="9" r="2" s="1">
-<O>
-<![CDATA[水分 Mad]]></O>
+<O t="RichText">
+<RichText>
+<RichChar styleIndex="2">
+<text>
+<![CDATA[水分 M]]></text>
+</RichChar>
+<RichChar styleIndex="4">
+<text>
+<![CDATA[ad]]></text>
+</RichChar>
+</RichText>
+</O>
 <PrivilegeControl/>
-<CellGUIAttr adjustmode="2"/>
+<CellGUIAttr adjustmode="2" showAsHTML="true"/>
 <CellPageAttr/>
 <Expand/>
 </C>
 <C c="10" r="2" s="1">
-<O>
-<![CDATA[灰分 Aad]]></O>
+<O t="RichText">
+<RichText>
+<RichChar styleIndex="2">
+<text>
+<![CDATA[灰分 A]]></text>
+</RichChar>
+<RichChar styleIndex="4">
+<text>
+<![CDATA[ad]]></text>
+</RichChar>
+</RichText>
+</O>
 <PrivilegeControl/>
-<CellGUIAttr adjustmode="2"/>
+<CellGUIAttr adjustmode="2" showAsHTML="true"/>
 <CellPageAttr/>
 <Expand/>
 </C>
@@ -170,7 +205,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="0" r="3" s="1">
+<C c="0" r="3" s="5">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="id"/>
 <Complex/>
@@ -181,7 +216,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="1" r="3" s="1">
+<C c="1" r="3" s="5">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="煤矿"/>
 <Complex/>
@@ -192,7 +227,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="2" r="3" s="2">
+<C c="2" r="3" s="6">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="位置"/>
 <Complex/>
@@ -203,7 +238,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="3" r="3" s="1">
+<C c="3" r="3" s="5">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="埋深"/>
 <Complex/>
@@ -214,7 +249,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="4" r="3" s="1">
+<C c="4" r="3" s="5">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="标高"/>
 <Complex/>
@@ -225,7 +260,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="5" r="3" s="1">
+<C c="5" r="3" s="5">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="gas_ch4"/>
 <Complex/>
@@ -236,7 +271,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="6" r="3" s="1">
+<C c="6" r="3" s="5">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="gas_co2"/>
 <Complex/>
@@ -247,7 +282,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="7" r="3" s="1">
+<C c="7" r="3" s="5">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="gas_n2"/>
 <Complex/>
@@ -258,7 +293,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="8" r="3" s="1">
+<C c="8" r="3" s="5">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="瓦斯含量"/>
 <Complex/>
@@ -269,7 +304,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="9" r="3" s="1">
+<C c="9" r="3" s="5">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="水分Mad"/>
 <Complex/>
@@ -280,7 +315,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="10" r="3" s="1">
+<C c="10" r="3" s="5">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="灰分Aad"/>
 <Complex/>
@@ -291,7 +326,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="11" r="3" s="1">
+<C c="11" r="3" s="5">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="挥发分Vdal"/>
 <Complex/>
@@ -302,7 +337,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="12" r="3" s="1">
+<C c="12" r="3" s="5">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="评价"/>
 <Complex/>
@@ -313,7 +348,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="13" r="3" s="1">
+<C c="13" r="3" s="5">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="备注"/>
 <Complex/>
@@ -328,7 +363,8 @@
 <ReportAttrSet>
 <ReportSettings headerHeight="0" footerHeight="0">
 <PaperSetting orientation="1">
-<Margin top="986400" left="2743200" bottom="986400" right="2743200"/>
+<PaperSize width="32918400" height="40233600"/>
+<Margin top="576000" left="720000" bottom="288000" right="576000"/>
 </PaperSetting>
 </ReportSettings>
 <Header reportPageType="0">
@@ -353,14 +389,39 @@
 </ReportParameterAttr>
 <StyleList>
 <Style horizontal_alignment="0" imageLayout="1">
-<FRFont name="SimSun" style="1" size="120"/>
+<FRFont name="微软雅黑" style="0" size="144"/>
 <Background name="NullBackground"/>
 <Border>
 <Bottom style="1"/>
 </Border>
 </Style>
 <Style horizontal_alignment="0" imageLayout="1">
-<FRFont name="SimSun" style="0" size="72"/>
+<FRFont name="微软雅黑" style="0" size="88"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1"/>
+<Bottom style="1"/>
+<Left style="1"/>
+<Right style="1"/>
+</Border>
+</Style>
+<Style imageLayout="1">
+<FRFont name="微软雅黑" style="0" size="120"/>
+<Background name="NullBackground"/>
+<Border/>
+</Style>
+<Style imageLayout="1">
+<FRFont name="微软雅黑" style="0" size="120" isSuperscript="true"/>
+<Background name="NullBackground"/>
+<Border/>
+</Style>
+<Style imageLayout="1">
+<FRFont name="微软雅黑" style="0" size="120" isSubscript="true"/>
+<Background name="NullBackground"/>
+<Border/>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="微软雅黑" style="0" size="72"/>
 <Background name="NullBackground"/>
 <Border>
 <Top style="1"/>
@@ -370,7 +431,7 @@
 </Border>
 </Style>
 <Style horizontal_alignment="2" imageLayout="1">
-<FRFont name="SimSun" style="0" size="72"/>
+<FRFont name="微软雅黑" style="0" size="72"/>
 <Background name="NullBackground"/>
 <Border>
 <Top style="1"/>

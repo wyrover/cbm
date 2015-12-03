@@ -22,9 +22,9 @@
 <ColumnPrivilegeControl/>
 <RowPrivilegeControl/>
 <RowHeight defaultValue="723900">
-<![CDATA[1600200,723900,723900,723900,723900,723900,723900,723900,723900,723900,723900]]></RowHeight>
+<![CDATA[1752600,1257300,952500,723900,723900,723900,723900,723900,723900,723900,723900]]></RowHeight>
 <ColumnWidth defaultValue="2743200">
-<![CDATA[1790700,1714500,1790700,4762500,1905000,2552700,2743200,2743200,2743200,2743200,2743200]]></ColumnWidth>
+<![CDATA[1790700,1714500,1790700,4762500,1905000,4572000,2857500,4724400,2743200,2743200,2743200]]></ColumnWidth>
 <CellElementList>
 <C c="0" r="0" cs="8" s="0">
 <O>
@@ -75,10 +75,24 @@
 <Expand/>
 </C>
 <C c="5" r="1" s="1">
-<O>
-<![CDATA[混合流量(m3/min)]]></O>
+<O t="RichText">
+<RichText>
+<RichChar styleIndex="2">
+<text>
+<![CDATA[混合流量(m]]></text>
+</RichChar>
+<RichChar styleIndex="3">
+<text>
+<![CDATA[3]]></text>
+</RichChar>
+<RichChar styleIndex="2">
+<text>
+<![CDATA[/min)]]></text>
+</RichChar>
+</RichText>
+</O>
 <PrivilegeControl/>
-<CellGUIAttr adjustmode="2"/>
+<CellGUIAttr adjustmode="2" showAsHTML="true"/>
 <CellPageAttr/>
 <Expand/>
 </C>
@@ -86,19 +100,33 @@
 <O>
 <![CDATA[抽放浓度(%)]]></O>
 <PrivilegeControl/>
-<CellGUIAttr adjustmode="2"/>
+<CellGUIAttr adjustmode="2" showAsHTML="true"/>
 <CellPageAttr/>
 <Expand/>
 </C>
 <C c="7" r="1" s="1">
-<O>
-<![CDATA[抽放纯量(m3/min)]]></O>
+<O t="RichText">
+<RichText>
+<RichChar styleIndex="2">
+<text>
+<![CDATA[抽放纯量(m]]></text>
+</RichChar>
+<RichChar styleIndex="3">
+<text>
+<![CDATA[3]]></text>
+</RichChar>
+<RichChar styleIndex="2">
+<text>
+<![CDATA[/min)]]></text>
+</RichChar>
+</RichText>
+</O>
 <PrivilegeControl/>
-<CellGUIAttr adjustmode="2"/>
+<CellGUIAttr adjustmode="2" showAsHTML="true"/>
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="0" r="2" s="1">
+<C c="0" r="2" s="4">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="id"/>
 <Complex/>
@@ -110,7 +138,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="1" r="2" s="1">
+<C c="1" r="2" s="4">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="煤矿"/>
 <Complex/>
@@ -122,7 +150,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="2" r="2" s="1">
+<C c="2" r="2" s="4">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="煤层"/>
 <Complex/>
@@ -134,7 +162,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="3" r="2" s="1">
+<C c="3" r="2" s="4">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="地点"/>
 <Complex/>
@@ -145,7 +173,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="4" r="2" s="1">
+<C c="4" r="2" s="4">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="日期"/>
 <Complex/>
@@ -157,7 +185,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="5" r="2" s="1">
+<C c="5" r="2" s="4">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="混合流量"/>
 <Complex/>
@@ -169,7 +197,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="6" r="2" s="1">
+<C c="6" r="2" s="4">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="抽放浓度"/>
 <Complex/>
@@ -181,7 +209,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="7" r="2" s="1">
+<C c="7" r="2" s="4">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="抽放纯量"/>
 <Complex/>
@@ -196,7 +224,10 @@
 </CellElementList>
 <ReportAttrSet>
 <ReportSettings headerHeight="0" footerHeight="0">
-<PaperSetting/>
+<PaperSetting>
+<PaperSize width="32918400" height="40233600"/>
+<Margin top="576000" left="720000" bottom="288000" right="576000"/>
+</PaperSetting>
 </ReportSettings>
 </ReportAttrSet>
 <PrivilegeControl/>
@@ -208,12 +239,32 @@
 </ReportParameterAttr>
 <StyleList>
 <Style horizontal_alignment="0" imageLayout="1">
-<FRFont name="SimSun" style="1" size="120"/>
+<FRFont name="微软雅黑" style="0" size="144"/>
 <Background name="NullBackground"/>
 <Border/>
 </Style>
 <Style horizontal_alignment="0" imageLayout="1">
-<FRFont name="SimSun" style="0" size="72"/>
+<FRFont name="微软雅黑" style="0" size="88"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1"/>
+<Bottom style="1"/>
+<Left style="1"/>
+<Right style="1"/>
+</Border>
+</Style>
+<Style imageLayout="1">
+<FRFont name="微软雅黑" style="0" size="120"/>
+<Background name="NullBackground"/>
+<Border/>
+</Style>
+<Style imageLayout="1">
+<FRFont name="微软雅黑" style="0" size="120" isSuperscript="true"/>
+<Background name="NullBackground"/>
+<Border/>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="微软雅黑" style="0" size="72"/>
 <Background name="NullBackground"/>
 <Border>
 <Top style="1"/>

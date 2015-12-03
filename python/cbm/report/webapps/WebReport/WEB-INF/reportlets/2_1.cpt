@@ -106,7 +106,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="0" r="2" s="1">
+<C c="0" r="2" s="2">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="id"/>
 <Complex/>
@@ -118,7 +118,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="1" r="2" s="1">
+<C c="1" r="2" s="2">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="煤矿"/>
 <Complex/>
@@ -130,7 +130,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="2" r="2" s="1">
+<C c="2" r="2" s="2">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="煤层"/>
 <Complex/>
@@ -142,7 +142,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="3" r="2" s="1">
+<C c="3" r="2" s="2">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="位置"/>
 <Complex/>
@@ -154,7 +154,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="4" r="2" s="1">
+<C c="4" r="2" s="2">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="标高"/>
 <Complex/>
@@ -166,7 +166,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="5" r="2" s="1">
+<C c="5" r="2" s="2">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="埋深"/>
 <Complex/>
@@ -178,7 +178,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="6" r="2" s="1">
+<C c="6" r="2" s="2">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="瓦斯压力"/>
 <Complex/>
@@ -190,7 +190,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="7" r="2" s="1">
+<C c="7" r="2" s="2">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="瓦斯含量"/>
 <Complex/>
@@ -202,7 +202,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="8" r="2" s="1">
+<C c="8" r="2" s="2">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="备注"/>
 <Complex/>
@@ -217,8 +217,8 @@
 </CellElementList>
 <ReportAttrSet>
 <ReportSettings headerHeight="0" footerHeight="0">
-<PaperSetting orientation="1">
-<Margin top="986400" left="2743200" bottom="986400" right="2743200"/>
+<PaperSetting>
+<Margin top="576000" left="720000" bottom="288000" right="576000"/>
 </PaperSetting>
 </ReportSettings>
 </ReportAttrSet>
@@ -231,14 +231,24 @@
 </ReportParameterAttr>
 <StyleList>
 <Style horizontal_alignment="0" imageLayout="1">
-<FRFont name="SimSun" style="1" size="120"/>
+<FRFont name="微软雅黑" style="0" size="120"/>
 <Background name="NullBackground"/>
 <Border>
 <Bottom style="1"/>
 </Border>
 </Style>
 <Style horizontal_alignment="0" imageLayout="1">
-<FRFont name="SimSun" style="0" size="72"/>
+<FRFont name="微软雅黑" style="0" size="88"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1"/>
+<Bottom style="1"/>
+<Left style="1"/>
+<Right style="1"/>
+</Border>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="微软雅黑" style="0" size="72"/>
 <Background name="NullBackground"/>
 <Border>
 <Top style="1"/>

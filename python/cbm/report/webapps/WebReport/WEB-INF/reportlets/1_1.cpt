@@ -21,7 +21,7 @@
 <ReportWebAttr>
 <ServerPrinter/>
 </ReportWebAttr>
-<ReportFitAttr fitHorizontalInApp="0" fitVerticalInApp="0"/>
+<ReportFitAttr fitInBrowser="true" fitHorizontalInApp="0" fitVerticalInApp="0"/>
 <Report class="com.fr.report.worksheet.WorkSheet" name="sheet1">
 <ReportPageAttr>
 <HR F="0" T="2"/>
@@ -32,10 +32,14 @@
 <ColumnPrivilegeControl/>
 <RowPrivilegeControl/>
 <RowHeight defaultValue="723900">
-<![CDATA[1752600,1143000,1371600,723900,723900,723900,723900,723900,723900,723900]]></RowHeight>
+<![CDATA[1752600,1143000,1371600,723900,723900,723900,723900,723900,723900,723900,723900]]></RowHeight>
 <ColumnWidth defaultValue="2743200">
 <![CDATA[647700,1562100,2400300,2514600,2819400,2552700,2362200,3048000,2628900,2476500,1981200,2286000,2362200,2552700,2743200]]></ColumnWidth>
 <CellElementList>
+<C c="0" r="0">
+<PrivilegeControl/>
+<Expand/>
+</C>
 <C c="1" r="0" cs="13" s="0">
 <O>
 <![CDATA[淮河南矿区钻孔瓦斯含量统计表]]></O>
@@ -117,21 +121,27 @@
 <Expand/>
 </C>
 <C c="12" r="1" cs="2" s="1">
-<O>
-<![CDATA[含量(可燃质)/(ml/g)]]></O>
+<O t="RichText">
+<RichText>
+<RichChar styleIndex="2">
+<text>
+<![CDATA[含量(可燃质)/(mL/g)]]></text>
+</RichChar>
+</RichText>
+</O>
 <PrivilegeControl/>
-<CellGUIAttr adjustmode="2"/>
+<CellGUIAttr adjustmode="2" showAsHTML="true"/>
 <CellPageAttr/>
 <Expand/>
 </C>
 <C c="9" r="2" s="1">
 <O t="RichText">
 <RichText>
-<RichChar styleIndex="2">
+<RichChar styleIndex="3">
 <text>
 <![CDATA[N]]></text>
 </RichChar>
-<RichChar styleIndex="3">
+<RichChar styleIndex="4">
 <text>
 <![CDATA[2]]></text>
 </RichChar>
@@ -145,11 +155,11 @@
 <C c="10" r="2" s="1">
 <O t="RichText">
 <RichText>
-<RichChar styleIndex="2">
+<RichChar styleIndex="3">
 <text>
 <![CDATA[CO]]></text>
 </RichChar>
-<RichChar styleIndex="3">
+<RichChar styleIndex="4">
 <text>
 <![CDATA[2]]></text>
 </RichChar>
@@ -163,11 +173,11 @@
 <C c="11" r="2" s="1">
 <O t="RichText">
 <RichText>
-<RichChar styleIndex="4">
+<RichChar styleIndex="5">
 <text>
 <![CDATA[CH]]></text>
 </RichChar>
-<RichChar styleIndex="5">
+<RichChar styleIndex="6">
 <text>
 <![CDATA[4]]></text>
 </RichChar>
@@ -181,11 +191,11 @@
 <C c="12" r="2" s="1">
 <O t="RichText">
 <RichText>
-<RichChar styleIndex="2">
+<RichChar styleIndex="3">
 <text>
 <![CDATA[CO]]></text>
 </RichChar>
-<RichChar styleIndex="3">
+<RichChar styleIndex="4">
 <text>
 <![CDATA[2]]></text>
 </RichChar>
@@ -199,11 +209,11 @@
 <C c="13" r="2" s="1">
 <O t="RichText">
 <RichText>
-<RichChar styleIndex="4">
+<RichChar styleIndex="5">
 <text>
 <![CDATA[CH]]></text>
 </RichChar>
-<RichChar styleIndex="5">
+<RichChar styleIndex="6">
 <text>
 <![CDATA[4]]></text>
 </RichChar>
@@ -214,7 +224,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="1" r="3" s="6">
+<C c="1" r="3" s="7">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="id"/>
 <Complex/>
@@ -226,7 +236,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="2" r="3" s="7">
+<C c="2" r="3" s="8">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="煤矿"/>
 <Condition class="com.fr.data.condition.ListCondition"/>
@@ -241,7 +251,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="3" r="3" s="7">
+<C c="3" r="3" s="8">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="孔号"/>
 <Complex/>
@@ -253,7 +263,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="4" r="3" s="7">
+<C c="4" r="3" s="8">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="样品深度"/>
 <Complex/>
@@ -265,7 +275,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="5" r="3" s="7">
+<C c="5" r="3" s="8">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="煤层"/>
 <Complex/>
@@ -277,7 +287,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="6" r="3" s="7">
+<C c="6" r="3" s="8">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="煤厚"/>
 <Complex/>
@@ -289,7 +299,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="7" r="3" s="7">
+<C c="7" r="3" s="8">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="直接顶板岩性"/>
 <Complex/>
@@ -301,7 +311,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="8" r="3" s="7">
+<C c="8" r="3" s="8">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="煤类"/>
 <Complex/>
@@ -313,7 +323,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="9" r="3" s="7">
+<C c="9" r="3" s="8">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="gas_n2"/>
 <Complex/>
@@ -325,7 +335,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="10" r="3" s="7">
+<C c="10" r="3" s="8">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="gas_co2"/>
 <Complex/>
@@ -337,7 +347,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="11" r="3" s="7">
+<C c="11" r="3" s="8">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="gas_ch4"/>
 <Complex/>
@@ -349,7 +359,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="12" r="3" s="7">
+<C c="12" r="3" s="8">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="content_co2"/>
 <Complex/>
@@ -361,7 +371,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="13" r="3" s="7">
+<C c="13" r="3" s="8">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="content_ch4"/>
 <Complex/>
@@ -377,7 +387,8 @@
 <ReportAttrSet>
 <ReportSettings headerHeight="0" footerHeight="0">
 <PaperSetting orientation="1">
-<Margin top="986400" left="2743200" bottom="986400" right="2743200"/>
+<PaperSize width="32918400" height="40233600"/>
+<Margin top="576000" left="720000" bottom="288000" right="576000"/>
 </PaperSetting>
 <Background name="ColorBackground"/>
 </ReportSettings>
@@ -434,6 +445,11 @@
 <Left style="1"/>
 <Right style="1"/>
 </Border>
+</Style>
+<Style imageLayout="1">
+<FRFont name="微软雅黑" style="0" size="120"/>
+<Background name="NullBackground"/>
+<Border/>
 </Style>
 <Style imageLayout="1">
 <FRFont name="宋体" style="0" size="104"/>

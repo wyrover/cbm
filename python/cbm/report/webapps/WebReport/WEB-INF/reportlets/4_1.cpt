@@ -22,9 +22,9 @@
 <ColumnPrivilegeControl/>
 <RowPrivilegeControl/>
 <RowHeight defaultValue="723900">
-<![CDATA[1485900,1143000,723900,723900,723900,723900,723900,723900,723900,723900,723900]]></RowHeight>
+<![CDATA[1485900,1524000,1028700,723900,723900,723900,723900,723900,723900,723900,723900]]></RowHeight>
 <ColumnWidth defaultValue="2743200">
-<![CDATA[2438400,2171700,2247900,2133600,3619500,3467100,3924300,3924300,5334000,2743200,2743200]]></ColumnWidth>
+<![CDATA[2438400,2171700,2247900,2133600,3619500,3467100,4000500,4038600,6172200,2743200,2743200]]></ColumnWidth>
 <CellElementList>
 <C c="0" r="0" cs="9" s="0">
 <O>
@@ -83,30 +83,72 @@
 <Expand/>
 </C>
 <C c="6" r="1" s="1">
-<O>
-<![CDATA[风  量(m3/min)]]></O>
+<O t="RichText">
+<RichText>
+<RichChar styleIndex="2">
+<text>
+<![CDATA[风  量(m]]></text>
+</RichChar>
+<RichChar styleIndex="3">
+<text>
+<![CDATA[3]]></text>
+</RichChar>
+<RichChar styleIndex="2">
+<text>
+<![CDATA[/min)]]></text>
+</RichChar>
+</RichText>
+</O>
 <PrivilegeControl/>
-<CellGUIAttr adjustmode="2"/>
+<CellGUIAttr adjustmode="2" showAsHTML="true"/>
 <CellPageAttr/>
 <Expand/>
 </C>
 <C c="7" r="1" s="1">
-<O>
-<![CDATA[抽采量(m3/min)]]></O>
+<O t="RichText">
+<RichText>
+<RichChar styleIndex="2">
+<text>
+<![CDATA[抽采量(m]]></text>
+</RichChar>
+<RichChar styleIndex="3">
+<text>
+<![CDATA[3]]></text>
+</RichChar>
+<RichChar styleIndex="2">
+<text>
+<![CDATA[/min)]]></text>
+</RichChar>
+</RichText>
+</O>
 <PrivilegeControl/>
-<CellGUIAttr adjustmode="2"/>
+<CellGUIAttr adjustmode="2" showAsHTML="true"/>
 <CellPageAttr/>
 <Expand/>
 </C>
 <C c="8" r="1" s="1">
-<O>
-<![CDATA[绝对瓦斯涌出量(m3/min)]]></O>
+<O t="RichText">
+<RichText>
+<RichChar styleIndex="2">
+<text>
+<![CDATA[绝对瓦斯涌出量(m]]></text>
+</RichChar>
+<RichChar styleIndex="3">
+<text>
+<![CDATA[3]]></text>
+</RichChar>
+<RichChar styleIndex="2">
+<text>
+<![CDATA[/min)]]></text>
+</RichChar>
+</RichText>
+</O>
 <PrivilegeControl/>
-<CellGUIAttr adjustmode="2"/>
+<CellGUIAttr adjustmode="2" showAsHTML="true"/>
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="0" r="2" s="1">
+<C c="0" r="2" s="4">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="id"/>
 <Complex/>
@@ -118,7 +160,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="1" r="2" s="1">
+<C c="1" r="2" s="4">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="煤矿"/>
 <Complex/>
@@ -130,7 +172,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="2" r="2" s="1">
+<C c="2" r="2" s="4">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="煤层"/>
 <Complex/>
@@ -142,7 +184,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="3" r="2" s="1">
+<C c="3" r="2" s="4">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="名称"/>
 <Complex/>
@@ -154,7 +196,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="4" r="2" s="1">
+<C c="4" r="2" s="4">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="日期"/>
 <Complex/>
@@ -166,7 +208,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="5" r="2" s="1">
+<C c="5" r="2" s="4">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="CH4浓度"/>
 <Complex/>
@@ -178,7 +220,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="6" r="2" s="1">
+<C c="6" r="2" s="4">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="风量"/>
 <Complex/>
@@ -190,7 +232,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="7" r="2" s="1">
+<C c="7" r="2" s="4">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="抽采量"/>
 <Complex/>
@@ -202,7 +244,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="8" r="2" s="1">
+<C c="8" r="2" s="4">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="绝对瓦斯涌出量"/>
 <Complex/>
@@ -217,9 +259,9 @@
 </CellElementList>
 <ReportAttrSet>
 <ReportSettings headerHeight="0" footerHeight="0">
-<PaperSetting>
-<PaperSize width="37440000" height="42768000"/>
-<Margin top="986400" left="2743200" bottom="986400" right="2743200"/>
+<PaperSetting orientation="1">
+<PaperSize width="32918400" height="40233600"/>
+<Margin top="576000" left="720000" bottom="288000" right="576000"/>
 </PaperSetting>
 </ReportSettings>
 <Header reportPageType="0">
@@ -244,12 +286,32 @@
 </ReportParameterAttr>
 <StyleList>
 <Style horizontal_alignment="0" imageLayout="1">
-<FRFont name="SimSun" style="1" size="120"/>
+<FRFont name="微软雅黑" style="0" size="144"/>
 <Background name="NullBackground"/>
 <Border/>
 </Style>
 <Style horizontal_alignment="0" imageLayout="1">
-<FRFont name="SimSun" style="0" size="72"/>
+<FRFont name="微软雅黑" style="0" size="88"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1"/>
+<Bottom style="1"/>
+<Left style="1"/>
+<Right style="1"/>
+</Border>
+</Style>
+<Style imageLayout="1">
+<FRFont name="微软雅黑" style="0" size="120"/>
+<Background name="NullBackground"/>
+<Border/>
+</Style>
+<Style imageLayout="1">
+<FRFont name="微软雅黑" style="0" size="120" isSuperscript="true"/>
+<Background name="NullBackground"/>
+<Border/>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="微软雅黑" style="0" size="72"/>
 <Background name="NullBackground"/>
 <Border>
 <Top style="1"/>
