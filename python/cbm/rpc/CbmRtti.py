@@ -121,7 +121,8 @@ info = {
 	"bottom_side":float,
 	"left_side":float,
 	"right_side":float,
-	"lm":float
+	"lm":float,
+	"close_length":float
 },
 "DesignEvalUnit":{
 	"id":int,
@@ -236,7 +237,8 @@ info = {
 	"d_offset":float,
 	"pore_stubble":float,
 	"pore_angle":float,
-	"pore_type":int
+	"pore_type":int,
+	"close_length":float
 },
 "DrillingRadiusParam":{
 	"id":int,
@@ -634,7 +636,8 @@ fkey = {
 	"bottom_side":0,
 	"left_side":0,
 	"right_side":0,
-	"lm":0
+	"lm":0,
+	"close_length":0
 },
 "DesignEvalUnit":{
 	"id":1,
@@ -749,7 +752,8 @@ fkey = {
 	"d_offset":0,
 	"pore_stubble":0,
 	"pore_angle":0,
-	"pore_type":0
+	"pore_type":0,
+	"close_length":0
 },
 "DrillingRadiusParam":{
 	"id":1,

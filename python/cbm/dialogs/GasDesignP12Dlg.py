@@ -58,6 +58,7 @@ class GasDesignP12Dlg(BaseDialog):
 		self.ui.leading_dist.setText(u'%.1f' % tws_tech.leading_dist)
 		self.ui.l_stripe.setText(u'%.1f' % tws_tech.l_stripe)
 		self.ui.gbp.setText(u'%.1f' % tws_tech.gbp)
+		self.ui.close_length.setText(u'%.1f' % tws_tech.close_length)
 
 	def onSave(self):
 		coal = SQLClientHelper.GetCoalById(self.coal_id)
@@ -90,6 +91,7 @@ class GasDesignP12Dlg(BaseDialog):
 		tws_tech.leading_dist, ok = self.ui.leading_dist.text().toDouble()
 		tws_tech.l_stripe, ok = self.ui.l_stripe.text().toDouble()
 		tws_tech.gbp, ok = self.ui.gbp.text().toDouble()
+		tws_tech.close_length, ok = self.ui.close_length.text().toDouble()
 
 		# 保存到数据库
 		if not SQLClientHelper.UpdateDesignDrillingSurfTechnology(tws_tech):

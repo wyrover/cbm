@@ -133,6 +133,7 @@
 <O>
 <![CDATA[钻孔间距：]]></O>
 <PrivilegeControl/>
+<Expand/>
 </C>
 <C c="4" r="5" cs="2" s="7">
 <O t="Formula" class="Formula">
@@ -164,7 +165,7 @@
 <C c="4" r="6" cs="2" s="10">
 <O t="Formula" class="Formula">
 <Attributes>
-<![CDATA[=$pore_length + " m"]]></Attributes>
+<![CDATA[=$close_length + " m"]]></Attributes>
 </O>
 <PrivilegeControl/>
 <Expand/>

@@ -54,6 +54,7 @@ class GasDesignP23Dlg(BaseDialog):
 		self.ui.gp.setText(u'%.1f' % ws_tech.gp)
 		self.ui.pore_stubble.setText(u'%.1f' % ws_tech.pore_stubble)
 		self.ui.pore_angle.setText(u'%.1f' % ws_tech.pore_angle)
+		self.ui.close_length.setText(u'%.1f' % ws_tech.close_length)
 
 		pore_type = ws_tech.pore_type
 		if pore_type == 1:
@@ -93,6 +94,7 @@ class GasDesignP23Dlg(BaseDialog):
 		ws_tech.gp, ok = self.ui.gp.text().toDouble()
 		ws_tech.pore_stubble, ok = self.ui.pore_stubble.text().toDouble()
 		ws_tech.pore_angle, ok = self.ui.pore_angle.text().toDouble()
+		ws_tech.close_length, ok = self.ui.close_length.text().toDouble()
 
 		if self.ui.pore_type1.isChecked():
 			ws_tech.pore_type = 1

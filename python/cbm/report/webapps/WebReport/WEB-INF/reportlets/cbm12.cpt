@@ -236,7 +236,7 @@
 <C c="1" r="8" cs="2" s="10">
 <O t="Formula" class="Formula">
 <Attributes>
-<![CDATA[=$pore_length + " m"]]></Attributes>
+<![CDATA[=$close_length + " m"]]></Attributes>
 </O>
 <PrivilegeControl/>
 <Expand/>

@@ -789,7 +789,7 @@
       <x>440</x>
       <y>240</y>
       <width>401</width>
-      <height>131</height>
+      <height>151</height>
      </rect>
     </property>
     <property name="font">
@@ -982,6 +982,52 @@
      </property>
      <property name="text">
       <string>(m)</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="close_length">
+     <property name="geometry">
+      <rect>
+       <x>102</x>
+       <y>110</y>
+       <width>61</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_41">
+     <property name="geometry">
+      <rect>
+       <x>170</x>
+       <y>110</y>
+       <width>31</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>(m)</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_42">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>110</y>
+       <width>71</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>封孔长度</string>
      </property>
     </widget>
    </widget>

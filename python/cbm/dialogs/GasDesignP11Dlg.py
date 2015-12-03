@@ -68,6 +68,7 @@ class GasDesignP11Dlg(BaseDialog):
 		self.ui.ws.setText(u'%.1f' % tws_tech.ws)
 		self.ui.gs.setText(u'%.1f' % tws_tech.gs)
 		self.ui.hs.setText(u'%.1f' % tws_tech.hs)
+		self.ui.close_length.setText(u'%.1f' % tws_tech.close_length)
 
 	def onSave(self):
 		coal = SQLClientHelper.GetCoalById(self.coal_id)
@@ -107,6 +108,8 @@ class GasDesignP11Dlg(BaseDialog):
 		tws_tech.ws, ok = self.ui.ws.text().toDouble()
 		tws_tech.gs, ok = self.ui.gs.text().toDouble()
 		tws_tech.hs, ok = self.ui.hs.text().toDouble()
+		tws_tech.close_length, ok = self.ui.close_length.text().toDouble()
+
 		# 保存到数据库
 		if not SQLClientHelper.UpdateDesignDrillingSurfTechnology(tws_tech):
 			UiHelper.MessageBox(u'sorry,出了点问题,请联系技术人员(错误码:113)')

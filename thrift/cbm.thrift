@@ -129,6 +129,7 @@ struct DesignDrillingSurfTechnology {
 	24: double left_side,
 	25: double right_side,
 	26: double lm,
+	27: double close_length,
 }
 
 struct DesignEvalUnit {
@@ -253,6 +254,7 @@ struct DesignWorkSurfTechnology {
 	27: double pore_stubble,
 	28: double pore_angle,
 	29: i32 pore_type,
+	30: double close_length,
 }
 
 struct DrillingRadiusParam {

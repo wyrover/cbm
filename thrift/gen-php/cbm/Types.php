@@ -2333,6 +2333,10 @@ class DesignDrillingSurfTechnology {
    * @var double
    */
   public $lm = null;
+  /**
+   * @var double
+   */
+  public $close_length = null;
 
   public function __construct($vals=null) {
     if (!isset(self::$_TSPEC)) {
@@ -2441,6 +2445,10 @@ class DesignDrillingSurfTechnology {
           'var' => 'lm',
           'type' => TType::DOUBLE,
           ),
+        27 => array(
+          'var' => 'close_length',
+          'type' => TType::DOUBLE,
+          ),
         );
     }
     if (is_array($vals)) {
@@ -2521,6 +2529,9 @@ class DesignDrillingSurfTechnology {
       }
       if (isset($vals['lm'])) {
         $this->lm = $vals['lm'];
+      }
+      if (isset($vals['close_length'])) {
+        $this->close_length = $vals['close_length'];
       }
     }
   }
@@ -2726,6 +2737,13 @@ class DesignDrillingSurfTechnology {
             $xfer += $input->skip($ftype);
           }
           break;
+        case 27:
+          if ($ftype == TType::DOUBLE) {
+            $xfer += $input->readDouble($this->close_length);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
         default:
           $xfer += $input->skip($ftype);
           break;
@@ -2867,6 +2885,11 @@ class DesignDrillingSurfTechnology {
     if ($this->lm !== null) {
       $xfer += $output->writeFieldBegin('lm', TType::DOUBLE, 26);
       $xfer += $output->writeDouble($this->lm);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->close_length !== null) {
+      $xfer += $output->writeFieldBegin('close_length', TType::DOUBLE, 27);
+      $xfer += $output->writeDouble($this->close_length);
       $xfer += $output->writeFieldEnd();
     }
     $xfer += $output->writeFieldStop();
@@ -4975,6 +4998,10 @@ class DesignWorkSurfTechnology {
    * @var int
    */
   public $pore_type = null;
+  /**
+   * @var double
+   */
+  public $close_length = null;
 
   public function __construct($vals=null) {
     if (!isset(self::$_TSPEC)) {
@@ -5095,6 +5122,10 @@ class DesignWorkSurfTechnology {
           'var' => 'pore_type',
           'type' => TType::I32,
           ),
+        30 => array(
+          'var' => 'close_length',
+          'type' => TType::DOUBLE,
+          ),
         );
     }
     if (is_array($vals)) {
@@ -5184,6 +5215,9 @@ class DesignWorkSurfTechnology {
       }
       if (isset($vals['pore_type'])) {
         $this->pore_type = $vals['pore_type'];
+      }
+      if (isset($vals['close_length'])) {
+        $this->close_length = $vals['close_length'];
       }
     }
   }
@@ -5410,6 +5444,13 @@ class DesignWorkSurfTechnology {
             $xfer += $input->skip($ftype);
           }
           break;
+        case 30:
+          if ($ftype == TType::DOUBLE) {
+            $xfer += $input->readDouble($this->close_length);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
         default:
           $xfer += $input->skip($ftype);
           break;
@@ -5566,6 +5607,11 @@ class DesignWorkSurfTechnology {
     if ($this->pore_type !== null) {
       $xfer += $output->writeFieldBegin('pore_type', TType::I32, 29);
       $xfer += $output->writeI32($this->pore_type);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->close_length !== null) {
+      $xfer += $output->writeFieldBegin('close_length', TType::DOUBLE, 30);
+      $xfer += $output->writeDouble($this->close_length);
       $xfer += $output->writeFieldEnd();
     }
     $xfer += $output->writeFieldStop();

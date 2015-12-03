@@ -774,7 +774,7 @@ inline std::ostream& operator<<(std::ostream& out, const Complexity& obj)
 }
 
 typedef struct _DesignDrillingSurfTechnology__isset {
-  _DesignDrillingSurfTechnology__isset() : id(false), design_technology_id(false), name(false), comment(false), v_offset(false), h_offset(false), dp(false), gp(false), leading_dist(false), gbp(false), l_stripe(false), ls(false), ws(false), hs(false), gs(false), wd(false), hd(false), l1(false), l2(false), w(false), h(false), top_side(false), bottom_side(false), left_side(false), right_side(false), lm(false) {}
+  _DesignDrillingSurfTechnology__isset() : id(false), design_technology_id(false), name(false), comment(false), v_offset(false), h_offset(false), dp(false), gp(false), leading_dist(false), gbp(false), l_stripe(false), ls(false), ws(false), hs(false), gs(false), wd(false), hd(false), l1(false), l2(false), w(false), h(false), top_side(false), bottom_side(false), left_side(false), right_side(false), lm(false), close_length(false) {}
   bool id :1;
   bool design_technology_id :1;
   bool name :1;
@@ -801,6 +801,7 @@ typedef struct _DesignDrillingSurfTechnology__isset {
   bool left_side :1;
   bool right_side :1;
   bool lm :1;
+  bool close_length :1;
 } _DesignDrillingSurfTechnology__isset;
 
 class DesignDrillingSurfTechnology {
@@ -808,7 +809,7 @@ class DesignDrillingSurfTechnology {
 
   DesignDrillingSurfTechnology(const DesignDrillingSurfTechnology&);
   DesignDrillingSurfTechnology& operator=(const DesignDrillingSurfTechnology&);
-  DesignDrillingSurfTechnology() : id(0), design_technology_id(0), name(), comment(), v_offset(0), h_offset(0), dp(0), gp(0), leading_dist(0), gbp(0), l_stripe(0), ls(0), ws(0), hs(0), gs(0), wd(0), hd(0), l1(0), l2(0), w(0), h(0), top_side(0), bottom_side(0), left_side(0), right_side(0), lm(0) {
+  DesignDrillingSurfTechnology() : id(0), design_technology_id(0), name(), comment(), v_offset(0), h_offset(0), dp(0), gp(0), leading_dist(0), gbp(0), l_stripe(0), ls(0), ws(0), hs(0), gs(0), wd(0), hd(0), l1(0), l2(0), w(0), h(0), top_side(0), bottom_side(0), left_side(0), right_side(0), lm(0), close_length(0) {
   }
 
   virtual ~DesignDrillingSurfTechnology() throw();
@@ -838,6 +839,7 @@ class DesignDrillingSurfTechnology {
   double left_side;
   double right_side;
   double lm;
+  double close_length;
 
   _DesignDrillingSurfTechnology__isset __isset;
 
@@ -893,6 +895,8 @@ class DesignDrillingSurfTechnology {
 
   void __set_lm(const double val);
 
+  void __set_close_length(const double val);
+
   bool operator == (const DesignDrillingSurfTechnology & rhs) const
   {
     if (!(id == rhs.id))
@@ -946,6 +950,8 @@ class DesignDrillingSurfTechnology {
     if (!(right_side == rhs.right_side))
       return false;
     if (!(lm == rhs.lm))
+      return false;
+    if (!(close_length == rhs.close_length))
       return false;
     return true;
   }
@@ -1698,7 +1704,7 @@ inline std::ostream& operator<<(std::ostream& out, const DesignWorkSurfControlPo
 }
 
 typedef struct _DesignWorkSurfTechnology__isset {
-  _DesignWorkSurfTechnology__isset() : id(false), design_technology_id(false), name(false), comment(false), top_side(false), bottom_side(false), right_side(false), l1(false), w(false), h(false), l2(false), left_side(false), v_offset(false), h_offset(false), p_offset(false), wd(false), hd(false), lm(false), ws(false), ls(false), gs(false), hs(false), dp(false), gp(false), single_rock_tunnel(false), d_offset(false), pore_stubble(false), pore_angle(false), pore_type(false) {}
+  _DesignWorkSurfTechnology__isset() : id(false), design_technology_id(false), name(false), comment(false), top_side(false), bottom_side(false), right_side(false), l1(false), w(false), h(false), l2(false), left_side(false), v_offset(false), h_offset(false), p_offset(false), wd(false), hd(false), lm(false), ws(false), ls(false), gs(false), hs(false), dp(false), gp(false), single_rock_tunnel(false), d_offset(false), pore_stubble(false), pore_angle(false), pore_type(false), close_length(false) {}
   bool id :1;
   bool design_technology_id :1;
   bool name :1;
@@ -1728,6 +1734,7 @@ typedef struct _DesignWorkSurfTechnology__isset {
   bool pore_stubble :1;
   bool pore_angle :1;
   bool pore_type :1;
+  bool close_length :1;
 } _DesignWorkSurfTechnology__isset;
 
 class DesignWorkSurfTechnology {
@@ -1735,7 +1742,7 @@ class DesignWorkSurfTechnology {
 
   DesignWorkSurfTechnology(const DesignWorkSurfTechnology&);
   DesignWorkSurfTechnology& operator=(const DesignWorkSurfTechnology&);
-  DesignWorkSurfTechnology() : id(0), design_technology_id(0), name(), comment(), top_side(0), bottom_side(0), right_side(0), l1(0), w(0), h(0), l2(0), left_side(0), v_offset(0), h_offset(0), p_offset(0), wd(0), hd(0), lm(0), ws(0), ls(0), gs(0), hs(0), dp(0), gp(0), single_rock_tunnel(0), d_offset(0), pore_stubble(0), pore_angle(0), pore_type(0) {
+  DesignWorkSurfTechnology() : id(0), design_technology_id(0), name(), comment(), top_side(0), bottom_side(0), right_side(0), l1(0), w(0), h(0), l2(0), left_side(0), v_offset(0), h_offset(0), p_offset(0), wd(0), hd(0), lm(0), ws(0), ls(0), gs(0), hs(0), dp(0), gp(0), single_rock_tunnel(0), d_offset(0), pore_stubble(0), pore_angle(0), pore_type(0), close_length(0) {
   }
 
   virtual ~DesignWorkSurfTechnology() throw();
@@ -1768,6 +1775,7 @@ class DesignWorkSurfTechnology {
   double pore_stubble;
   double pore_angle;
   int32_t pore_type;
+  double close_length;
 
   _DesignWorkSurfTechnology__isset __isset;
 
@@ -1829,6 +1837,8 @@ class DesignWorkSurfTechnology {
 
   void __set_pore_type(const int32_t val);
 
+  void __set_close_length(const double val);
+
   bool operator == (const DesignWorkSurfTechnology & rhs) const
   {
     if (!(id == rhs.id))
@@ -1888,6 +1898,8 @@ class DesignWorkSurfTechnology {
     if (!(pore_angle == rhs.pore_angle))
       return false;
     if (!(pore_type == rhs.pore_type))
+      return false;
+    if (!(close_length == rhs.close_length))
       return false;
     return true;
   }

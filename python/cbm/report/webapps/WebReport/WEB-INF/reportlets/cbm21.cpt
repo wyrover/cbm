@@ -164,7 +164,7 @@
 <C c="4" r="6" cs="2" s="10">
 <O t="Formula" class="Formula">
 <Attributes>
-<![CDATA[=$pore_length + " m"]]></Attributes>
+<![CDATA[=$close_length + " m"]]></Attributes>
 </O>
 <PrivilegeControl/>
 <Expand/>
@@ -372,12 +372,7 @@
 <Style imageLayout="1">
 <FRFont name="微软雅黑" style="0" size="112" foreground="-16764058"/>
 <Background name="ColorBackground" color="-3342337"/>
-<Border>
-<Top color="-16777216"/>
-<Bottom color="-16777216"/>
-<Left color="-16777216"/>
-<Right color="-16777216"/>
-</Border>
+<Border/>
 </Style>
 <Style horizontal_alignment="4" imageLayout="1">
 <FRFont name="微软雅黑" style="0" size="88"/>
@@ -453,12 +448,7 @@
 <Style horizontal_alignment="2" imageLayout="1">
 <FRFont name="微软雅黑" style="0" size="112" foreground="-16764058"/>
 <Background name="ColorBackground" color="-3342337"/>
-<Border>
-<Top color="-16777216"/>
-<Bottom color="-16777216"/>
-<Left color="-16777216"/>
-<Right color="-16777216"/>
-</Border>
+<Border/>
 </Style>
 <Style horizontal_alignment="2" imageLayout="1">
 <FRFont name="微软雅黑" style="0" size="88" foreground="-16777088"/>

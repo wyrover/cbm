@@ -1385,6 +1385,7 @@ class DesignDrillingSurfTechnology:
    - left_side
    - right_side
    - lm
+   - close_length
   """
 
   thrift_spec = (
@@ -1415,9 +1416,10 @@ class DesignDrillingSurfTechnology:
     (24, TType.DOUBLE, 'left_side', None, None, ), # 24
     (25, TType.DOUBLE, 'right_side', None, None, ), # 25
     (26, TType.DOUBLE, 'lm', None, None, ), # 26
+    (27, TType.DOUBLE, 'close_length', None, None, ), # 27
   )
 
-  def __init__(self, id=None, design_technology_id=None, name=None, comment=None, v_offset=None, h_offset=None, dp=None, gp=None, leading_dist=None, gbp=None, l_stripe=None, ls=None, ws=None, hs=None, gs=None, wd=None, hd=None, l1=None, l2=None, w=None, h=None, top_side=None, bottom_side=None, left_side=None, right_side=None, lm=None,):
+  def __init__(self, id=None, design_technology_id=None, name=None, comment=None, v_offset=None, h_offset=None, dp=None, gp=None, leading_dist=None, gbp=None, l_stripe=None, ls=None, ws=None, hs=None, gs=None, wd=None, hd=None, l1=None, l2=None, w=None, h=None, top_side=None, bottom_side=None, left_side=None, right_side=None, lm=None, close_length=None,):
     self.id = id
     self.design_technology_id = design_technology_id
     self.name = name
@@ -1444,6 +1446,7 @@ class DesignDrillingSurfTechnology:
     self.left_side = left_side
     self.right_side = right_side
     self.lm = lm
+    self.close_length = close_length
 
   def read(self, iprot):
     if iprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None and fastbinary is not None:
@@ -1584,6 +1587,11 @@ class DesignDrillingSurfTechnology:
           self.lm = iprot.readDouble()
         else:
           iprot.skip(ftype)
+      elif fid == 27:
+        if ftype == TType.DOUBLE:
+          self.close_length = iprot.readDouble()
+        else:
+          iprot.skip(ftype)
       else:
         iprot.skip(ftype)
       iprot.readFieldEnd()
@@ -1698,6 +1706,10 @@ class DesignDrillingSurfTechnology:
       oprot.writeFieldBegin('lm', TType.DOUBLE, 26)
       oprot.writeDouble(self.lm)
       oprot.writeFieldEnd()
+    if self.close_length is not None:
+      oprot.writeFieldBegin('close_length', TType.DOUBLE, 27)
+      oprot.writeDouble(self.close_length)
+      oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()
 
@@ -1733,6 +1745,7 @@ class DesignDrillingSurfTechnology:
     value = (value * 31) ^ hash(self.left_side)
     value = (value * 31) ^ hash(self.right_side)
     value = (value * 31) ^ hash(self.lm)
+    value = (value * 31) ^ hash(self.close_length)
     return value
 
   def __repr__(self):
@@ -3078,6 +3091,7 @@ class DesignWorkSurfTechnology:
    - pore_stubble
    - pore_angle
    - pore_type
+   - close_length
   """
 
   thrift_spec = (
@@ -3111,9 +3125,10 @@ class DesignWorkSurfTechnology:
     (27, TType.DOUBLE, 'pore_stubble', None, None, ), # 27
     (28, TType.DOUBLE, 'pore_angle', None, None, ), # 28
     (29, TType.I32, 'pore_type', None, None, ), # 29
+    (30, TType.DOUBLE, 'close_length', None, None, ), # 30
   )
 
-  def __init__(self, id=None, design_technology_id=None, name=None, comment=None, top_side=None, bottom_side=None, right_side=None, l1=None, w=None, h=None, l2=None, left_side=None, v_offset=None, h_offset=None, p_offset=None, wd=None, hd=None, lm=None, ws=None, ls=None, gs=None, hs=None, dp=None, gp=None, single_rock_tunnel=None, d_offset=None, pore_stubble=None, pore_angle=None, pore_type=None,):
+  def __init__(self, id=None, design_technology_id=None, name=None, comment=None, top_side=None, bottom_side=None, right_side=None, l1=None, w=None, h=None, l2=None, left_side=None, v_offset=None, h_offset=None, p_offset=None, wd=None, hd=None, lm=None, ws=None, ls=None, gs=None, hs=None, dp=None, gp=None, single_rock_tunnel=None, d_offset=None, pore_stubble=None, pore_angle=None, pore_type=None, close_length=None,):
     self.id = id
     self.design_technology_id = design_technology_id
     self.name = name
@@ -3143,6 +3158,7 @@ class DesignWorkSurfTechnology:
     self.pore_stubble = pore_stubble
     self.pore_angle = pore_angle
     self.pore_type = pore_type
+    self.close_length = close_length
 
   def read(self, iprot):
     if iprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None and fastbinary is not None:
@@ -3298,6 +3314,11 @@ class DesignWorkSurfTechnology:
           self.pore_type = iprot.readI32()
         else:
           iprot.skip(ftype)
+      elif fid == 30:
+        if ftype == TType.DOUBLE:
+          self.close_length = iprot.readDouble()
+        else:
+          iprot.skip(ftype)
       else:
         iprot.skip(ftype)
       iprot.readFieldEnd()
@@ -3424,6 +3445,10 @@ class DesignWorkSurfTechnology:
       oprot.writeFieldBegin('pore_type', TType.I32, 29)
       oprot.writeI32(self.pore_type)
       oprot.writeFieldEnd()
+    if self.close_length is not None:
+      oprot.writeFieldBegin('close_length', TType.DOUBLE, 30)
+      oprot.writeDouble(self.close_length)
+      oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()
 
@@ -3462,6 +3487,7 @@ class DesignWorkSurfTechnology:
     value = (value * 31) ^ hash(self.pore_stubble)
     value = (value * 31) ^ hash(self.pore_angle)
     value = (value * 31) ^ hash(self.pore_type)
+    value = (value * 31) ^ hash(self.close_length)
     return value
 
   def __repr__(self):

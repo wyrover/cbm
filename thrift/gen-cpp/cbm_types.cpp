@@ -2126,6 +2126,10 @@ void DesignDrillingSurfTechnology::__set_lm(const double val) {
   this->lm = val;
 }
 
+void DesignDrillingSurfTechnology::__set_close_length(const double val) {
+  this->close_length = val;
+}
+
 uint32_t DesignDrillingSurfTechnology::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -2355,6 +2359,14 @@ uint32_t DesignDrillingSurfTechnology::read(::apache::thrift::protocol::TProtoco
           xfer += iprot->skip(ftype);
         }
         break;
+      case 27:
+        if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
+          xfer += iprot->readDouble(this->close_length);
+          this->__isset.close_length = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -2476,6 +2488,10 @@ uint32_t DesignDrillingSurfTechnology::write(::apache::thrift::protocol::TProtoc
   xfer += oprot->writeDouble(this->lm);
   xfer += oprot->writeFieldEnd();
 
+  xfer += oprot->writeFieldBegin("close_length", ::apache::thrift::protocol::T_DOUBLE, 27);
+  xfer += oprot->writeDouble(this->close_length);
+  xfer += oprot->writeFieldEnd();
+
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -2509,6 +2525,7 @@ void swap(DesignDrillingSurfTechnology &a, DesignDrillingSurfTechnology &b) {
   swap(a.left_side, b.left_side);
   swap(a.right_side, b.right_side);
   swap(a.lm, b.lm);
+  swap(a.close_length, b.close_length);
   swap(a.__isset, b.__isset);
 }
 
@@ -2539,6 +2556,7 @@ DesignDrillingSurfTechnology::DesignDrillingSurfTechnology(const DesignDrillingS
   left_side = other8.left_side;
   right_side = other8.right_side;
   lm = other8.lm;
+  close_length = other8.close_length;
   __isset = other8.__isset;
 }
 DesignDrillingSurfTechnology& DesignDrillingSurfTechnology::operator=(const DesignDrillingSurfTechnology& other9) {
@@ -2568,6 +2586,7 @@ DesignDrillingSurfTechnology& DesignDrillingSurfTechnology::operator=(const Desi
   left_side = other9.left_side;
   right_side = other9.right_side;
   lm = other9.lm;
+  close_length = other9.close_length;
   __isset = other9.__isset;
   return *this;
 }
@@ -2600,6 +2619,7 @@ void DesignDrillingSurfTechnology::printTo(std::ostream& out) const {
   out << ", " << "left_side=" << to_string(left_side);
   out << ", " << "right_side=" << to_string(right_side);
   out << ", " << "lm=" << to_string(lm);
+  out << ", " << "close_length=" << to_string(close_length);
   out << ")";
 }
 
@@ -4612,6 +4632,10 @@ void DesignWorkSurfTechnology::__set_pore_type(const int32_t val) {
   this->pore_type = val;
 }
 
+void DesignWorkSurfTechnology::__set_close_length(const double val) {
+  this->close_length = val;
+}
+
 uint32_t DesignWorkSurfTechnology::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -4865,6 +4889,14 @@ uint32_t DesignWorkSurfTechnology::read(::apache::thrift::protocol::TProtocol* i
           xfer += iprot->skip(ftype);
         }
         break;
+      case 30:
+        if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
+          xfer += iprot->readDouble(this->close_length);
+          this->__isset.close_length = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -4998,6 +5030,10 @@ uint32_t DesignWorkSurfTechnology::write(::apache::thrift::protocol::TProtocol* 
   xfer += oprot->writeI32(this->pore_type);
   xfer += oprot->writeFieldEnd();
 
+  xfer += oprot->writeFieldBegin("close_length", ::apache::thrift::protocol::T_DOUBLE, 30);
+  xfer += oprot->writeDouble(this->close_length);
+  xfer += oprot->writeFieldEnd();
+
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -5034,6 +5070,7 @@ void swap(DesignWorkSurfTechnology &a, DesignWorkSurfTechnology &b) {
   swap(a.pore_stubble, b.pore_stubble);
   swap(a.pore_angle, b.pore_angle);
   swap(a.pore_type, b.pore_type);
+  swap(a.close_length, b.close_length);
   swap(a.__isset, b.__isset);
 }
 
@@ -5067,6 +5104,7 @@ DesignWorkSurfTechnology::DesignWorkSurfTechnology(const DesignWorkSurfTechnolog
   pore_stubble = other26.pore_stubble;
   pore_angle = other26.pore_angle;
   pore_type = other26.pore_type;
+  close_length = other26.close_length;
   __isset = other26.__isset;
 }
 DesignWorkSurfTechnology& DesignWorkSurfTechnology::operator=(const DesignWorkSurfTechnology& other27) {
@@ -5099,6 +5137,7 @@ DesignWorkSurfTechnology& DesignWorkSurfTechnology::operator=(const DesignWorkSu
   pore_stubble = other27.pore_stubble;
   pore_angle = other27.pore_angle;
   pore_type = other27.pore_type;
+  close_length = other27.close_length;
   __isset = other27.__isset;
   return *this;
 }
@@ -5134,6 +5173,7 @@ void DesignWorkSurfTechnology::printTo(std::ostream& out) const {
   out << ", " << "pore_stubble=" << to_string(pore_stubble);
   out << ", " << "pore_angle=" << to_string(pore_angle);
   out << ", " << "pore_type=" << to_string(pore_type);
+  out << ", " << "close_length=" << to_string(close_length);
   out << ")";
 }
 

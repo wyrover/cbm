@@ -149,6 +149,7 @@ class DesignDrillingSurfTechnology(Base):
     left_side = Column(Numeric(8, 2))
     right_side = Column(Numeric(8, 2))
     lm = Column(Numeric(8, 2))
+    close_length = Column(Numeric(8, 2), nullable=False)
 
     design_technology = relationship(u'DesignTechnology')
 
@@ -310,6 +311,7 @@ class DesignWorkSurfTechnology(Base):
     pore_stubble = Column(Numeric(8, 2))
     pore_angle = Column(Numeric(8, 2))
     pore_type = Column(Integer)
+    close_length = Column(Numeric(8, 2), nullable=False)
 
     design_technology = relationship(u'DesignTechnology')
 

@@ -68,6 +68,7 @@ class GasDesignP21Dlg(BaseDialog):
 		self.ui.single_rock_tunnel.setChecked(ws_tech.single_rock_tunnel != 0)
 		self.ui.d_offset.setText(u'%.1f' % ws_tech.d_offset)
 		self.ui.p_offset.setText(u'%.1f' % ws_tech.p_offset)
+		self.ui.close_length.setText(u'%.1f' % ws_tech.close_length)
 	
 	def onSave(self):
 		coal = SQLClientHelper.GetCoalById(self.coal_id)
@@ -110,6 +111,7 @@ class GasDesignP21Dlg(BaseDialog):
 		ws_tech.single_rock_tunnel = int(self.ui.single_rock_tunnel.isChecked())
 		ws_tech.d_offset, ok = self.ui.d_offset.text().toDouble()
 		ws_tech.p_offset, ok = self.ui.p_offset.text().toDouble()
+		ws_tech.close_length, ok = self.ui.close_length.text().toDouble()
 
 		# 保存到数据库
 		if not SQLClientHelper.UpdateDesignWorkSurfTechnology(ws_tech):
