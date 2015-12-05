@@ -361,7 +361,7 @@
 </C>
 <C c="3" r="15" s="13">
 <O>
-<![CDATA[钻孔倾角(°)]]></O>
+<![CDATA[钻孔方位角(°)]]></O>
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
@@ -369,7 +369,7 @@
 </C>
 <C c="4" r="15" cs="2" s="13">
 <O>
-<![CDATA[钻孔方位角(°)]]></O>
+<![CDATA[钻孔倾角(°)]]></O>
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>

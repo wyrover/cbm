@@ -29,7 +29,7 @@
 <ColumnPrivilegeControl/>
 <RowPrivilegeControl/>
 <RowHeight defaultValue="723900">
-<![CDATA[2304000,1728000,1440000,1440000,1440000,1440000,1440000,1728000,1440000,1728000,1440000,1440000,1728000,1440000,1440000,876300,723900]]></RowHeight>
+<![CDATA[2304000,1728000,1440000,1440000,1440000,1440000,1440000,1728000,1440000,1728000,1440000,1440000,1728000,1440000,1440000,723900]]></RowHeight>
 <ColumnWidth defaultValue="2743200">
 <![CDATA[5524500,0,6098117,5336117,7126817,1752600,2743200,2743200,2743200,2743200,2743200]]></ColumnWidth>
 <CellElementList>
@@ -291,7 +291,7 @@
 </C>
 <C c="3" r="13" s="13">
 <O>
-<![CDATA[钻孔倾角(°)]]></O>
+<![CDATA[钻孔方位角(°)]]></O>
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
@@ -299,7 +299,7 @@
 </C>
 <C c="4" r="13" cs="2" s="13">
 <O>
-<![CDATA[钻孔方位角(°)]]></O>
+<![CDATA[钻孔倾角(°)]]></O>
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
@@ -352,10 +352,6 @@
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
 <Expand dir="0"/>
-</C>
-<C c="4" r="15" cs="2">
-<PrivilegeControl/>
-<Expand/>
 </C>
 </CellElementList>
 <ReportAttrSet>
