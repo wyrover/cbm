@@ -1176,11 +1176,26 @@ inline std::ostream& operator<<(std::ostream& out, const DesignEvalUnitPartition
 }
 
 typedef struct _DesignGoafTechnology__isset {
-  _DesignGoafTechnology__isset() : id(false), design_technology_id(false), name(false), comment(false) {}
+  _DesignGoafTechnology__isset() : id(false), design_technology_id(false), name(false), comment(false), pore_stubble(false), dp(false), gs(false), ls(false), ws(false), hs(false), gp(false), pore_num(false), top_dist(false), h_offset(false), y_offset(false), l1(false), l2(false), w(false), h(false) {}
   bool id :1;
   bool design_technology_id :1;
   bool name :1;
   bool comment :1;
+  bool pore_stubble :1;
+  bool dp :1;
+  bool gs :1;
+  bool ls :1;
+  bool ws :1;
+  bool hs :1;
+  bool gp :1;
+  bool pore_num :1;
+  bool top_dist :1;
+  bool h_offset :1;
+  bool y_offset :1;
+  bool l1 :1;
+  bool l2 :1;
+  bool w :1;
+  bool h :1;
 } _DesignGoafTechnology__isset;
 
 class DesignGoafTechnology {
@@ -1188,7 +1203,7 @@ class DesignGoafTechnology {
 
   DesignGoafTechnology(const DesignGoafTechnology&);
   DesignGoafTechnology& operator=(const DesignGoafTechnology&);
-  DesignGoafTechnology() : id(0), design_technology_id(0), name(), comment() {
+  DesignGoafTechnology() : id(0), design_technology_id(0), name(), comment(), pore_stubble(0), dp(0), gs(0), ls(0), ws(0), hs(0), gp(0), pore_num(0), top_dist(0), h_offset(), y_offset(), l1(0), l2(0), w(0), h(0) {
   }
 
   virtual ~DesignGoafTechnology() throw();
@@ -1196,6 +1211,21 @@ class DesignGoafTechnology {
   int32_t design_technology_id;
   std::string name;
   std::string comment;
+  double pore_stubble;
+  double dp;
+  double gs;
+  double ls;
+  double ws;
+  double hs;
+  double gp;
+  int32_t pore_num;
+  double top_dist;
+  std::string h_offset;
+  std::string y_offset;
+  double l1;
+  double l2;
+  double w;
+  double h;
 
   _DesignGoafTechnology__isset __isset;
 
@@ -1207,6 +1237,36 @@ class DesignGoafTechnology {
 
   void __set_comment(const std::string& val);
 
+  void __set_pore_stubble(const double val);
+
+  void __set_dp(const double val);
+
+  void __set_gs(const double val);
+
+  void __set_ls(const double val);
+
+  void __set_ws(const double val);
+
+  void __set_hs(const double val);
+
+  void __set_gp(const double val);
+
+  void __set_pore_num(const int32_t val);
+
+  void __set_top_dist(const double val);
+
+  void __set_h_offset(const std::string& val);
+
+  void __set_y_offset(const std::string& val);
+
+  void __set_l1(const double val);
+
+  void __set_l2(const double val);
+
+  void __set_w(const double val);
+
+  void __set_h(const double val);
+
   bool operator == (const DesignGoafTechnology & rhs) const
   {
     if (!(id == rhs.id))
@@ -1216,6 +1276,36 @@ class DesignGoafTechnology {
     if (!(name == rhs.name))
       return false;
     if (!(comment == rhs.comment))
+      return false;
+    if (!(pore_stubble == rhs.pore_stubble))
+      return false;
+    if (!(dp == rhs.dp))
+      return false;
+    if (!(gs == rhs.gs))
+      return false;
+    if (!(ls == rhs.ls))
+      return false;
+    if (!(ws == rhs.ws))
+      return false;
+    if (!(hs == rhs.hs))
+      return false;
+    if (!(gp == rhs.gp))
+      return false;
+    if (!(pore_num == rhs.pore_num))
+      return false;
+    if (!(top_dist == rhs.top_dist))
+      return false;
+    if (!(h_offset == rhs.h_offset))
+      return false;
+    if (!(y_offset == rhs.y_offset))
+      return false;
+    if (!(l1 == rhs.l1))
+      return false;
+    if (!(l2 == rhs.l2))
+      return false;
+    if (!(w == rhs.w))
+      return false;
+    if (!(h == rhs.h))
       return false;
     return true;
   }

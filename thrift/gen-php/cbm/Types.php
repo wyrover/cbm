@@ -3482,6 +3482,66 @@ class DesignGoafTechnology {
    * @var string
    */
   public $comment = null;
+  /**
+   * @var double
+   */
+  public $pore_stubble = null;
+  /**
+   * @var double
+   */
+  public $dp = null;
+  /**
+   * @var double
+   */
+  public $gs = null;
+  /**
+   * @var double
+   */
+  public $ls = null;
+  /**
+   * @var double
+   */
+  public $ws = null;
+  /**
+   * @var double
+   */
+  public $hs = null;
+  /**
+   * @var double
+   */
+  public $gp = null;
+  /**
+   * @var int
+   */
+  public $pore_num = null;
+  /**
+   * @var double
+   */
+  public $top_dist = null;
+  /**
+   * @var string
+   */
+  public $h_offset = null;
+  /**
+   * @var string
+   */
+  public $y_offset = null;
+  /**
+   * @var double
+   */
+  public $l1 = null;
+  /**
+   * @var double
+   */
+  public $l2 = null;
+  /**
+   * @var double
+   */
+  public $w = null;
+  /**
+   * @var double
+   */
+  public $h = null;
 
   public function __construct($vals=null) {
     if (!isset(self::$_TSPEC)) {
@@ -3502,6 +3562,66 @@ class DesignGoafTechnology {
           'var' => 'comment',
           'type' => TType::STRING,
           ),
+        5 => array(
+          'var' => 'pore_stubble',
+          'type' => TType::DOUBLE,
+          ),
+        6 => array(
+          'var' => 'dp',
+          'type' => TType::DOUBLE,
+          ),
+        7 => array(
+          'var' => 'gs',
+          'type' => TType::DOUBLE,
+          ),
+        8 => array(
+          'var' => 'ls',
+          'type' => TType::DOUBLE,
+          ),
+        9 => array(
+          'var' => 'ws',
+          'type' => TType::DOUBLE,
+          ),
+        10 => array(
+          'var' => 'hs',
+          'type' => TType::DOUBLE,
+          ),
+        11 => array(
+          'var' => 'gp',
+          'type' => TType::DOUBLE,
+          ),
+        12 => array(
+          'var' => 'pore_num',
+          'type' => TType::I32,
+          ),
+        13 => array(
+          'var' => 'top_dist',
+          'type' => TType::DOUBLE,
+          ),
+        14 => array(
+          'var' => 'h_offset',
+          'type' => TType::STRING,
+          ),
+        15 => array(
+          'var' => 'y_offset',
+          'type' => TType::STRING,
+          ),
+        16 => array(
+          'var' => 'l1',
+          'type' => TType::DOUBLE,
+          ),
+        17 => array(
+          'var' => 'l2',
+          'type' => TType::DOUBLE,
+          ),
+        18 => array(
+          'var' => 'w',
+          'type' => TType::DOUBLE,
+          ),
+        19 => array(
+          'var' => 'h',
+          'type' => TType::DOUBLE,
+          ),
         );
     }
     if (is_array($vals)) {
@@ -3516,6 +3636,51 @@ class DesignGoafTechnology {
       }
       if (isset($vals['comment'])) {
         $this->comment = $vals['comment'];
+      }
+      if (isset($vals['pore_stubble'])) {
+        $this->pore_stubble = $vals['pore_stubble'];
+      }
+      if (isset($vals['dp'])) {
+        $this->dp = $vals['dp'];
+      }
+      if (isset($vals['gs'])) {
+        $this->gs = $vals['gs'];
+      }
+      if (isset($vals['ls'])) {
+        $this->ls = $vals['ls'];
+      }
+      if (isset($vals['ws'])) {
+        $this->ws = $vals['ws'];
+      }
+      if (isset($vals['hs'])) {
+        $this->hs = $vals['hs'];
+      }
+      if (isset($vals['gp'])) {
+        $this->gp = $vals['gp'];
+      }
+      if (isset($vals['pore_num'])) {
+        $this->pore_num = $vals['pore_num'];
+      }
+      if (isset($vals['top_dist'])) {
+        $this->top_dist = $vals['top_dist'];
+      }
+      if (isset($vals['h_offset'])) {
+        $this->h_offset = $vals['h_offset'];
+      }
+      if (isset($vals['y_offset'])) {
+        $this->y_offset = $vals['y_offset'];
+      }
+      if (isset($vals['l1'])) {
+        $this->l1 = $vals['l1'];
+      }
+      if (isset($vals['l2'])) {
+        $this->l2 = $vals['l2'];
+      }
+      if (isset($vals['w'])) {
+        $this->w = $vals['w'];
+      }
+      if (isset($vals['h'])) {
+        $this->h = $vals['h'];
       }
     }
   }
@@ -3567,6 +3732,111 @@ class DesignGoafTechnology {
             $xfer += $input->skip($ftype);
           }
           break;
+        case 5:
+          if ($ftype == TType::DOUBLE) {
+            $xfer += $input->readDouble($this->pore_stubble);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 6:
+          if ($ftype == TType::DOUBLE) {
+            $xfer += $input->readDouble($this->dp);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 7:
+          if ($ftype == TType::DOUBLE) {
+            $xfer += $input->readDouble($this->gs);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 8:
+          if ($ftype == TType::DOUBLE) {
+            $xfer += $input->readDouble($this->ls);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 9:
+          if ($ftype == TType::DOUBLE) {
+            $xfer += $input->readDouble($this->ws);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 10:
+          if ($ftype == TType::DOUBLE) {
+            $xfer += $input->readDouble($this->hs);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 11:
+          if ($ftype == TType::DOUBLE) {
+            $xfer += $input->readDouble($this->gp);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 12:
+          if ($ftype == TType::I32) {
+            $xfer += $input->readI32($this->pore_num);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 13:
+          if ($ftype == TType::DOUBLE) {
+            $xfer += $input->readDouble($this->top_dist);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 14:
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->h_offset);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 15:
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->y_offset);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 16:
+          if ($ftype == TType::DOUBLE) {
+            $xfer += $input->readDouble($this->l1);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 17:
+          if ($ftype == TType::DOUBLE) {
+            $xfer += $input->readDouble($this->l2);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 18:
+          if ($ftype == TType::DOUBLE) {
+            $xfer += $input->readDouble($this->w);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 19:
+          if ($ftype == TType::DOUBLE) {
+            $xfer += $input->readDouble($this->h);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
         default:
           $xfer += $input->skip($ftype);
           break;
@@ -3598,6 +3868,81 @@ class DesignGoafTechnology {
     if ($this->comment !== null) {
       $xfer += $output->writeFieldBegin('comment', TType::STRING, 4);
       $xfer += $output->writeString($this->comment);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->pore_stubble !== null) {
+      $xfer += $output->writeFieldBegin('pore_stubble', TType::DOUBLE, 5);
+      $xfer += $output->writeDouble($this->pore_stubble);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->dp !== null) {
+      $xfer += $output->writeFieldBegin('dp', TType::DOUBLE, 6);
+      $xfer += $output->writeDouble($this->dp);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->gs !== null) {
+      $xfer += $output->writeFieldBegin('gs', TType::DOUBLE, 7);
+      $xfer += $output->writeDouble($this->gs);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ls !== null) {
+      $xfer += $output->writeFieldBegin('ls', TType::DOUBLE, 8);
+      $xfer += $output->writeDouble($this->ls);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->ws !== null) {
+      $xfer += $output->writeFieldBegin('ws', TType::DOUBLE, 9);
+      $xfer += $output->writeDouble($this->ws);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->hs !== null) {
+      $xfer += $output->writeFieldBegin('hs', TType::DOUBLE, 10);
+      $xfer += $output->writeDouble($this->hs);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->gp !== null) {
+      $xfer += $output->writeFieldBegin('gp', TType::DOUBLE, 11);
+      $xfer += $output->writeDouble($this->gp);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->pore_num !== null) {
+      $xfer += $output->writeFieldBegin('pore_num', TType::I32, 12);
+      $xfer += $output->writeI32($this->pore_num);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->top_dist !== null) {
+      $xfer += $output->writeFieldBegin('top_dist', TType::DOUBLE, 13);
+      $xfer += $output->writeDouble($this->top_dist);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->h_offset !== null) {
+      $xfer += $output->writeFieldBegin('h_offset', TType::STRING, 14);
+      $xfer += $output->writeString($this->h_offset);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->y_offset !== null) {
+      $xfer += $output->writeFieldBegin('y_offset', TType::STRING, 15);
+      $xfer += $output->writeString($this->y_offset);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->l1 !== null) {
+      $xfer += $output->writeFieldBegin('l1', TType::DOUBLE, 16);
+      $xfer += $output->writeDouble($this->l1);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->l2 !== null) {
+      $xfer += $output->writeFieldBegin('l2', TType::DOUBLE, 17);
+      $xfer += $output->writeDouble($this->l2);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->w !== null) {
+      $xfer += $output->writeFieldBegin('w', TType::DOUBLE, 18);
+      $xfer += $output->writeDouble($this->w);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->h !== null) {
+      $xfer += $output->writeFieldBegin('h', TType::DOUBLE, 19);
+      $xfer += $output->writeDouble($this->h);
       $xfer += $output->writeFieldEnd();
     }
     $xfer += $output->writeFieldStop();

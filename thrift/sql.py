@@ -149,7 +149,7 @@ class DesignDrillingSurfTechnology(Base):
     left_side = Column(Numeric(8, 2))
     right_side = Column(Numeric(8, 2))
     lm = Column(Numeric(8, 2))
-    close_length = Column(Numeric(8, 2), nullable=False)
+    close_length = Column(Numeric(8, 2))
 
     design_technology = relationship(u'DesignTechnology')
 
@@ -195,6 +195,21 @@ class DesignGoafTechnology(Base):
     design_technology_id = Column(ForeignKey(u'design_technology.id', ondelete=u'CASCADE'), index=True)
     name = Column(String(255))
     comment = Column(String(255))
+    pore_stubble = Column(Numeric(8, 2))
+    dp = Column(Numeric(8, 2))
+    gs = Column(Numeric(8, 2))
+    ls = Column(Numeric(8, 2))
+    ws = Column(Numeric(8, 2))
+    hs = Column(Numeric(8, 2))
+    gp = Column(Numeric(8, 2))
+    pore_num = Column(Integer)
+    top_dist = Column(Numeric(8, 2))
+    h_offset = Column(String(255))
+    y_offset = Column(String(255))
+    l1 = Column(Numeric(8, 2))
+    l2 = Column(Numeric(8, 2))
+    w = Column(Numeric(8, 2))
+    h = Column(Numeric(8, 2))
 
     design_technology = relationship(u'DesignTechnology')
 

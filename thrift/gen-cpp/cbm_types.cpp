@@ -3176,6 +3176,66 @@ void DesignGoafTechnology::__set_comment(const std::string& val) {
   this->comment = val;
 }
 
+void DesignGoafTechnology::__set_pore_stubble(const double val) {
+  this->pore_stubble = val;
+}
+
+void DesignGoafTechnology::__set_dp(const double val) {
+  this->dp = val;
+}
+
+void DesignGoafTechnology::__set_gs(const double val) {
+  this->gs = val;
+}
+
+void DesignGoafTechnology::__set_ls(const double val) {
+  this->ls = val;
+}
+
+void DesignGoafTechnology::__set_ws(const double val) {
+  this->ws = val;
+}
+
+void DesignGoafTechnology::__set_hs(const double val) {
+  this->hs = val;
+}
+
+void DesignGoafTechnology::__set_gp(const double val) {
+  this->gp = val;
+}
+
+void DesignGoafTechnology::__set_pore_num(const int32_t val) {
+  this->pore_num = val;
+}
+
+void DesignGoafTechnology::__set_top_dist(const double val) {
+  this->top_dist = val;
+}
+
+void DesignGoafTechnology::__set_h_offset(const std::string& val) {
+  this->h_offset = val;
+}
+
+void DesignGoafTechnology::__set_y_offset(const std::string& val) {
+  this->y_offset = val;
+}
+
+void DesignGoafTechnology::__set_l1(const double val) {
+  this->l1 = val;
+}
+
+void DesignGoafTechnology::__set_l2(const double val) {
+  this->l2 = val;
+}
+
+void DesignGoafTechnology::__set_w(const double val) {
+  this->w = val;
+}
+
+void DesignGoafTechnology::__set_h(const double val) {
+  this->h = val;
+}
+
 uint32_t DesignGoafTechnology::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -3229,6 +3289,126 @@ uint32_t DesignGoafTechnology::read(::apache::thrift::protocol::TProtocol* iprot
           xfer += iprot->skip(ftype);
         }
         break;
+      case 5:
+        if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
+          xfer += iprot->readDouble(this->pore_stubble);
+          this->__isset.pore_stubble = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 6:
+        if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
+          xfer += iprot->readDouble(this->dp);
+          this->__isset.dp = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 7:
+        if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
+          xfer += iprot->readDouble(this->gs);
+          this->__isset.gs = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 8:
+        if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
+          xfer += iprot->readDouble(this->ls);
+          this->__isset.ls = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 9:
+        if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
+          xfer += iprot->readDouble(this->ws);
+          this->__isset.ws = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 10:
+        if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
+          xfer += iprot->readDouble(this->hs);
+          this->__isset.hs = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 11:
+        if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
+          xfer += iprot->readDouble(this->gp);
+          this->__isset.gp = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 12:
+        if (ftype == ::apache::thrift::protocol::T_I32) {
+          xfer += iprot->readI32(this->pore_num);
+          this->__isset.pore_num = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 13:
+        if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
+          xfer += iprot->readDouble(this->top_dist);
+          this->__isset.top_dist = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 14:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->h_offset);
+          this->__isset.h_offset = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 15:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->y_offset);
+          this->__isset.y_offset = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 16:
+        if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
+          xfer += iprot->readDouble(this->l1);
+          this->__isset.l1 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 17:
+        if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
+          xfer += iprot->readDouble(this->l2);
+          this->__isset.l2 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 18:
+        if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
+          xfer += iprot->readDouble(this->w);
+          this->__isset.w = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 19:
+        if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
+          xfer += iprot->readDouble(this->h);
+          this->__isset.h = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -3262,6 +3442,66 @@ uint32_t DesignGoafTechnology::write(::apache::thrift::protocol::TProtocol* opro
   xfer += oprot->writeString(this->comment);
   xfer += oprot->writeFieldEnd();
 
+  xfer += oprot->writeFieldBegin("pore_stubble", ::apache::thrift::protocol::T_DOUBLE, 5);
+  xfer += oprot->writeDouble(this->pore_stubble);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("dp", ::apache::thrift::protocol::T_DOUBLE, 6);
+  xfer += oprot->writeDouble(this->dp);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("gs", ::apache::thrift::protocol::T_DOUBLE, 7);
+  xfer += oprot->writeDouble(this->gs);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("ls", ::apache::thrift::protocol::T_DOUBLE, 8);
+  xfer += oprot->writeDouble(this->ls);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("ws", ::apache::thrift::protocol::T_DOUBLE, 9);
+  xfer += oprot->writeDouble(this->ws);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("hs", ::apache::thrift::protocol::T_DOUBLE, 10);
+  xfer += oprot->writeDouble(this->hs);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("gp", ::apache::thrift::protocol::T_DOUBLE, 11);
+  xfer += oprot->writeDouble(this->gp);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("pore_num", ::apache::thrift::protocol::T_I32, 12);
+  xfer += oprot->writeI32(this->pore_num);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("top_dist", ::apache::thrift::protocol::T_DOUBLE, 13);
+  xfer += oprot->writeDouble(this->top_dist);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("h_offset", ::apache::thrift::protocol::T_STRING, 14);
+  xfer += oprot->writeString(this->h_offset);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("y_offset", ::apache::thrift::protocol::T_STRING, 15);
+  xfer += oprot->writeString(this->y_offset);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("l1", ::apache::thrift::protocol::T_DOUBLE, 16);
+  xfer += oprot->writeDouble(this->l1);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("l2", ::apache::thrift::protocol::T_DOUBLE, 17);
+  xfer += oprot->writeDouble(this->l2);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("w", ::apache::thrift::protocol::T_DOUBLE, 18);
+  xfer += oprot->writeDouble(this->w);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("h", ::apache::thrift::protocol::T_DOUBLE, 19);
+  xfer += oprot->writeDouble(this->h);
+  xfer += oprot->writeFieldEnd();
+
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -3273,6 +3513,21 @@ void swap(DesignGoafTechnology &a, DesignGoafTechnology &b) {
   swap(a.design_technology_id, b.design_technology_id);
   swap(a.name, b.name);
   swap(a.comment, b.comment);
+  swap(a.pore_stubble, b.pore_stubble);
+  swap(a.dp, b.dp);
+  swap(a.gs, b.gs);
+  swap(a.ls, b.ls);
+  swap(a.ws, b.ws);
+  swap(a.hs, b.hs);
+  swap(a.gp, b.gp);
+  swap(a.pore_num, b.pore_num);
+  swap(a.top_dist, b.top_dist);
+  swap(a.h_offset, b.h_offset);
+  swap(a.y_offset, b.y_offset);
+  swap(a.l1, b.l1);
+  swap(a.l2, b.l2);
+  swap(a.w, b.w);
+  swap(a.h, b.h);
   swap(a.__isset, b.__isset);
 }
 
@@ -3281,6 +3536,21 @@ DesignGoafTechnology::DesignGoafTechnology(const DesignGoafTechnology& other14) 
   design_technology_id = other14.design_technology_id;
   name = other14.name;
   comment = other14.comment;
+  pore_stubble = other14.pore_stubble;
+  dp = other14.dp;
+  gs = other14.gs;
+  ls = other14.ls;
+  ws = other14.ws;
+  hs = other14.hs;
+  gp = other14.gp;
+  pore_num = other14.pore_num;
+  top_dist = other14.top_dist;
+  h_offset = other14.h_offset;
+  y_offset = other14.y_offset;
+  l1 = other14.l1;
+  l2 = other14.l2;
+  w = other14.w;
+  h = other14.h;
   __isset = other14.__isset;
 }
 DesignGoafTechnology& DesignGoafTechnology::operator=(const DesignGoafTechnology& other15) {
@@ -3288,6 +3558,21 @@ DesignGoafTechnology& DesignGoafTechnology::operator=(const DesignGoafTechnology
   design_technology_id = other15.design_technology_id;
   name = other15.name;
   comment = other15.comment;
+  pore_stubble = other15.pore_stubble;
+  dp = other15.dp;
+  gs = other15.gs;
+  ls = other15.ls;
+  ws = other15.ws;
+  hs = other15.hs;
+  gp = other15.gp;
+  pore_num = other15.pore_num;
+  top_dist = other15.top_dist;
+  h_offset = other15.h_offset;
+  y_offset = other15.y_offset;
+  l1 = other15.l1;
+  l2 = other15.l2;
+  w = other15.w;
+  h = other15.h;
   __isset = other15.__isset;
   return *this;
 }
@@ -3298,6 +3583,21 @@ void DesignGoafTechnology::printTo(std::ostream& out) const {
   out << ", " << "design_technology_id=" << to_string(design_technology_id);
   out << ", " << "name=" << to_string(name);
   out << ", " << "comment=" << to_string(comment);
+  out << ", " << "pore_stubble=" << to_string(pore_stubble);
+  out << ", " << "dp=" << to_string(dp);
+  out << ", " << "gs=" << to_string(gs);
+  out << ", " << "ls=" << to_string(ls);
+  out << ", " << "ws=" << to_string(ws);
+  out << ", " << "hs=" << to_string(hs);
+  out << ", " << "gp=" << to_string(gp);
+  out << ", " << "pore_num=" << to_string(pore_num);
+  out << ", " << "top_dist=" << to_string(top_dist);
+  out << ", " << "h_offset=" << to_string(h_offset);
+  out << ", " << "y_offset=" << to_string(y_offset);
+  out << ", " << "l1=" << to_string(l1);
+  out << ", " << "l2=" << to_string(l2);
+  out << ", " << "w=" << to_string(w);
+  out << ", " << "h=" << to_string(h);
   out << ")";
 }
 

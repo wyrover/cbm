@@ -2130,6 +2130,21 @@ class DesignGoafTechnology:
    - design_technology_id
    - name
    - comment
+   - pore_stubble
+   - dp
+   - gs
+   - ls
+   - ws
+   - hs
+   - gp
+   - pore_num
+   - top_dist
+   - h_offset
+   - y_offset
+   - l1
+   - l2
+   - w
+   - h
   """
 
   thrift_spec = (
@@ -2138,13 +2153,43 @@ class DesignGoafTechnology:
     (2, TType.I32, 'design_technology_id', None, None, ), # 2
     (3, TType.STRING, 'name', None, None, ), # 3
     (4, TType.STRING, 'comment', None, None, ), # 4
+    (5, TType.DOUBLE, 'pore_stubble', None, None, ), # 5
+    (6, TType.DOUBLE, 'dp', None, None, ), # 6
+    (7, TType.DOUBLE, 'gs', None, None, ), # 7
+    (8, TType.DOUBLE, 'ls', None, None, ), # 8
+    (9, TType.DOUBLE, 'ws', None, None, ), # 9
+    (10, TType.DOUBLE, 'hs', None, None, ), # 10
+    (11, TType.DOUBLE, 'gp', None, None, ), # 11
+    (12, TType.I32, 'pore_num', None, None, ), # 12
+    (13, TType.DOUBLE, 'top_dist', None, None, ), # 13
+    (14, TType.STRING, 'h_offset', None, None, ), # 14
+    (15, TType.STRING, 'y_offset', None, None, ), # 15
+    (16, TType.DOUBLE, 'l1', None, None, ), # 16
+    (17, TType.DOUBLE, 'l2', None, None, ), # 17
+    (18, TType.DOUBLE, 'w', None, None, ), # 18
+    (19, TType.DOUBLE, 'h', None, None, ), # 19
   )
 
-  def __init__(self, id=None, design_technology_id=None, name=None, comment=None,):
+  def __init__(self, id=None, design_technology_id=None, name=None, comment=None, pore_stubble=None, dp=None, gs=None, ls=None, ws=None, hs=None, gp=None, pore_num=None, top_dist=None, h_offset=None, y_offset=None, l1=None, l2=None, w=None, h=None,):
     self.id = id
     self.design_technology_id = design_technology_id
     self.name = name
     self.comment = comment
+    self.pore_stubble = pore_stubble
+    self.dp = dp
+    self.gs = gs
+    self.ls = ls
+    self.ws = ws
+    self.hs = hs
+    self.gp = gp
+    self.pore_num = pore_num
+    self.top_dist = top_dist
+    self.h_offset = h_offset
+    self.y_offset = y_offset
+    self.l1 = l1
+    self.l2 = l2
+    self.w = w
+    self.h = h
 
   def read(self, iprot):
     if iprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None and fastbinary is not None:
@@ -2175,6 +2220,81 @@ class DesignGoafTechnology:
           self.comment = iprot.readString()
         else:
           iprot.skip(ftype)
+      elif fid == 5:
+        if ftype == TType.DOUBLE:
+          self.pore_stubble = iprot.readDouble()
+        else:
+          iprot.skip(ftype)
+      elif fid == 6:
+        if ftype == TType.DOUBLE:
+          self.dp = iprot.readDouble()
+        else:
+          iprot.skip(ftype)
+      elif fid == 7:
+        if ftype == TType.DOUBLE:
+          self.gs = iprot.readDouble()
+        else:
+          iprot.skip(ftype)
+      elif fid == 8:
+        if ftype == TType.DOUBLE:
+          self.ls = iprot.readDouble()
+        else:
+          iprot.skip(ftype)
+      elif fid == 9:
+        if ftype == TType.DOUBLE:
+          self.ws = iprot.readDouble()
+        else:
+          iprot.skip(ftype)
+      elif fid == 10:
+        if ftype == TType.DOUBLE:
+          self.hs = iprot.readDouble()
+        else:
+          iprot.skip(ftype)
+      elif fid == 11:
+        if ftype == TType.DOUBLE:
+          self.gp = iprot.readDouble()
+        else:
+          iprot.skip(ftype)
+      elif fid == 12:
+        if ftype == TType.I32:
+          self.pore_num = iprot.readI32()
+        else:
+          iprot.skip(ftype)
+      elif fid == 13:
+        if ftype == TType.DOUBLE:
+          self.top_dist = iprot.readDouble()
+        else:
+          iprot.skip(ftype)
+      elif fid == 14:
+        if ftype == TType.STRING:
+          self.h_offset = iprot.readString()
+        else:
+          iprot.skip(ftype)
+      elif fid == 15:
+        if ftype == TType.STRING:
+          self.y_offset = iprot.readString()
+        else:
+          iprot.skip(ftype)
+      elif fid == 16:
+        if ftype == TType.DOUBLE:
+          self.l1 = iprot.readDouble()
+        else:
+          iprot.skip(ftype)
+      elif fid == 17:
+        if ftype == TType.DOUBLE:
+          self.l2 = iprot.readDouble()
+        else:
+          iprot.skip(ftype)
+      elif fid == 18:
+        if ftype == TType.DOUBLE:
+          self.w = iprot.readDouble()
+        else:
+          iprot.skip(ftype)
+      elif fid == 19:
+        if ftype == TType.DOUBLE:
+          self.h = iprot.readDouble()
+        else:
+          iprot.skip(ftype)
       else:
         iprot.skip(ftype)
       iprot.readFieldEnd()
@@ -2201,6 +2321,66 @@ class DesignGoafTechnology:
       oprot.writeFieldBegin('comment', TType.STRING, 4)
       oprot.writeString(self.comment)
       oprot.writeFieldEnd()
+    if self.pore_stubble is not None:
+      oprot.writeFieldBegin('pore_stubble', TType.DOUBLE, 5)
+      oprot.writeDouble(self.pore_stubble)
+      oprot.writeFieldEnd()
+    if self.dp is not None:
+      oprot.writeFieldBegin('dp', TType.DOUBLE, 6)
+      oprot.writeDouble(self.dp)
+      oprot.writeFieldEnd()
+    if self.gs is not None:
+      oprot.writeFieldBegin('gs', TType.DOUBLE, 7)
+      oprot.writeDouble(self.gs)
+      oprot.writeFieldEnd()
+    if self.ls is not None:
+      oprot.writeFieldBegin('ls', TType.DOUBLE, 8)
+      oprot.writeDouble(self.ls)
+      oprot.writeFieldEnd()
+    if self.ws is not None:
+      oprot.writeFieldBegin('ws', TType.DOUBLE, 9)
+      oprot.writeDouble(self.ws)
+      oprot.writeFieldEnd()
+    if self.hs is not None:
+      oprot.writeFieldBegin('hs', TType.DOUBLE, 10)
+      oprot.writeDouble(self.hs)
+      oprot.writeFieldEnd()
+    if self.gp is not None:
+      oprot.writeFieldBegin('gp', TType.DOUBLE, 11)
+      oprot.writeDouble(self.gp)
+      oprot.writeFieldEnd()
+    if self.pore_num is not None:
+      oprot.writeFieldBegin('pore_num', TType.I32, 12)
+      oprot.writeI32(self.pore_num)
+      oprot.writeFieldEnd()
+    if self.top_dist is not None:
+      oprot.writeFieldBegin('top_dist', TType.DOUBLE, 13)
+      oprot.writeDouble(self.top_dist)
+      oprot.writeFieldEnd()
+    if self.h_offset is not None:
+      oprot.writeFieldBegin('h_offset', TType.STRING, 14)
+      oprot.writeString(self.h_offset)
+      oprot.writeFieldEnd()
+    if self.y_offset is not None:
+      oprot.writeFieldBegin('y_offset', TType.STRING, 15)
+      oprot.writeString(self.y_offset)
+      oprot.writeFieldEnd()
+    if self.l1 is not None:
+      oprot.writeFieldBegin('l1', TType.DOUBLE, 16)
+      oprot.writeDouble(self.l1)
+      oprot.writeFieldEnd()
+    if self.l2 is not None:
+      oprot.writeFieldBegin('l2', TType.DOUBLE, 17)
+      oprot.writeDouble(self.l2)
+      oprot.writeFieldEnd()
+    if self.w is not None:
+      oprot.writeFieldBegin('w', TType.DOUBLE, 18)
+      oprot.writeDouble(self.w)
+      oprot.writeFieldEnd()
+    if self.h is not None:
+      oprot.writeFieldBegin('h', TType.DOUBLE, 19)
+      oprot.writeDouble(self.h)
+      oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()
 
@@ -2214,6 +2394,21 @@ class DesignGoafTechnology:
     value = (value * 31) ^ hash(self.design_technology_id)
     value = (value * 31) ^ hash(self.name)
     value = (value * 31) ^ hash(self.comment)
+    value = (value * 31) ^ hash(self.pore_stubble)
+    value = (value * 31) ^ hash(self.dp)
+    value = (value * 31) ^ hash(self.gs)
+    value = (value * 31) ^ hash(self.ls)
+    value = (value * 31) ^ hash(self.ws)
+    value = (value * 31) ^ hash(self.hs)
+    value = (value * 31) ^ hash(self.gp)
+    value = (value * 31) ^ hash(self.pore_num)
+    value = (value * 31) ^ hash(self.top_dist)
+    value = (value * 31) ^ hash(self.h_offset)
+    value = (value * 31) ^ hash(self.y_offset)
+    value = (value * 31) ^ hash(self.l1)
+    value = (value * 31) ^ hash(self.l2)
+    value = (value * 31) ^ hash(self.w)
+    value = (value * 31) ^ hash(self.h)
     return value
 
   def __repr__(self):

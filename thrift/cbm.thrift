@@ -163,6 +163,21 @@ struct DesignGoafTechnology {
 	2: i32 design_technology_id,
 	3: string name,
 	4: string comment,
+	5: double pore_stubble,
+	6: double dp,
+	7: double gs,
+	8: double ls,
+	9: double ws,
+	10: double hs,
+	11: double gp,
+	12: i32 pore_num,
+	13: double top_dist,
+	14: string h_offset,
+	15: string y_offset,
+	16: double l1,
+	17: double l2,
+	18: double w,
+	19: double h,
 }
 
 struct DesignPore {
