@@ -1330,7 +1330,7 @@ inline std::ostream& operator<<(std::ostream& out, const DesignGoafTechnology& o
 }
 
 typedef struct _DesignPore__isset {
-  _DesignPore__isset() : id(false), design_eval_unit_id(false), design_site_id(false), name(false), d(false), x1(false), y1(false), z1(false), x2(false), y2(false), z2(false), length(false), angle1(false), angle2(false), comment(false), t(false), h_dist(false), p_dist(false) {}
+  _DesignPore__isset() : id(false), design_eval_unit_id(false), design_site_id(false), name(false), d(false), x1(false), y1(false), z1(false), x2(false), y2(false), z2(false), length(false), angle1(false), angle2(false), comment(false), t(false) {}
   bool id :1;
   bool design_eval_unit_id :1;
   bool design_site_id :1;
@@ -1347,8 +1347,6 @@ typedef struct _DesignPore__isset {
   bool angle2 :1;
   bool comment :1;
   bool t :1;
-  bool h_dist :1;
-  bool p_dist :1;
 } _DesignPore__isset;
 
 class DesignPore {
@@ -1356,7 +1354,7 @@ class DesignPore {
 
   DesignPore(const DesignPore&);
   DesignPore& operator=(const DesignPore&);
-  DesignPore() : id(0), design_eval_unit_id(0), design_site_id(0), name(), d(0), x1(0), y1(0), z1(0), x2(0), y2(0), z2(0), length(0), angle1(0), angle2(0), comment(), t(0), h_dist(0), p_dist(0) {
+  DesignPore() : id(0), design_eval_unit_id(0), design_site_id(0), name(), d(0), x1(0), y1(0), z1(0), x2(0), y2(0), z2(0), length(0), angle1(0), angle2(0), comment(), t(0) {
   }
 
   virtual ~DesignPore() throw();
@@ -1376,8 +1374,6 @@ class DesignPore {
   double angle2;
   std::string comment;
   int32_t t;
-  double h_dist;
-  double p_dist;
 
   _DesignPore__isset __isset;
 
@@ -1413,10 +1409,6 @@ class DesignPore {
 
   void __set_t(const int32_t val);
 
-  void __set_h_dist(const double val);
-
-  void __set_p_dist(const double val);
-
   bool operator == (const DesignPore & rhs) const
   {
     if (!(id == rhs.id))
@@ -1450,10 +1442,6 @@ class DesignPore {
     if (!(comment == rhs.comment))
       return false;
     if (!(t == rhs.t))
-      return false;
-    if (!(h_dist == rhs.h_dist))
-      return false;
-    if (!(p_dist == rhs.p_dist))
       return false;
     return true;
   }

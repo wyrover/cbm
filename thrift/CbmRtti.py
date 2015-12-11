@@ -185,9 +185,7 @@ info = {
 	"angle1":float,
 	"angle2":float,
 	"comment":str,
-	"t":int,
-	"h_dist":float,
-	"p_dist":float
+	"t":int
 },
 "DesignSite":{
 	"id":int,
@@ -717,9 +715,7 @@ fkey = {
 	"angle1":0,
 	"angle2":0,
 	"comment":0,
-	"t":0,
-	"h_dist":0,
-	"p_dist":0
+	"t":0
 },
 "DesignSite":{
 	"id":1,

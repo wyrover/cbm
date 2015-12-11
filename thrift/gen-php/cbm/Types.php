@@ -4019,14 +4019,6 @@ class DesignPore {
    * @var int
    */
   public $t = null;
-  /**
-   * @var double
-   */
-  public $h_dist = null;
-  /**
-   * @var double
-   */
-  public $p_dist = null;
 
   public function __construct($vals=null) {
     if (!isset(self::$_TSPEC)) {
@@ -4095,14 +4087,6 @@ class DesignPore {
           'var' => 't',
           'type' => TType::I32,
           ),
-        17 => array(
-          'var' => 'h_dist',
-          'type' => TType::DOUBLE,
-          ),
-        18 => array(
-          'var' => 'p_dist',
-          'type' => TType::DOUBLE,
-          ),
         );
     }
     if (is_array($vals)) {
@@ -4153,12 +4137,6 @@ class DesignPore {
       }
       if (isset($vals['t'])) {
         $this->t = $vals['t'];
-      }
-      if (isset($vals['h_dist'])) {
-        $this->h_dist = $vals['h_dist'];
-      }
-      if (isset($vals['p_dist'])) {
-        $this->p_dist = $vals['p_dist'];
       }
     }
   }
@@ -4294,20 +4272,6 @@ class DesignPore {
             $xfer += $input->skip($ftype);
           }
           break;
-        case 17:
-          if ($ftype == TType::DOUBLE) {
-            $xfer += $input->readDouble($this->h_dist);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
-        case 18:
-          if ($ftype == TType::DOUBLE) {
-            $xfer += $input->readDouble($this->p_dist);
-          } else {
-            $xfer += $input->skip($ftype);
-          }
-          break;
         default:
           $xfer += $input->skip($ftype);
           break;
@@ -4399,16 +4363,6 @@ class DesignPore {
     if ($this->t !== null) {
       $xfer += $output->writeFieldBegin('t', TType::I32, 16);
       $xfer += $output->writeI32($this->t);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->h_dist !== null) {
-      $xfer += $output->writeFieldBegin('h_dist', TType::DOUBLE, 17);
-      $xfer += $output->writeDouble($this->h_dist);
-      $xfer += $output->writeFieldEnd();
-    }
-    if ($this->p_dist !== null) {
-      $xfer += $output->writeFieldBegin('p_dist', TType::DOUBLE, 18);
-      $xfer += $output->writeDouble($this->p_dist);
       $xfer += $output->writeFieldEnd();
     }
     $xfer += $output->writeFieldStop();
