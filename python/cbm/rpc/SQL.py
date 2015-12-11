@@ -233,6 +233,8 @@ class DesignPore(Base):
     angle2 = Column(Numeric(8, 2))
     comment = Column(String(255))
     t = Column(Integer)
+    h_dist = Column(Numeric(8, 2))
+    p_dist = Column(Numeric(8, 2))
 
     design_eval_unit = relationship(u'DesignEvalUnit')
     design_site = relationship(u'DesignSite')

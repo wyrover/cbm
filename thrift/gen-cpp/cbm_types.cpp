@@ -3670,6 +3670,14 @@ void DesignPore::__set_t(const int32_t val) {
   this->t = val;
 }
 
+void DesignPore::__set_h_dist(const double val) {
+  this->h_dist = val;
+}
+
+void DesignPore::__set_p_dist(const double val) {
+  this->p_dist = val;
+}
+
 uint32_t DesignPore::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -3819,6 +3827,22 @@ uint32_t DesignPore::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
+      case 17:
+        if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
+          xfer += iprot->readDouble(this->h_dist);
+          this->__isset.h_dist = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 18:
+        if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
+          xfer += iprot->readDouble(this->p_dist);
+          this->__isset.p_dist = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -3900,6 +3924,14 @@ uint32_t DesignPore::write(::apache::thrift::protocol::TProtocol* oprot) const {
   xfer += oprot->writeI32(this->t);
   xfer += oprot->writeFieldEnd();
 
+  xfer += oprot->writeFieldBegin("h_dist", ::apache::thrift::protocol::T_DOUBLE, 17);
+  xfer += oprot->writeDouble(this->h_dist);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("p_dist", ::apache::thrift::protocol::T_DOUBLE, 18);
+  xfer += oprot->writeDouble(this->p_dist);
+  xfer += oprot->writeFieldEnd();
+
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -3923,6 +3955,8 @@ void swap(DesignPore &a, DesignPore &b) {
   swap(a.angle2, b.angle2);
   swap(a.comment, b.comment);
   swap(a.t, b.t);
+  swap(a.h_dist, b.h_dist);
+  swap(a.p_dist, b.p_dist);
   swap(a.__isset, b.__isset);
 }
 
@@ -3943,6 +3977,8 @@ DesignPore::DesignPore(const DesignPore& other16) {
   angle2 = other16.angle2;
   comment = other16.comment;
   t = other16.t;
+  h_dist = other16.h_dist;
+  p_dist = other16.p_dist;
   __isset = other16.__isset;
 }
 DesignPore& DesignPore::operator=(const DesignPore& other17) {
@@ -3962,6 +3998,8 @@ DesignPore& DesignPore::operator=(const DesignPore& other17) {
   angle2 = other17.angle2;
   comment = other17.comment;
   t = other17.t;
+  h_dist = other17.h_dist;
+  p_dist = other17.p_dist;
   __isset = other17.__isset;
   return *this;
 }
@@ -3984,6 +4022,8 @@ void DesignPore::printTo(std::ostream& out) const {
   out << ", " << "angle2=" << to_string(angle2);
   out << ", " << "comment=" << to_string(comment);
   out << ", " << "t=" << to_string(t);
+  out << ", " << "h_dist=" << to_string(h_dist);
+  out << ", " << "p_dist=" << to_string(p_dist);
   out << ")";
 }
 

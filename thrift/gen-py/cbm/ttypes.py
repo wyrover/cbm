@@ -2441,6 +2441,8 @@ class DesignPore:
    - angle2
    - comment
    - t
+   - h_dist
+   - p_dist
   """
 
   thrift_spec = (
@@ -2461,9 +2463,11 @@ class DesignPore:
     (14, TType.DOUBLE, 'angle2', None, None, ), # 14
     (15, TType.STRING, 'comment', None, None, ), # 15
     (16, TType.I32, 't', None, None, ), # 16
+    (17, TType.DOUBLE, 'h_dist', None, None, ), # 17
+    (18, TType.DOUBLE, 'p_dist', None, None, ), # 18
   )
 
-  def __init__(self, id=None, design_eval_unit_id=None, design_site_id=None, name=None, d=None, x1=None, y1=None, z1=None, x2=None, y2=None, z2=None, length=None, angle1=None, angle2=None, comment=None, t=None,):
+  def __init__(self, id=None, design_eval_unit_id=None, design_site_id=None, name=None, d=None, x1=None, y1=None, z1=None, x2=None, y2=None, z2=None, length=None, angle1=None, angle2=None, comment=None, t=None, h_dist=None, p_dist=None,):
     self.id = id
     self.design_eval_unit_id = design_eval_unit_id
     self.design_site_id = design_site_id
@@ -2480,6 +2484,8 @@ class DesignPore:
     self.angle2 = angle2
     self.comment = comment
     self.t = t
+    self.h_dist = h_dist
+    self.p_dist = p_dist
 
   def read(self, iprot):
     if iprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None and fastbinary is not None:
@@ -2570,6 +2576,16 @@ class DesignPore:
           self.t = iprot.readI32()
         else:
           iprot.skip(ftype)
+      elif fid == 17:
+        if ftype == TType.DOUBLE:
+          self.h_dist = iprot.readDouble()
+        else:
+          iprot.skip(ftype)
+      elif fid == 18:
+        if ftype == TType.DOUBLE:
+          self.p_dist = iprot.readDouble()
+        else:
+          iprot.skip(ftype)
       else:
         iprot.skip(ftype)
       iprot.readFieldEnd()
@@ -2644,6 +2660,14 @@ class DesignPore:
       oprot.writeFieldBegin('t', TType.I32, 16)
       oprot.writeI32(self.t)
       oprot.writeFieldEnd()
+    if self.h_dist is not None:
+      oprot.writeFieldBegin('h_dist', TType.DOUBLE, 17)
+      oprot.writeDouble(self.h_dist)
+      oprot.writeFieldEnd()
+    if self.p_dist is not None:
+      oprot.writeFieldBegin('p_dist', TType.DOUBLE, 18)
+      oprot.writeDouble(self.p_dist)
+      oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()
 
@@ -2669,6 +2693,8 @@ class DesignPore:
     value = (value * 31) ^ hash(self.angle2)
     value = (value * 31) ^ hash(self.comment)
     value = (value * 31) ^ hash(self.t)
+    value = (value * 31) ^ hash(self.h_dist)
+    value = (value * 31) ^ hash(self.p_dist)
     return value
 
   def __repr__(self):

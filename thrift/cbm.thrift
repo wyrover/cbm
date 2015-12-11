@@ -197,6 +197,8 @@ struct DesignPore {
 	14: double angle2,
 	15: string comment,
 	16: i32 t,
+	17: double h_dist,
+	18: double p_dist,
 }
 
 struct DesignSite {

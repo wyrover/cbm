@@ -816,3 +816,50 @@ def show_report23(coal, ws_tech):
 	# params参数中的字符串数据包括key即可以是utf8编码的str字节数组,也可以是unicode字符串
 	# show_report方法内部会自动处理
 	show_report(params)
+
+# 显示钻孔报表23
+def show_report32(coal, goaf_tech):
+	# 生成参数
+	params = {}
+	# 矿井名称
+	mine = SQLClientHelper.GetMineById(coal.mine_id)
+	params['mine_name'] = mine.name
+	# 工作面名称
+	# 搜索矿井的所有工作面中的第一个(按道理应该是从界面中提供工作面名称!!!)
+	work_surf_list = CbmClientHelper.GetWorkSurfsOfMine(mine.id)
+	if len(work_surf_list) == 0:
+		params['face_name'] = 'W292'
+	else:
+		params['face_name'] = work_surf_list[0].name
+	# 工作面走向长度
+	params['strike_length'] = goaf_tech.l1
+	# 工作面倾向长度
+	params['tendency_length'] = goaf_tech.l2
+	# 钻孔压茬长度
+	params['pore_stubble'] = goaf_tech.pore_stubble
+	# 钻孔间距
+	params['pore_gap'] = goaf_tech.gp
+	# 钻孔直径
+	params['pore_diameter'] = goaf_tech.dp
+	# 钻孔间距
+	params['pore_gap'] = goaf_tech.gp
+	# 封孔长度(界面中没有输入,网上搜的一个参照值)
+	# http://wenku.baidu.com/link?url=4QOLWZsUfFu5zLewMQCeF_WRzYTWmBYE3SRyk1Cj_JTc1UzbZR54NNkrXUsKc1PDj1Kg4492gfSNaKweJTSWxVqz7VbM-b7G3IAbtcdifBy
+	params['close_length'] = goaf_tech.close_length
+	# 模板文件路径(必须参数)
+	params['reportlet'] = 'cbm32.cpt'
+	# 设计方案id(必须参数)
+	params['design_id'] = goaf_tech.design_technology_id
+	# 是否按页面大小显示
+	params['__bypagesize__'] = 'true'
+	# 查询所有钻孔
+	pore_lists = CbmClientHelper.GetAllPores(goaf_tech.design_technology_id)
+	# 计算钻孔个数
+	params['pore_num'] = len(pore_lists)
+	# 计算钻孔总长度
+	params['pore_sum'] = sum([pore.length for pore in pore_lists])
+
+	# 显示报表
+	# params参数中的字符串数据包括key即可以是utf8编码的str字节数组,也可以是unicode字符串
+	# show_report方法内部会自动处理
+	show_report(params)

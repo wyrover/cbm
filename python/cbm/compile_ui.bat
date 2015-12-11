@@ -52,6 +52,7 @@ python %UIC_PY% -o uipy\ui_gas_design_p1_1_dlg.py uifiles\gas_design_p1_1_dlg.ui
 python %UIC_PY% -o uipy\ui_gas_design_p1_2_dlg.py uifiles\gas_design_p1_2_dlg.ui
 python %UIC_PY% -o uipy\ui_gas_design_p2_1_dlg.py uifiles\gas_design_p2_1_dlg.ui
 python %UIC_PY% -o uipy\ui_gas_design_p2_3_dlg.py uifiles\gas_design_p2_3_dlg.ui
+python %UIC_PY% -o uipy\ui_gas_design_p3_2_dlg.py uifiles\gas_design_p3_2_dlg.ui
 
 python %UIC_PY% -o uipy\ui_mainwin.py uifiles\mainwindow.ui
 python %UIC_PY% -o uipy\ui_reg_dlg.py uifiles\reg_dlg.ui
