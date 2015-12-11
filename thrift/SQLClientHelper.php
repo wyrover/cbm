@@ -2274,6 +2274,330 @@ function GetDesignEvalUnitPartitionIdListByForeignKey($fkey, $id) {
 
 //$clsname 类型的CRUD操作
 
+function AddDesignGoafPore($fname) {
+	$ret = -1;
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$ret = $client->AddDesignGoafPore($fname);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$ret = -1;
+	}
+	return $ret;
+}
+
+function DeleteDesignGoafPore($id) {
+	$ret = false;
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$ret = $client->DeleteDesignGoafPore(intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$ret = false;
+	}
+	return $ret;
+}
+
+function UpdateDesignGoafPore($fname) {
+	$ret = false;
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$ret = $client->UpdateDesignGoafPore($fname);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$ret = false;
+	}
+	return $ret;
+}
+
+function GetDesignGoafPoreById($id) {
+	$_return = new DesignGoafPore();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignGoafPoreById(intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return->id = -1;
+	}
+	return $_return;
+}
+
+function GetDesignGoafPoreByForeignKey($fkey, $id) {
+	$_return = new DesignGoafPore();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignGoafPoreByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return->id = -1;
+	}
+	return $_return;
+}
+
+function GetDesignGoafPoreIdByForeignKey($fkey, $id) {
+	$_return = -1;
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignGoafPoreIdByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = -1;
+	}
+	return $_return;
+}
+
+function GetDesignGoafPoreList() {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignGoafPoreList();
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDesignGoafPoreIds() {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignGoafPoreIds();
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDesignGoafPoreNames() {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignGoafPoreNames();
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function AddMoreDesignGoafPore($objs) {
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$client->AddMoreDesignGoafPore($objs);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+	}
+}
+
+function DeleteMoreDesignGoafPore($obj_ids) {
+	if(empty($obj_ids)) return;
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$client->DeleteMoreDesignGoafPore($obj_ids);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+	}
+}
+
+function GetDesignGoafPoreByFields($fields) {
+	$_return = new DesignGoafPore();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignGoafPoreByFields($fields);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return->id = -1;
+	}
+	return $_return;
+}
+
+function GetDesignGoafPoreByField1($field, $value) {
+	$_return = new DesignGoafPore();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignGoafPoreByField1($field, strval($value));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return->id = -1;
+	}
+	return $_return;
+}
+
+function GetDesignGoafPoreByField2($field1, $value1, $field2, $value2) {
+	$_return = new DesignGoafPore();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignGoafPoreByField2($field1, strval($value1), $field2, str($value2));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return->id = -1;
+	}
+	return $_return;
+}
+
+function GetDesignGoafPoreListByFields($fields) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignGoafPoreListByFields($fields);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDesignGoafPoreListByField1($field, $value) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignGoafPoreListByField1($field, strval($value));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDesignGoafPoreListByField2($field1, $value1, $field2, $value2) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignGoafPoreListByField2($field1, strval($value1), $field2, strval($value2));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDesignGoafPoreIdByFields($fields) {
+	$_return = -1;
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignGoafPoreIdByFields($fields);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = -1;
+	}
+	return $_return;
+}
+
+function GetDesignGoafPoreIdByField1($field, $value) {
+	$_return = -1;
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignGoafPoreIdByField1($field, strval($value));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = -1;
+	}
+	return $_return;
+}
+
+function GetDesignGoafPoreIdByField2($field1, $value1, $field2, $value2) {
+	$_return = -1;
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignGoafPoreIdByField2($field1, strval($value1), $field2, strval($value2));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = -1;
+	}
+	return $_return;
+}
+
+function GetDesignGoafPoreIdListByFields($fields) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignGoafPoreIdListByFields($fields);
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDesignGoafPoreIdListByField1($field, $value) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignGoafPoreIdListByField1($field, strval($value));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDesignGoafPoreIdListByField2($field1, $value1, $field2, $value2) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignGoafPoreIdListByField2($field1, strval($value1), $field2, strval($value2));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDesignGoafPoreListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignGoafPoreListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+function GetDesignGoafPoreIdListByForeignKey($fkey, $id) {
+	$_return = array();
+	try {
+		$service_client = new ThriftClient('\cbm\CbmServiceClient', HOST, PORT2);
+		$client = $service_client->getClient();
+		$_return = $client->GetDesignGoafPoreIdListByForeignKey($fkey, intval($id));
+	} catch (TException $tx) {
+		print 'TException: '.$tx->getMessage()."\n";
+		$_return = array();
+	}
+	return $_return;
+}
+
+
+
+//$clsname 类型的CRUD操作
+
 function AddDesignGoafTechnology($fname) {
 	$ret = -1;
 	try {

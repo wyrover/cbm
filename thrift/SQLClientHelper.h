@@ -196,6 +196,33 @@ public:
 	static void GetDesignEvalUnitPartitionListByForeignKey(std::vector<cbm::DesignEvalUnitPartition> & _return, const std::string& fkey, const int32_t id);
 	static void GetDesignEvalUnitPartitionIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
 
+	//DesignGoafPore 类型的CRUD操作
+	static int32_t AddDesignGoafPore(const cbm::DesignGoafPore & design_goaf_pore);
+	static bool DeleteDesignGoafPore(const int32_t id);
+	static bool UpdateDesignGoafPore(const cbm::DesignGoafPore & design_goaf_pore);
+	static void GetDesignGoafPoreById(cbm::DesignGoafPore & _return, const int32_t id);
+	static void GetDesignGoafPoreByForeignKey(cbm::DesignGoafPore & _return, const std::string& fkey, const int32_t id);
+	static int32_t GetDesignGoafPoreIdByForeignKey(const std::string& fkey, const int32_t id);
+	static void GetDesignGoafPoreList(std::vector<cbm::DesignGoafPore> & _return);
+	static void GetDesignGoafPoreIds(std::vector<int32_t> & _return);
+	static void GetDesignGoafPoreNames(std::vector<std::string> & _return);
+	static void AddMoreDesignGoafPore(const std::vector<cbm::DesignGoafPore> & objs);
+	static void DeleteMoreDesignGoafPore(const std::vector<int32_t> & obj_ids);
+	static void GetDesignGoafPoreByFields(cbm::DesignGoafPore & _return, const std::map<std::string, std::string> & fields);
+	static void GetDesignGoafPoreByField1(cbm::DesignGoafPore & _return, const std::string& field, const std::string& value);
+	static void GetDesignGoafPoreByField2(cbm::DesignGoafPore & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static void GetDesignGoafPoreListByFields(std::vector<cbm::DesignGoafPore> & _return, const std::map<std::string, std::string> & fields);
+	static void GetDesignGoafPoreListByField1(std::vector<cbm::DesignGoafPore> & _return, const std::string& field, const std::string& value);
+	static void GetDesignGoafPoreListByField2(std::vector<cbm::DesignGoafPore> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static int32_t GetDesignGoafPoreIdByFields(const std::map<std::string, std::string> & fields);
+	static int32_t GetDesignGoafPoreIdByField1(const std::string& field, const std::string& value);
+	static int32_t GetDesignGoafPoreIdByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static void GetDesignGoafPoreIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields);
+	static void GetDesignGoafPoreIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value);
+	static void GetDesignGoafPoreIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2);
+	static void GetDesignGoafPoreListByForeignKey(std::vector<cbm::DesignGoafPore> & _return, const std::string& fkey, const int32_t id);
+	static void GetDesignGoafPoreIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id);
+
 	//DesignGoafTechnology 类型的CRUD操作
 	static int32_t AddDesignGoafTechnology(const cbm::DesignGoafTechnology & design_goaf_technology);
 	static bool DeleteDesignGoafTechnology(const int32_t id);

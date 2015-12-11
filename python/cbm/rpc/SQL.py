@@ -188,6 +188,19 @@ class DesignEvalUnitPartition(Base):
     work_surf = relationship(u'WorkSurf')
 
 
+class DesignGoafPore(Base):
+    __tablename__ = 'design_goaf_pore'
+
+    id = Column(Integer, primary_key=True)
+    design_goaf_technology_id = Column(ForeignKey(u'design_goaf_technology.id', ondelete=u'CASCADE'), index=True)
+    name = Column(String(255))
+    h_offset = Column(Numeric(8, 2))
+    v_offset = Column(Numeric(8, 2))
+    comment = Column(String(255))
+
+    design_goaf_technology = relationship(u'DesignGoafTechnology')
+
+
 class DesignGoafTechnology(Base):
     __tablename__ = 'design_goaf_technology'
 

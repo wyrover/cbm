@@ -33,6 +33,8 @@ class DesignEvalUnit;
 
 class DesignEvalUnitPartition;
 
+class DesignGoafPore;
+
 class DesignGoafTechnology;
 
 class DesignPore;
@@ -1170,6 +1172,82 @@ class DesignEvalUnitPartition {
 void swap(DesignEvalUnitPartition &a, DesignEvalUnitPartition &b);
 
 inline std::ostream& operator<<(std::ostream& out, const DesignEvalUnitPartition& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _DesignGoafPore__isset {
+  _DesignGoafPore__isset() : id(false), design_goaf_technology_id(false), name(false), h_offset(false), v_offset(false), comment(false) {}
+  bool id :1;
+  bool design_goaf_technology_id :1;
+  bool name :1;
+  bool h_offset :1;
+  bool v_offset :1;
+  bool comment :1;
+} _DesignGoafPore__isset;
+
+class DesignGoafPore {
+ public:
+
+  DesignGoafPore(const DesignGoafPore&);
+  DesignGoafPore& operator=(const DesignGoafPore&);
+  DesignGoafPore() : id(0), design_goaf_technology_id(0), name(), h_offset(0), v_offset(0), comment() {
+  }
+
+  virtual ~DesignGoafPore() throw();
+  int32_t id;
+  int32_t design_goaf_technology_id;
+  std::string name;
+  double h_offset;
+  double v_offset;
+  std::string comment;
+
+  _DesignGoafPore__isset __isset;
+
+  void __set_id(const int32_t val);
+
+  void __set_design_goaf_technology_id(const int32_t val);
+
+  void __set_name(const std::string& val);
+
+  void __set_h_offset(const double val);
+
+  void __set_v_offset(const double val);
+
+  void __set_comment(const std::string& val);
+
+  bool operator == (const DesignGoafPore & rhs) const
+  {
+    if (!(id == rhs.id))
+      return false;
+    if (!(design_goaf_technology_id == rhs.design_goaf_technology_id))
+      return false;
+    if (!(name == rhs.name))
+      return false;
+    if (!(h_offset == rhs.h_offset))
+      return false;
+    if (!(v_offset == rhs.v_offset))
+      return false;
+    if (!(comment == rhs.comment))
+      return false;
+    return true;
+  }
+  bool operator != (const DesignGoafPore &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const DesignGoafPore & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(DesignGoafPore &a, DesignGoafPore &b);
+
+inline std::ostream& operator<<(std::ostream& out, const DesignGoafPore& obj)
 {
   obj.printTo(out);
   return out;

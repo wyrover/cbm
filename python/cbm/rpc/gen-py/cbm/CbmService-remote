@@ -199,6 +199,31 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
   print('   GetDesignEvalUnitPartitionIdListByField2(string field1, string value1, string field2, string value2)')
   print('   GetDesignEvalUnitPartitionListByForeignKey(string fkey, i32 id)')
   print('   GetDesignEvalUnitPartitionIdListByForeignKey(string fkey, i32 id)')
+  print('  i32 AddDesignGoafPore(DesignGoafPore design_goaf_pore)')
+  print('  bool DeleteDesignGoafPore(i32 id)')
+  print('  bool UpdateDesignGoafPore(DesignGoafPore design_goaf_pore)')
+  print('  DesignGoafPore GetDesignGoafPoreById(i32 id)')
+  print('  DesignGoafPore GetDesignGoafPoreByForeignKey(string fkey, i32 id)')
+  print('  i32 GetDesignGoafPoreIdByForeignKey(string fkey, i32 id)')
+  print('   GetDesignGoafPoreList()')
+  print('   GetDesignGoafPoreIds()')
+  print('   GetDesignGoafPoreNames()')
+  print('  void AddMoreDesignGoafPore( objs)')
+  print('  void DeleteMoreDesignGoafPore( obj_ids)')
+  print('  DesignGoafPore GetDesignGoafPoreByFields( fields)')
+  print('  DesignGoafPore GetDesignGoafPoreByField1(string field, string value)')
+  print('  DesignGoafPore GetDesignGoafPoreByField2(string field1, string value1, string field2, string value2)')
+  print('   GetDesignGoafPoreListByFields( fields)')
+  print('   GetDesignGoafPoreListByField1(string field, string value)')
+  print('   GetDesignGoafPoreListByField2(string field1, string value1, string field2, string value2)')
+  print('  i32 GetDesignGoafPoreIdByFields( fields)')
+  print('  i32 GetDesignGoafPoreIdByField1(string field, string value)')
+  print('  i32 GetDesignGoafPoreIdByField2(string field1, string value1, string field2, string value2)')
+  print('   GetDesignGoafPoreIdListByFields( fields)')
+  print('   GetDesignGoafPoreIdListByField1(string field, string value)')
+  print('   GetDesignGoafPoreIdListByField2(string field1, string value1, string field2, string value2)')
+  print('   GetDesignGoafPoreListByForeignKey(string fkey, i32 id)')
+  print('   GetDesignGoafPoreIdListByForeignKey(string fkey, i32 id)')
   print('  i32 AddDesignGoafTechnology(DesignGoafTechnology design_goaf_technology)')
   print('  bool DeleteDesignGoafTechnology(i32 id)')
   print('  bool UpdateDesignGoafTechnology(DesignGoafTechnology design_goaf_technology)')
@@ -2034,6 +2059,156 @@ elif cmd == 'GetDesignEvalUnitPartitionIdListByForeignKey':
     print('GetDesignEvalUnitPartitionIdListByForeignKey requires 2 args')
     sys.exit(1)
   pp.pprint(client.GetDesignEvalUnitPartitionIdListByForeignKey(args[0],eval(args[1]),))
+
+elif cmd == 'AddDesignGoafPore':
+  if len(args) != 1:
+    print('AddDesignGoafPore requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.AddDesignGoafPore(eval(args[0]),))
+
+elif cmd == 'DeleteDesignGoafPore':
+  if len(args) != 1:
+    print('DeleteDesignGoafPore requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.DeleteDesignGoafPore(eval(args[0]),))
+
+elif cmd == 'UpdateDesignGoafPore':
+  if len(args) != 1:
+    print('UpdateDesignGoafPore requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.UpdateDesignGoafPore(eval(args[0]),))
+
+elif cmd == 'GetDesignGoafPoreById':
+  if len(args) != 1:
+    print('GetDesignGoafPoreById requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignGoafPoreById(eval(args[0]),))
+
+elif cmd == 'GetDesignGoafPoreByForeignKey':
+  if len(args) != 2:
+    print('GetDesignGoafPoreByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignGoafPoreByForeignKey(args[0],eval(args[1]),))
+
+elif cmd == 'GetDesignGoafPoreIdByForeignKey':
+  if len(args) != 2:
+    print('GetDesignGoafPoreIdByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignGoafPoreIdByForeignKey(args[0],eval(args[1]),))
+
+elif cmd == 'GetDesignGoafPoreList':
+  if len(args) != 0:
+    print('GetDesignGoafPoreList requires 0 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignGoafPoreList())
+
+elif cmd == 'GetDesignGoafPoreIds':
+  if len(args) != 0:
+    print('GetDesignGoafPoreIds requires 0 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignGoafPoreIds())
+
+elif cmd == 'GetDesignGoafPoreNames':
+  if len(args) != 0:
+    print('GetDesignGoafPoreNames requires 0 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignGoafPoreNames())
+
+elif cmd == 'AddMoreDesignGoafPore':
+  if len(args) != 1:
+    print('AddMoreDesignGoafPore requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.AddMoreDesignGoafPore(eval(args[0]),))
+
+elif cmd == 'DeleteMoreDesignGoafPore':
+  if len(args) != 1:
+    print('DeleteMoreDesignGoafPore requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.DeleteMoreDesignGoafPore(eval(args[0]),))
+
+elif cmd == 'GetDesignGoafPoreByFields':
+  if len(args) != 1:
+    print('GetDesignGoafPoreByFields requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignGoafPoreByFields(eval(args[0]),))
+
+elif cmd == 'GetDesignGoafPoreByField1':
+  if len(args) != 2:
+    print('GetDesignGoafPoreByField1 requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignGoafPoreByField1(args[0],args[1],))
+
+elif cmd == 'GetDesignGoafPoreByField2':
+  if len(args) != 4:
+    print('GetDesignGoafPoreByField2 requires 4 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignGoafPoreByField2(args[0],args[1],args[2],args[3],))
+
+elif cmd == 'GetDesignGoafPoreListByFields':
+  if len(args) != 1:
+    print('GetDesignGoafPoreListByFields requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignGoafPoreListByFields(eval(args[0]),))
+
+elif cmd == 'GetDesignGoafPoreListByField1':
+  if len(args) != 2:
+    print('GetDesignGoafPoreListByField1 requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignGoafPoreListByField1(args[0],args[1],))
+
+elif cmd == 'GetDesignGoafPoreListByField2':
+  if len(args) != 4:
+    print('GetDesignGoafPoreListByField2 requires 4 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignGoafPoreListByField2(args[0],args[1],args[2],args[3],))
+
+elif cmd == 'GetDesignGoafPoreIdByFields':
+  if len(args) != 1:
+    print('GetDesignGoafPoreIdByFields requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignGoafPoreIdByFields(eval(args[0]),))
+
+elif cmd == 'GetDesignGoafPoreIdByField1':
+  if len(args) != 2:
+    print('GetDesignGoafPoreIdByField1 requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignGoafPoreIdByField1(args[0],args[1],))
+
+elif cmd == 'GetDesignGoafPoreIdByField2':
+  if len(args) != 4:
+    print('GetDesignGoafPoreIdByField2 requires 4 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignGoafPoreIdByField2(args[0],args[1],args[2],args[3],))
+
+elif cmd == 'GetDesignGoafPoreIdListByFields':
+  if len(args) != 1:
+    print('GetDesignGoafPoreIdListByFields requires 1 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignGoafPoreIdListByFields(eval(args[0]),))
+
+elif cmd == 'GetDesignGoafPoreIdListByField1':
+  if len(args) != 2:
+    print('GetDesignGoafPoreIdListByField1 requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignGoafPoreIdListByField1(args[0],args[1],))
+
+elif cmd == 'GetDesignGoafPoreIdListByField2':
+  if len(args) != 4:
+    print('GetDesignGoafPoreIdListByField2 requires 4 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignGoafPoreIdListByField2(args[0],args[1],args[2],args[3],))
+
+elif cmd == 'GetDesignGoafPoreListByForeignKey':
+  if len(args) != 2:
+    print('GetDesignGoafPoreListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignGoafPoreListByForeignKey(args[0],eval(args[1]),))
+
+elif cmd == 'GetDesignGoafPoreIdListByForeignKey':
+  if len(args) != 2:
+    print('GetDesignGoafPoreIdListByForeignKey requires 2 args')
+    sys.exit(1)
+  pp.pprint(client.GetDesignGoafPoreIdListByForeignKey(args[0],eval(args[1]),))
 
 elif cmd == 'AddDesignGoafTechnology':
   if len(args) != 1:

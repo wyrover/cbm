@@ -158,6 +158,15 @@ struct DesignEvalUnitPartition {
 	12: double v,
 }
 
+struct DesignGoafPore {
+	1: i32 id,
+	2: i32 design_goaf_technology_id,
+	3: string name,
+	4: double h_offset,
+	5: double v_offset,
+	6: string comment,
+}
+
 struct DesignGoafTechnology {
 	1: i32 id,
 	2: i32 design_technology_id,
@@ -765,6 +774,33 @@ service CbmService {
 	list<i32> GetDesignEvalUnitPartitionIdListByField2(1:string field1, 2:string value1, 3:string field2, 4:string value2),
 	list<DesignEvalUnitPartition> GetDesignEvalUnitPartitionListByForeignKey(1:string fkey, 2:i32 id),
 	list<i32> GetDesignEvalUnitPartitionIdListByForeignKey(1:string fkey, 2:i32 id),
+
+	//DesignGoafPore 类型的CRUD操作
+	i32 AddDesignGoafPore(1:DesignGoafPore design_goaf_pore),
+	bool DeleteDesignGoafPore(1:i32 id),
+	bool UpdateDesignGoafPore(1:DesignGoafPore design_goaf_pore),
+	DesignGoafPore GetDesignGoafPoreById(1:i32 id),
+	DesignGoafPore GetDesignGoafPoreByForeignKey(1:string fkey, 2:i32 id),
+	i32 GetDesignGoafPoreIdByForeignKey(1:string fkey, 2:i32 id),
+	list<DesignGoafPore> GetDesignGoafPoreList(),
+	list<i32> GetDesignGoafPoreIds(),
+	list<string> GetDesignGoafPoreNames(),
+	void AddMoreDesignGoafPore(1:list<DesignGoafPore> objs),
+	void DeleteMoreDesignGoafPore(1:list<i32> obj_ids),
+	DesignGoafPore GetDesignGoafPoreByFields(1:map<string, string> fields),
+	DesignGoafPore GetDesignGoafPoreByField1(1:string field, 2:string value),
+	DesignGoafPore GetDesignGoafPoreByField2(1:string field1, 2:string value1, 3:string field2, 4:string value2),
+	list<DesignGoafPore> GetDesignGoafPoreListByFields(1:map<string, string> fields),
+	list<DesignGoafPore> GetDesignGoafPoreListByField1(1:string field, 2:string value),
+	list<DesignGoafPore> GetDesignGoafPoreListByField2(1:string field1, 2:string value1, 3:string field2, 4:string value2),
+	i32 GetDesignGoafPoreIdByFields(1:map<string, string> fields),
+	i32 GetDesignGoafPoreIdByField1(1:string field, 2:string value),
+	i32 GetDesignGoafPoreIdByField2(1:string field1, 2:string value1, 3:string field2, 4:string value2),
+	list<i32> GetDesignGoafPoreIdListByFields(1:map<string, string> fields),
+	list<i32> GetDesignGoafPoreIdListByField1(1:string field, 2:string value),
+	list<i32> GetDesignGoafPoreIdListByField2(1:string field1, 2:string value1, 3:string field2, 4:string value2),
+	list<DesignGoafPore> GetDesignGoafPoreListByForeignKey(1:string fkey, 2:i32 id),
+	list<i32> GetDesignGoafPoreIdListByForeignKey(1:string fkey, 2:i32 id),
 
 	//DesignGoafTechnology 类型的CRUD操作
 	i32 AddDesignGoafTechnology(1:DesignGoafTechnology design_goaf_technology),

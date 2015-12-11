@@ -912,6 +912,135 @@ class SQLServiceHandler(object):
 	def GetDesignEvalUnitPartitionIdListByForeignKey(self, fkey, id):
 		return self.GetDesignEvalUnitPartitionIdListByFields({fkey:id})
 
+	#DesignGoafPore 类型的CRUD操作
+	def AddDesignGoafPore(self, design_goaf_pore):
+		sql_obj = SQL.DesignGoafPore()
+		CbmUtil.CopyAttribsOfCbmType("DesignGoafPore", design_goaf_pore, sql_obj, False)
+		sql_obj.id = None
+		self.session.add(sql_obj)
+		self.session.flush()
+		self.session.commit()
+		return sql_obj.id
+	def DeleteDesignGoafPore(self, id):
+		ret=True
+		try:
+			self.session.query(SQL.DesignGoafPore).filter(SQL.DesignGoafPore.id==id).delete(synchronize_session=False)
+			self.session.commit()
+		except Exception, e:
+			print e
+			ret=False
+		return ret
+	def UpdateDesignGoafPore(self, design_goaf_pore):
+		ret=True
+		try:
+			sql_obj = SQL.DesignGoafPore()
+			CbmUtil.CopyAttribsOfCbmType("DesignGoafPore", design_goaf_pore, sql_obj, False)
+			attribs = CbmUtil.GetAttribsOfCbmType("DesignGoafPore", sql_obj)
+			del attribs['id']
+			self.session.query(SQL.DesignGoafPore).filter(SQL.DesignGoafPore.id==sql_obj.id).update(attribs, synchronize_session=False)
+			self.session.commit()
+		except Exception, e:
+			print e
+			ret=False
+		return ret
+	def GetDesignGoafPoreById(self, id):
+		query=self.session.query(SQL.DesignGoafPore).filter(SQL.DesignGoafPore.id==id).first()
+		obj = DesignGoafPore()
+		if query is None:
+			obj.id = -1
+		else:
+			CbmUtil.CopyAttribsOfCbmType("DesignGoafPore", query, obj, True)
+		return obj
+	def GetDesignGoafPoreByForeignKey(self, fkey, id):
+		return self.GetDesignGoafPoreByFields({fkey:id})
+	def GetDesignGoafPoreIdByForeignKey(self, fkey, id):
+		return self.GetDesignGoafPoreIdByFields({fkey:id})
+	def GetDesignGoafPoreList(self):
+		query = self.session.query(SQL.DesignGoafPore).order_by(SQL.DesignGoafPore.id).all()
+		n = len(query)
+		obj_list = [DesignGoafPore() for i in range(n)]
+		for i in range(n):
+			CbmUtil.CopyAttribsOfCbmType("DesignGoafPore", query[i], obj_list[i], True)
+		return obj_list
+	def GetDesignGoafPoreIds(self):
+		query=self.session.query(SQL.DesignGoafPore).order_by(SQL.DesignGoafPore.id).all()
+		return [obj.id for obj in query]
+	def GetDesignGoafPoreNames(self):
+		query=self.session.query(SQL.DesignGoafPore).all()
+		if len(query) == 0 or not hasattr(query[0], 'name'):
+			return []
+		else:
+			return [obj.name for obj in query]
+	def AddMoreDesignGoafPore(self, objs):
+		n = len(objs)
+		sql_objs = [SQL.DesignGoafPore() for i in range(n)]
+		for i in range(n):
+			CbmUtil.CopyAttribsOfCbmType("DesignGoafPore", objs[i], sql_objs[i], False)
+			sql_objs[i].id = None
+			self.session.add(sql_objs[i])
+		self.session.flush()
+		self.session.commit()
+	def DeleteMoreDesignGoafPore(self, obj_ids):
+		if len(obj_ids) == 0:return
+		self.session.query(SQL.DesignGoafPore).filter(SQL.DesignGoafPore.id.in_(obj_ids)).delete(synchronize_session=False)
+		self.session.commit()
+	def __GetDesignGoafPoreByFields(self, fields):
+		sql_fields = CbmUtil.map_fields("DesignGoafPore", fields)
+		query = self.session.query(SQL.DesignGoafPore).filter_by(**sql_fields).order_by(SQL.DesignGoafPore.id).all()
+		if len(query) == 0:
+			return []
+		else:
+			n = len(query)
+			obj_list = [DesignGoafPore() for i in range(n)]
+			for i in range(n):
+				CbmUtil.CopyAttribsOfCbmType("DesignGoafPore", query[i], obj_list[i], True)
+			return obj_list
+	def __GetDesignGoafPoreIdsByFields(self, fields):
+		sql_fields = CbmUtil.map_fields("DesignGoafPore", fields)
+		query = self.session.query(SQL.DesignGoafPore).filter_by(**sql_fields).order_by(SQL.DesignGoafPore.id).all()
+		if len(query) == 0:
+			return []
+		else:
+			return [obj.id for obj in query]
+	def GetDesignGoafPoreByFields(self, fields):
+		objs = self.__GetDesignGoafPoreByFields(fields)
+		if len(objs) == 0:
+			obj = DesignGoafPore()
+			obj.id = -1
+			return obj
+		else:
+			return objs[0]
+	def GetDesignGoafPoreByField1(self, field, value):
+		return self.GetDesignGoafPoreByFields({field:value})
+	def GetDesignGoafPoreByField2(self, field1, value1, field2, value2):
+		return self.GetDesignGoafPoreByFields({field1:value1, field2:value2})
+	def GetDesignGoafPoreListByFields(self, fields):
+		return self.__GetDesignGoafPoreByFields(fields)
+	def GetDesignGoafPoreListByField1(self, field, value):
+		return self.GetDesignGoafPoreListByFields({field:value})
+	def GetDesignGoafPoreListByField2(self, field1, value1, field2, value2):
+		return self.GetDesignGoafPoreListByFields({field1:value1, field2:value2})
+	def GetDesignGoafPoreIdByFields(self, fields):
+		obj_ids = self.__GetDesignGoafPoreIdsByFields(fields)
+		if len(obj_ids) == 0:
+			return -1
+		else:
+			return obj_ids[0]
+	def GetDesignGoafPoreIdByField1(self, field, value):
+		return self.GetDesignGoafPoreIdByFields({field:value})
+	def GetDesignGoafPoreIdByField2(self, field1, value1, field2, value2):
+		return self.GetDesignGoafPoreIdByFields({field1:value1, field2:value2})
+	def GetDesignGoafPoreIdListByFields(self, fields):
+		return self.__GetDesignGoafPoreIdsByFields(fields)
+	def GetDesignGoafPoreIdListByField1(self, field, value):
+		return self.GetDesignGoafPoreIdListByFields({field:value})
+	def GetDesignGoafPoreIdListByField2(self, field1, value1, field2, value2):
+		return self.GetDesignGoafPoreIdListByFields({field1:value1, field2:value2})
+	def GetDesignGoafPoreListByForeignKey(self, fkey, id):
+		return self.GetDesignGoafPoreListByFields({fkey:id})
+	def GetDesignGoafPoreIdListByForeignKey(self, fkey, id):
+		return self.GetDesignGoafPoreIdListByFields({fkey:id})
+
 	#DesignGoafTechnology 类型的CRUD操作
 	def AddDesignGoafTechnology(self, design_goaf_technology):
 		sql_obj = SQL.DesignGoafTechnology()

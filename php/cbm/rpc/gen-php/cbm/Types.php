@@ -3463,6 +3463,196 @@ class DesignEvalUnitPartition {
 
 }
 
+class DesignGoafPore {
+  static $_TSPEC;
+
+  /**
+   * @var int
+   */
+  public $id = null;
+  /**
+   * @var int
+   */
+  public $design_goaf_technology_id = null;
+  /**
+   * @var string
+   */
+  public $name = null;
+  /**
+   * @var double
+   */
+  public $h_offset = null;
+  /**
+   * @var double
+   */
+  public $v_offset = null;
+  /**
+   * @var string
+   */
+  public $comment = null;
+
+  public function __construct($vals=null) {
+    if (!isset(self::$_TSPEC)) {
+      self::$_TSPEC = array(
+        1 => array(
+          'var' => 'id',
+          'type' => TType::I32,
+          ),
+        2 => array(
+          'var' => 'design_goaf_technology_id',
+          'type' => TType::I32,
+          ),
+        3 => array(
+          'var' => 'name',
+          'type' => TType::STRING,
+          ),
+        4 => array(
+          'var' => 'h_offset',
+          'type' => TType::DOUBLE,
+          ),
+        5 => array(
+          'var' => 'v_offset',
+          'type' => TType::DOUBLE,
+          ),
+        6 => array(
+          'var' => 'comment',
+          'type' => TType::STRING,
+          ),
+        );
+    }
+    if (is_array($vals)) {
+      if (isset($vals['id'])) {
+        $this->id = $vals['id'];
+      }
+      if (isset($vals['design_goaf_technology_id'])) {
+        $this->design_goaf_technology_id = $vals['design_goaf_technology_id'];
+      }
+      if (isset($vals['name'])) {
+        $this->name = $vals['name'];
+      }
+      if (isset($vals['h_offset'])) {
+        $this->h_offset = $vals['h_offset'];
+      }
+      if (isset($vals['v_offset'])) {
+        $this->v_offset = $vals['v_offset'];
+      }
+      if (isset($vals['comment'])) {
+        $this->comment = $vals['comment'];
+      }
+    }
+  }
+
+  public function getName() {
+    return 'DesignGoafPore';
+  }
+
+  public function read($input)
+  {
+    $xfer = 0;
+    $fname = null;
+    $ftype = 0;
+    $fid = 0;
+    $xfer += $input->readStructBegin($fname);
+    while (true)
+    {
+      $xfer += $input->readFieldBegin($fname, $ftype, $fid);
+      if ($ftype == TType::STOP) {
+        break;
+      }
+      switch ($fid)
+      {
+        case 1:
+          if ($ftype == TType::I32) {
+            $xfer += $input->readI32($this->id);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 2:
+          if ($ftype == TType::I32) {
+            $xfer += $input->readI32($this->design_goaf_technology_id);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 3:
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->name);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 4:
+          if ($ftype == TType::DOUBLE) {
+            $xfer += $input->readDouble($this->h_offset);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 5:
+          if ($ftype == TType::DOUBLE) {
+            $xfer += $input->readDouble($this->v_offset);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        case 6:
+          if ($ftype == TType::STRING) {
+            $xfer += $input->readString($this->comment);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
+        default:
+          $xfer += $input->skip($ftype);
+          break;
+      }
+      $xfer += $input->readFieldEnd();
+    }
+    $xfer += $input->readStructEnd();
+    return $xfer;
+  }
+
+  public function write($output) {
+    $xfer = 0;
+    $xfer += $output->writeStructBegin('DesignGoafPore');
+    if ($this->id !== null) {
+      $xfer += $output->writeFieldBegin('id', TType::I32, 1);
+      $xfer += $output->writeI32($this->id);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->design_goaf_technology_id !== null) {
+      $xfer += $output->writeFieldBegin('design_goaf_technology_id', TType::I32, 2);
+      $xfer += $output->writeI32($this->design_goaf_technology_id);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->name !== null) {
+      $xfer += $output->writeFieldBegin('name', TType::STRING, 3);
+      $xfer += $output->writeString($this->name);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->h_offset !== null) {
+      $xfer += $output->writeFieldBegin('h_offset', TType::DOUBLE, 4);
+      $xfer += $output->writeDouble($this->h_offset);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->v_offset !== null) {
+      $xfer += $output->writeFieldBegin('v_offset', TType::DOUBLE, 5);
+      $xfer += $output->writeDouble($this->v_offset);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->comment !== null) {
+      $xfer += $output->writeFieldBegin('comment', TType::STRING, 6);
+      $xfer += $output->writeString($this->comment);
+      $xfer += $output->writeFieldEnd();
+    }
+    $xfer += $output->writeFieldStop();
+    $xfer += $output->writeStructEnd();
+    return $xfer;
+  }
+
+}
+
 class DesignGoafTechnology {
   static $_TSPEC;
 

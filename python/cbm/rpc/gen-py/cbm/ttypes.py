@@ -2123,6 +2123,136 @@ class DesignEvalUnitPartition:
   def __ne__(self, other):
     return not (self == other)
 
+class DesignGoafPore:
+  """
+  Attributes:
+   - id
+   - design_goaf_technology_id
+   - name
+   - h_offset
+   - v_offset
+   - comment
+  """
+
+  thrift_spec = (
+    None, # 0
+    (1, TType.I32, 'id', None, None, ), # 1
+    (2, TType.I32, 'design_goaf_technology_id', None, None, ), # 2
+    (3, TType.STRING, 'name', None, None, ), # 3
+    (4, TType.DOUBLE, 'h_offset', None, None, ), # 4
+    (5, TType.DOUBLE, 'v_offset', None, None, ), # 5
+    (6, TType.STRING, 'comment', None, None, ), # 6
+  )
+
+  def __init__(self, id=None, design_goaf_technology_id=None, name=None, h_offset=None, v_offset=None, comment=None,):
+    self.id = id
+    self.design_goaf_technology_id = design_goaf_technology_id
+    self.name = name
+    self.h_offset = h_offset
+    self.v_offset = v_offset
+    self.comment = comment
+
+  def read(self, iprot):
+    if iprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None and fastbinary is not None:
+      fastbinary.decode_binary(self, iprot.trans, (self.__class__, self.thrift_spec))
+      return
+    iprot.readStructBegin()
+    while True:
+      (fname, ftype, fid) = iprot.readFieldBegin()
+      if ftype == TType.STOP:
+        break
+      if fid == 1:
+        if ftype == TType.I32:
+          self.id = iprot.readI32()
+        else:
+          iprot.skip(ftype)
+      elif fid == 2:
+        if ftype == TType.I32:
+          self.design_goaf_technology_id = iprot.readI32()
+        else:
+          iprot.skip(ftype)
+      elif fid == 3:
+        if ftype == TType.STRING:
+          self.name = iprot.readString()
+        else:
+          iprot.skip(ftype)
+      elif fid == 4:
+        if ftype == TType.DOUBLE:
+          self.h_offset = iprot.readDouble()
+        else:
+          iprot.skip(ftype)
+      elif fid == 5:
+        if ftype == TType.DOUBLE:
+          self.v_offset = iprot.readDouble()
+        else:
+          iprot.skip(ftype)
+      elif fid == 6:
+        if ftype == TType.STRING:
+          self.comment = iprot.readString()
+        else:
+          iprot.skip(ftype)
+      else:
+        iprot.skip(ftype)
+      iprot.readFieldEnd()
+    iprot.readStructEnd()
+
+  def write(self, oprot):
+    if oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and self.thrift_spec is not None and fastbinary is not None:
+      oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
+      return
+    oprot.writeStructBegin('DesignGoafPore')
+    if self.id is not None:
+      oprot.writeFieldBegin('id', TType.I32, 1)
+      oprot.writeI32(self.id)
+      oprot.writeFieldEnd()
+    if self.design_goaf_technology_id is not None:
+      oprot.writeFieldBegin('design_goaf_technology_id', TType.I32, 2)
+      oprot.writeI32(self.design_goaf_technology_id)
+      oprot.writeFieldEnd()
+    if self.name is not None:
+      oprot.writeFieldBegin('name', TType.STRING, 3)
+      oprot.writeString(self.name)
+      oprot.writeFieldEnd()
+    if self.h_offset is not None:
+      oprot.writeFieldBegin('h_offset', TType.DOUBLE, 4)
+      oprot.writeDouble(self.h_offset)
+      oprot.writeFieldEnd()
+    if self.v_offset is not None:
+      oprot.writeFieldBegin('v_offset', TType.DOUBLE, 5)
+      oprot.writeDouble(self.v_offset)
+      oprot.writeFieldEnd()
+    if self.comment is not None:
+      oprot.writeFieldBegin('comment', TType.STRING, 6)
+      oprot.writeString(self.comment)
+      oprot.writeFieldEnd()
+    oprot.writeFieldStop()
+    oprot.writeStructEnd()
+
+  def validate(self):
+    return
+
+
+  def __hash__(self):
+    value = 17
+    value = (value * 31) ^ hash(self.id)
+    value = (value * 31) ^ hash(self.design_goaf_technology_id)
+    value = (value * 31) ^ hash(self.name)
+    value = (value * 31) ^ hash(self.h_offset)
+    value = (value * 31) ^ hash(self.v_offset)
+    value = (value * 31) ^ hash(self.comment)
+    return value
+
+  def __repr__(self):
+    L = ['%s=%r' % (key, value)
+      for key, value in self.__dict__.iteritems()]
+    return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
+
+  def __eq__(self, other):
+    return isinstance(other, self.__class__) and self.__dict__ == other.__dict__
+
+  def __ne__(self, other):
+    return not (self == other)
+
 class DesignGoafTechnology:
   """
   Attributes:

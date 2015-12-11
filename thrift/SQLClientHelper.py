@@ -1924,6 +1924,280 @@ def GetDesignEvalUnitPartitionIdListByForeignKey(fkey, id):
 
 
 
+#DesignGoafPore 类型的CRUD操作
+def AddDesignGoafPore(design_goaf_pore):
+	ret = -1
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		ret = service_client.get().AddDesignGoafPore(design_goaf_pore)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		ret = -1
+	return ret
+def DeleteDesignGoafPore(id):
+	ret = False
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		ret = service_client.get().DeleteDesignGoafPore(int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		ret = False
+	return ret
+def UpdateDesignGoafPore(design_goaf_pore):
+	ret = False
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		ret = service_client.get().UpdateDesignGoafPore(design_goaf_pore)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		ret = False
+	return ret
+def GetDesignGoafPoreById(id):
+	_return = DesignGoafPore()
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignGoafPoreById(int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return.id = -1
+	return _return
+def GetDesignGoafPoreByForeignKey(fkey, id):
+	_return = DesignGoafPore()
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignGoafPoreByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return.id = -1
+	return _return
+def GetDesignGoafPoreIdByForeignKey(fkey, id):
+	_return = -1
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignGoafPoreIdByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = -1
+	return _return
+def GetDesignGoafPoreList():
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignGoafPoreList()
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignGoafPoreIds():
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignGoafPoreIds()
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignGoafPoreNames():
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignGoafPoreNames()
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def AddMoreDesignGoafPore(objs):
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		service_client.get().AddMoreDesignGoafPore(objs)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+def DeleteMoreDesignGoafPore(obj_ids):
+	if len(obj_ids) == 0:return
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		service_client.get().DeleteMoreDesignGoafPore(obj_ids)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+def GetDesignGoafPoreByFields(fields):
+	_return = DesignGoafPore()
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignGoafPoreByFields(fields)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return.id = -1
+	return _return
+def GetDesignGoafPoreByField1(field, value):
+	_return = DesignGoafPore()
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignGoafPoreByField1(field, str(value))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return.id = -1
+	return _return
+def GetDesignGoafPoreByField2(field1, value1, field2, value2):
+	_return = DesignGoafPore()
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignGoafPoreByField2(field1, str(value1), field2, str(value2))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return.id = -1
+	return _return
+def GetDesignGoafPoreListByFields(fields):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignGoafPoreListByFields(fields)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignGoafPoreListByField1(field, value):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignGoafPoreListByField1(field, str(value))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignGoafPoreListByField2(field1, value1, field2, value2):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignGoafPoreListByField2(field1, str(value1), field2, str(value2))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignGoafPoreIdByFields(fields):
+	_return = -1
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignGoafPoreIdByFields(fields)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = -1
+	return _return
+def GetDesignGoafPoreIdByField1(field, value):
+	_return = -1
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignGoafPoreIdByField1(field, str(value))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = -1
+	return _return
+def GetDesignGoafPoreIdByField2(field1, value1, field2, value2):
+	_return = -1
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignGoafPoreIdByField2(field1, str(value1), field2, str(value2))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = -1
+	return _return
+def GetDesignGoafPoreIdListByFields(fields):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignGoafPoreIdListByFields(fields)
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignGoafPoreIdListByField1(field, value):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignGoafPoreIdListByField1(field, str(value))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignGoafPoreIdListByField2(field1, value1, field2, value2):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignGoafPoreIdListByField2(field1, str(value1), field2, str(value2))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignGoafPoreListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignGoafPoreListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+def GetDesignGoafPoreIdListByForeignKey(fkey, id):
+	_return = []
+	try:
+		service_client = RpcClient(CbmService, host=HOST, port=PORT2)
+		service_client.start()
+		_return = service_client.get().GetDesignGoafPoreIdListByForeignKey(fkey, int(id))
+		service_client.close()
+	except Exception, e:
+		print 'client exception:',e
+		_return = []
+	return _return
+
+
+
 #DesignGoafTechnology 类型的CRUD操作
 def AddDesignGoafTechnology(design_goaf_technology):
 	ret = -1

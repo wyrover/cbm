@@ -148,6 +148,14 @@ info = {
 	"t":float,
 	"v":float
 },
+"DesignGoafPore":{
+	"id":int,
+	"design_goaf_technology_id":int,
+	"name":str,
+	"h_offset":float,
+	"v_offset":float,
+	"comment":str
+},
 "DesignGoafTechnology":{
 	"id":int,
 	"design_technology_id":int,
@@ -677,6 +685,14 @@ fkey = {
 	"r":0,
 	"t":0,
 	"v":0
+},
+"DesignGoafPore":{
+	"id":1,
+	"design_goaf_technology_id":2,
+	"name":0,
+	"h_offset":0,
+	"v_offset":0,
+	"comment":0
 },
 "DesignGoafTechnology":{
 	"id":1,

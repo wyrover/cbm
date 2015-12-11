@@ -30,3 +30,19 @@ create table design_goaf_technology
 
 alter table design_goaf_technology add constraint fk_relationship_39 foreign key (design_technology_id)
       references design_technology (id) on delete cascade on update restrict;
+
+drop table if exists design_goaf_pore;
+
+create table design_goaf_pore
+(
+   id                   int not null,
+   design_goaf_technology_id int,
+   name                 varchar(255),
+   h_offset             decimal(8,2),
+   v_offset             decimal(8,2),
+   comment              varchar(255),
+   primary key (id)
+);
+
+alter table design_goaf_pore add constraint fk_relationship_45 foreign key (design_goaf_technology_id)
+      references design_goaf_technology (id) on delete cascade on update restrict;

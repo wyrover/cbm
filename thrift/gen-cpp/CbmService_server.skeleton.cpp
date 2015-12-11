@@ -897,6 +897,131 @@ class CbmServiceHandler : virtual public CbmServiceIf {
     printf("GetDesignEvalUnitPartitionIdListByForeignKey\n");
   }
 
+  int32_t AddDesignGoafPore(const DesignGoafPore& design_goaf_pore) {
+    // Your implementation goes here
+    printf("AddDesignGoafPore\n");
+  }
+
+  bool DeleteDesignGoafPore(const int32_t id) {
+    // Your implementation goes here
+    printf("DeleteDesignGoafPore\n");
+  }
+
+  bool UpdateDesignGoafPore(const DesignGoafPore& design_goaf_pore) {
+    // Your implementation goes here
+    printf("UpdateDesignGoafPore\n");
+  }
+
+  void GetDesignGoafPoreById(DesignGoafPore& _return, const int32_t id) {
+    // Your implementation goes here
+    printf("GetDesignGoafPoreById\n");
+  }
+
+  void GetDesignGoafPoreByForeignKey(DesignGoafPore& _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetDesignGoafPoreByForeignKey\n");
+  }
+
+  int32_t GetDesignGoafPoreIdByForeignKey(const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetDesignGoafPoreIdByForeignKey\n");
+  }
+
+  void GetDesignGoafPoreList(std::vector<DesignGoafPore> & _return) {
+    // Your implementation goes here
+    printf("GetDesignGoafPoreList\n");
+  }
+
+  void GetDesignGoafPoreIds(std::vector<int32_t> & _return) {
+    // Your implementation goes here
+    printf("GetDesignGoafPoreIds\n");
+  }
+
+  void GetDesignGoafPoreNames(std::vector<std::string> & _return) {
+    // Your implementation goes here
+    printf("GetDesignGoafPoreNames\n");
+  }
+
+  void AddMoreDesignGoafPore(const std::vector<DesignGoafPore> & objs) {
+    // Your implementation goes here
+    printf("AddMoreDesignGoafPore\n");
+  }
+
+  void DeleteMoreDesignGoafPore(const std::vector<int32_t> & obj_ids) {
+    // Your implementation goes here
+    printf("DeleteMoreDesignGoafPore\n");
+  }
+
+  void GetDesignGoafPoreByFields(DesignGoafPore& _return, const std::map<std::string, std::string> & fields) {
+    // Your implementation goes here
+    printf("GetDesignGoafPoreByFields\n");
+  }
+
+  void GetDesignGoafPoreByField1(DesignGoafPore& _return, const std::string& field, const std::string& value) {
+    // Your implementation goes here
+    printf("GetDesignGoafPoreByField1\n");
+  }
+
+  void GetDesignGoafPoreByField2(DesignGoafPore& _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
+    // Your implementation goes here
+    printf("GetDesignGoafPoreByField2\n");
+  }
+
+  void GetDesignGoafPoreListByFields(std::vector<DesignGoafPore> & _return, const std::map<std::string, std::string> & fields) {
+    // Your implementation goes here
+    printf("GetDesignGoafPoreListByFields\n");
+  }
+
+  void GetDesignGoafPoreListByField1(std::vector<DesignGoafPore> & _return, const std::string& field, const std::string& value) {
+    // Your implementation goes here
+    printf("GetDesignGoafPoreListByField1\n");
+  }
+
+  void GetDesignGoafPoreListByField2(std::vector<DesignGoafPore> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
+    // Your implementation goes here
+    printf("GetDesignGoafPoreListByField2\n");
+  }
+
+  int32_t GetDesignGoafPoreIdByFields(const std::map<std::string, std::string> & fields) {
+    // Your implementation goes here
+    printf("GetDesignGoafPoreIdByFields\n");
+  }
+
+  int32_t GetDesignGoafPoreIdByField1(const std::string& field, const std::string& value) {
+    // Your implementation goes here
+    printf("GetDesignGoafPoreIdByField1\n");
+  }
+
+  int32_t GetDesignGoafPoreIdByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
+    // Your implementation goes here
+    printf("GetDesignGoafPoreIdByField2\n");
+  }
+
+  void GetDesignGoafPoreIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields) {
+    // Your implementation goes here
+    printf("GetDesignGoafPoreIdListByFields\n");
+  }
+
+  void GetDesignGoafPoreIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value) {
+    // Your implementation goes here
+    printf("GetDesignGoafPoreIdListByField1\n");
+  }
+
+  void GetDesignGoafPoreIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
+    // Your implementation goes here
+    printf("GetDesignGoafPoreIdListByField2\n");
+  }
+
+  void GetDesignGoafPoreListByForeignKey(std::vector<DesignGoafPore> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetDesignGoafPoreListByForeignKey\n");
+  }
+
+  void GetDesignGoafPoreIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+    // Your implementation goes here
+    printf("GetDesignGoafPoreIdListByForeignKey\n");
+  }
+
   int32_t AddDesignGoafTechnology(const DesignGoafTechnology& design_goaf_technology) {
     // Your implementation goes here
     printf("AddDesignGoafTechnology\n");

@@ -2093,6 +2093,305 @@ void SQLClientHelper::GetDesignEvalUnitPartitionIdListByForeignKey(std::vector<i
 	}
 }
 
+//DesignGoafPore 类型的CRUD操作
+int32_t SQLClientHelper::AddDesignGoafPore(const cbm::DesignGoafPore & design_goaf_pore) {
+	int32_t ret = -1;
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		ret = service_client.get()->AddDesignGoafPore(design_goaf_pore);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+		ret = -1;
+	}
+	return ret;
+}
+bool SQLClientHelper::DeleteDesignGoafPore(const int32_t id) {
+	bool ret = false;
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		ret = service_client.get()->DeleteDesignGoafPore(id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+		ret = false;
+	}
+	return ret;
+}
+bool SQLClientHelper::UpdateDesignGoafPore(const cbm::DesignGoafPore & design_goaf_pore) {
+	bool ret = false;
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		ret = service_client.get()->UpdateDesignGoafPore(design_goaf_pore);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+		ret = false;
+	}
+	return ret;
+}
+void SQLClientHelper::GetDesignGoafPoreById(cbm::DesignGoafPore & _return, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignGoafPoreById(_return, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignGoafPoreByForeignKey(cbm::DesignGoafPore & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignGoafPoreByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+int32_t SQLClientHelper::GetDesignGoafPoreIdByForeignKey(const std::string& fkey, const int32_t id) {
+	int32_t ret = -1;
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		ret = service_client.get()->GetDesignGoafPoreIdByForeignKey(fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+		ret = -1;
+	}
+return ret;
+}
+void SQLClientHelper::GetDesignGoafPoreList(std::vector<cbm::DesignGoafPore> & _return) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignGoafPoreList(_return);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignGoafPoreIds(std::vector<int32_t> & _return) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignGoafPoreIds(_return);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignGoafPoreNames(std::vector<std::string> & _return) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignGoafPoreNames(_return);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::AddMoreDesignGoafPore(const std::vector<cbm::DesignGoafPore> & objs) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->AddMoreDesignGoafPore(objs);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::DeleteMoreDesignGoafPore(const std::vector<int32_t> & obj_ids) {
+	if(obj_ids.empty()) return;
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->DeleteMoreDesignGoafPore(obj_ids);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignGoafPoreByFields(cbm::DesignGoafPore & _return, const std::map<std::string, std::string> & fields) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignGoafPoreByFields(_return, fields);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignGoafPoreByField1(cbm::DesignGoafPore & _return, const std::string& field, const std::string& value) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignGoafPoreByField1(_return, field, value);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignGoafPoreByField2(cbm::DesignGoafPore & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignGoafPoreByField2(_return, field1, value1, field2, value2);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignGoafPoreListByFields(std::vector<cbm::DesignGoafPore> & _return, const std::map<std::string, std::string> & fields) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignGoafPoreListByFields(_return, fields);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignGoafPoreListByField1(std::vector<cbm::DesignGoafPore> & _return, const std::string& field, const std::string& value) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignGoafPoreListByField1(_return, field, value);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignGoafPoreListByField2(std::vector<cbm::DesignGoafPore> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignGoafPoreListByField2(_return, field1, value1, field2, value2);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+int32_t SQLClientHelper::GetDesignGoafPoreIdByFields(const std::map<std::string, std::string> & fields) {
+	int32_t ret = -1;
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		ret = service_client.get()->GetDesignGoafPoreIdByFields(fields);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+		ret = -1;
+	}
+return ret;
+}
+int32_t SQLClientHelper::GetDesignGoafPoreIdByField1(const std::string& field, const std::string& value) {
+	int32_t ret = -1;
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		ret = service_client.get()->GetDesignGoafPoreIdByField1(field, value);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+		ret = -1;
+	}
+return ret;
+}
+int32_t SQLClientHelper::GetDesignGoafPoreIdByField2(const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
+	int32_t ret = -1;
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		ret = service_client.get()->GetDesignGoafPoreIdByField2(field1, value1, field2, value2);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+		ret = -1;
+	}
+return ret;
+}
+void SQLClientHelper::GetDesignGoafPoreIdListByFields(std::vector<int32_t> & _return, const std::map<std::string, std::string> & fields) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignGoafPoreIdListByFields(_return, fields);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignGoafPoreIdListByField1(std::vector<int32_t> & _return, const std::string& field, const std::string& value) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignGoafPoreIdListByField1(_return, field, value);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignGoafPoreIdListByField2(std::vector<int32_t> & _return, const std::string& field1, const std::string& value1, const std::string& field2, const std::string& value2) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignGoafPoreIdListByField2(_return, field1, value1, field2, value2);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignGoafPoreListByForeignKey(std::vector<cbm::DesignGoafPore> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignGoafPoreListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+void SQLClientHelper::GetDesignGoafPoreIdListByForeignKey(std::vector<int32_t> & _return, const std::string& fkey, const int32_t id) {
+	try {
+		RpcClient<cbm::CbmServiceClient> service_client(HOST, PORT2);
+		service_client.start();
+		service_client.get()->GetDesignGoafPoreIdListByForeignKey(_return, fkey, id);
+		service_client.close();
+	}
+	catch (TException &tx) {
+		std::string error_msg = tx.what();
+	}
+}
+
 //DesignGoafTechnology 类型的CRUD操作
 int32_t SQLClientHelper::AddDesignGoafTechnology(const cbm::DesignGoafTechnology & design_goaf_technology) {
 	int32_t ret = -1;
