@@ -12,6 +12,8 @@ drop table if exists design_eval_unit;
 
 drop table if exists design_eval_unit_partition;
 
+drop table if exists design_goaf_pore;
+
 drop table if exists design_goaf_technology;
 
 drop table if exists design_pore;
@@ -234,6 +236,17 @@ create table design_eval_unit_partition
    r                    decimal(8,2),
    t                    decimal(8,2),
    v                    decimal(8,2),
+   primary key (id)
+);
+
+create table design_goaf_pore
+(
+   id                   int not null,
+   design_goaf_technology_id int,
+   name                 varchar(255),
+   h_offset             decimal(8,2),
+   v_offset             decimal(8,2),
+   comment              varchar(255),
    primary key (id)
 );
 
@@ -722,6 +735,9 @@ alter table design_eval_unit add constraint fk_relationship_42 foreign key (desi
 
 alter table design_eval_unit_partition add constraint fk_relationship_44 foreign key (work_surf_id)
       references work_surf (id) on delete cascade on update restrict;
+
+alter table design_goaf_pore add constraint fk_relationship_45 foreign key (design_goaf_technology_id)
+      references design_goaf_technology (id) on delete cascade on update restrict;
 
 alter table design_goaf_technology add constraint fk_relationship_39 foreign key (design_technology_id)
       references design_technology (id) on delete cascade on update restrict;

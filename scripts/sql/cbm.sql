@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2015-12-09 06:18:01
+-- Generation Time: 2015-12-11 10:03:21
 -- 服务器版本： 5.6.17
 -- PHP Version: 5.5.12
 
@@ -306,6 +306,23 @@ CREATE TABLE IF NOT EXISTS `design_eval_unit_partition` (
 INSERT INTO `design_eval_unit_partition` (`id`, `work_surf_id`, `name`, `comment`, `l2`, `l1`, `w`, `h`, `l`, `r`, `t`, `v`) VALUES
 (23, 1, '', '', '300.00', '1000.00', '3.00', '3.00', '1000.00', '3.00', '30.00', '3.00'),
 (26, 2, '', '', '180.00', '1000.00', '3.00', '3.00', '800.00', '5.00', '40.00', '4.00');
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `design_goaf_pore`
+--
+
+CREATE TABLE IF NOT EXISTS `design_goaf_pore` (
+  `id` int(11) NOT NULL,
+  `design_goaf_technology_id` int(11) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `h_offset` decimal(8,2) DEFAULT NULL,
+  `v_offset` decimal(8,2) DEFAULT NULL,
+  `comment` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_relationship_45` (`design_goaf_technology_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -1622,6 +1639,12 @@ ALTER TABLE `design_eval_unit`
 --
 ALTER TABLE `design_eval_unit_partition`
   ADD CONSTRAINT `fk_relationship_44` FOREIGN KEY (`work_surf_id`) REFERENCES `work_surf` (`id`) ON DELETE CASCADE;
+
+--
+-- 限制表 `design_goaf_pore`
+--
+ALTER TABLE `design_goaf_pore`
+  ADD CONSTRAINT `fk_relationship_45` FOREIGN KEY (`design_goaf_technology_id`) REFERENCES `design_goaf_technology` (`id`) ON DELETE CASCADE;
 
 --
 -- 限制表 `design_goaf_technology`
