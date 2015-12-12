@@ -33,6 +33,12 @@
 *.orig
 
 *.pyc
+*.pyc
+*.pyo
+app.db
+search.db
+flask
+*.mo
 
 *.pidb
 *.userpref
