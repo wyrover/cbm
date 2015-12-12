@@ -187,6 +187,7 @@ struct DesignGoafTechnology {
 	17: double l2,
 	18: double w,
 	19: double h,
+	20: double close_length,
 }
 
 struct DesignPore {

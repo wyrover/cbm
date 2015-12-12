@@ -2275,6 +2275,7 @@ class DesignGoafTechnology:
    - l2
    - w
    - h
+   - close_length
   """
 
   thrift_spec = (
@@ -2298,9 +2299,10 @@ class DesignGoafTechnology:
     (17, TType.DOUBLE, 'l2', None, None, ), # 17
     (18, TType.DOUBLE, 'w', None, None, ), # 18
     (19, TType.DOUBLE, 'h', None, None, ), # 19
+    (20, TType.DOUBLE, 'close_length', None, None, ), # 20
   )
 
-  def __init__(self, id=None, design_technology_id=None, name=None, comment=None, pore_stubble=None, dp=None, gs=None, ls=None, ws=None, hs=None, gp=None, pore_num=None, top_dist=None, h_offset=None, y_offset=None, l1=None, l2=None, w=None, h=None,):
+  def __init__(self, id=None, design_technology_id=None, name=None, comment=None, pore_stubble=None, dp=None, gs=None, ls=None, ws=None, hs=None, gp=None, pore_num=None, top_dist=None, h_offset=None, y_offset=None, l1=None, l2=None, w=None, h=None, close_length=None,):
     self.id = id
     self.design_technology_id = design_technology_id
     self.name = name
@@ -2320,6 +2322,7 @@ class DesignGoafTechnology:
     self.l2 = l2
     self.w = w
     self.h = h
+    self.close_length = close_length
 
   def read(self, iprot):
     if iprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None and fastbinary is not None:
@@ -2425,6 +2428,11 @@ class DesignGoafTechnology:
           self.h = iprot.readDouble()
         else:
           iprot.skip(ftype)
+      elif fid == 20:
+        if ftype == TType.DOUBLE:
+          self.close_length = iprot.readDouble()
+        else:
+          iprot.skip(ftype)
       else:
         iprot.skip(ftype)
       iprot.readFieldEnd()
@@ -2511,6 +2519,10 @@ class DesignGoafTechnology:
       oprot.writeFieldBegin('h', TType.DOUBLE, 19)
       oprot.writeDouble(self.h)
       oprot.writeFieldEnd()
+    if self.close_length is not None:
+      oprot.writeFieldBegin('close_length', TType.DOUBLE, 20)
+      oprot.writeDouble(self.close_length)
+      oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()
 
@@ -2539,6 +2551,7 @@ class DesignGoafTechnology:
     value = (value * 31) ^ hash(self.l2)
     value = (value * 31) ^ hash(self.w)
     value = (value * 31) ^ hash(self.h)
+    value = (value * 31) ^ hash(self.close_length)
     return value
 
   def __repr__(self):

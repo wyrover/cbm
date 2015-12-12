@@ -175,7 +175,8 @@ info = {
 	"l1":float,
 	"l2":float,
 	"w":float,
-	"h":float
+	"h":float,
+	"close_length":float
 },
 "DesignPore":{
 	"id":int,
@@ -713,7 +714,8 @@ fkey = {
 	"l1":0,
 	"l2":0,
 	"w":0,
-	"h":0
+	"h":0,
+	"close_length":0
 },
 "DesignPore":{
 	"id":1,

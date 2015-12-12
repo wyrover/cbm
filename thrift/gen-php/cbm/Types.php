@@ -3732,6 +3732,10 @@ class DesignGoafTechnology {
    * @var double
    */
   public $h = null;
+  /**
+   * @var double
+   */
+  public $close_length = null;
 
   public function __construct($vals=null) {
     if (!isset(self::$_TSPEC)) {
@@ -3812,6 +3816,10 @@ class DesignGoafTechnology {
           'var' => 'h',
           'type' => TType::DOUBLE,
           ),
+        20 => array(
+          'var' => 'close_length',
+          'type' => TType::DOUBLE,
+          ),
         );
     }
     if (is_array($vals)) {
@@ -3871,6 +3879,9 @@ class DesignGoafTechnology {
       }
       if (isset($vals['h'])) {
         $this->h = $vals['h'];
+      }
+      if (isset($vals['close_length'])) {
+        $this->close_length = $vals['close_length'];
       }
     }
   }
@@ -4027,6 +4038,13 @@ class DesignGoafTechnology {
             $xfer += $input->skip($ftype);
           }
           break;
+        case 20:
+          if ($ftype == TType::DOUBLE) {
+            $xfer += $input->readDouble($this->close_length);
+          } else {
+            $xfer += $input->skip($ftype);
+          }
+          break;
         default:
           $xfer += $input->skip($ftype);
           break;
@@ -4133,6 +4151,11 @@ class DesignGoafTechnology {
     if ($this->h !== null) {
       $xfer += $output->writeFieldBegin('h', TType::DOUBLE, 19);
       $xfer += $output->writeDouble($this->h);
+      $xfer += $output->writeFieldEnd();
+    }
+    if ($this->close_length !== null) {
+      $xfer += $output->writeFieldBegin('close_length', TType::DOUBLE, 20);
+      $xfer += $output->writeDouble($this->close_length);
       $xfer += $output->writeFieldEnd();
     }
     $xfer += $output->writeFieldStop();

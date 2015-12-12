@@ -223,6 +223,7 @@ class DesignGoafTechnology(Base):
     l2 = Column(Numeric(8, 2))
     w = Column(Numeric(8, 2))
     h = Column(Numeric(8, 2))
+    close_length = Column(Numeric(8, 2))
 
     design_technology = relationship(u'DesignTechnology')
 

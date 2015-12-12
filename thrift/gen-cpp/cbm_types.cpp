@@ -3422,6 +3422,10 @@ void DesignGoafTechnology::__set_h(const double val) {
   this->h = val;
 }
 
+void DesignGoafTechnology::__set_close_length(const double val) {
+  this->close_length = val;
+}
+
 uint32_t DesignGoafTechnology::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -3595,6 +3599,14 @@ uint32_t DesignGoafTechnology::read(::apache::thrift::protocol::TProtocol* iprot
           xfer += iprot->skip(ftype);
         }
         break;
+      case 20:
+        if (ftype == ::apache::thrift::protocol::T_DOUBLE) {
+          xfer += iprot->readDouble(this->close_length);
+          this->__isset.close_length = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -3688,6 +3700,10 @@ uint32_t DesignGoafTechnology::write(::apache::thrift::protocol::TProtocol* opro
   xfer += oprot->writeDouble(this->h);
   xfer += oprot->writeFieldEnd();
 
+  xfer += oprot->writeFieldBegin("close_length", ::apache::thrift::protocol::T_DOUBLE, 20);
+  xfer += oprot->writeDouble(this->close_length);
+  xfer += oprot->writeFieldEnd();
+
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -3714,6 +3730,7 @@ void swap(DesignGoafTechnology &a, DesignGoafTechnology &b) {
   swap(a.l2, b.l2);
   swap(a.w, b.w);
   swap(a.h, b.h);
+  swap(a.close_length, b.close_length);
   swap(a.__isset, b.__isset);
 }
 
@@ -3737,6 +3754,7 @@ DesignGoafTechnology::DesignGoafTechnology(const DesignGoafTechnology& other16) 
   l2 = other16.l2;
   w = other16.w;
   h = other16.h;
+  close_length = other16.close_length;
   __isset = other16.__isset;
 }
 DesignGoafTechnology& DesignGoafTechnology::operator=(const DesignGoafTechnology& other17) {
@@ -3759,6 +3777,7 @@ DesignGoafTechnology& DesignGoafTechnology::operator=(const DesignGoafTechnology
   l2 = other17.l2;
   w = other17.w;
   h = other17.h;
+  close_length = other17.close_length;
   __isset = other17.__isset;
   return *this;
 }
@@ -3784,6 +3803,7 @@ void DesignGoafTechnology::printTo(std::ostream& out) const {
   out << ", " << "l2=" << to_string(l2);
   out << ", " << "w=" << to_string(w);
   out << ", " << "h=" << to_string(h);
+  out << ", " << "close_length=" << to_string(close_length);
   out << ")";
 }
 

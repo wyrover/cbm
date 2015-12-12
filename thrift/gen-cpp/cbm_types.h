@@ -1254,7 +1254,7 @@ inline std::ostream& operator<<(std::ostream& out, const DesignGoafPore& obj)
 }
 
 typedef struct _DesignGoafTechnology__isset {
-  _DesignGoafTechnology__isset() : id(false), design_technology_id(false), name(false), comment(false), pore_stubble(false), dp(false), gs(false), ls(false), ws(false), hs(false), gp(false), pore_num(false), top_dist(false), h_offset(false), y_offset(false), l1(false), l2(false), w(false), h(false) {}
+  _DesignGoafTechnology__isset() : id(false), design_technology_id(false), name(false), comment(false), pore_stubble(false), dp(false), gs(false), ls(false), ws(false), hs(false), gp(false), pore_num(false), top_dist(false), h_offset(false), y_offset(false), l1(false), l2(false), w(false), h(false), close_length(false) {}
   bool id :1;
   bool design_technology_id :1;
   bool name :1;
@@ -1274,6 +1274,7 @@ typedef struct _DesignGoafTechnology__isset {
   bool l2 :1;
   bool w :1;
   bool h :1;
+  bool close_length :1;
 } _DesignGoafTechnology__isset;
 
 class DesignGoafTechnology {
@@ -1281,7 +1282,7 @@ class DesignGoafTechnology {
 
   DesignGoafTechnology(const DesignGoafTechnology&);
   DesignGoafTechnology& operator=(const DesignGoafTechnology&);
-  DesignGoafTechnology() : id(0), design_technology_id(0), name(), comment(), pore_stubble(0), dp(0), gs(0), ls(0), ws(0), hs(0), gp(0), pore_num(0), top_dist(0), h_offset(), y_offset(), l1(0), l2(0), w(0), h(0) {
+  DesignGoafTechnology() : id(0), design_technology_id(0), name(), comment(), pore_stubble(0), dp(0), gs(0), ls(0), ws(0), hs(0), gp(0), pore_num(0), top_dist(0), h_offset(), y_offset(), l1(0), l2(0), w(0), h(0), close_length(0) {
   }
 
   virtual ~DesignGoafTechnology() throw();
@@ -1304,6 +1305,7 @@ class DesignGoafTechnology {
   double l2;
   double w;
   double h;
+  double close_length;
 
   _DesignGoafTechnology__isset __isset;
 
@@ -1345,6 +1347,8 @@ class DesignGoafTechnology {
 
   void __set_h(const double val);
 
+  void __set_close_length(const double val);
+
   bool operator == (const DesignGoafTechnology & rhs) const
   {
     if (!(id == rhs.id))
@@ -1384,6 +1388,8 @@ class DesignGoafTechnology {
     if (!(w == rhs.w))
       return false;
     if (!(h == rhs.h))
+      return false;
+    if (!(close_length == rhs.close_length))
       return false;
     return true;
   }

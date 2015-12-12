@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>gas_design_p2_3_dlg</class>
- <widget class="QWidget" name="gas_design_p2_3_dlg">
+ <class>gas_design_p3_2_dlg</class>
+ <widget class="QWidget" name="gas_design_p3_2_dlg">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -60,6 +60,9 @@
     </property>
     <property name="title">
      <string>钻孔参数</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
     </property>
     <widget class="QLineEdit" name="gp">
      <property name="geometry">
@@ -799,7 +802,63 @@
       </font>
      </property>
      <property name="text">
-      <string>终孔设计</string>
+      <string>终孔位置</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="plus">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>56</y>
+       <width>21</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="../usecad.qrc">
+       <normaloff>:/images/plus.png</normaloff>:/images/plus.png</iconset>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="minus">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>56</y>
+       <width>21</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="../usecad.qrc">
+       <normaloff>:/images/minus.png</normaloff>:/images/minus.png</iconset>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
      </property>
     </widget>
    </widget>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2015-12-11 10:03:21
+-- Generation Time: 2015-12-12 05:45:33
 -- 服务器版本： 5.6.17
 -- PHP Version: 5.5.12
 
@@ -350,9 +350,17 @@ CREATE TABLE IF NOT EXISTS `design_goaf_technology` (
   `l2` decimal(8,2) DEFAULT NULL,
   `w` decimal(8,2) DEFAULT NULL,
   `h` decimal(8,2) DEFAULT NULL,
+  `close_length` decimal(8,2) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_relationship_39` (`design_technology_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- 转存表中的数据 `design_goaf_technology`
+--
+
+INSERT INTO `design_goaf_technology` (`id`, `design_technology_id`, `name`, `comment`, `pore_stubble`, `dp`, `gs`, `ls`, `ws`, `hs`, `gp`, `pore_num`, `top_dist`, `h_offset`, `y_offset`, `l1`, `l2`, `w`, `h`, `close_length`) VALUES
+(1, 54, '方案11', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -717,7 +725,7 @@ CREATE TABLE IF NOT EXISTS `design_technology` (
   `comment` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_relationship_35` (`coal_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=54 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=55 ;
 
 --
 -- 转存表中的数据 `design_technology`
@@ -725,7 +733,8 @@ CREATE TABLE IF NOT EXISTS `design_technology` (
 
 INSERT INTO `design_technology` (`id`, `coal_id`, `name`, `region`, `comment`) VALUES
 (52, 6, NULL, 1, NULL),
-(53, 6, NULL, 2, NULL);
+(53, 6, NULL, 2, NULL),
+(54, 6, NULL, 3, NULL);
 
 -- --------------------------------------------------------
 
@@ -1384,7 +1393,7 @@ CREATE TABLE IF NOT EXISTS `sys_info` (
   `comment` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_relationship_29` (`account_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='记录当前的一些信息，比如当前用户' AUTO_INCREMENT=42 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='记录当前的一些信息，比如当前用户' AUTO_INCREMENT=47 ;
 
 -- --------------------------------------------------------
 

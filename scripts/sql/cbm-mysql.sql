@@ -207,6 +207,7 @@ create table design_drilling_surf_technology
    left_side            decimal(8,2),
    right_side           decimal(8,2),
    lm                   decimal(8,2),
+   close_length         decimal(8,2),
    primary key (id)
 );
 
@@ -271,6 +272,7 @@ create table design_goaf_technology
    l2                   decimal(8,2),
    w                    decimal(8,2),
    h                    decimal(8,2),
+   close_length         decimal(8,2),
    primary key (id)
 );
 
@@ -374,6 +376,7 @@ create table design_work_surf_technology
    pore_stubble         decimal(8,2),
    pore_angle           decimal(8,2),
    pore_type            int,
+   close_length         decimal(8,2),
    primary key (id)
 );
 
