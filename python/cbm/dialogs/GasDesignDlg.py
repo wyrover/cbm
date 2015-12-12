@@ -7,6 +7,7 @@ from GasDesignP11Dlg import *
 from GasDesignP12Dlg import *
 from GasDesignP21Dlg import *
 from GasDesignP23Dlg import *
+from GasDesignP32Dlg import *
 
 from rpc import CbmUtil, SQLClientHelper, CbmClientHelper
 from cbm.ttypes import *
@@ -36,7 +37,14 @@ def RunGasDesignDlg(coal_id, region, which_tech, design_id):
 		else:
 			pass
 	elif region == 3:
-		pass
+		if which_tech == 1:
+			pass
+		elif which_tech == 2:
+			dlg = GasDesignP32Dlg(coal_id, design_id)
+		elif which_tech == 3:
+			pass
+		else:
+			pass
 	
 	ret = dlg is not None
 	if ret:
