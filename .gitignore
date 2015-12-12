@@ -33,6 +33,12 @@
 *.orig
 
 *.pyc
+*.pyc
+*.pyo
+app.db
+search.db
+flask
+*.mo
 
 *.pidb
 *.userpref
@@ -75,7 +81,7 @@ soui*.rc2
 ui_*.py
 *_rc.py
 
-*logs/
+logs/
 finedb/
 logdb/
 performance/
