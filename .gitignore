@@ -81,7 +81,7 @@ soui*.rc2
 ui_*.py
 *_rc.py
 
-*logs/
+logs/
 finedb/
 logdb/
 performance/
